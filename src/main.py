@@ -73,6 +73,9 @@ from dtk.ui.dialog import DIALOG_MASK_GLASS_PAGE
 from dtk.ui.treeview import TreeView, NodeItem, get_background_color, get_text_color
 from dtk.ui.utils import color_hex_to_cairo
 from dtk.ui.theme import ui_theme
+
+from deepin_utils.file import remove_path, touch_file
+import sqlite3
         
 # Load customize rc style before any other.
 PANED_HANDLE_SIZE = 2
@@ -109,6 +112,11 @@ TRANSPARENT_OFFSET = 0.1
 _HOME = os.path.expanduser('~')
 XDG_CONFIG_HOME = os.environ.get('XDG_CONFIG_HOME') or \
             os.path.join(_HOME, '.config')
+
+# NOTE:
+# We just store remote informations (include password) in sqlite database.
+# please don't fill password if you care about safe problem.
+LOGIN_DATABASE = os.path.join(XDG_CONFIG_HOME, PROJECT_NAME, ".config", "login.db")
 
 DEFAULT_CONFIG = [
     ("general", 
@@ -2059,14 +2067,50 @@ class RemoteLogin(DialogBox):
         
         self.treeview = TreeView()
         self.treeview.set_column_titles(["名字", "服务器"])
+        self.treeview.connect("items-change", lambda t: self.save_login_info())
         self.body_box.add(self.treeview)
+        
+        self.read_login_info()
         
         self.add_remote_login = EditRemoteLogin("添加远程登陆", self.save_remote_login)
         
         self.parent_window = None
         
         self.treeview.connect("right-press-items", self.right_press_items)
-        self.add_button.connect("clicked", lambda w: self.show_add_remote_login())
+        
+    def read_login_info(self):
+        if os.path.exists(LOGIN_DATABASE):
+            connection = sqlite3.connect(LOGIN_DATABASE)
+            cursor = connection.cursor()
+            
+            items = []
+            cursor.execute('SELECT * FROM login')
+            for (name, user, server, password, port) in cursor.fetchall():
+                items.append(TextItem(name, user, server, password, port))
+                
+            self.treeview.add_items(items)    
+        
+    def save_login_info(self):
+        items = self.treeview.get_items()
+        item_infos = map(lambda item: (
+                unicode(item.name),
+                unicode(item.user),
+                unicode(item.server),
+                unicode(item.password),
+                unicode(item.port),
+                ), items)
+        
+        remove_path(LOGIN_DATABASE)
+        touch_file(LOGIN_DATABASE)
+        
+        connection = sqlite3.connect(LOGIN_DATABASE)
+        cursor = connection.cursor()
+        
+        cursor.execute('''CREATE TABLE login (name, user, server, password, port)''')
+        cursor.executemany('''INSERT INTO login(name, user, server, password, port) VALUES(?, ?, ?, ?, ?)''', item_infos)
+        
+        connection.commit()
+        connection.close()
         
     def save_item_remote_login(self, item, name, user, server, password, port):
         item.name = name
@@ -2086,6 +2130,8 @@ class RemoteLogin(DialogBox):
             )
         edit_remote_login.show_login(self.parent_window)
         
+        self.save_login_info()
+        
     def right_press_items(self, *args):
         (treeview, x, y, current_item, select_items) = args
         if current_item:
@@ -2103,6 +2149,8 @@ class RemoteLogin(DialogBox):
         item = TextItem(name, user, server, password, port)
         self.treeview.add_items([item])
         self.treeview.select_items([item])
+        
+        self.save_login_info()
         
     def connect_remote_login(self):
         if len(self.treeview.select_rows) == 1:
