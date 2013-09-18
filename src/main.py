@@ -2010,8 +2010,10 @@ class EditRemoteLogin(DialogBox):
         self.port_box = SpinBox(port, lower=1, step=1)
         
         for (index, name) in enumerate(names):
+            label = Label(name)
+            label.set_can_focus(False)
             self.table.attach(
-                Label(name),
+                label,
                 0, 1,
                 index, index + 1,
                 xoptions=gtk.FILL,
