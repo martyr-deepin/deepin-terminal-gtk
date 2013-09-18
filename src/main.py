@@ -116,7 +116,7 @@ XDG_CONFIG_HOME = os.environ.get('XDG_CONFIG_HOME') or \
             os.path.join(_HOME, '.config')
 
 # NOTE:
-# We just store remote informations (include password) in sqlite database.
+# We just store remote information (include password) in sqlite database.
 # please don't fill password if you care about safe problem.
 LOGIN_DATABASE = os.path.join(XDG_CONFIG_HOME, PROJECT_NAME, ".config", "login.db")
 
@@ -461,12 +461,12 @@ class Terminal(object):
         return (focus_terminal, terminals)
         
     def focus_vertical_terminal(self, up=True):
-        # Get all terminal infomation.
+        # Get all terminal information.
         (focus_terminal, terminals) = self.get_all_terminal_infos()
         rect = focus_terminal.allocation
         x, y, w, h = rect.x, rect.y, rect.width, rect.height
         
-        # Find terminal intersectant with focus one.
+        # Find terminal intersects with focus one.
         def is_same_coordinate(t):
             if up:
                 return t.allocation.y + t.allocation.height + PANED_HANDLE_SIZE == y
@@ -489,7 +489,7 @@ class Terminal(object):
                 print "Same coordinate"
                 same_coordinate_terminals[0].grab_focus()
             else:
-                # Focus terminal if it's heigh than focus one.
+                # Focus terminal if it's height than focus one.
                 bigger_match_terminals = filter(
                     lambda t: 
                     (t.allocation.x < x and 
@@ -499,18 +499,18 @@ class Terminal(object):
                     print "Bigger"
                     bigger_match_terminals[0].grab_focus()
                 else:
-                    # Focus bigest intersectant area one.
+                    # Focus biggest intersectant area one.
                     intersectant_area_infos = map(
                         lambda t:
                             (t, 
                              (t.allocation.width + w - abs(t.allocation.x - x) - abs(t.allocation.x + t.allocation.width - x - w) / 2)),
                         intersectant_terminals)
-                    bigest_intersectant_terminal = sorted(intersectant_area_infos, key=lambda (_, area): area, reverse=True)[0][0]
-                    print "Bigest"
-                    bigest_intersectant_terminal.grab_focus()
+                    biggest_intersectant_terminal = sorted(intersectant_area_infos, key=lambda (_, area): area, reverse=True)[0][0]
+                    print "Biggest"
+                    biggest_intersectant_terminal.grab_focus()
     
     def focus_horizontal_terminal(self, left=True):                
-        # Get all terminal infomation.
+        # Get all terminal information.
         (focus_terminal, terminals) = self.get_all_terminal_infos()
         rect = focus_terminal.allocation
         x, y, w, h = rect.x, rect.y, rect.width, rect.height
@@ -538,7 +538,7 @@ class Terminal(object):
                 print "Same coordinate"
                 same_coordinate_terminals[0].grab_focus()
             else:
-                # Focus terminal if it's heigh than focus one.
+                # Focus terminal if it's height than focus one.
                 bigger_match_terminals = filter(
                     lambda t: 
                     (t.allocation.y < y and 
@@ -548,15 +548,15 @@ class Terminal(object):
                     print "Bigger"
                     bigger_match_terminals[0].grab_focus()
                 else:
-                    # Focus bigest intersectant area one.
+                    # Focus biggest intersectant area one.
                     intersectant_area_infos = map(
                         lambda t:
                             (t, 
                              (t.allocation.height + h - abs(t.allocation.y - y) - abs(t.allocation.y + t.allocation.height - y - h) / 2)),
                         intersectant_terminals)
-                    bigest_intersectant_terminal = sorted(intersectant_area_infos, key=lambda (_, area): area, reverse=True)[0][0]
-                    print "Bigest"
-                    bigest_intersectant_terminal.grab_focus()
+                    biggest_intersectant_terminal = sorted(intersectant_area_infos, key=lambda (_, area): area, reverse=True)[0][0]
+                    print "Biggest"
+                    biggest_intersectant_terminal.grab_focus()
                     
     def focus_up_terminal(self):
         self.focus_vertical_terminal(True)
@@ -742,10 +742,10 @@ class TerminalWrapper(vte.Terminal):
                  working_directory=None,
                  ):
         """
-        Inital values.
+        Initial values.
         :param parent_widget: which grid this widget belongs to.
         """
-        # TODO: Transmit a config object, so we could set attributs of vte.
+        # TODO: Transmit a config object, so we could set attributes of vte.
         # vte init
         vte.Terminal.__init__(self)
         self.parent_widget = parent_widget
@@ -1047,7 +1047,7 @@ class TerminalGrid(gtk.VBox):
 
     def child_exit_callback(self, widget):
         """
-        Recusively close the widget or remove paned.
+        Recursively close the widget or remove paned.
         :param widget: which widget is exited.
         """
         # TODO: Add a remove_child method to delete reference and return deleted child.
