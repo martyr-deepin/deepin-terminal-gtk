@@ -759,8 +759,6 @@ class TerminalWrapper(vte.Terminal):
         Initial values.
         :param parent_widget: which grid this widget belongs to.
         """
-        # TODO: Transmit a config object, so we could set attributes of vte.
-        # vte init
         vte.Terminal.__init__(self)
         self.parent_widget = parent_widget
         self.set_word_chars("-A-Za-z0-9,./?%&#:_")
@@ -1018,7 +1016,6 @@ class TerminalGrid(gtk.VBox):
         Initial values
         :param parent_widget: which TerminalGrid this widget belongs to.
         """
-        # TODO: Transmit a config object.
         gtk.VBox.__init__(self)
 
         # Keep a reference to parent
@@ -1064,7 +1061,6 @@ class TerminalGrid(gtk.VBox):
         Recursively close the widget or remove paned.
         :param widget: which widget is exited.
         """
-        # TODO: Add a remove_child method to delete reference and return deleted child.
         if self.is_parent:
             # Called from one of the children, now check which children to remove.
             widgets = self.paned.get_children()
