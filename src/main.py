@@ -174,17 +174,36 @@ color_style = {"deepin" : (_("Deepin"), ["#00FF00", "#000000"]),
 COMBO_BOX_WIDTH = 150
 
 def get_active_working_directory(toplevel_widget):
+    '''
+    Get active working directory with given toplevel widget.
+    
+    @param toplevel_widget: Toplevel widget, it's gtk.Window type.
+    
+    @return: Return working directory of focus terminal, return None if nothing to focus.
+    '''
     focus_widget = toplevel_widget.get_focus()
     if focus_widget and isinstance(focus_widget, TerminalWrapper):
         return focus_widget.get_working_directory()
     else:
         return None
     
-    
 def merge_list(a):
+    '''
+    Merge recursively list with flat list.
+    
+    @return: Return a flat list after merge from recursively list.
+    '''
     return list(itertools.chain.from_iterable(a))
 
 def get_match_children(widget, child_type):
+    '''
+    Get all child widgets that match given widget type.
+    
+    @param widget: The container to search.
+    @param child_type: The widget type of search.
+    
+    @return: Return all child widgets that match given widget type, or return empty list if nothing to find.
+    '''
     child_list = widget.get_children()
     if child_list:
         match_widget_list = filter(lambda w: isinstance(w, child_type), child_list)
@@ -199,12 +218,12 @@ def get_match_children(widget, child_type):
         
 class Terminal(object):
     """
-    Main class to run.
+    Terminal class.
     """
 
     def __init__(self):
         """
-        Init docs
+        Init Terminal class.
         """
         self.application = Application()
         self.application.set_default_size(664, 466)
@@ -224,17 +243,13 @@ class Terminal(object):
             self.switch_to_workspace
         )
         self.workspace_switcher_y_offset = 10
-        
+        self.is_full_screen = False
         self.search_bar = SearchBar()
-        
         self.helper_window = HelperWindow()
-        
         self.remote_login = RemoteLogin()
         
         self.terminal_align.add(self.terminal_box)
         self.application.main_box.pack_start(self.terminal_align)
-        
-        self.is_full_screen = False
         
         self.generate_keymap()
         
