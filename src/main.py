@@ -21,31 +21,35 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from dtk.ui.init_skin import init_skin
-from deepin_utils.file import get_parent_dir
-from deepin_utils.process import run_command
-from dtk.ui.utils import container_remove_all, get_match_parent, cairo_state, propagate_expose, is_left_button, is_right_button
+from collections import OrderedDict
+from deepin_utils.config import Config
 from deepin_utils.core import unzip
+from deepin_utils.file import get_parent_dir
+from deepin_utils.file import remove_path, touch_file
 from deepin_utils.font import get_font_families
-from dtk.ui.draw import draw_pixbuf, draw_text
-from dtk.ui.utils import place_center, get_widget_root_coordinate
+from deepin_utils.process import run_command
 from dtk.ui.constant import WIDGET_POS_BOTTOM_LEFT, ALIGN_END, DEFAULT_FONT_SIZE
+from dtk.ui.draw import draw_pixbuf, draw_text
+from dtk.ui.events import EventRegister
+from dtk.ui.init_skin import init_skin
+from dtk.ui.keymap import get_keyevent_name, is_no_key_press, has_ctrl_mask
 from dtk.ui.label import Label
 from dtk.ui.menu import Menu
+from dtk.ui.utils import container_remove_all, get_match_parent, cairo_state, propagate_expose, is_left_button, is_right_button
+from dtk.ui.utils import place_center, get_widget_root_coordinate
 from dtk.ui.window import Window
-import pango
-import os
-import gtk
-import gobject
-import vte
-import cairo
-from dtk.ui.keymap import get_keyevent_name, is_no_key_press, has_ctrl_mask
-from dtk.ui.events import EventRegister
-import gc
-import urllib
 from math import pi
-from deepin_utils.config import Config
-from collections import OrderedDict
+from nls import _
+import cairo
+import gc
+import gobject
+import gtk
+import itertools    
+import os
+import pango
+import sqlite3
+import urllib
+import vte
 
 PROJECT_NAME = "deepin-terminal"
 
@@ -56,28 +60,24 @@ app_theme = init_skin(
     os.path.join(get_parent_dir(__file__, 2), "skin"),
     os.path.join(get_parent_dir(__file__, 2), "app_theme")
 )
+
 from dtk.ui.application import Application
-from dtk.ui.entry import Entry
-from dtk.ui.titlebar import Titlebar
-from dtk.ui.button import SwitchButton
-from dtk.ui.dialog import PreferenceDialog
-from dtk.ui.combo import ComboBox
-from dtk.ui.spin import SpinBox
-from dtk.ui.color_selection import ColorButton
-from dtk.ui.scalebar import HScalebar
-from dtk.ui.entry import ShortcutKeyEntry, InputEntry, PasswordEntry
-from dtk.ui.scrolled_window import ScrolledWindow
 from dtk.ui.button import Button
-from dtk.ui.dialog import DialogBox
+from dtk.ui.button import SwitchButton
+from dtk.ui.color_selection import ColorButton
+from dtk.ui.combo import ComboBox
 from dtk.ui.dialog import DIALOG_MASK_GLASS_PAGE
+from dtk.ui.dialog import DialogBox
+from dtk.ui.dialog import PreferenceDialog
+from dtk.ui.entry import Entry
+from dtk.ui.entry import ShortcutKeyEntry, InputEntry, PasswordEntry
+from dtk.ui.scalebar import HScalebar
+from dtk.ui.scrolled_window import ScrolledWindow
+from dtk.ui.spin import SpinBox
+from dtk.ui.theme import ui_theme
+from dtk.ui.titlebar import Titlebar
 from dtk.ui.treeview import TreeView, NodeItem, get_background_color, get_text_color
 from dtk.ui.utils import color_hex_to_cairo
-from dtk.ui.theme import ui_theme
-
-from deepin_utils.file import remove_path, touch_file
-import sqlite3
-
-from nls import _
         
 # Load customize rc style before any other.
 PANED_HANDLE_SIZE = 2
@@ -180,7 +180,6 @@ def get_active_working_directory(toplevel_widget):
     else:
         return None
     
-import itertools    
     
 def merge_list(a):
     return list(itertools.chain.from_iterable(a))
