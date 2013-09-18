@@ -1,0 +1,247 @@
+# Chinese translations for PACKAGE package.
+# Copyright (C) 2013 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-09-18 10:17+0800\n"
+"PO-Revision-Date: 2013-09-18 09:49+0800\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: zh_HK\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../src/main.py:165
+msgid "Deepin"
+msgstr ""
+
+#: ../src/main.py:166
+msgid "Black/Grey"
+msgstr ""
+
+#: ../src/main.py:167
+msgid "Yellow/Black"
+msgstr ""
+
+#: ../src/main.py:168
+msgid "White/Black"
+msgstr ""
+
+#: ../src/main.py:169
+msgid "Black/White"
+msgstr ""
+
+#: ../src/main.py:170
+msgid "Black/Green"
+msgstr ""
+
+#: ../src/main.py:171
+msgid "Customize"
+msgstr ""
+
+#: ../src/main.py:253
+msgid "Normal Setting"
+msgstr ""
+
+#: ../src/main.py:254
+msgid "Hotkey Setting"
+msgstr ""
+
+#: ../src/main.py:255
+msgid "Advanced Setting"
+msgstr ""
+
+#: ../src/main.py:381
+msgid "New Feature"
+msgstr ""
+
+#: ../src/main.py:382 ../src/main.py:449
+msgid "Preference"
+msgstr ""
+
+#: ../src/main.py:383
+msgid "Exit"
+msgstr ""
+
+#: ../src/main.py:404 ../src/main.py:1496 ../src/main.py:1722
+msgid "Copy"
+msgstr ""
+
+#: ../src/main.py:406 ../src/main.py:1497 ../src/main.py:1723
+msgid "Paste"
+msgstr ""
+
+#: ../src/main.py:409 ../src/main.py:1509
+msgid "Open URL"
+msgstr ""
+
+#: ../src/main.py:412
+msgid "Exit fullscreen"
+msgstr ""
+
+#: ../src/main.py:414 ../src/main.py:1526 ../src/main.py:1740
+#: ../src/main.py:1817
+msgid "Fullscreen"
+msgstr ""
+
+#: ../src/main.py:418 ../src/main.py:1498 ../src/main.py:1724
+msgid "Split vertical"
+msgstr ""
+
+#: ../src/main.py:419 ../src/main.py:1499 ../src/main.py:1725
+msgid "Split horizontal"
+msgstr ""
+
+#: ../src/main.py:420 ../src/main.py:1500 ../src/main.py:1726
+msgid "Close terminal"
+msgstr ""
+
+#: ../src/main.py:426 ../src/main.py:1243
+msgid "Workspace"
+msgstr ""
+
+#: ../src/main.py:433 ../src/main.py:440 ../src/main.py:1520
+#: ../src/main.py:1734
+msgid "New workspace"
+msgstr ""
+
+#: ../src/main.py:434
+msgid "Switch workspace"
+msgstr ""
+
+#: ../src/main.py:435 ../src/main.py:1521 ../src/main.py:1735
+msgid "Close workspace"
+msgstr ""
+
+#: ../src/main.py:446
+msgid "Search"
+msgstr ""
+
+#: ../src/main.py:447 ../src/main.py:1527 ../src/main.py:1741
+msgid "Display shortcutkey"
+msgstr ""
+
+#: ../src/main.py:1501 ../src/main.py:1727
+msgid "Select up terminal"
+msgstr ""
+
+#: ../src/main.py:1502 ../src/main.py:1728
+msgid "Select down terminal"
+msgstr ""
+
+#: ../src/main.py:1503 ../src/main.py:1729
+msgid "Select left terminal"
+msgstr ""
+
+#: ../src/main.py:1504 ../src/main.py:1730
+msgid "Select right terminal"
+msgstr ""
+
+#: ../src/main.py:1508
+msgid "Select word"
+msgstr ""
+
+#: ../src/main.py:1508
+msgid "Double click"
+msgstr ""
+
+#: ../src/main.py:1509
+msgid "Ctrl + Left button"
+msgstr ""
+
+#: ../src/main.py:1517 ../src/main.py:1731
+msgid "Zoom out"
+msgstr ""
+
+#: ../src/main.py:1518 ../src/main.py:1732
+msgid "Zoom in"
+msgstr ""
+
+#: ../src/main.py:1519 ../src/main.py:1733
+msgid "Default size"
+msgstr ""
+
+#: ../src/main.py:1522 ../src/main.py:1736
+msgid "Previous workspace"
+msgstr ""
+
+#: ../src/main.py:1523 ../src/main.py:1737
+msgid "Next workspace"
+msgstr ""
+
+#: ../src/main.py:1524 ../src/main.py:1738
+msgid "Search forward"
+msgstr ""
+
+#: ../src/main.py:1525 ../src/main.py:1739
+msgid "Search backward"
+msgstr ""
+
+#: ../src/main.py:1528
+msgid "Build SSH connection"
+msgstr ""
+
+#: ../src/main.py:1626
+msgid "Font: "
+msgstr ""
+
+#: ../src/main.py:1627
+msgid "Font size: "
+msgstr ""
+
+#: ../src/main.py:1628
+msgid "Color precept: "
+msgstr ""
+
+#: ../src/main.py:1630
+msgid "Background transparent: "
+msgstr ""
+
+#: ../src/main.py:1815
+msgid "Normal"
+msgstr ""
+
+#: ../src/main.py:1816
+msgid "Maximize"
+msgstr ""
+
+#: ../src/main.py:1833
+msgid "Block"
+msgstr ""
+
+#: ../src/main.py:1834
+msgid "Ibeam"
+msgstr ""
+
+#: ../src/main.py:1835
+msgid "Underline"
+msgstr ""
+
+#: ../src/main.py:1852
+msgid "Startup style: "
+msgstr ""
+
+#: ../src/main.py:1853
+msgid "Startup command: "
+msgstr ""
+
+#: ../src/main.py:1854
+msgid "Startup directory: "
+msgstr ""
+
+#: ../src/main.py:1855
+msgid "Cursor shape: "
+msgstr ""
+
+#: ../src/main.py:1856
+msgid "Scroll on key: "
+msgstr ""
+
+#: ../src/main.py:1857
+msgid "Scroll on output: "
+msgstr ""

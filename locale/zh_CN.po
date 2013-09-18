@@ -1,0 +1,304 @@
+# Chinese translations for PACKAGE package
+# PACKAGE 软件包的简体中文翻译.
+# Copyright (C) 2013 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-09-18 10:21+0800\n"
+"PO-Revision-Date: 2013-09-18 09:49+0800\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../src/main.py:165
+msgid "Deepin"
+msgstr "深度"
+
+#: ../src/main.py:166
+msgid "Black/Grey"
+msgstr "黑底灰字"
+
+#: ../src/main.py:167
+msgid "Yellow/Black"
+msgstr "黄底黑字"
+
+#: ../src/main.py:168
+msgid "White/Black"
+msgstr "白底黑字"
+
+#: ../src/main.py:169
+msgid "Black/White"
+msgstr "黑底白字"
+
+#: ../src/main.py:170
+msgid "Black/Green"
+msgstr "黑底绿字"
+
+#: ../src/main.py:171
+msgid "Customize"
+msgstr "自定义"
+
+#: ../src/main.py:253
+msgid "Normal Setting"
+msgstr "常规设置"
+
+#: ../src/main.py:254
+msgid "Hotkey Setting"
+msgstr "热键设置"
+
+#: ../src/main.py:255
+msgid "Advanced Setting"
+msgstr "高级设置"
+
+#: ../src/main.py:381
+msgid "New Feature"
+msgstr "查看新特性"
+
+#: ../src/main.py:382 ../src/main.py:449
+msgid "Preference"
+msgstr "选项设置"
+
+#: ../src/main.py:383
+msgid "Exit"
+msgstr "退出"
+
+#: ../src/main.py:404 ../src/main.py:1496 ../src/main.py:1722
+msgid "Copy"
+msgstr "拷贝"
+
+#: ../src/main.py:406 ../src/main.py:1497 ../src/main.py:1723
+msgid "Paste"
+msgstr "粘贴"
+
+#: ../src/main.py:409 ../src/main.py:1509
+msgid "Open URL"
+msgstr "打开地址"
+
+#: ../src/main.py:412
+msgid "Exit fullscreen"
+msgstr "退出全屏"
+
+#: ../src/main.py:414 ../src/main.py:1526 ../src/main.py:1740
+#: ../src/main.py:1817
+msgid "Fullscreen"
+msgstr "全屏"
+
+#: ../src/main.py:418 ../src/main.py:1498 ../src/main.py:1724
+msgid "Split vertical"
+msgstr "纵向分屏"
+
+#: ../src/main.py:419 ../src/main.py:1499 ../src/main.py:1725
+msgid "Split horizontal"
+msgstr "横向分屏"
+
+#: ../src/main.py:420 ../src/main.py:1500 ../src/main.py:1726
+msgid "Close terminal"
+msgstr "关闭终端"
+
+#: ../src/main.py:426 ../src/main.py:1243
+msgid "Workspace"
+msgstr "工作区"
+
+#: ../src/main.py:433 ../src/main.py:440 ../src/main.py:1520
+#: ../src/main.py:1734
+msgid "New workspace"
+msgstr "新建工作区"
+
+#: ../src/main.py:434
+msgid "Switch workspace"
+msgstr "切换工作区"
+
+#: ../src/main.py:435 ../src/main.py:1521 ../src/main.py:1735
+msgid "Close workspace"
+msgstr "关闭工作区"
+
+#: ../src/main.py:446
+msgid "Search"
+msgstr "搜索"
+
+#: ../src/main.py:447 ../src/main.py:1527 ../src/main.py:1741
+msgid "Display shortcutkey"
+msgstr "显示快捷键"
+
+#: ../src/main.py:1501 ../src/main.py:1727
+msgid "Select up terminal"
+msgstr "选择上边的终端"
+
+#: ../src/main.py:1502 ../src/main.py:1728
+msgid "Select down terminal"
+msgstr "选择下边的终端"
+
+#: ../src/main.py:1503 ../src/main.py:1729
+msgid "Select left terminal"
+msgstr "选择左边的终端"
+
+#: ../src/main.py:1504 ../src/main.py:1730
+msgid "Select right terminal"
+msgstr "选择右边的终端"
+
+#: ../src/main.py:1508
+msgid "Select word"
+msgstr "选词"
+
+#: ../src/main.py:1508
+msgid "Double click"
+msgstr ""
+
+#: ../src/main.py:1509
+msgid "Ctrl + Left button"
+msgstr ""
+
+#: ../src/main.py:1517 ../src/main.py:1731
+msgid "Zoom out"
+msgstr "放大字体"
+
+#: ../src/main.py:1518 ../src/main.py:1732
+msgid "Zoom in"
+msgstr "缩小字体"
+
+#: ../src/main.py:1519 ../src/main.py:1733
+msgid "Default size"
+msgstr "默认大小"
+
+#: ../src/main.py:1522 ../src/main.py:1736
+msgid "Previous workspace"
+msgstr "前一个工作区"
+
+#: ../src/main.py:1523 ../src/main.py:1737
+msgid "Next workspace"
+msgstr "下一个工作区"
+
+#: ../src/main.py:1524 ../src/main.py:1738
+msgid "Search forward"
+msgstr "向前搜索"
+
+#: ../src/main.py:1525 ../src/main.py:1739
+msgid "Search backward"
+msgstr "向后搜索"
+
+#: ../src/main.py:1528
+msgid "Build SSH connection"
+msgstr "建立SSH连接"
+
+#: ../src/main.py:1626
+msgid "Font: "
+msgstr "字体: "
+
+#: ../src/main.py:1627
+msgid "Font size: "
+msgstr "字体大小: "
+
+#: ../src/main.py:1628
+msgid "Color precept: "
+msgstr "颜色方案: "
+
+#: ../src/main.py:1630
+msgid "Background transparent: "
+msgstr "背景透明: "
+
+#: ../src/main.py:1815
+msgid "Normal"
+msgstr "正常"
+
+#: ../src/main.py:1816
+msgid "Maximize"
+msgstr "最大化"
+
+#: ../src/main.py:1833
+msgid "Block"
+msgstr "块状"
+
+#: ../src/main.py:1834
+msgid "Ibeam"
+msgstr "竖条"
+
+#: ../src/main.py:1835
+msgid "Underline"
+msgstr "下划线"
+
+#: ../src/main.py:1852
+msgid "Startup style: "
+msgstr "启动方式: "
+
+#: ../src/main.py:1853
+msgid "Startup command: "
+msgstr "启动命令: "
+
+#: ../src/main.py:1854
+msgid "Startup directory: "
+msgstr "启动目录: "
+
+#: ../src/main.py:1855
+msgid "Cursor shape: "
+msgstr "光标形状: "
+
+#: ../src/main.py:1856
+msgid "Scroll on key: "
+msgstr "按键时滚动: "
+
+#: ../src/main.py:1857
+msgid "Scroll on output: "
+msgstr "输出时滚动: "
+
+#: ../src/main.py:1959
+msgid "Save"
+msgstr "保存"
+
+#: ../src/main.py:2001 ../src/main.py:2023
+msgid "Name: "
+msgstr "名字: "
+
+#: ../src/main.py:2001 ../src/main.py:2026
+msgid "User: "
+msgstr "用户名: "
+
+#: ../src/main.py:2001 ../src/main.py:2029
+msgid "Server: "
+msgstr "服务器: "
+
+#: ../src/main.py:2001 ../src/main.py:2032
+msgid "Password: "
+msgstr "密码: "
+
+#: ../src/main.py:2001 ../src/main.py:2035
+msgid "Port: "
+msgstr "端口号: "
+
+#: ../src/main.py:2064
+msgid "Add"
+msgstr "添加"
+
+#: ../src/main.py:2065
+msgid "Connection"
+msgstr "连接"
+
+#: ../src/main.py:2073
+msgid "Name"
+msgstr "名字"
+
+#: ../src/main.py:2073
+msgid "Server"
+msgstr "服务器"
+
+#: ../src/main.py:2079
+msgid "Add remote login"
+msgstr "添加远程连接"
+
+#: ../src/main.py:2131
+msgid "Edit remote login"
+msgstr "编辑远程连接"
+
+#: ../src/main.py:2143
+msgid "Edit"
+msgstr "编辑"
+
+#: ../src/main.py:2144
+msgid "Delete"
+msgstr "删除"

@@ -76,6 +76,8 @@ from dtk.ui.theme import ui_theme
 
 from deepin_utils.file import remove_path, touch_file
 import sqlite3
+
+from nls import _
         
 # Load customize rc style before any other.
 PANED_HANDLE_SIZE = 2
@@ -160,13 +162,13 @@ DEFAULT_CONFIG = [
       ]),
     ]
 
-color_style = {"deepin" : ("深度", ["#00FF00", "#000000"]),
-               "grey_on_black": ("黑底灰字", ["#aaaaaa", "#000000"]),
-               "black_on_yellow": ("黄底黑字", ["#000000", "#ffffdd"]),
-               "black_on_white": ("白底黑字", ["#000000", "#ffffff"]),
-               "white_on_black": ("黑底白字", ["#ffffff", "#000000"]),
-               "green_on_black": ("黑底绿字", ["#00ff00", "#000000"]),
-               "customize" : ("自定义", ["#00FF00", "#000000"]),
+color_style = {"deepin" : (_("Deepin"), ["#00FF00", "#000000"]),
+               "grey_on_black": (_("Black/Grey"), ["#aaaaaa", "#000000"]),
+               "black_on_yellow": (_("Yellow/Black"), ["#000000", "#ffffdd"]),
+               "black_on_white": (_("White/Black"), ["#000000", "#ffffff"]),
+               "white_on_black": (_("Black/White"), ["#ffffff", "#000000"]),
+               "green_on_black": (_("Black/Green"), ["#00ff00", "#000000"]),
+               "customize" : (_("Customize"), ["#00FF00", "#000000"]),
                }
 
 COMBO_BOX_WIDTH = 150
@@ -248,9 +250,9 @@ class Terminal(object):
         
         self.preference_dialog = PreferenceDialog(575, 390)
         self.preference_dialog.set_preference_items(
-            [("常规设置", self.general_settings),
-             ("热键设置", self.keybind_settings),
-             ("高级设置", self.advanced_settings),
+            [(_("Normal Setting"), self.general_settings),
+             (_("Hotkey Setting"), self.keybind_settings),
+             (_("Advanced Setting"), self.advanced_settings),
              ])
         self.application.titlebar.menu_button.connect("button-press-event", self.show_preference_menu)
         
@@ -376,9 +378,9 @@ class Terminal(object):
             
     def show_preference_menu(self, widget, event):
         menu_items = [
-            (None, "查看新特性", None),
-            (None, "选项设置", self.show_preference_dialog),
-            (None, "退出", gtk.main_quit),
+            (None, _("New Feature"), None),
+            (None, _("Preference"), self.show_preference_dialog),
+            (None, _("Exit"), gtk.main_quit),
             ]
         menu = Menu(menu_items, True)
         menu.show(
@@ -399,52 +401,52 @@ class Terminal(object):
         # Build menu.
         menu_items = []
         if has_selection:
-            menu_items.append((None, "拷贝", terminal.copy_clipboard))
+            menu_items.append((None, _("Copy"), terminal.copy_clipboard))
             
-        menu_items.append((None, "粘贴", terminal.paste_clipboard))    
+        menu_items.append((None, _("Paste"), terminal.paste_clipboard))    
             
         if match_text:
-            menu_items.append((None, "打开地址", lambda : global_event.emit("xdg-open", match_text[0])))
+            menu_items.append((None, _("Open URL"), lambda : global_event.emit("xdg-open", match_text[0])))
             
         if self.is_full_screen:
-            fullscreen_item_text = "退出全屏"
+            fullscreen_item_text = _("Exit fullscreen")
         else:
-            fullscreen_item_text = "全屏"
+            fullscreen_item_text = _("Fullscreen")
             
         terminal_items = [
             None,
-            (None, "垂直分屏", lambda : terminal.parent_widget.split(TerminalGrid.SPLIT_VERTICAL)),
-            (None, "水平分屏", lambda : terminal.parent_widget.split(TerminalGrid.SPLIT_HORIZONTAL)),
-            (None, "关闭终端", terminal.close_terminal),
+            (None, _("Split vertical"), lambda : terminal.parent_widget.split(TerminalGrid.SPLIT_VERTICAL)),
+            (None, _("Split horizontal"), lambda : terminal.parent_widget.split(TerminalGrid.SPLIT_HORIZONTAL)),
+            (None, _("Close terminal"), terminal.close_terminal),
             ]
         
         if len(self.get_workspaces()) > 1:
             current_workspace = self.terminal_box.get_children()[0]
             workspace_menu_items = map(
-                lambda w: (None, "工作区%s" % w.workspace_index, lambda : self.switch_to_workspace(w)), 
+                lambda w: (None, "%s%s" % (_("Workspace"), w.workspace_index), lambda : self.switch_to_workspace(w)), 
                 filter(lambda w: w.workspace_index != current_workspace.workspace_index, self.get_workspaces())
                 )
             workspace_menu = Menu(workspace_menu_items)
             
             workspace_items = [
                 None,
-                (None, "新建工作区", self.new_workspace),
-                (None, "切换工作区", workspace_menu),
-                (None, "关闭工作区%s" % current_workspace.workspace_index, self.close_current_workspace),
+                (None, _("New workspace"), self.new_workspace),
+                (None, _("Switch workspace"), workspace_menu),
+                (None, "%s%s" % (_("Close workspace"), current_workspace.workspace_index), self.close_current_workspace),
                 ]
         else:
             workspace_items = [
                 None,
-                (None, "新建工作区", self.new_workspace),
+                (None, _("New workspace"), self.new_workspace),
                 ]
             
         menu_items += terminal_items + workspace_items + [
             None,
             (None, fullscreen_item_text, self.toggle_full_screen),
-            (None, "搜索", self.search_forward),
-            (None, "显示快捷键", None),
+            (None, _("Search"), self.search_forward),
+            (None, _("Display shortcutkey"), None),
             None,
-            (None, "配置选项", self.show_preference_dialog),
+            (None, _("Preference"), self.show_preference_dialog),
             ]
         
         menu = Menu(menu_items, True)
@@ -1238,7 +1240,7 @@ class WorkspaceSwitcher(gtk.Window):
             # Draw workspace name.
             draw_text(
                 cr,
-                "工作区 %s" % workspace.workspace_index,
+                "%s %s" % (_("Workspace"), workspace.workspace_index),
                 draw_x,
                 draw_y + snapshot_height + text_offset_y,
                 snapshot_width,
@@ -1491,20 +1493,20 @@ class HelperWindow(Window):
         get_keybind = lambda key_value: setting_config.config.get("keybind", key_value)
         
         first_table_key = [
-            ("拷贝", "copy_clipboard"),
-            ("粘贴", "paste_clipboard"),
-            ("垂直分屏", "split_vertical"),
-            ("水平分屏", "split_horizontal"),
-            ("关闭终端", "close_terminal"),
-            ("选择上面的终端", "focus_up_terminal"),
-            ("选择下面的终端", "focus_down_terminal"),
-            ("选择左面的终端", "focus_left_terminal"),
-            ("选择右面的终端", "focus_right_terminal"),
+            (_("Copy"), "copy_clipboard"),
+            (_("Paste"), "paste_clipboard"),
+            (_("Split vertical"), "split_vertical"),
+            (_("Split horizontal"), "split_horizontal"),
+            (_("Close terminal"), "close_terminal"),
+            (_("Select up terminal"), "focus_up_terminal"),
+            (_("Select down terminal"), "focus_down_terminal"),
+            (_("Select left terminal"), "focus_left_terminal"),
+            (_("Select right terminal"), "focus_right_terminal"),
             ]
         
         no_customize_key = [          
-            ("选词", "左键双击"),
-            ("打开地址", "Ctrl + 左键"),
+            (_("Select word"), _("Double click")),
+            (_("Open URL"), _("Ctrl + Left button")),
             ]
         
         self.first_table = self.create_table(
@@ -1512,18 +1514,18 @@ class HelperWindow(Window):
             )
         
         second_table_key = [
-            ("放大字体", "zoom_in"),
-            ("缩小字体", "zoom_out"),
-            ("默认大小", "revert_default_size"),
-            ("新建工作区", "new_workspace"),
-            ("关闭工作区", "close_current_workspace"),
-            ("上一个工作区", "switch_prev_workspace"),
-            ("下一个工作区", "switch_next_workspace"),
-            ("先前搜索", "search_forward"),
-            ("先后搜索", "search_backward"),
-            ("全屏", "toggle_full_screen"),
-            ("显示快捷键", "show_helper_window"),
-            ("建立远程连接", "show_remote_login_window"),
+            (_("Zoom out"), "zoom_in"),
+            (_("Zoom in"), "zoom_out"),
+            (_("Default size"), "revert_default_size"),
+            (_("New workspace"), "new_workspace"),
+            (_("Close workspace"), "close_current_workspace"),
+            (_("Previous workspace"), "switch_prev_workspace"),
+            (_("Next workspace"), "switch_next_workspace"),
+            (_("Search forward"), "search_forward"),
+            (_("Search backward"), "search_backward"),
+            (_("Fullscreen"), "toggle_full_screen"),
+            (_("Display shortcutkey"), "show_helper_window"),
+            (_("Build SSH connection"), "show_remote_login_window"),
             ]
         
         self.second_table = self.create_table(
@@ -1621,11 +1623,11 @@ class GeneralSettings(gtk.VBox):
         self.table.set_row_spacings(TABLE_ROW_SPACING)
         self.table.set_col_spacing(0, TABLE_COLUMN_SPACING)
         table_items = [
-            ("字体: ", font_widget),
-            ("字体大小: ", font_size_widget),
-            ("颜色方案: ", self.color_precept_widget),
+            (_("Font: "), font_widget),
+            (_("Font size: "), font_size_widget),
+            (_("Color precept: "), self.color_precept_widget),
             ("", color_box),
-            ("背景透明: ", background_transparent_widget),
+            (_("Background transparent: "), background_transparent_widget),
             ]
         self.table_align = gtk.Alignment()
         self.table_align.set(0, 0, 1, 1)
@@ -1717,26 +1719,26 @@ class KeybindSettings(ScrolledWindow):
         self.box = gtk.VBox()
         
         key_name_dict = OrderedDict(
-            [("copy_clipboard", "拷贝"),
-             ("paste_clipboard", "粘贴"),
-             ("split_vertical", "垂直分屏"),
-             ("split_horizontal", "水平分屏"),
-             ("close_terminal", "关闭终端"),
-             ("focus_up_terminal", "选择上面的终端"),
-             ("focus_down_terminal", "选择下面的终端"),
-             ("focus_left_terminal", "选择左面的终端"),
-             ("focus_right_terminal", "选择右面的终端"),
-             ("zoom_in", "放大字体"),
-             ("zoom_out", "缩小字体"),
-             ("revert_default_size", "默认大小"),
-             ("new_workspace", "新建工作区"),
-             ("close_current_workspace", "关闭工作区"),
-             ("switch_prev_workspace", "上一个工作区"),
-             ("switch_next_workspace", "下一个工作区"),
-             ("search_forward", "先前搜索"),
-             ("search_backward", "先后搜索"),
-             ("toggle_full_screen", "全屏"),
-             ("show_helper_window", "显示快捷键"),
+            [("copy_clipboard", _("Copy")),
+             ("paste_clipboard", _("Paste")),
+             ("split_vertical", _("Split vertical")),
+             ("split_horizontal", _("Split horizontal")),
+             ("close_terminal", _("Close terminal")),
+             ("focus_up_terminal", _("Select up terminal")),
+             ("focus_down_terminal", _("Select down terminal")),
+             ("focus_left_terminal", _("Select left terminal")),
+             ("focus_right_terminal", _("Select right terminal")),
+             ("zoom_in", _("Zoom out")),
+             ("zoom_out", _("Zoom in")),
+             ("revert_default_size", _("Default size")),
+             ("new_workspace", _("New workspace")),
+             ("close_current_workspace", _("Close workspace")),
+             ("switch_prev_workspace", _("Previous workspace")),
+             ("switch_next_workspace", _("Next workspace")),
+             ("search_forward", _("Search forward")),
+             ("search_backward", _("Search backward")),
+             ("toggle_full_screen", _("Fullscreen")),
+             ("show_helper_window", _("Display shortcutkey")),
              ])
         
         self.table = gtk.Table(len(key_name_dict), 2)
@@ -1810,9 +1812,9 @@ class AdvancedSettings(gtk.VBox):
         gtk.VBox.__init__(self)
 
         startup_mode = setting_config.config.get("advanced", "startup_mode")
-        startup_mode_items = [("正常", "normal"),
-                              ("最大化", "maximize"),
-                              ("全屏", "fullscreen")]
+        startup_mode_items = [(_("Normal"), "normal"),
+                              (_("Maximize"), "maximize"),
+                              (_("Fullscreen"), "fullscreen")]
         startup_widget = ComboBox(startup_mode_items, fixed_width=COMBO_BOX_WIDTH)
         startup_widget.connect("item-selected", self.save_startup_setting)
         startup_widget.set_select_index(unzip(startup_mode_items)[-1].index(startup_mode))
@@ -1828,9 +1830,9 @@ class AdvancedSettings(gtk.VBox):
         startup_directory_widget.entry.connect("changed", self.startup_directory_changed)
         
         cursor_shape = setting_config.config.get("advanced", "cursor_shape")
-        cursor_shape_items =[("块状", "block"),
-                             ("竖条", "ibeam"),
-                             ("下划线", "underline")]
+        cursor_shape_items =[(_("Block"), "block"),
+                             (_("Ibeam"), "ibeam"),
+                             (_("Underline"), "underline")]
         cursor_shape_widget = ComboBox(cursor_shape_items, fixed_width=COMBO_BOX_WIDTH)
         cursor_shape_widget.connect("item-selected", self.save_cursor_shape)
         cursor_shape_widget.set_select_index(unzip(cursor_shape_items)[-1].index(cursor_shape))
@@ -1847,12 +1849,12 @@ class AdvancedSettings(gtk.VBox):
         self.table.set_row_spacings(TABLE_ROW_SPACING)
         self.table.set_col_spacing(0, TABLE_COLUMN_SPACING)
         table_items = [
-            ("启动方式: ", startup_widget),
-            ("启动命令: ", startup_command_widget),
-            ("启动目录: ", startup_directory_widget),
-            ("光标形状: ", cursor_shape_widget),
-            ("按键时滚动: ", scroll_on_key_widget),
-            ("输出时滚动: ", scroll_on_output_widget),
+            (_("Startup style: "), startup_widget),
+            (_("Startup command: "), startup_command_widget),
+            (_("Startup directory: "), startup_directory_widget),
+            (_("Cursor shape: "), cursor_shape_widget),
+            (_("Scroll on key: "), scroll_on_key_widget),
+            (_("Scroll on output: "), scroll_on_output_widget),
             ]
         self.table_align = gtk.Alignment()
         self.table_align.set(0, 0, 1, 1)
@@ -1954,7 +1956,7 @@ class EditRemoteLogin(DialogBox):
         self.table_align.set(0, 0, 1, 1)
         self.table_align.set_padding(10, 10, 20, 20)
         
-        self.save_button = Button("保存")
+        self.save_button = Button(_("Save"))
         self.save_button.connect("clicked", lambda w: self.save_login_info())
         
         self.right_button_box.set_buttons([self.save_button])
@@ -1996,7 +1998,7 @@ class EditRemoteLogin(DialogBox):
     def create_table(self):
         self.table = gtk.Table(4, 2)
         self.table.set_col_spacing(0, 10)
-        names = ["Name: ", "User: ", "Server: ", "Password: ", "Port: "]
+        names = [_("Name: "), _("User: "), _("Server: "), _("Password: "), _("Port: ")]
         
         if self.remote_info:
             (name, user, server, password, port) = self.remote_info
@@ -2018,19 +2020,19 @@ class EditRemoteLogin(DialogBox):
                 index, index + 1,
                 xoptions=gtk.FILL,
                 )
-            if name == "Name: ":
+            if name == _("Name: "):
                 widget = self.name_entry
                 widget.set_size(80, 23)
-            elif name == "User: ":
+            elif name == _("User: "):
                 widget = self.user_entry
                 widget.set_size(80, 23)
-            elif name == "Server: ":
+            elif name == _("Server: "):
                 widget = self.server_entry
                 widget.set_size(80, 23)
-            elif name == "Password: ":
+            elif name == _("Password: "):
                 widget = self.password_entry
                 widget.set_size(80, 23)
-            elif name == "Port: ":
+            elif name == _("Port: "):
                 widget = self.port_box
             
             self.table.attach(
@@ -2059,8 +2061,8 @@ class RemoteLogin(DialogBox):
             close_callback=self.hide_window,
             )
         
-        self.add_button = Button("添加")
-        self.connect_button = Button("连接")
+        self.add_button = Button(_("Add"))
+        self.connect_button = Button(_("Connection"))
         
         self.add_button.connect("clicked", lambda w: self.show_add_remote_login())
         self.connect_button.connect("clicked", lambda w: self.connect_remote_login())
@@ -2068,13 +2070,13 @@ class RemoteLogin(DialogBox):
         self.right_button_box.set_buttons([self.add_button, self.connect_button])
         
         self.treeview = TreeView()
-        self.treeview.set_column_titles(["名字", "服务器"])
+        self.treeview.set_column_titles([_("Name"), _("Server")])
         self.treeview.connect("items-change", lambda t: self.save_login_info())
         self.body_box.add(self.treeview)
         
         self.read_login_info()
         
-        self.add_remote_login = EditRemoteLogin("添加远程登陆", self.save_remote_login)
+        self.add_remote_login = EditRemoteLogin(_("Add remote login"), self.save_remote_login)
         
         self.parent_window = None
         
@@ -2126,7 +2128,7 @@ class RemoteLogin(DialogBox):
             
     def update_remote_login(self, current_item):
         edit_remote_login = EditRemoteLogin(
-            "编辑远程连接",
+            _("Edit remote login"),
             lambda name, user, server, password, port: self.save_item_remote_login(current_item, name, user, server, password, port),
             (current_item.name, current_item.user, current_item.server, current_item.password, current_item.port),
             )
@@ -2138,8 +2140,8 @@ class RemoteLogin(DialogBox):
         (treeview, x, y, current_item, select_items) = args
         if current_item:
             menu_items = [
-                (None, "编辑", lambda : self.update_remote_login(current_item)),
-                (None, "删除", treeview.delete_select_items),
+                (None, _("Edit"), lambda : self.update_remote_login(current_item)),
+                (None, _("Delete"), treeview.delete_select_items),
                 ]
             menu = Menu(menu_items, True)
             menu.show((x, y))
