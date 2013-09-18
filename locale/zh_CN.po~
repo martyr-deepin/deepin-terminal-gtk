@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-18 10:17+0800\n"
+"POT-Creation-Date: 2013-09-18 10:21+0800\n"
 "PO-Revision-Date: 2013-09-18 09:49+0800\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -204,13 +204,12 @@ msgid "Background transparent: "
 msgstr "背景透明: "
 
 #: ../src/main.py:1815
-#, fuzzy
 msgid "Normal"
-msgstr "常规设置"
+msgstr "正常"
 
 #: ../src/main.py:1816
 msgid "Maximize"
-msgstr ""
+msgstr "最大化"
 
 #: ../src/main.py:1833
 msgid "Block"
@@ -247,3 +246,59 @@ msgstr "按键时滚动: "
 #: ../src/main.py:1857
 msgid "Scroll on output: "
 msgstr "输出时滚动: "
+
+#: ../src/main.py:1959
+msgid "Save"
+msgstr "保存"
+
+#: ../src/main.py:2001 ../src/main.py:2023
+msgid "Name: "
+msgstr "名字: "
+
+#: ../src/main.py:2001 ../src/main.py:2026
+msgid "User: "
+msgstr "用户名: "
+
+#: ../src/main.py:2001 ../src/main.py:2029
+msgid "Server: "
+msgstr "服务器: "
+
+#: ../src/main.py:2001 ../src/main.py:2032
+msgid "Password: "
+msgstr "密码: "
+
+#: ../src/main.py:2001 ../src/main.py:2035
+msgid "Port: "
+msgstr "端口号: "
+
+#: ../src/main.py:2064
+msgid "Add"
+msgstr "添加"
+
+#: ../src/main.py:2065
+msgid "Connection"
+msgstr "连接"
+
+#: ../src/main.py:2073
+msgid "Name"
+msgstr "名字"
+
+#: ../src/main.py:2073
+msgid "Server"
+msgstr "服务器"
+
+#: ../src/main.py:2079
+msgid "Add remote login"
+msgstr "添加远程连接"
+
+#: ../src/main.py:2131
+msgid "Edit remote login"
+msgstr "编辑远程连接"
+
+#: ../src/main.py:2143
+msgid "Edit"
+msgstr "编辑"
+
+#: ../src/main.py:2144
+msgid "Delete"
+msgstr "删除"

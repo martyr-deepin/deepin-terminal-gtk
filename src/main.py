@@ -2054,7 +2054,7 @@ class RemoteLogin(DialogBox):
         '''
         DialogBox.__init__(
             self,
-            "远程登陆",
+            _("Remote login"),
             500,
             400,
             mask_type=DIALOG_MASK_GLASS_PAGE,

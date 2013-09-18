@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-18 10:21+0800\n"
+"POT-Creation-Date: 2013-09-19 00:10+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -269,6 +269,10 @@ msgstr ""
 
 #: ../src/main.py:2001 ../src/main.py:2035
 msgid "Port: "
+msgstr ""
+
+#: ../src/main.py:2057
+msgid "Remote login"
 msgstr ""
 
 #: ../src/main.py:2064

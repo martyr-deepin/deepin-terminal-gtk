@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-18 10:17+0800\n"
+"POT-Creation-Date: 2013-09-18 10:21+0800\n"
 "PO-Revision-Date: 2013-09-18 09:49+0800\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -244,4 +244,60 @@ msgstr ""
 
 #: ../src/main.py:1857
 msgid "Scroll on output: "
+msgstr ""
+
+#: ../src/main.py:1959
+msgid "Save"
+msgstr ""
+
+#: ../src/main.py:2001 ../src/main.py:2023
+msgid "Name: "
+msgstr ""
+
+#: ../src/main.py:2001 ../src/main.py:2026
+msgid "User: "
+msgstr ""
+
+#: ../src/main.py:2001 ../src/main.py:2029
+msgid "Server: "
+msgstr ""
+
+#: ../src/main.py:2001 ../src/main.py:2032
+msgid "Password: "
+msgstr ""
+
+#: ../src/main.py:2001 ../src/main.py:2035
+msgid "Port: "
+msgstr ""
+
+#: ../src/main.py:2064
+msgid "Add"
+msgstr ""
+
+#: ../src/main.py:2065
+msgid "Connection"
+msgstr ""
+
+#: ../src/main.py:2073
+msgid "Name"
+msgstr ""
+
+#: ../src/main.py:2073
+msgid "Server"
+msgstr ""
+
+#: ../src/main.py:2079
+msgid "Add remote login"
+msgstr ""
+
+#: ../src/main.py:2131
+msgid "Edit remote login"
+msgstr ""
+
+#: ../src/main.py:2143
+msgid "Edit"
+msgstr ""
+
+#: ../src/main.py:2144
+msgid "Delete"
 msgstr ""
