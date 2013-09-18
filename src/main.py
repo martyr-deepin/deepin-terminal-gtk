@@ -762,6 +762,7 @@ class TerminalWrapper(vte.Terminal):
         vte.Terminal.__init__(self)
         self.parent_widget = parent_widget
         self.set_word_chars("-A-Za-z0-9,./?%&#:_")
+        self.set_scrollback_lines(-1)
         
         self.change_color(
             setting_config.config.get("general", "font_color"),
