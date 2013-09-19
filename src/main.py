@@ -124,7 +124,7 @@ LOGIN_DATABASE = os.path.join(XDG_CONFIG_HOME, PROJECT_NAME, ".config", "login.d
 DEFAULT_CONFIG = [
     ("general", 
      [("font", "XHei Mono.Ubuntu"),
-      ("font_size", "12"),
+      ("font_size", "11"),
       ("color_precept", "deepin"), 
       ("font_color", "#00FF00"),
       ("background_color", "#000000"),
