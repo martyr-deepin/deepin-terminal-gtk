@@ -975,6 +975,8 @@ class TerminalWrapper(vte.Terminal):
             if match_text:
                 (match_type, match_string) = self.get_match_type(match_text)
                 self.open_match_string(match_type, match_string)
+                
+            self.press_ctrl = False    
         elif is_right_button(event):
             global_event.emit(
                 "show-menu", 
