@@ -32,7 +32,7 @@ from dtk.ui.constant import WIDGET_POS_BOTTOM_LEFT, ALIGN_END, DEFAULT_FONT_SIZE
 from dtk.ui.draw import draw_pixbuf, draw_text
 from dtk.ui.events import EventRegister
 from dtk.ui.init_skin import init_skin
-from dtk.ui.keymap import get_keyevent_name, is_no_key_press, has_ctrl_mask
+from dtk.ui.keymap import get_keyevent_name, is_no_key_press
 from dtk.ui.label import Label
 from dtk.ui.menu import Menu
 from dtk.ui.utils import container_remove_all, get_match_parent, cairo_state, propagate_expose, is_left_button, is_right_button
@@ -851,14 +851,12 @@ class TerminalWrapper(vte.Terminal):
         self.file_match_tag = self.match_add("[^\t\n ]+")
         self.match_set_cursor_type(self.file_match_tag, gtk.gdk.HAND2)
         
-        self.press_ctrl = False
-
         self.connect("drag-data-received", self.on_drag_data_received)
         self.connect("window-title-changed", self.on_window_title_changed)
         self.connect("grab-focus", lambda w: self.change_window_title())
         self.connect("button-press-event", self.on_button_press)
-        self.connect("key-press-event", self.on_key_press)
-        self.connect("key-release-event", self.on_key_release)
+        # self.connect("key-press-event", self.on_key_press)
+        # self.connect("key-release-event", self.on_key_release)
         self.connect("scroll-event", self.on_scroll)
         
     def generate_keymap(self):
@@ -911,7 +909,7 @@ class TerminalWrapper(vte.Terminal):
             self.set_cursor_shape(vte.CURSOR_SHAPE_UNDERLINE)
         
     def on_scroll(self, widget, event):
-        if self.press_ctrl:
+        if self.is_ctrl_press(event):
             global_event.emit("adjust-background-transparent", event.direction)
         
     def set_transparent(self, transparent):
@@ -961,22 +959,16 @@ class TerminalWrapper(vte.Terminal):
         elif match_type == MATCH_COMMAND:
             self.show_man_window(match_string)
         
-    def on_key_press(self, widget, event):
-        if has_ctrl_mask(event):
-            self.press_ctrl = True
-            
-    def on_key_release(self, widget, event):
-        self.press_ctrl = False
+    def is_ctrl_press(self, event):
+        return event.state & gtk.gdk.CONTROL_MASK == gtk.gdk.CONTROL_MASK
             
     def on_button_press(self, widget, event):
-        if is_left_button(event) and self.press_ctrl:
+        if is_left_button(event) and self.is_ctrl_press(event):
             (column, row) = self.get_cursor_position()
             match_text = self.get_match_text(event)
             if match_text:
                 (match_type, match_string) = self.get_match_type(match_text)
                 self.open_match_string(match_type, match_string)
-                
-            self.press_ctrl = False    
         elif is_right_button(event):
             global_event.emit(
                 "show-menu", 
