@@ -955,10 +955,7 @@ class TerminalWrapper(vte.Terminal):
         return None
     
     def open_match_string(self, match_type, match_string):
-        print "*** ", match_type, match_string
-        if match_type == MATCH_URL:
-            global_event.emit("xdg-open", match_string)
-        elif match_type == MATCH_FILE:
+        if match_type in [MATCH_URL, MATCH_FILE, MATCH_DIRECTORY]:
             global_event.emit("xdg-open", match_string)
         elif match_type == MATCH_COMMAND:
             self.show_man_window(match_string)
@@ -976,7 +973,6 @@ class TerminalWrapper(vte.Terminal):
             match_text = self.get_match_text(event)
             if match_text:
                 (match_type, match_string) = self.get_match_type(match_text)
-                print "#### ", (match_type, match_string), match_text
                 self.open_match_string(match_type, match_string)
         elif is_right_button(event):
             global_event.emit(
