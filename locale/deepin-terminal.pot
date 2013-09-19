@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-19 10:54+0800\n"
+"POT-Creation-Date: 2013-09-19 12:35+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,268 +45,284 @@ msgstr ""
 msgid "Customize"
 msgstr ""
 
-#: ../src/main.py:267
+#: ../src/main.py:272
 msgid "Normal Setting"
 msgstr ""
 
-#: ../src/main.py:268
+#: ../src/main.py:273
 msgid "Hotkey Setting"
 msgstr ""
 
-#: ../src/main.py:269
+#: ../src/main.py:274
 msgid "Advanced Setting"
 msgstr ""
 
-#: ../src/main.py:395
+#: ../src/main.py:401
 msgid "New Feature"
 msgstr ""
 
-#: ../src/main.py:396 ../src/main.py:463
+#: ../src/main.py:402 ../src/main.py:481
 msgid "Preference"
 msgstr ""
 
-#: ../src/main.py:397
+#: ../src/main.py:403
 msgid "Exit"
 msgstr ""
 
-#: ../src/main.py:418 ../src/main.py:1532 ../src/main.py:1758
+#: ../src/main.py:424 ../src/main.py:1576 ../src/main.py:1802
 msgid "Copy"
 msgstr ""
 
-#: ../src/main.py:420 ../src/main.py:1533 ../src/main.py:1759
+#: ../src/main.py:426 ../src/main.py:1577 ../src/main.py:1803
 msgid "Paste"
 msgstr ""
 
-#: ../src/main.py:423 ../src/main.py:1545
-msgid "Open"
+#: ../src/main.py:433
+msgid "Open file"
 msgstr ""
 
-#: ../src/main.py:426
+#: ../src/main.py:435
+msgid "Open directory"
+msgstr ""
+
+#: ../src/main.py:437
+msgid "Open URL"
+msgstr ""
+
+#: ../src/main.py:439
+msgid "Open manual"
+msgstr ""
+
+#: ../src/main.py:444
 msgid "Exit fullscreen"
 msgstr ""
 
-#: ../src/main.py:428 ../src/main.py:1562 ../src/main.py:1776
-#: ../src/main.py:1853
+#: ../src/main.py:446 ../src/main.py:1606 ../src/main.py:1820
+#: ../src/main.py:1895
 msgid "Fullscreen"
 msgstr ""
 
-#: ../src/main.py:432 ../src/main.py:1534 ../src/main.py:1760
+#: ../src/main.py:450 ../src/main.py:1578 ../src/main.py:1804
 msgid "Split vertical"
 msgstr ""
 
-#: ../src/main.py:433 ../src/main.py:1535 ../src/main.py:1761
+#: ../src/main.py:451 ../src/main.py:1579 ../src/main.py:1805
 msgid "Split horizontal"
 msgstr ""
 
-#: ../src/main.py:434 ../src/main.py:1536 ../src/main.py:1762
+#: ../src/main.py:452 ../src/main.py:1580 ../src/main.py:1806
 msgid "Close terminal"
 msgstr ""
 
-#: ../src/main.py:440 ../src/main.py:1279
+#: ../src/main.py:458 ../src/main.py:1323
 msgid "Workspace"
 msgstr ""
 
-#: ../src/main.py:447 ../src/main.py:454 ../src/main.py:1556
-#: ../src/main.py:1770
+#: ../src/main.py:465 ../src/main.py:472 ../src/main.py:1600
+#: ../src/main.py:1814
 msgid "New workspace"
 msgstr ""
 
-#: ../src/main.py:448
+#: ../src/main.py:466
 msgid "Switch workspace"
 msgstr ""
 
-#: ../src/main.py:449 ../src/main.py:1557 ../src/main.py:1771
+#: ../src/main.py:467 ../src/main.py:1601 ../src/main.py:1815
 msgid "Close workspace"
 msgstr ""
 
-#: ../src/main.py:460
+#: ../src/main.py:478
 msgid "Search"
 msgstr ""
 
-#: ../src/main.py:461 ../src/main.py:1563 ../src/main.py:1777
+#: ../src/main.py:479 ../src/main.py:1607 ../src/main.py:1821
 msgid "Display shortcutkey"
 msgstr ""
 
-#: ../src/main.py:1537 ../src/main.py:1763
+#: ../src/main.py:1581 ../src/main.py:1807
 msgid "Select up terminal"
 msgstr ""
 
-#: ../src/main.py:1538 ../src/main.py:1764
+#: ../src/main.py:1582 ../src/main.py:1808
 msgid "Select down terminal"
 msgstr ""
 
-#: ../src/main.py:1539 ../src/main.py:1765
+#: ../src/main.py:1583 ../src/main.py:1809
 msgid "Select left terminal"
 msgstr ""
 
-#: ../src/main.py:1540 ../src/main.py:1766
+#: ../src/main.py:1584 ../src/main.py:1810
 msgid "Select right terminal"
 msgstr ""
 
-#: ../src/main.py:1544
+#: ../src/main.py:1588
 msgid "Select word"
 msgstr ""
 
-#: ../src/main.py:1544
+#: ../src/main.py:1588
 msgid "Double click"
 msgstr ""
 
-#: ../src/main.py:1545
+#: ../src/main.py:1589
+msgid "Open"
+msgstr ""
+
+#: ../src/main.py:1589
 msgid "Ctrl + Left button"
 msgstr ""
 
-#: ../src/main.py:1553 ../src/main.py:1767
+#: ../src/main.py:1597 ../src/main.py:1811
 msgid "Zoom out"
 msgstr ""
 
-#: ../src/main.py:1554 ../src/main.py:1768
+#: ../src/main.py:1598 ../src/main.py:1812
 msgid "Zoom in"
 msgstr ""
 
-#: ../src/main.py:1555 ../src/main.py:1769
+#: ../src/main.py:1599 ../src/main.py:1813
 msgid "Default size"
 msgstr ""
 
-#: ../src/main.py:1558 ../src/main.py:1772
+#: ../src/main.py:1602 ../src/main.py:1816
 msgid "Previous workspace"
 msgstr ""
 
-#: ../src/main.py:1559 ../src/main.py:1773
+#: ../src/main.py:1603 ../src/main.py:1817
 msgid "Next workspace"
 msgstr ""
 
-#: ../src/main.py:1560 ../src/main.py:1774
+#: ../src/main.py:1604 ../src/main.py:1818
 msgid "Search forward"
 msgstr ""
 
-#: ../src/main.py:1561 ../src/main.py:1775
+#: ../src/main.py:1605 ../src/main.py:1819
 msgid "Search backward"
 msgstr ""
 
-#: ../src/main.py:1564
+#: ../src/main.py:1608
 msgid "Build SSH connection"
 msgstr ""
 
-#: ../src/main.py:1662
+#: ../src/main.py:1706
 msgid "Font: "
 msgstr ""
 
-#: ../src/main.py:1663
+#: ../src/main.py:1707
 msgid "Font size: "
 msgstr ""
 
-#: ../src/main.py:1664
+#: ../src/main.py:1708
 msgid "Color precept: "
 msgstr ""
 
-#: ../src/main.py:1666
+#: ../src/main.py:1710
 msgid "Background transparent: "
 msgstr ""
 
-#: ../src/main.py:1851
+#: ../src/main.py:1893
 msgid "Normal"
 msgstr ""
 
-#: ../src/main.py:1852
+#: ../src/main.py:1894
 msgid "Maximize"
 msgstr ""
 
-#: ../src/main.py:1869
+#: ../src/main.py:1911
 msgid "Block"
 msgstr ""
 
-#: ../src/main.py:1870
+#: ../src/main.py:1912
 msgid "Ibeam"
 msgstr ""
 
-#: ../src/main.py:1871
+#: ../src/main.py:1913
 msgid "Underline"
 msgstr ""
 
-#: ../src/main.py:1888
+#: ../src/main.py:1930
 msgid "Startup style: "
 msgstr ""
 
-#: ../src/main.py:1889
+#: ../src/main.py:1931
 msgid "Startup command: "
 msgstr ""
 
-#: ../src/main.py:1890
+#: ../src/main.py:1932
 msgid "Startup directory: "
 msgstr ""
 
-#: ../src/main.py:1891
+#: ../src/main.py:1933
 msgid "Cursor shape: "
 msgstr ""
 
-#: ../src/main.py:1892
+#: ../src/main.py:1934
 msgid "Scroll on key: "
 msgstr ""
 
-#: ../src/main.py:1893
+#: ../src/main.py:1935
 msgid "Scroll on output: "
 msgstr ""
 
-#: ../src/main.py:1984
+#: ../src/main.py:2026
 msgid "Manual"
 msgstr ""
 
-#: ../src/main.py:2045
+#: ../src/main.py:2089
 msgid "Save"
 msgstr ""
 
-#: ../src/main.py:2087 ../src/main.py:2109
+#: ../src/main.py:2131 ../src/main.py:2153
 msgid "Name: "
 msgstr ""
 
-#: ../src/main.py:2087 ../src/main.py:2112
+#: ../src/main.py:2131 ../src/main.py:2156
 msgid "Server: "
 msgstr ""
 
-#: ../src/main.py:2087 ../src/main.py:2115
+#: ../src/main.py:2131 ../src/main.py:2159
 msgid "User: "
 msgstr ""
 
-#: ../src/main.py:2087 ../src/main.py:2118
+#: ../src/main.py:2131 ../src/main.py:2162
 msgid "Password: "
 msgstr ""
 
-#: ../src/main.py:2087 ../src/main.py:2121
+#: ../src/main.py:2131 ../src/main.py:2165
 msgid "Port: "
 msgstr ""
 
-#: ../src/main.py:2143
+#: ../src/main.py:2187
 msgid "Remote login"
 msgstr ""
 
-#: ../src/main.py:2150
+#: ../src/main.py:2194
 msgid "Add"
 msgstr ""
 
-#: ../src/main.py:2151
+#: ../src/main.py:2195
 msgid "Connection"
 msgstr ""
 
-#: ../src/main.py:2159
+#: ../src/main.py:2203
 msgid "Name"
 msgstr ""
 
-#: ../src/main.py:2159
+#: ../src/main.py:2203
 msgid "Server"
 msgstr ""
 
-#: ../src/main.py:2165
+#: ../src/main.py:2209
 msgid "Add remote login"
 msgstr ""
 
-#: ../src/main.py:2217
+#: ../src/main.py:2261
 msgid "Edit remote login"
 msgstr ""
 
-#: ../src/main.py:2229
+#: ../src/main.py:2273
 msgid "Edit"
 msgstr ""
 
-#: ../src/main.py:2230
+#: ../src/main.py:2274
 msgid "Delete"
 msgstr ""

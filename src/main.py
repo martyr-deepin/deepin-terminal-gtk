@@ -173,6 +173,11 @@ color_style = {"deepin" : (_("Deepin"), ["#00FF00", "#000000"]),
 
 COMBO_BOX_WIDTH = 150
 
+MATCH_URL = 1
+MATCH_FILE = 2
+MATCH_DIRECTORY = 3
+MATCH_COMMAND = 4
+
 def get_active_working_directory(toplevel_widget):
     '''
     Get active working directory with given toplevel widget.
@@ -421,7 +426,19 @@ class Terminal(object):
         menu_items.append((None, _("Paste"), terminal.paste_clipboard))    
             
         if match_text:
-            menu_items.append((None, _("Open"), lambda : terminal.open_match_string(match_text)))
+            match_info = terminal.get_match_type(match_text)
+            if match_info:
+                (match_type, match_string) = match_info
+                if match_type == MATCH_FILE:
+                    menu_name = _("Open file")
+                if match_type == MATCH_DIRECTORY:
+                    menu_name = _("Open directory")
+                elif match_type == MATCH_URL:
+                    menu_name = _("Open URL")
+                elif match_type == MATCH_COMMAND:
+                    menu_name = _("Open manual")
+                    
+                menu_items.append((None, menu_name, lambda : terminal.open_match_string(match_type, match_string)))
             
         if self.is_full_screen:
             fullscreen_item_text = _("Exit fullscreen")
@@ -907,29 +924,44 @@ class TerminalWrapper(vte.Terminal):
             int(event.x / self.get_char_width()),
             int(event.y / self.get_char_height()))
     
-    def open_match_string(self, match_text):
+    def get_match_type(self, match_text):
         if match_text:
             (match_string, match_tag) = match_text
             if match_tag == self.url_match_tag:
-                global_event.emit("xdg-open", match_string)
+                return (MATCH_URL, match_string)
             elif match_tag == self.file_match_tag:
                 match_file = False
                 
                 if os.path.exists(match_string):
-                    global_event.emit("xdg-open", match_string)
-                    match_file = True
+                    if os.path.isdir(match_string):
+                        return (MATCH_DIRECTORY, match_string)
+                    else:
+                        return (MATCH_FILE, match_string)
                 else:
                     working_directory = get_active_working_directory(self.get_toplevel())    
                     filepath = os.path.join(working_directory, match_string)
                     
                     if os.path.exists(filepath):
-                        global_event.emit("xdg-open", filepath)
-                        match_file = True
+                        if os.path.isdir(filepath):
+                            return (MATCH_DIRECTORY, filepath)
+                        else:
+                            return (MATCH_FILE, filepath)
                         
                 if not match_file:        
                     man_path = get_command_output_first_line("man -w %s" % match_string, True).split("\n")[0]
                     if os.path.exists(man_path):
-                        self.show_man_window(match_string)
+                        return (MATCH_COMMAND, match_string)
+                    
+        return None
+    
+    def open_match_string(self, match_type, match_string):
+        print "*** ", match_type, match_string
+        if match_type == MATCH_URL:
+            global_event.emit("xdg-open", match_string)
+        elif match_type == MATCH_FILE:
+            global_event.emit("xdg-open", match_string)
+        elif match_type == MATCH_COMMAND:
+            self.show_man_window(match_string)
         
     def on_key_press(self, widget, event):
         if has_ctrl_mask(event):
@@ -942,7 +974,10 @@ class TerminalWrapper(vte.Terminal):
         if is_left_button(event) and self.press_ctrl:
             (column, row) = self.get_cursor_position()
             match_text = self.get_match_text(event)
-            self.open_match_string(match_text)
+            if match_text:
+                (match_type, match_string) = self.get_match_type(match_text)
+                print "#### ", (match_type, match_string), match_text
+                self.open_match_string(match_type, match_string)
         elif is_right_button(event):
             global_event.emit(
                 "show-menu", 
