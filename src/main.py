@@ -143,7 +143,7 @@ DEFAULT_CONFIG = [
       ("zoom_out", "Ctrl + -"),
       ("revert_default_size", "Ctrl + 0"),
       ("new_workspace", "Ctrl + /"),
-      ("close_current_workspace", "Ctrl + ;"),
+      ("close_current_workspace", "Ctrl + :"),
       ("switch_prev_workspace", "Ctrl + ,"),
       ("switch_next_workspace", "Ctrl + ."),
       ("search_forward", "Ctrl + '"),
@@ -315,6 +315,7 @@ class Terminal(object):
             "focus_right_terminal",
             "switch_prev_workspace",
             "switch_next_workspace",
+            "close_current_workspace",
             ]
         
         self.keymap = {
