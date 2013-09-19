@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-18 10:21+0800\n"
+"POT-Creation-Date: 2013-09-19 00:10+0800\n"
 "PO-Revision-Date: 2013-09-18 09:49+0800\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -270,6 +270,10 @@ msgstr "密码: "
 #: ../src/main.py:2001 ../src/main.py:2035
 msgid "Port: "
 msgstr "端口号: "
+
+#: ../src/main.py:2057
+msgid "Remote login"
+msgstr "远程登陆"
 
 #: ../src/main.py:2064
 msgid "Add"

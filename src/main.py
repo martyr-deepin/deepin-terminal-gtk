@@ -27,7 +27,7 @@ from deepin_utils.core import unzip
 from deepin_utils.file import get_parent_dir
 from deepin_utils.file import remove_path, touch_file
 from deepin_utils.font import get_font_families
-from deepin_utils.process import run_command
+from deepin_utils.process import run_command, get_command_output_first_line
 from dtk.ui.constant import WIDGET_POS_BOTTOM_LEFT, ALIGN_END, DEFAULT_FONT_SIZE
 from dtk.ui.draw import draw_pixbuf, draw_text
 from dtk.ui.events import EventRegister
@@ -420,7 +420,7 @@ class Terminal(object):
         menu_items.append((None, _("Paste"), terminal.paste_clipboard))    
             
         if match_text:
-            menu_items.append((None, _("Open URL"), lambda : global_event.emit("xdg-open", match_text[0])))
+            menu_items.append((None, _("Open"), lambda : terminal.open_match_string(match_text)))
             
         if self.is_full_screen:
             fullscreen_item_text = _("Exit fullscreen")
@@ -752,7 +752,7 @@ class TerminalWrapper(vte.Terminal):
     """
 
     def __init__(self, 
-                 parent_widget, 
+                 parent_widget=None, 
                  working_directory=None,
                  ):
         """
@@ -823,11 +823,14 @@ class TerminalWrapper(vte.Terminal):
         urlpath   = "/[" + pathchars + "]*[^]'.}>) \t\r\n,\\\"]"
         lboundry = "\\<"
         rboundry = "\\>"
-        self.match_tag = self.match_add(
+        self.url_match_tag = self.match_add(
             lboundry + schemes + 
             "//(" + user + "@)?[" + hostchars  +".]+(:[0-9]+)?(" + 
             urlpath + ")?" + rboundry + "/?")
-        self.match_set_cursor_type(self.match_tag, gtk.gdk.HAND2)
+        self.match_set_cursor_type(self.url_match_tag, gtk.gdk.HAND2)
+        
+        self.command_match_tag = self.match_add("[-A-Za-z0-9_.:]+")
+        self.match_set_cursor_type(self.command_match_tag, gtk.gdk.HAND2)
         
         self.press_ctrl = False
 
@@ -858,11 +861,17 @@ class TerminalWrapper(vte.Terminal):
         for key_value in key_values:
             self.keymap[get_keybind(key_value)] = getattr(self, key_value)
             
+    def show_man_window(self, command):
+        man_dialog = ManDialog(command)
+        man_dialog.show_all()
+            
     def split_vertical(self):
-        self.parent_widget.split(TerminalGrid.SPLIT_VERTICAL),
+        if self.parent_widget:
+            self.parent_widget.split(TerminalGrid.SPLIT_VERTICAL),
         
     def split_horizontal(self):
-        self.parent_widget.split(TerminalGrid.SPLIT_HORIZONTAL),
+        if self.parent_widget:
+            self.parent_widget.split(TerminalGrid.SPLIT_HORIZONTAL),
             
     def change_color(self, font_color, background_color):
         self.set_colors(
@@ -896,6 +905,18 @@ class TerminalWrapper(vte.Terminal):
         return self.match_check(
             int(event.x / self.get_char_width()),
             int(event.y / self.get_char_height()))
+    
+    def open_match_string(self, match_text):
+        if match_text:
+            (match_string, match_tag) = match_text
+            if match_tag == self.url_match_tag:
+                global_event.emit("xdg-open", match_string)
+            elif match_tag == self.command_match_tag:
+                man_path = get_command_output_first_line("man -w %s" % match_string, True).split("\n")[0]
+                if os.path.exists(man_path):
+                    self.show_man_window(match_string)
+                else:
+                    print "Can't found manual for %s" % match_string
         
     def on_key_press(self, widget, event):
         if has_ctrl_mask(event):
@@ -907,9 +928,8 @@ class TerminalWrapper(vte.Terminal):
     def on_button_press(self, widget, event):
         if is_left_button(event) and self.press_ctrl:
             (column, row) = self.get_cursor_position()
-            match_string = self.get_match_text(event)
-            if match_string:
-                global_event.emit("xdg-open", match_string[0])
+            match_text = self.get_match_text(event)
+            self.open_match_string(match_text)
         elif is_right_button(event):
             global_event.emit(
                 "show-menu", 
@@ -973,7 +993,8 @@ class TerminalWrapper(vte.Terminal):
         Call parent_widget.child_exit_callback
         :param widget: self
         """
-        self.parent_widget.child_exit_callback(self.parent_widget)
+        if self.parent_widget:
+            self.parent_widget.child_exit_callback(self.parent_widget)
 
     def realize_callback(self, widget):
         """
@@ -1517,7 +1538,7 @@ class HelperWindow(Window):
         
         no_customize_key = [          
             (_("Select word"), _("Double click")),
-            (_("Open URL"), _("Ctrl + Left button")),
+            (_("Open"), _("Ctrl + Left button")),
             ]
         
         self.first_table = self.create_table(
@@ -1807,8 +1828,6 @@ class KeybindEntry(ShortcutKeyEntry):
         
         global_event.emit("keybind-changed", self.key_value, new_keybind)
         
-        print self.key_value, new_keybind
-        
 gobject.type_register(KeybindEntry)        
 
 class AdvancedSettings(gtk.VBox):
@@ -1940,6 +1959,58 @@ class SettingConfig(gobject.GObject):
             self.config.load()
         
 gobject.type_register(SettingConfig)        
+
+class ManDialog(Window):
+    '''
+    class docs
+    '''
+	
+    def __init__(self, command):
+        '''
+        init docs
+        '''
+        Window.__init__(self)
+        self.set_skip_taskbar_hint(True)
+        self.set_modal(True)
+        self.set_default_size(500, 300)
+        self.set_type_hint(gtk.gdk.WINDOW_TYPE_HINT_DIALOG)
+        
+        self.titlebar = Titlebar(["close"], None, "%s (%s)" % (_("Manual"), command))
+        self.titlebar.close_button.connect("clicked", lambda w: self.exit_man_dialog())
+        self.add_move_event(self.titlebar)
+        
+        self.command = command
+        self.terminal_wrapper = TerminalWrapper()
+        self.terminal_wrapper.feed_child("man %s\n" % command)
+        self.terminal_align = gtk.Alignment()
+        self.terminal_align.set(0.5, 0.5, 1, 1)
+        self.terminal_align.set_padding(0, 2, 2, 2)
+        
+        self.terminal_align.add(self.terminal_wrapper)
+        self.window_frame.pack_start(self.titlebar, False, False)
+        self.window_frame.pack_start(self.terminal_align, False, False)
+        
+        self.keymap = {
+            "q" : self.exit_man_dialog,
+            "Q" : self.exit_man_dialog,
+            "Escape" : self.exit_man_dialog,
+            }
+        
+        self.connect("key-press-event", self.key_press_man_dialog)
+        
+    def exit_man_dialog(self):
+        self.destroy()
+        
+    def key_press_man_dialog(self, widget, event):
+        key_name = get_keyevent_name(event)
+        if key_name in self.keymap:
+            self.keymap[key_name]()
+            
+            return True
+        else:
+            return False
+        
+gobject.type_register(ManDialog)        
 
 class EditRemoteLogin(DialogBox):
     '''
