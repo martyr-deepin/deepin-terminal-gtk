@@ -909,7 +909,6 @@ class TerminalWrapper(vte.Terminal):
     def open_match_string(self, match_text):
         if match_text:
             (match_string, match_tag) = match_text
-            print match_text, unicode(match_string)
             if match_tag == self.url_match_tag:
                 global_event.emit("xdg-open", match_string)
             elif match_tag == self.file_match_tag:
