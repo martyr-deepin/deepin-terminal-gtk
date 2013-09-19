@@ -829,8 +829,8 @@ class TerminalWrapper(vte.Terminal):
             urlpath + ")?" + rboundry + "/?")
         self.match_set_cursor_type(self.url_match_tag, gtk.gdk.HAND2)
         
-        self.command_match_tag = self.match_add("[-A-Za-z0-9_.:]+")
-        self.match_set_cursor_type(self.command_match_tag, gtk.gdk.HAND2)
+        self.file_match_tag = self.match_add("[^\t\n ]+")
+        self.match_set_cursor_type(self.file_match_tag, gtk.gdk.HAND2)
         
         self.press_ctrl = False
 
@@ -909,14 +909,27 @@ class TerminalWrapper(vte.Terminal):
     def open_match_string(self, match_text):
         if match_text:
             (match_string, match_tag) = match_text
+            print match_text, unicode(match_string)
             if match_tag == self.url_match_tag:
                 global_event.emit("xdg-open", match_string)
-            elif match_tag == self.command_match_tag:
-                man_path = get_command_output_first_line("man -w %s" % match_string, True).split("\n")[0]
-                if os.path.exists(man_path):
-                    self.show_man_window(match_string)
+            elif match_tag == self.file_match_tag:
+                match_file = False
+                
+                if os.path.exists(match_string):
+                    global_event.emit("xdg-open", match_string)
+                    match_file = True
                 else:
-                    print "Can't found manual for %s" % match_string
+                    working_directory = get_active_working_directory(self.get_toplevel())    
+                    filepath = os.path.join(working_directory, match_string)
+                    
+                    if os.path.exists(filepath):
+                        global_event.emit("xdg-open", filepath)
+                        match_file = True
+                        
+                if not match_file:        
+                    man_path = get_command_output_first_line("man -w %s" % match_string, True).split("\n")[0]
+                    if os.path.exists(man_path):
+                        self.show_man_window(match_string)
         
     def on_key_press(self, widget, event):
         if has_ctrl_mask(event):
