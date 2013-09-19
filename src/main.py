@@ -1668,6 +1668,7 @@ class GeneralSettings(gtk.VBox):
         font_size_widget = SpinBox(lower=1, step=1)
         font_size_widget.set_value(int(font_size))
         font_size_widget.connect("value-changed", self.change_font_size)
+        font_size_widget.value_entry.connect("changed", self.change_font_size)
         
         color_precept = setting_config.config.get("general", "color_precept")
         self.color_items =map(lambda (color_precept_value, (color_precept_name, _)): (color_precept_name, color_precept_value), color_style.items())
