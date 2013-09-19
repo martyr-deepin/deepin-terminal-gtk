@@ -62,6 +62,7 @@ app_theme = init_skin(
 )
 
 from dtk.ui.application import Application
+from dtk.ui.box import EventBox
 from dtk.ui.button import Button
 from dtk.ui.button import SwitchButton
 from dtk.ui.color_selection import ColorButton
@@ -1695,6 +1696,8 @@ class GeneralSettings(gtk.VBox):
         background_transparent_widget.set_value(float(transparent))
         background_transparent_widget.connect("value-changed", self.save_background_transparent)
         
+        background_image_widget = BackgroundImage()
+        
         self.table = gtk.Table(7, 2)
         self.table.set_row_spacings(TABLE_ROW_SPACING)
         self.table.set_col_spacing(0, TABLE_COLUMN_SPACING)
@@ -1704,6 +1707,7 @@ class GeneralSettings(gtk.VBox):
             (_("Color precept: "), self.color_precept_widget),
             ("", color_box),
             (_("Background transparent: "), background_transparent_widget),
+            (_("Background image: "), background_image_widget),
             ]
         self.table_align = gtk.Alignment()
         self.table_align.set(0, 0, 1, 1)
@@ -1781,6 +1785,38 @@ class GeneralSettings(gtk.VBox):
                 )
         
 gobject.type_register(GeneralSettings)        
+
+class BackgroundImage(EventBox):
+    '''
+    class docs
+    '''
+	
+    def __init__(self):
+        '''
+        init docs
+        '''
+        EventBox.__init__(self)
+        self.image_path = None
+        self.set_size_request(COMBO_BOX_WIDTH, 80)
+        
+        self.connect("expose-event", self.expose_background_image)
+        
+    def set_image(self, image_path):
+        self.image_path = image_path
+        self.queue_draw()
+        
+    def expose_background_image(self, widget, event):
+        cr = widget.window.cairo_create()
+        rect = widget.allocation
+        
+        if self.image_path == None:
+            cr.set_source_rgba(0.8, 0.8, 0.8, 1)
+            cr.rectangle(rect.x, rect.y, rect.width, rect.height)
+            cr.fill()
+        
+        return True
+        
+gobject.type_register(BackgroundImage)        
 
 class KeybindSettings(ScrolledWindow):
     '''
