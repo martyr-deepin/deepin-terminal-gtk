@@ -477,7 +477,7 @@ class Terminal(object):
             None,
             (None, fullscreen_item_text, self.toggle_full_screen),
             (None, _("Search"), self.search_forward),
-            (None, _("Display shortcutkey"), None),
+            (None, _("Display shortcutkey"), self.show_helper_window),
             None,
             (None, _("Preference"), self.show_preference_dialog),
             ]
