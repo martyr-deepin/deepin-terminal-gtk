@@ -179,6 +179,8 @@ MATCH_FILE = 2
 MATCH_DIRECTORY = 3
 MATCH_COMMAND = 4
 
+MIN_FONT_SIZE = 8
+
 def get_active_working_directory(toplevel_widget):
     '''
     Get active working directory with given toplevel widget.
@@ -1002,7 +1004,7 @@ class TerminalWrapper(vte.Terminal):
         self.change_font(self.default_font, self.current_font_size)
     
     def zoom_in(self):
-        self.current_font_size = max(1, self.current_font_size - 1)
+        self.current_font_size = max(MIN_FONT_SIZE, self.current_font_size - 1)
         self.change_font(self.default_font, self.current_font_size)
     
     def zoom_out(self):
