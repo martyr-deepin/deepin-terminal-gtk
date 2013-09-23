@@ -1,7 +1,7 @@
 # Chinese translations for PACKAGE package.
 # Copyright (C) 2013 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Automatically generated, 2013.
+# Wang Dianjin <wangdianjin@linuxdeepin.com>, 2013
 #
 msgid ""
 msgstr ""
@@ -18,314 +18,314 @@ msgstr ""
 
 #: ../src/main.py:166
 msgid "Deepin"
-msgstr ""
+msgstr "深度"
 
 #: ../src/main.py:167
 msgid "Black/Grey"
-msgstr ""
+msgstr "黑底灰字"
 
 #: ../src/main.py:168
 msgid "Yellow/Black"
-msgstr ""
+msgstr "黃底黑字"
 
 #: ../src/main.py:169
 msgid "White/Black"
-msgstr ""
+msgstr "白底黑字"
 
 #: ../src/main.py:170
 msgid "Black/White"
-msgstr ""
+msgstr "黑底白字"
 
 #: ../src/main.py:171
 msgid "Black/Green"
-msgstr ""
+msgstr "黑底綠字"
 
 #: ../src/main.py:172
 msgid "Customize"
-msgstr ""
+msgstr "自訂"
 
 #: ../src/main.py:273
 msgid "Normal Setting"
-msgstr ""
+msgstr "一般設定"
 
 #: ../src/main.py:274
 msgid "Hotkey Setting"
-msgstr ""
+msgstr "熱鍵設定"
 
 #: ../src/main.py:275
 msgid "Advanced Setting"
-msgstr ""
+msgstr "高階設定"
 
 #: ../src/main.py:402
 msgid "New Feature"
-msgstr ""
+msgstr "新特性"
 
 #: ../src/main.py:403 ../src/main.py:482
 msgid "Preference"
-msgstr ""
+msgstr "偏好設定"
 
 #: ../src/main.py:404
 msgid "Exit"
-msgstr ""
+msgstr "結束"
 
 #: ../src/main.py:425 ../src/main.py:1573 ../src/main.py:1802
 msgid "Copy"
-msgstr ""
+msgstr "複製"
 
 #: ../src/main.py:427 ../src/main.py:1574 ../src/main.py:1803
 msgid "Paste"
-msgstr ""
+msgstr "貼上"
 
 #: ../src/main.py:434
 msgid "Open file"
-msgstr ""
+msgstr "開啟檔案"
 
 #: ../src/main.py:436
 msgid "Open directory"
-msgstr ""
+msgstr "開啟目錄"
 
 #: ../src/main.py:438
 msgid "Open URL"
-msgstr ""
+msgstr "開啟 URL"
 
 #: ../src/main.py:440
 msgid "Open manual"
-msgstr ""
+msgstr "開啓手冊"
 
 #: ../src/main.py:445
 msgid "Exit fullscreen"
-msgstr ""
+msgstr "結束全螢幕"
 
 #: ../src/main.py:447 ../src/main.py:1603 ../src/main.py:1820
 #: ../src/main.py:1895
 msgid "Fullscreen"
-msgstr ""
+msgstr "全螢幕"
 
 #: ../src/main.py:451 ../src/main.py:1575 ../src/main.py:1804
 msgid "Split vertical"
-msgstr ""
+msgstr "垂直分割"
 
 #: ../src/main.py:452 ../src/main.py:1576 ../src/main.py:1805
 msgid "Split horizontal"
-msgstr ""
+msgstr "水平分割"
 
 #: ../src/main.py:453 ../src/main.py:1577 ../src/main.py:1806
 msgid "Close terminal"
-msgstr ""
+msgstr "關閉終端機"
 
 #: ../src/main.py:459 ../src/main.py:1320
 msgid "Workspace"
-msgstr ""
+msgstr "工作區"
 
 #: ../src/main.py:466 ../src/main.py:473 ../src/main.py:1597
 #: ../src/main.py:1814
 msgid "New workspace"
-msgstr ""
+msgstr "創建工作區"
 
 #: ../src/main.py:467
 msgid "Switch workspace"
-msgstr ""
+msgstr "切換工作區"
 
 #: ../src/main.py:468 ../src/main.py:1598 ../src/main.py:1815
 msgid "Close workspace"
-msgstr ""
+msgstr "關閉工作區"
 
 #: ../src/main.py:479
 msgid "Search"
-msgstr ""
+msgstr "搜尋"
 
 #: ../src/main.py:480 ../src/main.py:1604 ../src/main.py:1821
 msgid "Display shortcutkey"
-msgstr ""
+msgstr "顯示捷徑鍵"
 
 #: ../src/main.py:1578 ../src/main.py:1807
 msgid "Select up terminal"
-msgstr ""
+msgstr "選擇上方終端機"
 
 #: ../src/main.py:1579 ../src/main.py:1808
 msgid "Select down terminal"
-msgstr ""
+msgstr "選擇下方終端機"
 
 #: ../src/main.py:1580 ../src/main.py:1809
 msgid "Select left terminal"
-msgstr ""
+msgstr "選擇左側終端機"
 
 #: ../src/main.py:1581 ../src/main.py:1810
 msgid "Select right terminal"
-msgstr ""
+msgstr "選擇右側終端機"
 
 #: ../src/main.py:1585
 msgid "Select word"
-msgstr ""
+msgstr "選擇字詞"
 
 #: ../src/main.py:1585
 msgid "Double click"
-msgstr ""
+msgstr "雙擊"
 
 #: ../src/main.py:1586
 msgid "Open"
-msgstr ""
+msgstr "開啓"
 
 #: ../src/main.py:1586
 msgid "Ctrl + Left button"
-msgstr ""
+msgstr "Ctrl + 滑鼠左鍵"
 
 #: ../src/main.py:1594 ../src/main.py:1811
 msgid "Zoom out"
-msgstr ""
+msgstr "拉遠"
 
 #: ../src/main.py:1595 ../src/main.py:1812
 msgid "Zoom in"
-msgstr ""
+msgstr "拉近"
 
 #: ../src/main.py:1596 ../src/main.py:1813
 msgid "Default size"
-msgstr ""
+msgstr "預設尺寸"
 
 #: ../src/main.py:1599 ../src/main.py:1816
 msgid "Previous workspace"
-msgstr ""
+msgstr "切換至上一工作區"
 
 #: ../src/main.py:1600 ../src/main.py:1817
 msgid "Next workspace"
-msgstr ""
+msgstr "切換至下一工作區"
 
 #: ../src/main.py:1601 ../src/main.py:1818
 msgid "Search forward"
-msgstr ""
+msgstr "向下搜尋"
 
 #: ../src/main.py:1602 ../src/main.py:1819
 msgid "Search backward"
-msgstr ""
+msgstr "向上搜尋"
 
 #: ../src/main.py:1605
 msgid "Build SSH connection"
-msgstr ""
+msgstr "建立 SSH 連線"
 
 #: ../src/main.py:1705
 msgid "Font: "
-msgstr ""
+msgstr "字型："
 
 #: ../src/main.py:1706
 msgid "Font size: "
-msgstr ""
+msgstr "字型大小："
 
 #: ../src/main.py:1707
 msgid "Color precept: "
-msgstr ""
+msgstr "色彩組合："
 
 #: ../src/main.py:1709
 msgid "Background transparent: "
-msgstr ""
+msgstr "背景透明度："
 
 #: ../src/main.py:1710
 msgid "Background image: "
-msgstr ""
+msgstr "背景圖像："
 
 #: ../src/main.py:1893
 msgid "Normal"
-msgstr ""
+msgstr "一般"
 
 #: ../src/main.py:1894
 msgid "Maximize"
-msgstr ""
+msgstr "最大化"
 
 #: ../src/main.py:1911
 msgid "Block"
-msgstr ""
+msgstr "方塊"
 
 #: ../src/main.py:1912
 msgid "Ibeam"
-msgstr ""
+msgstr "I 游標"
 
 #: ../src/main.py:1913
 msgid "Underline"
-msgstr ""
+msgstr "底線"
 
 #: ../src/main.py:1930
 msgid "Startup style: "
-msgstr ""
+msgstr "初始啟動樣式："
 
 #: ../src/main.py:1931
 msgid "Startup command: "
-msgstr ""
+msgstr "初始啟動指令："
 
 #: ../src/main.py:1932
 msgid "Startup directory: "
-msgstr ""
+msgstr "初始啟動目錄："
 
 #: ../src/main.py:1933
 msgid "Cursor shape: "
-msgstr ""
+msgstr "游標形狀："
 
 #: ../src/main.py:1934
 msgid "Scroll on key: "
-msgstr ""
+msgstr "按鍵時卷動："
 
 #: ../src/main.py:1935
 msgid "Scroll on output: "
-msgstr ""
+msgstr "輸出時卷動："
 
 #: ../src/main.py:2026
 msgid "Manual"
-msgstr ""
+msgstr "手冊"
 
 #: ../src/main.py:2089
 msgid "Save"
-msgstr ""
+msgstr "儲存"
 
 #: ../src/main.py:2131 ../src/main.py:2153
 msgid "Name: "
-msgstr ""
+msgstr "名稱："
 
 #: ../src/main.py:2131 ../src/main.py:2156
 msgid "Server: "
-msgstr ""
+msgstr "伺服器："
 
 #: ../src/main.py:2131 ../src/main.py:2159
 msgid "User: "
-msgstr ""
+msgstr "使用者："
 
 #: ../src/main.py:2131 ../src/main.py:2162
 msgid "Password: "
-msgstr ""
+msgstr "密碼："
 
 #: ../src/main.py:2131 ../src/main.py:2165
 msgid "Port: "
-msgstr ""
+msgstr "連接埠："
 
 #: ../src/main.py:2187
 msgid "Remote login"
-msgstr ""
+msgstr "遠端登入"
 
 #: ../src/main.py:2194
 msgid "Add"
-msgstr ""
+msgstr "加入"
 
 #: ../src/main.py:2195
 msgid "Connection"
-msgstr ""
+msgstr "連線"
 
 #: ../src/main.py:2203
 msgid "Name"
-msgstr ""
+msgstr "名稱"
 
 #: ../src/main.py:2203
 msgid "Server"
-msgstr ""
+msgstr "伺服器"
 
 #: ../src/main.py:2209
 msgid "Add remote login"
-msgstr ""
+msgstr "加入遠端登入"
 
 #: ../src/main.py:2261
 msgid "Edit remote login"
-msgstr ""
+msgstr "編輯遠端登入"
 
 #: ../src/main.py:2273
 msgid "Edit"
-msgstr ""
+msgstr "編輯"
 
 #: ../src/main.py:2274
 msgid "Delete"
-msgstr ""
+msgstr "刪除"
