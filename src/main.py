@@ -36,6 +36,7 @@ from dtk.ui.keymap import get_keyevent_name, is_no_key_press
 from dtk.ui.label import Label
 from dtk.ui.menu import Menu
 from dtk.ui.utils import container_remove_all, get_match_parent, cairo_state, propagate_expose, is_left_button, is_right_button
+from dtk.ui.utils import get_window_shadow_size
 from dtk.ui.utils import place_center, get_widget_root_coordinate
 from dtk.ui.window import Window
 from math import pi
@@ -78,6 +79,8 @@ from dtk.ui.theme import ui_theme
 from dtk.ui.titlebar import Titlebar
 from dtk.ui.treeview import TreeView, NodeItem, get_background_color, get_text_color
 from dtk.ui.utils import color_hex_to_cairo
+from dtk.ui.skin_config import skin_config
+from dtk.ui.cache_pixbuf import CachePixbuf
         
 # Load customize rc style before any other.
 PANED_HANDLE_SIZE = 2
@@ -128,6 +131,7 @@ DEFAULT_CONFIG = [
       ("font_color", "#00FF00"),
       ("background_color", "#000000"),
       ("background_transparent", "0.8"),
+      ("background_image", "False"),
       ]),
     ("keybind", 
      [("copy_clipboard", "Ctrl + C"),
@@ -222,6 +226,26 @@ def get_match_children(widget, child_type):
         return match_widget_list + match_children
     else:
         return []
+    
+def set_terminal_background(terminal):
+    cache_pixbuf = CachePixbuf()
+    (shadow_x, shadow_y) = get_window_shadow_size(terminal.get_toplevel())
+    
+    background_x = int(skin_config.x * skin_config.scale_x)
+    background_y = int(skin_config.y * skin_config.scale_y)
+    background_width = int(skin_config.background_pixbuf.get_width() * skin_config.scale_x)
+    background_height = int(skin_config.background_pixbuf.get_height() * skin_config.scale_y)
+    cache_pixbuf.scale(skin_config.background_pixbuf, background_width, background_height,
+                       skin_config.vertical_mirror, skin_config.horizontal_mirror)
+    
+    (offset_x, offset_y) = terminal.translate_coordinates(terminal.get_toplevel(), 0, 0)
+    sub_x = abs(background_x + shadow_x - offset_x)
+    sub_y = abs(background_y + shadow_y - offset_y)
+    
+    background_pixbuf = cache_pixbuf.get_cache().subpixbuf(
+        sub_x, sub_y, background_width - sub_x, background_height - sub_y)
+    
+    terminal.set_background_image(background_pixbuf)
         
 class Terminal(object):
     """
@@ -235,7 +259,7 @@ class Terminal(object):
         self.application = Application()
         self.application.set_default_size(664, 466)
         self.application.add_titlebar(
-            app_name = "Deepin Terminal",
+            app_name = _("Deepin Terminal"),
             )
 
         self.normal_padding = 2
@@ -293,6 +317,21 @@ class Terminal(object):
         global_event.register_event("change-background-color", self.change_color_scheme)
         global_event.register_event("keybind-changed", self.keybind_change)
         global_event.register_event("ssh-login", self.ssh_login)
+        global_event.register_event("background-image-toggle", self.background_image_toggle)
+        
+        skin_config.connect("theme-changed", self.change_background_image)
+        
+    def background_image_toggle(self, status):
+        for terminal in get_match_children(self.application.window, TerminalWrapper):
+            if status:
+                set_terminal_background(terminal)
+            else:
+                terminal.reset_background()
+        
+    def change_background_image(self, skin_config, theme_name):
+        if setting_config.config.get("general", "background_image") == "True":
+            for terminal in get_match_children(self.application.window, TerminalWrapper):
+                set_terminal_background(terminal)
         
     def ssh_login(self, user, server, password, port):
         active_terminal = self.application.window.get_focus()
@@ -856,9 +895,12 @@ class TerminalWrapper(vte.Terminal):
         self.connect("window-title-changed", self.on_window_title_changed)
         self.connect("grab-focus", lambda w: self.change_window_title())
         self.connect("button-press-event", self.on_button_press)
-        # self.connect("key-press-event", self.on_key_press)
-        # self.connect("key-release-event", self.on_key_release)
         self.connect("scroll-event", self.on_scroll)
+        self.connect("realize", lambda w: self.init_background())
+        
+    def init_background(self):
+        if setting_config.config.get("general", "background_image") == "True":
+            set_terminal_background(self)
         
     def generate_keymap(self):
         get_keybind = lambda key_value: setting_config.config.get("keybind", key_value)
@@ -1692,6 +1734,10 @@ class GeneralSettings(gtk.VBox):
         background_transparent_widget.set_value(float(transparent))
         background_transparent_widget.connect("value-changed", self.save_background_transparent)
         
+        display_background_image = setting_config.config.get("general", "background_image")
+        background_image_widget = SwitchButton(display_background_image == "True")
+        background_image_widget.connect("toggled", self.background_image_toggle)
+        
         self.table = gtk.Table(7, 2)
         self.table.set_row_spacings(TABLE_ROW_SPACING)
         self.table.set_col_spacing(0, TABLE_COLUMN_SPACING)
@@ -1701,6 +1747,7 @@ class GeneralSettings(gtk.VBox):
             (_("Color scheme: "), self.color_scheme_widget),
             ("", color_box),
             (_("Background transparency: "), background_transparent_widget),
+            (_("Background image: "), background_image_widget),
             ]
         self.table_align = gtk.Alignment()
         self.table_align.set(0, 0, 1, 1)
@@ -1709,6 +1756,12 @@ class GeneralSettings(gtk.VBox):
         self.fill_table(self.table, table_items)
         self.table_align.add(self.table)
         self.add(self.table_align)
+        
+    def background_image_toggle(self, toggle_button):
+        setting_config.config.set("general", "background_image", toggle_button.get_active())
+        setting_config.config.write()
+        
+        global_event.emit("background-image-toggle", toggle_button.get_active())
         
     def change_color_scheme(self, combo_box, option_name, option_value, index):
         setting_config.config.set("general", "color_scheme", option_value)
