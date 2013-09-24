@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-24 14:35+0800\n"
+"POT-Creation-Date: 2013-09-24 15:08+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,7 +98,7 @@ msgid "Exit fullscreen"
 msgstr ""
 
 #: ../src/main.py:449 ../src/main.py:1599 ../src/main.py:1814
-#: ../src/main.py:1889
+#: ../src/main.py:1886
 msgid "Fullscreen"
 msgstr ""
 
@@ -219,110 +219,114 @@ msgstr ""
 msgid "Background transparency: "
 msgstr ""
 
-#: ../src/main.py:1887
+#: ../src/main.py:1823
+msgid "68"
+msgstr ""
+
+#: ../src/main.py:1884
 msgid "Normal"
 msgstr ""
 
-#: ../src/main.py:1888
+#: ../src/main.py:1885
 msgid "Maximize"
 msgstr ""
 
-#: ../src/main.py:1905
+#: ../src/main.py:1902
 msgid "Block"
 msgstr ""
 
-#: ../src/main.py:1906
+#: ../src/main.py:1903
 msgid "I-beam"
 msgstr ""
 
-#: ../src/main.py:1907
+#: ../src/main.py:1904
 msgid "Underline"
 msgstr ""
 
-#: ../src/main.py:1924
+#: ../src/main.py:1921
 msgid "Window state: "
 msgstr ""
 
-#: ../src/main.py:1925
+#: ../src/main.py:1922
 msgid "Startup command: "
 msgstr ""
 
-#: ../src/main.py:1926
+#: ../src/main.py:1923
 msgid "Startup directory: "
 msgstr ""
 
-#: ../src/main.py:1927
+#: ../src/main.py:1924
 msgid "Cursor shape: "
 msgstr ""
 
-#: ../src/main.py:1928
+#: ../src/main.py:1925
 msgid "Scroll on keystroke: "
 msgstr ""
 
-#: ../src/main.py:1929
+#: ../src/main.py:1926
 msgid "Scroll on output: "
 msgstr ""
 
-#: ../src/main.py:2020
+#: ../src/main.py:2017
 msgid "Manual"
 msgstr ""
 
-#: ../src/main.py:2083
+#: ../src/main.py:2080
 msgid "Save"
 msgstr ""
 
-#: ../src/main.py:2125 ../src/main.py:2147
+#: ../src/main.py:2122 ../src/main.py:2144
 msgid "Name: "
 msgstr ""
 
-#: ../src/main.py:2125 ../src/main.py:2150
+#: ../src/main.py:2122 ../src/main.py:2147
 msgid "Server: "
 msgstr ""
 
-#: ../src/main.py:2125 ../src/main.py:2153
+#: ../src/main.py:2122 ../src/main.py:2150
 msgid "User: "
 msgstr ""
 
-#: ../src/main.py:2125 ../src/main.py:2156
+#: ../src/main.py:2122 ../src/main.py:2153
 msgid "Password: "
 msgstr ""
 
-#: ../src/main.py:2125 ../src/main.py:2159
+#: ../src/main.py:2122 ../src/main.py:2156
 msgid "Port: "
 msgstr ""
 
-#: ../src/main.py:2181
+#: ../src/main.py:2178
 msgid "Remote login"
 msgstr ""
 
-#: ../src/main.py:2188
+#: ../src/main.py:2185
 msgid "Add"
 msgstr ""
 
-#: ../src/main.py:2189
+#: ../src/main.py:2186
 msgid "Connection"
 msgstr ""
 
-#: ../src/main.py:2197
+#: ../src/main.py:2194
 msgid "Name"
 msgstr ""
 
-#: ../src/main.py:2197
+#: ../src/main.py:2194
 msgid "Server"
 msgstr ""
 
-#: ../src/main.py:2203
+#: ../src/main.py:2200
 msgid "Add remote login"
 msgstr ""
 
-#: ../src/main.py:2255
+#: ../src/main.py:2252
 msgid "Edit remote login"
 msgstr ""
 
-#: ../src/main.py:2267
+#: ../src/main.py:2264
 msgid "Edit"
 msgstr ""
 
-#: ../src/main.py:2268
+#: ../src/main.py:2265
 msgid "Delete"
 msgstr ""

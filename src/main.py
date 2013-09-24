@@ -1820,7 +1820,7 @@ class KeybindSettings(ScrolledWindow):
         self.table.set_col_spacing(0, TABLE_COLUMN_SPACING)
         self.table_align = gtk.Alignment()
         self.table_align.set(0, 0, 1, 1)
-        self.table_align.set_padding(TABLE_PADDING_TOP, TABLE_PADDING_BOTTOM, TABLE_PADDING_LEFT, 0)
+        self.table_align.set_padding(TABLE_PADDING_TOP, TABLE_PADDING_BOTTOM, TABLE_PADDING_LEFT, int(_("68")))
         
         self.fill_table(self.table, key_name_dict)
         self.table_align.add(self.table)
@@ -1839,11 +1839,8 @@ class KeybindSettings(ScrolledWindow):
                 )
             shortcutkey_entry = KeybindEntry(key_value, key_bind)
             shortcutkey_entry.set_size(170, 23)
-            shortcutkey_entry_align = gtk.Alignment()
-            shortcutkey_entry_align.set_padding(0, 0, 0, 122)
-            shortcutkey_entry_align.add(shortcutkey_entry)
             table.attach(
-                shortcutkey_entry_align,
+                shortcutkey_entry,
                 1, 2, 
                 index, index + 1,
                 )

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-24 14:35+0800\n"
+"POT-Creation-Date: 2013-09-24 15:08+0800\n"
 "PO-Revision-Date: 2013-09-18 09:49+0800\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -98,7 +98,7 @@ msgid "Exit fullscreen"
 msgstr "退出全屏"
 
 #: ../src/main.py:449 ../src/main.py:1599 ../src/main.py:1814
-#: ../src/main.py:1889
+#: ../src/main.py:1886
 msgid "Fullscreen"
 msgstr "全屏"
 
@@ -219,111 +219,114 @@ msgstr "颜色方案: "
 msgid "Background transparency: "
 msgstr "背景透明: "
 
-#: ../src/main.py:1887
+#: ../src/main.py:1823
+msgid "68"
+msgstr "122"
+
+#: ../src/main.py:1884
 msgid "Normal"
 msgstr "正常"
 
-#: ../src/main.py:1888
+#: ../src/main.py:1885
 msgid "Maximize"
 msgstr "最大化"
 
-#: ../src/main.py:1905
+#: ../src/main.py:1902
 msgid "Block"
 msgstr "块状"
 
-#: ../src/main.py:1906
+#: ../src/main.py:1903
 msgid "I-beam"
 msgstr "竖条"
 
-#: ../src/main.py:1907
+#: ../src/main.py:1904
 msgid "Underline"
 msgstr "下划线"
 
-#: ../src/main.py:1924
+#: ../src/main.py:1921
 msgid "Window state: "
 msgstr ""
 
-#: ../src/main.py:1925
+#: ../src/main.py:1922
 msgid "Startup command: "
 msgstr "启动命令: "
 
-#: ../src/main.py:1926
+#: ../src/main.py:1923
 msgid "Startup directory: "
 msgstr "启动目录: "
 
-#: ../src/main.py:1927
+#: ../src/main.py:1924
 msgid "Cursor shape: "
 msgstr "光标形状: "
 
-#: ../src/main.py:1928
+#: ../src/main.py:1925
 msgid "Scroll on keystroke: "
 msgstr "按键时滚动: "
 
-#: ../src/main.py:1929
+#: ../src/main.py:1926
 msgid "Scroll on output: "
 msgstr "输出时滚动: "
 
-#: ../src/main.py:2020
+#: ../src/main.py:2017
 msgid "Manual"
 msgstr "帮助手册"
 
-#: ../src/main.py:2083
+#: ../src/main.py:2080
 msgid "Save"
 msgstr "保存"
 
-#: ../src/main.py:2125 ../src/main.py:2147
+#: ../src/main.py:2122 ../src/main.py:2144
 msgid "Name: "
 msgstr "名字: "
 
-#: ../src/main.py:2125 ../src/main.py:2150
+#: ../src/main.py:2122 ../src/main.py:2147
 msgid "Server: "
 msgstr "服务器: "
 
-#: ../src/main.py:2125 ../src/main.py:2153
+#: ../src/main.py:2122 ../src/main.py:2150
 msgid "User: "
 msgstr "用户名: "
 
-#: ../src/main.py:2125 ../src/main.py:2156
+#: ../src/main.py:2122 ../src/main.py:2153
 msgid "Password: "
 msgstr "密码: "
 
-#: ../src/main.py:2125 ../src/main.py:2159
+#: ../src/main.py:2122 ../src/main.py:2156
 msgid "Port: "
 msgstr "端口号: "
 
-#: ../src/main.py:2181
+#: ../src/main.py:2178
 msgid "Remote login"
 msgstr "远程登陆"
 
-#: ../src/main.py:2188
+#: ../src/main.py:2185
 msgid "Add"
 msgstr "添加"
 
-#: ../src/main.py:2189
+#: ../src/main.py:2186
 msgid "Connection"
 msgstr "连接"
 
-#: ../src/main.py:2197
+#: ../src/main.py:2194
 msgid "Name"
 msgstr "名字"
 
-#: ../src/main.py:2197
+#: ../src/main.py:2194
 msgid "Server"
 msgstr "服务器"
 
-#: ../src/main.py:2203
+#: ../src/main.py:2200
 msgid "Add remote login"
 msgstr "添加远程连接"
 
-#: ../src/main.py:2255
+#: ../src/main.py:2252
 msgid "Edit remote login"
 msgstr "编辑远程连接"
 
-#: ../src/main.py:2267
+#: ../src/main.py:2264
 msgid "Edit"
 msgstr "编辑"
 
-#: ../src/main.py:2268
+#: ../src/main.py:2265
 msgid "Delete"
 msgstr "删除"
-
