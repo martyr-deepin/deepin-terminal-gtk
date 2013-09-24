@@ -125,7 +125,7 @@ DEFAULT_CONFIG = [
     ("general", 
      [("font", "XHei Mono.Ubuntu"),
       ("font_size", "11"),
-      ("color_precept", "deepin"), 
+      ("color_scheme", "deepin"), 
       ("font_color", "#00FF00"),
       ("background_color", "#000000"),
       ("background_transparent", "0.8"),
@@ -133,8 +133,8 @@ DEFAULT_CONFIG = [
     ("keybind", 
      [("copy_clipboard", "Ctrl + C"),
       ("paste_clipboard", "Ctrl + V"),
-      ("split_vertical", "Ctrl + v"),
-      ("split_horizontal", "Ctrl + h"),
+      ("split_vertically", "Ctrl + v"),
+      ("split_horizontally", "Ctrl + h"),
       ("close_terminal", "Ctrl + d"),
       ("focus_up_terminal", "Alt + Up"),
       ("focus_down_terminal", "Alt + Down"),
@@ -164,12 +164,12 @@ DEFAULT_CONFIG = [
     ]
 
 color_style = {"deepin" : (_("Deepin"), ["#00FF00", "#000000"]),
-               "grey_on_black": (_("Black/Grey"), ["#aaaaaa", "#000000"]),
-               "black_on_yellow": (_("Yellow/Black"), ["#000000", "#ffffdd"]),
-               "black_on_white": (_("White/Black"), ["#000000", "#ffffff"]),
-               "white_on_black": (_("Black/White"), ["#ffffff", "#000000"]),
-               "green_on_black": (_("Black/Green"), ["#00ff00", "#000000"]),
-               "customize" : (_("Customize"), ["#00FF00", "#000000"]),
+               "grey_on_black": (_("Grey on black"), ["#aaaaaa", "#000000"]),
+               "black_on_yellow": (_("Black on yellow"), ["#000000", "#ffffdd"]),
+               "black_on_white": (_("Black on white"), ["#000000", "#ffffff"]),
+               "white_on_black": (_("White on black"), ["#ffffff", "#000000"]),
+               "green_on_black": (_("Green on black"), ["#00ff00", "#000000"]),
+               "custom" : (_("Custom"), ["#00FF00", "#000000"]),
                }
 
 COMBO_BOX_WIDTH = 150
@@ -272,9 +272,9 @@ class Terminal(object):
         
         self.preference_dialog = PreferenceDialog(575, 390)
         self.preference_dialog.set_preference_items(
-            [(_("Normal Setting"), self.general_settings),
-             (_("Hotkey Setting"), self.keybind_settings),
-             (_("Advanced Setting"), self.advanced_settings),
+            [(_("General"), self.general_settings),
+             (_("Hotkeys"), self.keybind_settings),
+             (_("Advanced"), self.advanced_settings),
              ])
         self.application.titlebar.menu_button.connect("button-press-event", self.show_preference_menu)
         
@@ -289,9 +289,9 @@ class Terminal(object):
         global_event.register_event("set-cursor-shape", self.set_cursor_shape)
         global_event.register_event("change-font", self.change_font)
         global_event.register_event("change-font-size", self.change_font_size)
-        global_event.register_event("change-color-precept", self.change_color_precept)
-        global_event.register_event("change-font-color", self.change_color_precept)
-        global_event.register_event("change-background-color", self.change_color_precept)
+        global_event.register_event("change-color-precept", self.change_color_scheme)
+        global_event.register_event("change-font-color", self.change_color_scheme)
+        global_event.register_event("change-background-color", self.change_color_scheme)
         global_event.register_event("keybind-changed", self.keybind_change)
         global_event.register_event("ssh-login", self.ssh_login)
         
@@ -344,7 +344,7 @@ class Terminal(object):
             self.application.window,
             )
                 
-    def change_color_precept(self, value):
+    def change_color_scheme(self, value):
         font_color = setting_config.config.get("general", "font_color")
         background_color = setting_config.config.get("general", "background_color")
         for terminal in get_match_children(self.application.window, TerminalWrapper):
@@ -401,9 +401,9 @@ class Terminal(object):
             
     def show_preference_menu(self, widget, event):
         menu_items = [
-            (None, _("New Feature"), None),
-            (None, _("Preference"), self.show_preference_dialog),
-            (None, _("Exit"), gtk.main_quit),
+            (None, _("See what's new"), None),
+            (None, _("Preferences"), self.show_preference_dialog),
+            (None, _("Quit"), gtk.main_quit),
             ]
         menu = Menu(menu_items, True)
         menu.show(
@@ -450,8 +450,8 @@ class Terminal(object):
             
         terminal_items = [
             None,
-            (None, _("Split vertical"), lambda : terminal.parent_widget.split(TerminalGrid.SPLIT_VERTICAL)),
-            (None, _("Split horizontal"), lambda : terminal.parent_widget.split(TerminalGrid.SPLIT_HORIZONTAL)),
+            (None, _("Split vertically"), lambda : terminal.parent_widget.split(TerminalGrid.SPLIT_VERTICALLY)),
+            (None, _("Split horizontally"), lambda : terminal.parent_widget.split(TerminalGrid.SPLIT_HORIZONTALLY)),
             (None, _("Close terminal"), terminal.close_terminal),
             ]
         
@@ -479,9 +479,9 @@ class Terminal(object):
             None,
             (None, fullscreen_item_text, self.toggle_full_screen),
             (None, _("Search"), self.search_forward),
-            (None, _("Display shortcutkey"), self.show_helper_window),
+            (None, _("Display hotkeys"), self.show_helper_window),
             None,
-            (None, _("Preference"), self.show_preference_dialog),
+            (None, _("Preferences"), self.show_preference_dialog),
             ]
         
         menu = Menu(menu_items, True)
@@ -865,8 +865,8 @@ class TerminalWrapper(vte.Terminal):
         get_keybind = lambda key_value: setting_config.config.get("keybind", key_value)
         
         key_values = [
-            "split_vertical",
-            "split_horizontal",
+            "split_vertically",
+            "split_horizontally",
             "copy_clipboard",
             "paste_clipboard",
             "revert_default_size",
@@ -884,13 +884,13 @@ class TerminalWrapper(vte.Terminal):
         man_dialog = ManDialog(command)
         man_dialog.show_all()
             
-    def split_vertical(self):
+    def split_vertically(self):
         if self.parent_widget:
-            self.parent_widget.split(TerminalGrid.SPLIT_VERTICAL),
+            self.parent_widget.split(TerminalGrid.SPLIT_VERTICALLY),
         
-    def split_horizontal(self):
+    def split_horizontally(self):
         if self.parent_widget:
-            self.parent_widget.split(TerminalGrid.SPLIT_HORIZONTAL),
+            self.parent_widget.split(TerminalGrid.SPLIT_HORIZONTALLY),
             
     def change_color(self, font_color, background_color):
         self.set_colors(
@@ -1067,8 +1067,8 @@ class TerminalGrid(gtk.VBox):
     """
 
     # Constant values
-    SPLIT_VERTICAL = 1
-    SPLIT_HORIZONTAL = 2
+    SPLIT_VERTICALLY = 1
+    SPLIT_HORIZONTALLY = 2
 
     def __init__(self, 
                  parent_widget=None, 
@@ -1098,7 +1098,7 @@ class TerminalGrid(gtk.VBox):
         Split window.
         :param split_policy: used to determine vsplit or hsplit.
         """
-        if split_policy not in [TerminalGrid.SPLIT_VERTICAL, TerminalGrid.SPLIT_HORIZONTAL]:
+        if split_policy not in [TerminalGrid.SPLIT_VERTICALLY, TerminalGrid.SPLIT_HORIZONTALLY]:
             raise (ValueError, "Unknown split policy!!")
         
         working_directory = get_active_working_directory(self.get_toplevel())    
@@ -1106,10 +1106,10 @@ class TerminalGrid(gtk.VBox):
         self.is_parent = True
         self.remove(self.terminal)
         width, height = self.get_child_requisition()
-        if split_policy == TerminalGrid.SPLIT_VERTICAL:
+        if split_policy == TerminalGrid.SPLIT_VERTICALLY:
             self.paned = gtk.VPaned()
             self.paned.set_position(height/2)
-        elif split_policy == TerminalGrid.SPLIT_HORIZONTAL:
+        elif split_policy == TerminalGrid.SPLIT_HORIZONTALLY:
             self.paned = gtk.HPaned()
             self.paned.set_position(width/2)
             
@@ -1568,18 +1568,18 @@ class HelperWindow(Window):
         first_table_key = [
             (_("Copy"), "copy_clipboard"),
             (_("Paste"), "paste_clipboard"),
-            (_("Split vertical"), "split_vertical"),
-            (_("Split horizontal"), "split_horizontal"),
+            (_("Split vertically"), "split_vertically"),
+            (_("Split horizontally"), "split_horizontally"),
             (_("Close terminal"), "close_terminal"),
-            (_("Select up terminal"), "focus_up_terminal"),
-            (_("Select down terminal"), "focus_down_terminal"),
-            (_("Select left terminal"), "focus_left_terminal"),
-            (_("Select right terminal"), "focus_right_terminal"),
+            (_("Focus the terminal above"), "focus_up_terminal"),
+            (_("Focus the terminal below"), "focus_down_terminal"),
+            (_("Focus the temrinal left"), "focus_left_terminal"),
+            (_("Focus the terminal right"), "focus_right_terminal"),
             ]
         
         no_customize_key = [          
             (_("Select word"), _("Double click")),
-            (_("Open"), _("Ctrl + Left button")),
+            (_("Open"), _("Ctrl + Left click")),
             ]
         
         self.first_table = self.create_table(
@@ -1589,7 +1589,7 @@ class HelperWindow(Window):
         second_table_key = [
             (_("Zoom out"), "zoom_in"),
             (_("Zoom in"), "zoom_out"),
-            (_("Default size"), "revert_default_size"),
+            (_("Reset zoom"), "revert_default_size"),
             (_("New workspace"), "new_workspace"),
             (_("Close workspace"), "close_current_workspace"),
             (_("Previous workspace"), "switch_prev_workspace"),
@@ -1597,8 +1597,8 @@ class HelperWindow(Window):
             (_("Search forward"), "search_forward"),
             (_("Search backward"), "search_backward"),
             (_("Fullscreen"), "toggle_full_screen"),
-            (_("Display shortcutkey"), "show_helper_window"),
-            (_("Build SSH connection"), "show_remote_login_window"),
+            (_("Display hotkeys"), "show_helper_window"),
+            (_("Set up SSH connection"), "show_remote_login_window"),
             ]
         
         self.second_table = self.create_table(
@@ -1666,12 +1666,12 @@ class GeneralSettings(gtk.VBox):
         font_size_widget.connect("value-changed", self.change_font_size)
         font_size_widget.value_entry.connect("changed", self.change_font_size)
         
-        color_precept = setting_config.config.get("general", "color_precept")
-        self.color_items =map(lambda (color_precept_value, (color_precept_name, _)): (color_precept_name, color_precept_value), color_style.items())
-        self.color_precept_widget = ComboBox(self.color_items, fixed_width=COMBO_BOX_WIDTH)
-        self.color_precept_widget.set_select_index(
-            map(lambda (color_precept_value, color_infos): color_precept_value, color_style.items()).index(color_precept))
-        self.color_precept_widget.connect("item-selected", self.change_color_precept)
+        color_scheme = setting_config.config.get("general", "color_scheme")
+        self.color_items =map(lambda (color_scheme_value, (color_scheme_name, _)): (color_scheme_name, color_scheme_value), color_style.items())
+        self.color_scheme_widget = ComboBox(self.color_items, fixed_width=COMBO_BOX_WIDTH)
+        self.color_scheme_widget.set_select_index(
+            map(lambda (color_scheme_value, color_infos): color_scheme_value, color_style.items()).index(color_scheme))
+        self.color_scheme_widget.connect("item-selected", self.change_color_scheme)
         
         font_color = setting_config.config.get("general", "font_color")
         self.font_color_widget = ColorButton(color=font_color)
@@ -1699,9 +1699,9 @@ class GeneralSettings(gtk.VBox):
         table_items = [
             (_("Font: "), font_widget),
             (_("Font size: "), font_size_widget),
-            (_("Color precept: "), self.color_precept_widget),
+            (_("Color scheme: "), self.color_scheme_widget),
             ("", color_box),
-            (_("Background transparent: "), background_transparent_widget),
+            (_("Background transparency: "), background_transparent_widget),
             ]
         self.table_align = gtk.Alignment()
         self.table_align.set(0, 0, 1, 1)
@@ -1711,11 +1711,11 @@ class GeneralSettings(gtk.VBox):
         self.table_align.add(self.table)
         self.add(self.table_align)
         
-    def change_color_precept(self, combo_box, option_name, option_value, index):
-        setting_config.config.set("general", "color_precept", option_value)
+    def change_color_scheme(self, combo_box, option_name, option_value, index):
+        setting_config.config.set("general", "color_scheme", option_value)
         setting_config.config.write()
         
-        if option_value != "customize" and color_style.has_key(option_value):
+        if option_value != "custom" and color_style.has_key(option_value):
             (_, [font_color, background_color]) = color_style[option_value]
             
             self.font_color_widget.set_color(font_color)
@@ -1728,20 +1728,20 @@ class GeneralSettings(gtk.VBox):
             global_event.emit("change-color-precept", option_value)
     
     def change_font_color(self, color_button, font_color):
-        self.color_precept_widget.set_select_index(
-            map(lambda (color_precept_value, color_infos): color_precept_value, color_style.items()).index("customize"))
+        self.color_scheme_widget.set_select_index(
+            map(lambda (color_scheme_value, color_infos): color_scheme_value, color_style.items()).index("custom"))
         
-        setting_config.config.set("general", "color_precept", "customize")
+        setting_config.config.set("general", "color_scheme", "custom")
         setting_config.config.set("general", "font_color", font_color)
         setting_config.config.write()
         
         global_event.emit("change-font-color", font_color)
     
     def change_background_color(self, color_button, background_color):
-        self.color_precept_widget.set_select_index(
-            map(lambda (color_precept_value, color_infos): color_precept_value, color_style.items()).index("customize"))
+        self.color_scheme_widget.set_select_index(
+            map(lambda (color_scheme_value, color_infos): color_scheme_value, color_style.items()).index("custom"))
         
-        setting_config.config.set("general", "color_precept", "customize")
+        setting_config.config.set("general", "color_scheme", "custom")
         setting_config.config.set("general", "background_color", background_color)
         setting_config.config.write()
         
@@ -1795,16 +1795,16 @@ class KeybindSettings(ScrolledWindow):
         key_name_dict = OrderedDict(
             [("copy_clipboard", _("Copy")),
              ("paste_clipboard", _("Paste")),
-             ("split_vertical", _("Split vertical")),
-             ("split_horizontal", _("Split horizontal")),
+             ("split_vertically", _("Split vertically")),
+             ("split_horizontally", _("Split horizontally")),
              ("close_terminal", _("Close terminal")),
-             ("focus_up_terminal", _("Select up terminal")),
-             ("focus_down_terminal", _("Select down terminal")),
-             ("focus_left_terminal", _("Select left terminal")),
-             ("focus_right_terminal", _("Select right terminal")),
+             ("focus_up_terminal", _("Focus the terminal above")),
+             ("focus_down_terminal", _("Focus the terminal below")),
+             ("focus_left_terminal", _("Focus the temrinal left")),
+             ("focus_right_terminal", _("Focus the terminal right")),
              ("zoom_in", _("Zoom out")),
              ("zoom_out", _("Zoom in")),
-             ("revert_default_size", _("Default size")),
+             ("revert_default_size", _("Reset zoom")),
              ("new_workspace", _("New workspace")),
              ("close_current_workspace", _("Close workspace")),
              ("switch_prev_workspace", _("Previous workspace")),
@@ -1812,7 +1812,7 @@ class KeybindSettings(ScrolledWindow):
              ("search_forward", _("Search forward")),
              ("search_backward", _("Search backward")),
              ("toggle_full_screen", _("Fullscreen")),
-             ("show_helper_window", _("Display shortcutkey")),
+             ("show_helper_window", _("Display hotkeys")),
              ])
         
         self.table = gtk.Table(len(key_name_dict), 2)
@@ -1903,7 +1903,7 @@ class AdvancedSettings(gtk.VBox):
         
         cursor_shape = setting_config.config.get("advanced", "cursor_shape")
         cursor_shape_items =[(_("Block"), "block"),
-                             (_("Ibeam"), "ibeam"),
+                             (_("I-beam"), "ibeam"),
                              (_("Underline"), "underline")]
         cursor_shape_widget = ComboBox(cursor_shape_items, fixed_width=COMBO_BOX_WIDTH)
         cursor_shape_widget.connect("item-selected", self.save_cursor_shape)
@@ -1921,11 +1921,11 @@ class AdvancedSettings(gtk.VBox):
         self.table.set_row_spacings(TABLE_ROW_SPACING)
         self.table.set_col_spacing(0, TABLE_COLUMN_SPACING)
         table_items = [
-            (_("Startup style: "), startup_widget),
+            (_("Window state: "), startup_widget),
             (_("Startup command: "), startup_command_widget),
             (_("Startup directory: "), startup_directory_widget),
             (_("Cursor shape: "), cursor_shape_widget),
-            (_("Scroll on key: "), scroll_on_key_widget),
+            (_("Scroll on keystroke: "), scroll_on_key_widget),
             (_("Scroll on output: "), scroll_on_output_widget),
             ]
         self.table_align = gtk.Alignment()
