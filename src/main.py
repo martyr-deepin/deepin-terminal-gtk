@@ -319,7 +319,7 @@ class Terminal(object):
         global_event.register_event("ssh-login", self.ssh_login)
         global_event.register_event("background-image-toggle", self.background_image_toggle)
         
-        skin_config.connect("theme-changed", self.change_background_image)
+        skin_config.connect("theme-changed", lambda w, n: self.change_background_image())
         
     def background_image_toggle(self, status):
         for terminal in get_match_children(self.application.window, TerminalWrapper):
@@ -328,8 +328,8 @@ class Terminal(object):
             else:
                 terminal.reset_background()
         
-    def change_background_image(self, skin_config, theme_name):
-        if setting_config.config.get("general", "background_image") == "True":
+    def change_background_image(self):
+        if bool(setting_config.config.get("general", "background_image")):
             for terminal in get_match_children(self.application.window, TerminalWrapper):
                 set_terminal_background(terminal)
         
@@ -899,7 +899,7 @@ class TerminalWrapper(vte.Terminal):
         self.connect("realize", lambda w: self.init_background())
         
     def init_background(self):
-        if setting_config.config.get("general", "background_image") == "True":
+        if bool(setting_config.config.get("general", "background_image")):
             set_terminal_background(self)
         
     def generate_keymap(self):
@@ -1758,7 +1758,6 @@ class GeneralSettings(gtk.VBox):
         self.add(self.table_align)
         
     def background_image_toggle(self, toggle_button):
-        print toggle_button.get_active()
         setting_config.config.set("general", "background_image", toggle_button.get_active())
         setting_config.config.write()
         
