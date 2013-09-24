@@ -62,7 +62,6 @@ app_theme = init_skin(
 )
 
 from dtk.ui.application import Application
-from dtk.ui.box import EventBox
 from dtk.ui.button import Button
 from dtk.ui.button import SwitchButton
 from dtk.ui.color_selection import ColorButton
