@@ -329,7 +329,8 @@ class Terminal(object):
                 terminal.reset_background()
         
     def change_background_image(self):
-        if bool(setting_config.config.get("general", "background_image")):
+        display_background_image = setting_config.config.get("general", "background_image")
+        if display_background_image or display_background_image == "True":
             for terminal in get_match_children(self.application.window, TerminalWrapper):
                 set_terminal_background(terminal)
         
@@ -899,7 +900,7 @@ class TerminalWrapper(vte.Terminal):
         self.connect("realize", lambda w: self.init_background())
         
     def init_background(self):
-        if bool(setting_config.config.get("general", "background_image")):
+        if setting_config.config.get("general", "background_image") == "True":
             set_terminal_background(self)
         
     def generate_keymap(self):
