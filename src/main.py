@@ -57,7 +57,7 @@ PROJECT_NAME = "deepin-terminal"
 app_theme = init_skin(
     PROJECT_NAME,
     "1.0",
-    "colourless_glass",
+    "07",
     os.path.join(get_parent_dir(__file__, 2), "skin"),
     os.path.join(get_parent_dir(__file__, 2), "app_theme")
 )
@@ -1758,6 +1758,7 @@ class GeneralSettings(gtk.VBox):
         self.add(self.table_align)
         
     def background_image_toggle(self, toggle_button):
+        print toggle_button.get_active()
         setting_config.config.set("general", "background_image", toggle_button.get_active())
         setting_config.config.write()
         
