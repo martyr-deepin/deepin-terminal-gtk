@@ -900,7 +900,8 @@ class TerminalWrapper(vte.Terminal):
         self.connect("realize", lambda w: self.init_background())
         
     def init_background(self):
-        if setting_config.config.get("general", "background_image") == "True":
+        display_background_image = setting_config.config.get("general", "background_image")
+        if display_background_image or display_background_image == "True":
             set_terminal_background(self)
         
     def generate_keymap(self):
@@ -1736,7 +1737,7 @@ class GeneralSettings(gtk.VBox):
         background_transparent_widget.connect("value-changed", self.save_background_transparent)
         
         display_background_image = setting_config.config.get("general", "background_image")
-        background_image_widget = SwitchButton(display_background_image == "True")
+        background_image_widget = SwitchButton(bool(display_background_image) or display_background_image == "True")
         background_image_widget.connect("toggled", self.background_image_toggle)
         
         self.table = gtk.Table(7, 2)
