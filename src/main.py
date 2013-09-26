@@ -49,6 +49,7 @@ import itertools
 import os
 import pango
 import sqlite3
+import sys
 import urllib
 import vte
 
@@ -81,7 +82,12 @@ from dtk.ui.treeview import TreeView, NodeItem, get_background_color, get_text_c
 from dtk.ui.utils import color_hex_to_cairo
 from dtk.ui.skin_config import skin_config
 from dtk.ui.cache_pixbuf import CachePixbuf
-        
+from dtk.ui.unique_service import UniqueService, is_exists
+import dbus
+
+APP_DBUS_NAME   = "com.deepin.terminal"
+APP_OBJECT_NAME = "/com/deepin/terminal"
+
 # Load customize rc style before any other.
 PANED_HANDLE_SIZE = 2
 gtk.rc_parse_string(
@@ -246,16 +252,24 @@ def set_terminal_background(terminal):
         sub_x, sub_y, background_width - sub_x, background_height - sub_y)
     
     terminal.set_background_image(background_pixbuf)
-        
+    
 class Terminal(object):
     """
     Terminal class.
     """
 
-    def __init__(self):
+    def __init__(self, quake_mode=False):
         """
         Init Terminal class.
         """
+        if quake_mode:
+            UniqueService(
+                dbus.service.BusName(APP_DBUS_NAME, bus=dbus.SessionBus()),
+                APP_DBUS_NAME, 
+                APP_OBJECT_NAME,
+                self.quake,
+                )
+        
         self.application = Application()
         self.application.set_default_size(664, 466)
         self.application.add_titlebar(
@@ -320,6 +334,16 @@ class Terminal(object):
         global_event.register_event("background-image-toggle", self.background_image_toggle)
         
         skin_config.connect("theme-changed", lambda w, n: self.change_background_image())
+        
+        if quake_mode:
+            self.fullscreen()
+        
+    def quake(self):
+        if self.application.window.get_visible():
+            self.application.window.hide_all()
+        else:
+            self.application.window.show_all()
+            self.fullscreen()
         
     def background_image_toggle(self, status):
         for terminal in get_match_children(self.application.window, TerminalWrapper):
@@ -775,21 +799,29 @@ class Terminal(object):
         Switch between full_screen and normal window.
         """
         if self.is_full_screen:
-            self.application.window.unfullscreen()
-            self.application.show_titlebar()
-            self.terminal_align.set_padding(0, self.normal_padding, self.normal_padding, self.normal_padding)
+            self.unfullscreen()
         else:
-            self.application.window.fullscreen()
-            self.application.hide_titlebar()
-            self.terminal_align.set_padding(
-                0,
-                self.fullscreen_padding,
-                self.fullscreen_padding,
-                self.fullscreen_padding
-            )
+            self.fullscreen()
 
-        self.is_full_screen = not self.is_full_screen
-
+    def fullscreen(self):
+        self.application.window.fullscreen()
+        self.application.hide_titlebar()
+        self.terminal_align.set_padding(
+            0,
+            self.fullscreen_padding,
+            self.fullscreen_padding,
+            self.fullscreen_padding
+        )
+        
+        self.is_full_screen = True
+    
+    def unfullscreen(self):
+        self.application.window.unfullscreen()
+        self.application.show_titlebar()
+        self.terminal_align.set_padding(0, self.normal_padding, self.normal_padding, self.normal_padding)
+        
+        self.is_full_screen = False    
+            
     def exit_fullscreen(self):
         if self.is_full_screen:
             self.toggle_full_screen()
@@ -2411,4 +2443,6 @@ gobject.type_register(TextItem)
 setting_config = SettingConfig()
 
 if __name__ == "__main__":
-    Terminal().run()
+    quake_mode = "--quake-mode" in sys.argv
+    if (not quake_mode) or (not is_exists(APP_DBUS_NAME, APP_OBJECT_NAME)):
+        Terminal(quake_mode).run()
