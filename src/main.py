@@ -745,22 +745,22 @@ class Terminal(object):
         return self.workspace_list.index(current_workspace)
     
     def switch_next_workspace(self):
-        if self.workspace_switcher.get_visible():
-            self.workspace_switcher.switch_next()
-        else:
+        if not self.workspace_switcher.get_visible():
             self.workspace_switcher.show_switcher(
                 self.get_current_workspace_index(),
                 self.get_workspace_switcher_coordinate()
                 )
+            
+        self.workspace_switcher.switch_next()
     
     def switch_prev_workspace(self):
-        if self.workspace_switcher.get_visible():
-            self.workspace_switcher.switch_prev()
-        else:
+        if not self.workspace_switcher.get_visible():
             self.workspace_switcher.show_switcher(
                 self.get_current_workspace_index(),
                 self.get_workspace_switcher_coordinate()
                 )
+            
+        self.workspace_switcher.switch_prev()
             
     def search_forward(self):
         (x, y, w, h) = self.terminal_box.allocation
