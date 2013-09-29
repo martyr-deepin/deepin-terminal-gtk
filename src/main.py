@@ -1568,13 +1568,14 @@ class HelperWindow(Window):
         init docs
         '''
         Window.__init__(self, 
-                        window_type=gtk.WINDOW_POPUP,
                         expose_background_function=self.expose_helper_window,
                         )
         self.set_decorated(False)
         self.add_events(gtk.gdk.ALL_EVENTS_MASK)
         self.set_colormap(gtk.gdk.Screen().get_rgba_colormap())
         self.set_modal(True)
+        self.set_type_hint(gtk.gdk.WINDOW_TYPE_HINT_DIALOG)
+        self.set_skip_taskbar_hint(True)
         
         self.width = 480
         self.height = 400
