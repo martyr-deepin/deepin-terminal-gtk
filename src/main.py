@@ -1798,7 +1798,7 @@ class GeneralSettings(gtk.VBox):
         self.add(self.table_align)
         
     def background_image_toggle(self, toggle_button):
-        setting_config.config.set("general", "background_image", toggle_button.get_active())
+        setting_config.config.set("general", "background_image", str(toggle_button.get_active()))
         setting_config.config.write()
         
         global_event.emit("background-image-toggle", toggle_button.get_active())
