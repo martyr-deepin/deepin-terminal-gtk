@@ -888,7 +888,12 @@ class TerminalWrapper(vte.Terminal):
             os.chdir(working_directory)
             
         startup_command = setting_config.config.get("advanced", "startup_command")    
-        self.process_id = self.fork_command(startup_command)
+        if startup_command == "":
+            fork_command = os.getenv("SHELL")
+        else:
+            fork_command = startup_command
+            
+        self.process_id = self.fork_command(fork_command)
         self.cwd_path = '/proc/%s/cwd' % self.process_id
 
         # Key and signals
