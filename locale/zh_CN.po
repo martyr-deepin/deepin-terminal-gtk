@@ -253,7 +253,7 @@ msgstr "下划线"
 
 #: ../src/main.py:2012
 msgid "Window state: "
-msgstr ""
+msgstr "窗口启动模式: "
 
 #: ../src/main.py:2013
 msgid "Startup command: "
