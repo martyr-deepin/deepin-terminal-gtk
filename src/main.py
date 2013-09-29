@@ -164,7 +164,7 @@ DEFAULT_CONFIG = [
       ]),
     ("advanced", 
      [("startup_mode", "normal"),
-      ("startup_command", "bash"),
+      ("startup_command", ""),
       ("startup_directory", ""),
       ("cursor_shape", "block"),
       ("scroll_on_key", "True"),
