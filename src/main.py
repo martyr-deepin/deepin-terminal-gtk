@@ -127,7 +127,7 @@ XDG_CONFIG_HOME = os.environ.get('XDG_CONFIG_HOME') or \
 
 # NOTE:
 # We just store remote information (include password) in sqlite database.
-# please don't fill password if you care about safe problem.
+# please don't fill password if you care about safety problem.
 LOGIN_DATABASE = os.path.join(XDG_CONFIG_HOME, PROJECT_NAME, ".config", "login.db")
 
 DEFAULT_CONFIG = [
