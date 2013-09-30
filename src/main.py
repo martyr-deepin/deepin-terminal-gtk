@@ -101,6 +101,7 @@ gtk.rc_parse_string(
 )
 
 global_event = EventRegister()
+focus_terminal = None
 
 WORKSPACE_SNAPSHOT_HEIGHT = 160
 WORKSPACE_SNAPSHOT_OFFSET_TOP = 10
@@ -340,9 +341,11 @@ class Terminal(object):
             self.fullscreen()
             
     def window_is_active(self, window, param):
-        is_active_flag = window.props.is_active
-        import time
-        print time.time(), " ", is_active_flag
+        global focus_terminal
+        
+        # Focus terminal when window active.
+        if window.props.is_active and focus_terminal:
+            focus_terminal.grab_focus()
         
     def quake(self):
         if self.application.window.get_visible():
@@ -1104,7 +1107,12 @@ class TerminalWrapper(vte.Terminal):
         return os.readlink(self.cwd_path)
         
     def change_window_title(self):
+        global focus_terminal
+        
         global_event.emit("change-window-title", self.get_working_directory())
+        
+        # Save focus terminal. 
+        focus_terminal = self
         
     def on_window_title_changed(self, widget):
         if self.has_focus():
