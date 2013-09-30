@@ -374,7 +374,7 @@ class Terminal(object):
         active_terminal = self.application.window.get_focus()
         if active_terminal and isinstance(active_terminal, TerminalWrapper):
             active_terminal.feed_child(
-                "./ssh_login.sh %s %s %s %s\n" % (user, server, password, port))
+                "%s %s %s %s %s\n" % (os.path.join(get_parent_dir(__file__), "ssh_login.sh"), user, server, password, port))
         
     def keybind_change(self, key_value, new_key):
         for terminal in get_match_children(self.application.window, TerminalWrapper):
