@@ -300,6 +300,7 @@ class Terminal(object):
         
         self.application.window.connect("key-press-event", self.key_press_terminal)
         self.application.window.connect("key-release-event", self.key_release_terminal)
+        self.application.window.connect("notify::is-active", self.window_is_active)
         
         self.new_workspace()
         
@@ -337,10 +338,18 @@ class Terminal(object):
         
         if quake_mode:
             self.fullscreen()
+            
+    def window_is_active(self, window, param):
+        is_active_flag = window.props.is_active
+        import time
+        print time.time(), " ", is_active_flag
         
     def quake(self):
         if self.application.window.get_visible():
-            self.application.window.hide_all()
+            if self.application.window.props.is_active:
+                self.application.window.hide_all()
+            else:
+                self.application.window.present()
         else:
             self.application.window.show_all()
             self.fullscreen()
