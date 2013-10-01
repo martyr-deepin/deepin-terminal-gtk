@@ -1697,13 +1697,8 @@ class HelperWindow(Window):
             (_("Focus the terminal right"), "focus_right_terminal"),
             ]
         
-        no_customize_key = [          
-            (_("Select word"), _("Double click")),
-            (_("Open"), _("Ctrl + Left click")),
-            ]
-        
         self.first_table = self.create_table(
-            map(lambda (key_name, key_value): (key_name, get_keybind(key_value)), first_table_key) + no_customize_key,
+            map(lambda (key_name, key_value): (key_name, get_keybind(key_value)), first_table_key) + [(_("Select word"), _("Double click"))],
             )
         
         second_table_key = [
@@ -1722,7 +1717,7 @@ class HelperWindow(Window):
             ]
         
         self.second_table = self.create_table(
-            map(lambda (key_name, key_value): (key_name, get_keybind(key_value)), second_table_key)
+            [(_("Open"), _("Ctrl + Left click"))] + map(lambda (key_name, key_value): (key_name, get_keybind(key_value)), second_table_key),
             )
         self.table_box.pack_start(self.first_table, True, True)
         self.table_box.pack_start(self.second_table, True, True)
