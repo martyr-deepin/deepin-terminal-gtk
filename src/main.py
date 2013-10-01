@@ -146,6 +146,8 @@ DEFAULT_CONFIG = [
       ("split_vertically", "Ctrl + v"),
       ("split_horizontally", "Ctrl + h"),
       ("close_terminal", "Ctrl + Q"),
+      ("scroll_page_up", "Alt + ,"),
+      ("scroll_page_down", "Alt + ."),
       ("focus_up_terminal", "Alt + Up"),
       ("focus_down_terminal", "Alt + Down"),
       ("focus_left_terminal", "Alt + Left"),
@@ -965,12 +967,30 @@ class TerminalWrapper(vte.Terminal):
             "zoom_in",
             "zoom_out",
             "close_terminal",
+            "scroll_page_up",
+            "scroll_page_down",
             ]
         
         self.keymap = {}
         
         for key_value in key_values:
             self.keymap[get_keybind(key_value)] = getattr(self, key_value)
+            
+    def scroll_page_up(self):
+        adj = self.get_adjustment()
+        value = adj.get_value()
+        lower = adj.get_lower()
+        page_size = adj.get_page_size()
+        
+        adj.set_value(max(lower, value - page_size))
+    
+    def scroll_page_down(self):
+        adj = self.get_adjustment()
+        value = adj.get_value()
+        upper = adj.get_upper()
+        page_size = adj.get_page_size()
+        
+        adj.set_value(min(upper - page_size, value + page_size))
             
     def show_man_window(self, command):
         man_dialog = ManDialog(command)
@@ -1669,6 +1689,8 @@ class HelperWindow(Window):
             (_("Split vertically"), "split_vertically"),
             (_("Split horizontally"), "split_horizontally"),
             (_("Close terminal"), "close_terminal"),
+            (_("Scroll page up"), "scroll_page_up"),
+            (_("Scroll page down"), "scroll_page_down"),
             (_("Focus the terminal above"), "focus_up_terminal"),
             (_("Focus the terminal below"), "focus_down_terminal"),
             (_("Focus the temrinal left"), "focus_left_terminal"),
@@ -1907,6 +1929,8 @@ class KeybindSettings(ScrolledWindow):
              ("split_vertically", _("Split vertically")),
              ("split_horizontally", _("Split horizontally")),
              ("close_terminal", _("Close terminal")),
+             ("scroll_page_up", _("Scroll page up")),
+             ("scroll_page_down", _("Scroll page down")),
              ("focus_up_terminal", _("Focus the terminal above")),
              ("focus_down_terminal", _("Focus the terminal below")),
              ("focus_left_terminal", _("Focus the temrinal left")),
