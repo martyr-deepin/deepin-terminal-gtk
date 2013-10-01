@@ -1677,7 +1677,7 @@ class HelperWindow(Window):
         
     def show_help(self, parent_window, working_directory):
         if working_directory != None:
-            self.titlebar.change_name(working_directory)
+            self.titlebar.change_name("%s ( %s )" % (_("Keystrokes helper"), working_directory))
             
         container_remove_all(self.table_box)    
         
