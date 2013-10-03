@@ -954,10 +954,6 @@ class TerminalWrapper(vte.Terminal):
         # Key and signals
         self.generate_keymap()
         
-        self.connect("realize", self.realize_callback)
-        self.connect("child-exited", lambda w: self.exit_callback())
-        self.connect("key-press-event", self.handle_keys)
-        
         self.drag_dest_set(
             gtk.DEST_DEFAULT_MOTION |
             gtk.DEST_DEFAULT_DROP,
@@ -966,6 +962,18 @@ class TerminalWrapper(vte.Terminal):
              ],
             gtk.gdk.ACTION_COPY)
         
+        self.set_match_tag()
+        
+        self.connect("realize", self.realize_callback)
+        self.connect("child-exited", lambda w: self.exit_callback())
+        self.connect("key-press-event", self.handle_keys)
+        self.connect("drag-data-received", self.on_drag_data_received)
+        self.connect("window-title-changed", self.on_window_title_changed)
+        self.connect("grab-focus", lambda w: self.change_window_title())
+        self.connect("button-press-event", self.on_button_press)
+        self.connect("scroll-event", self.on_scroll)
+        
+    def set_match_tag(self):
         userchars = "-A-Za-z0-9"
         passchars = "-A-Za-z0-9,?;.:/!%$^*&~\"#'"
         hostchars = "-A-Za-z0-9"
@@ -983,13 +991,6 @@ class TerminalWrapper(vte.Terminal):
         
         self.file_match_tag = self.match_add("[^\t\n ]+")
         self.match_set_cursor_type(self.file_match_tag, gtk.gdk.HAND2)
-        
-        self.connect("drag-data-received", self.on_drag_data_received)
-        self.connect("window-title-changed", self.on_window_title_changed)
-        self.connect("grab-focus", lambda w: self.change_window_title())
-        self.connect("button-press-event", self.on_button_press)
-        self.connect("scroll-event", self.on_scroll)
-        self.connect("realize", lambda w: self.init_background())
         
     def init_background(self):
         display_background_image = setting_config.config.get("general", "background_image")
@@ -1202,6 +1203,8 @@ class TerminalWrapper(vte.Terminal):
         Callback for realize-signal.
         :param widget: which widget sends the signal.
         """
+        self.init_background()
+        
         widget.grab_focus()
 
     def handle_keys(self, widget, event):
