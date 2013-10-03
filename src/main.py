@@ -173,6 +173,10 @@ DEFAULT_CONFIG = [
       ("scroll_on_key", "True"),
       ("scroll_on_output", "False"),
       ]),
+    ("save_state",
+     [("window_width", "664"),
+      ("window_height", "446"),
+      ])
     ]
 
 color_style = {
@@ -283,7 +287,19 @@ class Terminal(object):
                 )
         
         self.application = Application()
-        self.application.set_default_size(664, 466)
+        
+        window_width = int(setting_config.config.get("save_state", "window_width", 664))
+        window_height = int(setting_config.config.get("save_state", "window_height", 466))
+        window_min_width = 200
+        window_min_height = 150
+        self.application.window.set_default_size(window_width, window_height)
+        self.application.window.set_geometry_hints(
+            None,
+            window_min_width,
+            window_min_height,
+            -1, -1, -1, -1, -1, -1, -1, -1
+            )
+        
         self.application.add_titlebar(
             app_name = _("Deepin Terminal"),
             )
@@ -327,6 +343,7 @@ class Terminal(object):
              (_("Advanced"), self.advanced_settings),
              ])
         self.application.titlebar.menu_button.connect("button-press-event", self.show_preference_menu)
+        self.application.window.connect("destroy", lambda w: self.quit())
         
         global_event.register_event("close-workspace", self.close_workspace)
         global_event.register_event("change-window-title", self.change_window_title)
@@ -345,11 +362,22 @@ class Terminal(object):
         global_event.register_event("keybind-changed", self.keybind_change)
         global_event.register_event("ssh-login", self.ssh_login)
         global_event.register_event("background-image-toggle", self.background_image_toggle)
+        global_event.register_event("quit", self.quit)
         
         skin_config.connect("theme-changed", lambda w, n: self.change_background_image())
         
         if quake_mode:
             self.fullscreen()
+            
+    def quit(self):
+        window_rect = self.application.window.get_allocation()
+        (window_width, window_height) = window_rect.width, window_rect.height
+        print (window_width, window_height)
+        setting_config.config.set("save_state", "window_width", window_width)
+        setting_config.config.set("save_state", "window_height", window_height)
+        setting_config.config.write()
+        
+        gtk.main_quit()
             
     def window_is_active(self, window, param):
         global focus_terminal
@@ -489,7 +517,7 @@ class Terminal(object):
         menu_items = [
             (None, _("See what's new"), None),
             (None, _("Preferences"), self.show_preference_dialog),
-            (None, _("Quit"), gtk.main_quit),
+            (None, _("Quit"), global_event.emit("quit")),
             ]
         menu = Menu(menu_items, True)
         menu.show(
@@ -742,8 +770,7 @@ class Terminal(object):
             self.terminal_box.show_all()
         # Exit if no workspace exit.
         else:
-            print "Quit"
-            gtk.main_quit()
+            global_event.emit("quit")
             
     def change_window_title(self, window_title):
         self.application.titlebar.change_title(window_title)
