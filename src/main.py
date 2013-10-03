@@ -1034,7 +1034,9 @@ class TerminalWrapper(vte.Terminal):
         adj.set_value(min(upper - page_size, value + page_size))
             
     def show_man_window(self, command):
-        man_dialog = ManDialog(command)
+        window_rect = self.get_toplevel().get_allocation()
+        
+        man_dialog = ManDialog(command, window_rect.width, window_rect.height)
         man_dialog.show_all()
             
     def split_vertically(self):
@@ -2173,13 +2175,16 @@ class ManDialog(Window):
     class docs
     '''
 	
-    def __init__(self, command):
+    def __init__(self, command, window_width, window_height):
         '''
         init docs
         '''
         Window.__init__(self)
         self.set_skip_taskbar_hint(True)
-        self.set_default_size(500, 300)
+        self.set_default_size(
+            int(4 * window_width / 5),
+            int(4 * window_height / 5),
+            )
         self.set_type_hint(gtk.gdk.WINDOW_TYPE_HINT_DIALOG)
         
         self.titlebar = Titlebar(["close"], None, "%s (%s)" % (_("Manual"), command))
@@ -2370,6 +2375,20 @@ class RemoteLogin(DialogBox):
         self.parent_window = None
         
         self.treeview.connect("right-press-items", self.right_press_items)
+        
+        self.connect("key-press-event", self.key_press_remote_login)
+        
+        self.keymap = {
+            "Escape" : self.hide_window,
+            }
+        
+    def key_press_remote_login(self, widget, event):
+        key_name = get_keyevent_name(event)
+        if key_name in self.keymap:
+            self.keymap[key_name]()
+            return True
+        else:
+            return False
         
     def read_login_info(self):
         if os.path.exists(LOGIN_DATABASE):
