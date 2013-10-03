@@ -522,7 +522,7 @@ class Terminal(object):
         menu_items = [
             (None, _("See what's new"), None),
             (None, _("Preferences"), self.show_preference_dialog),
-            (None, _("Quit"), global_event.emit("quit")),
+            (None, _("Quit"), self.quit),
             ]
         menu = Menu(menu_items, True)
         menu.show(
