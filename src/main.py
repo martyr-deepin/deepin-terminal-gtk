@@ -278,7 +278,8 @@ class Terminal(object):
         """
         Init Terminal class.
         """
-        if quake_mode:
+        self.quake_mode = quake_mode
+        if self.quake_mode:
             UniqueService(
                 dbus.service.BusName(APP_DBUS_NAME, bus=dbus.SessionBus()),
                 APP_DBUS_NAME, 
@@ -366,16 +367,20 @@ class Terminal(object):
         
         skin_config.connect("theme-changed", lambda w, n: self.change_background_image())
         
-        if quake_mode:
+        if self.quake_mode:
             self.fullscreen()
             
-    def quit(self):
+    def save_window_size(self):        
         window_rect = self.application.window.get_allocation()
         (window_width, window_height) = window_rect.width, window_rect.height
         print (window_width, window_height)
         setting_config.config.set("save_state", "window_width", window_width)
         setting_config.config.set("save_state", "window_height", window_height)
         setting_config.config.write()
+            
+    def quit(self):
+        if not self.quake_mode:
+            self.save_window_size()
         
         gtk.main_quit()
             
