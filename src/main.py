@@ -2092,10 +2092,10 @@ class AdvancedSettings(gtk.VBox):
         self.table.set_row_spacings(TABLE_ROW_SPACING)
         self.table.set_col_spacing(0, TABLE_COLUMN_SPACING)
         table_items = [
+            (_("Cursor shape: "), cursor_shape_widget),
             (_("Window state: "), startup_widget),
             (_("Startup command: "), startup_command_widget),
             (_("Startup directory: "), startup_directory_widget),
-            (_("Cursor shape: "), cursor_shape_widget),
             (_("Scroll on keystroke: "), scroll_on_key_widget),
             (_("Scroll on output: "), scroll_on_output_widget),
             ]
