@@ -175,14 +175,23 @@ DEFAULT_CONFIG = [
       ]),
     ]
 
-color_style = {"deepin" : (_("Deepin"), ["#00FF00", "#000000"]),
-               "grey_on_black": (_("Grey on black"), ["#aaaaaa", "#000000"]),
-               "black_on_yellow": (_("Black on yellow"), ["#000000", "#ffffdd"]),
-               "black_on_white": (_("Black on white"), ["#000000", "#ffffff"]),
-               "white_on_black": (_("White on black"), ["#ffffff", "#000000"]),
-               "green_on_black": (_("Green on black"), ["#00ff00", "#000000"]),
-               "custom" : (_("Custom"), ["#00FF00", "#000000"]),
-               }
+color_style = {
+    "deepin" : (_("Deepin"), ["#00BB00", "#000000"]),
+    "mocha" : (_("Mocha"), ["#BEB55B", "#3B3228"]),
+    "green_screen" : (_("Green screen"), ["#00BB00", "#001100"]),
+    "railscasts" : (_("Railscasts"), ["#3B3228", "#2B2B2B"]),
+    "ocean" : (_("Ocean"), ["#A3BE8C", "#2B303B"]),
+    "monokai" : (_("Monokai"), ["#A6E22E", "#272822"]),
+    "solarized" : (_("Solarized"), ["#859900", "#002B36"]),
+    "eighties" : (_("Eighties"), ["#99CC99", "#2D2D2D"]),
+    "eighties" : (_("Eighties"), ["#99CC99", "#2D2D2D"]),
+    "grey_on_black": (_("Grey on black"), ["#aaaaaa", "#000000"]),
+    "black_on_yellow": (_("Black on yellow"), ["#000000", "#ffffdd"]),
+    "black_on_white": (_("Black on white"), ["#000000", "#ffffff"]),
+    "white_on_black": (_("White on black"), ["#ffffff", "#000000"]),
+    "green_on_black": (_("Green on black"), ["#00ff00", "#000000"]),
+    "custom" : (_("Custom"), ["#00FF00", "#000000"]),
+    }
 
 COMBO_BOX_WIDTH = 150
 
