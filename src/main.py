@@ -2147,7 +2147,6 @@ class ManDialog(Window):
         '''
         Window.__init__(self)
         self.set_skip_taskbar_hint(True)
-        self.set_modal(True)
         self.set_default_size(500, 300)
         self.set_type_hint(gtk.gdk.WINDOW_TYPE_HINT_DIALOG)
         
