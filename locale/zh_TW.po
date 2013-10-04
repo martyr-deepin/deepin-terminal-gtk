@@ -26,7 +26,7 @@ msgstr "摩卡"
 
 #: ../src/main.py:181
 msgid "Green screen"
-msgstr "綠色屏幕"
+msgstr "綠色螢幕"
 
 #: ../src/main.py:182
 msgid "Railscasts"
@@ -34,7 +34,7 @@ msgstr ""
 
 #: ../src/main.py:183
 msgid "Ocean"
-msgstr "大海"
+msgstr "海洋"
 
 #: ../src/main.py:184
 msgid "Monokai"
@@ -46,7 +46,7 @@ msgstr ""
 
 #: ../src/main.py:186 ../src/main.py:187
 msgid "Eighties"
-msgstr "八十年代"
+msgstr "八零年代"
 
 #: ../src/main.py:188
 msgid "Grey on black"
@@ -58,11 +58,11 @@ msgstr "黃底黑字"
 
 #: ../src/main.py:190
 msgid "Black on white"
-msgstr "黑底白字"
+msgstr "白底黑字"
 
 #: ../src/main.py:191
 msgid "White on black"
-msgstr "白底黑字"
+msgstr "黑底白字"
 
 #: ../src/main.py:192
 msgid "Green on black"
@@ -82,15 +82,15 @@ msgstr "一般設定"
 
 #: ../src/main.py:326
 msgid "Hotkeys"
-msgstr "熱鍵設定"
+msgstr "快速鍵設定"
 
 #: ../src/main.py:327
 msgid "Advanced"
-msgstr "高階設定"
+msgstr "進階設定"
 
 #: ../src/main.py:490
 msgid "See what's new"
-msgstr "查看新特性"
+msgstr "檢視新特點"
 
 #: ../src/main.py:491 ../src/main.py:570
 msgid "Preferences"
@@ -122,7 +122,7 @@ msgstr "開啟 URL"
 
 #: ../src/main.py:528
 msgid "Open manual"
-msgstr "開啓手冊"
+msgstr "開啟手冊"
 
 #: ../src/main.py:533
 msgid "Exit fullscreen"
@@ -152,7 +152,7 @@ msgstr "工作區"
 #: ../src/main.py:554 ../src/main.py:561 ../src/main.py:1717
 #: ../src/main.py:1945
 msgid "New workspace"
-msgstr "創建工作區"
+msgstr "建立新工作區"
 
 #: ../src/main.py:555
 msgid "Switch workspace"
@@ -168,19 +168,19 @@ msgstr "搜尋"
 
 #: ../src/main.py:568 ../src/main.py:1724 ../src/main.py:1952
 msgid "Display hotkeys"
-msgstr "顯示捷徑鍵"
+msgstr "顯示快速鍵"
 
 #: ../src/main.py:1689
 msgid "Keystrokes helper"
-msgstr "快捷鍵幫助"
+msgstr "快速鍵幫助"
 
 #: ../src/main.py:1701 ../src/main.py:1936
 msgid "Scroll page up"
-msgstr "向上滾動一屏："
+msgstr "向上滾動："
 
 #: ../src/main.py:1702 ../src/main.py:1937
 msgid "Scroll page down"
-msgstr "向下滾動一屏: "
+msgstr "向下滾動: "
 
 #: ../src/main.py:1703 ../src/main.py:1938
 msgid "Focus the terminal above"
