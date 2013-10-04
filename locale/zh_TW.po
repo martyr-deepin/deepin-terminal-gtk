@@ -240,7 +240,7 @@ msgstr "建立 SSH 連線"
 
 #: ../src/main.py:1729
 msgid "Open"
-msgstr "開啓"
+msgstr "開啟"
 
 #: ../src/main.py:1729
 msgid "Ctrl + Left click"
@@ -265,7 +265,7 @@ msgstr "背景透明度："
 #: ../src/main.py:1833
 #, fuzzy
 msgid "Background image: "
-msgstr "背景图片："
+msgstr "背景圖片："
 
 #: ../src/main.py:1960
 msgid "68"
@@ -293,15 +293,15 @@ msgstr "底線"
 
 #: ../src/main.py:2058
 msgid "Window state: "
-msgstr "初始啟動樣式："
+msgstr "預設啟動樣式："
 
 #: ../src/main.py:2059
 msgid "Startup command: "
-msgstr "自定義初始啟動指令："
+msgstr "自定預設啟動指令："
 
 #: ../src/main.py:2060
 msgid "Startup directory: "
-msgstr "初始啟動目錄："
+msgstr "預設啟動目錄："
 
 #: ../src/main.py:2061
 msgid "Cursor shape: "
@@ -309,11 +309,11 @@ msgstr "游標形狀："
 
 #: ../src/main.py:2062
 msgid "Scroll on keystroke: "
-msgstr "按鍵時卷動："
+msgstr "按鍵時捲動："
 
 #: ../src/main.py:2063
 msgid "Scroll on output: "
-msgstr "輸出時卷動："
+msgstr "輸出時捲動："
 
 #: ../src/main.py:2154
 msgid "Manual"
