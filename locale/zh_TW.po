@@ -248,11 +248,11 @@ msgstr "Ctrl + 滑鼠左鍵"
 
 #: ../src/main.py:1828
 msgid "Font: "
-msgstr "字型："
+msgstr "字體："
 
 #: ../src/main.py:1829
 msgid "Font size: "
-msgstr "字型大小："
+msgstr "字體大小："
 
 #: ../src/main.py:1830
 msgid "Color scheme: "
