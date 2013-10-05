@@ -1775,7 +1775,7 @@ class HelperWindow(Window):
             (_("Search backward"), "search_backward"),
             (_("Fullscreen"), "toggle_full_screen"),
             (_("Display hotkeys"), "show_helper_window"),
-            (_("Show correlative child process window"), "show_correlative_window"),
+            (_("Show correlative child window"), "show_correlative_window"),
             (_("Set up SSH connection"), "show_remote_login_window"),
             ]
         
