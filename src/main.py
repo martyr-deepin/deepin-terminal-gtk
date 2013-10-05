@@ -23,7 +23,7 @@
 
 from collections import OrderedDict
 from deepin_utils.config import Config
-from deepin_utils.core import unzip
+from deepin_utils.core import unzip, is_int
 from deepin_utils.file import get_parent_dir
 from deepin_utils.file import remove_path, touch_file
 from deepin_utils.font import get_font_families
@@ -52,6 +52,9 @@ import sqlite3
 import sys
 import urllib
 import vte
+import commands
+import subprocess
+import traceback
 
 PROJECT_NAME = "deepin-terminal"
 
@@ -164,6 +167,7 @@ DEFAULT_CONFIG = [
       ("toggle_full_screen", "F11"),
       ("show_helper_window", "Ctrl + ?"),            
       ("show_remote_login_window", "Ctrl + 9"),
+      ("show_correlative_window", "Ctrl + 8"),
       ]),
     ("advanced", 
      [("startup_mode", "normal"),
@@ -1011,12 +1015,23 @@ class TerminalWrapper(vte.Terminal):
             "close_terminal",
             "scroll_page_up",
             "scroll_page_down",
+            "show_correlative_window",
             ]
         
         self.keymap = {}
         
         for key_value in key_values:
             self.keymap[get_keybind(key_value)] = getattr(self, key_value)
+            
+    def show_correlative_window(self):
+        try:
+            child_process_id = commands.getoutput("pgrep -P %s" % self.process_id)
+            correlative_window_id = commands.getoutput("xdotool search --all --pid %s --onlyvisible | head -1" % child_process_id).rsplit("\n", -1)[-1]
+            if is_int(correlative_window_id):
+                subprocess.Popen("xdotool windowactivate %s" % correlative_window_id, shell=True)
+        except Exception, e:
+            print "function show_correlative_window got error: %s" % (e)
+            traceback.print_exc(file=sys.stdout)
             
     def scroll_page_up(self):
         adj = self.get_adjustment()
@@ -1759,6 +1774,7 @@ class HelperWindow(Window):
             (_("Search backward"), "search_backward"),
             (_("Fullscreen"), "toggle_full_screen"),
             (_("Display hotkeys"), "show_helper_window"),
+            (_("Show correlative child process window"), "show_correlative_window"),
             (_("Set up SSH connection"), "show_remote_login_window"),
             ]
         
@@ -1987,6 +2003,8 @@ class KeybindSettings(ScrolledWindow):
              ("search_backward", _("Search backward")),
              ("toggle_full_screen", _("Fullscreen")),
              ("show_helper_window", _("Display hotkeys")),
+             ("show_remote_login_window", _("Set up SSH connection")),
+             ("show_correlative_window", _("Show correlative child window")),
              ])
         
         self.table = gtk.Table(len(key_name_dict), 2)
@@ -1994,7 +2012,7 @@ class KeybindSettings(ScrolledWindow):
         self.table.set_col_spacing(0, TABLE_COLUMN_SPACING)
         self.table_align = gtk.Alignment()
         self.table_align.set(0, 0, 1, 1)
-        self.table_align.set_padding(TABLE_PADDING_TOP, TABLE_PADDING_BOTTOM, TABLE_PADDING_LEFT, int(_("68")))
+        self.table_align.set_padding(TABLE_PADDING_TOP, TABLE_PADDING_BOTTOM, TABLE_PADDING_LEFT, int(_("40")))
         
         self.fill_table(self.table, key_name_dict)
         self.table_align.add(self.table)
