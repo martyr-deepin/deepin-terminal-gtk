@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-05 16:20+0800\n"
+"POT-Creation-Date: 2013-10-05 16:22+0800\n"
 "PO-Revision-Date: 2013-09-18 09:49+0800\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -234,7 +234,7 @@ msgstr ""
 msgid "Search backward"
 msgstr ""
 
-#: ../src/main.py:1777 ../src/main.py:2007
+#: ../src/main.py:1777
 msgid "Show correlative child process window"
 msgstr ""
 
@@ -270,9 +270,13 @@ msgstr ""
 msgid "Background image: "
 msgstr ""
 
+#: ../src/main.py:2007
+msgid "Show correlative child window"
+msgstr ""
+
 #: ../src/main.py:2015
-msgid "68"
-msgstr "122"
+msgid "40"
+msgstr ""
 
 #: ../src/main.py:2076
 msgid "Normal"
@@ -381,3 +385,6 @@ msgstr ""
 #: ../src/main.py:2473
 msgid "Delete"
 msgstr ""
+
+#~ msgid "68"
+#~ msgstr "122"

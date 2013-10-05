@@ -149,6 +149,7 @@ DEFAULT_CONFIG = [
       ("split_vertically", "Ctrl + v"),
       ("split_horizontally", "Ctrl + h"),
       ("close_terminal", "Ctrl + W"),
+      ("close_other_terminal", "Ctrl + Q"),
       ("scroll_page_up", "Alt + ,"),
       ("scroll_page_down", "Alt + ."),
       ("focus_up_terminal", "Alt + Up"),
@@ -447,6 +448,7 @@ class Terminal(object):
             "switch_prev_workspace",
             "switch_next_workspace",
             "close_current_workspace",
+            "close_other_terminal",
             ]
         
         self.keymap = {
@@ -571,12 +573,17 @@ class Terminal(object):
         else:
             fullscreen_item_text = _("Fullscreen")
             
+        (focus_terminal, terminals) = self.get_all_terminal_infos()
         terminal_items = [
             None,
             (None, _("Split vertically"), lambda : terminal.parent_widget.split(TerminalGrid.SPLIT_VERTICALLY)),
             (None, _("Split horizontally"), lambda : terminal.parent_widget.split(TerminalGrid.SPLIT_HORIZONTALLY)),
             (None, _("Close terminal"), terminal.close_terminal),
             ]
+        if len(terminals) >= 1:
+            terminal_items += [
+                (None, _("Close other terminal"), self.close_other_terminal),
+                ]
         
         if len(self.get_workspaces()) > 1:
             current_workspace = self.terminal_box.get_children()[0]
@@ -617,6 +624,11 @@ class Terminal(object):
         terminals = get_match_children(self.application.window, TerminalWrapper)
         terminals.remove(focus_terminal)
         return (focus_terminal, terminals)
+        
+    def close_other_terminal(self):
+        (focus_terminal, terminals) = self.get_all_terminal_infos()
+        for terminal in terminals:
+            terminal.close_terminal()
         
     def focus_vertical_terminal(self, up=True):
         # Get all terminal information.
@@ -1144,6 +1156,8 @@ class TerminalWrapper(vte.Terminal):
                 (match_type, match_string) = self.get_match_type(match_text)
                 self.open_match_string(match_type, match_string)
         elif is_right_button(event):
+            self.grab_focus()
+            
             global_event.emit(
                 "show-menu", 
                 self, 
@@ -1751,6 +1765,7 @@ class HelperWindow(Window):
             (_("Split vertically"), "split_vertically"),
             (_("Split horizontally"), "split_horizontally"),
             (_("Close terminal"), "close_terminal"),
+            (_("Close other terminal"), "close_other_terminal"),
             (_("Scroll page up"), "scroll_page_up"),
             (_("Scroll page down"), "scroll_page_down"),
             (_("Focus the terminal above"), "focus_up_terminal"),
@@ -1987,6 +2002,7 @@ class KeybindSettings(ScrolledWindow):
              ("split_vertically", _("Split vertically")),
              ("split_horizontally", _("Split horizontally")),
              ("close_terminal", _("Close terminal")),
+             ("close_other_terminal", _("Close other terminal")),
              ("scroll_page_up", _("Scroll page up")),
              ("scroll_page_down", _("Scroll page down")),
              ("focus_up_terminal", _("Focus the terminal above")),

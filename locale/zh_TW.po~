@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-05 16:20+0800\n"
+"POT-Creation-Date: 2013-10-05 16:22+0800\n"
 "PO-Revision-Date: 2013-09-18 09:49+0800\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -234,10 +234,6 @@ msgstr "向下搜尋"
 msgid "Search backward"
 msgstr "向上搜尋"
 
-#: ../src/main.py:1777 ../src/main.py:2007
-msgid "Show correlative child process window"
-msgstr "顯示相關的子進程窗口"
-
 #: ../src/main.py:1778 ../src/main.py:2006
 msgid "Set up SSH connection"
 msgstr "建立 SSH 連線"
@@ -271,9 +267,13 @@ msgstr "背景透明度："
 msgid "Background image: "
 msgstr "背景图片："
 
+#: ../src/main.py:2007
+msgid "Show correlative child window"
+msgstr "顯示相關的子進程窗口"
+
 #: ../src/main.py:2015
-msgid "68"
-msgstr "122"
+msgid "40"
+msgstr "86"
 
 #: ../src/main.py:2076
 msgid "Normal"
@@ -382,3 +382,6 @@ msgstr "編輯"
 #: ../src/main.py:2473
 msgid "Delete"
 msgstr "刪除"
+
+#~ msgid "68"
+#~ msgstr "122"
