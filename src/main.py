@@ -148,7 +148,7 @@ DEFAULT_CONFIG = [
       ("paste_clipboard", "Ctrl + V"),
       ("split_vertically", "Ctrl + v"),
       ("split_horizontally", "Ctrl + h"),
-      ("close_terminal", "Ctrl + Q"),
+      ("close_terminal", "Ctrl + W"),
       ("scroll_page_up", "Alt + ,"),
       ("scroll_page_down", "Alt + ."),
       ("focus_up_terminal", "Alt + Up"),
