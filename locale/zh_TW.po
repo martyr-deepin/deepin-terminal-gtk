@@ -82,7 +82,7 @@ msgstr "一般設定"
 
 #: ../src/main.py:326
 msgid "Hotkeys"
-msgstr "快速鍵設定"
+msgstr "捷徑鍵設定"
 
 #: ../src/main.py:327
 msgid "Advanced"
@@ -168,11 +168,11 @@ msgstr "搜尋"
 
 #: ../src/main.py:568 ../src/main.py:1724 ../src/main.py:1952
 msgid "Display hotkeys"
-msgstr "顯示快速鍵"
+msgstr "顯示捷徑鍵"
 
 #: ../src/main.py:1689
 msgid "Keystrokes helper"
-msgstr "快速鍵幫助"
+msgstr "捷徑鍵幫助"
 
 #: ../src/main.py:1701 ../src/main.py:1936
 msgid "Scroll page up"
@@ -297,7 +297,7 @@ msgstr "預設啟動樣式："
 
 #: ../src/main.py:2059
 msgid "Startup command: "
-msgstr "自定預設啟動指令："
+msgstr "自訂預設啟動指令："
 
 #: ../src/main.py:2060
 msgid "Startup directory: "
