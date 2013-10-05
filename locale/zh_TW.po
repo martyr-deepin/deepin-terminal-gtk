@@ -26,7 +26,7 @@ msgstr "摩卡"
 
 #: ../src/main.py:190
 msgid "Green screen"
-msgstr "綠色屏幕"
+msgstr "綠色螢幕"
 
 #: ../src/main.py:191
 msgid "Railscasts"
@@ -34,7 +34,7 @@ msgstr ""
 
 #: ../src/main.py:192
 msgid "Ocean"
-msgstr "大海"
+msgstr "海洋"
 
 #: ../src/main.py:193
 msgid "Monokai"
@@ -46,7 +46,7 @@ msgstr ""
 
 #: ../src/main.py:195 ../src/main.py:196
 msgid "Eighties"
-msgstr "八十年代"
+msgstr "八零年代"
 
 #: ../src/main.py:197
 msgid "Grey on black"
@@ -58,11 +58,11 @@ msgstr "黃底黑字"
 
 #: ../src/main.py:199
 msgid "Black on white"
-msgstr "黑底白字"
+msgstr "白底黑字"
 
 #: ../src/main.py:200
 msgid "White on black"
-msgstr "白底黑字"
+msgstr "黑底白字"
 
 #: ../src/main.py:201
 msgid "Green on black"
@@ -82,15 +82,15 @@ msgstr "一般設定"
 
 #: ../src/main.py:348
 msgid "Hotkeys"
-msgstr "熱鍵設定"
+msgstr "捷徑鍵設定"
 
 #: ../src/main.py:349
 msgid "Advanced"
-msgstr "高階設定"
+msgstr "進階設定"
 
 #: ../src/main.py:529
 msgid "See what's new"
-msgstr "查看新特性"
+msgstr "檢視新特點"
 
 #: ../src/main.py:530 ../src/main.py:614
 msgid "Preferences"
@@ -122,7 +122,7 @@ msgstr "開啟 URL"
 
 #: ../src/main.py:567
 msgid "Open manual"
-msgstr "開啓手冊"
+msgstr "開啟手冊"
 
 #: ../src/main.py:572
 msgid "Exit fullscreen"
@@ -156,7 +156,7 @@ msgstr "工作區"
 #: ../src/main.py:598 ../src/main.py:605 ../src/main.py:1783
 #: ../src/main.py:2013
 msgid "New workspace"
-msgstr "創建工作區"
+msgstr "建立新工作區"
 
 #: ../src/main.py:599
 msgid "Switch workspace"
@@ -176,15 +176,15 @@ msgstr "顯示捷徑鍵"
 
 #: ../src/main.py:1754
 msgid "Keystrokes helper"
-msgstr "快捷鍵幫助"
+msgstr "捷徑鍵幫助"
 
 #: ../src/main.py:1767 ../src/main.py:2004
 msgid "Scroll page up"
-msgstr "向上滾動一屏："
+msgstr "向上滾動："
 
 #: ../src/main.py:1768 ../src/main.py:2005
 msgid "Scroll page down"
-msgstr "向下滾動一屏: "
+msgstr "向下滾動: "
 
 #: ../src/main.py:1769 ../src/main.py:2006
 msgid "Focus the terminal above"
@@ -248,7 +248,7 @@ msgstr "建立 SSH 連線"
 
 #: ../src/main.py:1796
 msgid "Open"
-msgstr "開啓"
+msgstr "開啟"
 
 #: ../src/main.py:1796
 msgid "Ctrl + Left click"
@@ -256,11 +256,11 @@ msgstr "Ctrl + 滑鼠左鍵"
 
 #: ../src/main.py:1895
 msgid "Font: "
-msgstr "字型："
+msgstr "字體："
 
 #: ../src/main.py:1896
 msgid "Font size: "
-msgstr "字型大小："
+msgstr "字體大小："
 
 #: ../src/main.py:1897
 msgid "Color scheme: "
@@ -273,7 +273,7 @@ msgstr "背景透明度："
 #: ../src/main.py:1900
 #, fuzzy
 msgid "Background image: "
-msgstr "背景图片："
+msgstr "背景圖片："
 
 #: ../src/main.py:2030
 msgid "40"
@@ -305,23 +305,23 @@ msgstr "游標形狀："
 
 #: ../src/main.py:2129
 msgid "Window state: "
-msgstr "初始啟動樣式："
+msgstr "預設啟動樣式："
 
 #: ../src/main.py:2130
 msgid "Startup command: "
-msgstr "自定義初始啟動指令："
+msgstr "自訂預設啟動指令："
 
 #: ../src/main.py:2131
 msgid "Startup directory: "
-msgstr "初始啟動目錄："
+msgstr "預設啟動目錄："
 
 #: ../src/main.py:2132
 msgid "Scroll on keystroke: "
-msgstr "按鍵時卷動："
+msgstr "按鍵時捲動："
 
 #: ../src/main.py:2133
 msgid "Scroll on output: "
-msgstr "輸出時卷動："
+msgstr "輸出時捲動："
 
 #: ../src/main.py:2226
 msgid "Manual"
