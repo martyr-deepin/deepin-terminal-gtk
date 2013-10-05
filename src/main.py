@@ -1026,9 +1026,10 @@ class TerminalWrapper(vte.Terminal):
     def show_correlative_window(self):
         try:
             child_process_id = commands.getoutput("pgrep -P %s" % self.process_id)
-            correlative_window_id = commands.getoutput("xdotool search --all --pid %s --onlyvisible | head -1" % child_process_id).rsplit("\n", -1)[-1]
-            if is_int(correlative_window_id):
-                subprocess.Popen("xdotool windowactivate %s" % correlative_window_id, shell=True)
+            correlative_window_ids = commands.getoutput("xdotool search --all --pid %s --onlyvisible" % child_process_id).split("\n")
+            for correlative_window_id in correlative_window_ids:
+                if is_int(correlative_window_id):
+                    subprocess.Popen("xdotool windowactivate %s" % correlative_window_id, shell=True)
         except Exception, e:
             print "function show_correlative_window got error: %s" % (e)
             traceback.print_exc(file=sys.stdout)
