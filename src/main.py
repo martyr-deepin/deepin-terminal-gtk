@@ -125,6 +125,7 @@ TABLE_PADDING_TOP = 50
 TABLE_PADDING_BOTTOM = 50
 
 TRANSPARENT_OFFSET = 0.1
+MIN_TRANSPARENT = 0.2
 
 _HOME = os.path.expanduser('~')
 XDG_CONFIG_HOME = os.environ.get('XDG_CONFIG_HOME') or \
@@ -507,7 +508,7 @@ class Terminal(object):
         if direction == gtk.gdk.SCROLL_UP:
             transparent = min(float(transparent) + TRANSPARENT_OFFSET, 1.0)
         elif direction == gtk.gdk.SCROLL_DOWN:
-            transparent = max(float(transparent) - TRANSPARENT_OFFSET, 0.0)
+            transparent = max(float(transparent) - TRANSPARENT_OFFSET, MIN_TRANSPARENT)
             
         with save_config(setting_config):    
             setting_config.config.set("general", "background_transparent", transparent)
@@ -1923,7 +1924,7 @@ class GeneralSettings(gtk.VBox):
         color_box.pack_start(self.background_color_widget, False, False)
         
         transparent = setting_config.config.get("general", "background_transparent")
-        background_transparent_widget = HScalebar(value_min=0, value_max=1)
+        background_transparent_widget = HScalebar(value_min=MIN_TRANSPARENT, value_max=1)
         background_transparent_widget.set_value(float(transparent))
         background_transparent_widget.connect("value-changed", self.save_background_transparent)
         
