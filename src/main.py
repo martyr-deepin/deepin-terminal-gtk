@@ -1163,7 +1163,7 @@ class TerminalWrapper(vte.Terminal):
             self.show_man_window(match_string)
         
     def is_ctrl_press(self, event):
-        return event.state & gtk.gdk.CONTROL_MASK == gtk.gdk.CONTROL_MASK
+        return event.state == gtk.gdk.CONTROL_MASK
             
     def on_button_press(self, widget, event):
         if is_left_button(event) and self.is_ctrl_press(event):
