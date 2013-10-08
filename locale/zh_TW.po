@@ -387,9 +387,3 @@ msgstr "編輯"
 #: ../src/main.py:2491
 msgid "Delete"
 msgstr "刪除"
-
-#~ msgid "Close terminal"
-#~ msgstr "關閉終端機"
-
-#~ msgid "68"
-#~ msgstr "122"
