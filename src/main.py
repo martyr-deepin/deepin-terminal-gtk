@@ -71,6 +71,7 @@ from dtk.ui.button import Button
 from dtk.ui.button import SwitchButton
 from dtk.ui.color_selection import ColorButton
 from dtk.ui.combo import ComboBox
+from dtk.ui.draw import draw_hlinear
 from dtk.ui.dialog import DIALOG_MASK_GLASS_PAGE
 from dtk.ui.dialog import DialogBox
 from dtk.ui.dialog import PreferenceDialog
@@ -82,7 +83,7 @@ from dtk.ui.spin import SpinBox
 from dtk.ui.theme import ui_theme
 from dtk.ui.titlebar import Titlebar
 from dtk.ui.treeview import TreeView, NodeItem, get_background_color, get_text_color
-from dtk.ui.utils import color_hex_to_cairo
+from dtk.ui.utils import color_hex_to_cairo, alpha_color_hex_to_cairo, cairo_disable_antialias
 from dtk.ui.skin_config import skin_config
 from dtk.ui.cache_pixbuf import CachePixbuf
 from dtk.ui.unique_service import UniqueService, is_exists
@@ -321,7 +322,7 @@ class Terminal(object):
             self.get_workspaces,
             self.switch_to_workspace
         )
-        self.workspace_switcher_y_offset = 10
+        self.workspace_switcher_y_offset = 0
         self.is_full_screen = False
         self.search_bar = SearchBar()
         self.helper_window = HelperWindow()
@@ -1476,11 +1477,23 @@ class WorkspaceSwitcher(gtk.Window):
         cr = widget.window.cairo_create()
         rect = widget.allocation
         
+        # Draw background.
         with cairo_state(cr):
-            # Draw background.
-            cr.set_source_rgba(1.0, 0.5, 1.0, 0.5)
+            cr.set_source_rgba(*alpha_color_hex_to_cairo(("#000000", 0.4)))
             cr.set_operator(cairo.OPERATOR_SOURCE)
             cr.paint()
+        
+        # Draw background top frame.
+        draw_hlinear(
+            cr,
+            rect.x,
+            rect.y,
+            rect.width,
+            1,
+            [(0, ("#FFFFFF", 0.1)),
+             (0.5, ("#FFFFFF", 0.2)),
+             (1, ("#FFFFFF", 0.1)),
+             ])
         
         # Draw workspace snapshot.
         text_size = 32
@@ -1504,7 +1517,7 @@ class WorkspaceSwitcher(gtk.Window):
             
             # Draw workspace select background.
             if self.workspace_index == workspace_index:
-                cr.set_source_rgba(1, 0.5, 1, 0.8)
+                cr.set_source_rgba(*alpha_color_hex_to_cairo(("#FFFFFF", 0.1)))
                 cr.rectangle(
                     draw_x - WORKSPACE_SNAPSHOT_OFFSET_X, 
                     rect.y,
@@ -1519,6 +1532,17 @@ class WorkspaceSwitcher(gtk.Window):
                 draw_x,
                 draw_y,
             )
+            
+            # Draw workspace snapshot frame.
+            with cairo_disable_antialias(cr):
+                cr.set_source_rgba(*alpha_color_hex_to_cairo(("#FFFFFF", 0.1)))
+                cr.rectangle(
+                    draw_x,
+                    draw_y,
+                    workspace.snapshot_pixbuf.get_width(),
+                    workspace.snapshot_pixbuf.get_height(),
+                    )
+                cr.stroke()
             
             # Draw workspace name.
             draw_text(
