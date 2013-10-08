@@ -526,8 +526,9 @@ class Terminal(object):
             
     def show_preference_menu(self, widget, event):
         menu_items = [
-            (None, _("See what's new"), None),
             (None, _("Preferences"), self.show_preference_dialog),
+            (None, _("Display hotkeys"), self.show_helper_window),
+            (None, _("See what's new"), None),
             (None, _("Quit"), self.quit),
             ]
         menu = Menu(menu_items, True)
