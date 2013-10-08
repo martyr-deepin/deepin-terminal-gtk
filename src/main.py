@@ -36,7 +36,7 @@ from dtk.ui.init_skin import init_skin
 from dtk.ui.keymap import get_keyevent_name, is_no_key_press
 from dtk.ui.label import Label
 from dtk.ui.menu import Menu
-from dtk.ui.utils import container_remove_all, get_match_parent, cairo_state, propagate_expose, is_left_button, is_right_button
+from dtk.ui.utils import container_remove_all, get_match_parent, cairo_state, propagate_expose, is_left_button, is_right_button, is_in_rect
 from dtk.ui.utils import get_window_shadow_size
 from dtk.ui.utils import place_center, get_widget_root_coordinate
 from dtk.ui.window import Window
@@ -375,6 +375,7 @@ class Terminal(object):
         global_event.register_event("keybind-changed", self.keybind_change)
         global_event.register_event("ssh-login", self.ssh_login)
         global_event.register_event("background-image-toggle", self.background_image_toggle)
+        global_event.register_event("new-workspace", self.new_workspace)
         global_event.register_event("quit", self.quit)
         
         skin_config.connect("theme-changed", lambda w, n: self.change_background_image())
@@ -598,7 +599,7 @@ class Terminal(object):
         if len(self.get_workspaces()) > 1:
             current_workspace = self.terminal_box.get_children()[0]
             workspace_menu_items = map(
-                lambda w: (None, "%s%s" % (_("Workspace"), w.workspace_index), lambda : self.switch_to_workspace(w)), 
+                lambda w: (None, "%s%s" % (_("Workspace"), w.workspace_index), lambda : self.switch_to_workspace(w.workspace_index)), 
                 filter(lambda w: w.workspace_index != current_workspace.workspace_index, self.get_workspaces())
                 )
             workspace_menu = Menu(workspace_menu_items)
@@ -759,7 +760,8 @@ class Terminal(object):
         
         return self.workspace_list
     
-    def switch_to_workspace(self, workspace):
+    def switch_to_workspace(self, workspace_index):
+        workspace = self.workspace_list[workspace_index]
         current_workspace = self.terminal_box.get_children()[0]
         if workspace != current_workspace:
             self.remove_current_workspace()
@@ -872,7 +874,7 @@ class Terminal(object):
     def key_release_terminal(self, widget, event):
         if self.workspace_switcher.get_visible():
             if is_no_key_press(event):
-                self.switch_to_workspace(self.workspace_list[self.workspace_switcher.workspace_index])
+                self.switch_to_workspace(self.workspace_switcher.workspace_index)
                 self.workspace_switcher.hide_switcher()
                 
     def toggle_full_screen(self):
@@ -1441,7 +1443,14 @@ class WorkspaceSwitcher(gtk.Window):
         
         self.workspace_index = 0
         
+        self.workspace_snapshot_areas = []
+        self.workspace_add_area = None
+        
+        self.in_workspace_add_area = False
+        
         self.connect("expose-event", self.expose_workspace_switcher)
+        self.connect("motion-notify-event", self.motion_workspace_switcher)
+        self.connect("button-press-event", self.button_press_workspace_switcher)
         
     def hide_switcher(self):
         self.workspace_index = 0
@@ -1514,6 +1523,7 @@ class WorkspaceSwitcher(gtk.Window):
             scale_value = float(rect.width) / (snapshot_total_width + snapshot_add_width)
             draw_x = WORKSPACE_SNAPSHOT_OFFSET_X
             
+        self.workspace_snapshot_areas = []    
         with cairo_state(cr):    
             cr.scale(scale_value, scale_value)
             for (workspace_index, workspace) in enumerate(self.get_workspaces()): 
@@ -1524,14 +1534,27 @@ class WorkspaceSwitcher(gtk.Window):
                 draw_y = rect.y + WORKSPACE_SNAPSHOT_OFFSET_TOP
                 
                 # Draw workspace select background.
-                if self.workspace_index == workspace_index:
+                snapshot_area_x = draw_x - WORKSPACE_SNAPSHOT_OFFSET_X
+                snapshot_area_y = rect.y
+                snapshot_area_width = snapshot_width + WORKSPACE_SNAPSHOT_OFFSET_X * 2
+                snapshot_area_height = rect.height
+                
+                if self.workspace_index == workspace_index and not self.in_workspace_add_area:
                     cr.set_source_rgba(*alpha_color_hex_to_cairo(("#FFFFFF", 0.1)))
                     cr.rectangle(
-                        draw_x - WORKSPACE_SNAPSHOT_OFFSET_X, 
-                        rect.y,
-                        snapshot_width + WORKSPACE_SNAPSHOT_OFFSET_X * 2, 
-                        rect.height)
+                        snapshot_area_x,
+                        snapshot_area_y,
+                        snapshot_area_width,
+                        snapshot_area_height,
+                        )
                     cr.fill()
+                    
+                self.workspace_snapshot_areas.append((workspace_index, (
+                                                       scale_value * snapshot_area_x,
+                                                       scale_value * snapshot_area_y,
+                                                       scale_value * snapshot_area_width,
+                                                       scale_value * snapshot_area_height,
+                                                       )))    
                 
                 # Draw workspace snapshot.
                 draw_pixbuf(
@@ -1574,7 +1597,18 @@ class WorkspaceSwitcher(gtk.Window):
             workspace_add_x = rect.width - workspace_add_size - workspace_add_padding    
             workspace_add_area_height = scale_value * rect.height
             
-            cr.set_source_rgba(*alpha_color_hex_to_cairo(("#FFFFFF", 0.1)))
+            add_area_x = rect.width - (workspace_add_size + workspace_add_padding * 2)
+            add_area_y = rect.y
+            add_area_width = workspace_add_area_height
+            add_area_height = (workspace_add_size + workspace_add_padding * 2)
+                
+            self.workspace_add_area = (add_area_x, add_area_y, add_area_width, add_area_height)
+            
+            if self.in_workspace_add_area:
+                cr.set_source_rgba(*alpha_color_hex_to_cairo(("#FFFFFF", 0.5)))
+            else:
+                cr.set_source_rgba(*alpha_color_hex_to_cairo(("#FFFFFF", 0.1)))
+                
             cr.rectangle(
                 workspace_add_x, 
                 (rect.y + (workspace_add_area_height - workspace_add_middle_size) / 2),
@@ -1600,6 +1634,33 @@ class WorkspaceSwitcher(gtk.Window):
             cr.fill()
             
         return True
+        
+    def motion_workspace_switcher(self, widget, event):
+        for (workspace_index, snapshot_area) in self.workspace_snapshot_areas:
+            if is_in_rect((event.x, event.y), snapshot_area):
+                self.in_workspace_add_area = False
+                self.workspace_index = workspace_index
+                self.queue_draw()
+                return False
+            
+        if is_in_rect((event.x, event.y), self.workspace_add_area):
+            self.in_workspace_add_area = True
+            self.queue_draw()
+            return False
+            
+    def button_press_workspace_switcher(self, widget, event):        
+        for (workspace_index, snapshot_area) in self.workspace_snapshot_areas:
+            if is_in_rect((event.x, event.y), snapshot_area):
+                self.switch_to_workspace(workspace_index)
+                self.hide_switcher()
+                return False
+            
+        if is_in_rect((event.x, event.y), self.workspace_add_area):
+            global_event.emit("new-workspace")
+            self.queue_draw()
+            return False
+        
+        self.hide_switcher()
         
 gobject.type_register(WorkspaceSwitcher)
 
