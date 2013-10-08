@@ -22,6 +22,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from collections import OrderedDict
+from contextlib import contextmanager 
 from deepin_utils.config import Config
 from deepin_utils.core import unzip, is_int
 from deepin_utils.file import get_parent_dir
@@ -379,10 +380,9 @@ class Terminal(object):
     def save_window_size(self):        
         window_rect = self.application.window.get_allocation()
         (window_width, window_height) = window_rect.width, window_rect.height
-        print (window_width, window_height)
-        setting_config.config.set("save_state", "window_width", window_width)
-        setting_config.config.set("save_state", "window_height", window_height)
-        setting_config.config.write()
+        with save_config(setting_config):
+            setting_config.config.set("save_state", "window_width", window_width)
+            setting_config.config.set("save_state", "window_height", window_height)
             
     def quit(self):
         if not self.quake_mode:
@@ -509,8 +509,8 @@ class Terminal(object):
         elif direction == gtk.gdk.SCROLL_DOWN:
             transparent = max(float(transparent) - TRANSPARENT_OFFSET, 0.0)
             
-        setting_config.config.set("general", "background_transparent", transparent)
-        setting_config.config.write()
+        with save_config(setting_config):    
+            setting_config.config.set("general", "background_transparent", transparent)
         
         for terminal in get_match_children(self.application.window, TerminalWrapper):
             terminal.set_transparent(float(transparent))
@@ -1951,14 +1951,14 @@ class GeneralSettings(gtk.VBox):
         self.add(self.table_align)
         
     def background_image_toggle(self, toggle_button):
-        setting_config.config.set("general", "background_image", str(toggle_button.get_active()))
-        setting_config.config.write()
+        with save_config(setting_config):    
+            setting_config.config.set("general", "background_image", str(toggle_button.get_active()))
         
         global_event.emit("background-image-toggle", toggle_button.get_active())
         
     def change_color_scheme(self, combo_box, option_name, option_value, index):
-        setting_config.config.set("general", "color_scheme", option_value)
-        setting_config.config.write()
+        with save_config(setting_config):    
+            setting_config.config.set("general", "color_scheme", option_value)
         
         if option_value != "custom" and color_style.has_key(option_value):
             (_, [font_color, background_color]) = color_style[option_value]
@@ -1966,9 +1966,9 @@ class GeneralSettings(gtk.VBox):
             self.font_color_widget.set_color(font_color)
             self.background_color_widget.set_color(background_color)
             
-            setting_config.config.set("general", "font_color", font_color)
-            setting_config.config.set("general", "background_color", background_color)
-            setting_config.config.write()
+            with save_config(setting_config):    
+                setting_config.config.set("general", "font_color", font_color)
+                setting_config.config.set("general", "background_color", background_color)
             
             global_event.emit("change-color-precept", option_value)
     
@@ -1976,9 +1976,9 @@ class GeneralSettings(gtk.VBox):
         self.color_scheme_widget.set_select_index(
             map(lambda (color_scheme_value, color_infos): color_scheme_value, color_style.items()).index("custom"))
         
-        setting_config.config.set("general", "color_scheme", "custom")
-        setting_config.config.set("general", "font_color", font_color)
-        setting_config.config.write()
+        with save_config(setting_config):    
+            setting_config.config.set("general", "color_scheme", "custom")
+            setting_config.config.set("general", "font_color", font_color)
         
         global_event.emit("change-font-color", font_color)
     
@@ -1986,27 +1986,27 @@ class GeneralSettings(gtk.VBox):
         self.color_scheme_widget.set_select_index(
             map(lambda (color_scheme_value, color_infos): color_scheme_value, color_style.items()).index("custom"))
         
-        setting_config.config.set("general", "color_scheme", "custom")
-        setting_config.config.set("general", "background_color", background_color)
-        setting_config.config.write()
+        with save_config(setting_config):    
+            setting_config.config.set("general", "color_scheme", "custom")
+            setting_config.config.set("general", "background_color", background_color)
         
         global_event.emit("change-background-color", background_color)
         
     def change_font(self, combo_box, option_name, option_value, index):
-        setting_config.config.set("general", "font", option_value)
-        setting_config.config.write()
+        with save_config(setting_config):    
+            setting_config.config.set("general", "font", option_value)
         
         global_event.emit("change-font", option_value)
     
     def change_font_size(self, spin, font_size):
-        setting_config.config.set("general", "font_size", font_size)
-        setting_config.config.write()
+        with save_config(setting_config):    
+            setting_config.config.set("general", "font_size", font_size)
         
         global_event.emit("change-font-size", font_size)
         
     def save_background_transparent(self, scalebar, value):
-        setting_config.config.set("general", "background_transparent", value)
-        setting_config.config.write()
+        with save_config(setting_config):    
+            setting_config.config.set("general", "background_transparent", value)
         
         global_event.emit("change-background-transparent", value)
         
@@ -2112,8 +2112,8 @@ class KeybindEntry(ShortcutKeyEntry):
         self.connect("shortcut-key-change", self.key_change)
         
     def key_change(self, entry, new_keybind):
-        setting_config.config.set("keybind", self.key_value, new_keybind)
-        setting_config.config.write()
+        with save_config(setting_config):    
+            setting_config.config.set("keybind", self.key_value, new_keybind)
         
         global_event.emit("keybind-changed", self.key_value, new_keybind)
         
@@ -2184,32 +2184,32 @@ class AdvancedSettings(gtk.VBox):
         self.add(self.table_align)
         
     def save_startup_setting(self, combo_box, option_name, option_value, index):
-        setting_config.config.set("advanced", "startup_mode", option_value)
-        setting_config.config.write()
+        with save_config(setting_config):    
+            setting_config.config.set("advanced", "startup_mode", option_value)
                 
     def save_cursor_shape(self, combo_box, option_name, option_value, index):
-        setting_config.config.set("advanced", "cursor_shape", option_value)
-        setting_config.config.write()
+        with save_config(setting_config):    
+            setting_config.config.set("advanced", "cursor_shape", option_value)
         
         global_event.emit("set-cursor-shape", option_value)
         
     def startup_command_changed(self, entry, startup_command):
-        setting_config.config.set("advanced", "startup_command", startup_command)
-        setting_config.config.write()
+        with save_config(setting_config):    
+            setting_config.config.set("advanced", "startup_command", startup_command)
 
     def startup_directory_changed(self, entry, startup_directory):
-        setting_config.config.set("advanced", "startup_directory", startup_directory)
-        setting_config.config.write()
+        with save_config(setting_config):    
+            setting_config.config.set("advanced", "startup_directory", startup_directory)
         
     def scroll_on_key_toggle(self, toggle_button):
-        setting_config.config.set("advanced", "scroll_on_key", toggle_button.get_active())
-        setting_config.config.write()
+        with save_config(setting_config):    
+            setting_config.config.set("advanced", "scroll_on_key", toggle_button.get_active())
         
         global_event.emit("scroll-on-key-toggle", toggle_button.get_active())
 
     def scroll_on_output_toggle(self, toggle_button):
-        setting_config.config.set("advanced", "scroll_on_output", toggle_button.get_active())
-        setting_config.config.write()
+        with save_config(setting_config):    
+            setting_config.config.set("advanced", "scroll_on_output", toggle_button.get_active())
         
         global_event.emit("scroll-on-output-toggle", toggle_button.get_active())
         
@@ -2246,8 +2246,25 @@ class SettingConfig(gobject.GObject):
         else:
             self.config = Config(self.config_path)
             self.config.load()
-        
+            
 gobject.type_register(SettingConfig)        
+
+@contextmanager
+def save_config(setting_config):
+    # Load default config if config file is not exists.
+    config_path = os.path.join(XDG_CONFIG_HOME, PROJECT_NAME, "config")
+    if not os.path.exists(config_path):
+        touch_file(config_path)
+        setting_config.config.load_default()
+    try:  
+        # So setting change operations.
+        yield  
+    except Exception, e:  
+        print 'function save_config got error: %s' % e  
+        traceback.print_exc(file=sys.stdout)
+    else:  
+        # Save setting config last.
+        setting_config.config.write()
 
 class ManDialog(Window):
     '''
