@@ -11,17 +11,18 @@ set timeout 10
 if { ![string compare $port "" ] == 0 } { spawn ssh $user@$server -p $port } else { spawn ssh $user@$server };
 
 if { ![string compare $password ""] == 0 } {
+    #puts "PASSWORD GIVEN!"
     expect {
         "*yes/no" { send "yes\r"; exp_continue}
         "*password:" { send "$password\r" }
-        "*" {}
+        exp_continue
     }
 } else {
     expect {
         "*yes/no" { send "yes\r"; exp_continue }
-        "*" {}
+        exp_continue
     }
 }
 
-#puts "interacting";
+#puts "interacting"
 interact
