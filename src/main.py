@@ -546,7 +546,7 @@ class Terminal(object):
             get_active_working_directory(self.application.window),
             )
         
-    def show_menu(self, terminal, has_selection, match_text, (x_root, y_root)):
+    def show_menu(self, terminal, has_selection, match_text, correlative_window_ids, (x_root, y_root)):
         # Build menu.
         menu_items = []
         if has_selection:
@@ -568,6 +568,9 @@ class Terminal(object):
                     menu_name = _("Open manual")
                     
                 menu_items.append((None, menu_name, lambda : terminal.open_match_string(match_type, match_string)))
+                
+        if correlative_window_ids != None and correlative_window_ids != [""]:
+            menu_items.append((None, _("Show correlative child window"), lambda : terminal.show_correlative_window(correlative_window_ids)))
             
         if self.is_full_screen:
             fullscreen_item_text = _("Exit fullscreen")
@@ -1036,10 +1039,22 @@ class TerminalWrapper(vte.Terminal):
         for key_value in key_values:
             self.keymap[get_keybind(key_value)] = getattr(self, key_value)
             
-    def show_correlative_window(self):
+    def get_correlative_window_ids(self):
         try:
             child_process_id = commands.getoutput("pgrep -P %s" % self.process_id)
-            correlative_window_ids = commands.getoutput("xdotool search --all --pid %s --onlyvisible" % child_process_id).split("\n")
+            return filter(is_int, commands.getoutput("xdotool search --all --pid %s --onlyvisible" % child_process_id).split("\n"))
+        except Exception, e:
+            print "function get_correlative_window_ids got error: %s" % (e)
+            traceback.print_exc(file=sys.stdout)
+            
+            return None
+            
+    def show_correlative_window(self, window_ids=None):
+        try:
+            if window_ids:
+                correlative_window_ids = window_ids
+            else:
+                correlative_window_ids = self.get_correlative_window_ids()
             for correlative_window_id in correlative_window_ids:
                 if is_int(correlative_window_id):
                     subprocess.Popen("xdotool windowactivate %s" % correlative_window_id, shell=True)
@@ -1164,6 +1179,7 @@ class TerminalWrapper(vte.Terminal):
                 self, 
                 self.get_has_selection(),
                 self.get_match_text(event),
+                self.get_correlative_window_ids(),
                 (int(event.x_root), int(event.y_root)),
                 )
         
