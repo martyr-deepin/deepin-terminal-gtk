@@ -113,6 +113,10 @@ WORKSPACE_SNAPSHOT_OFFSET_TOP = 10
 WORKSPACE_SNAPSHOT_OFFSET_BOTTOM = 30
 WORKSPACE_SNAPSHOT_OFFSET_X = 10
 
+WORKSPACE_ADD_SIZE = 80
+WORKSPACE_ADD_PADDING = 20
+WORKSPACE_ADD_MIDDLE_SIZE = 10
+
 workspace_index = 1
 
 DRAG_TEXT_URI = 1
@@ -1500,65 +1504,101 @@ class WorkspaceSwitcher(gtk.Window):
         text_size = 32
         text_offset_y = 0
             
+        snapshot_add_width = WORKSPACE_ADD_SIZE + WORKSPACE_ADD_PADDING * 2
         snapshot_total_width = sum(map(lambda w: w.snapshot_pixbuf.get_width() + WORKSPACE_SNAPSHOT_OFFSET_X * 2, self.get_workspaces()))
-        if snapshot_total_width < rect.width:
+        have_enough_space = snapshot_total_width + snapshot_add_width * 2 < rect.width
+        if have_enough_space:
             scale_value = 1.0
             draw_x = (rect.width - snapshot_total_width) / 2
         else:
-            scale_value = float(rect.width) / snapshot_total_width
+            scale_value = float(rect.width) / (snapshot_total_width + snapshot_add_width)
             draw_x = WORKSPACE_SNAPSHOT_OFFSET_X
             
-        cr.scale(scale_value, scale_value)
-        for (workspace_index, workspace) in enumerate(self.get_workspaces()): 
-            
-            snapshot_width = workspace.snapshot_pixbuf.get_width()
-            snapshot_height = workspace.snapshot_pixbuf.get_height()
-            
-            draw_y = rect.y + WORKSPACE_SNAPSHOT_OFFSET_TOP
-            
-            # Draw workspace select background.
-            if self.workspace_index == workspace_index:
-                cr.set_source_rgba(*alpha_color_hex_to_cairo(("#FFFFFF", 0.1)))
-                cr.rectangle(
-                    draw_x - WORKSPACE_SNAPSHOT_OFFSET_X, 
-                    rect.y,
-                    snapshot_width + WORKSPACE_SNAPSHOT_OFFSET_X * 2, 
-                    rect.height)
-                cr.fill()
-            
-            # Draw workspace snapshot.
-            draw_pixbuf(
-                cr,
-                workspace.snapshot_pixbuf,
-                draw_x,
-                draw_y,
-            )
-            
-            # Draw workspace snapshot frame.
-            with cairo_disable_antialias(cr):
-                cr.set_source_rgba(*alpha_color_hex_to_cairo(("#FFFFFF", 0.1)))
-                cr.rectangle(
+        with cairo_state(cr):    
+            cr.scale(scale_value, scale_value)
+            for (workspace_index, workspace) in enumerate(self.get_workspaces()): 
+                
+                snapshot_width = workspace.snapshot_pixbuf.get_width()
+                snapshot_height = workspace.snapshot_pixbuf.get_height()
+                
+                draw_y = rect.y + WORKSPACE_SNAPSHOT_OFFSET_TOP
+                
+                # Draw workspace select background.
+                if self.workspace_index == workspace_index:
+                    cr.set_source_rgba(*alpha_color_hex_to_cairo(("#FFFFFF", 0.1)))
+                    cr.rectangle(
+                        draw_x - WORKSPACE_SNAPSHOT_OFFSET_X, 
+                        rect.y,
+                        snapshot_width + WORKSPACE_SNAPSHOT_OFFSET_X * 2, 
+                        rect.height)
+                    cr.fill()
+                
+                # Draw workspace snapshot.
+                draw_pixbuf(
+                    cr,
+                    workspace.snapshot_pixbuf,
                     draw_x,
                     draw_y,
-                    workspace.snapshot_pixbuf.get_width(),
-                    workspace.snapshot_pixbuf.get_height(),
-                    )
-                cr.stroke()
-            
-            # Draw workspace name.
-            draw_text(
-                cr,
-                "%s %s" % (_("Workspace"), workspace.workspace_index),
-                draw_x,
-                draw_y + snapshot_height + text_offset_y,
-                snapshot_width,
-                text_size,
-                text_color="#FFFFFF",
-                alignment=pango.ALIGN_CENTER,
                 )
+                
+                # Draw workspace snapshot frame.
+                with cairo_disable_antialias(cr):
+                    cr.set_source_rgba(*alpha_color_hex_to_cairo(("#FFFFFF", 0.1)))
+                    cr.rectangle(
+                        draw_x,
+                        draw_y,
+                        workspace.snapshot_pixbuf.get_width(),
+                        workspace.snapshot_pixbuf.get_height(),
+                        )
+                    cr.stroke()
+                
+                # Draw workspace name.
+                draw_text(
+                    cr,
+                    "%s %s" % (_("Workspace"), workspace.workspace_index),
+                    draw_x,
+                    draw_y + snapshot_height + text_offset_y,
+                    snapshot_width,
+                    text_size,
+                    text_color="#FFFFFF",
+                    alignment=pango.ALIGN_CENTER,
+                    )
+                
+                draw_x += snapshot_width + WORKSPACE_SNAPSHOT_OFFSET_X * 2
             
-            draw_x += snapshot_width + WORKSPACE_SNAPSHOT_OFFSET_X * 2
-        
+        # Draw workspace add button.
+        with cairo_state(cr):        
+            workspace_add_size = scale_value * WORKSPACE_ADD_SIZE    
+            workspace_add_middle_size = scale_value * WORKSPACE_ADD_MIDDLE_SIZE
+            workspace_add_padding = scale_value * WORKSPACE_ADD_PADDING
+            workspace_add_x = rect.width - workspace_add_size - workspace_add_padding    
+            workspace_add_area_height = scale_value * rect.height
+            
+            cr.set_source_rgba(*alpha_color_hex_to_cairo(("#FFFFFF", 0.1)))
+            cr.rectangle(
+                workspace_add_x, 
+                (rect.y + (workspace_add_area_height - workspace_add_middle_size) / 2),
+                workspace_add_size, 
+                workspace_add_middle_size,
+                )
+            cr.fill()
+            
+            cr.rectangle(
+                workspace_add_x + (workspace_add_size - workspace_add_middle_size) / 2,
+                (rect.y + (workspace_add_area_height - workspace_add_size) / 2),
+                workspace_add_middle_size,
+                (workspace_add_size - workspace_add_middle_size) / 2,
+                )
+            cr.fill()
+            
+            cr.rectangle(
+                workspace_add_x + (workspace_add_size - workspace_add_middle_size) / 2,
+                (rect.y + (workspace_add_area_height + workspace_add_middle_size) / 2),
+                workspace_add_middle_size,
+                (workspace_add_size - workspace_add_middle_size) / 2,
+                )
+            cr.fill()
+            
         return True
         
 gobject.type_register(WorkspaceSwitcher)
