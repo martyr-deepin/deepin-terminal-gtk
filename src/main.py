@@ -148,8 +148,8 @@ DEFAULT_CONFIG = [
       ("paste_clipboard", "Ctrl + V"),
       ("split_vertically", "Ctrl + v"),
       ("split_horizontally", "Ctrl + h"),
-      ("close_terminal", "Ctrl + W"),
-      ("close_other_terminal", "Ctrl + Q"),
+      ("close_current_window", "Ctrl + W"),
+      ("close_other_window", "Ctrl + Q"),
       ("scroll_page_up", "Alt + ,"),
       ("scroll_page_down", "Alt + ."),
       ("focus_up_terminal", "Alt + Up"),
@@ -448,7 +448,7 @@ class Terminal(object):
             "switch_prev_workspace",
             "switch_next_workspace",
             "close_current_workspace",
-            "close_other_terminal",
+            "close_other_window",
             ]
         
         self.keymap = {
@@ -579,11 +579,11 @@ class Terminal(object):
             None,
             (None, _("Split vertically"), lambda : terminal.parent_widget.split(TerminalGrid.SPLIT_VERTICALLY)),
             (None, _("Split horizontally"), lambda : terminal.parent_widget.split(TerminalGrid.SPLIT_HORIZONTALLY)),
-            (None, _("Close terminal"), terminal.close_terminal),
+            (None, _("Close current window"), terminal.close_current_window),
             ]
         if len(terminals) >= 1:
             terminal_items += [
-                (None, _("Close other terminal"), self.close_other_terminal),
+                (None, _("Close other window"), self.close_other_window),
                 ]
         
         if len(self.get_workspaces()) > 1:
@@ -626,10 +626,10 @@ class Terminal(object):
         terminals.remove(focus_terminal)
         return (focus_terminal, terminals)
         
-    def close_other_terminal(self):
+    def close_other_window(self):
         (focus_terminal, terminals) = self.get_all_terminal_infos()
         for terminal in terminals:
-            terminal.close_terminal()
+            terminal.close_current_window()
         
     def focus_vertical_terminal(self, up=True):
         # Get all terminal information.
@@ -1025,7 +1025,7 @@ class TerminalWrapper(vte.Terminal):
             "revert_default_size",
             "zoom_in",
             "zoom_out",
-            "close_terminal",
+            "close_current_window",
             "scroll_page_up",
             "scroll_page_down",
             "show_correlative_window",
@@ -1102,7 +1102,7 @@ class TerminalWrapper(vte.Terminal):
     def set_transparent(self, transparent):
         self.set_opacity(int(transparent * 65535))
         
-    def close_terminal(self):
+    def close_current_window(self):
         self.exit_callback()
         
     def get_match_text(self, event):
@@ -1765,8 +1765,8 @@ class HelperWindow(Window):
             (_("Paste"), "paste_clipboard"),
             (_("Split vertically"), "split_vertically"),
             (_("Split horizontally"), "split_horizontally"),
-            (_("Close terminal"), "close_terminal"),
-            (_("Close other terminal"), "close_other_terminal"),
+            (_("Close current window"), "close_current_window"),
+            (_("Close other window"), "close_other_window"),
             (_("Scroll page up"), "scroll_page_up"),
             (_("Scroll page down"), "scroll_page_down"),
             (_("Focus the terminal above"), "focus_up_terminal"),
@@ -2002,8 +2002,8 @@ class KeybindSettings(ScrolledWindow):
              ("paste_clipboard", _("Paste")),
              ("split_vertically", _("Split vertically")),
              ("split_horizontally", _("Split horizontally")),
-             ("close_terminal", _("Close terminal")),
-             ("close_other_terminal", _("Close other terminal")),
+             ("close_current_window", _("Close current window")),
+             ("close_other_window", _("Close other window")),
              ("scroll_page_up", _("Scroll page up")),
              ("scroll_page_down", _("Scroll page down")),
              ("focus_up_terminal", _("Focus the terminal above")),
