@@ -598,16 +598,11 @@ class Terminal(object):
         
         if len(self.get_workspaces()) > 1:
             current_workspace = self.terminal_box.get_children()[0]
-            workspace_menu_items = map(
-                lambda w: (None, "%s%s" % (_("Workspace"), w.workspace_index), lambda : self.switch_to_workspace(w.workspace_index)), 
-                filter(lambda w: w.workspace_index != current_workspace.workspace_index, self.get_workspaces())
-                )
-            workspace_menu = Menu(workspace_menu_items)
             
             workspace_items = [
                 None,
                 (None, _("New workspace"), self.new_workspace),
-                (None, _("Switch workspace"), workspace_menu),
+                (None, _("Switch workspace"), self.show_workspace),
                 (None, "%s%s" % (_("Close workspace"), current_workspace.workspace_index), self.close_current_workspace),
                 ]
         else:
@@ -827,21 +822,20 @@ class Terminal(object):
         current_workspace = self.terminal_box.get_children()[0]
         return self.workspace_list.index(current_workspace)
     
-    def switch_next_workspace(self):
+    def show_workspace(self):
         if not self.workspace_switcher.get_visible():
             self.workspace_switcher.show_switcher(
                 self.get_current_workspace_index(),
                 self.get_workspace_switcher_coordinate()
                 )
+    
+    def switch_next_workspace(self):
+        self.show_workspace()
             
         self.workspace_switcher.switch_next()
     
     def switch_prev_workspace(self):
-        if not self.workspace_switcher.get_visible():
-            self.workspace_switcher.show_switcher(
-                self.get_current_workspace_index(),
-                self.get_workspace_switcher_coordinate()
-                )
+        self.show_workspace()
             
         self.workspace_switcher.switch_prev()
             
