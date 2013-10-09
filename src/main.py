@@ -162,10 +162,10 @@ DEFAULT_CONFIG = [
       ("close_other_window", "Ctrl + Shift + q"),
       ("scroll_page_up", "Alt + ,"),
       ("scroll_page_down", "Alt + ."),
-      ("focus_up_terminal", "Alt + Up"),
-      ("focus_down_terminal", "Alt + Down"),
-      ("focus_left_terminal", "Alt + Left"),
-      ("focus_right_terminal", "Alt + Right"),
+      ("focus_up_terminal", "Alt + k"),
+      ("focus_down_terminal", "Alt + j"),
+      ("focus_left_terminal", "Alt + h"),
+      ("focus_right_terminal", "Alt + l"),
       ("zoom_out", "Ctrl + ="),
       ("zoom_in", "Ctrl + -"),
       ("revert_default_size", "Ctrl + 0"),
@@ -468,12 +468,7 @@ class Terminal(object):
             "close_other_window",
             ]
         
-        self.keymap = {
-            "Alt + k": self.focus_up_terminal,
-            "Alt + j": self.focus_down_terminal,
-            "Alt + h": self.focus_left_terminal,
-            "Alt + l": self.focus_right_terminal,
-            }
+        self.keymap = {}
         
         for key_value in key_values:
             self.keymap[get_keybind(key_value)] = getattr(self, key_value)
