@@ -362,6 +362,7 @@ class Terminal(object):
              (_("Advanced"), self.advanced_settings),
              ])
         self.application.titlebar.menu_button.connect("button-press-event", self.show_preference_menu)
+        self.application.window.connect("button-press-event", self.button_press_terminal)
         self.application.window.connect("destroy", lambda w: self.quit())
         
         global_event.register_event("close-workspace", self.close_workspace)
@@ -388,6 +389,10 @@ class Terminal(object):
         
         if self.quake_mode:
             self.fullscreen()
+            
+    def button_press_terminal(self, widget, event):
+        if self.workspace_switcher.get_visible():
+            self.workspace_switcher.hide_switcher()
             
     def set_window_resize(self, widget):
         self.is_window_resize_by_user = True
