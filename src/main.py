@@ -128,6 +128,9 @@ TABLE_PADDING_LEFT = 50
 TABLE_PADDING_TOP = 50
 TABLE_PADDING_BOTTOM = 50
 
+HOTKEYS_WINDOW_MIN_WIDTH = 800
+HOTKEYS_WINDOW_MIN_HEIGHT = 600
+
 TRANSPARENT_OFFSET = 0.1
 MIN_TRANSPARENT = 0.2
 
@@ -1818,6 +1821,7 @@ class HelperWindow(Window):
         init docs
         '''
         Window.__init__(self, 
+                        window_type=gtk.WINDOW_POPUP,
                         expose_background_function=self.expose_helper_window,
                         )
         self.set_decorated(False)
@@ -1827,22 +1831,11 @@ class HelperWindow(Window):
         self.set_type_hint(gtk.gdk.WINDOW_TYPE_HINT_DIALOG)
         self.set_skip_taskbar_hint(True)
         
-        self.width = 480
-        self.height = 400
-        
-        self.set_geometry_hints(
-            None,
-            self.width, self.height,
-            self.width, self.height,
-            -1, -1, -1, -1, -1, -1
-            )
-        
         self.keymap = {
             "Escape": self.hide_all
             }
         
-        self.titlebar = Titlebar(button_mask=["close"])
-        self.titlebar.close_button.connect("clicked", lambda w: self.hide_all())
+        self.titlebar = Titlebar(button_mask=[])
         
         self.table_box = gtk.HBox()
         
@@ -1861,18 +1854,20 @@ class HelperWindow(Window):
         self.window_frame.add(self.box)
         
         self.connect("key-press-event", self.key_press_helper_window)
+        self.connect("key-release-event", self.key_release_helper_window)
+        self.connect("button-press-event", self.button_press_helper_window)
         
     def create_table(self, infos):
         table = gtk.Table(9, 2)
         for (index, (name, key)) in enumerate(infos):
             table.attach(
-                Label(name),
+                Label(name, text_color=ui_theme.get_color("label_select_text")),
                 0, 1,
                 index, index + 1,
                 xoptions=gtk.FILL,
                 )
             table.attach(
-                Label(key),
+                Label(key, text_color=ui_theme.get_color("label_select_text")),
                 1, 2,
                 index, index + 1,
                 xpadding=20,
@@ -1888,10 +1883,16 @@ class HelperWindow(Window):
         else:
             return False
         
+    def key_release_helper_window(self, widget, event):    
+        if self.get_visible():
+            if is_no_key_press(event):
+                self.hide_all()
+                
+    def button_press_helper_window(self, widget, event):
+        if self.get_visible():
+            self.hide_all()
+        
     def show_help(self, parent_window, working_directory):
-        if working_directory != None:
-            self.titlebar.change_name("%s ( %s )" % (_("Keystrokes helper"), working_directory))
-            
         container_remove_all(self.table_box)    
         
         get_keybind = lambda key_value: setting_config.config.get("keybind", key_value)
@@ -1937,6 +1938,12 @@ class HelperWindow(Window):
         self.table_box.pack_start(self.first_table, True, True)
         self.table_box.pack_start(self.second_table, True, True)
             
+        parent_window_rect = parent_window.get_allocation()
+        self.resize(
+            max(parent_window_rect.width, HOTKEYS_WINDOW_MIN_WIDTH),
+            max(parent_window_rect.height, HOTKEYS_WINDOW_MIN_HEIGHT),
+            )
+        
         self.show_all()
         place_center(parent_window, self)
         
@@ -1963,7 +1970,7 @@ class HelperWindow(Window):
             cr.clip()
             
             cr.rectangle(x, y, w, h)
-            cr.set_source_rgba(1.0, 1.0, 1.0, 0.8)
+            cr.set_source_rgba(*alpha_color_hex_to_cairo(("#000000", 0.8)))
             cr.fill()
             
         propagate_expose(widget, event)
