@@ -2768,7 +2768,7 @@ class Paned(gtk.Paned):
     def draw_mask(self, event):
         handle = self.get_handle_window()
         cr = handle.cairo_create()
-        cr.set_source_rgba(*alpha_color_hex_to_cairo(("#000000", 0.5)))
+        cr.set_source_rgba(*alpha_color_hex_to_cairo(("#333333", 0.5)))
         (width, height) = handle.get_size()
         if self.get_orientation() == gtk.ORIENTATION_HORIZONTAL:
             cr.rectangle(0, 0, PANED_HANDLE_SIZE, height)
