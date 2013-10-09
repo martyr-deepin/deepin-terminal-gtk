@@ -342,9 +342,12 @@ class Terminal(object):
         
         self.generate_keymap()
         
+        self.is_window_resize_by_user = False
+        
         self.application.window.connect("key-press-event", self.key_press_terminal)
         self.application.window.connect("key-release-event", self.key_release_terminal)
         self.application.window.connect("notify::is-active", self.window_is_active)
+        self.application.window.connect("window-resize", self.set_window_resize)
         
         self.new_workspace()
         
@@ -386,12 +389,16 @@ class Terminal(object):
         if self.quake_mode:
             self.fullscreen()
             
+    def set_window_resize(self, widget):
+        self.is_window_resize_by_user = True
+            
     def save_window_size(self):        
-        window_rect = self.application.window.get_allocation()
-        (window_width, window_height) = window_rect.width, window_rect.height
-        with save_config(setting_config):
-            setting_config.config.set("save_state", "window_width", window_width)
-            setting_config.config.set("save_state", "window_height", window_height)
+        if self.is_window_resize_by_user:
+            window_rect = self.application.window.get_allocation()
+            (window_width, window_height) = window_rect.width, window_rect.height
+            with save_config(setting_config):
+                setting_config.config.set("save_state", "window_width", window_width)
+                setting_config.config.set("save_state", "window_height", window_height)
             
     def quit(self):
         if not self.quake_mode:
