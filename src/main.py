@@ -1831,11 +1831,12 @@ class HelperWindow(Window):
         self.set_type_hint(gtk.gdk.WINDOW_TYPE_HINT_DIALOG)
         self.set_skip_taskbar_hint(True)
         
+        self.key_label_color = ui_theme.get_color("label_select_text")
+        self.key_label_size = 12
+        
         self.keymap = {
             "Escape": self.hide_all
             }
-        
-        self.titlebar = Titlebar(button_mask=[])
         
         self.table_box = gtk.HBox()
         
@@ -1848,7 +1849,6 @@ class HelperWindow(Window):
         self.content_box_align.add(self.content_box)
         self.content_box.pack_start(self.table_box, True, True)
         
-        self.box.pack_start(self.titlebar, False, False)
         self.box.pack_start(self.content_box_align, True, True)
         
         self.window_frame.add(self.box)
@@ -1861,13 +1861,19 @@ class HelperWindow(Window):
         table = gtk.Table(9, 2)
         for (index, (name, key)) in enumerate(infos):
             table.attach(
-                Label(name, text_color=ui_theme.get_color("label_select_text")),
+                Label(name, 
+                      text_color=self.key_label_color,
+                      text_size=self.key_label_size,
+                      ),
                 0, 1,
                 index, index + 1,
                 xoptions=gtk.FILL,
                 )
             table.attach(
-                Label(key, text_color=ui_theme.get_color("label_select_text")),
+                Label(key, 
+                      text_color=self.key_label_color,
+                      text_size=self.key_label_size,
+                      ),
                 1, 2,
                 index, index + 1,
                 xpadding=20,
