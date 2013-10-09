@@ -94,7 +94,7 @@ APP_DBUS_NAME   = "com.deepin.terminal"
 APP_OBJECT_NAME = "/com/deepin/terminal"
 
 # Load customize rc style before any other.
-PANED_HANDLE_SIZE = 2
+PANED_HANDLE_SIZE = 1
 gtk.rc_parse_string(
     """
     style 'my_style' {
@@ -1319,10 +1319,10 @@ class TerminalGrid(gtk.VBox):
         self.remove(self.terminal)
         width, height = self.get_child_requisition()
         if split_policy == TerminalGrid.SPLIT_VERTICALLY:
-            self.paned = gtk.VPaned()
+            self.paned = VPaned()
             self.paned.set_position(height/2)
         elif split_policy == TerminalGrid.SPLIT_HORIZONTALLY:
-            self.paned = gtk.HPaned()
+            self.paned = HPaned()
             self.paned.set_position(width/2)
             
         self.paned.pack1(TerminalGrid(self, self.terminal), True, True)
@@ -2734,6 +2734,51 @@ class TextItem(NodeItem):
 gobject.type_register(TextItem)
 
 setting_config = SettingConfig()
+
+class Paned(gtk.Paned):
+    '''
+    class docs
+    '''
+	
+    def __init__(self):
+        '''
+        init docs
+        '''
+        gtk.Paned.__init__(self)
+        
+    def do_expose_event(self, event):
+        gtk.Container.do_expose_event(self, event)
+        self.draw_mask(event)
+        
+        return False
+    
+    def draw_mask(self, event):
+        handle = self.get_handle_window()
+        cr = handle.cairo_create()
+        cr.set_source_rgba(*alpha_color_hex_to_cairo(("#000000", 0.5)))
+        (width, height) = handle.get_size()
+        if self.get_orientation() == gtk.ORIENTATION_HORIZONTAL:
+            cr.rectangle(0, 0, PANED_HANDLE_SIZE, height)
+            cr.fill()
+        else:
+            cr.rectangle(0, 0, width, PANED_HANDLE_SIZE)
+            cr.fill()
+        
+gobject.type_register(Paned)        
+
+class HPaned(Paned):
+    def __init__(self, ):
+        Paned.__init__(self)
+        self.set_orientation(gtk.ORIENTATION_HORIZONTAL)
+
+gobject.type_register(HPaned)
+
+class VPaned(Paned):
+    def __init__(self):
+        Paned.__init__(self)
+        self.set_orientation(gtk.ORIENTATION_VERTICAL)
+        
+gobject.type_register(VPaned)
 
 if __name__ == "__main__":
     quake_mode = "--quake-mode" in sys.argv
