@@ -40,7 +40,6 @@ from dtk.ui.utils import container_remove_all, get_match_parent, cairo_state, pr
 from dtk.ui.utils import get_window_shadow_size
 from dtk.ui.utils import place_center, get_widget_root_coordinate
 from dtk.ui.window import Window
-from math import pi
 from nls import _
 import cairo
 import gc
@@ -88,6 +87,7 @@ from dtk.ui.utils import color_hex_to_cairo, alpha_color_hex_to_cairo, cairo_dis
 from dtk.ui.skin_config import skin_config
 from dtk.ui.cache_pixbuf import CachePixbuf
 from dtk.ui.unique_service import UniqueService, is_exists
+from dtk.ui.button import ImageButton
 import dbus
 
 APP_DBUS_NAME   = "com.deepin.terminal"
@@ -133,6 +133,8 @@ HOTKEYS_WINDOW_MIN_HEIGHT = 600
 
 TRANSPARENT_OFFSET = 0.1
 MIN_TRANSPARENT = 0.2
+
+SEARCH_BAR_PADDING = 6
 
 _HOME = os.path.expanduser('~')
 XDG_CONFIG_HOME = os.environ.get('XDG_CONFIG_HOME') or \
@@ -853,7 +855,7 @@ class Terminal(object):
         (x, y, w, h) = self.terminal_box.allocation
         (root_x, root_y) = self.terminal_box.window.get_origin()
         self.search_bar.show_bar(
-            (root_x + x + w, root_y + y),
+            (root_x + x + w, root_y + y + SEARCH_BAR_PADDING),
             self.application.window.get_focus(),
             )
         
@@ -1684,18 +1686,70 @@ class SearchBar(gtk.Window):
         self.set_colormap(gtk.gdk.Screen().get_rgba_colormap())
         self.set_modal(True)
         
-        self.entry = Entry()
+        self.entry = Entry(text_color=ui_theme.get_color("entry_select_text"),
+                           cursor_color="#FFFFFF",
+                           )
         self.entry.entry_buffer.always_show_cursor = True
         self.entry_align = gtk.Alignment()
         self.entry_align.set(0.5, 0.5, 1, 1)
-        self.entry_align.set_padding(2, 2, 10, 10)
+        self.entry_align.set_padding(2, 2, 10, 0)
         self.entry_align.add(self.entry)
-        self.add(self.entry_align)
+        
+        from dtk.ui.line import VSeparator
+        lines = []
+        for i in range(0, 3):
+            lines.append(VSeparator(
+                    [(0, ("#FFFFFF", 0.2)),
+                     (1, ("#FFFFFF", 0.1)),
+                     ],
+                    padding_y=1))
+        (self.split_line_a, self.split_line_b, self.split_line_c) = lines    
+        
+        self.prev_button = ImageButton(
+            app_theme.get_pixbuf("search_prev_normal.png"),
+            app_theme.get_pixbuf("search_prev_hover.png"),
+            app_theme.get_pixbuf("search_prev_press.png"),
+            )
+
+        self.next_button = ImageButton(
+            app_theme.get_pixbuf("search_next_normal.png"),
+            app_theme.get_pixbuf("search_next_hover.png"),
+            app_theme.get_pixbuf("search_next_press.png"),
+            )
+
+        self.close_button = ImageButton(
+            app_theme.get_pixbuf("search_close_normal.png"),
+            app_theme.get_pixbuf("search_close_hover.png"),
+            app_theme.get_pixbuf("search_close_press.png"),
+            )
+                
+        self.button_box = gtk.HBox()
+        self.button_box.pack_start(self.split_line_a, False, False)
+        self.button_box.pack_start(self.prev_button, False, False)
+        self.button_box.pack_start(self.split_line_b, False, False)
+        self.button_box.pack_start(self.next_button, False, False)
+        self.button_box.pack_start(self.split_line_c, False, False)
+        self.button_box.pack_start(self.close_button, False, False)
+        
+        self.button_align = gtk.Alignment()
+        self.button_align.set(0, 0, 0, 0)
+        self.button_align.set_padding(0, 0, 0, 0)
+        self.button_align.add(self.button_box)
+        
+        self.box = gtk.HBox()
+        self.box.pack_start(self.entry_align, True, True)
+        self.box.pack_start(self.button_align, False, False)
+        
+        self.add(self.box)
+        
+        self.prev_button.connect("clicked", lambda w: self.search_backward())
+        self.next_button.connect("clicked", lambda w: self.search_forward())
+        self.close_button.connect("clicked", lambda w: self.hide_bar())
         
         self.search_regex = ""
         
-        self.width = 300
-        self.height = 26
+        self.width = 320
+        self.height = 37
         self.radius = 5
         self.right_padding = 5
         
@@ -1770,12 +1824,21 @@ class SearchBar(gtk.Window):
         
     def expose_search_bar(self, widget, event):
         cr = widget.window.cairo_create()
+        rect = widget.allocation
+        x, y, w, h = rect.x, rect.y, rect.width, rect.height
         
+        # Draw background.
         with cairo_state(cr):
-            # Draw background.
-            cr.set_source_rgba(1.0, 1.0, 1.0, 0.8)
+            cr.set_source_rgba(*alpha_color_hex_to_cairo(("#000000", 0.5)))
             cr.set_operator(cairo.OPERATOR_SOURCE)
             cr.paint()
+            
+        # Draw frame.
+        with cairo_state(cr):
+            cr.set_source_rgba(*alpha_color_hex_to_cairo(("#FFFFFF", 0.1)))
+            cr.set_operator(cairo.OPERATOR_OVER)
+            draw_round_rectangle(cr, x, y, w, h, self.radius)
+            cr.stroke()
             
         propagate_expose(widget, event)
             
@@ -1796,13 +1859,7 @@ class SearchBar(gtk.Window):
             # Draw shape of search bar.
             cr.set_source_rgb(1.0, 1.0, 1.0)
             cr.set_operator(cairo.OPERATOR_OVER)
-
-            cr.move_to(x, y)
-            cr.line_to(x + w, y)
-            cr.arc(x + w - self.radius, y + h - self.radius, self.radius, 0, pi / 2)
-            cr.line_to(x + self.radius, y + h)
-            cr.arc(x + self.radius, y + h - self.radius, self.radius, pi / 2, pi)
-            cr.line_to(x, y)
+            draw_round_rectangle(cr, x, y, w, h, self.radius)
             cr.fill()
                 
             # Shape with given mask.
