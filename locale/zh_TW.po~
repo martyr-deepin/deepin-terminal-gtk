@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-08 16:28+0800\n"
+"POT-Creation-Date: 2013-10-08 16:29+0800\n"
 "PO-Revision-Date: 2013-09-18 09:49+0800\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -58,11 +58,11 @@ msgstr "黃底黑字"
 
 #: ../src/main.py:199
 msgid "Black on white"
-msgstr "白底黑字"
+msgstr "黑底白字"
 
 #: ../src/main.py:200
 msgid "White on black"
-msgstr "黑底白字"
+msgstr "白底黑字"
 
 #: ../src/main.py:201
 msgid "Green on black"
@@ -146,9 +146,9 @@ msgstr "垂直分割"
 msgid "Split horizontally"
 msgstr "水平分割"
 
-#: ../src/main.py:582
-msgid "Close terminal"
-msgstr "關閉終端機"
+#: ../src/main.py:582 ../src/main.py:1768 ../src/main.py:2005
+msgid "Close current window"
+msgstr "關閉當前窗口"
 
 #: ../src/main.py:586 ../src/main.py:1769 ../src/main.py:2006
 msgid "Close other window"
@@ -178,10 +178,6 @@ msgstr "搜尋"
 #: ../src/main.py:1757
 msgid "Keystrokes helper"
 msgstr "捷徑鍵幫助"
-
-#: ../src/main.py:1768 ../src/main.py:2005
-msgid "Close current window"
-msgstr "關閉當前窗口"
 
 #: ../src/main.py:1770 ../src/main.py:2007
 msgid "Scroll page up"
@@ -391,6 +387,3 @@ msgstr "編輯"
 #: ../src/main.py:2491
 msgid "Delete"
 msgstr "刪除"
-
-#~ msgid "68"
-#~ msgstr "122"
