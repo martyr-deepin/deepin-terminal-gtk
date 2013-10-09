@@ -1680,11 +1680,13 @@ class SearchBar(gtk.Window):
         '''
         init docs
         '''
-        gtk.Window.__init__(self, gtk.WINDOW_POPUP)
+        gtk.Window.__init__(self, gtk.WINDOW_TOPLEVEL)
         self.set_decorated(False)
         self.add_events(gtk.gdk.ALL_EVENTS_MASK)
         self.set_colormap(gtk.gdk.Screen().get_rgba_colormap())
         self.set_modal(True)
+        self.set_type_hint(gtk.gdk.WINDOW_TYPE_HINT_DIALOG)
+        self.set_skip_taskbar_hint(True)
         
         self.entry = Entry(text_color=ui_theme.get_color("entry_select_text"),
                            cursor_color="#FFFFFF",
