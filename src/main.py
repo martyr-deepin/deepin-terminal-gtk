@@ -113,9 +113,9 @@ WORKSPACE_SNAPSHOT_OFFSET_TOP = 10
 WORKSPACE_SNAPSHOT_OFFSET_BOTTOM = 30
 WORKSPACE_SNAPSHOT_OFFSET_X = 10
 
-WORKSPACE_ADD_SIZE = 60
+WORKSPACE_ADD_SIZE = 48
 WORKSPACE_ADD_PADDING = 30
-WORKSPACE_ADD_MIDDLE_SIZE = 10
+WORKSPACE_ADD_MIDDLE_SIZE = 8
 
 workspace_index = 1
 
@@ -1490,7 +1490,7 @@ class WorkspaceSwitcher(gtk.Window):
         
         # Draw background.
         with cairo_state(cr):
-            cr.set_source_rgba(*alpha_color_hex_to_cairo(("#000000", 0.4)))
+            cr.set_source_rgba(*alpha_color_hex_to_cairo(("#000000", 0.6)))
             cr.set_operator(cairo.OPERATOR_SOURCE)
             cr.paint()
         
