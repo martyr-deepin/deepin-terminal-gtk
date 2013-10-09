@@ -1688,13 +1688,15 @@ class SearchBar(gtk.Window):
         self.set_type_hint(gtk.gdk.WINDOW_TYPE_HINT_DIALOG)
         self.set_skip_taskbar_hint(True)
         
-        self.entry = Entry(text_color=ui_theme.get_color("entry_select_text"),
-                           cursor_color="#FFFFFF",
-                           )
+        self.entry = Entry(
+            text_color=ui_theme.get_color("entry_select_text"),
+            cursor_color="#FFFFFF",
+            font_size=11,
+            )
         self.entry.entry_buffer.always_show_cursor = True
         self.entry_align = gtk.Alignment()
         self.entry_align.set(0.5, 0.5, 1, 1)
-        self.entry_align.set_padding(2, 2, 10, 0)
+        self.entry_align.set_padding(0, 0, 10, 0)
         self.entry_align.add(self.entry)
         
         from dtk.ui.line import VSeparator
