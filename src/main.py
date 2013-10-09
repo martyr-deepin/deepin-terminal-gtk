@@ -1918,7 +1918,7 @@ class HelperWindow(Window):
         self.content_box = gtk.VBox()
         self.content_box_align = gtk.Alignment()
         self.content_box_align.set(0.5, 0.5, 1, 1)
-        self.content_box_align.set_padding(10, 10, 40, 10)
+        self.content_box_align.set_padding(10, 10, 100, 100)
         self.content_box_align.add(self.content_box)
         self.content_box.pack_start(self.table_box, True, True)
         
@@ -1930,24 +1930,35 @@ class HelperWindow(Window):
         self.connect("key-release-event", self.key_release_helper_window)
         self.connect("button-press-event", self.button_press_helper_window)
         
-    def create_table(self, infos):
-        table = gtk.Table(9, 2)
+    def fill_table(self, table, infos, column_offset):
         for (index, (name, key)) in enumerate(infos):
+            if key == None:
+                title = "<b>%s</b>" % name
+                title_size = self.key_label_size + 4
+                title_ypadding = 10
+                key_value = ""
+            else:
+                title = name
+                title_size = self.key_label_size
+                title_ypadding = 0
+                key_value = key
+                
             table.attach(
-                Label(name, 
+                Label(title, 
                       text_color=self.key_label_color,
-                      text_size=self.key_label_size,
+                      text_size=title_size,
                       ),
-                0, 1,
+                column_offset, column_offset + 1,
                 index, index + 1,
                 xoptions=gtk.FILL,
+                ypadding=title_ypadding,
                 )
             table.attach(
-                Label(key, 
+                Label(key_value, 
                       text_color=self.key_label_color,
                       text_size=self.key_label_size,
                       ),
-                1, 2,
+                column_offset + 1, column_offset + 2,
                 index, index + 1,
                 xpadding=20,
                 )
@@ -1974,48 +1985,63 @@ class HelperWindow(Window):
     def show_help(self, parent_window, working_directory):
         container_remove_all(self.table_box)    
         
-        get_keybind = lambda key_value: setting_config.config.get("keybind", key_value)
+        def get_keybind(key_value):
+            try:
+                return setting_config.config.config_parser.get("keybind", key_value)
+            except:
+                return key_value
         
         first_table_key = [
+            (_("Terminal command"), None),
             (_("Copy"), "copy_clipboard"),
             (_("Paste"), "paste_clipboard"),
-            (_("Split vertically"), "split_vertically"),
-            (_("Split horizontally"), "split_horizontally"),
-            (_("Close current window"), "close_current_window"),
-            (_("Close other window"), "close_other_window"),
             (_("Scroll page up"), "scroll_page_up"),
             (_("Scroll page down"), "scroll_page_down"),
+            (_("Search forward"), "search_forward"),
+            (_("Search backward"), "search_backward"),
+            (_("Select word"), _("Double click")),
+            (_("Open"), _("Ctrl + Left click")),
+            (_("Zoom out"), "zoom_in"),
+            (_("Zoom in"), "zoom_out"),
+            (_("Reset zoom"), "revert_default_size"),
+            (_("Show correlative child window"), "show_correlative_window"),
+            ]
+        
+        second_table_key = [
+            (_("Workspace command"), None),
+            (_("New workspace"), "new_workspace"),
+            (_("Previous workspace"), "switch_prev_workspace"),
+            (_("Next workspace"), "switch_next_workspace"),
+            (_("Close workspace"), "close_current_workspace"),
+            (_("Split vertically"), "split_vertically"),
+            (_("Split horizontally"), "split_horizontally"),
             (_("Focus the terminal above"), "focus_up_terminal"),
             (_("Focus the terminal below"), "focus_down_terminal"),
             (_("Focus the temrinal left"), "focus_left_terminal"),
             (_("Focus the terminal right"), "focus_right_terminal"),
-            ]
-        
-        self.first_table = self.create_table(
-            map(lambda (key_name, key_value): (key_name, get_keybind(key_value)), first_table_key) + [(_("Select word"), _("Double click"))],
-            )
-        
-        second_table_key = [
-            (_("Zoom out"), "zoom_in"),
-            (_("Zoom in"), "zoom_out"),
-            (_("Reset zoom"), "revert_default_size"),
-            (_("New workspace"), "new_workspace"),
-            (_("Close workspace"), "close_current_workspace"),
-            (_("Previous workspace"), "switch_prev_workspace"),
-            (_("Next workspace"), "switch_next_workspace"),
-            (_("Search forward"), "search_forward"),
-            (_("Search backward"), "search_backward"),
+            (_("Close current window"), "close_current_window"),
+            (_("Close other window"), "close_other_window"),
+            
+            (_("Advanced command"), None),
             (_("Fullscreen"), "toggle_full_screen"),
             (_("Display hotkeys"), "show_helper_window"),
-            (_("Show correlative child window"), "show_correlative_window"),
             (_("Set up SSH connection"), "show_remote_login_window"),
             ]
         
-        self.second_table = self.create_table(
-            [(_("Open"), _("Ctrl + Left click"))] + map(lambda (key_name, key_value): (key_name, get_keybind(key_value)), second_table_key),
+        self.table = gtk.Table(18, 4)
+        
+        self.fill_table(
+            self.table,
+            map(lambda (key_name, key_value): (key_name, get_keybind(key_value)), first_table_key),
+            0,
             )
-        self.table_box.pack_start(self.first_table, True, True)
-        self.table_box.pack_start(self.second_table, True, True)
+        
+        self.fill_table(
+            self.table,
+            map(lambda (key_name, key_value): (key_name, get_keybind(key_value)), second_table_key),
+            2,
+            )
+        self.table_box.pack_start(self.table, True, True)
             
         parent_window_rect = parent_window.get_allocation()
         self.resize(
