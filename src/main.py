@@ -30,7 +30,7 @@ from deepin_utils.file import remove_path, touch_file
 from deepin_utils.font import get_font_families
 from deepin_utils.process import run_command, get_command_output_first_line
 from dtk.ui.constant import WIDGET_POS_BOTTOM_LEFT, ALIGN_END, DEFAULT_FONT_SIZE
-from dtk.ui.draw import draw_pixbuf, draw_text
+from dtk.ui.draw import draw_pixbuf, draw_text, draw_round_rectangle, draw_radial_ring, draw_vlinear
 from dtk.ui.events import EventRegister
 from dtk.ui.init_skin import init_skin
 from dtk.ui.keymap import get_keyevent_name, is_no_key_press
@@ -1822,9 +1822,17 @@ class HelperWindow(Window):
         '''
         init docs
         '''
+        self.radius = 5
+        self.frame_radius = 2
+        
         Window.__init__(self, 
+                        shadow_visible=True,
                         window_type=gtk.WINDOW_POPUP,
                         expose_background_function=self.expose_helper_window,
+                        shape_frame_function=self.shape_frame_helper_window,
+                        expose_frame_function=self.expose_frame_helper_window,
+                        expose_shadow_function=self.expose_shadow_helper_window,
+                        frame_radius=self.frame_radius,
                         )
         self.set_decorated(False)
         self.add_events(gtk.gdk.ALL_EVENTS_MASK)
@@ -1955,6 +1963,78 @@ class HelperWindow(Window):
         self.show_all()
         place_center(parent_window, self)
         
+    def shape_frame_helper_window(self, widget, rect):
+        if widget.window != None and widget.get_has_window() and rect.width > 0 and rect.height > 0:
+            if self.window.get_state() & gtk.gdk.WINDOW_STATE_MAXIMIZED != gtk.gdk.WINDOW_STATE_MAXIMIZED:
+                # Init.
+                x, y, w, h = rect.x, rect.y, rect.width, rect.height
+                bitmap = gtk.gdk.Pixmap(None, w, h, 1)
+                cr = bitmap.cairo_create()
+                
+                # Clear the bitmap
+                cr.set_source_rgb(0.0, 0.0, 0.0)
+                cr.set_operator(cairo.OPERATOR_CLEAR)
+                cr.paint()
+                
+                # Draw our shape into the bitmap using cairo.
+                cr.set_source_rgb(1.0, 1.0, 1.0)
+                cr.set_operator(cairo.OPERATOR_OVER)
+                
+                draw_round_rectangle(cr, x, y, w, h, self.radius)
+                
+                cr.fill()
+                
+                # Shape with given mask.
+                widget.shape_combine_mask(bitmap, 0, 0)
+    
+    def expose_frame_helper_window(self, widget, event):
+        pass
+    
+    def expose_shadow_helper_window(self, widget, event):
+        cr = widget.window.cairo_create()
+        rect = widget.allocation
+        x, y, w, h = rect.x, rect.y, rect.width, rect.height
+        r = self.shadow_radius
+        p = self.shadow_radius - self.frame_radius
+        color_window_shadow = ui_theme.get_shadow_color("window_shadow")
+        
+        color_infos = color_window_shadow.get_color_info()
+        
+        cr.set_operator(cairo.OPERATOR_OVER)
+        
+        with cairo_state(cr):
+            # Draw four round.
+            draw_radial_ring(cr, x + r, y + r, r, self.frame_radius, color_infos, "top-left")
+            draw_radial_ring(cr, x + w - r, y + r, r, self.frame_radius, color_infos, "top-right")
+            draw_radial_ring(cr, x + r, y + h - r, r, self.frame_radius, color_infos, "bottom-left")
+            draw_radial_ring(cr, x + w - r, y + h - r, r, self.frame_radius, color_infos, "bottom-right")
+        
+        with cairo_state(cr):
+            # Clip four side.
+            cr.rectangle(x, y + r, p, h - r * 2)
+            cr.rectangle(x + w - p, y + r, p, h - r * 2)
+            cr.rectangle(x + r, y, w - r * 2, p)
+            cr.rectangle(x + r, y + h - p, w - r * 2, p)
+            cr.clip()
+            
+            # Draw four side.
+            draw_vlinear(
+                cr, 
+                x + r, y, 
+                w - r * 2, r, color_infos)
+            draw_vlinear(
+                cr, 
+                x + r, y + h - r, 
+                w - r * 2, r, color_infos, 0, False)
+            draw_hlinear(
+                cr, 
+                x, y + r, 
+                r, h - r * 2, color_infos)
+            draw_hlinear(
+                cr, 
+                x + w - r, y + r, 
+                r, h - r * 2, color_infos, 0, False)
+        
     def expose_helper_window(self, widget, event):
         cr = widget.window.cairo_create()
         rect = widget.allocation
@@ -1964,21 +2044,32 @@ class HelperWindow(Window):
             cr.set_operator(cairo.OPERATOR_SOURCE)
             cr.paint()
             
-        x = rect.x + self.shadow_padding
-        y = rect.y + self.shadow_padding
-        w = rect.width - self.shadow_padding * 2
-        h = rect.height - self.shadow_padding * 2
+        out_x = rect.x + self.shadow_padding
+        out_y = rect.y + self.shadow_padding
+        out_w = rect.width - self.shadow_padding * 2
+        out_h = rect.height - self.shadow_padding * 2
+        
+        padding = 2
+        inner_x = out_x + padding
+        inner_y = out_y + padding
+        inner_w = out_w - padding * 2
+        inner_h = out_h - padding * 2
+        inner_radius = self.radius
+        
         with cairo_state(cr):
-            cr.rectangle(x + 2, y, w - 4, 1)
-            cr.rectangle(x + 1, y + 1, w - 2, 1)
-            cr.rectangle(x, y + 2, w, h - 4)
-            cr.rectangle(x + 2, y + h - 1, w - 4, 1)
-            cr.rectangle(x + 1, y + h - 2, w - 2, 1)
-                    
-            cr.clip()
+            draw_round_rectangle(cr, out_x, out_y, out_w, out_h, self.radius)
+            cr.set_source_rgba(*alpha_color_hex_to_cairo(("#FFFFFF", 0.4)))
+            cr.fill()
             
-            cr.rectangle(x, y, w, h)
+        with cairo_state(cr):
+            cr.set_source_rgba(1.0, 1.0, 1.0, 0)
+            cr.set_operator(cairo.OPERATOR_SOURCE)
+            draw_round_rectangle(cr, inner_x, inner_y, inner_w, inner_h, inner_radius)
+            cr.fill()
+            
             cr.set_source_rgba(*alpha_color_hex_to_cairo(("#000000", 0.8)))
+            cr.set_operator(cairo.OPERATOR_OVER)
+            draw_round_rectangle(cr, inner_x, inner_y, inner_w, inner_h, inner_radius)
             cr.fill()
             
         propagate_expose(widget, event)
