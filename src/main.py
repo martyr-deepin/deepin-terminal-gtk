@@ -961,8 +961,9 @@ class TerminalWrapper(vte.Terminal):
         self.change_font(self.default_font, self.current_font_size)
         
         startup_directory = setting_config.config.get("advanced", "startup_directory")
-        if startup_directory != "":
-            os.chdir(startup_directory)
+        directory = commands.getoutput("echo %s" % startup_directory)
+        if os.path.exists(directory):
+            os.chdir(directory)
         elif working_directory:
             # Use os.chdir and not child_feed("cd %s\n" % working_directory), 
             # this will make terminal with 'clear' init value.
