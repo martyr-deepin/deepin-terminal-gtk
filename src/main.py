@@ -961,6 +961,7 @@ class TerminalWrapper(vte.Terminal):
     def __init__(self, 
                  parent_widget=None, 
                  working_directory=None,
+                 command=None,
                  ):
         """
         Initial values.
@@ -1011,6 +1012,9 @@ class TerminalWrapper(vte.Terminal):
             
         self.process_id = self.fork_command(fork_command)
         self.cwd_path = '/proc/%s/cwd' % self.process_id
+        
+        if command:
+            self.feed_child(command)
 
         # Key and signals
         self.generate_keymap()
@@ -1120,18 +1124,15 @@ class TerminalWrapper(vte.Terminal):
         adj.set_value(min(upper - page_size, value + page_size))
             
     def show_man_window(self, command):
-        window_rect = self.get_toplevel().get_allocation()
-        
-        man_dialog = ManDialog(command, window_rect.width, window_rect.height)
-        man_dialog.show_all()
+        self.split_vertically("man %s\n" % command)
             
-    def split_vertically(self):
+    def split_vertically(self, command=None):
         if self.parent_widget:
-            self.parent_widget.split(TerminalGrid.SPLIT_VERTICALLY),
+            self.parent_widget.split(TerminalGrid.SPLIT_VERTICALLY, command),
         
-    def split_horizontally(self):
+    def split_horizontally(self, command=None):
         if self.parent_widget:
-            self.parent_widget.split(TerminalGrid.SPLIT_HORIZONTALLY),
+            self.parent_widget.split(TerminalGrid.SPLIT_HORIZONTALLY, command),
             
     def change_color(self, font_color, background_color):
         self.set_colors(
@@ -1332,6 +1333,7 @@ class TerminalGrid(gtk.VBox):
                  parent_widget=None, 
                  terminal=None,
                  working_directory=None,
+                 command=None,
                  ):
         """
         Initial values
@@ -1345,13 +1347,16 @@ class TerminalGrid(gtk.VBox):
             self.terminal = terminal
             self.terminal.parent_widget = self
         else:
-            self.terminal = TerminalWrapper(self, working_directory=working_directory)
+            self.terminal = TerminalWrapper(
+                self, 
+                working_directory=working_directory,
+                command=command)
 
         self.is_parent = False
         self.paned = None
         self.add(self.terminal)
 
-    def split(self, split_policy):
+    def split(self, split_policy, command=None):
         """
         Split window.
         :param split_policy: used to determine vsplit or hsplit.
@@ -1372,7 +1377,7 @@ class TerminalGrid(gtk.VBox):
             self.paned.set_position(width/2)
             
         self.paned.pack1(TerminalGrid(self, self.terminal), True, True)
-        self.paned.pack2(TerminalGrid(self, working_directory=working_directory), True, True)
+        self.paned.pack2(TerminalGrid(self, working_directory=working_directory, command=command), True, True)
 
         self.add(self.paned)
         self.show_all()
@@ -2603,60 +2608,6 @@ def save_config(setting_config):
     else:  
         # Save setting config last.
         setting_config.config.write()
-
-class ManDialog(Window):
-    '''
-    class docs
-    '''
-	
-    def __init__(self, command, window_width, window_height):
-        '''
-        init docs
-        '''
-        Window.__init__(self)
-        self.set_skip_taskbar_hint(True)
-        self.set_default_size(
-            int(4 * window_width / 5),
-            int(4 * window_height / 5),
-            )
-        self.set_type_hint(gtk.gdk.WINDOW_TYPE_HINT_DIALOG)
-        
-        self.titlebar = Titlebar(["close"], None, "%s (%s)" % (_("Manual"), command))
-        self.titlebar.close_button.connect("clicked", lambda w: self.exit_man_dialog())
-        self.add_move_event(self.titlebar)
-        
-        self.command = command
-        self.terminal_wrapper = TerminalWrapper()
-        self.terminal_wrapper.feed_child("man %s\n" % command)
-        self.terminal_align = gtk.Alignment()
-        self.terminal_align.set(0.5, 0.5, 1, 1)
-        self.terminal_align.set_padding(0, 2, 2, 2)
-        
-        self.terminal_align.add(self.terminal_wrapper)
-        self.window_frame.pack_start(self.titlebar, False, False)
-        self.window_frame.pack_start(self.terminal_align, False, False)
-        
-        self.keymap = {
-            "q" : self.exit_man_dialog,
-            "Q" : self.exit_man_dialog,
-            "Escape" : self.exit_man_dialog,
-            }
-        
-        self.connect("key-press-event", self.key_press_man_dialog)
-        
-    def exit_man_dialog(self):
-        self.destroy()
-        
-    def key_press_man_dialog(self, widget, event):
-        key_name = get_keyevent_name(event)
-        if key_name in self.keymap:
-            self.keymap[key_name]()
-            
-            return True
-        else:
-            return False
-        
-gobject.type_register(ManDialog)        
 
 class EditRemoteLogin(DialogBox):
     '''
