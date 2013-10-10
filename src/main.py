@@ -1140,6 +1140,9 @@ class TerminalWrapper(vte.Terminal):
             int(event.x / self.get_char_width()),
             int(event.y / self.get_char_height()))
     
+    def filter_file_string(self, match_string):
+        return match_string.replace('\'', '').replace('`', '')
+    
     def get_match_type(self, match_text):
         if match_text:
             (match_string, match_tag) = match_text
@@ -1148,14 +1151,17 @@ class TerminalWrapper(vte.Terminal):
             elif match_tag == self.file_match_tag:
                 match_file = False
                 
-                if os.path.exists(match_string):
-                    if os.path.isdir(match_string):
-                        return (MATCH_DIRECTORY, match_string)
+                file_string = self.filter_file_string(match_string)
+                print file_string
+                
+                if os.path.exists(file_string):
+                    if os.path.isdir(file_string):
+                        return (MATCH_DIRECTORY, file_string)
                     else:
-                        return (MATCH_FILE, match_string)
+                        return (MATCH_FILE, file_string)
                 else:
                     working_directory = get_active_working_directory(self.get_toplevel())    
-                    filepath = os.path.join(working_directory, match_string)
+                    filepath = os.path.join(working_directory, file_string)
                     
                     if os.path.exists(filepath):
                         if os.path.isdir(filepath):
