@@ -1141,7 +1141,7 @@ class TerminalWrapper(vte.Terminal):
             int(event.y / self.get_char_height()))
     
     def filter_file_string(self, match_string):
-        return match_string.replace('\'', '').replace('`', '')
+        return commands.getoutput("echo %s" % match_string.replace('\'', '').replace('`', ''))
     
     def get_match_type(self, match_text):
         if match_text:
