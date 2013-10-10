@@ -1970,11 +1970,11 @@ class HelperWindow(Window):
         self.content_box = gtk.VBox()
         self.content_box_align = gtk.Alignment()
         self.content_box_align.set(0.5, 0.5, 1, 1)
-        self.content_box_align.set_padding(10, 10, 100, 100)
+        self.content_box_align.set_padding(60, 60, 30, 30)
         self.content_box_align.add(self.content_box)
-        self.content_box.pack_start(self.table_box, True, True)
+        self.content_box.pack_start(self.table_box, False, False)
         
-        self.box.pack_start(self.content_box_align, True, True)
+        self.box.pack_start(self.content_box_align, False, False)
         
         self.window_frame.add(self.box)
         
@@ -1992,7 +1992,7 @@ class HelperWindow(Window):
             else:
                 title = name
                 title_size = self.key_label_size
-                title_ypadding = 0
+                title_ypadding = 7
                 key_value = key
                 
             table.attach(
@@ -2004,6 +2004,7 @@ class HelperWindow(Window):
                 index, index + 1,
                 xoptions=gtk.FILL,
                 ypadding=title_ypadding,
+                xpadding=20,
                 )
             table.attach(
                 Label(key_value, 
@@ -2073,14 +2074,16 @@ class HelperWindow(Window):
             (_("Focus the terminal right"), "focus_right_terminal"),
             (_("Close current window"), "close_current_window"),
             (_("Close other window"), "close_other_window"),
-            
+            ]
+        
+        third_table_key = [
             (_("Advanced command"), None),
             (_("Fullscreen"), "toggle_full_screen"),
             (_("Display hotkeys"), "show_helper_window"),
             (_("Set up SSH connection"), "show_remote_login_window"),
             ]
         
-        self.table = gtk.Table(18, 4)
+        self.table = gtk.Table(18, 6)
         
         self.fill_table(
             self.table,
@@ -2093,6 +2096,13 @@ class HelperWindow(Window):
             map(lambda (key_name, key_value): (key_name, get_keybind(key_value)), second_table_key),
             2,
             )
+
+        self.fill_table(
+            self.table,
+            map(lambda (key_name, key_value): (key_name, get_keybind(key_value)), third_table_key),
+            4,
+            )
+        
         self.table_box.pack_start(self.table, True, True)
             
         parent_window_rect = parent_window.get_allocation()
