@@ -36,25 +36,25 @@ from dtk.ui.init_skin import init_skin
 from dtk.ui.keymap import get_keyevent_name, is_no_key_press
 from dtk.ui.label import Label
 from dtk.ui.menu import Menu
-from dtk.ui.utils import container_remove_all, get_match_parent, cairo_state, propagate_expose, is_left_button, is_right_button, is_in_rect
+from dtk.ui.utils import (container_remove_all, get_match_parent, cairo_state, propagate_expose, 
+                          is_left_button, is_right_button, is_in_rect, get_match_children)
 from dtk.ui.utils import get_window_shadow_size
 from dtk.ui.utils import place_center, get_widget_root_coordinate
 from dtk.ui.window import Window
 from nls import _
 import cairo
+import commands
 import gc
 import gobject
 import gtk
-import itertools    
 import os
 import pango
 import sqlite3
+import subprocess
 import sys
+import traceback
 import urllib
 import vte
-import commands
-import subprocess
-import traceback
 
 PROJECT_NAME = "deepin-terminal"
 
@@ -68,26 +68,25 @@ app_theme = init_skin(
 
 from dtk.ui.application import Application
 from dtk.ui.button import Button
+from dtk.ui.button import ImageButton
 from dtk.ui.button import SwitchButton
+from dtk.ui.cache_pixbuf import CachePixbuf
 from dtk.ui.color_selection import ColorButton
 from dtk.ui.combo import ComboBox
-from dtk.ui.draw import draw_hlinear
 from dtk.ui.dialog import DIALOG_MASK_GLASS_PAGE
 from dtk.ui.dialog import DialogBox
 from dtk.ui.dialog import PreferenceDialog
+from dtk.ui.draw import draw_hlinear
 from dtk.ui.entry import Entry
 from dtk.ui.entry import ShortcutKeyEntry, InputEntry, PasswordEntry
 from dtk.ui.scalebar import HScalebar
 from dtk.ui.scrolled_window import ScrolledWindow
+from dtk.ui.skin_config import skin_config
 from dtk.ui.spin import SpinBox
 from dtk.ui.theme import ui_theme
-from dtk.ui.titlebar import Titlebar
 from dtk.ui.treeview import TreeView, NodeItem, get_background_color, get_text_color
-from dtk.ui.utils import color_hex_to_cairo, alpha_color_hex_to_cairo, cairo_disable_antialias
-from dtk.ui.skin_config import skin_config
-from dtk.ui.cache_pixbuf import CachePixbuf
 from dtk.ui.unique_service import UniqueService, is_exists
-from dtk.ui.button import ImageButton
+from dtk.ui.utils import color_hex_to_cairo, alpha_color_hex_to_cairo, cairo_disable_antialias
 import dbus
 
 APP_DBUS_NAME   = "com.deepin.terminal"
@@ -237,35 +236,6 @@ def get_active_working_directory(toplevel_widget):
     else:
         return None
     
-def merge_list(a):
-    '''
-    Merge recursively list with flat list.
-    
-    @return: Return a flat list after merge from recursively list.
-    '''
-    return list(itertools.chain.from_iterable(a))
-
-def get_match_children(widget, child_type):
-    '''
-    Get all child widgets that match given widget type.
-    
-    @param widget: The container to search.
-    @param child_type: The widget type of search.
-    
-    @return: Return all child widgets that match given widget type, or return empty list if nothing to find.
-    '''
-    child_list = widget.get_children()
-    if child_list:
-        match_widget_list = filter(lambda w: isinstance(w, child_type), child_list)
-        match_children = (merge_list(map(
-                    lambda w: get_match_children(w, child_type), 
-                    filter(
-                        lambda w: isinstance(w, gtk.Container), 
-                        child_list))))
-        return match_widget_list + match_children
-    else:
-        return []
-    
 def set_terminal_background(terminal):
     cache_pixbuf = CachePixbuf()
     (shadow_x, shadow_y) = get_window_shadow_size(terminal.get_toplevel())
@@ -286,12 +256,6 @@ def set_terminal_background(terminal):
     
     terminal.set_background_image(background_pixbuf)
     
-def create_menu_item_pixbufs(icon_name):
-    return (app_theme.get_pixbuf("menu/%s.png" % icon_name),
-            app_theme.get_pixbuf("menu/%s_press.png" % icon_name),
-            app_theme.get_pixbuf("menu/%s_press.png" % icon_name),
-            )
-        
 class Terminal(object):
     """
     Terminal class.
