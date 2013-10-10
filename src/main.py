@@ -566,12 +566,9 @@ class Terminal(object):
             terminal.background_update()
             
     def show_preference_menu(self, widget, event):
-        setting_pixbufs = create_menu_item_pixbufs("setting")
-        show_shortcut_pixbufs = create_menu_item_pixbufs("show_shortcut")
-        
         menu_items = [
-            (setting_pixbufs, _("Preferences"), self.show_preference_dialog),
-            (show_shortcut_pixbufs, _("Display hotkeys"), self.show_helper_window),
+            (None, _("Preferences"), self.show_preference_dialog),
+            (None, _("Display hotkeys"), self.show_helper_window),
             (None, _("See what's new"), None),
             (None, _("Quit"), self.quit),
             ]
@@ -593,24 +590,12 @@ class Terminal(object):
             )
         
     def show_menu(self, terminal, has_selection, match_text, correlative_window_ids, (x_root, y_root)):
-        close_current_window_pixbufs = create_menu_item_pixbufs("close_window")
-        copy_pixbufs = create_menu_item_pixbufs("copy")
-        paste_pixbufs = create_menu_item_pixbufs("paste")
-        fullscreen_pixbufs = create_menu_item_pixbufs("fullscreen")
-        split_vertically_pixbufs = create_menu_item_pixbufs("horizontal_window")
-        split_horizontally_pixbufs = create_menu_item_pixbufs("vertical_window")
-        new_workspace_pixbufs = create_menu_item_pixbufs("new_workspace")
-        search_pixbufs = create_menu_item_pixbufs("search")
-        setting_pixbufs = create_menu_item_pixbufs("setting")
-        show_child_window_pixbufs = create_menu_item_pixbufs("show_child_window")
-        show_shortcut_pixbufs = create_menu_item_pixbufs("show_shortcut")
-        
         # Build menu.
         menu_items = []
         if has_selection:
-            menu_items.append((copy_pixbufs, _("Copy"), terminal.copy_clipboard))
+            menu_items.append((None, _("Copy"), terminal.copy_clipboard))
             
-        menu_items.append((paste_pixbufs, _("Paste"), terminal.paste_clipboard))    
+        menu_items.append((None, _("Paste"), terminal.paste_clipboard))    
             
         if match_text:
             match_info = terminal.get_match_type(match_text)
@@ -629,7 +614,7 @@ class Terminal(object):
                 
         if correlative_window_ids != None and correlative_window_ids != [""]:
             menu_items.append((
-                    show_child_window_pixbufs,
+                    None,
                     _("Show correlative child window"), lambda : terminal.show_correlative_window(correlative_window_ids)))
             
         if self.is_full_screen:
@@ -640,9 +625,9 @@ class Terminal(object):
         (focus_terminal, terminals) = self.get_all_terminal_infos()
         terminal_items = [
             None,
-            (split_vertically_pixbufs, _("Split vertically"), lambda : terminal.parent_widget.split(TerminalGrid.SPLIT_VERTICALLY)),
-            (split_horizontally_pixbufs, _("Split horizontally"), lambda : terminal.parent_widget.split(TerminalGrid.SPLIT_HORIZONTALLY)),
-            (close_current_window_pixbufs, _("Close current window"), terminal.close_current_window),
+            (None, _("Split vertically"), lambda : terminal.parent_widget.split(TerminalGrid.SPLIT_VERTICALLY)),
+            (None, _("Split horizontally"), lambda : terminal.parent_widget.split(TerminalGrid.SPLIT_HORIZONTALLY)),
+            (None, _("Close current window"), terminal.close_current_window),
             ]
         if len(terminals) >= 1:
             terminal_items += [
@@ -654,23 +639,23 @@ class Terminal(object):
             
             workspace_items = [
                 None,
-                (new_workspace_pixbufs, _("New workspace"), self.new_workspace),
+                (None, _("New workspace"), self.new_workspace),
                 (None, _("Switch workspace"), self.show_workspace),
                 (None, "%s%s" % (_("Close workspace"), current_workspace.workspace_index), self.close_current_workspace),
                 ]
         else:
             workspace_items = [
                 None,
-                (new_workspace_pixbufs, _("New workspace"), self.new_workspace),
+                (None, _("New workspace"), self.new_workspace),
                 ]
             
         menu_items += terminal_items + workspace_items + [
             None,
-            (fullscreen_pixbufs, fullscreen_item_text, self.toggle_full_screen),
-            (search_pixbufs, _("Search"), self.search_forward),
-            (show_shortcut_pixbufs, _("Display hotkeys"), self.show_helper_window),
+            (None, fullscreen_item_text, self.toggle_full_screen),
+            (None, _("Search"), self.search_forward),
+            (None, _("Display hotkeys"), self.show_helper_window),
             None,
-            (setting_pixbufs, _("Preferences"), self.show_preference_dialog),
+            (None, _("Preferences"), self.show_preference_dialog),
             ]
         
         menu = Menu(menu_items, True)
