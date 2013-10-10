@@ -131,7 +131,7 @@ msgstr "開啟手冊"
 
 #: ../src/main.py:592 ../src/main.py:2006 ../src/main.py:2355
 msgid "Show correlative child window"
-msgstr "顯示相關的子進程窗口"
+msgstr "顯示關聯的子進程視窗"
 
 #: ../src/main.py:595
 msgid "Exit fullscreen"
@@ -152,11 +152,11 @@ msgstr "水平分割"
 
 #: ../src/main.py:604 ../src/main.py:2021 ../src/main.py:2335
 msgid "Close current window"
-msgstr "關閉當前窗口"
+msgstr "關閉當前視窗"
 
 #: ../src/main.py:608 ../src/main.py:2022 ../src/main.py:2336
 msgid "Close other window"
-msgstr "關閉其他終窗口"
+msgstr "關閉其他視窗"
 
 #: ../src/main.py:616 ../src/main.py:623 ../src/main.py:2011
 #: ../src/main.py:2346
@@ -181,15 +181,15 @@ msgstr "工作區"
 
 #: ../src/main.py:1994
 msgid "Terminal command"
-msgstr "終端機命令"
+msgstr "終端機指令"
 
 #: ../src/main.py:1997 ../src/main.py:2337
 msgid "Scroll page up"
-msgstr "向上滾動："
+msgstr "向上捲動："
 
 #: ../src/main.py:1998 ../src/main.py:2338
 msgid "Scroll page down"
-msgstr "向下滾動: "
+msgstr "向下捲動: "
 
 #: ../src/main.py:1999 ../src/main.py:2350
 msgid "Search forward"
@@ -229,7 +229,7 @@ msgstr "預設尺寸"
 
 #: ../src/main.py:2010
 msgid "Workspace command"
-msgstr "工作區命令"
+msgstr "工作區指令"
 
 #: ../src/main.py:2012 ../src/main.py:2348
 msgid "Previous workspace"
@@ -257,7 +257,7 @@ msgstr "選擇右側終端機"
 
 #: ../src/main.py:2024
 msgid "Advanced command"
-msgstr "高級命令"
+msgstr "進階指令"
 
 #: ../src/main.py:2027 ../src/main.py:2354
 msgid "Set up SSH connection"
@@ -280,7 +280,6 @@ msgid "Background transparency: "
 msgstr "背景透明度："
 
 #: ../src/main.py:2233
-#, fuzzy
 msgid "Background image: "
 msgstr "背景圖片："
 
