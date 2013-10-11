@@ -532,6 +532,7 @@ class Terminal(object):
     def show_preference_menu(self, widget, event):
         menu_items = [
             (None, _("Preferences"), self.show_preference_dialog),
+            (None, _("Set up SSH connection"), self.show_remote_login_window),
             (None, _("Display hotkeys"), self.show_helper_window),
             (None, _("See what's new"), None),
             (None, _("Quit"), self.quit),
