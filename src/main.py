@@ -144,51 +144,57 @@ XDG_CONFIG_HOME = os.environ.get('XDG_CONFIG_HOME') or \
 # please don't fill password if you care about safety problem.
 LOGIN_DATABASE = os.path.join(XDG_CONFIG_HOME, PROJECT_NAME, ".config", "login.db")
 
+GENERAL_CONFIG = [
+    ("font", "XHei Mono.Ubuntu"),
+    ("font_size", "11"),
+    ("color_scheme", "deepin"), 
+    ("font_color", "#00FF00"),
+    ("background_color", "#000000"),
+    ("background_transparent", "0.8"),
+    ("background_image", "False"),
+    ]
+
+KEYBIND_CONFIG = [
+    ("copy_clipboard", "Ctrl + Shift + c"),
+    ("paste_clipboard", "Ctrl + Shift + v"),
+    ("split_vertically", "Ctrl + v"),
+    ("split_horizontally", "Ctrl + h"),
+    ("close_current_window", "Ctrl + Shift + w"),
+    ("close_other_window", "Ctrl + Shift + q"),
+    ("scroll_page_up", "Alt + ,"),
+    ("scroll_page_down", "Alt + ."),
+    ("focus_up_terminal", "Alt + k"),
+    ("focus_down_terminal", "Alt + j"),
+    ("focus_left_terminal", "Alt + h"),
+    ("focus_right_terminal", "Alt + l"),
+    ("zoom_out", "Ctrl + ="),
+    ("zoom_in", "Ctrl + -"),
+    ("revert_default_size", "Ctrl + 0"),
+    ("new_workspace", "Ctrl + /"),
+    ("close_current_workspace", "Ctrl + Shift + :"),
+    ("switch_prev_workspace", "Ctrl + ,"),
+    ("switch_next_workspace", "Ctrl + ."),
+    ("search_forward", "Ctrl + '"),
+    ("search_backward", "Ctrl + \""),
+    ("toggle_full_screen", "F11"),
+    ("show_helper_window", "Ctrl + Shift + ?"),
+    ("show_remote_login_window", "Ctrl + 9"),
+    ("show_correlative_window", "Ctrl + 8"),
+    ]
+
+ADVANCED_CONFIG = [
+    ("startup_mode", "normal"),
+    ("startup_command", ""),
+    ("startup_directory", ""),
+    ("cursor_shape", "block"),
+    ("scroll_on_key", "True"),
+    ("scroll_on_output", "False"),
+    ]
+
 DEFAULT_CONFIG = [
-    ("general", 
-     [("font", "XHei Mono.Ubuntu"),
-      ("font_size", "11"),
-      ("color_scheme", "deepin"), 
-      ("font_color", "#00FF00"),
-      ("background_color", "#000000"),
-      ("background_transparent", "0.8"),
-      ("background_image", "False"),
-      ]),
-    ("keybind", 
-     [("copy_clipboard", "Ctrl + Shift + c"),
-      ("paste_clipboard", "Ctrl + Shift + v"),
-      ("split_vertically", "Ctrl + v"),
-      ("split_horizontally", "Ctrl + h"),
-      ("close_current_window", "Ctrl + Shift + w"),
-      ("close_other_window", "Ctrl + Shift + q"),
-      ("scroll_page_up", "Alt + ,"),
-      ("scroll_page_down", "Alt + ."),
-      ("focus_up_terminal", "Alt + k"),
-      ("focus_down_terminal", "Alt + j"),
-      ("focus_left_terminal", "Alt + h"),
-      ("focus_right_terminal", "Alt + l"),
-      ("zoom_out", "Ctrl + ="),
-      ("zoom_in", "Ctrl + -"),
-      ("revert_default_size", "Ctrl + 0"),
-      ("new_workspace", "Ctrl + /"),
-      ("close_current_workspace", "Ctrl + Shift + :"),
-      ("switch_prev_workspace", "Ctrl + ,"),
-      ("switch_next_workspace", "Ctrl + ."),
-      ("search_forward", "Ctrl + '"),
-      ("search_backward", "Ctrl + \""),
-      ("toggle_full_screen", "F11"),
-      ("show_helper_window", "Ctrl + Shift + ?"),
-      ("show_remote_login_window", "Ctrl + 9"),
-      ("show_correlative_window", "Ctrl + 8"),
-      ]),
-    ("advanced", 
-     [("startup_mode", "normal"),
-      ("startup_command", ""),
-      ("startup_directory", ""),
-      ("cursor_shape", "block"),
-      ("scroll_on_key", "True"),
-      ("scroll_on_output", "False"),
-      ]),
+    ("general", GENERAL_CONFIG),
+    ("keybind", KEYBIND_CONFIG),
+    ("advanced", ADVANCED_CONFIG),
     ("save_state",
      [("window_width", "664"),
       ("window_height", "446"),
@@ -334,7 +340,7 @@ class Terminal(object):
         self.keybind_settings = KeybindSettings()
         self.advanced_settings = AdvancedSettings()
         
-        self.preference_dialog = PreferenceDialog(575, 390)
+        self.preference_dialog = SettingDialog()
         self.preference_dialog.set_preference_items(
             [(_("General"), self.general_settings),
              (_("Hotkeys"), self.keybind_settings),
@@ -355,7 +361,7 @@ class Terminal(object):
         global_event.register_event("set-cursor-shape", self.set_cursor_shape)
         global_event.register_event("change-font", self.change_font)
         global_event.register_event("change-font-size", self.change_font_size)
-        global_event.register_event("change-color-precept", self.change_color_scheme)
+        global_event.register_event("change-color-scheme", self.change_color_scheme)
         global_event.register_event("change-font-color", self.change_color_scheme)
         global_event.register_event("change-background-color", self.change_color_scheme)
         global_event.register_event("keybind-changed", self.keybind_change)
@@ -2212,15 +2218,15 @@ class GeneralSettings(gtk.VBox):
         font = setting_config.config.get("general", "font")
         font_families = get_font_families()
         font_items = map(lambda i: (i, i), font_families)
-        font_widget = ComboBox(font_items, droplist_height=200, fixed_width=COMBO_BOX_WIDTH)
-        font_widget.set_select_index(font_families.index(font))
-        font_widget.connect("item-selected", self.change_font)
+        self.font_widget = ComboBox(font_items, droplist_height=200, fixed_width=COMBO_BOX_WIDTH)
+        self.font_widget.set_select_index(font_families.index(font))
+        self.font_widget.connect("item-selected", self.change_font)
         
         font_size = setting_config.config.get("general", "font_size")
-        font_size_widget = SpinBox(lower=1, step=1)
-        font_size_widget.set_value(int(font_size))
-        font_size_widget.connect("value-changed", self.change_font_size)
-        font_size_widget.value_entry.connect("changed", self.change_font_size)
+        self.font_size_widget = SpinBox(lower=1, step=1)
+        self.font_size_widget.set_value(int(font_size))
+        self.font_size_widget.connect("value-changed", self.change_font_size)
+        self.font_size_widget.value_entry.connect("changed", self.change_font_size)
         
         color_scheme = setting_config.config.get("general", "color_scheme")
         self.color_items =map(lambda (color_scheme_value, (color_scheme_name, _)): (color_scheme_name, color_scheme_value), color_style.items())
@@ -2245,24 +2251,24 @@ class GeneralSettings(gtk.VBox):
         color_box.pack_start(self.background_color_widget, False, False)
         
         transparent = setting_config.config.get("general", "background_transparent")
-        background_transparent_widget = HScalebar(value_min=MIN_TRANSPARENT, value_max=1)
-        background_transparent_widget.set_value(float(transparent))
-        background_transparent_widget.connect("value-changed", self.save_background_transparent)
+        self.background_transparent_widget = HScalebar(value_min=MIN_TRANSPARENT, value_max=1)
+        self.background_transparent_widget.set_value(float(transparent))
+        self.background_transparent_widget.connect("value-changed", self.save_background_transparent)
         
         display_background_image = setting_config.config.get("general", "background_image")
-        background_image_widget = SwitchButton(display_background_image.lower() == "true")
-        background_image_widget.connect("toggled", self.background_image_toggle)
+        self.background_image_widget = SwitchButton(display_background_image.lower() == "true")
+        self.background_image_widget.connect("toggled", self.background_image_toggle)
         
         self.table = gtk.Table(7, 2)
         self.table.set_row_spacings(TABLE_ROW_SPACING)
         self.table.set_col_spacing(0, TABLE_COLUMN_SPACING)
         table_items = [
-            (_("Font: "), font_widget),
-            (_("Font size: "), font_size_widget),
+            (_("Font: "), self.font_widget),
+            (_("Font size: "), self.font_size_widget),
             (_("Color scheme: "), self.color_scheme_widget),
             ("", color_box),
-            (_("Background transparency: "), background_transparent_widget),
-            (_("Background image: "), background_image_widget),
+            (_("Background transparency: "), self.background_transparent_widget),
+            (_("Background image: "), self.background_image_widget),
             ]
         self.table_align = gtk.Alignment()
         self.table_align.set(0, 0, 1, 1)
@@ -2292,7 +2298,7 @@ class GeneralSettings(gtk.VBox):
                 setting_config.config.set("general", "font_color", font_color)
                 setting_config.config.set("general", "background_color", background_color)
             
-            global_event.emit("change-color-precept", option_value)
+            global_event.emit("change-color-scheme", option_value)
     
     def change_font_color(self, color_button, font_color):
         self.color_scheme_widget.set_select_index(
@@ -2951,6 +2957,67 @@ class VPaned(Paned):
         self.set_orientation(gtk.ORIENTATION_VERTICAL)
         
 gobject.type_register(VPaned)
+
+class SettingDialog(PreferenceDialog):
+    '''
+    class docs
+    '''
+	
+    def __init__(self):
+        '''
+        init docs
+        '''
+        PreferenceDialog.__init__(self, 575, 390)
+        
+        restore_default_button = Button("恢复默认")
+        restore_default_button.connect("clicked", lambda w: self.restore_default())
+        
+        container_remove_all(self.right_button_box.button_box)
+        self.right_button_box.set_buttons([restore_default_button])
+        
+    def restore_default(self):
+        page_widget = self.right_box.get_children()[0]
+        if isinstance(page_widget, GeneralSettings):
+            config_dict = dict(GENERAL_CONFIG)        
+            with save_config(setting_config):
+                for (config_key, config_value) in GENERAL_CONFIG:
+                    setting_config.config.set("general", config_key, config_value)
+                    
+            (_, [font_color, background_color]) = color_style[config_dict["color_scheme"]]
+                    
+            font = config_dict["font"]
+            global_event.emit("change-font", font)
+            font_families = get_font_families()
+            page_widget.font_widget.set_select_index(font_families.index(font))
+            
+            font_size = int(config_dict["font_size"])
+            global_event.emit("change-font-size", font_size)
+            page_widget.font_size_widget.set_value(font_size)
+            
+            color_scheme = config_dict["color_scheme"]
+            global_event.emit("change-color-scheme", color_scheme)
+            page_widget.color_scheme_widget.set_select_index(
+                map(lambda (color_scheme_value, color_infos): color_scheme_value, color_style.items()).index(color_scheme))
+            
+            global_event.emit("change-font-color", font_color)
+            page_widget.font_color_widget.set_color(font_color)
+            
+            global_event.emit("change-background-color", background_color)
+            page_widget.background_color_widget.set_color(background_color)
+            
+            background_transparent = float(config_dict["background_transparent"])
+            global_event.emit("change-background-transparent", background_transparent)
+            page_widget.background_transparent_widget.set_value(background_transparent)
+            
+            background_image = config_dict["background_image"].lower == "true"
+            global_event.emit("background-image-toggle", background_image)
+            page_widget.background_image_widget.set_active(background_image)
+        elif isinstance(page_widget, KeybindSettings):
+            print "2"
+        elif isinstance(page_widget, AdvancedSettings):
+            print "3"
+
+gobject.type_register(SettingDialog)        
 
 if __name__ == "__main__":
     quake_mode = "--quake-mode" in sys.argv
