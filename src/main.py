@@ -107,6 +107,15 @@ gtk.rc_parse_string(
 global_event = EventRegister()
 focus_terminal = None
 
+STARTUP_MODE_ITEMS = [
+    (_("Normal"), "normal"),
+    (_("Maximize"), "maximize"),
+    (_("Fullscreen"), "fullscreen")]
+
+CURSOR_SHAPE_ITEMS =[(_("Block"), "block"),
+                     (_("I-beam"), "ibeam"),
+                     (_("Underline"), "underline")]
+            
 WORKSPACE_SNAPSHOT_HEIGHT = 160
 WORKSPACE_SNAPSHOT_OFFSET_TOP = 10
 WORKSPACE_SNAPSHOT_OFFSET_BOTTOM = 30
@@ -2462,49 +2471,43 @@ class AdvancedSettings(gtk.VBox):
         gtk.VBox.__init__(self)
 
         startup_mode = setting_config.config.get("advanced", "startup_mode")
-        startup_mode_items = [(_("Normal"), "normal"),
-                              (_("Maximize"), "maximize"),
-                              (_("Fullscreen"), "fullscreen")]
-        startup_widget = ComboBox(startup_mode_items, fixed_width=COMBO_BOX_WIDTH)
-        startup_widget.connect("item-selected", self.save_startup_setting)
-        startup_widget.set_select_index(unzip(startup_mode_items)[-1].index(startup_mode))
+        self.startup_widget = ComboBox(STARTUP_MODE_ITEMS, fixed_width=COMBO_BOX_WIDTH)
+        self.startup_widget.connect("item-selected", self.save_startup_setting)
+        self.startup_widget.set_select_index(unzip(STARTUP_MODE_ITEMS)[-1].index(startup_mode))
         
         startup_command = setting_config.config.get("advanced", "startup_command")
-        startup_command_widget = InputEntry(startup_command)
-        startup_command_widget.set_size(100, 23)
-        startup_command_widget.entry.connect("changed", self.startup_command_changed)
+        self.startup_command_widget = InputEntry(startup_command)
+        self.startup_command_widget.set_size(100, 23)
+        self.startup_command_widget.entry.connect("changed", self.startup_command_changed)
         
         startup_directory = setting_config.config.get("advanced", "startup_directory")
-        startup_directory_widget = InputEntry(startup_directory)
-        startup_directory_widget.set_size(100, 23)
-        startup_directory_widget.entry.connect("changed", self.startup_directory_changed)
+        self.startup_directory_widget = InputEntry(startup_directory)
+        self.startup_directory_widget.set_size(100, 23)
+        self.startup_directory_widget.entry.connect("changed", self.startup_directory_changed)
         
         cursor_shape = setting_config.config.get("advanced", "cursor_shape")
-        cursor_shape_items =[(_("Block"), "block"),
-                             (_("I-beam"), "ibeam"),
-                             (_("Underline"), "underline")]
-        cursor_shape_widget = ComboBox(cursor_shape_items, fixed_width=COMBO_BOX_WIDTH)
-        cursor_shape_widget.connect("item-selected", self.save_cursor_shape)
-        cursor_shape_widget.set_select_index(unzip(cursor_shape_items)[-1].index(cursor_shape))
+        self.cursor_shape_widget = ComboBox(CURSOR_SHAPE_ITEMS, fixed_width=COMBO_BOX_WIDTH)
+        self.cursor_shape_widget.connect("item-selected", self.save_cursor_shape)
+        self.cursor_shape_widget.set_select_index(unzip(CURSOR_SHAPE_ITEMS)[-1].index(cursor_shape))
         
         scroll_on_key = setting_config.config.get("advanced", "scroll_on_key")
-        scroll_on_key_widget = SwitchButton(scroll_on_key == "True")
-        scroll_on_key_widget.connect("toggled", self.scroll_on_key_toggle)
+        self.scroll_on_key_widget = SwitchButton(scroll_on_key == "True")
+        self.scroll_on_key_widget.connect("toggled", self.scroll_on_key_toggle)
         
         scroll_on_output = setting_config.config.get("advanced", "scroll_on_output")
-        scroll_on_output_widget = SwitchButton(scroll_on_output == "True")
-        scroll_on_output_widget.connect("toggled", self.scroll_on_output_toggle)
+        self.scroll_on_output_widget = SwitchButton(scroll_on_output == "True")
+        self.scroll_on_output_widget.connect("toggled", self.scroll_on_output_toggle)
         
         self.table = gtk.Table(7, 2)
         self.table.set_row_spacings(TABLE_ROW_SPACING)
         self.table.set_col_spacing(0, TABLE_COLUMN_SPACING)
         table_items = [
-            (_("Cursor shape: "), cursor_shape_widget),
-            (_("Window state: "), startup_widget),
-            (_("Startup command: "), startup_command_widget),
-            (_("Startup directory: "), startup_directory_widget),
-            (_("Scroll on keystroke: "), scroll_on_key_widget),
-            (_("Scroll on output: "), scroll_on_output_widget),
+            (_("Cursor shape: "), self.cursor_shape_widget),
+            (_("Window state: "), self.startup_widget),
+            (_("Startup command: "), self.startup_command_widget),
+            (_("Startup directory: "), self.startup_directory_widget),
+            (_("Scroll on keystroke: "), self.scroll_on_key_widget),
+            (_("Scroll on output: "), self.scroll_on_output_widget),
             ]
         self.table_align = gtk.Alignment()
         self.table_align.set(0, 0, 1, 1)
@@ -3021,7 +3024,32 @@ class SettingDialog(PreferenceDialog):
                     page_widget.entry_widget_dict[config_key].set_shortcut_key(config_value)
                     
         elif isinstance(page_widget, AdvancedSettings):
-            print "3"
+            with save_config(setting_config):
+                for (config_key, config_value) in ADVANCED_CONFIG:
+                    setting_config.config.set("advanced", config_key, config_value)
+                    
+            config_dict = dict(ADVANCED_CONFIG)        
+            
+            startup_mode = config_dict["startup_mode"]
+            page_widget.startup_widget.set_select_index(unzip(STARTUP_MODE_ITEMS)[-1].index(startup_mode))
+            
+            startup_command = config_dict["startup_command"]
+            page_widget.startup_command_widget.set_text(startup_command)
+
+            startup_directory = config_dict["startup_directory"]
+            page_widget.startup_directory_widget.set_text(startup_directory)
+            
+            cursor_shape = config_dict["cursor_shape"]
+            page_widget.cursor_shape_widget.set_select_index(unzip(CURSOR_SHAPE_ITEMS)[-1].index(cursor_shape))
+            global_event.emit("set-cursor-shape", cursor_shape)
+            
+            scroll_on_key = config_dict["scroll_on_key"].lower() == "true"
+            page_widget.scroll_on_key_widget.set_active(scroll_on_key)
+            global_event.emit("scroll-on-key-toggle", scroll_on_key)
+            
+            scroll_on_output = config_dict["scroll_on_output"].lower() == "true"
+            page_widget.scroll_on_output_widget.set_active(scroll_on_output)
+            global_event.emit("scroll-on-output-toggle", scroll_on_output)
 
 gobject.type_register(SettingDialog)        
 
