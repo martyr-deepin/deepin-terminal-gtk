@@ -926,6 +926,7 @@ class TerminalWrapper(vte.Terminal):
                  parent_widget=None, 
                  working_directory=None,
                  command=None,
+                 press_q_quit=False,
                  ):
         """
         Initial values.
@@ -933,8 +934,11 @@ class TerminalWrapper(vte.Terminal):
         """
         vte.Terminal.__init__(self)
         self.parent_widget = parent_widget
+        self.press_q_quit = press_q_quit
         self.set_word_chars("-A-Za-z0-9,./?%&#:_")
         self.set_scrollback_lines(-1)
+        
+        print self.press_q_quit
         
         self.change_color(
             setting_config.config.get("general", "font_color"),
@@ -1048,6 +1052,9 @@ class TerminalWrapper(vte.Terminal):
         for key_value in key_values:
             self.keymap[get_keybind(key_value)] = getattr(self, key_value)
             
+        if self.press_q_quit:
+            self.keymap["q"] = self.exit_callback
+            
     def get_correlative_window_ids(self):
         try:
             child_process_id = commands.getoutput("pgrep -P %s" % self.process_id)
@@ -1088,15 +1095,15 @@ class TerminalWrapper(vte.Terminal):
         adj.set_value(min(upper - page_size, value + page_size))
             
     def show_man_window(self, command):
-        self.split_vertically("man %s\n" % command)
+        self.split_vertically(command="man %s\n" % command, press_q_quit=True)
             
-    def split_vertically(self, command=None):
+    def split_vertically(self, command=None, press_q_quit=False):
         if self.parent_widget:
-            self.parent_widget.split(TerminalGrid.SPLIT_VERTICALLY, command),
+            self.parent_widget.split(TerminalGrid.SPLIT_VERTICALLY, command=command, press_q_quit=press_q_quit),
         
-    def split_horizontally(self, command=None):
+    def split_horizontally(self, command=None, press_q_quit=False):
         if self.parent_widget:
-            self.parent_widget.split(TerminalGrid.SPLIT_HORIZONTALLY, command),
+            self.parent_widget.split(TerminalGrid.SPLIT_HORIZONTALLY, command=command, press_q_quit=press_q_quit),
             
     def change_color(self, font_color, background_color):
         self.set_colors(
@@ -1298,6 +1305,7 @@ class TerminalGrid(gtk.VBox):
                  terminal=None,
                  working_directory=None,
                  command=None,
+                 press_q_quit=False,
                  ):
         """
         Initial values
@@ -1314,13 +1322,15 @@ class TerminalGrid(gtk.VBox):
             self.terminal = TerminalWrapper(
                 self, 
                 working_directory=working_directory,
-                command=command)
+                command=command,
+                press_q_quit=press_q_quit,
+                )
 
         self.is_parent = False
         self.paned = None
         self.add(self.terminal)
 
-    def split(self, split_policy, command=None):
+    def split(self, split_policy, command=None, press_q_quit=False):
         """
         Split window.
         :param split_policy: used to determine vsplit or hsplit.
@@ -1341,7 +1351,11 @@ class TerminalGrid(gtk.VBox):
             self.paned.set_position(width/2)
             
         self.paned.pack1(TerminalGrid(self, self.terminal), True, True)
-        self.paned.pack2(TerminalGrid(self, working_directory=working_directory, command=command), True, True)
+        self.paned.pack2(TerminalGrid(
+                self, 
+                working_directory=working_directory, 
+                command=command,
+                press_q_quit=press_q_quit), True, True)
 
         self.add(self.paned)
         self.show_all()
