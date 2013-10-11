@@ -2365,6 +2365,8 @@ class KeybindSettings(ScrolledWindow):
         ScrolledWindow.__init__(self)
         self.box = gtk.VBox()
         
+        self.entry_widget_dict = {}
+        
         key_name_dict = OrderedDict(
             [("copy_clipboard", _("Copy")),
              ("paste_clipboard", _("Paste")),
@@ -2415,7 +2417,8 @@ class KeybindSettings(ScrolledWindow):
                 0, 1, 
                 index, index + 1,
                 )
-            shortcutkey_entry = KeybindEntry(key_value, key_bind)
+            self.entry_widget_dict[key_value] = KeybindEntry(key_value, key_bind)
+            shortcutkey_entry = self.entry_widget_dict[key_value]
             shortcutkey_entry.set_size(170, 23)
             table.attach(
                 shortcutkey_entry,
@@ -3013,7 +3016,10 @@ class SettingDialog(PreferenceDialog):
             global_event.emit("background-image-toggle", background_image)
             page_widget.background_image_widget.set_active(background_image)
         elif isinstance(page_widget, KeybindSettings):
-            print "2"
+            with save_config(setting_config):
+                for (config_key, config_value) in KEYBIND_CONFIG:
+                    page_widget.entry_widget_dict[config_key].set_shortcut_key(config_value)
+                    
         elif isinstance(page_widget, AdvancedSettings):
             print "3"
 
