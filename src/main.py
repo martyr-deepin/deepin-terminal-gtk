@@ -237,6 +237,9 @@ MATCH_COMMAND = 4
 
 MIN_FONT_SIZE = 8
 
+def is_bool_string(string_value):
+    return string_value.lower() == "true"
+
 def get_active_working_directory(toplevel_widget):
     '''
     Get active working directory with given toplevel widget.
@@ -440,7 +443,7 @@ class Terminal(object):
         
     def change_background_image(self):
         display_background_image = setting_config.config.get("general", "background_image")
-        if display_background_image.lower() == "true":
+        if is_bool_string(display_background_image):
             for terminal in get_match_children(self.application.window, TerminalWrapper):
                 set_terminal_background(terminal)
         
@@ -1043,7 +1046,7 @@ class TerminalWrapper(vte.Terminal):
         
     def init_background(self):
         display_background_image = setting_config.config.get("general", "background_image")
-        if display_background_image.lower() == "true":
+        if is_bool_string(display_background_image):
             set_terminal_background(self)
         
     def generate_keymap(self):
@@ -2264,8 +2267,8 @@ class GeneralSettings(gtk.VBox):
         self.background_transparent_widget.set_value(float(transparent))
         self.background_transparent_widget.connect("value-changed", self.save_background_transparent)
         
-        display_background_image = setting_config.config.get("general", "background_image")
-        self.background_image_widget = SwitchButton(display_background_image.lower() == "true")
+        display_background_image = is_bool_string(setting_config.config.get("general", "background_image"))
+        self.background_image_widget = SwitchButton(display_background_image)
         self.background_image_widget.connect("toggled", self.background_image_toggle)
         
         self.table = gtk.Table(7, 2)
@@ -3015,7 +3018,7 @@ class SettingDialog(PreferenceDialog):
             global_event.emit("change-background-transparent", background_transparent)
             page_widget.background_transparent_widget.set_value(background_transparent)
             
-            background_image = config_dict["background_image"].lower == "true"
+            background_image = is_bool_string(config_dict["background_image"])
             global_event.emit("background-image-toggle", background_image)
             page_widget.background_image_widget.set_active(background_image)
         elif isinstance(page_widget, KeybindSettings):
@@ -3043,11 +3046,11 @@ class SettingDialog(PreferenceDialog):
             page_widget.cursor_shape_widget.set_select_index(unzip(CURSOR_SHAPE_ITEMS)[-1].index(cursor_shape))
             global_event.emit("set-cursor-shape", cursor_shape)
             
-            scroll_on_key = config_dict["scroll_on_key"].lower() == "true"
+            scroll_on_key = is_bool_string(config_dict["scroll_on_key"])
             page_widget.scroll_on_key_widget.set_active(scroll_on_key)
             global_event.emit("scroll-on-key-toggle", scroll_on_key)
             
-            scroll_on_output = config_dict["scroll_on_output"].lower() == "true"
+            scroll_on_output = is_bool_string(config_dict["scroll_on_output"])
             page_widget.scroll_on_output_widget.set_active(scroll_on_output)
             global_event.emit("scroll-on-output-toggle", scroll_on_output)
 
