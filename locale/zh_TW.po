@@ -58,11 +58,11 @@ msgstr "黃底黑字"
 
 #: ../src/main.py:190
 msgid "Black on white"
-msgstr "白底黑字"
+msgstr "黑底白字"
 
 #: ../src/main.py:191
 msgid "White on black"
-msgstr "黑底白字"
+msgstr "白底黑字"
 
 #: ../src/main.py:192
 msgid "Green on black"
