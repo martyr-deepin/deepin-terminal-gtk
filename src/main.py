@@ -61,7 +61,7 @@ PROJECT_NAME = "deepin-terminal"
 app_theme = init_skin(
     PROJECT_NAME,
     "1.0",
-    "03",
+    "06",
     os.path.join(get_parent_dir(__file__, 2), "skin"),
     os.path.join(get_parent_dir(__file__, 2), "app_theme")
 )
