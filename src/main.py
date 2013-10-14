@@ -2978,7 +2978,7 @@ class SettingDialog(PreferenceDialog):
         '''
         PreferenceDialog.__init__(self, 575, 390)
         
-        restore_default_button = Button("恢复默认")
+        restore_default_button = Button(_("Reset"))
         restore_default_button.connect("clicked", lambda w: self.restore_default())
         
         container_remove_all(self.right_button_box.button_box)
