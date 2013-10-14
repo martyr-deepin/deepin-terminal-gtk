@@ -798,7 +798,7 @@ class Terminal(object):
         self.new_workspace(self.working_directory)
                 
     def new_workspace(self, working_directory=None):
-        if working_directory == None:
+        if working_directory == None or not(os.path.exists(working_directory)):
             working_directory = get_active_working_directory(self.application.window)
         
         workspace = Workspace()
