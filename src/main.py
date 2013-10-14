@@ -55,6 +55,7 @@ import sys
 import traceback
 import urllib
 import vte
+import getopt
 
 PROJECT_NAME = "deepin-terminal"
 
@@ -279,11 +280,12 @@ class Terminal(object):
     Terminal class.
     """
 
-    def __init__(self, quake_mode=False):
+    def __init__(self, quake_mode=False, working_directory=None):
         """
         Init Terminal class.
         """
         self.quake_mode = quake_mode
+        self.working_directory = working_directory
         if self.quake_mode:
             UniqueService(
                 dbus.service.BusName(APP_DBUS_NAME, bus=dbus.SessionBus()),
@@ -346,7 +348,7 @@ class Terminal(object):
         self.application.window.connect("notify::is-active", self.window_is_active)
         self.application.window.connect("window-resize", self.set_window_resize)
         
-        self.new_workspace()
+        self.first_workspace()
         
         self.general_settings = GeneralSettings()
         self.keybind_settings = KeybindSettings()
@@ -792,8 +794,12 @@ class Terminal(object):
                 child.save_workspace_snapshot()
                 self.terminal_box.remove(child)
         
-    def new_workspace(self):
-        working_directory = get_active_working_directory(self.application.window)
+    def first_workspace(self):
+        self.new_workspace(self.working_directory)
+                
+    def new_workspace(self, working_directory=None):
+        if working_directory == None:
+            working_directory = get_active_working_directory(self.application.window)
         
         workspace = Workspace()
         terminal_grid = TerminalGrid(working_directory=working_directory)
@@ -3058,5 +3064,14 @@ gobject.type_register(SettingDialog)
 
 if __name__ == "__main__":
     quake_mode = "--quake-mode" in sys.argv
+    opts, args = getopt.getopt(sys.argv[1:], "", ["quake-mode", "working-directory="])  
+    quake_mode = False
+    working_directory = None
+    for (option_name, option_value) in opts:
+        if option_name == "--quake-mode":
+            quake_mode = True
+        elif option_name == "--working-directory":
+            working_directory = option_value
+            
     if (not quake_mode) or (not is_exists(APP_DBUS_NAME, APP_OBJECT_NAME)):
-        Terminal(quake_mode).run()
+        Terminal(quake_mode, working_directory).run()
