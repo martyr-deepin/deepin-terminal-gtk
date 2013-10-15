@@ -1,30 +1,38 @@
-This is Deepin Terminal based on python-vte.
+这是基于 python-vte 开发的深度终端
 
-深度终端快捷键
+深度终端默认快捷键
 
-拷贝		    Ctrl + C
-粘贴		    Ctrl + V
+拷贝		    Ctrl + Shift + C
+粘贴		    Ctrl + Shift + V
 选词		    左键双击
 打开地址	    	Ctrl + 左键
-垂直分屏	    	Ctrl + v
-水平分屏	    	Ctrl + h
-关闭终端	    	Ctrl + d
-选择上面的终端     Alt + Up
-选择下面的终端     Alt + Down
-选择左面的终端     Alt + Left
-选择右面的终端     Alt + Right
-选择上面的终端     Alt + k
-选择下面的终端     Alt + j
-选择左面的终端     Alt + h
-选择右面的终端     Alt + l
+纵向分屏	    	Ctrl + V
+横向分屏	    	Ctrl + H
+
+关闭当前窗口    Ctrl + Shift + W
+关闭其他窗口    Ctrl + Shift + Q
+向上滚动一屏    Alt + ，
+向下滚动一屏    Alt + .
+
+选择上面的终端     Alt + K
+选择下面的终端     Alt + J
+选择左面的终端     Alt + H
+选择右面的终端     Alt + L
+
 放大字体	    	Ctrl + =
 缩小字体	    	Ctrl + -
 默认大小	    	Ctrl + 0
-新建工作区	    Ctrl + /
-关闭工作区	    Ctrl + ;
+
+新建工作区	      Ctrl + /
+关闭工作区	      Ctrl + shft + ：
 上一个工作区    	Ctrl + ,
 下一个工作区    	Ctrl + .
-先前搜索	    	Ctrl + '
-先后搜索	    	Ctrl + "
-全屏		    F11
-显示快捷键	    Ctrl + ?
+
+向前搜索	    	Ctrl + '
+向后搜索	    	Ctrl + "
+
+全屏		            F11
+显示快捷键	        Ctrl + Shift + ?
+建立ssh连接         Ctrl+9
+显示相关子进程窗口  Ctrl+8
+
