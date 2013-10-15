@@ -116,6 +116,10 @@ STARTUP_MODE_ITEMS = [
 CURSOR_SHAPE_ITEMS =[(_("Block"), "block"),
                      (_("I-beam"), "ibeam"),
                      (_("Underline"), "underline")]
+
+CURSOR_BLINK_MODE_ITEMS =[(_("System"), "system"),
+                          (_("On"), "on"),
+                          (_("Off"), "off")]
             
 WORKSPACE_SNAPSHOT_HEIGHT = 160
 WORKSPACE_SNAPSHOT_OFFSET_TOP = 10
@@ -197,6 +201,7 @@ ADVANCED_CONFIG = [
     ("startup_command", ""),
     ("startup_directory", ""),
     ("cursor_shape", "block"),
+    ("cursor_blink_mode", "system"),
     ("scroll_on_key", "True"),
     ("scroll_on_output", "False"),
     ]
@@ -373,6 +378,7 @@ class Terminal(object):
         global_event.register_event("scroll-on-key-toggle", self.scroll_on_key_toggle)
         global_event.register_event("scroll-on-output-toggle", self.scroll_on_output_toggle)
         global_event.register_event("set-cursor-shape", self.set_cursor_shape)
+        global_event.register_event("set-cursor-blink-mode", self.set_cursor_blink_mode)
         global_event.register_event("change-font", self.change_font)
         global_event.register_event("change-font-size", self.change_font_size)
         global_event.register_event("change-color-scheme", self.change_color_scheme)
@@ -514,6 +520,10 @@ class Terminal(object):
     def set_cursor_shape(self, cursor_shape):
         for terminal in get_match_children(self.application.window, TerminalWrapper):
             terminal.change_cursor_shape(cursor_shape)
+
+    def set_cursor_blink_mode(self, cursor_blink_mode):
+        for terminal in get_match_children(self.application.window, TerminalWrapper):
+            terminal.change_cursor_blink_mode(cursor_blink_mode)
         
     def scroll_on_key_toggle(self, status):
         for terminal in get_match_children(self.application.window, TerminalWrapper):
@@ -982,6 +992,9 @@ class TerminalWrapper(vte.Terminal):
         cursor_shape = setting_config.config.get("advanced", "cursor_shape")
         self.change_cursor_shape(cursor_shape)
         
+        cursor_blink_mode = setting_config.config.get("advanced", "cursor_blink_mode")
+        self.change_cursor_blink_mode(cursor_blink_mode)
+
         self.default_font = setting_config.config.get("general", "font")
         self.default_font_size = int(setting_config.config.get("general", "font_size"))
         self.current_font_size = self.default_font_size
@@ -1147,7 +1160,15 @@ class TerminalWrapper(vte.Terminal):
             self.set_cursor_shape(vte.CURSOR_SHAPE_IBEAM)
         elif cursor_shape == "underline":
             self.set_cursor_shape(vte.CURSOR_SHAPE_UNDERLINE)
-        
+
+    def change_cursor_blink_mode(self, cursor_blink_mode):
+        if cursor_blink_mode == "system":
+            self.set_cursor_blink_mode(vte.CURSOR_BLINK_SYSTEM)
+        elif cursor_blink_mode == "on":
+            self.set_cursor_blink_mode(vte.CURSOR_BLINK_ON)
+        elif cursor_blink_mode == "off":
+            self.set_cursor_blink_mode(vte.CURSOR_BLINK_OFF)
+
     def on_scroll(self, widget, event):
         if self.is_ctrl_press(event):
             global_event.emit("adjust-background-transparent", event.direction)
@@ -2499,6 +2520,11 @@ class AdvancedSettings(gtk.VBox):
         self.cursor_shape_widget.connect("item-selected", self.save_cursor_shape)
         self.cursor_shape_widget.set_select_index(unzip(CURSOR_SHAPE_ITEMS)[-1].index(cursor_shape))
         
+        cursor_blink_mode = setting_config.config.get("advanced", "cursor_blink_mode")
+        self.cursor_blink_mode_widget = ComboBox(CURSOR_BLINK_MODE_ITEMS, fixed_width=COMBO_BOX_WIDTH)
+        self.cursor_blink_mode_widget.connect("item-selected", self.save_cursor_blink_mode)
+        self.cursor_blink_mode_widget.set_select_index(unzip(CURSOR_BLINK_MODE_ITEMS)[-1].index(cursor_blink_mode))
+
         scroll_on_key = setting_config.config.get("advanced", "scroll_on_key")
         self.scroll_on_key_widget = SwitchButton(scroll_on_key == "True")
         self.scroll_on_key_widget.connect("toggled", self.scroll_on_key_toggle)
@@ -2512,6 +2538,7 @@ class AdvancedSettings(gtk.VBox):
         self.table.set_col_spacing(0, TABLE_COLUMN_SPACING)
         table_items = [
             (_("Cursor shape: "), self.cursor_shape_widget),
+            (_("Cursor blink: "), self.cursor_blink_mode_widget),
             (_("Window state: "), self.startup_widget),
             (_("Startup command: "), self.startup_command_widget),
             (_("Startup directory: "), self.startup_directory_widget),
@@ -2536,6 +2563,12 @@ class AdvancedSettings(gtk.VBox):
         
         global_event.emit("set-cursor-shape", option_value)
         
+    def save_cursor_blink_mode(self, combo_box, option_name, option_value, index):
+        with save_config(setting_config):
+            setting_config.config.set("advanced", "cursor_blink_mode", option_value)
+
+        global_event.emit("set-cursor-blink-mode", option_value)
+
     def startup_command_changed(self, entry, startup_command):
         with save_config(setting_config):    
             setting_config.config.set("advanced", "startup_command", startup_command)
@@ -3051,6 +3084,11 @@ class SettingDialog(PreferenceDialog):
             cursor_shape = config_dict["cursor_shape"]
             page_widget.cursor_shape_widget.set_select_index(unzip(CURSOR_SHAPE_ITEMS)[-1].index(cursor_shape))
             global_event.emit("set-cursor-shape", cursor_shape)
+            
+            cursor_blink_mode = config_dict["cursor_blink_mode"]
+            page_widget.cursor_blink_mode_widget.set_select_index(
+                unzip(CURSOR_BLINK_MODE_ITEMS)[-1].index(cursor_blink_mode))
+            global_event.emit("set-cursor-blink-mode", cursor_blink_mode)
             
             scroll_on_key = is_bool_string(config_dict["scroll_on_key"])
             page_widget.scroll_on_key_widget.set_active(scroll_on_key)
