@@ -427,6 +427,8 @@ class Terminal(object):
             focus_terminal.grab_focus()
         
     def quake(self):
+        global focus_terminal
+        
         if self.application.window.get_visible():
             if self.application.window.props.is_active:
                 self.application.window.hide_all()
@@ -435,6 +437,9 @@ class Terminal(object):
         else:
             self.application.window.show_all()
             self.fullscreen()
+
+        if focus_terminal:
+            focus_terminal.grab_focus()
         
     def background_image_toggle(self, status):
         for terminal in get_match_children(self.application.window, TerminalWrapper):
