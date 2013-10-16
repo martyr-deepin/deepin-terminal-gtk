@@ -323,7 +323,14 @@ class Terminal(object):
         self.terminal_align.set(0, 0, 1, 1)
         self.terminal_align.set_padding(0, self.normal_padding, self.normal_padding, self.normal_padding)
         self.terminal_box = gtk.VBox()
+        self.terminal_align.add(self.terminal_box)
+        self.application.main_box.pack_start(self.terminal_align)
+        
         self.workspace_list = []
+        self.first_workspace()
+        
+        self.application.window.show_window()
+        
         self.workspace_switcher = WorkspaceSwitcher(
             self.get_workspaces,
             self.switch_to_workspace
@@ -334,26 +341,9 @@ class Terminal(object):
         self.helper_window = HelperWindow()
         self.remote_login = RemoteLogin()
         
-        self.animation_save_width = None
-        self.animation_save_height = None
-        self.animation_src_width = None
-        self.animation_src_height = None
-        self.animation_target_width = None
-        self.animation_target_height = None
-        
-        self.terminal_align.add(self.terminal_box)
-        self.application.main_box.pack_start(self.terminal_align)
-        
-        self.generate_keymap()
-        
         self.is_window_resize_by_user = False
         
-        self.application.window.connect("key-press-event", self.key_press_terminal)
-        self.application.window.connect("key-release-event", self.key_release_terminal)
-        self.application.window.connect("notify::is-active", self.window_is_active)
-        self.application.window.connect("window-resize", self.set_window_resize)
-        
-        self.first_workspace()
+        self.generate_keymap()
         
         self.general_settings = GeneralSettings()
         self.keybind_settings = KeybindSettings()
@@ -368,6 +358,10 @@ class Terminal(object):
         self.application.titlebar.menu_button.connect("button-press-event", self.show_preference_menu)
         self.application.window.connect("button-press-event", self.button_press_terminal)
         self.application.window.connect("destroy", lambda w: self.quit())
+        self.application.window.connect("key-press-event", self.key_press_terminal)
+        self.application.window.connect("key-release-event", self.key_release_terminal)
+        self.application.window.connect("notify::is-active", self.window_is_active)
+        self.application.window.connect("window-resize", self.set_window_resize)
         
         global_event.register_event("close-workspace", self.close_workspace)
         global_event.register_event("change-window-title", self.change_window_title)
@@ -950,7 +944,8 @@ class Terminal(object):
         elif startup_mode == "fullscreen":
             self.toggle_full_screen()
             
-        self.application.run()
+        # self.application.run()
+        gtk.main()    
 
 class TerminalWrapper(vte.Terminal):
     """
