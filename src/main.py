@@ -204,7 +204,7 @@ ADVANCED_CONFIG = [
     ("cursor_blink_mode", "system"),
     ("scroll_on_key", "True"),
     ("scroll_on_output", "False"),
-    ("copy_on_selection", "True"),
+    ("copy_on_selection", "False"),
     ]
 
 DEFAULT_CONFIG = [
