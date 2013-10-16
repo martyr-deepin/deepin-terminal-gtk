@@ -204,6 +204,7 @@ ADVANCED_CONFIG = [
     ("cursor_blink_mode", "system"),
     ("scroll_on_key", "True"),
     ("scroll_on_output", "False"),
+    ("copy_on_selection", "False"),
     ]
 
 DEFAULT_CONFIG = [
@@ -280,6 +281,9 @@ def set_terminal_background(terminal):
     
     terminal.set_background_image(background_pixbuf)
     
+def do_copy_on_selection_toggle(terminal):
+    terminal.copy_clipboard()
+
 class Terminal(object):
     """
     Terminal class.
@@ -371,6 +375,7 @@ class Terminal(object):
         global_event.register_event("adjust-background-transparent", self.adjust_background_transparent)
         global_event.register_event("scroll-on-key-toggle", self.scroll_on_key_toggle)
         global_event.register_event("scroll-on-output-toggle", self.scroll_on_output_toggle)
+        global_event.register_event("copy-on-selection-toggle", self.copy_on_selection_toggle)
         global_event.register_event("set-cursor-shape", self.set_cursor_shape)
         global_event.register_event("set-cursor-blink-mode", self.set_cursor_blink_mode)
         global_event.register_event("change-font", self.change_font)
@@ -531,6 +536,13 @@ class Terminal(object):
     def scroll_on_output_toggle(self, status):
         for terminal in get_match_children(self.application.window, TerminalWrapper):
             terminal.set_scroll_on_output(status)
+        
+    def copy_on_selection_toggle(self, status):
+        for terminal in get_match_children(self.application.window, TerminalWrapper):
+            if(status is True):
+                terminal.connect("selection-changed", do_copy_on_selection_toggle)
+            else:
+                terminal.disconnect_by_func(do_copy_on_selection_toggle)
         
     def adjust_background_transparent(self, direction):
         if not direction in [gtk.gdk.SCROLL_UP, gtk.gdk.SCROLL_DOWN]:
@@ -988,6 +1000,10 @@ class TerminalWrapper(vte.Terminal):
         
         scroll_on_output = get_config("advanced", "scroll_on_output")
         self.set_scroll_on_output(scroll_on_output == "True")
+        
+        copy_on_selection = get_config("advanced", "copy_on_selection")
+        if(copy_on_selection == "True"):
+            self.connect("selection-changed", do_copy_on_selection_toggle)
         
         cursor_shape = get_config("advanced", "cursor_shape")
         self.change_cursor_shape(cursor_shape)
@@ -2533,6 +2549,10 @@ class AdvancedSettings(gtk.VBox):
         self.scroll_on_output_widget = SwitchButton(scroll_on_output == "True")
         self.scroll_on_output_widget.connect("toggled", self.scroll_on_output_toggle)
         
+        copy_on_selection = get_config("advanced", "copy_on_selection")
+        self.copy_on_selection_widget = SwitchButton(copy_on_selection == "True")
+        self.copy_on_selection_widget.connect("toggled", self.copy_on_selection_toggle)
+        
         self.table = gtk.Table(7, 2)
         self.table.set_row_spacings(TABLE_ROW_SPACING)
         self.table.set_col_spacing(0, TABLE_COLUMN_SPACING)
@@ -2544,6 +2564,7 @@ class AdvancedSettings(gtk.VBox):
             (_("Startup directory: "), self.startup_directory_widget),
             (_("Scroll on keystroke: "), self.scroll_on_key_widget),
             (_("Scroll on output: "), self.scroll_on_output_widget),
+            (_("Copy on selection: "), self.copy_on_selection_widget),
             ]
         self.table_align = gtk.Alignment()
         self.table_align.set(0, 0, 1, 1)
@@ -2588,6 +2609,12 @@ class AdvancedSettings(gtk.VBox):
             setting_config.config.set("advanced", "scroll_on_output", toggle_button.get_active())
         
         global_event.emit("scroll-on-output-toggle", toggle_button.get_active())
+        
+    def copy_on_selection_toggle(self, toggle_button):
+        with save_config(setting_config):
+            setting_config.config.set("advanced", "copy_on_selection", toggle_button.get_active())
+        
+        global_event.emit("copy-on-selection-toggle", toggle_button.get_active())
         
     def fill_table(self, table, table_items):
         for (index, (setting_name, setting_widget)) in enumerate(table_items):
@@ -3112,6 +3139,10 @@ class SettingDialog(PreferenceDialog):
             scroll_on_output = is_bool_string(config_dict["scroll_on_output"])
             page_widget.scroll_on_output_widget.set_active(scroll_on_output)
             global_event.emit("scroll-on-output-toggle", scroll_on_output)
+
+            copy_on_selection = is_bool_string(config_dict["copy_on_selection"])
+            page_widget.copy_on_selection_widget.set_active(copy_on_selection)
+            global_event.emit("copy-on-selection-toggle", copy_on_selection)
 
 gobject.type_register(SettingDialog)        
 
