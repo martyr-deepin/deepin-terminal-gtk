@@ -3025,8 +3025,11 @@ class SettingDialog(PreferenceDialog):
         restore_default_button = Button(_("Reset"))
         restore_default_button.connect("clicked", lambda w: self.restore_default())
         
+        close_button = Button(_("Close"))
+        close_button.connect("clicked", lambda w: self.hide_all())
+        
         container_remove_all(self.right_button_box.button_box)
-        self.right_button_box.set_buttons([restore_default_button])
+        self.right_button_box.set_buttons([restore_default_button, close_button])
         
     def restore_default(self):
         page_widget = self.right_box.get_children()[0]
