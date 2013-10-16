@@ -601,6 +601,8 @@ class Terminal(object):
                     
                 menu_items.append((None, menu_name, lambda : terminal.open_match_string(match_type, match_string)))
                 
+        menu_items.append((None, _("Open current directory"), lambda : terminal.open_match_string(MATCH_DIRECTORY, terminal.get_working_directory())))        
+                
         if correlative_window_ids != None and correlative_window_ids != [""]:
             menu_items.append((
                     None,
