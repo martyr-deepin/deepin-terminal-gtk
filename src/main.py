@@ -301,8 +301,8 @@ class Terminal(object):
         
         self.application = Application()
         
-        window_width = int(setting_config.config.get("save_state", "window_width", 664))
-        window_height = int(setting_config.config.get("save_state", "window_height", 466))
+        window_width = int(get_config("save_state", "window_width", 664))
+        window_height = int(get_config("save_state", "window_height", 466))
         window_min_width = 200
         window_min_height = 150
         self.application.window.set_default_size(window_width, window_height)
@@ -450,7 +450,7 @@ class Terminal(object):
                 terminal.reset_background()
         
     def change_background_image(self):
-        display_background_image = setting_config.config.get("general", "background_image")
+        display_background_image = get_config("general", "background_image")
         if is_bool_string(display_background_image):
             for terminal in get_match_children(self.application.window, TerminalWrapper):
                 set_terminal_background(terminal)
@@ -469,7 +469,7 @@ class Terminal(object):
         self.search_bar.generate_keymap()
         
     def generate_keymap(self):
-        get_keybind = lambda key_value: setting_config.config.get("keybind", key_value)
+        get_keybind = lambda key_value: get_config("keybind", key_value)
         
         key_values = [
             "toggle_full_screen",
@@ -501,19 +501,19 @@ class Terminal(object):
             )
                 
     def change_color_scheme(self, value):
-        font_color = setting_config.config.get("general", "font_color")
-        background_color = setting_config.config.get("general", "background_color")
+        font_color = get_config("general", "font_color")
+        background_color = get_config("general", "background_color")
         for terminal in get_match_children(self.application.window, TerminalWrapper):
             terminal.change_color(font_color, background_color)
             terminal.background_update()
         
     def change_font(self, font):    
-        font_size = setting_config.config.get("general", "font_size")
+        font_size = get_config("general", "font_size")
         for terminal in get_match_children(self.application.window, TerminalWrapper):
             terminal.change_font(font, font_size)
 
     def change_font_size(self, font_size):    
-        font = setting_config.config.get("general", "font")
+        font = get_config("general", "font")
         for terminal in get_match_children(self.application.window, TerminalWrapper):
             terminal.change_font(font, font_size)
         
@@ -537,7 +537,7 @@ class Terminal(object):
         if not direction in [gtk.gdk.SCROLL_UP, gtk.gdk.SCROLL_DOWN]:
             return
         
-        transparent = setting_config.config.get("general", "background_transparent")
+        transparent = get_config("general", "background_transparent")
         if direction == gtk.gdk.SCROLL_UP:
             transparent = min(float(transparent) + TRANSPARENT_OFFSET, 1.0)
         elif direction == gtk.gdk.SCROLL_DOWN:
@@ -944,7 +944,7 @@ class Terminal(object):
         """
         Main function.
         """
-        startup_mode = setting_config.config.get("advanced", "startup_mode", "normal")
+        startup_mode = get_config("advanced", "startup_mode", "normal")
         if startup_mode == "maximize":
             self.application.window.maximize()
         elif startup_mode == "fullscreen":
@@ -973,34 +973,32 @@ class TerminalWrapper(vte.Terminal):
         self.set_word_chars("-A-Za-z0-9,./?%&#:_")
         self.set_scrollback_lines(-1)
         
-        print self.press_q_quit
-        
         self.change_color(
-            setting_config.config.get("general", "font_color"),
-            setting_config.config.get("general", "background_color")
+            get_config("general", "font_color"),
+            get_config("general", "background_color")
             )
         
-        transparent = setting_config.config.get("general", "background_transparent")
+        transparent = get_config("general", "background_transparent")
         self.set_transparent(float(transparent))
         
-        scroll_on_key = setting_config.config.get("advanced", "scroll_on_key")
+        scroll_on_key = get_config("advanced", "scroll_on_key")
         self.set_scroll_on_keystroke(scroll_on_key == "True")
         
-        scroll_on_output = setting_config.config.get("advanced", "scroll_on_output")
+        scroll_on_output = get_config("advanced", "scroll_on_output")
         self.set_scroll_on_output(scroll_on_output == "True")
         
-        cursor_shape = setting_config.config.get("advanced", "cursor_shape")
+        cursor_shape = get_config("advanced", "cursor_shape")
         self.change_cursor_shape(cursor_shape)
         
-        cursor_blink_mode = setting_config.config.get("advanced", "cursor_blink_mode")
+        cursor_blink_mode = get_config("advanced", "cursor_blink_mode")
         self.change_cursor_blink_mode(cursor_blink_mode)
 
-        self.default_font = setting_config.config.get("general", "font")
-        self.default_font_size = int(setting_config.config.get("general", "font_size"))
+        self.default_font = get_config("general", "font")
+        self.default_font_size = int(get_config("general", "font_size"))
         self.current_font_size = self.default_font_size
         self.change_font(self.default_font, self.current_font_size)
         
-        startup_directory = setting_config.config.get("advanced", "startup_directory")
+        startup_directory = get_config("advanced", "startup_directory")
         directory = commands.getoutput("echo %s" % startup_directory)
         if os.path.exists(directory):
             os.chdir(directory)
@@ -1010,7 +1008,7 @@ class TerminalWrapper(vte.Terminal):
             # child_feed have cd information after terminal created.
             os.chdir(working_directory)
             
-        startup_command = setting_config.config.get("advanced", "startup_command")    
+        startup_command = get_config("advanced", "startup_command")    
         if startup_command == "":
             fork_command = os.getenv("SHELL")
         else:
@@ -1064,12 +1062,12 @@ class TerminalWrapper(vte.Terminal):
         self.match_set_cursor_type(self.file_match_tag, gtk.gdk.HAND2)
         
     def init_background(self):
-        display_background_image = setting_config.config.get("general", "background_image")
+        display_background_image = get_config("general", "background_image")
         if is_bool_string(display_background_image):
             set_terminal_background(self)
         
     def generate_keymap(self):
-        get_keybind = lambda key_value: setting_config.config.get("keybind", key_value)
+        get_keybind = lambda key_value: get_config("keybind", key_value)
         
         key_values = [
             "split_vertically",
@@ -1836,7 +1834,7 @@ class SearchBar(gtk.Window):
         self.entry.connect("changed", self.search_terminal)
         
     def generate_keymap(self):
-        get_keybind = lambda key_value: setting_config.config.get("keybind", key_value)
+        get_keybind = lambda key_value: get_config("keybind", key_value)
         
         key_values = [
             "search_forward",
@@ -2254,31 +2252,31 @@ class GeneralSettings(gtk.VBox):
         '''
         gtk.VBox.__init__(self)
         
-        font = setting_config.config.get("general", "font")
+        font = get_config("general", "font")
         font_families = get_font_families()
         font_items = map(lambda i: (i, i), font_families)
         self.font_widget = ComboBox(font_items, droplist_height=200, fixed_width=COMBO_BOX_WIDTH)
         self.font_widget.set_select_index(font_families.index(font))
         self.font_widget.connect("item-selected", self.change_font)
         
-        font_size = setting_config.config.get("general", "font_size")
+        font_size = get_config("general", "font_size")
         self.font_size_widget = SpinBox(lower=1, step=1)
         self.font_size_widget.set_value(int(font_size))
         self.font_size_widget.connect("value-changed", self.change_font_size)
         self.font_size_widget.value_entry.connect("changed", self.change_font_size)
         
-        color_scheme = setting_config.config.get("general", "color_scheme")
+        color_scheme = get_config("general", "color_scheme")
         self.color_items =map(lambda (color_scheme_value, (color_scheme_name, _)): (color_scheme_name, color_scheme_value), color_style.items())
         self.color_scheme_widget = ComboBox(self.color_items, fixed_width=COMBO_BOX_WIDTH)
         self.color_scheme_widget.set_select_index(
             map(lambda (color_scheme_value, color_infos): color_scheme_value, color_style.items()).index(color_scheme))
         self.color_scheme_widget.connect("item-selected", self.change_color_scheme)
         
-        font_color = setting_config.config.get("general", "font_color")
+        font_color = get_config("general", "font_color")
         self.font_color_widget = ColorButton(color=font_color)
         self.font_color_widget.connect("color-select", self.change_font_color)
         
-        background_color = setting_config.config.get("general", "background_color")
+        background_color = get_config("general", "background_color")
         self.background_color_widget = ColorButton(background_color)
         self.background_color_widget.connect("color-select", self.change_background_color)
         
@@ -2289,12 +2287,12 @@ class GeneralSettings(gtk.VBox):
         color_box.pack_start(color_box_split, False, False)
         color_box.pack_start(self.background_color_widget, False, False)
         
-        transparent = setting_config.config.get("general", "background_transparent")
+        transparent = get_config("general", "background_transparent")
         self.background_transparent_widget = HScalebar(value_min=MIN_TRANSPARENT, value_max=1)
         self.background_transparent_widget.set_value(float(transparent))
         self.background_transparent_widget.connect("value-changed", self.save_background_transparent)
         
-        display_background_image = is_bool_string(setting_config.config.get("general", "background_image"))
+        display_background_image = is_bool_string(get_config("general", "background_image"))
         self.background_image_widget = SwitchButton(display_background_image)
         self.background_image_widget.connect("toggled", self.background_image_toggle)
         
@@ -2450,7 +2448,7 @@ class KeybindSettings(ScrolledWindow):
         
     def fill_table(self, table, key_name_dict):
         for (index, (key_value, key_name)) in enumerate(key_name_dict.items()):
-            key_bind = setting_config.config.get("keybind", key_value)
+            key_bind = get_config("keybind", key_value)
             table.attach(
                 Label(key_name, text_x_align=ALIGN_END),
                 0, 1, 
@@ -2500,36 +2498,36 @@ class AdvancedSettings(gtk.VBox):
         '''
         gtk.VBox.__init__(self)
 
-        startup_mode = setting_config.config.get("advanced", "startup_mode")
+        startup_mode = get_config("advanced", "startup_mode")
         self.startup_widget = ComboBox(STARTUP_MODE_ITEMS, fixed_width=COMBO_BOX_WIDTH)
         self.startup_widget.connect("item-selected", self.save_startup_setting)
         self.startup_widget.set_select_index(unzip(STARTUP_MODE_ITEMS)[-1].index(startup_mode))
         
-        startup_command = setting_config.config.get("advanced", "startup_command")
+        startup_command = get_config("advanced", "startup_command")
         self.startup_command_widget = InputEntry(startup_command)
         self.startup_command_widget.set_size(100, 23)
         self.startup_command_widget.entry.connect("changed", self.startup_command_changed)
         
-        startup_directory = setting_config.config.get("advanced", "startup_directory")
+        startup_directory = get_config("advanced", "startup_directory")
         self.startup_directory_widget = InputEntry(startup_directory)
         self.startup_directory_widget.set_size(100, 23)
         self.startup_directory_widget.entry.connect("changed", self.startup_directory_changed)
         
-        cursor_shape = setting_config.config.get("advanced", "cursor_shape")
+        cursor_shape = get_config("advanced", "cursor_shape")
         self.cursor_shape_widget = ComboBox(CURSOR_SHAPE_ITEMS, fixed_width=COMBO_BOX_WIDTH)
         self.cursor_shape_widget.connect("item-selected", self.save_cursor_shape)
         self.cursor_shape_widget.set_select_index(unzip(CURSOR_SHAPE_ITEMS)[-1].index(cursor_shape))
         
-        cursor_blink_mode = setting_config.config.get("advanced", "cursor_blink_mode")
+        cursor_blink_mode = get_config("advanced", "cursor_blink_mode")
         self.cursor_blink_mode_widget = ComboBox(CURSOR_BLINK_MODE_ITEMS, fixed_width=COMBO_BOX_WIDTH)
         self.cursor_blink_mode_widget.connect("item-selected", self.save_cursor_blink_mode)
         self.cursor_blink_mode_widget.set_select_index(unzip(CURSOR_BLINK_MODE_ITEMS)[-1].index(cursor_blink_mode))
 
-        scroll_on_key = setting_config.config.get("advanced", "scroll_on_key")
+        scroll_on_key = get_config("advanced", "scroll_on_key")
         self.scroll_on_key_widget = SwitchButton(scroll_on_key == "True")
         self.scroll_on_key_widget.connect("toggled", self.scroll_on_key_toggle)
         
-        scroll_on_output = setting_config.config.get("advanced", "scroll_on_output")
+        scroll_on_output = get_config("advanced", "scroll_on_output")
         self.scroll_on_output_widget = SwitchButton(scroll_on_output == "True")
         self.scroll_on_output_widget.connect("toggled", self.scroll_on_output_toggle)
         
@@ -2641,7 +2639,19 @@ def save_config(setting_config):
     else:  
         # Save setting config last.
         setting_config.config.write()
-
+        
+def get_config(selection, option, default=None):
+    try:
+        return setting_config.config.config_parser.get(selection, option)
+    except:
+        try:
+            if default:
+                return default
+            else:
+                return dict(dict(DEFAULT_CONFIG)[selection])[option]
+        except:
+            raise "This is a buf of get_config(%s, %s, %s)" % (selection, option, default)
+        
 class EditRemoteLogin(DialogBox):
     '''
     class docs
