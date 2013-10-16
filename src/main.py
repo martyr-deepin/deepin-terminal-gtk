@@ -89,6 +89,7 @@ from dtk.ui.treeview import TreeView, NodeItem, get_background_color, get_text_c
 from dtk.ui.unique_service import UniqueService, is_exists
 from dtk.ui.utils import color_hex_to_cairo, alpha_color_hex_to_cairo, cairo_disable_antialias
 import dbus
+import math
 
 APP_DBUS_NAME   = "com.deepin.terminal"
 APP_OBJECT_NAME = "/com/deepin/terminal"
@@ -1525,12 +1526,15 @@ class WorkspaceSwitcher(gtk.Window):
         
         self.width = 0
         self.height = 0
+        self.close_button_size = 40
         
         self.workspace_index = 0
         
         self.workspace_snapshot_areas = []
         self.workspace_add_area = None
         
+        self.in_workspace_snapshot_area = False
+        self.in_workspace_close_area = False
         self.in_workspace_add_area = False
         
         self.connect("expose-event", self.expose_workspace_switcher)
@@ -1624,7 +1628,7 @@ class WorkspaceSwitcher(gtk.Window):
                 snapshot_area_width = snapshot_width + WORKSPACE_SNAPSHOT_OFFSET_X * 2
                 snapshot_area_height = rect.height
                 
-                if self.workspace_index == workspace_index and not self.in_workspace_add_area:
+                if self.workspace_index == workspace_index and self.in_workspace_snapshot_area:
                     cr.set_source_rgba(*alpha_color_hex_to_cairo(("#FFFFFF", 0.1)))
                     cr.rectangle(
                         snapshot_area_x,
@@ -1672,6 +1676,59 @@ class WorkspaceSwitcher(gtk.Window):
                     alignment=pango.ALIGN_CENTER,
                     )
                 
+                # Draw close button.
+                button_x = snapshot_area_x + WORKSPACE_SNAPSHOT_OFFSET_X * 2
+                if self.workspace_index == workspace_index and self.in_workspace_snapshot_area:
+                    # Draw close button background.
+                    if self.in_workspace_close_area:
+                        cr.set_source_rgba(*alpha_color_hex_to_cairo(("#FF0000", 0.5)))
+                    else:
+                        cr.set_source_rgba(*alpha_color_hex_to_cairo(("#333333", 0.5)))
+                    cr.move_to(
+                        button_x + snapshot_width - self.close_button_size,
+                        snapshot_area_y,
+                        )
+                    cr.line_to(
+                        button_x + snapshot_width,
+                        snapshot_area_y,
+                        )
+                    cr.line_to(
+                        button_x + snapshot_width,
+                        snapshot_area_y + self.close_button_size,
+                        )
+                    cr.line_to(
+                        button_x + snapshot_width - self.close_button_size,
+                        snapshot_area_y,
+                        )
+                    cr.close_path()
+                    cr.fill()
+                    
+                    # Draw close button foreground.
+                    if self.in_workspace_close_area:
+                        cr.set_source_rgba(*alpha_color_hex_to_cairo(("#FFFFFF", 0.8)))
+                    else:
+                        cr.set_source_rgba(*alpha_color_hex_to_cairo(("#FFFFFF", 0.5)))
+                    padding = 5
+                    cr.set_line_width(2)
+                    cr.move_to(
+                        button_x + snapshot_width - self.close_button_size / 2 + padding,
+                        snapshot_area_y + padding,
+                        )
+                    cr.line_to(
+                        button_x + snapshot_width - padding,
+                        snapshot_area_y + self.close_button_size / 2 - padding,
+                        )
+                    cr.stroke()
+                    cr.move_to(
+                        button_x + snapshot_width - self.close_button_size / 2 + padding,
+                        snapshot_area_y + self.close_button_size / 2 - padding,
+                        )
+                    cr.line_to(
+                        button_x + snapshot_width - padding,
+                        snapshot_area_y + padding,
+                        )
+                    cr.stroke()
+                    
                 draw_x += snapshot_width + WORKSPACE_SNAPSHOT_OFFSET_X * 2
             
         # Draw workspace add button.
@@ -1720,9 +1777,26 @@ class WorkspaceSwitcher(gtk.Window):
             
         return True
         
+    def is_in_close_button_area(self, ex, ey, snapshot_area):
+        (x, y, w, h) = snapshot_area
+        return is_in_rect(
+            (ex, ey),
+            (x + w - self.close_button_size,
+             y,
+             self.close_button_size,
+             self.close_button_size,
+             ))
+    
     def motion_workspace_switcher(self, widget, event):
+        self.in_workspace_snapshot_area = False
+        self.in_workspace_close_area = False
+        
         for (workspace_index, snapshot_area) in self.workspace_snapshot_areas:
             if is_in_rect((event.x, event.y), snapshot_area):
+                if self.is_in_close_button_area(event.x, event.y, snapshot_area):
+                    self.in_workspace_close_area = True
+                
+                self.in_workspace_snapshot_area = True
                 self.in_workspace_add_area = False
                 self.workspace_index = workspace_index
                 self.queue_draw()
@@ -1736,8 +1810,14 @@ class WorkspaceSwitcher(gtk.Window):
     def button_press_workspace_switcher(self, widget, event):        
         for (workspace_index, snapshot_area) in self.workspace_snapshot_areas:
             if is_in_rect((event.x, event.y), snapshot_area):
-                self.switch_to_workspace(workspace_index)
-                self.hide_switcher()
+                if self.is_in_close_button_area(event.x, event.y, snapshot_area):
+                    self.in_workspace_close_area = True
+                    global_event.emit("close-workspace", self.get_workspaces()[workspace_index])
+                    self.queue_draw()
+                else:
+                    self.switch_to_workspace(workspace_index)
+                    self.hide_switcher()
+                    
                 return False
             
         if is_in_rect((event.x, event.y), self.workspace_add_area):
