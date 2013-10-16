@@ -43,7 +43,7 @@ msgstr "底線"
 
 #: ../src/main.py:120
 msgid "System"
-msgstr "係統默認"
+msgstr "系統預設"
 
 #: ../src/main.py:121
 msgid "On"
@@ -83,7 +83,7 @@ msgstr ""
 
 #: ../src/main.py:228 ../src/main.py:229
 msgid "Eighties"
-msgstr "八零年代"
+msgstr "八〇年代"
 
 #: ../src/main.py:230
 msgid "Grey on black"
@@ -95,11 +95,11 @@ msgstr "黃底黑字"
 
 #: ../src/main.py:232
 msgid "Black on white"
-msgstr "黑底白字"
+msgstr "白底黑字"
 
 #: ../src/main.py:233
 msgid "White on black"
-msgstr "白底黑字"
+msgstr "黑底白字"
 
 #: ../src/main.py:234
 msgid "Green on black"
@@ -172,11 +172,11 @@ msgstr "開啟手冊"
 
 #: ../src/main.py:621
 msgid "Open current directory"
-msgstr "開啟當前目錄"
+msgstr "開啟目前目錄"
 
 #: ../src/main.py:626 ../src/main.py:2090 ../src/main.py:2450
 msgid "Show correlative child window"
-msgstr "顯示關聯的子進程視窗"
+msgstr "顯示相關的子進程視窗"
 
 #: ../src/main.py:629
 msgid "Exit fullscreen"
@@ -192,7 +192,7 @@ msgstr "水平分割"
 
 #: ../src/main.py:638 ../src/main.py:2105 ../src/main.py:2430
 msgid "Close current window"
-msgstr "關閉當前視窗"
+msgstr "關閉目前視窗"
 
 #: ../src/main.py:642 ../src/main.py:2106 ../src/main.py:2431
 msgid "Close other window"
@@ -417,7 +417,7 @@ msgstr "刪除"
 
 #: ../src/main.py:3059
 msgid "Reset"
-msgstr "恢複預設"
+msgstr "恢複預設值"
 
 #: ../src/main.py:3062
 msgid "Close"
