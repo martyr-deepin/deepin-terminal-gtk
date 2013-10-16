@@ -204,7 +204,7 @@ ADVANCED_CONFIG = [
     ("cursor_blink_mode", "system"),
     ("scroll_on_key", "True"),
     ("scroll_on_output", "False"),
-    ("copy_on_selection", "False"),
+    ("copy_on_selection", "True"),
     ]
 
 DEFAULT_CONFIG = [
@@ -2562,9 +2562,9 @@ class AdvancedSettings(gtk.VBox):
             (_("Window state: "), self.startup_widget),
             (_("Startup command: "), self.startup_command_widget),
             (_("Startup directory: "), self.startup_directory_widget),
+            (_("Copy on selection: "), self.copy_on_selection_widget),
             (_("Scroll on keystroke: "), self.scroll_on_key_widget),
             (_("Scroll on output: "), self.scroll_on_output_widget),
-            (_("Copy on selection: "), self.copy_on_selection_widget),
             ]
         self.table_align = gtk.Alignment()
         self.table_align.set(0, 0, 1, 1)
