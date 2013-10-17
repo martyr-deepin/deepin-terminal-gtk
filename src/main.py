@@ -75,7 +75,7 @@ from dtk.ui.cache_pixbuf import CachePixbuf
 from dtk.ui.color_selection import ColorButton
 from dtk.ui.combo import ComboBox
 from dtk.ui.dialog import DIALOG_MASK_GLASS_PAGE
-from dtk.ui.dialog import DialogBox
+from dtk.ui.dialog import DialogBox, ConfirmDialog
 from dtk.ui.dialog import PreferenceDialog
 from dtk.ui.draw import draw_hlinear
 from dtk.ui.entry import Entry
@@ -89,7 +89,6 @@ from dtk.ui.treeview import TreeView, NodeItem, get_background_color, get_text_c
 from dtk.ui.unique_service import UniqueService, is_exists
 from dtk.ui.utils import color_hex_to_cairo, alpha_color_hex_to_cairo, cairo_disable_antialias
 import dbus
-import math
 
 APP_DBUS_NAME   = "com.deepin.terminal"
 APP_OBJECT_NAME = "/com/deepin/terminal"
@@ -130,6 +129,10 @@ WORKSPACE_SNAPSHOT_OFFSET_X = 10
 WORKSPACE_ADD_SIZE = 48
 WORKSPACE_ADD_PADDING = 30
 WORKSPACE_ADD_MIDDLE_SIZE = 8
+
+CONFIRM_DIALOG_WIDTH = 450
+CONFIRM_DIALOG_HEIGHT = 150
+CONFIRM_WRAP_WIDTH = 350
 
 workspace_index = 1
 
@@ -203,6 +206,7 @@ ADVANCED_CONFIG = [
     ("startup_directory", ""),
     ("cursor_shape", "block"),
     ("cursor_blink_mode", "system"),
+    ("ask_on_quit", "True"),
     ("scroll_on_key", "True"),
     ("scroll_on_output", "False"),
     ("copy_on_selection", "False"),
@@ -246,7 +250,10 @@ MATCH_COMMAND = 4
 MIN_FONT_SIZE = 8
 
 def is_bool_string(string_value):
-    return string_value.lower() == "true"
+    if isinstance(string_value, bool):
+        return string_value
+    else:
+        return string_value.lower() == "true"
 
 def get_active_working_directory(toplevel_widget):
     '''
@@ -304,7 +311,7 @@ class Terminal(object):
                 self.quake,
                 )
         
-        self.application = Application()
+        self.application = Application(destroy_func=self.quit)
         
         window_width = int(get_config("save_state", "window_width", 664))
         window_height = int(get_config("save_state", "window_height", 466))
@@ -361,8 +368,9 @@ class Terminal(object):
              (_("Advanced"), self.advanced_settings),
              ])
         self.application.titlebar.menu_button.connect("button-press-event", self.show_preference_menu)
-        self.application.window.connect("button-press-event", self.button_press_terminal)
         self.application.window.connect("destroy", lambda w: self.quit())
+        self.application.window.connect("delete-event", self.delete_window)
+        self.application.window.connect("button-press-event", self.button_press_terminal)
         self.application.window.connect("key-press-event", self.key_press_terminal)
         self.application.window.connect("key-release-event", self.key_release_terminal)
         self.application.window.connect("notify::is-active", self.window_is_active)
@@ -419,11 +427,33 @@ class Terminal(object):
                 setting_config.config.set("save_state", "window_width", window_width)
                 setting_config.config.set("save_state", "window_height", window_height)
             
-    def quit(self):
+    def _quit(self):
         if not self.quake_mode:
             self.save_window_size()
-        
+            
         gtk.main_quit()
+            
+    def delete_window(self, widget, event):
+        self.quit()
+        
+        return True
+        
+    def quit(self):
+        child_pids = self.get_terminal_child_pids(self.get_all_terminals())
+        
+        ask_on_quit = is_bool_string(get_config("advanced", "ask_on_quit"))
+        if not ask_on_quit or len(child_pids) == 0:
+            self._quit()
+        elif len(child_pids) > 0:
+            dialog = ConfirmDialog(
+                _("Close terminal?"),
+                _("Terminal still have running programs. Are you sure you want to quit?"),
+                confirm_callback=self._quit,
+                default_width=CONFIRM_DIALOG_WIDTH,
+                default_height=CONFIRM_DIALOG_HEIGHT,
+                text_wrap_width=CONFIRM_WRAP_WIDTH,
+                )
+            dialog.show_all()
             
     def window_is_active(self, window, param):
         global focus_terminal
@@ -793,6 +823,15 @@ class Terminal(object):
     def focus_right_terminal(self):
         self.focus_horizontal_terminal(False)
         
+    def get_terminal_child_pids(self, terminals):
+        return filter(lambda pid: pid != '', map(lambda terminal: commands.getoutput("pgrep -P %s" % terminal.process_id), terminals))
+        
+    def get_all_terminals(self):
+        return get_match_children(self.application.window, TerminalWrapper)
+        
+    def get_workspace_terminals(self, workspace):
+        return get_match_children(workspace, TerminalWrapper)
+        
     def get_workspaces(self):
         children = self.terminal_box.get_children()
         if len(children) == 1:
@@ -835,9 +874,9 @@ class Terminal(object):
         
         self.workspace_list.append(workspace)
         
-    def close_workspace(self, workspace):    
+    def _close_workspace(self, workspace):
         workspace_index = self.workspace_list.index(workspace)            
-        
+            
         # Remove workspace from list.
         if workspace in self.workspace_list:
             self.workspace_list.remove(workspace)
@@ -847,9 +886,26 @@ class Terminal(object):
             self.remove_current_workspace(False)
             self.terminal_box.add(self.workspace_list[workspace_index - 1])
             self.terminal_box.show_all()
-        # Exit if no workspace exit.
-        else:
+        
+    def close_workspace(self, workspace):    
+        if len(self.workspace_list) == 1:
             global_event.emit("quit")
+        else:        
+            child_pids = self.get_terminal_child_pids(self.get_workspace_terminals(workspace))
+
+            ask_on_quit = is_bool_string(get_config("advanced", "ask_on_quit"))
+            if not ask_on_quit or len(child_pids) == 0:
+                self._close_workspace(workspace)
+            elif len(child_pids) > 0:
+                dialog = ConfirmDialog(
+                    _("Close workspace?"),
+                    _("Workspace still have running programs. Are you sure you want to quit?"),
+                    confirm_callback=lambda : self._close_workspace(workspace),
+                    default_width=CONFIRM_DIALOG_WIDTH,
+                    default_height=CONFIRM_DIALOG_HEIGHT,
+                    text_wrap_width=CONFIRM_WRAP_WIDTH,
+                    )
+                dialog.show_all()
             
     def change_window_title(self, window_title):
         self.application.titlebar.change_title(window_title)
@@ -1003,7 +1059,7 @@ class TerminalWrapper(vte.Terminal):
         self.set_scroll_on_output(scroll_on_output == "True")
         
         copy_on_selection = get_config("advanced", "copy_on_selection")
-        if(copy_on_selection == "True"):
+        if (copy_on_selection == "True"):
             self.connect("selection-changed", do_copy_on_selection_toggle)
         
         cursor_shape = get_config("advanced", "cursor_shape")
@@ -2616,6 +2672,10 @@ class AdvancedSettings(gtk.VBox):
         self.cursor_shape_widget.connect("item-selected", self.save_cursor_shape)
         self.cursor_shape_widget.set_select_index(unzip(CURSOR_SHAPE_ITEMS)[-1].index(cursor_shape))
         
+        ask_on_quit = is_bool_string(get_config("advanced", "ask_on_quit"))
+        self.ask_on_quit_widget = SwitchButton(ask_on_quit)
+        self.ask_on_quit_widget.connect("toggled", self.ask_on_quit_toggle)
+        
         cursor_blink_mode = get_config("advanced", "cursor_blink_mode")
         self.cursor_blink_mode_widget = ComboBox(CURSOR_BLINK_MODE_ITEMS, fixed_width=COMBO_BOX_WIDTH)
         self.cursor_blink_mode_widget.connect("item-selected", self.save_cursor_blink_mode)
@@ -2642,9 +2702,10 @@ class AdvancedSettings(gtk.VBox):
             (_("Window state: "), self.startup_widget),
             (_("Startup command: "), self.startup_command_widget),
             (_("Startup directory: "), self.startup_directory_widget),
-            (_("Copy on selection: "), self.copy_on_selection_widget),
+            (_("Ask on quit"), self.ask_on_quit_widget),
             (_("Scroll on keystroke: "), self.scroll_on_key_widget),
             (_("Scroll on output: "), self.scroll_on_output_widget),
+            (_("Copy on selection: "), self.copy_on_selection_widget),
             ]
         self.table_align = gtk.Alignment()
         self.table_align.set(0, 0, 1, 1)
@@ -2677,6 +2738,10 @@ class AdvancedSettings(gtk.VBox):
     def startup_directory_changed(self, entry, startup_directory):
         with save_config(setting_config):    
             setting_config.config.set("advanced", "startup_directory", startup_directory)
+            
+    def ask_on_quit_toggle(self, toggle_button):
+        with save_config(setting_config):    
+            setting_config.config.set("advanced", "ask_on_quit", toggle_button.get_active())
         
     def scroll_on_key_toggle(self, toggle_button):
         with save_config(setting_config):    
@@ -3206,6 +3271,9 @@ class SettingDialog(PreferenceDialog):
             cursor_shape = config_dict["cursor_shape"]
             page_widget.cursor_shape_widget.set_select_index(unzip(CURSOR_SHAPE_ITEMS)[-1].index(cursor_shape))
             global_event.emit("set-cursor-shape", cursor_shape)
+            
+            ask_on_quit = is_bool_string(config_dict["ask_on_quit"])
+            page_widget.ask_on_quit_widget.set_active(ask_on_quit)
             
             cursor_blink_mode = config_dict["cursor_blink_mode"]
             page_widget.cursor_blink_mode_widget.set_select_index(
