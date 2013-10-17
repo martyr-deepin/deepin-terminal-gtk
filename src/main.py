@@ -573,7 +573,10 @@ class Terminal(object):
             if status:
                 terminal.connect("selection-changed", do_copy_on_selection_toggle)
             else:
-                terminal.disconnect_by_func(do_copy_on_selection_toggle)
+                try:
+                    terminal.disconnect_by_func(do_copy_on_selection_toggle)
+                except:
+                    pass
         
     def adjust_background_transparent(self, direction):
         if not direction in [gtk.gdk.SCROLL_UP, gtk.gdk.SCROLL_DOWN]:
