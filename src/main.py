@@ -570,7 +570,7 @@ class Terminal(object):
         
     def copy_on_selection_toggle(self, status):
         for terminal in get_match_children(self.application.window, TerminalWrapper):
-            if(status is True):
+            if status:
                 terminal.connect("selection-changed", do_copy_on_selection_toggle)
             else:
                 terminal.disconnect_by_func(do_copy_on_selection_toggle)
