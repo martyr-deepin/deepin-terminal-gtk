@@ -249,7 +249,7 @@ MATCH_COMMAND = 4
 
 MIN_FONT_SIZE = 8
 
-def is_bool_string(string_value):
+def is_bool(string_value):
     if isinstance(string_value, bool):
         return string_value
     else:
@@ -441,7 +441,7 @@ class Terminal(object):
     def quit(self):
         child_pids = self.get_terminal_child_pids(self.get_all_terminals())
         
-        ask_on_quit = is_bool_string(get_config("advanced", "ask_on_quit"))
+        ask_on_quit = is_bool(get_config("advanced", "ask_on_quit"))
         if not ask_on_quit or len(child_pids) == 0:
             self._quit()
         elif len(child_pids) > 0:
@@ -486,7 +486,7 @@ class Terminal(object):
         
     def change_background_image(self):
         display_background_image = get_config("general", "background_image")
-        if is_bool_string(display_background_image):
+        if is_bool(display_background_image):
             for terminal in get_match_children(self.application.window, TerminalWrapper):
                 set_terminal_background(terminal)
         
@@ -896,7 +896,7 @@ class Terminal(object):
         else:        
             child_pids = self.get_terminal_child_pids(self.get_workspace_terminals(workspace))
 
-            ask_on_quit = is_bool_string(get_config("advanced", "ask_on_quit"))
+            ask_on_quit = is_bool(get_config("advanced", "ask_on_quit"))
             if not ask_on_quit or len(child_pids) == 0:
                 self._close_workspace(workspace)
             elif len(child_pids) > 0:
@@ -1055,14 +1055,14 @@ class TerminalWrapper(vte.Terminal):
         transparent = get_config("general", "background_transparent")
         self.set_transparent(float(transparent))
         
-        scroll_on_key = get_config("advanced", "scroll_on_key")
-        self.set_scroll_on_keystroke(scroll_on_key == "True")
+        scroll_on_key = is_bool(get_config("advanced", "scroll_on_key"))
+        self.set_scroll_on_keystroke(scroll_on_key)
         
-        scroll_on_output = get_config("advanced", "scroll_on_output")
-        self.set_scroll_on_output(scroll_on_output == "True")
+        scroll_on_output = is_bool(get_config("advanced", "scroll_on_output"))
+        self.set_scroll_on_output(scroll_on_output)
         
-        copy_on_selection = get_config("advanced", "copy_on_selection")
-        if (copy_on_selection == "True"):
+        copy_on_selection = is_bool(get_config("advanced", "copy_on_selection"))
+        if copy_on_selection:
             self.connect("selection-changed", do_copy_on_selection_toggle)
         
         cursor_shape = get_config("advanced", "cursor_shape")
@@ -1141,7 +1141,7 @@ class TerminalWrapper(vte.Terminal):
         
     def init_background(self):
         display_background_image = get_config("general", "background_image")
-        if is_bool_string(display_background_image):
+        if is_bool(display_background_image):
             set_terminal_background(self)
         
     def generate_keymap(self):
@@ -2449,7 +2449,7 @@ class GeneralSettings(gtk.VBox):
         self.background_transparent_widget.set_value(float(transparent))
         self.background_transparent_widget.connect("value-changed", self.save_background_transparent)
         
-        display_background_image = is_bool_string(get_config("general", "background_image"))
+        display_background_image = is_bool(get_config("general", "background_image"))
         self.background_image_widget = SwitchButton(display_background_image)
         self.background_image_widget.connect("toggled", self.background_image_toggle)
         
@@ -2675,7 +2675,7 @@ class AdvancedSettings(gtk.VBox):
         self.cursor_shape_widget.connect("item-selected", self.save_cursor_shape)
         self.cursor_shape_widget.set_select_index(unzip(CURSOR_SHAPE_ITEMS)[-1].index(cursor_shape))
         
-        ask_on_quit = is_bool_string(get_config("advanced", "ask_on_quit"))
+        ask_on_quit = is_bool(get_config("advanced", "ask_on_quit"))
         self.ask_on_quit_widget = SwitchButton(ask_on_quit)
         self.ask_on_quit_widget.connect("toggled", self.ask_on_quit_toggle)
         
@@ -2684,16 +2684,16 @@ class AdvancedSettings(gtk.VBox):
         self.cursor_blink_mode_widget.connect("item-selected", self.save_cursor_blink_mode)
         self.cursor_blink_mode_widget.set_select_index(unzip(CURSOR_BLINK_MODE_ITEMS)[-1].index(cursor_blink_mode))
 
-        scroll_on_key = get_config("advanced", "scroll_on_key")
-        self.scroll_on_key_widget = SwitchButton(scroll_on_key == "True")
+        scroll_on_key = is_bool(get_config("advanced", "scroll_on_key"))
+        self.scroll_on_key_widget = SwitchButton(scroll_on_key)
         self.scroll_on_key_widget.connect("toggled", self.scroll_on_key_toggle)
         
-        scroll_on_output = get_config("advanced", "scroll_on_output")
-        self.scroll_on_output_widget = SwitchButton(scroll_on_output == "True")
+        scroll_on_output = is_bool(get_config("advanced", "scroll_on_output"))
+        self.scroll_on_output_widget = SwitchButton(scroll_on_output)
         self.scroll_on_output_widget.connect("toggled", self.scroll_on_output_toggle)
         
-        copy_on_selection = get_config("advanced", "copy_on_selection")
-        self.copy_on_selection_widget = SwitchButton(copy_on_selection == "True")
+        copy_on_selection = is_bool(get_config("advanced", "copy_on_selection"))
+        self.copy_on_selection_widget = SwitchButton(copy_on_selection)
         self.copy_on_selection_widget.connect("toggled", self.copy_on_selection_toggle)
         
         self.table = gtk.Table(7, 2)
@@ -3247,7 +3247,7 @@ class SettingDialog(PreferenceDialog):
             global_event.emit("change-background-transparent", background_transparent)
             page_widget.background_transparent_widget.set_value(background_transparent)
             
-            background_image = is_bool_string(config_dict["background_image"])
+            background_image = is_bool(config_dict["background_image"])
             global_event.emit("background-image-toggle", background_image)
             page_widget.background_image_widget.set_active(background_image)
         elif isinstance(page_widget, KeybindSettings):
@@ -3275,7 +3275,7 @@ class SettingDialog(PreferenceDialog):
             page_widget.cursor_shape_widget.set_select_index(unzip(CURSOR_SHAPE_ITEMS)[-1].index(cursor_shape))
             global_event.emit("set-cursor-shape", cursor_shape)
             
-            ask_on_quit = is_bool_string(config_dict["ask_on_quit"])
+            ask_on_quit = is_bool(config_dict["ask_on_quit"])
             page_widget.ask_on_quit_widget.set_active(ask_on_quit)
             
             cursor_blink_mode = config_dict["cursor_blink_mode"]
@@ -3283,15 +3283,15 @@ class SettingDialog(PreferenceDialog):
                 unzip(CURSOR_BLINK_MODE_ITEMS)[-1].index(cursor_blink_mode))
             global_event.emit("set-cursor-blink-mode", cursor_blink_mode)
             
-            scroll_on_key = is_bool_string(config_dict["scroll_on_key"])
+            scroll_on_key = is_bool(config_dict["scroll_on_key"])
             page_widget.scroll_on_key_widget.set_active(scroll_on_key)
             global_event.emit("scroll-on-key-toggle", scroll_on_key)
             
-            scroll_on_output = is_bool_string(config_dict["scroll_on_output"])
+            scroll_on_output = is_bool(config_dict["scroll_on_output"])
             page_widget.scroll_on_output_widget.set_active(scroll_on_output)
             global_event.emit("scroll-on-output-toggle", scroll_on_output)
 
-            copy_on_selection = is_bool_string(config_dict["copy_on_selection"])
+            copy_on_selection = is_bool(config_dict["copy_on_selection"])
             page_widget.copy_on_selection_widget.set_active(copy_on_selection)
             global_event.emit("copy-on-selection-toggle", copy_on_selection)
 
