@@ -24,7 +24,7 @@
 from collections import OrderedDict
 from contextlib import contextmanager 
 from deepin_utils.config import Config
-from deepin_utils.core import unzip, is_int
+from deepin_utils.core import unzip, is_int, merge_list
 from deepin_utils.file import get_parent_dir
 from deepin_utils.file import remove_path, touch_file
 from deepin_utils.font import get_font_families
@@ -442,6 +442,7 @@ class Terminal(object):
         child_pids = self.get_terminal_child_pids(self.get_all_terminals())
         
         ask_on_quit = is_bool(get_config("advanced", "ask_on_quit"))
+        
         if not ask_on_quit or len(child_pids) == 0:
             self._quit()
         elif len(child_pids) > 0:
@@ -830,7 +831,7 @@ class Terminal(object):
         return filter(lambda pid: pid != '', map(lambda terminal: commands.getoutput("pgrep -P %s" % terminal.process_id), terminals))
         
     def get_all_terminals(self):
-        return get_match_children(self.application.window, TerminalWrapper)
+        return merge_list(map(lambda workspace: get_match_children(workspace, TerminalWrapper), self.workspace_list))
         
     def get_workspace_terminals(self, workspace):
         return get_match_children(workspace, TerminalWrapper)
@@ -895,8 +896,8 @@ class Terminal(object):
             global_event.emit("quit")
         else:        
             child_pids = self.get_terminal_child_pids(self.get_workspace_terminals(workspace))
-
             ask_on_quit = is_bool(get_config("advanced", "ask_on_quit"))
+            
             if not ask_on_quit or len(child_pids) == 0:
                 self._close_workspace(workspace)
             elif len(child_pids) > 0:
@@ -1273,7 +1274,6 @@ class TerminalWrapper(vte.Terminal):
                 match_file = False
                 
                 file_string = self.filter_file_string(match_string)
-                print file_string
                 
                 if os.path.exists(file_string):
                     if os.path.isdir(file_string):
