@@ -1382,6 +1382,10 @@ class TerminalWrapper(vte.Terminal):
             paste_text = selection.data
             
         self.feed_child(paste_text)    
+        
+        # Grab focus when drag release.
+        self.get_toplevel().present()
+        self.grab_focus()
 
     def exit_callback(self):
         """
