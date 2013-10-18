@@ -849,9 +849,13 @@ class Terminal(object):
         workspace = self.workspace_list[workspace_index]
         current_workspace = self.terminal_box.get_children()[0]
         if workspace != current_workspace:
+            current_workspace.save_focus_terminal()
+            
             self.remove_current_workspace()
             self.terminal_box.add(workspace)
             self.terminal_box.show_all()
+            
+            workspace.restore_focus_terminal()
         
     def remove_current_workspace(self, save_snapshot=True):
         children = self.terminal_box.get_children()
@@ -1539,6 +1543,15 @@ class Workspace(gtk.VBox):
         self.workspace_index = workspace_index
         workspace_index += 1
         self.snapshot_pixbuf = None
+        self.focus_terminal = None
+        
+    def save_focus_terminal(self):
+        self.focus_terminal = self.get_toplevel().get_focus()
+    
+    def restore_focus_terminal(self):
+        if self.focus_terminal:
+            self.focus_terminal.grab_focus()
+            self.focus_terminal = None
         
     def save_workspace_snapshot(self):
         if self.window and self.window.get_colormap():
