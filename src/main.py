@@ -302,6 +302,17 @@ def get_terminal_child_pids(terminal):
 
 def get_terminals_child_pids(terminals):
     return merge_list(map(get_terminal_child_pids, terminals))
+
+def create_confirm_dialog(dialog_title, dialog_content, confirm_callback):
+    dialog = ConfirmDialog(
+        dialog_title,
+        dialog_content,
+        confirm_callback=confirm_callback,
+        default_width=CONFIRM_DIALOG_WIDTH,
+        default_height=CONFIRM_DIALOG_HEIGHT,
+        text_wrap_width=CONFIRM_WRAP_WIDTH,
+        )
+    dialog.show_all()
     
 class Terminal(object):
     """
@@ -458,15 +469,11 @@ class Terminal(object):
         if not ask_on_quit or len(child_pids) == 0:
             self._quit()
         elif len(child_pids) > 0:
-            dialog = ConfirmDialog(
+            create_confirm_dialog(
                 _("Quit terminal?"),
                 _("Terminal still have running programs. Are you sure you want to quit?"),
-                confirm_callback=self._quit,
-                default_width=CONFIRM_DIALOG_WIDTH,
-                default_height=CONFIRM_DIALOG_HEIGHT,
-                text_wrap_width=CONFIRM_WRAP_WIDTH,
+                self._quit,
                 )
-            dialog.show_all()
             
     def window_is_active(self, window, param):
         global focus_terminal
@@ -924,15 +931,11 @@ class Terminal(object):
                     dialog_title = _("Close workspace?")
                     dialog_content = _("Workspace still have running programs. Are you sure you want to close?")
                 
-                dialog = ConfirmDialog(
+                create_confirm_dialog(
                     dialog_title,
                     dialog_content,
-                    confirm_callback=lambda : self._close_workspace(workspace, child_pids),
-                    default_width=CONFIRM_DIALOG_WIDTH,
-                    default_height=CONFIRM_DIALOG_HEIGHT,
-                    text_wrap_width=CONFIRM_WRAP_WIDTH,
+                    lambda : self._close_workspace(workspace, child_pids),
                     )
-                dialog.show_all()
             
     def change_window_title(self, window_title):
         self.application.titlebar.change_title(window_title)
@@ -1562,17 +1565,11 @@ class TerminalGrid(gtk.VBox):
                 if not ask_on_quit or len(child_pids) == 0:
                     remove_terminal()
                 else:
-                    dialog_title = _("Close window?")
-                    dialog_content = _("Window still have running programs. Are you sure you want to close?")
-                    dialog = ConfirmDialog(
-                        dialog_title,
-                        dialog_content,
-                        confirm_callback=remove_terminal,
-                        default_width=CONFIRM_DIALOG_WIDTH,
-                        default_height=CONFIRM_DIALOG_HEIGHT,
-                        text_wrap_width=CONFIRM_WRAP_WIDTH,
+                    create_confirm_dialog(
+                        _("Close window?"),
+                        _("Window still have running programs. Are you sure you want to close?"),
+                        remove_terminal,
                         )
-                    dialog.show_all()
             else:
                 workspace = get_match_parent(self, "Workspace")
                 if workspace:
