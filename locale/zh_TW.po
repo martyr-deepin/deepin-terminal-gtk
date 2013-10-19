@@ -131,7 +131,7 @@ msgstr "關閉終端機?"
 
 #: ../src/main.py:455
 msgid "Terminal still have running programs. Are you sure you want to quit?"
-msgstr "終端機中仍然有正在運行的程序， 你確定要退出嗎？"
+msgstr "終端機中仍然有正在執行的程式， 你確定要退出嗎？"
 
 #: ../src/main.py:614 ../src/main.py:705
 msgid "Preferences"
@@ -229,7 +229,7 @@ msgstr "關閉視窗"
 
 #: ../src/main.py:911
 msgid "Window still have running programs. Are you sure you want to close?"
-msgstr "視窗中仍然有正在運行的程序， 你確定要关闭嗎？"
+msgstr "視窗中仍然有正在執行的程式， 你確定要關閉嗎？"
 
 #: ../src/main.py:913
 msgid "Close workspace?"
@@ -237,7 +237,7 @@ msgstr "關閉工作區?"
 
 #: ../src/main.py:914
 msgid "Workspace still have running programs. Are you sure you want to close?"
-msgstr "工作區中仍然有正在運行的程序， 你確定要關閉嗎？"
+msgstr "工作區中仍然有正在執行的程式， 你確定要關閉嗎？"
 
 #: ../src/main.py:1754
 msgid "Workspace"
