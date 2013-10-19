@@ -292,11 +292,16 @@ def set_terminal_background(terminal):
 def do_copy_on_selection_toggle(terminal):
     terminal.copy_clipboard()
 
-def get_terminal_child_pids(terminal):
-    return commands.getoutput("pgrep -P %s" % terminal.process_id)
+def kill_processes(process_ids):
+    if len(process_ids) > 0:
+        print "Kill: %s" % ' '.join(process_ids)
+        subprocess.Popen("kill %s" % ' '.join(process_ids), shell=True)
     
+def get_terminal_child_pids(terminal):
+    return filter(lambda pid: pid != '', commands.getoutput("pgrep -P %s" % terminal.process_id).split("\n"))
+
 def get_terminals_child_pids(terminals):
-    return filter(lambda pid: pid != '', map(get_terminal_child_pids, terminals))
+    return merge_list(map(get_terminal_child_pids, terminals))
     
 class Terminal(object):
     """
@@ -886,8 +891,11 @@ class Terminal(object):
         
         self.workspace_list.append(workspace)
         
-    def _close_workspace(self, workspace):
+    def _close_workspace(self, workspace, child_pids):
         workspace_index = self.workspace_list.index(workspace)            
+        
+        # Kill child processes in current workspace.
+        kill_processes(child_pids)
             
         # Remove workspace from list.
         if workspace in self.workspace_list:
@@ -907,7 +915,7 @@ class Terminal(object):
             ask_on_quit = is_bool(get_config("advanced", "ask_on_quit"))
             
             if not ask_on_quit or len(child_pids) == 0:
-                self._close_workspace(workspace)
+                self._close_workspace(workspace, child_pids)
             elif len(child_pids) > 0:
                 if close_by_terminal:
                     dialog_title = _("Close window?")
@@ -919,7 +927,7 @@ class Terminal(object):
                 dialog = ConfirmDialog(
                     dialog_title,
                     dialog_content,
-                    confirm_callback=lambda : self._close_workspace(workspace),
+                    confirm_callback=lambda : self._close_workspace(workspace, child_pids),
                     default_width=CONFIRM_DIALOG_WIDTH,
                     default_height=CONFIRM_DIALOG_HEIGHT,
                     text_wrap_width=CONFIRM_WRAP_WIDTH,
@@ -1128,7 +1136,7 @@ class TerminalWrapper(vte.Terminal):
         self.set_match_tag()
         
         self.connect("realize", self.realize_callback)
-        self.connect("child-exited", lambda w: self.exit_callback())
+        self.connect("child-exited", self.child_exited)
         self.connect("key-press-event", self.handle_keys)
         self.connect("drag-data-received", self.on_drag_data_received)
         self.connect("window-title-changed", self.on_window_title_changed)
@@ -1187,8 +1195,12 @@ class TerminalWrapper(vte.Terminal):
             
     def get_correlative_window_ids(self):
         try:
-            child_process_id = get_terminal_child_pids(self)
-            return filter(is_int, commands.getoutput("xdotool search --all --pid %s --onlyvisible" % child_process_id).split("\n"))
+            child_process_ids = get_terminal_child_pids(self)
+            return merge_list(
+                map(lambda child_process_id:
+                    filter(is_int, commands.getoutput("xdotool search --all --pid %s --onlyvisible" % child_process_id).split("\n")),
+                    child_process_ids
+                    ))
         except Exception, e:
             print "function get_correlative_window_ids got error: %s" % (e)
             traceback.print_exc(file=sys.stdout)
@@ -1398,6 +1410,12 @@ class TerminalWrapper(vte.Terminal):
         self.get_toplevel().present()
         self.grab_focus()
 
+    def stop_child_processes(self):
+        kill_processes(get_terminal_child_pids(self))
+        
+    def child_exited(self, widget):
+        self.exit_callback()
+        
     def exit_callback(self):
         """
         Call parent_widget.child_exit_callback
@@ -1532,9 +1550,29 @@ class TerminalGrid(gtk.VBox):
                 self.is_parent = False
         else:
             if self.parent_widget:
-                self.remove(self.terminal)
-                self.terminal = None
-                self.parent_widget.child_exit_callback(self)
+                def remove_terminal():
+                    self.terminal.stop_child_processes()
+                    self.remove(self.terminal)
+                    self.terminal = None
+                    self.parent_widget.child_exit_callback(self)
+                    
+                child_pids = get_terminals_child_pids([self.terminal])
+                ask_on_quit = is_bool(get_config("advanced", "ask_on_quit"))
+                
+                if not ask_on_quit or len(child_pids) == 0:
+                    remove_terminal()
+                else:
+                    dialog_title = _("Close window?")
+                    dialog_content = _("Window still have running programs. Are you sure you want to close?")
+                    dialog = ConfirmDialog(
+                        dialog_title,
+                        dialog_content,
+                        confirm_callback=remove_terminal,
+                        default_width=CONFIRM_DIALOG_WIDTH,
+                        default_height=CONFIRM_DIALOG_HEIGHT,
+                        text_wrap_width=CONFIRM_WRAP_WIDTH,
+                        )
+                    dialog.show_all()
             else:
                 workspace = get_match_parent(self, "Workspace")
                 if workspace:
