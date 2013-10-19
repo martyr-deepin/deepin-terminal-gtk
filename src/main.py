@@ -292,8 +292,11 @@ def set_terminal_background(terminal):
 def do_copy_on_selection_toggle(terminal):
     terminal.copy_clipboard()
 
-def get_terminal_child_pids(terminals):
-    return filter(lambda pid: pid != '', map(lambda terminal: commands.getoutput("pgrep -P %s" % terminal.process_id), terminals))
+def get_terminal_child_pids(terminal):
+    return commands.getoutput("pgrep -P %s" % terminal.process_id)
+    
+def get_terminals_child_pids(terminals):
+    return filter(lambda pid: pid != '', map(get_terminal_child_pids, terminals))
     
 class Terminal(object):
     """
@@ -443,7 +446,7 @@ class Terminal(object):
         return True
         
     def quit(self):
-        child_pids = get_terminal_child_pids(self.get_all_terminals())
+        child_pids = get_terminals_child_pids(self.get_all_terminals())
         
         ask_on_quit = is_bool(get_config("advanced", "ask_on_quit"))
         
@@ -900,7 +903,7 @@ class Terminal(object):
         if len(self.workspace_list) == 1:
             global_event.emit("quit")
         else:        
-            child_pids = get_terminal_child_pids(self.get_workspace_terminals(workspace))
+            child_pids = get_terminals_child_pids(self.get_workspace_terminals(workspace))
             ask_on_quit = is_bool(get_config("advanced", "ask_on_quit"))
             
             if not ask_on_quit or len(child_pids) == 0:
@@ -1184,7 +1187,7 @@ class TerminalWrapper(vte.Terminal):
             
     def get_correlative_window_ids(self):
         try:
-            child_process_id = commands.getoutput("pgrep -P %s" % self.process_id)
+            child_process_id = get_terminal_child_pids(self)
             return filter(is_int, commands.getoutput("xdotool search --all --pid %s --onlyvisible" % child_process_id).split("\n"))
         except Exception, e:
             print "function get_correlative_window_ids got error: %s" % (e)
