@@ -447,7 +447,7 @@ class Terminal(object):
             self._quit()
         elif len(child_pids) > 0:
             dialog = ConfirmDialog(
-                _("Close terminal?"),
+                _("Quit terminal?"),
                 _("Terminal still have running programs. Are you sure you want to quit?"),
                 confirm_callback=self._quit,
                 default_width=CONFIRM_DIALOG_WIDTH,
@@ -907,7 +907,7 @@ class Terminal(object):
             elif len(child_pids) > 0:
                 dialog = ConfirmDialog(
                     _("Close workspace?"),
-                    _("Workspace still have running programs. Are you sure you want to quit?"),
+                    _("Workspace still have running programs. Are you sure you want to close?"),
                     confirm_callback=lambda : self._close_workspace(workspace),
                     default_width=CONFIRM_DIALOG_WIDTH,
                     default_height=CONFIRM_DIALOG_HEIGHT,

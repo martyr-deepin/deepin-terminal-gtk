@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-17 13:58+0800\n"
+"POT-Creation-Date: 2013-10-19 09:22+0800\n"
 "PO-Revision-Date: 2013-09-18 09:49+0800\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -24,8 +24,8 @@ msgstr "一般"
 msgid "Maximize"
 msgstr "最大化"
 
-#: ../src/main.py:114 ../src/main.py:659 ../src/main.py:2244
-#: ../src/main.py:2580
+#: ../src/main.py:114 ../src/main.py:666 ../src/main.py:2262
+#: ../src/main.py:2598
 msgid "Fullscreen"
 msgstr "全螢幕"
 
@@ -109,337 +109,337 @@ msgstr "黑底綠字"
 msgid "Custom"
 msgstr "自訂"
 
-#: ../src/main.py:326
+#: ../src/main.py:329
 msgid "Deepin Terminal"
 msgstr "深度終端機"
 
-#: ../src/main.py:363
+#: ../src/main.py:366
 msgid "General"
 msgstr "一般設定"
 
-#: ../src/main.py:364
+#: ../src/main.py:367
 msgid "Hotkeys"
 msgstr "捷徑鍵設定"
 
-#: ../src/main.py:365
+#: ../src/main.py:368
 msgid "Advanced"
 msgstr "進階設定"
 
-#: ../src/main.py:446
-msgid "Close terminal?"
+#: ../src/main.py:450
+msgid "Quit terminal?"
 msgstr "關閉終端機?"
 
-#: ../src/main.py:447
+#: ../src/main.py:451
 msgid "Terminal still have running programs. Are you sure you want to quit?"
 msgstr "終端機中仍然有正在運行的程序， 你確定要退出嗎？"
 
-#: ../src/main.py:603 ../src/main.py:694
+#: ../src/main.py:610 ../src/main.py:701
 msgid "Preferences"
 msgstr "偏好設定"
 
-#: ../src/main.py:604 ../src/main.py:2246 ../src/main.py:2582
+#: ../src/main.py:611 ../src/main.py:2264 ../src/main.py:2600
 msgid "Set up SSH connection"
 msgstr "建立 SSH 連線"
 
-#: ../src/main.py:605 ../src/main.py:692 ../src/main.py:2245
-#: ../src/main.py:2581
+#: ../src/main.py:612 ../src/main.py:699 ../src/main.py:2263
+#: ../src/main.py:2599
 msgid "Display hotkeys"
 msgstr "顯示捷徑鍵"
 
-#: ../src/main.py:606
+#: ../src/main.py:613
 msgid "See what's new"
 msgstr "檢視新特點"
 
-#: ../src/main.py:607
+#: ../src/main.py:614
 msgid "Quit"
 msgstr "結束"
 
-#: ../src/main.py:630 ../src/main.py:2212 ../src/main.py:2559
+#: ../src/main.py:637 ../src/main.py:2230 ../src/main.py:2577
 msgid "Copy"
 msgstr "複製"
 
-#: ../src/main.py:632 ../src/main.py:2213 ../src/main.py:2560
+#: ../src/main.py:639 ../src/main.py:2231 ../src/main.py:2578
 msgid "Paste"
 msgstr "貼上"
 
-#: ../src/main.py:639
+#: ../src/main.py:646
 msgid "Open file"
 msgstr "開啟檔案"
 
-#: ../src/main.py:641
+#: ../src/main.py:648
 msgid "Open directory"
 msgstr "開啟目錄"
 
-#: ../src/main.py:643
+#: ../src/main.py:650
 msgid "Open URL"
 msgstr "開啟 URL"
 
-#: ../src/main.py:645
+#: ../src/main.py:652
 msgid "Open manual"
 msgstr "開啟手冊"
 
-#: ../src/main.py:649
+#: ../src/main.py:656
 msgid "Open current directory"
 msgstr "開啟目前目錄"
 
-#: ../src/main.py:654 ../src/main.py:2223 ../src/main.py:2583
+#: ../src/main.py:661 ../src/main.py:2241 ../src/main.py:2601
 msgid "Show correlative child window"
 msgstr "顯示相關的子進程視窗"
 
-#: ../src/main.py:657
+#: ../src/main.py:664
 msgid "Exit fullscreen"
 msgstr "結束全螢幕"
 
-#: ../src/main.py:664 ../src/main.py:2232 ../src/main.py:2561
+#: ../src/main.py:671 ../src/main.py:2250 ../src/main.py:2579
 msgid "Split vertically"
 msgstr "垂直分割"
 
-#: ../src/main.py:665 ../src/main.py:2233 ../src/main.py:2562
+#: ../src/main.py:672 ../src/main.py:2251 ../src/main.py:2580
 msgid "Split horizontally"
 msgstr "水平分割"
 
-#: ../src/main.py:666 ../src/main.py:2238 ../src/main.py:2563
+#: ../src/main.py:673 ../src/main.py:2256 ../src/main.py:2581
 msgid "Close current window"
 msgstr "關閉目前視窗"
 
-#: ../src/main.py:670 ../src/main.py:2239 ../src/main.py:2564
+#: ../src/main.py:677 ../src/main.py:2257 ../src/main.py:2582
 msgid "Close other window"
 msgstr "關閉其他視窗"
 
-#: ../src/main.py:678 ../src/main.py:685 ../src/main.py:2228
-#: ../src/main.py:2574
+#: ../src/main.py:685 ../src/main.py:692 ../src/main.py:2246
+#: ../src/main.py:2592
 msgid "New workspace"
 msgstr "建立新工作區"
 
-#: ../src/main.py:679
+#: ../src/main.py:686
 msgid "Switch workspace"
 msgstr "切換工作區"
 
-#: ../src/main.py:680 ../src/main.py:2231 ../src/main.py:2575
+#: ../src/main.py:687 ../src/main.py:2249 ../src/main.py:2593
 msgid "Close workspace"
 msgstr "關閉工作區"
 
-#: ../src/main.py:691
+#: ../src/main.py:698
 msgid "Search"
 msgstr "搜尋"
 
-#: ../src/main.py:898
+#: ../src/main.py:909
 msgid "Close workspace?"
 msgstr "關閉工作區?"
 
-#: ../src/main.py:899
-msgid "Workspace still have running programs. Are you sure you want to quit?"
-msgstr "工作區中仍然有正在運行的程序， 你確定要退出嗎？"
+#: ../src/main.py:910
+msgid "Workspace still have running programs. Are you sure you want to close?"
+msgstr "工作區中仍然有正在運行的程序， 你確定要關閉嗎？"
 
-#: ../src/main.py:1723
+#: ../src/main.py:1746
 msgid "Workspace"
 msgstr "工作區"
 
-#: ../src/main.py:2211
+#: ../src/main.py:2229
 msgid "Terminal command"
 msgstr "終端機指令"
 
-#: ../src/main.py:2214 ../src/main.py:2565
+#: ../src/main.py:2232 ../src/main.py:2583
 msgid "Scroll page up"
 msgstr "向上捲動："
 
-#: ../src/main.py:2215 ../src/main.py:2566
+#: ../src/main.py:2233 ../src/main.py:2584
 msgid "Scroll page down"
 msgstr "向下捲動: "
 
-#: ../src/main.py:2216 ../src/main.py:2578
+#: ../src/main.py:2234 ../src/main.py:2596
 msgid "Search forward"
 msgstr "向下搜尋"
 
-#: ../src/main.py:2217 ../src/main.py:2579
+#: ../src/main.py:2235 ../src/main.py:2597
 msgid "Search backward"
 msgstr "向上搜尋"
 
-#: ../src/main.py:2218
+#: ../src/main.py:2236
 msgid "Select word"
 msgstr "選擇字詞"
 
-#: ../src/main.py:2218
+#: ../src/main.py:2236
 msgid "Double click"
 msgstr "雙擊"
 
-#: ../src/main.py:2219
+#: ../src/main.py:2237
 msgid "Open"
 msgstr "開啟"
 
-#: ../src/main.py:2219
+#: ../src/main.py:2237
 msgid "Ctrl + Left click"
 msgstr "Ctrl + 滑鼠左鍵"
 
-#: ../src/main.py:2220 ../src/main.py:2572
+#: ../src/main.py:2238 ../src/main.py:2590
 msgid "Zoom out"
 msgstr "拉遠"
 
-#: ../src/main.py:2221 ../src/main.py:2571
+#: ../src/main.py:2239 ../src/main.py:2589
 msgid "Zoom in"
 msgstr "拉近"
 
-#: ../src/main.py:2222 ../src/main.py:2573
+#: ../src/main.py:2240 ../src/main.py:2591
 msgid "Reset zoom"
 msgstr "預設尺寸"
 
-#: ../src/main.py:2227
+#: ../src/main.py:2245
 msgid "Workspace command"
 msgstr "工作區指令"
 
-#: ../src/main.py:2229 ../src/main.py:2576
+#: ../src/main.py:2247 ../src/main.py:2594
 msgid "Previous workspace"
 msgstr "切換至上一工作區"
 
-#: ../src/main.py:2230 ../src/main.py:2577
+#: ../src/main.py:2248 ../src/main.py:2595
 msgid "Next workspace"
 msgstr "切換至下一工作區"
 
-#: ../src/main.py:2234 ../src/main.py:2567
+#: ../src/main.py:2252 ../src/main.py:2585
 msgid "Focus the terminal above"
 msgstr "選擇上方終端機"
 
-#: ../src/main.py:2235 ../src/main.py:2568
+#: ../src/main.py:2253 ../src/main.py:2586
 msgid "Focus the terminal below"
 msgstr "選擇下方終端機"
 
-#: ../src/main.py:2236 ../src/main.py:2569
+#: ../src/main.py:2254 ../src/main.py:2587
 msgid "Focus the temrinal left"
 msgstr "選擇左側終端機"
 
-#: ../src/main.py:2237 ../src/main.py:2570
+#: ../src/main.py:2255 ../src/main.py:2588
 msgid "Focus the terminal right"
 msgstr "選擇右側終端機"
 
-#: ../src/main.py:2243
+#: ../src/main.py:2261
 msgid "Advanced command"
 msgstr "進階指令"
 
-#: ../src/main.py:2454
+#: ../src/main.py:2472
 msgid "Font: "
 msgstr "字體："
 
-#: ../src/main.py:2455
+#: ../src/main.py:2473
 msgid "Font size: "
 msgstr "字體大小："
 
-#: ../src/main.py:2456
+#: ../src/main.py:2474
 msgid "Color scheme: "
 msgstr "色彩組合："
 
-#: ../src/main.py:2458
+#: ../src/main.py:2476
 msgid "Background transparency: "
 msgstr "背景透明度："
 
-#: ../src/main.py:2459
+#: ../src/main.py:2477
 msgid "Background image: "
 msgstr "背景圖片："
 
-#: ../src/main.py:2591
+#: ../src/main.py:2609
 msgid "40"
 msgstr "86"
 
-#: ../src/main.py:2697
+#: ../src/main.py:2715
 msgid "Cursor shape: "
 msgstr "游標形狀："
 
-#: ../src/main.py:2698
+#: ../src/main.py:2716
 msgid "Cursor blink: "
 msgstr "游標閃爍："
 
-#: ../src/main.py:2699
+#: ../src/main.py:2717
 msgid "Window state: "
 msgstr "預設啟動樣式："
 
-#: ../src/main.py:2700
+#: ../src/main.py:2718
 msgid "Startup command: "
 msgstr "自訂預設啟動指令："
 
-#: ../src/main.py:2701
+#: ../src/main.py:2719
 msgid "Startup directory: "
 msgstr "預設啟動目錄："
 
-#: ../src/main.py:2702
+#: ../src/main.py:2720
 msgid "Ask on quit"
 msgstr "退出時詢問"
 
-#: ../src/main.py:2703
-msgid "Copy on selection: "
-msgstr "選中時拷貝: "
-
-#: ../src/main.py:2704
+#: ../src/main.py:2721
 msgid "Scroll on keystroke: "
 msgstr "按鍵時捲動："
 
-#: ../src/main.py:2705
+#: ../src/main.py:2722
 msgid "Scroll on output: "
 msgstr "輸出時捲動："
 
-#: ../src/main.py:2852
+#: ../src/main.py:2723
+msgid "Copy on selection: "
+msgstr "選中時拷貝: "
+
+#: ../src/main.py:2870
 msgid "Save"
 msgstr "儲存"
 
-#: ../src/main.py:2894 ../src/main.py:2916
+#: ../src/main.py:2912 ../src/main.py:2934
 msgid "Name: "
 msgstr "名稱："
 
-#: ../src/main.py:2894 ../src/main.py:2919
+#: ../src/main.py:2912 ../src/main.py:2937
 msgid "Server: "
 msgstr "伺服器："
 
-#: ../src/main.py:2894 ../src/main.py:2922
+#: ../src/main.py:2912 ../src/main.py:2940
 msgid "User: "
 msgstr "使用者："
 
-#: ../src/main.py:2894 ../src/main.py:2925
+#: ../src/main.py:2912 ../src/main.py:2943
 msgid "Password: "
 msgstr "密碼："
 
-#: ../src/main.py:2894 ../src/main.py:2928
+#: ../src/main.py:2912 ../src/main.py:2946
 msgid "Port: "
 msgstr "連接埠："
 
-#: ../src/main.py:2950
+#: ../src/main.py:2968
 msgid "Remote login"
 msgstr "遠端登入"
 
-#: ../src/main.py:2957
+#: ../src/main.py:2975
 msgid "Add"
 msgstr "加入"
 
-#: ../src/main.py:2958
+#: ../src/main.py:2976
 msgid "Connection"
 msgstr "連線"
 
-#: ../src/main.py:2966
+#: ../src/main.py:2984
 msgid "Name"
 msgstr "名稱"
 
-#: ../src/main.py:2966
+#: ../src/main.py:2984
 msgid "Server"
 msgstr "伺服器"
 
-#: ../src/main.py:2972
+#: ../src/main.py:2990
 msgid "Add remote login"
 msgstr "加入遠端登入"
 
-#: ../src/main.py:3038
+#: ../src/main.py:3056
 msgid "Edit remote login"
 msgstr "編輯遠端登入"
 
-#: ../src/main.py:3050
+#: ../src/main.py:3068
 msgid "Edit"
 msgstr "編輯"
 
-#: ../src/main.py:3051
+#: ../src/main.py:3069
 msgid "Delete"
 msgstr "刪除"
 
-#: ../src/main.py:3201
+#: ../src/main.py:3219
 msgid "Reset"
 msgstr "恢複預設值"
 
-#: ../src/main.py:3204
+#: ../src/main.py:3222
 msgid "Close"
 msgstr "關閉"
 
