@@ -292,6 +292,9 @@ def set_terminal_background(terminal):
 def do_copy_on_selection_toggle(terminal):
     terminal.copy_clipboard()
 
+def get_terminal_child_pids(terminals):
+    return filter(lambda pid: pid != '', map(lambda terminal: commands.getoutput("pgrep -P %s" % terminal.process_id), terminals))
+    
 class Terminal(object):
     """
     Terminal class.
@@ -377,6 +380,7 @@ class Terminal(object):
         self.application.window.connect("window-resize", self.set_window_resize)
         
         global_event.register_event("close-workspace", self.close_workspace)
+        global_event.register_event("close-terminal-workspace", lambda w: self.close_workspace(w, True))
         global_event.register_event("change-window-title", self.change_window_title)
         global_event.register_event("show-menu", self.show_menu)
         global_event.register_event("xdg-open", lambda command: run_command("xdg-open %s" % command))
@@ -439,7 +443,7 @@ class Terminal(object):
         return True
         
     def quit(self):
-        child_pids = self.get_terminal_child_pids(self.get_all_terminals())
+        child_pids = get_terminal_child_pids(self.get_all_terminals())
         
         ask_on_quit = is_bool(get_config("advanced", "ask_on_quit"))
         
@@ -827,9 +831,6 @@ class Terminal(object):
     def focus_right_terminal(self):
         self.focus_horizontal_terminal(False)
         
-    def get_terminal_child_pids(self, terminals):
-        return filter(lambda pid: pid != '', map(lambda terminal: commands.getoutput("pgrep -P %s" % terminal.process_id), terminals))
-        
     def get_all_terminals(self):
         return merge_list(map(lambda workspace: get_match_children(workspace, TerminalWrapper), self.workspace_list))
         
@@ -895,19 +896,26 @@ class Terminal(object):
             self.terminal_box.add(self.workspace_list[workspace_index - 1])
             self.terminal_box.show_all()
         
-    def close_workspace(self, workspace):    
+    def close_workspace(self, workspace, close_by_terminal=False):    
         if len(self.workspace_list) == 1:
             global_event.emit("quit")
         else:        
-            child_pids = self.get_terminal_child_pids(self.get_workspace_terminals(workspace))
+            child_pids = get_terminal_child_pids(self.get_workspace_terminals(workspace))
             ask_on_quit = is_bool(get_config("advanced", "ask_on_quit"))
             
             if not ask_on_quit or len(child_pids) == 0:
                 self._close_workspace(workspace)
             elif len(child_pids) > 0:
+                if close_by_terminal:
+                    dialog_title = _("Close window?")
+                    dialog_content = _("Window still have running programs. Are you sure you want to close?")
+                else:
+                    dialog_title = _("Close workspace?")
+                    dialog_content = _("Workspace still have running programs. Are you sure you want to close?")
+                
                 dialog = ConfirmDialog(
-                    _("Close workspace?"),
-                    _("Workspace still have running programs. Are you sure you want to close?"),
+                    dialog_title,
+                    dialog_content,
                     confirm_callback=lambda : self._close_workspace(workspace),
                     default_width=CONFIRM_DIALOG_WIDTH,
                     default_height=CONFIRM_DIALOG_HEIGHT,
@@ -1527,7 +1535,7 @@ class TerminalGrid(gtk.VBox):
             else:
                 workspace = get_match_parent(self, "Workspace")
                 if workspace:
-                    global_event.emit("close-workspace", workspace)
+                    global_event.emit("close-terminal-workspace", workspace)
 
 gobject.type_register(TerminalGrid)
 
