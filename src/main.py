@@ -1661,6 +1661,7 @@ class WorkspaceSwitcher(gtk.Window):
         
         self.connect("expose-event", self.expose_workspace_switcher)
         self.connect("motion-notify-event", self.motion_workspace_switcher)
+        self.connect("leave-notify-event", self.leave_workspace_switcher)
         self.connect("button-press-event", self.button_press_workspace_switcher)
         
     def hide_switcher(self):
@@ -1750,7 +1751,7 @@ class WorkspaceSwitcher(gtk.Window):
                 snapshot_area_width = snapshot_width + WORKSPACE_SNAPSHOT_OFFSET_X * 2
                 snapshot_area_height = rect.height
                 
-                if self.workspace_index == workspace_index and self.in_workspace_snapshot_area:
+                if self.workspace_index == workspace_index:
                     cr.set_source_rgba(*alpha_color_hex_to_cairo(("#FFFFFF", 0.1)))
                     cr.rectangle(
                         snapshot_area_x,
@@ -1760,12 +1761,13 @@ class WorkspaceSwitcher(gtk.Window):
                         )
                     cr.fill()
                     
-                self.workspace_snapshot_areas.append((workspace_index, (
-                                                       scale_value * snapshot_area_x,
-                                                       scale_value * snapshot_area_y,
-                                                       scale_value * snapshot_area_width,
-                                                       scale_value * snapshot_area_height,
-                                                       )))    
+                self.workspace_snapshot_areas.append(
+                    (workspace_index, (
+                            scale_value * snapshot_area_x,
+                            scale_value * snapshot_area_y,
+                            scale_value * snapshot_area_width,
+                            scale_value * snapshot_area_height,
+                            )))    
                 
                 # Draw workspace snapshot.
                 draw_pixbuf(
@@ -1903,6 +1905,13 @@ class WorkspaceSwitcher(gtk.Window):
              self.close_button_size,
              self.close_button_size,
              ))
+    
+    def leave_workspace_switcher(self, widget, event):
+        self.in_workspace_snapshot_area = False
+        self.in_workspace_add_area = False
+        self.in_workspace_close_area = False
+        
+        self.queue_draw()
     
     def motion_workspace_switcher(self, widget, event):
         self.in_workspace_snapshot_area = False
