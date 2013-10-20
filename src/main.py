@@ -513,8 +513,12 @@ class Terminal(object):
     def ssh_login(self, user, server, password, port):
         active_terminal = self.application.window.get_focus()
         if active_terminal and isinstance(active_terminal, TerminalWrapper):
-            active_terminal.feed_child(
-                "%s %s %s %s %s\n" % (os.path.join(get_parent_dir(__file__), "ssh_login.sh"), user, server, password, port))
+            command = "%s %s %s\n" % (os.path.join(get_parent_dir(__file__), "ssh_login.sh"), user, server)
+            if len(password):
+                command = "EXP_SSH_PASS=\"%s\" %s" % (password, command)
+            if len(port):
+                command = "EXP_SSH_PORT=\"%s\" %s" % (port, command)
+            active_terminal.feed_child(command)
         
     def keybind_change(self, key_value, new_key):
         for terminal in get_match_children(self.application.window, TerminalWrapper):
