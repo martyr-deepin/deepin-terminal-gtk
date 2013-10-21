@@ -1134,7 +1134,6 @@ class TerminalWrapper(vte.Terminal):
                 fork_command = startup_command
             
         self.process_id = self.fork_command(fork_command)
-        self.cwd_path = '/proc/%s/cwd' % self.process_id
         
         if command:
             self.feed_child(command)
@@ -1401,7 +1400,7 @@ class TerminalWrapper(vte.Terminal):
         self.change_font(self.default_font, self.current_font_size)
         
     def get_working_directory(self):
-        return os.readlink(self.cwd_path)
+        return os.getenv("PWD")
         
     def change_window_title(self):
         global focus_terminal
