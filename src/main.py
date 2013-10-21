@@ -2149,7 +2149,7 @@ class SearchBar(gtk.Window):
             
         # Draw frame.
         with cairo_state(cr):
-            cr.set_source_rgba(*alpha_color_hex_to_cairo(("#FFFFFF", 0.1)))
+            cr.set_source_rgba(*alpha_color_hex_to_cairo(("#FFFFFF", 0.15)))
             cr.set_operator(cairo.OPERATOR_OVER)
             draw_round_rectangle(cr, x, y, w, h, self.radius)
             cr.stroke()
