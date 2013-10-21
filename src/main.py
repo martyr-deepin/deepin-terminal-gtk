@@ -3382,7 +3382,7 @@ gobject.type_register(SettingDialog)
 
 if __name__ == "__main__":
     quake_mode = "--quake-mode" in sys.argv
-    opts, args = getopt.getopt(sys.argv[1:], "e:", ["quake-mode", "working-directory="])  
+    opts, args = getopt.getopt(sys.argv[1:], "c:e:", ["quake-mode", "working-directory="])  
     quake_mode = False
     working_directory = None
     user_command = None
@@ -3391,7 +3391,7 @@ if __name__ == "__main__":
             quake_mode = True
         elif option_name == "--working-directory":
             working_directory = option_value
-        elif option_name == "-e":
+        elif option_name in ["-c", "-e"]:
             user_command = option_value
             
     if (not quake_mode) or (not is_exists(APP_DBUS_NAME, APP_OBJECT_NAME)):
