@@ -1143,7 +1143,7 @@ class TerminalWrapper(vte.Terminal):
         self.process_id = self.fork_command(fork_command)
         
         if customize_feed_command:
-            self.feed_child(customize_feed_command)
+            self.feed_child("%s\n" % customize_feed_command)
         elif command:
             self.feed_child(command)
 
