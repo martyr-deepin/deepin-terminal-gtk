@@ -319,12 +319,18 @@ class Terminal(object):
     Terminal class.
     """
 
-    def __init__(self, quake_mode=False, working_directory=None):
+    def __init__(self, 
+                 quake_mode=False, 
+                 working_directory=None,
+                 user_command=None,
+                 ):
         """
         Init Terminal class.
         """
         self.quake_mode = quake_mode
         self.working_directory = working_directory
+        self.user_command = user_command
+        
         if self.quake_mode:
             UniqueService(
                 dbus.service.BusName(APP_DBUS_NAME, bus=dbus.SessionBus()),
@@ -886,14 +892,14 @@ class Terminal(object):
                 self.terminal_box.remove(child)
         
     def first_workspace(self):
-        self.new_workspace(self.working_directory)
+        self.new_workspace(self.working_directory, self.user_command)
                 
-    def new_workspace(self, working_directory=None):
+    def new_workspace(self, working_directory=None, user_command=None):
         if working_directory == None or not(os.path.exists(working_directory)):
             working_directory = get_active_working_directory(self.application.window)
         
         workspace = Workspace()
-        terminal_grid = TerminalGrid(working_directory=working_directory)
+        terminal_grid = TerminalGrid(working_directory=working_directory, user_command=user_command)
         workspace.add(terminal_grid)
         
         self.remove_current_workspace()
@@ -1067,6 +1073,7 @@ class TerminalWrapper(vte.Terminal):
                  working_directory=None,
                  command=None,
                  press_q_quit=False,
+                 user_command=None,
                  ):
         """
         Initial values.
@@ -1117,11 +1124,14 @@ class TerminalWrapper(vte.Terminal):
             # child_feed have cd information after terminal created.
             os.chdir(working_directory)
             
-        startup_command = get_config("advanced", "startup_command")    
-        if startup_command == "":
-            fork_command = os.getenv("SHELL")
+        if user_command and user_command != "":
+            fork_command = user_command
         else:
-            fork_command = startup_command
+            startup_command = get_config("advanced", "startup_command")
+            if startup_command == "":
+                fork_command = os.getenv("SHELL")
+            else:
+                fork_command = startup_command
             
         self.process_id = self.fork_command(fork_command)
         self.cwd_path = '/proc/%s/cwd' % self.process_id
@@ -1472,6 +1482,7 @@ class TerminalGrid(gtk.VBox):
                  working_directory=None,
                  command=None,
                  press_q_quit=False,
+                 user_command=None,
                  ):
         """
         Initial values
@@ -1490,6 +1501,7 @@ class TerminalGrid(gtk.VBox):
                 working_directory=working_directory,
                 command=command,
                 press_q_quit=press_q_quit,
+                user_command=user_command,
                 )
 
         self.is_parent = False
@@ -3370,14 +3382,17 @@ gobject.type_register(SettingDialog)
 
 if __name__ == "__main__":
     quake_mode = "--quake-mode" in sys.argv
-    opts, args = getopt.getopt(sys.argv[1:], "", ["quake-mode", "working-directory="])  
+    opts, args = getopt.getopt(sys.argv[1:], "e:", ["quake-mode", "working-directory="])  
     quake_mode = False
     working_directory = None
+    user_command = None
     for (option_name, option_value) in opts:
         if option_name == "--quake-mode":
             quake_mode = True
         elif option_name == "--working-directory":
             working_directory = option_value
+        elif option_name == "-e":
+            user_command = option_value
             
     if (not quake_mode) or (not is_exists(APP_DBUS_NAME, APP_OBJECT_NAME)):
-        Terminal(quake_mode, working_directory).run()
+        Terminal(quake_mode, working_directory, user_command).run()
