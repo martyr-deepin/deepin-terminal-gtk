@@ -41,6 +41,7 @@ from dtk.ui.utils import (container_remove_all, get_match_parent, cairo_state, p
 from dtk.ui.utils import get_window_shadow_size
 from dtk.ui.utils import place_center, get_widget_root_coordinate
 from dtk.ui.window import Window
+from optparse import OptionParser
 from nls import _
 import cairo
 import commands
@@ -55,7 +56,6 @@ import sys
 import traceback
 import urllib
 import vte
-import getopt
 
 PROJECT_NAME = "deepin-terminal"
 
@@ -322,14 +322,16 @@ class Terminal(object):
     def __init__(self, 
                  quake_mode=False, 
                  working_directory=None,
-                 user_command=None,
+                 customize_startup_command=None,
+                 customize_feed_command=None,
                  ):
         """
         Init Terminal class.
         """
         self.quake_mode = quake_mode
         self.working_directory = working_directory
-        self.user_command = user_command
+        self.customize_startup_command = customize_startup_command
+        self.customize_feed_command = customize_feed_command
         
         if self.quake_mode:
             UniqueService(
@@ -892,14 +894,18 @@ class Terminal(object):
                 self.terminal_box.remove(child)
         
     def first_workspace(self):
-        self.new_workspace(self.working_directory, self.user_command)
+        self.new_workspace(self.working_directory, self.customize_startup_command, self.customize_feed_command)
                 
-    def new_workspace(self, working_directory=None, user_command=None):
+    def new_workspace(self, working_directory=None, customize_startup_command=None, customize_feed_command=None):
         if working_directory == None or not(os.path.exists(working_directory)):
             working_directory = get_active_working_directory(self.application.window)
         
         workspace = Workspace()
-        terminal_grid = TerminalGrid(working_directory=working_directory, user_command=user_command)
+        terminal_grid = TerminalGrid(
+            working_directory=working_directory, 
+            customize_startup_command=customize_startup_command,
+            customize_feed_command=customize_feed_command,
+            )
         workspace.add(terminal_grid)
         
         self.remove_current_workspace()
@@ -1073,7 +1079,8 @@ class TerminalWrapper(vte.Terminal):
                  working_directory=None,
                  command=None,
                  press_q_quit=False,
-                 user_command=None,
+                 customize_startup_command=None,
+                 customize_feed_command=None,
                  ):
         """
         Initial values.
@@ -1124,8 +1131,8 @@ class TerminalWrapper(vte.Terminal):
             # child_feed have cd information after terminal created.
             os.chdir(working_directory)
             
-        if user_command and user_command != "":
-            fork_command = user_command
+        if customize_startup_command and customize_startup_command != "":
+            fork_command = customize_startup_command
         else:
             startup_command = get_config("advanced", "startup_command")
             if startup_command == "":
@@ -1135,7 +1142,9 @@ class TerminalWrapper(vte.Terminal):
             
         self.process_id = self.fork_command(fork_command)
         
-        if command:
+        if customize_feed_command:
+            self.feed_child(customize_feed_command)
+        elif command:
             self.feed_child(command)
 
         # Key and signals
@@ -1481,7 +1490,8 @@ class TerminalGrid(gtk.VBox):
                  working_directory=None,
                  command=None,
                  press_q_quit=False,
-                 user_command=None,
+                 customize_startup_command=None,
+                 customize_feed_command=None,
                  ):
         """
         Initial values
@@ -1500,9 +1510,10 @@ class TerminalGrid(gtk.VBox):
                 working_directory=working_directory,
                 command=command,
                 press_q_quit=press_q_quit,
-                user_command=user_command,
+                customize_startup_command=customize_startup_command,
+                customize_feed_command=customize_feed_command,
                 )
-
+            
         self.is_parent = False
         self.paned = None
         self.add(self.terminal)
@@ -3380,18 +3391,19 @@ class SettingDialog(PreferenceDialog):
 gobject.type_register(SettingDialog)        
 
 if __name__ == "__main__":
-    quake_mode = "--quake-mode" in sys.argv
-    opts, args = getopt.getopt(sys.argv[1:], "c:e:", ["quake-mode", "working-directory="])  
-    quake_mode = False
-    working_directory = None
-    user_command = None
-    for (option_name, option_value) in opts:
-        if option_name == "--quake-mode":
-            quake_mode = True
-        elif option_name == "--working-directory":
-            working_directory = option_value
-        elif option_name in ["-c", "-e"]:
-            user_command = option_value
-            
-    if (not quake_mode) or (not is_exists(APP_DBUS_NAME, APP_OBJECT_NAME)):
-        Terminal(quake_mode, working_directory, user_command).run()
+    customize_feed_command = None
+    
+    parser = OptionParser(usage="Usage: deepin-terminal [options] [arg]", version="deepin-terminal v1.0")
+    parser.add_option("--working-directory", dest="working_directory", help=_("working directory"), metavar="FILE")
+    parser.add_option("--quake-mode", action="store_true", dest="quake_mode", help=_("run with quake mode"))
+    parser.add_option("-e", action="store", type="string", dest="startup_command", help=_("startup terminal with given command"))
+    parser.add_option("-c", action="store", type="string", dest="feed_command", help=_("feed vte process with given command"))
+    parser.get_option('-h').help = _("show this help message and exit")
+    parser.get_option('--version').help = _("show program's version number and exit")
+    
+    (opts, args) = parser.parse_args()
+    if opts.feed_command:
+        customize_feed_command = "%s %s" % (opts.feed_command, ' '.join(args))
+        
+    if (not opts.quake_mode) or (not is_exists(APP_DBUS_NAME, APP_OBJECT_NAME)):
+        Terminal(opts.quake_mode, opts.working_directory, opts.startup_command, customize_feed_command).run()
