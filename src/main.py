@@ -1409,7 +1409,12 @@ class TerminalWrapper(vte.Terminal):
         self.change_font(self.default_font, self.current_font_size)
         
     def get_working_directory(self):
-        return os.getenv("PWD")
+        try:
+            return os.readlink("/proc/%s/cwd" % self.process_id)
+        except Exception, e:
+            # Return HOME directory if got error when read /proc/pid/cwd
+            print "TerminalWrapper.get_working_directory got error: %s" % e
+            return _HOME
         
     def change_window_title(self):
         global focus_terminal
