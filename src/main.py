@@ -303,7 +303,7 @@ def get_terminal_child_pids(terminal):
 def get_terminals_child_pids(terminals):
     return merge_list(map(get_terminal_child_pids, terminals))
 
-def create_confirm_dialog(dialog_title, dialog_content, confirm_callback):
+def create_confirm_dialog(dialog_title, dialog_content, confirm_callback, toplevel):
     dialog = ConfirmDialog(
         dialog_title,
         dialog_content,
@@ -313,6 +313,7 @@ def create_confirm_dialog(dialog_title, dialog_content, confirm_callback):
         text_wrap_width=CONFIRM_WRAP_WIDTH,
         )
     dialog.show_all()
+    place_center(toplevel, dialog)
     
 class Terminal(object):
     """
@@ -481,6 +482,7 @@ class Terminal(object):
                 _("Quit terminal?"),
                 _("Terminal still have running programs. Are you sure you want to quit?"),
                 self._quit,
+                self.application.window,
                 )
             
     def window_is_active(self, window, param):
@@ -951,6 +953,7 @@ class Terminal(object):
                     dialog_title,
                     dialog_content,
                     lambda : self._close_workspace(workspace, child_pids),
+                    self.application.window,
                     )
             
     def change_window_title(self, window_title):
@@ -1600,6 +1603,7 @@ class TerminalGrid(gtk.VBox):
                         _("Close window?"),
                         _("Window still have running programs. Are you sure you want to close?"),
                         remove_terminal,
+                        self.get_toplevel(),
                         )
             else:
                 workspace = get_match_parent(self, "Workspace")
