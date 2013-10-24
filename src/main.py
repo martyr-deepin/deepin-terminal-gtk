@@ -62,7 +62,7 @@ PROJECT_NAME = "deepin-terminal"
 app_theme = init_skin(
     PROJECT_NAME,
     "1.0",
-    "06",
+    "07",
     os.path.join(get_parent_dir(__file__, 2), "skin"),
     os.path.join(get_parent_dir(__file__, 2), "app_theme")
 )
@@ -356,7 +356,10 @@ class Terminal(object):
         
         self.application.add_titlebar(
             app_name = _("Deepin Terminal"),
+            name_size=11,
+            title_size=11,
             )
+        self.application.titlebar.set_size_request(-1, 34)
 
         self.normal_padding = 2
         self.fullscreen_padding = 0
@@ -654,8 +657,6 @@ class Terminal(object):
         self.preference_dialog.show_all()
         
     def show_helper_window(self):
-        
-        
         self.helper_window.show_help(
             self.application.window,
             get_active_working_directory(self.application.window),
