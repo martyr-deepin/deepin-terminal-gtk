@@ -94,7 +94,7 @@ APP_DBUS_NAME   = "com.deepin.terminal"
 APP_OBJECT_NAME = "/com/deepin/terminal"
 
 # Load customize rc style before any other.
-PANED_HANDLE_SIZE = 1
+PANED_HANDLE_SIZE = 2
 gtk.rc_parse_string(
     """
     style 'my_style' {
@@ -3262,15 +3262,24 @@ class Paned(gtk.Paned):
     def draw_mask(self, event):
         handle = self.get_handle_window()
         cr = handle.cairo_create()
-        cr.set_source_rgba(*alpha_color_hex_to_cairo(("#333333", 0.5)))
         (width, height) = handle.get_size()
         if self.get_orientation() == gtk.ORIENTATION_HORIZONTAL:
-            cr.rectangle(0, 0, PANED_HANDLE_SIZE, height)
+            cr.set_source_rgba(*alpha_color_hex_to_cairo(("#111111", 0.8)))
+            cr.rectangle(0, 0, 1, height)
+            cr.fill()
+            
+            cr.set_source_rgba(*alpha_color_hex_to_cairo(("#333333", 0.5)))
+            cr.rectangle(1, 0, 1, height)
             cr.fill()
         else:
-            cr.rectangle(0, 0, width, PANED_HANDLE_SIZE)
+            cr.set_source_rgba(*alpha_color_hex_to_cairo(("#111111", 0.8)))
+            cr.rectangle(0, 0, width, 1)
             cr.fill()
         
+            cr.set_source_rgba(*alpha_color_hex_to_cairo(("#333333", 0.5)))
+            cr.rectangle(0, 1, width, 1)
+            cr.fill()
+            
 gobject.type_register(Paned)        
 
 class HPaned(Paned):
