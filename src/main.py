@@ -1216,7 +1216,7 @@ class TerminalWrapper(vte.Terminal):
             self.keymap[get_keybind(key_value)] = getattr(self, key_value)
             
         if self.press_q_quit:
-            self.keymap["q"] = self.exit_callback
+            self.keymap["q"] = lambda : self.exit_callback(True)
             
     def get_correlative_window_ids(self):
         try:
@@ -1446,13 +1446,13 @@ class TerminalWrapper(vte.Terminal):
     def child_exited(self, widget):
         self.exit_callback()
         
-    def exit_callback(self):
+    def exit_callback(self, no_confirm_dialog=False):
         """
         Call parent_widget.child_exit_callback
         :param widget: self
         """
         if self.parent_widget:
-            self.parent_widget.child_exit_callback(self.parent_widget)
+            self.parent_widget.child_exit_callback(self.parent_widget, no_confirm_dialog)
 
     def realize_callback(self, widget):
         """
@@ -1551,7 +1551,7 @@ class TerminalGrid(gtk.VBox):
         self.add(self.paned)
         self.show_all()
 
-    def child_exit_callback(self, widget):
+    def child_exit_callback(self, widget, no_confirm_dialog=False):
         """
         Recursively close the widget or remove paned.
         :param widget: which widget is exited.
@@ -1591,7 +1591,7 @@ class TerminalGrid(gtk.VBox):
                 child_pids = get_terminals_child_pids([self.terminal])
                 ask_on_quit = is_bool(get_config("advanced", "ask_on_quit"))
                 
-                if not ask_on_quit or len(child_pids) == 0:
+                if no_confirm_dialog or not ask_on_quit or len(child_pids) == 0:
                     remove_terminal()
                 else:
                     create_confirm_dialog(
