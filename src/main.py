@@ -1132,7 +1132,7 @@ class TerminalWrapper(vte.Terminal):
             
         if cmdline_startup_command and cmdline_startup_command != "":
             if len(cmdline_startup_command) == 1:
-                self.process_id = self.fork_command(cmdline_startup_command, [])
+                self.process_id = self.fork_command(cmdline_startup_command[0], [])
             else:
                 self.process_id = self.fork_command("/bin/sh", cmdline_startup_command)
         else:
