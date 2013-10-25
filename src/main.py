@@ -359,7 +359,7 @@ class Terminal(object):
             name_size=11,
             title_size=11,
             )
-        self.application.titlebar.set_size_request(-1, 34)
+        self.application.titlebar.set_size_request(-1, 30)
 
         self.normal_padding = 2
         self.fullscreen_padding = 0
