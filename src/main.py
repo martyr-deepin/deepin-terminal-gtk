@@ -1431,7 +1431,7 @@ class TerminalWrapper(vte.Terminal):
         
     def on_drag_data_received(self, widget, drag_context, x, y, selection, target_type, timestamp):
         if target_type == DRAG_TEXT_URI:
-            paste_text = "'%s'" % urllib.unquote(selection.get_uris()[0].split("file://")[1])            
+            paste_text = ' '.join(map(lambda uri: "'%s'" % urllib.unquote(uri.split("file://")[1]), selection.get_uris()))
         elif target_type == DRAG_TEXT_PLAIN:
             paste_text = selection.data
             
