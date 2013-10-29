@@ -294,7 +294,6 @@ def do_copy_on_selection_toggle(terminal):
 
 def kill_processes(process_ids):
     if len(process_ids) > 0:
-        print "Kill: %s" % ' '.join(process_ids)
         subprocess.Popen("kill %s" % ' '.join(process_ids), shell=True)
     
 def get_terminal_child_pids(terminal):
@@ -775,7 +774,6 @@ class Terminal(object):
                 t.allocation.x == x,
                 intersectant_terminals)
             if len(same_coordinate_terminals) > 0:
-                print "Same coordinate"
                 same_coordinate_terminals[0].grab_focus()
             else:
                 # Focus terminal if it's height than focus one.
@@ -785,7 +783,6 @@ class Terminal(object):
                      t.allocation.x + t.allocation.width >= x + w),
                     intersectant_terminals)
                 if len(bigger_match_terminals) > 0:
-                    print "Bigger"
                     bigger_match_terminals[0].grab_focus()
                 else:
                     # Focus biggest intersectant area one.
@@ -795,7 +792,6 @@ class Terminal(object):
                              (t.allocation.width + w - abs(t.allocation.x - x) - abs(t.allocation.x + t.allocation.width - x - w) / 2)),
                         intersectant_terminals)
                     biggest_intersectant_terminal = sorted(intersectant_area_infos, key=lambda (_, area): area, reverse=True)[0][0]
-                    print "Biggest"
                     biggest_intersectant_terminal.grab_focus()
     
     def focus_horizontal_terminal(self, left=True):                
@@ -824,7 +820,6 @@ class Terminal(object):
                 t.allocation.y == y,
                 intersectant_terminals)
             if len(same_coordinate_terminals) > 0:
-                print "Same coordinate"
                 same_coordinate_terminals[0].grab_focus()
             else:
                 # Focus terminal if it's height than focus one.
@@ -834,7 +829,6 @@ class Terminal(object):
                      t.allocation.y + t.allocation.height >= y + h),
                     intersectant_terminals)
                 if len(bigger_match_terminals) > 0:
-                    print "Bigger"
                     bigger_match_terminals[0].grab_focus()
                 else:
                     # Focus biggest intersectant area one.
@@ -844,7 +838,6 @@ class Terminal(object):
                              (t.allocation.height + h - abs(t.allocation.y - y) - abs(t.allocation.y + t.allocation.height - y - h) / 2)),
                         intersectant_terminals)
                     biggest_intersectant_terminal = sorted(intersectant_area_infos, key=lambda (_, area): area, reverse=True)[0][0]
-                    print "Biggest"
                     biggest_intersectant_terminal.grab_focus()
                     
     def focus_up_terminal(self):
@@ -2973,7 +2966,7 @@ class EditRemoteLogin(DialogBox):
             self.user_entry.get_text(),
             self.server_entry.get_text(),
             self.password_entry.entry.get_text(),
-            self.port_box.get_value(),
+            self.port_box.value_entry.get_text(),
             )
         
         self.hide_all()
@@ -3101,6 +3094,7 @@ class RemoteLogin(DialogBox):
             items = []
             cursor.execute('SELECT * FROM login')
             for (name, user, server, password, port) in cursor.fetchall():
+                print (name, user, server, password, port)
                 items.append(TextItem(name, user, server, password, port))
                 
             self.treeview.add_items(items)    
@@ -3141,7 +3135,7 @@ class RemoteLogin(DialogBox):
         edit_remote_login = EditRemoteLogin(
             _("Edit remote login"),
             lambda name, user, server, password, port: self.save_item_remote_login(current_item, name, user, server, password, port),
-            (current_item.name, current_item.user, current_item.server, current_item.password, current_item.port),
+            (current_item.name, current_item.user, current_item.server, current_item.password, int(current_item.port)),
             )
         edit_remote_login.show_login(self.parent_window)
         
