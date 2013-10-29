@@ -528,6 +528,7 @@ class Terminal(object):
                 command = "EXP_SSH_PASS=\"%s\" %s" % (password, command)
             if len(port):
                 command = "EXP_SSH_PORT=\"%s\" %s" % (port, command)
+
             active_terminal.feed_child(command)
         
     def keybind_change(self, key_value, new_key):
@@ -3062,6 +3063,7 @@ class RemoteLogin(DialogBox):
         self.treeview = TreeView()
         self.treeview.set_column_titles([_("Name"), _("Server")])
         self.treeview.connect("items-change", lambda t: self.save_login_info())
+        self.treeview.connect("double-click-item", lambda treeview, item, column, offset_x, offset_y: self.connect_remote_login(item))
         self.body_box.add(self.treeview)
         
         self.read_login_info()
@@ -3094,7 +3096,6 @@ class RemoteLogin(DialogBox):
             items = []
             cursor.execute('SELECT * FROM login')
             for (name, user, server, password, port) in cursor.fetchall():
-                print (name, user, server, password, port)
                 items.append(TextItem(name, user, server, password, port))
                 
             self.treeview.add_items(items)    
@@ -3161,9 +3162,10 @@ class RemoteLogin(DialogBox):
         
         self.save_login_info()
         
-    def connect_remote_login(self):
+    def connect_remote_login(self, text_item=None):
         if len(self.treeview.select_rows) == 1:
-            text_item = self.treeview.visible_items[self.treeview.select_rows[0]]
+            if text_item:
+                text_item = self.treeview.visible_items[self.treeview.select_rows[0]]
             global_event.emit("ssh-login", text_item.user, text_item.server, text_item.password, text_item.port)
             
             self.hide_all()
