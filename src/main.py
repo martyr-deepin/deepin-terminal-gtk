@@ -667,6 +667,9 @@ class Terminal(object):
         menu_items = []
         if has_selection:
             menu_items.append((None, _("Copy"), terminal.copy_clipboard))
+        else:
+            if match_text:
+                menu_items.append((None, _("Copy"), terminal.copy_text(match_text[0])))
             
         menu_items.append((None, _("Paste"), terminal.paste_clipboard))    
             
@@ -1471,6 +1474,9 @@ class TerminalWrapper(vte.Terminal):
             return True
         else:
             return False
+        
+    def copy_text(self, text):
+        gtk.Clipboard().set_text(text)
 
 gobject.type_register(TerminalWrapper)
 
