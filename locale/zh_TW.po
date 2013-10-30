@@ -445,7 +445,7 @@ msgstr "刪除"
 
 #: ../src/main.py:3227
 msgid "Reset"
-msgstr "恢複預設值"
+msgstr "重設"
 
 #: ../src/main.py:3230
 msgid "Close"
