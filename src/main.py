@@ -341,8 +341,10 @@ class Terminal(object):
         
         self.application = Application(destroy_func=self.quit)
         
-        window_width = int(get_config("save_state", "window_width", 664))
-        window_height = int(get_config("save_state", "window_height", 466))
+        default_window_width = 664
+        default_window_height = 466
+        window_width = int(get_config("save_state", "window_width", default_window_width))
+        window_height = int(get_config("save_state", "window_height", default_window_height))
         window_min_width = 200
         window_min_height = 150
         self.application.window.set_default_size(window_width, window_height)
@@ -359,6 +361,8 @@ class Terminal(object):
             title_size=11,
             )
         self.application.titlebar.set_size_request(-1, 30)
+        self.application.set_skin_preview(os.path.join(get_parent_dir(__file__, 2), "image", "preview.png"))
+        skin_config.set_application_window_size(default_window_width, default_window_height)
 
         self.normal_padding = 2
         self.fullscreen_padding = 0
