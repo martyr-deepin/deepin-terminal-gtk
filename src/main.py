@@ -3180,7 +3180,7 @@ class RemoteLogin(DialogBox):
         
     def connect_remote_login(self, text_item=None):
         if len(self.treeview.select_rows) == 1:
-            if text_item:
+            if not text_item:
                 text_item = self.treeview.visible_items[self.treeview.select_rows[0]]
             global_event.emit("ssh-login", text_item.user, text_item.server, text_item.password, text_item.port)
             
