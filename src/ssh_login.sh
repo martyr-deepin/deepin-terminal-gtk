@@ -6,32 +6,19 @@
 # Enter passphrase for key
 
 ## Main
-if {$argc < 2} {
-    set scriptname [lindex [split $argv0 "/"] end]
-    send_user "Usage: $scriptname <user> <host>\n"
-    send_user "Environment variables: EXP_SSH_PASS, EXP_SSH_PORT, EXP_SSH_OPT\n"
-    exit 1
-}
+# Delete self for secret, will not affect the following code
+file delete $argv0
 
 # Setup variables
 set timeout 10
-set user [lindex $argv 0]
-set host [lindex $argv 1]
+set user "<<USER>>"
+set server "<<SERVER>>"
+set password "<<PASSWORD>>"
+set port "<<PORT>>"
+# set extopt "<<EXTOPT>>"
 set ssh_cmd "ssh"
-set ssh_opt "$user@$host"
-
-set password ""
-if {[info exists env(EXP_SSH_PASS)]} {
-    set password $env(EXP_SSH_PASS)
-}
-
-if {[info exists env(EXP_SSH_PORT)]} {
-    set ssh_opt "$ssh_opt -p $env(EXP_SSH_PORT)"
-}
-
-if {[info exists env(EXP_SSH_OPT)]} {
-    set ssh_opt "$ssh_opt $env(EXP_SSH_OPT)"
-}
+set ssh_opt "$user@$server -p $port"
+# set ssh_opt "$ssh_opt $extopt"
 
 # Spawn and expect
 eval spawn $ssh_cmd $ssh_opt

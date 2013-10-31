@@ -88,6 +88,7 @@ from dtk.ui.theme import ui_theme
 from dtk.ui.treeview import TreeView, NodeItem, get_background_color, get_text_color
 from dtk.ui.unique_service import UniqueService, is_exists
 from dtk.ui.utils import color_hex_to_cairo, alpha_color_hex_to_cairo, cairo_disable_antialias
+from tempfile import NamedTemporaryFile
 import dbus
 
 APP_DBUS_NAME   = "com.deepin.terminal"
@@ -527,13 +528,18 @@ class Terminal(object):
     def ssh_login(self, user, server, password, port):
         active_terminal = self.application.window.get_focus()
         if active_terminal and isinstance(active_terminal, TerminalWrapper):
-            command = "%s %s %s\n" % (os.path.join(get_parent_dir(__file__), "ssh_login.sh"), user, server)
-            if len(password):
-                command = "EXP_SSH_PASS=\"%s\" %s" % (password, command)
-            if len(port):
-                command = "EXP_SSH_PORT=\"%s\" %s" % (port, command)
-
-            active_terminal.feed_child(command)
+            with open(os.path.join(get_parent_dir(__file__), "ssh_login.sh")) as file:
+                content = ''.join(file.readlines())
+            content = content.replace("<<USER>>", user)
+            content = content.replace("<<SERVER>>", server)
+            content = content.replace("<<PASSWORD>>", password)
+            content = content.replace("<<PORT>>", port)
+            
+            # create temporary expect script file, and the file will
+            # be delete by itself
+            with NamedTemporaryFile(delete=False) as tempfile:
+                tempfile.write(content)
+            active_terminal.feed_child("expect -f " + tempfile.name + "\n")
         
     def keybind_change(self, key_value, new_key):
         for terminal in get_match_children(self.application.window, TerminalWrapper):
