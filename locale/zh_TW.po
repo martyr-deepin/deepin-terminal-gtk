@@ -381,7 +381,7 @@ msgstr "輸出時捲動："
 
 #: ../src/main.py:2731
 msgid "Copy on selection: "
-msgstr "選中時拷貝: "
+msgstr "選中時複製: "
 
 #: ../src/main.py:2878
 msgid "Save"
