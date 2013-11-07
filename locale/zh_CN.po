@@ -157,7 +157,7 @@ msgstr "退出"
 
 #: ../src/main.py:641 ../src/main.py:2238 ../src/main.py:2585
 msgid "Copy"
-msgstr "拷贝"
+msgstr "复制"
 
 #: ../src/main.py:643 ../src/main.py:2239 ../src/main.py:2586
 msgid "Paste"
