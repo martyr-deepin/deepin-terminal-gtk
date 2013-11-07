@@ -1223,8 +1223,21 @@ class TerminalWrapper(vte.Terminal):
         for key_value in key_values:
             self.keymap[get_keybind(key_value)] = getattr(self, key_value)
             
+        self.keymap["Menu"] = self.show_menu
+            
         if self.press_q_quit:
             self.keymap["q"] = lambda : self.exit_callback(True)
+            
+    def show_menu(self):
+        (event_x, event_y) = gtk.gdk.display_get_default().get_pointer()[1:3]
+        global_event.emit(
+            "show-menu", 
+            self, 
+            self.get_has_selection(),
+            self.get_match_text_at_coordinate(event_x, event_y),
+            self.get_correlative_window_ids(),
+            (int(event_x), int(event_y)),
+            )
             
     def get_correlative_window_ids(self):
         try:
@@ -1317,9 +1330,12 @@ class TerminalWrapper(vte.Terminal):
         self.exit_callback()
         
     def get_match_text(self, event):
-        return self.match_check(
+        return self.get_match_text_at_coordinate(
             int(event.x / self.get_char_width()),
             int(event.y / self.get_char_height()))
+    
+    def get_match_text_at_coordinate(self, event_x, event_y):
+        return self.match_check(event_x, event_y)
     
     def filter_file_string(self, match_string):
         # ` and ' is not valid filename char, so replace operation is safe.
