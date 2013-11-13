@@ -176,7 +176,7 @@ GENERAL_CONFIG = [
 KEYBIND_CONFIG = [
     ("copy_clipboard", "Ctrl + Shift + c"),
     ("paste_clipboard", "Ctrl + Shift + v"),
-    ("split_vertically", "Ctrl + v"),
+    ("split_vertically", "Ctrl + Shift + h"),
     ("split_horizontally", "Ctrl + h"),
     ("close_current_window", "Ctrl + Shift + w"),
     ("close_other_window", "Ctrl + Shift + q"),
