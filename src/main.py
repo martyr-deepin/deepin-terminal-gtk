@@ -21,6 +21,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import math
 from collections import OrderedDict
 from contextlib import contextmanager 
 from deepin_utils.config import Config
@@ -33,7 +34,7 @@ from dtk.ui.constant import WIDGET_POS_BOTTOM_LEFT, ALIGN_END, DEFAULT_FONT_SIZE
 from dtk.ui.draw import draw_pixbuf, draw_text, draw_round_rectangle, draw_radial_ring, draw_vlinear
 from dtk.ui.events import EventRegister
 from dtk.ui.init_skin import init_skin
-from dtk.ui.keymap import get_keyevent_name, is_no_key_press
+from dtk.ui.keymap import get_keyevent_name, get_key_name, is_no_key_press
 from dtk.ui.label import Label
 from dtk.ui.menu import Menu
 from dtk.ui.utils import (container_remove_all, get_match_parent, cairo_state, propagate_expose, 
@@ -176,8 +177,8 @@ GENERAL_CONFIG = [
 KEYBIND_CONFIG = [
     ("copy_clipboard", "Ctrl + Shift + c"),
     ("paste_clipboard", "Ctrl + Shift + v"),
-    ("split_vertically", "Ctrl + Shift + e"),
-    ("split_horizontally", "Ctrl + Shift + o"),
+    ("split_vertically", "Ctrl + Shift + h"),
+    ("split_horizontally", "Ctrl + h"),
     ("close_current_window", "Ctrl + Shift + w"),
     ("close_other_window", "Ctrl + Shift + q"),
     ("scroll_page_up", "Alt + ,"),
@@ -388,6 +389,7 @@ class Terminal(object):
         self.search_bar = SearchBar()
         self.helper_window = HelperWindow()
         self.remote_login = RemoteLogin()
+        self.terminal_num_window = TerminalNumWindow()
         
         self.is_window_resize_by_user = False
         
@@ -416,6 +418,7 @@ class Terminal(object):
         global_event.register_event("close-terminal-workspace", lambda w: self.close_workspace(w, True))
         global_event.register_event("change-window-title", self.change_window_title)
         global_event.register_event("show-menu", self.show_menu)
+        global_event.register_event("show-terminal-num-window", self.show_terminal_num_window)
         global_event.register_event("xdg-open", lambda command: run_command("xdg-open %s" % command))
         global_event.register_event("change-background-transparent", self.change_background_transparent)
         global_event.register_event("adjust-background-transparent", self.adjust_background_transparent)
@@ -671,6 +674,18 @@ class Terminal(object):
             self.application.window,
             get_active_working_directory(self.application.window),
             )
+        
+    def show_terminal_num_window(self, x, y, width, height):
+        terminals = get_match_children(self.application.window, TerminalWrapper)
+        if len(terminals) > 1:
+            workspace = self.terminal_box.get_children()[0]
+            (workspace_x, workspace_y) = workspace.translate_coordinates(self.application.window, 0, 0)
+            
+            self.terminal_num_window.show_window(
+                x, y, width, height,
+                map(lambda (terminal_index, terminal): 
+                    (terminal_index + 1, 
+                     (terminal.allocation.x, terminal.allocation.y - workspace_y)), enumerate(terminals[0:10])))
         
     def show_menu(self, terminal, has_selection, match_text, correlative_window_ids, (x_root, y_root)):
         # Build menu.
@@ -1014,23 +1029,61 @@ class Terminal(object):
         :param widget: which sends the event.
         :param event: what event.
         """
-        key_name = get_keyevent_name(event)
-        if key_name in self.keymap:
-            # Hide switcher first when key not is workspace switch key. 
-            if key_name not in [self.switch_prev_workspace_key, self.switch_next_workspace_key]:
-                self.workspace_switcher.hide_switcher()
+        if event.is_modifier:
+            key_name = get_key_name(event.keyval)
+            if key_name in ["Alt_L", "Alt_R"]:
+                workspace = self.terminal_box.get_children()[0]
+                (workspace_x, workspace_y) = workspace.translate_coordinates(self.application.window, 0, 0)
+                (window_x, window_y) = self.application.window.window.get_origin()
+                self.show_terminal_num_window(
+                    window_x + workspace_x,
+                    window_y + workspace_y,
+                    workspace.allocation.width,
+                    workspace.allocation.height,
+                    )
                 
-            self.keymap[key_name]()
-            
-            return True
-        else:
-            return False
+                return False
+                
+        key_name = get_keyevent_name(event)
+        
+        alt_keys = key_name.split("Alt + ")
+        is_switch_terminal_key = False
+        if len(alt_keys) == 2:
+            terminal_num_str = alt_keys[1]
+            if is_int(terminal_num_str):
+                terminal_num = int(terminal_num_str)
+                if terminal_num in range(0, 10):
+                    if terminal_num == 0:
+                        terminal_num = 10
+                    
+                    terminals = get_match_children(self.application.window, TerminalWrapper)
+                    terminals[terminal_num - 1].grab_focus()
+                    
+                    is_switch_terminal_key = True
+                    
+                    return True
+           
+        if not is_switch_terminal_key:
+            if key_name in self.keymap:
+                # Hide switcher first when key not is workspace switch key. 
+                if key_name not in [self.switch_prev_workspace_key, self.switch_next_workspace_key]:
+                    self.workspace_switcher.hide_switcher()
+                    
+                self.keymap[key_name]()
+                
+                return True
+            else:
+                return False
         
     def key_release_terminal(self, widget, event):
         if self.workspace_switcher.get_visible():
             if is_no_key_press(event):
                 self.switch_to_workspace(self.workspace_switcher.workspace_index)
                 self.workspace_switcher.hide_switcher()
+                
+        if self.terminal_num_window.get_visible():
+            if is_no_key_press(event):
+                self.terminal_num_window.hide_all()
                 
     def toggle_full_screen(self):
         """
@@ -1074,7 +1127,6 @@ class Terminal(object):
         elif startup_mode == "fullscreen":
             self.toggle_full_screen()
             
-        # self.application.run()
         gtk.main()    
 
 class TerminalWrapper(vte.Terminal):
@@ -1170,7 +1222,7 @@ class TerminalWrapper(vte.Terminal):
         
         self.connect("realize", self.realize_callback)
         self.connect("child-exited", self.child_exited)
-        self.connect("key-press-event", self.handle_keys)
+        self.connect("key-press-event", self.handle_key_press)
         self.connect("drag-data-received", self.on_drag_data_received)
         self.connect("window-title-changed", self.on_window_title_changed)
         self.connect("grab-focus", lambda w: self.change_window_title())
@@ -1487,16 +1539,17 @@ class TerminalWrapper(vte.Terminal):
         
         widget.grab_focus()
 
-    def handle_keys(self, widget, event):
+    def handle_key_press(self, widget, event):
         """
         Handle keys as c-v and c-h
         :param widget: which widget sends the key_event.
         :param event: what event is sent.
         """
         key_name = get_keyevent_name(event)
+
         if key_name in self.keymap:
             self.keymap[key_name]()
-            # True to stop event from propagating.
+
             return True
         else:
             return False
@@ -1633,7 +1686,6 @@ class TerminalGrid(gtk.VBox):
                     global_event.emit("close-terminal-workspace", workspace)
 
 gobject.type_register(TerminalGrid)
-
 
 class Workspace(gtk.VBox):
     """
@@ -2220,6 +2272,72 @@ class SearchBar(gtk.Window):
             return False
 
 gobject.type_register(SearchBar)
+
+class TerminalNumWindow(Window):
+    def __init__(self):
+        Window.__init__(self, 
+                        shadow_visible=False,
+                        window_type=gtk.WINDOW_POPUP,
+                        expose_background_function=self.expose_terminal_num_window,
+                        expose_frame_function=self.expose_frame_terminal_num_window,
+                        )
+        self.set_decorated(False)
+        self.add_events(gtk.gdk.ALL_EVENTS_MASK)
+        self.set_colormap(gtk.gdk.Screen().get_rgba_colormap())
+        self.set_type_hint(gtk.gdk.WINDOW_TYPE_HINT_DIALOG)
+        self.set_skip_taskbar_hint(True)
+        self.set_can_focus(False)
+        self.terminal_infos = []
+        
+    def show_window(self, x, y, width, height, terminal_infos):
+        self.terminal_infos = terminal_infos
+        self.move(x, y)
+        self.resize(width, height)
+        
+        self.show_all()
+        
+    def expose_terminal_num_window(self, widget, event):
+        cr = widget.window.cairo_create()
+
+        with cairo_state(cr):
+            cr.set_source_rgba(1.0, 1.0, 1.0, 0)
+            cr.set_operator(cairo.OPERATOR_SOURCE)
+            cr.paint()
+            
+        offset_x = 35
+        offset_y = 35
+        radius = 20
+        for (terminal_index, (terminal_x, terminal_y)) in self.terminal_infos:
+            cr.set_source_rgba(1, 1, 1, 0.2)
+            cr.arc(terminal_x + offset_x,
+                   terminal_y + offset_y,
+                   radius,
+                   0, 
+                   2 * math.pi)
+            cr.fill()
+            
+            if terminal_index == 10:
+                terminal_num = "0"
+            else:
+                terminal_num = str(terminal_index)
+            draw_text(
+                cr,
+                terminal_num,
+                terminal_x + offset_x - radius,
+                terminal_y + offset_y - radius,
+                radius * 2,
+                radius * 2,
+                text_size=20,
+                text_color="#FFFFFF",
+                alignment=pango.ALIGN_CENTER,
+                )
+            
+        return True    
+    
+    def expose_frame_terminal_num_window(self, widget, event):
+        pass
+    
+gobject.type_register(TerminalNumWindow)    
 
 class HelperWindow(Window):
     '''
