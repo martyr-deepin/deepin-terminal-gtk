@@ -85,7 +85,7 @@ from dtk.ui.scalebar import HScalebar
 from dtk.ui.scrolled_window import ScrolledWindow
 from dtk.ui.skin_config import skin_config
 from dtk.ui.spin import SpinBox
-from dtk.ui.theme import ui_theme, DynamicColor
+from dtk.ui.theme import ui_theme
 from dtk.ui.treeview import TreeView, NodeItem, get_background_color, get_text_color
 from dtk.ui.unique_service import UniqueService, is_exists
 from dtk.ui.utils import color_hex_to_cairo, alpha_color_hex_to_cairo, cairo_disable_antialias
