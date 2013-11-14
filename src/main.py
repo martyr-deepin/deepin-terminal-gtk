@@ -47,6 +47,7 @@ import commands
 import gc
 import gobject
 import gtk
+import glib
 import os
 import pango
 import sqlite3
@@ -84,7 +85,7 @@ from dtk.ui.scalebar import HScalebar
 from dtk.ui.scrolled_window import ScrolledWindow
 from dtk.ui.skin_config import skin_config
 from dtk.ui.spin import SpinBox
-from dtk.ui.theme import ui_theme
+from dtk.ui.theme import ui_theme, DynamicColor
 from dtk.ui.treeview import TreeView, NodeItem, get_background_color, get_text_color
 from dtk.ui.unique_service import UniqueService, is_exists
 from dtk.ui.utils import color_hex_to_cairo, alpha_color_hex_to_cairo, cairo_disable_antialias
@@ -146,8 +147,8 @@ TABLE_PADDING_LEFT = 50
 TABLE_PADDING_TOP = 30
 TABLE_PADDING_BOTTOM = 30
 
-HOTKEYS_WINDOW_MIN_WIDTH = 800
-HOTKEYS_WINDOW_MIN_HEIGHT = 600
+HOTKEYS_WINDOW_MIN_WIDTH = 960
+HOTKEYS_WINDOW_MIN_HEIGHT = 540
 
 TRANSPARENT_OFFSET = 0.1
 MIN_TRANSPARENT = 0.2
@@ -370,14 +371,14 @@ class Terminal(object):
         self.fullscreen_padding = 0
         self.terminal_align = gtk.Alignment()
         self.terminal_align.set(0, 0, 1, 1)
-        self.terminal_align.set_padding(0, self.normal_padding, self.normal_padding, self.normal_padding)
+        self.terminal_align.set_padding(0, 0, self.normal_padding, self.normal_padding)
         self.terminal_box = gtk.VBox()
         self.terminal_align.add(self.terminal_box)
         
         self.statusbar = Statusbar()
         
         self.application.main_box.pack_start(self.terminal_align)
-        self.application.main_box.pack_start(self.statusbar)
+        self.application.main_box.pack_start(self.statusbar, False, False)
         
         self.workspace_list = []
         self.first_workspace()
@@ -419,9 +420,12 @@ class Terminal(object):
         self.application.window.connect("window-state-event", self.window_state_change)
         self.application.window.connect("window-resize", self.set_window_resize)
         
+        self.draw_skin_padding = 2
+        self.application.window.draw_skin = self.draw_terminal_skin
+        
         global_event.register_event("close-workspace", self.close_workspace)
         global_event.register_event("close-terminal-workspace", lambda w: self.close_workspace(w, True))
-        global_event.register_event("change-window-title", self.change_window_title)
+        global_event.register_event("change-path", self.change_path)
         global_event.register_event("show-menu", self.show_menu)
         global_event.register_event("show-terminal-num-window", self.show_terminal_num_window)
         global_event.register_event("xdg-open", lambda command: run_command("xdg-open %s" % command))
@@ -448,6 +452,18 @@ class Terminal(object):
         
         if self.quake_mode:
             self.fullscreen()
+            
+    def draw_terminal_skin(self, cr, x, y, w, h):
+        display_background_image = get_config("general", "background_image")
+        if not is_bool(display_background_image):
+            statusbar_height = self.statusbar.height
+            cr.rectangle(x, y, w, h - statusbar_height)
+            cr.rectangle(x, y + h - statusbar_height, self.draw_skin_padding, statusbar_height)
+            cr.rectangle(x + w - self.draw_skin_padding, y + h - statusbar_height, self.draw_skin_padding, statusbar_height)
+            cr.rectangle(x, y + h - self.draw_skin_padding, w, self.draw_skin_padding)
+            cr.clip()
+        
+        super(Window, self.application.window).draw_skin(cr, x, y, w, h)
             
     def zoom_in_window(self):
         pass
@@ -503,14 +519,17 @@ class Terminal(object):
         if focus_terminal:
             focus_terminal.grab_focus()
         
-        import glib
         glib.timeout_add(10, self.adjust_terminal_padding)
             
     def adjust_terminal_padding(self):        
         if self.application.window.allocation.width == gtk.gdk.screen_width():
             self.terminal_align.set_padding(0, 0, 0, 0)
+            self.statusbar.set_padding(0, 0, 0, 0)
+            self.draw_skin_padding = 0
         else:
-            self.terminal_align.set_padding(0, self.normal_padding, self.normal_padding, self.normal_padding)
+            self.terminal_align.set_padding(0, 0, self.normal_padding, self.normal_padding)
+            self.statusbar.set_padding(0, self.normal_padding, self.normal_padding, self.normal_padding)
+            self.draw_skin_padding = 2
         
     def window_is_active(self, window, param):
         global focus_terminal
@@ -612,7 +631,7 @@ class Terminal(object):
         for terminal in get_match_children(self.application.window, TerminalWrapper):
             terminal.change_color(font_color, background_color)
             terminal.background_update()
-        
+            
     def change_font(self, font):    
         font_size = get_config("general", "font_size")
         for terminal in get_match_children(self.application.window, TerminalWrapper):
@@ -939,6 +958,8 @@ class Terminal(object):
             self.terminal_box.show_all()
             
             workspace.restore_focus_terminal()
+            
+        self.update_workspace_indicator()
         
     def remove_current_workspace(self, save_snapshot=True):
         children = self.terminal_box.get_children()
@@ -950,6 +971,10 @@ class Terminal(object):
         
     def first_workspace(self):
         self.new_workspace(self.working_directory, self.cmdline_startup_command)
+        
+    def update_workspace_indicator(self):
+        self.statusbar.workspace_indicator.workspaces = map(lambda workspace: workspace.workspace_index, self.workspace_list)
+        self.statusbar.workspace_indicator.current_workspace_index = self.terminal_box.get_children()[0].workspace_index
                 
     def new_workspace(self, working_directory=None, cmdline_startup_command=None):
         if working_directory == None or not(os.path.exists(working_directory)):
@@ -967,6 +992,8 @@ class Terminal(object):
         self.terminal_box.show_all()
         
         self.workspace_list.append(workspace)
+        
+        self.update_workspace_indicator()
         
     def _close_workspace(self, workspace, child_pids):
         workspace_index = self.workspace_list.index(workspace)            
@@ -1008,8 +1035,9 @@ class Terminal(object):
                     self.application.window,
                     )
             
-    def change_window_title(self, window_title):
-        self.application.titlebar.change_title(window_title)
+    def change_path(self, path):
+        self.statusbar.path_indicator.path = path
+        self.statusbar.queue_draw()
         
     def close_current_workspace(self):
         children = self.terminal_box.get_children()
@@ -1017,6 +1045,8 @@ class Terminal(object):
             self.close_workspace(children[0])
         else:
             print "IMPOSSIBLE: no workspace in terminal_box"
+            
+        self.update_workspace_indicator()
             
     def get_workspace_switcher_coordinate(self):
         (x, y, w, h) = self.terminal_box.allocation
@@ -1137,13 +1167,17 @@ class Terminal(object):
         )
         
         self.is_full_screen = True
+        
+        self.draw_skin_padding = 0
     
     def unfullscreen(self):
         self.application.window.unfullscreen()
         self.application.show_titlebar()
-        self.terminal_align.set_padding(0, self.normal_padding, self.normal_padding, self.normal_padding)
+        self.terminal_align.set_padding(0, 0, self.normal_padding, self.normal_padding)
         
         self.is_full_screen = False    
+        
+        self.draw_skin_padding = 2
             
     def exit_fullscreen(self):
         if self.is_full_screen:
@@ -1262,7 +1296,7 @@ class TerminalWrapper(vte.Terminal):
         self.connect("key-press-event", self.handle_key_press)
         self.connect("drag-data-received", self.on_drag_data_received)
         self.connect("window-title-changed", self.on_window_title_changed)
-        self.connect("grab-focus", lambda w: self.change_window_title())
+        self.connect("grab-focus", lambda w: self.change_path())
         self.connect("button-press-event", self.on_button_press)
         self.connect("scroll-event", self.on_scroll)
         
@@ -1534,17 +1568,17 @@ class TerminalWrapper(vte.Terminal):
             print "TerminalWrapper.get_working_directory got error: %s" % e
             return _HOME
         
-    def change_window_title(self):
+    def change_path(self):
         global focus_terminal
         
-        global_event.emit("change-window-title", self.get_working_directory())
+        global_event.emit("change-path", self.get_working_directory())
         
         # Save focus terminal. 
         focus_terminal = self
         
     def on_window_title_changed(self, widget):
         if self.has_focus():
-            self.change_window_title()
+            self.change_path()
         
     def on_drag_data_received(self, widget, drag_context, x, y, selection, target_type, timestamp):
         if target_type == DRAG_TEXT_URI:
@@ -3621,25 +3655,188 @@ class SettingDialog(PreferenceDialog):
 
 gobject.type_register(SettingDialog)        
 
-class Statusbar(EventBox):
+class LeftBox(gtk.HBox):
+    '''
+    HBox to handle left side boxes in Box.
+    '''
+	
     def __init__(self):
-        EventBox.__init__(self)
-        self.set_size_request(-1, 16)
+        '''
+        Initialize LeftBox class.
+        '''
+        gtk.HBox.__init__(self)
+        self.button_align = gtk.Alignment()
+        self.button_align.set(0.0, 0.5, 0, 0)
+        self.button_align.set_padding(5, 9, 7, 0)
+        self.button_box = gtk.HBox()
         
-        self.connect("expose-event", self.expose_statusbar)
+        self.button_align.add(self.button_box)    
+        self.pack_start(self.button_align, True, True)
+
+    def set_boxes(self, boxes):
+        '''
+        Set boxes in box.
+
+        @note: This function will use new boxes B{instead} old boxes in button box.
+        
+        @param boxes: A list of Gtk.Widget instance.
+        '''
+        container_remove_all(self.button_box)
+        for button in boxes:
+            self.button_box.pack_start(button, False, False, 4)
+            
+gobject.type_register(LeftBox)
+
+class RightBox(gtk.HBox):
+    '''
+    HBox to handle right side boxes in Box.
+    '''
+	
+    def __init__(self):
+        '''
+        Initialize RightBox class.
+        '''
+        gtk.HBox.__init__(self)
+        self.button_align = gtk.Alignment()
+        self.button_align.set(1.0, 0.5, 0, 0)
+        self.button_align.set_padding(5, 9, 0, 7)
+        self.button_box = gtk.HBox()
+        
+        self.button_align.add(self.button_box)    
+        self.pack_start(self.button_align, True, True)
+
+    def set_boxes(self, boxes):
+        '''
+        Set boxes in box.
+
+        @note: This function will use new boxes B{instead} old boxes in button box.
+        
+        @param boxes: A list of Gtk.Widget instance.
+        '''
+        container_remove_all(self.button_box)
+        for button in boxes:
+            self.button_box.pack_start(button, False, False, 4)
+            
+gobject.type_register(RightBox)
+
+class Statusbar(gtk.Alignment):
+    def __init__(self):
+        gtk.Alignment.__init__(self)
+        self.height = 24
+        self.set(0.5, 0.5, 1, 1)
+        self.set_padding(0, 2, 2, 2)
+        self.set_size_request(-1, self.height)
+        self.box = EventBox()        
+        self.indicator_box = gtk.HBox()
+        self.left_box = LeftBox()
+        self.right_box = RightBox()
+        
+        self.workspace_indicator = WorkspaceIndicator()
+        self.path_indicator = PathIndicator()
+        
+        self.left_box.set_boxes([self.workspace_indicator])
+        self.right_box.set_boxes([self.path_indicator])
+        self.indicator_box.pack_start(self.left_box, True, True)
+        self.indicator_box.pack_start(self.right_box, True, True)
+        self.box.add(self.indicator_box)
+        self.add(self.box)
+        
+        self.box.connect("expose-event", self.expose_statusbar)
         
     def expose_statusbar(self, widget, event):
         cr = widget.window.cairo_create()
         rect = widget.allocation
         x, y, w, h = rect.x, rect.y, rect.width, rect.height
 
-        cr.set_source_rgba(0, 0, 0, 0.5)
+        background_color = get_config("general", "background_color")
+        transparent = get_config("general", "background_transparent")
+        (r, g, b) = color_hex_to_cairo(background_color)
+        cr.set_source_rgba(r, g, b, min(float(transparent) + 0.2, 1))
         cr.rectangle(x, y, w, h)
         cr.fill()
+        
+        propagate_expose(widget, event)
         
         return True
         
 gobject.type_register(Statusbar)        
+
+class WorkspaceIndicator(gtk.Alignment):
+
+    def __init__(self):
+        gtk.Alignment.__init__(self)
+        self.set(0, 0, 1, 1)
+        
+        self.height = 20
+        self.current_workspace_index = 1
+        self.workspaces = [1]
+        self.set_size_request(-1, self.height)
+        
+        self.eventbox = EventBox()
+        self.add(self.eventbox)
+        
+        self.eventbox.connect("expose-event", self.expose_workspace_indicator)
+        
+    def expose_workspace_indicator(self, widget, event):
+        cr = widget.window.cairo_create()
+        rect = widget.allocation
+        
+        offset_x = 5
+        offset_y = -4
+        width = 30
+        radius = 0
+        (r, g, b) = color_hex_to_cairo(get_config("general", "font_color"))
+        for (index, workspace_index) in enumerate(self.workspaces):
+            if workspace_index == self.current_workspace_index:
+                cr.set_source_rgba(r, g, b, 0.5)
+            else:
+                cr.set_source_rgba(1, 1, 1, 0.2)
+                
+            x = rect.x + index * (width + offset_x)
+            y = rect.y + offset_y
+            w = width
+            h = self.height
+            draw_round_rectangle(cr, x, y, w, h, radius)
+            cr.fill()
+            
+            draw_text(
+                cr,
+                str(workspace_index),
+                x, y, w, h,
+                text_color="#FFFFFF",
+                alignment=pango.ALIGN_CENTER,
+                )
+
+class PathIndicator(gtk.Alignment):
+    
+    def __init__(self):
+        gtk.Alignment.__init__(self)
+        self.set_size_request(200, -1)
+        
+        self.set(0.5, 0.5, 1, 1)
+        self.path = ""
+        
+        self.eventbox = EventBox()
+        
+        self.connect("expose-event", self.expose_path_indicator)
+        
+    def expose_path_indicator(self, widget, event):
+        cr = widget.window.cairo_create()
+        rect = widget.allocation
+        
+        font_color = get_config("general", "font_color")
+        
+        offset_y = -6
+        draw_text(
+            cr,
+            self.path,
+            rect.x, 
+            rect.y + offset_y,
+            rect.width,
+            rect.height,
+            alignment=pango.ALIGN_RIGHT,
+            text_color=font_color,
+            )
 
 def execute_cb(option, opt, value, lparser):
     assert value is None
