@@ -1126,6 +1126,8 @@ class Terminal(object):
                         return True
            
         if not is_switch_terminal_key:
+            self.terminal_num_window.hide()
+            
             if key_name in self.keymap:
                 # Hide switcher first when key not is workspace switch key. 
                 if key_name not in [self.switch_prev_workspace_key, self.switch_next_workspace_key]:
