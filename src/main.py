@@ -3751,7 +3751,7 @@ class Statusbar(gtk.Alignment):
         background_color = get_config("general", "background_color")
         transparent = get_config("general", "background_transparent")
         (r, g, b) = color_hex_to_cairo(background_color)
-        cr.set_source_rgba(r, g, b, min(float(transparent) + 0.2, 1))
+        cr.set_source_rgba(r, g, b, min(float(transparent) + 0.1, 1))
         cr.rectangle(x, y, w, h)
         cr.fill()
         
