@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-19 09:40+0800\n"
+"POT-Creation-Date: 2013-10-19 09:42+0800\n"
 "PO-Revision-Date: 2013-09-18 09:49+0800\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -157,7 +157,7 @@ msgstr "退出"
 
 #: ../src/main.py:641 ../src/main.py:2238 ../src/main.py:2585
 msgid "Copy"
-msgstr "拷贝"
+msgstr "复制"
 
 #: ../src/main.py:643 ../src/main.py:2239 ../src/main.py:2586
 msgid "Paste"
@@ -229,9 +229,8 @@ msgid "Close window?"
 msgstr "关闭窗口"
 
 #: ../src/main.py:911
-msgid ""
-"Current window still have running programs. Are you sure you want to close?"
-msgstr "当前窗口中仍然有正在运行的程序， 你确定要关闭吗？"
+msgid "Window still have running programs. Are you sure you want to close?"
+msgstr "窗口中仍然有正在运行的程序， 你确定要关闭吗？"
 
 #: ../src/main.py:913
 msgid "Close workspace?"

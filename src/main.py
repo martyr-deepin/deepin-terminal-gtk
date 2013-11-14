@@ -211,6 +211,7 @@ ADVANCED_CONFIG = [
     ("scroll_on_key", "True"),
     ("scroll_on_output", "False"),
     ("copy_on_selection", "False"),
+    ("open_file_on_hover", "False"),
     ]
 
 DEFAULT_CONFIG = [
@@ -425,6 +426,7 @@ class Terminal(object):
         global_event.register_event("scroll-on-key-toggle", self.scroll_on_key_toggle)
         global_event.register_event("scroll-on-output-toggle", self.scroll_on_output_toggle)
         global_event.register_event("copy-on-selection-toggle", self.copy_on_selection_toggle)
+        global_event.register_event("open-file-on-hover-toggle", self.open_file_on_hover_toggle)
         global_event.register_event("set-cursor-shape", self.set_cursor_shape)
         global_event.register_event("set-cursor-blink-mode", self.set_cursor_blink_mode)
         global_event.register_event("change-font", self.change_font)
@@ -633,6 +635,13 @@ class Terminal(object):
                     terminal.disconnect_by_func(do_copy_on_selection_toggle)
                 except:
                     pass
+                
+    def open_file_on_hover_toggle(self, status):
+        for terminal in get_match_children(self.application.window, TerminalWrapper):
+            if status:
+                terminal.add_file_match_tag()
+            else:
+                terminal.remove_file_match_tag()
         
     def adjust_background_transparent(self, direction):
         if not direction in [gtk.gdk.SCROLL_UP, gtk.gdk.SCROLL_DOWN]:
@@ -1160,6 +1169,7 @@ class TerminalWrapper(vte.Terminal):
         self.press_q_quit = press_q_quit
         self.set_word_chars("-A-Za-z0-9,./?%&#:_")
         self.set_scrollback_lines(-1)
+        self.set_match_tag()
         
         self.change_color(
             get_config("general", "font_color"),
@@ -1178,6 +1188,12 @@ class TerminalWrapper(vte.Terminal):
         copy_on_selection = is_bool(get_config("advanced", "copy_on_selection"))
         if copy_on_selection:
             self.connect("selection-changed", do_copy_on_selection_toggle)
+
+        open_file_on_hover = is_bool(get_config("advanced", "open_file_on_hover"))
+        if open_file_on_hover:
+            self.add_file_match_tag()
+        else:
+            self.remove_file_match_tag()
         
         cursor_shape = get_config("advanced", "cursor_shape")
         self.change_cursor_shape(cursor_shape)
@@ -1228,8 +1244,6 @@ class TerminalWrapper(vte.Terminal):
              ],
             gtk.gdk.ACTION_COPY)
         
-        self.set_match_tag()
-        
         self.connect("realize", self.realize_callback)
         self.connect("child-exited", self.child_exited)
         self.connect("key-press-event", self.handle_key_press)
@@ -1256,7 +1270,12 @@ class TerminalWrapper(vte.Terminal):
         self.match_set_cursor_type(self.url_match_tag, gtk.gdk.HAND2)
         
         self.file_match_tag = self.match_add("[^\t\n ]+")
+        
+    def add_file_match_tag(self):
         self.match_set_cursor_type(self.file_match_tag, gtk.gdk.HAND2)
+        
+    def remove_file_match_tag(self):
+        self.match_remove(self.file_match_tag)
         
     def init_background(self):
         display_background_image = get_config("general", "background_image")
@@ -2962,6 +2981,10 @@ class AdvancedSettings(gtk.VBox):
         copy_on_selection = is_bool(get_config("advanced", "copy_on_selection"))
         self.copy_on_selection_widget = SwitchButton(copy_on_selection)
         self.copy_on_selection_widget.connect("toggled", self.copy_on_selection_toggle)
+
+        open_file_on_hover = is_bool(get_config("advanced", "open_file_on_hover"))
+        self.open_file_on_hover_widget = SwitchButton(open_file_on_hover)
+        self.open_file_on_hover_widget.connect("toggled", self.open_file_on_hover_toggle)
         
         self.table = gtk.Table(7, 2)
         self.table.set_row_spacings(TABLE_ROW_SPACING)
@@ -2976,6 +2999,7 @@ class AdvancedSettings(gtk.VBox):
             (_("Scroll on keystroke: "), self.scroll_on_key_widget),
             (_("Scroll on output: "), self.scroll_on_output_widget),
             (_("Copy on selection: "), self.copy_on_selection_widget),
+            (_("Open file on hover: "), self.open_file_on_hover_widget),
             ]
         self.table_align = gtk.Alignment()
         self.table_align.set(0, 0, 1, 1)
@@ -3030,6 +3054,12 @@ class AdvancedSettings(gtk.VBox):
             setting_config.config.set("advanced", "copy_on_selection", toggle_button.get_active())
         
         global_event.emit("copy-on-selection-toggle", toggle_button.get_active())
+        
+    def open_file_on_hover_toggle(self, toggle_button):
+        with save_config(setting_config):
+            setting_config.config.set("advanced", "open_file_on_hover", toggle_button.get_active())
+        
+        global_event.emit("open-file-on-hover-toggle", toggle_button.get_active())
         
     def fill_table(self, table, table_items):
         for (index, (setting_name, setting_widget)) in enumerate(table_items):
@@ -3572,6 +3602,10 @@ class SettingDialog(PreferenceDialog):
             copy_on_selection = is_bool(config_dict["copy_on_selection"])
             page_widget.copy_on_selection_widget.set_active(copy_on_selection)
             global_event.emit("copy-on-selection-toggle", copy_on_selection)
+
+            open_file_on_hover = is_bool(config_dict["open_file_on_hover"])
+            page_widget.open_file_on_hover_widget.set_active(open_file_on_hover)
+            global_event.emit("open-file-on-hover-toggle", open_file_on_hover)
 
 gobject.type_register(SettingDialog)        
 

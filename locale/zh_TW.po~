@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-19 09:40+0800\n"
+"POT-Creation-Date: 2013-10-19 09:42+0800\n"
 "PO-Revision-Date: 2013-09-18 09:49+0800\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -131,7 +131,7 @@ msgstr "關閉終端機?"
 
 #: ../src/main.py:455
 msgid "Terminal still have running programs. Are you sure you want to quit?"
-msgstr "終端機中仍然有正在運行的程序， 你確定要退出嗎？"
+msgstr "終端機中仍然有正在執行的程式， 你確定要退出嗎？"
 
 #: ../src/main.py:614 ../src/main.py:705
 msgid "Preferences"
@@ -228,9 +228,8 @@ msgid "Close window?"
 msgstr "關閉視窗"
 
 #: ../src/main.py:911
-msgid ""
-"Current window still have running programs. Are you sure you want to close?"
-msgstr "當前視窗中仍然有正在運行的程序， 你確定要关闭嗎？"
+msgid "Window still have running programs. Are you sure you want to close?"
+msgstr "視窗中仍然有正在執行的程式， 你確定要關閉嗎？"
 
 #: ../src/main.py:913
 msgid "Close workspace?"
@@ -238,7 +237,7 @@ msgstr "關閉工作區?"
 
 #: ../src/main.py:914
 msgid "Workspace still have running programs. Are you sure you want to close?"
-msgstr "工作區中仍然有正在運行的程序， 你確定要關閉嗎？"
+msgstr "工作區中仍然有正在執行的程式， 你確定要關閉嗎？"
 
 #: ../src/main.py:1754
 msgid "Workspace"
@@ -382,7 +381,7 @@ msgstr "輸出時捲動："
 
 #: ../src/main.py:2731
 msgid "Copy on selection: "
-msgstr "選中時拷貝: "
+msgstr "選中時複製: "
 
 #: ../src/main.py:2878
 msgid "Save"
@@ -446,7 +445,7 @@ msgstr "刪除"
 
 #: ../src/main.py:3227
 msgid "Reset"
-msgstr "恢複預設值"
+msgstr "重設"
 
 #: ../src/main.py:3230
 msgid "Close"
