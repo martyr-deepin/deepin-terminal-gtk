@@ -497,8 +497,12 @@ class Terminal(object):
         global focus_terminal
         
         # Focus terminal when window active.
-        if window.props.is_active and focus_terminal:
-            focus_terminal.grab_focus()
+        if window.props.is_active:
+            if focus_terminal:
+                focus_terminal.grab_focus()
+        else:
+            if self.terminal_num_window.get_visible():
+                self.terminal_num_window.hide()
         
     def quake(self):
         global focus_terminal
