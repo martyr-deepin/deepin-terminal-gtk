@@ -411,6 +411,7 @@ class Terminal(object):
         self.application.window.connect("key-press-event", self.key_press_terminal)
         self.application.window.connect("key-release-event", self.key_release_terminal)
         self.application.window.connect("notify::is-active", self.window_is_active)
+        self.application.window.connect("window-state-event", self.window_state_change)
         self.application.window.connect("window-resize", self.set_window_resize)
         
         global_event.register_event("close-workspace", self.close_workspace)
@@ -491,6 +492,10 @@ class Terminal(object):
                 self._quit,
                 self.application.window,
                 )
+            
+    def window_state_change(self, widget, event):
+        if focus_terminal:
+            focus_terminal.grab_focus()
             
     def window_is_active(self, window, param):
         global focus_terminal
