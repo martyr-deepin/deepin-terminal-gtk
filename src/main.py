@@ -36,13 +36,12 @@ from dtk.ui.init_skin import init_skin
 from dtk.ui.keymap import get_keyevent_name, get_key_name, is_no_key_press
 from dtk.ui.label import Label
 from dtk.ui.menu import Menu
-from dtk.ui.utils import (container_remove_all, get_match_parent, cairo_state, propagate_expose, 
-                          is_left_button, is_right_button, is_in_rect, get_match_children)
+from dtk.ui.utils import (container_remove_all, get_match_parent, cairo_state, propagate_expose, is_left_button, is_right_button, is_in_rect, get_match_children)
 from dtk.ui.utils import get_window_shadow_size
 from dtk.ui.utils import place_center, get_widget_root_coordinate
 from dtk.ui.window import Window
-from optparse import OptionParser
 from nls import _
+from optparse import OptionParser
 import cairo
 import commands
 import gc
