@@ -21,7 +21,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import math
 from collections import OrderedDict
 from contextlib import contextmanager 
 from deepin_utils.config import Config
@@ -684,12 +683,14 @@ class Terminal(object):
         if len(terminals) > 1:
             workspace = self.terminal_box.get_children()[0]
             (workspace_x, workspace_y) = workspace.translate_coordinates(self.application.window, 0, 0)
+            (shadow_with, shadow_height) = self.application.window.get_shadow_size()
             
             self.terminal_num_window.show_window(
                 x, y, width, height,
                 map(lambda (terminal_index, terminal): 
                     (terminal_index + 1, 
-                     (terminal.allocation.x, terminal.allocation.y - workspace_y)), enumerate(terminals[0:10])))
+                     (terminal.allocation.x - shadow_with, 
+                      terminal.allocation.y - workspace_y + terminal.allocation.height)), enumerate(terminals[0:10])))
         
     def show_menu(self, terminal, has_selection, match_text, correlative_window_ids, (x_root, y_root)):
         # Build menu.
@@ -2308,17 +2309,32 @@ class TerminalNumWindow(Window):
             cr.set_operator(cairo.OPERATOR_SOURCE)
             cr.paint()
             
-        offset_x = 35
-        offset_y = 35
-        radius = 20
+        offset_x = 7
+        offset_y = -46
+        size = 36
+        radius = 4
         for (terminal_index, (terminal_x, terminal_y)) in self.terminal_infos:
-            cr.set_source_rgba(1, 1, 1, 0.2)
-            cr.arc(terminal_x + offset_x,
-                   terminal_y + offset_y,
-                   radius,
-                   0, 
-                   2 * math.pi)
+            cr.set_source_rgba(0, 0, 0, 0.9)
+            draw_round_rectangle(
+                cr,
+                terminal_x + offset_x,
+                terminal_y + offset_y,
+                size,
+                size,
+                radius,
+                )
             cr.fill()
+            
+            cr.set_source_rgba(1, 1, 1, 0.5)
+            draw_round_rectangle(
+                cr,
+                terminal_x + offset_x,
+                terminal_y + offset_y,
+                36,
+                36,
+                radius,
+                )
+            cr.stroke()
             
             if terminal_index == 10:
                 terminal_num = "0"
@@ -2327,10 +2343,10 @@ class TerminalNumWindow(Window):
             draw_text(
                 cr,
                 terminal_num,
-                terminal_x + offset_x - radius,
-                terminal_y + offset_y - radius,
-                radius * 2,
-                radius * 2,
+                terminal_x + offset_x,
+                terminal_y + offset_y,
+                size,
+                size,
                 text_size=20,
                 text_color="#FFFFFF",
                 alignment=pango.ALIGN_CENTER,
