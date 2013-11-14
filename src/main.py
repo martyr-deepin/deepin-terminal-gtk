@@ -689,8 +689,8 @@ class Terminal(object):
                 x, y, width, height,
                 map(lambda (terminal_index, terminal): 
                     (terminal_index + 1, 
-                     (terminal.allocation.x - shadow_with, 
-                      terminal.allocation.y - workspace_y + terminal.allocation.height)), enumerate(terminals[0:10])))
+                     (terminal.allocation.x - shadow_with + terminal.allocation.width / 2, 
+                      terminal.allocation.y - workspace_y + terminal.allocation.height / 2)), enumerate(terminals[0:10])))
         
     def show_menu(self, terminal, has_selection, match_text, correlative_window_ids, (x_root, y_root)):
         # Build menu.
@@ -1062,11 +1062,11 @@ class Terminal(object):
                         terminal_num = 10
                     
                     terminals = get_match_children(self.application.window, TerminalWrapper)
-                    terminals[terminal_num - 1].grab_focus()
+                    if terminal_num - 1 < len(terminals):
+                        terminals[terminal_num - 1].grab_focus()
+                        is_switch_terminal_key = True
                     
-                    is_switch_terminal_key = True
-                    
-                    return True
+                        return True
            
         if not is_switch_terminal_key:
             if key_name in self.keymap:
@@ -2309,10 +2309,10 @@ class TerminalNumWindow(Window):
             cr.set_operator(cairo.OPERATOR_SOURCE)
             cr.paint()
             
-        offset_x = 7
-        offset_y = -46
-        size = 36
-        radius = 4
+        size = 48
+        offset_x = -size / 2
+        offset_y = -size / 2
+        radius = 6
         for (terminal_index, (terminal_x, terminal_y)) in self.terminal_infos:
             cr.set_source_rgba(0, 0, 0, 0.9)
             draw_round_rectangle(
@@ -2330,8 +2330,8 @@ class TerminalNumWindow(Window):
                 cr,
                 terminal_x + offset_x,
                 terminal_y + offset_y,
-                36,
-                36,
+                size,
+                size,
                 radius,
                 )
             cr.stroke()
