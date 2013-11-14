@@ -70,6 +70,7 @@ from dtk.ui.application import Application
 from dtk.ui.button import Button
 from dtk.ui.button import ImageButton
 from dtk.ui.button import SwitchButton
+from dtk.ui.box import EventBox
 from dtk.ui.cache_pixbuf import CachePixbuf
 from dtk.ui.color_selection import ColorButton
 from dtk.ui.combo import ComboBox
@@ -372,7 +373,11 @@ class Terminal(object):
         self.terminal_align.set_padding(0, self.normal_padding, self.normal_padding, self.normal_padding)
         self.terminal_box = gtk.VBox()
         self.terminal_align.add(self.terminal_box)
+        
+        self.statusbar = Statusbar()
+        
         self.application.main_box.pack_start(self.terminal_align)
+        self.application.main_box.pack_start(self.statusbar)
         
         self.workspace_list = []
         self.first_workspace()
@@ -497,7 +502,16 @@ class Terminal(object):
     def window_state_change(self, widget, event):
         if focus_terminal:
             focus_terminal.grab_focus()
+        
+        import glib
+        glib.timeout_add(10, self.adjust_terminal_padding)
             
+    def adjust_terminal_padding(self):        
+        if self.application.window.allocation.width == gtk.gdk.screen_width():
+            self.terminal_align.set_padding(0, 0, 0, 0)
+        else:
+            self.terminal_align.set_padding(0, self.normal_padding, self.normal_padding, self.normal_padding)
+        
     def window_is_active(self, window, param):
         global focus_terminal
         
@@ -1763,7 +1777,6 @@ class Workspace(gtk.VBox):
             gc.collect()
         
 gobject.type_register(Workspace)
-
 
 class WorkspaceSwitcher(gtk.Window):
     """
@@ -3607,6 +3620,26 @@ class SettingDialog(PreferenceDialog):
             global_event.emit("open-file-on-hover-toggle", open_file_on_hover)
 
 gobject.type_register(SettingDialog)        
+
+class Statusbar(EventBox):
+    def __init__(self):
+        EventBox.__init__(self)
+        self.set_size_request(-1, 16)
+        
+        self.connect("expose-event", self.expose_statusbar)
+        
+    def expose_statusbar(self, widget, event):
+        cr = widget.window.cairo_create()
+        rect = widget.allocation
+        x, y, w, h = rect.x, rect.y, rect.width, rect.height
+
+        cr.set_source_rgba(0, 0, 0, 0.5)
+        cr.rectangle(x, y, w, h)
+        cr.fill()
+        
+        return True
+        
+gobject.type_register(Statusbar)        
 
 def execute_cb(option, opt, value, lparser):
     assert value is None
