@@ -1010,6 +1010,8 @@ class Terminal(object):
             self.remove_current_workspace(False)
             self.terminal_box.add(self.workspace_list[workspace_index - 1])
             self.terminal_box.show_all()
+            
+        self.update_workspace_indicator()    
         
     def close_workspace(self, workspace, close_by_terminal=False):    
         if len(self.workspace_list) == 1:
