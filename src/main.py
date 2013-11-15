@@ -3796,34 +3796,35 @@ class WorkspaceIndicator(gtk.Alignment):
         self.eventbox.connect("expose-event", self.expose_workspace_indicator)
         
     def expose_workspace_indicator(self, widget, event):
-        cr = widget.window.cairo_create()
-        rect = widget.allocation
-        
-        offset_x = 1
-        offset_y = -4
-        width = 30
-        radius = 0
-        (r, g, b) = color_hex_to_cairo(get_config("general", "font_color"))
-        for (index, workspace_index) in enumerate(self.workspaces):
-            if workspace_index == self.current_workspace_index:
-                cr.set_source_rgba(r, g, b, 0.5)
-            else:
-                cr.set_source_rgba(1, 1, 1, 0.05)
-                
-            x = rect.x + index * (width + offset_x) - 9
-            y = rect.y + offset_y
-            w = width
-            h = self.height
-            draw_round_rectangle(cr, x, y, w, h, radius)
-            cr.fill()
+        if len(self.workspaces) > 1:
+            cr = widget.window.cairo_create()
+            rect = widget.allocation
             
-            draw_text(
-                cr,
-                str(workspace_index),
-                x, y, w, h,
-                text_color="#DDDDDD",
-                alignment=pango.ALIGN_CENTER,
-                )
+            offset_x = 1
+            offset_y = -4
+            width = 30
+            radius = 0
+            (r, g, b) = color_hex_to_cairo(get_config("general", "font_color"))
+            for (index, workspace_index) in enumerate(self.workspaces):
+                if workspace_index == self.current_workspace_index:
+                    cr.set_source_rgba(r, g, b, 0.5)
+                else:
+                    cr.set_source_rgba(1, 1, 1, 0.05)
+                    
+                x = rect.x + index * (width + offset_x) - 9
+                y = rect.y + offset_y
+                w = width
+                h = self.height
+                draw_round_rectangle(cr, x, y, w, h, radius)
+                cr.fill()
+                
+                draw_text(
+                    cr,
+                    str(workspace_index),
+                    x, y, w, h,
+                    text_color="#DDDDDD",
+                    alignment=pango.ALIGN_CENTER,
+                    )
 
 class PathIndicator(gtk.Alignment):
     
