@@ -3783,7 +3783,7 @@ class WorkspaceIndicator(gtk.Alignment):
         cr = widget.window.cairo_create()
         rect = widget.allocation
         
-        offset_x = 5
+        offset_x = 1
         offset_y = -4
         width = 30
         radius = 0
@@ -3792,9 +3792,9 @@ class WorkspaceIndicator(gtk.Alignment):
             if workspace_index == self.current_workspace_index:
                 cr.set_source_rgba(r, g, b, 0.5)
             else:
-                cr.set_source_rgba(1, 1, 1, 0.2)
+                cr.set_source_rgba(1, 1, 1, 0.05)
                 
-            x = rect.x + index * (width + offset_x)
+            x = rect.x + index * (width + offset_x) - 9
             y = rect.y + offset_y
             w = width
             h = self.height
@@ -3805,7 +3805,7 @@ class WorkspaceIndicator(gtk.Alignment):
                 cr,
                 str(workspace_index),
                 x, y, w, h,
-                text_color="#FFFFFF",
+                text_color="#DDDDDD",
                 alignment=pango.ALIGN_CENTER,
                 )
 
@@ -3826,8 +3826,6 @@ class PathIndicator(gtk.Alignment):
         cr = widget.window.cairo_create()
         rect = widget.allocation
         
-        font_color = get_config("general", "font_color")
-        
         offset_y = -6
         draw_text(
             cr,
@@ -3837,7 +3835,7 @@ class PathIndicator(gtk.Alignment):
             rect.width,
             rect.height,
             alignment=pango.ALIGN_RIGHT,
-            text_color=font_color,
+            text_color="#666666"
             )
 
 def execute_cb(option, opt, value, lparser):
