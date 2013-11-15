@@ -558,17 +558,19 @@ class Terminal(object):
             focus_terminal.grab_focus()
         
     def background_image_toggle(self, status):
-        for terminal in get_match_children(self.application.window, TerminalWrapper):
-            if status:
-                set_terminal_background(terminal)
-            else:
-                terminal.reset_background()
+        for workspace in self.workspace_list:
+            for terminal in get_match_children(workspace, TerminalWrapper):
+                if status:
+                    set_terminal_background(terminal)
+                else:
+                    terminal.reset_background()
         
     def change_background_image(self):
         display_background_image = get_config("general", "background_image")
         if is_bool(display_background_image):
-            for terminal in get_match_children(self.application.window, TerminalWrapper):
-                set_terminal_background(terminal)
+            for workspace in self.workspace_list:
+                for terminal in get_match_children(workspace, TerminalWrapper):
+                    set_terminal_background(terminal)
         
     def ssh_login(self, user, server, password, port):
         active_terminal = self.application.window.get_focus()
@@ -587,8 +589,9 @@ class Terminal(object):
             active_terminal.feed_child("expect -f " + tempfile.name + "\n")
         
     def keybind_change(self, key_value, new_key):
-        for terminal in get_match_children(self.application.window, TerminalWrapper):
-            terminal.generate_keymap()
+        for workspace in self.workspace_list:
+            for terminal in get_match_children(workspace, TerminalWrapper):
+                terminal.generate_keymap()
             
         self.generate_keymap()    
         self.search_bar.generate_keymap()
@@ -628,52 +631,61 @@ class Terminal(object):
     def change_color_scheme(self, value):
         font_color = get_config("general", "font_color")
         background_color = get_config("general", "background_color")
-        for terminal in get_match_children(self.application.window, TerminalWrapper):
-            terminal.change_color(font_color, background_color)
-            terminal.background_update()
+        for workspace in self.workspace_list:
+            for terminal in get_match_children(workspace, TerminalWrapper):
+                terminal.change_color(font_color, background_color)
+                terminal.background_update()
             
     def change_font(self, font):    
         font_size = get_config("general", "font_size")
-        for terminal in get_match_children(self.application.window, TerminalWrapper):
-            terminal.change_font(font, font_size)
+        for workspace in self.workspace_list:
+            for terminal in get_match_children(workspace, TerminalWrapper):
+                terminal.change_font(font, font_size)
 
     def change_font_size(self, font_size):    
         font = get_config("general", "font")
-        for terminal in get_match_children(self.application.window, TerminalWrapper):
-            terminal.change_font(font, font_size)
+        for workspace in self.workspace_list:
+            for terminal in get_match_children(workspace, TerminalWrapper):
+                terminal.change_font(font, font_size)
         
     def set_cursor_shape(self, cursor_shape):
-        for terminal in get_match_children(self.application.window, TerminalWrapper):
-            terminal.change_cursor_shape(cursor_shape)
+        for workspace in self.workspace_list:
+            for terminal in get_match_children(workspace, TerminalWrapper):
+                terminal.change_cursor_shape(cursor_shape)
 
     def set_cursor_blink_mode(self, cursor_blink_mode):
-        for terminal in get_match_children(self.application.window, TerminalWrapper):
-            terminal.change_cursor_blink_mode(cursor_blink_mode)
+        for workspace in self.workspace_list:
+            for terminal in get_match_children(workspace, TerminalWrapper):
+                terminal.change_cursor_blink_mode(cursor_blink_mode)
         
     def scroll_on_key_toggle(self, status):
-        for terminal in get_match_children(self.application.window, TerminalWrapper):
-            terminal.set_scroll_on_keystroke(status)
+        for workspace in self.workspace_list:
+            for terminal in get_match_children(workspace, TerminalWrapper):
+                terminal.set_scroll_on_keystroke(status)
 
     def scroll_on_output_toggle(self, status):
-        for terminal in get_match_children(self.application.window, TerminalWrapper):
-            terminal.set_scroll_on_output(status)
+        for workspace in self.workspace_list:
+            for terminal in get_match_children(workspace, TerminalWrapper):
+                terminal.set_scroll_on_output(status)
         
     def copy_on_selection_toggle(self, status):
-        for terminal in get_match_children(self.application.window, TerminalWrapper):
-            if status:
-                terminal.connect("selection-changed", do_copy_on_selection_toggle)
-            else:
-                try:
-                    terminal.disconnect_by_func(do_copy_on_selection_toggle)
-                except:
-                    pass
+        for workspace in self.workspace_list:
+            for terminal in get_match_children(workspace, TerminalWrapper):
+                if status:
+                    terminal.connect("selection-changed", do_copy_on_selection_toggle)
+                else:
+                    try:
+                        terminal.disconnect_by_func(do_copy_on_selection_toggle)
+                    except:
+                        pass
                 
     def open_file_on_hover_toggle(self, status):
-        for terminal in get_match_children(self.application.window, TerminalWrapper):
-            if status:
-                terminal.add_file_match_tag()
-            else:
-                terminal.remove_file_match_tag()
+        for workspace in self.workspace_list:
+            for terminal in get_match_children(workspace, TerminalWrapper):
+                if status:
+                    terminal.add_file_match_tag()
+                else:
+                    terminal.remove_file_match_tag()
         
     def adjust_background_transparent(self, direction):
         if not direction in [gtk.gdk.SCROLL_UP, gtk.gdk.SCROLL_DOWN]:
@@ -688,18 +700,20 @@ class Terminal(object):
         with save_config(setting_config):    
             setting_config.config.set("general", "background_transparent", transparent)
         
-        for terminal in get_match_children(self.application.window, TerminalWrapper):
-            terminal.set_transparent(float(transparent))
-            
-            # Use background_update to update opacity of terminal.
-            terminal.background_update()
+        for workspace in self.workspace_list:
+            for terminal in get_match_children(workspace, TerminalWrapper):
+                terminal.set_transparent(float(transparent))
+                
+                # Use background_update to update opacity of terminal.
+                terminal.background_update()
         
     def change_background_transparent(self, transparent):
-        for terminal in get_match_children(self.application.window, TerminalWrapper):
-            terminal.set_transparent(float(transparent))
-            
-            # Use background_update to update opacity of terminal.
-            terminal.background_update()
+        for workspace in self.workspace_list:
+            for terminal in get_match_children(workspace, TerminalWrapper):
+                terminal.set_transparent(float(transparent))
+                
+                # Use background_update to update opacity of terminal.
+                terminal.background_update()
             
     def show_preference_menu(self, widget, event):
         menu_items = [
