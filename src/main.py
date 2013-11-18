@@ -136,7 +136,7 @@ CONFIRM_DIALOG_WIDTH = 450
 CONFIRM_DIALOG_HEIGHT = 150
 CONFIRM_WRAP_WIDTH = 350
 
-workspace_index = 1
+# workspace_index = 1
 
 DRAG_TEXT_URI = 1
 DRAG_TEXT_PLAIN = 2
@@ -990,11 +990,23 @@ class Terminal(object):
         self.statusbar.workspace_indicator.workspaces = map(lambda workspace: workspace.workspace_index, self.workspace_list)
         self.statusbar.workspace_indicator.current_workspace_index = self.terminal_box.get_children()[0].workspace_index
                 
+    def get_workspace_index(self):
+        if len(self.workspace_list) == 0:
+            return 0
+        else:
+            workspace_indexes = sorted(map(lambda w: w.workspace_index, self.workspace_list))
+            max_index = workspace_indexes[-1] + 1
+            for workspace_index in range(0, max_index):
+                if workspace_index not in workspace_indexes:
+                    return workspace_index
+                
+            return max_index
+        
     def new_workspace(self, working_directory=None, cmdline_startup_command=None):
         if working_directory == None or not(os.path.exists(working_directory)):
             working_directory = get_active_working_directory(self.application.window)
         
-        workspace = Workspace()
+        workspace = Workspace(self.get_workspace_index())
         terminal_grid = TerminalGrid(
             working_directory=working_directory, 
             cmdline_startup_command=cmdline_startup_command,
@@ -1006,6 +1018,7 @@ class Terminal(object):
         self.terminal_box.show_all()
         
         self.workspace_list.append(workspace)
+        self.workspace_list = sorted(self.workspace_list, key=lambda w: w.workspace_index)
         
         self.update_workspace_indicator()
         
@@ -1789,15 +1802,13 @@ class Workspace(gtk.VBox):
     class docs
     """
 
-    def __init__(self):
+    def __init__(self, workspace_index):
         """
         init docs
         """
-        global workspace_index
         gtk.VBox.__init__(self)
         
         self.workspace_index = workspace_index
-        workspace_index += 1
         self.snapshot_pixbuf = None
         self.focus_terminal = None
         
