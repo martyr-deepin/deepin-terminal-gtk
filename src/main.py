@@ -1775,8 +1775,8 @@ class Workspace(gtk.VBox):
         if self.window and self.window.get_colormap():
             rect = self.allocation
             x, y, width, height = rect.x, rect.y, rect.width, rect.height
-            self.snapshot_pixbuf = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, False, 8, width, height)
-            self.snapshot_pixbuf.get_from_drawable(
+            snapshot_pixbuf = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, False, 8, width, height)
+            snapshot_pixbuf.get_from_drawable(
                 self.window,
                 self.window.get_colormap(),
                 x, y, 0, 0,
@@ -1785,11 +1785,12 @@ class Workspace(gtk.VBox):
                 )
             snapshot_height = WORKSPACE_SNAPSHOT_HEIGHT - WORKSPACE_SNAPSHOT_OFFSET_TOP - WORKSPACE_SNAPSHOT_OFFSET_BOTTOM
             snapshot_width = int(width * snapshot_height / height)
-            self.snapshot_pixbuf = self.snapshot_pixbuf.scale_simple(
+            self.snapshot_pixbuf = snapshot_pixbuf.scale_simple(
                 snapshot_width,
                 snapshot_height,
                 gtk.gdk.INTERP_BILINEAR,
                 )
+            snapshot_pixbuf = None
             
             gc.collect()
         
