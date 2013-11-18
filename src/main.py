@@ -1955,53 +1955,6 @@ class WorkspaceSwitcher(gtk.Window):
                         )
                     cr.stroke()
                 
-                # Draw close button.
-                button_x = snapshot_area_x + WORKSPACE_SNAPSHOT_OFFSET_X * 2
-                rect_width = 20
-                rect_height = 20
-                padding_x = padding_y = 5
-                if self.workspace_index == index and self.in_workspace_snapshot_area:
-                    # Draw close button background.
-                    if self.in_workspace_close_area:
-                        cr.set_source_rgba(*alpha_color_hex_to_cairo(("#FF0000", 0.3)))
-                    else:
-                        cr.set_source_rgba(*alpha_color_hex_to_cairo(("#FFFFFF", 0.2)))
-                        
-                    draw_round_rectangle(
-                        cr, 
-                        button_x + snapshot_width - rect_width - padding_x,
-                        snapshot_area_y + padding_y,
-                        rect_width,
-                        rect_height,
-                        5,
-                        )    
-                    cr.fill()
-                    
-                    # Draw close button foreground.
-                    if self.in_workspace_close_area:
-                        cr.set_source_rgba(*alpha_color_hex_to_cairo(("#FFFFFF", 0.8)))
-                    else:
-                        cr.set_source_rgba(*alpha_color_hex_to_cairo(("#FFFFFF", 0.3)))
-                    padding = 5
-                    cr.set_line_width(2)
-                    cr.move_to(
-                        button_x + snapshot_width - self.close_button_size / 2 + padding - padding_x,
-                        snapshot_area_y + padding + padding_y,
-                        )
-                    cr.line_to(
-                        button_x + snapshot_width - padding - padding_x,
-                        snapshot_area_y + self.close_button_size / 2 - padding + padding_y,
-                        )
-                    cr.stroke()
-                    cr.move_to(
-                        button_x + snapshot_width - self.close_button_size / 2 + padding  - padding_x,
-                        snapshot_area_y + self.close_button_size / 2 - padding + padding_y,
-                        )
-                    cr.line_to(
-                        button_x + snapshot_width - padding - padding_x,
-                        snapshot_area_y + padding + padding_y,
-                        )
-                    cr.stroke()
                     
                 draw_x += snapshot_width + WORKSPACE_SNAPSHOT_OFFSET_X * 2
             
@@ -2018,6 +1971,56 @@ class WorkspaceSwitcher(gtk.Window):
                 text_color="#FFFFFF",
                 alignment=pango.ALIGN_CENTER,
                 )
+            
+        # Draw close button.
+        for ((index, workspace_index), (draw_x, draw_y, draw_width, draw_height)) in self.workspace_snapshot_areas:
+            rect_width = 20
+            rect_height = 20
+            padding_x = padding_y = 5
+            button_x = draw_x
+            button_y = draw_y + padding_y
+            if self.workspace_index == index and self.in_workspace_snapshot_area:
+                # Draw close button background.
+                if self.in_workspace_close_area:
+                    cr.set_source_rgba(*alpha_color_hex_to_cairo(("#FF0000", 0.3)))
+                else:
+                    cr.set_source_rgba(*alpha_color_hex_to_cairo(("#FFFFFF", 0.2)))
+                    
+                draw_round_rectangle(
+                    cr, 
+                    button_x + draw_width - rect_width - padding_x,
+                    button_y,
+                    rect_width,
+                    rect_height,
+                    5,
+                    )    
+                cr.fill()
+                
+                # Draw close button foreground.
+                if self.in_workspace_close_area:
+                    cr.set_source_rgba(*alpha_color_hex_to_cairo(("#FFFFFF", 0.8)))
+                else:
+                    cr.set_source_rgba(*alpha_color_hex_to_cairo(("#FFFFFF", 0.3)))
+                padding = 5
+                cr.set_line_width(2)
+                cr.move_to(
+                    button_x + draw_width - self.close_button_size / 2 + padding - padding_x,
+                    button_y + padding,
+                    )
+                cr.line_to(
+                    button_x + draw_width - padding - padding_x,
+                    button_y + self.close_button_size / 2 - padding,
+                    )
+                cr.stroke()
+                cr.move_to(
+                    button_x + draw_width - self.close_button_size / 2 + padding  - padding_x,
+                    button_y + self.close_button_size / 2 - padding,
+                    )
+                cr.line_to(
+                    button_x + draw_width - padding - padding_x,
+                    button_y + padding,
+                    )
+                cr.stroke()
                 
         # Draw workspace add button.
         with cairo_state(cr):        
