@@ -513,6 +513,9 @@ class Terminal(object):
         else:
             if self.terminal_num_window.get_visible():
                 self.terminal_num_window.hide()
+                
+            if self.workspace_switcher.get_visible():
+                self.workspace_switcher.hide()
         
     def quake(self):
         global focus_terminal
