@@ -1939,9 +1939,6 @@ class WorkspaceSwitcher(gtk.Window):
              ])
         
         # Draw workspace snapshot.
-        text_size = 32
-        text_offset_y = 0
-            
         snapshot_add_width = WORKSPACE_ADD_SIZE + WORKSPACE_ADD_PADDING * 2
         snapshot_total_width = sum(map(lambda w: w.snapshot_pixbuf.get_width() + WORKSPACE_SNAPSHOT_OFFSET_X * 2, self.get_workspaces()))
         have_enough_space = snapshot_total_width + snapshot_add_width * 2 < rect.width
@@ -1955,10 +1952,9 @@ class WorkspaceSwitcher(gtk.Window):
         self.workspace_snapshot_areas = []    
         with cairo_state(cr):    
             cr.scale(scale_value, scale_value)
-            for (workspace_index, workspace) in enumerate(self.get_workspaces()): 
+            for (index, workspace) in enumerate(self.get_workspaces()): 
                 
                 snapshot_width = workspace.snapshot_pixbuf.get_width()
-                snapshot_height = workspace.snapshot_pixbuf.get_height()
                 
                 draw_y = rect.y + WORKSPACE_SNAPSHOT_OFFSET_TOP
                 
@@ -1968,7 +1964,7 @@ class WorkspaceSwitcher(gtk.Window):
                 snapshot_area_width = snapshot_width + WORKSPACE_SNAPSHOT_OFFSET_X * 2
                 snapshot_area_height = rect.height
                 
-                if self.workspace_index == workspace_index:
+                if self.workspace_index == index:
                     cr.set_source_rgba(*alpha_color_hex_to_cairo(("#FFFFFF", 0.1)))
                     cr.rectangle(
                         snapshot_area_x,
@@ -1979,12 +1975,12 @@ class WorkspaceSwitcher(gtk.Window):
                     cr.fill()
                     
                 self.workspace_snapshot_areas.append(
-                    (workspace_index, (
-                            scale_value * snapshot_area_x,
-                            scale_value * snapshot_area_y,
-                            scale_value * snapshot_area_width,
-                            scale_value * snapshot_area_height,
-                            )))    
+                    ((index, workspace.workspace_index), (
+                               scale_value * snapshot_area_x,
+                               scale_value * snapshot_area_y,
+                               scale_value * snapshot_area_width,
+                               scale_value * snapshot_area_height,
+                               )))    
                 
                 # Draw workspace snapshot.
                 draw_pixbuf(
@@ -2005,24 +2001,12 @@ class WorkspaceSwitcher(gtk.Window):
                         )
                     cr.stroke()
                 
-                # Draw workspace name.
-                draw_text(
-                    cr,
-                    "%s %s" % (_("Workspace"), workspace.workspace_index),
-                    draw_x,
-                    draw_y + snapshot_height + text_offset_y,
-                    snapshot_width,
-                    text_size,
-                    text_color="#FFFFFF",
-                    alignment=pango.ALIGN_CENTER,
-                    )
-                
                 # Draw close button.
                 button_x = snapshot_area_x + WORKSPACE_SNAPSHOT_OFFSET_X * 2
                 rect_width = 20
                 rect_height = 20
                 padding_x = padding_y = 5
-                if self.workspace_index == workspace_index and self.in_workspace_snapshot_area:
+                if self.workspace_index == index and self.in_workspace_snapshot_area:
                     # Draw close button background.
                     if self.in_workspace_close_area:
                         cr.set_source_rgba(*alpha_color_hex_to_cairo(("#FF0000", 0.3)))
@@ -2067,6 +2051,20 @@ class WorkspaceSwitcher(gtk.Window):
                     
                 draw_x += snapshot_width + WORKSPACE_SNAPSHOT_OFFSET_X * 2
             
+        # Draw workspace name.
+        text_size = 32
+        for ((index, workspace_index), (draw_x, draw_y, draw_width, draw_height)) in self.workspace_snapshot_areas:
+            draw_text(
+                cr,
+                "%s %s" % (_("Workspace"), workspace_index),
+                int(draw_x),
+                int(draw_y + draw_height - text_size * scale_value),
+                int(draw_width),
+                text_size * scale_value,
+                text_color="#FFFFFF",
+                alignment=pango.ALIGN_CENTER,
+                )
+                
         # Draw workspace add button.
         with cairo_state(cr):        
             workspace_add_size = scale_value * WORKSPACE_ADD_SIZE    
@@ -2134,14 +2132,14 @@ class WorkspaceSwitcher(gtk.Window):
         self.in_workspace_snapshot_area = False
         self.in_workspace_close_area = False
         
-        for (workspace_index, snapshot_area) in self.workspace_snapshot_areas:
+        for ((index, workspace_index), snapshot_area) in self.workspace_snapshot_areas:
             if is_in_rect((event.x, event.y), snapshot_area):
                 if self.is_in_close_button_area(event.x, event.y, snapshot_area):
                     self.in_workspace_close_area = True
                 
                 self.in_workspace_snapshot_area = True
                 self.in_workspace_add_area = False
-                self.workspace_index = workspace_index
+                self.workspace_index = index
                 self.queue_draw()
                 return False
             
@@ -2151,14 +2149,14 @@ class WorkspaceSwitcher(gtk.Window):
             return False
             
     def button_press_workspace_switcher(self, widget, event):        
-        for (workspace_index, snapshot_area) in self.workspace_snapshot_areas:
+        for ((index, workspace_index), snapshot_area) in self.workspace_snapshot_areas:
             if is_in_rect((event.x, event.y), snapshot_area):
                 if self.is_in_close_button_area(event.x, event.y, snapshot_area):
                     self.in_workspace_close_area = True
-                    global_event.emit("close-workspace", self.get_workspaces()[workspace_index])
+                    global_event.emit("close-workspace", self.get_workspaces()[index])
                     self.queue_draw()
                 else:
-                    self.switch_to_workspace(workspace_index)
+                    self.switch_to_workspace(index)
                     self.hide_switcher()
                     
                 return False
