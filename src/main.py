@@ -1266,10 +1266,10 @@ class TerminalWrapper(vte.Terminal):
         cursor_blink_mode = get_config("advanced", "cursor_blink_mode")
         self.change_cursor_blink_mode(cursor_blink_mode)
 
-        self.default_font = get_config("general", "font")
+        font = get_config("general", "font")
         self.default_font_size = int(get_config("general", "font_size"))
         self.current_font_size = self.default_font_size
-        self.change_font(self.default_font, self.current_font_size)
+        self.change_font(font, self.current_font_size)
         
         startup_directory = get_config("advanced", "startup_directory")
         directory = commands.getoutput("echo %s" % startup_directory)
@@ -1567,16 +1567,19 @@ class TerminalWrapper(vte.Terminal):
         return(True) 
 
     def revert_default_size(self):
+        font = get_config("general", "font")
         self.current_font_size = self.default_font_size
-        self.change_font(self.default_font, self.current_font_size)
+        self.change_font(font, self.current_font_size)
     
     def zoom_in(self):
+        font = get_config("general", "font")
         self.current_font_size = max(MIN_FONT_SIZE, self.current_font_size - 1)
-        self.change_font(self.default_font, self.current_font_size)
+        self.change_font(font, self.current_font_size)
     
     def zoom_out(self):
+        font = get_config("general", "font")
         self.current_font_size += 1
-        self.change_font(self.default_font, self.current_font_size)
+        self.change_font(font, self.current_font_size)
         
     def get_working_directory(self):
         try:
