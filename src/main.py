@@ -994,8 +994,9 @@ class Terminal(object):
         if len(self.workspace_list) == 0:
             return 0
         else:
-            workspace_indexes = sorted(map(lambda w: w.workspace_index, self.workspace_list))
-            max_index = workspace_indexes[-1] + 1
+            workspace_indexes = map(lambda w: w.workspace_index, self.workspace_list)
+            max_index = max(workspace_indexes) + 1
+            
             for workspace_index in range(0, max_index):
                 if workspace_index not in workspace_indexes:
                     return workspace_index
