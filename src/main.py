@@ -36,8 +36,9 @@ from dtk.ui.init_skin import init_skin
 from dtk.ui.keymap import get_keyevent_name, get_key_name, is_no_key_press
 from dtk.ui.label import Label
 from dtk.ui.menu import Menu
-from dtk.ui.utils import (container_remove_all, get_match_parent, cairo_state, propagate_expose, is_left_button, is_right_button, is_in_rect, get_match_children)
-from dtk.ui.utils import get_window_shadow_size
+from dtk.ui.utils import (container_remove_all, get_match_parent, cairo_state, 
+                          propagate_expose, is_left_button, is_right_button, 
+                          is_in_rect, get_match_children)
 from dtk.ui.utils import place_center, get_widget_root_coordinate
 from dtk.ui.window import Window
 from nls import _
@@ -72,7 +73,6 @@ from dtk.ui.button import Button
 from dtk.ui.button import ImageButton
 from dtk.ui.button import SwitchButton
 from dtk.ui.box import EventBox
-from dtk.ui.cache_pixbuf import CachePixbuf
 from dtk.ui.color_selection import ColorButton
 from dtk.ui.combo import ComboBox
 from dtk.ui.dialog import DIALOG_MASK_GLASS_PAGE
@@ -136,8 +136,6 @@ CONFIRM_DIALOG_WIDTH = 450
 CONFIRM_DIALOG_HEIGHT = 150
 CONFIRM_WRAP_WIDTH = 350
 
-# workspace_index = 1
-
 DRAG_TEXT_URI = 1
 DRAG_TEXT_PLAIN = 2
 
@@ -171,7 +169,6 @@ GENERAL_CONFIG = [
     ("font_color", "#00FF00"),
     ("background_color", "#000000"),
     ("background_transparent", "0.8"),
-    ("background_image", "False"),
     ]
 
 KEYBIND_CONFIG = [
@@ -271,26 +268,6 @@ def get_active_working_directory(toplevel_widget):
         return focus_widget.get_working_directory()
     else:
         return None
-    
-def set_terminal_background(terminal):
-    cache_pixbuf = CachePixbuf()
-    (shadow_x, shadow_y) = get_window_shadow_size(terminal.get_toplevel())
-    
-    background_x = int(skin_config.x * skin_config.scale_x)
-    background_y = int(skin_config.y * skin_config.scale_y)
-    background_width = int(skin_config.background_pixbuf.get_width() * skin_config.scale_x)
-    background_height = int(skin_config.background_pixbuf.get_height() * skin_config.scale_y)
-    cache_pixbuf.scale(skin_config.background_pixbuf, background_width, background_height,
-                       skin_config.vertical_mirror, skin_config.horizontal_mirror)
-    
-    (offset_x, offset_y) = terminal.translate_coordinates(terminal.get_toplevel(), 0, 0)
-    sub_x = abs(background_x + shadow_x - offset_x)
-    sub_y = abs(background_y + shadow_y - offset_y)
-    
-    background_pixbuf = cache_pixbuf.get_cache().subpixbuf(
-        sub_x, sub_y, background_width - sub_x, background_height - sub_y)
-    
-    terminal.set_background_image(background_pixbuf)
     
 def do_copy_on_selection_toggle(terminal):
     terminal.copy_clipboard()
@@ -444,24 +421,19 @@ class Terminal(object):
         global_event.register_event("change-background-color", self.change_color_scheme)
         global_event.register_event("keybind-changed", self.keybind_change)
         global_event.register_event("ssh-login", self.ssh_login)
-        global_event.register_event("background-image-toggle", self.background_image_toggle)
         global_event.register_event("new-workspace", self.new_workspace)
         global_event.register_event("quit", self.quit)
-        
-        skin_config.connect("theme-changed", lambda w, n: self.change_background_image())
         
         if self.quake_mode:
             self.fullscreen()
             
     def draw_terminal_skin(self, cr, x, y, w, h):
-        display_background_image = get_config("general", "background_image")
-        if not is_bool(display_background_image):
-            statusbar_height = self.statusbar.height
-            cr.rectangle(x, y, w, h - statusbar_height)
-            cr.rectangle(x, y + h - statusbar_height, self.draw_skin_padding, statusbar_height)
-            cr.rectangle(x + w - self.draw_skin_padding, y + h - statusbar_height, self.draw_skin_padding, statusbar_height)
-            cr.rectangle(x, y + h - self.draw_skin_padding, w, self.draw_skin_padding)
-            cr.clip()
+        statusbar_height = self.statusbar.height
+        cr.rectangle(x, y, w, h - statusbar_height)
+        cr.rectangle(x, y + h - statusbar_height, self.draw_skin_padding, statusbar_height)
+        cr.rectangle(x + w - self.draw_skin_padding, y + h - statusbar_height, self.draw_skin_padding, statusbar_height)
+        cr.rectangle(x, y + h - self.draw_skin_padding, w, self.draw_skin_padding)
+        cr.clip()
         
         super(Window, self.application.window).draw_skin(cr, x, y, w, h)
             
@@ -556,21 +528,6 @@ class Terminal(object):
 
         if focus_terminal:
             focus_terminal.grab_focus()
-        
-    def background_image_toggle(self, status):
-        for workspace in self.workspace_list:
-            for terminal in get_match_children(workspace, TerminalWrapper):
-                if status:
-                    set_terminal_background(terminal)
-                else:
-                    terminal.reset_background()
-        
-    def change_background_image(self):
-        display_background_image = get_config("general", "background_image")
-        if is_bool(display_background_image):
-            for workspace in self.workspace_list:
-                for terminal in get_match_children(workspace, TerminalWrapper):
-                    set_terminal_background(terminal)
         
     def ssh_login(self, user, server, password, port):
         active_terminal = self.application.window.get_focus()
@@ -1356,11 +1313,6 @@ class TerminalWrapper(vte.Terminal):
     def remove_file_match_tag(self):
         self.match_remove(self.file_match_tag)
         
-    def init_background(self):
-        display_background_image = get_config("general", "background_image")
-        if is_bool(display_background_image):
-            set_terminal_background(self)
-        
     def generate_keymap(self):
         get_keybind = lambda key_value: get_config("keybind", key_value)
         
@@ -1646,8 +1598,6 @@ class TerminalWrapper(vte.Terminal):
         Callback for realize-signal.
         :param widget: which widget sends the signal.
         """
-        self.init_background()
-        
         widget.grab_focus()
 
     def handle_key_press(self, widget, event):
@@ -2812,10 +2762,6 @@ class GeneralSettings(gtk.VBox):
         self.background_transparent_widget.set_value(float(transparent))
         self.background_transparent_widget.connect("value-changed", self.save_background_transparent)
         
-        display_background_image = is_bool(get_config("general", "background_image"))
-        self.background_image_widget = SwitchButton(display_background_image)
-        self.background_image_widget.connect("toggled", self.background_image_toggle)
-        
         self.table = gtk.Table(7, 2)
         self.table.set_row_spacings(TABLE_ROW_SPACING)
         self.table.set_col_spacing(0, TABLE_COLUMN_SPACING)
@@ -2825,7 +2771,6 @@ class GeneralSettings(gtk.VBox):
             (_("Color scheme: "), self.color_scheme_widget),
             ("", color_box),
             (_("Background transparency: "), self.background_transparent_widget),
-            (_("Background image: "), self.background_image_widget),
             ]
         self.table_align = gtk.Alignment()
         self.table_align.set(0, 0, 1, 1)
@@ -2834,12 +2779,6 @@ class GeneralSettings(gtk.VBox):
         self.fill_table(self.table, table_items)
         self.table_align.add(self.table)
         self.add(self.table_align)
-        
-    def background_image_toggle(self, toggle_button):
-        with save_config(setting_config):    
-            setting_config.config.set("general", "background_image", str(toggle_button.get_active()))
-        
-        global_event.emit("background-image-toggle", toggle_button.get_active())
         
     def change_color_scheme(self, combo_box, option_name, option_value, index):
         with save_config(setting_config):    
@@ -3632,9 +3571,6 @@ class SettingDialog(PreferenceDialog):
             global_event.emit("change-background-transparent", background_transparent)
             page_widget.background_transparent_widget.set_value(background_transparent)
             
-            background_image = is_bool(config_dict["background_image"])
-            global_event.emit("background-image-toggle", background_image)
-            page_widget.background_image_widget.set_active(background_image)
         elif isinstance(page_widget, KeybindSettings):
             with save_config(setting_config):
                 for (config_key, config_value) in KEYBIND_CONFIG:
