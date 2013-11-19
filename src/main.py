@@ -496,11 +496,13 @@ class Terminal(object):
     def adjust_terminal_padding(self):        
         if self.application.window.allocation.width == gtk.gdk.screen_width():
             self.terminal_align.set_padding(0, 0, 0, 0)
-            self.statusbar.set_padding(0, 0, 0, 0)
+            self.statusbar.set_padding(1, 0, 0, 0)
+            self.statusbar.adjust_padding(0, 0, 0, 0)
             self.draw_skin_padding = 0
         else:
             self.terminal_align.set_padding(0, 0, self.normal_padding, self.normal_padding)
             self.statusbar.set_padding(0, self.normal_padding, self.normal_padding, self.normal_padding)
+            self.statusbar.adjust_padding(0, self.normal_padding, self.normal_padding, self.normal_padding)
             self.draw_skin_padding = 2
         
     def window_is_active(self, window, param):
@@ -3715,7 +3717,20 @@ class Statusbar(gtk.Alignment):
         self.box.add(self.indicator_box)
         self.add(self.box)
         
-        self.box.connect("expose-event", self.expose_statusbar)
+        self.padding_top = 0
+        self.padding_bottom = 2
+        self.padding_left = 2
+        self.padding_right = 2
+        
+        self.connect("expose-event", self.expose_statusbar)
+        
+    def adjust_padding(self, padding_top, padding_bottom, padding_left, padding_right):
+        self.padding_top = padding_top
+        self.padding_bottom = padding_bottom
+        self.padding_left = padding_left
+        self.padding_right = padding_right
+        
+        self.queue_draw()
         
     def expose_statusbar(self, widget, event):
         cr = widget.window.cairo_create()
@@ -3726,7 +3741,12 @@ class Statusbar(gtk.Alignment):
         transparent = get_config("general", "background_transparent")
         (r, g, b) = color_hex_to_cairo(background_color)
         cr.set_source_rgba(r, g, b, min(float(transparent) + 0.1, 1))
-        cr.rectangle(x, y, w, h)
+        cr.rectangle(
+            x + self.padding_left, 
+            y + self.padding_top, 
+            w - self.padding_left - self.padding_right, 
+            h - self.padding_top - self.padding_bottom,
+            )
         cr.fill()
         
         propagate_expose(widget, event)
