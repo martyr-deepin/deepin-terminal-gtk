@@ -38,7 +38,7 @@ from dtk.ui.label import Label
 from dtk.ui.menu import Menu
 from dtk.ui.utils import (container_remove_all, get_match_parent, cairo_state, 
                           propagate_expose, is_left_button, is_right_button, 
-                          is_in_rect, get_match_children)
+                          is_in_rect, get_match_children, set_hover_cursor)
 from dtk.ui.utils import place_center, get_widget_root_coordinate
 from dtk.ui.window import Window
 from nls import _
@@ -3709,21 +3709,28 @@ class WorkspaceIndicator(gtk.Alignment):
         self.eventbox.connect("expose-event", self.expose_workspace_indicator)
         self.eventbox.connect("button-press-event", self.button_press_indicator)        
         
+    def get_workspace_rect(self, index):
+        rect = self.eventbox.allocation
+        
+        return (
+            rect.x + self.padding_x + index * (self.width + self.offset_x),
+            rect.y + self.offset_y,
+            self.width,
+            self.height,
+            )
+        
     def button_press_indicator(self, widget, event):
         if len(self.workspaces) > 1:
-            rect = widget.allocation
             
             for (index, workspace_index) in enumerate(self.workspaces):
-                x = rect.x + self.padding_x + index * (self.width + self.offset_x)
-                w = self.width
+                (x, y, w, h) = self.get_workspace_rect(index)
                 
                 if x < event.x < x + w:
                     global_event.emit("switch-to-workspace", index)
-                        
+
     def expose_workspace_indicator(self, widget, event):
         if len(self.workspaces) > 1:
             cr = widget.window.cairo_create()
-            rect = widget.allocation
             
             (r, g, b) = color_hex_to_cairo(get_config("general", "font_color"))
             for (index, workspace_index) in enumerate(self.workspaces):
@@ -3732,10 +3739,7 @@ class WorkspaceIndicator(gtk.Alignment):
                 else:
                     cr.set_source_rgba(1, 1, 1, 0.05)
                     
-                x = rect.x + self.padding_x + index * (self.width + self.offset_x)
-                y = rect.y + self.offset_y
-                w = self.width
-                h = self.height
+                (x, y, w, h) = self.get_workspace_rect(index)
                 draw_round_rectangle(cr, x, y, w, h, self.radius)
                 cr.fill()
                 
@@ -3761,6 +3765,12 @@ class PathIndicator(gtk.Alignment):
         self.add(self.eventbox)
         
         self.eventbox.connect("expose-event", self.expose_path_indicator)
+        self.eventbox.connect("button-press-event", self.button_press_path_indicator)
+        
+        set_hover_cursor(self.eventbox, gtk.gdk.HAND2)
+        
+    def button_press_path_indicator(self, widget, event):
+        subprocess.Popen("xdg-open '%s'" % self.path, shell=True)
         
     def expose_path_indicator(self, widget, event):
         cr = widget.window.cairo_create()
