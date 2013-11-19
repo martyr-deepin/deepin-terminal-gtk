@@ -3644,7 +3644,7 @@ class Statusbar(gtk.Alignment):
         self.path_indicator = PathIndicator()
         
         self.indicator_box.pack_start(self.workspace_indicator, True, True)
-        self.indicator_box.pack_start(self.path_indicator, True, True)
+        self.indicator_box.pack_start(self.path_indicator, False, False)
         self.box.add(self.indicator_box)
         self.add(self.box)
         
