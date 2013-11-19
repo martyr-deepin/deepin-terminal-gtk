@@ -1831,6 +1831,9 @@ class WorkspaceSwitcher(gtk.Window):
         self.in_workspace_close_area = False
         self.in_workspace_add_area = False
         
+        self.background_offset_y = 0
+        self.scale_value = 0
+        
         self.connect("expose-event", self.expose_workspace_switcher)
         self.connect("motion-notify-event", self.motion_workspace_switcher)
         self.connect("leave-notify-event", self.leave_workspace_switcher)
@@ -1875,25 +1878,7 @@ class WorkspaceSwitcher(gtk.Window):
         cr = widget.window.cairo_create()
         rect = widget.allocation
         
-        # Draw background.
-        with cairo_state(cr):
-            cr.set_source_rgba(*alpha_color_hex_to_cairo(("#000000", 0.6)))
-            cr.set_operator(cairo.OPERATOR_SOURCE)
-            cr.paint()
-        
-        # Draw background top frame.
-        draw_hlinear(
-            cr,
-            rect.x,
-            rect.y,
-            rect.width,
-            1,
-            [(0, ("#FFFFFF", 0.1)),
-             (0.5, ("#FFFFFF", 0.2)),
-             (1, ("#FFFFFF", 0.1)),
-             ])
-        
-        # Draw workspace snapshot.
+        # Calcuate scale value.
         snapshot_add_width = WORKSPACE_ADD_SIZE + WORKSPACE_ADD_PADDING * 2
         snapshot_total_width = sum(map(lambda w: w.snapshot_pixbuf.get_width() + WORKSPACE_SNAPSHOT_OFFSET_X * 2, self.get_workspaces()))
         have_enough_space = snapshot_total_width + snapshot_add_width * 2 < rect.width
@@ -1903,7 +1888,37 @@ class WorkspaceSwitcher(gtk.Window):
         else:
             scale_value = float(rect.width) / (snapshot_total_width + snapshot_add_width)
             draw_x = WORKSPACE_SNAPSHOT_OFFSET_X
+        self.scale_value = scale_value    
             
+        # Draw background.
+        with cairo_state(cr):
+            cr.set_source_rgba(*alpha_color_hex_to_cairo(("#000000", 0)))
+            cr.set_operator(cairo.OPERATOR_SOURCE)
+            cr.paint()
+            
+            
+        background_height = rect.height * scale_value
+        background_offset_y = rect.height - background_height
+        self.background_offset_y = rect.height - background_height
+        cr.set_source_rgba(*alpha_color_hex_to_cairo(("#000000", 0.6)))
+        cr.rectangle(rect.x, rect.y + background_offset_y, rect.width, background_height)
+        cr.fill()
+        
+        # Draw background top frame.
+        draw_hlinear(
+            cr,
+            rect.x,
+            rect.y + background_offset_y,
+            rect.width,
+            1,
+            
+            [(0, ("#FFFFFF", 0.1)),
+             (0.5, ("#FFFFFF", 0.2)),
+             (1, ("#FFFFFF", 0.1)),
+             ],
+            )
+        
+        # Draw workspace snapshot.
         self.workspace_snapshot_areas = []    
         with cairo_state(cr):    
             cr.scale(scale_value, scale_value)
@@ -1923,7 +1938,7 @@ class WorkspaceSwitcher(gtk.Window):
                     cr.set_source_rgba(*alpha_color_hex_to_cairo(("#FFFFFF", 0.1)))
                     cr.rectangle(
                         snapshot_area_x,
-                        snapshot_area_y,
+                        snapshot_area_y + background_offset_y / scale_value,
                         snapshot_area_width,
                         snapshot_area_height,
                         )
@@ -1932,7 +1947,7 @@ class WorkspaceSwitcher(gtk.Window):
                 self.workspace_snapshot_areas.append(
                     ((index, workspace.workspace_index), (
                                scale_value * snapshot_area_x,
-                               scale_value * snapshot_area_y,
+                               scale_value * (snapshot_area_y + background_offset_y / scale_value),
                                scale_value * snapshot_area_width,
                                scale_value * snapshot_area_height,
                                )))    
@@ -1942,7 +1957,7 @@ class WorkspaceSwitcher(gtk.Window):
                     cr,
                     workspace.snapshot_pixbuf,
                     draw_x,
-                    draw_y,
+                    draw_y + background_offset_y / scale_value,
                 )
                 
                 # Draw workspace snapshot frame.
@@ -1950,7 +1965,7 @@ class WorkspaceSwitcher(gtk.Window):
                     cr.set_source_rgba(*alpha_color_hex_to_cairo(("#FFFFFF", 0.1)))
                     cr.rectangle(
                         draw_x,
-                        draw_y,
+                        draw_y + background_offset_y / scale_value,
                         workspace.snapshot_pixbuf.get_width(),
                         workspace.snapshot_pixbuf.get_height(),
                         )
@@ -2032,7 +2047,7 @@ class WorkspaceSwitcher(gtk.Window):
             workspace_add_area_height = scale_value * rect.height
             
             add_area_x = rect.width - (workspace_add_size + workspace_add_padding * 2)
-            add_area_y = rect.y
+            add_area_y = rect.y + background_offset_y
             add_area_width = workspace_add_area_height
             add_area_height = (workspace_add_size + workspace_add_padding * 2)
                 
@@ -2045,7 +2060,7 @@ class WorkspaceSwitcher(gtk.Window):
                 
             cr.rectangle(
                 workspace_add_x, 
-                (rect.y + (workspace_add_area_height - workspace_add_middle_size) / 2),
+                (add_area_y + (workspace_add_area_height - workspace_add_middle_size) / 2),
                 workspace_add_size, 
                 workspace_add_middle_size,
                 )
@@ -2053,7 +2068,7 @@ class WorkspaceSwitcher(gtk.Window):
             
             cr.rectangle(
                 workspace_add_x + (workspace_add_size - workspace_add_middle_size) / 2,
-                (rect.y + (workspace_add_area_height - workspace_add_size) / 2),
+                (add_area_y + (workspace_add_area_height - workspace_add_size) / 2),
                 workspace_add_middle_size,
                 (workspace_add_size - workspace_add_middle_size) / 2,
                 )
@@ -2061,7 +2076,7 @@ class WorkspaceSwitcher(gtk.Window):
             
             cr.rectangle(
                 workspace_add_x + (workspace_add_size - workspace_add_middle_size) / 2,
-                (rect.y + (workspace_add_area_height + workspace_add_middle_size) / 2),
+                (add_area_y + (workspace_add_area_height + workspace_add_middle_size) / 2),
                 workspace_add_middle_size,
                 (workspace_add_size - workspace_add_middle_size) / 2,
                 )
