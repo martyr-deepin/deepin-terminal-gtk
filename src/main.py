@@ -364,7 +364,6 @@ class Terminal(object):
         
         self.workspace_switcher = WorkspaceSwitcher(
             self.get_workspaces,
-            self.switch_to_workspace
         )
         self.workspace_switcher_y_offset = 0
         self.is_full_screen = False
@@ -402,6 +401,7 @@ class Terminal(object):
         
         global_event.register_event("close-workspace", self.close_workspace)
         global_event.register_event("close-terminal-workspace", lambda w: self.close_workspace(w, True))
+        global_event.register_event("switch-to-workspace", self.switch_to_workspace)
         global_event.register_event("change-path", self.change_path)
         global_event.register_event("show-menu", self.show_menu)
         global_event.register_event("show-terminal-num-window", self.show_terminal_num_window)
@@ -1806,13 +1806,12 @@ class WorkspaceSwitcher(gtk.Window):
     class docs
     """
 
-    def __init__(self, get_workspaces, switch_to_workspace):
+    def __init__(self, get_workspaces):
         """
         init docs
         """
         gtk.Window.__init__(self, gtk.WINDOW_POPUP)
         self.get_workspaces = get_workspaces
-        self.switch_to_workspace = switch_to_workspace
         self.set_decorated(False)
         self.add_events(gtk.gdk.ALL_EVENTS_MASK)
         self.set_colormap(gtk.gdk.Screen().get_rgba_colormap())
@@ -2115,7 +2114,7 @@ class WorkspaceSwitcher(gtk.Window):
                     global_event.emit("close-workspace", self.get_workspaces()[index])
                     self.queue_draw()
                 else:
-                    self.switch_to_workspace(index)
+                    global_event.emit("switch-to-workspace", index)
                     self.hide_switcher()
                     
                 return False
@@ -3631,70 +3630,6 @@ class SettingDialog(PreferenceDialog):
 
 gobject.type_register(SettingDialog)        
 
-class LeftBox(gtk.HBox):
-    '''
-    HBox to handle left side boxes in Box.
-    '''
-	
-    def __init__(self):
-        '''
-        Initialize LeftBox class.
-        '''
-        gtk.HBox.__init__(self)
-        self.button_align = gtk.Alignment()
-        self.button_align.set(0.0, 0.5, 0, 0)
-        self.button_align.set_padding(5, 9, 7, 0)
-        self.button_box = gtk.HBox()
-        
-        self.button_align.add(self.button_box)    
-        self.pack_start(self.button_align, True, True)
-
-    def set_boxes(self, boxes):
-        '''
-        Set boxes in box.
-
-        @note: This function will use new boxes B{instead} old boxes in button box.
-        
-        @param boxes: A list of Gtk.Widget instance.
-        '''
-        container_remove_all(self.button_box)
-        for button in boxes:
-            self.button_box.pack_start(button, False, False, 4)
-            
-gobject.type_register(LeftBox)
-
-class RightBox(gtk.HBox):
-    '''
-    HBox to handle right side boxes in Box.
-    '''
-	
-    def __init__(self):
-        '''
-        Initialize RightBox class.
-        '''
-        gtk.HBox.__init__(self)
-        self.button_align = gtk.Alignment()
-        self.button_align.set(1.0, 0.5, 0, 0)
-        self.button_align.set_padding(5, 9, 0, 7)
-        self.button_box = gtk.HBox()
-        
-        self.button_align.add(self.button_box)    
-        self.pack_start(self.button_align, True, True)
-
-    def set_boxes(self, boxes):
-        '''
-        Set boxes in box.
-
-        @note: This function will use new boxes B{instead} old boxes in button box.
-        
-        @param boxes: A list of Gtk.Widget instance.
-        '''
-        container_remove_all(self.button_box)
-        for button in boxes:
-            self.button_box.pack_start(button, False, False, 4)
-            
-gobject.type_register(RightBox)
-
 class Statusbar(gtk.Alignment):
     def __init__(self):
         gtk.Alignment.__init__(self)
@@ -3704,16 +3639,12 @@ class Statusbar(gtk.Alignment):
         self.set_size_request(-1, self.height)
         self.box = EventBox()        
         self.indicator_box = gtk.HBox()
-        self.left_box = LeftBox()
-        self.right_box = RightBox()
         
         self.workspace_indicator = WorkspaceIndicator()
         self.path_indicator = PathIndicator()
         
-        self.left_box.set_boxes([self.workspace_indicator])
-        self.right_box.set_boxes([self.path_indicator])
-        self.indicator_box.pack_start(self.left_box, True, True)
-        self.indicator_box.pack_start(self.right_box, True, True)
+        self.indicator_box.pack_start(self.workspace_indicator, True, True)
+        self.indicator_box.pack_start(self.path_indicator, True, True)
         self.box.add(self.indicator_box)
         self.add(self.box)
         
@@ -3761,7 +3692,13 @@ class WorkspaceIndicator(gtk.Alignment):
         gtk.Alignment.__init__(self)
         self.set(0, 0, 1, 1)
         
+        self.offset_x = 1
+        self.offset_y = 1
+        self.padding_x = 2
+        self.width = 30
         self.height = 20
+        self.radius = 0
+        
         self.current_workspace_index = 1
         self.workspaces = [1]
         self.set_size_request(-1, self.height)
@@ -3770,16 +3707,24 @@ class WorkspaceIndicator(gtk.Alignment):
         self.add(self.eventbox)
         
         self.eventbox.connect("expose-event", self.expose_workspace_indicator)
+        self.eventbox.connect("button-press-event", self.button_press_indicator)        
         
+    def button_press_indicator(self, widget, event):
+        if len(self.workspaces) > 1:
+            rect = widget.allocation
+            
+            for (index, workspace_index) in enumerate(self.workspaces):
+                x = rect.x + self.padding_x + index * (self.width + self.offset_x)
+                w = self.width
+                
+                if x < event.x < x + w:
+                    global_event.emit("switch-to-workspace", index)
+                        
     def expose_workspace_indicator(self, widget, event):
         if len(self.workspaces) > 1:
             cr = widget.window.cairo_create()
             rect = widget.allocation
             
-            offset_x = 1
-            offset_y = -4
-            width = 30
-            radius = 0
             (r, g, b) = color_hex_to_cairo(get_config("general", "font_color"))
             for (index, workspace_index) in enumerate(self.workspaces):
                 if workspace_index == self.current_workspace_index:
@@ -3787,11 +3732,11 @@ class WorkspaceIndicator(gtk.Alignment):
                 else:
                     cr.set_source_rgba(1, 1, 1, 0.05)
                     
-                x = rect.x + index * (width + offset_x) - 9
-                y = rect.y + offset_y
-                w = width
+                x = rect.x + self.padding_x + index * (self.width + self.offset_x)
+                y = rect.y + self.offset_y
+                w = self.width
                 h = self.height
-                draw_round_rectangle(cr, x, y, w, h, radius)
+                draw_round_rectangle(cr, x, y, w, h, self.radius)
                 cr.fill()
                 
                 draw_text(
@@ -3809,17 +3754,19 @@ class PathIndicator(gtk.Alignment):
         self.set_size_request(200, -1)
         
         self.set(0.5, 0.5, 1, 1)
+        self.set_padding(0, 0, 0, 2)
         self.path = ""
         
         self.eventbox = EventBox()
+        self.add(self.eventbox)
         
-        self.connect("expose-event", self.expose_path_indicator)
+        self.eventbox.connect("expose-event", self.expose_path_indicator)
         
     def expose_path_indicator(self, widget, event):
         cr = widget.window.cairo_create()
         rect = widget.allocation
         
-        offset_y = -6
+        offset_y = 0
         draw_text(
             cr,
             self.path,
