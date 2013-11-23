@@ -318,7 +318,7 @@ msgstr "選擇右側終端機"
 
 #: ../src/main.py:2535
 msgid "Advanced command"
-msgstr "進階指令"
+msgstr "進階命令"
 
 #: ../src/main.py:2746
 msgid "Font: "
@@ -382,7 +382,7 @@ msgstr "選中時複製: "
 
 #: ../src/main.py:3002
 msgid "Open file on hover: "
-msgstr "掠過時高亮可打開文件"
+msgstr "滑鼠懸停時反白可以打開文件"
 
 #: ../src/main.py:3155
 msgid "Save"
@@ -459,19 +459,19 @@ msgstr "開啟目錄"
 
 #: ../src/main.py:3624
 msgid "run with quake mode"
-msgstr ""
+msgstr "以雷神模式執行深度終端機"
 
 #: ../src/main.py:3625
 msgid "startup terminal with given command"
-msgstr ""
+msgstr "啟動終端機使用特定命令"
 
 #: ../src/main.py:3626
 msgid "show this help message and exit"
-msgstr ""
+msgstr "顯示本幫助資訊並退出"
 
 #: ../src/main.py:3627
 msgid "show program's version number and exit"
-msgstr ""
+msgstr "顯示程式版本號並退出"
 
 #~ msgid "See what's new"
 #~ msgstr "檢視新特點"
