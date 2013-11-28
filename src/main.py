@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2011 ~ 2012 Deepin, Inc.
+# Copyright (C) 2011 ~ 2013 Deepin, Inc.
 #               2011 ~ 2012 Wang Yong
 # 
 # Author:     Wang Yong <lazycat.manatee@gmail.com>
@@ -3229,7 +3229,13 @@ class EditRemoteLogin(DialogBox):
         self.unset_focus_chain()
         self.set_focus_chain(
             [self.name_entry.entry, self.user_entry.entry, self.server_entry.entry, self.password_entry.entry, self.save_button])
-        
+
+    def set_save_button(self, entry, str):
+        if entry.get_text() and not self.save_button.get_sensitive():
+            self.save_button.set_sensitive(True)
+        if not entry.get_text() and self.save_button.get_sensitive():
+            self.save_button.set_sensitive(False)
+
     def create_table(self):
         self.table = gtk.Table(4, 2)
         self.table.set_col_spacing(0, 10)
@@ -3239,8 +3245,10 @@ class EditRemoteLogin(DialogBox):
             (name, user, server, password, port) = self.remote_info
         else:
             name, user, server, password, port = "", "", "", "", 22
+            self.save_button.set_sensitive(False)
         
         self.name_entry = InputEntry(name)
+        self.name_entry.entry.connect("changed", self.set_save_button)
         self.user_entry = InputEntry(user)
         self.server_entry = InputEntry(server)
         self.password_entry = PasswordEntry(password)
