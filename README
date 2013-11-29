@@ -1,38 +1,39 @@
-这是基于 python-vte 开发的深度终端
+This is default terminal for Linux Deepin.
+Deepin terminal base on python-vte and with much patch for advanced features, such as, search, adjust opacity in real-time etc.
 
-深度终端默认快捷键
+Below is keymap list for deepin-terminal:
 
-拷贝		    Ctrl + Shift + C
-粘贴		    Ctrl + Shift + V
-选词		    左键双击
-打开地址	    	Ctrl + 左键
-纵向分屏	    	Ctrl + V
-横向分屏	    	Ctrl + H
+Copy		                Ctrl + Shift + c
+Paste		                Ctrl + Shift + v
+Select word		            Double click
+Open URL		            Ctrl + LeftButton
+Split vertically            Ctrl + Shift + h
+Split horizontally          Ctrl + h
+						    
+Close current window        Ctrl + Shift + w
+Close other windows		    Ctrl + Shift + q
+Scrol up				    Alt + ，
+Scroll down				    Alt + .
+						    
+Focus up terminal		    Alt + k
+Focus down terminal		    Alt + j
+Focus left terminal         Alt + h
+Focus right terminal	    Alt + l
+						    
+Zoom out				    Ctrl + =
+Zoom in					    Ctrl + -
+Revert default size		    Ctrl + 0
+						    
+New workspace			    Ctrl + /
+Close workspace			    Ctrl + shft + ：
+Switch preview workspace    Ctrl + ,
+Switch next workspace		Ctrl + .
 
-关闭当前窗口    Ctrl + Shift + W
-关闭其他窗口    Ctrl + Shift + Q
-向上滚动一屏    Alt + ，
-向下滚动一屏    Alt + .
+Search forward				Ctrl + '
+Search backward				Ctrl + "
 
-选择上面的终端     Alt + K
-选择下面的终端     Alt + J
-选择左面的终端     Alt + H
-选择右面的终端     Alt + L
-
-放大字体	    	Ctrl + =
-缩小字体	    	Ctrl + -
-默认大小	    	Ctrl + 0
-
-新建工作区	      Ctrl + /
-关闭工作区	      Ctrl + shft + ：
-上一个工作区    	Ctrl + ,
-下一个工作区    	Ctrl + .
-
-向前搜索	    	Ctrl + '
-向后搜索	    	Ctrl + "
-
-全屏		            F11
-显示快捷键	        Ctrl + Shift + ?
-建立ssh连接         Ctrl+9
-显示相关子进程窗口  Ctrl+8
+Fullscreen					F11
+Help						Ctrl + Shift + ?
+Show remote login window	Ctrl+9
+Show sub-process window		Ctrl+8
 
