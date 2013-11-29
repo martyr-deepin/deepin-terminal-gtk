@@ -36,6 +36,7 @@ from dtk.ui.init_skin import init_skin
 from dtk.ui.keymap import get_keyevent_name, get_key_name, is_no_key_press
 from dtk.ui.label import Label
 from dtk.ui.menu import Menu
+from dtk.ui.constant import WIDGET_POS_CENTER
 from dtk.ui.utils import (container_remove_all, get_match_parent, cairo_state, 
                           propagate_expose, is_left_button, is_right_button, 
                           is_in_rect, get_match_children, set_hover_cursor)
@@ -2618,10 +2619,11 @@ class HelperWindow(Window):
         
         self.show_all()
         
+        (center_x, center_y) = get_widget_root_coordinate(parent_window, WIDGET_POS_CENTER)
         (screen_width, screen_height) = get_screen_size(self)
         self.move(
-            (screen_width - self.allocation.width) / 2,
-            (screen_height - self.allocation.height) / 2
+            min(screen_width - self.allocation.width, max(center_x - self.allocation.width / 2, 0)),
+            min(screen_height - self.allocation.height, max(center_y - self.allocation.height / 2, 0))
             )
         
     def shape_frame_helper_window(self, widget, rect):
