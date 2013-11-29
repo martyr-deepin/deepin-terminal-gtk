@@ -39,7 +39,7 @@ from dtk.ui.menu import Menu
 from dtk.ui.utils import (container_remove_all, get_match_parent, cairo_state, 
                           propagate_expose, is_left_button, is_right_button, 
                           is_in_rect, get_match_children, set_hover_cursor)
-from dtk.ui.utils import place_center, get_widget_root_coordinate
+from dtk.ui.utils import place_center, get_widget_root_coordinate, get_screen_size
 from dtk.ui.window import Window
 from nls import _
 from optparse import OptionParser
@@ -2617,7 +2617,12 @@ class HelperWindow(Window):
             )
         
         self.show_all()
-        place_center(parent_window, self)
+        
+        (screen_width, screen_height) = get_screen_size(self)
+        self.move(
+            (screen_width - self.allocation.width) / 2,
+            (screen_height - self.allocation.height) / 2
+            )
         
     def shape_frame_helper_window(self, widget, rect):
         if widget.window != None and widget.get_has_window() and rect.width > 0 and rect.height > 0:
