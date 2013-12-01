@@ -1440,6 +1440,9 @@ class TerminalWrapper(vte.Terminal):
     def on_scroll(self, widget, event):
         if self.is_ctrl_press(event):
             global_event.emit("adjust-background-transparent", event.direction)
+            
+            # Avoid scroll page when adjust transparent.
+            return True
         
     def set_transparent(self, transparent):
         self.set_opacity(int(transparent * 65535))
