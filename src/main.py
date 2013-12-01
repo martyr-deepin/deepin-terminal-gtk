@@ -2605,7 +2605,7 @@ class HelperWindow(Window):
 
         self.fill_table(
             self.table,
-            map(lambda (key_name, key_value): (key_name, get_keybind(key_value)), third_table_key),
+            map(lambda (key_name, key_value): (key_name, get_keybind(key_value)), third_table_key) + [(_("Adjust opacity"), _("Ctrl + Wheel"))],
             4,
             )
         
