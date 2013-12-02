@@ -3231,8 +3231,8 @@ class EditRemoteLogin(DialogBox):
         self.create_table()
         self.table_align.add(self.table)
         
-        self.show_all()
         place_center(parent_window, self)
+        self.show_all()
         
         self.name_entry.entry.grab_focus()
         
@@ -3331,6 +3331,7 @@ class RemoteLogin(DialogBox):
         self.read_login_info()
         
         self.add_remote_login = EditRemoteLogin(_("Add remote login"), self.save_remote_login)
+        self.add_remote_login.set_transient_for(self)
         
         self.parent_window = None
         
@@ -3400,6 +3401,7 @@ class RemoteLogin(DialogBox):
             lambda name, user, server, password, port: self.save_item_remote_login(current_item, name, user, server, password, port),
             (current_item.name, current_item.user, current_item.server, current_item.password, int(current_item.port)),
             )
+        edit_remote_login.set_transient_for(self)
         edit_remote_login.show_login(self.parent_window)
         
         self.save_login_info()
