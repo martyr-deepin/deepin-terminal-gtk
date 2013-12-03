@@ -741,6 +741,7 @@ class Terminal(object):
                     
                 menu_items.append((None, menu_name, lambda : terminal.open_match_string(match_type, match_string)))
                 
+        menu_items.append((None, _("Clear screen"), terminal.clear))
         menu_items.append((None, _("Open current directory"), lambda : terminal.open_match_string(MATCH_DIRECTORY, terminal.get_working_directory())))        
                 
         if correlative_window_ids != None and correlative_window_ids != [""]:
@@ -1400,6 +1401,9 @@ class TerminalWrapper(vte.Terminal):
         
         adj.set_value(min(upper - page_size, value + page_size))
             
+    def clear(self):
+        self.feed_child("cls\n")
+        
     def show_man_window(self, command):
         self.split_vertically(command="man %s\n" % command, press_q_quit=True)
             
