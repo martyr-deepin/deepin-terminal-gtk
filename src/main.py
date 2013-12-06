@@ -58,7 +58,6 @@ import sys
 import traceback
 import urllib
 import vte
-import virtkey
 
 PROJECT_NAME = "deepin-terminal"
 
@@ -1403,11 +1402,7 @@ class TerminalWrapper(vte.Terminal):
         adj.set_value(min(upper - page_size, value + page_size))
             
     def clear(self):
-        v = virtkey.virtkey()
-        v.press_keysym(65507)
-        v.press_unicode(ord("l"))
-        v.release_unicode(ord("l"))
-        v.release_keysym(65507)
+        self.feed_child("cls\n")
         
     def show_man_window(self, command):
         self.split_vertically(command="man %s\n" % command, press_q_quit=True)
