@@ -321,10 +321,7 @@ class Terminal(object):
                 self.quake,
                 )
         
-        self.application = Application(
-            destroy_func=self.quit,
-            always_at_center=False,
-            )
+        self.application = Application(destroy_func=self.quit)
         
         default_window_width = 664
         default_window_height = 466
