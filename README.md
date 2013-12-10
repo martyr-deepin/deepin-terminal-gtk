@@ -32,8 +32,8 @@ Below is keymap list for deepin-terminal:
 | Switch preview workspace | **Ctrl** + **,**      |
 | Switch next workspace    | **Ctrl** + **.**      |
 |                                                  |
-| Search forward           | **Ctrl** + **‘**      |
-| Search backward          | **Ctrl** + **“**      |
+| Search forward           | **Ctrl** + **'**      |
+| Search backward          | **Ctrl** + **"**      |
 |                                                  |
 | Fullscreen               | **F11**               |
 | Help                     | **Ctrl** + **?**      |
