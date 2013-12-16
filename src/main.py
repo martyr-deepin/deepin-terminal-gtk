@@ -2933,7 +2933,7 @@ class KeybindSettings(ScrolledWindow):
         self.table.set_col_spacing(0, TABLE_COLUMN_SPACING)
         self.table_align = gtk.Alignment()
         self.table_align.set(0, 0, 1, 1)
-        self.table_align.set_padding(TABLE_PADDING_TOP, TABLE_PADDING_BOTTOM, TABLE_PADDING_LEFT, int(_("40")))
+        self.table_align.set_padding(TABLE_PADDING_TOP, TABLE_PADDING_BOTTOM, TABLE_PADDING_LEFT, int(_("90")))
         
         self.fill_table(self.table, key_name_dict)
         self.table_align.add(self.table)
@@ -3573,7 +3573,7 @@ class SettingDialog(PreferenceDialog):
         '''
         init docs
         '''
-        PreferenceDialog.__init__(self, 575, 390)
+        PreferenceDialog.__init__(self, 626, 390)
         
         restore_default_button = Button(_("Reset"))
         restore_default_button.connect("clicked", lambda w: self.restore_default())

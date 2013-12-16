@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-04 00:36+0800\n"
+"POT-Creation-Date: 2013-12-16 13:56+0800\n"
 "PO-Revision-Date: 2013-09-18 09:49+0800\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -25,7 +25,7 @@ msgstr "正常"
 msgid "Maximize"
 msgstr "最大化"
 
-#: ../src/main.py:117 ../src/main.py:754 ../src/main.py:2594
+#: ../src/main.py:117 ../src/main.py:755 ../src/main.py:2594
 #: ../src/main.py:2925
 msgid "Fullscreen"
 msgstr "全屏"
@@ -177,49 +177,49 @@ msgid "Open manual"
 msgstr "打开手册"
 
 #: ../src/main.py:744
+msgid "Clear screen"
+msgstr "清屏"
+
+#: ../src/main.py:745
 msgid "Open current directory"
 msgstr "打开当前目录"
 
-#: ../src/main.py:749 ../src/main.py:2573 ../src/main.py:2928
+#: ../src/main.py:750 ../src/main.py:2573 ../src/main.py:2928
 msgid "Show correlative child window"
 msgstr "显示相关的子进程窗口"
 
-#: ../src/main.py:752
+#: ../src/main.py:753
 msgid "Exit fullscreen"
 msgstr "退出全屏"
 
-#: ../src/main.py:759 ../src/main.py:2582 ../src/main.py:2906
+#: ../src/main.py:760 ../src/main.py:2582 ../src/main.py:2906
 msgid "Split vertically"
 msgstr "纵向分屏"
 
-#: ../src/main.py:760 ../src/main.py:2583 ../src/main.py:2907
+#: ../src/main.py:761 ../src/main.py:2583 ../src/main.py:2907
 msgid "Split horizontally"
 msgstr "横向分屏"
 
-#: ../src/main.py:761 ../src/main.py:2588 ../src/main.py:2908
+#: ../src/main.py:762 ../src/main.py:2588 ../src/main.py:2908
 msgid "Close current window"
 msgstr "关闭当前窗口"
 
-#: ../src/main.py:765 ../src/main.py:2589 ../src/main.py:2909
+#: ../src/main.py:766 ../src/main.py:2589 ../src/main.py:2909
 msgid "Close other window"
 msgstr "关闭其他窗口"
 
-#: ../src/main.py:773 ../src/main.py:780 ../src/main.py:2578
+#: ../src/main.py:774 ../src/main.py:781 ../src/main.py:2578
 #: ../src/main.py:2919
 msgid "New workspace"
 msgstr "新建工作区"
 
-#: ../src/main.py:774
+#: ../src/main.py:775
 msgid "Switch workspace"
 msgstr "切换工作区"
 
-#: ../src/main.py:775 ../src/main.py:2581 ../src/main.py:2920
+#: ../src/main.py:776 ../src/main.py:2581 ../src/main.py:2920
 msgid "Close workspace"
 msgstr "关闭工作区"
-
-#: ../src/main.py:786
-msgid "Clear screen"
-msgstr "清屏"
 
 #: ../src/main.py:787
 msgid "Search"
@@ -350,8 +350,8 @@ msgid "Background transparency: "
 msgstr "背景透明: "
 
 #: ../src/main.py:2936
-msgid "40"
-msgstr "86"
+msgid "90"
+msgstr "136"
 
 #: ../src/main.py:3046
 msgid "Cursor shape: "
@@ -481,6 +481,9 @@ msgstr ""
 #: ../src/main.py:3845
 msgid "show program's version number and exit"
 msgstr ""
+
+#~ msgid "70"
+#~ msgstr "86"
 
 #~ msgid "Background image: "
 #~ msgstr "背景图片: "
