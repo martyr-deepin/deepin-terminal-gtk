@@ -1,20 +1,23 @@
-# Chinese translations for PACKAGE package.
-# Copyright (C) 2013 THE PACKAGE'S COPYRIGHT HOLDER
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# freddy4212 <freddy4212@gmail.com>, 2013
 # Wang Dianjin <wangdianjin@linuxdeepin.com>, 2013
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-12-16 13:56+0800\n"
-"PO-Revision-Date: 2013-09-18 09:49+0800\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
-"Language: zh_TW\n"
+"PO-Revision-Date: 2013-12-26 08:06+0000\n"
+"Last-Translator: electricface <songwentai@linuxdeepin.com>\n"
+"Language-Team: Chinese (Taiwan) (http://www.transifex.com/projects/p/deepin-terminal/language/zh_TW/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh_TW\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../src/main.py:115
 msgid "Normal"
@@ -67,7 +70,7 @@ msgstr "綠色螢幕"
 
 #: ../src/main.py:230
 msgid "Railscasts"
-msgstr ""
+msgstr "Railscasts"
 
 #: ../src/main.py:231
 msgid "Ocean"
@@ -75,11 +78,11 @@ msgstr "海洋"
 
 #: ../src/main.py:232
 msgid "Monokai"
-msgstr ""
+msgstr "Monokai"
 
 #: ../src/main.py:233
 msgid "Solarized"
-msgstr ""
+msgstr "Solarized"
 
 #: ../src/main.py:234 ../src/main.py:235
 msgid "Eighties"
@@ -127,11 +130,11 @@ msgstr "進階設定"
 
 #: ../src/main.py:485
 msgid "Quit terminal?"
-msgstr "關閉終端機?"
+msgstr "結束終端機?"
 
 #: ../src/main.py:486
 msgid "Terminal still have running programs. Are you sure you want to quit?"
-msgstr "終端機中仍然有正在執行的程式， 你確定要退出嗎？"
+msgstr "終端機中仍然有正在執行的程式， 你確定要結束嗎？"
 
 #: ../src/main.py:683 ../src/main.py:790
 msgid "Preferences"
@@ -177,7 +180,7 @@ msgstr "開啟手冊"
 
 #: ../src/main.py:744
 msgid "Clear screen"
-msgstr "清螢"
+msgstr ""
 
 #: ../src/main.py:745
 msgid "Open current directory"
@@ -193,11 +196,11 @@ msgstr "結束全螢幕"
 
 #: ../src/main.py:760 ../src/main.py:2582 ../src/main.py:2906
 msgid "Split vertically"
-msgstr "垂直分割"
+msgstr "水平分割"
 
 #: ../src/main.py:761 ../src/main.py:2583 ../src/main.py:2907
 msgid "Split horizontally"
-msgstr "水平分割"
+msgstr "垂直分割"
 
 #: ../src/main.py:762 ../src/main.py:2588 ../src/main.py:2908
 msgid "Close current window"
@@ -230,7 +233,7 @@ msgstr "關閉視窗"
 
 #: ../src/main.py:1020 ../src/main.py:1753
 msgid "Window still have running programs. Are you sure you want to close?"
-msgstr "視窗中仍然有正在執行的程式， 你確定要關閉嗎？"
+msgstr "視窗中仍然有正在執行的程式， 你確定要結束嗎？"
 
 #: ../src/main.py:1022
 msgid "Close workspace?"
@@ -238,7 +241,7 @@ msgstr "關閉工作區?"
 
 #: ../src/main.py:1023
 msgid "Workspace still have running programs. Are you sure you want to close?"
-msgstr "工作區中仍然有正在執行的程式， 你確定要關閉嗎？"
+msgstr "工作區中仍然有正在執行的程式， 你確定要結束嗎？"
 
 #: ../src/main.py:1990
 msgid "Workspace"
@@ -298,11 +301,11 @@ msgstr "工作區指令"
 
 #: ../src/main.py:2579 ../src/main.py:2921
 msgid "Previous workspace"
-msgstr "切換至上一工作區"
+msgstr "切換至上一個工作區"
 
 #: ../src/main.py:2580 ../src/main.py:2922
 msgid "Next workspace"
-msgstr "切換至下一工作區"
+msgstr "切換至下一個工作區"
 
 #: ../src/main.py:2584 ../src/main.py:2912
 msgid "Focus the terminal above"
@@ -326,11 +329,11 @@ msgstr "進階命令"
 
 #: ../src/main.py:2615
 msgid "Adjust opacity"
-msgstr "調整透明度"
+msgstr ""
 
 #: ../src/main.py:2615
 msgid "Ctrl + Wheel"
-msgstr "Ctrl + 滑鼠滾輪"
+msgstr ""
 
 #: ../src/main.py:2806
 msgid "Font: "
@@ -350,7 +353,7 @@ msgstr "背景透明度："
 
 #: ../src/main.py:2936
 msgid "90"
-msgstr "136"
+msgstr "137"
 
 #: ../src/main.py:3046
 msgid "Cursor shape: "
@@ -374,7 +377,7 @@ msgstr "預設啟動目錄："
 
 #: ../src/main.py:3051
 msgid "Ask on quit"
-msgstr "退出時詢問"
+msgstr "結束時詢問"
 
 #: ../src/main.py:3052
 msgid "Scroll on keystroke: "
@@ -461,9 +464,8 @@ msgid "Close"
 msgstr "關閉"
 
 #: ../src/main.py:3841
-#, fuzzy
 msgid "working directory"
-msgstr "開啟目錄"
+msgstr "工作中目錄"
 
 #: ../src/main.py:3842
 msgid "run with quake mode"
@@ -480,22 +482,3 @@ msgstr "顯示本幫助資訊並退出"
 #: ../src/main.py:3845
 msgid "show program's version number and exit"
 msgstr "顯示程式版本號並退出"
-
-#~ msgid "70"
-#~ msgstr "86"
-
-#~ msgid "Background image: "
-#~ msgstr "背景圖片："
-
-#~ msgid "See what's new"
-#~ msgstr "檢視新特點"
-
-#, fuzzy
-#~ msgid "Close terminal?"
-#~ msgstr "關閉終端機?"
-
-#~ msgid "Manual"
-#~ msgstr "手冊"
-
-#~ msgid "Keystrokes helper"
-#~ msgstr "捷徑鍵幫助"

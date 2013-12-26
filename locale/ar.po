@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Karim Oulad Chalha <herr.linux88@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
@@ -10,29 +11,29 @@ msgstr ""
 "POT-Creation-Date: 2013-12-16 13:56+0800\n"
 "PO-Revision-Date: 2013-12-26 08:06+0000\n"
 "Last-Translator: electricface <songwentai@linuxdeepin.com>\n"
-"Language-Team: Chinese (Hong Kong) (http://www.transifex.com/projects/p/deepin-terminal/language/zh_HK/)\n"
+"Language-Team: Arabic (http://www.transifex.com/projects/p/deepin-terminal/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_HK\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: ../src/main.py:115
 msgid "Normal"
-msgstr ""
+msgstr "عادي"
 
 #: ../src/main.py:116
 msgid "Maximize"
-msgstr ""
+msgstr "تكبير"
 
 #: ../src/main.py:117 ../src/main.py:755 ../src/main.py:2594
 #: ../src/main.py:2925
 msgid "Fullscreen"
-msgstr ""
+msgstr "ملء الشاشة"
 
 #: ../src/main.py:119
 msgid "Block"
-msgstr ""
+msgstr "كتلة"
 
 #: ../src/main.py:120
 msgid "I-beam"
@@ -44,19 +45,19 @@ msgstr ""
 
 #: ../src/main.py:123
 msgid "System"
-msgstr ""
+msgstr "نظام"
 
 #: ../src/main.py:124
 msgid "On"
-msgstr ""
+msgstr "مشغل"
 
 #: ../src/main.py:125
 msgid "Off"
-msgstr ""
+msgstr "غير مشغل"
 
 #: ../src/main.py:227
 msgid "Deepin"
-msgstr ""
+msgstr "دييبـ إن"
 
 #: ../src/main.py:228
 msgid "Mocha"
@@ -64,7 +65,7 @@ msgstr ""
 
 #: ../src/main.py:229
 msgid "Green screen"
-msgstr ""
+msgstr "شاشة خضراء"
 
 #: ../src/main.py:230
 msgid "Railscasts"
@@ -72,7 +73,7 @@ msgstr ""
 
 #: ../src/main.py:231
 msgid "Ocean"
-msgstr ""
+msgstr "محيط"
 
 #: ../src/main.py:232
 msgid "Monokai"
@@ -88,68 +89,68 @@ msgstr ""
 
 #: ../src/main.py:236
 msgid "Grey on black"
-msgstr ""
+msgstr "رمادي في أسود"
 
 #: ../src/main.py:237
 msgid "Black on yellow"
-msgstr ""
+msgstr "أسود في أصفر"
 
 #: ../src/main.py:238
 msgid "Black on white"
-msgstr ""
+msgstr "أسود في ابيض"
 
 #: ../src/main.py:239
 msgid "White on black"
-msgstr ""
+msgstr "أبيض في اسود"
 
 #: ../src/main.py:240
 msgid "Green on black"
-msgstr ""
+msgstr "أخضر في أسود"
 
 #: ../src/main.py:241
 msgid "Custom"
-msgstr ""
+msgstr "مخصص"
 
 #: ../src/main.py:340
 msgid "Deepin Terminal"
-msgstr ""
+msgstr "طرفية دييبـ إن"
 
 #: ../src/main.py:386
 msgid "General"
-msgstr ""
+msgstr "عام"
 
 #: ../src/main.py:387
 msgid "Hotkeys"
-msgstr ""
+msgstr "إختصارات"
 
 #: ../src/main.py:388
 msgid "Advanced"
-msgstr ""
+msgstr "متقدم"
 
 #: ../src/main.py:485
 msgid "Quit terminal?"
-msgstr ""
+msgstr "خروج من طرفية؟"
 
 #: ../src/main.py:486
 msgid "Terminal still have running programs. Are you sure you want to quit?"
-msgstr ""
+msgstr "لا تزال هنالك برامج قيد التشغيلفي الطرفية. هل ترغب حقا بالخروج؟"
 
 #: ../src/main.py:683 ../src/main.py:790
 msgid "Preferences"
-msgstr ""
+msgstr "تفضيلات"
 
 #: ../src/main.py:684 ../src/main.py:2596 ../src/main.py:2927
 msgid "Set up SSH connection"
-msgstr ""
+msgstr "إعداد إتصال SSH"
 
 #: ../src/main.py:685 ../src/main.py:788 ../src/main.py:2595
 #: ../src/main.py:2926
 msgid "Display hotkeys"
-msgstr ""
+msgstr "عرض الإختصارات"
 
 #: ../src/main.py:687
 msgid "Quit"
-msgstr ""
+msgstr "جروج"
 
 #: ../src/main.py:722 ../src/main.py:725 ../src/main.py:2562
 #: ../src/main.py:2904
@@ -158,23 +159,23 @@ msgstr ""
 
 #: ../src/main.py:727 ../src/main.py:2563 ../src/main.py:2905
 msgid "Paste"
-msgstr ""
+msgstr "لصق"
 
 #: ../src/main.py:734
 msgid "Open file"
-msgstr ""
+msgstr "فتح الملف"
 
 #: ../src/main.py:736
 msgid "Open directory"
-msgstr ""
+msgstr "فتح الدليل"
 
 #: ../src/main.py:738
 msgid "Open URL"
-msgstr ""
+msgstr "فتح URL"
 
 #: ../src/main.py:740
 msgid "Open manual"
-msgstr ""
+msgstr "فتح دليل المستخدم"
 
 #: ../src/main.py:744
 msgid "Clear screen"
@@ -182,148 +183,148 @@ msgstr ""
 
 #: ../src/main.py:745
 msgid "Open current directory"
-msgstr ""
+msgstr "فتح الدليل الحالي"
 
 #: ../src/main.py:750 ../src/main.py:2573 ../src/main.py:2928
 msgid "Show correlative child window"
-msgstr ""
+msgstr "عرض نافذة الأبن الملازمة"
 
 #: ../src/main.py:753
 msgid "Exit fullscreen"
-msgstr ""
+msgstr "خروج من وضع ملء الشاشة"
 
 #: ../src/main.py:760 ../src/main.py:2582 ../src/main.py:2906
 msgid "Split vertically"
-msgstr ""
+msgstr "تقسيم عمودي"
 
 #: ../src/main.py:761 ../src/main.py:2583 ../src/main.py:2907
 msgid "Split horizontally"
-msgstr ""
+msgstr "تقسيم أفقي"
 
 #: ../src/main.py:762 ../src/main.py:2588 ../src/main.py:2908
 msgid "Close current window"
-msgstr ""
+msgstr "غلق النافذة الحالية"
 
 #: ../src/main.py:766 ../src/main.py:2589 ../src/main.py:2909
 msgid "Close other window"
-msgstr ""
+msgstr "غلق النافذة الاخرى"
 
 #: ../src/main.py:774 ../src/main.py:781 ../src/main.py:2578
 #: ../src/main.py:2919
 msgid "New workspace"
-msgstr ""
+msgstr "مساحة عمل جديدة"
 
 #: ../src/main.py:775
 msgid "Switch workspace"
-msgstr ""
+msgstr "تبديل مساحة العمل"
 
 #: ../src/main.py:776 ../src/main.py:2581 ../src/main.py:2920
 msgid "Close workspace"
-msgstr ""
+msgstr "غلق مساحة العمل"
 
 #: ../src/main.py:787
 msgid "Search"
-msgstr ""
+msgstr "بحث"
 
 #: ../src/main.py:1019 ../src/main.py:1752
 msgid "Close window?"
-msgstr ""
+msgstr "غلق النافذة؟"
 
 #: ../src/main.py:1020 ../src/main.py:1753
 msgid "Window still have running programs. Are you sure you want to close?"
-msgstr ""
+msgstr "لا تزال هنالك برامج قيد التشغيل في هذه النافذة. هل ترغب حقا بغلقها؟"
 
 #: ../src/main.py:1022
 msgid "Close workspace?"
-msgstr ""
+msgstr "غلق مساحة العمل؟"
 
 #: ../src/main.py:1023
 msgid "Workspace still have running programs. Are you sure you want to close?"
-msgstr ""
+msgstr "لا تزال هنالك برامج قيد التشغيل في مساحة العمل هذه. هل ترغب حقا بغلقها؟"
 
 #: ../src/main.py:1990
 msgid "Workspace"
-msgstr ""
+msgstr "مساحة عمل"
 
 #: ../src/main.py:2561
 msgid "Terminal command"
-msgstr ""
+msgstr "أمر الطرفية"
 
 #: ../src/main.py:2564 ../src/main.py:2910
 msgid "Scroll page up"
-msgstr ""
+msgstr "لف الصفحة إلى الأعلى"
 
 #: ../src/main.py:2565 ../src/main.py:2911
 msgid "Scroll page down"
-msgstr ""
+msgstr "لف الصفحة إلى الأسفل"
 
 #: ../src/main.py:2566 ../src/main.py:2923
 msgid "Search forward"
-msgstr ""
+msgstr "البحث في الأمام"
 
 #: ../src/main.py:2567 ../src/main.py:2924
 msgid "Search backward"
-msgstr ""
+msgstr "البحث في الخلف"
 
 #: ../src/main.py:2568
 msgid "Select word"
-msgstr ""
+msgstr "حدد الكلمة"
 
 #: ../src/main.py:2568
 msgid "Double click"
-msgstr ""
+msgstr "نقر مزدوج"
 
 #: ../src/main.py:2569
 msgid "Open"
-msgstr ""
+msgstr "فتح"
 
 #: ../src/main.py:2569
 msgid "Ctrl + Left click"
-msgstr ""
+msgstr "ضغط Ctrl-Left"
 
 #: ../src/main.py:2570 ../src/main.py:2917
 msgid "Zoom out"
-msgstr ""
+msgstr "صغّر"
 
 #: ../src/main.py:2571 ../src/main.py:2916
 msgid "Zoom in"
-msgstr ""
+msgstr "كبّر"
 
 #: ../src/main.py:2572 ../src/main.py:2918
 msgid "Reset zoom"
-msgstr ""
+msgstr "غعادة ضبط التكبير"
 
 #: ../src/main.py:2577
 msgid "Workspace command"
-msgstr ""
+msgstr "أمر مساحة العمل"
 
 #: ../src/main.py:2579 ../src/main.py:2921
 msgid "Previous workspace"
-msgstr ""
+msgstr "مساحة عمل السابقة"
 
 #: ../src/main.py:2580 ../src/main.py:2922
 msgid "Next workspace"
-msgstr ""
+msgstr "مساحة عمل التالية"
 
 #: ../src/main.py:2584 ../src/main.py:2912
 msgid "Focus the terminal above"
-msgstr ""
+msgstr "ركز الطرفية في الأعلى"
 
 #: ../src/main.py:2585 ../src/main.py:2913
 msgid "Focus the terminal below"
-msgstr ""
+msgstr "ركز الطرفية في الأسفل"
 
 #: ../src/main.py:2586 ../src/main.py:2914
 msgid "Focus the temrinal left"
-msgstr ""
+msgstr "ركز الطرفية في اليسار"
 
 #: ../src/main.py:2587 ../src/main.py:2915
 msgid "Focus the terminal right"
-msgstr ""
+msgstr "ركز الطرفية في اليمين"
 
 #: ../src/main.py:2593
 msgid "Advanced command"
-msgstr ""
+msgstr "أوامر متقدمة"
 
 #: ../src/main.py:2615
 msgid "Adjust opacity"
@@ -335,27 +336,27 @@ msgstr ""
 
 #: ../src/main.py:2806
 msgid "Font: "
-msgstr ""
+msgstr "خط: "
 
 #: ../src/main.py:2807
 msgid "Font size: "
-msgstr ""
+msgstr "حجم الخط: "
 
 #: ../src/main.py:2808
 msgid "Color scheme: "
-msgstr ""
+msgstr "مخطط الالوان: "
 
 #: ../src/main.py:2810
 msgid "Background transparency: "
-msgstr ""
+msgstr "شفافية الخلفية: "
 
 #: ../src/main.py:2936
 msgid "90"
-msgstr ""
+msgstr "130"
 
 #: ../src/main.py:3046
 msgid "Cursor shape: "
-msgstr ""
+msgstr "شكل المؤشر: "
 
 #: ../src/main.py:3047
 msgid "Cursor blink: "
@@ -363,107 +364,107 @@ msgstr ""
 
 #: ../src/main.py:3048
 msgid "Window state: "
-msgstr ""
+msgstr "حالة النافذة: "
 
 #: ../src/main.py:3049
 msgid "Startup command: "
-msgstr ""
+msgstr "أمر بدء التشغيل: "
 
 #: ../src/main.py:3050
 msgid "Startup directory: "
-msgstr ""
+msgstr "مسار بدء االتشغيل: "
 
 #: ../src/main.py:3051
 msgid "Ask on quit"
-msgstr ""
+msgstr "سؤال عنذ الخروج"
 
 #: ../src/main.py:3052
 msgid "Scroll on keystroke: "
-msgstr ""
+msgstr "لف عند _ضغطة مفتاح: "
 
 #: ../src/main.py:3053
 msgid "Scroll on output: "
-msgstr ""
+msgstr "التمرير عنذ الإخراج: "
 
 #: ../src/main.py:3054
 msgid "Copy on selection: "
-msgstr ""
+msgstr "نسخ عنذ التحديد: "
 
 #: ../src/main.py:3055
 msgid "Open file on hover: "
-msgstr ""
+msgstr "فتح الملف عنذ مرور الفأرة: "
 
 #: ../src/main.py:3208
 msgid "Save"
-msgstr ""
+msgstr "حفظ"
 
 #: ../src/main.py:3256 ../src/main.py:3280
 msgid "Name: "
-msgstr ""
+msgstr "إسم: "
 
 #: ../src/main.py:3256 ../src/main.py:3283
 msgid "Server: "
-msgstr ""
+msgstr "خادم: "
 
 #: ../src/main.py:3256 ../src/main.py:3286
 msgid "User: "
-msgstr ""
+msgstr "مستخدم: "
 
 #: ../src/main.py:3256 ../src/main.py:3289
 msgid "Password: "
-msgstr ""
+msgstr "كلمة السر: "
 
 #: ../src/main.py:3256 ../src/main.py:3292
 msgid "Port: "
-msgstr ""
+msgstr "منفذ: "
 
 #: ../src/main.py:3314
 msgid "Remote login"
-msgstr ""
+msgstr "ولوج بعيد"
 
 #: ../src/main.py:3321
 msgid "Add"
-msgstr ""
+msgstr "أضف"
 
 #: ../src/main.py:3322
 msgid "Connection"
-msgstr ""
+msgstr "إتصال"
 
 #: ../src/main.py:3330
 msgid "Name"
-msgstr ""
+msgstr "إسم"
 
 #: ../src/main.py:3330
 msgid "Server"
-msgstr ""
+msgstr "خادم"
 
 #: ../src/main.py:3337
 msgid "Add remote login"
-msgstr ""
+msgstr "أضف الولوج البعيد"
 
 #: ../src/main.py:3404
 msgid "Edit remote login"
-msgstr ""
+msgstr "حرر الولوج البعيد"
 
 #: ../src/main.py:3417
 msgid "Edit"
-msgstr ""
+msgstr "حرر"
 
 #: ../src/main.py:3418
 msgid "Delete"
-msgstr ""
+msgstr "حذف"
 
 #: ../src/main.py:3578
 msgid "Reset"
-msgstr ""
+msgstr "إعادة ضبط"
 
 #: ../src/main.py:3581
 msgid "Close"
-msgstr ""
+msgstr "غلق"
 
 #: ../src/main.py:3841
 msgid "working directory"
-msgstr ""
+msgstr "مجلد العمل"
 
 #: ../src/main.py:3842
 msgid "run with quake mode"
@@ -471,12 +472,12 @@ msgstr ""
 
 #: ../src/main.py:3843
 msgid "startup terminal with given command"
-msgstr ""
+msgstr "بدء تشغيل الطرفية بأوامر محددة مسبقا"
 
 #: ../src/main.py:3844
 msgid "show this help message and exit"
-msgstr ""
+msgstr "عرض هذه الرسالة و اخرج"
 
 #: ../src/main.py:3845
 msgid "show program's version number and exit"
-msgstr ""
+msgstr "عرض رقم إصدار البرنامج و أخرج"

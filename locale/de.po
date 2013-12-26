@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# corEr <baracus.de@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
@@ -10,25 +11,25 @@ msgstr ""
 "POT-Creation-Date: 2013-12-16 13:56+0800\n"
 "PO-Revision-Date: 2013-12-26 08:06+0000\n"
 "Last-Translator: electricface <songwentai@linuxdeepin.com>\n"
-"Language-Team: Chinese (Hong Kong) (http://www.transifex.com/projects/p/deepin-terminal/language/zh_HK/)\n"
+"Language-Team: German (http://www.transifex.com/projects/p/deepin-terminal/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_HK\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../src/main.py:115
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 #: ../src/main.py:116
 msgid "Maximize"
-msgstr ""
+msgstr "Maximieren"
 
 #: ../src/main.py:117 ../src/main.py:755 ../src/main.py:2594
 #: ../src/main.py:2925
 msgid "Fullscreen"
-msgstr ""
+msgstr "Vollbild"
 
 #: ../src/main.py:119
 msgid "Block"
@@ -40,23 +41,23 @@ msgstr ""
 
 #: ../src/main.py:121
 msgid "Underline"
-msgstr ""
+msgstr "Unterstreichen"
 
 #: ../src/main.py:123
 msgid "System"
-msgstr ""
+msgstr "System"
 
 #: ../src/main.py:124
 msgid "On"
-msgstr ""
+msgstr "An"
 
 #: ../src/main.py:125
 msgid "Off"
-msgstr ""
+msgstr "Aus"
 
 #: ../src/main.py:227
 msgid "Deepin"
-msgstr ""
+msgstr "Deepin"
 
 #: ../src/main.py:228
 msgid "Mocha"
@@ -154,11 +155,11 @@ msgstr ""
 #: ../src/main.py:722 ../src/main.py:725 ../src/main.py:2562
 #: ../src/main.py:2904
 msgid "Copy"
-msgstr ""
+msgstr "Kopieren"
 
 #: ../src/main.py:727 ../src/main.py:2563 ../src/main.py:2905
 msgid "Paste"
-msgstr ""
+msgstr "Einfügen"
 
 #: ../src/main.py:734
 msgid "Open file"
@@ -190,7 +191,7 @@ msgstr ""
 
 #: ../src/main.py:753
 msgid "Exit fullscreen"
-msgstr ""
+msgstr "Vollbild verlassen"
 
 #: ../src/main.py:760 ../src/main.py:2582 ../src/main.py:2906
 msgid "Split vertically"
@@ -211,23 +212,23 @@ msgstr ""
 #: ../src/main.py:774 ../src/main.py:781 ../src/main.py:2578
 #: ../src/main.py:2919
 msgid "New workspace"
-msgstr ""
+msgstr "Neue Arbeitsfläche"
 
 #: ../src/main.py:775
 msgid "Switch workspace"
-msgstr ""
+msgstr "Arbeitsfläche wechseln"
 
 #: ../src/main.py:776 ../src/main.py:2581 ../src/main.py:2920
 msgid "Close workspace"
-msgstr ""
+msgstr "Arbeitsfläche schließen"
 
 #: ../src/main.py:787
 msgid "Search"
-msgstr ""
+msgstr "Suchen"
 
 #: ../src/main.py:1019 ../src/main.py:1752
 msgid "Close window?"
-msgstr ""
+msgstr "Fenster schließen?"
 
 #: ../src/main.py:1020 ../src/main.py:1753
 msgid "Window still have running programs. Are you sure you want to close?"
@@ -235,7 +236,7 @@ msgstr ""
 
 #: ../src/main.py:1022
 msgid "Close workspace?"
-msgstr ""
+msgstr "Arbeitsfläche schließen?"
 
 #: ../src/main.py:1023
 msgid "Workspace still have running programs. Are you sure you want to close?"
@@ -243,7 +244,7 @@ msgstr ""
 
 #: ../src/main.py:1990
 msgid "Workspace"
-msgstr ""
+msgstr "Arbeitsfläche"
 
 #: ../src/main.py:2561
 msgid "Terminal command"
@@ -271,11 +272,11 @@ msgstr ""
 
 #: ../src/main.py:2568
 msgid "Double click"
-msgstr ""
+msgstr "Doppelklick"
 
 #: ../src/main.py:2569
 msgid "Open"
-msgstr ""
+msgstr "Öffnen"
 
 #: ../src/main.py:2569
 msgid "Ctrl + Left click"
@@ -335,11 +336,11 @@ msgstr ""
 
 #: ../src/main.py:2806
 msgid "Font: "
-msgstr ""
+msgstr "Schrift:"
 
 #: ../src/main.py:2807
 msgid "Font size: "
-msgstr ""
+msgstr "Schriftgröße:"
 
 #: ../src/main.py:2808
 msgid "Color scheme: "
@@ -395,23 +396,23 @@ msgstr ""
 
 #: ../src/main.py:3208
 msgid "Save"
-msgstr ""
+msgstr "Speichern"
 
 #: ../src/main.py:3256 ../src/main.py:3280
 msgid "Name: "
-msgstr ""
+msgstr "Name:"
 
 #: ../src/main.py:3256 ../src/main.py:3283
 msgid "Server: "
-msgstr ""
+msgstr "Server:"
 
 #: ../src/main.py:3256 ../src/main.py:3286
 msgid "User: "
-msgstr ""
+msgstr "Benutzer:"
 
 #: ../src/main.py:3256 ../src/main.py:3289
 msgid "Password: "
-msgstr ""
+msgstr "Passwort:"
 
 #: ../src/main.py:3256 ../src/main.py:3292
 msgid "Port: "
@@ -423,19 +424,19 @@ msgstr ""
 
 #: ../src/main.py:3321
 msgid "Add"
-msgstr ""
+msgstr "Hinzufügen"
 
 #: ../src/main.py:3322
 msgid "Connection"
-msgstr ""
+msgstr "Verbindung"
 
 #: ../src/main.py:3330
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 #: ../src/main.py:3330
 msgid "Server"
-msgstr ""
+msgstr "Server"
 
 #: ../src/main.py:3337
 msgid "Add remote login"
@@ -447,19 +448,19 @@ msgstr ""
 
 #: ../src/main.py:3417
 msgid "Edit"
-msgstr ""
+msgstr "Bearbeiten"
 
 #: ../src/main.py:3418
 msgid "Delete"
-msgstr ""
+msgstr "Löschen"
 
 #: ../src/main.py:3578
 msgid "Reset"
-msgstr ""
+msgstr "Zurücksetzen"
 
 #: ../src/main.py:3581
 msgid "Close"
-msgstr ""
+msgstr "Schließen"
 
 #: ../src/main.py:3841
 msgid "working directory"

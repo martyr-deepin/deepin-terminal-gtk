@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# addegsson <addegsson@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
@@ -10,171 +11,171 @@ msgstr ""
 "POT-Creation-Date: 2013-12-16 13:56+0800\n"
 "PO-Revision-Date: 2013-12-26 08:06+0000\n"
 "Last-Translator: electricface <songwentai@linuxdeepin.com>\n"
-"Language-Team: Chinese (Hong Kong) (http://www.transifex.com/projects/p/deepin-terminal/language/zh_HK/)\n"
+"Language-Team: Swedish (Sweden) (http://www.transifex.com/projects/p/deepin-terminal/language/sv_SE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_HK\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: sv_SE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../src/main.py:115
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 #: ../src/main.py:116
 msgid "Maximize"
-msgstr ""
+msgstr "Maximera"
 
 #: ../src/main.py:117 ../src/main.py:755 ../src/main.py:2594
 #: ../src/main.py:2925
 msgid "Fullscreen"
-msgstr ""
+msgstr "Fullskärm"
 
 #: ../src/main.py:119
 msgid "Block"
-msgstr ""
+msgstr "Blocka"
 
 #: ../src/main.py:120
 msgid "I-beam"
-msgstr ""
+msgstr "I-beam"
 
 #: ../src/main.py:121
 msgid "Underline"
-msgstr ""
+msgstr "Understryck"
 
 #: ../src/main.py:123
 msgid "System"
-msgstr ""
+msgstr "System"
 
 #: ../src/main.py:124
 msgid "On"
-msgstr ""
+msgstr "På"
 
 #: ../src/main.py:125
 msgid "Off"
-msgstr ""
+msgstr "Av"
 
 #: ../src/main.py:227
 msgid "Deepin"
-msgstr ""
+msgstr "Deepin"
 
 #: ../src/main.py:228
 msgid "Mocha"
-msgstr ""
+msgstr "Mocha"
 
 #: ../src/main.py:229
 msgid "Green screen"
-msgstr ""
+msgstr "Grönskärm"
 
 #: ../src/main.py:230
 msgid "Railscasts"
-msgstr ""
+msgstr "Railscasts"
 
 #: ../src/main.py:231
 msgid "Ocean"
-msgstr ""
+msgstr "Hav"
 
 #: ../src/main.py:232
 msgid "Monokai"
-msgstr ""
+msgstr "Monokai"
 
 #: ../src/main.py:233
 msgid "Solarized"
-msgstr ""
+msgstr "Solarized"
 
 #: ../src/main.py:234 ../src/main.py:235
 msgid "Eighties"
-msgstr ""
+msgstr "Åttiotalet"
 
 #: ../src/main.py:236
 msgid "Grey on black"
-msgstr ""
+msgstr "Grå på svart"
 
 #: ../src/main.py:237
 msgid "Black on yellow"
-msgstr ""
+msgstr "Svart på gul"
 
 #: ../src/main.py:238
 msgid "Black on white"
-msgstr ""
+msgstr "Svart på vit"
 
 #: ../src/main.py:239
 msgid "White on black"
-msgstr ""
+msgstr "Vit på svart"
 
 #: ../src/main.py:240
 msgid "Green on black"
-msgstr ""
+msgstr "Grön på svart"
 
 #: ../src/main.py:241
 msgid "Custom"
-msgstr ""
+msgstr "Egen"
 
 #: ../src/main.py:340
 msgid "Deepin Terminal"
-msgstr ""
+msgstr "Deepin Terminal"
 
 #: ../src/main.py:386
 msgid "General"
-msgstr ""
+msgstr "Allmän"
 
 #: ../src/main.py:387
 msgid "Hotkeys"
-msgstr ""
+msgstr "Hotkeys"
 
 #: ../src/main.py:388
 msgid "Advanced"
-msgstr ""
+msgstr "Advancerad"
 
 #: ../src/main.py:485
 msgid "Quit terminal?"
-msgstr ""
+msgstr "Stäng terminal?"
 
 #: ../src/main.py:486
 msgid "Terminal still have running programs. Are you sure you want to quit?"
-msgstr ""
+msgstr "Terminalen kör fortfarande program. Är du säker på att du vill avsluta terminalen?"
 
 #: ../src/main.py:683 ../src/main.py:790
 msgid "Preferences"
-msgstr ""
+msgstr "Inställningar"
 
 #: ../src/main.py:684 ../src/main.py:2596 ../src/main.py:2927
 msgid "Set up SSH connection"
-msgstr ""
+msgstr "Ställ in en SSH anslutning"
 
 #: ../src/main.py:685 ../src/main.py:788 ../src/main.py:2595
 #: ../src/main.py:2926
 msgid "Display hotkeys"
-msgstr ""
+msgstr "Visa snabbkommando"
 
 #: ../src/main.py:687
 msgid "Quit"
-msgstr ""
+msgstr "Stäng"
 
 #: ../src/main.py:722 ../src/main.py:725 ../src/main.py:2562
 #: ../src/main.py:2904
 msgid "Copy"
-msgstr ""
+msgstr "Kopiera"
 
 #: ../src/main.py:727 ../src/main.py:2563 ../src/main.py:2905
 msgid "Paste"
-msgstr ""
+msgstr "Klistra in"
 
 #: ../src/main.py:734
 msgid "Open file"
-msgstr ""
+msgstr "Öppna fil"
 
 #: ../src/main.py:736
 msgid "Open directory"
-msgstr ""
+msgstr "Öppna mapp"
 
 #: ../src/main.py:738
 msgid "Open URL"
-msgstr ""
+msgstr "Öppna länk"
 
 #: ../src/main.py:740
 msgid "Open manual"
-msgstr ""
+msgstr "Öppna manual"
 
 #: ../src/main.py:744
 msgid "Clear screen"
@@ -182,148 +183,148 @@ msgstr ""
 
 #: ../src/main.py:745
 msgid "Open current directory"
-msgstr ""
+msgstr "Öppna nuvarande mapp"
 
 #: ../src/main.py:750 ../src/main.py:2573 ../src/main.py:2928
 msgid "Show correlative child window"
-msgstr ""
+msgstr "Visa korrelat barnfönster"
 
 #: ../src/main.py:753
 msgid "Exit fullscreen"
-msgstr ""
+msgstr "Stäng fullskärm"
 
 #: ../src/main.py:760 ../src/main.py:2582 ../src/main.py:2906
 msgid "Split vertically"
-msgstr ""
+msgstr "Dela vertikalt"
 
 #: ../src/main.py:761 ../src/main.py:2583 ../src/main.py:2907
 msgid "Split horizontally"
-msgstr ""
+msgstr "Dela horisontalt"
 
 #: ../src/main.py:762 ../src/main.py:2588 ../src/main.py:2908
 msgid "Close current window"
-msgstr ""
+msgstr "Stäng nuvarande fönster"
 
 #: ../src/main.py:766 ../src/main.py:2589 ../src/main.py:2909
 msgid "Close other window"
-msgstr ""
+msgstr "Stäng andra fönster"
 
 #: ../src/main.py:774 ../src/main.py:781 ../src/main.py:2578
 #: ../src/main.py:2919
 msgid "New workspace"
-msgstr ""
+msgstr "Ny arbetsyta"
 
 #: ../src/main.py:775
 msgid "Switch workspace"
-msgstr ""
+msgstr "Byt arbetsyta"
 
 #: ../src/main.py:776 ../src/main.py:2581 ../src/main.py:2920
 msgid "Close workspace"
-msgstr ""
+msgstr "Stäng arbetsyta"
 
 #: ../src/main.py:787
 msgid "Search"
-msgstr ""
+msgstr "Sök"
 
 #: ../src/main.py:1019 ../src/main.py:1752
 msgid "Close window?"
-msgstr ""
+msgstr "Stäng fönster?"
 
 #: ../src/main.py:1020 ../src/main.py:1753
 msgid "Window still have running programs. Are you sure you want to close?"
-msgstr ""
+msgstr "Fönster kör fortfarande program. Är du säker på att du vill stänga?"
 
 #: ../src/main.py:1022
 msgid "Close workspace?"
-msgstr ""
+msgstr "Stäng arbetsyta?"
 
 #: ../src/main.py:1023
 msgid "Workspace still have running programs. Are you sure you want to close?"
-msgstr ""
+msgstr "Arbetsytan kör fortfarande program. Är du säker på att du vill stänga?"
 
 #: ../src/main.py:1990
 msgid "Workspace"
-msgstr ""
+msgstr "Arbetsyta"
 
 #: ../src/main.py:2561
 msgid "Terminal command"
-msgstr ""
+msgstr "Terminalkommandon"
 
 #: ../src/main.py:2564 ../src/main.py:2910
 msgid "Scroll page up"
-msgstr ""
+msgstr "Rulla upp på sidan"
 
 #: ../src/main.py:2565 ../src/main.py:2911
 msgid "Scroll page down"
-msgstr ""
+msgstr "Rulla ned på sidan"
 
 #: ../src/main.py:2566 ../src/main.py:2923
 msgid "Search forward"
-msgstr ""
+msgstr "Sök framåt"
 
 #: ../src/main.py:2567 ../src/main.py:2924
 msgid "Search backward"
-msgstr ""
+msgstr "Sök bakåt"
 
 #: ../src/main.py:2568
 msgid "Select word"
-msgstr ""
+msgstr "Välj ord"
 
 #: ../src/main.py:2568
 msgid "Double click"
-msgstr ""
+msgstr "Dubbelklicka"
 
 #: ../src/main.py:2569
 msgid "Open"
-msgstr ""
+msgstr "Öppna"
 
 #: ../src/main.py:2569
 msgid "Ctrl + Left click"
-msgstr ""
+msgstr "Ctrl + vänster klicka"
 
 #: ../src/main.py:2570 ../src/main.py:2917
 msgid "Zoom out"
-msgstr ""
+msgstr "Zooma ut"
 
 #: ../src/main.py:2571 ../src/main.py:2916
 msgid "Zoom in"
-msgstr ""
+msgstr "Zooma in"
 
 #: ../src/main.py:2572 ../src/main.py:2918
 msgid "Reset zoom"
-msgstr ""
+msgstr "Återställ zoom"
 
 #: ../src/main.py:2577
 msgid "Workspace command"
-msgstr ""
+msgstr "Arbetsytakommandon"
 
 #: ../src/main.py:2579 ../src/main.py:2921
 msgid "Previous workspace"
-msgstr ""
+msgstr "Föregående arbetsyta"
 
 #: ../src/main.py:2580 ../src/main.py:2922
 msgid "Next workspace"
-msgstr ""
+msgstr "Nästa arbetsyta"
 
 #: ../src/main.py:2584 ../src/main.py:2912
 msgid "Focus the terminal above"
-msgstr ""
+msgstr "Fokusera på terminalen ovan"
 
 #: ../src/main.py:2585 ../src/main.py:2913
 msgid "Focus the terminal below"
-msgstr ""
+msgstr "Fokusera på terminalen under"
 
 #: ../src/main.py:2586 ../src/main.py:2914
 msgid "Focus the temrinal left"
-msgstr ""
+msgstr "Fokusera på terminalen till vänster"
 
 #: ../src/main.py:2587 ../src/main.py:2915
 msgid "Focus the terminal right"
-msgstr ""
+msgstr "Fokusera på terminalen till höger"
 
 #: ../src/main.py:2593
 msgid "Advanced command"
-msgstr ""
+msgstr "avanceradekommandon"
 
 #: ../src/main.py:2615
 msgid "Adjust opacity"
@@ -335,148 +336,148 @@ msgstr ""
 
 #: ../src/main.py:2806
 msgid "Font: "
-msgstr ""
+msgstr "Text: "
 
 #: ../src/main.py:2807
 msgid "Font size: "
-msgstr ""
+msgstr "Text storlek: "
 
 #: ../src/main.py:2808
 msgid "Color scheme: "
-msgstr ""
+msgstr "Färgschema:"
 
 #: ../src/main.py:2810
 msgid "Background transparency: "
-msgstr ""
+msgstr "Bakgrundstransparens:"
 
 #: ../src/main.py:2936
 msgid "90"
-msgstr ""
+msgstr "68"
 
 #: ../src/main.py:3046
 msgid "Cursor shape: "
-msgstr ""
+msgstr "Muspekare:"
 
 #: ../src/main.py:3047
 msgid "Cursor blink: "
-msgstr ""
+msgstr "Muspekareblinkning:"
 
 #: ../src/main.py:3048
 msgid "Window state: "
-msgstr ""
+msgstr "Fönsterstatus:"
 
 #: ../src/main.py:3049
 msgid "Startup command: "
-msgstr ""
+msgstr "Uppstartkommando:"
 
 #: ../src/main.py:3050
 msgid "Startup directory: "
-msgstr ""
+msgstr "Uppstartmapp:"
 
 #: ../src/main.py:3051
 msgid "Ask on quit"
-msgstr ""
+msgstr "Fråga för att stänga"
 
 #: ../src/main.py:3052
 msgid "Scroll on keystroke: "
-msgstr ""
+msgstr "Skrolla på tangenttryckning:"
 
 #: ../src/main.py:3053
 msgid "Scroll on output: "
-msgstr ""
+msgstr "Skrolla på utmatning:"
 
 #: ../src/main.py:3054
 msgid "Copy on selection: "
-msgstr ""
+msgstr "Kopiera på val:"
 
 #: ../src/main.py:3055
 msgid "Open file on hover: "
-msgstr ""
+msgstr "Öppna fil vid strykning:"
 
 #: ../src/main.py:3208
 msgid "Save"
-msgstr ""
+msgstr "Spara"
 
 #: ../src/main.py:3256 ../src/main.py:3280
 msgid "Name: "
-msgstr ""
+msgstr "Namn:"
 
 #: ../src/main.py:3256 ../src/main.py:3283
 msgid "Server: "
-msgstr ""
+msgstr "Server: "
 
 #: ../src/main.py:3256 ../src/main.py:3286
 msgid "User: "
-msgstr ""
+msgstr "Användare:"
 
 #: ../src/main.py:3256 ../src/main.py:3289
 msgid "Password: "
-msgstr ""
+msgstr "Lösenord:"
 
 #: ../src/main.py:3256 ../src/main.py:3292
 msgid "Port: "
-msgstr ""
+msgstr "Port: "
 
 #: ../src/main.py:3314
 msgid "Remote login"
-msgstr ""
+msgstr "Fjärrinloggning:"
 
 #: ../src/main.py:3321
 msgid "Add"
-msgstr ""
+msgstr "Lägg till"
 
 #: ../src/main.py:3322
 msgid "Connection"
-msgstr ""
+msgstr "Anslutning"
 
 #: ../src/main.py:3330
 msgid "Name"
-msgstr ""
+msgstr "Namn"
 
 #: ../src/main.py:3330
 msgid "Server"
-msgstr ""
+msgstr "Server"
 
 #: ../src/main.py:3337
 msgid "Add remote login"
-msgstr ""
+msgstr "Lägg till fjärranslutning"
 
 #: ../src/main.py:3404
 msgid "Edit remote login"
-msgstr ""
+msgstr "Ändra fjärranslutning"
 
 #: ../src/main.py:3417
 msgid "Edit"
-msgstr ""
+msgstr "Ändra"
 
 #: ../src/main.py:3418
 msgid "Delete"
-msgstr ""
+msgstr "Ta bort"
 
 #: ../src/main.py:3578
 msgid "Reset"
-msgstr ""
+msgstr "Återställ"
 
 #: ../src/main.py:3581
 msgid "Close"
-msgstr ""
+msgstr "Stäng"
 
 #: ../src/main.py:3841
 msgid "working directory"
-msgstr ""
+msgstr "Arbetskatalog"
 
 #: ../src/main.py:3842
 msgid "run with quake mode"
-msgstr ""
+msgstr "Kör med quakeläge"
 
 #: ../src/main.py:3843
 msgid "startup terminal with given command"
-msgstr ""
+msgstr "Uppstartsterminal med angivna kommandon"
 
 #: ../src/main.py:3844
 msgid "show this help message and exit"
-msgstr ""
+msgstr "Visa hjälp vid meddelanden och avslut"
 
 #: ../src/main.py:3845
 msgid "show program's version number and exit"
-msgstr ""
+msgstr "Visa program versionsnummer och avslut"
