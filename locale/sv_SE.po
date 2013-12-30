@@ -4,12 +4,13 @@
 # 
 # Translators:
 # addegsson <addegsson@gmail.com>, 2013
+# addegsson <addegsson@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-12-16 13:56+0800\n"
-"PO-Revision-Date: 2013-12-26 08:06+0000\n"
+"PO-Revision-Date: 2013-12-26 08:52+0000\n"
 "Last-Translator: electricface <songwentai@linuxdeepin.com>\n"
 "Language-Team: Swedish (Sweden) (http://www.transifex.com/projects/p/deepin-terminal/language/sv_SE/)\n"
 "MIME-Version: 1.0\n"
