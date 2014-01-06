@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # FFXP <ffxpstudio@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-16 13:56+0800\n"
+"POT-Creation-Date: 2014-01-06 14:16+0800\n"
 "PO-Revision-Date: 2013-12-27 20:58+0000\n"
 "Last-Translator: FFXP <ffxpstudio@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/deepin-terminal/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/projects/p/deepin-terminal/"
+"language/fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ../src/main.py:115
@@ -133,7 +134,9 @@ msgstr "Fermer le terminal?"
 
 #: ../src/main.py:486
 msgid "Terminal still have running programs. Are you sure you want to quit?"
-msgstr "Des programmes sont en cours d'exécution. Voulez vous vraiment fermer le terminal?"
+msgstr ""
+"Des programmes sont en cours d'exécution. Voulez vous vraiment fermer le "
+"terminal?"
 
 #: ../src/main.py:683 ../src/main.py:790
 msgid "Preferences"
@@ -232,7 +235,9 @@ msgstr "Fermer la fenêtre?"
 
 #: ../src/main.py:1020 ../src/main.py:1753
 msgid "Window still have running programs. Are you sure you want to close?"
-msgstr "Cette fenêtre contient des programmes en cours d'exécution. Voulez vous vraiment la fermer?"
+msgstr ""
+"Cette fenêtre contient des programmes en cours d'exécution. Voulez vous "
+"vraiment la fermer?"
 
 #: ../src/main.py:1022
 msgid "Close workspace?"
@@ -240,7 +245,9 @@ msgstr "Fermer l'espace de travail?"
 
 #: ../src/main.py:1023
 msgid "Workspace still have running programs. Are you sure you want to close?"
-msgstr "Cet espace de travail contient des programmes en cours d'exécution. Voulez vous vraiment le fermer?"
+msgstr ""
+"Cet espace de travail contient des programmes en cours d'exécution. Voulez "
+"vous vraiment le fermer?"
 
 #: ../src/main.py:1990
 msgid "Workspace"

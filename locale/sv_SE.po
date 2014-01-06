@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # addegsson <addegsson@gmail.com>, 2013
 # addegsson <addegsson@gmail.com>, 2013
@@ -9,14 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-16 13:56+0800\n"
+"POT-Creation-Date: 2014-01-06 14:16+0800\n"
 "PO-Revision-Date: 2013-12-26 08:52+0000\n"
 "Last-Translator: electricface <songwentai@linuxdeepin.com>\n"
-"Language-Team: Swedish (Sweden) (http://www.transifex.com/projects/p/deepin-terminal/language/sv_SE/)\n"
+"Language-Team: Swedish (Sweden) (http://www.transifex.com/projects/p/deepin-"
+"terminal/language/sv_SE/)\n"
+"Language: sv_SE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sv_SE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../src/main.py:115
@@ -134,7 +135,9 @@ msgstr "Stäng terminal?"
 
 #: ../src/main.py:486
 msgid "Terminal still have running programs. Are you sure you want to quit?"
-msgstr "Terminalen kör fortfarande program. Är du säker på att du vill avsluta terminalen?"
+msgstr ""
+"Terminalen kör fortfarande program. Är du säker på att du vill avsluta "
+"terminalen?"
 
 #: ../src/main.py:683 ../src/main.py:790
 msgid "Preferences"

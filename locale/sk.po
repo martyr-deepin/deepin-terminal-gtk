@@ -3,481 +3,483 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# fasier <matus.ravas@outlook.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-01-06 14:16+0800\n"
-"PO-Revision-Date: 2013-12-26 08:06+0000\n"
-"Last-Translator: electricface <songwentai@linuxdeepin.com>\n"
-"Language-Team: Portuguese (Portugal) (http://www.transifex.com/projects/p/"
-"deepin-terminal/language/pt_PT/)\n"
-"Language: pt_PT\n"
+"PO-Revision-Date: 2014-01-03 17:31+0000\n"
+"Last-Translator: ballmet <emkohencel@gmail.com>\n"
+"Language-Team: Slovak (http://www.transifex.com/projects/p/deepin-terminal/"
+"language/sk/)\n"
+"Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: ../src/main.py:115
 msgid "Normal"
-msgstr ""
+msgstr "Normálny"
 
 #: ../src/main.py:116
 msgid "Maximize"
-msgstr ""
+msgstr "Zväčšiť"
 
 #: ../src/main.py:117 ../src/main.py:755 ../src/main.py:2594
 #: ../src/main.py:2925
 msgid "Fullscreen"
-msgstr ""
+msgstr "Celá obrazovka"
 
 #: ../src/main.py:119
 msgid "Block"
-msgstr ""
+msgstr "Blok"
 
 #: ../src/main.py:120
 msgid "I-beam"
-msgstr ""
+msgstr "I-paprsok"
 
 #: ../src/main.py:121
 msgid "Underline"
-msgstr ""
+msgstr "Podtrhnutie"
 
 #: ../src/main.py:123
 msgid "System"
-msgstr ""
+msgstr "Systém"
 
 #: ../src/main.py:124
 msgid "On"
-msgstr ""
+msgstr "Zapnuté"
 
 #: ../src/main.py:125
 msgid "Off"
-msgstr ""
+msgstr "Vypnuté"
 
 #: ../src/main.py:227
 msgid "Deepin"
-msgstr ""
+msgstr "Deepin"
 
 #: ../src/main.py:228
 msgid "Mocha"
-msgstr ""
+msgstr "Tmavohnedá"
 
 #: ../src/main.py:229
 msgid "Green screen"
-msgstr ""
+msgstr "Zelená obrazovka"
 
 #: ../src/main.py:230
 msgid "Railscasts"
-msgstr ""
+msgstr "Želežničný odtieň"
 
 #: ../src/main.py:231
 msgid "Ocean"
-msgstr ""
+msgstr "Oceán"
 
 #: ../src/main.py:232
 msgid "Monokai"
-msgstr ""
+msgstr "Monokai"
 
 #: ../src/main.py:233
 msgid "Solarized"
-msgstr ""
+msgstr "Oslnené"
 
 #: ../src/main.py:234 ../src/main.py:235
 msgid "Eighties"
-msgstr ""
+msgstr "Osemdestiatky"
 
 #: ../src/main.py:236
 msgid "Grey on black"
-msgstr ""
+msgstr "Šedé na čiernom"
 
 #: ../src/main.py:237
 msgid "Black on yellow"
-msgstr ""
+msgstr "Čierne na žltom"
 
 #: ../src/main.py:238
 msgid "Black on white"
-msgstr ""
+msgstr "Čierne na bielom"
 
 #: ../src/main.py:239
 msgid "White on black"
-msgstr ""
+msgstr "Biele na čiernom"
 
 #: ../src/main.py:240
 msgid "Green on black"
-msgstr ""
+msgstr "Zelené na čiernom"
 
 #: ../src/main.py:241
 msgid "Custom"
-msgstr ""
+msgstr "Vlastné"
 
 #: ../src/main.py:340
 msgid "Deepin Terminal"
-msgstr ""
+msgstr "Terminál"
 
 #: ../src/main.py:386
 msgid "General"
-msgstr ""
+msgstr "Obecné"
 
 #: ../src/main.py:387
 msgid "Hotkeys"
-msgstr ""
+msgstr "Horúce klávesy"
 
 #: ../src/main.py:388
 msgid "Advanced"
-msgstr ""
+msgstr "Pokročilé"
 
 #: ../src/main.py:485
 msgid "Quit terminal?"
-msgstr ""
+msgstr "Zatvoriť terminál?"
 
 #: ../src/main.py:486
 msgid "Terminal still have running programs. Are you sure you want to quit?"
-msgstr ""
+msgstr "V termináli sú stále spustené programy. Naozaj ho chcete zrušiť?"
 
 #: ../src/main.py:683 ../src/main.py:790
 msgid "Preferences"
-msgstr ""
+msgstr "Nastavenia"
 
 #: ../src/main.py:684 ../src/main.py:2596 ../src/main.py:2927
 msgid "Set up SSH connection"
-msgstr ""
+msgstr "Nastaviť spojenie SSH"
 
 #: ../src/main.py:685 ../src/main.py:788 ../src/main.py:2595
 #: ../src/main.py:2926
 msgid "Display hotkeys"
-msgstr ""
+msgstr "Zobraziť horúce klávesy"
 
 #: ../src/main.py:687
 msgid "Quit"
-msgstr ""
+msgstr "Ukončiť"
 
 #: ../src/main.py:722 ../src/main.py:725 ../src/main.py:2562
 #: ../src/main.py:2904
 msgid "Copy"
-msgstr ""
+msgstr "Kopírovať"
 
 #: ../src/main.py:727 ../src/main.py:2563 ../src/main.py:2905
 msgid "Paste"
-msgstr ""
+msgstr "Prilepiť"
 
 #: ../src/main.py:734
 msgid "Open file"
-msgstr ""
+msgstr "Otvoriť súbor"
 
 #: ../src/main.py:736
 msgid "Open directory"
-msgstr ""
+msgstr "Otvoriť priečinok"
 
 #: ../src/main.py:738
 msgid "Open URL"
-msgstr ""
+msgstr "Otvoriť URL"
 
 #: ../src/main.py:740
 msgid "Open manual"
-msgstr ""
+msgstr "Otvoriť príručku"
 
 #: ../src/main.py:744
 msgid "Clear screen"
-msgstr ""
+msgstr "Vyprázdniť obrazovku"
 
 #: ../src/main.py:745
 msgid "Open current directory"
-msgstr ""
+msgstr "Otvoriť aktuálny priečinok"
 
 #: ../src/main.py:750 ../src/main.py:2573 ../src/main.py:2928
 msgid "Show correlative child window"
-msgstr ""
+msgstr "Ukázať súvisiace okno potomka"
 
 #: ../src/main.py:753
 msgid "Exit fullscreen"
-msgstr ""
+msgstr "Zrušiť celú obrazovku"
 
 #: ../src/main.py:760 ../src/main.py:2582 ../src/main.py:2906
 msgid "Split vertically"
-msgstr ""
+msgstr "Rozdeliť zvislo"
 
 #: ../src/main.py:761 ../src/main.py:2583 ../src/main.py:2907
 msgid "Split horizontally"
-msgstr ""
+msgstr "Rozdeliť vodorovne"
 
 #: ../src/main.py:762 ../src/main.py:2588 ../src/main.py:2908
 msgid "Close current window"
-msgstr ""
+msgstr "Zatvoriť aktuálne okno"
 
 #: ../src/main.py:766 ../src/main.py:2589 ../src/main.py:2909
 msgid "Close other window"
-msgstr ""
+msgstr "Zatvoriť ďalšie okno"
 
 #: ../src/main.py:774 ../src/main.py:781 ../src/main.py:2578
 #: ../src/main.py:2919
 msgid "New workspace"
-msgstr ""
+msgstr "Nové pracovné prostredie"
 
 #: ../src/main.py:775
 msgid "Switch workspace"
-msgstr ""
+msgstr "Prepnúť pracovné prostredie"
 
 #: ../src/main.py:776 ../src/main.py:2581 ../src/main.py:2920
 msgid "Close workspace"
-msgstr ""
+msgstr "Zatvoriť pracovné prostredie"
 
 #: ../src/main.py:787
 msgid "Search"
-msgstr ""
+msgstr "Hľadať"
 
 #: ../src/main.py:1019 ../src/main.py:1752
 msgid "Close window?"
-msgstr ""
+msgstr "Zatvoriť okno?"
 
 #: ../src/main.py:1020 ../src/main.py:1753
 msgid "Window still have running programs. Are you sure you want to close?"
-msgstr ""
+msgstr "V okne sú stále spustené programy. Naozaj ho chcete zatvoriť?"
 
 #: ../src/main.py:1022
 msgid "Close workspace?"
-msgstr ""
+msgstr "Zatvoriť pracovné prostredie?"
 
 #: ../src/main.py:1023
 msgid "Workspace still have running programs. Are you sure you want to close?"
 msgstr ""
+"V pracovnom prostredí sú stále spustené programy. Naozaj ho chcete zatvoriť?"
 
 #: ../src/main.py:1990
 msgid "Workspace"
-msgstr ""
+msgstr "Pracovné prostredie"
 
 #: ../src/main.py:2561
 msgid "Terminal command"
-msgstr ""
+msgstr "Príkaz pre terminál"
 
 #: ../src/main.py:2564 ../src/main.py:2910
 msgid "Scroll page up"
-msgstr ""
+msgstr "Presunúť o stranu hore"
 
 #: ../src/main.py:2565 ../src/main.py:2911
 msgid "Scroll page down"
-msgstr ""
+msgstr "Presunúť o stranu dole"
 
 #: ../src/main.py:2566 ../src/main.py:2923
 msgid "Search forward"
-msgstr ""
+msgstr "Hľadať dopredu"
 
 #: ../src/main.py:2567 ../src/main.py:2924
 msgid "Search backward"
-msgstr ""
+msgstr "Hľadať dozadu"
 
 #: ../src/main.py:2568
 msgid "Select word"
-msgstr ""
+msgstr "Vybrať slovo"
 
 #: ../src/main.py:2568
 msgid "Double click"
-msgstr ""
+msgstr "Dvojklik"
 
 #: ../src/main.py:2569
 msgid "Open"
-msgstr ""
+msgstr "Otvoriť"
 
 #: ../src/main.py:2569
 msgid "Ctrl + Left click"
-msgstr ""
+msgstr "Ctrl + ľavé tlačidlo myši"
 
 #: ../src/main.py:2570 ../src/main.py:2917
 msgid "Zoom out"
-msgstr ""
+msgstr "Oddialiť"
 
 #: ../src/main.py:2571 ../src/main.py:2916
 msgid "Zoom in"
-msgstr ""
+msgstr "Priblížiť"
 
 #: ../src/main.py:2572 ../src/main.py:2918
 msgid "Reset zoom"
-msgstr ""
+msgstr "Nastaviť priblíženie na predvolené"
 
 #: ../src/main.py:2577
 msgid "Workspace command"
-msgstr ""
+msgstr "Príkaz pre pracovné prostredie"
 
 #: ../src/main.py:2579 ../src/main.py:2921
 msgid "Previous workspace"
-msgstr ""
+msgstr "Predchádzajúce pracovné prostredie"
 
 #: ../src/main.py:2580 ../src/main.py:2922
 msgid "Next workspace"
-msgstr ""
+msgstr "Ďalšie pracovné prostredie"
 
 #: ../src/main.py:2584 ../src/main.py:2912
 msgid "Focus the terminal above"
-msgstr ""
+msgstr "Zamerať terminál nad"
 
 #: ../src/main.py:2585 ../src/main.py:2913
 msgid "Focus the terminal below"
-msgstr ""
+msgstr "Zamerať terminál pod"
 
 #: ../src/main.py:2586 ../src/main.py:2914
 msgid "Focus the temrinal left"
-msgstr ""
+msgstr "Zamerať terminál vľavo"
 
 #: ../src/main.py:2587 ../src/main.py:2915
 msgid "Focus the terminal right"
-msgstr ""
+msgstr "Zamerať terminál vpravo"
 
 #: ../src/main.py:2593
 msgid "Advanced command"
-msgstr ""
+msgstr "Pokročilý príkaz"
 
 #: ../src/main.py:2615
 msgid "Adjust opacity"
-msgstr ""
+msgstr "Upraviť nepriehľadnosť"
 
 #: ../src/main.py:2615
 msgid "Ctrl + Wheel"
-msgstr ""
+msgstr "Ctrl + kolečko myši"
 
 #: ../src/main.py:2806
 msgid "Font: "
-msgstr ""
+msgstr "Písmo:"
 
 #: ../src/main.py:2807
 msgid "Font size: "
-msgstr ""
+msgstr "Veľkosť písma:"
 
 #: ../src/main.py:2808
 msgid "Color scheme: "
-msgstr ""
+msgstr "Farebná schéma:"
 
 #: ../src/main.py:2810
 msgid "Background transparency: "
-msgstr ""
+msgstr "Priehľadnosť pozadia:"
 
 #: ../src/main.py:2936
 msgid "90"
-msgstr ""
+msgstr "90"
 
 #: ../src/main.py:3046
 msgid "Cursor shape: "
-msgstr ""
+msgstr "Tvar kurzora:"
 
 #: ../src/main.py:3047
 msgid "Cursor blink: "
-msgstr ""
+msgstr "Blikanie kurzora:"
 
 #: ../src/main.py:3048
 msgid "Window state: "
-msgstr ""
+msgstr "Stav okna:"
 
 #: ../src/main.py:3049
 msgid "Startup command: "
-msgstr ""
+msgstr "Spúšťací príkaz:"
 
 #: ../src/main.py:3050
 msgid "Startup directory: "
-msgstr ""
+msgstr "Spúšťací priečinok:"
 
 #: ../src/main.py:3051
 msgid "Ask on quit"
-msgstr ""
+msgstr "Opýtať sa pri ukončení"
 
 #: ../src/main.py:3052
 msgid "Scroll on keystroke: "
-msgstr ""
+msgstr "Posunúť po prejdení po klávesnici:"
 
 #: ../src/main.py:3053
 msgid "Scroll on output: "
-msgstr ""
+msgstr "Posunúť pri výstupe:"
 
 #: ../src/main.py:3054
 msgid "Copy on selection: "
-msgstr ""
+msgstr "Kopírovať pri výbere:"
 
 #: ../src/main.py:3055
 msgid "Open file on hover: "
-msgstr ""
+msgstr "Otvoriť súbor pri prejdení:"
 
 #: ../src/main.py:3208
 msgid "Save"
-msgstr ""
+msgstr "Uložiť"
 
 #: ../src/main.py:3256 ../src/main.py:3280
 msgid "Name: "
-msgstr ""
+msgstr "Meno:"
 
 #: ../src/main.py:3256 ../src/main.py:3283
 msgid "Server: "
-msgstr ""
+msgstr "Server:"
 
 #: ../src/main.py:3256 ../src/main.py:3286
 msgid "User: "
-msgstr ""
+msgstr "Používateľ:"
 
 #: ../src/main.py:3256 ../src/main.py:3289
 msgid "Password: "
-msgstr ""
+msgstr "Heslo:"
 
 #: ../src/main.py:3256 ../src/main.py:3292
 msgid "Port: "
-msgstr ""
+msgstr "Port:"
 
 #: ../src/main.py:3314
 msgid "Remote login"
-msgstr ""
+msgstr "Vzdialené prihlásenie"
 
 #: ../src/main.py:3321
 msgid "Add"
-msgstr ""
+msgstr "Pridať"
 
 #: ../src/main.py:3322
 msgid "Connection"
-msgstr ""
+msgstr "Spojenie"
 
 #: ../src/main.py:3330
 msgid "Name"
-msgstr ""
+msgstr "Meno"
 
 #: ../src/main.py:3330
 msgid "Server"
-msgstr ""
+msgstr "Server"
 
 #: ../src/main.py:3337
 msgid "Add remote login"
-msgstr ""
+msgstr "Pridať vzdialené prihlásenie"
 
 #: ../src/main.py:3404
 msgid "Edit remote login"
-msgstr ""
+msgstr "Upraviť vzdialené prihlásenie"
 
 #: ../src/main.py:3417
 msgid "Edit"
-msgstr ""
+msgstr "Upraviť"
 
 #: ../src/main.py:3418
 msgid "Delete"
-msgstr ""
+msgstr "Vymazať"
 
 #: ../src/main.py:3578
 msgid "Reset"
-msgstr ""
+msgstr "Nastaviť znovu"
 
 #: ../src/main.py:3581
 msgid "Close"
-msgstr ""
+msgstr "Zatvoriť"
 
 #: ../src/main.py:3841
 msgid "working directory"
-msgstr ""
+msgstr "Pracovný priečinok"
 
 #: ../src/main.py:3842
 msgid "run with quake mode"
-msgstr ""
+msgstr "Spustiť v režime quake"
 
 #: ../src/main.py:3843
 msgid "startup terminal with given command"
-msgstr ""
+msgstr "Spustiť terminál zadaným príkazom"
 
 #: ../src/main.py:3844
 msgid "show this help message and exit"
-msgstr ""
+msgstr "Ukázať túto správu s nápovedou a ukončiť"
 
 #: ../src/main.py:3845
 msgid "show program's version number and exit"
-msgstr ""
+msgstr "Ukázať číslo verzie programu a ukončiť"

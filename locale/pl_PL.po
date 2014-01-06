@@ -1,22 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # krukowskid <420kruk@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-16 13:56+0800\n"
+"POT-Creation-Date: 2014-01-06 14:16+0800\n"
 "PO-Revision-Date: 2013-12-26 08:06+0000\n"
 "Last-Translator: electricface <songwentai@linuxdeepin.com>\n"
-"Language-Team: Polish (Poland) (http://www.transifex.com/projects/p/deepin-terminal/language/pl_PL/)\n"
+"Language-Team: Polish (Poland) (http://www.transifex.com/projects/p/deepin-"
+"terminal/language/pl_PL/)\n"
+"Language: pl_PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl_PL\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
 
 #: ../src/main.py:115
 msgid "Normal"
@@ -232,7 +234,8 @@ msgstr "Zamknąć okno?"
 
 #: ../src/main.py:1020 ../src/main.py:1753
 msgid "Window still have running programs. Are you sure you want to close?"
-msgstr "Do okna przypięte są działające programy. Czy na pewno chcesz kontynuować?"
+msgstr ""
+"Do okna przypięte są działające programy. Czy na pewno chcesz kontynuować?"
 
 #: ../src/main.py:1022
 msgid "Close workspace?"
@@ -240,7 +243,9 @@ msgstr "Zamknąć przestrzeń roboczą?"
 
 #: ../src/main.py:1023
 msgid "Workspace still have running programs. Are you sure you want to close?"
-msgstr "Do przestrzeni roboczej przypięte są działające programy. Czy na pewno chcesz kontynuować?"
+msgstr ""
+"Do przestrzeni roboczej przypięte są działające programy. Czy na pewno "
+"chcesz kontynuować?"
 
 #: ../src/main.py:1990
 msgid "Workspace"
