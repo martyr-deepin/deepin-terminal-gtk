@@ -3,481 +3,489 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# kloki <klokimass@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-02-25 10:56+0800\n"
-"PO-Revision-Date: 2013-12-26 08:06+0000\n"
-"Last-Translator: electricface <songwentai@linuxdeepin.com>\n"
-"Language-Team: Chinese (Hong Kong) (http://www.transifex.com/projects/p/"
-"deepin-terminal/language/zh_HK/)\n"
-"Language: zh_HK\n"
+"PO-Revision-Date: 2014-02-22 23:36+0000\n"
+"Last-Translator: kloki <klokimass@gmail.com>\n"
+"Language-Team: Slovenian (http://www.transifex.com/projects/p/deepin-"
+"terminal/language/sl/)\n"
+"Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3);\n"
 
 #: ../src/main.py:115
 msgid "Normal"
-msgstr ""
+msgstr "Normalno"
 
 #: ../src/main.py:116
 msgid "Maximize"
-msgstr ""
+msgstr "Povečaj"
 
 #: ../src/main.py:117 ../src/main.py:758 ../src/main.py:2597
 #: ../src/main.py:2928
 msgid "Fullscreen"
-msgstr ""
+msgstr "Celozaslonski način"
 
 #: ../src/main.py:119
 msgid "Block"
-msgstr ""
+msgstr "Blok"
 
 #: ../src/main.py:120
 msgid "I-beam"
-msgstr ""
+msgstr "Navpična črtica"
 
 #: ../src/main.py:121
 msgid "Underline"
-msgstr ""
+msgstr "Poudari"
 
 #: ../src/main.py:123
 msgid "System"
-msgstr ""
+msgstr "Sistem"
 
 #: ../src/main.py:124
 msgid "On"
-msgstr ""
+msgstr "Vklopi"
 
 #: ../src/main.py:125
 msgid "Off"
-msgstr ""
+msgstr "Izklopi"
 
 #: ../src/main.py:227
 msgid "Deepin"
-msgstr ""
+msgstr "Deepin"
 
 #: ../src/main.py:228
 msgid "Mocha"
-msgstr ""
+msgstr "Kavno rjava"
 
 #: ../src/main.py:229
 msgid "Green screen"
-msgstr ""
+msgstr "Zelen zaslon"
 
 #: ../src/main.py:230
 msgid "Railscasts"
-msgstr ""
+msgstr "Odtenek železniških tirov"
 
 #: ../src/main.py:231
 msgid "Ocean"
-msgstr ""
+msgstr "Ocean"
 
 #: ../src/main.py:232
 msgid "Monokai"
-msgstr ""
+msgstr "Monokai"
 
 #: ../src/main.py:233
 msgid "Solarized"
-msgstr ""
+msgstr "Obsijano"
 
 #: ../src/main.py:234 ../src/main.py:235
 msgid "Eighties"
-msgstr ""
+msgstr "Osemdeseta"
 
 #: ../src/main.py:236
 msgid "Grey on black"
-msgstr ""
+msgstr "Siva na črni"
 
 #: ../src/main.py:237
 msgid "Black on yellow"
-msgstr ""
+msgstr "Črna na rumeni"
 
 #: ../src/main.py:238
 msgid "Black on white"
-msgstr ""
+msgstr "Črna na beli"
 
 #: ../src/main.py:239
 msgid "White on black"
-msgstr ""
+msgstr "Bela na črni"
 
 #: ../src/main.py:240
 msgid "Green on black"
-msgstr ""
+msgstr "Zelena na črni"
 
 #: ../src/main.py:241
 msgid "Custom"
-msgstr ""
+msgstr "Po meri"
 
 #: ../src/main.py:343
 msgid "Deepin Terminal"
-msgstr ""
+msgstr "Terminal Deepin"
 
 #: ../src/main.py:389
 msgid "General"
-msgstr ""
+msgstr "Splošno"
 
 #: ../src/main.py:390
 msgid "Hotkeys"
-msgstr ""
+msgstr "Bližnjice"
 
 #: ../src/main.py:391
 msgid "Advanced"
-msgstr ""
+msgstr "Napredno"
 
 #: ../src/main.py:488
 msgid "Quit terminal?"
-msgstr ""
+msgstr "Zaprem terminal?"
 
 #: ../src/main.py:489
 msgid "Terminal still have running programs. Are you sure you want to quit?"
 msgstr ""
+"V terminalu se še vedno izvajajo programi. Ali ste prepričani, da želite "
+"končati?"
 
 #: ../src/main.py:686 ../src/main.py:793
 msgid "Preferences"
-msgstr ""
+msgstr "Lastnosti"
 
 #: ../src/main.py:687 ../src/main.py:2599 ../src/main.py:2930
 msgid "Set up SSH connection"
-msgstr ""
+msgstr "Nastavi povezavo SSH"
 
 #: ../src/main.py:688 ../src/main.py:791 ../src/main.py:2598
 #: ../src/main.py:2929
 msgid "Display hotkeys"
-msgstr ""
+msgstr "Prikaži bližnjice"
 
 #: ../src/main.py:690
 msgid "Quit"
-msgstr ""
+msgstr "Končaj"
 
 #: ../src/main.py:725 ../src/main.py:728 ../src/main.py:2565
 #: ../src/main.py:2907
 msgid "Copy"
-msgstr ""
+msgstr "Kopiraj"
 
 #: ../src/main.py:730 ../src/main.py:2566 ../src/main.py:2908
 msgid "Paste"
-msgstr ""
+msgstr "Prilepi"
 
 #: ../src/main.py:737
 msgid "Open file"
-msgstr ""
+msgstr "Odpri datoteko"
 
 #: ../src/main.py:739
 msgid "Open directory"
-msgstr ""
+msgstr "Odpri imenik"
 
 #: ../src/main.py:741
 msgid "Open URL"
-msgstr ""
+msgstr "Odpri URL naslov"
 
 #: ../src/main.py:743
 msgid "Open manual"
-msgstr ""
+msgstr "Odpri navodila"
 
 #: ../src/main.py:747
 msgid "Clear screen"
-msgstr ""
+msgstr "Prazen zaslon"
 
 #: ../src/main.py:748
 msgid "Open current directory"
-msgstr ""
+msgstr "Odpri trenuten imenik"
 
 #: ../src/main.py:753 ../src/main.py:2576 ../src/main.py:2931
 msgid "Show correlative child window"
-msgstr ""
+msgstr "Prikaži sorodno otroško okno"
 
 #: ../src/main.py:756
 msgid "Exit fullscreen"
-msgstr ""
+msgstr "Izhod iz celozaslonskega načina"
 
 #: ../src/main.py:763 ../src/main.py:2585 ../src/main.py:2909
 msgid "Split vertically"
-msgstr ""
+msgstr "Razdeli navpično"
 
 #: ../src/main.py:764 ../src/main.py:2586 ../src/main.py:2910
 msgid "Split horizontally"
-msgstr ""
+msgstr "Razdeli vodoravno"
 
 #: ../src/main.py:765 ../src/main.py:2591 ../src/main.py:2911
 msgid "Close current window"
-msgstr ""
+msgstr "Zapri trenutno okno"
 
 #: ../src/main.py:769 ../src/main.py:2592 ../src/main.py:2912
 msgid "Close other window"
-msgstr ""
+msgstr "Zapri drugo okno"
 
 #: ../src/main.py:777 ../src/main.py:784 ../src/main.py:2581
 #: ../src/main.py:2922
 msgid "New workspace"
-msgstr ""
+msgstr "Nova delovna površina"
 
 #: ../src/main.py:778
 msgid "Switch workspace"
-msgstr ""
+msgstr "Zamenjaj delovno površino"
 
 #: ../src/main.py:779 ../src/main.py:2584 ../src/main.py:2923
 msgid "Close workspace"
-msgstr ""
+msgstr "Zapri delovno površino"
 
 #: ../src/main.py:790
 msgid "Search"
-msgstr ""
+msgstr "Iskanje"
 
 #: ../src/main.py:1022 ../src/main.py:1755
 msgid "Close window?"
-msgstr ""
+msgstr "Zaprem okno?"
 
 #: ../src/main.py:1023 ../src/main.py:1756
 msgid "Window still have running programs. Are you sure you want to close?"
 msgstr ""
+"V oknu se še vedno izvajajo programi. Ali ste prepričani, da ga želite "
+"zapreti?"
 
 #: ../src/main.py:1025
 msgid "Close workspace?"
-msgstr ""
+msgstr "Zaprem delovno površino?"
 
 #: ../src/main.py:1026
 msgid "Workspace still have running programs. Are you sure you want to close?"
 msgstr ""
+"V delovni površini se še vedno izvajajo programi. Ali ste prepričani, da ga "
+"želite zapreti?"
 
 #: ../src/main.py:1993
 msgid "Workspace"
-msgstr ""
+msgstr "Delovna površina"
 
 #: ../src/main.py:2564
 msgid "Terminal command"
-msgstr ""
+msgstr "Ukaz za terminal"
 
 #: ../src/main.py:2567 ../src/main.py:2913
 msgid "Scroll page up"
-msgstr ""
+msgstr "Premakni za stran navzgor"
 
 #: ../src/main.py:2568 ../src/main.py:2914
 msgid "Scroll page down"
-msgstr ""
+msgstr "Premakni za stran navzdol"
 
 #: ../src/main.py:2569 ../src/main.py:2926
 msgid "Search forward"
-msgstr ""
+msgstr "Išči naprej"
 
 #: ../src/main.py:2570 ../src/main.py:2927
 msgid "Search backward"
-msgstr ""
+msgstr "Išči nazaj"
 
 #: ../src/main.py:2571
 msgid "Select word"
-msgstr ""
+msgstr "Izberi besedo"
 
 #: ../src/main.py:2571
 msgid "Double click"
-msgstr ""
+msgstr "Dvojni klik"
 
 #: ../src/main.py:2572
 msgid "Open"
-msgstr ""
+msgstr "Odpri"
 
 #: ../src/main.py:2572
 msgid "Ctrl + Left click"
-msgstr ""
+msgstr "Ctrl + Levi klik"
 
 #: ../src/main.py:2573 ../src/main.py:2920
 msgid "Zoom out"
-msgstr ""
+msgstr "Pomanjšaj"
 
 #: ../src/main.py:2574 ../src/main.py:2919
 msgid "Zoom in"
-msgstr ""
+msgstr "Povečaj"
 
 #: ../src/main.py:2575 ../src/main.py:2921
 msgid "Reset zoom"
-msgstr ""
+msgstr "Ponastavi povečavo"
 
 #: ../src/main.py:2580
 msgid "Workspace command"
-msgstr ""
+msgstr "Ukaz za delovno površino"
 
 #: ../src/main.py:2582 ../src/main.py:2924
 msgid "Previous workspace"
-msgstr ""
+msgstr "Prejšnja delovna površina"
 
 #: ../src/main.py:2583 ../src/main.py:2925
 msgid "Next workspace"
-msgstr ""
+msgstr "Nova delovna površina"
 
 #: ../src/main.py:2587 ../src/main.py:2915
 msgid "Focus the terminal above"
-msgstr ""
+msgstr "Osredotoči na gornji terminal"
 
 #: ../src/main.py:2588 ../src/main.py:2916
 msgid "Focus the terminal below"
-msgstr ""
+msgstr "Osredotoči na spodnji terminal"
 
 #: ../src/main.py:2589 ../src/main.py:2917
 msgid "Focus the temrinal left"
-msgstr ""
+msgstr "Osredotoči na levi terminal"
 
 #: ../src/main.py:2590 ../src/main.py:2918
 msgid "Focus the terminal right"
-msgstr ""
+msgstr "Osredotoči na desni terminal"
 
 #: ../src/main.py:2596
 msgid "Advanced command"
-msgstr ""
+msgstr "Napredni ukaz"
 
 #: ../src/main.py:2618
 msgid "Adjust opacity"
-msgstr ""
+msgstr "Nastavi motnost"
 
 #: ../src/main.py:2618
 msgid "Ctrl + Wheel"
-msgstr ""
+msgstr "Ctrl + miškin kolešček"
 
 #: ../src/main.py:2809
 msgid "Font: "
-msgstr ""
+msgstr "Pisava:"
 
 #: ../src/main.py:2810
 msgid "Font size: "
-msgstr ""
+msgstr "Velikost pisave:"
 
 #: ../src/main.py:2811
 msgid "Color scheme: "
-msgstr ""
+msgstr "Barvna shema:"
 
 #: ../src/main.py:2813
 msgid "Background transparency: "
-msgstr ""
+msgstr "Prosojnost ozadja:"
 
 #: ../src/main.py:2939
 msgid "90"
-msgstr ""
+msgstr "90"
 
 #: ../src/main.py:3049
 msgid "Cursor shape: "
-msgstr ""
+msgstr "Oblika kazalca:"
 
 #: ../src/main.py:3050
 msgid "Cursor blink: "
-msgstr ""
+msgstr "Utripanje kazalca:"
 
 #: ../src/main.py:3051
 msgid "Window state: "
-msgstr ""
+msgstr "Stanje okna:"
 
 #: ../src/main.py:3052
 msgid "Startup command: "
-msgstr ""
+msgstr "Zagonski ukaz:"
 
 #: ../src/main.py:3053
 msgid "Startup directory: "
-msgstr ""
+msgstr "Zagonski imenik:"
 
 #: ../src/main.py:3054
 msgid "Ask on quit"
-msgstr ""
+msgstr "Vprašaj ob izhodu"
 
 #: ../src/main.py:3055
 msgid "Scroll on keystroke: "
-msgstr ""
+msgstr "Premikaj se s tipkovnico:"
 
 #: ../src/main.py:3056
 msgid "Scroll on output: "
-msgstr ""
+msgstr "Pomakni se na izhod:"
 
 #: ../src/main.py:3057
 msgid "Copy on selection: "
-msgstr ""
+msgstr "Kopiraj izbor:"
 
 #: ../src/main.py:3058
 msgid "Open file on hover: "
-msgstr ""
+msgstr "Odpri datoteko ob prejemu:"
 
 #: ../src/main.py:3211
 msgid "Save"
-msgstr ""
+msgstr "Shrani"
 
 #: ../src/main.py:3259 ../src/main.py:3283
 msgid "Name: "
-msgstr ""
+msgstr "Ime:"
 
 #: ../src/main.py:3259 ../src/main.py:3286
 msgid "Server: "
-msgstr ""
+msgstr "Strežnik:"
 
 #: ../src/main.py:3259 ../src/main.py:3289
 msgid "User: "
-msgstr ""
+msgstr "Uporabnik:"
 
 #: ../src/main.py:3259 ../src/main.py:3292
 msgid "Password: "
-msgstr ""
+msgstr "Geslo:"
 
 #: ../src/main.py:3259 ../src/main.py:3295
 msgid "Port: "
-msgstr ""
+msgstr "Priključek (Port):"
 
 #: ../src/main.py:3317
 msgid "Remote login"
-msgstr ""
+msgstr "Oddaljena prijava"
 
 #: ../src/main.py:3324
 msgid "Add"
-msgstr ""
+msgstr "Dodaj"
 
 #: ../src/main.py:3325
 msgid "Connection"
-msgstr ""
+msgstr "Povezava"
 
 #: ../src/main.py:3333
 msgid "Name"
-msgstr ""
+msgstr "Ime"
 
 #: ../src/main.py:3333
 msgid "Server"
-msgstr ""
+msgstr "Strežnik"
 
 #: ../src/main.py:3340
 msgid "Add remote login"
-msgstr ""
+msgstr "Dodaj oddaljeno prijavo"
 
 #: ../src/main.py:3407
 msgid "Edit remote login"
-msgstr ""
+msgstr "Uredi oddaljeno prijavo"
 
 #: ../src/main.py:3420
 msgid "Edit"
-msgstr ""
+msgstr "Uredi"
 
 #: ../src/main.py:3421
 msgid "Delete"
-msgstr ""
+msgstr "Izbriši"
 
 #: ../src/main.py:3581
 msgid "Reset"
-msgstr ""
+msgstr "Ponastavi"
 
 #: ../src/main.py:3584
 msgid "Close"
-msgstr ""
+msgstr "Zapri"
 
 #: ../src/main.py:3844
 msgid "working directory"
-msgstr ""
+msgstr "delovni imenik"
 
 #: ../src/main.py:3845
 msgid "run with quake mode"
-msgstr ""
+msgstr "zaženi v načinu quake"
 
 #: ../src/main.py:3846
 msgid "startup terminal with given command"
-msgstr ""
+msgstr "zaženi terminal z danim ukazom"
 
 #: ../src/main.py:3847
 msgid "show this help message and exit"
-msgstr ""
+msgstr "prikaži sporočilo za pomoč in zapri"
 
 #: ../src/main.py:3848
 msgid "show program's version number and exit"
-msgstr ""
+msgstr "prikaži različico programa in zapri"

@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# jasper580 <jasperweyne@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-11 09:43+0800\n"
-"PO-Revision-Date: 2013-12-26 08:06+0000\n"
-"Last-Translator: electricface <songwentai@linuxdeepin.com>\n"
+"POT-Creation-Date: 2014-02-25 10:56+0800\n"
+"PO-Revision-Date: 2014-02-24 13:26+0000\n"
+"Last-Translator: jasper580 <jasperweyne@gmail.com>\n"
 "Language-Team: Dutch (http://www.transifex.com/projects/p/deepin-terminal/"
 "language/nl/)\n"
 "Language: nl\n"
@@ -24,12 +25,12 @@ msgstr ""
 
 #: ../src/main.py:116
 msgid "Maximize"
-msgstr ""
+msgstr "Maximaliseer"
 
 #: ../src/main.py:117 ../src/main.py:758 ../src/main.py:2597
 #: ../src/main.py:2928
 msgid "Fullscreen"
-msgstr ""
+msgstr "Volledig Scherm"
 
 #: ../src/main.py:119
 msgid "Block"
@@ -49,11 +50,11 @@ msgstr ""
 
 #: ../src/main.py:124
 msgid "On"
-msgstr ""
+msgstr "Aan"
 
 #: ../src/main.py:125
 msgid "Off"
-msgstr ""
+msgstr "Uit"
 
 #: ../src/main.py:227
 msgid "Deepin"
@@ -113,7 +114,7 @@ msgstr ""
 
 #: ../src/main.py:343
 msgid "Deepin Terminal"
-msgstr ""
+msgstr "Deepin Terminal"
 
 #: ../src/main.py:389
 msgid "General"
@@ -125,11 +126,11 @@ msgstr ""
 
 #: ../src/main.py:391
 msgid "Advanced"
-msgstr ""
+msgstr "Geavanceerd"
 
 #: ../src/main.py:488
 msgid "Quit terminal?"
-msgstr ""
+msgstr "Terminal afsluiten?"
 
 #: ../src/main.py:489
 msgid "Terminal still have running programs. Are you sure you want to quit?"
@@ -137,7 +138,7 @@ msgstr ""
 
 #: ../src/main.py:686 ../src/main.py:793
 msgid "Preferences"
-msgstr ""
+msgstr "Voorkeuren"
 
 #: ../src/main.py:687 ../src/main.py:2599 ../src/main.py:2930
 msgid "Set up SSH connection"
@@ -150,32 +151,32 @@ msgstr ""
 
 #: ../src/main.py:690
 msgid "Quit"
-msgstr ""
+msgstr "Afsluiten"
 
 #: ../src/main.py:725 ../src/main.py:728 ../src/main.py:2565
 #: ../src/main.py:2907
 msgid "Copy"
-msgstr ""
+msgstr "Kopiëren"
 
 #: ../src/main.py:730 ../src/main.py:2566 ../src/main.py:2908
 msgid "Paste"
-msgstr ""
+msgstr "Plakken"
 
 #: ../src/main.py:737
 msgid "Open file"
-msgstr ""
+msgstr "Open bestand"
 
 #: ../src/main.py:739
 msgid "Open directory"
-msgstr ""
+msgstr "Open map"
 
 #: ../src/main.py:741
 msgid "Open URL"
-msgstr ""
+msgstr "Open URL"
 
 #: ../src/main.py:743
 msgid "Open manual"
-msgstr ""
+msgstr "Open handleiding"
 
 #: ../src/main.py:747
 msgid "Clear screen"
@@ -183,7 +184,7 @@ msgstr ""
 
 #: ../src/main.py:748
 msgid "Open current directory"
-msgstr ""
+msgstr "Open huidige map"
 
 #: ../src/main.py:753 ../src/main.py:2576 ../src/main.py:2931
 msgid "Show correlative child window"
@@ -191,23 +192,23 @@ msgstr ""
 
 #: ../src/main.py:756
 msgid "Exit fullscreen"
-msgstr ""
+msgstr "Volledig scherm afsluiten"
 
 #: ../src/main.py:763 ../src/main.py:2585 ../src/main.py:2909
 msgid "Split vertically"
-msgstr ""
+msgstr "Splits verticaal"
 
 #: ../src/main.py:764 ../src/main.py:2586 ../src/main.py:2910
 msgid "Split horizontally"
-msgstr ""
+msgstr "Split horizontaal"
 
 #: ../src/main.py:765 ../src/main.py:2591 ../src/main.py:2911
 msgid "Close current window"
-msgstr ""
+msgstr "Sluit huidige scherm af"
 
 #: ../src/main.py:769 ../src/main.py:2592 ../src/main.py:2912
 msgid "Close other window"
-msgstr ""
+msgstr "Sluit ander scherm af"
 
 #: ../src/main.py:777 ../src/main.py:784 ../src/main.py:2581
 #: ../src/main.py:2922
@@ -224,7 +225,7 @@ msgstr ""
 
 #: ../src/main.py:790
 msgid "Search"
-msgstr ""
+msgstr "Zoeken"
 
 #: ../src/main.py:1022 ../src/main.py:1755
 msgid "Close window?"
