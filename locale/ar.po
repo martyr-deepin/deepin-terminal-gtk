@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-11 09:43+0800\n"
-"PO-Revision-Date: 2014-02-09 21:04+0000\n"
+"POT-Creation-Date: 2014-02-25 10:44+0800\n"
+"PO-Revision-Date: 2014-02-16 00:35+0000\n"
 "Last-Translator: Mohd <mo-hd@windowslive.com>\n"
 "Language-Team: Arabic (http://www.transifex.com/projects/p/deepin-terminal/"
 "language/ar/)\n"
@@ -44,7 +44,7 @@ msgstr "سهم شعاعي"
 
 #: ../src/main.py:121
 msgid "Underline"
-msgstr ""
+msgstr "تأكيد"
 
 #: ../src/main.py:123
 msgid "System"
@@ -64,7 +64,7 @@ msgstr "دييبن"
 
 #: ../src/main.py:228
 msgid "Mocha"
-msgstr ""
+msgstr "Mocha"
 
 #: ../src/main.py:229
 msgid "Green screen"
@@ -72,7 +72,7 @@ msgstr "شاشة خضراء"
 
 #: ../src/main.py:230
 msgid "Railscasts"
-msgstr ""
+msgstr "Railscasts"
 
 #: ../src/main.py:231
 msgid "Ocean"
@@ -80,11 +80,11 @@ msgstr "محيط"
 
 #: ../src/main.py:232
 msgid "Monokai"
-msgstr ""
+msgstr "Monokai"
 
 #: ../src/main.py:233
 msgid "Solarized"
-msgstr ""
+msgstr "Solarized"
 
 #: ../src/main.py:234 ../src/main.py:235
 msgid "Eighties"
@@ -132,11 +132,11 @@ msgstr "متقدم"
 
 #: ../src/main.py:488
 msgid "Quit terminal?"
-msgstr "خروج من الطرفية؟"
+msgstr "خروج من الطرفية ؟"
 
 #: ../src/main.py:489
 msgid "Terminal still have running programs. Are you sure you want to quit?"
-msgstr "لا تزال هنالك برامج قيد التشغيل في الطرفية. هل ترغب حقا بالخروج؟"
+msgstr "لا تزال هنالك برامج قيد التشغيل في الطرفية. هل ترغب حقا بالخروج ؟"
 
 #: ../src/main.py:686 ../src/main.py:793
 msgid "Preferences"
@@ -231,15 +231,15 @@ msgstr "بحث"
 
 #: ../src/main.py:1022 ../src/main.py:1755
 msgid "Close window?"
-msgstr "إغلاق النافذة؟"
+msgstr "إغلاق النافذة ؟"
 
 #: ../src/main.py:1023 ../src/main.py:1756
 msgid "Window still have running programs. Are you sure you want to close?"
-msgstr "لا تزال هنالك برامج قيد التشغيل في هذه النافذة. هل ترغب حقا بإغلاقها؟"
+msgstr "لا تزال هنالك برامج قيد التشغيل في هذه النافذة. هل ترغب حقا بإغلاقها ؟"
 
 #: ../src/main.py:1025
 msgid "Close workspace?"
-msgstr "غلق مساحة العمل ؟"
+msgstr "إغلاق مساحة العمل ؟"
 
 #: ../src/main.py:1026
 msgid "Workspace still have running programs. Are you sure you want to close?"
@@ -284,7 +284,7 @@ msgstr "فتح"
 
 #: ../src/main.py:2572
 msgid "Ctrl + Left click"
-msgstr "Ctrl + Left إضغط "
+msgstr "إضغط Ctrl + Left"
 
 #: ../src/main.py:2573 ../src/main.py:2920
 msgid "Zoom out"
@@ -340,19 +340,19 @@ msgstr "Ctrl + عجلة الفارة"
 
 #: ../src/main.py:2809
 msgid "Font: "
-msgstr ": الخط"
+msgstr "الخط :"
 
 #: ../src/main.py:2810
 msgid "Font size: "
-msgstr ": حجم الخط"
+msgstr " حجم الخط :"
 
 #: ../src/main.py:2811
 msgid "Color scheme: "
-msgstr ": مخطط الالوان"
+msgstr "مخطط الالوان :"
 
 #: ../src/main.py:2813
 msgid "Background transparency: "
-msgstr ": شفافية الخلفية"
+msgstr "شفافية الخلفية :"
 
 #: ../src/main.py:2939
 msgid "90"
@@ -360,23 +360,23 @@ msgstr "90"
 
 #: ../src/main.py:3049
 msgid "Cursor shape: "
-msgstr ": شكل المؤشر"
+msgstr "شكل المؤشر :"
 
 #: ../src/main.py:3050
 msgid "Cursor blink: "
-msgstr ": وميض المؤشر"
+msgstr "وميض المؤشر :"
 
 #: ../src/main.py:3051
 msgid "Window state: "
-msgstr ": حالة النافذة"
+msgstr "حالة النافذة :"
 
 #: ../src/main.py:3052
 msgid "Startup command: "
-msgstr ": أمر بدء التشغيل"
+msgstr "أمر بدء التشغيل :"
 
 #: ../src/main.py:3053
 msgid "Startup directory: "
-msgstr ": مسار بدء االتشغيل"
+msgstr "مسار بدء االتشغيل :"
 
 #: ../src/main.py:3054
 msgid "Ask on quit"
@@ -384,19 +384,19 @@ msgstr "سؤال عند الخروج"
 
 #: ../src/main.py:3055
 msgid "Scroll on keystroke: "
-msgstr ": التمرير عند ضغطة مفتاح"
+msgstr "التمرير عند ضغطة مفتاح :"
 
 #: ../src/main.py:3056
 msgid "Scroll on output: "
-msgstr ": التمرير عنذ الإخراج"
+msgstr "التمرير عنذ الإخراج :"
 
 #: ../src/main.py:3057
 msgid "Copy on selection: "
-msgstr ": نسخ عند التحديد"
+msgstr "نسخ عند التحديد :"
 
 #: ../src/main.py:3058
 msgid "Open file on hover: "
-msgstr ": فتح الملف عنذ مرور الفأرة"
+msgstr "فتح الملف عنذ مرور الفأرة :"
 
 #: ../src/main.py:3211
 msgid "Save"
@@ -404,23 +404,23 @@ msgstr "حفظ"
 
 #: ../src/main.py:3259 ../src/main.py:3283
 msgid "Name: "
-msgstr ": الأسم"
+msgstr "الأسم :"
 
 #: ../src/main.py:3259 ../src/main.py:3286
 msgid "Server: "
-msgstr ": الخادم"
+msgstr "الخادم :"
 
 #: ../src/main.py:3259 ../src/main.py:3289
 msgid "User: "
-msgstr ": المستخدم"
+msgstr "المستخدم :"
 
 #: ../src/main.py:3259 ../src/main.py:3292
 msgid "Password: "
-msgstr ": كلمة المرور"
+msgstr "كلمة المرور :"
 
 #: ../src/main.py:3259 ../src/main.py:3295
 msgid "Port: "
-msgstr "منفذ: "
+msgstr "منفذ : "
 
 #: ../src/main.py:3317
 msgid "Remote login"

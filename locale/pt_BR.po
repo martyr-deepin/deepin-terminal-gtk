@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# 648trindade <rafaelgt.mbin@gmail.com>, 2013
+# 648trindade <rafaelgt.mbin@gmail.com>, 2013-2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-11 09:43+0800\n"
-"PO-Revision-Date: 2013-12-26 08:06+0000\n"
-"Last-Translator: electricface <songwentai@linuxdeepin.com>\n"
+"POT-Creation-Date: 2014-02-25 10:44+0800\n"
+"PO-Revision-Date: 2014-02-23 20:24+0000\n"
+"Last-Translator: 648trindade <rafaelgt.mbin@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/"
 "deepin-terminal/language/pt_BR/)\n"
 "Language: pt_BR\n"
@@ -182,7 +182,7 @@ msgstr "Abrir manual"
 
 #: ../src/main.py:747
 msgid "Clear screen"
-msgstr ""
+msgstr "Limpar tela"
 
 #: ../src/main.py:748
 msgid "Open current directory"
@@ -334,11 +334,11 @@ msgstr "Comando avançado"
 
 #: ../src/main.py:2618
 msgid "Adjust opacity"
-msgstr ""
+msgstr "Ajustar opacidade"
 
 #: ../src/main.py:2618
 msgid "Ctrl + Wheel"
-msgstr ""
+msgstr "Ctrl + Roda"
 
 #: ../src/main.py:2809
 msgid "Font: "
@@ -358,7 +358,7 @@ msgstr "Transparência do fundo:"
 
 #: ../src/main.py:2939
 msgid "90"
-msgstr ""
+msgstr "90"
 
 #: ../src/main.py:3049
 msgid "Cursor shape: "
