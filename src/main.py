@@ -343,6 +343,7 @@ class Terminal(object):
             app_name = _("Deepin Terminal"),
             name_size=11,
             title_size=11,
+            button_mask=["menu", "max", "min", "close"],
             )
         self.application.titlebar.set_size_request(-1, 30)
         self.application.set_skin_preview(os.path.join(get_parent_dir(__file__, 2), "image", "preview.png"))
