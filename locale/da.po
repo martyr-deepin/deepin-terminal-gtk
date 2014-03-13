@@ -3,481 +3,487 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# Snubbi <carl@manjaro.dk>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-02-25 10:56+0800\n"
-"PO-Revision-Date: 2013-12-26 08:06+0000\n"
-"Last-Translator: electricface <songwentai@linuxdeepin.com>\n"
-"Language-Team: Chinese (Hong Kong) (http://www.transifex.com/projects/p/"
-"deepin-terminal/language/zh_HK/)\n"
-"Language: zh_HK\n"
+"PO-Revision-Date: 2014-01-10 18:29+0000\n"
+"Last-Translator: Snubbi <carl@manjaro.dk>\n"
+"Language-Team: Danish (http://www.transifex.com/projects/p/deepin-terminal/"
+"language/da/)\n"
+"Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../src/main.py:115
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 #: ../src/main.py:116
 msgid "Maximize"
-msgstr ""
+msgstr "Maksimer"
 
 #: ../src/main.py:117 ../src/main.py:758 ../src/main.py:2597
 #: ../src/main.py:2928
 msgid "Fullscreen"
-msgstr ""
+msgstr "Fuldskærmsvisning  "
 
 #: ../src/main.py:119
 msgid "Block"
-msgstr ""
+msgstr "Blok"
 
 #: ../src/main.py:120
 msgid "I-beam"
-msgstr ""
+msgstr "I-bjælke"
 
 #: ../src/main.py:121
 msgid "Underline"
-msgstr ""
+msgstr "Understrege"
 
 #: ../src/main.py:123
 msgid "System"
-msgstr ""
+msgstr "System"
 
 #: ../src/main.py:124
 msgid "On"
-msgstr ""
+msgstr "Til"
 
 #: ../src/main.py:125
 msgid "Off"
-msgstr ""
+msgstr "Fra"
 
 #: ../src/main.py:227
 msgid "Deepin"
-msgstr ""
+msgstr "Deepin"
 
 #: ../src/main.py:228
 msgid "Mocha"
-msgstr ""
+msgstr "Mokka"
 
 #: ../src/main.py:229
 msgid "Green screen"
-msgstr ""
+msgstr "Grøn skærm"
 
 #: ../src/main.py:230
 msgid "Railscasts"
-msgstr ""
+msgstr "Railscasts"
 
 #: ../src/main.py:231
 msgid "Ocean"
-msgstr ""
+msgstr "Ocean"
 
 #: ../src/main.py:232
 msgid "Monokai"
-msgstr ""
+msgstr "Monokai"
 
 #: ../src/main.py:233
 msgid "Solarized"
-msgstr ""
+msgstr "Solariseret"
 
 #: ../src/main.py:234 ../src/main.py:235
 msgid "Eighties"
-msgstr ""
+msgstr "Firsere"
 
 #: ../src/main.py:236
 msgid "Grey on black"
-msgstr ""
+msgstr "Grå på sort"
 
 #: ../src/main.py:237
 msgid "Black on yellow"
-msgstr ""
+msgstr "Sort på gul"
 
 #: ../src/main.py:238
 msgid "Black on white"
-msgstr ""
+msgstr "Sort på hvid"
 
 #: ../src/main.py:239
 msgid "White on black"
-msgstr ""
+msgstr "Hvid på sort"
 
 #: ../src/main.py:240
 msgid "Green on black"
-msgstr ""
+msgstr "Grøn på sort"
 
 #: ../src/main.py:241
 msgid "Custom"
-msgstr ""
+msgstr "Tilpasset"
 
 #: ../src/main.py:343
 msgid "Deepin Terminal"
-msgstr ""
+msgstr "Deepin Terminal"
 
 #: ../src/main.py:389
 msgid "General"
-msgstr ""
+msgstr "General"
 
 #: ../src/main.py:390
 msgid "Hotkeys"
-msgstr ""
+msgstr "Tastaturgenveje"
 
 #: ../src/main.py:391
 msgid "Advanced"
-msgstr ""
+msgstr "Avanceret"
 
 #: ../src/main.py:488
 msgid "Quit terminal?"
-msgstr ""
+msgstr "Forlad terminal?"
 
 #: ../src/main.py:489
 msgid "Terminal still have running programs. Are you sure you want to quit?"
 msgstr ""
+"Terminalen har stadigvæk kørende programmer. Er du sikker på at du vil "
+"afslutte?"
 
 #: ../src/main.py:686 ../src/main.py:793
 msgid "Preferences"
-msgstr ""
+msgstr "Præferencer"
 
 #: ../src/main.py:687 ../src/main.py:2599 ../src/main.py:2930
 msgid "Set up SSH connection"
-msgstr ""
+msgstr "Opsæt en SSH forbindelse"
 
 #: ../src/main.py:688 ../src/main.py:791 ../src/main.py:2598
 #: ../src/main.py:2929
 msgid "Display hotkeys"
-msgstr ""
+msgstr "Vis tastaturgenveje"
 
 #: ../src/main.py:690
 msgid "Quit"
-msgstr ""
+msgstr "Afslut"
 
 #: ../src/main.py:725 ../src/main.py:728 ../src/main.py:2565
 #: ../src/main.py:2907
 msgid "Copy"
-msgstr ""
+msgstr "Kopier"
 
 #: ../src/main.py:730 ../src/main.py:2566 ../src/main.py:2908
 msgid "Paste"
-msgstr ""
+msgstr "Indsæt"
 
 #: ../src/main.py:737
 msgid "Open file"
-msgstr ""
+msgstr "Åbn fil"
 
 #: ../src/main.py:739
 msgid "Open directory"
-msgstr ""
+msgstr "Åbn mappe"
 
 #: ../src/main.py:741
 msgid "Open URL"
-msgstr ""
+msgstr "Åbn URL"
 
 #: ../src/main.py:743
 msgid "Open manual"
-msgstr ""
+msgstr "Åbn manual"
 
 #: ../src/main.py:747
 msgid "Clear screen"
-msgstr ""
+msgstr "Ryd skærm"
 
 #: ../src/main.py:748
 msgid "Open current directory"
-msgstr ""
+msgstr "Åbn aktuelle mappe"
 
 #: ../src/main.py:753 ../src/main.py:2576 ../src/main.py:2931
 msgid "Show correlative child window"
-msgstr ""
+msgstr "Vis korrelativt undervindue"
 
 #: ../src/main.py:756
 msgid "Exit fullscreen"
-msgstr ""
+msgstr "Forlad Fuldskærmsvisning  "
 
 #: ../src/main.py:763 ../src/main.py:2585 ../src/main.py:2909
 msgid "Split vertically"
-msgstr ""
+msgstr "Opdel lodret"
 
 #: ../src/main.py:764 ../src/main.py:2586 ../src/main.py:2910
 msgid "Split horizontally"
-msgstr ""
+msgstr "Opdel vandret"
 
 #: ../src/main.py:765 ../src/main.py:2591 ../src/main.py:2911
 msgid "Close current window"
-msgstr ""
+msgstr "Luk aktuel vindue"
 
 #: ../src/main.py:769 ../src/main.py:2592 ../src/main.py:2912
 msgid "Close other window"
-msgstr ""
+msgstr "Luk andre vinduer"
 
 #: ../src/main.py:777 ../src/main.py:784 ../src/main.py:2581
 #: ../src/main.py:2922
 msgid "New workspace"
-msgstr ""
+msgstr "Nyt arbejdsområde"
 
 #: ../src/main.py:778
 msgid "Switch workspace"
-msgstr ""
+msgstr "Skift arbejdsområde"
 
 #: ../src/main.py:779 ../src/main.py:2584 ../src/main.py:2923
 msgid "Close workspace"
-msgstr ""
+msgstr "Luk arbejdsområde"
 
 #: ../src/main.py:790
 msgid "Search"
-msgstr ""
+msgstr "Søg"
 
 #: ../src/main.py:1022 ../src/main.py:1755
 msgid "Close window?"
-msgstr ""
+msgstr "Luk vindue?"
 
 #: ../src/main.py:1023 ../src/main.py:1756
 msgid "Window still have running programs. Are you sure you want to close?"
 msgstr ""
+"Vindue har stadigvæk kørende programmer. Er du sikker på at du vil lukke?"
 
 #: ../src/main.py:1025
 msgid "Close workspace?"
-msgstr ""
+msgstr "Luk arbejdsområde?"
 
 #: ../src/main.py:1026
 msgid "Workspace still have running programs. Are you sure you want to close?"
 msgstr ""
+"Abejdsområdet har stadigvæk kørende programmer. Er du sikkerpå at  du vil "
+"lukke?"
 
 #: ../src/main.py:1993
 msgid "Workspace"
-msgstr ""
+msgstr "Arbejdsområde"
 
 #: ../src/main.py:2564
 msgid "Terminal command"
-msgstr ""
+msgstr "Terminal kommando"
 
 #: ../src/main.py:2567 ../src/main.py:2913
 msgid "Scroll page up"
-msgstr ""
+msgstr "Scrol side op"
 
 #: ../src/main.py:2568 ../src/main.py:2914
 msgid "Scroll page down"
-msgstr ""
+msgstr "Scrol side ned"
 
 #: ../src/main.py:2569 ../src/main.py:2926
 msgid "Search forward"
-msgstr ""
+msgstr "Søg fremad"
 
 #: ../src/main.py:2570 ../src/main.py:2927
 msgid "Search backward"
-msgstr ""
+msgstr "Søg baglæns"
 
 #: ../src/main.py:2571
 msgid "Select word"
-msgstr ""
+msgstr "Vælg ord"
 
 #: ../src/main.py:2571
 msgid "Double click"
-msgstr ""
+msgstr "Dobbeltklik"
 
 #: ../src/main.py:2572
 msgid "Open"
-msgstr ""
+msgstr "Åbn"
 
 #: ../src/main.py:2572
 msgid "Ctrl + Left click"
-msgstr ""
+msgstr "Ctrl + Venstre Klik"
 
 #: ../src/main.py:2573 ../src/main.py:2920
 msgid "Zoom out"
-msgstr ""
+msgstr "Zoom ud"
 
 #: ../src/main.py:2574 ../src/main.py:2919
 msgid "Zoom in"
-msgstr ""
+msgstr "Zoom ind"
 
 #: ../src/main.py:2575 ../src/main.py:2921
 msgid "Reset zoom"
-msgstr ""
+msgstr "Nulstil zoom"
 
 #: ../src/main.py:2580
 msgid "Workspace command"
-msgstr ""
+msgstr "Arbejdsområde-kommando"
 
 #: ../src/main.py:2582 ../src/main.py:2924
 msgid "Previous workspace"
-msgstr ""
+msgstr "Previous workspace"
 
 #: ../src/main.py:2583 ../src/main.py:2925
 msgid "Next workspace"
-msgstr ""
+msgstr "Næste arbejdsområde"
 
 #: ../src/main.py:2587 ../src/main.py:2915
 msgid "Focus the terminal above"
-msgstr ""
+msgstr "Fokuser på terminalen ovenfor"
 
 #: ../src/main.py:2588 ../src/main.py:2916
 msgid "Focus the terminal below"
-msgstr ""
+msgstr "Fokuser på terminalen nedenfor"
 
 #: ../src/main.py:2589 ../src/main.py:2917
 msgid "Focus the temrinal left"
-msgstr ""
+msgstr "Fokuser på terminalen til venstre"
 
 #: ../src/main.py:2590 ../src/main.py:2918
 msgid "Focus the terminal right"
-msgstr ""
+msgstr "Fokuser på terminalen til højre"
 
 #: ../src/main.py:2596
 msgid "Advanced command"
-msgstr ""
+msgstr "Avanceret kommando"
 
 #: ../src/main.py:2618
 msgid "Adjust opacity"
-msgstr ""
+msgstr "Tilpas opacitet"
 
 #: ../src/main.py:2618
 msgid "Ctrl + Wheel"
-msgstr ""
+msgstr "Ctrl + Hjul"
 
 #: ../src/main.py:2809
 msgid "Font: "
-msgstr ""
+msgstr "Font: "
 
 #: ../src/main.py:2810
 msgid "Font size: "
-msgstr ""
+msgstr "Font størrelse: "
 
 #: ../src/main.py:2811
 msgid "Color scheme: "
-msgstr ""
+msgstr "Farvesystem: "
 
 #: ../src/main.py:2813
 msgid "Background transparency: "
-msgstr ""
+msgstr "Baggrundgennemsigtighed:"
 
 #: ../src/main.py:2939
 msgid "90"
-msgstr ""
+msgstr "90"
 
 #: ../src/main.py:3049
 msgid "Cursor shape: "
-msgstr ""
+msgstr "Markør form:"
 
 #: ../src/main.py:3050
 msgid "Cursor blink: "
-msgstr ""
+msgstr "Markør blink: "
 
 #: ../src/main.py:3051
 msgid "Window state: "
-msgstr ""
+msgstr "Vindue fremføring:"
 
 #: ../src/main.py:3052
 msgid "Startup command: "
-msgstr ""
+msgstr "Opstartskomando:"
 
 #: ../src/main.py:3053
 msgid "Startup directory: "
-msgstr ""
+msgstr "Opstartsmappe:"
 
 #: ../src/main.py:3054
 msgid "Ask on quit"
-msgstr ""
+msgstr "Spørg ved afslutning"
 
 #: ../src/main.py:3055
 msgid "Scroll on keystroke: "
-msgstr ""
+msgstr "Scrol ved tastaturtryk:"
 
 #: ../src/main.py:3056
 msgid "Scroll on output: "
-msgstr ""
+msgstr "Scrol ved output:"
 
 #: ../src/main.py:3057
 msgid "Copy on selection: "
-msgstr ""
+msgstr "Kopier ved udvælgelse:"
 
 #: ../src/main.py:3058
 msgid "Open file on hover: "
-msgstr ""
+msgstr "Åbn fil ved mus føres over filnavn:"
 
 #: ../src/main.py:3211
 msgid "Save"
-msgstr ""
+msgstr "Gem"
 
 #: ../src/main.py:3259 ../src/main.py:3283
 msgid "Name: "
-msgstr ""
+msgstr "Navn:"
 
 #: ../src/main.py:3259 ../src/main.py:3286
 msgid "Server: "
-msgstr ""
+msgstr "Server: "
 
 #: ../src/main.py:3259 ../src/main.py:3289
 msgid "User: "
-msgstr ""
+msgstr "Bruger"
 
 #: ../src/main.py:3259 ../src/main.py:3292
 msgid "Password: "
-msgstr ""
+msgstr "Password: "
 
 #: ../src/main.py:3259 ../src/main.py:3295
 msgid "Port: "
-msgstr ""
+msgstr "Port: "
 
 #: ../src/main.py:3317
 msgid "Remote login"
-msgstr ""
+msgstr "Fjern logind"
 
 #: ../src/main.py:3324
 msgid "Add"
-msgstr ""
+msgstr "Tilføj"
 
 #: ../src/main.py:3325
 msgid "Connection"
-msgstr ""
+msgstr "Forbindelse"
 
 #: ../src/main.py:3333
 msgid "Name"
-msgstr ""
+msgstr "Navn"
 
 #: ../src/main.py:3333
 msgid "Server"
-msgstr ""
+msgstr "Server"
 
 #: ../src/main.py:3340
 msgid "Add remote login"
-msgstr ""
+msgstr "Tilføj fjern logind"
 
 #: ../src/main.py:3407
 msgid "Edit remote login"
-msgstr ""
+msgstr "Rediger fjern logind"
 
 #: ../src/main.py:3420
 msgid "Edit"
-msgstr ""
+msgstr "Rediger"
 
 #: ../src/main.py:3421
 msgid "Delete"
-msgstr ""
+msgstr "Slet"
 
 #: ../src/main.py:3581
 msgid "Reset"
-msgstr ""
+msgstr "Nulstil"
 
 #: ../src/main.py:3584
 msgid "Close"
-msgstr ""
+msgstr "Luk"
 
 #: ../src/main.py:3844
 msgid "working directory"
-msgstr ""
+msgstr "arbejdesmappe"
 
 #: ../src/main.py:3845
 msgid "run with quake mode"
-msgstr ""
+msgstr "kør med fremføring mode"
 
 #: ../src/main.py:3846
 msgid "startup terminal with given command"
-msgstr ""
+msgstr "opstart terminal med given kommando"
 
 #: ../src/main.py:3847
 msgid "show this help message and exit"
-msgstr ""
+msgstr "vis denne hjælpebesked og afslut"
 
 #: ../src/main.py:3848
 msgid "show program's version number and exit"
-msgstr ""
+msgstr "vis programs versionsnummer og afslut"
