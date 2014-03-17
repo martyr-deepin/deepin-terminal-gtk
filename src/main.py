@@ -1406,7 +1406,7 @@ class TerminalWrapper(vte.Terminal):
         adj.set_value(min(upper - page_size, value + page_size))
             
     def clear(self):
-        self.feed_child("cls\n")
+        self.feed_child("clear\n")
         
     def show_man_window(self, command):
         self.split_vertically(command="man %s\n" % command, press_q_quit=True)
