@@ -3809,7 +3809,10 @@ class WorkspaceIndicator(gtk.Alignment):
                 if workspace_index == self.current_workspace_index:
                     cr.set_source_rgba(r, g, b, 0.5)
                 else:
-                    cr.set_source_rgba(1, 1, 1, 0.05)
+                    if get_config("general", "background_color") == "#ffffff":
+                        cr.set_source_rgba(0, 0, 0, 0.3)
+                    else:
+                        cr.set_source_rgba(1, 1, 1, 0.05)
                     
                 (x, y, w, h) = self.get_workspace_rect(index)
                 draw_round_rectangle(cr, x, y, w, h, self.radius)
