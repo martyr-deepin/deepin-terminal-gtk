@@ -512,7 +512,7 @@ class Terminal(object):
         if self.application.window.allocation.width == gtk.gdk.screen_width():
             self.terminal_align.set_padding(0, 0, 0, 0)
             
-            self.statusbar.set_padding(1, 0, 0, 0)
+            self.statusbar.set_padding(0, 0, 0, 0)
             self.statusbar.adjust_padding(0, 0, 0, 0)
             self.draw_skin_padding = 0
         else:
