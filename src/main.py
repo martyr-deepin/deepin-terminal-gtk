@@ -227,7 +227,6 @@ color_style = {
     "deepin" : (_("Deepin"), ["#00BB00", "#000000"]),
     "mocha" : (_("Mocha"), ["#BEB55B", "#3B3228"]),
     "green_screen" : (_("Green screen"), ["#00BB00", "#001100"]),
-    "railscasts" : (_("Railscasts"), ["#3B3228", "#2B2B2B"]),
     "ocean" : (_("Ocean"), ["#A3BE8C", "#2B303B"]),
     "monokai" : (_("Monokai"), ["#A6E22E", "#272822"]),
     "solarized" : (_("Solarized"), ["#859900", "#002B36"]),

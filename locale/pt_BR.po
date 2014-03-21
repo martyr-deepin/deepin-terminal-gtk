@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-25 10:56+0800\n"
+"POT-Creation-Date: 2014-03-21 12:38+0800\n"
 "PO-Revision-Date: 2014-02-23 20:24+0000\n"
 "Last-Translator: 648trindade <rafaelgt.mbin@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/"
@@ -27,8 +27,8 @@ msgstr "Normal"
 msgid "Maximize"
 msgstr "Maximizar"
 
-#: ../src/main.py:117 ../src/main.py:758 ../src/main.py:2597
-#: ../src/main.py:2928
+#: ../src/main.py:117 ../src/main.py:773 ../src/main.py:2627
+#: ../src/main.py:2958
 msgid "Fullscreen"
 msgstr "Tela Inteira"
 
@@ -69,421 +69,420 @@ msgid "Green screen"
 msgstr "Green screen"
 
 #: ../src/main.py:230
-msgid "Railscasts"
-msgstr "Railscasts"
-
-#: ../src/main.py:231
 msgid "Ocean"
 msgstr "Ocean"
 
-#: ../src/main.py:232
+#: ../src/main.py:231
 msgid "Monokai"
 msgstr "Monokai"
 
-#: ../src/main.py:233
+#: ../src/main.py:232
 msgid "Solarized"
 msgstr "Solarized"
 
-#: ../src/main.py:234 ../src/main.py:235
+#: ../src/main.py:233 ../src/main.py:234
 msgid "Eighties"
 msgstr "Eighties"
 
-#: ../src/main.py:236
+#: ../src/main.py:235
 msgid "Grey on black"
 msgstr "Cinza no preto"
 
-#: ../src/main.py:237
+#: ../src/main.py:236
 msgid "Black on yellow"
 msgstr "Preto no amarelo"
 
-#: ../src/main.py:238
+#: ../src/main.py:237
 msgid "Black on white"
 msgstr "Preto no branco"
 
-#: ../src/main.py:239
+#: ../src/main.py:238
 msgid "White on black"
 msgstr "Branco no preto"
 
-#: ../src/main.py:240
+#: ../src/main.py:239
 msgid "Green on black"
 msgstr "Verde no preto"
 
-#: ../src/main.py:241
+#: ../src/main.py:240
 msgid "Custom"
 msgstr "Personalizado"
 
-#: ../src/main.py:343
+#: ../src/main.py:342
 msgid "Deepin Terminal"
 msgstr "Deepin Terminal"
 
-#: ../src/main.py:389
+#: ../src/main.py:390
 msgid "General"
 msgstr "Geral"
 
-#: ../src/main.py:390
+#: ../src/main.py:391
 msgid "Hotkeys"
 msgstr "Atalhos"
 
-#: ../src/main.py:391
+#: ../src/main.py:392
 msgid "Advanced"
 msgstr "Avançado"
 
-#: ../src/main.py:488
+#: ../src/main.py:498
 msgid "Quit terminal?"
 msgstr "Sair do terminal?"
 
-#: ../src/main.py:489
+#: ../src/main.py:499
 msgid "Terminal still have running programs. Are you sure you want to quit?"
 msgstr ""
 "O terminal ainda possui programas em execução. Tem certeza que você quer "
 "sair?"
 
-#: ../src/main.py:686 ../src/main.py:793
+#: ../src/main.py:701 ../src/main.py:808
 msgid "Preferences"
 msgstr "Preferências"
 
-#: ../src/main.py:687 ../src/main.py:2599 ../src/main.py:2930
+#: ../src/main.py:702 ../src/main.py:2629 ../src/main.py:2960
 msgid "Set up SSH connection"
 msgstr "Configurar conexão SSH"
 
-#: ../src/main.py:688 ../src/main.py:791 ../src/main.py:2598
-#: ../src/main.py:2929
+#: ../src/main.py:703 ../src/main.py:806 ../src/main.py:2628
+#: ../src/main.py:2959
 msgid "Display hotkeys"
 msgstr "Mostrar atalhos"
 
-#: ../src/main.py:690
+#: ../src/main.py:705
 msgid "Quit"
 msgstr "Sair"
 
-#: ../src/main.py:725 ../src/main.py:728 ../src/main.py:2565
-#: ../src/main.py:2907
+#: ../src/main.py:740 ../src/main.py:743 ../src/main.py:2595
+#: ../src/main.py:2937
 msgid "Copy"
 msgstr "Copiar"
 
-#: ../src/main.py:730 ../src/main.py:2566 ../src/main.py:2908
+#: ../src/main.py:745 ../src/main.py:2596 ../src/main.py:2938
 msgid "Paste"
 msgstr "Colar"
 
-#: ../src/main.py:737
+#: ../src/main.py:752
 msgid "Open file"
 msgstr "Abrir arquivo"
 
-#: ../src/main.py:739
+#: ../src/main.py:754
 msgid "Open directory"
 msgstr "Abrir pasta"
 
-#: ../src/main.py:741
+#: ../src/main.py:756
 msgid "Open URL"
 msgstr "Abrir URL"
 
-#: ../src/main.py:743
+#: ../src/main.py:758
 msgid "Open manual"
 msgstr "Abrir manual"
 
-#: ../src/main.py:747
+#: ../src/main.py:762
 msgid "Clear screen"
 msgstr "Limpar tela"
 
-#: ../src/main.py:748
+#: ../src/main.py:763
 msgid "Open current directory"
 msgstr "Abrir pasta atual"
 
-#: ../src/main.py:753 ../src/main.py:2576 ../src/main.py:2931
+#: ../src/main.py:768 ../src/main.py:2606 ../src/main.py:2961
 msgid "Show correlative child window"
 msgstr "Mostrar janela filha correlativa"
 
-#: ../src/main.py:756
+#: ../src/main.py:771
 msgid "Exit fullscreen"
 msgstr "Sair de tela inteira"
 
-#: ../src/main.py:763 ../src/main.py:2585 ../src/main.py:2909
+#: ../src/main.py:778 ../src/main.py:2615 ../src/main.py:2939
 msgid "Split vertically"
 msgstr "Dividir verticalmente"
 
-#: ../src/main.py:764 ../src/main.py:2586 ../src/main.py:2910
+#: ../src/main.py:779 ../src/main.py:2616 ../src/main.py:2940
 msgid "Split horizontally"
 msgstr "Dividir horizontalmente"
 
-#: ../src/main.py:765 ../src/main.py:2591 ../src/main.py:2911
+#: ../src/main.py:780 ../src/main.py:2621 ../src/main.py:2941
 msgid "Close current window"
 msgstr "Fechar janela atual"
 
-#: ../src/main.py:769 ../src/main.py:2592 ../src/main.py:2912
+#: ../src/main.py:784 ../src/main.py:2622 ../src/main.py:2942
 msgid "Close other window"
 msgstr "Fechar outras janelas"
 
-#: ../src/main.py:777 ../src/main.py:784 ../src/main.py:2581
-#: ../src/main.py:2922
+#: ../src/main.py:792 ../src/main.py:799 ../src/main.py:2611
+#: ../src/main.py:2952
 msgid "New workspace"
 msgstr "Novo espaço de trabalho"
 
-#: ../src/main.py:778
+#: ../src/main.py:793
 msgid "Switch workspace"
 msgstr "Alternar espaço de trabalho"
 
-#: ../src/main.py:779 ../src/main.py:2584 ../src/main.py:2923
+#: ../src/main.py:794 ../src/main.py:2614 ../src/main.py:2953
 msgid "Close workspace"
 msgstr "Fechar espaço de trabalho"
 
-#: ../src/main.py:790
+#: ../src/main.py:805
 msgid "Search"
 msgstr "rocurar"
 
-#: ../src/main.py:1022 ../src/main.py:1755
+#: ../src/main.py:1052 ../src/main.py:1785
 msgid "Close window?"
 msgstr "Fechar janela?"
 
-#: ../src/main.py:1023 ../src/main.py:1756
+#: ../src/main.py:1053 ../src/main.py:1786
 msgid "Window still have running programs. Are you sure you want to close?"
 msgstr ""
 "A janela ainda possui programas em execução. Tem certeza que deseja fechá-la?"
 
-#: ../src/main.py:1025
+#: ../src/main.py:1055
 msgid "Close workspace?"
 msgstr "Fechar espaço de trabalho?"
 
-#: ../src/main.py:1026
+#: ../src/main.py:1056
 msgid "Workspace still have running programs. Are you sure you want to close?"
 msgstr ""
 "O espaço de trabalho ainda possui programas em execução. Tem certeza que "
 "deseja fechá-lo?"
 
-#: ../src/main.py:1993
+#: ../src/main.py:2023
 msgid "Workspace"
 msgstr "Espaço de trabalho"
 
-#: ../src/main.py:2564
+#: ../src/main.py:2594
 msgid "Terminal command"
 msgstr "Comando do terminal"
 
-#: ../src/main.py:2567 ../src/main.py:2913
+#: ../src/main.py:2597 ../src/main.py:2943
 msgid "Scroll page up"
 msgstr "Rolar página para cima"
 
-#: ../src/main.py:2568 ../src/main.py:2914
+#: ../src/main.py:2598 ../src/main.py:2944
 msgid "Scroll page down"
 msgstr "Rolar página para baixo"
 
-#: ../src/main.py:2569 ../src/main.py:2926
+#: ../src/main.py:2599 ../src/main.py:2956
 msgid "Search forward"
 msgstr "Procurar a frente"
 
-#: ../src/main.py:2570 ../src/main.py:2927
+#: ../src/main.py:2600 ../src/main.py:2957
 msgid "Search backward"
 msgstr "Procurar atrás"
 
-#: ../src/main.py:2571
+#: ../src/main.py:2601
 msgid "Select word"
 msgstr "Selecionar palavra"
 
-#: ../src/main.py:2571
+#: ../src/main.py:2601
 msgid "Double click"
 msgstr "Clique duplo"
 
-#: ../src/main.py:2572
+#: ../src/main.py:2602
 msgid "Open"
 msgstr "Abrir"
 
-#: ../src/main.py:2572
+#: ../src/main.py:2602
 msgid "Ctrl + Left click"
 msgstr "Ctrl + Clique esquerdo"
 
-#: ../src/main.py:2573 ../src/main.py:2920
+#: ../src/main.py:2603 ../src/main.py:2950
 msgid "Zoom out"
 msgstr "Aumentar zoom"
 
-#: ../src/main.py:2574 ../src/main.py:2919
+#: ../src/main.py:2604 ../src/main.py:2949
 msgid "Zoom in"
 msgstr "Diminuir zoom"
 
-#: ../src/main.py:2575 ../src/main.py:2921
+#: ../src/main.py:2605 ../src/main.py:2951
 msgid "Reset zoom"
 msgstr "Reiniciar zoom"
 
-#: ../src/main.py:2580
+#: ../src/main.py:2610
 msgid "Workspace command"
 msgstr "Comando do espaço de trabalho"
 
-#: ../src/main.py:2582 ../src/main.py:2924
+#: ../src/main.py:2612 ../src/main.py:2954
 msgid "Previous workspace"
 msgstr "Espaço de trabalho anterior"
 
-#: ../src/main.py:2583 ../src/main.py:2925
+#: ../src/main.py:2613 ../src/main.py:2955
 msgid "Next workspace"
 msgstr "Próximo espaço de trabalho"
 
-#: ../src/main.py:2587 ../src/main.py:2915
+#: ../src/main.py:2617 ../src/main.py:2945
 msgid "Focus the terminal above"
 msgstr "Focar o terminal acima"
 
-#: ../src/main.py:2588 ../src/main.py:2916
+#: ../src/main.py:2618 ../src/main.py:2946
 msgid "Focus the terminal below"
 msgstr "Focar o terminal abaixo"
 
-#: ../src/main.py:2589 ../src/main.py:2917
+#: ../src/main.py:2619 ../src/main.py:2947
 msgid "Focus the temrinal left"
 msgstr "Focar o terminal à esquerda"
 
-#: ../src/main.py:2590 ../src/main.py:2918
+#: ../src/main.py:2620 ../src/main.py:2948
 msgid "Focus the terminal right"
 msgstr "Focar o terminal à direita"
 
-#: ../src/main.py:2596
+#: ../src/main.py:2626
 msgid "Advanced command"
 msgstr "Comando avançado"
 
-#: ../src/main.py:2618
+#: ../src/main.py:2648
 msgid "Adjust opacity"
 msgstr "Ajustar opacidade"
 
-#: ../src/main.py:2618
+#: ../src/main.py:2648
 msgid "Ctrl + Wheel"
 msgstr "Ctrl + Roda"
 
-#: ../src/main.py:2809
+#: ../src/main.py:2839
 msgid "Font: "
 msgstr "Fonte:"
 
-#: ../src/main.py:2810
+#: ../src/main.py:2840
 msgid "Font size: "
 msgstr "Tamanho da fonte:"
 
-#: ../src/main.py:2811
+#: ../src/main.py:2841
 msgid "Color scheme: "
 msgstr "Esquema de cores:"
 
-#: ../src/main.py:2813
+#: ../src/main.py:2843
 msgid "Background transparency: "
 msgstr "Transparência do fundo:"
 
-#: ../src/main.py:2939
+#: ../src/main.py:2969
 msgid "90"
 msgstr "90"
 
-#: ../src/main.py:3049
+#: ../src/main.py:3079
 msgid "Cursor shape: "
 msgstr "Forma do cursor:"
 
-#: ../src/main.py:3050
+#: ../src/main.py:3080
 msgid "Cursor blink: "
 msgstr "Intermitência do cursos"
 
-#: ../src/main.py:3051
+#: ../src/main.py:3081
 msgid "Window state: "
 msgstr "Estado da janela:"
 
-#: ../src/main.py:3052
+#: ../src/main.py:3082
 msgid "Startup command: "
 msgstr "Comando inicial:"
 
-#: ../src/main.py:3053
+#: ../src/main.py:3083
 msgid "Startup directory: "
 msgstr "Localização inicial:"
 
-#: ../src/main.py:3054
+#: ../src/main.py:3084
 msgid "Ask on quit"
 msgstr "Perguntar ao sair"
 
-#: ../src/main.py:3055
+#: ../src/main.py:3085
 msgid "Scroll on keystroke: "
 msgstr "Rolar ao teclar:"
 
-#: ../src/main.py:3056
+#: ../src/main.py:3086
 msgid "Scroll on output: "
 msgstr "Rolar à saída de dados:"
 
-#: ../src/main.py:3057
+#: ../src/main.py:3087
 msgid "Copy on selection: "
 msgstr "Copiar ao selecionar:"
 
-#: ../src/main.py:3058
+#: ../src/main.py:3088
 msgid "Open file on hover: "
 msgstr "Abrir arquivo ao passar o mouse:"
 
-#: ../src/main.py:3211
+#: ../src/main.py:3241
 msgid "Save"
 msgstr "Salvar"
 
-#: ../src/main.py:3259 ../src/main.py:3283
+#: ../src/main.py:3289 ../src/main.py:3313
 msgid "Name: "
 msgstr "Nome:"
 
-#: ../src/main.py:3259 ../src/main.py:3286
+#: ../src/main.py:3289 ../src/main.py:3316
 msgid "Server: "
 msgstr "Servidor:"
 
-#: ../src/main.py:3259 ../src/main.py:3289
+#: ../src/main.py:3289 ../src/main.py:3319
 msgid "User: "
 msgstr "Usuário:"
 
-#: ../src/main.py:3259 ../src/main.py:3292
+#: ../src/main.py:3289 ../src/main.py:3322
 msgid "Password: "
 msgstr "Senha:"
 
-#: ../src/main.py:3259 ../src/main.py:3295
+#: ../src/main.py:3289 ../src/main.py:3325
 msgid "Port: "
 msgstr "Porta:"
 
-#: ../src/main.py:3317
+#: ../src/main.py:3347
 msgid "Remote login"
 msgstr "Login remoto"
 
-#: ../src/main.py:3324
+#: ../src/main.py:3354
 msgid "Add"
 msgstr "Adicionar"
 
-#: ../src/main.py:3325
+#: ../src/main.py:3355
 msgid "Connection"
 msgstr "Conexão"
 
-#: ../src/main.py:3333
+#: ../src/main.py:3363
 msgid "Name"
 msgstr "Nome"
 
-#: ../src/main.py:3333
+#: ../src/main.py:3363
 msgid "Server"
 msgstr "Servidor"
 
-#: ../src/main.py:3340
+#: ../src/main.py:3370
 msgid "Add remote login"
 msgstr "Adicionar login remoto"
 
-#: ../src/main.py:3407
+#: ../src/main.py:3437
 msgid "Edit remote login"
 msgstr "Editar login remoto"
 
-#: ../src/main.py:3420
+#: ../src/main.py:3450
 msgid "Edit"
 msgstr "Editar"
 
-#: ../src/main.py:3421
+#: ../src/main.py:3451
 msgid "Delete"
 msgstr "Excluir"
 
-#: ../src/main.py:3581
+#: ../src/main.py:3611
 msgid "Reset"
 msgstr "Reconfigurar"
 
-#: ../src/main.py:3584
+#: ../src/main.py:3614
 msgid "Close"
 msgstr "Fechar"
 
-#: ../src/main.py:3844
+#: ../src/main.py:3874
 msgid "working directory"
 msgstr "Pasta em trabalho"
 
-#: ../src/main.py:3845
+#: ../src/main.py:3875
 msgid "run with quake mode"
 msgstr "executar com modo quake"
 
-#: ../src/main.py:3846
+#: ../src/main.py:3876
 msgid "startup terminal with given command"
 msgstr "inicializar terminal com comando dado"
 
-#: ../src/main.py:3847
+#: ../src/main.py:3877
 msgid "show this help message and exit"
 msgstr "mostrar essa mensagem de ajuda e sair"
 
-#: ../src/main.py:3848
+#: ../src/main.py:3878
 msgid "show program's version number and exit"
 msgstr "mostrar versão do programa e sair"
+
+#~ msgid "Railscasts"
+#~ msgstr "Railscasts"
