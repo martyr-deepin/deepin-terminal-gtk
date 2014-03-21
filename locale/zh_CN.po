@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-21 12:38+0800\n"
+"POT-Creation-Date: 2014-03-21 22:37+0800\n"
 "PO-Revision-Date: 2014-01-06 05:38+0000\n"
 "Last-Translator: electricface <songwentai@linuxdeepin.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/deepin-"
@@ -352,137 +352,136 @@ msgstr "颜色方案: "
 msgid "Background transparency: "
 msgstr "背景透明: "
 
-#: ../src/main.py:2969
-msgid "90"
-msgstr "137"
-
-#: ../src/main.py:3079
+#: ../src/main.py:3084
 msgid "Cursor shape: "
 msgstr "光标形状: "
 
-#: ../src/main.py:3080
+#: ../src/main.py:3085
 msgid "Cursor blink: "
 msgstr "光标闪烁: "
 
-#: ../src/main.py:3081
+#: ../src/main.py:3086
 msgid "Window state: "
 msgstr "窗口启动模式: "
 
-#: ../src/main.py:3082
+#: ../src/main.py:3087
 msgid "Startup command: "
 msgstr "自定义启动命令: "
 
-#: ../src/main.py:3083
+#: ../src/main.py:3088
 msgid "Startup directory: "
 msgstr "启动目录: "
 
-#: ../src/main.py:3084
+#: ../src/main.py:3089
 msgid "Ask on quit"
 msgstr "退出时询问"
 
-#: ../src/main.py:3085
+#: ../src/main.py:3090
 msgid "Scroll on keystroke: "
 msgstr "按键时滚动: "
 
-#: ../src/main.py:3086
+#: ../src/main.py:3091
 msgid "Scroll on output: "
 msgstr "输出时滚动: "
 
-#: ../src/main.py:3087
+#: ../src/main.py:3092
 msgid "Copy on selection: "
 msgstr "选中时拷贝: "
 
-#: ../src/main.py:3088
+#: ../src/main.py:3093
 msgid "Open file on hover: "
 msgstr "掠过时高亮可打开文件"
 
-#: ../src/main.py:3241
+#: ../src/main.py:3246
 msgid "Save"
 msgstr "保存"
 
-#: ../src/main.py:3289 ../src/main.py:3313
+#: ../src/main.py:3294 ../src/main.py:3318
 msgid "Name: "
 msgstr "名字: "
 
-#: ../src/main.py:3289 ../src/main.py:3316
+#: ../src/main.py:3294 ../src/main.py:3321
 msgid "Server: "
 msgstr "服务器: "
 
-#: ../src/main.py:3289 ../src/main.py:3319
+#: ../src/main.py:3294 ../src/main.py:3324
 msgid "User: "
 msgstr "用户名: "
 
-#: ../src/main.py:3289 ../src/main.py:3322
+#: ../src/main.py:3294 ../src/main.py:3327
 msgid "Password: "
 msgstr "密码: "
 
-#: ../src/main.py:3289 ../src/main.py:3325
+#: ../src/main.py:3294 ../src/main.py:3330
 msgid "Port: "
 msgstr "端口号: "
 
-#: ../src/main.py:3347
+#: ../src/main.py:3352
 msgid "Remote login"
 msgstr "远程登陆"
 
-#: ../src/main.py:3354
+#: ../src/main.py:3359
 msgid "Add"
 msgstr "添加"
 
-#: ../src/main.py:3355
+#: ../src/main.py:3360
 msgid "Connection"
 msgstr "连接"
 
-#: ../src/main.py:3363
+#: ../src/main.py:3368
 msgid "Name"
 msgstr "名字"
 
-#: ../src/main.py:3363
+#: ../src/main.py:3368
 msgid "Server"
 msgstr "服务器"
 
-#: ../src/main.py:3370
+#: ../src/main.py:3375
 msgid "Add remote login"
 msgstr "添加远程连接"
 
-#: ../src/main.py:3437
+#: ../src/main.py:3442
 msgid "Edit remote login"
 msgstr "编辑远程连接"
 
-#: ../src/main.py:3450
+#: ../src/main.py:3455
 msgid "Edit"
 msgstr "编辑"
 
-#: ../src/main.py:3451
+#: ../src/main.py:3456
 msgid "Delete"
 msgstr "删除"
 
-#: ../src/main.py:3611
+#: ../src/main.py:3616
 msgid "Reset"
 msgstr "恢复默认"
 
-#: ../src/main.py:3614
+#: ../src/main.py:3619
 msgid "Close"
 msgstr "关闭"
 
-#: ../src/main.py:3874
+#: ../src/main.py:3882
 msgid "working directory"
 msgstr "当前工作目录"
 
-#: ../src/main.py:3875
+#: ../src/main.py:3883
 msgid "run with quake mode"
 msgstr "以抖动模式运行"
 
-#: ../src/main.py:3876
+#: ../src/main.py:3884
 msgid "startup terminal with given command"
 msgstr "指定参数启动终端"
 
-#: ../src/main.py:3877
+#: ../src/main.py:3885
 msgid "show this help message and exit"
 msgstr "显示帮助并退出"
 
-#: ../src/main.py:3878
+#: ../src/main.py:3886
 msgid "show program's version number and exit"
 msgstr "显示程序版本号并退出"
+
+#~ msgid "90"
+#~ msgstr "137"
 
 #~ msgid "Railscasts"
 #~ msgstr "Railscasts"

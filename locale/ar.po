@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-21 12:38+0800\n"
+"POT-Creation-Date: 2014-03-21 22:37+0800\n"
 "PO-Revision-Date: 2014-02-16 00:35+0000\n"
 "Last-Translator: Mohd <mo-hd@windowslive.com>\n"
 "Language-Team: Arabic (http://www.transifex.com/projects/p/deepin-terminal/"
@@ -350,137 +350,136 @@ msgstr "مخطط الالوان :"
 msgid "Background transparency: "
 msgstr "شفافية الخلفية :"
 
-#: ../src/main.py:2969
-msgid "90"
-msgstr "90"
-
-#: ../src/main.py:3079
+#: ../src/main.py:3084
 msgid "Cursor shape: "
 msgstr "شكل المؤشر :"
 
-#: ../src/main.py:3080
+#: ../src/main.py:3085
 msgid "Cursor blink: "
 msgstr "وميض المؤشر :"
 
-#: ../src/main.py:3081
+#: ../src/main.py:3086
 msgid "Window state: "
 msgstr "حالة النافذة :"
 
-#: ../src/main.py:3082
+#: ../src/main.py:3087
 msgid "Startup command: "
 msgstr "أمر بدء التشغيل :"
 
-#: ../src/main.py:3083
+#: ../src/main.py:3088
 msgid "Startup directory: "
 msgstr "مسار بدء االتشغيل :"
 
-#: ../src/main.py:3084
+#: ../src/main.py:3089
 msgid "Ask on quit"
 msgstr "سؤال عند الخروج"
 
-#: ../src/main.py:3085
+#: ../src/main.py:3090
 msgid "Scroll on keystroke: "
 msgstr "التمرير عند ضغطة مفتاح :"
 
-#: ../src/main.py:3086
+#: ../src/main.py:3091
 msgid "Scroll on output: "
 msgstr "التمرير عنذ الإخراج :"
 
-#: ../src/main.py:3087
+#: ../src/main.py:3092
 msgid "Copy on selection: "
 msgstr "نسخ عند التحديد :"
 
-#: ../src/main.py:3088
+#: ../src/main.py:3093
 msgid "Open file on hover: "
 msgstr "فتح الملف عنذ مرور الفأرة :"
 
-#: ../src/main.py:3241
+#: ../src/main.py:3246
 msgid "Save"
 msgstr "حفظ"
 
-#: ../src/main.py:3289 ../src/main.py:3313
+#: ../src/main.py:3294 ../src/main.py:3318
 msgid "Name: "
 msgstr "الأسم :"
 
-#: ../src/main.py:3289 ../src/main.py:3316
+#: ../src/main.py:3294 ../src/main.py:3321
 msgid "Server: "
 msgstr "الخادم :"
 
-#: ../src/main.py:3289 ../src/main.py:3319
+#: ../src/main.py:3294 ../src/main.py:3324
 msgid "User: "
 msgstr "المستخدم :"
 
-#: ../src/main.py:3289 ../src/main.py:3322
+#: ../src/main.py:3294 ../src/main.py:3327
 msgid "Password: "
 msgstr "كلمة المرور :"
 
-#: ../src/main.py:3289 ../src/main.py:3325
+#: ../src/main.py:3294 ../src/main.py:3330
 msgid "Port: "
 msgstr "منفذ : "
 
-#: ../src/main.py:3347
+#: ../src/main.py:3352
 msgid "Remote login"
 msgstr "ولوج بعيد"
 
-#: ../src/main.py:3354
+#: ../src/main.py:3359
 msgid "Add"
 msgstr "أضف"
 
-#: ../src/main.py:3355
+#: ../src/main.py:3360
 msgid "Connection"
 msgstr "إتصال"
 
-#: ../src/main.py:3363
+#: ../src/main.py:3368
 msgid "Name"
 msgstr "إسم"
 
-#: ../src/main.py:3363
+#: ../src/main.py:3368
 msgid "Server"
 msgstr "خادم"
 
-#: ../src/main.py:3370
+#: ../src/main.py:3375
 msgid "Add remote login"
 msgstr "أضف الولوج البعيد"
 
-#: ../src/main.py:3437
+#: ../src/main.py:3442
 msgid "Edit remote login"
 msgstr "حرر الولوج البعيد"
 
-#: ../src/main.py:3450
+#: ../src/main.py:3455
 msgid "Edit"
 msgstr "حرر"
 
-#: ../src/main.py:3451
+#: ../src/main.py:3456
 msgid "Delete"
 msgstr "حذف"
 
-#: ../src/main.py:3611
+#: ../src/main.py:3616
 msgid "Reset"
 msgstr "إعادة ضبط"
 
-#: ../src/main.py:3614
+#: ../src/main.py:3619
 msgid "Close"
 msgstr "غلق"
 
-#: ../src/main.py:3874
+#: ../src/main.py:3882
 msgid "working directory"
 msgstr "مجلد العمل"
 
-#: ../src/main.py:3875
+#: ../src/main.py:3883
 msgid "run with quake mode"
 msgstr "تشغيل أسلوب الأهتزاز"
 
-#: ../src/main.py:3876
+#: ../src/main.py:3884
 msgid "startup terminal with given command"
 msgstr "بدء تشغيل الطرفية بأوامر محددة مسبقا"
 
-#: ../src/main.py:3877
+#: ../src/main.py:3885
 msgid "show this help message and exit"
 msgstr "عرض هذه الرسالة وأخرج"
 
-#: ../src/main.py:3878
+#: ../src/main.py:3886
 msgid "show program's version number and exit"
 msgstr "عرض رقم إصدار البرنامج وأخرج"
+
+#~ msgid "90"
+#~ msgstr "90"
 
 #~ msgid "Railscasts"
 #~ msgstr "Railscasts"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-21 12:38+0800\n"
+"POT-Creation-Date: 2014-03-21 22:37+0800\n"
 "PO-Revision-Date: 2014-02-22 23:36+0000\n"
 "Last-Translator: kloki <klokimass@gmail.com>\n"
 "Language-Team: Slovenian (http://www.transifex.com/projects/p/deepin-"
@@ -354,137 +354,136 @@ msgstr "Barvna shema:"
 msgid "Background transparency: "
 msgstr "Prosojnost ozadja:"
 
-#: ../src/main.py:2969
-msgid "90"
-msgstr "90"
-
-#: ../src/main.py:3079
+#: ../src/main.py:3084
 msgid "Cursor shape: "
 msgstr "Oblika kazalca:"
 
-#: ../src/main.py:3080
+#: ../src/main.py:3085
 msgid "Cursor blink: "
 msgstr "Utripanje kazalca:"
 
-#: ../src/main.py:3081
+#: ../src/main.py:3086
 msgid "Window state: "
 msgstr "Stanje okna:"
 
-#: ../src/main.py:3082
+#: ../src/main.py:3087
 msgid "Startup command: "
 msgstr "Zagonski ukaz:"
 
-#: ../src/main.py:3083
+#: ../src/main.py:3088
 msgid "Startup directory: "
 msgstr "Zagonski imenik:"
 
-#: ../src/main.py:3084
+#: ../src/main.py:3089
 msgid "Ask on quit"
 msgstr "Vprašaj ob izhodu"
 
-#: ../src/main.py:3085
+#: ../src/main.py:3090
 msgid "Scroll on keystroke: "
 msgstr "Premikaj se s tipkovnico:"
 
-#: ../src/main.py:3086
+#: ../src/main.py:3091
 msgid "Scroll on output: "
 msgstr "Pomakni se na izhod:"
 
-#: ../src/main.py:3087
+#: ../src/main.py:3092
 msgid "Copy on selection: "
 msgstr "Kopiraj izbor:"
 
-#: ../src/main.py:3088
+#: ../src/main.py:3093
 msgid "Open file on hover: "
 msgstr "Odpri datoteko ob prejemu:"
 
-#: ../src/main.py:3241
+#: ../src/main.py:3246
 msgid "Save"
 msgstr "Shrani"
 
-#: ../src/main.py:3289 ../src/main.py:3313
+#: ../src/main.py:3294 ../src/main.py:3318
 msgid "Name: "
 msgstr "Ime:"
 
-#: ../src/main.py:3289 ../src/main.py:3316
+#: ../src/main.py:3294 ../src/main.py:3321
 msgid "Server: "
 msgstr "Strežnik:"
 
-#: ../src/main.py:3289 ../src/main.py:3319
+#: ../src/main.py:3294 ../src/main.py:3324
 msgid "User: "
 msgstr "Uporabnik:"
 
-#: ../src/main.py:3289 ../src/main.py:3322
+#: ../src/main.py:3294 ../src/main.py:3327
 msgid "Password: "
 msgstr "Geslo:"
 
-#: ../src/main.py:3289 ../src/main.py:3325
+#: ../src/main.py:3294 ../src/main.py:3330
 msgid "Port: "
 msgstr "Priključek (Port):"
 
-#: ../src/main.py:3347
+#: ../src/main.py:3352
 msgid "Remote login"
 msgstr "Oddaljena prijava"
 
-#: ../src/main.py:3354
+#: ../src/main.py:3359
 msgid "Add"
 msgstr "Dodaj"
 
-#: ../src/main.py:3355
+#: ../src/main.py:3360
 msgid "Connection"
 msgstr "Povezava"
 
-#: ../src/main.py:3363
+#: ../src/main.py:3368
 msgid "Name"
 msgstr "Ime"
 
-#: ../src/main.py:3363
+#: ../src/main.py:3368
 msgid "Server"
 msgstr "Strežnik"
 
-#: ../src/main.py:3370
+#: ../src/main.py:3375
 msgid "Add remote login"
 msgstr "Dodaj oddaljeno prijavo"
 
-#: ../src/main.py:3437
+#: ../src/main.py:3442
 msgid "Edit remote login"
 msgstr "Uredi oddaljeno prijavo"
 
-#: ../src/main.py:3450
+#: ../src/main.py:3455
 msgid "Edit"
 msgstr "Uredi"
 
-#: ../src/main.py:3451
+#: ../src/main.py:3456
 msgid "Delete"
 msgstr "Izbriši"
 
-#: ../src/main.py:3611
+#: ../src/main.py:3616
 msgid "Reset"
 msgstr "Ponastavi"
 
-#: ../src/main.py:3614
+#: ../src/main.py:3619
 msgid "Close"
 msgstr "Zapri"
 
-#: ../src/main.py:3874
+#: ../src/main.py:3882
 msgid "working directory"
 msgstr "delovni imenik"
 
-#: ../src/main.py:3875
+#: ../src/main.py:3883
 msgid "run with quake mode"
 msgstr "zaženi v načinu quake"
 
-#: ../src/main.py:3876
+#: ../src/main.py:3884
 msgid "startup terminal with given command"
 msgstr "zaženi terminal z danim ukazom"
 
-#: ../src/main.py:3877
+#: ../src/main.py:3885
 msgid "show this help message and exit"
 msgstr "prikaži sporočilo za pomoč in zapri"
 
-#: ../src/main.py:3878
+#: ../src/main.py:3886
 msgid "show program's version number and exit"
 msgstr "prikaži različico programa in zapri"
+
+#~ msgid "90"
+#~ msgstr "90"
 
 #~ msgid "Railscasts"
 #~ msgstr "Odtenek železniških tirov"

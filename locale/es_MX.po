@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-21 12:38+0800\n"
+"POT-Creation-Date: 2014-03-21 22:37+0800\n"
 "PO-Revision-Date: 2014-02-10 02:33+0000\n"
 "Last-Translator: cxbii <mycxbii@gmail.com>\n"
 "Language-Team: Spanish (Mexico) (http://www.transifex.com/projects/p/deepin-"
@@ -346,134 +346,130 @@ msgstr ""
 msgid "Background transparency: "
 msgstr ""
 
-#: ../src/main.py:2969
-msgid "90"
-msgstr ""
-
-#: ../src/main.py:3079
+#: ../src/main.py:3084
 msgid "Cursor shape: "
 msgstr ""
 
-#: ../src/main.py:3080
+#: ../src/main.py:3085
 msgid "Cursor blink: "
 msgstr ""
 
-#: ../src/main.py:3081
+#: ../src/main.py:3086
 msgid "Window state: "
 msgstr ""
 
-#: ../src/main.py:3082
+#: ../src/main.py:3087
 msgid "Startup command: "
 msgstr ""
 
-#: ../src/main.py:3083
+#: ../src/main.py:3088
 msgid "Startup directory: "
 msgstr ""
 
-#: ../src/main.py:3084
+#: ../src/main.py:3089
 msgid "Ask on quit"
 msgstr ""
 
-#: ../src/main.py:3085
+#: ../src/main.py:3090
 msgid "Scroll on keystroke: "
 msgstr ""
 
-#: ../src/main.py:3086
+#: ../src/main.py:3091
 msgid "Scroll on output: "
 msgstr ""
 
-#: ../src/main.py:3087
+#: ../src/main.py:3092
 msgid "Copy on selection: "
 msgstr ""
 
-#: ../src/main.py:3088
+#: ../src/main.py:3093
 msgid "Open file on hover: "
 msgstr ""
 
-#: ../src/main.py:3241
+#: ../src/main.py:3246
 msgid "Save"
 msgstr ""
 
-#: ../src/main.py:3289 ../src/main.py:3313
+#: ../src/main.py:3294 ../src/main.py:3318
 msgid "Name: "
 msgstr ""
 
-#: ../src/main.py:3289 ../src/main.py:3316
+#: ../src/main.py:3294 ../src/main.py:3321
 msgid "Server: "
 msgstr ""
 
-#: ../src/main.py:3289 ../src/main.py:3319
+#: ../src/main.py:3294 ../src/main.py:3324
 msgid "User: "
 msgstr ""
 
-#: ../src/main.py:3289 ../src/main.py:3322
+#: ../src/main.py:3294 ../src/main.py:3327
 msgid "Password: "
 msgstr ""
 
-#: ../src/main.py:3289 ../src/main.py:3325
+#: ../src/main.py:3294 ../src/main.py:3330
 msgid "Port: "
 msgstr ""
 
-#: ../src/main.py:3347
+#: ../src/main.py:3352
 msgid "Remote login"
 msgstr ""
 
-#: ../src/main.py:3354
+#: ../src/main.py:3359
 msgid "Add"
 msgstr ""
 
-#: ../src/main.py:3355
+#: ../src/main.py:3360
 msgid "Connection"
 msgstr ""
 
-#: ../src/main.py:3363
+#: ../src/main.py:3368
 msgid "Name"
 msgstr ""
 
-#: ../src/main.py:3363
+#: ../src/main.py:3368
 msgid "Server"
 msgstr ""
 
-#: ../src/main.py:3370
+#: ../src/main.py:3375
 msgid "Add remote login"
 msgstr ""
 
-#: ../src/main.py:3437
+#: ../src/main.py:3442
 msgid "Edit remote login"
 msgstr ""
 
-#: ../src/main.py:3450
+#: ../src/main.py:3455
 msgid "Edit"
 msgstr ""
 
-#: ../src/main.py:3451
+#: ../src/main.py:3456
 msgid "Delete"
 msgstr ""
 
-#: ../src/main.py:3611
+#: ../src/main.py:3616
 msgid "Reset"
 msgstr ""
 
-#: ../src/main.py:3614
+#: ../src/main.py:3619
 msgid "Close"
 msgstr ""
 
-#: ../src/main.py:3874
+#: ../src/main.py:3882
 msgid "working directory"
 msgstr ""
 
-#: ../src/main.py:3875
+#: ../src/main.py:3883
 msgid "run with quake mode"
 msgstr ""
 
-#: ../src/main.py:3876
+#: ../src/main.py:3884
 msgid "startup terminal with given command"
 msgstr ""
 
-#: ../src/main.py:3877
+#: ../src/main.py:3885
 msgid "show this help message and exit"
 msgstr ""
 
-#: ../src/main.py:3878
+#: ../src/main.py:3886
 msgid "show program's version number and exit"
 msgstr ""

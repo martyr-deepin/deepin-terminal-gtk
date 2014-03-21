@@ -2965,15 +2965,20 @@ class KeybindSettings(ScrolledWindow):
         self.table.set_row_spacings(TABLE_ROW_SPACING)
         self.table.set_col_spacing(0, TABLE_COLUMN_SPACING)
         self.table_align = gtk.Alignment()
-        self.table_align.set(0, 0, 1, 1)
-        self.table_align.set_padding(TABLE_PADDING_TOP, TABLE_PADDING_BOTTOM, TABLE_PADDING_LEFT, int(_("90")))
+        self.table_align.set(0, 0, 0, 0)
+        self.table_align.set_padding(TABLE_PADDING_TOP, TABLE_PADDING_BOTTOM, TABLE_PADDING_LEFT, 0)
         
         self.fill_table(self.table, key_name_dict)
         self.table_align.add(self.table)
-        self.box.add(self.table_align)
+        self.box.pack_start(self.table_align)
         self.add_with_viewport(self.box)
         
         self.connect("hierarchy-changed", lambda w, t: self.get_vadjustment().set_value(0))
+        self.connect("size-allocate", self.realize_callback)
+        
+    def realize_callback(self, widget, rect):
+        self.box.set_size_request(483, -1)
+        self.table_align.set_size_request(483, -1)
         
     def fill_table(self, table, key_name_dict):
         for (index, (key_value, key_name)) in enumerate(key_name_dict.items()):

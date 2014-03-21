@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-21 12:38+0800\n"
+"POT-Creation-Date: 2014-03-21 22:37+0800\n"
 "PO-Revision-Date: 2013-12-26 16:42+0000\n"
 "Last-Translator: fri <pavelfric@seznam.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/projects/p/deepin-terminal/"
@@ -350,137 +350,136 @@ msgstr "Barevné schéma: "
 msgid "Background transparency: "
 msgstr "Průhlednost pozadí: "
 
-#: ../src/main.py:2969
-msgid "90"
-msgstr "67"
-
-#: ../src/main.py:3079
+#: ../src/main.py:3084
 msgid "Cursor shape: "
 msgstr "Tvar ukazatele: "
 
-#: ../src/main.py:3080
+#: ../src/main.py:3085
 msgid "Cursor blink: "
 msgstr "Blikání ukazatele: "
 
-#: ../src/main.py:3081
+#: ../src/main.py:3086
 msgid "Window state: "
 msgstr "Stav okna: "
 
-#: ../src/main.py:3082
+#: ../src/main.py:3087
 msgid "Startup command: "
 msgstr "Spouštěcí příkaz: "
 
-#: ../src/main.py:3083
+#: ../src/main.py:3088
 msgid "Startup directory: "
 msgstr "Spouštěcí adresář: "
 
-#: ../src/main.py:3084
+#: ../src/main.py:3089
 msgid "Ask on quit"
 msgstr "Zeptat se při ukončení"
 
-#: ../src/main.py:3085
+#: ../src/main.py:3090
 msgid "Scroll on keystroke: "
 msgstr "Posunout při úhozu na klávesnici: "
 
-#: ../src/main.py:3086
+#: ../src/main.py:3091
 msgid "Scroll on output: "
 msgstr "Posunout při výstupu: "
 
-#: ../src/main.py:3087
+#: ../src/main.py:3092
 msgid "Copy on selection: "
 msgstr "Kopírovat při výběru: "
 
-#: ../src/main.py:3088
+#: ../src/main.py:3093
 msgid "Open file on hover: "
 msgstr "Otevřít soubor při přejetí: "
 
-#: ../src/main.py:3241
+#: ../src/main.py:3246
 msgid "Save"
 msgstr "Uložit"
 
-#: ../src/main.py:3289 ../src/main.py:3313
+#: ../src/main.py:3294 ../src/main.py:3318
 msgid "Name: "
 msgstr "Název: "
 
-#: ../src/main.py:3289 ../src/main.py:3316
+#: ../src/main.py:3294 ../src/main.py:3321
 msgid "Server: "
 msgstr "Server: "
 
-#: ../src/main.py:3289 ../src/main.py:3319
+#: ../src/main.py:3294 ../src/main.py:3324
 msgid "User: "
 msgstr "Uživatel: "
 
-#: ../src/main.py:3289 ../src/main.py:3322
+#: ../src/main.py:3294 ../src/main.py:3327
 msgid "Password: "
 msgstr "Heslo: "
 
-#: ../src/main.py:3289 ../src/main.py:3325
+#: ../src/main.py:3294 ../src/main.py:3330
 msgid "Port: "
 msgstr "Přípojka (port): "
 
-#: ../src/main.py:3347
+#: ../src/main.py:3352
 msgid "Remote login"
 msgstr "Vzdálené přihlášení"
 
-#: ../src/main.py:3354
+#: ../src/main.py:3359
 msgid "Add"
 msgstr "Přidat"
 
-#: ../src/main.py:3355
+#: ../src/main.py:3360
 msgid "Connection"
 msgstr "Spojení"
 
-#: ../src/main.py:3363
+#: ../src/main.py:3368
 msgid "Name"
 msgstr "Název"
 
-#: ../src/main.py:3363
+#: ../src/main.py:3368
 msgid "Server"
 msgstr "Server"
 
-#: ../src/main.py:3370
+#: ../src/main.py:3375
 msgid "Add remote login"
 msgstr "Přidat vzdálené přihlášení"
 
-#: ../src/main.py:3437
+#: ../src/main.py:3442
 msgid "Edit remote login"
 msgstr "Upravit vzdálené přihlášení"
 
-#: ../src/main.py:3450
+#: ../src/main.py:3455
 msgid "Edit"
 msgstr "Upravit"
 
-#: ../src/main.py:3451
+#: ../src/main.py:3456
 msgid "Delete"
 msgstr "Smazat"
 
-#: ../src/main.py:3611
+#: ../src/main.py:3616
 msgid "Reset"
 msgstr "Nastavit znovu"
 
-#: ../src/main.py:3614
+#: ../src/main.py:3619
 msgid "Close"
 msgstr "Zavřít"
 
-#: ../src/main.py:3874
+#: ../src/main.py:3882
 msgid "working directory"
 msgstr "Pracovní adresář"
 
-#: ../src/main.py:3875
+#: ../src/main.py:3883
 msgid "run with quake mode"
 msgstr "Spustit v režimu quake"
 
-#: ../src/main.py:3876
+#: ../src/main.py:3884
 msgid "startup terminal with given command"
 msgstr "Spustit terminál zadaným příkazem"
 
-#: ../src/main.py:3877
+#: ../src/main.py:3885
 msgid "show this help message and exit"
 msgstr "Ukázat tuto zprávu s nápovědou a ukončit"
 
-#: ../src/main.py:3878
+#: ../src/main.py:3886
 msgid "show program's version number and exit"
 msgstr "Ukázat číslo s verzí programu a ukončit"
+
+#~ msgid "90"
+#~ msgstr "67"
 
 #~ msgid "Railscasts"
 #~ msgstr "Železniční odstín"
