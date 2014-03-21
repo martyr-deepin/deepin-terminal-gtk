@@ -358,9 +358,10 @@ class Terminal(object):
         self.terminal_align.add(self.terminal_box)
         
         self.statusbar = Statusbar()
+        self.statusbar_box = gtk.HBox()
         
         self.application.main_box.pack_start(self.terminal_align)
-        self.application.main_box.pack_start(self.statusbar, False, False)
+        self.application.main_box.pack_start(self.statusbar_box, False, False)
         
         self.workspace_list = []
         self.first_workspace()
@@ -432,6 +433,15 @@ class Terminal(object):
         if self.quake_mode:
             self.fullscreen()
             
+    def show_statusbar(self):
+        container_remove_all(self.statusbar_box)
+        self.statusbar_box.add(self.statusbar)
+        
+        self.statusbar_box.show_all()
+        
+    def hide_statusbar(self):
+        container_remove_all(self.statusbar_box)
+            
     def draw_terminal_skin(self, cr, x, y, w, h):
         statusbar_height = self.statusbar.height
         cr.rectangle(x, y, w, h - statusbar_height)
@@ -501,15 +511,20 @@ class Terminal(object):
     def adjust_terminal_padding(self):        
         if self.application.window.allocation.width == gtk.gdk.screen_width():
             self.terminal_align.set_padding(0, 0, 0, 0)
+            
             self.statusbar.set_padding(1, 0, 0, 0)
             self.statusbar.adjust_padding(0, 0, 0, 0)
             self.draw_skin_padding = 0
         else:
-            self.terminal_align.set_padding(0, 0, self.normal_padding, self.normal_padding)
+            if len(self.workspace_list) > 1:
+                self.terminal_align.set_padding(0, 0, self.normal_padding, self.normal_padding)
+            else:
+                self.terminal_align.set_padding(0, self.normal_padding, self.normal_padding, self.normal_padding)
+            
             self.statusbar.set_padding(0, self.normal_padding, self.normal_padding, self.normal_padding)
             self.statusbar.adjust_padding(0, self.normal_padding, self.normal_padding, self.normal_padding)
             self.draw_skin_padding = 2
-        
+                    
     def window_is_active(self, window, param):
         global focus_terminal
         
@@ -957,7 +972,22 @@ class Terminal(object):
     def update_workspace_indicator(self):
         self.statusbar.workspace_indicator.workspaces = map(lambda workspace: workspace.workspace_index, self.workspace_list)
         self.statusbar.workspace_indicator.current_workspace_index = self.terminal_box.get_children()[0].workspace_index
-                
+        
+        if len(self.workspace_list) > 1:
+            self.show_statusbar()
+            
+            if self.application.window.allocation.width == gtk.gdk.screen_width():
+                self.terminal_align.set_padding(0, 0, 0, 0)
+            else:
+                self.terminal_align.set_padding(0, 0, self.normal_padding, self.normal_padding)
+        else:
+            self.hide_statusbar()
+            
+            if self.application.window.allocation.width == gtk.gdk.screen_width():
+                self.terminal_align.set_padding(0, self.normal_padding, 0, 0)
+            else:
+                self.terminal_align.set_padding(0, self.normal_padding, self.normal_padding, self.normal_padding)
+            
     def get_workspace_index(self):
         if len(self.workspace_list) == 0:
             return 1
