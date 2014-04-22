@@ -2796,7 +2796,7 @@ class GeneralSettings(gtk.VBox):
         gtk.VBox.__init__(self)
         
         font = get_config("general", "font")
-        font_families = get_font_families()
+        font_families = get_font_families(True)
         font_items = map(lambda i: (i, i), font_families)
         self.font_widget = ComboBox(font_items, droplist_height=200, fixed_width=COMBO_BOX_WIDTH)
         try:
