@@ -305,6 +305,7 @@ class Terminal(object):
                  quake_mode=False, 
                  working_directory=None,
                  cmdline_startup_command=None,
+                 terminal_has_startup=False,
                  ):
         """
         Init Terminal class.
@@ -323,7 +324,7 @@ class Terminal(object):
         
         self.application = Application(
             destroy_func=self.quit,
-            always_at_center=False,
+            always_at_center=not terminal_has_startup,
         )
         
         default_window_width = 664
@@ -3895,5 +3896,7 @@ if __name__ == "__main__":
     
     (opts, args) = parser.parse_args()
     
-    if (not opts.quake_mode) or (not is_exists(APP_DBUS_NAME, APP_OBJECT_NAME)):
-        Terminal(opts.quake_mode, opts.working_directory, opts.startup_command).run()
+    terminal_has_startup = is_exists(APP_DBUS_NAME, APP_OBJECT_NAME)
+    
+    if (not opts.quake_mode) or (not terminal_has_startup):
+        Terminal(opts.quake_mode, opts.working_directory, opts.startup_command, terminal_has_startup).run()
