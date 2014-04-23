@@ -314,13 +314,12 @@ class Terminal(object):
         self.working_directory = working_directory
         self.cmdline_startup_command = cmdline_startup_command
         
-        if self.quake_mode:
-            UniqueService(
-                dbus.service.BusName(APP_DBUS_NAME, bus=dbus.SessionBus()),
-                APP_DBUS_NAME, 
-                APP_OBJECT_NAME,
-                self.quake,
-                )
+        UniqueService(
+            dbus.service.BusName(APP_DBUS_NAME, bus=dbus.SessionBus()),
+            APP_DBUS_NAME, 
+            APP_OBJECT_NAME,
+            self.quake,
+        )
         
         self.application = Application(
             destroy_func=self.quit,
@@ -542,19 +541,20 @@ class Terminal(object):
                 self.workspace_switcher.hide()
         
     def quake(self):
-        global focus_terminal
-        
-        if self.application.window.get_visible():
-            if self.application.window.props.is_active:
-                self.application.window.hide_all()
+        if self.quake_mode:
+            global focus_terminal
+            
+            if self.application.window.get_visible():
+                if self.application.window.props.is_active:
+                    self.application.window.hide_all()
+                else:
+                    self.application.window.present()
             else:
-                self.application.window.present()
-        else:
-            self.application.window.show_all()
-            self.fullscreen()
-
-        if focus_terminal:
-            focus_terminal.grab_focus()
+                self.application.window.show_all()
+                self.fullscreen()
+            
+            if focus_terminal:
+                focus_terminal.grab_focus()
         
     def ssh_login(self, user, server, password, port):
         active_terminal = self.application.window.get_focus()
