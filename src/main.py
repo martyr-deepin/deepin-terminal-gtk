@@ -93,11 +93,11 @@ from dtk.ui.utils import color_hex_to_cairo, alpha_color_hex_to_cairo, cairo_dis
 from tempfile import NamedTemporaryFile
 import dbus
 
-QUAKE_DBUS_NAME   = "com.deepin.terminal-quake"
-QUAKE_OBJECT_NAME = "/com/deepin/terminal-quake"
+QUAKE_DBUS_NAME   = "com.deepin.terminal_quake"
+QUAKE_OBJECT_NAME = "/com/deepin/terminal_quake"
 
-UNIQUE_DBUS_NAME   = "com.deepin.terminal-unique"
-UNIQUE_OBJECT_NAME = "/com/deepin/terminal-unique"
+UNIQUE_DBUS_NAME   = "com.deepin.terminal_unique"
+UNIQUE_OBJECT_NAME = "/com/deepin/terminal_unique"
 
 # Load customize rc style before any other.
 PANED_HANDLE_SIZE = 2
