@@ -93,8 +93,11 @@ from dtk.ui.utils import color_hex_to_cairo, alpha_color_hex_to_cairo, cairo_dis
 from tempfile import NamedTemporaryFile
 import dbus
 
-APP_DBUS_NAME   = "com.deepin.terminal-quake"
-APP_OBJECT_NAME = "/com/deepin/terminal-quake"
+QUAKE_DBUS_NAME   = "com.deepin.terminal-quake"
+QUAKE_OBJECT_NAME = "/com/deepin/terminal-quake"
+
+UNIQUE_DBUS_NAME   = "com.deepin.terminal-unique"
+UNIQUE_OBJECT_NAME = "/com/deepin/terminal-unique"
 
 # Load customize rc style before any other.
 PANED_HANDLE_SIZE = 2
@@ -313,17 +316,24 @@ class Terminal(object):
         self.working_directory = working_directory
         self.cmdline_startup_command = cmdline_startup_command
         
+        if not is_exists(UNIQUE_DBUS_NAME, UNIQUE_OBJECT_NAME):
+            UniqueService(
+                dbus.service.BusName(UNIQUE_DBUS_NAME, bus=dbus.SessionBus()),
+                UNIQUE_DBUS_NAME, 
+                UNIQUE_OBJECT_NAME,
+            )
+        
         if self.quake_mode:
             UniqueService(
-                dbus.service.BusName(APP_DBUS_NAME, bus=dbus.SessionBus()),
-                APP_DBUS_NAME, 
-                APP_OBJECT_NAME,
+                dbus.service.BusName(QUAKE_DBUS_NAME, bus=dbus.SessionBus()),
+                QUAKE_DBUS_NAME, 
+                QUAKE_OBJECT_NAME,
                 self.quake,
             )
         
         self.application = Application(
             destroy_func=self.quit,
-            always_at_center=False,
+            always_at_center=is_exists(UNIQUE_DBUS_NAME, UNIQUE_OBJECT_NAME),
         )
         
         default_window_width = 664
@@ -3895,6 +3905,6 @@ if __name__ == "__main__":
     
     (opts, args) = parser.parse_args()
     
-    if (not opts.quake_mode) or (not is_exists(APP_DBUS_NAME, APP_OBJECT_NAME)):
+    if (not opts.quake_mode) or (not is_exists(QUAKE_DBUS_NAME, QUAKE_OBJECT_NAME)):
         Terminal(opts.quake_mode, opts.working_directory, opts.startup_command).run()
     
