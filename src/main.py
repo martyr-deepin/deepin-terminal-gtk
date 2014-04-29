@@ -324,12 +324,14 @@ class Terminal(object):
                 self.quake,
             )
         
+        terminal_has_running = is_exists(UNIQUE_DBUS_NAME, UNIQUE_OBJECT_NAME)
+            
         self.application = Application(
             destroy_func=self.quit,
-            always_at_center=is_exists(UNIQUE_DBUS_NAME, UNIQUE_OBJECT_NAME),
+            always_at_center=not terminal_has_running
         )
         
-        if not is_exists(UNIQUE_DBUS_NAME, UNIQUE_OBJECT_NAME):
+        if not terminal_has_running:
             UniqueService(
                 dbus.service.BusName(UNIQUE_DBUS_NAME, bus=dbus.SessionBus()),
                 UNIQUE_DBUS_NAME, 
