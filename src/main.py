@@ -316,13 +316,6 @@ class Terminal(object):
         self.working_directory = working_directory
         self.cmdline_startup_command = cmdline_startup_command
         
-        if not is_exists(UNIQUE_DBUS_NAME, UNIQUE_OBJECT_NAME):
-            UniqueService(
-                dbus.service.BusName(UNIQUE_DBUS_NAME, bus=dbus.SessionBus()),
-                UNIQUE_DBUS_NAME, 
-                UNIQUE_OBJECT_NAME,
-            )
-        
         if self.quake_mode:
             UniqueService(
                 dbus.service.BusName(QUAKE_DBUS_NAME, bus=dbus.SessionBus()),
@@ -336,6 +329,14 @@ class Terminal(object):
             always_at_center=is_exists(UNIQUE_DBUS_NAME, UNIQUE_OBJECT_NAME),
         )
         
+        
+        if not is_exists(UNIQUE_DBUS_NAME, UNIQUE_OBJECT_NAME):
+            UniqueService(
+                dbus.service.BusName(UNIQUE_DBUS_NAME, bus=dbus.SessionBus()),
+                UNIQUE_DBUS_NAME, 
+                UNIQUE_OBJECT_NAME,
+            )
+            
         default_window_width = 664
         default_window_height = 466
         window_width = int(get_config("save_state", "window_width", default_window_width))
