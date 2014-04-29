@@ -93,8 +93,8 @@ from dtk.ui.utils import color_hex_to_cairo, alpha_color_hex_to_cairo, cairo_dis
 from tempfile import NamedTemporaryFile
 import dbus
 
-APP_DBUS_NAME   = "com.deepin.terminal"
-APP_OBJECT_NAME = "/com/deepin/terminal"
+APP_DBUS_NAME   = "com.deepin.terminal-quake"
+APP_OBJECT_NAME = "/com/deepin/terminal-quake"
 
 # Load customize rc style before any other.
 PANED_HANDLE_SIZE = 2
@@ -305,7 +305,6 @@ class Terminal(object):
                  quake_mode=False, 
                  working_directory=None,
                  cmdline_startup_command=None,
-                 terminal_has_startup=False,
                  ):
         """
         Init Terminal class.
@@ -314,16 +313,17 @@ class Terminal(object):
         self.working_directory = working_directory
         self.cmdline_startup_command = cmdline_startup_command
         
-        UniqueService(
-            dbus.service.BusName(APP_DBUS_NAME, bus=dbus.SessionBus()),
-            APP_DBUS_NAME, 
-            APP_OBJECT_NAME,
-            self.quake,
-        )
+        if self.quake_mode:
+            UniqueService(
+                dbus.service.BusName(APP_DBUS_NAME, bus=dbus.SessionBus()),
+                APP_DBUS_NAME, 
+                APP_OBJECT_NAME,
+                self.quake,
+            )
         
         self.application = Application(
             destroy_func=self.quit,
-            always_at_center=not terminal_has_startup,
+            always_at_center=False,
         )
         
         default_window_width = 664
@@ -541,20 +541,19 @@ class Terminal(object):
                 self.workspace_switcher.hide()
         
     def quake(self):
-        if self.quake_mode:
-            global focus_terminal
-            
-            if self.application.window.get_visible():
-                if self.application.window.props.is_active:
-                    self.application.window.hide_all()
-                else:
-                    self.application.window.present()
+        global focus_terminal
+        
+        if self.application.window.get_visible():
+            if self.application.window.props.is_active:
+                self.application.window.hide_all()
             else:
-                self.application.window.show_all()
-                self.fullscreen()
-            
-            if focus_terminal:
-                focus_terminal.grab_focus()
+                self.application.window.present()
+        else:
+            self.application.window.show_all()
+            self.fullscreen()
+        
+        if focus_terminal:
+            focus_terminal.grab_focus()
         
     def ssh_login(self, user, server, password, port):
         active_terminal = self.application.window.get_focus()
@@ -3896,7 +3895,6 @@ if __name__ == "__main__":
     
     (opts, args) = parser.parse_args()
     
-    terminal_has_startup = is_exists(APP_DBUS_NAME, APP_OBJECT_NAME)
+    if (not opts.quake_mode) or (not is_exists(APP_DBUS_NAME, APP_OBJECT_NAME)):
+        Terminal(opts.quake_mode, opts.working_directory, opts.startup_command).run()
     
-    if (not opts.quake_mode) or (not terminal_has_startup):
-        Terminal(opts.quake_mode, opts.working_directory, opts.startup_command, terminal_has_startup).run()
