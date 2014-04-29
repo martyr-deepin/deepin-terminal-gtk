@@ -329,7 +329,6 @@ class Terminal(object):
             always_at_center=is_exists(UNIQUE_DBUS_NAME, UNIQUE_OBJECT_NAME),
         )
         
-        
         if not is_exists(UNIQUE_DBUS_NAME, UNIQUE_OBJECT_NAME):
             UniqueService(
                 dbus.service.BusName(UNIQUE_DBUS_NAME, bus=dbus.SessionBus()),
