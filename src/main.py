@@ -568,8 +568,8 @@ class Terminal(object):
             focus_terminal.grab_focus()
         
     def ssh_login(self, user, server, password, port):
-        active_terminal = self.application.window.get_focus()
-        if active_terminal and isinstance(active_terminal, TerminalWrapper):
+        global focus_terminal
+        if focus_terminal:
             with open(os.path.join(get_parent_dir(__file__), "ssh_login.sh")) as file:
                 content = ''.join(file.readlines())
             content = content.replace("<<USER>>", user)
@@ -581,7 +581,7 @@ class Terminal(object):
             # be delete by itself
             with NamedTemporaryFile(delete=False) as tempfile:
                 tempfile.write(content)
-            active_terminal.feed_child("expect -f " + tempfile.name + "\n")
+            focus_terminal.feed_child("expect -f " + tempfile.name + "\n")
         
     def keybind_change(self, key_value, new_key):
         for workspace in self.workspace_list:
