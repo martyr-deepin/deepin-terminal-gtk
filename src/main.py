@@ -1308,7 +1308,14 @@ class TerminalWrapper(vte.Terminal):
             
         if cmdline_startup_command and cmdline_startup_command != "":
             if len(cmdline_startup_command) == 1:
-                self.process_id = self.fork_command(cmdline_startup_command[0], cmdline_startup_command)
+                cmdline_command = cmdline_startup_command[0]
+                # Execute command notify user install it if command is not exist.
+                if commands.getoutput("which %s" % cmdline_command) == "":
+                    self.process_id = self.fork_command(os.getenv("SHELL"))
+                    self.feed_child("%s\n" % cmdline_command)
+                # Otherwise just execute command.
+                else:
+                    self.process_id = self.fork_command(cmdline_command, cmdline_startup_command)
             else:
                 self.process_id = self.fork_command("/bin/sh", cmdline_startup_command)
         else:
