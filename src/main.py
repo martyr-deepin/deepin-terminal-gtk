@@ -126,6 +126,75 @@ CURSOR_SHAPE_ITEMS =[(_("Block"), "block"),
 CURSOR_BLINK_MODE_ITEMS =[(_("System"), "system"),
                           (_("On"), "on"),
                           (_("Off"), "off")]
+
+ENCODINGS = [(_("Western"), "ISO-8859-1"),
+             (_("Central European"), "ISO-8859-2"),
+             (_("South European"), "ISO-8859-3"),
+             (_("Baltic"), "ISO-8859-4"),
+             (_("Cyrillic"), "ISO-8859-5"),
+             (_("Arabic"), "ISO-8859-6"),
+             (_("Greek"), "ISO-8859-7"),
+             (_("Hebrew Visual"), "ISO-8859-8"),
+             (_("Hebrew"), "ISO-8859-8-I"),
+             (_("Turkish"), "ISO-8859-9"),
+             (_("Nordic"), "ISO-8859-10"),
+             (_("Baltic"), "ISO-8859-13"),
+             (_("Celtic"), "ISO-8859-14"),
+             (_("Western"), "ISO-8859-15"),
+             (_("Romanian"), "ISO-8859-16"),
+             (_("Unicode"), "UTF-8"),
+             (_("Armenian"), "ARMSCII-8"),
+             (_("Chinese Traditional"), "BIG5"),
+             (_("Chinese Traditional"), "BIG5-HKSCS"),
+             (_("Cyrillic/Russian"), "CP866"),
+             (_("Japanese"), "EUC-JP"),
+             (_("Korean"), "EUC-KR"),
+             (_("Chinese Traditional"), "EUC-TW"),
+             (_("Chinese Simplified"), "GB18030"),
+             (_("Chinese Simplified"), "GB2312"),
+             (_("Chinese Simplified"), "GBK"),
+             (_("Georgian"), "GEORGIAN-PS"),
+             (_("Chinese Simplified"), "HZ"),
+             (_("Western"), "IBM850"),
+             (_("Central European"), "IBM852"),
+             (_("Cyrillic"), "IBM855"),
+             (_("Turkish"), "IBM857"),
+             (_("Hebrew"), "IBM862"),
+             (_("Arabic"), "IBM864"),
+             (_("Japanese"), "ISO-2022-JP"),
+             (_("Korean"), "ISO-2022-KR"),
+             (_("Cyrillic"), "ISO-IR-111"),
+             (_("Cyrillic"), "KOI8-R"),
+             (_("Cyrillic/Ukrainian"), "KOI8-U"),
+             (_("Arabic"), "MAC_ARABIC"),
+             (_("Central European"), "MAC_CE"),
+             (_("Croatian"), "MAC_CROATIAN"),
+             (_("Cyrillic"), "MAC-CYRILLIC"),
+             (_("Hindi"), "MAC_DEVANAGARI"),
+             (_("Persian"), "MAC_FARSI"),
+             (_("Greek"), "MAC_GREEK"),
+             (_("Gujarati"), "MAC_GUJARATI"),
+             (_("Gurmukhi"), "MAC_GURMUKHI"),
+             (_("Hebrew"), "MAC_HEBREW"),
+             (_("Icelandic"), "MAC_ICELANDIC"),
+             (_("Western"), "MAC_ROMAN"),
+             (_("Romanian"), "MAC_ROMANIAN"),
+             (_("Turkish"), "MAC_TURKISH"),
+             (_("Cyrillic/Ukrainian"), "MAC_UKRAINIAN"),
+             (_("Japanese"), "SHIFT-JIS"),
+             (_("Vietnamese"), "TCVN"),
+             (_("Thai"), "TIS-620"),
+             (_("Korean"), "UHC"),
+             (_("Vietnamese"), "VISCII"),
+             (_("Central European"), "WINDOWS-1250"),
+             (_("Cyrillic"), "WINDOWS-1251"),
+             (_("Western"), "WINDOWS-1252"),
+             (_("Greek"), "WINDOWS-1253"),
+             (_("Turkish"), "WINDOWS-1254"),
+             (_("Hebrew"), "WINDOWS-1255"),
+             (_("Arabic"), "WINDOWS-1256"),
+             (_("Baltic"), "WINDOWS-1257"),
+             (_("Vietnamese"), "WINDOWS-1258")]
             
 WORKSPACE_SNAPSHOT_HEIGHT = 160
 WORKSPACE_SNAPSHOT_OFFSET_TOP = 10
@@ -209,9 +278,10 @@ ADVANCED_CONFIG = [
     ("startup_mode", "normal"),
     ("startup_command", ""),
     ("startup_directory", ""),
+    ("ask_on_quit", "True"),
     ("cursor_shape", "block"),
     ("cursor_blink_mode", "system"),
-    ("ask_on_quit", "True"),
+    ("encoding", "UTF-8"),
     ("scroll_on_key", "True"),
     ("scroll_on_output", "False"),
     ("copy_on_selection", "False"),
@@ -433,6 +503,7 @@ class Terminal(object):
         global_event.register_event("open-file-on-hover-toggle", self.open_file_on_hover_toggle)
         global_event.register_event("set-cursor-shape", self.set_cursor_shape)
         global_event.register_event("set-cursor-blink-mode", self.set_cursor_blink_mode)
+        global_event.register_event("set-encoding", self.set_encoding)
         global_event.register_event("change-font", self.change_font)
         global_event.register_event("change-font-size", self.change_font_size)
         global_event.register_event("change-color-scheme", self.change_color_scheme)
@@ -652,6 +723,11 @@ class Terminal(object):
         for workspace in self.workspace_list:
             for terminal in get_match_children(workspace, TerminalWrapper):
                 terminal.change_cursor_blink_mode(cursor_blink_mode)
+                
+    def set_encoding(self, encoding):
+        for workspace in self.workspace_list:
+            for terminal in get_match_children(workspace, TerminalWrapper):
+                terminal.set_encoding(encoding)
         
     def scroll_on_key_toggle(self, status):
         for workspace in self.workspace_list:
@@ -1290,6 +1366,9 @@ class TerminalWrapper(vte.Terminal):
         
         cursor_blink_mode = get_config("advanced", "cursor_blink_mode")
         self.change_cursor_blink_mode(cursor_blink_mode)
+        
+        encoding = get_config("advanced", "encoding")
+        self.change_encoding(encoding)
 
         font = get_config("general", "font")
         self.default_font_size = int(get_config("general", "font_size"))
@@ -1494,6 +1573,9 @@ class TerminalWrapper(vte.Terminal):
             self.set_cursor_blink_mode(vte.CURSOR_BLINK_ON)
         elif cursor_blink_mode == "off":
             self.set_cursor_blink_mode(vte.CURSOR_BLINK_OFF)
+            
+    def change_encoding(self, encoding):
+        self.set_encoding(encoding)
 
     def on_scroll(self, widget, event):
         if self.is_ctrl_press(event):
@@ -3085,6 +3167,11 @@ class AdvancedSettings(gtk.VBox):
         self.cursor_blink_mode_widget.connect("item-selected", self.save_cursor_blink_mode)
         self.cursor_blink_mode_widget.set_select_index(unzip(CURSOR_BLINK_MODE_ITEMS)[-1].index(cursor_blink_mode))
 
+        encoding = get_config("advanced", "encoding")
+        self.encoding_widget = ComboBox(ENCODINGS, fixed_width=COMBO_BOX_WIDTH, droplist_height=200)
+        self.encoding_widget.connect("item-selected", self.save_encoding)
+        self.encoding_widget.set_select_index(unzip(ENCODINGS)[-1].index(encoding))
+        
         scroll_on_key = is_bool(get_config("advanced", "scroll_on_key"))
         self.scroll_on_key_widget = SwitchButton(scroll_on_key)
         self.scroll_on_key_widget.connect("toggled", self.scroll_on_key_toggle)
@@ -3107,6 +3194,7 @@ class AdvancedSettings(gtk.VBox):
         table_items = [
             (_("Cursor shape: "), self.cursor_shape_widget),
             (_("Cursor blink: "), self.cursor_blink_mode_widget),
+            (_("Encoding: "), self.encoding_widget),
             (_("Window state: "), self.startup_widget),
             (_("Startup command: "), self.startup_command_widget),
             (_("Startup directory: "), self.startup_directory_widget),
@@ -3139,6 +3227,12 @@ class AdvancedSettings(gtk.VBox):
             setting_config.config.set("advanced", "cursor_blink_mode", option_value)
 
         global_event.emit("set-cursor-blink-mode", option_value)
+        
+    def save_encoding(self, combo_box, option_name, option_value, index):
+        with save_config(setting_config):
+            setting_config.config.set("advanced", "encoding", option_value)
+            
+        global_event.emit("set-encoding", option_value)
 
     def startup_command_changed(self, entry, startup_command):
         with save_config(setting_config):    
@@ -3635,7 +3729,7 @@ class SettingDialog(PreferenceDialog):
         '''
         init docs
         '''
-        PreferenceDialog.__init__(self, 626, 390)
+        PreferenceDialog.__init__(self, 626, 410)
         
         restore_default_button = Button(_("Reset"))
         restore_default_button.connect("clicked", lambda w: self.restore_default())
@@ -3715,6 +3809,11 @@ class SettingDialog(PreferenceDialog):
             page_widget.cursor_blink_mode_widget.set_select_index(
                 unzip(CURSOR_BLINK_MODE_ITEMS)[-1].index(cursor_blink_mode))
             global_event.emit("set-cursor-blink-mode", cursor_blink_mode)
+
+            encoding = config_dict["encoding"]
+            page_widget.encoding_widget.set_select_index(
+                unzip(ENCODINGS)[-1].index(encoding))
+            global_event.emit("set-encoding", encoding)
             
             scroll_on_key = is_bool(config_dict["scroll_on_key"])
             page_widget.scroll_on_key_widget.set_active(scroll_on_key)
