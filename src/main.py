@@ -3168,7 +3168,7 @@ class AdvancedSettings(gtk.VBox):
         self.cursor_blink_mode_widget.set_select_index(unzip(CURSOR_BLINK_MODE_ITEMS)[-1].index(cursor_blink_mode))
 
         encoding = get_config("advanced", "encoding")
-        self.encoding_widget = ComboBox(ENCODINGS, fixed_width=COMBO_BOX_WIDTH, droplist_height=200)
+        self.encoding_widget = ComboBox(sorted(ENCODINGS, key=lambda (name, value): name), fixed_width=COMBO_BOX_WIDTH, droplist_height=200)
         self.encoding_widget.connect("item-selected", self.save_encoding)
         self.encoding_widget.set_select_index(unzip(ENCODINGS)[-1].index(encoding))
         
