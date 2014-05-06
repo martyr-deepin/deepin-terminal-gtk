@@ -6,13 +6,14 @@
 # freddy4212 <freddy4212@gmail.com>, 2013
 # freddy4212 <freddy4212@gmail.com>, 2013-2014
 # Wang Dianjin <wangdianjin@linuxdeepin.com>, 2013
+# Peter Dave Hello <hsu@peterdavehello.org>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-30 14:32+0800\n"
 "PO-Revision-Date: 2014-01-24 03:08+0000\n"
-"Last-Translator: freddy4212 <freddy4212@gmail.com>\n"
+"Last-Translator: Peter Dave Hello <hsu@peterdavehello.org>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/projects/p/deepin-"
 "terminal/language/zh_TW/)\n"
 "Language: zh_TW\n"
@@ -130,7 +131,7 @@ msgstr "斯拉夫語系/俄文"
 
 #: ../src/main.py:150 ../src/main.py:164 ../src/main.py:184
 msgid "Japanese"
-msgstr "日本語"
+msgstr "日文"
 
 #: ../src/main.py:151 ../src/main.py:165 ../src/main.py:187
 msgid "Korean"
@@ -242,7 +243,7 @@ msgstr "一般設定"
 
 #: ../src/main.py:474
 msgid "Hotkeys"
-msgstr "捷徑鍵設定"
+msgstr "快捷鍵設定"
 
 #: ../src/main.py:475
 msgid "Advanced"
@@ -267,7 +268,7 @@ msgstr "建立 SSH 連線"
 #: ../src/main.py:792 ../src/main.py:895 ../src/main.py:2730
 #: ../src/main.py:3064
 msgid "Display hotkeys"
-msgstr "顯示捷徑鍵"
+msgstr "顯示快捷鍵"
 
 #: ../src/main.py:794
 msgid "Quit"
@@ -300,7 +301,7 @@ msgstr "開啟手冊"
 
 #: ../src/main.py:851
 msgid "Clear screen"
-msgstr "清理畫面"
+msgstr "清除畫面"
 
 #: ../src/main.py:852
 msgid "Open current directory"
@@ -308,7 +309,7 @@ msgstr "開啟目前的目錄"
 
 #: ../src/main.py:857 ../src/main.py:2708 ../src/main.py:3066
 msgid "Show correlative child window"
-msgstr "顯示相關的子進程視窗"
+msgstr "顯示相關的子處理程序視窗"
 
 #: ../src/main.py:860
 msgid "Exit fullscreen"
@@ -597,11 +598,11 @@ msgstr "啟動終端機使用特定命令"
 
 #: ../src/main.py:4010
 msgid "show this help message and exit"
-msgstr "顯示本幫助資訊並退出"
+msgstr "顯示本幫助資訊並結束"
 
 #: ../src/main.py:4011
 msgid "show program's version number and exit"
-msgstr "顯示程式版本號並退出"
+msgstr "顯示程式版本號並結束"
 
 #~ msgid "90"
 #~ msgstr "137"
