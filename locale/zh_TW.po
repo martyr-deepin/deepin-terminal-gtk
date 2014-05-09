@@ -5,15 +5,15 @@
 # Translators:
 # freddy4212 <freddy4212@gmail.com>, 2013
 # freddy4212 <freddy4212@gmail.com>, 2013-2014
+# PeterDaveHello <hsu@peterdavehello.org>, 2014
 # Wang Dianjin <wangdianjin@linuxdeepin.com>, 2013
-# Peter Dave Hello <hsu@peterdavehello.org>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-30 14:32+0800\n"
-"PO-Revision-Date: 2014-01-24 03:08+0000\n"
-"Last-Translator: Peter Dave Hello <hsu@peterdavehello.org>\n"
+"POT-Creation-Date: 2014-05-09 14:04+0800\n"
+"PO-Revision-Date: 2014-05-09 04:10+0000\n"
+"Last-Translator: electricface <songwentai@linuxdeepin.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/projects/p/deepin-"
 "terminal/language/zh_TW/)\n"
 "Language: zh_TW\n"
@@ -22,590 +22,434 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../src/main.py:118
-msgid "Normal"
-msgstr "一般"
-
-#: ../src/main.py:119
-msgid "Maximize"
-msgstr "最大化"
-
-#: ../src/main.py:120 ../src/main.py:862 ../src/main.py:2729
-#: ../src/main.py:3063
-msgid "Fullscreen"
-msgstr "全螢幕"
-
-#: ../src/main.py:122
-msgid "Block"
-msgstr "方塊"
-
-#: ../src/main.py:123
-msgid "I-beam"
-msgstr "I 游標"
-
-#: ../src/main.py:124
-msgid "Underline"
-msgstr "底線"
-
-#: ../src/main.py:126
-msgid "System"
-msgstr "系統預設"
-
-#: ../src/main.py:127
-msgid "On"
-msgstr "開啟"
-
-#: ../src/main.py:128
-msgid "Off"
-msgstr "關閉"
-
-#: ../src/main.py:130 ../src/main.py:143 ../src/main.py:158 ../src/main.py:180
-#: ../src/main.py:191
-msgid "Western"
-msgstr "西歐語系"
-
-#: ../src/main.py:131 ../src/main.py:159 ../src/main.py:170 ../src/main.py:189
-msgid "Central European"
-msgstr "中歐語系"
-
-#: ../src/main.py:132
-msgid "South European"
-msgstr "南歐語系"
-
-#: ../src/main.py:133 ../src/main.py:141 ../src/main.py:196
-msgid "Baltic"
-msgstr "波羅的海語"
-
-#: ../src/main.py:134 ../src/main.py:160 ../src/main.py:166 ../src/main.py:167
-#: ../src/main.py:172 ../src/main.py:190
-msgid "Cyrillic"
-msgstr "斯拉夫語"
-
-#: ../src/main.py:135 ../src/main.py:163 ../src/main.py:169 ../src/main.py:195
-msgid "Arabic"
-msgstr "阿拉伯語"
-
-#: ../src/main.py:136 ../src/main.py:175 ../src/main.py:192
-msgid "Greek"
-msgstr "希臘語"
-
-#: ../src/main.py:137
-msgid "Hebrew Visual"
-msgstr "希伯來語（左至右）"
-
-#: ../src/main.py:138 ../src/main.py:162 ../src/main.py:178 ../src/main.py:194
-msgid "Hebrew"
-msgstr "希伯來語"
-
-#: ../src/main.py:139 ../src/main.py:161 ../src/main.py:182 ../src/main.py:193
-msgid "Turkish"
-msgstr "土耳其語"
-
-#: ../src/main.py:140
-msgid "Nordic"
-msgstr "北歐語系"
-
-#: ../src/main.py:142
-msgid "Celtic"
-msgstr "塞爾特語"
-
-#: ../src/main.py:144 ../src/main.py:181
-msgid "Romanian"
-msgstr "羅馬尼亞語"
-
-#: ../src/main.py:145
-msgid "Unicode"
-msgstr "Unicode"
-
-#: ../src/main.py:146
-msgid "Armenian"
-msgstr "亞美尼亞語"
-
-#: ../src/main.py:147 ../src/main.py:148 ../src/main.py:152
-msgid "Chinese Traditional"
-msgstr "正體中文"
-
-#: ../src/main.py:149
-msgid "Cyrillic/Russian"
-msgstr "斯拉夫語系/俄文"
-
-#: ../src/main.py:150 ../src/main.py:164 ../src/main.py:184
-msgid "Japanese"
-msgstr "日文"
-
-#: ../src/main.py:151 ../src/main.py:165 ../src/main.py:187
-msgid "Korean"
-msgstr "韓國語"
-
-#: ../src/main.py:153 ../src/main.py:154 ../src/main.py:155 ../src/main.py:157
-msgid "Chinese Simplified"
-msgstr "簡體中文"
-
-#: ../src/main.py:156
-msgid "Georgian"
-msgstr "喬治亞語"
-
-#: ../src/main.py:168 ../src/main.py:183
-msgid "Cyrillic/Ukrainian"
-msgstr "斯拉夫/烏克蘭語系"
-
-#: ../src/main.py:171
-msgid "Croatian"
-msgstr "克羅埃西亞語"
-
-#: ../src/main.py:173
-msgid "Hindi"
-msgstr "北印度語"
-
-#: ../src/main.py:174
-msgid "Persian"
-msgstr "波斯語"
-
-#: ../src/main.py:176
-msgid "Gujarati"
-msgstr "古吉拉特語"
-
-#: ../src/main.py:177
-msgid "Gurmukhi"
-msgstr "古爾穆奇文"
-
-#: ../src/main.py:179
-msgid "Icelandic"
-msgstr "冰島語"
-
-#: ../src/main.py:185 ../src/main.py:188 ../src/main.py:197
-msgid "Vietnamese"
-msgstr "越南語"
-
-#: ../src/main.py:186
-msgid "Thai"
-msgstr "泰語"
-
-#: ../src/main.py:301
-msgid "Deepin"
-msgstr "深度"
-
-#: ../src/main.py:302
-msgid "Mocha"
-msgstr "摩卡"
-
-#: ../src/main.py:303
-msgid "Green screen"
-msgstr "綠色螢幕"
-
-#: ../src/main.py:304
-msgid "Ocean"
-msgstr "海洋"
-
-#: ../src/main.py:305
-msgid "Monokai"
-msgstr "Monokai"
-
-#: ../src/main.py:306
-msgid "Solarized"
-msgstr "Solarized"
-
-#: ../src/main.py:307 ../src/main.py:308
-msgid "Eighties"
-msgstr "八〇年代"
-
-#: ../src/main.py:309
-msgid "Grey on black"
-msgstr "黑底灰字"
-
-#: ../src/main.py:310
-msgid "Black on yellow"
-msgstr "黃底黑字"
-
-#: ../src/main.py:311
-msgid "Black on white"
-msgstr "白底黑字"
-
-#: ../src/main.py:312
-msgid "White on black"
-msgstr "黑底白字"
-
-#: ../src/main.py:313
-msgid "Green on black"
-msgstr "黑底綠字"
-
-#: ../src/main.py:314
-msgid "Custom"
-msgstr "自訂"
-
-#: ../src/main.py:425
-msgid "Deepin Terminal"
-msgstr "深度終端機"
-
-#: ../src/main.py:473
-msgid "General"
-msgstr "一般設定"
-
-#: ../src/main.py:474
-msgid "Hotkeys"
-msgstr "快捷鍵設定"
-
-#: ../src/main.py:475
-msgid "Advanced"
-msgstr "進階設定"
-
-#: ../src/main.py:582
-msgid "Quit terminal?"
-msgstr "結束終端機?"
-
-#: ../src/main.py:583
-msgid "Terminal still have running programs. Are you sure you want to quit?"
-msgstr "終端機中仍然有正在執行的程式， 你確定要結束嗎？"
-
-#: ../src/main.py:790 ../src/main.py:897
-msgid "Preferences"
-msgstr "偏好設定"
-
-#: ../src/main.py:791 ../src/main.py:2731 ../src/main.py:3065
-msgid "Set up SSH connection"
-msgstr "建立 SSH 連線"
-
-#: ../src/main.py:792 ../src/main.py:895 ../src/main.py:2730
-#: ../src/main.py:3064
-msgid "Display hotkeys"
-msgstr "顯示快捷鍵"
-
-#: ../src/main.py:794
-msgid "Quit"
-msgstr "結束"
-
-#: ../src/main.py:829 ../src/main.py:832 ../src/main.py:2697
-#: ../src/main.py:3042
-msgid "Copy"
-msgstr "複製"
-
-#: ../src/main.py:834 ../src/main.py:2698 ../src/main.py:3043
-msgid "Paste"
-msgstr "貼上"
-
-#: ../src/main.py:841
-msgid "Open file"
-msgstr "開啟檔案"
-
-#: ../src/main.py:843
-msgid "Open directory"
-msgstr "開啟目錄"
-
-#: ../src/main.py:845
-msgid "Open URL"
-msgstr "開啟網址"
-
-#: ../src/main.py:847
-msgid "Open manual"
-msgstr "開啟手冊"
-
-#: ../src/main.py:851
-msgid "Clear screen"
-msgstr "清除畫面"
-
-#: ../src/main.py:852
-msgid "Open current directory"
-msgstr "開啟目前的目錄"
-
-#: ../src/main.py:857 ../src/main.py:2708 ../src/main.py:3066
-msgid "Show correlative child window"
-msgstr "顯示相關的子處理程序視窗"
-
-#: ../src/main.py:860
-msgid "Exit fullscreen"
-msgstr "結束全螢幕"
-
-#: ../src/main.py:867 ../src/main.py:2717 ../src/main.py:3044
-msgid "Split vertically"
-msgstr "水平分割"
-
-#: ../src/main.py:868 ../src/main.py:2718 ../src/main.py:3045
-msgid "Split horizontally"
-msgstr "垂直分割"
-
-#: ../src/main.py:869 ../src/main.py:2723 ../src/main.py:3046
-msgid "Close current window"
-msgstr "關閉目前視窗"
-
-#: ../src/main.py:873 ../src/main.py:2724 ../src/main.py:3047
-msgid "Close other window"
-msgstr "關閉其他視窗"
-
-#: ../src/main.py:881 ../src/main.py:888 ../src/main.py:2713
-#: ../src/main.py:3057
-msgid "New workspace"
-msgstr "建立新工作區"
-
-#: ../src/main.py:882
-msgid "Switch workspace"
-msgstr "切換工作區"
-
-#: ../src/main.py:883 ../src/main.py:2716 ../src/main.py:3058
-msgid "Close workspace"
-msgstr "關閉工作區"
-
-#: ../src/main.py:894
-msgid "Search"
-msgstr "搜尋"
-
-#: ../src/main.py:1141 ../src/main.py:1887
-msgid "Close window?"
-msgstr "關閉視窗？"
-
-#: ../src/main.py:1142 ../src/main.py:1888
-msgid "Window still have running programs. Are you sure you want to close?"
-msgstr "視窗中仍然有正在執行的程式， 你確定要結束嗎？"
-
-#: ../src/main.py:1144
-msgid "Close workspace?"
-msgstr "關閉工作區?"
-
-#: ../src/main.py:1145
-msgid "Workspace still have running programs. Are you sure you want to close?"
-msgstr "工作區中仍然有正在執行的程式， 你確定要結束嗎？"
-
-#: ../src/main.py:2125
-msgid "Workspace"
-msgstr "工作區"
-
-#: ../src/main.py:2696
-msgid "Terminal command"
-msgstr "終端機命令"
-
-#: ../src/main.py:2699 ../src/main.py:3048
-msgid "Scroll page up"
-msgstr "向上捲動："
-
-#: ../src/main.py:2700 ../src/main.py:3049
-msgid "Scroll page down"
-msgstr "向下捲動: "
-
-#: ../src/main.py:2701 ../src/main.py:3061
-msgid "Search forward"
-msgstr "向下搜尋"
-
-#: ../src/main.py:2702 ../src/main.py:3062
-msgid "Search backward"
-msgstr "向上搜尋"
-
-#: ../src/main.py:2703
-msgid "Select word"
-msgstr "選擇字詞"
-
-#: ../src/main.py:2703
-msgid "Double click"
-msgstr "雙擊"
-
-#: ../src/main.py:2704
-msgid "Open"
-msgstr "開啟"
-
-#: ../src/main.py:2704
-msgid "Ctrl + Left click"
-msgstr "Ctrl + 滑鼠左鍵"
-
-#: ../src/main.py:2705 ../src/main.py:3055
-msgid "Zoom out"
-msgstr "拉遠"
-
-#: ../src/main.py:2706 ../src/main.py:3054
-msgid "Zoom in"
-msgstr "拉近"
-
-#: ../src/main.py:2707 ../src/main.py:3056
-msgid "Reset zoom"
-msgstr "預設尺寸"
-
-#: ../src/main.py:2712
-msgid "Workspace command"
-msgstr "工作區命令"
-
-#: ../src/main.py:2714 ../src/main.py:3059
-msgid "Previous workspace"
-msgstr "切換至上一個工作區"
-
-#: ../src/main.py:2715 ../src/main.py:3060
-msgid "Next workspace"
-msgstr "切換至下一個工作區"
-
-#: ../src/main.py:2719 ../src/main.py:3050
-msgid "Focus the terminal above"
-msgstr "選擇上方終端機"
-
-#: ../src/main.py:2720 ../src/main.py:3051
-msgid "Focus the terminal below"
-msgstr "選擇下方終端機"
-
-#: ../src/main.py:2721 ../src/main.py:3052
-msgid "Focus the temrinal left"
-msgstr "選擇左側終端機"
-
-#: ../src/main.py:2722 ../src/main.py:3053
-msgid "Focus the terminal right"
-msgstr "選擇右側終端機"
-
-#: ../src/main.py:2728
-msgid "Advanced command"
-msgstr "進階命令"
-
-#: ../src/main.py:2750
-msgid "Adjust opacity"
-msgstr "調整透明度"
-
-#: ../src/main.py:2750
-msgid "Ctrl + Wheel"
-msgstr "Ctrl + 滑鼠滾輪"
-
-#: ../src/main.py:2944
-msgid "Font: "
-msgstr "字型："
-
-#: ../src/main.py:2945
-msgid "Font size: "
-msgstr "字型大小："
-
-#: ../src/main.py:2946
-msgid "Color scheme: "
-msgstr "色彩組合："
-
-#: ../src/main.py:2948
-msgid "Background transparency: "
-msgstr "背景透明度："
-
-#: ../src/main.py:3194
-msgid "Cursor shape: "
-msgstr "游標形狀："
-
-#: ../src/main.py:3195
-msgid "Cursor blink: "
-msgstr "游標閃爍："
-
-#: ../src/main.py:3196
-msgid "Encoding: "
-msgstr "編碼"
-
-#: ../src/main.py:3197
-msgid "Window state: "
-msgstr "視窗啟動模式："
-
-#: ../src/main.py:3198
-msgid "Startup command: "
-msgstr "自訂預設啟動命令："
-
-#: ../src/main.py:3199
-msgid "Startup directory: "
-msgstr "預設啟動目錄："
-
-#: ../src/main.py:3200
-msgid "Ask on quit"
-msgstr "結束時詢問："
-
-#: ../src/main.py:3201
-msgid "Scroll on keystroke: "
-msgstr "按鍵時捲動："
-
-#: ../src/main.py:3202
-msgid "Scroll on output: "
-msgstr "輸出時捲動："
-
-#: ../src/main.py:3203
-msgid "Copy on selection: "
-msgstr "選取即複製："
-
-#: ../src/main.py:3204
-msgid "Open file on hover: "
-msgstr "掠過時反白可開啟的文件："
-
-#: ../src/main.py:3363
-msgid "Save"
-msgstr "儲存"
-
-#: ../src/main.py:3411 ../src/main.py:3435
-msgid "Name: "
-msgstr "名稱："
-
-#: ../src/main.py:3411 ../src/main.py:3438
-msgid "Server: "
-msgstr "伺服器："
-
-#: ../src/main.py:3411 ../src/main.py:3441
-msgid "User: "
-msgstr "使用者："
-
-#: ../src/main.py:3411 ../src/main.py:3444
-msgid "Password: "
-msgstr "密碼："
-
-#: ../src/main.py:3411 ../src/main.py:3447
-msgid "Port: "
-msgstr "連接埠："
-
-#: ../src/main.py:3469
-msgid "Remote login"
-msgstr "遠端登入"
-
-#: ../src/main.py:3476
 msgid "Add"
 msgstr "加入"
 
-#: ../src/main.py:3477
-msgid "Connection"
-msgstr "連線"
-
-#: ../src/main.py:3485
-msgid "Name"
-msgstr "名稱"
-
-#: ../src/main.py:3485
-msgid "Server"
-msgstr "伺服器"
-
-#: ../src/main.py:3492
 msgid "Add remote login"
 msgstr "加入遠端登入"
 
-#: ../src/main.py:3559
-msgid "Edit remote login"
-msgstr "編輯遠端登入"
+msgid "Adjust opacity"
+msgstr "調整透明度"
 
-#: ../src/main.py:3572
-msgid "Edit"
-msgstr "編輯"
+msgid "Advanced"
+msgstr "進階設定"
 
-#: ../src/main.py:3573
-msgid "Delete"
-msgstr "刪除"
+msgid "Advanced command"
+msgstr "進階命令"
 
-#: ../src/main.py:3733
-msgid "Reset"
-msgstr "重設"
+msgid "Arabic"
+msgstr "阿拉伯語"
 
-#: ../src/main.py:3736
+msgid "Armenian"
+msgstr "亞美尼亞語"
+
+msgid "Ask on quit"
+msgstr "結束時詢問："
+
+msgid "Background transparency: "
+msgstr "背景透明度："
+
+msgid "Baltic"
+msgstr "波羅的海語"
+
+msgid "Black on white"
+msgstr "白底黑字"
+
+msgid "Black on yellow"
+msgstr "黃底黑字"
+
+msgid "Block"
+msgstr "方塊"
+
+msgid "Celtic"
+msgstr "塞爾特語"
+
+msgid "Central European"
+msgstr "中歐語系"
+
+msgid "Chinese Simplified"
+msgstr "簡體中文"
+
+msgid "Chinese Traditional"
+msgstr "正體中文"
+
+msgid "Clear screen"
+msgstr "清除畫面"
+
 msgid "Close"
 msgstr "關閉"
 
-#: ../src/main.py:4007
-msgid "working directory"
-msgstr "工作中目錄"
+msgid "Close current window"
+msgstr "關閉目前視窗"
 
-#: ../src/main.py:4008
+msgid "Close other window"
+msgstr "關閉其他視窗"
+
+msgid "Close window?"
+msgstr "關閉視窗？"
+
+msgid "Close workspace"
+msgstr "關閉工作區"
+
+msgid "Close workspace?"
+msgstr "關閉工作區?"
+
+msgid "Color scheme: "
+msgstr "色彩組合："
+
+msgid "Connection"
+msgstr "連線"
+
+msgid "Copy"
+msgstr "複製"
+
+msgid "Copy on selection: "
+msgstr "選取即複製："
+
+msgid "Croatian"
+msgstr "克羅埃西亞語"
+
+msgid "Ctrl + Left click"
+msgstr "Ctrl + 滑鼠左鍵"
+
+msgid "Ctrl + Wheel"
+msgstr "Ctrl + 滑鼠滾輪"
+
+msgid "Cursor blink: "
+msgstr "游標閃爍："
+
+msgid "Cursor shape: "
+msgstr "游標形狀："
+
+msgid "Custom"
+msgstr "自訂"
+
+msgid "Cyrillic"
+msgstr "斯拉夫語"
+
+msgid "Cyrillic/Russian"
+msgstr "斯拉夫語系/俄文"
+
+msgid "Cyrillic/Ukrainian"
+msgstr "斯拉夫/烏克蘭語系"
+
+msgid "Deepin"
+msgstr "深度"
+
+msgid "Deepin Terminal"
+msgstr "深度終端機"
+
+msgid "Delete"
+msgstr "刪除"
+
+msgid "Display hotkeys"
+msgstr "顯示快捷鍵"
+
+msgid "Double click"
+msgstr "雙擊"
+
+msgid "Edit"
+msgstr "編輯"
+
+msgid "Edit remote login"
+msgstr "編輯遠端登入"
+
+msgid "Eighties"
+msgstr "八〇年代"
+
+msgid "Encoding: "
+msgstr "編碼"
+
+msgid "Exit fullscreen"
+msgstr "結束全螢幕"
+
+msgid "Focus the temrinal left"
+msgstr "選擇左側終端機"
+
+msgid "Focus the terminal above"
+msgstr "選擇上方終端機"
+
+msgid "Focus the terminal below"
+msgstr "選擇下方終端機"
+
+msgid "Focus the terminal right"
+msgstr "選擇右側終端機"
+
+msgid "Font size: "
+msgstr "字型大小："
+
+msgid "Font: "
+msgstr "字型："
+
+msgid "Fullscreen"
+msgstr "全螢幕"
+
+msgid "General"
+msgstr "一般設定"
+
+msgid "Georgian"
+msgstr "喬治亞語"
+
+msgid "Greek"
+msgstr "希臘語"
+
+msgid "Green on black"
+msgstr "黑底綠字"
+
+msgid "Green screen"
+msgstr "綠色螢幕"
+
+msgid "Grey on black"
+msgstr "黑底灰字"
+
+msgid "Gujarati"
+msgstr "古吉拉特語"
+
+msgid "Gurmukhi"
+msgstr "古爾穆奇文"
+
+msgid "Hebrew"
+msgstr "希伯來語"
+
+msgid "Hebrew Visual"
+msgstr "希伯來語（左至右）"
+
+msgid "Hindi"
+msgstr "北印度語"
+
+msgid "Hotkeys"
+msgstr "快捷鍵設定"
+
+msgid "I-beam"
+msgstr "I 游標"
+
+msgid "Icelandic"
+msgstr "冰島語"
+
+msgid "Japanese"
+msgstr "日文"
+
+msgid "Korean"
+msgstr "韓國語"
+
+msgid "Maximize"
+msgstr "最大化"
+
+msgid "Mocha"
+msgstr "摩卡"
+
+msgid "Monokai"
+msgstr "Monokai"
+
+msgid "Name"
+msgstr "名稱"
+
+msgid "Name: "
+msgstr "名稱："
+
+msgid "New workspace"
+msgstr "建立新工作區"
+
+msgid "Next workspace"
+msgstr "切換至下一個工作區"
+
+msgid "Nordic"
+msgstr "北歐語系"
+
+msgid "Normal"
+msgstr "一般"
+
+msgid "Ocean"
+msgstr "海洋"
+
+msgid "Off"
+msgstr "關閉"
+
+msgid "On"
+msgstr "開啟"
+
+msgid "Open"
+msgstr "開啟"
+
+msgid "Open URL"
+msgstr "開啟網址"
+
+msgid "Open current directory"
+msgstr "開啟目前的目錄"
+
+msgid "Open directory"
+msgstr "開啟目錄"
+
+msgid "Open file"
+msgstr "開啟檔案"
+
+msgid "Open file on hover: "
+msgstr "掠過時反白可開啟的文件："
+
+msgid "Open manual"
+msgstr "開啟手冊"
+
+msgid "Password: "
+msgstr "密碼："
+
+msgid "Paste"
+msgstr "貼上"
+
+msgid "Persian"
+msgstr "波斯語"
+
+msgid "Port: "
+msgstr "連接埠："
+
+msgid "Preferences"
+msgstr "偏好設定"
+
+msgid "Previous workspace"
+msgstr "切換至上一個工作區"
+
+msgid "Quit"
+msgstr "結束"
+
+msgid "Quit terminal?"
+msgstr "結束終端機?"
+
+msgid "Remote login"
+msgstr "遠端登入"
+
+msgid "Reset"
+msgstr "重設"
+
+msgid "Reset zoom"
+msgstr "預設尺寸"
+
+msgid "Romanian"
+msgstr "羅馬尼亞語"
+
+msgid "Save"
+msgstr "儲存"
+
+msgid "Scroll on keystroke: "
+msgstr "按鍵時捲動："
+
+msgid "Scroll on output: "
+msgstr "輸出時捲動："
+
+msgid "Scroll page down"
+msgstr "向下捲動: "
+
+msgid "Scroll page up"
+msgstr "向上捲動："
+
+msgid "Search"
+msgstr "搜尋"
+
+msgid "Search backward"
+msgstr "向上搜尋"
+
+msgid "Search forward"
+msgstr "向下搜尋"
+
+msgid "Select word"
+msgstr "選擇字詞"
+
+msgid "Server"
+msgstr "伺服器"
+
+msgid "Server: "
+msgstr "伺服器："
+
+msgid "Set up SSH connection"
+msgstr "建立 SSH 連線"
+
+msgid "Show correlative child window"
+msgstr "顯示相關的子處理程序視窗"
+
+msgid "Solarized"
+msgstr "Solarized"
+
+msgid "South European"
+msgstr "南歐語系"
+
+msgid "Split horizontally"
+msgstr "垂直分割"
+
+msgid "Split vertically"
+msgstr "水平分割"
+
+msgid "Startup command: "
+msgstr "自訂預設啟動命令："
+
+msgid "Startup directory: "
+msgstr "預設啟動目錄："
+
+msgid "Switch workspace"
+msgstr "切換工作區"
+
+msgid "System"
+msgstr "系統預設"
+
+msgid "Terminal command"
+msgstr "終端機命令"
+
+msgid "Terminal still have running programs. Are you sure you want to quit?"
+msgstr "終端機中仍然有正在執行的程式， 你確定要結束嗎？"
+
+msgid "Thai"
+msgstr "泰語"
+
+msgid "Turkish"
+msgstr "土耳其語"
+
+msgid "Underline"
+msgstr "底線"
+
+msgid "Unicode"
+msgstr "Unicode"
+
+msgid "User: "
+msgstr "使用者："
+
+msgid "Vietnamese"
+msgstr "越南語"
+
+msgid "Western"
+msgstr "西歐語系"
+
+msgid "White on black"
+msgstr "黑底白字"
+
+msgid "Window state: "
+msgstr "視窗啟動模式："
+
+msgid "Window still have running programs. Are you sure you want to close?"
+msgstr "視窗中仍然有正在執行的程式， 你確定要結束嗎？"
+
+msgid "Workspace"
+msgstr "工作區"
+
+msgid "Workspace command"
+msgstr "工作區命令"
+
+msgid "Workspace still have running programs. Are you sure you want to close?"
+msgstr "工作區中仍然有正在執行的程式， 你確定要結束嗎？"
+
+msgid "Zoom in"
+msgstr "拉近"
+
+msgid "Zoom out"
+msgstr "拉遠"
+
 msgid "run with quake mode"
 msgstr "以雷神模式執行深度終端機"
 
-#: ../src/main.py:4009
-msgid "startup terminal with given command"
-msgstr "啟動終端機使用特定命令"
-
-#: ../src/main.py:4010
-msgid "show this help message and exit"
-msgstr "顯示本幫助資訊並結束"
-
-#: ../src/main.py:4011
 msgid "show program's version number and exit"
 msgstr "顯示程式版本號並結束"
 
-#~ msgid "90"
-#~ msgstr "137"
+msgid "show this help message and exit"
+msgstr "顯示本幫助資訊並結束"
 
-#~ msgid "Railscasts"
-#~ msgstr "Railscasts"
+msgid "startup terminal with given command"
+msgstr "啟動終端機使用特定命令"
+
+msgid "working directory"
+msgstr "工作中目錄"

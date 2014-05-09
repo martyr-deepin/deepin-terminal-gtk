@@ -3,16 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# fri <pavelfric@seznam.cz>, 2013
-# fri <pavelfric@seznam.cz>, 2013
-# fri <pavelfric@seznam.cz>, 2013
+# fri, 2013
+# fri, 2013
+# fri, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-30 14:32+0800\n"
-"PO-Revision-Date: 2013-12-26 16:42+0000\n"
-"Last-Translator: fri <pavelfric@seznam.cz>\n"
+"POT-Creation-Date: 2014-05-09 14:04+0800\n"
+"PO-Revision-Date: 2014-04-30 09:12+0000\n"
+"Last-Translator: Cxbii chen <chenxiangbang@linuxdeepin.com>\n"
 "Language-Team: Czech (http://www.transifex.com/projects/p/deepin-terminal/"
 "language/cs/)\n"
 "Language: cs\n"
@@ -21,591 +21,435 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: ../src/main.py:118
-msgid "Normal"
-msgstr "Normální"
+msgid "Add"
+msgstr "Přidat"
 
-#: ../src/main.py:119
-msgid "Maximize"
-msgstr "Zvětšit"
+msgid "Add remote login"
+msgstr "Přidat vzdálené přihlášení"
 
-#: ../src/main.py:120 ../src/main.py:862 ../src/main.py:2729
-#: ../src/main.py:3063
-msgid "Fullscreen"
-msgstr "Celá obrazovka"
+msgid "Adjust opacity"
+msgstr "Upravit neprůhlednost"
 
-#: ../src/main.py:122
-msgid "Block"
-msgstr "Blok"
-
-#: ../src/main.py:123
-msgid "I-beam"
-msgstr "I-paprsek"
-
-#: ../src/main.py:124
-msgid "Underline"
-msgstr "Podtržení"
-
-#: ../src/main.py:126
-msgid "System"
-msgstr "Systém"
-
-#: ../src/main.py:127
-msgid "On"
-msgstr "Zapnuto"
-
-#: ../src/main.py:128
-msgid "Off"
-msgstr "Vypnuto"
-
-#: ../src/main.py:130 ../src/main.py:143 ../src/main.py:158 ../src/main.py:180
-#: ../src/main.py:191
-msgid "Western"
-msgstr ""
-
-#: ../src/main.py:131 ../src/main.py:159 ../src/main.py:170 ../src/main.py:189
-msgid "Central European"
-msgstr ""
-
-#: ../src/main.py:132
-msgid "South European"
-msgstr ""
-
-#: ../src/main.py:133 ../src/main.py:141 ../src/main.py:196
-msgid "Baltic"
-msgstr ""
-
-#: ../src/main.py:134 ../src/main.py:160 ../src/main.py:166 ../src/main.py:167
-#: ../src/main.py:172 ../src/main.py:190
-msgid "Cyrillic"
-msgstr ""
-
-#: ../src/main.py:135 ../src/main.py:163 ../src/main.py:169 ../src/main.py:195
-msgid "Arabic"
-msgstr ""
-
-#: ../src/main.py:136 ../src/main.py:175 ../src/main.py:192
-msgid "Greek"
-msgstr ""
-
-#: ../src/main.py:137
-msgid "Hebrew Visual"
-msgstr ""
-
-#: ../src/main.py:138 ../src/main.py:162 ../src/main.py:178 ../src/main.py:194
-msgid "Hebrew"
-msgstr ""
-
-#: ../src/main.py:139 ../src/main.py:161 ../src/main.py:182 ../src/main.py:193
-msgid "Turkish"
-msgstr ""
-
-#: ../src/main.py:140
-msgid "Nordic"
-msgstr ""
-
-#: ../src/main.py:142
-msgid "Celtic"
-msgstr ""
-
-#: ../src/main.py:144 ../src/main.py:181
-msgid "Romanian"
-msgstr ""
-
-#: ../src/main.py:145
-msgid "Unicode"
-msgstr ""
-
-#: ../src/main.py:146
-msgid "Armenian"
-msgstr ""
-
-#: ../src/main.py:147 ../src/main.py:148 ../src/main.py:152
-msgid "Chinese Traditional"
-msgstr ""
-
-#: ../src/main.py:149
-msgid "Cyrillic/Russian"
-msgstr ""
-
-#: ../src/main.py:150 ../src/main.py:164 ../src/main.py:184
-msgid "Japanese"
-msgstr ""
-
-#: ../src/main.py:151 ../src/main.py:165 ../src/main.py:187
-msgid "Korean"
-msgstr ""
-
-#: ../src/main.py:153 ../src/main.py:154 ../src/main.py:155 ../src/main.py:157
-msgid "Chinese Simplified"
-msgstr ""
-
-#: ../src/main.py:156
-msgid "Georgian"
-msgstr ""
-
-#: ../src/main.py:168 ../src/main.py:183
-msgid "Cyrillic/Ukrainian"
-msgstr ""
-
-#: ../src/main.py:171
-msgid "Croatian"
-msgstr ""
-
-#: ../src/main.py:173
-msgid "Hindi"
-msgstr ""
-
-#: ../src/main.py:174
-msgid "Persian"
-msgstr ""
-
-#: ../src/main.py:176
-msgid "Gujarati"
-msgstr ""
-
-#: ../src/main.py:177
-msgid "Gurmukhi"
-msgstr ""
-
-#: ../src/main.py:179
-msgid "Icelandic"
-msgstr ""
-
-#: ../src/main.py:185 ../src/main.py:188 ../src/main.py:197
-msgid "Vietnamese"
-msgstr ""
-
-#: ../src/main.py:186
-msgid "Thai"
-msgstr ""
-
-#: ../src/main.py:301
-msgid "Deepin"
-msgstr "Deepin"
-
-#: ../src/main.py:302
-msgid "Mocha"
-msgstr "Tmavě hnědá"
-
-#: ../src/main.py:303
-msgid "Green screen"
-msgstr "Zelená obrazovka"
-
-#: ../src/main.py:304
-msgid "Ocean"
-msgstr "Oceán"
-
-#: ../src/main.py:305
-msgid "Monokai"
-msgstr "Monokai"
-
-#: ../src/main.py:306
-msgid "Solarized"
-msgstr "Osluněno"
-
-#: ../src/main.py:307 ../src/main.py:308
-msgid "Eighties"
-msgstr "Osmdesátky"
-
-#: ../src/main.py:309
-msgid "Grey on black"
-msgstr "Šedá na černé"
-
-#: ../src/main.py:310
-msgid "Black on yellow"
-msgstr "Černá na žluté"
-
-#: ../src/main.py:311
-msgid "Black on white"
-msgstr "Černá na bílé"
-
-#: ../src/main.py:312
-msgid "White on black"
-msgstr "Bílá na černé"
-
-#: ../src/main.py:313
-msgid "Green on black"
-msgstr "Zelená na černé"
-
-#: ../src/main.py:314
-msgid "Custom"
-msgstr "Vlastní"
-
-#: ../src/main.py:425
-msgid "Deepin Terminal"
-msgstr "Terminál"
-
-#: ../src/main.py:473
-msgid "General"
-msgstr "Obecné"
-
-#: ../src/main.py:474
-msgid "Hotkeys"
-msgstr "Klávesové zkratky"
-
-#: ../src/main.py:475
 msgid "Advanced"
 msgstr "Pokročilé"
 
-#: ../src/main.py:582
-msgid "Quit terminal?"
-msgstr "Ukončit terminál?"
+msgid "Advanced command"
+msgstr "Pokročilý příkaz"
 
-#: ../src/main.py:583
-msgid "Terminal still have running programs. Are you sure you want to quit?"
-msgstr "V terminálu stále ještě běží programy. Opravdu chcete zavřít?"
+msgid "Arabic"
+msgstr ""
 
-#: ../src/main.py:790 ../src/main.py:897
-msgid "Preferences"
-msgstr "Nastavení"
+msgid "Armenian"
+msgstr ""
 
-#: ../src/main.py:791 ../src/main.py:2731 ../src/main.py:3065
-msgid "Set up SSH connection"
-msgstr "Nastavit spojení SSH"
+msgid "Ask on quit"
+msgstr "Zeptat se při ukončení"
 
-#: ../src/main.py:792 ../src/main.py:895 ../src/main.py:2730
-#: ../src/main.py:3064
-msgid "Display hotkeys"
-msgstr "Zobrazit klávesové zkratky"
+msgid "Background transparency: "
+msgstr "Průhlednost pozadí: "
 
-#: ../src/main.py:794
-msgid "Quit"
-msgstr "Ukončit"
+msgid "Baltic"
+msgstr ""
 
-#: ../src/main.py:829 ../src/main.py:832 ../src/main.py:2697
-#: ../src/main.py:3042
-msgid "Copy"
-msgstr "Kopírovat"
+msgid "Black on white"
+msgstr "Černá na bílé"
 
-#: ../src/main.py:834 ../src/main.py:2698 ../src/main.py:3043
-msgid "Paste"
-msgstr "Vložit"
+msgid "Black on yellow"
+msgstr "Černá na žluté"
 
-#: ../src/main.py:841
-msgid "Open file"
-msgstr "Otevřít soubor"
+msgid "Block"
+msgstr "Blok"
 
-#: ../src/main.py:843
-msgid "Open directory"
-msgstr "Otevřít adresář"
+msgid "Celtic"
+msgstr ""
 
-#: ../src/main.py:845
-msgid "Open URL"
-msgstr "Otevřít adresu (URL)"
+msgid "Central European"
+msgstr ""
 
-#: ../src/main.py:847
-msgid "Open manual"
-msgstr "Otevřít příručku"
+msgid "Chinese Simplified"
+msgstr ""
 
-#: ../src/main.py:851
+msgid "Chinese Traditional"
+msgstr ""
+
 msgid "Clear screen"
 msgstr "Vyprázdnit obrazovku"
 
-#: ../src/main.py:852
-msgid "Open current directory"
-msgstr "Otevřít nynější adresář"
+msgid "Close"
+msgstr "Zavřít"
 
-#: ../src/main.py:857 ../src/main.py:2708 ../src/main.py:3066
-msgid "Show correlative child window"
-msgstr "Ukázat související okno potomka"
-
-#: ../src/main.py:860
-msgid "Exit fullscreen"
-msgstr "Opustit celou obrazovku"
-
-#: ../src/main.py:867 ../src/main.py:2717 ../src/main.py:3044
-msgid "Split vertically"
-msgstr "Rozdělit svisle"
-
-#: ../src/main.py:868 ../src/main.py:2718 ../src/main.py:3045
-msgid "Split horizontally"
-msgstr "Rozdělit vodorovně"
-
-#: ../src/main.py:869 ../src/main.py:2723 ../src/main.py:3046
 msgid "Close current window"
 msgstr "Zavřít nynější okno"
 
-#: ../src/main.py:873 ../src/main.py:2724 ../src/main.py:3047
 msgid "Close other window"
 msgstr "Zavřít další okno"
 
-#: ../src/main.py:881 ../src/main.py:888 ../src/main.py:2713
-#: ../src/main.py:3057
-msgid "New workspace"
-msgstr "Nová pracovní prostředí"
-
-#: ../src/main.py:882
-msgid "Switch workspace"
-msgstr "Přepnout pracovní prostředí"
-
-#: ../src/main.py:883 ../src/main.py:2716 ../src/main.py:3058
-msgid "Close workspace"
-msgstr "Zavřít pracovní prostředí"
-
-#: ../src/main.py:894
-msgid "Search"
-msgstr "Hledat"
-
-#: ../src/main.py:1141 ../src/main.py:1887
 msgid "Close window?"
 msgstr "Zavřít okno"
 
-#: ../src/main.py:1142 ../src/main.py:1888
-msgid "Window still have running programs. Are you sure you want to close?"
-msgstr "V okně stále ještě běží programy. Opravdu chcete zavřít?"
+msgid "Close workspace"
+msgstr "Zavřít pracovní prostředí"
 
-#: ../src/main.py:1144
 msgid "Close workspace?"
 msgstr "Zavřít pracovní prostředí?"
 
-#: ../src/main.py:1145
+msgid "Color scheme: "
+msgstr "Barevné schéma: "
+
+msgid "Connection"
+msgstr "Spojení"
+
+msgid "Copy"
+msgstr "Kopírovat"
+
+msgid "Copy on selection: "
+msgstr "Kopírovat při výběru: "
+
+msgid "Croatian"
+msgstr ""
+
+msgid "Ctrl + Left click"
+msgstr "Ctrl+levé tlačítko myši"
+
+msgid "Ctrl + Wheel"
+msgstr "Ctrl+kolečko myši"
+
+msgid "Cursor blink: "
+msgstr "Blikání ukazatele: "
+
+msgid "Cursor shape: "
+msgstr "Tvar ukazatele: "
+
+msgid "Custom"
+msgstr "Vlastní"
+
+msgid "Cyrillic"
+msgstr ""
+
+msgid "Cyrillic/Russian"
+msgstr ""
+
+msgid "Cyrillic/Ukrainian"
+msgstr ""
+
+msgid "Deepin"
+msgstr "Deepin"
+
+msgid "Deepin Terminal"
+msgstr "Terminál"
+
+msgid "Delete"
+msgstr "Smazat"
+
+msgid "Display hotkeys"
+msgstr "Zobrazit klávesové zkratky"
+
+msgid "Double click"
+msgstr "Dvojité klepnutí"
+
+msgid "Edit"
+msgstr "Upravit"
+
+msgid "Edit remote login"
+msgstr "Upravit vzdálené přihlášení"
+
+msgid "Eighties"
+msgstr "Osmdesátky"
+
+msgid "Encoding: "
+msgstr ""
+
+msgid "Exit fullscreen"
+msgstr "Opustit celou obrazovku"
+
+msgid "Focus the temrinal left"
+msgstr "Zaměřit terminál vlevo"
+
+msgid "Focus the terminal above"
+msgstr "Zaměřit terminál nad"
+
+msgid "Focus the terminal below"
+msgstr "Zaměřit terminál pod"
+
+msgid "Focus the terminal right"
+msgstr "Zaměřit terminál vpravo"
+
+msgid "Font size: "
+msgstr "Velikost písma: "
+
+msgid "Font: "
+msgstr "Písmo"
+
+msgid "Fullscreen"
+msgstr "Celá obrazovka"
+
+msgid "General"
+msgstr "Obecné"
+
+msgid "Georgian"
+msgstr ""
+
+msgid "Greek"
+msgstr ""
+
+msgid "Green on black"
+msgstr "Zelená na černé"
+
+msgid "Green screen"
+msgstr "Zelená obrazovka"
+
+msgid "Grey on black"
+msgstr "Šedá na černé"
+
+msgid "Gujarati"
+msgstr ""
+
+msgid "Gurmukhi"
+msgstr ""
+
+msgid "Hebrew"
+msgstr ""
+
+msgid "Hebrew Visual"
+msgstr ""
+
+msgid "Hindi"
+msgstr ""
+
+msgid "Hotkeys"
+msgstr "Klávesové zkratky"
+
+msgid "I-beam"
+msgstr "I-paprsek"
+
+msgid "Icelandic"
+msgstr ""
+
+msgid "Japanese"
+msgstr ""
+
+msgid "Korean"
+msgstr ""
+
+msgid "Maximize"
+msgstr "Zvětšit"
+
+msgid "Mocha"
+msgstr "Tmavě hnědá"
+
+msgid "Monokai"
+msgstr "Monokai"
+
+msgid "Name"
+msgstr "Název"
+
+msgid "Name: "
+msgstr "Název: "
+
+msgid "New workspace"
+msgstr "Nová pracovní prostředí"
+
+msgid "Next workspace"
+msgstr "Další pracovní prostředí"
+
+msgid "Nordic"
+msgstr ""
+
+msgid "Normal"
+msgstr "Normální"
+
+msgid "Ocean"
+msgstr "Oceán"
+
+msgid "Off"
+msgstr "Vypnuto"
+
+msgid "On"
+msgstr "Zapnuto"
+
+msgid "Open"
+msgstr "Otevřít"
+
+msgid "Open URL"
+msgstr "Otevřít adresu (URL)"
+
+msgid "Open current directory"
+msgstr "Otevřít nynější adresář"
+
+msgid "Open directory"
+msgstr "Otevřít adresář"
+
+msgid "Open file"
+msgstr "Otevřít soubor"
+
+msgid "Open file on hover: "
+msgstr "Otevřít soubor při přejetí: "
+
+msgid "Open manual"
+msgstr "Otevřít příručku"
+
+msgid "Password: "
+msgstr "Heslo: "
+
+msgid "Paste"
+msgstr "Vložit"
+
+msgid "Persian"
+msgstr ""
+
+msgid "Port: "
+msgstr "Přípojka (port): "
+
+msgid "Preferences"
+msgstr "Nastavení"
+
+msgid "Previous workspace"
+msgstr "Předchozí pracovní prostředí"
+
+msgid "Quit"
+msgstr "Ukončit"
+
+msgid "Quit terminal?"
+msgstr "Ukončit terminál?"
+
+msgid "Remote login"
+msgstr "Vzdálené přihlášení"
+
+msgid "Reset"
+msgstr "Nastavit znovu"
+
+msgid "Reset zoom"
+msgstr "Nastavit zvětšení znovu na výchozí"
+
+msgid "Romanian"
+msgstr ""
+
+msgid "Save"
+msgstr "Uložit"
+
+msgid "Scroll on keystroke: "
+msgstr "Posunout při úhozu na klávesnici: "
+
+msgid "Scroll on output: "
+msgstr "Posunout při výstupu: "
+
+msgid "Scroll page down"
+msgstr "Posunout o stranu dolů"
+
+msgid "Scroll page up"
+msgstr "Posunout o stranu nahoru"
+
+msgid "Search"
+msgstr "Hledat"
+
+msgid "Search backward"
+msgstr "Hledat dozadu"
+
+msgid "Search forward"
+msgstr "Hledat dopředu"
+
+msgid "Select word"
+msgstr "Vybrat slovo"
+
+msgid "Server"
+msgstr "Server"
+
+msgid "Server: "
+msgstr "Server: "
+
+msgid "Set up SSH connection"
+msgstr "Nastavit spojení SSH"
+
+msgid "Show correlative child window"
+msgstr "Ukázat související okno potomka"
+
+msgid "Solarized"
+msgstr "Osluněno"
+
+msgid "South European"
+msgstr ""
+
+msgid "Split horizontally"
+msgstr "Rozdělit vodorovně"
+
+msgid "Split vertically"
+msgstr "Rozdělit svisle"
+
+msgid "Startup command: "
+msgstr "Spouštěcí příkaz: "
+
+msgid "Startup directory: "
+msgstr "Spouštěcí adresář: "
+
+msgid "Switch workspace"
+msgstr "Přepnout pracovní prostředí"
+
+msgid "System"
+msgstr "Systém"
+
+msgid "Terminal command"
+msgstr "Příkaz pro terminál"
+
+msgid "Terminal still have running programs. Are you sure you want to quit?"
+msgstr "V terminálu stále ještě běží programy. Opravdu chcete zavřít?"
+
+msgid "Thai"
+msgstr ""
+
+msgid "Turkish"
+msgstr ""
+
+msgid "Underline"
+msgstr "Podtržení"
+
+msgid "Unicode"
+msgstr ""
+
+msgid "User: "
+msgstr "Uživatel: "
+
+msgid "Vietnamese"
+msgstr ""
+
+msgid "Western"
+msgstr ""
+
+msgid "White on black"
+msgstr "Bílá na černé"
+
+msgid "Window state: "
+msgstr "Stav okna: "
+
+msgid "Window still have running programs. Are you sure you want to close?"
+msgstr "V okně stále ještě běží programy. Opravdu chcete zavřít?"
+
+msgid "Workspace"
+msgstr "Pracovní prostředí"
+
+msgid "Workspace command"
+msgstr "Příkaz pro pracovní prostředí"
+
 msgid "Workspace still have running programs. Are you sure you want to close?"
 msgstr ""
 "V pracovním prostředí stále ještě běží programy. Opravdu chcete zavřít?"
 
-#: ../src/main.py:2125
-msgid "Workspace"
-msgstr "Pracovní prostředí"
-
-#: ../src/main.py:2696
-msgid "Terminal command"
-msgstr "Příkaz pro terminál"
-
-#: ../src/main.py:2699 ../src/main.py:3048
-msgid "Scroll page up"
-msgstr "Posunout o stranu nahoru"
-
-#: ../src/main.py:2700 ../src/main.py:3049
-msgid "Scroll page down"
-msgstr "Posunout o stranu dolů"
-
-#: ../src/main.py:2701 ../src/main.py:3061
-msgid "Search forward"
-msgstr "Hledat dopředu"
-
-#: ../src/main.py:2702 ../src/main.py:3062
-msgid "Search backward"
-msgstr "Hledat dozadu"
-
-#: ../src/main.py:2703
-msgid "Select word"
-msgstr "Vybrat slovo"
-
-#: ../src/main.py:2703
-msgid "Double click"
-msgstr "Dvojité klepnutí"
-
-#: ../src/main.py:2704
-msgid "Open"
-msgstr "Otevřít"
-
-#: ../src/main.py:2704
-msgid "Ctrl + Left click"
-msgstr "Ctrl+levé tlačítko myši"
-
-#: ../src/main.py:2705 ../src/main.py:3055
-msgid "Zoom out"
-msgstr "Oddálit"
-
-#: ../src/main.py:2706 ../src/main.py:3054
 msgid "Zoom in"
 msgstr "Přiblížit"
 
-#: ../src/main.py:2707 ../src/main.py:3056
-msgid "Reset zoom"
-msgstr "Nastavit zvětšení znovu na výchozí"
+msgid "Zoom out"
+msgstr "Oddálit"
 
-#: ../src/main.py:2712
-msgid "Workspace command"
-msgstr "Příkaz pro pracovní prostředí"
-
-#: ../src/main.py:2714 ../src/main.py:3059
-msgid "Previous workspace"
-msgstr "Předchozí pracovní prostředí"
-
-#: ../src/main.py:2715 ../src/main.py:3060
-msgid "Next workspace"
-msgstr "Další pracovní prostředí"
-
-#: ../src/main.py:2719 ../src/main.py:3050
-msgid "Focus the terminal above"
-msgstr "Zaměřit terminál nad"
-
-#: ../src/main.py:2720 ../src/main.py:3051
-msgid "Focus the terminal below"
-msgstr "Zaměřit terminál pod"
-
-#: ../src/main.py:2721 ../src/main.py:3052
-msgid "Focus the temrinal left"
-msgstr "Zaměřit terminál vlevo"
-
-#: ../src/main.py:2722 ../src/main.py:3053
-msgid "Focus the terminal right"
-msgstr "Zaměřit terminál vpravo"
-
-#: ../src/main.py:2728
-msgid "Advanced command"
-msgstr "Pokročilý příkaz"
-
-#: ../src/main.py:2750
-msgid "Adjust opacity"
-msgstr "Upravit neprůhlednost"
-
-#: ../src/main.py:2750
-msgid "Ctrl + Wheel"
-msgstr "Ctrl+kolečko myši"
-
-#: ../src/main.py:2944
-msgid "Font: "
-msgstr "Písmo"
-
-#: ../src/main.py:2945
-msgid "Font size: "
-msgstr "Velikost písma: "
-
-#: ../src/main.py:2946
-msgid "Color scheme: "
-msgstr "Barevné schéma: "
-
-#: ../src/main.py:2948
-msgid "Background transparency: "
-msgstr "Průhlednost pozadí: "
-
-#: ../src/main.py:3194
-msgid "Cursor shape: "
-msgstr "Tvar ukazatele: "
-
-#: ../src/main.py:3195
-msgid "Cursor blink: "
-msgstr "Blikání ukazatele: "
-
-#: ../src/main.py:3196
-msgid "Encoding: "
-msgstr ""
-
-#: ../src/main.py:3197
-msgid "Window state: "
-msgstr "Stav okna: "
-
-#: ../src/main.py:3198
-msgid "Startup command: "
-msgstr "Spouštěcí příkaz: "
-
-#: ../src/main.py:3199
-msgid "Startup directory: "
-msgstr "Spouštěcí adresář: "
-
-#: ../src/main.py:3200
-msgid "Ask on quit"
-msgstr "Zeptat se při ukončení"
-
-#: ../src/main.py:3201
-msgid "Scroll on keystroke: "
-msgstr "Posunout při úhozu na klávesnici: "
-
-#: ../src/main.py:3202
-msgid "Scroll on output: "
-msgstr "Posunout při výstupu: "
-
-#: ../src/main.py:3203
-msgid "Copy on selection: "
-msgstr "Kopírovat při výběru: "
-
-#: ../src/main.py:3204
-msgid "Open file on hover: "
-msgstr "Otevřít soubor při přejetí: "
-
-#: ../src/main.py:3363
-msgid "Save"
-msgstr "Uložit"
-
-#: ../src/main.py:3411 ../src/main.py:3435
-msgid "Name: "
-msgstr "Název: "
-
-#: ../src/main.py:3411 ../src/main.py:3438
-msgid "Server: "
-msgstr "Server: "
-
-#: ../src/main.py:3411 ../src/main.py:3441
-msgid "User: "
-msgstr "Uživatel: "
-
-#: ../src/main.py:3411 ../src/main.py:3444
-msgid "Password: "
-msgstr "Heslo: "
-
-#: ../src/main.py:3411 ../src/main.py:3447
-msgid "Port: "
-msgstr "Přípojka (port): "
-
-#: ../src/main.py:3469
-msgid "Remote login"
-msgstr "Vzdálené přihlášení"
-
-#: ../src/main.py:3476
-msgid "Add"
-msgstr "Přidat"
-
-#: ../src/main.py:3477
-msgid "Connection"
-msgstr "Spojení"
-
-#: ../src/main.py:3485
-msgid "Name"
-msgstr "Název"
-
-#: ../src/main.py:3485
-msgid "Server"
-msgstr "Server"
-
-#: ../src/main.py:3492
-msgid "Add remote login"
-msgstr "Přidat vzdálené přihlášení"
-
-#: ../src/main.py:3559
-msgid "Edit remote login"
-msgstr "Upravit vzdálené přihlášení"
-
-#: ../src/main.py:3572
-msgid "Edit"
-msgstr "Upravit"
-
-#: ../src/main.py:3573
-msgid "Delete"
-msgstr "Smazat"
-
-#: ../src/main.py:3733
-msgid "Reset"
-msgstr "Nastavit znovu"
-
-#: ../src/main.py:3736
-msgid "Close"
-msgstr "Zavřít"
-
-#: ../src/main.py:4007
-msgid "working directory"
-msgstr "Pracovní adresář"
-
-#: ../src/main.py:4008
 msgid "run with quake mode"
 msgstr "Spustit v režimu quake"
 
-#: ../src/main.py:4009
-msgid "startup terminal with given command"
-msgstr "Spustit terminál zadaným příkazem"
-
-#: ../src/main.py:4010
-msgid "show this help message and exit"
-msgstr "Ukázat tuto zprávu s nápovědou a ukončit"
-
-#: ../src/main.py:4011
 msgid "show program's version number and exit"
 msgstr "Ukázat číslo s verzí programu a ukončit"
 
-#~ msgid "90"
-#~ msgstr "67"
+msgid "show this help message and exit"
+msgstr "Ukázat tuto zprávu s nápovědou a ukončit"
 
-#~ msgid "Railscasts"
-#~ msgstr "Železniční odstín"
+msgid "startup terminal with given command"
+msgstr "Spustit terminál zadaným příkazem"
+
+msgid "working directory"
+msgstr "Pracovní adresář"
