@@ -2656,7 +2656,7 @@ class HelperWindow(Window):
                 xpadding=20,
                 )
             table.attach(
-                Label(key_value, 
+                Label(key_value.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"),
                       text_color=self.key_label_color,
                       text_size=self.key_label_size,
                       ),
