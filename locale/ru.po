@@ -165,7 +165,7 @@ msgstr "Кодировка:"
 msgid "Exit fullscreen"
 msgstr "Выйти из полного экрана"
 
-msgid "Focus the temrinal left"
+msgid "Focus the terminal left"
 msgstr "Фокус терминала левее"
 
 msgid "Focus the terminal above"

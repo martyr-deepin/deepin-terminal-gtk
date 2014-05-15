@@ -162,7 +162,7 @@ msgstr ""
 msgid "Exit fullscreen"
 msgstr "Quitter le mode plein écran"
 
-msgid "Focus the temrinal left"
+msgid "Focus the terminal left"
 msgstr "Surveiller fenêtre du terminal de gauche"
 
 msgid "Focus the terminal above"

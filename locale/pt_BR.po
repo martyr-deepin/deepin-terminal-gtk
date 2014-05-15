@@ -162,7 +162,7 @@ msgstr "Codificação:"
 msgid "Exit fullscreen"
 msgstr "Sair de tela inteira"
 
-msgid "Focus the temrinal left"
+msgid "Focus the terminal left"
 msgstr "Focar o terminal à esquerda"
 
 msgid "Focus the terminal above"

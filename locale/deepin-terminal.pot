@@ -432,7 +432,7 @@ msgid "Focus the terminal below"
 msgstr ""
 
 #: ../src/main.py:2721 ../src/main.py:3052
-msgid "Focus the temrinal left"
+msgid "Focus the terminal left"
 msgstr ""
 
 #: ../src/main.py:2722 ../src/main.py:3053

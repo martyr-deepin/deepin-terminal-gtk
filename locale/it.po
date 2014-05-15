@@ -160,7 +160,7 @@ msgstr ""
 msgid "Exit fullscreen"
 msgstr "Esci dallo schermo intero"
 
-msgid "Focus the temrinal left"
+msgid "Focus the terminal left"
 msgstr "Focus del terminale a sinistra"
 
 msgid "Focus the terminal above"

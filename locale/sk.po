@@ -160,7 +160,7 @@ msgstr ""
 msgid "Exit fullscreen"
 msgstr "Zrušiť celú obrazovku"
 
-msgid "Focus the temrinal left"
+msgid "Focus the terminal left"
 msgstr "Zamerať terminál vľavo"
 
 msgid "Focus the terminal above"

@@ -162,7 +162,7 @@ msgstr ""
 msgid "Exit fullscreen"
 msgstr "خروج من وضع ملء الشاشة"
 
-msgid "Focus the temrinal left"
+msgid "Focus the terminal left"
 msgstr "ركز الطرفية في اليسار"
 
 msgid "Focus the terminal above"

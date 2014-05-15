@@ -161,7 +161,7 @@ msgstr "Kodiranje:"
 msgid "Exit fullscreen"
 msgstr "Izhod iz celozaslonskega načina"
 
-msgid "Focus the temrinal left"
+msgid "Focus the terminal left"
 msgstr "Osredotoči na levi terminal"
 
 msgid "Focus the terminal above"

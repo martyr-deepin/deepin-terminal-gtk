@@ -162,7 +162,7 @@ msgstr ""
 msgid "Exit fullscreen"
 msgstr "Opustit celou obrazovku"
 
-msgid "Focus the temrinal left"
+msgid "Focus the terminal left"
 msgstr "Zaměřit terminál vlevo"
 
 msgid "Focus the terminal above"

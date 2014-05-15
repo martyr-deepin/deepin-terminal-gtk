@@ -161,7 +161,7 @@ msgstr ""
 msgid "Exit fullscreen"
 msgstr "Stäng fullskärm"
 
-msgid "Focus the temrinal left"
+msgid "Focus the terminal left"
 msgstr "Fokusera på terminalen till vänster"
 
 msgid "Focus the terminal above"

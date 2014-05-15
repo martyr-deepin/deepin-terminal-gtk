@@ -163,7 +163,7 @@ msgstr "編碼"
 msgid "Exit fullscreen"
 msgstr "結束全螢幕"
 
-msgid "Focus the temrinal left"
+msgid "Focus the terminal left"
 msgstr "選擇左側終端機"
 
 msgid "Focus the terminal above"

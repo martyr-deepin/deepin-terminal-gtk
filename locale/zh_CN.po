@@ -165,7 +165,7 @@ msgstr "编码"
 msgid "Exit fullscreen"
 msgstr "退出全屏"
 
-msgid "Focus the temrinal left"
+msgid "Focus the terminal left"
 msgstr "选中左边的终端"
 
 msgid "Focus the terminal above"

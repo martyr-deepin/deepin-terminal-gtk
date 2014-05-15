@@ -160,7 +160,7 @@ msgstr ""
 msgid "Exit fullscreen"
 msgstr "Forlad Fuldskærmsvisning  "
 
-msgid "Focus the temrinal left"
+msgid "Focus the terminal left"
 msgstr "Fokuser på terminalen til venstre"
 
 msgid "Focus the terminal above"

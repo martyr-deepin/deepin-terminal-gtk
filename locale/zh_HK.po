@@ -159,7 +159,7 @@ msgstr ""
 msgid "Exit fullscreen"
 msgstr ""
 
-msgid "Focus the temrinal left"
+msgid "Focus the terminal left"
 msgstr ""
 
 msgid "Focus the terminal above"
