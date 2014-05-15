@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-09 14:04+0800\n"
-"PO-Revision-Date: 2014-04-30 17:10+0000\n"
+"POT-Creation-Date: 2014-05-15 16:26+0800\n"
+"PO-Revision-Date: 2014-05-13 06:00+0000\n"
 "Last-Translator: Fox909 <ffox909@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/deepin-terminal/"
 "language/ru/)\n"
@@ -82,7 +82,7 @@ msgid "Close"
 msgstr "Закрыть"
 
 msgid "Close current window"
-msgstr "Закрыть окно"
+msgstr "Закрыть текущее окно"
 
 msgid "Close other window"
 msgstr "Закрыть другие окна"
@@ -165,14 +165,15 @@ msgstr "Кодировка:"
 msgid "Exit fullscreen"
 msgstr "Выйти из полного экрана"
 
-msgid "Focus the terminal left"
-msgstr "Фокус терминала левее"
-
 msgid "Focus the terminal above"
 msgstr "Фокус терминал выше"
 
 msgid "Focus the terminal below"
 msgstr "Фокус терминал ниже"
+
+#, fuzzy
+msgid "Focus the terminal left"
+msgstr "Фокус терминала левее"
 
 msgid "Focus the terminal right"
 msgstr "Фокус терминала правее"
@@ -238,7 +239,7 @@ msgid "Maximize"
 msgstr "Развернуть"
 
 msgid "Mocha"
-msgstr "Кофе мокко"
+msgstr "Мокко"
 
 msgid "Monokai"
 msgstr "Monokai"
@@ -352,7 +353,7 @@ msgid "Search forward"
 msgstr "Поиск далее"
 
 msgid "Select word"
-msgstr "Выьрать слово"
+msgstr "Выделить текст"
 
 msgid "Server"
 msgstr "Сервер"
@@ -364,7 +365,7 @@ msgid "Set up SSH connection"
 msgstr "Установить защищенное SSH соединение"
 
 msgid "Show correlative child window"
-msgstr "Показать соотносительно дочернее окно"
+msgstr "Показать соотносящееся дочернее окно"
 
 msgid "Solarized"
 msgstr "Зарумянить"
@@ -391,7 +392,7 @@ msgid "System"
 msgstr "Система"
 
 msgid "Terminal command"
-msgstr "Терминальная команда"
+msgstr "Команда терминала"
 
 msgid "Terminal still have running programs. Are you sure you want to quit?"
 msgstr "В терминале есть запущенные приложения. Вы точно хотите закрыть его?"
@@ -424,8 +425,7 @@ msgid "Window state: "
 msgstr "Статус окна:"
 
 msgid "Window still have running programs. Are you sure you want to close?"
-msgstr ""
-"У окна все еще есть работающие программы. Вы уверены, что хотите закрыть?"
+msgstr "Окно имеет запущенные программы. Уверены, что хотите закрыть?"
 
 msgid "Workspace"
 msgstr "Рабочий стол"
@@ -434,9 +434,7 @@ msgid "Workspace command"
 msgstr "Команда рабочего стола"
 
 msgid "Workspace still have running programs. Are you sure you want to close?"
-msgstr ""
-"На рабочем столе еще есть работающие программы. Вы уверены, что хотите "
-"закрыть?"
+msgstr "Рабочий столе имеет запущенные программы. Уверены, что хотите закрыть?"
 
 msgid "Zoom in"
 msgstr "Приблизить"

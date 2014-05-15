@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-09 14:04+0800\n"
-"PO-Revision-Date: 2014-05-05 16:47+0000\n"
-"Last-Translator: Thiago Cangussu <cangussu.thg@gmail.com>\n"
+"POT-Creation-Date: 2014-05-15 16:26+0800\n"
+"PO-Revision-Date: 2014-05-15 08:24+0000\n"
+"Last-Translator: electricface <songwentai@linuxdeepin.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/"
 "deepin-terminal/language/pt_BR/)\n"
 "Language: pt_BR\n"
@@ -162,14 +162,14 @@ msgstr "Codificação:"
 msgid "Exit fullscreen"
 msgstr "Sair de tela inteira"
 
-msgid "Focus the terminal left"
-msgstr "Focar o terminal à esquerda"
-
 msgid "Focus the terminal above"
 msgstr "Focar o terminal acima"
 
 msgid "Focus the terminal below"
 msgstr "Focar o terminal abaixo"
+
+msgid "Focus the terminal left"
+msgstr ""
 
 msgid "Focus the terminal right"
 msgstr "Focar o terminal à direita"
@@ -229,7 +229,7 @@ msgid "Japanese"
 msgstr "Japonês"
 
 msgid "Korean"
-msgstr "Koreano"
+msgstr "Coreano"
 
 msgid "Maximize"
 msgstr "Maximizar"
@@ -322,7 +322,7 @@ msgid "Reset zoom"
 msgstr "Reiniciar zoom"
 
 msgid "Romanian"
-msgstr "Romêno"
+msgstr "Romeno"
 
 msgid "Save"
 msgstr "Salvar"

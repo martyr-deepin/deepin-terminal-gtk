@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-09 14:04+0800\n"
-"PO-Revision-Date: 2014-04-30 15:01+0800\n"
+"POT-Creation-Date: 2014-05-15 16:24+0800\n"
+"PO-Revision-Date: 2014-05-11 09:50+0000\n"
 "Last-Translator: electricface <songwentai@linuxdeepin.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/deepin-"
 "terminal/language/zh_CN/)\n"
@@ -165,14 +165,14 @@ msgstr "编码"
 msgid "Exit fullscreen"
 msgstr "退出全屏"
 
-msgid "Focus the terminal left"
-msgstr "选中左边的终端"
-
 msgid "Focus the terminal above"
 msgstr "选中上边的终端"
 
 msgid "Focus the terminal below"
 msgstr "选中下边的终端"
+
+msgid "Focus the terminal left"
+msgstr "选中左边的终端"
 
 msgid "Focus the terminal right"
 msgstr "选中右边的终端"
@@ -455,9 +455,3 @@ msgstr "指定参数启动终端"
 
 msgid "working directory"
 msgstr "当前工作目录"
-
-#~ msgid "90"
-#~ msgstr "137"
-
-#~ msgid "Railscasts"
-#~ msgstr "Railscasts"
