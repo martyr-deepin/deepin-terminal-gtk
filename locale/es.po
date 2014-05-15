@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-09 14:04+0800\n"
-"PO-Revision-Date: 2014-05-08 13:42+0000\n"
-"Last-Translator: Cxbii chen <chenxiangbang@linuxdeepin.com>\n"
+"POT-Creation-Date: 2014-05-15 16:26+0800\n"
+"PO-Revision-Date: 2014-05-15 03:20+0000\n"
+"Last-Translator: josedancer <josemdance@outlook.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/deepin-terminal/"
 "language/es/)\n"
 "Language: es\n"
@@ -36,10 +36,10 @@ msgid "Advanced command"
 msgstr "Comando Avanzado"
 
 msgid "Arabic"
-msgstr ""
+msgstr "árabe"
 
 msgid "Armenian"
-msgstr ""
+msgstr "armenio"
 
 msgid "Ask on quit"
 msgstr "Preguntar al Salir"
@@ -48,7 +48,7 @@ msgid "Background transparency: "
 msgstr "Transparencia del Fondo:"
 
 msgid "Baltic"
-msgstr ""
+msgstr "báltico"
 
 msgid "Black on white"
 msgstr "Negro sobre Blanco"
@@ -60,16 +60,16 @@ msgid "Block"
 msgstr "Bloquear"
 
 msgid "Celtic"
-msgstr ""
+msgstr "celta"
 
 msgid "Central European"
-msgstr ""
+msgstr "central Europeo"
 
 msgid "Chinese Simplified"
-msgstr ""
+msgstr "chino simplificado"
 
 msgid "Chinese Traditional"
-msgstr ""
+msgstr "Chino tradicional"
 
 msgid "Clear screen"
 msgstr "Borrar pantalla"
@@ -105,7 +105,7 @@ msgid "Copy on selection: "
 msgstr "Copiar al Seleccionar:"
 
 msgid "Croatian"
-msgstr ""
+msgstr "croata"
 
 msgid "Ctrl + Left click"
 msgstr "Control + Clic Izquierdo"
@@ -123,13 +123,13 @@ msgid "Custom"
 msgstr "Personalizado"
 
 msgid "Cyrillic"
-msgstr ""
+msgstr "cirílico"
 
 msgid "Cyrillic/Russian"
-msgstr ""
+msgstr "Cirílico / ruso"
 
 msgid "Cyrillic/Ukrainian"
-msgstr ""
+msgstr "Cirílico / Ucraniano"
 
 msgid "Deepin"
 msgstr "Deepin"
@@ -156,19 +156,20 @@ msgid "Eighties"
 msgstr "Ochentas"
 
 msgid "Encoding: "
-msgstr ""
+msgstr "codificación:"
 
 msgid "Exit fullscreen"
 msgstr "Salir de Pantalla Completa"
-
-msgid "Focus the terminal left"
-msgstr "Enfocar la Terminal a la Izquierda"
 
 msgid "Focus the terminal above"
 msgstr "Enfocar la Terminal por Encima"
 
 msgid "Focus the terminal below"
 msgstr "Enfocar la Terminal por Debajo"
+
+#, fuzzy
+msgid "Focus the terminal left"
+msgstr "Enfocar la Terminal a la Izquierda"
 
 msgid "Focus the terminal right"
 msgstr "Enfocar la Terminal a la Derecha"
@@ -186,10 +187,10 @@ msgid "General"
 msgstr "General"
 
 msgid "Georgian"
-msgstr ""
+msgstr "georgiano"
 
 msgid "Greek"
-msgstr ""
+msgstr "griego"
 
 msgid "Green on black"
 msgstr "Verde sobre Negro"
@@ -201,19 +202,19 @@ msgid "Grey on black"
 msgstr "Gris sobre negro"
 
 msgid "Gujarati"
-msgstr ""
+msgstr "Gujarati"
 
 msgid "Gurmukhi"
-msgstr ""
+msgstr "Gurmukhi"
 
 msgid "Hebrew"
-msgstr ""
+msgstr "Hebreo"
 
 msgid "Hebrew Visual"
-msgstr ""
+msgstr "hebreo Visual"
 
 msgid "Hindi"
-msgstr ""
+msgstr "Hindi"
 
 msgid "Hotkeys"
 msgstr "Atajos de Teclado"
@@ -222,13 +223,13 @@ msgid "I-beam"
 msgstr "I-beam"
 
 msgid "Icelandic"
-msgstr ""
+msgstr "islandés"
 
 msgid "Japanese"
-msgstr ""
+msgstr "japonés"
 
 msgid "Korean"
-msgstr ""
+msgstr "coreano"
 
 msgid "Maximize"
 msgstr "Maximizar"
@@ -252,7 +253,7 @@ msgid "Next workspace"
 msgstr "Espacio de Trabajo Siguiente"
 
 msgid "Nordic"
-msgstr ""
+msgstr "nórdico"
 
 msgid "Normal"
 msgstr "Normal"
@@ -294,7 +295,7 @@ msgid "Paste"
 msgstr "Pegar"
 
 msgid "Persian"
-msgstr ""
+msgstr "persa"
 
 msgid "Port: "
 msgstr "Puerto:"
@@ -321,7 +322,7 @@ msgid "Reset zoom"
 msgstr "Resetear Acercamiento"
 
 msgid "Romanian"
-msgstr ""
+msgstr "rumano"
 
 msgid "Save"
 msgstr "Guardar"
@@ -366,7 +367,7 @@ msgid "Solarized"
 msgstr "Solarizado"
 
 msgid "South European"
-msgstr ""
+msgstr "Europa del Sur"
 
 msgid "Split horizontally"
 msgstr "Dividir Horizontalmente"
@@ -394,25 +395,25 @@ msgstr ""
 "La terminal aun esta corriendo programas. ¿Estás seguro que deseas salir?"
 
 msgid "Thai"
-msgstr ""
+msgstr "tailandés"
 
 msgid "Turkish"
-msgstr ""
+msgstr "turco"
 
 msgid "Underline"
 msgstr "Subrayado"
 
 msgid "Unicode"
-msgstr ""
+msgstr "Unicode"
 
 msgid "User: "
 msgstr "Usuario:"
 
 msgid "Vietnamese"
-msgstr ""
+msgstr "vietnamita"
 
 msgid "Western"
-msgstr ""
+msgstr "Western"
 
 msgid "White on black"
 msgstr "Blanco sobre Negro"

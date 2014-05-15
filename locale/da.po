@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-09 14:04+0800\n"
-"PO-Revision-Date: 2014-05-08 15:40+0000\n"
+"POT-Creation-Date: 2014-05-15 16:26+0800\n"
+"PO-Revision-Date: 2014-05-13 07:08+0000\n"
 "Last-Translator: Snubbi <carl@manjaro.dk>\n"
 "Language-Team: Danish (http://www.transifex.com/projects/p/deepin-terminal/"
 "language/da/)\n"
@@ -35,10 +35,10 @@ msgid "Advanced command"
 msgstr "Avanceret kommando"
 
 msgid "Arabic"
-msgstr ""
+msgstr "Arabisk"
 
 msgid "Armenian"
-msgstr ""
+msgstr "Armensk"
 
 msgid "Ask on quit"
 msgstr "Spørg ved afslutning"
@@ -47,7 +47,7 @@ msgid "Background transparency: "
 msgstr "Baggrundgennemsigtighed:"
 
 msgid "Baltic"
-msgstr ""
+msgstr "Baltisk"
 
 msgid "Black on white"
 msgstr "Sort på hvid"
@@ -59,16 +59,16 @@ msgid "Block"
 msgstr "Blok"
 
 msgid "Celtic"
-msgstr ""
+msgstr "Celtisk"
 
 msgid "Central European"
-msgstr ""
+msgstr "Centraleuropæisk"
 
 msgid "Chinese Simplified"
-msgstr ""
+msgstr "Forenklet kinesisk"
 
 msgid "Chinese Traditional"
-msgstr ""
+msgstr "Traditionelt kinesisk"
 
 msgid "Clear screen"
 msgstr "Ryd skærm"
@@ -104,7 +104,7 @@ msgid "Copy on selection: "
 msgstr "Kopier ved udvælgelse:"
 
 msgid "Croatian"
-msgstr ""
+msgstr "Kroatisk"
 
 msgid "Ctrl + Left click"
 msgstr "Ctrl + Venstre Klik"
@@ -122,13 +122,13 @@ msgid "Custom"
 msgstr "Tilpasset"
 
 msgid "Cyrillic"
-msgstr ""
+msgstr "Kyrillisk"
 
 msgid "Cyrillic/Russian"
-msgstr ""
+msgstr "Kyrillisk/Russisk"
 
 msgid "Cyrillic/Ukrainian"
-msgstr ""
+msgstr "Kyrillisk/Ukrainsk"
 
 msgid "Deepin"
 msgstr "Deepin"
@@ -155,19 +155,20 @@ msgid "Eighties"
 msgstr "Firsere"
 
 msgid "Encoding: "
-msgstr ""
+msgstr "Sprog kodning:"
 
 msgid "Exit fullscreen"
 msgstr "Forlad Fuldskærmsvisning  "
-
-msgid "Focus the terminal left"
-msgstr "Fokuser på terminalen til venstre"
 
 msgid "Focus the terminal above"
 msgstr "Fokuser på terminalen ovenfor"
 
 msgid "Focus the terminal below"
 msgstr "Fokuser på terminalen nedenfor"
+
+#, fuzzy
+msgid "Focus the terminal left"
+msgstr "Fokuser på terminalen til venstre"
 
 msgid "Focus the terminal right"
 msgstr "Fokuser på terminalen til højre"
@@ -185,10 +186,10 @@ msgid "General"
 msgstr "General"
 
 msgid "Georgian"
-msgstr ""
+msgstr "Georgisk"
 
 msgid "Greek"
-msgstr ""
+msgstr "Græsk"
 
 msgid "Green on black"
 msgstr "Grøn på sort"
@@ -200,19 +201,19 @@ msgid "Grey on black"
 msgstr "Grå på sort"
 
 msgid "Gujarati"
-msgstr ""
+msgstr "Gujarati"
 
 msgid "Gurmukhi"
-msgstr ""
+msgstr "Gurmukhi"
 
 msgid "Hebrew"
-msgstr ""
+msgstr "Hebræisk"
 
 msgid "Hebrew Visual"
-msgstr ""
+msgstr "Hebræisk Visual"
 
 msgid "Hindi"
-msgstr ""
+msgstr "Hindi"
 
 msgid "Hotkeys"
 msgstr "Tastaturgenveje"
@@ -221,13 +222,13 @@ msgid "I-beam"
 msgstr "I-bjælke"
 
 msgid "Icelandic"
-msgstr ""
+msgstr "Islandsk"
 
 msgid "Japanese"
-msgstr ""
+msgstr "Japansk"
 
 msgid "Korean"
-msgstr ""
+msgstr "Koreansk"
 
 msgid "Maximize"
 msgstr "Maksimer"
@@ -251,7 +252,7 @@ msgid "Next workspace"
 msgstr "Næste arbejdsområde"
 
 msgid "Nordic"
-msgstr ""
+msgstr "Nordisk"
 
 msgid "Normal"
 msgstr "Normal"
@@ -293,7 +294,7 @@ msgid "Paste"
 msgstr "Indsæt"
 
 msgid "Persian"
-msgstr ""
+msgstr "Persisk"
 
 msgid "Port: "
 msgstr "Port: "
@@ -320,7 +321,7 @@ msgid "Reset zoom"
 msgstr "Nulstil zoom"
 
 msgid "Romanian"
-msgstr ""
+msgstr "Rumænsk"
 
 msgid "Save"
 msgstr "Gem"
@@ -365,7 +366,7 @@ msgid "Solarized"
 msgstr "Solariseret"
 
 msgid "South European"
-msgstr ""
+msgstr "Sydeuropæisk"
 
 msgid "Split horizontally"
 msgstr "Opdel vandret"
@@ -394,22 +395,22 @@ msgstr ""
 "afslutte?"
 
 msgid "Thai"
-msgstr ""
+msgstr "Thai"
 
 msgid "Turkish"
-msgstr ""
+msgstr "Tyrkisk"
 
 msgid "Underline"
 msgstr "Understrege"
 
 msgid "Unicode"
-msgstr ""
+msgstr "Unicode"
 
 msgid "User: "
 msgstr "Bruger"
 
 msgid "Vietnamese"
-msgstr ""
+msgstr "Vietnamesisk"
 
 msgid "Western"
 msgstr "Vesteuropa"

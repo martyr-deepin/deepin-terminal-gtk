@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-09 14:04+0800\n"
+"POT-Creation-Date: 2014-05-15 16:26+0800\n"
 "PO-Revision-Date: 2013-12-10 13:20+0000\n"
 "Last-Translator: kazzike <jeancarlosrivas@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/deepin-terminal/"
@@ -162,14 +162,14 @@ msgstr ""
 msgid "Exit fullscreen"
 msgstr "Salir de Pantalla Completa"
 
-msgid "Focus the terminal left"
-msgstr "Enfocar la Terminal a la Izquierda"
-
 msgid "Focus the terminal above"
 msgstr "Enfocar la Terminal por Encima"
 
 msgid "Focus the terminal below"
 msgstr "Enfocar la Terminal por Debajo"
+
+msgid "Focus the terminal left"
+msgstr "Enfocar la Terminal a la Izquierda"
 
 msgid "Focus the terminal right"
 msgstr "Enfocar la Terminal a la Derecha"

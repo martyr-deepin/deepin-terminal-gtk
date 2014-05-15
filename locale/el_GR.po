@@ -1,0 +1,459 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# GoldBlossom <angelnonis@gmail.com>, 2014
+msgid ""
+msgstr ""
+"Project-Id-Version: Deepin Terminal\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-05-15 16:26+0800\n"
+"PO-Revision-Date: 2014-05-14 08:56+0000\n"
+"Last-Translator: GoldBlossom <angelnonis@gmail.com>\n"
+"Language-Team: Greek (Greece) (http://www.transifex.com/projects/p/deepin-"
+"terminal/language/el_GR/)\n"
+"Language: el_GR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Add"
+msgstr "Προσθήκη"
+
+msgid "Add remote login"
+msgstr "Προσθήκη απομακρυσμένης σύνδεσης"
+
+msgid "Adjust opacity"
+msgstr "Ρυθμίστε την αδιαφάνεια"
+
+msgid "Advanced"
+msgstr "Προχωρημένη"
+
+msgid "Advanced command"
+msgstr "Προχωρημένη εντολή"
+
+msgid "Arabic"
+msgstr "Αραβικά"
+
+msgid "Armenian"
+msgstr "Αρμενικά"
+
+msgid "Ask on quit"
+msgstr "Ρωτήστε κατά την έξοδο"
+
+msgid "Background transparency: "
+msgstr "Διαφάνεια φόντου:"
+
+msgid "Baltic"
+msgstr "Βαλτικά"
+
+msgid "Black on white"
+msgstr "Μαύρο σε λευκό"
+
+msgid "Black on yellow"
+msgstr "Μαύρο σε κίτρινο"
+
+msgid "Block"
+msgstr "Αποκλεισμός"
+
+msgid "Celtic"
+msgstr "Κελτικά"
+
+msgid "Central European"
+msgstr "Κεντρική Ευρωπαϊκή"
+
+msgid "Chinese Simplified"
+msgstr "Απλοποιημένα Κινέζικα"
+
+msgid "Chinese Traditional"
+msgstr "Παραδοσιακά Κινέζικα"
+
+msgid "Clear screen"
+msgstr "Καθαρίσει της οθόνης"
+
+msgid "Close"
+msgstr "Κλείσιμο"
+
+msgid "Close current window"
+msgstr "Κλείσιμο τρέχοντος παραθύρου"
+
+msgid "Close other window"
+msgstr "Κλείσιμο άλλου παραθύρου"
+
+msgid "Close window?"
+msgstr "Κλείσιμο παράθυρου;"
+
+msgid "Close workspace"
+msgstr "Κλείσιμο χώρου εργασίας"
+
+msgid "Close workspace?"
+msgstr "Κλείσιμο χώρου εργασίας;"
+
+msgid "Color scheme: "
+msgstr "Συνδυασμός χρωμάτων:"
+
+msgid "Connection"
+msgstr "Σύνδεση"
+
+msgid "Copy"
+msgstr "Αντιγραφή"
+
+msgid "Copy on selection: "
+msgstr "Αντιγραφή κατά την επιλογή:"
+
+msgid "Croatian"
+msgstr "Κροατικά"
+
+msgid "Ctrl + Left click"
+msgstr "Ctrl + Αριστερό κλικ"
+
+msgid "Ctrl + Wheel"
+msgstr "Ctrl + Τροχός"
+
+msgid "Cursor blink: "
+msgstr "Αναβοσβήσμα δρομέα:"
+
+msgid "Cursor shape: "
+msgstr "Σχήμα δρομέα:"
+
+msgid "Custom"
+msgstr "Προσαρμοσμένο"
+
+msgid "Cyrillic"
+msgstr "Κυριλλικά"
+
+msgid "Cyrillic/Russian"
+msgstr "Κυριλλικά / Ρωσικά"
+
+msgid "Cyrillic/Ukrainian"
+msgstr "Κυριλλικά / Ουκρανικά"
+
+msgid "Deepin"
+msgstr "Deepin"
+
+msgid "Deepin Terminal"
+msgstr "Deepin τερματικό"
+
+msgid "Delete"
+msgstr "Διαγραφή"
+
+msgid "Display hotkeys"
+msgstr "Προβολή πλήκτρων πρόσβασης"
+
+msgid "Double click"
+msgstr "Κάντε διπλό κλικ"
+
+msgid "Edit"
+msgstr "Επεξεργασία"
+
+msgid "Edit remote login"
+msgstr "Επεξεργασία απομακρυσμένης σύνδεσης"
+
+msgid "Eighties"
+msgstr "Δεκαετίας του ογδόντα"
+
+msgid "Encoding: "
+msgstr "Κωδικοποίηση"
+
+msgid "Exit fullscreen"
+msgstr "Έξοδος από πλήρη οθόνη"
+
+msgid "Focus the terminal above"
+msgstr "Εστιάστε το τερματικό πάνω"
+
+msgid "Focus the terminal below"
+msgstr "Εστιάστε το τερματικό παρακάτω"
+
+#, fuzzy
+msgid "Focus the terminal left"
+msgstr "Εστιάστε το τερματικό αριστερά"
+
+msgid "Focus the terminal right"
+msgstr "Εστιάστε το τερματικό δεξιά"
+
+msgid "Font size: "
+msgstr "Μέγεθος γραμματοσειράς:"
+
+msgid "Font: "
+msgstr "Γραμματοσειρά:"
+
+msgid "Fullscreen"
+msgstr "Πλήρης οθόνη"
+
+msgid "General"
+msgstr "Γενικά"
+
+msgid "Georgian"
+msgstr "Γεωργιανά"
+
+msgid "Greek"
+msgstr "Ελληνικά"
+
+msgid "Green on black"
+msgstr "Πράσινο σε μαύρο"
+
+msgid "Green screen"
+msgstr "Πράσινη οθόνη"
+
+msgid "Grey on black"
+msgstr "Γκρι, μαύρο"
+
+msgid "Gujarati"
+msgstr "Γκουτζαρατικά"
+
+msgid "Gurmukhi"
+msgstr "Γκουρμούκι"
+
+msgid "Hebrew"
+msgstr "Εβραϊκά"
+
+msgid "Hebrew Visual"
+msgstr "Οπτικά Εβραϊκά"
+
+msgid "Hindi"
+msgstr "Ινδικά"
+
+msgid "Hotkeys"
+msgstr "Πλήκτρα συντόμευσης"
+
+msgid "I-beam"
+msgstr "I-beam"
+
+msgid "Icelandic"
+msgstr "Ισλανδικά"
+
+msgid "Japanese"
+msgstr "Ιαπωνικά"
+
+msgid "Korean"
+msgstr "Κορεατικά"
+
+msgid "Maximize"
+msgstr "Μεγιστοποίηση"
+
+msgid "Mocha"
+msgstr "Μόκα"
+
+msgid "Monokai"
+msgstr "Monokai"
+
+msgid "Name"
+msgstr "Όνομα"
+
+msgid "Name: "
+msgstr "Όνομα:"
+
+msgid "New workspace"
+msgstr "Νέος χώρος εργασίας"
+
+msgid "Next workspace"
+msgstr "Επόμενος χώρος εργασίας"
+
+msgid "Nordic"
+msgstr "Σκανδιναβικά"
+
+msgid "Normal"
+msgstr "Κανονικό"
+
+msgid "Ocean"
+msgstr "Ωκεανός"
+
+msgid "Off"
+msgstr "Απενεργοποιημενο"
+
+msgid "On"
+msgstr "Ενεργό"
+
+msgid "Open"
+msgstr "Άνοιγμα"
+
+msgid "Open URL"
+msgstr "Άνοιγμα URL"
+
+msgid "Open current directory"
+msgstr "Άνοιγμα τρέχοντος καταλόγου"
+
+msgid "Open directory"
+msgstr "Άνοιγμα καταλόγου"
+
+msgid "Open file"
+msgstr "Άνοιγμα αρχείου"
+
+msgid "Open file on hover: "
+msgstr "Άνοιγμα αρχείου σε αιώρηση:"
+
+msgid "Open manual"
+msgstr "Άνοιγμα εγχειριδίου"
+
+msgid "Password: "
+msgstr "Κωδικός:"
+
+msgid "Paste"
+msgstr "Επικόλλησε"
+
+msgid "Persian"
+msgstr "Περσικά"
+
+msgid "Port: "
+msgstr "θύρα:"
+
+msgid "Preferences"
+msgstr "Προτιμήσεις"
+
+msgid "Previous workspace"
+msgstr "Προηγούμενος χώρος εργασίας"
+
+msgid "Quit"
+msgstr "Έξοδος"
+
+msgid "Quit terminal?"
+msgstr "Έξοδος από τερματικό;"
+
+msgid "Remote login"
+msgstr "Απομακρυσμένη σύνδεση"
+
+msgid "Reset"
+msgstr "Επαναφορά"
+
+msgid "Reset zoom"
+msgstr "Επαναφορά μεγέθυνσης"
+
+msgid "Romanian"
+msgstr "Ρουμανικά"
+
+msgid "Save"
+msgstr "Αποθήκευση"
+
+msgid "Scroll on keystroke: "
+msgstr "Κύλιση στην πληκτρολόγηση:"
+
+msgid "Scroll on output: "
+msgstr "Κύλιση στην παραγωγή:"
+
+msgid "Scroll page down"
+msgstr "Κύλιση σελίδας προς τα κάτω"
+
+msgid "Scroll page up"
+msgstr "Κύλιση σελίδας προς τα πάνω"
+
+msgid "Search"
+msgstr "Αναζήτηση"
+
+msgid "Search backward"
+msgstr "Αναζήτηση προς τα πίσω"
+
+msgid "Search forward"
+msgstr "Αναζήτηση προς τα εμπρός"
+
+msgid "Select word"
+msgstr "Επιλέξτε λέξη"
+
+msgid "Server"
+msgstr "Διακομιστής"
+
+msgid "Server: "
+msgstr "Διακομιστής:"
+
+msgid "Set up SSH connection"
+msgstr "Ρύθμιση σύνδεσης SSH"
+
+msgid "Show correlative child window"
+msgstr "Προβολή διασυνδέσεων εξαρτημένου παραθύρου"
+
+msgid "Solarized"
+msgstr "Solarized"
+
+msgid "South European"
+msgstr "Νότιας Ευρώπης"
+
+msgid "Split horizontally"
+msgstr "Διαχωρισμός οριζόντια"
+
+msgid "Split vertically"
+msgstr "Διαχωρισμός κατακόρυφα"
+
+msgid "Startup command: "
+msgstr "Εντολή εκκίνησης:"
+
+msgid "Startup directory: "
+msgstr "Κατάλογος εκκίνησης:"
+
+msgid "Switch workspace"
+msgstr "Αλλαγή χώρου εργασίας"
+
+msgid "System"
+msgstr "Σύστημα"
+
+msgid "Terminal command"
+msgstr "Εντολή τερματικού"
+
+msgid "Terminal still have running programs. Are you sure you want to quit?"
+msgstr ""
+"Το τερματικό εξακολουθεί να έχει τα προγράμματα που εκτελούνται. Είστε "
+"σίγουροι ότι θέλετε να βγείτε;"
+
+msgid "Thai"
+msgstr "Ταϊλανδικά"
+
+msgid "Turkish"
+msgstr "Τουρκικά"
+
+msgid "Underline"
+msgstr "Υπογράμμιση"
+
+msgid "Unicode"
+msgstr "Unicode"
+
+msgid "User: "
+msgstr "Χρήστης:"
+
+msgid "Vietnamese"
+msgstr "Βιετναμέζικα"
+
+msgid "Western"
+msgstr "Δυτικά"
+
+msgid "White on black"
+msgstr "Λευκό σε μαύρο"
+
+msgid "Window state: "
+msgstr "Κατάσταση παράθυρου:"
+
+msgid "Window still have running programs. Are you sure you want to close?"
+msgstr ""
+"Το παράθυρο εξακολουθέι την εκτέλεση προγραμμάτων. Είστε σίγουροι ότι θέλετε "
+"να το κλείσετε;"
+
+msgid "Workspace"
+msgstr "Χώρος εργασίας"
+
+msgid "Workspace command"
+msgstr "Εντολή χώρου εργασίας"
+
+msgid "Workspace still have running programs. Are you sure you want to close?"
+msgstr ""
+"Ο χώρος εργασίας εξακολουθέι την εκτέλεση προγραμμάτων. Είστε σίγουροι ότι "
+"θέλετε να το κλείσετε;"
+
+msgid "Zoom in"
+msgstr "Μεγεθύνση"
+
+msgid "Zoom out"
+msgstr "Σμίκρυνση"
+
+msgid "run with quake mode"
+msgstr "Εκτέλεση σε κατάσταση λειτουργίας πλήρους οθόνης"
+
+msgid "show program's version number and exit"
+msgstr "προβολή αριθμού έκδοσης του πρόγραμμα και έξοδος"
+
+msgid "show this help message and exit"
+msgstr "εμφανιστεί αυτού του μήνυματος βοήθειας και έξοδος"
+
+msgid "startup terminal with given command"
+msgstr "εκκίνηση τερματικό με δεδομένη εντολή"
+
+msgid "working directory"
+msgstr "κατάλογος εργασίας"
