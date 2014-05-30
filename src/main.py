@@ -3168,9 +3168,10 @@ class AdvancedSettings(gtk.VBox):
         self.cursor_blink_mode_widget.set_select_index(unzip(CURSOR_BLINK_MODE_ITEMS)[-1].index(cursor_blink_mode))
 
         encoding = get_config("advanced", "encoding")
-        self.encoding_widget = ComboBox(sorted(ENCODINGS, key=lambda (name, value): name), fixed_width=COMBO_BOX_WIDTH, droplist_height=200)
+        encodings = sorted(ENCODINGS, key=lambda (name, value): name)
+        self.encoding_widget = ComboBox(encodings, fixed_width=COMBO_BOX_WIDTH, droplist_height=200)
         self.encoding_widget.connect("item-selected", self.save_encoding)
-        self.encoding_widget.set_select_index(unzip(ENCODINGS)[-1].index(encoding))
+        self.encoding_widget.set_select_index(unzip(encodings)[-1].index(encoding))
         
         scroll_on_key = is_bool(get_config("advanced", "scroll_on_key"))
         self.scroll_on_key_widget = SwitchButton(scroll_on_key)
@@ -3811,8 +3812,9 @@ class SettingDialog(PreferenceDialog):
             global_event.emit("set-cursor-blink-mode", cursor_blink_mode)
 
             encoding = config_dict["encoding"]
+            encodings = sorted(ENCODINGS, key=lambda (name, value): name)
             page_widget.encoding_widget.set_select_index(
-                unzip(ENCODINGS)[-1].index(encoding))
+                unzip(encodings)[-1].index(encoding))
             global_event.emit("set-encoding", encoding)
             
             scroll_on_key = is_bool(config_dict["scroll_on_key"])
