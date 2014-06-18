@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-15 16:26+0800\n"
+"POT-Creation-Date: 2014-06-18 18:16+0800\n"
 "PO-Revision-Date: 2014-03-22 09:14+0000\n"
 "Last-Translator: cxbii <mycxbii@gmail.com>\n"
 "Language-Team: English (Australia) (http://www.transifex.com/projects/p/"
@@ -18,434 +18,584 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Add"
-msgstr ""
-
-msgid "Add remote login"
-msgstr ""
-
-msgid "Adjust opacity"
-msgstr ""
-
-msgid "Advanced"
-msgstr ""
-
-msgid "Advanced command"
-msgstr ""
-
-msgid "Arabic"
-msgstr ""
-
-msgid "Armenian"
-msgstr ""
-
-msgid "Ask on quit"
-msgstr ""
-
-msgid "Background transparency: "
-msgstr ""
-
-msgid "Baltic"
-msgstr ""
-
-msgid "Black on white"
-msgstr ""
-
-msgid "Black on yellow"
-msgstr ""
-
-msgid "Block"
-msgstr ""
-
-msgid "Celtic"
-msgstr ""
-
-msgid "Central European"
-msgstr ""
-
-msgid "Chinese Simplified"
-msgstr ""
-
-msgid "Chinese Traditional"
-msgstr ""
-
-msgid "Clear screen"
-msgstr ""
-
-msgid "Close"
-msgstr ""
-
-msgid "Close current window"
-msgstr ""
-
-msgid "Close other window"
-msgstr ""
-
-msgid "Close window?"
-msgstr ""
-
-msgid "Close workspace"
-msgstr ""
-
-msgid "Close workspace?"
-msgstr ""
-
-msgid "Color scheme: "
-msgstr ""
-
-msgid "Connection"
-msgstr ""
-
-msgid "Copy"
-msgstr ""
-
-msgid "Copy on selection: "
-msgstr ""
-
-msgid "Croatian"
-msgstr ""
-
-msgid "Ctrl + Left click"
-msgstr ""
-
-msgid "Ctrl + Wheel"
-msgstr ""
-
-msgid "Cursor blink: "
-msgstr ""
-
-msgid "Cursor shape: "
-msgstr ""
-
-msgid "Custom"
-msgstr ""
-
-msgid "Cyrillic"
-msgstr ""
-
-msgid "Cyrillic/Russian"
-msgstr ""
-
-msgid "Cyrillic/Ukrainian"
-msgstr ""
-
-msgid "Deepin"
-msgstr ""
-
-msgid "Deepin Terminal"
-msgstr ""
-
-msgid "Delete"
-msgstr ""
-
-msgid "Display hotkeys"
-msgstr ""
-
-msgid "Double click"
-msgstr ""
-
-msgid "Edit"
-msgstr ""
-
-msgid "Edit remote login"
-msgstr ""
-
-msgid "Eighties"
-msgstr ""
-
-msgid "Encoding: "
-msgstr ""
-
-msgid "Exit fullscreen"
-msgstr ""
-
-msgid "Focus the terminal above"
-msgstr ""
-
-msgid "Focus the terminal below"
-msgstr ""
-
-msgid "Focus the terminal left"
-msgstr ""
-
-msgid "Focus the terminal right"
-msgstr ""
-
-msgid "Font size: "
-msgstr ""
-
-msgid "Font: "
-msgstr ""
-
-msgid "Fullscreen"
-msgstr ""
-
-msgid "General"
-msgstr ""
-
-msgid "Georgian"
-msgstr ""
-
-msgid "Greek"
-msgstr ""
-
-msgid "Green on black"
-msgstr ""
-
-msgid "Green screen"
-msgstr ""
-
-msgid "Grey on black"
-msgstr ""
-
-msgid "Gujarati"
-msgstr ""
-
-msgid "Gurmukhi"
-msgstr ""
-
-msgid "Hebrew"
-msgstr ""
-
-msgid "Hebrew Visual"
-msgstr ""
-
-msgid "Hindi"
-msgstr ""
-
-msgid "Hotkeys"
-msgstr ""
-
-msgid "I-beam"
-msgstr ""
-
-msgid "Icelandic"
-msgstr ""
-
-msgid "Japanese"
-msgstr ""
-
-msgid "Korean"
-msgstr ""
-
-msgid "Maximize"
-msgstr ""
-
-msgid "Mocha"
-msgstr ""
-
-msgid "Monokai"
-msgstr ""
-
-msgid "Name"
-msgstr ""
-
-msgid "Name: "
-msgstr ""
-
-msgid "New workspace"
-msgstr ""
-
-msgid "Next workspace"
-msgstr ""
-
-msgid "Nordic"
-msgstr ""
-
+#: ../src/main.py:118
 msgid "Normal"
 msgstr ""
 
-msgid "Ocean"
+#: ../src/main.py:119
+msgid "Maximize"
 msgstr ""
 
-msgid "Off"
+#: ../src/main.py:120 ../src/main.py:863 ../src/main.py:2730
+#: ../src/main.py:3064
+msgid "Fullscreen"
 msgstr ""
 
-msgid "On"
+#: ../src/main.py:122
+msgid "Block"
 msgstr ""
 
-msgid "Open"
+#: ../src/main.py:123
+msgid "I-beam"
 msgstr ""
 
-msgid "Open URL"
-msgstr ""
-
-msgid "Open current directory"
-msgstr ""
-
-msgid "Open directory"
-msgstr ""
-
-msgid "Open file"
-msgstr ""
-
-msgid "Open file on hover: "
-msgstr ""
-
-msgid "Open manual"
-msgstr ""
-
-msgid "Password: "
-msgstr ""
-
-msgid "Paste"
-msgstr ""
-
-msgid "Persian"
-msgstr ""
-
-msgid "Port: "
-msgstr ""
-
-msgid "Preferences"
-msgstr ""
-
-msgid "Previous workspace"
-msgstr ""
-
-msgid "Quit"
-msgstr ""
-
-msgid "Quit terminal?"
-msgstr ""
-
-msgid "Remote login"
-msgstr ""
-
-msgid "Reset"
-msgstr ""
-
-msgid "Reset zoom"
-msgstr ""
-
-msgid "Romanian"
-msgstr ""
-
-msgid "Save"
-msgstr ""
-
-msgid "Scroll on keystroke: "
-msgstr ""
-
-msgid "Scroll on output: "
-msgstr ""
-
-msgid "Scroll page down"
-msgstr ""
-
-msgid "Scroll page up"
-msgstr ""
-
-msgid "Search"
-msgstr ""
-
-msgid "Search backward"
-msgstr ""
-
-msgid "Search forward"
-msgstr ""
-
-msgid "Select word"
-msgstr ""
-
-msgid "Server"
-msgstr ""
-
-msgid "Server: "
-msgstr ""
-
-msgid "Set up SSH connection"
-msgstr ""
-
-msgid "Show correlative child window"
-msgstr ""
-
-msgid "Solarized"
-msgstr ""
-
-msgid "South European"
-msgstr ""
-
-msgid "Split horizontally"
-msgstr ""
-
-msgid "Split vertically"
-msgstr ""
-
-msgid "Startup command: "
-msgstr ""
-
-msgid "Startup directory: "
-msgstr ""
-
-msgid "Switch workspace"
-msgstr ""
-
-msgid "System"
-msgstr ""
-
-msgid "Terminal command"
-msgstr ""
-
-msgid "Terminal still have running programs. Are you sure you want to quit?"
-msgstr ""
-
-msgid "Thai"
-msgstr ""
-
-msgid "Turkish"
-msgstr ""
-
+#: ../src/main.py:124
 msgid "Underline"
 msgstr ""
 
-msgid "Unicode"
+#: ../src/main.py:126
+msgid "System Default"
 msgstr ""
 
-msgid "User: "
+#: ../src/main.py:127
+msgid "On"
 msgstr ""
 
-msgid "Vietnamese"
+#: ../src/main.py:128
+msgid "Off"
 msgstr ""
 
+#: ../src/main.py:130 ../src/main.py:143 ../src/main.py:158 ../src/main.py:180
+#: ../src/main.py:191
 msgid "Western"
 msgstr ""
 
+#: ../src/main.py:131 ../src/main.py:159 ../src/main.py:170 ../src/main.py:189
+msgid "Central European"
+msgstr ""
+
+#: ../src/main.py:132
+msgid "South European"
+msgstr ""
+
+#: ../src/main.py:133 ../src/main.py:141 ../src/main.py:196
+msgid "Baltic"
+msgstr ""
+
+#: ../src/main.py:134 ../src/main.py:160 ../src/main.py:166 ../src/main.py:167
+#: ../src/main.py:172 ../src/main.py:190
+msgid "Cyrillic"
+msgstr ""
+
+#: ../src/main.py:135 ../src/main.py:163 ../src/main.py:169 ../src/main.py:195
+msgid "Arabic"
+msgstr ""
+
+#: ../src/main.py:136 ../src/main.py:175 ../src/main.py:192
+msgid "Greek"
+msgstr ""
+
+#: ../src/main.py:137
+msgid "Hebrew Visual"
+msgstr ""
+
+#: ../src/main.py:138 ../src/main.py:162 ../src/main.py:178 ../src/main.py:194
+msgid "Hebrew"
+msgstr ""
+
+#: ../src/main.py:139 ../src/main.py:161 ../src/main.py:182 ../src/main.py:193
+msgid "Turkish"
+msgstr ""
+
+#: ../src/main.py:140
+msgid "Germanic"
+msgstr ""
+
+#: ../src/main.py:142
+msgid "Celtic"
+msgstr ""
+
+#: ../src/main.py:144 ../src/main.py:181
+msgid "Romanian"
+msgstr ""
+
+#: ../src/main.py:145
+msgid "Unicode"
+msgstr ""
+
+#: ../src/main.py:146
+msgid "Armenian"
+msgstr ""
+
+#: ../src/main.py:147 ../src/main.py:148 ../src/main.py:149 ../src/main.py:157
+msgid "Chinese Simplified"
+msgstr ""
+
+#: ../src/main.py:150 ../src/main.py:151 ../src/main.py:152
+msgid "Chinese Traditional"
+msgstr ""
+
+#: ../src/main.py:153
+msgid "Cyrillic/Russian"
+msgstr ""
+
+#: ../src/main.py:154 ../src/main.py:164 ../src/main.py:184
+msgid "Japanese"
+msgstr ""
+
+#: ../src/main.py:155 ../src/main.py:165 ../src/main.py:187
+msgid "Korean"
+msgstr ""
+
+#: ../src/main.py:156
+msgid "Georgian"
+msgstr ""
+
+#: ../src/main.py:168 ../src/main.py:183
+msgid "Cyrillic/Ukrainian"
+msgstr ""
+
+#: ../src/main.py:171
+msgid "Croatian"
+msgstr ""
+
+#: ../src/main.py:173
+msgid "Hindi"
+msgstr ""
+
+#: ../src/main.py:174
+msgid "Persian"
+msgstr ""
+
+#: ../src/main.py:176
+msgid "Gujarati"
+msgstr ""
+
+#: ../src/main.py:177
+msgid "Gurmukhi"
+msgstr ""
+
+#: ../src/main.py:179
+msgid "Icelandic"
+msgstr ""
+
+#: ../src/main.py:185 ../src/main.py:188 ../src/main.py:197
+msgid "Vietnamese"
+msgstr ""
+
+#: ../src/main.py:186
+msgid "Thai"
+msgstr ""
+
+#: ../src/main.py:302
+msgid "Deepin"
+msgstr ""
+
+#: ../src/main.py:303
+msgid "Mocha"
+msgstr ""
+
+#: ../src/main.py:304
+msgid "Green screen"
+msgstr ""
+
+#: ../src/main.py:305
+msgid "Ocean"
+msgstr ""
+
+#: ../src/main.py:306
+msgid "Monokai"
+msgstr ""
+
+#: ../src/main.py:307
+msgid "Solarized"
+msgstr ""
+
+#: ../src/main.py:308 ../src/main.py:309
+msgid "Eighties"
+msgstr ""
+
+#: ../src/main.py:310
+msgid "Grey on black"
+msgstr ""
+
+#: ../src/main.py:311
+msgid "Black on yellow"
+msgstr ""
+
+#: ../src/main.py:312
+msgid "Black on white"
+msgstr ""
+
+#: ../src/main.py:313
 msgid "White on black"
 msgstr ""
 
-msgid "Window state: "
+#: ../src/main.py:314
+msgid "Green on black"
 msgstr ""
 
-msgid "Window still have running programs. Are you sure you want to close?"
+#: ../src/main.py:315
+msgid "Custom"
 msgstr ""
 
+#: ../src/main.py:426
+msgid "Deepin Terminal"
+msgstr ""
+
+#: ../src/main.py:474
+msgid "General"
+msgstr ""
+
+#: ../src/main.py:475
+msgid "Hotkeys"
+msgstr ""
+
+#: ../src/main.py:476
+msgid "Advanced"
+msgstr ""
+
+#: ../src/main.py:583
+msgid "Quit terminal?"
+msgstr ""
+
+#: ../src/main.py:584
+msgid "Terminal still has running programs. Are you sure you want to quit?"
+msgstr ""
+
+#: ../src/main.py:791 ../src/main.py:898
+msgid "Preferences"
+msgstr ""
+
+#: ../src/main.py:792 ../src/main.py:2732 ../src/main.py:3066
+msgid "Set up SSH connection"
+msgstr ""
+
+#: ../src/main.py:793 ../src/main.py:896 ../src/main.py:2731
+#: ../src/main.py:3065
+msgid "Display hotkeys"
+msgstr ""
+
+#: ../src/main.py:795
+msgid "Quit"
+msgstr ""
+
+#: ../src/main.py:830 ../src/main.py:833 ../src/main.py:2698
+#: ../src/main.py:3043
+msgid "Copy"
+msgstr ""
+
+#: ../src/main.py:835 ../src/main.py:2699 ../src/main.py:3044
+msgid "Paste"
+msgstr ""
+
+#: ../src/main.py:842
+msgid "Open file"
+msgstr ""
+
+#: ../src/main.py:844
+msgid "Open directory"
+msgstr ""
+
+#: ../src/main.py:846
+msgid "Open URL"
+msgstr ""
+
+#: ../src/main.py:848
+msgid "Open manual"
+msgstr ""
+
+#: ../src/main.py:852
+msgid "Clear screen"
+msgstr ""
+
+#: ../src/main.py:853
+msgid "Open current directory"
+msgstr ""
+
+#: ../src/main.py:858 ../src/main.py:2709 ../src/main.py:3067
+msgid "Show correlative child window"
+msgstr ""
+
+#: ../src/main.py:861
+msgid "Exit fullscreen"
+msgstr ""
+
+#: ../src/main.py:868 ../src/main.py:2718 ../src/main.py:3045
+msgid "Split vertically"
+msgstr ""
+
+#: ../src/main.py:869 ../src/main.py:2719 ../src/main.py:3046
+msgid "Split horizontally"
+msgstr ""
+
+#: ../src/main.py:870 ../src/main.py:2724 ../src/main.py:3047
+msgid "Close current window"
+msgstr ""
+
+#: ../src/main.py:874 ../src/main.py:2725 ../src/main.py:3048
+msgid "Close other window"
+msgstr ""
+
+#: ../src/main.py:882 ../src/main.py:889 ../src/main.py:2714
+#: ../src/main.py:3058
+msgid "New workspace"
+msgstr ""
+
+#: ../src/main.py:883
+msgid "Switch workspace"
+msgstr ""
+
+#: ../src/main.py:884 ../src/main.py:2717 ../src/main.py:3059
+msgid "Close workspace"
+msgstr ""
+
+#: ../src/main.py:895
+msgid "Search"
+msgstr ""
+
+#: ../src/main.py:1142 ../src/main.py:1888
+msgid "Close window?"
+msgstr ""
+
+#: ../src/main.py:1143 ../src/main.py:1889
+msgid "Window still has running programs. Are you sure you want to close?"
+msgstr ""
+
+#: ../src/main.py:1145
+msgid "Close workspace?"
+msgstr ""
+
+#: ../src/main.py:1146
+msgid "Workspace still has running programs. Are you sure you want to close?"
+msgstr ""
+
+#: ../src/main.py:2126
 msgid "Workspace"
 msgstr ""
 
-msgid "Workspace command"
+#: ../src/main.py:2697
+msgid "Terminal command"
 msgstr ""
 
-msgid "Workspace still have running programs. Are you sure you want to close?"
+#: ../src/main.py:2700 ../src/main.py:3049
+msgid "Scroll page up"
 msgstr ""
 
-msgid "Zoom in"
+#: ../src/main.py:2701 ../src/main.py:3050
+msgid "Scroll page down"
 msgstr ""
 
+#: ../src/main.py:2702 ../src/main.py:3062
+msgid "Search forward"
+msgstr ""
+
+#: ../src/main.py:2703 ../src/main.py:3063
+msgid "Search backward"
+msgstr ""
+
+#: ../src/main.py:2704
+msgid "Select word"
+msgstr ""
+
+#: ../src/main.py:2704
+msgid "Double click"
+msgstr ""
+
+#: ../src/main.py:2705
+msgid "Open"
+msgstr ""
+
+#: ../src/main.py:2705
+msgid "Ctrl + Left click"
+msgstr ""
+
+#: ../src/main.py:2706 ../src/main.py:3056
 msgid "Zoom out"
 msgstr ""
 
+#: ../src/main.py:2707 ../src/main.py:3055
+msgid "Zoom in"
+msgstr ""
+
+#: ../src/main.py:2708 ../src/main.py:3057
+msgid "Reset zoom"
+msgstr ""
+
+#: ../src/main.py:2713
+msgid "Workspace command"
+msgstr ""
+
+#: ../src/main.py:2715 ../src/main.py:3060
+msgid "Previous workspace"
+msgstr ""
+
+#: ../src/main.py:2716 ../src/main.py:3061
+msgid "Next workspace"
+msgstr ""
+
+#: ../src/main.py:2720 ../src/main.py:3051
+msgid "Focus the terminal above"
+msgstr ""
+
+#: ../src/main.py:2721 ../src/main.py:3052
+msgid "Focus the terminal below"
+msgstr ""
+
+#: ../src/main.py:2722 ../src/main.py:3053
+msgid "Focus the terminal left"
+msgstr ""
+
+#: ../src/main.py:2723 ../src/main.py:3054
+msgid "Focus the terminal right"
+msgstr ""
+
+#: ../src/main.py:2729
+msgid "Advanced command"
+msgstr ""
+
+#: ../src/main.py:2751
+msgid "Adjust opacity"
+msgstr ""
+
+#: ../src/main.py:2751
+msgid "Ctrl + Wheel"
+msgstr ""
+
+#: ../src/main.py:2945
+msgid "Font: "
+msgstr ""
+
+#: ../src/main.py:2946
+msgid "Font size: "
+msgstr ""
+
+#: ../src/main.py:2947
+msgid "Color scheme: "
+msgstr ""
+
+#: ../src/main.py:2949
+msgid "Background transparency: "
+msgstr ""
+
+#: ../src/main.py:3196
+msgid "Cursor shape: "
+msgstr ""
+
+#: ../src/main.py:3197
+msgid "Cursor blink: "
+msgstr ""
+
+#: ../src/main.py:3198
+msgid "Encoding: "
+msgstr ""
+
+#: ../src/main.py:3199
+msgid "Window startup mode: "
+msgstr ""
+
+#: ../src/main.py:3200
+msgid "Startup command: "
+msgstr ""
+
+#: ../src/main.py:3201
+msgid "Startup directory: "
+msgstr ""
+
+#: ../src/main.py:3202
+msgid "Ask on quit"
+msgstr ""
+
+#: ../src/main.py:3203
+msgid "Scroll on keystroke: "
+msgstr ""
+
+#: ../src/main.py:3204
+msgid "Scroll on output: "
+msgstr ""
+
+#: ../src/main.py:3205
+msgid "Copy on selection: "
+msgstr ""
+
+#: ../src/main.py:3206
+msgid "Open file on hover: "
+msgstr ""
+
+#: ../src/main.py:3365
+msgid "Save"
+msgstr ""
+
+#: ../src/main.py:3413 ../src/main.py:3437
+msgid "Name: "
+msgstr ""
+
+#: ../src/main.py:3413 ../src/main.py:3440
+msgid "Server: "
+msgstr ""
+
+#: ../src/main.py:3413 ../src/main.py:3443
+msgid "User: "
+msgstr ""
+
+#: ../src/main.py:3413 ../src/main.py:3446
+msgid "Password: "
+msgstr ""
+
+#: ../src/main.py:3413 ../src/main.py:3449
+msgid "Port: "
+msgstr ""
+
+#: ../src/main.py:3471
+msgid "Remote login"
+msgstr ""
+
+#: ../src/main.py:3478
+msgid "Add"
+msgstr ""
+
+#: ../src/main.py:3479
+msgid "Connection"
+msgstr ""
+
+#: ../src/main.py:3487
+msgid "Name"
+msgstr ""
+
+#: ../src/main.py:3487
+msgid "Server"
+msgstr ""
+
+#: ../src/main.py:3494
+msgid "Add remote login"
+msgstr ""
+
+#: ../src/main.py:3561
+msgid "Edit remote login"
+msgstr ""
+
+#: ../src/main.py:3574
+msgid "Edit"
+msgstr ""
+
+#: ../src/main.py:3575
+msgid "Delete"
+msgstr ""
+
+#: ../src/main.py:3735
+msgid "Reset"
+msgstr ""
+
+#: ../src/main.py:3738
+msgid "Close"
+msgstr ""
+
+#: ../src/main.py:4010
+msgid "working directory"
+msgstr ""
+
+#: ../src/main.py:4011
 msgid "run with quake mode"
 msgstr ""
 
-msgid "show program's version number and exit"
+#: ../src/main.py:4012
+msgid "startup terminal with given parameter"
 msgstr ""
 
+#: ../src/main.py:4013
 msgid "show this help message and exit"
 msgstr ""
 
-msgid "startup terminal with given command"
-msgstr ""
-
-msgid "working directory"
+#: ../src/main.py:4014
+msgid "show program's version number and exit"
 msgstr ""

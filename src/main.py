@@ -123,7 +123,7 @@ CURSOR_SHAPE_ITEMS =[(_("Block"), "block"),
                      (_("I-beam"), "ibeam"),
                      (_("Underline"), "underline")]
 
-CURSOR_BLINK_MODE_ITEMS =[(_("System"), "system"),
+CURSOR_BLINK_MODE_ITEMS =[(_("System Default"), "system"),
                           (_("On"), "on"),
                           (_("Off"), "off")]
 
@@ -137,7 +137,7 @@ ENCODINGS = [("%s (%s)" % (_("Western"), "ISO-8859-1"), "ISO-8859-1"),
              ("%s (%s)" % (_("Hebrew Visual"), "ISO-8859-8"), "ISO-8859-8"),
              ("%s (%s)" % (_("Hebrew"), "ISO-8859-8-I"), "ISO-8859-8-I"),
              ("%s (%s)" % (_("Turkish"), "ISO-8859-9"), "ISO-8859-9"),
-             ("%s (%s)" % (_("Nordic"), "ISO-8859-10"), "ISO-8859-10"),
+             ("%s (%s)" % (_("Germanic"), "ISO-8859-10"), "ISO-8859-10"),
              ("%s (%s)" % (_("Baltic"), "ISO-8859-13"), "ISO-8859-13"),
              ("%s (%s)" % (_("Celtic"), "ISO-8859-14"), "ISO-8859-14"),
              ("%s (%s)" % (_("Western"), "ISO-8859-15"), "ISO-8859-15"),
@@ -581,7 +581,7 @@ class Terminal(object):
         elif len(child_pids) > 0:
             create_confirm_dialog(
                 _("Quit terminal?"),
-                _("Terminal still have running programs. Are you sure you want to quit?"),
+                _("Terminal still has running programs. Are you sure you want to quit?"),
                 self._quit,
                 self.application.window,
                 )
@@ -1140,10 +1140,10 @@ class Terminal(object):
             elif len(child_pids) > 0:
                 if close_by_terminal:
                     dialog_title = _("Close window?")
-                    dialog_content = _("Window still have running programs. Are you sure you want to close?")
+                    dialog_content = _("Window still has running programs. Are you sure you want to close?")
                 else:
                     dialog_title = _("Close workspace?")
-                    dialog_content = _("Workspace still have running programs. Are you sure you want to close?")
+                    dialog_content = _("Workspace still has running programs. Are you sure you want to close?")
                 
                 create_confirm_dialog(
                     dialog_title,
@@ -1886,7 +1886,7 @@ class TerminalGrid(gtk.VBox):
                 else:
                     create_confirm_dialog(
                         _("Close window?"),
-                        _("Window still have running programs. Are you sure you want to close?"),
+                        _("Window still has running programs. Are you sure you want to close?"),
                         remove_terminal,
                         self.get_toplevel(),
                         )
@@ -3196,7 +3196,7 @@ class AdvancedSettings(gtk.VBox):
             (_("Cursor shape: "), self.cursor_shape_widget),
             (_("Cursor blink: "), self.cursor_blink_mode_widget),
             (_("Encoding: "), self.encoding_widget),
-            (_("Window state: "), self.startup_widget),
+            (_("Window startup mode: "), self.startup_widget),
             (_("Startup command: "), self.startup_command_widget),
             (_("Startup directory: "), self.startup_directory_widget),
             (_("Ask on quit"), self.ask_on_quit_widget),
@@ -4009,7 +4009,7 @@ if __name__ == "__main__":
     parser = OptionParser(usage="Usage: deepin-terminal [options] [arg]", version="deepin-terminal v1.0")
     parser.add_option("--working-directory", dest="working_directory", help=_("working directory"), metavar="FILE")
     parser.add_option("--quake-mode", action="store_true", dest="quake_mode", help=_("run with quake mode"))
-    parser.add_option("-e", action="callback", callback=execute_cb, dest="startup_command", help=_("startup terminal with given command"))
+    parser.add_option("-e", action="callback", callback=execute_cb, dest="startup_command", help=_("startup terminal with given parameter"))
     parser.get_option('-h').help = _("show this help message and exit")
     parser.get_option('--version').help = _("show program's version number and exit")
     

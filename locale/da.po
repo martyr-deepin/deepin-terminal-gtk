@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-15 16:26+0800\n"
+"POT-Creation-Date: 2014-06-18 18:16+0800\n"
 "PO-Revision-Date: 2014-05-13 07:08+0000\n"
 "Last-Translator: Snubbi <carl@manjaro.dk>\n"
 "Language-Team: Danish (http://www.transifex.com/projects/p/deepin-terminal/"
@@ -19,440 +19,599 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Add"
-msgstr "Tilføj"
-
-msgid "Add remote login"
-msgstr "Tilføj fjern logind"
-
-msgid "Adjust opacity"
-msgstr "Tilpas opacitet"
-
-msgid "Advanced"
-msgstr "Avanceret"
-
-msgid "Advanced command"
-msgstr "Avanceret kommando"
-
-msgid "Arabic"
-msgstr "Arabisk"
-
-msgid "Armenian"
-msgstr "Armensk"
-
-msgid "Ask on quit"
-msgstr "Spørg ved afslutning"
-
-msgid "Background transparency: "
-msgstr "Baggrundgennemsigtighed:"
-
-msgid "Baltic"
-msgstr "Baltisk"
-
-msgid "Black on white"
-msgstr "Sort på hvid"
-
-msgid "Black on yellow"
-msgstr "Sort på gul"
-
-msgid "Block"
-msgstr "Blok"
-
-msgid "Celtic"
-msgstr "Celtisk"
-
-msgid "Central European"
-msgstr "Centraleuropæisk"
-
-msgid "Chinese Simplified"
-msgstr "Forenklet kinesisk"
-
-msgid "Chinese Traditional"
-msgstr "Traditionelt kinesisk"
-
-msgid "Clear screen"
-msgstr "Ryd skærm"
-
-msgid "Close"
-msgstr "Luk"
-
-msgid "Close current window"
-msgstr "Luk aktuel vindue"
-
-msgid "Close other window"
-msgstr "Luk andre vinduer"
-
-msgid "Close window?"
-msgstr "Luk vindue?"
-
-msgid "Close workspace"
-msgstr "Luk arbejdsområde"
-
-msgid "Close workspace?"
-msgstr "Luk arbejdsområde?"
-
-msgid "Color scheme: "
-msgstr "Farvesystem: "
-
-msgid "Connection"
-msgstr "Forbindelse"
-
-msgid "Copy"
-msgstr "Kopier"
-
-msgid "Copy on selection: "
-msgstr "Kopier ved udvælgelse:"
-
-msgid "Croatian"
-msgstr "Kroatisk"
-
-msgid "Ctrl + Left click"
-msgstr "Ctrl + Venstre Klik"
-
-msgid "Ctrl + Wheel"
-msgstr "Ctrl + Hjul"
-
-msgid "Cursor blink: "
-msgstr "Markør blink: "
-
-msgid "Cursor shape: "
-msgstr "Markør form:"
-
-msgid "Custom"
-msgstr "Tilpasset"
-
-msgid "Cyrillic"
-msgstr "Kyrillisk"
-
-msgid "Cyrillic/Russian"
-msgstr "Kyrillisk/Russisk"
-
-msgid "Cyrillic/Ukrainian"
-msgstr "Kyrillisk/Ukrainsk"
-
-msgid "Deepin"
-msgstr "Deepin"
-
-msgid "Deepin Terminal"
-msgstr "Deepin Terminal"
-
-msgid "Delete"
-msgstr "Slet"
-
-msgid "Display hotkeys"
-msgstr "Vis tastaturgenveje"
-
-msgid "Double click"
-msgstr "Dobbeltklik"
-
-msgid "Edit"
-msgstr "Rediger"
-
-msgid "Edit remote login"
-msgstr "Rediger fjern logind"
-
-msgid "Eighties"
-msgstr "Firsere"
-
-msgid "Encoding: "
-msgstr "Sprog kodning:"
-
-msgid "Exit fullscreen"
-msgstr "Forlad Fuldskærmsvisning  "
-
-msgid "Focus the terminal above"
-msgstr "Fokuser på terminalen ovenfor"
-
-msgid "Focus the terminal below"
-msgstr "Fokuser på terminalen nedenfor"
-
-#, fuzzy
-msgid "Focus the terminal left"
-msgstr "Fokuser på terminalen til venstre"
-
-msgid "Focus the terminal right"
-msgstr "Fokuser på terminalen til højre"
-
-msgid "Font size: "
-msgstr "Font størrelse: "
-
-msgid "Font: "
-msgstr "Font: "
-
-msgid "Fullscreen"
-msgstr "Fuldskærmsvisning  "
-
-msgid "General"
-msgstr "General"
-
-msgid "Georgian"
-msgstr "Georgisk"
-
-msgid "Greek"
-msgstr "Græsk"
-
-msgid "Green on black"
-msgstr "Grøn på sort"
-
-msgid "Green screen"
-msgstr "Grøn skærm"
-
-msgid "Grey on black"
-msgstr "Grå på sort"
-
-msgid "Gujarati"
-msgstr "Gujarati"
-
-msgid "Gurmukhi"
-msgstr "Gurmukhi"
-
-msgid "Hebrew"
-msgstr "Hebræisk"
-
-msgid "Hebrew Visual"
-msgstr "Hebræisk Visual"
-
-msgid "Hindi"
-msgstr "Hindi"
-
-msgid "Hotkeys"
-msgstr "Tastaturgenveje"
-
-msgid "I-beam"
-msgstr "I-bjælke"
-
-msgid "Icelandic"
-msgstr "Islandsk"
-
-msgid "Japanese"
-msgstr "Japansk"
-
-msgid "Korean"
-msgstr "Koreansk"
-
-msgid "Maximize"
-msgstr "Maksimer"
-
-msgid "Mocha"
-msgstr "Mokka"
-
-msgid "Monokai"
-msgstr "Monokai"
-
-msgid "Name"
-msgstr "Navn"
-
-msgid "Name: "
-msgstr "Navn:"
-
-msgid "New workspace"
-msgstr "Nyt arbejdsområde"
-
-msgid "Next workspace"
-msgstr "Næste arbejdsområde"
-
-msgid "Nordic"
-msgstr "Nordisk"
-
+#: ../src/main.py:118
 msgid "Normal"
 msgstr "Normal"
 
-msgid "Ocean"
-msgstr "Ocean"
+#: ../src/main.py:119
+msgid "Maximize"
+msgstr "Maksimer"
 
-msgid "Off"
-msgstr "Fra"
+#: ../src/main.py:120 ../src/main.py:863 ../src/main.py:2730
+#: ../src/main.py:3064
+msgid "Fullscreen"
+msgstr "Fuldskærmsvisning  "
 
+#: ../src/main.py:122
+msgid "Block"
+msgstr "Blok"
+
+#: ../src/main.py:123
+msgid "I-beam"
+msgstr "I-bjælke"
+
+#: ../src/main.py:124
+msgid "Underline"
+msgstr "Understrege"
+
+#: ../src/main.py:126
+#, fuzzy
+msgid "System Default"
+msgstr "System"
+
+#: ../src/main.py:127
 msgid "On"
 msgstr "Til"
 
-msgid "Open"
-msgstr "Åbn"
+#: ../src/main.py:128
+msgid "Off"
+msgstr "Fra"
 
-msgid "Open URL"
-msgstr "Åbn URL"
+#: ../src/main.py:130 ../src/main.py:143 ../src/main.py:158 ../src/main.py:180
+#: ../src/main.py:191
+msgid "Western"
+msgstr "Vesteuropa"
 
-msgid "Open current directory"
-msgstr "Åbn aktuelle mappe"
+#: ../src/main.py:131 ../src/main.py:159 ../src/main.py:170 ../src/main.py:189
+msgid "Central European"
+msgstr "Centraleuropæisk"
 
-msgid "Open directory"
-msgstr "Åbn mappe"
-
-msgid "Open file"
-msgstr "Åbn fil"
-
-msgid "Open file on hover: "
-msgstr "Åbn fil ved mus føres over filnavn:"
-
-msgid "Open manual"
-msgstr "Åbn manual"
-
-msgid "Password: "
-msgstr "Password: "
-
-msgid "Paste"
-msgstr "Indsæt"
-
-msgid "Persian"
-msgstr "Persisk"
-
-msgid "Port: "
-msgstr "Port: "
-
-msgid "Preferences"
-msgstr "Præferencer"
-
-msgid "Previous workspace"
-msgstr "Previous workspace"
-
-msgid "Quit"
-msgstr "Afslut"
-
-msgid "Quit terminal?"
-msgstr "Forlad terminal?"
-
-msgid "Remote login"
-msgstr "Fjern logind"
-
-msgid "Reset"
-msgstr "Nulstil"
-
-msgid "Reset zoom"
-msgstr "Nulstil zoom"
-
-msgid "Romanian"
-msgstr "Rumænsk"
-
-msgid "Save"
-msgstr "Gem"
-
-msgid "Scroll on keystroke: "
-msgstr "Scrol ved tastaturtryk:"
-
-msgid "Scroll on output: "
-msgstr "Scrol ved output:"
-
-msgid "Scroll page down"
-msgstr "Scrol side ned"
-
-msgid "Scroll page up"
-msgstr "Scrol side op"
-
-msgid "Search"
-msgstr "Søg"
-
-msgid "Search backward"
-msgstr "Søg baglæns"
-
-msgid "Search forward"
-msgstr "Søg fremad"
-
-msgid "Select word"
-msgstr "Vælg ord"
-
-msgid "Server"
-msgstr "Server"
-
-msgid "Server: "
-msgstr "Server: "
-
-msgid "Set up SSH connection"
-msgstr "Opsæt en SSH forbindelse"
-
-msgid "Show correlative child window"
-msgstr "Vis korrelativt undervindue"
-
-msgid "Solarized"
-msgstr "Solariseret"
-
+#: ../src/main.py:132
 msgid "South European"
 msgstr "Sydeuropæisk"
 
-msgid "Split horizontally"
-msgstr "Opdel vandret"
+#: ../src/main.py:133 ../src/main.py:141 ../src/main.py:196
+msgid "Baltic"
+msgstr "Baltisk"
 
-msgid "Split vertically"
-msgstr "Opdel lodret"
+#: ../src/main.py:134 ../src/main.py:160 ../src/main.py:166 ../src/main.py:167
+#: ../src/main.py:172 ../src/main.py:190
+msgid "Cyrillic"
+msgstr "Kyrillisk"
 
-msgid "Startup command: "
-msgstr "Opstartskomando:"
+#: ../src/main.py:135 ../src/main.py:163 ../src/main.py:169 ../src/main.py:195
+msgid "Arabic"
+msgstr "Arabisk"
 
-msgid "Startup directory: "
-msgstr "Opstartsmappe:"
+#: ../src/main.py:136 ../src/main.py:175 ../src/main.py:192
+msgid "Greek"
+msgstr "Græsk"
 
-msgid "Switch workspace"
-msgstr "Skift arbejdsområde"
+#: ../src/main.py:137
+msgid "Hebrew Visual"
+msgstr "Hebræisk Visual"
 
-msgid "System"
-msgstr "System"
+#: ../src/main.py:138 ../src/main.py:162 ../src/main.py:178 ../src/main.py:194
+msgid "Hebrew"
+msgstr "Hebræisk"
 
-msgid "Terminal command"
-msgstr "Terminal kommando"
+#: ../src/main.py:139 ../src/main.py:161 ../src/main.py:182 ../src/main.py:193
+msgid "Turkish"
+msgstr "Tyrkisk"
 
-msgid "Terminal still have running programs. Are you sure you want to quit?"
+#: ../src/main.py:140
+msgid "Germanic"
+msgstr ""
+
+#: ../src/main.py:142
+msgid "Celtic"
+msgstr "Celtisk"
+
+#: ../src/main.py:144 ../src/main.py:181
+msgid "Romanian"
+msgstr "Rumænsk"
+
+#: ../src/main.py:145
+msgid "Unicode"
+msgstr "Unicode"
+
+#: ../src/main.py:146
+msgid "Armenian"
+msgstr "Armensk"
+
+#: ../src/main.py:147 ../src/main.py:148 ../src/main.py:149 ../src/main.py:157
+msgid "Chinese Simplified"
+msgstr "Forenklet kinesisk"
+
+#: ../src/main.py:150 ../src/main.py:151 ../src/main.py:152
+msgid "Chinese Traditional"
+msgstr "Traditionelt kinesisk"
+
+#: ../src/main.py:153
+msgid "Cyrillic/Russian"
+msgstr "Kyrillisk/Russisk"
+
+#: ../src/main.py:154 ../src/main.py:164 ../src/main.py:184
+msgid "Japanese"
+msgstr "Japansk"
+
+#: ../src/main.py:155 ../src/main.py:165 ../src/main.py:187
+msgid "Korean"
+msgstr "Koreansk"
+
+#: ../src/main.py:156
+msgid "Georgian"
+msgstr "Georgisk"
+
+#: ../src/main.py:168 ../src/main.py:183
+msgid "Cyrillic/Ukrainian"
+msgstr "Kyrillisk/Ukrainsk"
+
+#: ../src/main.py:171
+msgid "Croatian"
+msgstr "Kroatisk"
+
+#: ../src/main.py:173
+msgid "Hindi"
+msgstr "Hindi"
+
+#: ../src/main.py:174
+msgid "Persian"
+msgstr "Persisk"
+
+#: ../src/main.py:176
+msgid "Gujarati"
+msgstr "Gujarati"
+
+#: ../src/main.py:177
+msgid "Gurmukhi"
+msgstr "Gurmukhi"
+
+#: ../src/main.py:179
+msgid "Icelandic"
+msgstr "Islandsk"
+
+#: ../src/main.py:185 ../src/main.py:188 ../src/main.py:197
+msgid "Vietnamese"
+msgstr "Vietnamesisk"
+
+#: ../src/main.py:186
+msgid "Thai"
+msgstr "Thai"
+
+#: ../src/main.py:302
+msgid "Deepin"
+msgstr "Deepin"
+
+#: ../src/main.py:303
+msgid "Mocha"
+msgstr "Mokka"
+
+#: ../src/main.py:304
+msgid "Green screen"
+msgstr "Grøn skærm"
+
+#: ../src/main.py:305
+msgid "Ocean"
+msgstr "Ocean"
+
+#: ../src/main.py:306
+msgid "Monokai"
+msgstr "Monokai"
+
+#: ../src/main.py:307
+msgid "Solarized"
+msgstr "Solariseret"
+
+#: ../src/main.py:308 ../src/main.py:309
+msgid "Eighties"
+msgstr "Firsere"
+
+#: ../src/main.py:310
+msgid "Grey on black"
+msgstr "Grå på sort"
+
+#: ../src/main.py:311
+msgid "Black on yellow"
+msgstr "Sort på gul"
+
+#: ../src/main.py:312
+msgid "Black on white"
+msgstr "Sort på hvid"
+
+#: ../src/main.py:313
+msgid "White on black"
+msgstr "Hvid på sort"
+
+#: ../src/main.py:314
+msgid "Green on black"
+msgstr "Grøn på sort"
+
+#: ../src/main.py:315
+msgid "Custom"
+msgstr "Tilpasset"
+
+#: ../src/main.py:426
+msgid "Deepin Terminal"
+msgstr "Deepin Terminal"
+
+#: ../src/main.py:474
+msgid "General"
+msgstr "General"
+
+#: ../src/main.py:475
+msgid "Hotkeys"
+msgstr "Tastaturgenveje"
+
+#: ../src/main.py:476
+msgid "Advanced"
+msgstr "Avanceret"
+
+#: ../src/main.py:583
+msgid "Quit terminal?"
+msgstr "Forlad terminal?"
+
+#: ../src/main.py:584
+#, fuzzy
+msgid "Terminal still has running programs. Are you sure you want to quit?"
 msgstr ""
 "Terminalen har stadigvæk kørende programmer. Er du sikker på at du vil "
 "afslutte?"
 
-msgid "Thai"
-msgstr "Thai"
+#: ../src/main.py:791 ../src/main.py:898
+msgid "Preferences"
+msgstr "Præferencer"
 
-msgid "Turkish"
-msgstr "Tyrkisk"
+#: ../src/main.py:792 ../src/main.py:2732 ../src/main.py:3066
+msgid "Set up SSH connection"
+msgstr "Opsæt en SSH forbindelse"
 
-msgid "Underline"
-msgstr "Understrege"
+#: ../src/main.py:793 ../src/main.py:896 ../src/main.py:2731
+#: ../src/main.py:3065
+msgid "Display hotkeys"
+msgstr "Vis tastaturgenveje"
 
-msgid "Unicode"
-msgstr "Unicode"
+#: ../src/main.py:795
+msgid "Quit"
+msgstr "Afslut"
 
-msgid "User: "
-msgstr "Bruger"
+#: ../src/main.py:830 ../src/main.py:833 ../src/main.py:2698
+#: ../src/main.py:3043
+msgid "Copy"
+msgstr "Kopier"
 
-msgid "Vietnamese"
-msgstr "Vietnamesisk"
+#: ../src/main.py:835 ../src/main.py:2699 ../src/main.py:3044
+msgid "Paste"
+msgstr "Indsæt"
 
-msgid "Western"
-msgstr "Vesteuropa"
+#: ../src/main.py:842
+msgid "Open file"
+msgstr "Åbn fil"
 
-msgid "White on black"
-msgstr "Hvid på sort"
+#: ../src/main.py:844
+msgid "Open directory"
+msgstr "Åbn mappe"
 
-msgid "Window state: "
-msgstr "Vindue fremføring:"
+#: ../src/main.py:846
+msgid "Open URL"
+msgstr "Åbn URL"
 
-msgid "Window still have running programs. Are you sure you want to close?"
+#: ../src/main.py:848
+msgid "Open manual"
+msgstr "Åbn manual"
+
+#: ../src/main.py:852
+msgid "Clear screen"
+msgstr "Ryd skærm"
+
+#: ../src/main.py:853
+msgid "Open current directory"
+msgstr "Åbn aktuelle mappe"
+
+#: ../src/main.py:858 ../src/main.py:2709 ../src/main.py:3067
+msgid "Show correlative child window"
+msgstr "Vis korrelativt undervindue"
+
+#: ../src/main.py:861
+msgid "Exit fullscreen"
+msgstr "Forlad Fuldskærmsvisning  "
+
+#: ../src/main.py:868 ../src/main.py:2718 ../src/main.py:3045
+msgid "Split vertically"
+msgstr "Opdel lodret"
+
+#: ../src/main.py:869 ../src/main.py:2719 ../src/main.py:3046
+msgid "Split horizontally"
+msgstr "Opdel vandret"
+
+#: ../src/main.py:870 ../src/main.py:2724 ../src/main.py:3047
+msgid "Close current window"
+msgstr "Luk aktuel vindue"
+
+#: ../src/main.py:874 ../src/main.py:2725 ../src/main.py:3048
+msgid "Close other window"
+msgstr "Luk andre vinduer"
+
+#: ../src/main.py:882 ../src/main.py:889 ../src/main.py:2714
+#: ../src/main.py:3058
+msgid "New workspace"
+msgstr "Nyt arbejdsområde"
+
+#: ../src/main.py:883
+msgid "Switch workspace"
+msgstr "Skift arbejdsområde"
+
+#: ../src/main.py:884 ../src/main.py:2717 ../src/main.py:3059
+msgid "Close workspace"
+msgstr "Luk arbejdsområde"
+
+#: ../src/main.py:895
+msgid "Search"
+msgstr "Søg"
+
+#: ../src/main.py:1142 ../src/main.py:1888
+msgid "Close window?"
+msgstr "Luk vindue?"
+
+#: ../src/main.py:1143 ../src/main.py:1889
+#, fuzzy
+msgid "Window still has running programs. Are you sure you want to close?"
 msgstr ""
 "Vindue har stadigvæk kørende programmer. Er du sikker på at du vil lukke?"
 
-msgid "Workspace"
-msgstr "Arbejdsområde"
+#: ../src/main.py:1145
+msgid "Close workspace?"
+msgstr "Luk arbejdsområde?"
 
-msgid "Workspace command"
-msgstr "Arbejdsområde-kommando"
-
-msgid "Workspace still have running programs. Are you sure you want to close?"
+#: ../src/main.py:1146
+#, fuzzy
+msgid "Workspace still has running programs. Are you sure you want to close?"
 msgstr ""
 "Abejdsområdet har stadigvæk kørende programmer. Er du sikkerpå at  du vil "
 "lukke?"
 
-msgid "Zoom in"
-msgstr "Zoom ind"
+#: ../src/main.py:2126
+msgid "Workspace"
+msgstr "Arbejdsområde"
 
+#: ../src/main.py:2697
+msgid "Terminal command"
+msgstr "Terminal kommando"
+
+#: ../src/main.py:2700 ../src/main.py:3049
+msgid "Scroll page up"
+msgstr "Scrol side op"
+
+#: ../src/main.py:2701 ../src/main.py:3050
+msgid "Scroll page down"
+msgstr "Scrol side ned"
+
+#: ../src/main.py:2702 ../src/main.py:3062
+msgid "Search forward"
+msgstr "Søg fremad"
+
+#: ../src/main.py:2703 ../src/main.py:3063
+msgid "Search backward"
+msgstr "Søg baglæns"
+
+#: ../src/main.py:2704
+msgid "Select word"
+msgstr "Vælg ord"
+
+#: ../src/main.py:2704
+msgid "Double click"
+msgstr "Dobbeltklik"
+
+#: ../src/main.py:2705
+msgid "Open"
+msgstr "Åbn"
+
+#: ../src/main.py:2705
+msgid "Ctrl + Left click"
+msgstr "Ctrl + Venstre Klik"
+
+#: ../src/main.py:2706 ../src/main.py:3056
 msgid "Zoom out"
 msgstr "Zoom ud"
 
+#: ../src/main.py:2707 ../src/main.py:3055
+msgid "Zoom in"
+msgstr "Zoom ind"
+
+#: ../src/main.py:2708 ../src/main.py:3057
+msgid "Reset zoom"
+msgstr "Nulstil zoom"
+
+#: ../src/main.py:2713
+msgid "Workspace command"
+msgstr "Arbejdsområde-kommando"
+
+#: ../src/main.py:2715 ../src/main.py:3060
+msgid "Previous workspace"
+msgstr "Previous workspace"
+
+#: ../src/main.py:2716 ../src/main.py:3061
+msgid "Next workspace"
+msgstr "Næste arbejdsområde"
+
+#: ../src/main.py:2720 ../src/main.py:3051
+msgid "Focus the terminal above"
+msgstr "Fokuser på terminalen ovenfor"
+
+#: ../src/main.py:2721 ../src/main.py:3052
+msgid "Focus the terminal below"
+msgstr "Fokuser på terminalen nedenfor"
+
+#: ../src/main.py:2722 ../src/main.py:3053
+#, fuzzy
+msgid "Focus the terminal left"
+msgstr "Fokuser på terminalen til venstre"
+
+#: ../src/main.py:2723 ../src/main.py:3054
+msgid "Focus the terminal right"
+msgstr "Fokuser på terminalen til højre"
+
+#: ../src/main.py:2729
+msgid "Advanced command"
+msgstr "Avanceret kommando"
+
+#: ../src/main.py:2751
+msgid "Adjust opacity"
+msgstr "Tilpas opacitet"
+
+#: ../src/main.py:2751
+msgid "Ctrl + Wheel"
+msgstr "Ctrl + Hjul"
+
+#: ../src/main.py:2945
+msgid "Font: "
+msgstr "Font: "
+
+#: ../src/main.py:2946
+msgid "Font size: "
+msgstr "Font størrelse: "
+
+#: ../src/main.py:2947
+msgid "Color scheme: "
+msgstr "Farvesystem: "
+
+#: ../src/main.py:2949
+msgid "Background transparency: "
+msgstr "Baggrundgennemsigtighed:"
+
+#: ../src/main.py:3196
+msgid "Cursor shape: "
+msgstr "Markør form:"
+
+#: ../src/main.py:3197
+msgid "Cursor blink: "
+msgstr "Markør blink: "
+
+#: ../src/main.py:3198
+msgid "Encoding: "
+msgstr "Sprog kodning:"
+
+#: ../src/main.py:3199
+#, fuzzy
+msgid "Window startup mode: "
+msgstr "Vindue fremføring:"
+
+#: ../src/main.py:3200
+msgid "Startup command: "
+msgstr "Opstartskomando:"
+
+#: ../src/main.py:3201
+msgid "Startup directory: "
+msgstr "Opstartsmappe:"
+
+#: ../src/main.py:3202
+msgid "Ask on quit"
+msgstr "Spørg ved afslutning"
+
+#: ../src/main.py:3203
+msgid "Scroll on keystroke: "
+msgstr "Scrol ved tastaturtryk:"
+
+#: ../src/main.py:3204
+msgid "Scroll on output: "
+msgstr "Scrol ved output:"
+
+#: ../src/main.py:3205
+msgid "Copy on selection: "
+msgstr "Kopier ved udvælgelse:"
+
+#: ../src/main.py:3206
+msgid "Open file on hover: "
+msgstr "Åbn fil ved mus føres over filnavn:"
+
+#: ../src/main.py:3365
+msgid "Save"
+msgstr "Gem"
+
+#: ../src/main.py:3413 ../src/main.py:3437
+msgid "Name: "
+msgstr "Navn:"
+
+#: ../src/main.py:3413 ../src/main.py:3440
+msgid "Server: "
+msgstr "Server: "
+
+#: ../src/main.py:3413 ../src/main.py:3443
+msgid "User: "
+msgstr "Bruger"
+
+#: ../src/main.py:3413 ../src/main.py:3446
+msgid "Password: "
+msgstr "Password: "
+
+#: ../src/main.py:3413 ../src/main.py:3449
+msgid "Port: "
+msgstr "Port: "
+
+#: ../src/main.py:3471
+msgid "Remote login"
+msgstr "Fjern logind"
+
+#: ../src/main.py:3478
+msgid "Add"
+msgstr "Tilføj"
+
+#: ../src/main.py:3479
+msgid "Connection"
+msgstr "Forbindelse"
+
+#: ../src/main.py:3487
+msgid "Name"
+msgstr "Navn"
+
+#: ../src/main.py:3487
+msgid "Server"
+msgstr "Server"
+
+#: ../src/main.py:3494
+msgid "Add remote login"
+msgstr "Tilføj fjern logind"
+
+#: ../src/main.py:3561
+msgid "Edit remote login"
+msgstr "Rediger fjern logind"
+
+#: ../src/main.py:3574
+msgid "Edit"
+msgstr "Rediger"
+
+#: ../src/main.py:3575
+msgid "Delete"
+msgstr "Slet"
+
+#: ../src/main.py:3735
+msgid "Reset"
+msgstr "Nulstil"
+
+#: ../src/main.py:3738
+msgid "Close"
+msgstr "Luk"
+
+#: ../src/main.py:4010
+msgid "working directory"
+msgstr "arbejdesmappe"
+
+#: ../src/main.py:4011
 msgid "run with quake mode"
 msgstr "kør med fremføring mode"
 
-msgid "show program's version number and exit"
-msgstr "vis programs versionsnummer og afslut"
+#: ../src/main.py:4012
+#, fuzzy
+msgid "startup terminal with given parameter"
+msgstr "opstart terminal med given kommando"
 
+#: ../src/main.py:4013
 msgid "show this help message and exit"
 msgstr "vis denne hjælpebesked og afslut"
 
-msgid "startup terminal with given command"
-msgstr "opstart terminal med given kommando"
+#: ../src/main.py:4014
+msgid "show program's version number and exit"
+msgstr "vis programs versionsnummer og afslut"
 
-msgid "working directory"
-msgstr "arbejdesmappe"
+#~ msgid "Nordic"
+#~ msgstr "Nordisk"
