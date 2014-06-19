@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-18 18:16+0800\n"
+"POT-Creation-Date: 2014-06-19 16:07+0800\n"
 "PO-Revision-Date: 2014-05-13 07:08+0000\n"
 "Last-Translator: Snubbi <carl@manjaro.dk>\n"
 "Language-Team: Danish (http://www.transifex.com/projects/p/deepin-terminal/"
@@ -63,11 +63,13 @@ msgid "Western"
 msgstr "Vesteuropa"
 
 #: ../src/main.py:131 ../src/main.py:159 ../src/main.py:170 ../src/main.py:189
-msgid "Central European"
+#, fuzzy
+msgid "Central Europe"
 msgstr "Centraleuropæisk"
 
 #: ../src/main.py:132
-msgid "South European"
+#, fuzzy
+msgid "South Europe"
 msgstr "Sydeuropæisk"
 
 #: ../src/main.py:133 ../src/main.py:141 ../src/main.py:196
@@ -328,8 +330,9 @@ msgstr "Opdel vandret"
 msgid "Close current window"
 msgstr "Luk aktuel vindue"
 
-#: ../src/main.py:874 ../src/main.py:2725 ../src/main.py:3048
-msgid "Close other window"
+#: ../src/main.py:874 ../src/main.py:3048
+#, fuzzy
+msgid "Close other windows"
 msgstr "Luk andre vinduer"
 
 #: ../src/main.py:882 ../src/main.py:889 ../src/main.py:2714
@@ -450,6 +453,10 @@ msgstr "Fokuser på terminalen til venstre"
 #: ../src/main.py:2723 ../src/main.py:3054
 msgid "Focus the terminal right"
 msgstr "Fokuser på terminalen til højre"
+
+#: ../src/main.py:2725
+msgid "Close other window"
+msgstr "Luk andre vinduer"
 
 #: ../src/main.py:2729
 msgid "Advanced command"

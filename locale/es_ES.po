@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-18 18:16+0800\n"
+"POT-Creation-Date: 2014-06-19 16:07+0800\n"
 "PO-Revision-Date: 2013-12-10 13:20+0000\n"
 "Last-Translator: kazzike <jeancarlosrivas@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/deepin-terminal/"
@@ -63,11 +63,11 @@ msgid "Western"
 msgstr ""
 
 #: ../src/main.py:131 ../src/main.py:159 ../src/main.py:170 ../src/main.py:189
-msgid "Central European"
+msgid "Central Europe"
 msgstr ""
 
 #: ../src/main.py:132
-msgid "South European"
+msgid "South Europe"
 msgstr ""
 
 #: ../src/main.py:133 ../src/main.py:141 ../src/main.py:196
@@ -328,8 +328,9 @@ msgstr "Dividir Horizontalmente"
 msgid "Close current window"
 msgstr "Cerrar la Ventana Actual"
 
-#: ../src/main.py:874 ../src/main.py:2725 ../src/main.py:3048
-msgid "Close other window"
+#: ../src/main.py:874 ../src/main.py:3048
+#, fuzzy
+msgid "Close other windows"
 msgstr "Cerrar Otra Ventana"
 
 #: ../src/main.py:882 ../src/main.py:889 ../src/main.py:2714
@@ -449,6 +450,10 @@ msgstr "Enfocar la Terminal a la Izquierda"
 #: ../src/main.py:2723 ../src/main.py:3054
 msgid "Focus the terminal right"
 msgstr "Enfocar la Terminal a la Derecha"
+
+#: ../src/main.py:2725
+msgid "Close other window"
+msgstr "Cerrar Otra Ventana"
 
 #: ../src/main.py:2729
 msgid "Advanced command"

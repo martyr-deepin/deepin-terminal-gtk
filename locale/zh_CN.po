@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-18 18:02+0800\n"
+"POT-Creation-Date: 2014-06-19 16:07+0800\n"
 "PO-Revision-Date: 2014-05-11 09:50+0000\n"
 "Last-Translator: electricface <songwentai@linuxdeepin.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/deepin-"
@@ -68,11 +68,11 @@ msgid "Western"
 msgstr "西方"
 
 #: ../src/main.py:131 ../src/main.py:159 ../src/main.py:170 ../src/main.py:189
-msgid "Central European"
+msgid "Central Europe"
 msgstr "中欧"
 
 #: ../src/main.py:132
-msgid "South European"
+msgid "South Europe"
 msgstr "南欧"
 
 #: ../src/main.py:133 ../src/main.py:141 ../src/main.py:196
@@ -142,7 +142,7 @@ msgstr "日语"
 
 #: ../src/main.py:155 ../src/main.py:165 ../src/main.py:187
 msgid "Korean"
-msgstr "韩语"
+msgstr "朝鲜语"
 
 #: ../src/main.py:156
 msgid "Georgian"
@@ -257,8 +257,8 @@ msgid "Quit terminal?"
 msgstr "关闭终端？"
 
 #: ../src/main.py:584
-msgid "Terminal still has running programs. Are you sure you want to quit?" 
-msgstr "终端中还有正在运行的程序， 你确定要退出吗？"
+msgid "Terminal still has running programs. Are you sure you want to quit?"
+msgstr "终端中还有正在运行的程序，你确定要退出吗？"
 
 #: ../src/main.py:791 ../src/main.py:898
 msgid "Preferences"
@@ -330,8 +330,8 @@ msgstr "横向分屏"
 msgid "Close current window"
 msgstr "关闭当前窗口"
 
-#: ../src/main.py:874 ../src/main.py:2725 ../src/main.py:3048
-msgid "Close other window"
+#: ../src/main.py:874 ../src/main.py:3048
+msgid "Close other windows"
 msgstr "关闭其他窗口"
 
 #: ../src/main.py:882 ../src/main.py:889 ../src/main.py:2714
@@ -357,7 +357,7 @@ msgstr "关闭窗口？"
 
 #: ../src/main.py:1143 ../src/main.py:1889
 msgid "Window still has running programs. Are you sure you want to close?"
-msgstr "窗口中还有正在运行的程序, 你确定要关闭吗？"
+msgstr "窗口中还有正在运行的程序，你确定要关闭吗？"
 
 #: ../src/main.py:1145
 msgid "Close workspace?"
@@ -365,7 +365,7 @@ msgstr "关闭工作区？"
 
 #: ../src/main.py:1146
 msgid "Workspace still has running programs. Are you sure you want to close?"
-msgstr "工作区中还有正在运行的程序, 你确定要关闭吗？"
+msgstr "工作区中还有正在运行的程序，你确定要关闭吗？"
 
 #: ../src/main.py:2126
 msgid "Workspace"
@@ -446,6 +446,11 @@ msgstr "选中左边的终端"
 #: ../src/main.py:2723 ../src/main.py:3054
 msgid "Focus the terminal right"
 msgstr "选中右边的终端"
+
+#: ../src/main.py:2725
+#, fuzzy
+msgid "Close other window"
+msgstr "关闭其他窗口"
 
 #: ../src/main.py:2729
 msgid "Advanced command"

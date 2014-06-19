@@ -128,8 +128,8 @@ CURSOR_BLINK_MODE_ITEMS =[(_("System Default"), "system"),
                           (_("Off"), "off")]
 
 ENCODINGS = [("%s (%s)" % (_("Western"), "ISO-8859-1"), "ISO-8859-1"),
-             ("%s (%s)" % (_("Central European"), "ISO-8859-2"), "ISO-8859-2"),
-             ("%s (%s)" % (_("South European"), "ISO-8859-3"), "ISO-8859-3"),
+             ("%s (%s)" % (_("Central Europe"), "ISO-8859-2"), "ISO-8859-2"),
+             ("%s (%s)" % (_("South Europe"), "ISO-8859-3"), "ISO-8859-3"),
              ("%s (%s)" % (_("Baltic"), "ISO-8859-4"), "ISO-8859-4"),
              ("%s (%s)" % (_("Cyrillic"), "ISO-8859-5"), "ISO-8859-5"),
              ("%s (%s)" % (_("Arabic"), "ISO-8859-6"), "ISO-8859-6"),
@@ -156,7 +156,7 @@ ENCODINGS = [("%s (%s)" % (_("Western"), "ISO-8859-1"), "ISO-8859-1"),
              ("%s (%s)" % (_("Georgian"), "GEORGIAN-PS"), "GEORGIAN-PS"),
              ("%s (%s)" % (_("Chinese Simplified"), "HZ"), "HZ"),
              ("%s (%s)" % (_("Western"), "IBM850"), "IBM850"),
-             ("%s (%s)" % (_("Central European"), "IBM852"), "IBM852"),
+             ("%s (%s)" % (_("Central Europe"), "IBM852"), "IBM852"),
              ("%s (%s)" % (_("Cyrillic"), "IBM855"), "IBM855"),
              ("%s (%s)" % (_("Turkish"), "IBM857"), "IBM857"),
              ("%s (%s)" % (_("Hebrew"), "IBM862"), "IBM862"),
@@ -167,7 +167,7 @@ ENCODINGS = [("%s (%s)" % (_("Western"), "ISO-8859-1"), "ISO-8859-1"),
              ("%s (%s)" % (_("Cyrillic"), "KOI8-R"), "KOI8-R"),
              ("%s (%s)" % (_("Cyrillic/Ukrainian"), "KOI8-U"), "KOI8-U"),
              ("%s (%s)" % (_("Arabic"), "MAC_ARABIC"), "MAC_ARABIC"),
-             ("%s (%s)" % (_("Central European"), "MAC_CE"), "MAC_CE"),
+             ("%s (%s)" % (_("Central Europe"), "MAC_CE"), "MAC_CE"),
              ("%s (%s)" % (_("Croatian"), "MAC_CROATIAN"), "MAC_CROATIAN"),
              ("%s (%s)" % (_("Cyrillic"), "MAC-CYRILLIC"), "MAC-CYRILLIC"),
              ("%s (%s)" % (_("Hindi"), "MAC_DEVANAGARI"), "MAC_DEVANAGARI"),
@@ -186,7 +186,7 @@ ENCODINGS = [("%s (%s)" % (_("Western"), "ISO-8859-1"), "ISO-8859-1"),
              ("%s (%s)" % (_("Thai"), "TIS-620"), "TIS-620"),
              ("%s (%s)" % (_("Korean"), "UHC"), "UHC"),
              ("%s (%s)" % (_("Vietnamese"), "VISCII"), "VISCII"),
-             ("%s (%s)" % (_("Central European"), "WINDOWS-1250"), "WINDOWS-1250"),
+             ("%s (%s)" % (_("Central Europe"), "WINDOWS-1250"), "WINDOWS-1250"),
              ("%s (%s)" % (_("Cyrillic"), "WINDOWS-1251"), "WINDOWS-1251"),
              ("%s (%s)" % (_("Western"), "WINDOWS-1252"), "WINDOWS-1252"),
              ("%s (%s)" % (_("Greek"), "WINDOWS-1253"), "WINDOWS-1253"),
@@ -871,7 +871,7 @@ class Terminal(object):
             ]
         if len(terminals) >= 1:
             terminal_items += [
-                (None, _("Close other window"), self.close_other_window),
+                (None, _("Close other windows"), self.close_other_window),
                 ]
         
         if len(self.get_workspaces()) > 1:
@@ -2722,7 +2722,7 @@ class HelperWindow(Window):
             (_("Focus the terminal left"), "focus_left_terminal"),
             (_("Focus the terminal right"), "focus_right_terminal"),
             (_("Close current window"), "close_current_window"),
-            (_("Close other window"), "close_other_window"),
+            (_("Close other window"), "close_other_windows"),
             ]
         
         third_table_key = [
@@ -3045,7 +3045,7 @@ class KeybindSettings(ScrolledWindow):
              ("split_vertically", _("Split vertically")),
              ("split_horizontally", _("Split horizontally")),
              ("close_current_window", _("Close current window")),
-             ("close_other_window", _("Close other window")),
+             ("close_other_window", _("Close other windows")),
              ("scroll_page_up", _("Scroll page up")),
              ("scroll_page_down", _("Scroll page down")),
              ("focus_up_terminal", _("Focus the terminal above")),
