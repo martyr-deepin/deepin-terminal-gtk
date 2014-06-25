@@ -3476,7 +3476,7 @@ class RemoteLogin(DialogBox):
             )
         
         self.add_button = Button(_("Add"))
-        self.connect_button = Button(_("Connection"))
+        self.connect_button = Button(_("Connect"))
         
         self.add_button.connect("clicked", lambda w: self.show_add_remote_login())
         self.connect_button.connect("clicked", lambda w: self.connect_remote_login())

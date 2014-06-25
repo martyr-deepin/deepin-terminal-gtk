@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-19 16:07+0800\n"
+"POT-Creation-Date: 2014-06-25 18:19+0800\n"
 "PO-Revision-Date: 2014-05-15 08:24+0000\n"
 "Last-Translator: electricface <songwentai@linuxdeepin.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/"
@@ -565,7 +565,8 @@ msgid "Add"
 msgstr "Adicionar"
 
 #: ../src/main.py:3479
-msgid "Connection"
+#, fuzzy
+msgid "Connect"
 msgstr "Conexão"
 
 #: ../src/main.py:3487
