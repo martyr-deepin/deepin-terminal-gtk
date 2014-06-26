@@ -1377,13 +1377,16 @@ class TerminalWrapper(vte.Terminal):
         
         startup_directory = get_config("advanced", "startup_directory")
         directory = commands.getoutput("echo %s" % startup_directory)
-        if os.path.exists(directory):
-            os.chdir(directory)
-        elif working_directory:
-            # Use os.chdir and not child_feed("cd %s\n" % working_directory), 
-            # this will make terminal with 'clear' init value.
-            # child_feed have cd information after terminal created.
-            os.chdir(working_directory)
+        try:
+            if os.path.exists(directory):
+                os.chdir(directory)
+            elif working_directory:
+                # Use os.chdir and not child_feed("cd %s\n" % working_directory), 
+                # this will make terminal with 'clear' init value.
+                # child_feed have cd information after terminal created.
+                os.chdir(working_directory)
+        except:
+            traceback.print_exc(file=sys.stdout)
             
         if cmdline_startup_command and cmdline_startup_command != "":
             if len(cmdline_startup_command) == 1:
