@@ -226,9 +226,9 @@ MIN_TRANSPARENT = 0.2
 
 SEARCH_BAR_PADDING = 6
 
-_HOME = os.path.expanduser('~')
+HOME = os.path.expanduser('~')
 XDG_CONFIG_HOME = os.environ.get('XDG_CONFIG_HOME') or \
-            os.path.join(_HOME, '.config')
+            os.path.join(HOME, '.config')
 
 # NOTE:
 # We just store remote information (include password) in sqlite database.
@@ -1388,6 +1388,8 @@ class TerminalWrapper(vte.Terminal):
         except:
             traceback.print_exc(file=sys.stdout)
             
+            os.chdir(HOME)
+            
         if cmdline_startup_command and cmdline_startup_command != "":
             if len(cmdline_startup_command) == 1:
                 cmdline_command = cmdline_startup_command[0]
@@ -1705,7 +1707,7 @@ class TerminalWrapper(vte.Terminal):
         except Exception, e:
             # Return HOME directory if got error when read /proc/pid/cwd
             print "TerminalWrapper.get_working_directory got error: %s" % e
-            return _HOME
+            return HOME
         
     def change_path(self):
         global focus_terminal
