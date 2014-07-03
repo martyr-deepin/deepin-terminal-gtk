@@ -1,0 +1,605 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# samson <sambelet@yahoo.com>, 2014
+msgid ""
+msgstr ""
+"Project-Id-Version: Deepin Terminal\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-25 18:19+0800\n"
+"PO-Revision-Date: 2014-06-30 04:34+0000\n"
+"Last-Translator: samson <sambelet@yahoo.com>\n"
+"Language-Team: Amharic (http://www.transifex.com/projects/p/deepin-terminal/language/am/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: am\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../src/main.py:118
+msgid "Normal"
+msgstr "መደበኛ"
+
+#: ../src/main.py:119
+msgid "Maximize"
+msgstr "ማሳደጊያ"
+
+#: ../src/main.py:120 ../src/main.py:863 ../src/main.py:2730
+#: ../src/main.py:3064
+msgid "Fullscreen"
+msgstr "በሙሉ መመልከቻ ዘዴ"
+
+#: ../src/main.py:122
+msgid "Block"
+msgstr "መከልከያ"
+
+#: ../src/main.py:123
+msgid "I-beam"
+msgstr "I-beam"
+
+#: ../src/main.py:124
+msgid "Underline"
+msgstr "ከስሩ ማስመሪያ"
+
+#: ../src/main.py:126
+msgid "System Default"
+msgstr "የ ስርአቱ ነባር"
+
+#: ../src/main.py:127
+msgid "On"
+msgstr "ማብሪያ"
+
+#: ../src/main.py:128
+msgid "Off"
+msgstr "ማጥፊያ"
+
+#: ../src/main.py:130 ../src/main.py:143 ../src/main.py:158 ../src/main.py:180
+#: ../src/main.py:191
+msgid "Western"
+msgstr "Western"
+
+#: ../src/main.py:131 ../src/main.py:159 ../src/main.py:170 ../src/main.py:189
+msgid "Central Europe"
+msgstr "Central Europe"
+
+#: ../src/main.py:132
+msgid "South Europe"
+msgstr "South Europe"
+
+#: ../src/main.py:133 ../src/main.py:141 ../src/main.py:196
+msgid "Baltic"
+msgstr "Baltic"
+
+#: ../src/main.py:134 ../src/main.py:160 ../src/main.py:166 ../src/main.py:167
+#: ../src/main.py:172 ../src/main.py:190
+msgid "Cyrillic"
+msgstr "Cyrillic"
+
+#: ../src/main.py:135 ../src/main.py:163 ../src/main.py:169 ../src/main.py:195
+msgid "Arabic"
+msgstr "Arabic"
+
+#: ../src/main.py:136 ../src/main.py:175 ../src/main.py:192
+msgid "Greek"
+msgstr "Greek"
+
+#: ../src/main.py:137
+msgid "Hebrew Visual"
+msgstr "Hebrew Visual"
+
+#: ../src/main.py:138 ../src/main.py:162 ../src/main.py:178 ../src/main.py:194
+msgid "Hebrew"
+msgstr "Hebrew"
+
+#: ../src/main.py:139 ../src/main.py:161 ../src/main.py:182 ../src/main.py:193
+msgid "Turkish"
+msgstr "Turkish"
+
+#: ../src/main.py:140
+msgid "Germanic"
+msgstr "Germanic"
+
+#: ../src/main.py:142
+msgid "Celtic"
+msgstr "Celtic"
+
+#: ../src/main.py:144 ../src/main.py:181
+msgid "Romanian"
+msgstr "Romanian"
+
+#: ../src/main.py:145
+msgid "Unicode"
+msgstr "ዩኒኮድ"
+
+#: ../src/main.py:146
+msgid "Armenian"
+msgstr "Armenian"
+
+#: ../src/main.py:147 ../src/main.py:148 ../src/main.py:149 ../src/main.py:157
+msgid "Chinese Simplified"
+msgstr "Chinese Simplified"
+
+#: ../src/main.py:150 ../src/main.py:151 ../src/main.py:152
+msgid "Chinese Traditional"
+msgstr "Chinese Traditional"
+
+#: ../src/main.py:153
+msgid "Cyrillic/Russian"
+msgstr "Cyrillic/Russian"
+
+#: ../src/main.py:154 ../src/main.py:164 ../src/main.py:184
+msgid "Japanese"
+msgstr "Japanese"
+
+#: ../src/main.py:155 ../src/main.py:165 ../src/main.py:187
+msgid "Korean"
+msgstr "Korean"
+
+#: ../src/main.py:156
+msgid "Georgian"
+msgstr "Georgian"
+
+#: ../src/main.py:168 ../src/main.py:183
+msgid "Cyrillic/Ukrainian"
+msgstr "Cyrillic/Ukrainian"
+
+#: ../src/main.py:171
+msgid "Croatian"
+msgstr "Croatian"
+
+#: ../src/main.py:173
+msgid "Hindi"
+msgstr "Hindi"
+
+#: ../src/main.py:174
+msgid "Persian"
+msgstr "Persian"
+
+#: ../src/main.py:176
+msgid "Gujarati"
+msgstr "Gujarati"
+
+#: ../src/main.py:177
+msgid "Gurmukhi"
+msgstr "Gurmukhi"
+
+#: ../src/main.py:179
+msgid "Icelandic"
+msgstr "Icelandic"
+
+#: ../src/main.py:185 ../src/main.py:188 ../src/main.py:197
+msgid "Vietnamese"
+msgstr "Vietnamese"
+
+#: ../src/main.py:186
+msgid "Thai"
+msgstr "Thai"
+
+#: ../src/main.py:302
+msgid "Deepin"
+msgstr ""
+
+#: ../src/main.py:303
+msgid "Mocha"
+msgstr ""
+
+#: ../src/main.py:304
+msgid "Green screen"
+msgstr "አረንጓዴ መመልከቻ"
+
+#: ../src/main.py:305
+msgid "Ocean"
+msgstr "ውቂያኖስ"
+
+#: ../src/main.py:306
+msgid "Monokai"
+msgstr ""
+
+#: ../src/main.py:307
+msgid "Solarized"
+msgstr ""
+
+#: ../src/main.py:308 ../src/main.py:309
+msgid "Eighties"
+msgstr ""
+
+#: ../src/main.py:310
+msgid "Grey on black"
+msgstr "ግራጫ በ ጥቁር ላይ"
+
+#: ../src/main.py:311
+msgid "Black on yellow"
+msgstr "ጥቁር በ ቢጫ ላይ"
+
+#: ../src/main.py:312
+msgid "Black on white"
+msgstr "ጥቁር በ ነጭ ላይ"
+
+#: ../src/main.py:313
+msgid "White on black"
+msgstr "ነጭ በ ጥቁር ላይ"
+
+#: ../src/main.py:314
+msgid "Green on black"
+msgstr "አረንጓዴ በ ጥቁር ላይ"
+
+#: ../src/main.py:315
+msgid "Custom"
+msgstr ""
+
+#: ../src/main.py:426
+msgid "Deepin Terminal"
+msgstr "ተርሚናል"
+
+#: ../src/main.py:474
+msgid "General"
+msgstr "ባጠቃላይ"
+
+#: ../src/main.py:475
+msgid "Hotkeys"
+msgstr "አቋራጭ ቁልፍ"
+
+#: ../src/main.py:476
+msgid "Advanced"
+msgstr "የረቀቀ"
+
+#: ../src/main.py:583
+msgid "Quit terminal?"
+msgstr "ከ ተርሚናል ልውጣ?"
+
+#: ../src/main.py:584
+msgid "Terminal still has running programs. Are you sure you want to quit?"
+msgstr ""
+
+#: ../src/main.py:791 ../src/main.py:898
+msgid "Preferences"
+msgstr "ምርጫዎች"
+
+#: ../src/main.py:792 ../src/main.py:2732 ../src/main.py:3066
+msgid "Set up SSH connection"
+msgstr "የ SSH ግንኙነት ማሰናጃ"
+
+#: ../src/main.py:793 ../src/main.py:896 ../src/main.py:2731
+#: ../src/main.py:3065
+msgid "Display hotkeys"
+msgstr "አቋራጭ ቁልፍ ማሳያ"
+
+#: ../src/main.py:795
+msgid "Quit"
+msgstr "ማጥፊያ"
+
+#: ../src/main.py:830 ../src/main.py:833 ../src/main.py:2698
+#: ../src/main.py:3043
+msgid "Copy"
+msgstr "ኮፒ ማድረጊያ"
+
+#: ../src/main.py:835 ../src/main.py:2699 ../src/main.py:3044
+msgid "Paste"
+msgstr "መለጠፊያ"
+
+#: ../src/main.py:842
+msgid "Open file"
+msgstr "ፋይል መክፈቻ"
+
+#: ../src/main.py:844
+msgid "Open directory"
+msgstr "ዳይሬክቶሪ መክፈቻ"
+
+#: ../src/main.py:846
+msgid "Open URL"
+msgstr "URL መክፈቻ"
+
+#: ../src/main.py:848
+msgid "Open manual"
+msgstr "በእጅ መክፈቻ"
+
+#: ../src/main.py:852
+msgid "Clear screen"
+msgstr "መመልከቻውን ማጽጃ"
+
+#: ../src/main.py:853
+msgid "Open current directory"
+msgstr "የአሁኑን ዳይሬክቶሪ መክፈቻ"
+
+#: ../src/main.py:858 ../src/main.py:2709 ../src/main.py:3067
+msgid "Show correlative child window"
+msgstr ""
+
+#: ../src/main.py:861
+msgid "Exit fullscreen"
+msgstr "ከ ሙሉ መመልከቻው ዘዴ መውጫ"
+
+#: ../src/main.py:868 ../src/main.py:2718 ../src/main.py:3045
+msgid "Split vertically"
+msgstr "በ ቁመት መክፈያ"
+
+#: ../src/main.py:869 ../src/main.py:2719 ../src/main.py:3046
+msgid "Split horizontally"
+msgstr "በ አግድም መክፈያ"
+
+#: ../src/main.py:870 ../src/main.py:2724 ../src/main.py:3047
+msgid "Close current window"
+msgstr "የአሁኑን መስኮት መዝጊያ"
+
+#: ../src/main.py:874 ../src/main.py:3048
+msgid "Close other windows"
+msgstr "ሌሎች መስኮቶችን መዝጊያ"
+
+#: ../src/main.py:882 ../src/main.py:889 ../src/main.py:2714
+#: ../src/main.py:3058
+msgid "New workspace"
+msgstr "አዲስ የ ስራ ቦታ"
+
+#: ../src/main.py:883
+msgid "Switch workspace"
+msgstr " የ ስራ ቦታ መቀየሪያ"
+
+#: ../src/main.py:884 ../src/main.py:2717 ../src/main.py:3059
+msgid "Close workspace"
+msgstr " የ ስራ ቦታ መዝጊያ"
+
+#: ../src/main.py:895
+msgid "Search"
+msgstr "መፈለጊያ"
+
+#: ../src/main.py:1142 ../src/main.py:1888
+msgid "Close window?"
+msgstr "መስኮቱን ልዝጋው?"
+
+#: ../src/main.py:1143 ../src/main.py:1889
+msgid "Window still has running programs. Are you sure you want to close?"
+msgstr ""
+
+#: ../src/main.py:1145
+msgid "Close workspace?"
+msgstr " የ ስራ ቦታውን ልዝጋው?"
+
+#: ../src/main.py:1146
+msgid "Workspace still has running programs. Are you sure you want to close?"
+msgstr ""
+
+#: ../src/main.py:2126
+msgid "Workspace"
+msgstr " የ ስራ ቦታ"
+
+#: ../src/main.py:2697
+msgid "Terminal command"
+msgstr "የ ተርሚናል ትእዛዝ"
+
+#: ../src/main.py:2700 ../src/main.py:3049
+msgid "Scroll page up"
+msgstr "ገጽ ወደ ላይ መሸብለያ"
+
+#: ../src/main.py:2701 ../src/main.py:3050
+msgid "Scroll page down"
+msgstr "ገጽ ወደ ታች መሸብለያ"
+
+#: ../src/main.py:2702 ../src/main.py:3062
+msgid "Search forward"
+msgstr "ወደ ፊት መፈለጊያ"
+
+#: ../src/main.py:2703 ../src/main.py:3063
+msgid "Search backward"
+msgstr "የኋሊዮሽ መፈለጊያ"
+
+#: ../src/main.py:2704
+msgid "Select word"
+msgstr "ቃላት ይምረጡ"
+
+#: ../src/main.py:2704
+msgid "Double click"
+msgstr "ሁለት ጊዜ መጫኛ"
+
+#: ../src/main.py:2705
+msgid "Open"
+msgstr "መክፈቻ"
+
+#: ../src/main.py:2705
+msgid "Ctrl + Left click"
+msgstr "Ctrl + በ ግራ መጫኛ"
+
+#: ../src/main.py:2706 ../src/main.py:3056
+msgid "Zoom out"
+msgstr "በቅርብ ማሳያ"
+
+#: ../src/main.py:2707 ../src/main.py:3055
+msgid "Zoom in"
+msgstr "በርቀት ማሳያ"
+
+#: ../src/main.py:2708 ../src/main.py:3057
+msgid "Reset zoom"
+msgstr "ማሳያውን እንደ ነበር መመለሻ"
+
+#: ../src/main.py:2713
+msgid "Workspace command"
+msgstr "የ ስራ ቦታ ትእዛዝ"
+
+#: ../src/main.py:2715 ../src/main.py:3060
+msgid "Previous workspace"
+msgstr "ቀደም ያለው የ ስራ ቦታ"
+
+#: ../src/main.py:2716 ../src/main.py:3061
+msgid "Next workspace"
+msgstr "የሚቀጥለው የ ስራ ቦታ"
+
+#: ../src/main.py:2720 ../src/main.py:3051
+msgid "Focus the terminal above"
+msgstr ""
+
+#: ../src/main.py:2721 ../src/main.py:3052
+msgid "Focus the terminal below"
+msgstr ""
+
+#: ../src/main.py:2722 ../src/main.py:3053
+msgid "Focus the terminal left"
+msgstr ""
+
+#: ../src/main.py:2723 ../src/main.py:3054
+msgid "Focus the terminal right"
+msgstr ""
+
+#: ../src/main.py:2725
+msgid "Close other window"
+msgstr "ሌሎች መስኮቶችን መዝጊያ"
+
+#: ../src/main.py:2729
+msgid "Advanced command"
+msgstr "የረቀቀ ትእዛዝ"
+
+#: ../src/main.py:2751
+msgid "Adjust opacity"
+msgstr "ግልጽነት ማስተካከያ"
+
+#: ../src/main.py:2751
+msgid "Ctrl + Wheel"
+msgstr "Ctrl + ጎማ"
+
+#: ../src/main.py:2945
+msgid "Font: "
+msgstr "ፊደል:"
+
+#: ../src/main.py:2946
+msgid "Font size: "
+msgstr "የፋይል መጠን:"
+
+#: ../src/main.py:2947
+msgid "Color scheme: "
+msgstr "የገጽታ ቀለም: "
+
+#: ../src/main.py:2949
+msgid "Background transparency: "
+msgstr "የመደብ ግልጽነት: "
+
+#: ../src/main.py:3196
+msgid "Cursor shape: "
+msgstr "የመጠቆሚያው ቅርጽ: "
+
+#: ../src/main.py:3197
+msgid "Cursor blink: "
+msgstr "የመጠቆሚያው ብልጭ ድርግም ባይ"
+
+#: ../src/main.py:3198
+msgid "Encoding: "
+msgstr "Encoding: "
+
+#: ../src/main.py:3199
+msgid "Window startup mode: "
+msgstr "የ መስኮት ማስጀመሪያ ዘዴ:"
+
+#: ../src/main.py:3200
+msgid "Startup command: "
+msgstr "ትእዛዝ ማስጀመሪያ: "
+
+#: ../src/main.py:3201
+msgid "Startup directory: "
+msgstr "ዳይሬክቶሪ ማስጀመሪያ:"
+
+#: ../src/main.py:3202
+msgid "Ask on quit"
+msgstr "በማጠፋ ጊዜ ጠይቀኝ"
+
+#: ../src/main.py:3203
+msgid "Scroll on keystroke: "
+msgstr ""
+
+#: ../src/main.py:3204
+msgid "Scroll on output: "
+msgstr ""
+
+#: ../src/main.py:3205
+msgid "Copy on selection: "
+msgstr "በምርጫ ኮፒ ማድረጊያ:"
+
+#: ../src/main.py:3206
+msgid "Open file on hover: "
+msgstr "ፋይሉ ላይ በሚንሳፈፍ ጊዜ መክፈቻ"
+
+#: ../src/main.py:3365
+msgid "Save"
+msgstr "ማስቀመጫ"
+
+#: ../src/main.py:3413 ../src/main.py:3437
+msgid "Name: "
+msgstr "ስም: "
+
+#: ../src/main.py:3413 ../src/main.py:3440
+msgid "Server: "
+msgstr "ሰርቨር: "
+
+#: ../src/main.py:3413 ../src/main.py:3443
+msgid "User: "
+msgstr "ተጠቃሚ: "
+
+#: ../src/main.py:3413 ../src/main.py:3446
+msgid "Password: "
+msgstr "የመግቢያ ቃል:"
+
+#: ../src/main.py:3413 ../src/main.py:3449
+msgid "Port: "
+msgstr "Port: "
+
+#: ../src/main.py:3471
+msgid "Remote login"
+msgstr "በርቀት መግቢያ"
+
+#: ../src/main.py:3478
+msgid "Add"
+msgstr "መጨመሪያ"
+
+#: ../src/main.py:3479
+msgid "Connect"
+msgstr "መገናኛ"
+
+#: ../src/main.py:3487
+msgid "Name"
+msgstr "ስም"
+
+#: ../src/main.py:3487
+msgid "Server"
+msgstr "ሰርቨር"
+
+#: ../src/main.py:3494
+msgid "Add remote login"
+msgstr "በርቀት መግቢያ መጨመሪያ"
+
+#: ../src/main.py:3561
+msgid "Edit remote login"
+msgstr "በርቀት መግቢያ ማረሚያ"
+
+#: ../src/main.py:3574
+msgid "Edit"
+msgstr "ማረሚያ"
+
+#: ../src/main.py:3575
+msgid "Delete"
+msgstr "ማጥፊያ"
+
+#: ../src/main.py:3735
+msgid "Reset"
+msgstr "እንደ ነበር መመለሻ"
+
+#: ../src/main.py:3738
+msgid "Close"
+msgstr "መዝጊያ"
+
+#: ../src/main.py:4010
+msgid "working directory"
+msgstr "በስራ ላይ ያለው ዳይሬክቶሪ"
+
+#: ../src/main.py:4011
+msgid "run with quake mode"
+msgstr ""
+
+#: ../src/main.py:4012
+msgid "startup terminal with given parameter"
+msgstr ""
+
+#: ../src/main.py:4013
+msgid "show this help message and exit"
+msgstr "ይህን የእርዳታ መልእክት ማሳያ እና መውጫ"
+
+#: ../src/main.py:4014
+msgid "show program's version number and exit"
+msgstr "የ ፕሮግራሙን እትም ቁጥር ማሳያ እና መውጫ"
