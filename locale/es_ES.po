@@ -88,7 +88,6 @@ msgid "Chinese Traditional"
 msgstr ""
 
 #: src/main.py:852
-#, fuzzy
 msgid "Clear screen"
 msgstr "Pantalla Verde"
 
@@ -105,7 +104,6 @@ msgid "Close other window"
 msgstr "Cerrar Otra Ventana"
 
 #: src/main.py:874 src/main.py:3053
-#, fuzzy
 msgid "Close other windows"
 msgstr "Cerrar Otra Ventana"
 
@@ -126,7 +124,6 @@ msgid "Color scheme: "
 msgstr "Esquema de Color:"
 
 #: src/main.py:3484
-#, fuzzy
 msgid "Connect"
 msgstr "Conexión"
 
@@ -147,7 +144,6 @@ msgid "Ctrl + Left click"
 msgstr "Control + Clic Izquierdo"
 
 #: src/main.py:2756
-#, fuzzy
 msgid "Ctrl + Wheel"
 msgstr "Control + Clic Izquierdo"
 
@@ -513,7 +509,6 @@ msgid "Switch workspace"
 msgstr "Cambiar de Espacio de Trabajo"
 
 #: src/main.py:126
-#, fuzzy
 msgid "System Default"
 msgstr "Sistema"
 
@@ -522,7 +517,6 @@ msgid "Terminal command"
 msgstr "Comando de Terminal"
 
 #: src/main.py:584
-#, fuzzy
 msgid "Terminal still has running programs. Are you sure you want to quit?"
 msgstr ""
 "La terminal aun esta corriendo programas. ¿Estás seguro que deseas salir?"
@@ -561,12 +555,10 @@ msgid "White on black"
 msgstr "Blanco sobre Negro"
 
 #: src/main.py:3204
-#, fuzzy
 msgid "Window startup mode: "
 msgstr "Estado de La Ventana:"
 
 #: src/main.py:1143 src/main.py:1894
-#, fuzzy
 msgid "Window still has running programs. Are you sure you want to close?"
 msgstr ""
 "La Ventana aun tiene programas corriendo. ¿Estás seguro que deseas cerrarla?"
@@ -580,7 +572,6 @@ msgid "Workspace command"
 msgstr "Comando de Espacio de Trabajo"
 
 #: src/main.py:1146
-#, fuzzy
 msgid "Workspace still has running programs. Are you sure you want to close?"
 msgstr ""
 "El espacio de trabajo aun esta corriendo programas. ¿Está seguro que desea "
@@ -607,7 +598,6 @@ msgid "show this help message and exit"
 msgstr "Mostrar este Mensaje de Ayuda y Salir"
 
 #: src/main.py:4017
-#, fuzzy
 msgid "startup terminal with given parameter"
 msgstr "Inicar Terminal con el Comando Dado "
 

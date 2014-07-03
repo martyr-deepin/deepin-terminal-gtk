@@ -104,7 +104,6 @@ msgid "Close other window"
 msgstr "Sluit ander scherm af"
 
 #: src/main.py:874 src/main.py:3053
-#, fuzzy
 msgid "Close other windows"
 msgstr "Sluit ander scherm af"
 
