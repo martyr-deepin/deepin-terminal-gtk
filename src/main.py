@@ -1410,7 +1410,6 @@ class TerminalWrapper(vte.Terminal):
             else:
                 self.process_id = self.fork_command("/bin/sh", cmdline_startup_command)
         else:
-            print "5"
             startup_command = get_config("advanced", "startup_command")
             if startup_command == "":
                 fork_command = os.getenv("SHELL")
