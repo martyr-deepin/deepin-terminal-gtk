@@ -1393,7 +1393,7 @@ class TerminalWrapper(vte.Terminal):
         if cmdline_startup_command and cmdline_startup_command != "":
             if len(cmdline_startup_command) == 1:
                 cmdline_command = cmdline_startup_command[0]
-                cmdline_command_args = cmdline_command.split(" ")
+                cmdline_command_args = filter(lambda arg: len(arg) > 0, cmdline_command.split(" "))
                 
                 if len(cmdline_command_args) == 1:
                     # Execute command notify user install it if command is not exist.
