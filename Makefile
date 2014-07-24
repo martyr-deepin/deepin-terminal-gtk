@@ -16,4 +16,4 @@ install:
 	cp -r image ${DESTDIR}${PREFIX}/share/deepin-terminal
 	cp deepin-terminal.png ${DESTDIR}${PREFIX}/share/icons/hicolor/48x48/apps
 	cp deepin-terminal.desktop ${DESTDIR}${PREFIX}/share/applications
-	ln -sf ${DESTDIR}${PREFIX}/share/deepin-terminal/src/main.py ${DESTDIR}${PREFIX}/bin/deepin-terminal
+	ln -sf ${PREFIX}/share/deepin-terminal/src/main.py ${DESTDIR}${PREFIX}/bin/deepin-terminal
