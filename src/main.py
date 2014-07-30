@@ -58,6 +58,7 @@ import sys
 import traceback
 import urllib
 import vte
+import shlex
 
 PROJECT_NAME = "deepin-terminal"
 
@@ -1393,22 +1394,8 @@ class TerminalWrapper(vte.Terminal):
         if cmdline_startup_command and cmdline_startup_command != "":
             if len(cmdline_startup_command) == 1:
                 cmdline_command = cmdline_startup_command[0]
-                cmdline_command_splits = filter(lambda arg: len(arg) > 0, cmdline_command.split(" "))
+                cmdline_command_args = filter(lambda arg: len(arg) > 0, shlex.split(cmdline_command))
                 
-                cmdline_command_args = []
-                
-                # We need scan command list to avoid split in doublequote string.
-                # Example, deepin-terminal -e 'bash -c "less ~/.bashrc"' should to ['bash', '-c', 'less ~/.bashrc '],
-                # and not ['bash', '-c', '"less', '~/.bashrc"'].
-                for (index, split) in enumerate(cmdline_command_splits):
-                    if split.startswith('\"'):
-                        if split.endswith('\"'):
-                            cmdline_command_args.append(split[1:-1])
-                        else:
-                            cmdline_command_args.append(' '.join([split[1:], cmdline_command_splits[index + 1][:-1]]))
-                    elif not split.endswith('\"'):
-                        cmdline_command_args.append(split)
-                        
                 if len(cmdline_command_args) == 1:
                     # Execute command notify user install it if command is not exist.
                     if commands.getoutput("which %s" % cmdline_command) == "":
