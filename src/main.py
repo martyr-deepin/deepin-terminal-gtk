@@ -253,7 +253,7 @@ KEYBIND_CONFIG = [
     ("split_vertically", "Ctrl + Shift + h"),
     ("split_horizontally", "Ctrl + h"),
     ("close_current_window", "Ctrl + Shift + w"),
-    ("close_other_window", "Ctrl + Shift + q"),
+    ("close_other_windows", "Ctrl + Shift + q"),
     ("scroll_page_up", "Alt + ,"),
     ("scroll_page_down", "Alt + ."),
     ("focus_up_terminal", "Alt + k"),
@@ -679,7 +679,7 @@ class Terminal(object):
             "switch_prev_workspace",
             "switch_next_workspace",
             "close_current_workspace",
-            "close_other_window",
+            "close_other_windows",
             ]
         
         self.keymap = {}
@@ -872,7 +872,7 @@ class Terminal(object):
             ]
         if len(terminals) >= 1:
             terminal_items += [
-                (None, _("Close other windows"), self.close_other_window),
+                (None, _("Close other windows"), self.close_other_windows),
                 ]
         
         if len(self.get_workspaces()) > 1:
@@ -910,7 +910,7 @@ class Terminal(object):
         terminals.remove(focus_terminal)
         return (focus_terminal, terminals)
         
-    def close_other_window(self):
+    def close_other_windows(self):
         (focus_terminal, terminals) = self.get_all_terminal_infos()
         for terminal in terminals:
             terminal.close_current_window()
@@ -2735,7 +2735,7 @@ class HelperWindow(Window):
             (_("Focus the terminal left"), "focus_left_terminal"),
             (_("Focus the terminal right"), "focus_right_terminal"),
             (_("Close current window"), "close_current_window"),
-            (_("Close other window"), "close_other_windows"),
+            (_("Close other windows"), "close_other_windows"),
             ]
         
         third_table_key = [
@@ -3058,7 +3058,7 @@ class KeybindSettings(ScrolledWindow):
              ("split_vertically", _("Split vertically")),
              ("split_horizontally", _("Split horizontally")),
              ("close_current_window", _("Close current window")),
-             ("close_other_window", _("Close other windows")),
+             ("close_other_windows", _("Close other windows")),
              ("scroll_page_up", _("Scroll page up")),
              ("scroll_page_down", _("Scroll page down")),
              ("focus_up_terminal", _("Focus the terminal above")),
