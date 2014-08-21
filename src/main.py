@@ -3423,7 +3423,7 @@ class EditRemoteLogin(DialogBox):
     def create_table(self):
         self.table = gtk.Table(4, 2)
         self.table.set_col_spacing(0, 10)
-        names = [_("Name: "), _("Server: "), _("User: "), _("Password: "), _("Port: ")]
+        names = [_("Name: "), _("Server: "), _("Username: "), _("Password: "), _("Port: ")]
         
         if self.remote_info:
             (name, user, server, password, port) = self.remote_info
@@ -3453,7 +3453,7 @@ class EditRemoteLogin(DialogBox):
             elif name == _("Server: "):
                 widget = self.server_entry
                 widget.set_size(80, 23)
-            elif name == _("User: "):
+            elif name == _("Username: "):
                 widget = self.user_entry
                 widget.set_size(80, 23)
             elif name == _("Password: "):
