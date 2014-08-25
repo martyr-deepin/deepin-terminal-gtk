@@ -1,22 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # GoldBlossom <angelnonis@gmail.com>, 2014
+# JimSp472000 <jimspentzos2000@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-21 17:59+0800\n"
-"PO-Revision-Date: 2014-06-30 04:41+0000\n"
-"Last-Translator: Piotr Strębski <strebski@o2.pl>\n"
-"Language-Team: Greek (Greece) (http://www.transifex.com/projects/p/deepin-"
-"terminal/language/el_GR/)\n"
-"Language: el_GR\n"
+"PO-Revision-Date: 2014-08-25 01:46+0000\n"
+"Last-Translator: JimSp472000 <jimspentzos2000@gmail.com>\n"
+"Language-Team: Greek (Greece) (http://www.transifex.com/projects/p/deepin-terminal/language/el_GR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: el_GR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../src/main.py:119
@@ -46,7 +46,7 @@ msgstr "Υπογράμμιση"
 
 #: ../src/main.py:127
 msgid "System Default"
-msgstr ""
+msgstr "Προεπιλογή Συστήματος"
 
 #: ../src/main.py:128
 msgid "On"
@@ -63,11 +63,11 @@ msgstr "Δυτικά"
 
 #: ../src/main.py:132 ../src/main.py:160 ../src/main.py:171 ../src/main.py:190
 msgid "Central Europe"
-msgstr ""
+msgstr "Κεντρική Ευρώπη"
 
 #: ../src/main.py:133
 msgid "South Europe"
-msgstr ""
+msgstr "Νότια Ευρώπη"
 
 #: ../src/main.py:134 ../src/main.py:142 ../src/main.py:197
 msgid "Baltic"
@@ -100,7 +100,7 @@ msgstr "Τουρκικά"
 
 #: ../src/main.py:141
 msgid "Germanic"
-msgstr ""
+msgstr "Γερμανικά"
 
 #: ../src/main.py:143
 msgid "Celtic"
@@ -252,7 +252,7 @@ msgstr "Έξοδος από τερματικό;"
 
 #: ../src/main.py:585
 msgid "Terminal still has running programs. Are you sure you want to quit?"
-msgstr ""
+msgstr "Το τερματικό έχει ακόμη εκτελούμενα προγράμματα. Είστε σίγουρος ότι θέλετε να το κλείσετε;"
 
 #: ../src/main.py:792 ../src/main.py:899
 msgid "Preferences"
@@ -326,7 +326,7 @@ msgstr "Κλείσιμο τρέχοντος παραθύρου"
 
 #: ../src/main.py:875 ../src/main.py:2738 ../src/main.py:3061
 msgid "Close other windows"
-msgstr ""
+msgstr "Κλείσιμο άλλων παραθύρων"
 
 #: ../src/main.py:883 ../src/main.py:890 ../src/main.py:2727
 #: ../src/main.py:3071
@@ -351,7 +351,7 @@ msgstr "Κλείσιμο παράθυρου;"
 
 #: ../src/main.py:1144 ../src/main.py:1902
 msgid "Window still has running programs. Are you sure you want to close?"
-msgstr ""
+msgstr "Το παράθυρο έχει ακόμη εκτελούμενα προγράμματα. Είστε σίγουρος ότι θέλετε να το κλείσετε;"
 
 #: ../src/main.py:1146
 msgid "Close workspace?"
@@ -359,7 +359,7 @@ msgstr "Κλείσιμο χώρου εργασίας;"
 
 #: ../src/main.py:1147
 msgid "Workspace still has running programs. Are you sure you want to close?"
-msgstr ""
+msgstr "Ο χώρος εργασίας έχει ακόμη εκτελούμενα προγράμματα. Είστε σίγουρος ότι θέλετε να τον κλείσετε;"
 
 #: ../src/main.py:2139
 msgid "Workspace"
@@ -435,7 +435,7 @@ msgstr "Εστιάστε το τερματικό παρακάτω"
 
 #: ../src/main.py:2735 ../src/main.py:3066
 msgid "Focus the terminal left"
-msgstr ""
+msgstr "Εστίαση στο τερματικό αριστερά"
 
 #: ../src/main.py:2736 ../src/main.py:3067
 msgid "Focus the terminal right"
@@ -483,7 +483,7 @@ msgstr "Κωδικοποίηση"
 
 #: ../src/main.py:3212
 msgid "Window startup mode: "
-msgstr ""
+msgstr "Λειτουργία εκκίνησης παραθύρων:"
 
 #: ../src/main.py:3213
 msgid "Startup command: "
@@ -527,7 +527,7 @@ msgstr "Διακομιστής:"
 
 #: ../src/main.py:3426 ../src/main.py:3456
 msgid "Username: "
-msgstr "Χρήστης:"
+msgstr "Όνομα χρήστη:"
 
 #: ../src/main.py:3426 ../src/main.py:3459
 msgid "Password: "
@@ -547,7 +547,7 @@ msgstr "Προσθήκη"
 
 #: ../src/main.py:3492
 msgid "Connect"
-msgstr ""
+msgstr "Σύνδεση"
 
 #: ../src/main.py:3500
 msgid "Name"
@@ -591,7 +591,7 @@ msgstr "Εκτέλεση σε κατάσταση λειτουργίας πλήρ
 
 #: ../src/main.py:4025
 msgid "startup terminal with given parameter"
-msgstr ""
+msgstr "εκκίνηση τερματικού με δοσμένη παράμετρο"
 
 #: ../src/main.py:4026
 msgid "show this help message and exit"
@@ -600,6 +600,3 @@ msgstr "εμφανιστεί αυτού του μήνυματος βοήθεια
 #: ../src/main.py:4027
 msgid "show program's version number and exit"
 msgstr "προβολή αριθμού έκδοσης του πρόγραμμα και έξοδος"
-
-#~ msgid "Close other window"
-#~ msgstr "Κλείσιμο άλλου παραθύρου"

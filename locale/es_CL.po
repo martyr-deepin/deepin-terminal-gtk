@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Benjamin Perez Carrillo <benperezc@gmail.com>, 2014
 # halbares <pablo.alvarez.flores@gmail.com>, 2014
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-21 17:59+0800\n"
-"PO-Revision-Date: 2014-06-30 04:34+0000\n"
-"Last-Translator: Piotr Strębski <strebski@o2.pl>\n"
-"Language-Team: Spanish (Chile) (http://www.transifex.com/projects/p/deepin-"
-"terminal/language/es_CL/)\n"
-"Language: es_CL\n"
+"PO-Revision-Date: 2014-08-22 07:06+0000\n"
+"Last-Translator: Catherinelin <linhongxia@linuxdeepin.com>\n"
+"Language-Team: Spanish (Chile) (http://www.transifex.com/projects/p/deepin-terminal/language/es_CL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es_CL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../src/main.py:119
@@ -360,9 +359,7 @@ msgstr "Desea cerra el modo de escritorio?"
 
 #: ../src/main.py:1147
 msgid "Workspace still has running programs. Are you sure you want to close?"
-msgstr ""
-"Algunas aplicaciones aun se estan ejecutando en el modo de escritorio. Estas "
-"seguro que deseas cerrar?"
+msgstr "Algunas aplicaciones aun se estan ejecutando en el modo de escritorio. Estas seguro que deseas cerrar?"
 
 #: ../src/main.py:2139
 msgid "Workspace"
@@ -530,7 +527,7 @@ msgstr "Servidor"
 
 #: ../src/main.py:3426 ../src/main.py:3456
 msgid "Username: "
-msgstr "Usuario:"
+msgstr ""
 
 #: ../src/main.py:3426 ../src/main.py:3459
 msgid "Password: "
@@ -603,6 +600,3 @@ msgstr "Mostrar este mensaje de ayuda y salir"
 #: ../src/main.py:4027
 msgid "show program's version number and exit"
 msgstr "mostrar versión del programa y salir"
-
-#~ msgid "Close other window"
-#~ msgstr "Cerrar otra ventana"

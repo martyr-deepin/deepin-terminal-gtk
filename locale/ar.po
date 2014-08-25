@@ -1,8 +1,10 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# goodboy5 <a6895118@drdrb.net>, 2014
+# Baraa Ch <baraa.ch.95@mail.ru>, 2014
 # Karim Oulad Chalha <herr.linux88@gmail.com>, 2013
 # mo-hd <mo-hd@windowslive.com>, 2014
 msgid ""
@@ -10,16 +12,14 @@ msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-21 17:59+0800\n"
-"PO-Revision-Date: 2014-06-30 06:20+0000\n"
-"Last-Translator: Piotr Strębski <strebski@o2.pl>\n"
-"Language-Team: Arabic (http://www.transifex.com/projects/p/deepin-terminal/"
-"language/ar/)\n"
-"Language: ar\n"
+"PO-Revision-Date: 2014-08-22 07:06+0000\n"
+"Last-Translator: Catherinelin <linhongxia@linuxdeepin.com>\n"
+"Language-Team: Arabic (http://www.transifex.com/projects/p/deepin-terminal/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: ../src/main.py:119
 msgid "Normal"
@@ -48,7 +48,7 @@ msgstr "تأكيد"
 
 #: ../src/main.py:127
 msgid "System Default"
-msgstr ""
+msgstr "الوضع الإفتراضي لنظام"
 
 #: ../src/main.py:128
 msgid "On"
@@ -61,124 +61,124 @@ msgstr "غير مشغل"
 #: ../src/main.py:131 ../src/main.py:144 ../src/main.py:159 ../src/main.py:181
 #: ../src/main.py:192
 msgid "Western"
-msgstr ""
+msgstr "الغربية"
 
 #: ../src/main.py:132 ../src/main.py:160 ../src/main.py:171 ../src/main.py:190
 msgid "Central Europe"
-msgstr ""
+msgstr "أوروبا الوسطى"
 
 #: ../src/main.py:133
 msgid "South Europe"
-msgstr ""
+msgstr "أوروبا الجنوبية"
 
 #: ../src/main.py:134 ../src/main.py:142 ../src/main.py:197
 msgid "Baltic"
-msgstr ""
+msgstr "البلطيق"
 
 #: ../src/main.py:135 ../src/main.py:161 ../src/main.py:167 ../src/main.py:168
 #: ../src/main.py:173 ../src/main.py:191
 msgid "Cyrillic"
-msgstr ""
+msgstr "السيريلية"
 
 #: ../src/main.py:136 ../src/main.py:164 ../src/main.py:170 ../src/main.py:196
 msgid "Arabic"
-msgstr ""
+msgstr "العربية"
 
 #: ../src/main.py:137 ../src/main.py:176 ../src/main.py:193
 msgid "Greek"
-msgstr ""
+msgstr "اليونانية"
 
 #: ../src/main.py:138
 msgid "Hebrew Visual"
-msgstr ""
+msgstr "العبرية المرئية"
 
 #: ../src/main.py:139 ../src/main.py:163 ../src/main.py:179 ../src/main.py:195
 msgid "Hebrew"
-msgstr ""
+msgstr "العبرية"
 
 #: ../src/main.py:140 ../src/main.py:162 ../src/main.py:183 ../src/main.py:194
 msgid "Turkish"
-msgstr ""
+msgstr "التركية"
 
 #: ../src/main.py:141
 msgid "Germanic"
-msgstr ""
+msgstr "الجرمانية"
 
 #: ../src/main.py:143
 msgid "Celtic"
-msgstr ""
+msgstr "السلتيك"
 
 #: ../src/main.py:145 ../src/main.py:182
 msgid "Romanian"
-msgstr ""
+msgstr "الرومانية"
 
 #: ../src/main.py:146
 msgid "Unicode"
-msgstr ""
+msgstr "يونيكود"
 
 #: ../src/main.py:147
 msgid "Armenian"
-msgstr ""
+msgstr "الأرمينية"
 
 #: ../src/main.py:148 ../src/main.py:149 ../src/main.py:150 ../src/main.py:158
 msgid "Chinese Simplified"
-msgstr ""
+msgstr "الصينية المبسطة"
 
 #: ../src/main.py:151 ../src/main.py:152 ../src/main.py:153
 msgid "Chinese Traditional"
-msgstr ""
+msgstr "الصينية التقليدية"
 
 #: ../src/main.py:154
 msgid "Cyrillic/Russian"
-msgstr ""
+msgstr "السيريلية / الروسية"
 
 #: ../src/main.py:155 ../src/main.py:165 ../src/main.py:185
 msgid "Japanese"
-msgstr ""
+msgstr "اليابانية"
 
 #: ../src/main.py:156 ../src/main.py:166 ../src/main.py:188
 msgid "Korean"
-msgstr ""
+msgstr "الكورية"
 
 #: ../src/main.py:157
 msgid "Georgian"
-msgstr ""
+msgstr "الجورجية"
 
 #: ../src/main.py:169 ../src/main.py:184
 msgid "Cyrillic/Ukrainian"
-msgstr ""
+msgstr "السريلية/الأوكرانية"
 
 #: ../src/main.py:172
 msgid "Croatian"
-msgstr ""
+msgstr "الكرواتية"
 
 #: ../src/main.py:174
 msgid "Hindi"
-msgstr ""
+msgstr "الهندية"
 
 #: ../src/main.py:175
 msgid "Persian"
-msgstr ""
+msgstr "الفارسية"
 
 #: ../src/main.py:177
 msgid "Gujarati"
-msgstr ""
+msgstr "الغوجاراتية"
 
 #: ../src/main.py:178
 msgid "Gurmukhi"
-msgstr ""
+msgstr "الجورموخية"
 
 #: ../src/main.py:180
 msgid "Icelandic"
-msgstr ""
+msgstr "الآيسلندية"
 
 #: ../src/main.py:186 ../src/main.py:189 ../src/main.py:198
 msgid "Vietnamese"
-msgstr ""
+msgstr "الفيتنامية"
 
 #: ../src/main.py:187
 msgid "Thai"
-msgstr ""
+msgstr "التايلندية"
 
 #: ../src/main.py:303
 msgid "Deepin"
@@ -254,7 +254,7 @@ msgstr "خروج من الطرفية ؟"
 
 #: ../src/main.py:585
 msgid "Terminal still has running programs. Are you sure you want to quit?"
-msgstr ""
+msgstr "لا تزال هنالك برامج قيد التشغيل في الطرفية. هل ترغب حقا بالخروج؟"
 
 #: ../src/main.py:792 ../src/main.py:899
 msgid "Preferences"
@@ -328,7 +328,7 @@ msgstr "غلق النافذة الحالية"
 
 #: ../src/main.py:875 ../src/main.py:2738 ../src/main.py:3061
 msgid "Close other windows"
-msgstr ""
+msgstr "إغلاق النوافذ الأخرى"
 
 #: ../src/main.py:883 ../src/main.py:890 ../src/main.py:2727
 #: ../src/main.py:3071
@@ -353,7 +353,7 @@ msgstr "إغلاق النافذة ؟"
 
 #: ../src/main.py:1144 ../src/main.py:1902
 msgid "Window still has running programs. Are you sure you want to close?"
-msgstr ""
+msgstr "لا تزال هنالك برامج قيد التشغيل في هذه النافذة. هل ترغب حقا بإغلاقها؟"
 
 #: ../src/main.py:1146
 msgid "Close workspace?"
@@ -361,7 +361,7 @@ msgstr "إغلاق مساحة العمل ؟"
 
 #: ../src/main.py:1147
 msgid "Workspace still has running programs. Are you sure you want to close?"
-msgstr ""
+msgstr "لا تزال هنالك برامج قيد التشغيل في مساحة العمل هذه. هل ترغب حقا بإغلاقها؟"
 
 #: ../src/main.py:2139
 msgid "Workspace"
@@ -437,7 +437,7 @@ msgstr "ركز الطرفية في الأسفل"
 
 #: ../src/main.py:2735 ../src/main.py:3066
 msgid "Focus the terminal left"
-msgstr ""
+msgstr "ركز الطرفية في اليسار"
 
 #: ../src/main.py:2736 ../src/main.py:3067
 msgid "Focus the terminal right"
@@ -481,7 +481,7 @@ msgstr "وميض المؤشر :"
 
 #: ../src/main.py:3211
 msgid "Encoding: "
-msgstr ""
+msgstr "الترميز:"
 
 #: ../src/main.py:3212
 msgid "Window startup mode: "
@@ -529,7 +529,7 @@ msgstr "الخادم :"
 
 #: ../src/main.py:3426 ../src/main.py:3456
 msgid "Username: "
-msgstr "المستخدم :"
+msgstr ""
 
 #: ../src/main.py:3426 ../src/main.py:3459
 msgid "Password: "
@@ -593,7 +593,7 @@ msgstr "تشغيل أسلوب الأهتزاز"
 
 #: ../src/main.py:4025
 msgid "startup terminal with given parameter"
-msgstr ""
+msgstr "بدء تشغيل الطرفية بأوامر محددة مسبقاً"
 
 #: ../src/main.py:4026
 msgid "show this help message and exit"
@@ -602,6 +602,3 @@ msgstr "عرض هذه الرسالة وأخرج"
 #: ../src/main.py:4027
 msgid "show program's version number and exit"
 msgstr "عرض رقم إصدار البرنامج وأخرج"
-
-#~ msgid "Close other window"
-#~ msgstr "غلق النافذة الاخرى"

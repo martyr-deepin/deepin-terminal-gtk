@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # ambiya <ambiya90@gmail.com>, 2014
 # Aril Apria Susanto <awriel@gmail.com>, 2014
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-21 17:59+0800\n"
-"PO-Revision-Date: 2014-07-01 13:31+0000\n"
-"Last-Translator: Aril Apria Susanto <awriel@gmail.com>\n"
-"Language-Team: Indonesian (Indonesia) (http://www.transifex.com/projects/p/"
-"deepin-terminal/language/id_ID/)\n"
-"Language: id_ID\n"
+"PO-Revision-Date: 2014-08-22 07:06+0000\n"
+"Last-Translator: Catherinelin <linhongxia@linuxdeepin.com>\n"
+"Language-Team: Indonesian (Indonesia) (http://www.transifex.com/projects/p/deepin-terminal/language/id_ID/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: id_ID\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../src/main.py:119
@@ -51,16 +50,16 @@ msgstr "Default Sistem"
 
 #: ../src/main.py:128
 msgid "On"
-msgstr "On"
+msgstr "Nyala"
 
 #: ../src/main.py:129
 msgid "Off"
-msgstr "Off"
+msgstr "Mati"
 
 #: ../src/main.py:131 ../src/main.py:144 ../src/main.py:159 ../src/main.py:181
 #: ../src/main.py:192
 msgid "Western"
-msgstr ""
+msgstr "Western"
 
 #: ../src/main.py:132 ../src/main.py:160 ../src/main.py:171 ../src/main.py:190
 msgid "Central Europe"
@@ -72,32 +71,32 @@ msgstr "Eropa Selatan"
 
 #: ../src/main.py:134 ../src/main.py:142 ../src/main.py:197
 msgid "Baltic"
-msgstr ""
+msgstr "Baltik"
 
 #: ../src/main.py:135 ../src/main.py:161 ../src/main.py:167 ../src/main.py:168
 #: ../src/main.py:173 ../src/main.py:191
 msgid "Cyrillic"
-msgstr ""
+msgstr "Cyrillic"
 
 #: ../src/main.py:136 ../src/main.py:164 ../src/main.py:170 ../src/main.py:196
 msgid "Arabic"
-msgstr ""
+msgstr "Arab"
 
 #: ../src/main.py:137 ../src/main.py:176 ../src/main.py:193
 msgid "Greek"
-msgstr ""
+msgstr "Yunani"
 
 #: ../src/main.py:138
 msgid "Hebrew Visual"
-msgstr ""
+msgstr "Hebrew Visual"
 
 #: ../src/main.py:139 ../src/main.py:163 ../src/main.py:179 ../src/main.py:195
 msgid "Hebrew"
-msgstr ""
+msgstr "Hebrew"
 
 #: ../src/main.py:140 ../src/main.py:162 ../src/main.py:183 ../src/main.py:194
 msgid "Turkish"
-msgstr ""
+msgstr "Turki"
 
 #: ../src/main.py:141
 msgid "Germanic"
@@ -105,79 +104,79 @@ msgstr "Jerman"
 
 #: ../src/main.py:143
 msgid "Celtic"
-msgstr ""
+msgstr "Celtik"
 
 #: ../src/main.py:145 ../src/main.py:182
 msgid "Romanian"
-msgstr ""
+msgstr "Rumania"
 
 #: ../src/main.py:146
 msgid "Unicode"
-msgstr ""
+msgstr "Unicode"
 
 #: ../src/main.py:147
 msgid "Armenian"
-msgstr ""
+msgstr "Armenia"
 
 #: ../src/main.py:148 ../src/main.py:149 ../src/main.py:150 ../src/main.py:158
 msgid "Chinese Simplified"
-msgstr ""
+msgstr "Cina - Sederhana"
 
 #: ../src/main.py:151 ../src/main.py:152 ../src/main.py:153
 msgid "Chinese Traditional"
-msgstr ""
+msgstr "Cina - Tradisional"
 
 #: ../src/main.py:154
 msgid "Cyrillic/Russian"
-msgstr ""
+msgstr "Cyrillic/Rusia"
 
 #: ../src/main.py:155 ../src/main.py:165 ../src/main.py:185
 msgid "Japanese"
-msgstr ""
+msgstr "Jepang"
 
 #: ../src/main.py:156 ../src/main.py:166 ../src/main.py:188
 msgid "Korean"
-msgstr ""
+msgstr "Korea"
 
 #: ../src/main.py:157
 msgid "Georgian"
-msgstr ""
+msgstr "Georgia"
 
 #: ../src/main.py:169 ../src/main.py:184
 msgid "Cyrillic/Ukrainian"
-msgstr ""
+msgstr "Cyrillic/Ukraina"
 
 #: ../src/main.py:172
 msgid "Croatian"
-msgstr ""
+msgstr "Kroasia"
 
 #: ../src/main.py:174
 msgid "Hindi"
-msgstr ""
+msgstr "Hindi"
 
 #: ../src/main.py:175
 msgid "Persian"
-msgstr ""
+msgstr "Persia"
 
 #: ../src/main.py:177
 msgid "Gujarati"
-msgstr ""
+msgstr "Gujarat"
 
 #: ../src/main.py:178
 msgid "Gurmukhi"
-msgstr ""
+msgstr "Gurmukhi"
 
 #: ../src/main.py:180
 msgid "Icelandic"
-msgstr ""
+msgstr "Islandia"
 
 #: ../src/main.py:186 ../src/main.py:189 ../src/main.py:198
 msgid "Vietnamese"
-msgstr ""
+msgstr "Vietnam"
 
 #: ../src/main.py:187
 msgid "Thai"
-msgstr ""
+msgstr "Thai"
 
 #: ../src/main.py:303
 msgid "Deepin"
@@ -193,7 +192,7 @@ msgstr "Layar hijau"
 
 #: ../src/main.py:306
 msgid "Ocean"
-msgstr "Ocean"
+msgstr "Lautan"
 
 #: ../src/main.py:307
 msgid "Monokai"
@@ -209,23 +208,23 @@ msgstr "Eighties"
 
 #: ../src/main.py:311
 msgid "Grey on black"
-msgstr "Grey on black"
+msgstr "Abu-abu di atas Hitam"
 
 #: ../src/main.py:312
 msgid "Black on yellow"
-msgstr "Black on yellow"
+msgstr "Hitam di atas Kuning"
 
 #: ../src/main.py:313
 msgid "Black on white"
-msgstr "Black on white"
+msgstr "Hitam di atas Putih"
 
 #: ../src/main.py:314
 msgid "White on black"
-msgstr "White on black"
+msgstr "Putih di atas Hitam"
 
 #: ../src/main.py:315
 msgid "Green on black"
-msgstr "Green on black"
+msgstr "Hijau di atas Hitam"
 
 #: ../src/main.py:316
 msgid "Custom"
@@ -412,7 +411,7 @@ msgstr "Perbesar"
 
 #: ../src/main.py:2721 ../src/main.py:3070
 msgid "Reset zoom"
-msgstr "Atur ulang zoom"
+msgstr "Atur ulang zum"
 
 #: ../src/main.py:2726
 msgid "Workspace command"
@@ -452,7 +451,7 @@ msgstr "Atur opacity"
 
 #: ../src/main.py:2764
 msgid "Ctrl + Wheel"
-msgstr ""
+msgstr "Ctrl + Roda penggulung"
 
 #: ../src/main.py:2958
 msgid "Font: "
@@ -480,7 +479,7 @@ msgstr "Kedipan Kursor:"
 
 #: ../src/main.py:3211
 msgid "Encoding: "
-msgstr ""
+msgstr "Enkoding:"
 
 #: ../src/main.py:3212
 msgid "Window startup mode: "
@@ -500,11 +499,11 @@ msgstr "Tanyakan saat keluar"
 
 #: ../src/main.py:3216
 msgid "Scroll on keystroke: "
-msgstr ""
+msgstr "Gulung pada keystroke:"
 
 #: ../src/main.py:3217
 msgid "Scroll on output: "
-msgstr ""
+msgstr "Gulung keluaran:"
 
 #: ../src/main.py:3218
 msgid "Copy on selection: "
@@ -528,7 +527,7 @@ msgstr "Peladen:"
 
 #: ../src/main.py:3426 ../src/main.py:3456
 msgid "Username: "
-msgstr "Pengguna:"
+msgstr ""
 
 #: ../src/main.py:3426 ../src/main.py:3459
 msgid "Password: "
@@ -540,7 +539,7 @@ msgstr "Port:"
 
 #: ../src/main.py:3484
 msgid "Remote login"
-msgstr "Remote login"
+msgstr "Akses Masuk jarak jauh"
 
 #: ../src/main.py:3491
 msgid "Add"
@@ -560,11 +559,11 @@ msgstr "Peladen"
 
 #: ../src/main.py:3507
 msgid "Add remote login"
-msgstr ""
+msgstr "Tambah akses masuk jarak jauh"
 
 #: ../src/main.py:3574
 msgid "Edit remote login"
-msgstr ""
+msgstr "Edit akses jarak jauh"
 
 #: ../src/main.py:3587
 msgid "Edit"
@@ -601,6 +600,3 @@ msgstr "tampilkan pesan bantuan ini dan keluar"
 #: ../src/main.py:4027
 msgid "show program's version number and exit"
 msgstr "jalankan nomor versi program dan keluar"
-
-#~ msgid "Close other window"
-#~ msgstr "Tutup jendela lainnya"

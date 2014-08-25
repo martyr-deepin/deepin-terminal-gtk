@@ -1,23 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Antisound <antisound@gmail.com>, 2014
 # Eduard Gotwig <eduardgotwig@gmail.com>, 2014
+# Ettore Atalan <atalanttore@googlemail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-21 17:59+0800\n"
-"PO-Revision-Date: 2014-06-30 04:34+0000\n"
-"Last-Translator: Piotr Strębski <strebski@o2.pl>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/deepin-"
-"terminal/language/de_DE/)\n"
-"Language: de_DE\n"
+"PO-Revision-Date: 2014-08-25 10:22+0000\n"
+"Last-Translator: webcrush <chris.plescher@yahoo.de>\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/deepin-terminal/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../src/main.py:119
@@ -253,8 +253,7 @@ msgstr "Terminal schließen?"
 
 #: ../src/main.py:585
 msgid "Terminal still has running programs. Are you sure you want to quit?"
-msgstr ""
-"Das Terminal hat noch laufende Programme. Möchten Sie es sicher beenden?"
+msgstr "Das Terminal hat noch laufende Programme. Möchten Sie es sicher beenden?"
 
 #: ../src/main.py:792 ../src/main.py:899
 msgid "Preferences"
@@ -353,8 +352,7 @@ msgstr "Fenster schließen?"
 
 #: ../src/main.py:1144 ../src/main.py:1902
 msgid "Window still has running programs. Are you sure you want to close?"
-msgstr ""
-"Das Fenster hat noch laufende Programme. Möchten Sie es sicher beenden?"
+msgstr "Das Fenster hat noch laufende Programme. Möchten Sie es sicher beenden?"
 
 #: ../src/main.py:1146
 msgid "Close workspace?"
@@ -362,9 +360,7 @@ msgstr "Arbeitsfläche schließen?"
 
 #: ../src/main.py:1147
 msgid "Workspace still has running programs. Are you sure you want to close?"
-msgstr ""
-"Die Arbeitsfläche hat noch laufende Programme. Möchten Sie sie sicher "
-"beenden?"
+msgstr "Die Arbeitsfläche hat noch laufende Programme. Möchten Sie sie sicher beenden?"
 
 #: ../src/main.py:2139
 msgid "Workspace"
@@ -532,7 +528,7 @@ msgstr "Server:"
 
 #: ../src/main.py:3426 ../src/main.py:3456
 msgid "Username: "
-msgstr "Benutzer:"
+msgstr "Benutzername: "
 
 #: ../src/main.py:3426 ../src/main.py:3459
 msgid "Password: "
@@ -605,6 +601,3 @@ msgstr "Hilfenachricht anzeigen und beenden"
 #: ../src/main.py:4027
 msgid "show program's version number and exit"
 msgstr "Programmversion anzeigen und beenden"
-
-#~ msgid "Close other window"
-#~ msgstr "Anderes Fenster schließen"

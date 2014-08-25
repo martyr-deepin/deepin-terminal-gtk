@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Jesse Wayde Brandao <www.jwb@gmail.com>, 2014
 # Ricardo Simões <xmcorporation@gmail.com>, 2014
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-21 17:59+0800\n"
-"PO-Revision-Date: 2014-06-30 04:34+0000\n"
-"Last-Translator: Jesse Wayde Brandao <www.jwb@gmail.com>\n"
-"Language-Team: Portuguese (Portugal) (http://www.transifex.com/projects/p/"
-"deepin-terminal/language/pt_PT/)\n"
-"Language: pt_PT\n"
+"PO-Revision-Date: 2014-08-22 07:06+0000\n"
+"Last-Translator: Catherinelin <linhongxia@linuxdeepin.com>\n"
+"Language-Team: Portuguese (Portugal) (http://www.transifex.com/projects/p/deepin-terminal/language/pt_PT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_PT\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../src/main.py:119
@@ -352,8 +351,7 @@ msgstr "Fechar janela?"
 
 #: ../src/main.py:1144 ../src/main.py:1902
 msgid "Window still has running programs. Are you sure you want to close?"
-msgstr ""
-"A janela ainda tem programa a correr. Tem a certeza que a deseja fechar?"
+msgstr "A janela ainda tem programa a correr. Tem a certeza que a deseja fechar?"
 
 #: ../src/main.py:1146
 msgid "Close workspace?"
@@ -361,9 +359,7 @@ msgstr "Fechar área de trabalho?"
 
 #: ../src/main.py:1147
 msgid "Workspace still has running programs. Are you sure you want to close?"
-msgstr ""
-"A área de trabalho ainda tem programa a correr. Tem a certeza que deseja "
-"fechar?"
+msgstr "A área de trabalho ainda tem programa a correr. Tem a certeza que deseja fechar?"
 
 #: ../src/main.py:2139
 msgid "Workspace"
@@ -531,7 +527,7 @@ msgstr "Servidor:"
 
 #: ../src/main.py:3426 ../src/main.py:3456
 msgid "Username: "
-msgstr "Utilizador:"
+msgstr ""
 
 #: ../src/main.py:3426 ../src/main.py:3459
 msgid "Password: "
@@ -604,6 +600,3 @@ msgstr "mostra esta mensagem de ajuda e sair"
 #: ../src/main.py:4027
 msgid "show program's version number and exit"
 msgstr "mostrar a versão do programa e sair"
-
-#~ msgid "Close other window"
-#~ msgstr "Fechar outra janela"

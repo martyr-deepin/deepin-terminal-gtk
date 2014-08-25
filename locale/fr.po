@@ -1,25 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# 4goodapp <4goodapp@gmail.com>, 2014
 # FFXP <ffxpstudio@gmail.com>, 2013
 # lexross <its4moi@gmail.com>, 2014
 # lexross <its4moi@gmail.com>, 2014
-# trid <tristan.denni@viacesi.fr>, 2014
+# Tristan Denni <tristan.denni@viacesi.fr>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-21 17:59+0800\n"
-"PO-Revision-Date: 2014-06-30 04:34+0000\n"
-"Last-Translator: trid <tristan.denni@viacesi.fr>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/deepin-terminal/"
-"language/fr/)\n"
-"Language: fr\n"
+"PO-Revision-Date: 2014-08-22 07:06+0000\n"
+"Last-Translator: Catherinelin <linhongxia@linuxdeepin.com>\n"
+"Language-Team: French (http://www.transifex.com/projects/p/deepin-terminal/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ../src/main.py:119
@@ -255,9 +255,7 @@ msgstr "Quitter le terminal?"
 
 #: ../src/main.py:585
 msgid "Terminal still has running programs. Are you sure you want to quit?"
-msgstr ""
-"Le terminal a encore des programmes en exécution. Êtes vous sûr de vouloir "
-"quitter ?"
+msgstr "Le terminal a encore des programmes en exécution. Êtes vous sûr de vouloir quitter ?"
 
 #: ../src/main.py:792 ../src/main.py:899
 msgid "Preferences"
@@ -327,7 +325,7 @@ msgstr "Séparer horizontalement"
 
 #: ../src/main.py:871 ../src/main.py:2737 ../src/main.py:3060
 msgid "Close current window"
-msgstr "Fermer la fenêtre actuelle"
+msgstr "Fermer la fenêtre courante"
 
 #: ../src/main.py:875 ../src/main.py:2738 ../src/main.py:3061
 msgid "Close other windows"
@@ -344,7 +342,7 @@ msgstr "Basculer l'espace de travail "
 
 #: ../src/main.py:885 ../src/main.py:2730 ../src/main.py:3072
 msgid "Close workspace"
-msgstr "Fermer espace de travail"
+msgstr "Fermer l'espace de travail"
 
 #: ../src/main.py:896
 msgid "Search"
@@ -356,19 +354,15 @@ msgstr "Fermer la fenêtre?"
 
 #: ../src/main.py:1144 ../src/main.py:1902
 msgid "Window still has running programs. Are you sure you want to close?"
-msgstr ""
-"La fenêtre a encore des programmes en exécution. Êtes vous sûr de vouloir "
-"quitter ?"
+msgstr "La fenêtre a encore des programmes en exécution. Êtes vous sûr de vouloir quitter ?"
 
 #: ../src/main.py:1146
 msgid "Close workspace?"
-msgstr "Fermer espace de travail?"
+msgstr "Fermer l'espace de travail?"
 
 #: ../src/main.py:1147
 msgid "Workspace still has running programs. Are you sure you want to close?"
-msgstr ""
-"L'espace de travail a encore des programmes en exécution. Êtes vous sûr de "
-"vouloir quitter ?"
+msgstr "L'espace de travail a encore des programmes en exécution. Êtes vous sûr de vouloir quitter ?"
 
 #: ../src/main.py:2139
 msgid "Workspace"
@@ -456,7 +450,7 @@ msgstr "Commandes avancées"
 
 #: ../src/main.py:2764
 msgid "Adjust opacity"
-msgstr "Régler l'obscurité"
+msgstr "Régler l'opacité"
 
 #: ../src/main.py:2764
 msgid "Ctrl + Wheel"
@@ -536,7 +530,7 @@ msgstr "Serveur: "
 
 #: ../src/main.py:3426 ../src/main.py:3456
 msgid "Username: "
-msgstr "Utilisateur: "
+msgstr ""
 
 #: ../src/main.py:3426 ../src/main.py:3459
 msgid "Password: "
@@ -609,6 +603,3 @@ msgstr "afficher ce message d'aide et quitter"
 #: ../src/main.py:4027
 msgid "show program's version number and exit"
 msgstr "Afficher la version du programme et quitter"
-
-#~ msgid "Close other window"
-#~ msgstr "Ferme cette fenêtre"

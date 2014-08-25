@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # massimo.carofano <massimo.carofano@gmail.com>, 2014
 # Maxximo88 <real.massimo@hotmail.it>, 2014
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-21 17:59+0800\n"
-"PO-Revision-Date: 2014-06-30 04:34+0000\n"
-"Last-Translator: Piotr Strębski <strebski@o2.pl>\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/deepin-terminal/"
-"language/it/)\n"
-"Language: it\n"
+"PO-Revision-Date: 2014-08-23 11:50+0000\n"
+"Last-Translator: Maxximo88 <real.massimo@hotmail.it>\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/deepin-terminal/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../src/main.py:119
@@ -249,7 +248,7 @@ msgstr "Avanzate"
 
 #: ../src/main.py:584
 msgid "Quit terminal?"
-msgstr "Chiudi il terminale?"
+msgstr "Chiudere il terminale?"
 
 #: ../src/main.py:585
 msgid "Terminal still has running programs. Are you sure you want to quit?"
@@ -360,8 +359,7 @@ msgstr "Chiudi lo spazio di lavoro?"
 
 #: ../src/main.py:1147
 msgid "Workspace still has running programs. Are you sure you want to close?"
-msgstr ""
-"Lo spazio di lavoro ha programmi in esecuzione. Sicuro di volerli chiudere?"
+msgstr "Lo spazio di lavoro ha programmi in esecuzione. Sicuro di volerli chiudere?"
 
 #: ../src/main.py:2139
 msgid "Workspace"
@@ -529,7 +527,7 @@ msgstr "Server:"
 
 #: ../src/main.py:3426 ../src/main.py:3456
 msgid "Username: "
-msgstr "Utente:"
+msgstr "Username: "
 
 #: ../src/main.py:3426 ../src/main.py:3459
 msgid "Password: "
@@ -602,6 +600,3 @@ msgstr "mostra questo messaggio di aiuto ed esci"
 #: ../src/main.py:4027
 msgid "show program's version number and exit"
 msgstr "mostra la versione del programma ed esci"
-
-#~ msgid "Close other window"
-#~ msgstr "Chiudi un'altra finestra"
