@@ -2,7 +2,6 @@ PREFIX = /usr/local
 
 all:
 	cd tools; ./generate_mo.py; cd ..
-	pycompile src
 
 install:
 	mkdir -p ${DESTDIR}${PREFIX}/bin
