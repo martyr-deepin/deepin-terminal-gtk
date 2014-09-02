@@ -260,8 +260,8 @@ KEYBIND_CONFIG = [
     ("focus_down_terminal", "Alt + j"),
     ("focus_left_terminal", "Alt + h"),
     ("focus_right_terminal", "Alt + l"),
-    ("zoom_out", "Ctrl + ="),
-    ("zoom_in", "Ctrl + -"),
+    ("zoom_out", "Ctrl + -"),
+    ("zoom_in", "Ctrl + ="),
     ("revert_default_size", "Ctrl + 0"),
     ("new_workspace", "Ctrl + /"),
     ("close_current_workspace", "Ctrl + Shift + :"),
@@ -1701,12 +1701,12 @@ class TerminalWrapper(vte.Terminal):
 
     def zoom_in(self):
         font = get_config("general", "font")
-        self.current_font_size = max(MIN_FONT_SIZE, self.current_font_size - 1)
+        self.current_font_size += 1
         self.change_font(font, self.current_font_size)
 
     def zoom_out(self):
         font = get_config("general", "font")
-        self.current_font_size += 1
+        self.current_font_size = max(MIN_FONT_SIZE, self.current_font_size - 1)
         self.change_font(font, self.current_font_size)
 
     def get_working_directory(self):
