@@ -5,6 +5,11 @@ mode = developer
 
 [deepin-terminal.deepin-terminal-20140625]
 file_filter = locale/<lang>.po
+source_file = locale/deepin-terminal.pot
 source_lang = en
 type = PO
 
+[deepin-terminal.desktop]
+source_file = deepin-terminal.desktop
+source_lang = en
+type = DESKTOP
