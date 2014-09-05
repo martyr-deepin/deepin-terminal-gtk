@@ -10,7 +10,7 @@ install:
 	mkdir -p ${DESTDIR}${PREFIX}/share/icons/hicolor/48x48/apps
 	cp -r src ${DESTDIR}${PREFIX}/share/deepin-terminal
 	cp -r skin ${DESTDIR}${PREFIX}/share/deepin-terminal
-	cp -r locale ${DESTDIR}${PREFIX}/share/deepin-terminal
+	cp -r locale/mo ${DESTDIR}${PREFIX}/share/locale
 	cp -r app_theme ${DESTDIR}${PREFIX}/share/deepin-terminal
 	cp -r image ${DESTDIR}${PREFIX}/share/deepin-terminal
 	cp deepin-terminal.png ${DESTDIR}${PREFIX}/share/icons/hicolor/48x48/apps
