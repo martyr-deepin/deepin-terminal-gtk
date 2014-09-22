@@ -5,13 +5,14 @@
 # Translators:
 # kdavid97 <kdavid97@gmail.hu>, 2014
 # Laszlo Espadas <kw@kardiweb.org>, 2014
+# unicum99 <stampf99@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-21 17:59+0800\n"
-"PO-Revision-Date: 2014-08-22 07:06+0000\n"
-"Last-Translator: Catherinelin <linhongxia@linuxdeepin.com>\n"
+"PO-Revision-Date: 2014-09-04 09:42+0000\n"
+"Last-Translator: unicum99 <stampf99@gmail.com>\n"
 "Language-Team: Hungarian (http://www.transifex.com/projects/p/deepin-terminal/language/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -527,7 +528,7 @@ msgstr "Szerver:"
 
 #: ../src/main.py:3426 ../src/main.py:3456
 msgid "Username: "
-msgstr ""
+msgstr "Felhasználó név:"
 
 #: ../src/main.py:3426 ../src/main.py:3459
 msgid "Password: "

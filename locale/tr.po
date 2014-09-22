@@ -4,14 +4,15 @@
 # 
 # Translators:
 # Ömer GÖK <omergok@outlook.com>, 2014
+# Sinan Eldem, 2014
 # yakup <mutouk@yandex.ru>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-21 17:59+0800\n"
-"PO-Revision-Date: 2014-08-22 20:40+0000\n"
-"Last-Translator: yakup <mutouk@yandex.ru>\n"
+"PO-Revision-Date: 2014-09-04 09:42+0000\n"
+"Last-Translator: Sinan Eldem\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/deepin-terminal/language/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -232,7 +233,7 @@ msgstr "Özel"
 
 #: ../src/main.py:427
 msgid "Deepin Terminal"
-msgstr "Deepin Terminal"
+msgstr "Deepin Uçbirim"
 
 #: ../src/main.py:475
 msgid "General"
@@ -248,11 +249,11 @@ msgstr "Gelişmiş"
 
 #: ../src/main.py:584
 msgid "Quit terminal?"
-msgstr "Termilanden çık?"
+msgstr "Uçbirimden çık?"
 
 #: ../src/main.py:585
 msgid "Terminal still has running programs. Are you sure you want to quit?"
-msgstr "Terminalde hala çalışan programlar var. Çıkmak istediğinize emin misiniz?"
+msgstr "Uçbirimde hala çalışan programlar var. Çıkmak istediğinizden emin misiniz?"
 
 #: ../src/main.py:792 ../src/main.py:899
 msgid "Preferences"
@@ -367,7 +368,7 @@ msgstr "Çalışma alanı"
 
 #: ../src/main.py:2710
 msgid "Terminal command"
-msgstr "Terminal komutu"
+msgstr "Uçbirim komutu"
 
 #: ../src/main.py:2713 ../src/main.py:3062
 msgid "Scroll page up"
@@ -427,19 +428,19 @@ msgstr "Sonraki çalışma alanı"
 
 #: ../src/main.py:2733 ../src/main.py:3064
 msgid "Focus the terminal above"
-msgstr "Terminalin üstüne odaklan"
+msgstr "Uçbirimin üstüne odaklan"
 
 #: ../src/main.py:2734 ../src/main.py:3065
 msgid "Focus the terminal below"
-msgstr "Terminalin altına odaklan"
+msgstr "Uçbirimin altına odaklan"
 
 #: ../src/main.py:2735 ../src/main.py:3066
 msgid "Focus the terminal left"
-msgstr "Terminalin soluna odaklan"
+msgstr "Uçbirimin soluna odaklan"
 
 #: ../src/main.py:2736 ../src/main.py:3067
 msgid "Focus the terminal right"
-msgstr "Terminalin sağına odaklan"
+msgstr "Uçbirimin sağına odaklan"
 
 #: ../src/main.py:2742
 msgid "Advanced command"
@@ -591,7 +592,7 @@ msgstr "quake modla çalıştır"
 
 #: ../src/main.py:4025
 msgid "startup terminal with given parameter"
-msgstr "verilen parametreyle terminali başlat"
+msgstr "verilen parametre ile uçbirimi başlat"
 
 #: ../src/main.py:4026
 msgid "show this help message and exit"

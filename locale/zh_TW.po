@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-21 17:59+0800\n"
-"PO-Revision-Date: 2014-08-25 13:57+0000\n"
+"PO-Revision-Date: 2014-09-04 09:42+0000\n"
 "Last-Translator: freddy4212 <freddy4212@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/projects/p/deepin-terminal/language/zh_TW/)\n"
 "MIME-Version: 1.0\n"
@@ -458,11 +458,11 @@ msgstr "Ctrl＋滑鼠滾輪"
 
 #: ../src/main.py:2958
 msgid "Font: "
-msgstr "字體："
+msgstr "字型："
 
 #: ../src/main.py:2959
 msgid "Font size: "
-msgstr "字體大小："
+msgstr "字型大小："
 
 #: ../src/main.py:2960
 msgid "Color scheme: "
