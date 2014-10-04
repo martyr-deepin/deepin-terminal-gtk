@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-21 17:59+0800\n"
-"PO-Revision-Date: 2014-09-23 07:51+0000\n"
+"PO-Revision-Date: 2014-10-18 07:30+0000\n"
 "Last-Translator: aliperus <aliperus@gmail.com>\n"
 "Language-Team: Kapampangan (http://www.transifex.com/projects/p/deepin-terminal/language/pam/)\n"
 "MIME-Version: 1.0\n"
@@ -510,7 +510,7 @@ msgstr "Copy on selection:"
 
 #: ../src/main.py:3219
 msgid "Open file on hover: "
-msgstr ""
+msgstr "Ibuklat ing file istung mitapat:"
 
 #: ../src/main.py:3378
 msgid "Save"
@@ -518,63 +518,63 @@ msgstr "Isinup"
 
 #: ../src/main.py:3426 ../src/main.py:3450
 msgid "Name: "
-msgstr ""
+msgstr "Lagyu:"
 
 #: ../src/main.py:3426 ../src/main.py:3453
 msgid "Server: "
-msgstr ""
+msgstr "Server:"
 
 #: ../src/main.py:3426 ../src/main.py:3456
 msgid "Username: "
-msgstr ""
+msgstr "Username:"
 
 #: ../src/main.py:3426 ../src/main.py:3459
 msgid "Password: "
-msgstr ""
+msgstr "Password:"
 
 #: ../src/main.py:3426 ../src/main.py:3462
 msgid "Port: "
-msgstr ""
+msgstr "Port:"
 
 #: ../src/main.py:3484
 msgid "Remote login"
-msgstr ""
+msgstr "Remote login"
 
 #: ../src/main.py:3491
 msgid "Add"
-msgstr ""
+msgstr "Idagdag"
 
 #: ../src/main.py:3492
 msgid "Connect"
-msgstr ""
+msgstr "Kumunekta"
 
 #: ../src/main.py:3500
 msgid "Name"
-msgstr ""
+msgstr "Lagyu"
 
 #: ../src/main.py:3500
 msgid "Server"
-msgstr ""
+msgstr "Server"
 
 #: ../src/main.py:3507
 msgid "Add remote login"
-msgstr ""
+msgstr "Magdagdag remote login"
 
 #: ../src/main.py:3574
 msgid "Edit remote login"
-msgstr ""
+msgstr "Alilan remote login"
 
 #: ../src/main.py:3587
 msgid "Edit"
-msgstr ""
+msgstr "Alilan"
 
 #: ../src/main.py:3588
 msgid "Delete"
-msgstr ""
+msgstr "Buran"
 
 #: ../src/main.py:3748
 msgid "Reset"
-msgstr ""
+msgstr "Ireset"
 
 #: ../src/main.py:3751
 msgid "Close"
@@ -582,15 +582,15 @@ msgstr "Isara"
 
 #: ../src/main.py:4023
 msgid "working directory"
-msgstr ""
+msgstr "working directory"
 
 #: ../src/main.py:4024
 msgid "run with quake mode"
-msgstr ""
+msgstr "gumana gamit ing quake mode"
 
 #: ../src/main.py:4025
 msgid "startup terminal with given parameter"
-msgstr ""
+msgstr "umpisan ya ing termianl gamit ing mebieng parameter"
 
 #: ../src/main.py:4026
 msgid "show this help message and exit"

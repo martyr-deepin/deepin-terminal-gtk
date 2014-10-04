@@ -4,7 +4,7 @@
 # 
 # Translators:
 # Alan Jhone <alanjhone9@gmail.com>, 2014
-# Thiago Cangussu <cangussu.thg@gmail.com>, 2014
+# Thiago Cangussu <cng.thg@gmail.com>, 2014
 # RAFAEL GAUNA <rafaelgt.mbin@gmail.com>, 2013-2014
 msgid ""
 msgstr ""

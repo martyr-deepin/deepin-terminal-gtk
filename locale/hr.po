@@ -3,183 +3,179 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# freddy4212 <freddy4212@gmail.com>, 2013
-# freddy4212 <freddy4212@gmail.com>, 2013-2014
-# Peter Dave Hello <hsu@peterdavehello.org>, 2014
-# Peter Dave Hello <hsu@peterdavehello.org>, 2014
-# Wang Dianjin <wangdianjin@linuxdeepin.com>, 2013
+# Ivica  Kolić <ikoli@yahoo.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-21 17:59+0800\n"
-"PO-Revision-Date: 2014-10-17 06:02+0000\n"
-"Last-Translator: freddy4212 <freddy4212@gmail.com>\n"
-"Language-Team: Chinese (Taiwan) (http://www.transifex.com/projects/p/deepin-terminal/language/zh_TW/)\n"
+"PO-Revision-Date: 2014-10-23 15:41+0000\n"
+"Last-Translator: Ivica  Kolić <ikoli@yahoo.com>\n"
+"Language-Team: Croatian (http://www.transifex.com/projects/p/deepin-terminal/language/hr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_TW\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: hr\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #: ../src/main.py:119
 msgid "Normal"
-msgstr "一般"
+msgstr "Normalno"
 
 #: ../src/main.py:120
 msgid "Maximize"
-msgstr "最大化"
+msgstr "Uvećaj"
 
 #: ../src/main.py:121 ../src/main.py:864 ../src/main.py:2743
 #: ../src/main.py:3077
 msgid "Fullscreen"
-msgstr "全螢幕"
+msgstr "Cijeli zaslon"
 
 #: ../src/main.py:123
 msgid "Block"
-msgstr "方塊"
+msgstr ""
 
 #: ../src/main.py:124
 msgid "I-beam"
-msgstr "I 游標"
+msgstr ""
 
 #: ../src/main.py:125
 msgid "Underline"
-msgstr "底線"
+msgstr "Podcrtano"
 
 #: ../src/main.py:127
 msgid "System Default"
-msgstr "系統預設"
+msgstr "Sustavno zadano"
 
 #: ../src/main.py:128
 msgid "On"
-msgstr "開啟"
+msgstr "Uključeno"
 
 #: ../src/main.py:129
 msgid "Off"
-msgstr "關閉"
+msgstr "Isključeno"
 
 #: ../src/main.py:131 ../src/main.py:144 ../src/main.py:159 ../src/main.py:181
 #: ../src/main.py:192
 msgid "Western"
-msgstr "西歐語系"
+msgstr "Zapadno"
 
 #: ../src/main.py:132 ../src/main.py:160 ../src/main.py:171 ../src/main.py:190
 msgid "Central Europe"
-msgstr "中歐語系"
+msgstr "Srednja Europa"
 
 #: ../src/main.py:133
 msgid "South Europe"
-msgstr "南歐語系"
+msgstr "Južna Europa"
 
 #: ../src/main.py:134 ../src/main.py:142 ../src/main.py:197
 msgid "Baltic"
-msgstr "波羅的海語系"
+msgstr "Baltik"
 
 #: ../src/main.py:135 ../src/main.py:161 ../src/main.py:167 ../src/main.py:168
 #: ../src/main.py:173 ../src/main.py:191
 msgid "Cyrillic"
-msgstr "斯拉夫語系"
+msgstr "Ćirilica"
 
 #: ../src/main.py:136 ../src/main.py:164 ../src/main.py:170 ../src/main.py:196
 msgid "Arabic"
-msgstr "阿拉伯文"
+msgstr "Arapski"
 
 #: ../src/main.py:137 ../src/main.py:176 ../src/main.py:193
 msgid "Greek"
-msgstr "希臘語"
+msgstr "Grčki"
 
 #: ../src/main.py:138
 msgid "Hebrew Visual"
-msgstr "希伯來語（左至右）"
+msgstr "Hebrejski visual"
 
 #: ../src/main.py:139 ../src/main.py:163 ../src/main.py:179 ../src/main.py:195
 msgid "Hebrew"
-msgstr "希伯來語"
+msgstr "Hebrejski"
 
 #: ../src/main.py:140 ../src/main.py:162 ../src/main.py:183 ../src/main.py:194
 msgid "Turkish"
-msgstr "土耳其語"
+msgstr "Turski"
 
 #: ../src/main.py:141
 msgid "Germanic"
-msgstr "日耳曼語"
+msgstr ""
 
 #: ../src/main.py:143
 msgid "Celtic"
-msgstr "塞爾特語系"
+msgstr "Keltski"
 
 #: ../src/main.py:145 ../src/main.py:182
 msgid "Romanian"
-msgstr "羅馬尼亞語"
+msgstr "Rumunjski"
 
 #: ../src/main.py:146
 msgid "Unicode"
-msgstr "萬國碼"
+msgstr ""
 
 #: ../src/main.py:147
 msgid "Armenian"
-msgstr "亞美尼亞語"
+msgstr "Armenski"
 
 #: ../src/main.py:148 ../src/main.py:149 ../src/main.py:150 ../src/main.py:158
 msgid "Chinese Simplified"
-msgstr "簡體中文"
+msgstr "Pojednostavljeni kineski"
 
 #: ../src/main.py:151 ../src/main.py:152 ../src/main.py:153
 msgid "Chinese Traditional"
-msgstr "正體中文"
+msgstr "Tradicionalni kineski"
 
 #: ../src/main.py:154
 msgid "Cyrillic/Russian"
-msgstr "斯拉夫語系/俄語"
+msgstr "Ćirilica/ruska"
 
 #: ../src/main.py:155 ../src/main.py:165 ../src/main.py:185
 msgid "Japanese"
-msgstr "日語"
+msgstr "Japanski"
 
 #: ../src/main.py:156 ../src/main.py:166 ../src/main.py:188
 msgid "Korean"
-msgstr "韓語"
+msgstr "Korejski"
 
 #: ../src/main.py:157
 msgid "Georgian"
-msgstr "喬治亞語"
+msgstr "Gruzijski"
 
 #: ../src/main.py:169 ../src/main.py:184
 msgid "Cyrillic/Ukrainian"
-msgstr "斯拉夫語系/烏克蘭語"
+msgstr "Ćirilica/ukrajinska"
 
 #: ../src/main.py:172
 msgid "Croatian"
-msgstr "克羅埃西亞語"
+msgstr "Hrvatski"
 
 #: ../src/main.py:174
 msgid "Hindi"
-msgstr "北印度語"
+msgstr "Hindi"
 
 #: ../src/main.py:175
 msgid "Persian"
-msgstr "波斯語"
+msgstr "Perzijski"
 
 #: ../src/main.py:177
 msgid "Gujarati"
-msgstr "古吉拉特語"
+msgstr "Gudžarati"
 
 #: ../src/main.py:178
 msgid "Gurmukhi"
-msgstr "果魯穆其語"
+msgstr "Gurmukhi"
 
 #: ../src/main.py:180
 msgid "Icelandic"
-msgstr "冰島語"
+msgstr "Islandski"
 
 #: ../src/main.py:186 ../src/main.py:189 ../src/main.py:198
 msgid "Vietnamese"
-msgstr "越南語"
+msgstr "Vijetnamski"
 
 #: ../src/main.py:187
 msgid "Thai"
-msgstr "泰語"
+msgstr "Tai"
 
 #: ../src/main.py:303
 msgid "Deepin"
@@ -187,15 +183,15 @@ msgstr "Deepin"
 
 #: ../src/main.py:304
 msgid "Mocha"
-msgstr "摩卡"
+msgstr "Mocha"
 
 #: ../src/main.py:305
 msgid "Green screen"
-msgstr "綠色螢幕"
+msgstr "Zeleni zaslon"
 
 #: ../src/main.py:306
 msgid "Ocean"
-msgstr "海洋"
+msgstr "Ocean"
 
 #: ../src/main.py:307
 msgid "Monokai"
@@ -203,403 +199,403 @@ msgstr "Monokai"
 
 #: ../src/main.py:308
 msgid "Solarized"
-msgstr "Solarized"
+msgstr ""
 
 #: ../src/main.py:309 ../src/main.py:310
 msgid "Eighties"
-msgstr "八〇年代"
+msgstr "Osamdesete"
 
 #: ../src/main.py:311
 msgid "Grey on black"
-msgstr "黑底灰字"
+msgstr "Sivo na crnom"
 
 #: ../src/main.py:312
 msgid "Black on yellow"
-msgstr "黃底黑字"
+msgstr "Crno na žutom"
 
 #: ../src/main.py:313
 msgid "Black on white"
-msgstr "白底黑字"
+msgstr "Crno na bijelom"
 
 #: ../src/main.py:314
 msgid "White on black"
-msgstr "黑底白字"
+msgstr "Bijelo na crnom"
 
 #: ../src/main.py:315
 msgid "Green on black"
-msgstr "黑底綠字"
+msgstr "Zeleno na crnom"
 
 #: ../src/main.py:316
 msgid "Custom"
-msgstr "自訂"
+msgstr "Prilagođeno"
 
 #: ../src/main.py:427
 msgid "Deepin Terminal"
-msgstr "深度終端機"
+msgstr "Deepin terminal"
 
 #: ../src/main.py:475
 msgid "General"
-msgstr "一般設定"
+msgstr "Općenito"
 
 #: ../src/main.py:476
 msgid "Hotkeys"
-msgstr "捷徑鍵設定"
+msgstr ""
 
 #: ../src/main.py:477
 msgid "Advanced"
-msgstr "進階設定"
+msgstr "Napredno"
 
 #: ../src/main.py:584
 msgid "Quit terminal?"
-msgstr "結束終端機？"
+msgstr "Isključiti terminal?"
 
 #: ../src/main.py:585
 msgid "Terminal still has running programs. Are you sure you want to quit?"
-msgstr "終端機中還有程式在執行。您確定要結束嗎？"
+msgstr ""
 
 #: ../src/main.py:792 ../src/main.py:899
 msgid "Preferences"
-msgstr "偏好設定"
+msgstr "Osobitosti"
 
 #: ../src/main.py:793 ../src/main.py:2745 ../src/main.py:3079
 msgid "Set up SSH connection"
-msgstr "建立 SSH 連線"
+msgstr "Postavi SSH vezu"
 
 #: ../src/main.py:794 ../src/main.py:897 ../src/main.py:2744
 #: ../src/main.py:3078
 msgid "Display hotkeys"
-msgstr "顯示捷徑鍵"
+msgstr ""
 
 #: ../src/main.py:796
 msgid "Quit"
-msgstr "結束"
+msgstr "Zatvori"
 
 #: ../src/main.py:831 ../src/main.py:834 ../src/main.py:2711
 #: ../src/main.py:3056
 msgid "Copy"
-msgstr "複製"
+msgstr "Kopiraj"
 
 #: ../src/main.py:836 ../src/main.py:2712 ../src/main.py:3057
 msgid "Paste"
-msgstr "貼上"
+msgstr "Zalijepi"
 
 #: ../src/main.py:843
 msgid "Open file"
-msgstr "開啟檔案"
+msgstr "Otvori datoteku"
 
 #: ../src/main.py:845
 msgid "Open directory"
-msgstr "開啟目錄"
+msgstr "Otvori direktorij"
 
 #: ../src/main.py:847
 msgid "Open URL"
-msgstr "開啟網址"
+msgstr "Otvori URL"
 
 #: ../src/main.py:849
 msgid "Open manual"
-msgstr "開啟手冊"
+msgstr ""
 
 #: ../src/main.py:853
 msgid "Clear screen"
-msgstr "清除畫面"
+msgstr "Očisti zaslon"
 
 #: ../src/main.py:854
 msgid "Open current directory"
-msgstr "開啟目前的目錄"
+msgstr "Otvori trenutni direktorij"
 
 #: ../src/main.py:859 ../src/main.py:2722 ../src/main.py:3080
 msgid "Show correlative child window"
-msgstr "顯示相關的子處理程序視窗"
+msgstr ""
 
 #: ../src/main.py:862
 msgid "Exit fullscreen"
-msgstr "結束全螢幕"
+msgstr "Izađi iz cijelog zaslona"
 
 #: ../src/main.py:869 ../src/main.py:2731 ../src/main.py:3058
 msgid "Split vertically"
-msgstr "垂直分割"
+msgstr "Podijeli okomito"
 
 #: ../src/main.py:870 ../src/main.py:2732 ../src/main.py:3059
 msgid "Split horizontally"
-msgstr "水平分割"
+msgstr "Podijeli vodoravno"
 
 #: ../src/main.py:871 ../src/main.py:2737 ../src/main.py:3060
 msgid "Close current window"
-msgstr "關閉目前的視窗"
+msgstr "Zatvori trenutni prozor"
 
 #: ../src/main.py:875 ../src/main.py:2738 ../src/main.py:3061
 msgid "Close other windows"
-msgstr "關閉其他的視窗"
+msgstr "Zatvori ostale prozore"
 
 #: ../src/main.py:883 ../src/main.py:890 ../src/main.py:2727
 #: ../src/main.py:3071
 msgid "New workspace"
-msgstr "建立新工作區"
+msgstr "Novi radni prostor"
 
 #: ../src/main.py:884
 msgid "Switch workspace"
-msgstr "切換工作區"
+msgstr "Promjeni radni prostor"
 
 #: ../src/main.py:885 ../src/main.py:2730 ../src/main.py:3072
 msgid "Close workspace"
-msgstr "關閉工作區"
+msgstr "Zatvori radni prostor"
 
 #: ../src/main.py:896
 msgid "Search"
-msgstr "搜尋"
+msgstr "Traži"
 
 #: ../src/main.py:1143 ../src/main.py:1901
 msgid "Close window?"
-msgstr "關閉視窗？"
+msgstr "Zatvoriti prozor?"
 
 #: ../src/main.py:1144 ../src/main.py:1902
 msgid "Window still has running programs. Are you sure you want to close?"
-msgstr "視窗中還有程式在執行。您確定要結束嗎？"
+msgstr ""
 
 #: ../src/main.py:1146
 msgid "Close workspace?"
-msgstr "關閉工作區？"
+msgstr "Zatvoriti radni prostor?"
 
 #: ../src/main.py:1147
 msgid "Workspace still has running programs. Are you sure you want to close?"
-msgstr "工作區中還有程式在執行。您確定要結束嗎？"
+msgstr ""
 
 #: ../src/main.py:2139
 msgid "Workspace"
-msgstr "工作區"
+msgstr "Radni prostor"
 
 #: ../src/main.py:2710
 msgid "Terminal command"
-msgstr "終端機命令"
+msgstr "Naredba terminala"
 
 #: ../src/main.py:2713 ../src/main.py:3062
 msgid "Scroll page up"
-msgstr "向上捲動："
+msgstr ""
 
 #: ../src/main.py:2714 ../src/main.py:3063
 msgid "Scroll page down"
-msgstr "向下捲動："
+msgstr ""
 
 #: ../src/main.py:2715 ../src/main.py:3075
 msgid "Search forward"
-msgstr "向下搜尋"
+msgstr "Traži naprijed"
 
 #: ../src/main.py:2716 ../src/main.py:3076
 msgid "Search backward"
-msgstr "向上搜尋"
+msgstr "Traži unatrag"
 
 #: ../src/main.py:2717
 msgid "Select word"
-msgstr "選擇單字"
+msgstr "Odaberi riječ"
 
 #: ../src/main.py:2717
 msgid "Double click"
-msgstr "雙擊"
+msgstr "Dvostruki klik"
 
 #: ../src/main.py:2718
 msgid "Open"
-msgstr "開啟"
+msgstr "Otvoreno"
 
 #: ../src/main.py:2718
 msgid "Ctrl + Left click"
-msgstr "Ctrl＋滑鼠左鍵"
+msgstr "Ctrl +lijevi klik"
 
 #: ../src/main.py:2719 ../src/main.py:3069
 msgid "Zoom out"
-msgstr "拉遠"
+msgstr "Smanji"
 
 #: ../src/main.py:2720 ../src/main.py:3068
 msgid "Zoom in"
-msgstr "拉近"
+msgstr "Povećaj"
 
 #: ../src/main.py:2721 ../src/main.py:3070
 msgid "Reset zoom"
-msgstr "預設尺寸"
+msgstr ""
 
 #: ../src/main.py:2726
 msgid "Workspace command"
-msgstr "工作區命令"
+msgstr "Naredba radnog prostora"
 
 #: ../src/main.py:2728 ../src/main.py:3073
 msgid "Previous workspace"
-msgstr "切換至上一個工作區"
+msgstr "Prethodni radni prostor"
 
 #: ../src/main.py:2729 ../src/main.py:3074
 msgid "Next workspace"
-msgstr "切換至下一個工作區"
+msgstr "Slijedeći radni prostor"
 
 #: ../src/main.py:2733 ../src/main.py:3064
 msgid "Focus the terminal above"
-msgstr "選擇上方終端機"
+msgstr ""
 
 #: ../src/main.py:2734 ../src/main.py:3065
 msgid "Focus the terminal below"
-msgstr "選擇下方終端機"
+msgstr ""
 
 #: ../src/main.py:2735 ../src/main.py:3066
 msgid "Focus the terminal left"
-msgstr "選擇左側終端機"
+msgstr ""
 
 #: ../src/main.py:2736 ../src/main.py:3067
 msgid "Focus the terminal right"
-msgstr "選擇右側終端機"
+msgstr ""
 
 #: ../src/main.py:2742
 msgid "Advanced command"
-msgstr "進階命令"
+msgstr "Napredna naredba"
 
 #: ../src/main.py:2764
 msgid "Adjust opacity"
-msgstr "調整透明度"
+msgstr "Prilagodi neprozirnost"
 
 #: ../src/main.py:2764
 msgid "Ctrl + Wheel"
-msgstr "Ctrl＋滑鼠滾輪"
+msgstr "Ctrl + kotačić miša"
 
 #: ../src/main.py:2958
 msgid "Font: "
-msgstr "字型："
+msgstr "Font: "
 
 #: ../src/main.py:2959
 msgid "Font size: "
-msgstr "字型大小："
+msgstr "Veličina fonta:"
 
 #: ../src/main.py:2960
 msgid "Color scheme: "
-msgstr "色彩組合："
+msgstr "Shema boja:"
 
 #: ../src/main.py:2962
 msgid "Background transparency: "
-msgstr "背景透明度："
+msgstr "Prozirnost pozadine:"
 
 #: ../src/main.py:3209
 msgid "Cursor shape: "
-msgstr "游標形狀："
+msgstr "Oblik pokazivača:"
 
 #: ../src/main.py:3210
 msgid "Cursor blink: "
-msgstr "游標閃爍："
+msgstr "Treptanje pokazivača:"
 
 #: ../src/main.py:3211
 msgid "Encoding: "
-msgstr "編碼："
+msgstr "Kodiranje:"
 
 #: ../src/main.py:3212
 msgid "Window startup mode: "
-msgstr "視窗啟動模式："
+msgstr ""
 
 #: ../src/main.py:3213
 msgid "Startup command: "
-msgstr "自訂預設啟動命令："
+msgstr "Naredba pokretanja:"
 
 #: ../src/main.py:3214
 msgid "Startup directory: "
-msgstr "預設啟動目錄："
+msgstr ""
 
 #: ../src/main.py:3215
 msgid "Ask on quit"
-msgstr "結束時詢問："
+msgstr "Pitaj i isključi"
 
 #: ../src/main.py:3216
 msgid "Scroll on keystroke: "
-msgstr "按鍵時捲動："
+msgstr ""
 
 #: ../src/main.py:3217
 msgid "Scroll on output: "
-msgstr "輸出時捲動："
+msgstr ""
 
 #: ../src/main.py:3218
 msgid "Copy on selection: "
-msgstr "選取即複製："
+msgstr ""
 
 #: ../src/main.py:3219
 msgid "Open file on hover: "
-msgstr "當滑鼠掠過時反白可開啟的文件："
+msgstr ""
 
 #: ../src/main.py:3378
 msgid "Save"
-msgstr "儲存"
+msgstr "Spremi"
 
 #: ../src/main.py:3426 ../src/main.py:3450
 msgid "Name: "
-msgstr "名稱："
+msgstr "Ime:"
 
 #: ../src/main.py:3426 ../src/main.py:3453
 msgid "Server: "
-msgstr "伺服器："
+msgstr "Poslužitelj:"
 
 #: ../src/main.py:3426 ../src/main.py:3456
 msgid "Username: "
-msgstr "使用者名稱："
+msgstr "Korisničko ime:"
 
 #: ../src/main.py:3426 ../src/main.py:3459
 msgid "Password: "
-msgstr "密碼："
+msgstr "Lozinka:"
 
 #: ../src/main.py:3426 ../src/main.py:3462
 msgid "Port: "
-msgstr "連接埠："
+msgstr "Port: "
 
 #: ../src/main.py:3484
 msgid "Remote login"
-msgstr "遠端登入"
+msgstr "Udaljena prijava"
 
 #: ../src/main.py:3491
 msgid "Add"
-msgstr "加入"
+msgstr "Dodaj"
 
 #: ../src/main.py:3492
 msgid "Connect"
-msgstr "連線"
+msgstr "Povezivanje"
 
 #: ../src/main.py:3500
 msgid "Name"
-msgstr "名稱"
+msgstr "Naziv"
 
 #: ../src/main.py:3500
 msgid "Server"
-msgstr "伺服器"
+msgstr "Poslužitelj"
 
 #: ../src/main.py:3507
 msgid "Add remote login"
-msgstr "加入遠端登入"
+msgstr "Dodaj udaljenu prijavu"
 
 #: ../src/main.py:3574
 msgid "Edit remote login"
-msgstr "編輯遠端登入"
+msgstr "Uredi udaljenu prijavu"
 
 #: ../src/main.py:3587
 msgid "Edit"
-msgstr "編輯"
+msgstr "Uredi"
 
 #: ../src/main.py:3588
 msgid "Delete"
-msgstr "刪除"
+msgstr "Obriši"
 
 #: ../src/main.py:3748
 msgid "Reset"
-msgstr "重設"
+msgstr "Vrati"
 
 #: ../src/main.py:3751
 msgid "Close"
-msgstr "關閉"
+msgstr "Zatvori"
 
 #: ../src/main.py:4023
 msgid "working directory"
-msgstr "工作中的目錄"
+msgstr "radni direktorij"
 
 #: ../src/main.py:4024
 msgid "run with quake mode"
-msgstr "以雷神模式執行終端機"
+msgstr ""
 
 #: ../src/main.py:4025
 msgid "startup terminal with given parameter"
-msgstr "使用特定參數啟動終端機"
+msgstr "pokretanje terminala danim parametrom"
 
 #: ../src/main.py:4026
 msgid "show this help message and exit"
-msgstr "顯示本幫助資訊並結束"
+msgstr "pokaži ovu poruku pomoći i izađi"
 
 #: ../src/main.py:4027
 msgid "show program's version number and exit"
-msgstr "顯示程式版本號並結束"
+msgstr "pokaži broj verzije programa i izađi"

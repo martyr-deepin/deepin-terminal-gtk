@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Carl Andersen <carl@manjaro.dk>, 2014
+# Morten Juhl-Johansen Zölde-Fejér <morten@writtenandread.net>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-21 17:59+0800\n"
-"PO-Revision-Date: 2014-09-18 08:01+0000\n"
-"Last-Translator: Carl Andersen <carl@manjaro.dk>\n"
+"PO-Revision-Date: 2014-10-17 17:41+0000\n"
+"Last-Translator: Morten Juhl-Johansen Zölde-Fejér <morten@writtenandread.net>\n"
 "Language-Team: Danish (http://www.transifex.com/projects/p/deepin-terminal/language/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -41,11 +42,11 @@ msgstr "I-bjælke"
 
 #: ../src/main.py:125
 msgid "Underline"
-msgstr "Understrege"
+msgstr "Understreg"
 
 #: ../src/main.py:127
 msgid "System Default"
-msgstr "System Standard"
+msgstr "Systemstandard"
 
 #: ../src/main.py:128
 msgid "On"
@@ -87,7 +88,7 @@ msgstr "Græsk"
 
 #: ../src/main.py:138
 msgid "Hebrew Visual"
-msgstr "Hebræisk Visual"
+msgstr "Hebræisk Visuel"
 
 #: ../src/main.py:139 ../src/main.py:163 ../src/main.py:179 ../src/main.py:195
 msgid "Hebrew"
@@ -103,7 +104,7 @@ msgstr "Germansk"
 
 #: ../src/main.py:143
 msgid "Celtic"
-msgstr "Celtisk"
+msgstr "Keltisk"
 
 #: ../src/main.py:145 ../src/main.py:182
 msgid "Romanian"
@@ -199,7 +200,7 @@ msgstr "Monokai"
 
 #: ../src/main.py:308
 msgid "Solarized"
-msgstr "Solariseret"
+msgstr "Solarized"
 
 #: ../src/main.py:309 ../src/main.py:310
 msgid "Eighties"

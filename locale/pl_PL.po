@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-21 17:59+0800\n"
-"PO-Revision-Date: 2014-09-23 10:41+0000\n"
+"PO-Revision-Date: 2014-10-08 08:51+0000\n"
 "Last-Translator: Piotr Strębski <strebski@o2.pl>\n"
 "Language-Team: Polish (Poland) (http://www.transifex.com/projects/p/deepin-terminal/language/pl_PL/)\n"
 "MIME-Version: 1.0\n"
@@ -206,23 +206,23 @@ msgstr "Solaryzacja"
 
 #: ../src/main.py:309 ../src/main.py:310
 msgid "Eighties"
-msgstr "Lata 80"
+msgstr "Lata '80"
 
 #: ../src/main.py:311
 msgid "Grey on black"
-msgstr "Szaro na czarnym"
+msgstr "Szary na czarnym"
 
 #: ../src/main.py:312
 msgid "Black on yellow"
-msgstr "Czarno na żółtym"
+msgstr "Czarny na żółtym"
 
 #: ../src/main.py:313
 msgid "Black on white"
-msgstr "Czarno na białym"
+msgstr "Czarny na białym"
 
 #: ../src/main.py:314
 msgid "White on black"
-msgstr "Biało na czarnym"
+msgstr "Biały na czarnym"
 
 #: ../src/main.py:315
 msgid "Green on black"
@@ -242,7 +242,7 @@ msgstr "Ogólny"
 
 #: ../src/main.py:476
 msgid "Hotkeys"
-msgstr "Hotkeys"
+msgstr "Skróty klawiszowe"
 
 #: ../src/main.py:477
 msgid "Advanced"
@@ -267,7 +267,7 @@ msgstr "Połącz przez SSH"
 #: ../src/main.py:794 ../src/main.py:897 ../src/main.py:2744
 #: ../src/main.py:3078
 msgid "Display hotkeys"
-msgstr "Wyświetl hotkeye"
+msgstr "Wyświetl skróty klawiszowe"
 
 #: ../src/main.py:796
 msgid "Quit"
@@ -288,7 +288,7 @@ msgstr "Otwórz plik"
 
 #: ../src/main.py:845
 msgid "Open directory"
-msgstr "Otwórz lokalizację"
+msgstr "Otwórz katalog"
 
 #: ../src/main.py:847
 msgid "Open URL"
@@ -296,15 +296,15 @@ msgstr "Otwórz URL"
 
 #: ../src/main.py:849
 msgid "Open manual"
-msgstr "Otwórz pomoc"
+msgstr "Otwórz podręcznik"
 
 #: ../src/main.py:853
 msgid "Clear screen"
-msgstr "Czysty ekran"
+msgstr "Wyczyść ekran"
 
 #: ../src/main.py:854
 msgid "Open current directory"
-msgstr "Otwórz aktualną lokalizacje"
+msgstr "Otwórz aktualny katalog"
 
 #: ../src/main.py:859 ../src/main.py:2722 ../src/main.py:3080
 msgid "Show correlative child window"
@@ -369,7 +369,7 @@ msgstr "Przestrzeń robocza"
 
 #: ../src/main.py:2710
 msgid "Terminal command"
-msgstr "Komenda terminala"
+msgstr "Polecenie terminala"
 
 #: ../src/main.py:2713 ../src/main.py:3062
 msgid "Scroll page up"
@@ -465,7 +465,7 @@ msgstr "Rozmiar czcionki:"
 
 #: ../src/main.py:2960
 msgid "Color scheme: "
-msgstr "Układ kolorystyczny:"
+msgstr "Schemat kolorów:"
 
 #: ../src/main.py:2962
 msgid "Background transparency: "
@@ -489,11 +489,11 @@ msgstr ""
 
 #: ../src/main.py:3213
 msgid "Startup command: "
-msgstr "Komenda startowa"
+msgstr "Polecenie początkowe:"
 
 #: ../src/main.py:3214
 msgid "Startup directory: "
-msgstr "Lokalizacja początkowa"
+msgstr "Katalog początkowy:"
 
 #: ../src/main.py:3215
 msgid "Ask on quit"
@@ -521,7 +521,7 @@ msgstr "Zapisz"
 
 #: ../src/main.py:3426 ../src/main.py:3450
 msgid "Name: "
-msgstr "Nazwa"
+msgstr "Nazwa:"
 
 #: ../src/main.py:3426 ../src/main.py:3453
 msgid "Server: "
