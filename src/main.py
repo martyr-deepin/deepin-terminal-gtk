@@ -3488,6 +3488,8 @@ class RemoteLogin(DialogBox):
             close_callback=self.hide_window,
             )
 
+        self._has_init = False
+
         self.add_button = Button(_("Add"))
         self.connect_button = Button(_("Connect"))
 
@@ -3536,8 +3538,11 @@ class RemoteLogin(DialogBox):
                 items.append(TextItem(name, user, server, password, port))
 
             self.treeview.add_items(items)
+        self._has_init = True
 
     def save_login_info(self):
+        if not self._has_init:
+            return
         items = self.treeview.get_items()
         item_infos = map(lambda item: (
                 unicode(item.name),
@@ -3569,6 +3574,8 @@ class RemoteLogin(DialogBox):
         if item.redraw_request_callback:
             item.redraw_request_callback(item)
 
+        self.save_login_info()
+
     def update_remote_login(self, current_item):
         edit_remote_login = EditRemoteLogin(
             _("Edit remote login"),
@@ -3577,8 +3584,6 @@ class RemoteLogin(DialogBox):
             )
         edit_remote_login.set_transient_for(self)
         edit_remote_login.show_login(self.parent_window)
-
-        self.save_login_info()
 
     def right_press_items(self, *args):
         (treeview, x, y, current_item, select_items) = args
