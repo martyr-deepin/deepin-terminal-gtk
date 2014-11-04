@@ -3,14 +3,17 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# ambiya <ambiya90@gmail.com>, 2014
+# Aril Apria Susanto <awriel@gmail.com>, 2014
+# Mohammad Rizki <mohammadrizki.md@gmail.com>, 2014
 # Sucipto <show.cheap@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-21 17:59+0800\n"
-"PO-Revision-Date: 2014-10-17 06:02+0000\n"
-"Last-Translator: Catherinelin <linhongxia@linuxdeepin.com>\n"
+"PO-Revision-Date: 2014-11-03 06:10+0000\n"
+"Last-Translator: Aril Apria Susanto <awriel@gmail.com>\n"
 "Language-Team: Indonesian (http://www.transifex.com/projects/p/deepin-terminal/language/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,7 +27,7 @@ msgstr "Normal"
 
 #: ../src/main.py:120
 msgid "Maximize"
-msgstr "Bentangkan"
+msgstr "Maksimalkan"
 
 #: ../src/main.py:121 ../src/main.py:864 ../src/main.py:2743
 #: ../src/main.py:3077
@@ -37,11 +40,11 @@ msgstr "Halangi"
 
 #: ../src/main.py:124
 msgid "I-beam"
-msgstr "l-beam"
+msgstr "I-beam"
 
 #: ../src/main.py:125
 msgid "Underline"
-msgstr "Garis Bawah"
+msgstr "Garis bawah"
 
 #: ../src/main.py:127
 msgid "System Default"
@@ -49,16 +52,16 @@ msgstr "Default Sistem"
 
 #: ../src/main.py:128
 msgid "On"
-msgstr "On"
+msgstr "Nyala"
 
 #: ../src/main.py:129
 msgid "Off"
-msgstr "Off"
+msgstr "Padam"
 
 #: ../src/main.py:131 ../src/main.py:144 ../src/main.py:159 ../src/main.py:181
 #: ../src/main.py:192
 msgid "Western"
-msgstr "Barat"
+msgstr "Western"
 
 #: ../src/main.py:132 ../src/main.py:160 ../src/main.py:171 ../src/main.py:190
 msgid "Central Europe"
@@ -70,7 +73,7 @@ msgstr "Eropa Selatan"
 
 #: ../src/main.py:134 ../src/main.py:142 ../src/main.py:197
 msgid "Baltic"
-msgstr "Baltic"
+msgstr "Baltik"
 
 #: ../src/main.py:135 ../src/main.py:161 ../src/main.py:167 ../src/main.py:168
 #: ../src/main.py:173 ../src/main.py:191
@@ -79,11 +82,11 @@ msgstr "Cyrillic"
 
 #: ../src/main.py:136 ../src/main.py:164 ../src/main.py:170 ../src/main.py:196
 msgid "Arabic"
-msgstr "Arabic"
+msgstr "Arab"
 
 #: ../src/main.py:137 ../src/main.py:176 ../src/main.py:193
 msgid "Greek"
-msgstr "Greek"
+msgstr "Yunani"
 
 #: ../src/main.py:138
 msgid "Hebrew Visual"
@@ -95,7 +98,7 @@ msgstr "Hebrew"
 
 #: ../src/main.py:140 ../src/main.py:162 ../src/main.py:183 ../src/main.py:194
 msgid "Turkish"
-msgstr "Turkish"
+msgstr "Turki"
 
 #: ../src/main.py:141
 msgid "Germanic"
@@ -103,11 +106,11 @@ msgstr "Jerman"
 
 #: ../src/main.py:143
 msgid "Celtic"
-msgstr "Celtic"
+msgstr "Celtik"
 
 #: ../src/main.py:145 ../src/main.py:182
 msgid "Romanian"
-msgstr "Romanian"
+msgstr "Rumania"
 
 #: ../src/main.py:146
 msgid "Unicode"
@@ -115,15 +118,15 @@ msgstr "Unicode"
 
 #: ../src/main.py:147
 msgid "Armenian"
-msgstr "Armenian"
+msgstr "Armenia"
 
 #: ../src/main.py:148 ../src/main.py:149 ../src/main.py:150 ../src/main.py:158
 msgid "Chinese Simplified"
-msgstr "Tiongkok Sederhana"
+msgstr "Cina - Sederhana"
 
 #: ../src/main.py:151 ../src/main.py:152 ../src/main.py:153
 msgid "Chinese Traditional"
-msgstr "Tiongkok Tradisional"
+msgstr "Cina - Tradisional"
 
 #: ../src/main.py:154
 msgid "Cyrillic/Russian"
@@ -139,11 +142,11 @@ msgstr "Korea"
 
 #: ../src/main.py:157
 msgid "Georgian"
-msgstr "Georgian"
+msgstr "Georgia"
 
 #: ../src/main.py:169 ../src/main.py:184
 msgid "Cyrillic/Ukrainian"
-msgstr "Cyrillic/Ukrania"
+msgstr "Cyrillic/Ukraina"
 
 #: ../src/main.py:172
 msgid "Croatian"
@@ -159,7 +162,7 @@ msgstr "Persia"
 
 #: ../src/main.py:177
 msgid "Gujarati"
-msgstr "Gujarati"
+msgstr "Gujarat"
 
 #: ../src/main.py:178
 msgid "Gurmukhi"
@@ -167,15 +170,15 @@ msgstr "Gurmukhi"
 
 #: ../src/main.py:180
 msgid "Icelandic"
-msgstr "Iceland"
+msgstr "Islandia"
 
 #: ../src/main.py:186 ../src/main.py:189 ../src/main.py:198
 msgid "Vietnamese"
-msgstr "Vietnamese"
+msgstr "Vietnam"
 
 #: ../src/main.py:187
 msgid "Thai"
-msgstr "Tailand"
+msgstr "Thai"
 
 #: ../src/main.py:303
 msgid "Deepin"
@@ -191,7 +194,7 @@ msgstr "Layar hijau"
 
 #: ../src/main.py:306
 msgid "Ocean"
-msgstr "Laut"
+msgstr "Lautan"
 
 #: ../src/main.py:307
 msgid "Monokai"
@@ -207,23 +210,23 @@ msgstr "Eighties"
 
 #: ../src/main.py:311
 msgid "Grey on black"
-msgstr "Abu abu pada Hitam"
+msgstr "Abu-abu di atas Hitam"
 
 #: ../src/main.py:312
 msgid "Black on yellow"
-msgstr "Hitam pada Kuning"
+msgstr "Hitam di atas Kuning"
 
 #: ../src/main.py:313
 msgid "Black on white"
-msgstr "Hitam pada putih"
+msgstr "Hitam di atas Putih"
 
 #: ../src/main.py:314
 msgid "White on black"
-msgstr "Putih pada hitam"
+msgstr "Putih di atas Hitam"
 
 #: ../src/main.py:315
 msgid "Green on black"
-msgstr "Hijau pada hitam"
+msgstr "Hijau di atas Hitam"
 
 #: ../src/main.py:316
 msgid "Custom"
@@ -231,7 +234,7 @@ msgstr "Kustom"
 
 #: ../src/main.py:427
 msgid "Deepin Terminal"
-msgstr "Deepin Terminal"
+msgstr "Terminal Deepin"
 
 #: ../src/main.py:475
 msgid "General"
@@ -247,11 +250,11 @@ msgstr "Lanjutan"
 
 #: ../src/main.py:584
 msgid "Quit terminal?"
-msgstr "Keluar terminal?"
+msgstr "Keluar dari terminal?"
 
 #: ../src/main.py:585
 msgid "Terminal still has running programs. Are you sure you want to quit?"
-msgstr "Terminal masih menjalankan program. Yakin ingin keluar?"
+msgstr "Terminal masih menjalankan program. Anda yakin ingin keluar?"
 
 #: ../src/main.py:792 ../src/main.py:899
 msgid "Preferences"
@@ -259,7 +262,7 @@ msgstr "Preferensi"
 
 #: ../src/main.py:793 ../src/main.py:2745 ../src/main.py:3079
 msgid "Set up SSH connection"
-msgstr "Atur koneksi SSH"
+msgstr "Mengatur koneksi SSH"
 
 #: ../src/main.py:794 ../src/main.py:897 ../src/main.py:2744
 #: ../src/main.py:3078
@@ -285,7 +288,7 @@ msgstr "Buka berkas"
 
 #: ../src/main.py:845
 msgid "Open directory"
-msgstr "Buka folder"
+msgstr "Buka direktori"
 
 #: ../src/main.py:847
 msgid "Open URL"
@@ -293,7 +296,7 @@ msgstr "Buka URL"
 
 #: ../src/main.py:849
 msgid "Open manual"
-msgstr "Buka panduan"
+msgstr "Buka manual"
 
 #: ../src/main.py:853
 msgid "Clear screen"
@@ -301,11 +304,11 @@ msgstr "Bersihkan layar"
 
 #: ../src/main.py:854
 msgid "Open current directory"
-msgstr "Buka folder sekarang"
+msgstr "Buka direktori sekarang"
 
 #: ../src/main.py:859 ../src/main.py:2722 ../src/main.py:3080
 msgid "Show correlative child window"
-msgstr "Tampilkan child window korelatif"
+msgstr " Tampilkan child window korelatif"
 
 #: ../src/main.py:862
 msgid "Exit fullscreen"
@@ -317,28 +320,28 @@ msgstr "Bagi vertikal"
 
 #: ../src/main.py:870 ../src/main.py:2732 ../src/main.py:3059
 msgid "Split horizontally"
-msgstr "Bagi horizontal"
+msgstr "Bagi horisontal"
 
 #: ../src/main.py:871 ../src/main.py:2737 ../src/main.py:3060
 msgid "Close current window"
-msgstr "Tutup ini"
+msgstr "Tutup jendela ini"
 
 #: ../src/main.py:875 ../src/main.py:2738 ../src/main.py:3061
 msgid "Close other windows"
-msgstr "Tutup jendela lain"
+msgstr "Tutup jendela lainnya"
 
 #: ../src/main.py:883 ../src/main.py:890 ../src/main.py:2727
 #: ../src/main.py:3071
 msgid "New workspace"
-msgstr "Lembar kerja baru"
+msgstr "Ruang kerja baru"
 
 #: ../src/main.py:884
 msgid "Switch workspace"
-msgstr "Ganti lembar kerja"
+msgstr "Pindah ruang kerja"
 
 #: ../src/main.py:885 ../src/main.py:2730 ../src/main.py:3072
 msgid "Close workspace"
-msgstr "Tutup lembar kerja"
+msgstr "Tutup ruang kerja"
 
 #: ../src/main.py:896
 msgid "Search"
@@ -350,23 +353,23 @@ msgstr "Tutup jendela?"
 
 #: ../src/main.py:1144 ../src/main.py:1902
 msgid "Window still has running programs. Are you sure you want to close?"
-msgstr "Jendela masih menjalankan program. Yakin ingin keluar?"
+msgstr "Jendela masih menjalankan program. Anda yakin ingin menutupnya?"
 
 #: ../src/main.py:1146
 msgid "Close workspace?"
-msgstr "Tutup lembar kerja?"
+msgstr "Tutup ruang kerja?"
 
 #: ../src/main.py:1147
 msgid "Workspace still has running programs. Are you sure you want to close?"
-msgstr "Lembar kerja masih menjalankan program. Yakin ingin keluar?"
+msgstr "Ruang kerja masih menjalankan program. Anda yakin ingin menutupnya?"
 
 #: ../src/main.py:2139
 msgid "Workspace"
-msgstr "Lembar Kerja"
+msgstr "Ruang kerja"
 
 #: ../src/main.py:2710
 msgid "Terminal command"
-msgstr "Perintah terminal"
+msgstr "perintah teks"
 
 #: ../src/main.py:2713 ../src/main.py:3062
 msgid "Scroll page up"
@@ -394,7 +397,7 @@ msgstr "Klik ganda"
 
 #: ../src/main.py:2718
 msgid "Open"
-msgstr "Buka"
+msgstr "Terbuka"
 
 #: ../src/main.py:2718
 msgid "Ctrl + Left click"
@@ -410,35 +413,35 @@ msgstr "Perbesar"
 
 #: ../src/main.py:2721 ../src/main.py:3070
 msgid "Reset zoom"
-msgstr "Atur ulang zoom"
+msgstr "Atur ulang zum"
 
 #: ../src/main.py:2726
 msgid "Workspace command"
-msgstr "Perintah lembar kerja"
+msgstr "Perintah ruang kerja"
 
 #: ../src/main.py:2728 ../src/main.py:3073
 msgid "Previous workspace"
-msgstr "Lembar kerja sebelumnya"
+msgstr "Ruang kerja sebelumnya"
 
 #: ../src/main.py:2729 ../src/main.py:3074
 msgid "Next workspace"
-msgstr "Lembar kerja selanjutnya"
+msgstr "Ruang kerja berikutnya"
 
 #: ../src/main.py:2733 ../src/main.py:3064
 msgid "Focus the terminal above"
-msgstr "Fokus terminal di atas"
+msgstr "Fokuskan terminal di atas"
 
 #: ../src/main.py:2734 ../src/main.py:3065
 msgid "Focus the terminal below"
-msgstr "Fokus terminal di bawah"
+msgstr "Fokuskan terminal di bawah"
 
 #: ../src/main.py:2735 ../src/main.py:3066
 msgid "Focus the terminal left"
-msgstr "Fokus terminal kiri"
+msgstr "Fokuskan terminal di kiri"
 
 #: ../src/main.py:2736 ../src/main.py:3067
 msgid "Focus the terminal right"
-msgstr "Fokus terminal kanan"
+msgstr "Fokus terminal di kanan"
 
 #: ../src/main.py:2742
 msgid "Advanced command"
@@ -446,55 +449,55 @@ msgstr "Perintah lanjutan"
 
 #: ../src/main.py:2764
 msgid "Adjust opacity"
-msgstr "Atur kegelapan"
+msgstr "Atur opacity"
 
 #: ../src/main.py:2764
 msgid "Ctrl + Wheel"
-msgstr "Ctrl + Roda"
+msgstr "Ctrl + Roda penggulung"
 
 #: ../src/main.py:2958
 msgid "Font: "
-msgstr "Font:"
+msgstr "Fonta:"
 
 #: ../src/main.py:2959
 msgid "Font size: "
-msgstr "Ukuran font:"
+msgstr "Ukuran Fonta:"
 
 #: ../src/main.py:2960
 msgid "Color scheme: "
-msgstr "Skema warna:"
+msgstr "Skema Warna:"
 
 #: ../src/main.py:2962
 msgid "Background transparency: "
-msgstr "Transparansi Latar:"
+msgstr "Latar belakang transparan:"
 
 #: ../src/main.py:3209
 msgid "Cursor shape: "
-msgstr "Bentuk kursor:"
+msgstr "Ketajaman Kursor:"
 
 #: ../src/main.py:3210
 msgid "Cursor blink: "
-msgstr "Kedip Kursor:"
+msgstr "Kedipan Kursor:"
 
 #: ../src/main.py:3211
 msgid "Encoding: "
-msgstr "Encoding:"
+msgstr "Enkoding:"
 
 #: ../src/main.py:3212
 msgid "Window startup mode: "
-msgstr "Mode mulai Jendela:"
+msgstr "Mode awalan jendela:"
 
 #: ../src/main.py:3213
 msgid "Startup command: "
-msgstr "Perintah Mulai:"
+msgstr "Perintah awalan:"
 
 #: ../src/main.py:3214
 msgid "Startup directory: "
-msgstr "Folder Mulai:"
+msgstr "Direktori awalan:"
 
 #: ../src/main.py:3215
 msgid "Ask on quit"
-msgstr "Tanya saat keluar"
+msgstr "Tanyakan saat keluar"
 
 #: ../src/main.py:3216
 msgid "Scroll on keystroke: "
@@ -506,11 +509,11 @@ msgstr "Gulung keluaran:"
 
 #: ../src/main.py:3218
 msgid "Copy on selection: "
-msgstr "Salin pada seleksi:"
+msgstr "Salin teks terpilih:"
 
 #: ../src/main.py:3219
 msgid "Open file on hover: "
-msgstr "Buka berkas saat hover:"
+msgstr "Buka berkas ketika ditunjuk:"
 
 #: ../src/main.py:3378
 msgid "Save"
@@ -522,15 +525,15 @@ msgstr "Nama:"
 
 #: ../src/main.py:3426 ../src/main.py:3453
 msgid "Server: "
-msgstr "Server:"
+msgstr "Peladen:"
 
 #: ../src/main.py:3426 ../src/main.py:3456
 msgid "Username: "
-msgstr ""
+msgstr "Nama pengguna:"
 
 #: ../src/main.py:3426 ../src/main.py:3459
 msgid "Password: "
-msgstr "Sandi:"
+msgstr "Kata Sandi :"
 
 #: ../src/main.py:3426 ../src/main.py:3462
 msgid "Port: "
@@ -538,7 +541,7 @@ msgstr "Port:"
 
 #: ../src/main.py:3484
 msgid "Remote login"
-msgstr "Login Jarak Jauh"
+msgstr "Akses Masuk jarak jauh"
 
 #: ../src/main.py:3491
 msgid "Add"
@@ -546,7 +549,7 @@ msgstr "Tambah"
 
 #: ../src/main.py:3492
 msgid "Connect"
-msgstr "Sambung"
+msgstr "Sambungkan"
 
 #: ../src/main.py:3500
 msgid "Name"
@@ -554,15 +557,15 @@ msgstr "Nama"
 
 #: ../src/main.py:3500
 msgid "Server"
-msgstr "Server"
+msgstr "Peladen"
 
 #: ../src/main.py:3507
 msgid "Add remote login"
-msgstr "Tambah Login Jarak Jauh"
+msgstr "Tambah akses masuk jarak jauh"
 
 #: ../src/main.py:3574
 msgid "Edit remote login"
-msgstr "Sunting Login Jarak Jauh"
+msgstr "Edit akses jarak jauh"
 
 #: ../src/main.py:3587
 msgid "Edit"
@@ -574,28 +577,28 @@ msgstr "Hapus"
 
 #: ../src/main.py:3748
 msgid "Reset"
-msgstr "Atur Ulang"
+msgstr "Atur ulang"
 
 #: ../src/main.py:3751
 msgid "Close"
-msgstr "Tutu"
+msgstr "Keluar"
 
 #: ../src/main.py:4023
 msgid "working directory"
-msgstr "folder bekerja"
+msgstr "direktori kerja"
 
 #: ../src/main.py:4024
 msgid "run with quake mode"
-msgstr "berjalan dengan mode quake"
+msgstr "jalankan dengan mode layar penuh"
 
 #: ../src/main.py:4025
 msgid "startup terminal with given parameter"
-msgstr "parameter yang diberikan saat startup"
+msgstr "terminal awalah dengan parameter"
 
 #: ../src/main.py:4026
 msgid "show this help message and exit"
-msgstr "tampilkan pesan bantuan dan keluar"
+msgstr "tampilkan pesan bantuan ini dan keluar"
 
 #: ../src/main.py:4027
 msgid "show program's version number and exit"
-msgstr "tampilkan versi program dan keluar"
+msgstr "jalankan nomor versi program dan keluar"

@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-21 17:59+0800\n"
-"PO-Revision-Date: 2014-10-17 06:02+0000\n"
+"PO-Revision-Date: 2014-11-03 15:03+0000\n"
 "Last-Translator: freddy4212 <freddy4212@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/projects/p/deepin-terminal/language/zh_TW/)\n"
 "MIME-Version: 1.0\n"
@@ -251,11 +251,11 @@ msgstr "進階設定"
 
 #: ../src/main.py:584
 msgid "Quit terminal?"
-msgstr "結束終端機？"
+msgstr "退出終端機？"
 
 #: ../src/main.py:585
 msgid "Terminal still has running programs. Are you sure you want to quit?"
-msgstr "終端機中還有程式在執行。您確定要結束嗎？"
+msgstr "終端機中還有程式在執行。您確定要退出嗎？"
 
 #: ../src/main.py:792 ../src/main.py:899
 msgid "Preferences"
@@ -272,7 +272,7 @@ msgstr "顯示捷徑鍵"
 
 #: ../src/main.py:796
 msgid "Quit"
-msgstr "結束"
+msgstr "退出"
 
 #: ../src/main.py:831 ../src/main.py:834 ../src/main.py:2711
 #: ../src/main.py:3056
@@ -498,7 +498,7 @@ msgstr "預設啟動目錄："
 
 #: ../src/main.py:3215
 msgid "Ask on quit"
-msgstr "結束時詢問："
+msgstr "退出時詢問："
 
 #: ../src/main.py:3216
 msgid "Scroll on keystroke: "

@@ -5,14 +5,15 @@
 # Translators:
 # kdavid97 <kdavid97@gmail.hu>, 2014
 # Laszlo Espadas <kw@kardiweb.org>, 2014
+# SlazO <blum1866@gmail.com>, 2014
 # unicum99 <stampf99@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-21 17:59+0800\n"
-"PO-Revision-Date: 2014-10-21 09:20+0000\n"
-"Last-Translator: unicum99 <stampf99@gmail.com>\n"
+"PO-Revision-Date: 2014-10-24 15:51+0000\n"
+"Last-Translator: SlazO <blum1866@gmail.com>\n"
 "Language-Team: Hungarian (http://www.transifex.com/projects/p/deepin-terminal/language/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -35,7 +36,7 @@ msgstr "Teljes képernyő"
 
 #: ../src/main.py:123
 msgid "Block"
-msgstr "Blokkolás "
+msgstr "Blokk"
 
 #: ../src/main.py:124
 msgid "I-beam"
@@ -43,7 +44,7 @@ msgstr "I-beam"
 
 #: ../src/main.py:125
 msgid "Underline"
-msgstr "Aláhúzott"
+msgstr "Alsóvonal"
 
 #: ../src/main.py:127
 msgid "System Default"
@@ -60,7 +61,7 @@ msgstr "Ki"
 #: ../src/main.py:131 ../src/main.py:144 ../src/main.py:159 ../src/main.py:181
 #: ../src/main.py:192
 msgid "Western"
-msgstr "Nyugat"
+msgstr "Nyugati"
 
 #: ../src/main.py:132 ../src/main.py:160 ../src/main.py:171 ../src/main.py:190
 msgid "Central Europe"
@@ -72,7 +73,7 @@ msgstr "Dél Európa "
 
 #: ../src/main.py:134 ../src/main.py:142 ../src/main.py:197
 msgid "Baltic"
-msgstr "Baltic"
+msgstr "Balti"
 
 #: ../src/main.py:135 ../src/main.py:161 ../src/main.py:167 ../src/main.py:168
 #: ../src/main.py:173 ../src/main.py:191
@@ -89,7 +90,7 @@ msgstr "Görög"
 
 #: ../src/main.py:138
 msgid "Hebrew Visual"
-msgstr "Héber vizuálisan"
+msgstr "Héber Visual"
 
 #: ../src/main.py:139 ../src/main.py:163 ../src/main.py:179 ../src/main.py:195
 msgid "Hebrew"
@@ -101,7 +102,7 @@ msgstr "Török"
 
 #: ../src/main.py:141
 msgid "Germanic"
-msgstr "Germánul"
+msgstr "Germán"
 
 #: ../src/main.py:143
 msgid "Celtic"
@@ -121,11 +122,11 @@ msgstr "Örmény"
 
 #: ../src/main.py:148 ../src/main.py:149 ../src/main.py:150 ../src/main.py:158
 msgid "Chinese Simplified"
-msgstr "Kínai (egyszerűsített)"
+msgstr "Egyszerűsített kínai"
 
 #: ../src/main.py:151 ../src/main.py:152 ../src/main.py:153
 msgid "Chinese Traditional"
-msgstr "Kínai (hagyományos)"
+msgstr "Hagyományos kínai"
 
 #: ../src/main.py:154
 msgid "Cyrillic/Russian"
@@ -173,7 +174,7 @@ msgstr "Izlandi"
 
 #: ../src/main.py:186 ../src/main.py:189 ../src/main.py:198
 msgid "Vietnamese"
-msgstr "Vietnami"
+msgstr "Vietnám"
 
 #: ../src/main.py:187
 msgid "Thai"
@@ -205,15 +206,15 @@ msgstr "Solarized"
 
 #: ../src/main.py:309 ../src/main.py:310
 msgid "Eighties"
-msgstr "nyolcvanas "
+msgstr "Nyolcvanas évek"
 
 #: ../src/main.py:311
 msgid "Grey on black"
-msgstr "Szürke fekete"
+msgstr "Szürke a feketén"
 
 #: ../src/main.py:312
 msgid "Black on yellow"
-msgstr "Fekete sárga"
+msgstr "Fekete a sárgán"
 
 #: ../src/main.py:313
 msgid "Black on white"
@@ -225,7 +226,7 @@ msgstr "Fehér fekete"
 
 #: ../src/main.py:315
 msgid "Green on black"
-msgstr "Zöld fekete"
+msgstr "Zöld a feketén"
 
 #: ../src/main.py:316
 msgid "Custom"
@@ -249,11 +250,11 @@ msgstr "Kibővített"
 
 #: ../src/main.py:584
 msgid "Quit terminal?"
-msgstr "Kilépünk a terminalból?"
+msgstr "Terminál bezárása?"
 
 #: ../src/main.py:585
 msgid "Terminal still has running programs. Are you sure you want to quit?"
-msgstr "Még van futó folyamat ebben a terminálban. Bezárja a terminált?"
+msgstr "A terminál még mindig futtat programokat. Biztos, hogy kilép?"
 
 #: ../src/main.py:792 ../src/main.py:899
 msgid "Preferences"
@@ -291,7 +292,7 @@ msgstr "Könyvtár megnyitása"
 
 #: ../src/main.py:847
 msgid "Open URL"
-msgstr "Hivatkozás megnyitás"
+msgstr "URL megnyitás"
 
 #: ../src/main.py:849
 msgid "Open manual"
@@ -299,15 +300,15 @@ msgstr "Kézikönyv megnyitás"
 
 #: ../src/main.py:853
 msgid "Clear screen"
-msgstr "Kijelző tisztítása "
+msgstr "Képernyő tisztítása "
 
 #: ../src/main.py:854
 msgid "Open current directory"
-msgstr "Jelenleg használt könyvtár megnyitás"
+msgstr "Jelenleg használt könyvtár megnyitása"
 
 #: ../src/main.py:859 ../src/main.py:2722 ../src/main.py:3080
 msgid "Show correlative child window"
-msgstr "Mutassa korrelatív gyermek ablakot"
+msgstr "Mutassa a hozzá tartozó alablakot"
 
 #: ../src/main.py:862
 msgid "Exit fullscreen"
@@ -323,11 +324,11 @@ msgstr "Vízszintes felosztás"
 
 #: ../src/main.py:871 ../src/main.py:2737 ../src/main.py:3060
 msgid "Close current window"
-msgstr "Aktuális ablak bezárása"
+msgstr "Jelenlegi ablak bezárása"
 
 #: ../src/main.py:875 ../src/main.py:2738 ../src/main.py:3061
 msgid "Close other windows"
-msgstr "Másik ablak bezárása"
+msgstr "Többi ablak bezárása"
 
 #: ../src/main.py:883 ../src/main.py:890 ../src/main.py:2727
 #: ../src/main.py:3071
@@ -336,11 +337,11 @@ msgstr "Új munkaterület"
 
 #: ../src/main.py:884
 msgid "Switch workspace"
-msgstr "Váltás a munkaterületek között "
+msgstr "Munkaterület váltás"
 
 #: ../src/main.py:885 ../src/main.py:2730 ../src/main.py:3072
 msgid "Close workspace"
-msgstr "munkaterület bezárása "
+msgstr "Munkaterület bezárása "
 
 #: ../src/main.py:896
 msgid "Search"
@@ -352,7 +353,7 @@ msgstr "Ablak bezárása?"
 
 #: ../src/main.py:1144 ../src/main.py:1902
 msgid "Window still has running programs. Are you sure you want to close?"
-msgstr "Az ablaknak van még futó folyamata. Biztos be szeretné zárni?"
+msgstr "Az ablakban még futnak programok. Biztos, hogy bezárja?"
 
 #: ../src/main.py:1146
 msgid "Close workspace?"
@@ -360,7 +361,7 @@ msgstr "Munkaterület bezárása?"
 
 #: ../src/main.py:1147
 msgid "Workspace still has running programs. Are you sure you want to close?"
-msgstr "A munkaterületnek van még futó alkalmazása? Be szeretné zárni?"
+msgstr "A munkaterületen még futnak programok. Biztos, hogy bezárja?"
 
 #: ../src/main.py:2139
 msgid "Workspace"
@@ -392,7 +393,7 @@ msgstr "Szó kijelölése"
 
 #: ../src/main.py:2717
 msgid "Double click"
-msgstr "dupla kattintás "
+msgstr "Dupla kattintás "
 
 #: ../src/main.py:2718
 msgid "Open"
@@ -404,15 +405,15 @@ msgstr "Ctrl + bal egérgomb  "
 
 #: ../src/main.py:2719 ../src/main.py:3069
 msgid "Zoom out"
-msgstr "Kifelé zoomolás "
+msgstr "Kicsinyítés"
 
 #: ../src/main.py:2720 ../src/main.py:3068
 msgid "Zoom in"
-msgstr "Zoomolás"
+msgstr "Nagyítás"
 
 #: ../src/main.py:2721 ../src/main.py:3070
 msgid "Reset zoom"
-msgstr "Zoom vissza állítása"
+msgstr "Eredeti méret"
 
 #: ../src/main.py:2726
 msgid "Workspace command"
@@ -428,19 +429,19 @@ msgstr "Következő munkaterület"
 
 #: ../src/main.py:2733 ../src/main.py:3064
 msgid "Focus the terminal above"
-msgstr "A felső terminált fókuszálni"
+msgstr "Felül lévő terminált előtérbe helyezni"
 
 #: ../src/main.py:2734 ../src/main.py:3065
 msgid "Focus the terminal below"
-msgstr "Az alsó terminált fókuszálni"
+msgstr "Alul lévő terminált előtérbe helyezni"
 
 #: ../src/main.py:2735 ../src/main.py:3066
 msgid "Focus the terminal left"
-msgstr "Terminál baloldalt fókuszálni"
+msgstr "Baloldalon lévő terminált előtérbe helyezni"
 
 #: ../src/main.py:2736 ../src/main.py:3067
 msgid "Focus the terminal right"
-msgstr "A jobb oldali terminál fókuszálása "
+msgstr "Jobboldalon lévő terminált előtérbe helyezni"
 
 #: ../src/main.py:2742
 msgid "Advanced command"
@@ -448,7 +449,7 @@ msgstr "Haladó parancsok "
 
 #: ../src/main.py:2764
 msgid "Adjust opacity"
-msgstr "Átjátszhatóság beállítása "
+msgstr "Átlátszóság állítása"
 
 #: ../src/main.py:2764
 msgid "Ctrl + Wheel"
@@ -456,31 +457,31 @@ msgstr "Ctrl + Görgő "
 
 #: ../src/main.py:2958
 msgid "Font: "
-msgstr "Betűtípus"
+msgstr "Betűtípus:"
 
 #: ../src/main.py:2959
 msgid "Font size: "
-msgstr "Betű méret"
+msgstr "Betű méret:"
 
 #: ../src/main.py:2960
 msgid "Color scheme: "
-msgstr "szín séma"
+msgstr "Színek:"
 
 #: ../src/main.py:2962
 msgid "Background transparency: "
-msgstr "Átlátszó háttér "
+msgstr "Háttér átlátszóság:"
 
 #: ../src/main.py:3209
 msgid "Cursor shape: "
-msgstr "Kurzor kinézet"
+msgstr "Kurzor alakja:"
 
 #: ../src/main.py:3210
 msgid "Cursor blink: "
-msgstr "Cursor villog"
+msgstr "Kurzor villogás:"
 
 #: ../src/main.py:3211
 msgid "Encoding: "
-msgstr "Kikódolás:"
+msgstr "Kódolás:"
 
 #: ../src/main.py:3212
 msgid "Window startup mode: "
@@ -508,15 +509,15 @@ msgstr "Görgetés a kimenetnél:"
 
 #: ../src/main.py:3218
 msgid "Copy on selection: "
-msgstr "Másolás kiválasztása:"
+msgstr "Kiválasztáskor másol:"
 
 #: ../src/main.py:3219
 msgid "Open file on hover: "
-msgstr "Kijelölt adat megnyitása:"
+msgstr "Kijelölt adat megnyitása ha a kurzor fölötte van:"
 
 #: ../src/main.py:3378
 msgid "Save"
-msgstr "mentés"
+msgstr "Mentés"
 
 #: ../src/main.py:3426 ../src/main.py:3450
 msgid "Name: "
@@ -588,7 +589,7 @@ msgstr "Munka könyvtár"
 
 #: ../src/main.py:4024
 msgid "run with quake mode"
-msgstr "Teljes képernyős mód "
+msgstr "futtatás teljes képernyős módban"
 
 #: ../src/main.py:4025
 msgid "startup terminal with given parameter"
@@ -596,8 +597,8 @@ msgstr "A terminált a következő paraméterekkel elindítani"
 
 #: ../src/main.py:4026
 msgid "show this help message and exit"
-msgstr "Információ a segítséghez  és befejezni"
+msgstr "Mutassa ezt a segítség üznetet és kilépés"
 
 #: ../src/main.py:4027
 msgid "show program's version number and exit"
-msgstr "Programverzió megnézése és kilépés"
+msgstr "Program verziószámának mutatása és kilépés"
