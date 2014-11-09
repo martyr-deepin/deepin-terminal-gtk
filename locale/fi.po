@@ -1,601 +1,601 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# Kimmo Siniluoto <robotti1984@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-21 17:59+0800\n"
-"PO-Revision-Date: 2014-03-22 09:14+0000\n"
-"Last-Translator: cxbii <mycxbii@gmail.com>\n"
-"Language-Team: Finnish (http://www.transifex.com/projects/p/deepin-terminal/"
-"language/fi/)\n"
-"Language: fi\n"
+"PO-Revision-Date: 2014-12-04 04:51+0000\n"
+"Last-Translator: Kimmo Siniluoto <robotti1984@gmail.com>\n"
+"Language-Team: Finnish (http://www.transifex.com/projects/p/deepin-terminal/language/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fi\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../src/main.py:119
 msgid "Normal"
-msgstr ""
+msgstr "Normaali"
 
 #: ../src/main.py:120
 msgid "Maximize"
-msgstr ""
+msgstr "Suurenna"
 
 #: ../src/main.py:121 ../src/main.py:864 ../src/main.py:2743
 #: ../src/main.py:3077
 msgid "Fullscreen"
-msgstr ""
+msgstr "Koko näytön tila"
 
 #: ../src/main.py:123
 msgid "Block"
-msgstr ""
+msgstr "Lohko"
 
 #: ../src/main.py:124
 msgid "I-beam"
-msgstr ""
+msgstr "I-viiva"
 
 #: ../src/main.py:125
 msgid "Underline"
-msgstr ""
+msgstr "Alaviiva"
 
 #: ../src/main.py:127
 msgid "System Default"
-msgstr ""
+msgstr "Järjestelmän oletus"
 
 #: ../src/main.py:128
 msgid "On"
-msgstr ""
+msgstr "Päällä"
 
 #: ../src/main.py:129
 msgid "Off"
-msgstr ""
+msgstr "Pois"
 
 #: ../src/main.py:131 ../src/main.py:144 ../src/main.py:159 ../src/main.py:181
 #: ../src/main.py:192
 msgid "Western"
-msgstr ""
+msgstr "Läntinen"
 
 #: ../src/main.py:132 ../src/main.py:160 ../src/main.py:171 ../src/main.py:190
 msgid "Central Europe"
-msgstr ""
+msgstr "Keskieurooppalainen"
 
 #: ../src/main.py:133
 msgid "South Europe"
-msgstr ""
+msgstr "Eteläeurooppalainen"
 
 #: ../src/main.py:134 ../src/main.py:142 ../src/main.py:197
 msgid "Baltic"
-msgstr ""
+msgstr "Baltialainen"
 
 #: ../src/main.py:135 ../src/main.py:161 ../src/main.py:167 ../src/main.py:168
 #: ../src/main.py:173 ../src/main.py:191
 msgid "Cyrillic"
-msgstr ""
+msgstr "Kyrillinen"
 
 #: ../src/main.py:136 ../src/main.py:164 ../src/main.py:170 ../src/main.py:196
 msgid "Arabic"
-msgstr ""
+msgstr "Arabialainen"
 
 #: ../src/main.py:137 ../src/main.py:176 ../src/main.py:193
 msgid "Greek"
-msgstr ""
+msgstr "Kreikkalainen"
 
 #: ../src/main.py:138
 msgid "Hebrew Visual"
-msgstr ""
+msgstr "Hebrealainen Visual"
 
 #: ../src/main.py:139 ../src/main.py:163 ../src/main.py:179 ../src/main.py:195
 msgid "Hebrew"
-msgstr ""
+msgstr "Hebrealainen"
 
 #: ../src/main.py:140 ../src/main.py:162 ../src/main.py:183 ../src/main.py:194
 msgid "Turkish"
-msgstr ""
+msgstr "Turkkilainen"
 
 #: ../src/main.py:141
 msgid "Germanic"
-msgstr ""
+msgstr "Keskieurooppalainen"
 
 #: ../src/main.py:143
 msgid "Celtic"
-msgstr ""
+msgstr "Kelttiläinen"
 
 #: ../src/main.py:145 ../src/main.py:182
 msgid "Romanian"
-msgstr ""
+msgstr "Romanialainen"
 
 #: ../src/main.py:146
 msgid "Unicode"
-msgstr ""
+msgstr "Unicode"
 
 #: ../src/main.py:147
 msgid "Armenian"
-msgstr ""
+msgstr "Armenialainen"
 
 #: ../src/main.py:148 ../src/main.py:149 ../src/main.py:150 ../src/main.py:158
 msgid "Chinese Simplified"
-msgstr ""
+msgstr "Kiinalainen yksinkertaistettu"
 
 #: ../src/main.py:151 ../src/main.py:152 ../src/main.py:153
 msgid "Chinese Traditional"
-msgstr ""
+msgstr "Kiinalainen perinteinen"
 
 #: ../src/main.py:154
 msgid "Cyrillic/Russian"
-msgstr ""
+msgstr "Kyrillinen/Venäläinen"
 
 #: ../src/main.py:155 ../src/main.py:165 ../src/main.py:185
 msgid "Japanese"
-msgstr ""
+msgstr "Japanilainen"
 
 #: ../src/main.py:156 ../src/main.py:166 ../src/main.py:188
 msgid "Korean"
-msgstr ""
+msgstr "Korealainen"
 
 #: ../src/main.py:157
 msgid "Georgian"
-msgstr ""
+msgstr "Georgialainen"
 
 #: ../src/main.py:169 ../src/main.py:184
 msgid "Cyrillic/Ukrainian"
-msgstr ""
+msgstr "Kyrillinen/Ukrainalainen"
 
 #: ../src/main.py:172
 msgid "Croatian"
-msgstr ""
+msgstr "Croatian"
 
 #: ../src/main.py:174
 msgid "Hindi"
-msgstr ""
+msgstr "Hindi"
 
 #: ../src/main.py:175
 msgid "Persian"
-msgstr ""
+msgstr "Persian"
 
 #: ../src/main.py:177
 msgid "Gujarati"
-msgstr ""
+msgstr "Gujarati"
 
 #: ../src/main.py:178
 msgid "Gurmukhi"
-msgstr ""
+msgstr "Gurmukhi"
 
 #: ../src/main.py:180
 msgid "Icelandic"
-msgstr ""
+msgstr "Icelandic"
 
 #: ../src/main.py:186 ../src/main.py:189 ../src/main.py:198
 msgid "Vietnamese"
-msgstr ""
+msgstr "Vietnamilainen"
 
 #: ../src/main.py:187
 msgid "Thai"
-msgstr ""
+msgstr "Thaimaalainen"
 
 #: ../src/main.py:303
 msgid "Deepin"
-msgstr ""
+msgstr "Deepin"
 
 #: ../src/main.py:304
 msgid "Mocha"
-msgstr ""
+msgstr "Mocha"
 
 #: ../src/main.py:305
 msgid "Green screen"
-msgstr ""
+msgstr "Green screen"
 
 #: ../src/main.py:306
 msgid "Ocean"
-msgstr ""
+msgstr "Meri"
 
 #: ../src/main.py:307
 msgid "Monokai"
-msgstr ""
+msgstr "Monokai"
 
 #: ../src/main.py:308
 msgid "Solarized"
-msgstr ""
+msgstr "Solarized"
 
 #: ../src/main.py:309 ../src/main.py:310
 msgid "Eighties"
-msgstr ""
+msgstr "80-luku"
 
 #: ../src/main.py:311
 msgid "Grey on black"
-msgstr ""
+msgstr "Harmaa mustalla"
 
 #: ../src/main.py:312
 msgid "Black on yellow"
-msgstr ""
+msgstr "Musta keltaisella"
 
 #: ../src/main.py:313
 msgid "Black on white"
-msgstr ""
+msgstr "Musta valkoisella"
 
 #: ../src/main.py:314
 msgid "White on black"
-msgstr ""
+msgstr "Valkoinen mustalla"
 
 #: ../src/main.py:315
 msgid "Green on black"
-msgstr ""
+msgstr "Vihreä mustalla"
 
 #: ../src/main.py:316
 msgid "Custom"
-msgstr ""
+msgstr "Kustomoitu"
 
 #: ../src/main.py:427
 msgid "Deepin Terminal"
-msgstr ""
+msgstr "Deepin Pääte"
 
 #: ../src/main.py:475
 msgid "General"
-msgstr ""
+msgstr "Yleinen"
 
 #: ../src/main.py:476
 msgid "Hotkeys"
-msgstr ""
+msgstr "Pikanäppäimet"
 
 #: ../src/main.py:477
 msgid "Advanced"
-msgstr ""
+msgstr "Lisäasetukset"
 
 #: ../src/main.py:584
 msgid "Quit terminal?"
-msgstr ""
+msgstr "Sulje pääte?"
 
 #: ../src/main.py:585
 msgid "Terminal still has running programs. Are you sure you want to quit?"
-msgstr ""
+msgstr "Tässä päätteessä on vielä käynnissä prosessi. Päätteen sulkeminen lopettaa tämän prosessin."
 
 #: ../src/main.py:792 ../src/main.py:899
 msgid "Preferences"
-msgstr ""
+msgstr "Asetukset"
 
 #: ../src/main.py:793 ../src/main.py:2745 ../src/main.py:3079
 msgid "Set up SSH connection"
-msgstr ""
+msgstr "Määritä SSH-yhteys"
 
 #: ../src/main.py:794 ../src/main.py:897 ../src/main.py:2744
 #: ../src/main.py:3078
 msgid "Display hotkeys"
-msgstr ""
+msgstr "Näytä pikanäppäimet"
 
 #: ../src/main.py:796
 msgid "Quit"
-msgstr ""
+msgstr "Poistu"
 
 #: ../src/main.py:831 ../src/main.py:834 ../src/main.py:2711
 #: ../src/main.py:3056
 msgid "Copy"
-msgstr ""
+msgstr "Kopioi"
 
 #: ../src/main.py:836 ../src/main.py:2712 ../src/main.py:3057
 msgid "Paste"
-msgstr ""
+msgstr "Liitä"
 
 #: ../src/main.py:843
 msgid "Open file"
-msgstr ""
+msgstr "Avaa tiedosto"
 
 #: ../src/main.py:845
 msgid "Open directory"
-msgstr ""
+msgstr "Avaa hakemisto"
 
 #: ../src/main.py:847
 msgid "Open URL"
-msgstr ""
+msgstr "Avaa URL"
 
 #: ../src/main.py:849
 msgid "Open manual"
-msgstr ""
+msgstr "Avaa ohje"
 
 #: ../src/main.py:853
 msgid "Clear screen"
-msgstr ""
+msgstr "Tyhjennä"
 
 #: ../src/main.py:854
 msgid "Open current directory"
-msgstr ""
+msgstr "Avaa nykyinen hakemisto"
 
 #: ../src/main.py:859 ../src/main.py:2722 ../src/main.py:3080
 msgid "Show correlative child window"
-msgstr ""
+msgstr "Näytä korreloiva lapsi-ikkuna"
 
 #: ../src/main.py:862
 msgid "Exit fullscreen"
-msgstr ""
+msgstr "Poistu koko näytön tilasta"
 
 #: ../src/main.py:869 ../src/main.py:2731 ../src/main.py:3058
 msgid "Split vertically"
-msgstr ""
+msgstr "Jaa pystysuunnassa"
 
 #: ../src/main.py:870 ../src/main.py:2732 ../src/main.py:3059
 msgid "Split horizontally"
-msgstr ""
+msgstr "Jaa vaakasuunnassa"
 
 #: ../src/main.py:871 ../src/main.py:2737 ../src/main.py:3060
 msgid "Close current window"
-msgstr ""
+msgstr "Sulje nykyinen ikkuna"
 
 #: ../src/main.py:875 ../src/main.py:2738 ../src/main.py:3061
 msgid "Close other windows"
-msgstr ""
+msgstr "Sulje muut ikkunat"
 
 #: ../src/main.py:883 ../src/main.py:890 ../src/main.py:2727
 #: ../src/main.py:3071
 msgid "New workspace"
-msgstr ""
+msgstr "Uusi työtila"
 
 #: ../src/main.py:884
 msgid "Switch workspace"
-msgstr ""
+msgstr "Vaihda työtila"
 
 #: ../src/main.py:885 ../src/main.py:2730 ../src/main.py:3072
 msgid "Close workspace"
-msgstr ""
+msgstr "Sulje työtila"
 
 #: ../src/main.py:896
 msgid "Search"
-msgstr ""
+msgstr "Etsi"
 
 #: ../src/main.py:1143 ../src/main.py:1901
 msgid "Close window?"
-msgstr ""
+msgstr "Suljetaanko tämä ikkuna?"
 
 #: ../src/main.py:1144 ../src/main.py:1902
 msgid "Window still has running programs. Are you sure you want to close?"
-msgstr ""
+msgstr "Tässä ikkunassa on vielä käynnissä prosesseja. Ikkunan sulkeminen lopettaa nämä prosessit."
 
 #: ../src/main.py:1146
 msgid "Close workspace?"
-msgstr ""
+msgstr "Suljetaanko tämä työtila?"
 
 #: ../src/main.py:1147
 msgid "Workspace still has running programs. Are you sure you want to close?"
-msgstr ""
+msgstr "Työtilassa on vielä käynnissä prosessi. Työtilan sulkeminen lopettaa tämän prosessin."
 
 #: ../src/main.py:2139
 msgid "Workspace"
-msgstr ""
+msgstr "Työtila"
 
 #: ../src/main.py:2710
 msgid "Terminal command"
-msgstr ""
+msgstr "Pääte komento"
 
 #: ../src/main.py:2713 ../src/main.py:3062
 msgid "Scroll page up"
-msgstr ""
+msgstr "Vieritä sivu ylös"
 
 #: ../src/main.py:2714 ../src/main.py:3063
 msgid "Scroll page down"
-msgstr ""
+msgstr "Vieritä sivu alas"
 
 #: ../src/main.py:2715 ../src/main.py:3075
 msgid "Search forward"
-msgstr ""
+msgstr "Etsi seuraava"
 
 #: ../src/main.py:2716 ../src/main.py:3076
 msgid "Search backward"
-msgstr ""
+msgstr "Etsi edellinen"
 
 #: ../src/main.py:2717
 msgid "Select word"
-msgstr ""
+msgstr "Valitse sana"
 
 #: ../src/main.py:2717
 msgid "Double click"
-msgstr ""
+msgstr "Kaksoisklikkaus"
 
 #: ../src/main.py:2718
 msgid "Open"
-msgstr ""
+msgstr "Avaa"
 
 #: ../src/main.py:2718
 msgid "Ctrl + Left click"
-msgstr ""
+msgstr "Ctrl + Vasen klikkaus"
 
 #: ../src/main.py:2719 ../src/main.py:3069
 msgid "Zoom out"
-msgstr ""
+msgstr "Loitonna"
 
 #: ../src/main.py:2720 ../src/main.py:3068
 msgid "Zoom in"
-msgstr ""
+msgstr "Lähennä"
 
 #: ../src/main.py:2721 ../src/main.py:3070
 msgid "Reset zoom"
-msgstr ""
+msgstr "Tavallinen koko"
 
 #: ../src/main.py:2726
 msgid "Workspace command"
-msgstr ""
+msgstr "Työtila komento"
 
 #: ../src/main.py:2728 ../src/main.py:3073
 msgid "Previous workspace"
-msgstr ""
+msgstr "Edellinen työtila"
 
 #: ../src/main.py:2729 ../src/main.py:3074
 msgid "Next workspace"
-msgstr ""
+msgstr "Seuraava työtila"
 
 #: ../src/main.py:2733 ../src/main.py:3064
 msgid "Focus the terminal above"
-msgstr ""
+msgstr "Kohdista alapuolella olevaan pääteeseen"
 
 #: ../src/main.py:2734 ../src/main.py:3065
 msgid "Focus the terminal below"
-msgstr ""
+msgstr "Kohdista yläpuolella olevaan päätteeseen"
 
 #: ../src/main.py:2735 ../src/main.py:3066
 msgid "Focus the terminal left"
-msgstr ""
+msgstr "Kohdista vasemmalla olevaan päätteeseen"
 
 #: ../src/main.py:2736 ../src/main.py:3067
 msgid "Focus the terminal right"
-msgstr ""
+msgstr "Kohdista oikealla olevaan päätteeseen"
 
 #: ../src/main.py:2742
 msgid "Advanced command"
-msgstr ""
+msgstr "Tarkennettu komento"
 
 #: ../src/main.py:2764
 msgid "Adjust opacity"
-msgstr ""
+msgstr "Säädä peittävyys"
 
 #: ../src/main.py:2764
 msgid "Ctrl + Wheel"
-msgstr ""
+msgstr "Ctrl + Rulla"
 
 #: ../src/main.py:2958
 msgid "Font: "
-msgstr ""
+msgstr "Kirjasin:"
 
 #: ../src/main.py:2959
 msgid "Font size: "
-msgstr ""
+msgstr "Kirjasimen koko:"
 
 #: ../src/main.py:2960
 msgid "Color scheme: "
-msgstr ""
+msgstr "Värimallit:"
 
 #: ../src/main.py:2962
 msgid "Background transparency: "
-msgstr ""
+msgstr "Taustan läpinäkyvyys"
 
 #: ../src/main.py:3209
 msgid "Cursor shape: "
-msgstr ""
+msgstr "Kohdistimen muoto:"
 
 #: ../src/main.py:3210
 msgid "Cursor blink: "
-msgstr ""
+msgstr "Vilkkuva kohdistin:"
 
 #: ../src/main.py:3211
 msgid "Encoding: "
-msgstr ""
+msgstr "Merkistökoodaus:"
 
 #: ../src/main.py:3212
 msgid "Window startup mode: "
-msgstr ""
+msgstr "Ikkunan käynnistystila:"
 
 #: ../src/main.py:3213
 msgid "Startup command: "
-msgstr ""
+msgstr "Käynnistyskomento:"
 
 #: ../src/main.py:3214
 msgid "Startup directory: "
-msgstr ""
+msgstr "Käynnistyshakemisto:"
 
 #: ../src/main.py:3215
 msgid "Ask on quit"
-msgstr ""
+msgstr "Varoita suljettaessa"
 
 #: ../src/main.py:3216
 msgid "Scroll on keystroke: "
-msgstr ""
+msgstr "Vieritä näppäilystä:"
 
 #: ../src/main.py:3217
 msgid "Scroll on output: "
-msgstr ""
+msgstr "Vieritä tulosteesta:"
 
 #: ../src/main.py:3218
 msgid "Copy on selection: "
-msgstr ""
+msgstr "Kopioi valittuna:"
 
 #: ../src/main.py:3219
 msgid "Open file on hover: "
-msgstr ""
+msgstr "Avaa tiedosto klikkaamatta:"
 
 #: ../src/main.py:3378
 msgid "Save"
-msgstr ""
+msgstr "Tallenna"
 
 #: ../src/main.py:3426 ../src/main.py:3450
 msgid "Name: "
-msgstr ""
+msgstr "Nimi:"
 
 #: ../src/main.py:3426 ../src/main.py:3453
 msgid "Server: "
-msgstr ""
+msgstr "Palvelin:"
 
 #: ../src/main.py:3426 ../src/main.py:3456
 msgid "Username: "
-msgstr ""
+msgstr "Käyttäjä:"
 
 #: ../src/main.py:3426 ../src/main.py:3459
 msgid "Password: "
-msgstr ""
+msgstr "Salasana:"
 
 #: ../src/main.py:3426 ../src/main.py:3462
 msgid "Port: "
-msgstr ""
+msgstr "Portti:"
 
 #: ../src/main.py:3484
 msgid "Remote login"
-msgstr ""
+msgstr "Remote login"
 
 #: ../src/main.py:3491
 msgid "Add"
-msgstr ""
+msgstr "Lisää"
 
 #: ../src/main.py:3492
 msgid "Connect"
-msgstr ""
+msgstr "Yhdistä"
 
 #: ../src/main.py:3500
 msgid "Name"
-msgstr ""
+msgstr "Nimi"
 
 #: ../src/main.py:3500
 msgid "Server"
-msgstr ""
+msgstr "Palvelin"
 
 #: ../src/main.py:3507
 msgid "Add remote login"
-msgstr ""
+msgstr "Lisää remote login"
 
 #: ../src/main.py:3574
 msgid "Edit remote login"
-msgstr ""
+msgstr "Muokaa remote login"
 
 #: ../src/main.py:3587
 msgid "Edit"
-msgstr ""
+msgstr "Muokkaa"
 
 #: ../src/main.py:3588
 msgid "Delete"
-msgstr ""
+msgstr "Poista"
 
 #: ../src/main.py:3748
 msgid "Reset"
-msgstr ""
+msgstr "Resetoi"
 
 #: ../src/main.py:3751
 msgid "Close"
-msgstr ""
+msgstr "Sulje"
 
 #: ../src/main.py:4023
 msgid "working directory"
-msgstr ""
+msgstr "työhakemisto"
 
 #: ../src/main.py:4024
 msgid "run with quake mode"
-msgstr ""
+msgstr "suorita quake-tilassa"
 
 #: ../src/main.py:4025
 msgid "startup terminal with given parameter"
-msgstr ""
+msgstr "suorita pääte annetulla parametrilla:"
 
 #: ../src/main.py:4026
 msgid "show this help message and exit"
-msgstr ""
+msgstr "näytä tämä ohjeviesti ja poistu"
 
 #: ../src/main.py:4027
 msgid "show program's version number and exit"
-msgstr ""
+msgstr "näytä ohjelman versionumero ja poistu"

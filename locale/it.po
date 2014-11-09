@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Massimo Antonio Carofano <real.massimo@hotmail.it>, 2014
 # massimo.carofano <massimo.carofano@gmail.com>, 2014
 # Massimo Antonio Carofano <real.massimo@hotmail.it>, 2014
 msgid ""
@@ -10,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Deepin Terminal\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-21 17:59+0800\n"
-"PO-Revision-Date: 2014-10-13 20:41+0000\n"
+"PO-Revision-Date: 2014-12-04 04:51+0000\n"
 "Last-Translator: Massimo Antonio Carofano <real.massimo@hotmail.it>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/deepin-terminal/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -240,7 +241,7 @@ msgstr "Generali"
 
 #: ../src/main.py:476
 msgid "Hotkeys"
-msgstr "Parole Chiave"
+msgstr "Scorciatoie"
 
 #: ../src/main.py:477
 msgid "Advanced"
@@ -265,7 +266,7 @@ msgstr "Imposta una connessione SSH"
 #: ../src/main.py:794 ../src/main.py:897 ../src/main.py:2744
 #: ../src/main.py:3078
 msgid "Display hotkeys"
-msgstr "Mostra le Hotkeys"
+msgstr "Mostra le scorciatoie"
 
 #: ../src/main.py:796
 msgid "Quit"
