@@ -710,7 +710,7 @@ class Terminal(object):
                 terminal.change_font(font, font_size)
 
     def change_font_size(self, font_size):
-        font = get_config("general", "font")
+        font = get_terminal_font()
         for workspace in self.workspace_list:
             for terminal in get_match_children(workspace, TerminalWrapper):
                 terminal.change_font(font, font_size)
@@ -1371,7 +1371,7 @@ class TerminalWrapper(vte.Terminal):
         encoding = get_config("advanced", "encoding")
         self.change_encoding(encoding)
 
-        font = get_config("general", "font")
+        font = get_terminal_font()
         self.default_font_size = int(get_config("general", "font_size"))
         self.current_font_size = self.default_font_size
         self.change_font(font, self.current_font_size)
@@ -1695,17 +1695,17 @@ class TerminalWrapper(vte.Terminal):
         return(True)
 
     def revert_default_size(self):
-        font = get_config("general", "font")
+        font = get_terminal_font()
         self.current_font_size = self.default_font_size
         self.change_font(font, self.current_font_size)
 
     def zoom_in(self):
-        font = get_config("general", "font")
+        font = get_terminal_font()
         self.current_font_size += 1
         self.change_font(font, self.current_font_size)
 
     def zoom_out(self):
-        font = get_config("general", "font")
+        font = get_terminal_font()
         self.current_font_size = max(MIN_FONT_SIZE, self.current_font_size - 1)
         self.change_font(font, self.current_font_size)
 
@@ -2908,14 +2908,10 @@ class GeneralSettings(gtk.VBox):
         '''
         gtk.VBox.__init__(self)
 
-        font = get_config("general", "font")
-        font_families = get_font_families(True)
+        font = get_terminal_font()
         font_items = map(lambda i: (i, i), font_families)
         self.font_widget = ComboBox(font_items, droplist_height=200, fixed_width=COMBO_BOX_WIDTH)
-        try:
-            self.font_widget.set_select_index(font_families.index(font))
-        except:
-            self.font_widget.set_select_index(font_families.index(BACKUP_FONT))
+        self.font_widget.set_select_index(font_families.index(font))
         self.font_widget.connect("item-selected", self.change_font)
 
         font_size = get_config("general", "font_size")
@@ -3348,6 +3344,14 @@ def get_config(selection, option, default=None):
                 return dict(dict(DEFAULT_CONFIG)[selection])[option]
         except:
             raise "This is a buf of get_config(%s, %s, %s)" % (selection, option, default)
+
+font_families = get_font_families(True)
+def get_terminal_font():
+    font = get_config("general", "font")
+    if font in font_families:
+        return font
+    else:
+        return BACKUP_FONT
 
 class EditRemoteLogin(DialogBox):
     '''
