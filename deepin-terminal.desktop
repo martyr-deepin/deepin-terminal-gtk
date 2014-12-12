@@ -9,16 +9,6 @@ StartupNotify=true
 TryExec=deepin-terminal
 Type=Application
 
-[NewQuake Shortcut Group]
-Exec=deepin-terminal --quake-mode
-Name=New Quake Window
-
-[NewWindow Shortcut Group]
-Exec=deepin-terminal
-Name=New Window
-
-
-
 # Translations
 Name[am]=ተርሚናል
 Icon[am]=ዲፕኢን-ተርሚናል
@@ -129,3 +119,11 @@ Comment[en_AU]=Use the command line
 Name[es_ES]=Terminal Deepin
 Comment[es_ES]=Usar linea de comandos
 Name[sv_SE]=Deepin Terminal
+
+[NewQuake Shortcut Group]
+Exec=deepin-terminal --quake-mode
+Name=New Quake Window
+
+[NewWindow Shortcut Group]
+Exec=deepin-terminal
+Name=New Window
