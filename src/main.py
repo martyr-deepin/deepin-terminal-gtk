@@ -325,6 +325,15 @@ MATCH_COMMAND = 4
 
 MIN_FONT_SIZE = 8
 
+def escape_string(input_string):
+    input_string = input_string.replace("\\", "\\\\\\")
+    input_string = input_string.replace("[", "\\[")
+    input_string = input_string.replace("]", "\\]")
+    input_string = input_string.replace("$", "\\$")
+    input_string = input_string.replace("`", "\\`")
+    input_string = input_string.replace("\"", "\\\"")
+    return input_string
+
 def is_bool(string_value):
     if isinstance(string_value, bool):
         return string_value
@@ -646,7 +655,7 @@ class Terminal(object):
                 content = ''.join(file.readlines())
             content = content.replace("<<USER>>", user)
             content = content.replace("<<SERVER>>", server)
-            content = content.replace("<<PASSWORD>>", password)
+            content = content.replace("<<PASSWORD>>", escape_string(password))
             content = content.replace("<<PORT>>", port)
 
             # create temporary expect script file, and the file will
