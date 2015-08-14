@@ -325,12 +325,10 @@ MATCH_COMMAND = 4
 
 MIN_FONT_SIZE = 8
 
-def escape_string(input_string):
-    input_string = input_string.replace("\\", "\\\\\\")
+def escape_tcl_string(input_string):
+    input_string = input_string.replace("\\", "\\\\")
     input_string = input_string.replace("[", "\\[")
     input_string = input_string.replace("]", "\\]")
-    input_string = input_string.replace("$", "\\$")
-    input_string = input_string.replace("`", "\\`")
     input_string = input_string.replace("\"", "\\\"")
     return input_string
 
@@ -653,9 +651,9 @@ class Terminal(object):
         if focus_terminal:
             with open(os.path.join(get_parent_dir(__file__), "ssh_login.sh")) as file:
                 content = ''.join(file.readlines())
-            content = content.replace("<<USER>>", user)
+            content = content.replace("<<USER>>", escape_tcl_string(user))
             content = content.replace("<<SERVER>>", server)
-            content = content.replace("<<PASSWORD>>", escape_string(password))
+            content = content.replace("<<PASSWORD>>", escape_tcl_string(password))
             content = content.replace("<<PORT>>", port)
 
             # create temporary expect script file, and the file will
@@ -4048,4 +4046,3 @@ if __name__ == "__main__":
 
     if (not opts.quake_mode) or (not is_exists(QUAKE_DBUS_NAME, QUAKE_OBJECT_NAME)):
         Terminal(opts.quake_mode, opts.working_directory, opts.startup_command).run()
-
