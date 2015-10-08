@@ -1,6 +1,22 @@
-This is default terminal for Linux Deepin.
+## Deepin Terminal
+
+This is default terminal emulation application for Linux Deepin.
 
 Deepin terminal base on python-vte and with much patch for advanced features, such as, search, adjust opacity in real-time etc.
+
+## Depends:
+
+* python
+* [deepin-ui](https://github.com/linuxdeepin/deepin-ui)
+* [python-vte](https://github.com/linuxdeepin/python-vte)
+* expect
+* hicolor-icon-theme
+* xdotool
+* [python-deepin-gsettings](https://github.com/linuxdeepin/deepin-gsettings)
+
+## Usage
+
+`python ./src/main.py`
 
 Below is keymap list for deepin-terminal:
 
@@ -40,4 +56,14 @@ Below is keymap list for deepin-terminal:
 | Show remote login window | **Ctrl** + **9**      |
 | Show sub-process window  | **Ctrl** + **8**      |
 
-----
+## Installation
+
+`make && make install`
+
+## Getting involved
+
+We encourage you to report issues and contribute changes. Please check out the [Contribution Guidelines](http://wiki.deepin.org/index.php?title=Contribution_Guidelines) about how to proceed.
+
+## License
+
+GNU General Public License, Version 3.0
