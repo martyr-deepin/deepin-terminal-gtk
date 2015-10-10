@@ -653,11 +653,7 @@ class Terminal(object):
                 content = ''.join(file.readlines())
             content = content.replace("<<USER>>", escape_tcl_string(user))
             content = content.replace("<<SERVER>>", server)
-<<<<<<< HEAD
-            content = content.replace("<<PASSWORD>>", escape_string(password))
-=======
             content = content.replace("<<PASSWORD>>", escape_tcl_string(password))
->>>>>>> release/1.1
             content = content.replace("<<PORT>>", port)
 
             # create temporary expect script file, and the file will
