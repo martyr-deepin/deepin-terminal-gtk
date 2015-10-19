@@ -1,8 +1,8 @@
-## Deepin Terminal
+# Deepin Terminal
 
 This is default terminal emulation application for Linux Deepin.
 
-Deepin terminal base on python-vte and with much patch for advanced features, such as, search, adjust opacity in real-time etc.
+Deepin terminal base on python-vte and with many patches for advanced features, such as, searching, opacity adjusting in real-time etc.
 
 ## Depends:
 
@@ -60,10 +60,21 @@ Below is keymap list for deepin-terminal:
 
 `make && make install`
 
+## Getting help
+
+Any usage issues can ask for help via
+[Gitter](https://gitter.im/orgs/linuxdeepin/rooms)
+[IRC channel](https://webchat.freenode.net/?channels=deepin)
+[Forum](https://bbs.deepin.org)
+[WiKi](http://wiki.deepin.org/)
+
 ## Getting involved
 
-We encourage you to report issues and contribute changes. Please check out the [Contribution Guidelines](http://wiki.deepin.org/index.php?title=Contribution_Guidelines) about how to proceed.
+We encourage you to report issues and contribute changes
+[Contirubtion guide for users](http://wiki.deepin.org/index.php?title=Contribution_Guidelines_for_Users)
+[Contribution guide for developers](http://wiki.deepin.org/index.php?title=Contribution_Guidelines_for_Developers).
 
 ## License
 
-GNU General Public License, Version 3.0
+Deepin Terminal is licensed under [GPLv3](LICENSE).
+
