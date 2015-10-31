@@ -4,7 +4,7 @@ This is default terminal emulation application for Linux Deepin.
 
 Deepin terminal base on python-vte and with many patches for advanced features, such as, searching, opacity adjusting in real-time etc.
 
-## Depends:
+## Dependencies
 
 * python
 * [deepin-ui](https://github.com/linuxdeepin/deepin-ui)
@@ -73,7 +73,7 @@ Any usage issues can ask for help via
 
 We encourage you to report issues and contribute changes
 
-* [Contirubtion guide for users](http://wiki.deepin.org/index.php?title=Contribution_Guidelines_for_Users)
+* [Contribution guide for users](http://wiki.deepin.org/index.php?title=Contribution_Guidelines_for_Users)
 * [Contribution guide for developers](http://wiki.deepin.org/index.php?title=Contribution_Guidelines_for_Developers).
 
 ## License
