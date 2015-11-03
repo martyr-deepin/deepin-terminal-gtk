@@ -248,6 +248,7 @@ GENERAL_CONFIG = [
     ]
 
 KEYBIND_CONFIG = [
+    ("show_manual", "F1"),
     ("copy_clipboard", "Ctrl + Shift + c"),
     ("paste_clipboard", "Ctrl + Shift + v"),
     ("split_vertically", "Ctrl + Shift + h"),
@@ -674,6 +675,7 @@ class Terminal(object):
         get_keybind = lambda key_value: get_config("keybind", key_value)
 
         key_values = [
+            "show_manual",
             "toggle_full_screen",
             "new_workspace",
             "search_forward",
@@ -910,6 +912,12 @@ class Terminal(object):
 
         # Show menu.
         menu.show((x_root, y_root))
+
+    def show_manual(self):
+        '''
+        show user manual for deepin-terminal.
+        '''
+        run_command("dman deepin-terminal")
 
     def get_all_terminal_infos(self):
         focus_terminal = self.application.window.get_focus()
