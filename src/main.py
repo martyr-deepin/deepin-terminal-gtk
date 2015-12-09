@@ -4047,6 +4047,7 @@ if __name__ == "__main__":
     parser.add_option("--working-directory", dest="working_directory", help=_("working directory"), metavar="FILE")
     parser.add_option("--quake-mode", action="store_true", dest="quake_mode", help=_("run with quake mode"))
     parser.add_option("-e", action="callback", callback=execute_cb, dest="startup_command", help=_("startup terminal with given parameter"))
+    parser.add_option("-x", action="callback", callback=execute_cb, dest="startup_command", help=_("startup terminal with given parameter, same as -e"))
     parser.get_option('-h').help = _("show this help message and exit")
     parser.get_option('--version').help = _("show program's version number and exit")
 
