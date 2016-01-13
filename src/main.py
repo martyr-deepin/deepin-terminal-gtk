@@ -7,6 +7,7 @@
 # Author:     Wang Yong <lazycat.manatee@gmail.com>
 # Maintainer: Wang Yong <lazycat.manatee@gmail.com>
 #             Yueqian Zhang <nohappiness@gmail.com>
+#             Hualet Wang <mr.asianwang@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -493,6 +494,7 @@ class Terminal(object):
         self.application.window.connect("notify::is-active", self.window_is_active)
         self.application.window.connect("window-state-event", self.window_state_change)
         self.application.window.connect("window-resize", self.set_window_resize)
+        self.application.window.connect("configure-event", self.window_configured)
 
         self.draw_skin_padding = 2
         self.application.window.draw_skin = self.draw_terminal_skin
@@ -560,6 +562,10 @@ class Terminal(object):
 
     def set_window_resize(self, widget):
         self.is_window_resize_by_user = True
+
+    def window_configured(self, window, event):
+        if focus_terminal and not focus_terminal.has_focus():
+            focus_terminal.grab_focus()
 
     def save_window_size(self):
         if self.is_window_resize_by_user:
