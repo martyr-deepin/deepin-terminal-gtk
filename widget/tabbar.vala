@@ -464,7 +464,7 @@ namespace Widgets {
             Gtk.Allocation alloc;
             widget.get_allocation(out alloc);
             
-            cr.set_source_rgba(1, 1, 1, 0.0);
+            cr.set_source_rgba(0, 0, 0, 0.8);
             Draw.draw_rectangle(cr, 0, 0, alloc.width, alloc.height);
             
             if (draw_arrow) {
