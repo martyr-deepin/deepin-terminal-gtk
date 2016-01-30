@@ -3,8 +3,10 @@ main: ./lib/draw.vala \
       ./lib/keymap.vala \
       ./lib/utils.vala \
       ./widget/tabbar.vala \
+      ./widget/titlebar.vala \
       ./widget/terminal.vala \
       ./widget/workspace.vala \
+      ./widget/image_button.vala \
       main.vala
 	valac -o main \
 	-X -w \
@@ -15,8 +17,10 @@ main: ./lib/draw.vala \
     ./lib/keymap.vala \
     ./lib/utils.vala \
     ./widget/tabbar.vala \
+    ./widget/titlebar.vala \
     ./widget/terminal.vala \
     ./widget/workspace.vala \
+    ./widget/image_button.vala \
     main.vala
 clean:
 	rm -f main

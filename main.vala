@@ -21,8 +21,7 @@ private class Application {
             stdout.printf(er.message);
         }
         
-        Widgets.Tabbar tabbar = new Widgets.Tabbar("tab_close");
-        tabbar.add_tab("Tabbar 1", "", 0, "");
+        Titlebar titlebar = new Titlebar();
         
         Widgets.Workspace workspace = new Widgets.Workspace();
         
@@ -30,8 +29,14 @@ private class Application {
                 Gtk.main_quit();
             });
         
+        window.window_state_event.connect((w) => {
+                titlebar.update_max_button();
+                
+                return false;
+            });
+        
         window.set_position(Gtk.WindowPosition.CENTER);
-        window.set_titlebar(tabbar);
+        window.set_titlebar(titlebar);
         window.add(workspace);
         window.show_all();
     }

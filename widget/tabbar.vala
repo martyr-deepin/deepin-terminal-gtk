@@ -16,7 +16,7 @@ namespace Widgets {
         public HashMap<int, string> tab_app_map;
         public HashMap<int, string> tab_window_type_map;
         public HashMap<int, int> tab_percent_map;
-        public int height = 36;
+        public int height = 30;
         public int tab_index = 0;
         
         public Gdk.Color inactive_arrow_color = Utils.color_from_string("#393937");
@@ -25,9 +25,9 @@ namespace Widgets {
         public Gdk.Color hover_text_color = Utils.color_from_string("#ffffff");
         public Gdk.Color percent_color = Utils.color_from_string("#3880AB");
         
-        private Cairo.ImageSurface hover_surface;
-        private Cairo.ImageSurface normal_surface;
-        private Cairo.ImageSurface press_surface;
+        private Cairo.ImageSurface close_hover_surface;
+        private Cairo.ImageSurface close_normal_surface;
+        private Cairo.ImageSurface close_press_surface;
         private bool draw_arrow = false;
         private bool draw_hover = false;
         private bool is_button_press = false;
@@ -46,7 +46,7 @@ namespace Widgets {
         public signal void focus_window(int xid);
         public signal void press_tab(int tab_index);
         
-        public Tabbar(string image_path) {
+        public Tabbar() {
             add_events (Gdk.EventMask.BUTTON_PRESS_MASK
                         | Gdk.EventMask.BUTTON_RELEASE_MASK
                         | Gdk.EventMask.POINTER_MOTION_MASK
@@ -63,9 +63,9 @@ namespace Widgets {
             
             set_size_request(-1, height);
             
-            normal_surface = new Cairo.ImageSurface.from_png("image/" + image_path + "_normal.png");
-            hover_surface = new Cairo.ImageSurface.from_png("image/" + image_path + "_hover.png");
-            press_surface = new Cairo.ImageSurface.from_png("image/" + image_path + "_press.png");
+            close_normal_surface = new Cairo.ImageSurface.from_png("image/tab_close_normal.png");
+            close_hover_surface = new Cairo.ImageSurface.from_png("image/tab_close_hover.png");
+            close_press_surface = new Cairo.ImageSurface.from_png("image/tab_close_press.png");
             
             draw.connect(on_draw);
             configure_event.connect(on_configure);
@@ -464,9 +464,6 @@ namespace Widgets {
             Gtk.Allocation alloc;
             widget.get_allocation(out alloc);
             
-            cr.set_source_rgba(0, 0, 0, 0.8);
-            Draw.draw_rectangle(cr, 0, 0, alloc.width, alloc.height);
-            
             if (draw_arrow) {
                 Utils.set_context_color(cr, inactive_arrow_color);
                 Draw.draw_rectangle(cr, alloc.x, alloc.y, arrow_width, alloc.height);
@@ -511,19 +508,24 @@ namespace Widgets {
                 layout.get_pixel_size(out name_width, out name_height);
                 
                 if (counter == tab_index) {
-                    cr.set_source_rgba(0, 0, 0, 0.2);
+                    cr.set_source_rgba(0.3, 0.8, 0.3, 0.2);
                     Draw.draw_rectangle(cr, draw_x, 0, get_tab_width(name_width), height);
                 } else {
+                    var is_hover = false;
+                    
                     if (draw_hover) {
                         if (hover_x > draw_x && hover_x < draw_x + get_tab_width(name_width)) {
-                            cr.set_source_rgba(0, 0, 0, 0.3);
-                        } else {
-                            cr.set_source_rgba(0, 0, 0, 0.1);
+                            is_hover = true;
                         }
-                    } else {
-                        cr.set_source_rgba(0, 0, 0, 0.1);
                     }
-                    Draw.draw_rectangle(cr, draw_x, 0, get_tab_width(name_width), height);
+                    
+                    if (is_hover) {
+                        cr.set_source_rgba(0.5, 0.5, 0.5, 0.2);
+                        Draw.draw_rectangle(cr, draw_x, 0, get_tab_width(name_width), height);
+                    } else {
+                        cr.set_source_rgba(0, 0, 0, 0.2);
+                        Draw.draw_rectangle(cr, draw_x, 0, get_tab_width(name_width), height);
+                    }
                 }
                 
                 int? percent = tab_percent_map.get(tab_id);
@@ -538,12 +540,12 @@ namespace Widgets {
                     if (hover_x > draw_x && hover_x < draw_x + get_tab_width(name_width)) {
                         if (hover_x > draw_x + name_width) {
                             if (is_button_press) {
-                                Draw.draw_surface(cr, press_surface, draw_x + name_width + close_button_padding_x, draw_padding_y + close_button_padding_y);
+                                Draw.draw_surface(cr, close_press_surface, draw_x + name_width + close_button_padding_x, draw_padding_y + close_button_padding_y);
                             } else {
-                                Draw.draw_surface(cr, hover_surface, draw_x + name_width + close_button_padding_x, draw_padding_y + close_button_padding_y);
+                                Draw.draw_surface(cr, close_hover_surface, draw_x + name_width + close_button_padding_x, draw_padding_y + close_button_padding_y);
                             }
                         } else {
-                            Draw.draw_surface(cr, normal_surface, draw_x + name_width + close_button_padding_x, draw_padding_y + close_button_padding_y);
+                            Draw.draw_surface(cr, close_normal_surface, draw_x + name_width + close_button_padding_x, draw_padding_y + close_button_padding_y);
                         }
                     }
                 }
