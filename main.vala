@@ -16,7 +16,7 @@ private class Application {
         window.set_default_size(screen.get_width() * 2 / 3, screen.get_height() * 2 / 3);
         
         try{
-            window.set_icon_from_file("deepin-terminal.svg");
+            window.set_icon_from_file("image/deepin-terminal.svg");
         } catch(Error er) {
             stdout.printf(er.message);
         }
