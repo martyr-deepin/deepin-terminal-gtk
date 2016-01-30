@@ -5,6 +5,8 @@ This is default terminal emulation application for Deepin.
 ## Dependencies
 
 * vala
+* vte-2.91
+* gtk+-3.0
 
 ## Usage
 

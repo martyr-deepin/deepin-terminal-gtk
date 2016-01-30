@@ -9,7 +9,7 @@ main: ./lib/draw.vala \
 	valac -o main \
 	-X -w \
     --pkg=gtk+-3.0 \
-    --pkg=vte-2.90 \
+    --pkg=vte-2.91 \
     --pkg=gee-1.0 \
     ./lib/draw.vala \
     ./lib/keymap.vala \
