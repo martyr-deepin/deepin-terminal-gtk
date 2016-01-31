@@ -119,27 +119,19 @@ namespace Widgets {
             
             if (keyname == "Ctrl + C") {
                 term.copy_clipboard();
-                
-                return true;
             } else if (keyname == "Ctrl + V") {
                 term.paste_clipboard();
-                
-                return true;
             } else if (keyname == "Ctrl + =") {
                 increment_size();
-                
-                return true;
             } else if (keyname == "Ctrl + -") {
                 decrement_size();
-                
-                return true;
             } else if (keyname == "Ctrl + 0") {
                 set_default_font_size();
-                
-                return true;
             } else {
                 return false;
             }
+            
+            return true;
         }
 
         public void increment_size () {

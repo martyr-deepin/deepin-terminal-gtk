@@ -57,31 +57,21 @@ private class Application {
 
         if (keyname == "Ctrl + t") {
             workspace_manager.new_workspace();
-            
-            return true;
         } else if (keyname == "Ctrl + w") {
             workspace_manager.tabbar.close_current_tab();
-            
-            return true;
         } else if (keyname == "Ctrl + Tab") {
             workspace_manager.tabbar.select_next_tab();
-            
-            return true;
         } else if (keyname == "Ctrl + ISO_Left_Tab") {
             workspace_manager.tabbar.select_prev_tab();
-            
-            return true;
         } else if (keyname in ctrl_num_keys) {
             workspace_manager.switch_workspace_with_index(int.parse(Keymap.get_key_name(key_event.keyval)));
-            
-            return true;
         } else if (keyname == "F11") {
             toggle_fullscreen();
-            
-            return true;
         } else {
             return false;
         }
+        
+        return true;
     }
     
     public void toggle_fullscreen () {
