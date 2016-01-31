@@ -36,7 +36,8 @@ namespace Widgets {
         private int hover_x = 0;
         private int text_padding_x = 12;
         
-        public signal void press_tab(int tab_index);
+        public signal void press_tab(int tab_index, int tab_id);
+        public signal void close_tab(int tab_index, int tab_id);
         
         public Tabbar() {
             add_events (Gdk.EventMask.BUTTON_PRESS_MASK
@@ -146,6 +147,8 @@ namespace Widgets {
                     tab_index = tab_list.size - 1;
                 }
                 
+                close_tab(index, tab_id);
+                
                 out_of_area();
                 make_current_visible(false);
                 
@@ -228,7 +231,7 @@ namespace Widgets {
                     if (press_x < draw_x + name_width + text_padding_x) {
                         select_nth_tab(counter);
                         
-                        press_tab(counter);
+                        press_tab(counter, tab_id);
                         return false;
                     }
                 }

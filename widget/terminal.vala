@@ -36,6 +36,9 @@ namespace Widgets {
             term.child_exited.connect ((t)=> {
                     Gtk.main_quit();
                 });
+            term.realize.connect((t) => {
+                    t.grab_focus();
+                });
             term.window_title_changed.connect((t) => {
                     string working_directory;
                     string[] spawn_args = {"readlink", "/proc/%i/cwd".printf(child_pid)};
