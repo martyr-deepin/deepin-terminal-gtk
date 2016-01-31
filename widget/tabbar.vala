@@ -9,13 +9,7 @@ using GLib;
 namespace Widgets {
     public class Tabbar : Gtk.DrawingArea {
         public ArrayList<int> tab_list;
-        public HashMap<int, int> tab_xid_map;
-        public HashMap<int, string> tab_buffer_map;
         public HashMap<int, string> tab_name_map;
-        public HashMap<int, string> tab_path_map;
-        public HashMap<int, string> tab_app_map;
-        public HashMap<int, string> tab_window_type_map;
-        public HashMap<int, int> tab_percent_map;
         public int height = 30;
         public int tab_index = 0;
         
@@ -42,8 +36,6 @@ namespace Widgets {
         private int hover_x = 0;
         private int text_padding_x = 12;
         
-        public signal void destroy_buffer(int index, string buffer_id);
-        public signal void focus_window(int xid);
         public signal void press_tab(int tab_index);
         
         public Tabbar() {
@@ -54,12 +46,6 @@ namespace Widgets {
 
             tab_list = new ArrayList<int>();
             tab_name_map = new HashMap<int, string>();
-            tab_path_map = new HashMap<int, string>();
-            tab_xid_map = new HashMap<int, int>();
-            tab_buffer_map = new HashMap<int, string>();
-            tab_window_type_map = new HashMap<int, string>();
-            tab_app_map = new HashMap<int, string>();
-            tab_percent_map = new HashMap<int, int>();
             
             set_size_request(-1, height);
             
@@ -78,65 +64,16 @@ namespace Widgets {
         public void reset() {
             tab_list = new ArrayList<int>();
             tab_name_map = new HashMap<int, string>();
-            tab_path_map = new HashMap<int, string>();
-            tab_xid_map = new HashMap<int, int>();
-            tab_buffer_map = new HashMap<int, string>();
-            tab_window_type_map = new HashMap<int, string>();
-            tab_app_map = new HashMap<int, string>();
             tab_index = 0;
         }
         
-        public void add_tab(string tab_name, string tab_path, int tab_id, string app) {
+        public void add_tab(string tab_name, int tab_id) {
             tab_list.add(tab_id);
             tab_name_map.set(tab_id, tab_name);
-            tab_path_map.set(tab_id, tab_path);
-            tab_app_map.set(tab_id, app);
             
             out_of_area();
             
             queue_draw();
-        }
-        
-        public void rename_tab(string buffer_id, string tab_name, string tab_path) {
-            foreach (var name_entry in tab_buffer_map.entries) {
-                if (name_entry.value == buffer_id) {
-                    tab_name_map.set(name_entry.key, tab_name);
-                    tab_path_map.set(name_entry.key, tab_path);
-                    queue_draw();
-                    
-                    break;
-                }
-            }
-        }
-        
-        public void percent_tab(string buffer_id, int percent) {
-            foreach (var name_entry in tab_buffer_map.entries) {
-                if (name_entry.value == buffer_id) {
-                    tab_percent_map.set(name_entry.key, percent);
-                    queue_draw();
-                    
-                    // We need remove percent later once reach 100% percent.
-                    if (percent == 100) {
-                        GLib.Timeout.add(500, () => {
-                                tab_percent_map.unset(name_entry.key);
-                                queue_draw();
-                                
-                                return false;
-                            });
-                    }
-                    
-                    break;
-                }
-            }
-        }
-        
-        public void set_tab_xid(int tab_id, int xid) {
-            tab_xid_map.set(tab_id, xid);
-        }
-        
-        public bool has_tab(int tab_id) {
-            int? tab_xid = tab_xid_map.get(tab_id);
-            return (tab_xid != null);
         }
         
         public bool is_focus_tab(int tab_id) {
@@ -146,14 +83,6 @@ namespace Widgets {
             } else {
                 return false;
             }
-        }
-        
-        public void set_tab_buffer(int tab_id, string buffer_id) {
-            tab_buffer_map.set(tab_id, buffer_id);
-        }
-        
-        public void set_tab_window_type(int tab_id, string window_type) {
-            tab_window_type_map.set(tab_id, window_type);
         }
         
         public void select_next_tab() {
@@ -198,43 +127,18 @@ namespace Widgets {
             close_nth_tab(tab_index);
         }
         
-        public bool close_tab_with_buffer(string buffer_id) {
-            foreach (var entry in tab_buffer_map.entries) {
-                if (entry.value == buffer_id) {
-                    int? tab_index = tab_list.index_of(entry.key);
-                    if (tab_index != null) {
-                        close_nth_tab(tab_index, false);
-                        return true;
-                    }
-                }
-            }
-            
-            return false;
-        }
-        
         public void close_nth_tab(int index, bool emit_close_signal=true) {
             if (tab_list.size > 0) {
                 var tab_id = tab_list.get(index);
                 
                 tab_list.remove_at(index);
                 tab_name_map.unset(tab_id);
-                tab_path_map.unset(tab_id);
-                tab_app_map.unset(tab_id);
-                tab_xid_map.unset(tab_id);
-
-                if (emit_close_signal) {
-                    destroy_buffer(index, tab_buffer_map.get(tab_id));
-                }
-                tab_buffer_map.unset(tab_id);
-                tab_window_type_map.unset(tab_id);
 
                 if (tab_list.size == 0) {
                     tab_index = 0;
                 } else if (tab_index >= tab_list.size) {
                     tab_index = tab_list.size - 1;
                 }
-                
-                focus_tab(tab_index);
                 
                 out_of_area();
                 make_current_visible(false);
@@ -528,14 +432,6 @@ namespace Widgets {
                     }
                 }
                 
-                int? percent = tab_percent_map.get(tab_id);
-                if (percent != null) {
-                    Utils.set_context_color(cr, percent_color);
-                    Draw.draw_rectangle(cr, draw_x, height - 2, get_tab_width(name_width) * percent / 100, 2);
-                }
-                
-                draw_x += text_padding_x;
-                
                 if (draw_hover) {
                     if (hover_x > draw_x && hover_x < draw_x + get_tab_width(name_width)) {
                         if (hover_x > draw_x + name_width) {
@@ -565,59 +461,6 @@ namespace Widgets {
             return name_width + close_button_width + text_padding_x * 2;
         }
         
-        public int? get_current_tab_xid() {
-            if (tab_list.size > 0) {
-                return tab_xid_map.get(tab_list.get(tab_index));
-            } else {
-                return null;
-            }
-        }
-        
-        public delegate void AnyAction();
-        
-        public void protect_current_tab(AnyAction action) {
-            var tab_id_backup = tab_list.get(tab_index);
-            action();
-
-            // FIXEDME: This is hacking way.
-            // 
-            // We need add timeout here to avoid xcb.reparent_window request to fast
-            // that current tab can't reparent correctly.
-            //
-            // Please found a better way that we don't need depend time delay to reparent window.
-            GLib.Timeout.add(10, () => {
-                    select_tab_with_id(tab_id_backup);
-                    return false;
-                });
-        }
-        
-        public ArrayList<int> get_all_xids() {
-            ArrayList<int> xids = new ArrayList<int>();
-            foreach (int index in tab_list) {
-                xids.add(tab_xid_map.get(index));
-            }
-            
-            return xids;
-        }
-
-        public ArrayList<string> get_all_apps() {
-            ArrayList<string> apps = new ArrayList<string>();
-            foreach (int index in tab_list) {
-                apps.add(tab_app_map.get(index));
-            }
-            
-            return apps;
-        }
-        
-        public ArrayList<string> get_all_buffers() {
-            ArrayList<string> buffers = new ArrayList<string>();
-            foreach (int index in tab_list) {
-                buffers.add(tab_buffer_map.get(index));
-            }
-            
-            return buffers;
-        }
-        
         public ArrayList<string> get_all_names() {
             ArrayList<string> names = new ArrayList<string>();
             foreach (int index in tab_list) {
@@ -627,42 +470,11 @@ namespace Widgets {
             return names;
         }
 
-        public ArrayList<string> get_all_paths() {
-            ArrayList<string> paths = new ArrayList<string>();
-            foreach (int index in tab_list) {
-                paths.add(tab_path_map.get(index));
-            }
-            
-            return paths;
-        }
-
-        public ArrayList<string> get_all_types() {
-            ArrayList<string> types = new ArrayList<string>();
-            foreach (int index in tab_list) {
-                types.add(tab_window_type_map.get(index));
-            }
-            
-            return types;
-        }
-        
         public void switch_tab(int new_index) {
-            var new_xid = tab_xid_map.get(tab_list.get(new_index));
-                
-            focus_window(new_xid);
-                
             tab_index = new_index;
                 
             make_current_visible(true);
             queue_draw();
-        }
-        
-        public void focus_tab(int index) {
-            if (tab_list.size > 0) {
-                int tab_id = tab_list.get(index);
-                int tab_xid = tab_xid_map.get(tab_id);
-                
-                focus_window(tab_xid);
-            }
         }
     }
 }
