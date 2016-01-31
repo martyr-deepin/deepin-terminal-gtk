@@ -76,6 +76,12 @@ namespace Widgets {
             queue_draw();
         }
         
+        public void rename_tab(int tab_id, string tab_name) {
+            tab_name_map.set(tab_id, tab_name);
+            
+            queue_draw();
+        }
+
         public bool is_focus_tab(int tab_id) {
             int? index = tab_list.index_of(tab_id);
             if (index != null) {
@@ -127,7 +133,7 @@ namespace Widgets {
             close_nth_tab(tab_index);
         }
         
-        public void close_nth_tab(int index, bool emit_close_signal=true) {
+        public void close_nth_tab(int index) {
             if (tab_list.size > 0) {
                 var tab_id = tab_list.get(index);
                 

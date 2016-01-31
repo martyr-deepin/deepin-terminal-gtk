@@ -23,7 +23,7 @@ private class Application {
         
         Titlebar titlebar = new Titlebar();
         
-        Widgets.Workspace workspace = new Widgets.Workspace();
+        WorkspaceManager workspace_manager = new WorkspaceManager(titlebar.tabbar);
         
         window.destroy.connect((t) => {
                 Gtk.main_quit();
@@ -37,7 +37,7 @@ private class Application {
         
         window.set_position(Gtk.WindowPosition.CENTER);
         window.set_titlebar(titlebar);
-        window.add(workspace);
+        window.add(workspace_manager);
         window.show_all();
     }
     

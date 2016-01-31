@@ -18,7 +18,6 @@ namespace Widgets {
             draw.connect(on_draw);
             
             tabbar = new Tabbar();
-            tabbar.add_tab("Test new", 0);
             
             menu_button = new ImageButton("window_menu");
             min_button = new ImageButton("window_min");

@@ -6,6 +6,7 @@ main: ./lib/draw.vala \
       ./widget/titlebar.vala \
       ./widget/terminal.vala \
       ./widget/workspace.vala \
+      ./widget/workspace_manager.vala \
       ./widget/image_button.vala \
       main.vala
 	valac -o main \
@@ -20,6 +21,7 @@ main: ./lib/draw.vala \
     ./widget/titlebar.vala \
     ./widget/terminal.vala \
     ./widget/workspace.vala \
+    ./widget/workspace_manager.vala \
     ./widget/image_button.vala \
     main.vala
 clean:

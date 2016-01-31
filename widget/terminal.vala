@@ -5,8 +5,10 @@ namespace Widgets {
     public class Term : Gtk.ScrolledWindow {
         public Terminal term;
         public GLib.Pid child_pid;
-        public string working_directory = "";
+        public string current_dir;
     
+        public signal void change_dir(string dir);
+        
         public Term() {
             Gdk.RGBA background_color = Gdk.RGBA();
             background_color.parse("#000000");
@@ -33,6 +35,23 @@ namespace Widgets {
             term.set_colors(foreground_color, background_color, palette);
             term.child_exited.connect ((t)=> {
                     Gtk.main_quit();
+                });
+            term.window_title_changed.connect((t) => {
+                    string working_directory;
+                    string[] spawn_args = {"readlink", "/proc/%i/cwd".printf(child_pid)};
+                    try {
+                        Process.spawn_sync(null, spawn_args, null, SpawnFlags.SEARCH_PATH, null, out working_directory);
+                    } catch (SpawnError e) {
+                        print("Got error when spawn_sync: %s\n", e.message);
+                    }
+                    
+                    if (working_directory.length > 0) {
+                        working_directory = working_directory[0:working_directory.length - 1];
+                        if (current_dir != working_directory) {
+                            change_dir(GLib.Path.get_basename(working_directory));
+                            current_dir = working_directory;
+                        }
+                    }
                 });
 
             active_shell();
