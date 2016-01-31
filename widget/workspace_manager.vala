@@ -36,6 +36,16 @@ namespace Widgets {
             show_all();
         }
         
+        public void switch_workspace_with_index(int index) {
+            if (index == 1) {
+                tabbar.select_first_tab();
+            } else if (index == 9) {
+                tabbar.select_end_tab();
+            } else if (index > 0 && index <= tabbar.tab_list.size) {
+                tabbar.select_nth_tab(index - 1);
+            }
+        }
+        
         public void switch_workspace(int workspace_index) {
             foreach (Widget w in get_children()) {
                 this.remove(w);

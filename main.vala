@@ -52,12 +52,26 @@ private class Application {
     
     private bool on_key_press(Gtk.Widget widget, Gdk.EventKey key_event) {
         string keyname = Keymap.get_keyevent_name(key_event);
+        string[] ctrl_num_keys = {"Ctrl + 1", "Ctrl + 2", "Ctrl + 3", "Ctrl + 4", "Ctrl + 5", "Ctrl + 6", "Ctrl + 7", "Ctrl + 8", "Ctrl + 9"};
+
         if (keyname == "Ctrl + t") {
             workspace_manager.new_workspace();
             
             return true;
         } else if (keyname == "Ctrl + w") {
             workspace_manager.tabbar.close_current_tab();
+            
+            return true;
+        } else if (keyname == "Ctrl + Tab") {
+            workspace_manager.tabbar.select_next_tab();
+            
+            return true;
+        } else if (keyname == "Ctrl + ISO_Left_Tab") {
+            workspace_manager.tabbar.select_prev_tab();
+            
+            return true;
+        } else if (keyname in ctrl_num_keys) {
+            workspace_manager.switch_workspace_with_index(int.parse(Keymap.get_key_name(key_event.keyval)));
             
             return true;
         } else {

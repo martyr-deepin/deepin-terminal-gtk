@@ -9,6 +9,8 @@ namespace Keymap {
         } else {
             if (key_unicode == 13) {
                 return "Enter";
+            } else if (key_unicode == 9) {
+                return "Tab";
             } else {
                 return key_unicode.to_string();
             }

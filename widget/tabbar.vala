@@ -481,6 +481,8 @@ namespace Widgets {
 
         public void switch_tab(int new_index) {
             tab_index = new_index;
+            
+            press_tab(tab_index, tab_list.get(tab_index));
                 
             make_current_visible(true);
             queue_draw();
