@@ -23,8 +23,6 @@ Below is keymap list for deepin-terminal:
 |                                                                       |
 | Close current window            | **Ctrl** + **q**                    |
 | Close other windows             | **Ctrl** + **Q**                    |
-| Scrol up                        | **Alt**  + **,**                    |
-| Scroll down                     | **Alt**  + **.**                    |
 |                                                                       |
 | Focus up terminal               | **Alt**  + **k**                    |
 | Focus down terminal             | **Alt**  + **j**                    |
