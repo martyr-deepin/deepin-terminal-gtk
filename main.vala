@@ -7,6 +7,7 @@ using Keymap;
 private class Application {
     public Gtk.Window window;
     public WorkspaceManager workspace_manager;
+    private bool is_fullscreen = false;
     
     private Application() {
         Utils.load_css_theme("style.css");
@@ -74,12 +75,26 @@ private class Application {
             workspace_manager.switch_workspace_with_index(int.parse(Keymap.get_key_name(key_event.keyval)));
             
             return true;
+        } else if (keyname == "F11") {
+            toggle_fullscreen();
+            
+            return true;
         } else {
             return false;
         }
     }
     
-    private static void main(string[] args) {
+    public void toggle_fullscreen () {
+        if (is_fullscreen) {
+            window.unfullscreen();
+            is_fullscreen = false;
+        } else {
+            window.fullscreen();
+            is_fullscreen = true;
+        }
+    }
+
+   private static void main(string[] args) {
         Gtk.init(ref args);
         new Application();
         Gtk.main();
