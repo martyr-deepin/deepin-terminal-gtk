@@ -9,6 +9,9 @@ namespace Widgets {
     
         public signal void change_dir(string dir);
         
+        public int default_size;
+        public double zoom_factor = 1.0;
+
         /* Following strings are used to build RegEx for matching URIs */
         const string USERCHARS = "-[:alnum:]";
         const string USERCHARS_CLASS = "[" + USERCHARS + "]";
@@ -80,6 +83,7 @@ namespace Widgets {
                         }
                     }
                 });
+            term.key_press_event.connect(on_key_press);
             term.button_press_event.connect((event) => {
                 string? uri = get_link ((long) event.x, (long) event.y);
                 
@@ -110,6 +114,63 @@ namespace Widgets {
             add(term);
         }
         
+        private bool on_key_press(Gtk.Widget widget, Gdk.EventKey key_event) {
+            string keyname = Keymap.get_keyevent_name(key_event);
+            
+            if (keyname == "Ctrl + C") {
+                term.copy_clipboard();
+                
+                return true;
+            } else if (keyname == "Ctrl + V") {
+                term.paste_clipboard();
+                
+                return true;
+            } else if (keyname == "Ctrl + =") {
+                increment_size();
+                
+                return true;
+            } else if (keyname == "Ctrl + -") {
+                decrement_size();
+                
+                return true;
+            } else if (keyname == "Ctrl + 0") {
+                set_default_font_size();
+                
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public void increment_size () {
+            Pango.FontDescription current_font = term.get_font ();
+            if (default_size == 0) default_size = current_font.get_size ();
+            if (current_font.get_size () > 60000) return;
+
+            zoom_factor += 0.1;
+            current_font.set_size ((int) Math.floor (default_size * zoom_factor));
+            term.set_font (current_font);
+        }
+
+        public void decrement_size () {
+            Pango.FontDescription current_font = term.get_font ();
+            if (default_size == 0) default_size = current_font.get_size ();
+            if (current_font.get_size () < 2048) return;
+
+            zoom_factor -= 0.1;
+            current_font.set_size ((int) Math.ceil (default_size * zoom_factor));
+            term.set_font (current_font);
+        }
+
+        public void set_default_font_size () {
+            Pango.FontDescription current_font = term.get_font ();
+            if (default_size == 0) default_size = current_font.get_size ();
+
+            zoom_factor = 1.0;
+            current_font.set_size (default_size);
+            term.set_font (current_font);
+        }
+
         private string? get_link (long x, long y) {
             long col = x / term.get_char_width ();
             long row = y / term.get_char_height ();

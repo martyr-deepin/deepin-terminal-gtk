@@ -11,6 +11,7 @@ main: ./lib/draw.vala \
       main.vala
 	valac -o main \
 	-X -w \
+	-X -lm \
     --pkg=gtk+-3.0 \
     --pkg=vte-2.91 \
     --pkg=gee-1.0 \
