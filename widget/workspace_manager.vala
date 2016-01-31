@@ -18,9 +18,7 @@ namespace Widgets {
         }
         
         public void new_workspace() {
-            foreach (Widget w in get_children()) {
-                this.remove(w);
-            }
+            Utils.remove_all_children(this);
             
             workspace_index++;
             Widgets.Workspace workspace = new Widgets.Workspace(workspace_index);
@@ -47,10 +45,8 @@ namespace Widgets {
         }
         
         public void switch_workspace(int workspace_index) {
-            foreach (Widget w in get_children()) {
-                this.remove(w);
-            }
-
+            Utils.remove_all_children(this);
+            
             var workspace = workspace_map.get(workspace_index);
             pack_start(workspace, true, true, 0);
             
@@ -65,9 +61,7 @@ namespace Widgets {
                 Gtk.main_quit();
             } else {
                 int workspace_index = tabbar.tab_list.get(tabbar.tab_index);
-                foreach (Widget w in get_children()) {
-                    this.remove(w);
-                }
+                Utils.remove_all_children(this);
 
                 var workspace = workspace_map.get(workspace_index);
                 pack_start(workspace, true, true, 0);

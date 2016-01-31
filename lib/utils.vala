@@ -107,4 +107,10 @@ namespace Utils {
             }
         }
     }
+
+    public void remove_all_children(Gtk.Container container) {
+        foreach (Widget w in container.get_children()) {
+            container.remove(w);
+        }
+    }
 }

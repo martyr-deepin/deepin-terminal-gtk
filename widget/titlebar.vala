@@ -61,9 +61,7 @@ namespace Widgets {
         }
         
         public void update_max_button() {
-            foreach (Widget w in max_toggle_box.get_children()) {
-                max_toggle_box.remove(w);
-            }
+            Utils.remove_all_children(max_toggle_box);
             
             if ((((Gtk.Window) get_toplevel()).get_window().get_state() & Gdk.WindowState.MAXIMIZED) == Gdk.WindowState.MAXIMIZED) {
                 max_toggle_box.add(unmax_button);
