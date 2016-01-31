@@ -9,6 +9,30 @@ namespace Widgets {
     
         public signal void change_dir(string dir);
         
+        /* Following strings are used to build RegEx for matching URIs */
+        const string USERCHARS = "-[:alnum:]";
+        const string USERCHARS_CLASS = "[" + USERCHARS + "]";
+        const string PASSCHARS_CLASS = "[-[:alnum:]\\Q,?;.:/!%$^*&~\"#'\\E]";
+        const string HOSTCHARS_CLASS = "[-[:alnum:]]";
+        const string HOST = HOSTCHARS_CLASS + "+(\\." + HOSTCHARS_CLASS + "+)*";
+        const string PORT = "(?:\\:[[:digit:]]{1,5})?";
+        const string PATHCHARS_CLASS = "[-[:alnum:]\\Q_$.+!*,;:@&=?/~#%\\E]";
+        const string PATHTERM_CLASS = "[^\\Q]'.}>) \t\r\n,\"\\E]";
+        const string SCHEME = """(?:news:|telnet:|nntp:|file:\/|https?:|ftps?:|sftp:|webcal:
+                                 |irc:|sftp:|ldaps?:|nfs:|smb:|rsync:|ssh:|rlogin:|telnet:|git:
+                                 |git\+ssh:|bzr:|bzr\+ssh:|svn:|svn\+ssh:|hg:|mailto:|magnet:)""";
+
+        const string USERPASS = USERCHARS_CLASS + "+(?:" + PASSCHARS_CLASS + "+)?";
+        const string URLPATH = "(?:(/" + PATHCHARS_CLASS + "+(?:[(]" + PATHCHARS_CLASS + "*[)])*" + PATHCHARS_CLASS + "*)*" + PATHTERM_CLASS + ")?";
+
+        static const string[] regex_strings = {
+            SCHEME + "//(?:" + USERPASS + "\\@)?" + HOST + PORT + URLPATH,
+            "(?:www|ftp)" + HOSTCHARS_CLASS + "*\\." + HOST + PORT + URLPATH,
+            "(?:callto:|h323:|sip:)" + USERCHARS_CLASS + "[" + USERCHARS + ".]*(?:" + PORT + "/[a-z0-9]+)?\\@" + HOST,
+            "(?:mailto:)?" + USERCHARS_CLASS + "[" + USERCHARS + ".]*\\@" + HOSTCHARS_CLASS + "+\\." + HOST,
+            "(?:news:|man:|info:)[[:alnum:]\\Q^_{|}~!\"#$%&'()*+,./;:=?`\\E]+"
+        };
+        
         public Term() {
             Gdk.RGBA background_color = Gdk.RGBA();
             background_color.parse("#000000");
@@ -56,13 +80,60 @@ namespace Widgets {
                         }
                     }
                 });
+            term.button_press_event.connect((event) => {
+                string? uri = get_link ((long) event.x, (long) event.y);
+                
+                switch (event.button) {
+                    case Gdk.BUTTON_PRIMARY:
+                        if (event.state == Gdk.ModifierType.CONTROL_MASK && uri != null) {
+                            try {
+                                Gtk.show_uri (null, (!) uri, Gtk.get_current_event_time ());
+                                return true;
+                            } catch (GLib.Error error) {
+                                warning ("Could Not Open link");
+                            }
+                        }
 
+                        return false;
+                }
+
+                return false;
+            });
+
+
+            /* Make Links Clickable */
+            this.clickable(regex_strings);
+            
             active_shell();
         
             set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             add(term);
         }
         
+        private string? get_link (long x, long y) {
+            long col = x / term.get_char_width ();
+            long row = y / term.get_char_height ();
+            int tag;
+
+            // Vte.Terminal.match_check need a non-null tag instead of what is
+            // written in the doc
+            // (see: https://bugzilla.gnome.org/show_bug.cgi?id=676886)
+            return term.match_check(col, row, out tag);
+        }
+
+        private void clickable (string[] str) {
+            foreach (string exp in str) {
+                try {
+                    var regex = new GLib.Regex (exp);
+                    int id = term.match_add_gregex (regex, 0);
+
+                    term.match_set_cursor_type (id, Gdk.CursorType.HAND2);
+                } catch (GLib.RegexError error) {
+                    warning (error.message);
+                }
+            }
+        }
+
         public void active_shell(string dir = GLib.Environment.get_current_dir ()) {
             string shell = "";
             string?[] envv = null;
