@@ -3,6 +3,12 @@ using Vte;
 
 namespace Widgets {
     public class Term : Gtk.ScrolledWindow {
+        enum DropTargets {
+            URILIST,
+            STRING,
+            TEXT
+        }
+
         public Terminal term;
         public GLib.Pid child_pid;
         public string current_dir;
@@ -108,6 +114,18 @@ namespace Widgets {
                 return false;
             });
 
+            /* target entries specify what kind of data the terminal widget accepts */
+            Gtk.TargetEntry uri_entry = { "text/uri-list", Gtk.TargetFlags.OTHER_APP, DropTargets.URILIST };
+            Gtk.TargetEntry string_entry = { "STRING", Gtk.TargetFlags.OTHER_APP, DropTargets.STRING };
+            Gtk.TargetEntry text_entry = { "text/plain", Gtk.TargetFlags.OTHER_APP, DropTargets.TEXT };
+
+            Gtk.TargetEntry[] targets = { };
+            targets += uri_entry;
+            targets += string_entry;
+            targets += text_entry;
+
+            Gtk.drag_dest_set (this, Gtk.DestDefaults.ALL, targets, Gdk.DragAction.COPY);
+            this.drag_data_received.connect(drag_received);
 
             /* Make Links Clickable */
             this.clickable(regex_strings);
@@ -178,6 +196,37 @@ namespace Widgets {
             return term.match_check(col, row, out tag);
         }
 
+        public void drag_received (Gdk.DragContext context, int x, int y,
+                                   Gtk.SelectionData selection_data, uint target_type, uint time_) {
+            switch (target_type) {
+                case DropTargets.URILIST:
+                    var uris = selection_data.get_uris ();
+                    string path;
+                    File file;
+
+                    for (var i = 0; i < uris.length; i++) {
+                         file = File.new_for_uri (uris[i]);
+                         if ((path = file.get_path ()) != null) {
+                             uris[i] = Shell.quote (path) + " ";
+                        }
+                    }
+
+                    string uris_s = string.joinv ("", uris);
+                    this.term.feed_child (uris_s, uris_s.length);
+
+                    break;
+                case DropTargets.STRING:
+                case DropTargets.TEXT:
+                    var data = selection_data.get_text ();
+
+                    if (data != null) {
+                        this.term.feed_child (data, data.length);
+                    }
+
+                    break;
+            }
+        }
+        
         private void clickable (string[] str) {
             foreach (string exp in str) {
                 try {
