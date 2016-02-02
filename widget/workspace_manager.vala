@@ -7,6 +7,7 @@ namespace Widgets {
         public Tabbar tabbar;
         public int workspace_index;
         public HashMap<int, Workspace> workspace_map;
+        public Workspace focus_workspace;
         
         public WorkspaceManager(Tabbar t) {
             tabbar = t;
@@ -15,6 +16,11 @@ namespace Widgets {
             workspace_map = new HashMap<int, Workspace>();
             
             new_workspace();
+        }
+        
+        public void pack_workspace(Workspace workspace) {
+            focus_workspace = workspace;
+            pack_start(workspace, true, true, 0);
         }
         
         public void new_workspace() {
@@ -27,7 +33,7 @@ namespace Widgets {
                     tabbar.rename_tab(index, dir);
                 });
             
-            pack_start(workspace, true, true, 0);
+            pack_workspace(workspace);
             tabbar.add_tab("", workspace_index);
             tabbar.select_tab_with_id(workspace_index);
             
@@ -48,7 +54,7 @@ namespace Widgets {
             Utils.remove_all_children(this);
             
             var workspace = workspace_map.get(workspace_index);
-            pack_start(workspace, true, true, 0);
+            pack_workspace(workspace);
             
             show_all();
         }
@@ -64,10 +70,18 @@ namespace Widgets {
                 Utils.remove_all_children(this);
 
                 var workspace = workspace_map.get(workspace_index);
-                pack_start(workspace, true, true, 0);
+                pack_workspace(workspace);
             
                 show_all();
             }
+        }
+        
+        public void split_workspace_horizontal() {
+            focus_workspace.split_horizontal();
+        }
+        
+        public void split_workspace_vertical() {
+            focus_workspace.split_vertical();
         }
     }
 }

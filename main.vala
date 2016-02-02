@@ -67,6 +67,10 @@ private class Application {
             workspace_manager.switch_workspace_with_index(int.parse(Keymap.get_key_name(key_event.keyval)));
         } else if (keyname == "F11") {
             toggle_fullscreen();
+        } else if (keyname == "Ctrl + h") {
+            workspace_manager.split_workspace_horizontal();
+        } else if (keyname == "Ctrl + H") {
+            workspace_manager.split_workspace_vertical();
         } else {
             return false;
         }

@@ -36,7 +36,11 @@ namespace Widgets {
             "(?:news:|man:|info:)[[:alnum:]\\Q^_{|}~!\"#$%&'()*+,./;:=?`\\E]+"
         };
         
-        public Term() {
+        public bool is_first_term; 
+        
+        public Term(bool first_term) {
+            is_first_term = first_term;
+            
             Gdk.RGBA background_color = Gdk.RGBA();
             background_color.parse("#000000");
             background_color.alpha = 0.8;
