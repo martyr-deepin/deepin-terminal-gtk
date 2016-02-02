@@ -1,5 +1,6 @@
 using Gtk;
 using Vte;
+using Widgets;
 
 namespace Widgets {
     public class Term : Gtk.ScrolledWindow {
@@ -43,15 +44,18 @@ namespace Widgets {
         };
         
         public bool is_first_term; 
+        public Gdk.RGBA background_color;
+        public Gdk.RGBA foreground_color;
+        public Gdk.RGBA[] palette;
         
         public Term(bool first_term) {
             is_first_term = first_term;
             
-            Gdk.RGBA background_color = Gdk.RGBA();
+            background_color = Gdk.RGBA();
             background_color.parse("#000000");
             background_color.alpha = 0.8;
 
-            Gdk.RGBA foreground_color = Gdk.RGBA();
+            foreground_color = Gdk.RGBA();
             foreground_color.parse("#00FF00");
             
             string[] hex_palette = { "#000000", "#FF6C60", "#A8FF60", "#FFFFCC", "#96CBFE",
@@ -59,7 +63,7 @@ namespace Widgets {
                                      "#A8FF60", "#FFFFB6", "#96CBFE", "#FF73FE", "#C6C5FE",
                                      "#EEEEEE" };
 
-            Gdk.RGBA[] palette = new Gdk.RGBA[16];
+            palette = new Gdk.RGBA[16];
 
             for (int i = 0; i < hex_palette.length; i++) {
                 Gdk.RGBA new_color= Gdk.RGBA();
@@ -69,12 +73,19 @@ namespace Widgets {
             }
 
             term = new Terminal();
-            term.set_colors(foreground_color, background_color, palette);
             term.child_exited.connect ((t)=> {
                     Gtk.main_quit();
                 });
             term.realize.connect((t) => {
+                    term.set_colors(foreground_color, background_color, palette);
                     t.grab_focus();
+                });
+            term.draw.connect((t) => {
+                    Widgets.Window window = (Widgets.Window) term.get_toplevel();
+                    background_color.alpha = window.background_opacity;
+                    term.set_colors(foreground_color, background_color, palette);
+                    
+                    return false;
                 });
             term.window_title_changed.connect((t) => {
                     string working_directory;
@@ -94,6 +105,7 @@ namespace Widgets {
                     }
                 });
             term.key_press_event.connect(on_key_press);
+            term.scroll_event.connect(on_scroll);
             term.button_press_event.connect((event) => {
                 string? uri = get_link ((long) event.x, (long) event.y);
                 
@@ -134,6 +146,20 @@ namespace Widgets {
         
             set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             add(term);
+        }
+        
+        public bool on_scroll(Gtk.Widget widget, Gdk.EventScroll scroll_event) {
+            if ((scroll_event.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
+                if (scroll_event.direction == Gdk.ScrollDirection.UP) {
+                    Widgets.Window window = (Widgets.Window) term.get_toplevel();
+                    window.change_opacity(0.1);
+                } else if (scroll_event.direction == Gdk.ScrollDirection.DOWN) {
+                    Widgets.Window window = (Widgets.Window) term.get_toplevel();
+                    window.change_opacity(-0.1);
+                }
+            }
+
+            return false;
         }
         
         private bool on_key_press(Gtk.Widget widget, Gdk.EventKey key_event) {

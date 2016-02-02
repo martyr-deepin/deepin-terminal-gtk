@@ -42,6 +42,7 @@ Below is keymap list for deepin-terminal:
 | Search forward                  | **Ctrl** + **'**                    |
 | Search backward                 | **Ctrl** + **"**                    |
 |                                                                       |
+| Adjust background opacity       | **Ctrl** + ScrollButton				|
 | Fullscreen                      | **F11**                             |
 | Help                            | **Ctrl** + **?**                    |
 

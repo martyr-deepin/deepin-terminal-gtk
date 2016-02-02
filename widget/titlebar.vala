@@ -73,7 +73,9 @@ namespace Widgets {
         }
         
         private bool on_draw(Gtk.Widget widget, Cairo.Context cr) {
-            cr.set_source_rgba(0, 0, 0, 0.8);
+            Widgets.Window window = (Widgets.Window) this.get_toplevel();
+
+            cr.set_source_rgba(0, 0, 0, window.background_opacity);
             cr.set_operator (Cairo.Operator.SOURCE);
             cr.paint();
             cr.set_operator (Cairo.Operator.OVER);

@@ -421,7 +421,8 @@ namespace Widgets {
                 layout.get_pixel_size(out name_width, out name_height);
                 
                 if (counter == tab_index) {
-                    cr.set_source_rgba(0.3, 0.8, 0.3, 0.2);
+                    Widgets.Window window = (Widgets.Window) this.get_toplevel();
+                    cr.set_source_rgba(0.3, window.background_opacity, 0.3, 0.2);
                     Draw.draw_rectangle(cr, draw_x, 0, get_tab_width(name_width), height);
                 } else {
                     var is_hover = false;

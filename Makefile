@@ -8,6 +8,7 @@ main: ./lib/draw.vala \
       ./widget/workspace.vala \
       ./widget/workspace_manager.vala \
       ./widget/image_button.vala \
+      ./widget/window.vala \
       main.vala
 	valac -o main \
 	-X -w \
@@ -24,6 +25,7 @@ main: ./lib/draw.vala \
     ./widget/workspace.vala \
     ./widget/workspace_manager.vala \
     ./widget/image_button.vala \
+    ./widget/window.vala \
     main.vala
 clean:
 	rm -f main
