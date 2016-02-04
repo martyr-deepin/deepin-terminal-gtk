@@ -26,15 +26,21 @@ namespace Widgets {
         private bool draw_hover = false;
         private bool is_button_press = false;
         private int arrow_padding_x = 4;
-        private int arrow_padding_y = 0;
+        private int arrow_padding_y = 10;
+        private int arrow_draw_padding_y = 1;
         private int arrow_width = 16;
-        private int close_button_padding_x = 8;
-        private int close_button_padding_y = 2;
+        private int text_padding_x = 12;
+        private int close_button_padding_x = 16;
+        private int close_button_padding_y = 0;
         private int close_button_width = 12;
         private int draw_offset = 0;
         private int draw_padding_y = 8;
         private int hover_x = 0;
-        private int text_padding_x = 12;
+        
+        public Gdk.RGBA tab_active_center_color;
+        public Gdk.RGBA tab_active_edge_color;
+        public Gdk.RGBA tab_hover_center_color;
+        public Gdk.RGBA tab_hover_edge_color;
         
         public signal void press_tab(int tab_index, int tab_id);
         public signal void close_tab(int tab_index, int tab_id);
@@ -53,6 +59,30 @@ namespace Widgets {
             close_normal_surface = new Cairo.ImageSurface.from_png("image/tab_close_normal.png");
             close_hover_surface = new Cairo.ImageSurface.from_png("image/tab_close_hover.png");
             close_press_surface = new Cairo.ImageSurface.from_png("image/tab_close_press.png");
+            
+            tab_active_center_color = Gdk.RGBA();
+            tab_active_center_color.red = 0;
+            tab_active_center_color.green = 255;
+            tab_active_center_color.blue = 0;
+            tab_active_center_color.alpha = 0.25;
+            
+            tab_active_edge_color = Gdk.RGBA();
+            tab_active_edge_color.red = 34;
+            tab_active_edge_color.green = 255;
+            tab_active_edge_color.blue = 144;
+            tab_active_edge_color.alpha = 0;
+
+            tab_hover_center_color = Gdk.RGBA();
+            tab_hover_center_color.red = 255;
+            tab_hover_center_color.green = 255;
+            tab_hover_center_color.blue = 255;
+            tab_hover_center_color.alpha = 0.15;
+            
+            tab_hover_edge_color = Gdk.RGBA();
+            tab_hover_edge_color.red = 255;
+            tab_hover_edge_color.green = 255;
+            tab_hover_edge_color.blue = 255;
+            tab_hover_edge_color.alpha = 0;
             
             draw.connect(on_draw);
             configure_event.connect(on_configure);
@@ -207,10 +237,10 @@ namespace Widgets {
             if (draw_arrow) {
                 if (press_x < arrow_width) {
                     scroll_left();
-                    return false;
+                    return true;
                 } else if (press_x > alloc.width - arrow_width) {
                     scroll_right();
-                    return false;
+                    return true;
                 }
             }
             
@@ -379,7 +409,7 @@ namespace Widgets {
             
             if (draw_arrow) {
                 Utils.set_context_color(cr, inactive_arrow_color);
-                Draw.draw_rectangle(cr, alloc.x, alloc.y, arrow_width, alloc.height);
+                Draw.draw_rectangle(cr, 0, arrow_draw_padding_y, arrow_width, alloc.height - arrow_draw_padding_y * 2);
                 
                 if (draw_hover) {
                     if (hover_x < arrow_width) {
@@ -393,7 +423,7 @@ namespace Widgets {
                 Draw.draw_text(this, cr, "<", arrow_padding_x, arrow_padding_y);
                 
                 Utils.set_context_color(cr, inactive_arrow_color);
-                Draw.draw_rectangle(cr, alloc.width - arrow_width, alloc.y, arrow_width, alloc.height);
+                Draw.draw_rectangle(cr, alloc.width - arrow_width, arrow_draw_padding_y, arrow_width, alloc.height - arrow_draw_padding_y * 2);
                 
                 if (draw_hover) {
                     if (hover_x > alloc.width - arrow_width) {
@@ -404,9 +434,9 @@ namespace Widgets {
                 } else {
                     Utils.set_context_color(cr, text_color);
                 }
-                Draw.draw_text(this, cr, ">", alloc.width - 12, arrow_padding_y);
+                Draw.draw_text(this, cr, ">", alloc.width - arrow_width + arrow_padding_x, arrow_padding_y);
                 
-                Draw.clip_rectangle(cr, alloc.x + arrow_width, alloc.y, alloc.width - arrow_width * 2, alloc.height);
+                Draw.clip_rectangle(cr, arrow_width, 0, alloc.width - arrow_width * 2, alloc.height);
             }
             
             int draw_x = 0;
@@ -421,9 +451,16 @@ namespace Widgets {
                 layout.get_pixel_size(out name_width, out name_height);
                 
                 if (counter == tab_index) {
-                    Widgets.Window window = (Widgets.Window) this.get_toplevel();
-                    cr.set_source_rgba(0.3, window.background_opacity, 0.3, 0.2);
-                    Draw.draw_rectangle(cr, draw_x, 0, get_tab_width(name_width), height);
+                    cr.save();
+                    clip_rectangle(cr, draw_x, 0, get_tab_width(name_width), height);
+                    
+                    double scale_x = 1;
+                    double scale_y = ((double) height * 2) / get_tab_width(name_width);
+                    cr.translate(0, 24);
+                    cr.scale(scale_x, scale_y);
+                    Draw.draw_radial(cr, draw_x, get_tab_width(name_width), height, tab_active_center_color, tab_active_edge_color);
+                    
+                    cr.restore();
                 } else {
                     var is_hover = false;
                     
@@ -434,10 +471,18 @@ namespace Widgets {
                     }
                     
                     if (is_hover) {
-                        cr.set_source_rgba(0.5, 0.5, 0.5, 0.2);
-                        Draw.draw_rectangle(cr, draw_x, 0, get_tab_width(name_width), height);
+                        cr.save();
+                        clip_rectangle(cr, draw_x, 0, get_tab_width(name_width), height);
+                    
+                        double scale_x = 1;
+                        double scale_y = ((double) height * 2) / get_tab_width(name_width);
+                        cr.translate(0, 24);
+                        cr.scale(scale_x, scale_y);
+                        Draw.draw_radial(cr, draw_x, get_tab_width(name_width), height, tab_hover_center_color, tab_hover_edge_color);
+                    
+                        cr.restore();
                     } else {
-                        cr.set_source_rgba(0, 0, 0, 0.2);
+                        cr.set_source_rgba(0, 0, 0, 0);
                         Draw.draw_rectangle(cr, draw_x, 0, get_tab_width(name_width), height);
                     }
                 }
@@ -455,11 +500,13 @@ namespace Widgets {
                         }
                     }
                 }
+                cr.set_source_rgba(1, 1, 1, 0.1);
+                Draw.draw_rectangle(cr, draw_x + get_tab_width(name_width) - 1, 0, 1, height);
                 
                 Utils.set_context_color(cr, text_color);
-                Draw.draw_layout(cr, layout, draw_x, draw_padding_y);
+                Draw.draw_layout(cr, layout, draw_x + text_padding_x, draw_padding_y);
                 
-                draw_x += name_width + close_button_width + text_padding_x;
+                draw_x += name_width + close_button_width + text_padding_x * 2;
                 
                 counter++;
             }
@@ -471,15 +518,6 @@ namespace Widgets {
             return name_width + close_button_width + text_padding_x * 2;
         }
         
-        public ArrayList<string> get_all_names() {
-            ArrayList<string> names = new ArrayList<string>();
-            foreach (int index in tab_list) {
-                names.add(tab_name_map.get(index));
-            }
-            
-            return names;
-        }
-
         public void switch_tab(int new_index) {
             tab_index = new_index;
             

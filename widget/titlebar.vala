@@ -73,12 +73,18 @@ namespace Widgets {
         }
         
         private bool on_draw(Gtk.Widget widget, Cairo.Context cr) {
+            Gtk.Allocation rect;
+            widget.get_allocation(out rect);
+            
             Widgets.Window window = (Widgets.Window) this.get_toplevel();
 
             cr.set_source_rgba(0, 0, 0, window.background_opacity);
             cr.set_operator (Cairo.Operator.SOURCE);
             cr.paint();
             cr.set_operator (Cairo.Operator.OVER);
+            
+            cr.set_source_rgba(1, 1, 1, 0.1);
+            Draw.draw_rectangle(cr, 0, rect.height - 1, rect.width, 1);
             
             foreach(Gtk.Widget w in this.get_children()) {
                 w.draw(cr);
