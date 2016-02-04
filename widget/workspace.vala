@@ -10,6 +10,7 @@ namespace Widgets {
         public int PANED_HANDLE_SIZE = 1;
         
         public signal void change_dir(int index, string dir);
+        public signal void exit(int index);
         
         public Workspace(int workspace_index) {
             index = workspace_index;
@@ -25,9 +26,39 @@ namespace Widgets {
             term.change_dir.connect((term, dir) => {
                     change_dir(index, dir);
                 });
+            term.exit.connect((term) => {
+                    close_term(term);
+                });
             term_list.add(term);
             
             return term;
+        }
+        
+        public void close_term(Term term) {
+            Container parent_widget = term.get_parent();
+            parent_widget.remove(term);
+            term.destroy();
+            term_list.remove(term);
+            
+            clean_unused_parent(parent_widget);
+        }
+        
+        public void clean_unused_parent(Gtk.Container container) {
+            if (container.get_children().length() == 0) {
+                if (container.get_type().is_a(typeof(Workspace))) {
+                    exit(index);
+                } else {
+                    Container parent_widget = container.get_parent();
+                    parent_widget.remove(container);
+                    container.destroy();
+                    
+                    clean_unused_parent(parent_widget);
+                }
+            } else {
+                if (container.get_type().is_a(typeof(Paned))) {
+                    ((Term) container.get_children().nth_data(0)).term.grab_focus();
+                }
+            }
         }
         
         public Term get_focus_term(Container container) {

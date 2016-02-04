@@ -48,6 +48,8 @@ namespace Widgets {
         public Gdk.RGBA foreground_color;
         public Gdk.RGBA[] palette;
         
+        public signal void exit();
+        
         public Term(bool first_term) {
             is_first_term = first_term;
             
@@ -74,7 +76,7 @@ namespace Widgets {
 
             term = new Terminal();
             term.child_exited.connect ((t)=> {
-                    Gtk.main_quit();
+                    exit();
                 });
             term.realize.connect((t) => {
                     term.set_colors(foreground_color, background_color, palette);
