@@ -43,12 +43,21 @@ namespace Widgets {
         public void split(Orientation orientation) {
             Term focus_term = get_focus_term(this);
             
+            Gtk.Allocation alloc;
+            focus_term.get_allocation(out alloc);
+            
             Widget parent_widget = focus_term.get_parent();
             ((Container) parent_widget).remove(focus_term);
             Paned paned = new Paned(orientation);
             Term term = new_term(false);
             paned.pack1(focus_term, true, false);
             paned.pack2(term, true, false);
+            
+            if (orientation == Gtk.Orientation.HORIZONTAL) {
+                paned.set_position(alloc.width / 2); 
+            } else {
+                paned.set_position(alloc.height / 2); 
+            }
                 
             if (parent_widget.get_type().is_a(typeof(Workspace))) {
                 ((Workspace) parent_widget).pack_start(paned, true, true, 0);
