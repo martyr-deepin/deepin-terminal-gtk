@@ -113,4 +113,12 @@ namespace Utils {
             container.remove(w);
         }
     }
+
+    public Gtk.Allocation get_origin_allocation(Gtk.Widget w) {
+        Gtk.Allocation alloc;
+        w.get_allocation(out alloc);
+        
+        w.translate_coordinates(w.get_toplevel(), 0, 0, out alloc.x, out alloc.y);
+        return alloc;
+    }
 }

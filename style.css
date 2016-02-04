@@ -1,5 +1,5 @@
 GtkWindow.background,
-GtkWindow.background:backdrop{
+GtkWindow.background:backdrop {
     background-color: transparent;
 }
 
@@ -10,7 +10,7 @@ GtkWindow .frame.scrollbar.trough,
 GtkWindow .scrollbars-junction:backdrop, 
 GtkWindow .scrollbar.trough:backdrop,
 GtkWindow .scrollbars-junction.frame:backdrop,
-GtkWindow .frame.scrollbar.trough:backdrop{
+GtkWindow .frame.scrollbar.trough:backdrop {
   background-color: rgba(39,40,34,.95); /*match scroll gutter to the bg set previously*/
   border:none;
 }

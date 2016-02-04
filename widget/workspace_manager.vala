@@ -75,13 +75,5 @@ namespace Widgets {
                 show_all();
             }
         }
-        
-        public void split_workspace_horizontal() {
-            focus_workspace.split_horizontal();
-        }
-        
-        public void split_workspace_vertical() {
-            focus_workspace.split_vertical();
-        }
     }
 }

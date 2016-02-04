@@ -55,9 +55,17 @@ private class Application {
         } else if (keyname == "F11") {
             window.toggle_fullscreen();
         } else if (keyname == "Ctrl + h") {
-            workspace_manager.split_workspace_horizontal();
+            workspace_manager.focus_workspace.split_horizontal();
         } else if (keyname == "Ctrl + H") {
-            workspace_manager.split_workspace_vertical();
+            workspace_manager.focus_workspace.split_vertical();
+        } else if (keyname == "Alt + h") {
+            workspace_manager.focus_workspace.focus_left_terminal();
+        } else if (keyname == "Alt + l") {
+            workspace_manager.focus_workspace.focus_right_terminal();
+        } else if (keyname == "Alt + j") {
+            workspace_manager.focus_workspace.focus_down_terminal();
+        } else if (keyname == "Alt + k") {
+            workspace_manager.focus_workspace.focus_up_terminal();
         } else {
             return false;
         }
