@@ -52,7 +52,7 @@ Below is keymap list for deepin-terminal:
 
 ## Installation
 
-`make && make install`
+`make && ./main`
 
 ## Getting help
 
