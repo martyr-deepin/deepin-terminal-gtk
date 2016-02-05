@@ -37,8 +37,8 @@ Below is keymap list for deepin-terminal:
 | Zoom in                         | **Ctrl** + **-**                    |
 | Revert default size             | **Ctrl** + **0**                    |
 |                                                                       |
-| New workspace                   | **Ctrl** + **t**                    |
-| Close workspace                 | **Ctrl** + **w**                    |
+| New workspace                   | **Ctrl** + **T**                    |
+| Close workspace                 | **Ctrl** + **W**                    |
 | Switch preview workspace        | **Ctrl** + **Tab**                  |
 | Switch next workspace           | **Ctrl** + **Shift** + **Tab**      |
 | Select workspace with number    | **Ctrl** + **number**               |
