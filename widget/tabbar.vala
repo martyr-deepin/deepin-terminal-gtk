@@ -15,8 +15,9 @@ namespace Widgets {
         
         public Gdk.Color inactive_arrow_color = Utils.color_from_string("#393937");
         public Gdk.Color hover_arrow_color = Utils.color_from_string("#494943");
-        public Gdk.Color text_color = Utils.color_from_string("#aaaaaa");
         public Gdk.Color hover_text_color = Utils.color_from_string("#ffffff");
+        public Gdk.Color text_active_color = Utils.color_from_string("#ffffff");
+        public Gdk.Color text_color = Utils.color_from_string("#aaaaaa");
         public Gdk.Color percent_color = Utils.color_from_string("#3880AB");
         
         private Cairo.ImageSurface close_hover_surface;
@@ -442,6 +443,8 @@ namespace Widgets {
                 int name_width, name_height;
                 layout.get_pixel_size(out name_width, out name_height);
                 
+                Gdk.Color tab_text_color = text_color;
+                
                 if (counter == tab_index) {
                     cr.save();
                     clip_rectangle(cr, draw_x, 0, get_tab_width(name_width), height);
@@ -453,6 +456,8 @@ namespace Widgets {
                     Draw.draw_radial(cr, draw_x, get_tab_width(name_width), height, tab_active_center_color, tab_active_edge_color);
                     
                     cr.restore();
+                    
+                    tab_text_color = text_active_color;
                 } else {
                     var is_hover = false;
                     
@@ -473,6 +478,8 @@ namespace Widgets {
                         Draw.draw_radial(cr, draw_x, get_tab_width(name_width), height, tab_hover_center_color, tab_hover_edge_color);
                     
                         cr.restore();
+                        
+                        tab_text_color = text_active_color;
                     } else {
                         cr.set_source_rgba(0, 0, 0, 0);
                         Draw.draw_rectangle(cr, draw_x, 0, get_tab_width(name_width), height);
@@ -495,7 +502,7 @@ namespace Widgets {
                 cr.set_source_rgba(1, 1, 1, 0.1);
                 Draw.draw_rectangle(cr, draw_x + get_tab_width(name_width) - 1, 0, 1, height);
                 
-                Utils.set_context_color(cr, text_color);
+                Utils.set_context_color(cr, tab_text_color);
                 Draw.draw_layout(cr, layout, draw_x + text_padding_x, draw_padding_y);
                 
                 draw_x += name_width + close_button_width + text_padding_x * 2;
