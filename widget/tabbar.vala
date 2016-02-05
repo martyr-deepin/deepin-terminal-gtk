@@ -13,12 +13,11 @@ namespace Widgets {
         public int height = 30;
         public int tab_index = 0;
         
-        public Gdk.Color inactive_arrow_color = Utils.color_from_string("#393937");
-        public Gdk.Color hover_arrow_color = Utils.color_from_string("#494943");
-        public Gdk.Color hover_text_color = Utils.color_from_string("#ffffff");
-        public Gdk.Color text_active_color = Utils.color_from_string("#ffffff");
-        public Gdk.Color text_color = Utils.color_from_string("#aaaaaa");
-        public Gdk.Color percent_color = Utils.color_from_string("#3880AB");
+        public Gdk.RGBA inactive_arrow_color;
+        public Gdk.RGBA hover_arrow_color;
+        public Gdk.RGBA text_hover_color;
+        public Gdk.RGBA text_active_color;
+        public Gdk.RGBA text_color;
         
         private Cairo.ImageSurface close_hover_surface;
         private Cairo.ImageSurface close_normal_surface;
@@ -60,6 +59,21 @@ namespace Widgets {
             close_normal_surface = new Cairo.ImageSurface.from_png("image/tab_close_normal.png");
             close_hover_surface = new Cairo.ImageSurface.from_png("image/tab_close_hover.png");
             close_press_surface = new Cairo.ImageSurface.from_png("image/tab_close_press.png");
+            
+            inactive_arrow_color = Gdk.RGBA();
+            inactive_arrow_color.parse("#393937");
+
+            hover_arrow_color = Gdk.RGBA();
+            hover_arrow_color.parse("#494943");
+            
+            text_hover_color = Gdk.RGBA();
+            text_hover_color.parse("#ffffff");
+            
+            text_active_color = Gdk.RGBA();
+            text_active_color.parse("#ffffff");
+            
+            text_color = Gdk.RGBA();
+            text_color.parse("#aaaaaa");
             
             tab_active_center_color = Gdk.RGBA();
             tab_active_center_color.parse("#44FFC4");
@@ -406,7 +420,7 @@ namespace Widgets {
                 
                 if (draw_hover) {
                     if (hover_x < arrow_width) {
-                        Utils.set_context_color(cr, hover_text_color);
+                        Utils.set_context_color(cr, text_hover_color);
                     } else {
                         Utils.set_context_color(cr, text_color);
                     }
@@ -420,7 +434,7 @@ namespace Widgets {
                 
                 if (draw_hover) {
                     if (hover_x > alloc.width - arrow_width) {
-                        Utils.set_context_color(cr, hover_text_color);
+                        Utils.set_context_color(cr, text_hover_color);
                     } else {
                         Utils.set_context_color(cr, text_color);
                     }
@@ -443,7 +457,7 @@ namespace Widgets {
                 int name_width, name_height;
                 layout.get_pixel_size(out name_width, out name_height);
                 
-                Gdk.Color tab_text_color = text_color;
+                Gdk.RGBA tab_text_color = text_color;
                 
                 if (counter == tab_index) {
                     cr.save();

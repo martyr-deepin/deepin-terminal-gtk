@@ -63,15 +63,8 @@ namespace Utils {
         return (px < rect_start_x || px > rect_end_x || py < rect_start_y || py > rect_end_y);
     }
 
-    public Gdk.Color color_from_string(string color_string) {
-        Gdk.Color color;
-        Gdk.Color.parse(color_string, out color);
-        
-        return color;
-    }
-
-    public void set_context_color(Cairo.Context cr, Gdk.Color color) {
-        cr.set_source_rgb(color.red / 65535.0, color.green / 65535.0, color.blue / 65535.0);
+    public void set_context_color(Cairo.Context cr, Gdk.RGBA color) {
+        cr.set_source_rgba(color.red, color.green, color.blue, color.alpha);
     }
 
     public void propagate_draw(Gtk.Container widget, Cairo.Context cr) {
