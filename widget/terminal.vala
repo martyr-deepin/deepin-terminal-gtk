@@ -50,7 +50,7 @@ namespace Widgets {
         
         public signal void exit();
         
-        public Term(bool first_term) {
+        public Term(bool first_term, string[]? commands, string? work_directory) {
             is_first_term = first_term;
             
             background_color = Gdk.RGBA();
@@ -79,6 +79,7 @@ namespace Widgets {
                     exit();
                 });
             term.realize.connect((t) => {
+            
                     term.set_colors(foreground_color, background_color, palette);
                     focus_term();
                 });
@@ -144,8 +145,20 @@ namespace Widgets {
             /* Make Links Clickable */
             this.clickable(regex_strings);
             
-            active_shell();
-        
+            if (work_directory != null) {
+                active_shell(work_directory);
+            } else {
+                active_shell();
+            }
+            
+            string program_string = "";
+            if (commands != null) {
+                foreach (string command in commands) {
+                    program_string = program_string.concat(command);
+                }
+                run_program(program_string);
+            }
+            
             set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             add(term);
         }
@@ -278,15 +291,27 @@ namespace Widgets {
         public void active_shell(string dir = GLib.Environment.get_current_dir ()) {
             string shell = "";
             string?[] envv = null;
-
+            
             if (shell == "") {
                 shell = Vte.get_user_shell();
             }
-
+            
             try {
                 term.spawn_sync (Vte.PtyFlags.DEFAULT, dir, {shell}, envv, SpawnFlags.SEARCH_PATH, null, out child_pid, null);
             } catch (Error e) {
                 warning(e.message);
+            }
+        }
+        
+        public void run_program(string program_string) {
+            try {
+                string[]? program_with_args = null;
+                Shell.parse_argv (program_string, out program_with_args);
+
+                term.spawn_sync (Vte.PtyFlags.DEFAULT, null, program_with_args,
+                                 null, SpawnFlags.SEARCH_PATH, null, out this.child_pid, null);
+            } catch (Error e) {
+                warning (e.message);
             }
         }
     }

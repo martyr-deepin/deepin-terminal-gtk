@@ -12,17 +12,17 @@ namespace Widgets {
         public signal void change_dir(int index, string dir);
         public signal void exit(int index);
         
-        public Workspace(int workspace_index) {
+        public Workspace(int workspace_index, string[]? commands, string? work_directory) {
             index = workspace_index;
             term_list = new ArrayList<Term>();
             
-            Term term = new_term(true);
+            Term term = new_term(true, commands, work_directory);
             
             pack_start(term, true, true, 0);
         }
         
-        public Term new_term(bool first_term) {
-            Term term = new Widgets.Term(first_term);
+        public Term new_term(bool first_term, string[]? commands, string? work_directory) {
+            Term term = new Widgets.Term(first_term, commands, work_directory);
             term.change_dir.connect((term, dir) => {
                     change_dir(index, dir);
                 });
@@ -87,7 +87,7 @@ namespace Widgets {
             Widget parent_widget = focus_term.get_parent();
             ((Container) parent_widget).remove(focus_term);
             Paned paned = new Paned(orientation);
-            Term term = new_term(false);
+            Term term = new_term(false, null, null);
             paned.pack1(focus_term, true, false);
             paned.pack2(term, true, false);
             

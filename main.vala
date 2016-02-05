@@ -8,11 +8,30 @@ private class Application {
     public Widgets.Window window;
     public WorkspaceManager workspace_manager;
     
+	private static bool version = false;
+	private static bool quake_mode = false;
+	private static string? work_directory = null;
+    
+    /* command_e (-e) is used for running commands independently (not inside a shell) */
+    [CCode (array_length = false, array_null_terminated = true)]
+	private static string[]? commands = null;
+    
+    private const GLib.OptionEntry[] options = {
+		{ "version", 0, 0, OptionArg.NONE, ref version, "Print version info and exit", null },
+		{ "work-directory", 'w', 0, OptionArg.FILENAME, ref work_directory, "Set shell working directory", "DIRECTORY" },
+		{ "quake-mode", 0, 0, OptionArg.NONE, ref quake_mode, "Quake mode", null },
+        { "execute", 'e', 0, OptionArg.STRING_ARRAY, ref commands, "Run a program in terminal", "" },
+		{ "execute", 'x', 0, OptionArg.STRING_ARRAY, ref commands, "Same as -e", "" },
+        
+		// list terminator
+		{ null }
+	};
+    
     private Application() {
         Utils.load_css_theme("style.css");
         
         Titlebar titlebar = new Titlebar();
-        workspace_manager = new WorkspaceManager(titlebar.tabbar); 
+        workspace_manager = new WorkspaceManager(titlebar.tabbar, commands, work_directory); 
         
         titlebar.tabbar.press_tab.connect((t, tab_index, tab_id) => {
                 workspace_manager.switch_workspace(tab_id);
@@ -22,6 +41,7 @@ private class Application {
             });
         
         window = new Widgets.Window();
+        
         window.destroy.connect((t) => {
                 Gtk.main_quit();
             });
@@ -43,7 +63,7 @@ private class Application {
         string[] ctrl_num_keys = {"Ctrl + 1", "Ctrl + 2", "Ctrl + 3", "Ctrl + 4", "Ctrl + 5", "Ctrl + 6", "Ctrl + 7", "Ctrl + 8", "Ctrl + 9"};
         
         if (keyname == "Ctrl + t") {
-            workspace_manager.new_workspace();
+            workspace_manager.new_workspace(null, null);
         } else if (keyname == "Ctrl + w") {
             workspace_manager.tabbar.close_current_tab();
         } else if (keyname == "Ctrl + Tab") {
@@ -74,8 +94,22 @@ private class Application {
     }
     
     private static void main(string[] args) {
-        Gtk.init(ref args);
-        new Application();
-        Gtk.main();
+        try {
+			var opt_context = new OptionContext();
+			opt_context.set_help_enabled(true);
+			opt_context.add_main_entries(options, null);
+			opt_context.parse(ref args);
+		} catch (OptionError e) {
+			stdout.printf ("error: %s\n", e.message);
+			stdout.printf ("Run '%s --help' to see a full list of available command line options.\n", args[0]);
+		}
+
+		if (version) {
+			stdout.printf("Deepin Terminal 2.0\n");
+        } else {
+            Gtk.init(ref args);
+            new Application();
+            Gtk.main();
+        }
     }
 }

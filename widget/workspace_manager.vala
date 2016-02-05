@@ -9,13 +9,13 @@ namespace Widgets {
         public HashMap<int, Workspace> workspace_map;
         public Workspace focus_workspace;
         
-        public WorkspaceManager(Tabbar t) {
+        public WorkspaceManager(Tabbar t, string[]? commands, string? work_directory) {
             tabbar = t;
 
             workspace_index = 0;
             workspace_map = new HashMap<int, Workspace>();
             
-            new_workspace();
+            new_workspace(commands, work_directory);
         }
         
         public void pack_workspace(Workspace workspace) {
@@ -23,11 +23,11 @@ namespace Widgets {
             pack_start(workspace, true, true, 0);
         }
         
-        public void new_workspace() {
+        public void new_workspace(string[]? commands, string? work_directory) {
             Utils.remove_all_children(this);
             
             workspace_index++;
-            Widgets.Workspace workspace = new Widgets.Workspace(workspace_index);
+            Widgets.Workspace workspace = new Widgets.Workspace(workspace_index, commands, work_directory);
             workspace_map.set(workspace_index, workspace);
             workspace.change_dir.connect((workspace, index, dir) => {
                     tabbar.rename_tab(index, dir);
