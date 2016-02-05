@@ -61,27 +61,19 @@ namespace Widgets {
             close_press_surface = new Cairo.ImageSurface.from_png("image/tab_close_press.png");
             
             tab_active_center_color = Gdk.RGBA();
-            tab_active_center_color.red = 0;
-            tab_active_center_color.green = 255;
-            tab_active_center_color.blue = 0;
+            tab_active_center_color.parse("#44FFC4");
             tab_active_center_color.alpha = 0.25;
             
             tab_active_edge_color = Gdk.RGBA();
-            tab_active_edge_color.red = 34;
-            tab_active_edge_color.green = 255;
-            tab_active_edge_color.blue = 144;
+            tab_active_edge_color.parse("#22FF90");
             tab_active_edge_color.alpha = 0;
 
             tab_hover_center_color = Gdk.RGBA();
-            tab_hover_center_color.red = 255;
-            tab_hover_center_color.green = 255;
-            tab_hover_center_color.blue = 255;
+            tab_hover_center_color.parse("#ffffff");
             tab_hover_center_color.alpha = 0.15;
             
             tab_hover_edge_color = Gdk.RGBA();
-            tab_hover_edge_color.red = 255;
-            tab_hover_edge_color.green = 255;
-            tab_hover_edge_color.blue = 255;
+            tab_hover_edge_color.parse("#ffffff");
             tab_hover_edge_color.alpha = 0;
             
             draw.connect(on_draw);
@@ -456,7 +448,7 @@ namespace Widgets {
                     
                     double scale_x = 1;
                     double scale_y = ((double) height * 2) / get_tab_width(name_width);
-                    cr.translate(0, 24);
+                    cr.translate(0, height / 2);
                     cr.scale(scale_x, scale_y);
                     Draw.draw_radial(cr, draw_x, get_tab_width(name_width), height, tab_active_center_color, tab_active_edge_color);
                     
@@ -476,7 +468,7 @@ namespace Widgets {
                     
                         double scale_x = 1;
                         double scale_y = ((double) height * 2) / get_tab_width(name_width);
-                        cr.translate(0, 24);
+                        cr.translate(0, height / 2);
                         cr.scale(scale_x, scale_y);
                         Draw.draw_radial(cr, draw_x, get_tab_width(name_width), height, tab_hover_center_color, tab_hover_edge_color);
                     

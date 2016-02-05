@@ -29,9 +29,9 @@ namespace Draw {
     }
 
     public void draw_radial(Cairo.Context cr, int x, int width, int height, Gdk.RGBA center_color, Gdk.RGBA edge_color) {
-        Cairo.Pattern pattern = new Cairo.Pattern.radial(x + width / 2, height / 2, width / 2, x + width / 2, height / 2, 0);
-        pattern.add_color_stop_rgba(0, edge_color.red, edge_color.green, edge_color.blue, edge_color.alpha);        
+        Cairo.Pattern pattern = new Cairo.Pattern.radial(x + width / 2, height, width / 2, x + width / 2, height, 0);
         pattern.add_color_stop_rgba(1, center_color.red, center_color.green, center_color.blue, center_color.alpha);
+        pattern.add_color_stop_rgba(0, edge_color.red, edge_color.green, edge_color.blue, edge_color.alpha);        
         cr.set_source(pattern);
         cr.paint();
     }
