@@ -62,9 +62,9 @@ private class Application {
         string keyname = Keymap.get_keyevent_name(key_event);
         string[] ctrl_num_keys = {"Ctrl + 1", "Ctrl + 2", "Ctrl + 3", "Ctrl + 4", "Ctrl + 5", "Ctrl + 6", "Ctrl + 7", "Ctrl + 8", "Ctrl + 9"};
         
-        if (keyname == "Ctrl + t") {
+        if (keyname == "Ctrl + T") {
             workspace_manager.new_workspace(null, null);
-        } else if (keyname == "Ctrl + w") {
+        } else if (keyname == "Ctrl + W") {
             workspace_manager.tabbar.close_current_tab();
         } else if (keyname == "Ctrl + Tab") {
             workspace_manager.tabbar.select_next_tab();

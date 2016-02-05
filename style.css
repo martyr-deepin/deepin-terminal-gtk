@@ -14,3 +14,8 @@ GtkWindow .frame.scrollbar.trough:backdrop {
   background-color: rgba(39,40,34,.95); /*match scroll gutter to the bg set previously*/
   border:none;
 }
+
+/* GtkPaned */
+.pane-separator {
+    background-color: rgba(255, 255, 255, 0.15);
+}

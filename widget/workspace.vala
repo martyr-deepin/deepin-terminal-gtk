@@ -87,6 +87,15 @@ namespace Widgets {
             Widget parent_widget = focus_term.get_parent();
             ((Container) parent_widget).remove(focus_term);
             Paned paned = new Paned(orientation);
+            paned.draw.connect((w, cr) => {
+                    Gtk.Allocation rect;
+                    w.get_allocation(out rect);
+                    
+                    cr.set_source_rgba(0, 0, 0, 0.8);
+                    Draw.draw_rectangle(cr, 0, 0, rect.width, rect.height);
+                    
+                    return false;
+                });
             Term term = new_term(false, null, null);
             paned.pack1(focus_term, true, false);
             paned.pack2(term, true, false);
