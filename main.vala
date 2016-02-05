@@ -4,7 +4,8 @@ using Vte;
 using Widgets;
 using Keymap;
 
-private class Application {
+[DBus (name = "com.deepin.terminal")]
+private class Application : Object {
     public Widgets.Window window;
     public WorkspaceManager workspace_manager;
     
@@ -28,6 +29,9 @@ private class Application {
 	};
     
     private Application() {
+    }
+    
+    public void run(bool has_start) {
         Utils.load_css_theme("style.css");
         
         Titlebar titlebar = new Titlebar();
@@ -52,7 +56,9 @@ private class Application {
             });
         window.key_press_event.connect(on_key_press);
         
-        window.set_position(Gtk.WindowPosition.CENTER);
+        if (!has_start) {
+            window.set_position(Gtk.WindowPosition.CENTER);
+        }
         window.set_titlebar(titlebar);
         window.add(workspace_manager);
         window.show_all();
@@ -93,6 +99,14 @@ private class Application {
         return true;
     }
     
+    public static void on_bus_acquired(DBusConnection conn, Application app) {
+        try {
+            conn.register_object("/com/deepin/terminal", app);
+        } catch (IOError e) {
+            stderr.printf("Could not register service\n");
+        }
+    }
+
     private static void main(string[] args) {
         try {
 			var opt_context = new OptionContext();
@@ -108,7 +122,15 @@ private class Application {
 			stdout.printf("Deepin Terminal 2.0\n");
         } else {
             Gtk.init(ref args);
-            new Application();
+            Application app = new Application();
+            
+            Bus.own_name(BusType.SESSION,
+                 "com.deepin.terminal",
+                 BusNameOwnerFlags.NONE,
+                 ((con) => {on_bus_acquired(con, app);}),
+                 () => {app.run(false);},
+                 () => {app.run(true);});
+            
             Gtk.main();
         }
     }
