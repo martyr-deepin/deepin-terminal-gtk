@@ -80,7 +80,7 @@ namespace Widgets {
                 });
             term.realize.connect((t) => {
                     term.set_colors(foreground_color, background_color, palette);
-                    t.grab_focus();
+                    focus_term();
                 });
             term.draw.connect((t) => {
                     Widgets.Window window = (Widgets.Window) term.get_toplevel();
@@ -148,6 +148,13 @@ namespace Widgets {
         
             set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             add(term);
+        }
+        
+        public void focus_term() {
+            term.grab_focus();
+            if (current_dir != null) {
+                change_dir(GLib.Path.get_basename(current_dir));
+            }
         }
         
         public bool on_scroll(Gtk.Widget widget, Gdk.EventScroll scroll_event) {

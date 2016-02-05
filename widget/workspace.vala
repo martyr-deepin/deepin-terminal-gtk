@@ -56,7 +56,7 @@ namespace Widgets {
                 }
             } else {
                 if (container.get_type().is_a(typeof(Paned))) {
-                    ((Term) container.get_children().nth_data(0)).term.grab_focus();
+                    ((Term) container.get_children().nth_data(0)).focus_term();
                 }
             }
         }
@@ -168,7 +168,7 @@ namespace Widgets {
                 }
                 
                 if (same_coordinate_terminals.size > 0) {
-                    same_coordinate_terminals[0].term.grab_focus();
+                    same_coordinate_terminals[0].focus_term();
                 } else {
                     ArrayList<Term> bigger_match_terminals = new ArrayList<Term>();
                     foreach (Term t in intersects_terminals) {
@@ -180,7 +180,7 @@ namespace Widgets {
                     }
                     
                     if (bigger_match_terminals.size > 0) {
-                        bigger_match_terminals[0].term.grab_focus();
+                        bigger_match_terminals[0].focus_term();
                     } else {
                         Term biggest_intersectant_terminal = null;
                         int area = 0;
@@ -194,7 +194,7 @@ namespace Widgets {
                         }
                         
                         if (biggest_intersectant_terminal != null) {
-                            biggest_intersectant_terminal.term.grab_focus();
+                            biggest_intersectant_terminal.focus_term();
                         }
                     }
                 }
@@ -241,7 +241,7 @@ namespace Widgets {
                 }
                 
                 if (same_coordinate_terminals.size > 0) {
-                    same_coordinate_terminals[0].term.grab_focus();
+                    same_coordinate_terminals[0].focus_term();
                 } else {
                     ArrayList<Term> bigger_match_terminals = new ArrayList<Term>();
                     foreach (Term t in intersects_terminals) {
@@ -253,7 +253,7 @@ namespace Widgets {
                     }
                     
                     if (bigger_match_terminals.size > 0) {
-                        bigger_match_terminals[0].term.grab_focus();
+                        bigger_match_terminals[0].focus_term();
                     } else {
                         Term biggest_intersectant_terminal = null;
                         int area = 0;
@@ -267,7 +267,7 @@ namespace Widgets {
                         }
                         
                         if (biggest_intersectant_terminal != null) {
-                            biggest_intersectant_terminal.term.grab_focus();
+                            biggest_intersectant_terminal.focus_term();
                         }
                     }
                 }
