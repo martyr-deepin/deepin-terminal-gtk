@@ -8,7 +8,11 @@ namespace Widgets {
         public Window() {
             Gdk.Screen screen = Gdk.Screen.get_default();
             set_visual(screen.get_rgba_visual());
-            set_default_size(screen.get_width() * 2 / 3, screen.get_height() * 2 / 3);
+            
+            int monitor = screen.get_monitor_at_window(screen.get_active_window());
+            Gdk.Rectangle rect;
+            screen.get_monitor_geometry(monitor, out rect);
+            set_default_size(rect.width * 2 / 3, rect.height * 2 / 3);
 
             try{
                 set_icon_from_file("image/deepin-terminal.svg");
