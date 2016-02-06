@@ -32,13 +32,14 @@ Below is keymap list for deepin-terminal:
 | Focus down terminal             | **Alt**  + **j**                    |
 | Focus left terminal             | **Alt**  + **h**                    |
 | Focus right terminal            | **Alt**  + **l**                    |
+| Close terminal                  | **Ctrl** + **W**                    |
 |                                                                       |
 | Zoom out                        | **Ctrl** + **=**                    |
 | Zoom in                         | **Ctrl** + **-**                    |
 | Revert default size             | **Ctrl** + **0**                    |
 |                                                                       |
 | New workspace                   | **Ctrl** + **T**                    |
-| Close workspace                 | **Ctrl** + **W**                    |
+| Close workspace                 | **Ctrl** + **Q**                    |
 | Switch preview workspace        | **Ctrl** + **Tab**                  |
 | Switch next workspace           | **Ctrl** + **Shift** + **Tab**      |
 | Select workspace with number    | **Ctrl** + **number**               |

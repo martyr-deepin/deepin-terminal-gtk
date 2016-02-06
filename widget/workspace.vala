@@ -34,6 +34,10 @@ namespace Widgets {
             return term;
         }
         
+        public void close_focus_term() {
+            close_term(get_focus_term(this));
+        }
+        
         public void close_term(Term term) {
             Container parent_widget = term.get_parent();
             parent_widget.remove(term);
