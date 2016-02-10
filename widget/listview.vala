@@ -82,13 +82,13 @@ namespace Widgets {
         
         public void on_key_press(Gtk.Widget widget, Gdk.EventKey key_event) {
             string keyname = Keymap.get_keyevent_name(key_event);
-            if (keyname == "j") {
+            if (keyname == "Down") {
                 select_next_item();
-            } else if (keyname == "k") {
+            } else if (keyname == "Up") {
                 select_prev_item();
-            } else if (keyname == "J") {
+            } else if (keyname == "Home") {
                 select_last_item();
-            } else if (keyname == "K") {
+            } else if (keyname == "End") {
                 select_first_item();
             } else if (keyname == "Enter") {
                 active_item(current_row);

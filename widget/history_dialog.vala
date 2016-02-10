@@ -5,6 +5,7 @@ using Gee;
 namespace Widgets {
     public class HistoryDialog : Gtk.Window {
         public HistoryList history_list;
+        public Entry entry;
         
         public signal void active_history(string history_command);
         
@@ -35,7 +36,7 @@ namespace Widgets {
                  y + window.get_allocated_height() / 6);
             
             Box box = new Box(Gtk.Orientation.VERTICAL, 0);
-            Entry entry = new Entry();
+            entry = new Entry();
             entry.set_placeholder_text("Type history command...");
             entry.get_buffer().deleted_text.connect((buffer, p, nc) => {
                     history_list.match_input(buffer.get_text());
@@ -95,6 +96,14 @@ namespace Widgets {
             string keyname = Keymap.get_keyevent_name(key_event);
             if (keyname == "Enter") {
                 history_list.active_item(history_list.current_row);
+            } else if (keyname == "Down") {
+                history_list.select_next_item();
+            } else if (keyname == "Up") {
+                history_list.select_prev_item();
+            } else if (keyname == "Home") {
+                history_list.select_first_item();
+            } else if (keyname == "End") {
+                history_list.select_last_item();
             }
         }
         
@@ -143,15 +152,19 @@ namespace Widgets {
             list_items.clear();
             
             // Add match items.
-            ArrayList<HistoryItem> match_items = new ArrayList<HistoryItem>();
-            foreach (HistoryItem item in history_items) {
-                if (input.match_string(item.history_text, true)) {
-                    match_items.add(new HistoryItem(item.history_text));
+            if (input != "") {
+                ArrayList<HistoryItem> match_items = new ArrayList<HistoryItem>();
+                foreach (HistoryItem item in history_items) {
+                    if (input.match_string(item.history_text, true)) {
+                        HistoryItem match_item = new HistoryItem(item.history_text);
+                        match_items.add(match_item);
+                    }
                 }
                 
+                add_items(match_items);
+            } else {
+                add_items(history_items);
             }
-            
-            add_items(match_items);
         }
         
         public void list_history() {
