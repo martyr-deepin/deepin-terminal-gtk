@@ -24,6 +24,7 @@ Below is keymap list for deepin-terminal:
 | Open URL                        | **Ctrl** + LeftButton               |
 | Split vertically                | **Ctrl** + **H**                    |
 | Split horizontally              | **Ctrl** + **h**                    |
+| Search history                  | **Ctrl** + **r**                    |
 |                                                                       |
 | Close current window            | **Ctrl** + **q**                    |
 | Close other windows             | **Ctrl** + **Q**                    |
