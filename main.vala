@@ -34,23 +34,40 @@ private class Application : Object {
     public void run(bool has_start) {
         Utils.load_css_theme("style.css");
         
-        Titlebar titlebar = new Titlebar();
-        workspace_manager = new WorkspaceManager(titlebar.tabbar, commands, work_directory); 
+        Appbar appbar = new Appbar();
+        workspace_manager = new WorkspaceManager(appbar.tabbar, commands, work_directory); 
         
-        titlebar.tabbar.press_tab.connect((t, tab_index, tab_id) => {
+        appbar.tabbar.press_tab.connect((t, tab_index, tab_id) => {
                 workspace_manager.switch_workspace(tab_id);
             });
-        titlebar.tabbar.close_tab.connect((t, tab_index, tab_id) => {
-                workspace_manager.remove_workspace(tab_id);
+        appbar.tabbar.close_tab.connect((t, tab_index, tab_id) => {
+                Workspace focus_workspace = workspace_manager.workspace_map.get(tab_id);
+                if (focus_workspace.has_active_term()) {
+                    ConfirmDialog dialog = new ConfirmDialog(
+                        "Terminal still has running programs. Are you sure you want to quit?",
+                        window);
+                    dialog.confirm.connect((d) => {
+                            appbar.tabbar.destroy_tab(tab_index);
+                            workspace_manager.remove_workspace(tab_id);
+                        });
+                } else {
+                    appbar.tabbar.destroy_tab(tab_index);
+                    workspace_manager.remove_workspace(tab_id);
+                }
+            });
+        appbar.close_button.button_press_event.connect((w, e) => {
+                quit();
+                
+                return false;
             });
         
         window = new Widgets.Window();
         
         window.destroy.connect((t) => {
-                Gtk.main_quit();
+                quit();
             });
         window.window_state_event.connect((w) => {
-                titlebar.update_max_button();
+                appbar.update_max_button();
                 
                 return false;
             });
@@ -59,9 +76,22 @@ private class Application : Object {
         if (!has_start) {
             window.set_position(Gtk.WindowPosition.CENTER);
         }
-        window.set_titlebar(titlebar);
+        window.set_titlebar(appbar);
         window.add(workspace_manager);
         window.show_all();
+    }
+    
+    private void quit() {
+        if (workspace_manager.has_active_term()) {
+            ConfirmDialog dialog = new ConfirmDialog(
+                "Terminal still has running programs. Are you sure you want to quit?",
+                window);
+            dialog.confirm.connect((d) => {
+                    Gtk.main_quit();
+                });
+        } else {
+            Gtk.main_quit();
+        }
     }
     
     private bool on_key_press(Gtk.Widget widget, Gdk.EventKey key_event) {

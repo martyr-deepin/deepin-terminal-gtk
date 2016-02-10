@@ -34,8 +34,28 @@ namespace Widgets {
             return term;
         }
         
+        public bool has_active_term() {
+            foreach (Term term in term_list) {
+                if (term.has_foreground_process()) {
+                    return true;
+                }
+            }
+            
+            return false;
+        }
+        
         public void close_focus_term() {
-            close_term(get_focus_term(this));
+            Term focus_term = get_focus_term(this);
+            if (focus_term.has_foreground_process()) {
+                ConfirmDialog dialog = new ConfirmDialog(
+                    "Terminal still has running programs. Are you sure you want to quit?",
+                    (Window) focus_term.get_toplevel());
+                dialog.confirm.connect((d) => {
+                        close_term(focus_term);
+                    });
+            } else {
+                close_term(focus_term);
+            }
         }
         
         public void close_term(Term term) {

@@ -174,23 +174,26 @@ namespace Widgets {
         public void close_nth_tab(int index) {
             if (tab_list.size > 0) {
                 var tab_id = tab_list.get(index);
-                
-                tab_list.remove_at(index);
-                tab_name_map.unset(tab_id);
-
-                if (tab_list.size == 0) {
-                    tab_index = 0;
-                } else if (tab_index >= tab_list.size) {
-                    tab_index = tab_list.size - 1;
-                }
-                
                 close_tab(index, tab_id);
-                
-                out_of_area();
-                make_current_visible(false);
-                
-                queue_draw();
             }
+        }
+        
+        public void destroy_tab(int index) {
+            var tab_id = tab_list.get(index);
+                
+            tab_list.remove_at(index);
+            tab_name_map.unset(tab_id);
+
+            if (tab_list.size == 0) {
+                tab_index = 0;
+            } else if (tab_index >= tab_list.size) {
+                tab_index = tab_list.size - 1;
+            }
+            
+            out_of_area();
+            make_current_visible(false);
+            
+            queue_draw();
         }
         
         public void scroll_left() {
@@ -427,7 +430,7 @@ namespace Widgets {
                 } else {
                     Utils.set_context_color(cr, text_color);
                 }
-                Draw.draw_text(this, cr, "<", arrow_padding_x, arrow_padding_y);
+                Draw.draw_text(this, cr, "<", arrow_padding_x, arrow_padding_y, 20, alloc.height);
                 
                 Utils.set_context_color(cr, inactive_arrow_color);
                 Draw.draw_rectangle(cr, alloc.width - arrow_width, arrow_draw_padding_y, arrow_width, alloc.height - arrow_draw_padding_y * 2);
@@ -441,7 +444,7 @@ namespace Widgets {
                 } else {
                     Utils.set_context_color(cr, text_color);
                 }
-                Draw.draw_text(this, cr, ">", alloc.width - arrow_width + arrow_padding_x, arrow_padding_y);
+                Draw.draw_text(this, cr, ">", alloc.width - arrow_width + arrow_padding_x, arrow_padding_y, 20, alloc.height);
                 
                 Draw.clip_rectangle(cr, arrow_width, 0, alloc.width - arrow_width * 2, alloc.height);
             }

@@ -78,6 +78,9 @@ namespace Widgets {
             term.child_exited.connect ((t)=> {
                     exit();
                 });
+            term.destroy.connect((t) => {
+                    kill_fg();
+                });
             term.realize.connect((t) => {
             
                     term.set_colors(foreground_color, background_color, palette);
@@ -312,6 +315,30 @@ namespace Widgets {
                                  null, SpawnFlags.SEARCH_PATH, null, out this.child_pid, null);
             } catch (Error e) {
                 warning (e.message);
+            }
+        }
+        
+        public bool try_get_foreground_pid (out int pid) {
+            int pty = this.term.get_pty().fd;
+            int fgpid = Posix.tcgetpgrp (pty);
+
+            if (fgpid != this.child_pid && fgpid != -1) {
+                pid = (int) fgpid;
+                return true;
+            } else {
+                pid = -1;
+                return false;
+            }
+        }
+
+        public bool has_foreground_process () {
+            return try_get_foreground_pid(null);
+        }
+
+        public void kill_fg() {
+            int fg_pid;
+            if (this.try_get_foreground_pid(out fg_pid)) {
+                Posix.kill(fg_pid, Posix.SIGKILL);
             }
         }
     }

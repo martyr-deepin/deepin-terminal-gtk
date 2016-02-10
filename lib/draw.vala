@@ -8,8 +8,13 @@ namespace Draw {
         }
     }
 
-    public void draw_text(Gtk.Widget widget, Cairo.Context cr, string text, int x, int y) {
+    public void draw_text(Gtk.Widget widget, Cairo.Context cr, string text, int x, int y, int width, int height,
+                          Pango.Alignment text_align=Pango.Alignment.LEFT) {
         var layout = widget.create_pango_layout(text);
+		layout.set_width((int)(width * Pango.SCALE));
+		layout.set_height((int)(height * Pango.SCALE));
+		layout.set_alignment(text_align);
+        
         draw_layout(cr, layout, x, y);
     }
 

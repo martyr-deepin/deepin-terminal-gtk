@@ -114,4 +114,15 @@ namespace Utils {
         w.translate_coordinates(w.get_toplevel(), 0, 0, out alloc.x, out alloc.y);
         return alloc;
     }
+
+    public string get_command_output(string cmd) {
+    	try {
+    	    int exit_code;
+    	    string std_out;
+    	    Process.spawn_command_line_sync(cmd, out std_out, null, out exit_code);
+    	    return std_out;
+    	} catch (Error e){
+    	    return "";
+    	}
+    }
 }

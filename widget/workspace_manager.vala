@@ -78,5 +78,15 @@ namespace Widgets {
                 show_all();
             }
         }
+        
+        public bool has_active_term() {
+            foreach (var workspace_entry in workspace_map.entries) {
+                if (workspace_entry.value.has_active_term()) {
+                    return true;
+                }
+            }
+            
+            return false;
+        }
     }
 }
