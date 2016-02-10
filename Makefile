@@ -13,6 +13,8 @@ main: ./lib/draw.vala \
       ./widget/event_box.vala \
       ./widget/window.vala \
       ./widget/confirm_dialog.vala \
+      ./widget/history_dialog.vala \
+      ./widget/listview.vala \
       main.vala
 	valac -o main \
 	-X -w \
@@ -35,6 +37,8 @@ main: ./lib/draw.vala \
     ./widget/event_box.vala \
     ./widget/window.vala \
     ./widget/confirm_dialog.vala \
+    ./widget/history_dialog.vala \
+    ./widget/listview.vala \
     main.vala
 clean:
 	rm -f main

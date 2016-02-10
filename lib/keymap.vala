@@ -11,6 +11,8 @@ namespace Keymap {
                 return "Enter";
             } else if (key_unicode == 9) {
                 return "Tab";
+            } else if (key_unicode == 27) {
+                return "Esc";
             } else {
                 return key_unicode.to_string();
             }
