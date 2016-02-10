@@ -19,6 +19,7 @@ namespace Widgets {
                 set_size_request(rect.width, rect.height / 3);
                 set_skip_taskbar_hint(true);
                 set_skip_pager_hint(true);
+                set_type_hint(Gdk.WindowTypeHint.DIALOG);  // DIALOG hint will give right window effect
                 move(rect.x, 0);
             } else {
                 set_default_size(rect.width * 2 / 3, rect.height * 2 / 3);
