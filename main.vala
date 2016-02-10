@@ -5,7 +5,38 @@ using Widgets;
 using Keymap;
 
 [DBus (name = "com.deepin.terminal")]
-private class Application : Object {
+public class TerminalApp : Application {
+    public static void on_bus_acquired(DBusConnection conn, TerminalApp app) {
+        try {
+            conn.register_object("/com/deepin/terminal", app);
+        } catch (IOError e) {
+            stderr.printf("Could not register service\n");
+        }
+    }
+}
+
+[DBus (name = "com.deepin.quake_terminal")]
+public class QuakeTerminalApp : Application {
+    public static void on_bus_acquired(DBusConnection conn, QuakeTerminalApp app) {
+        try {
+            conn.register_object("/com/deepin/quake_terminal", app);
+        } catch (IOError e) {
+            stderr.printf("Could not register service\n");
+        }
+    }
+    
+    public void show_or_hide() {
+        this.window.toggle_quake_window();
+    }
+}
+
+[DBus (name = "com.deepin.quake_terminal")]
+interface QuakeDaemon : Object {
+    public abstract void show_or_hide() throws IOError;
+}
+
+
+public class Application : Object {
     public Widgets.Window window;
     public WorkspaceManager workspace_manager;
     
@@ -28,57 +59,65 @@ private class Application : Object {
 		{ null }
 	};
     
-    private Application() {
-    }
-    
     public void run(bool has_start) {
-        Utils.load_css_theme("style.css");
-        
-        Appbar appbar = new Appbar();
-        workspace_manager = new WorkspaceManager(appbar.tabbar, commands, work_directory); 
-        
-        appbar.tabbar.press_tab.connect((t, tab_index, tab_id) => {
-                workspace_manager.switch_workspace(tab_id);
-            });
-        appbar.tabbar.close_tab.connect((t, tab_index, tab_id) => {
-                Workspace focus_workspace = workspace_manager.workspace_map.get(tab_id);
-                if (focus_workspace.has_active_term()) {
-                    ConfirmDialog dialog = new ConfirmDialog(
-                        "Terminal still has running programs. Are you sure you want to quit?",
-                        window);
-                    dialog.confirm.connect((d) => {
-                            appbar.tabbar.destroy_tab(tab_index);
-                            workspace_manager.remove_workspace(tab_id);
-                        });
-                } else {
-                    appbar.tabbar.destroy_tab(tab_index);
-                    workspace_manager.remove_workspace(tab_id);
-                }
-            });
-        appbar.close_button.button_press_event.connect((w, e) => {
-                quit();
-                
-                return false;
-            });
-        
-        window = new Widgets.Window();
-        
-        window.destroy.connect((t) => {
-                quit();
-            });
-        window.window_state_event.connect((w) => {
-                appbar.update_max_button();
-                
-                return false;
-            });
-        window.key_press_event.connect(on_key_press);
-        
-        if (!has_start) {
-            window.set_position(Gtk.WindowPosition.CENTER);
+        if (has_start && quake_mode) {
+            try {
+                QuakeDaemon daemon = Bus.get_proxy_sync(BusType.SESSION, "com.deepin.quake_terminal", "/com/deepin/quake_terminal");
+                daemon.show_or_hide();
+            } catch (IOError e) {
+                stderr.printf("%s\n", e.message);
+            }
+            
+            Gtk.main_quit();
+        } else {
+            Utils.load_css_theme("style.css");
+            
+            Appbar appbar = new Appbar();
+            workspace_manager = new WorkspaceManager(appbar.tabbar, commands, work_directory); 
+            
+            appbar.tabbar.press_tab.connect((t, tab_index, tab_id) => {
+                    workspace_manager.switch_workspace(tab_id);
+                });
+            appbar.tabbar.close_tab.connect((t, tab_index, tab_id) => {
+                    Workspace focus_workspace = workspace_manager.workspace_map.get(tab_id);
+                    if (focus_workspace.has_active_term()) {
+                        ConfirmDialog dialog = new ConfirmDialog(
+                            "Terminal still has running programs. Are you sure you want to quit?",
+                            window);
+                        dialog.confirm.connect((d) => {
+                                appbar.tabbar.destroy_tab(tab_index);
+                                workspace_manager.remove_workspace(tab_id);
+                            });
+                    } else {
+                        appbar.tabbar.destroy_tab(tab_index);
+                        workspace_manager.remove_workspace(tab_id);
+                    }
+                });
+            appbar.close_button.button_press_event.connect((w, e) => {
+                    quit();
+                    
+                    return false;
+                });
+            
+            window = new Widgets.Window(quake_mode);
+            
+            window.destroy.connect((t) => {
+                    quit();
+                });
+            window.window_state_event.connect((w) => {
+                    appbar.update_max_button();
+                    
+                    return false;
+                });
+            window.key_press_event.connect(on_key_press);
+            
+            if (!has_start) {
+                window.set_position(Gtk.WindowPosition.CENTER);
+            }
+            window.set_titlebar(appbar);
+            window.add(workspace_manager);
+            window.show_all();
         }
-        window.set_titlebar(appbar);
-        window.add(workspace_manager);
-        window.show_all();
     }
     
     private void quit() {
@@ -131,15 +170,7 @@ private class Application : Object {
         return true;
     }
     
-    public static void on_bus_acquired(DBusConnection conn, Application app) {
-        try {
-            conn.register_object("/com/deepin/terminal", app);
-        } catch (IOError e) {
-            stderr.printf("Could not register service\n");
-        }
-    }
-
-    private static void main(string[] args) {
+    public static void main(string[] args) {
         try {
 			var opt_context = new OptionContext();
 			opt_context.set_help_enabled(true);
@@ -154,14 +185,24 @@ private class Application : Object {
 			stdout.printf("Deepin Terminal 2.0\n");
         } else {
             Gtk.init(ref args);
-            Application app = new Application();
             
-            Bus.own_name(BusType.SESSION,
-                 "com.deepin.terminal",
-                 BusNameOwnerFlags.NONE,
-                 ((con) => {on_bus_acquired(con, app);}),
-                 () => {app.run(false);},
-                 () => {app.run(true);});
+            if (quake_mode) {
+                QuakeTerminalApp app = new QuakeTerminalApp();
+                Bus.own_name(BusType.SESSION,
+                             "com.deepin.quake_terminal",
+                             BusNameOwnerFlags.NONE,
+                             ((con) => {QuakeTerminalApp.on_bus_acquired(con, app);}),
+                             () => {app.run(false);},
+                             () => {app.run(true);});
+            } else {
+                TerminalApp app = new TerminalApp();
+                Bus.own_name(BusType.SESSION,
+                             "com.deepin.terminal",
+                             BusNameOwnerFlags.NONE,
+                             ((con) => {TerminalApp.on_bus_acquired(con, app);}),
+                             () => {app.run(false);},
+                             () => {app.run(true);});
+            }
             
             Gtk.main();
         }
