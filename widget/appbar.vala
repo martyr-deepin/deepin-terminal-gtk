@@ -12,12 +12,11 @@ namespace Widgets {
         public ImageButton unmax_button;
         public ImageButton close_button;
         
-        public Appbar() {
+        public Appbar(Tabbar tab_bar, bool quake_mode) {
+            tabbar = tab_bar;
             visible_window = false;
             
             draw.connect(on_draw);
-            
-            tabbar = new Tabbar();
             
             menu_button = new ImageButton("window_menu");
             min_button = new ImageButton("window_min");
@@ -46,7 +45,9 @@ namespace Widgets {
             Box box = new Box(Gtk.Orientation.HORIZONTAL, 0);
             
             max_toggle_box.add(max_button);
-            box.pack_start(tabbar, true, true, 0);
+            if (!quake_mode) {
+                box.pack_start(tabbar, true, true, 0);
+            }
             box.pack_start(menu_button, false, false, 0);
             box.pack_start(min_button, false, false, 0);
             box.pack_start(max_toggle_box, false, false, 0);

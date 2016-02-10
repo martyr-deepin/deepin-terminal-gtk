@@ -72,7 +72,8 @@ public class Application : Object {
         } else {
             Utils.load_css_theme("style.css");
             
-            Appbar appbar = new Appbar();
+            Tabbar tabbar = new Tabbar();
+            Appbar appbar = new Appbar(tabbar, quake_mode);
             workspace_manager = new WorkspaceManager(appbar.tabbar, commands, work_directory); 
             
             appbar.tabbar.press_tab.connect((t, tab_index, tab_id) => {
@@ -99,6 +100,8 @@ public class Application : Object {
                     return false;
                 });
             
+            Box box = new Box(Gtk.Orientation.VERTICAL, 0);
+            
             window = new Widgets.Window(quake_mode);
             
             window.destroy.connect((t) => {
@@ -114,8 +117,16 @@ public class Application : Object {
             if (!has_start) {
                 window.set_position(Gtk.WindowPosition.CENTER);
             }
+            
+            box.pack_start(workspace_manager, true, true, 0);
+            if (quake_mode) {
+                Widgets.EventBox event_box = new Widgets.EventBox();
+                event_box.add(tabbar);
+                box.pack_start(event_box, false, false, 0);
+            }
+            
             window.set_titlebar(appbar);
-            window.add(workspace_manager);
+            window.add(box);
             window.show_all();
         }
     }
