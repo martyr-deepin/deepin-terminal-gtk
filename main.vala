@@ -123,6 +123,11 @@ public class Application : Object {
                 Widgets.EventBox event_box = new Widgets.EventBox();
                 event_box.add(tabbar);
                 box.pack_start(event_box, false, false, 0);
+                
+                // First focus terminal after show quake terminal.
+                window.show.connect((t) => {
+                        window.present();
+                    });
             }
             
             window.set_titlebar(appbar);
