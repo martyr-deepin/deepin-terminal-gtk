@@ -56,9 +56,9 @@ namespace Widgets {
             
             set_size_request(-1, height);
             
-            close_normal_surface = new Cairo.ImageSurface.from_png("image/tab_close_normal.png");
-            close_hover_surface = new Cairo.ImageSurface.from_png("image/tab_close_hover.png");
-            close_press_surface = new Cairo.ImageSurface.from_png("image/tab_close_press.png");
+            close_normal_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("tab_close_normal.png"));
+            close_hover_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("tab_close_hover.png"));
+            close_press_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("tab_close_press.png"));
             
             inactive_arrow_color = Gdk.RGBA();
             inactive_arrow_color.parse("#393937");

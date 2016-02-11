@@ -1,6 +1,7 @@
 using Cairo;
 using Draw;
 using Gtk;
+using Utils;
 
 namespace Widgets {
     public class ImageButton : Gtk.Button {
@@ -9,9 +10,9 @@ namespace Widgets {
         Cairo.ImageSurface press_surface;
         
         public ImageButton(string image_path) {
-            normal_surface = new Cairo.ImageSurface.from_png("image/" + image_path + "_normal.png");
-            hover_surface = new Cairo.ImageSurface.from_png("image/" + image_path + "_hover.png");
-            press_surface = new Cairo.ImageSurface.from_png("image/" + image_path + "_press.png");
+            normal_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_normal.png"));
+            hover_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_hover.png"));
+            press_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_press.png"));
             
             set_size_request(this.normal_surface.get_width(), this.normal_surface.get_height());
             

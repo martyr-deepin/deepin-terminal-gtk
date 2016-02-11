@@ -1,6 +1,8 @@
 using Gdk;
 using Gtk;
 
+extern char* project_path();
+
 namespace Utils {
     public bool move_window(Gtk.Widget widget, Gdk.EventButton event, Gtk.Window window) {
         if (is_left_button(event)) {
@@ -124,5 +126,9 @@ namespace Utils {
     	} catch (Error e){
     	    return "";
     	}
+    }
+
+    public string get_image_path(string image_name) {
+        return GLib.Path.build_path(Path.DIR_SEPARATOR_S, GLib.Path.get_dirname((string) project_path()), "image", image_name);
     }
 }

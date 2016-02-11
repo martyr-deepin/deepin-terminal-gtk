@@ -291,7 +291,7 @@ namespace Widgets {
             }
         }
 
-        public void active_shell(string dir = GLib.Environment.get_current_dir ()) {
+        public void active_shell(string dir = GLib.Environment.get_current_dir()) {
             string shell = "";
             string?[] envv = null;
             
