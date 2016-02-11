@@ -95,6 +95,10 @@ namespace Widgets {
         public void exit() {
             Gtk.Window window = get_transient_for();
             destroy();
+            
+            // Focus terminal after dialog exit.
+            // Sometimes, some popup window (like wine program's popup notify window) will grab focus,
+            // so call window.present to make terminal get focus.
             window.present();
         }
         

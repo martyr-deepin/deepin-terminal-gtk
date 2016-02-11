@@ -125,6 +125,8 @@ public class Application : Object {
                 box.pack_start(event_box, false, false, 0);
                 
                 // First focus terminal after show quake terminal.
+                // Sometimes, some popup window (like wine program's popup notify window) will grab focus,
+                // so call window.present to make terminal get focus.
                 window.show.connect((t) => {
                         window.present();
                     });
