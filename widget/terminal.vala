@@ -319,15 +319,20 @@ namespace Widgets {
         }
         
         public bool try_get_foreground_pid (out int pid) {
-            int pty = this.term.get_pty().fd;
-            int fgpid = Posix.tcgetpgrp (pty);
-
-            if (fgpid != this.child_pid && fgpid != -1) {
-                pid = (int) fgpid;
-                return true;
-            } else {
+            if (this.term.get_pty() == null) {
                 pid = -1;
                 return false;
+            } else {
+                int pty_fd = this.term.get_pty().fd;
+                int fgpid = Posix.tcgetpgrp(pty_fd);
+                
+                if (fgpid != this.child_pid && fgpid != -1) {
+                    pid = (int) fgpid;
+                    return true;
+                } else {
+                    pid = -1;
+                    return false;
+                }
             }
         }
 
