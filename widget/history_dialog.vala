@@ -20,7 +20,7 @@ namespace Widgets {
             
             Titlebar titlebar = new Titlebar();
             titlebar.close_button.button_press_event.connect((b) => {
-                    destroy();
+                    exit();
                     
                     return false;
                 });
@@ -53,7 +53,7 @@ namespace Widgets {
             key_press_event.connect((w, e) => {
                     string keyname = Keymap.get_keyevent_name(e);
                     if (keyname == "Esc") {
-                        destroy();
+                        exit();
                     }
                     
                     return false;
@@ -89,7 +89,13 @@ namespace Widgets {
         
         public void execute_history_command(string command) {
             active_history(command);
+            exit();
+        }
+        
+        public void exit() {
+            Gtk.Window window = get_transient_for();
             destroy();
+            window.present();
         }
         
         public void on_key_press(Gtk.Widget widget, Gdk.EventKey key_event) {
