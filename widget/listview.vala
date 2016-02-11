@@ -204,14 +204,14 @@ namespace Widgets {
         }
         
         private int get_max_current_row() {
-            return list_items.size - 1;
+            return int.max(0, list_items.size - 1);
         }
         
         private int get_max_start_row() {
             Gtk.Allocation alloc;
             this.get_allocation(out alloc);
             
-            return (list_items.size * get_item_height() - alloc.height) / get_item_height() + 1;
+            return int.max(0, (list_items.size * get_item_height() - alloc.height) / get_item_height() + 1);
         }
         
         public virtual int[] get_column_widths() {
