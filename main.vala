@@ -94,6 +94,9 @@ public class Application : Object {
                         workspace_manager.remove_workspace(tab_id);
                     }
                 });
+            appbar.tabbar.new_tab.connect((t) => {
+                    workspace_manager.new_workspace(null, null);
+                });
             appbar.close_button.button_press_event.connect((w, e) => {
                     quit();
                     

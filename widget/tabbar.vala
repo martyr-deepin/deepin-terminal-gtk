@@ -22,18 +22,25 @@ namespace Widgets {
         private Cairo.ImageSurface close_hover_surface;
         private Cairo.ImageSurface close_normal_surface;
         private Cairo.ImageSurface close_press_surface;
-        private bool draw_arrow = false;
+        
+        private Cairo.ImageSurface add_hover_surface;
+        private Cairo.ImageSurface add_normal_surface;
+        private Cairo.ImageSurface add_press_surface;
+
+        private double draw_scale = 1.0;
+        
         private bool draw_hover = false;
         private bool is_button_press = false;
-        private int arrow_padding_x = 4;
-        private int arrow_padding_y = 10;
-        private int arrow_draw_padding_y = 1;
-        private int arrow_width = 16;
-        private int text_padding_x = 12;
-        private int close_button_padding_x = 16;
+        
+        private int add_button_width = 16;
+        private int add_button_padding_x = 10;
+        private int add_button_padding_y = 8;
+        
+        private int tab_split_width = 1;
+        
+        private int text_padding_x = 20;
+        private int close_button_padding_x = 18;
         private int close_button_padding_y = 0;
-        private int close_button_width = 12;
-        private int draw_offset = 0;
         private int draw_padding_y = 8;
         private int hover_x = 0;
         
@@ -44,6 +51,7 @@ namespace Widgets {
         
         public signal void press_tab(int tab_index, int tab_id);
         public signal void close_tab(int tab_index, int tab_id);
+        public signal void new_tab();
         
         public Tabbar() {
             add_events (Gdk.EventMask.BUTTON_PRESS_MASK
@@ -59,6 +67,10 @@ namespace Widgets {
             close_normal_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("tab_close_normal.png"));
             close_hover_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("tab_close_hover.png"));
             close_press_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("tab_close_press.png"));
+
+            add_normal_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("tab_add_normal.png"));
+            add_hover_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("tab_add_hover.png"));
+            add_press_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("tab_add_press.png"));
             
             inactive_arrow_color = Gdk.RGBA();
             inactive_arrow_color.parse("#393937");
@@ -109,13 +121,15 @@ namespace Widgets {
             tab_list.add(tab_id);
             tab_name_map.set(tab_id, tab_name);
             
-            out_of_area();
+            update_tab_scale();
             
             queue_draw();
         }
         
         public void rename_tab(int tab_id, string tab_name) {
             tab_name_map.set(tab_id, tab_name);
+            
+            update_tab_scale();
             
             queue_draw();
         }
@@ -190,48 +204,15 @@ namespace Widgets {
                 tab_index = tab_list.size - 1;
             }
             
-            out_of_area();
-            make_current_visible(false);
-            
-            queue_draw();
-        }
-        
-        public void scroll_left() {
-            Gtk.Allocation alloc;
-            get_allocation(out alloc);
-            
-            draw_offset += alloc.width / 2;
-            if (draw_offset > 0) {
-                draw_offset = 0;
-            }
-            
-            queue_draw();
-        }
-        
-        public void scroll_right() {
-            Gtk.Allocation alloc;
-            get_allocation(out alloc);
-            
-            int draw_x = 0;
-            foreach (int tab_id in tab_list) {
-                var layout = create_pango_layout(tab_name_map.get(tab_id));
-                int name_width, name_height;
-                layout.get_pixel_size(out name_width, out name_height);
-
-                draw_x += get_tab_width(name_width);
-            }
-            
-            draw_offset -= alloc.width / 2;
-            if (draw_offset < alloc.width - arrow_width * 2 - draw_x) {
-                draw_offset = alloc.width - arrow_width * 2 - draw_x;
-            }
+            update_tab_scale();
             
             queue_draw();
         }
         
         public bool on_configure(Gtk.Widget widget, Gdk.EventConfigure event) {
-            out_of_area();
-            make_current_visible(true);
+            update_tab_scale();
+            
+            queue_draw();
             
             return false;
         }
@@ -244,39 +225,22 @@ namespace Widgets {
             Gtk.Allocation alloc;
             widget.get_allocation(out alloc);
             
-            if (draw_arrow) {
-                if (press_x < arrow_width) {
-                    scroll_left();
-                    return true;
-                } else if (press_x > alloc.width - arrow_width) {
-                    scroll_right();
-                    return true;
-                }
-            }
-            
             int draw_x = 0;
-            if (draw_arrow) {
-                draw_x += arrow_width + draw_offset;
-            }
-            
             int counter = 0;
             foreach (int tab_id in tab_list) {
                 var layout = create_pango_layout(tab_name_map.get(tab_id));
                 int name_width, name_height;
                 layout.get_pixel_size(out name_width, out name_height);
+                int tab_width = (int) (get_tab_width(name_width) * draw_scale);
 
-                draw_x += text_padding_x;
-                
-                if (press_x > draw_x && press_x < draw_x + get_tab_width(name_width)) {
-                    if (press_x < draw_x + name_width + text_padding_x) {
-                        select_nth_tab(counter);
+                if (press_x > draw_x && press_x < draw_x + tab_width - close_button_padding_x) {
+                    select_nth_tab(counter);
                         
-                        press_tab(counter, tab_id);
-                        return false;
-                    }
+                    press_tab(counter, tab_id);
+                    return false;
                 }
                 
-                draw_x += name_width + close_button_width + text_padding_x;
+                draw_x += tab_width;
                 
                 counter++;
             }
@@ -295,28 +259,27 @@ namespace Widgets {
             widget.get_allocation(out alloc);
             
             int draw_x = 0;
-            if (draw_arrow) {
-                draw_x += arrow_width + draw_offset;
-            }
-            
             int counter = 0;
             foreach (int tab_id in tab_list) {
                 var layout = create_pango_layout(tab_name_map.get(tab_id));
                 int name_width, name_height;
                 layout.get_pixel_size(out name_width, out name_height);
+                int tab_width = (int) (get_tab_width(name_width) * draw_scale);
 
-                draw_x += text_padding_x;
-                
-                if (release_x > draw_x && release_x < draw_x + get_tab_width(name_width)) {
-                    if (release_x > draw_x + name_width) {
+                if (release_x > draw_x && release_x < draw_x + tab_width) {
+                    if (release_x > draw_x + tab_width - close_button_padding_x) {
                         close_nth_tab(counter);
                         return false;
                     }
                 }
                 
-                draw_x += name_width + close_button_width + text_padding_x;
+                draw_x += tab_width;
                 
                 counter++;
+            }
+            
+            if (release_x > draw_x + add_button_padding_x && release_x < draw_x + add_button_padding_x + add_button_width) {
+                new_tab();
             }
             
             queue_draw();
@@ -326,7 +289,7 @@ namespace Widgets {
         
         public bool on_motion_notify(Gtk.Widget widget, Gdk.EventMotion event) {
             draw_hover = true;
-            hover_x = (int)event.x;
+            hover_x = (int) event.x;
             
             queue_draw();
             
@@ -342,135 +305,51 @@ namespace Widgets {
             return false;
         }
         
-        public int make_current_visible(bool left) {
-            if (draw_arrow) {
-                Gtk.Allocation alloc;
-                this.get_allocation(out alloc);
-                
-                int draw_x = 0;
-                int counter = 0;
-                foreach (int tab_id in tab_list) {
-                    var layout = create_pango_layout(tab_name_map.get(tab_id));
-                    int name_width, name_height;
-                    layout.get_pixel_size(out name_width, out name_height);
-                    
-                    if (tab_index == 0) {
-                        draw_offset = 0;
-                        return draw_offset;
-                    } else {
-                        if (left) {
-                            draw_x += get_tab_width(name_width);
-                            
-                            if (counter == tab_index) {
-                                if (draw_x > -draw_offset + alloc.width - arrow_width * 2) {
-                                    draw_offset = alloc.width - draw_x - arrow_width - close_button_width;
-                                    return draw_offset;
-                                }
-                            }
-                        } else {
-                            if (tab_index == tab_list.size - 1) {
-                                draw_offset = -draw_x + alloc.width - arrow_width - get_tab_width(name_width) - close_button_width;
-                            } else if (counter == tab_index) {
-                                if (draw_x < -draw_offset - arrow_width) {
-                                    draw_offset = -draw_x + arrow_width - close_button_width;
-                                    return draw_offset;
-                                }
-                            }
-                            
-                            draw_x += get_tab_width(name_width);
-                        }
-                    }
-                    
-                    counter++;
-                }
-                
-                return draw_offset;
-            }
-            
-            return 0;
-        }
-        
-        public bool out_of_area() {
+        public void update_tab_scale() {
             Gtk.Allocation alloc;
             this.get_allocation(out alloc);
             
-            int draw_x = 0;
+            int tab_add_button_width = add_button_width + add_button_padding_x * 2;
+            int tab_width = 0;
             foreach (int tab_id in tab_list) {
                 var layout = create_pango_layout(tab_name_map.get(tab_id));
                 int name_width, name_height;
                 layout.get_pixel_size(out name_width, out name_height);
                 
-                draw_x += get_tab_width(name_width);
-                
-                if (draw_x > alloc.width) {
-                    draw_arrow = true;
-                    return true;
-                }
+                tab_width += get_tab_width(name_width);
             }
             
-            draw_arrow = false;
-            draw_offset = 0;
-            return false;
+            if (tab_width + tab_add_button_width > alloc.width) {
+                draw_scale = (double) alloc.width / tab_width * 0.97;
+            } else {
+                draw_scale = 1.0;
+            }
         }
         
         public bool on_draw(Gtk.Widget widget, Cairo.Context cr) {
             Gtk.Allocation alloc;
             widget.get_allocation(out alloc);
             
-            if (draw_arrow) {
-                Utils.set_context_color(cr, inactive_arrow_color);
-                Draw.draw_rectangle(cr, 0, arrow_draw_padding_y, arrow_width, alloc.height - arrow_draw_padding_y * 2);
-                
-                if (draw_hover) {
-                    if (hover_x < arrow_width) {
-                        Utils.set_context_color(cr, text_hover_color);
-                    } else {
-                        Utils.set_context_color(cr, text_color);
-                    }
-                } else {
-                    Utils.set_context_color(cr, text_color);
-                }
-                Draw.draw_text(this, cr, "<", arrow_padding_x, arrow_padding_y, 20, alloc.height);
-                
-                Utils.set_context_color(cr, inactive_arrow_color);
-                Draw.draw_rectangle(cr, alloc.width - arrow_width, arrow_draw_padding_y, arrow_width, alloc.height - arrow_draw_padding_y * 2);
-                
-                if (draw_hover) {
-                    if (hover_x > alloc.width - arrow_width) {
-                        Utils.set_context_color(cr, text_hover_color);
-                    } else {
-                        Utils.set_context_color(cr, text_color);
-                    }
-                } else {
-                    Utils.set_context_color(cr, text_color);
-                }
-                Draw.draw_text(this, cr, ">", alloc.width - arrow_width + arrow_padding_x, arrow_padding_y, 20, alloc.height);
-                
-                Draw.clip_rectangle(cr, arrow_width, 0, alloc.width - arrow_width * 2, alloc.height);
-            }
-            
             int draw_x = 0;
-            if (draw_arrow) {
-                draw_x += arrow_width + draw_offset;
-            }
-            
             int counter = 0;
             foreach (int tab_id in tab_list) {
                 var layout = create_pango_layout(tab_name_map.get(tab_id));
-                int name_width, name_height;
+                int name_width, name_height, name_scale_width;
                 layout.get_pixel_size(out name_width, out name_height);
+                name_scale_width = (int) (name_width * draw_scale);
+                int tab_width = (int) (get_tab_width(name_width) * draw_scale);
                 
                 Gdk.RGBA tab_text_color = text_color;
                 
                 if (counter == tab_index) {
                     cr.save();
-                    clip_rectangle(cr, draw_x, 0, get_tab_width(name_width), height);
+                    clip_rectangle(cr, draw_x, 0, tab_width, height);
                     
                     double scale_x = 1;
-                    double scale_y = ((double) height * 2) / get_tab_width(name_width);
+                    double scale_y = ((double) height * 2) / tab_width;
                     cr.translate(0, height / 2);
                     cr.scale(scale_x, scale_y);
-                    Draw.draw_radial(cr, draw_x, get_tab_width(name_width), height, tab_active_center_color, tab_active_edge_color);
+                    Draw.draw_radial(cr, draw_x, tab_width, height, tab_active_center_color, tab_active_edge_color);
                     
                     cr.restore();
                     
@@ -479,59 +358,77 @@ namespace Widgets {
                     var is_hover = false;
                     
                     if (draw_hover) {
-                        if (hover_x > draw_x && hover_x < draw_x + get_tab_width(name_width)) {
+                        if (hover_x > draw_x && hover_x < draw_x + tab_width) {
                             is_hover = true;
                         }
                     }
                     
                     if (is_hover) {
                         cr.save();
-                        clip_rectangle(cr, draw_x, 0, get_tab_width(name_width), height);
+                        clip_rectangle(cr, draw_x, 0, tab_width, height);
                     
                         double scale_x = 1;
-                        double scale_y = ((double) height * 2) / get_tab_width(name_width);
+                        double scale_y = ((double) height * 2) / tab_width;
                         cr.translate(0, height / 2);
                         cr.scale(scale_x, scale_y);
-                        Draw.draw_radial(cr, draw_x, get_tab_width(name_width), height, tab_hover_center_color, tab_hover_edge_color);
+                        Draw.draw_radial(cr, draw_x, tab_width, height, tab_hover_center_color, tab_hover_edge_color);
                     
                         cr.restore();
                         
                         tab_text_color = text_active_color;
                     } else {
                         cr.set_source_rgba(0, 0, 0, 0);
-                        Draw.draw_rectangle(cr, draw_x, 0, get_tab_width(name_width), height);
+                        Draw.draw_rectangle(cr, draw_x, 0, tab_width, height);
                     }
                 }
                 
                 if (draw_hover) {
-                    if (hover_x > draw_x && hover_x < draw_x + get_tab_width(name_width)) {
-                        if (hover_x > draw_x + name_width) {
+                    if (hover_x > draw_x && hover_x < draw_x + tab_width) {
+                        if (hover_x > draw_x + tab_width - close_button_padding_x) {
                             if (is_button_press) {
-                                Draw.draw_surface(cr, close_press_surface, draw_x + name_width + close_button_padding_x, draw_padding_y + close_button_padding_y);
+                                Draw.draw_surface(cr, close_press_surface, draw_x + tab_width - close_button_padding_x, draw_padding_y + close_button_padding_y);
                             } else {
-                                Draw.draw_surface(cr, close_hover_surface, draw_x + name_width + close_button_padding_x, draw_padding_y + close_button_padding_y);
+                                Draw.draw_surface(cr, close_hover_surface, draw_x + tab_width - close_button_padding_x, draw_padding_y + close_button_padding_y);
                             }
                         } else {
-                            Draw.draw_surface(cr, close_normal_surface, draw_x + name_width + close_button_padding_x, draw_padding_y + close_button_padding_y);
+                            Draw.draw_surface(cr, close_normal_surface, draw_x + tab_width - close_button_padding_x, draw_padding_y + close_button_padding_y);
                         }
                     }
                 }
+                
+                // Draw tab splitter.
                 cr.set_source_rgba(1, 1, 1, 0.1);
-                Draw.draw_rectangle(cr, draw_x + get_tab_width(name_width) - 1, 0, 1, height);
+                Draw.draw_rectangle(cr, draw_x + tab_width - tab_split_width, 0, tab_split_width, height);
+                
+                // Draw tab text.
+                cr.save();
+                clip_rectangle(cr, draw_x + text_padding_x, 0, tab_width - text_padding_x * 2, height);
                 
                 Utils.set_context_color(cr, tab_text_color);
                 Draw.draw_layout(cr, layout, draw_x + text_padding_x, draw_padding_y);
                 
-                draw_x += name_width + close_button_width + text_padding_x * 2;
+                cr.restore();
+                
+                draw_x += tab_width;
                 
                 counter++;
+            }
+            
+            if (hover_x > draw_x + add_button_padding_x && hover_x < draw_x + add_button_padding_x + add_button_width) {
+                if (is_button_press) {
+                    Draw.draw_surface(cr, add_press_surface, draw_x + add_button_padding_x, add_button_padding_y);
+                } else if (draw_hover) {
+                    Draw.draw_surface(cr, add_hover_surface, draw_x + add_button_padding_x, add_button_padding_y);
+                }
+            } else {
+                Draw.draw_surface(cr, add_normal_surface, draw_x + add_button_padding_x, add_button_padding_y);
             }
             
             return true;
         }
 
         public int get_tab_width(int name_width) {
-            return name_width + close_button_width + text_padding_x * 2;
+            return name_width + text_padding_x * 2;
         }
         
         public void switch_tab(int new_index) {
@@ -539,7 +436,6 @@ namespace Widgets {
             
             press_tab(tab_index, tab_list.get(tab_index));
                 
-            make_current_visible(true);
             queue_draw();
         }
     }
