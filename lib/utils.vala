@@ -131,4 +131,8 @@ namespace Utils {
     public string get_image_path(string image_name) {
         return GLib.Path.build_path(Path.DIR_SEPARATOR_S, GLib.Path.get_dirname((string) project_path()), "image", image_name);
     }
+
+    public string get_root_path(string file_path) {
+        return GLib.Path.build_path(Path.DIR_SEPARATOR_S, GLib.Path.get_dirname((string) project_path()), file_path);
+    }
 }

@@ -70,7 +70,7 @@ public class Application : Object {
             
             Gtk.main_quit();
         } else {
-            Utils.load_css_theme("style.css");
+            Utils.load_css_theme(Utils.get_root_path("style.css"));
             
             Tabbar tabbar = new Tabbar();
             Appbar appbar = new Appbar(tabbar, quake_mode);
