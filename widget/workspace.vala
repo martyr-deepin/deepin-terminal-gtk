@@ -389,10 +389,9 @@ namespace Widgets {
                 search_text = entry_text;
                 
                 try {
-                    var regex = new Regex(Regex.escape_string(search_text),
-                                      RegexCompileFlags.CASELESS);
+                    var regex = new Regex(Regex.escape_string(search_text), RegexCompileFlags.CASELESS);
                     term_before_search.term.search_set_gregex(regex, 0);
-                    term_before_search.term.search_set_wrap_around (true);
+                    term_before_search.term.search_set_wrap_around(true);
                 } catch (GLib.RegexError e) {
                     stdout.printf("Got error %s", e.message);
                 }
