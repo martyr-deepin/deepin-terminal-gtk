@@ -3,9 +3,12 @@ using Widgets;
 using Gee;
 
 namespace Widgets {
-    public class Workspace : Gtk.Box {
+    public class Workspace : Gtk.Overlay {
         public int index;
         public ArrayList<Term> term_list;
+        public SearchBox? search_box;
+        public Term? term_before_search;
+        public string search_text;
         
         public int PANED_HANDLE_SIZE = 1;
         
@@ -18,7 +21,7 @@ namespace Widgets {
             
             Term term = new_term(true, commands, work_directory);
             
-            pack_start(term, true, true, 0);
+            add(term);
         }
         
         public Term new_term(bool first_term, string[]? commands, string? work_directory) {
@@ -29,6 +32,12 @@ namespace Widgets {
             term.exit.connect((term) => {
                     close_term(term);
                 });
+            term.term.button_press_event.connect((w, e) => {
+                    remove_search_box();
+                    
+                    return false;
+                });
+
             term_list.add(term);
             
             return term;
@@ -131,7 +140,7 @@ namespace Widgets {
             }
                 
             if (parent_widget.get_type().is_a(typeof(Workspace))) {
-                ((Workspace) parent_widget).pack_start(paned, true, true, 0);
+                ((Workspace) parent_widget).add(paned);
             } else if (parent_widget.get_type().is_a(typeof(Paned))) {
                 if (focus_term.is_first_term) {
                     ((Paned) parent_widget).pack1(paned, true, false);
@@ -314,6 +323,80 @@ namespace Widgets {
                     Term focus_term = get_focus_term(this);
                     focus_term.term.feed_child(command, command.length);
                 });
+        }
+        
+        public void search() {
+            if (search_box == null) {
+                term_before_search = get_focus_term(this);
+                search_text = "";
+                
+                search_box = new SearchBox();
+                search_box.close_button.button_press_event.connect((w, e) => {
+                        remove_search_box();
+                        
+                        return false;
+                    });
+                search_box.entry.key_press_event.connect((w, e) => {
+                        string keyname = Keymap.get_keyevent_name(e);
+                        
+                        if (keyname == "Esc") {
+                            remove_search_box();
+                        }
+                        
+                        return false;
+                    });
+                search_box.entry.get_buffer().deleted_text.connect((buffer, p, nc) => {
+                        update_search_text();
+                    });
+                search_box.entry.get_buffer().inserted_text.connect((buffer, p, c, nc) => {
+                        update_search_text();
+                    });
+                search_box.entry.activate.connect((w) => {
+                        if (search_text != "") {
+                            term_before_search.term.search_find_next();
+                        }
+                    });
+                search_box.set_size_request(100, -1);
+                search_box.set_valign(Gtk.Align.START);
+                search_box.set_halign(Gtk.Align.END);
+                add_overlay(search_box);
+                show_all();            
+                
+                search_box.entry.grab_focus();
+            } else {
+                search_box.entry.grab_focus();
+            }
+        }
+        
+        public void remove_search_box() {
+            search_text = "";
+            
+            if (search_box != null) {
+                remove(search_box);
+                search_box.destroy();
+                search_box = null;
+            }
+            
+            if (term_before_search != null) {
+                term_before_search.focus_term();
+                term_before_search = null;
+            }
+        }
+        
+        public void update_search_text() {
+            string entry_text = search_box.entry.get_text().strip();
+            if (search_text != entry_text) {
+                search_text = entry_text;
+                
+                try {
+                    var regex = new Regex(Regex.escape_string(search_text),
+                                      RegexCompileFlags.CASELESS);
+                    term_before_search.term.search_set_gregex(regex, 0);
+                    term_before_search.term.search_set_wrap_around (true);
+                } catch (GLib.RegexError e) {
+                    stdout.printf("Got error %s", e.message);
+                }
+            }
         }
     }
 }
