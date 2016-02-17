@@ -168,8 +168,6 @@ public class Application : Object {
             workspace_manager.tabbar.select_prev_tab();
         } else if (keyname == "Ctrl + W") {
             workspace_manager.focus_workspace.close_focus_term();
-        } else if (keyname == "Ctrl + r") {
-            workspace_manager.focus_workspace.search_history();
         } else if (keyname in ctrl_num_keys) {
             workspace_manager.switch_workspace_with_index(int.parse(Keymap.get_key_name(key_event.keyval)));
         } else if (keyname == "F11") {

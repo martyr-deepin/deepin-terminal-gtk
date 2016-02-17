@@ -316,15 +316,6 @@ namespace Widgets {
             }
         }
         
-        public void search_history() {
-            HistoryDialog history_dialog = new HistoryDialog((Gtk.Window) get_toplevel());
-            history_dialog.active_history.connect((d, history_command) => {
-                    string command = "%s\n".printf(history_command);
-                    Term focus_term = get_focus_term(this);
-                    focus_term.term.feed_child(command, command.length);
-                });
-        }
-        
         public void search() {
             if (search_box == null) {
                 term_before_search = get_focus_term(this);
