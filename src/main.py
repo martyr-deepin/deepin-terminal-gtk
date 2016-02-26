@@ -1,25 +1,12 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2011 ~ 2013 Deepin, Inc.
-#               2011 ~ 2012 Wang Yong
+# Copyright (C) 2013 Deepin Technology Co., Ltd.
 #
-# Author:     Wang Yong <lazycat.manatee@gmail.com>
-# Maintainer: Wang Yong <lazycat.manatee@gmail.com>
-#             Yueqian Zhang <nohappiness@gmail.com>
-#
-# This program is free software: you can redistribute it and/or modify
+# This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
 
 from collections import OrderedDict
 from contextlib import contextmanager
@@ -248,6 +235,7 @@ GENERAL_CONFIG = [
     ]
 
 KEYBIND_CONFIG = [
+    ("show_manual", "F1"),
     ("copy_clipboard", "Ctrl + Shift + c"),
     ("paste_clipboard", "Ctrl + Shift + v"),
     ("split_vertically", "Ctrl + Shift + h"),
@@ -492,6 +480,7 @@ class Terminal(object):
         self.application.window.connect("notify::is-active", self.window_is_active)
         self.application.window.connect("window-state-event", self.window_state_change)
         self.application.window.connect("window-resize", self.set_window_resize)
+        self.application.window.connect("configure-event", self.window_configured)
 
         self.draw_skin_padding = 2
         self.application.window.draw_skin = self.draw_terminal_skin
@@ -559,6 +548,10 @@ class Terminal(object):
 
     def set_window_resize(self, widget):
         self.is_window_resize_by_user = True
+
+    def window_configured(self, window, event):
+        if focus_terminal and not focus_terminal.has_focus():
+            focus_terminal.grab_focus()
 
     def save_window_size(self):
         if self.is_window_resize_by_user:
@@ -674,6 +667,7 @@ class Terminal(object):
         get_keybind = lambda key_value: get_config("keybind", key_value)
 
         key_values = [
+            "show_manual",
             "toggle_full_screen",
             "new_workspace",
             "search_forward",
@@ -910,6 +904,12 @@ class Terminal(object):
 
         # Show menu.
         menu.show((x_root, y_root))
+
+    def show_manual(self):
+        '''
+        show user manual for deepin-terminal.
+        '''
+        run_command("dman deepin-terminal")
 
     def get_all_terminal_infos(self):
         focus_terminal = self.application.window.get_focus()
@@ -4039,6 +4039,7 @@ if __name__ == "__main__":
     parser.add_option("--working-directory", dest="working_directory", help=_("working directory"), metavar="FILE")
     parser.add_option("--quake-mode", action="store_true", dest="quake_mode", help=_("run with quake mode"))
     parser.add_option("-e", action="callback", callback=execute_cb, dest="startup_command", help=_("startup terminal with given parameter"))
+    parser.add_option("-x", action="callback", callback=execute_cb, dest="startup_command", help=_("startup terminal with given parameter, same as -e"))
     parser.get_option('-h').help = _("show this help message and exit")
     parser.get_option('--version').help = _("show program's version number and exit")
 

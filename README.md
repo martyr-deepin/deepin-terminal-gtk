@@ -1,6 +1,22 @@
-This is default terminal for Linux Deepin.
+# Deepin Terminal
 
-Deepin terminal base on python-vte and with much patch for advanced features, such as, search, adjust opacity in real-time etc.
+This is default terminal emulation application for Linux Deepin.
+
+Deepin terminal base on python-vte and with many patches for advanced features, such as, searching, opacity adjusting in real-time etc.
+
+## Dependencies
+
+* python
+* [deepin-ui](https://github.com/linuxdeepin/deepin-ui)
+* [python-vte](https://github.com/linuxdeepin/python-vte)
+* expect
+* hicolor-icon-theme
+* xdotool
+* [python-deepin-gsettings](https://github.com/linuxdeepin/deepin-gsettings)
+
+## Usage
+
+`python ./src/main.py`
 
 Below is keymap list for deepin-terminal:
 
@@ -40,4 +56,26 @@ Below is keymap list for deepin-terminal:
 | Show remote login window | **Ctrl** + **9**      |
 | Show sub-process window  | **Ctrl** + **8**      |
 
-----
+## Installation
+
+`make && make install`
+
+## Getting help
+
+Any usage issues can ask for help via
+
+* [Gitter](https://gitter.im/orgs/linuxdeepin/rooms)
+* [IRC channel](https://webchat.freenode.net/?channels=deepin)
+* [Forum](https://bbs.deepin.org)
+* [WiKi](http://wiki.deepin.org/)
+
+## Getting involved
+
+We encourage you to report issues and contribute changes
+
+* [Contribution guide for users](http://wiki.deepin.org/index.php?title=Contribution_Guidelines_for_Users)
+* [Contribution guide for developers](http://wiki.deepin.org/index.php?title=Contribution_Guidelines_for_Developers).
+
+## License
+
+Deepin Terminal is licensed under [GPLv3](LICENSE).

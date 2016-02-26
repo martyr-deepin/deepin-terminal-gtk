@@ -1,9 +1,0 @@
-#!/bin/sh -e
-
-case "$1" in
-     remove|purge)
-	rm /usr/share/deepin-media-player -rf
-	;;
-esac
-
-exit 0
