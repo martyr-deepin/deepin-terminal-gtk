@@ -1,6 +1,7 @@
 using Gtk;
 using Widgets;
 using Gee;
+using Utils;
 
 namespace Widgets {
     public class Workspace : Gtk.Overlay {
@@ -66,6 +67,48 @@ namespace Widgets {
                 close_term(focus_term);
             }
         }
+		
+		public void close_other_terms() {
+			Term focus_term = get_focus_term(this);
+			
+			bool has_active_process = false;
+			foreach (Term term in term_list) {
+				if (term != focus_term) {
+				    if (term.has_foreground_process()) {
+				    	has_active_process = true;
+				    	
+				    	break;
+				    }
+				}
+			}
+			
+			if (has_active_process) {
+				ConfirmDialog dialog = new ConfirmDialog(
+					"Terminal still has running programs. Are you sure you want to quit?",
+					(Window) focus_term.get_toplevel());
+				dialog.confirm.connect((d) => {
+						close_term_except(focus_term);
+					});
+			} else {
+				close_term_except(focus_term);
+			}
+		}
+		
+		public void close_term_except(Term except_term) {
+			foreach (Term term in term_list) {
+				if (term != except_term) {
+					term.destroy();
+				}
+			}
+			
+			term_list = new ArrayList<Term>();
+			term_list.add(except_term);
+			
+			stdout.printf("%s\n", except_term.get_type().is_a(typeof(Widget)).to_string());
+			Utils.remove_all_children(this);
+			
+			add(except_term);
+		}
         
         public void close_term(Term term) {
             Container parent_widget = term.get_parent();
@@ -89,7 +132,12 @@ namespace Widgets {
                 }
             } else {
                 if (container.get_type().is_a(typeof(Paned))) {
-                    ((Term) container.get_children().nth_data(0)).focus_term();
+					var first_child = container.get_children().nth_data(0);
+					if (first_child.get_type().is_a(typeof(Paned))) {
+						((Term) ((Paned) first_child).get_children().nth_data(0)).focus_term();
+					} else {
+						((Term) first_child).focus_term();
+					}
                 }
             }
         }

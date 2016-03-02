@@ -162,15 +162,17 @@ public class Application : Object {
         
         if (keyname == "Ctrl + T") {
             workspace_manager.new_workspace(null, null);
-        } else if (keyname == "Ctrl + Q") {
+        } else if (keyname == "Ctrl + W") {
             workspace_manager.tabbar.close_current_tab();
         } else if (keyname == "Ctrl + Tab") {
             workspace_manager.tabbar.select_next_tab();
         } else if (keyname == "Ctrl + ISO_Left_Tab") {
             workspace_manager.tabbar.select_prev_tab();
-        } else if (keyname == "Ctrl + W") {
+        } else if (keyname == "Ctrl + q") {
             workspace_manager.focus_workspace.close_focus_term();
-        } else if (keyname in ctrl_num_keys) {
+        } else if (keyname == "Ctrl + Q") {
+			workspace_manager.focus_workspace.close_other_terms();
+		} else if (keyname in ctrl_num_keys) {
             workspace_manager.switch_workspace_with_index(int.parse(Keymap.get_key_name(key_event.keyval)));
         } else if (keyname == "F11") {
             window.toggle_fullscreen();

@@ -26,8 +26,8 @@ Below is keymap list for deepin-terminal:
 | Split horizontally              | **Ctrl** + **h**                    |
 | Search history                  | **Ctrl** + **r**                    |
 |                                                                       |
-| Close current window            | **Ctrl** + **q**                    |
-| Close other windows             | **Ctrl** + **Q**                    |
+| Close current terminal          | **Ctrl** + **q**                    |
+| Close other terminals           | **Ctrl** + **Q**                    |
 |                                                                       |
 | Focus up terminal               | **Alt**  + **k**                    |
 | Focus down terminal             | **Alt**  + **j**                    |
