@@ -95,18 +95,18 @@ namespace Widgets {
 		}
 		
 		public void close_term_except(Term except_term) {
-			foreach (Term term in term_list) {
-				if (term != except_term) {
-					term.destroy();
-				}
+			// We need remove term from it's parent before remove all children from workspace.
+			Widget parent_widget = except_term.get_parent();
+            ((Container) parent_widget).remove(except_term);
+			
+			// Destory all other terminals, wow! ;)
+			foreach (Widget w in get_children()) {
+				w.destroy();
 			}
 			
+			// Re-parent except terminal.
 			term_list = new ArrayList<Term>();
 			term_list.add(except_term);
-			
-			stdout.printf("%s\n", except_term.get_type().is_a(typeof(Widget)).to_string());
-			Utils.remove_all_children(this);
-			
 			add(except_term);
 		}
         
