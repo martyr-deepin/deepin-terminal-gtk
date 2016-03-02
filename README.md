@@ -22,7 +22,7 @@ Below is keymap list for deepin-terminal:
 | Paste                           | **Ctrl** + **V**                    |
 | Select word                     | Double click                        |
 | Open URL                        | **Ctrl** + LeftButton               |
-| Split vertically                | **Ctrl** + **H**                    |
+| Split vertically                | **Ctrl** + **Shift** + **h**        |
 | Split horizontally              | **Ctrl** + **h**                    |
 | Search history                  | **Ctrl** + **r**                    |
 |                                                                       |
@@ -45,8 +45,7 @@ Below is keymap list for deepin-terminal:
 | Switch next workspace           | **Ctrl** + **Shift** + **Tab**      |
 | Select workspace with number    | **Ctrl** + **number**               |
 |                                                                       |
-| Search forward                  | **Ctrl** + **'**                    |
-| Search backward                 | **Ctrl** + **"**                    |
+| Search                          | **Ctrl** + **Shift** + **f**		|
 |                                                                       |
 | Adjust background opacity       | **Ctrl** + ScrollButton				|
 | Fullscreen                      | **F11**                             |

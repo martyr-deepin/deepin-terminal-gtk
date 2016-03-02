@@ -39,6 +39,7 @@ interface QuakeDaemon : Object {
 public class Application : Object {
     public Widgets.Window window;
     public WorkspaceManager workspace_manager;
+	public HotkeyPreview hotkey_preview;
     
 	private static bool version = false;
 	private static bool quake_mode = false;
@@ -116,6 +117,7 @@ public class Application : Object {
                     return false;
                 });
             window.key_press_event.connect(on_key_press);
+			window.key_release_event.connect(on_key_release);
             
             if (!has_start) {
                 window.set_position(Gtk.WindowPosition.CENTER);
@@ -186,12 +188,27 @@ public class Application : Object {
             workspace_manager.focus_workspace.focus_down_terminal();
         } else if (keyname == "Alt + k") {
             workspace_manager.focus_workspace.focus_up_terminal();
-        } else {
+        } else if (keyname == "Ctrl + ?") {
+			if (hotkey_preview == null) {
+				hotkey_preview = new HotkeyPreview();
+			}
+		} else {
             return false;
         }
         
         return true;
     }
+	
+	private bool on_key_release(Gtk.Widget widget, Gdk.EventKey key_event) {
+		if (Keymap.is_no_key_press(key_event)) {
+			if (hotkey_preview != null) {
+				hotkey_preview.destroy();
+				hotkey_preview = null;
+			}
+		}
+		
+		return false;
+	}
     
     public static void main(string[] args) {
         try {

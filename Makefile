@@ -6,6 +6,7 @@ main: ./project_path.c \
       ./widget/tabbar.vala \
       ./widget/appbar.vala \
       ./widget/titlebar.vala \
+      ./widget/hotkey_preview.vala \
       ./widget/terminal.vala \
       ./widget/workspace.vala \
       ./widget/workspace_manager.vala \
@@ -31,6 +32,7 @@ main: ./project_path.c \
     ./widget/tabbar.vala \
     ./widget/appbar.vala \
     ./widget/titlebar.vala \
+    ./widget/hotkey_preview.vala \
     ./widget/terminal.vala \
     ./widget/workspace.vala \
     ./widget/workspace_manager.vala \

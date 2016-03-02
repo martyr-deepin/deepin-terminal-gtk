@@ -40,7 +40,7 @@ namespace Keymap {
         
         return modifiers;
     }
-
+	
     public string get_keyevent_name(Gdk.EventKey key_event) {
         if ((key_event.is_modifier) != 0) {
             return "";
@@ -66,6 +66,11 @@ namespace Keymap {
         }
     }
 
+	public bool is_no_key_press(Gdk.EventKey key_event) {
+		return (key_event.is_modifier == 0 && get_key_name(key_event.keyval) == get_keyevent_name(key_event) ||
+				key_event.is_modifier != 0 && get_key_event_modifiers(key_event).length == 1);
+	}
+	
     public bool has_ctrl_mask(Gdk.EventKey key_event) {
         string[] mask_list = {"Control_L", "Control_R"};
         
