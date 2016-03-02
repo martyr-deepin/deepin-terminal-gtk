@@ -68,6 +68,11 @@ namespace Widgets {
             }
         }
 		
+		public void toggle_select_all() {
+			Term focus_term = get_focus_term(this);
+			focus_term.toggle_select_all();
+		}
+		
 		public void close_other_terms() {
 			Term focus_term = get_focus_term(this);
 			

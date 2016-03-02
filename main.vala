@@ -178,7 +178,9 @@ public class Application : Object {
             window.toggle_fullscreen();
         } else if (keyname == "Ctrl + F") {
             workspace_manager.focus_workspace.search();
-        } else if (keyname == "Ctrl + h") {
+        } else if (keyname == "Ctrl + A") {
+			workspace_manager.focus_workspace.toggle_select_all();
+		} else if (keyname == "Ctrl + h") {
             workspace_manager.focus_workspace.split_horizontal();
         } else if (keyname == "Ctrl + H") {
             workspace_manager.focus_workspace.split_vertical();

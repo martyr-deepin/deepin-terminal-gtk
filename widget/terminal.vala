@@ -13,6 +13,7 @@ namespace Widgets {
         public Terminal term;
         public GLib.Pid child_pid;
         public string current_dir;
+		public bool has_select_all = false;
     
         public signal void change_dir(string dir);
         
@@ -113,25 +114,27 @@ namespace Widgets {
             term.key_press_event.connect(on_key_press);
             term.scroll_event.connect(on_scroll);
             term.button_press_event.connect((event) => {
-                string? uri = get_link ((long) event.x, (long) event.y);
+					has_select_all = false;
+					
+					string? uri = get_link ((long) event.x, (long) event.y);
                 
-                switch (event.button) {
-                    case Gdk.BUTTON_PRIMARY:
-                        if (event.state == Gdk.ModifierType.CONTROL_MASK && uri != null) {
-                            try {
-                                Gtk.show_uri (null, (!) uri, Gtk.get_current_event_time ());
-                                return true;
-                            } catch (GLib.Error error) {
-                                warning ("Could Not Open link");
+                    switch (event.button) {
+                        case Gdk.BUTTON_PRIMARY:
+                            if (event.state == Gdk.ModifierType.CONTROL_MASK && uri != null) {
+                                try {
+                                    Gtk.show_uri (null, (!) uri, Gtk.get_current_event_time ());
+                                    return true;
+                                } catch (GLib.Error error) {
+                                    warning ("Could Not Open link");
+                                }
                             }
-                        }
-
-                        return false;
-                }
-
-                return false;
-            });
-
+				    
+                            return false;
+                    }
+					
+                    return false;
+				});
+			
             /* target entries specify what kind of data the terminal widget accepts */
             Gtk.TargetEntry uri_entry = { "text/uri-list", Gtk.TargetFlags.OTHER_APP, DropTargets.URILIST };
             Gtk.TargetEntry string_entry = { "STRING", Gtk.TargetFlags.OTHER_APP, DropTargets.STRING };
@@ -346,5 +349,15 @@ namespace Widgets {
                 Posix.kill(fg_pid, Posix.SIGKILL);
             }
         }
+		
+		public void toggle_select_all() {
+			if (has_select_all) {
+				term.unselect_all();
+			} else {
+				term.select_all();
+			}
+			
+			has_select_all = !has_select_all;
+		}
     }
 }
