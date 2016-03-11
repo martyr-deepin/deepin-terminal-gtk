@@ -183,7 +183,7 @@ It will do more for less in your subsequent operations if you viewed the shortcu
 
 1. Open Deepin Terminal in launcher interface.
 
-2. On Deepin Movie interface, press ![ctrl](icon/Ctrl.svg)+![shift](icon/Shift.svg)+![?](icon/？.svg) on keyboard to open shortcuts preview interface. 
+2. On Deepin Movie interface, press ![ctrl](icon/Ctrl.svg)+![shift](icon/Shift.svg)+![QM](icon/QM.svg) on keyboard to open shortcuts preview interface. 
 
 
 

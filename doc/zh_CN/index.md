@@ -95,7 +95,7 @@
 #### 按键操作 ####
 
 1. 在启动器界面打开深度终端。
-2. 按下键盘上的 ![ctrl](icon/Ctrl.svg)+![shift](icon/Shift.svg)+![?](icon/？.svg) 组合键，打开快捷键预览界面。
+2. 按下键盘上的 ![ctrl](icon/Ctrl.svg)+![shift](icon/Shift.svg)+![QM](icon/QM.svg) 组合键，打开快捷键预览界面。
 
 #### 界面操作 ####
 
