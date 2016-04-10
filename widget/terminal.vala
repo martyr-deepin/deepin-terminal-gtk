@@ -197,10 +197,32 @@ namespace Widgets {
         }
 		
 		public void handle_menu_item_click(string item_id) {
-			switch(item_id) {
-				case "paste":
-					term.paste_clipboard();
-					break;
+			var workspace_manager = get_workspace_manager(null);
+			if (workspace_manager.get_type().is_a(typeof(WorkspaceManager))) {
+			    switch(item_id) {
+			    	case "paste":
+			    		term.paste_clipboard();
+			    		break;
+			    	case "search":
+						workspace_manager.focus_workspace.search();
+			    		break;
+			    }
+			} else {
+				print("handle_menu_item_click: impossible here!\n");
+			}
+			
+		}
+		
+		public WorkspaceManager get_workspace_manager(Container? container) {
+			if (container == null) {
+				Container window = (Container) term.get_toplevel();
+				return get_workspace_manager(window);
+			} else {
+				if (container.get_type().is_a(typeof(WorkspaceManager))) {
+					return (WorkspaceManager) container;
+				} else {
+					return get_workspace_manager((Container) container.get_children().nth_data(0));
+				}
 			}
 		}
 		
