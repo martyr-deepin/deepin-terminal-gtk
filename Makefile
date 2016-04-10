@@ -1,6 +1,7 @@
 all: main
 main: ./project_path.c \
       ./lib/draw.vala \
+      ./lib/menu.vala \
       ./lib/keymap.vala \
       ./lib/utils.vala \
       ./widget/tabbar.vala \
@@ -24,9 +25,11 @@ main: ./project_path.c \
     --pkg=gtk+-3.0 \
     --pkg=vte-2.91 \
     --pkg=gee-1.0 \
+    --pkg=json-glib-1.0 \
     --pkg=posix \
     ./project_path.c \
     ./lib/draw.vala \
+    ./lib/menu.vala \
     ./lib/keymap.vala \
     ./lib/utils.vala \
     ./widget/tabbar.vala \

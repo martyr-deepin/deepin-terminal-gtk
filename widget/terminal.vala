@@ -1,6 +1,7 @@
 using Gtk;
 using Vte;
 using Widgets;
+using Menu;
 
 namespace Widgets {
     public class Term : Gtk.ScrolledWindow {
@@ -130,6 +131,27 @@ namespace Widgets {
                             }
 				    
                             return false;
+						case Gdk.BUTTON_SECONDARY:
+							var menu_content = new List<Menu.MenuItem>();
+							menu_content.append(new Menu.MenuItem("paste", "Paste"));
+							menu_content.append(new Menu.MenuItem("clear", "Clear"));
+							menu_content.append(new Menu.MenuItem("open_current_directory", "Open current directory"));
+							menu_content.append(new Menu.MenuItem("", ""));
+							menu_content.append(new Menu.MenuItem("horizontal_split", "Horizontal split"));
+							menu_content.append(new Menu.MenuItem("vertical_split", "Vertical split"));
+							menu_content.append(new Menu.MenuItem("close_terminal", "Close terminal"));
+							menu_content.append(new Menu.MenuItem("", ""));
+							menu_content.append(new Menu.MenuItem("new_workspace", "New workspace"));
+							menu_content.append(new Menu.MenuItem("", ""));
+							menu_content.append(new Menu.MenuItem("fullscreen", "Fullscreen"));
+							menu_content.append(new Menu.MenuItem("search", "Search"));
+							menu_content.append(new Menu.MenuItem("display_hotkey", "Display hotkey"));
+							menu_content.append(new Menu.MenuItem("", ""));
+							menu_content.append(new Menu.MenuItem("preference", "Preference"));
+							
+							show_menu((int) event.x_root, (int) event.y_root, menu_content);
+							
+							return false;
                     }
 					
                     return false;
