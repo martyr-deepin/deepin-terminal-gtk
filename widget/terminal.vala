@@ -135,6 +135,9 @@ namespace Widgets {
 				    
                             return false;
 						case Gdk.BUTTON_SECONDARY:
+							// Grab focus terminal first. 
+							term.grab_focus();
+							
 							var menu_content = new List<Menu.MenuItem>();
 							menu_content.append(new Menu.MenuItem("paste", "Paste"));
 							menu_content.append(new Menu.MenuItem("clear", "Clear"));
@@ -206,6 +209,12 @@ namespace Widgets {
 			    	case "search":
 						workspace_manager.focus_workspace.search();
 			    		break;
+					case "horizontal_split":
+						workspace_manager.focus_workspace.split_horizontal();
+						break;
+					case "vertical_split":
+						workspace_manager.focus_workspace.split_vertical();
+						break;
 			    }
 			} else {
 				print("handle_menu_item_click: impossible here!\n");
