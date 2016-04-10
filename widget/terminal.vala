@@ -143,7 +143,6 @@ namespace Widgets {
 								menu_content.append(new Menu.MenuItem("copy", "Copy"));
 							}
 							menu_content.append(new Menu.MenuItem("paste", "Paste"));
-							menu_content.append(new Menu.MenuItem("clear", "Clear"));
 							menu_content.append(new Menu.MenuItem("open_current_directory", "Open current directory"));
 							menu_content.append(new Menu.MenuItem("", ""));
 							menu_content.append(new Menu.MenuItem("horizontal_split", "Horizontal split"));
@@ -441,5 +440,5 @@ namespace Widgets {
 			
 			has_select_all = !has_select_all;
 		}
-    }
+	}
 }
