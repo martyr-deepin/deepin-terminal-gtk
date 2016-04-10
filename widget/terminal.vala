@@ -218,6 +218,9 @@ namespace Widgets {
 					case "close_terminal":
 						workspace_manager.focus_workspace.close_focus_term();
 						break;
+					case "new_workspace":
+						workspace_manager.new_workspace(null, null);
+						break;
 			    }
 			} else {
 				print("handle_menu_item_click: impossible here!\n");
