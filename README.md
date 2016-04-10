@@ -10,7 +10,7 @@ This is default terminal emulation application for Deepin.
 
 In debian, use below command to install dependencies:
 
-`sudo apt-get install valac libgtk-3-dev libgee-dev libvte-2.91-dev`
+`sudo apt-get install valac libgtk-3-dev libgee-dev libvte-2.91-dev libjson-glib-dev`
 
 ## Usage
 
