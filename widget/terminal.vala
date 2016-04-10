@@ -149,7 +149,8 @@ namespace Widgets {
 							menu_content.append(new Menu.MenuItem("", ""));
 							menu_content.append(new Menu.MenuItem("preference", "Preference"));
 							
-							show_menu((int) event.x_root, (int) event.y_root, menu_content);
+							Menu.Menu menu = new Menu.Menu((int) event.x_root, (int) event.y_root, menu_content);
+							menu.click_item.connect(handle_menu_event);
 							
 							return false;
                     }
@@ -190,6 +191,10 @@ namespace Widgets {
             set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             add(term);
         }
+		
+		public void handle_menu_event(string item_id) {
+			print("hello\n");
+		}
         
         public void focus_term() {
             term.grab_focus();

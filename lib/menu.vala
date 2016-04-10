@@ -1,13 +1,13 @@
 namespace Menu {
     [DBus (name = "com.deepin.menu.Manager")]
-    interface MenuManager : Object {
+    interface MenuManagerInterface : Object {
         public abstract string RegisterMenu() throws IOError;
-        public abstract void UnregisterMenu(string menu_object_path) throws IOError;
     }
 
     [DBus (name = "com.deepin.menu.Menu")]
-    interface Menu : Object {
+    interface MenuInterface : Object {
         public abstract void ShowMenu(string menu_json_content) throws IOError;
+		public signal void ItemInvoked(string item_id, bool checked);
 	}
 	
 	public class MenuItem : Object {
@@ -20,97 +20,117 @@ namespace Menu {
 		}
 	}
 	
-	public void show_menu(int x, int y, List<MenuItem> menu_content) {
-		try {
-		    MenuManager menu_manager = Bus.get_proxy_sync(BusType.SESSION, "com.deepin.menu", "/com/deepin/menu");
-		    string menu_object_path = menu_manager.RegisterMenu();
-		    
-		    Menu menu = Bus.get_proxy_sync(BusType.SESSION, "com.deepin.menu", menu_object_path);
-		    
-		    Json.Builder builder = new Json.Builder();
-		    
+	public class Menu : Object {
+		MenuInterface menu_interface;
+		
+		public signal void click_item(string item_id);
+		
+		public Menu(int menu_x, int menu_y, List<MenuItem> menu_content) {
+			try {
+			    MenuManagerInterface menu_manager_interface = Bus.get_proxy_sync(BusType.SESSION, "com.deepin.menu", "/com/deepin/menu");
+			    string menu_object_path = menu_manager_interface.RegisterMenu();
+				
+				print(menu_object_path + "\n");
+	    	        
+			    menu_interface = Bus.get_proxy_sync(BusType.SESSION, "com.deepin.menu", menu_object_path);
+			    menu_interface.ItemInvoked.connect((item_id, checked) => {
+			    		print(item_id + "\n");
+			    		click_item(item_id);
+			    	});
+			} catch (IOError e) {
+				stderr.printf ("%s\n", e.message);
+			}
+			
+			show_menu(menu_x, menu_y, menu_content);
+		}
+		
+	    public void show_menu(int x, int y, List<MenuItem> menu_content) {
+	    	try {
+	    	    Json.Builder builder = new Json.Builder();
+	    	    
+	            builder.begin_object();
+	    	    
+	            builder.set_member_name("x");
+	            builder.add_int_value(x);
+	    	    
+	            builder.set_member_name("y");
+	            builder.add_int_value(y);
+	    	    
+	            builder.set_member_name("isDockMenu");
+	            builder.add_boolean_value(false);
+	    		
+	    		builder.set_member_name("menuJsonContent");
+	    		builder.add_string_value(get_items_node(menu_content));
+	    	    
+	    	    builder.end_object ();
+	            
+	    	    Json.Generator generator = new Json.Generator();
+	            Json.Node root = builder.get_root();
+	            generator.set_root(root);
+	            
+	            string menu_json_content = generator.to_data(null);
+	    		
+	    	    menu_interface.ShowMenu(menu_json_content);
+	    	} catch (IOError e) {
+	    		stderr.printf ("%s\n", e.message);
+	    	}
+	    }
+	    
+	    public string get_items_node(List<MenuItem> menu_content) {
+	    	Json.Builder builder = new Json.Builder();
+	    	    
 	        builder.begin_object();
-		    
-	        builder.set_member_name("x");
-	        builder.add_int_value(x);
-		    
-	        builder.set_member_name("y");
-	        builder.add_int_value(y);
-		    
-	        builder.set_member_name("isDockMenu");
-	        builder.add_boolean_value(false);
-			
-			builder.set_member_name("menuJsonContent");
-			builder.add_string_value(get_items_node(menu_content));
-		    
-		    builder.end_object ();
+	    	
+	        builder.set_member_name("items");
+	    	builder.begin_array ();
+	    	foreach (MenuItem item in menu_content) {
+	    		builder.add_value(get_item_node(item.menu_item_id, item.menu_item_text));
+	    	}
+	    	builder.end_array ();
+	    	
+	    	builder.end_object ();
 	        
-		    Json.Generator generator = new Json.Generator();
-	        Json.Node root = builder.get_root();
-	        generator.set_root(root);
+	    	Json.Generator generator = new Json.Generator();
+	    	generator.set_root(builder.get_root());
+	    	
+	        return generator.to_data(null);
+	    }
+	    
+	    public Json.Node get_item_node(string item_id, string item_text) {
+	    	Json.Builder builder = new Json.Builder();
+	    	
+	    	builder.begin_object();
+	    	
+	        builder.set_member_name("itemId");
+	    	builder.add_string_value(item_id);
+	    	
+	        builder.set_member_name("itemText");
+	    	builder.add_string_value(item_text);
+	    	
+	        builder.set_member_name("itemIcon");
+	    	builder.add_string_value("");
+	    
+	        builder.set_member_name("itemIconHover");
+	    	builder.add_string_value("");
+	    	
+	        builder.set_member_name("itemIconInactive");
+	    	builder.add_string_value("");
+	    	
+	        builder.set_member_name("itemExtra");
+	    	builder.add_string_value("");
+	    	
+	        builder.set_member_name("isActive");
+	    	builder.add_boolean_value(true);
+	    
+	        builder.set_member_name("checked");
+	    	builder.add_boolean_value(false);
+	    	
+	        builder.set_member_name("isSubMenu");
+	    	builder.add_null_value();
+	    	
+	    	builder.end_object ();
 	        
-	        string menu_json_content = generator.to_data(null);
-			
-		    menu.ShowMenu(menu_json_content);
-		} catch (IOError e) {
-			stderr.printf ("%s\n", e.message);
-		}
-	}
-	
-	public string get_items_node(List<MenuItem> menu_content) {
-		Json.Builder builder = new Json.Builder();
-		    
-	    builder.begin_object();
-		
-	    builder.set_member_name("items");
-		builder.begin_array ();
-		foreach (MenuItem item in menu_content) {
-			builder.add_value(get_item_node(item.menu_item_id, item.menu_item_text));
-		}
-		builder.end_array ();
-		
-		builder.end_object ();
-	    
-		Json.Generator generator = new Json.Generator();
-		generator.set_root(builder.get_root());
-		
-	    return generator.to_data(null);
-	}
-	
-	public Json.Node get_item_node(string item_id, string item_text) {
-		Json.Builder builder = new Json.Builder();
-		
-		builder.begin_object();
-		
-	    builder.set_member_name("itemId");
-		builder.add_string_value(item_id);
-		
-	    builder.set_member_name("itemText");
-		builder.add_string_value(item_text);
-		
-	    builder.set_member_name("itemIcon");
-		builder.add_string_value("");
-
-	    builder.set_member_name("itemIconHover");
-		builder.add_string_value("");
-		
-	    builder.set_member_name("itemIconInactive");
-		builder.add_string_value("");
-		
-	    builder.set_member_name("itemExtra");
-		builder.add_string_value("");
-		
-	    builder.set_member_name("isActive");
-		builder.add_boolean_value(true);
-
-	    builder.set_member_name("checked");
-		builder.add_boolean_value(false);
-		
-	    builder.set_member_name("isSubMenu");
-		builder.add_null_value();
-		
-		builder.end_object ();
-	    
-	    return builder.get_root();
+	        return builder.get_root();
+	    }		
 	}
 }
