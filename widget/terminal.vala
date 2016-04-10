@@ -139,6 +139,9 @@ namespace Widgets {
 							term.grab_focus();
 							
 							var menu_content = new List<Menu.MenuItem>();
+							if (term.get_has_selection()) {
+								menu_content.append(new Menu.MenuItem("copy", "Copy"));
+							}
 							menu_content.append(new Menu.MenuItem("paste", "Paste"));
 							menu_content.append(new Menu.MenuItem("clear", "Clear"));
 							menu_content.append(new Menu.MenuItem("open_current_directory", "Open current directory"));
@@ -206,6 +209,9 @@ namespace Widgets {
 			    	case "paste":
 			    		term.paste_clipboard();
 			    		break;
+					case "copy":
+						term.copy_clipboard();
+						break;
 			    	case "search":
 						workspace_manager.focus_workspace.search();
 			    		break;
