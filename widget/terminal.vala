@@ -215,6 +215,9 @@ namespace Widgets {
 					case "vertical_split":
 						workspace_manager.focus_workspace.split_vertical();
 						break;
+					case "close_terminal":
+						workspace_manager.focus_workspace.close_focus_term();
+						break;
 			    }
 			} else {
 				print("handle_menu_item_click: impossible here!\n");
