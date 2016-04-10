@@ -49,8 +49,11 @@ namespace Widgets {
         public Gdk.RGBA background_color;
         public Gdk.RGBA foreground_color;
         public Gdk.RGBA[] palette;
+		
+		public Menu.Menu menu;
         
         public signal void exit();
+		
         
         public Term(bool first_term, string[]? commands, string? work_directory) {
             is_first_term = first_term;
@@ -149,8 +152,9 @@ namespace Widgets {
 							menu_content.append(new Menu.MenuItem("", ""));
 							menu_content.append(new Menu.MenuItem("preference", "Preference"));
 							
-							Menu.Menu menu = new Menu.Menu((int) event.x_root, (int) event.y_root, menu_content);
-							menu.click_item.connect(handle_menu_event);
+							menu = new Menu.Menu((int) event.x_root, (int) event.y_root, menu_content);
+							menu.click_item.connect(handle_menu_item_click);
+							menu.destroy.connect(handle_menu_destroy);
 							
 							return false;
                     }
@@ -192,8 +196,16 @@ namespace Widgets {
             add(term);
         }
 		
-		public void handle_menu_event(string item_id) {
-			print("hello\n");
+		public void handle_menu_item_click(string item_id) {
+			switch(item_id) {
+				case "paste":
+					term.paste_clipboard();
+					break;
+			}
+		}
+		
+		public void handle_menu_destroy() {
+			menu = null;
 		}
         
         public void focus_term() {

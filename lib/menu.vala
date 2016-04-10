@@ -8,6 +8,7 @@ namespace Menu {
     interface MenuInterface : Object {
         public abstract void ShowMenu(string menu_json_content) throws IOError;
 		public signal void ItemInvoked(string item_id, bool checked);
+		public signal void MenuUnregistered();
 	}
 	
 	public class MenuItem : Object {
@@ -24,19 +25,20 @@ namespace Menu {
 		MenuInterface menu_interface;
 		
 		public signal void click_item(string item_id);
+		public signal void destroy();
 		
 		public Menu(int menu_x, int menu_y, List<MenuItem> menu_content) {
 			try {
 			    MenuManagerInterface menu_manager_interface = Bus.get_proxy_sync(BusType.SESSION, "com.deepin.menu", "/com/deepin/menu");
 			    string menu_object_path = menu_manager_interface.RegisterMenu();
 				
-				print(menu_object_path + "\n");
-	    	        
-			    menu_interface = Bus.get_proxy_sync(BusType.SESSION, "com.deepin.menu", menu_object_path);
+				menu_interface = Bus.get_proxy_sync(BusType.SESSION, "com.deepin.menu", menu_object_path);
 			    menu_interface.ItemInvoked.connect((item_id, checked) => {
-			    		print(item_id + "\n");
-			    		click_item(item_id);
+						click_item(item_id);
 			    	});
+				menu_interface.MenuUnregistered.connect(() => {
+						destroy();
+					});
 			} catch (IOError e) {
 				stderr.printf ("%s\n", e.message);
 			}
