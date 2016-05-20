@@ -2,6 +2,7 @@ using Gtk;
 using Vte;
 using Widgets;
 using Menu;
+using Utils;
 
 namespace Widgets {
     public class Term : Gtk.ScrolledWindow {
@@ -113,11 +114,31 @@ namespace Widgets {
                             change_dir(GLib.Path.get_basename(working_directory));
                             current_dir = working_directory;
                         }
+
+						// Command finish will trigger 'window-title-changed' signal emit.
+						// we will notify user if terminal is hide or cursor out of visible area.
+						var test = term.get_toplevel();
+						if (test != null) {
+							if (test.get_type().is_a(typeof(Window))) {
+								Gtk.Adjustment vadj = term.get_vadjustment();
+								double value = vadj.get_value();
+								double page_size = vadj.get_page_size();
+								double upper = vadj.get_upper();
+								
+								// Send notify when out of visible area.
+								if (value + page_size < upper) {
+									complete_notify_send();
+								}
+							} else {
+								// Send notify when terminal tab is hidden.
+								complete_notify_send();
+							}
+						}
                     }
                 });
             term.key_press_event.connect(on_key_press);
             term.scroll_event.connect(on_scroll);
-            term.button_press_event.connect((event) => {
+			term.button_press_event.connect((event) => {
 					has_select_all = false;
 					
 					string? uri = term.match_check_event(event, null);
@@ -431,6 +452,15 @@ namespace Widgets {
 			}
 			
 			has_select_all = !has_select_all;
+		}
+		
+		public void complete_notify_send() {
+			try {
+				string notify_command = "notify-send 'Deepin terminal' 'Command finished, please check.' -i %s".printf(Utils.get_image_path("deepin-terminal.svg"));
+				Process.spawn_command_line_async(notify_command);
+			} catch (Error e) {
+				print("complete_notify_send: error %s\n", e.message);
+			}
 		}
 	}
 }
