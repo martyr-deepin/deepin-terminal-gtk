@@ -175,7 +175,9 @@ public class Application : Object {
 		} else if (keyname in ctrl_num_keys) {
             workspace_manager.switch_workspace_with_index(int.parse(Keymap.get_key_name(key_event.keyval)));
         } else if (keyname == "F11") {
-            window.toggle_fullscreen();
+			if (!quake_mode) {
+				window.toggle_fullscreen();
+			}
         } else if (keyname == "Ctrl + F") {
             workspace_manager.focus_workspace.search();
         } else if (keyname == "Ctrl + A") {
@@ -194,7 +196,7 @@ public class Application : Object {
             workspace_manager.focus_workspace.focus_up_terminal();
         } else if (keyname == "Ctrl + ?") {
 			if (hotkey_preview == null) {
-				hotkey_preview = new HotkeyPreview();
+				hotkey_preview = new HotkeyPreview(quake_mode);
 			}
 		} else {
             return false;

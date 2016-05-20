@@ -19,7 +19,11 @@ namespace Widgets {
 		public int frame_width = 2;
 		public int hotkey_width = 300;
 		
-		public HotkeyPreview() {
+		public bool quake_mode = false;
+		
+		public HotkeyPreview(bool q_mode) {
+			quake_mode = q_mode;
+			
 			set_decorated(false);
 			set_keep_above(true);
 			set_skip_taskbar_hint(true);
@@ -119,8 +123,10 @@ namespace Widgets {
 			Utils.set_context_color(cr, hotkey_color);
 			int advanced_hotkey_count = 0;
 			foreach (string advanced_hotkey in advanced_hotkeys) {
-				draw_text(widget, cr, advanced_hotkey, rect.x + title_padding_x + hotkey_width * 2, rect.y + title_padding_y + title_height + advanced_hotkey_count * hotkey_height, hotkey_width, title_height);
-				advanced_hotkey_count++;
+				if (advanced_hotkey != "Toggle fullscreen" || !quake_mode) {
+					draw_text(widget, cr, advanced_hotkey, rect.x + title_padding_x + hotkey_width * 2, rect.y + title_padding_y + title_height + advanced_hotkey_count * hotkey_height, hotkey_width, title_height);
+					advanced_hotkey_count++;
+				}
 			}
 			
 			return false;
