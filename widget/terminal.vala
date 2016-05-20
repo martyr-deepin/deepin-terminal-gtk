@@ -120,7 +120,7 @@ namespace Widgets {
             term.button_press_event.connect((event) => {
 					has_select_all = false;
 					
-					string? uri = get_link ((long) event.x, (long) event.y);
+					string? uri = get_link(event);
                 
                     switch (event.button) {
                         case Gdk.BUTTON_PRIMARY:
@@ -320,15 +320,13 @@ namespace Widgets {
             term.set_font (current_font);
         }
 
-        private string? get_link (long x, long y) {
-            long col = x / term.get_char_width ();
-            long row = y / term.get_char_height ();
-            int tag;
+        private string? get_link(Gdk.Event *event) {
+			int tag;
 
             // Vte.Terminal.match_check need a non-null tag instead of what is
             // written in the doc
             // (see: https://bugzilla.gnome.org/show_bug.cgi?id=676886)
-            return term.match_check(col, row, out tag);
+            return term.match_check_event(event, out tag);
         }
 
         public void drag_received (Gdk.DragContext context, int x, int y,
