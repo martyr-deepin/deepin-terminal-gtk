@@ -8,6 +8,7 @@ namespace Widgets {
         public int index;
         public ArrayList<Term> term_list;
         public SearchBox? search_box;
+		public RemotePanel? remote_panel;
         public Term? term_before_search;
         public string search_text;
         
@@ -35,6 +36,7 @@ namespace Widgets {
                 });
             term.term.button_press_event.connect((w, e) => {
                     remove_search_box();
+					remove_remote_panel();
                     
                     return false;
                 });
@@ -441,5 +443,28 @@ namespace Widgets {
                 }
             }
         }
+
+		public void show_remote_panel() {
+			if (remote_panel == null) {
+				Gtk.Allocation rect;
+				get_allocation(out rect);
+				
+				remote_panel = new RemotePanel();
+				remote_panel.set_size_request(200, rect.height);
+                remote_panel.set_valign(Gtk.Align.START);
+                remote_panel.set_halign(Gtk.Align.START);
+				add_overlay(remote_panel);
+				
+				show_all();
+			}
+		}
+		
+		public void remove_remote_panel() {
+			if (remote_panel != null) {
+				remove(remote_panel);
+				remote_panel.destroy();
+				remote_panel = null;
+			}
+		}
     }
 }

@@ -9,13 +9,20 @@ namespace Widgets {
         
         public TextButton(string text) {
             button_text = text;
+			set_size_request(-1, 22);
             
             draw.connect(on_draw);
         }
         
         private bool on_draw(Gtk.Widget widget, Cairo.Context cr) {
+            Gtk.Allocation rect;
+            widget.get_allocation(out rect);
+			
             var state_flags = widget.get_state_flags();
             
+            cr.set_source_rgba(1, 1, 1, 0.3);
+            Draw.draw_rectangle(cr, 0, 0, rect.width, rect.height, false);
+			
             if ((state_flags & Gtk.StateFlags.ACTIVE) != 0) {
                 cr.set_source_rgba(1, 1, 1, 0.8);
             } else if ((state_flags & Gtk.StateFlags.PRELIGHT) != 0) {

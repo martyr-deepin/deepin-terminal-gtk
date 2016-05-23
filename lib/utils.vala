@@ -108,8 +108,15 @@ namespace Utils {
             container.remove(w);
         }
     }
-
-    public Gtk.Allocation get_origin_allocation(Gtk.Widget w) {
+	
+    public void destroy_all_children(Gtk.Container container) {
+        foreach (Widget w in container.get_children()) {
+            container.remove(w);
+			w.destroy();
+        }
+    }
+	
+	public Gtk.Allocation get_origin_allocation(Gtk.Widget w) {
         Gtk.Allocation alloc;
         w.get_allocation(out alloc);
         
@@ -135,4 +142,12 @@ namespace Utils {
     public string get_root_path(string file_path) {
         return GLib.Path.build_path(Path.DIR_SEPARATOR_S, GLib.Path.get_dirname((string) project_path()), file_path);
     }
+	
+	public string get_config_dir() {
+		return GLib.Path.build_path(Path.DIR_SEPARATOR_S, Environment.get_user_config_dir(), "deepin-terminal_new");
+	}
+	
+	public string get_config_file_path(string config_name) {
+		return GLib.Path.build_path(Path.DIR_SEPARATOR_S, Environment.get_user_config_dir(), "deepin-terminal_new", config_name);
+	}
 }

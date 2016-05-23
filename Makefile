@@ -17,6 +17,8 @@ main: ./project_path.c \
       ./widget/window.vala \
       ./widget/confirm_dialog.vala \
       ./widget/search_box.vala \
+      ./widget/remote_panel.vala \
+      ./widget/theme_selector.vala \
       ./widget/listview.vala \
       main.vala
 	valac -o main \
@@ -46,6 +48,8 @@ main: ./project_path.c \
     ./widget/window.vala \
     ./widget/confirm_dialog.vala \
     ./widget/search_box.vala \
+    ./widget/remote_panel.vala \
+    ./widget/theme_selector.vala \
     ./widget/listview.vala \
     main.vala
 clean:

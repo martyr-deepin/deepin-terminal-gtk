@@ -173,7 +173,7 @@ namespace Widgets {
 							menu_content.append(new Menu.MenuItem("", ""));
 							menu_content.append(new Menu.MenuItem("fullscreen", "Fullscreen"));
 							menu_content.append(new Menu.MenuItem("search", "Search"));
-							menu_content.append(new Menu.MenuItem("display_hotkey", "Display hotkey"));
+							menu_content.append(new Menu.MenuItem("remote_manage", "Connect remote"));
 							menu_content.append(new Menu.MenuItem("", ""));
 							menu_content.append(new Menu.MenuItem("preference", "Preference"));
 							
@@ -245,6 +245,9 @@ namespace Widgets {
 						break;
 					case "new_workspace":
 						workspace_manager.new_workspace(null, null);
+						break;
+					case "remote_manage":
+						workspace_manager.focus_workspace.show_remote_panel();
 						break;
 			    }
 			} else {
