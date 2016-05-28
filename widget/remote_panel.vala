@@ -4,6 +4,63 @@ using Utils;
 using Gee;
 
 namespace Widgets {
+	public class RemoteListView : ListView {
+		public int item_height = 36;
+		
+		public RemoteListView() {
+		}
+		
+		public override int get_item_height() {
+			return item_height;
+		}
+		
+		public override int[] get_column_widths() {
+			return {-1};
+		}
+	}
+	
+	public class GroupItem : ListItem {
+		public string group_name;
+		public int remote_number;
+		
+		public GroupItem(string gname, int gnumber) {
+			group_name = gname;
+			remote_number = gnumber;
+		}
+		
+		public override void render_column_cell(Gtk.Widget widget, Cairo.Context cr, int column_index, int x, int y, int w, int h) {
+            cr.set_source_rgba(0, 0, 1, 0.8);
+            Draw.draw_rectangle(cr, x, y, w, h);
+			
+            cr.set_source_rgba(1, 0, 1, 0.8);
+			Draw.draw_text(widget, cr, group_name, x, y, w, 10);
+
+            cr.set_source_rgba(1, 1, 0, 0.8);
+			Draw.draw_text(widget, cr, remote_number.to_string(), x, y + 10, w, 10);
+		}
+	}
+	
+	public class RemoteItem : ListItem {
+		public string remote_name;
+		public string remote_address;
+		
+		public RemoteItem(string name, string user_and_server) {
+			remote_name = name;
+			remote_address = user_and_server;
+		}
+		
+		public override void render_column_cell(Gtk.Widget widget, Cairo.Context cr, int column_index, int x, int y, int w, int h) {
+            cr.set_source_rgba(0, 0, 1, 0.8);
+            Draw.draw_rectangle(cr, x, y, w, h);
+			
+            cr.set_source_rgba(1, 0, 1, 0.8);
+			Draw.draw_text(widget, cr, remote_name, x, y, w, 10);
+
+            cr.set_source_rgba(1, 1, 0, 0.8);
+			Draw.draw_text(widget, cr, remote_address, x, y + 10, w, 10);
+		}
+	}
+	
 	public class RemotePanel : Gtk.VBox {
 		string config_file_path = Utils.get_config_file_path("server_config.ini");
 		
@@ -26,32 +83,28 @@ namespace Widgets {
 		public void show_homepage() {
 			Utils.destroy_all_children(this);
 			
-			HashMap<string, ArrayList<string>> groups = new HashMap<string, ArrayList<string>>();
+			HashMap<string, int> groups = new HashMap<string, int>();
 			ArrayList<ArrayList<string>> ungroups = new ArrayList<ArrayList<string>>();
 			        
 			KeyFile config_file = new KeyFile();
 			try {
 				config_file.load_from_file(config_file_path, KeyFileFlags.NONE);
 				
-			    foreach (unowned string group in config_file.get_groups ()) {
-			    	string group_name = config_file.get_value(group, "GroupName");
-			    	ArrayList<string> remote_config = new ArrayList<string>();
-			    	remote_config.add(group.split("@")[0]);
-			    	remote_config.add(group.split("@")[1]);
-			    	remote_config.add(config_file.get_value(group, "Name"));
-			    	remote_config.add(config_file.get_value(group, "Password"));
-			    	remote_config.add(config_file.get_value(group, "Theme"));
-			    	remote_config.add(config_file.get_value(group, "Port"));
-			    	remote_config.add(config_file.get_value(group, "Encode"));
+			    foreach (unowned string option in config_file.get_groups ()) {
+			    	string group_name = config_file.get_value(option, "GroupName");
 					
-					foreach (string test in remote_config) {
-						print("%s\n", test);
-					}
-			    	
-			    	if (group_name == "") {
-			    		ungroups.add(remote_config);
+					if (group_name == "") {
+						ArrayList<string> ungroup = new ArrayList<string>();
+						ungroup.add(config_file.get_value(option, "Name"));
+						ungroup.add(option);
+			    		ungroups.add(ungroup);
 			    	} else {
-			    		groups.set(group_name, remote_config);
+						if (groups.has_key(group_name)) {
+							int group_item_number = groups.get(group_name);
+							groups.set(group_name, group_item_number + 1);
+						} else {
+							groups.set(group_name, 1);
+						}
 			    	}
 			    }
 			} catch (Error e) {
@@ -60,7 +113,7 @@ namespace Widgets {
 				}
 			}
 			
-			if (ungroups.size + groups.size > 1) {
+			if (groups.size > 0 || ungroups.size > 1) {
 			    Entry search_entry = new Entry();
 			    search_entry.set_placeholder_text("Search");
 			    pack_start(search_entry, false, false, 0);
@@ -73,6 +126,23 @@ namespace Widgets {
 					return false;
 				});
 			pack_start(add_server_button, false, false, 0);
+			
+			if (ungroups.size + groups.size > 0) {
+				RemoteListView remote_list_view = new RemoteListView();
+				pack_start(remote_list_view, true, true, 0);
+				
+				ArrayList<GroupItem> group_items = new ArrayList<GroupItem>();
+				foreach (var group_entry in groups.entries) {
+					group_items.add(new GroupItem(group_entry.key, group_entry.value));
+				}
+				remote_list_view.add_items(group_items);
+				
+				ArrayList<RemoteItem> ungroup_items = new ArrayList<RemoteItem>();
+				foreach (var ungroup_list in ungroups) {
+					ungroup_items.add(new RemoteItem(ungroup_list[0], ungroup_list[1]));
+				}
+				remote_list_view.add_items(ungroup_items);
+			}
 			
 			show_all();
 		}
