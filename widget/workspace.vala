@@ -444,6 +444,14 @@ namespace Widgets {
             }
         }
 
+		public void toggle_remote_panel() {
+			if (remote_panel == null) {
+				show_remote_panel();
+			} else {
+				remove_remote_panel();
+			}
+		}
+		
 		public void show_remote_panel() {
 			if (remote_panel == null) {
 				Gtk.Allocation rect;
