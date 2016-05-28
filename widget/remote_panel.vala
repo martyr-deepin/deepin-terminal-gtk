@@ -1,6 +1,7 @@
 using Gtk;
 using Widgets;
 using Utils;
+using Gee;
 
 namespace Widgets {
 	public class RemotePanel : Gtk.VBox {
@@ -24,6 +25,46 @@ namespace Widgets {
 		
 		public void show_homepage() {
 			Utils.destroy_all_children(this);
+			
+			HashMap<string, ArrayList<string>> groups = new HashMap<string, ArrayList<string>>();
+			ArrayList<ArrayList<string>> ungroups = new ArrayList<ArrayList<string>>();
+			        
+			KeyFile config_file = new KeyFile();
+			try {
+				config_file.load_from_file(config_file_path, KeyFileFlags.NONE);
+				
+			    foreach (unowned string group in config_file.get_groups ()) {
+			    	string group_name = config_file.get_value(group, "GroupName");
+			    	ArrayList<string> remote_config = new ArrayList<string>();
+			    	remote_config.add(group.split("@")[0]);
+			    	remote_config.add(group.split("@")[1]);
+			    	remote_config.add(config_file.get_value(group, "Name"));
+			    	remote_config.add(config_file.get_value(group, "Password"));
+			    	remote_config.add(config_file.get_value(group, "Theme"));
+			    	remote_config.add(config_file.get_value(group, "Port"));
+			    	remote_config.add(config_file.get_value(group, "Encode"));
+					
+					foreach (string test in remote_config) {
+						print("%s\n", test);
+					}
+			    	
+			    	if (group_name == "") {
+			    		ungroups.add(remote_config);
+			    	} else {
+			    		groups.set(group_name, remote_config);
+			    	}
+			    }
+			} catch (Error e) {
+				if (!FileUtils.test(config_file_path, FileTest.EXISTS)) {
+					print("show_homepage error: %s\n", e.message);
+				}
+			}
+			
+			if (ungroups.size + groups.size > 1) {
+			    Entry search_entry = new Entry();
+			    search_entry.set_placeholder_text("Search");
+			    pack_start(search_entry, false, false, 0);
+			}
 			
 			TextButton add_server_button = new TextButton("Add server");
 			add_server_button.button_press_event.connect((w, e) => {
@@ -116,6 +157,9 @@ namespace Widgets {
 			    try {
 			    	config_file.load_from_file(config_file_path, KeyFileFlags.NONE);
 			    } catch (Error e) {
+					if (!FileUtils.test(config_file_path, FileTest.EXISTS)) {
+						print("show_homepage error: %s\n", e.message);
+					}
 			    }
 			    
 			    // Use ',' as array-element-separator instead of ';'.
