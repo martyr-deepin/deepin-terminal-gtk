@@ -55,6 +55,7 @@ namespace Widgets {
 				"Scroll up : Shift + up",
 				"Scroll down : Shift + down",
 				"Search : Ctrl + Shift + f",
+				"Remote manage : Ctrl + Shift + s",
 				"Select word : Double click",
 				"Open url : Ctrl + LeftButton",
 				"Zoom in : Ctrl + -",
