@@ -1393,8 +1393,6 @@ class TerminalWrapper(vte.Terminal):
                 # this will make terminal with 'clear' init value.
                 # child_feed have cd information after terminal created.
                 os.chdir(working_directory)
-            else:
-                os.chdir(HOME)
         except:
             traceback.print_exc(file=sys.stdout)
 
