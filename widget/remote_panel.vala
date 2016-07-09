@@ -80,7 +80,7 @@ namespace Widgets {
                 var listmodel = new Gtk.ListStore(4, typeof(string), typeof(string), typeof(string), typeof(string));
                 view.set_model(listmodel);
 
-                view.insert_column_with_attributes(-1, "Name", new CellRendererText (), "text", 0);
+                view.insert_column_with_attributes(-1, "Name", new CellRendererText(), "text", 0);
                 
                 TreeIter iter;
                 
@@ -129,6 +129,15 @@ namespace Widgets {
 			pack_start(encode_box, false, false, 0);
 			
 			// FIXME: split line.
+			Entry command_entry = new Entry();
+			command_entry.set_placeholder_text("Command");
+			pack_start(command_entry, false, false, 0);
+            
+			Entry path_entry = new Entry();
+			path_entry.set_placeholder_text("Path");
+			pack_start(path_entry, false, false, 0);
+            
+			// FIXME: split line.
 			
 			Entry name_entry = new Entry();
 			name_entry.set_placeholder_text("Name");
@@ -149,6 +158,8 @@ namespace Widgets {
 						"",
 						port_entry.get_text(),
 						"",
+                        command_entry.get_text(),
+                        path_entry.get_text(),
 						name_entry.get_text(),
 						groupname_entry.get_text()
 						);
@@ -168,6 +179,8 @@ namespace Widgets {
 			string theme,
 			string port,
 			string encode,
+            string command,
+            string path,
 			string name,
 			string group_name
 			) {
@@ -191,6 +204,8 @@ namespace Widgets {
 			    config_file.set_string(gname, "GroupName", group_name);
 			    config_file.set_string(gname, "Password", password);
 			    config_file.set_string(gname, "Theme", theme);
+                config_file.set_string(gname, "Command", command);
+                config_file.set_string(gname, "Path", path);
 			    config_file.set_string(gname, "Port", port);
 			    config_file.set_string(gname, "Encode", encode);
 			    
