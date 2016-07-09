@@ -4,63 +4,6 @@ using Utils;
 using Gee;
 
 namespace Widgets {
-	public class RemoteListView : ListView {
-		public int item_height = 36;
-		
-		public RemoteListView() {
-		}
-		
-		public override int get_item_height() {
-			return item_height;
-		}
-		
-		public override int[] get_column_widths() {
-			return {-1};
-		}
-	}
-	
-	public class GroupItem : ListItem {
-		public string group_name;
-		public int remote_number;
-		
-		public GroupItem(string gname, int gnumber) {
-			group_name = gname;
-			remote_number = gnumber;
-		}
-		
-		public override void render_column_cell(Gtk.Widget widget, Cairo.Context cr, int column_index, int x, int y, int w, int h) {
-            cr.set_source_rgba(0, 0, 1, 0.8);
-            Draw.draw_rectangle(cr, x, y, w, h);
-			
-            cr.set_source_rgba(1, 0, 1, 0.8);
-			Draw.draw_text(widget, cr, group_name, x, y, w, 10);
-
-            cr.set_source_rgba(1, 1, 0, 0.8);
-			Draw.draw_text(widget, cr, remote_number.to_string(), x, y + 10, w, 10);
-		}
-	}
-	
-	public class RemoteItem : ListItem {
-		public string remote_name;
-		public string remote_address;
-		
-		public RemoteItem(string name, string user_and_server) {
-			remote_name = name;
-			remote_address = user_and_server;
-		}
-		
-		public override void render_column_cell(Gtk.Widget widget, Cairo.Context cr, int column_index, int x, int y, int w, int h) {
-            cr.set_source_rgba(0, 0, 1, 0.8);
-            Draw.draw_rectangle(cr, x, y, w, h);
-			
-            cr.set_source_rgba(1, 0, 1, 0.8);
-			Draw.draw_text(widget, cr, remote_name, x, y, w, 10);
-
-            cr.set_source_rgba(1, 1, 0, 0.8);
-			Draw.draw_text(widget, cr, remote_address, x, y + 10, w, 10);
-		}
-	}
-	
 	public class RemotePanel : Gtk.VBox {
 		string config_file_path = Utils.get_config_file_path("server_config.ini");
 		
@@ -128,21 +71,29 @@ namespace Widgets {
 			pack_start(add_server_button, false, false, 0);
 			
 			if (ungroups.size + groups.size > 0) {
-				RemoteListView remote_list_view = new RemoteListView();
-				pack_start(remote_list_view, true, true, 0);
-				
-				ArrayList<GroupItem> group_items = new ArrayList<GroupItem>();
+                var view = new TreeView();
+                var scrolledwindow = new ScrolledWindow(null, null);
+                view.set_headers_visible(false);
+                scrolledwindow.add(view);
+                pack_start(scrolledwindow, true, true, 0);
+                
+                var listmodel = new Gtk.ListStore(4, typeof(string), typeof(string), typeof(string), typeof(string));
+                view.set_model(listmodel);
+
+                view.insert_column_with_attributes(-1, "Name", new CellRendererText (), "text", 0);
+                
+                TreeIter iter;
+                
 				foreach (var group_entry in groups.entries) {
-					group_items.add(new GroupItem(group_entry.key, group_entry.value));
+                    listmodel.append(out iter);
+                    listmodel.set(iter, 0, "%s\n%i".printf(group_entry.key, group_entry.value));
 				}
-				remote_list_view.add_items(group_items);
 				
-				ArrayList<RemoteItem> ungroup_items = new ArrayList<RemoteItem>();
 				foreach (var ungroup_list in ungroups) {
-					ungroup_items.add(new RemoteItem(ungroup_list[0], ungroup_list[1]));
+                    listmodel.append(out iter);
+                    listmodel.set(iter, 0, "%s\n%s".printf(ungroup_list[0], ungroup_list[1]));
 				}
-				remote_list_view.add_items(ungroup_items);
-			}
+            }
 			
 			show_all();
 		}
