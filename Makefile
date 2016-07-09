@@ -19,6 +19,7 @@ main: ./project_path.c \
       ./widget/search_box.vala \
       ./widget/remote_panel.vala \
       ./widget/theme_selector.vala \
+      ./widget/about_dialog.vala \
       main.vala
 	valac -o main \
 	-X -w \
@@ -49,6 +50,7 @@ main: ./project_path.c \
     ./widget/search_box.vala \
     ./widget/remote_panel.vala \
     ./widget/theme_selector.vala \
+    ./widget/about_dialog.vala \
     main.vala
 clean:
 	rm -f main

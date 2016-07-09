@@ -74,7 +74,7 @@ public class Application : Object {
             Utils.load_css_theme(Utils.get_root_path("style.css"));
             
             Tabbar tabbar = new Tabbar();
-            Appbar appbar = new Appbar(tabbar, quake_mode);
+            Appbar appbar = new Appbar(tabbar, quake_mode, this);
             workspace_manager = new WorkspaceManager(appbar.tabbar, commands, work_directory); 
             
             appbar.tabbar.press_tab.connect((t, tab_index, tab_id) => {
@@ -143,7 +143,7 @@ public class Application : Object {
         }
     }
     
-    private void quit() {
+    public void quit() {
         if (workspace_manager.has_active_term()) {
             ConfirmDialog dialog = new ConfirmDialog(
                 "Terminal still has running programs. Are you sure you want to quit?",

@@ -11,10 +11,14 @@ namespace Widgets {
         public ImageButton max_button;
         public ImageButton unmax_button;
         public ImageButton close_button;
+        public Application application;
         
-        public Appbar(Tabbar tab_bar, bool quake_mode) {
+		public Menu.Menu menu;
+        
+        public Appbar(Tabbar tab_bar, bool quake_mode, Application app) {
             tabbar = tab_bar;
             visible_window = false;
+            application = app;
             
             draw.connect(on_draw);
             
@@ -23,6 +27,21 @@ namespace Widgets {
             max_button = new ImageButton("window_max");
             unmax_button = new ImageButton("window_unmax");
             close_button = new ImageButton("window_close");
+            
+            menu_button.button_press_event.connect((b) => {
+                    var menu_content = new List<Menu.MenuItem>();
+                    menu_content.append(new Menu.MenuItem("new_window", "New window"));
+                    menu_content.append(new Menu.MenuItem("", ""));
+                    menu_content.append(new Menu.MenuItem("help", "Help"));
+                    menu_content.append(new Menu.MenuItem("about", "About"));
+                    menu_content.append(new Menu.MenuItem("exit", "Exit"));
+                    
+                    menu = new Menu.Menu((int) b.x_root, (int) b.y_root, menu_content);
+                    menu.click_item.connect(handle_menu_item_click);
+                    menu.destroy.connect(handle_menu_destroy);
+                    
+                    return false;
+                });
             
             max_toggle_box = new Box(Gtk.Orientation.HORIZONTAL, 0);
             
@@ -54,6 +73,25 @@ namespace Widgets {
             box.pack_start(close_button, false, false, 0);
             
             add(box);
+        }
+        
+        public void handle_menu_item_click(string item_id) {
+            switch(item_id) {
+                case "new_window":
+			    	break;
+				case "help":
+					break;
+			    case "about":
+                    new AboutDialog((Gtk.Window) this.get_toplevel());
+			    	break;
+				case "exit":
+                    application.quit();
+					break;
+            }
+		}        
+        
+		public void handle_menu_destroy() {
+			menu = null;
         }
         
         public void update_max_button() {
