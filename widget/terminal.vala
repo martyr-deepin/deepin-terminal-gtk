@@ -247,7 +247,7 @@ namespace Widgets {
 						workspace_manager.new_workspace(null, null);
 						break;
 					case "remote_manage":
-						workspace_manager.focus_workspace.show_remote_panel();
+						workspace_manager.focus_workspace.show_remote_panel(workspace_manager.focus_workspace);
 						break;
 			    }
 			} else {
@@ -359,7 +359,7 @@ namespace Widgets {
                     }
 
                     string uris_s = string.joinv ("", uris);
-                    this.term.feed_child (uris_s, uris_s.length);
+                    this.term.feed_child(uris_s, uris_s.length);
 
                     break;
                 case DropTargets.STRING:
@@ -367,7 +367,7 @@ namespace Widgets {
                     var data = selection_data.get_text ();
 
                     if (data != null) {
-                        this.term.feed_child (data, data.length);
+                        this.term.feed_child(data, data.length);
                     }
 
                     break;

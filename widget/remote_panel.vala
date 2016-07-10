@@ -6,8 +6,14 @@ using Gee;
 namespace Widgets {
 	public class RemotePanel : Gtk.VBox {
 		string config_file_path = Utils.get_config_file_path("server_config.ini");
+        
+        public Workspace workspace;
+        public Gtk.Widget focus_widget;
 		
-		public RemotePanel() {
+		public RemotePanel(Workspace space) {
+            workspace = space;
+            focus_widget = ((Gtk.Window) workspace.get_toplevel()).get_focus();
+            
 			show_homepage();
 			
 			draw.connect(on_draw);
@@ -93,6 +99,55 @@ namespace Widgets {
                     listmodel.append(out iter);
                     listmodel.set(iter, 0, "%s\n%s".printf(ungroup_list[0], ungroup_list[1]));
 				}
+                
+                view.row_activated.connect((path, column) => {
+                           Gtk.TreeIter activated_iter;
+                           if (view.model.get_iter(out activated_iter, path)) {
+                               string iter_content;
+                               view.model.get(activated_iter, 0, out iter_content);
+                               string[] row_content = iter_content.split("\n");
+                               if ("@" in row_content[1]) {
+                                    // A reference to our file
+                                   var file = File.new_for_path(Utils.get_ssh_script_path());
+
+                                   if (!file.query_exists ()) {
+                                       stderr.printf("File '%s' doesn't exist.\n", file.get_path());
+                                   }
+
+                                   try {
+                                       var dis = new DataInputStream(file.read());
+                                       string line;
+                                       string ssh_script_content = "";                                       
+                                       while ((line = dis.read_line(null)) != null) {
+                                           ssh_script_content = ssh_script_content.concat("%s\n".printf(line));
+                                       }
+                                       
+                                       ssh_script_content = ssh_script_content.replace("<<USER>>", row_content[1].split("@")[0]);
+                                       ssh_script_content = ssh_script_content.replace("<<SERVER>>", row_content[1].split("@")[1]);
+                                       ssh_script_content = ssh_script_content.replace("<<PASSWORD>>", config_file.get_value(row_content[1], "Password"));
+                                       ssh_script_content = ssh_script_content.replace("<<PORT>>", config_file.get_value(row_content[1], "Port"));
+                                       
+                                       // Create temporary expect script file, and the file will
+                                       // be delete by itself.
+                                       FileIOStream iostream;
+                                       var tmpfile = File.new_tmp("deepin-terminal-XXXXXX", out iostream);
+                                       OutputStream ostream = iostream.output_stream;
+                                       DataOutputStream dos = new DataOutputStream(ostream);
+                                       dos.put_string(ssh_script_content);
+                                       
+                                       workspace.remove_remote_panel();
+                                       focus_widget.grab_focus();
+                                       Term term = workspace.get_focus_term(workspace);
+                                       if (term != null) {
+                                           string command = "expect -f " + tmpfile.get_path() + "\n";
+                                           term.term.feed_child(command, command.length);
+                                       }
+                                   } catch (Error e) {
+                                       error ("%s", e.message);
+                                   }
+                               }
+                           }
+                    });
             }
 			
 			show_all();

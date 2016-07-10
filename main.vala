@@ -181,7 +181,7 @@ public class Application : Object {
         } else if (keyname == "Ctrl + F") {
             workspace_manager.focus_workspace.search();
         } else if (keyname == "Ctrl + S") {
-			workspace_manager.focus_workspace.toggle_remote_panel();
+			workspace_manager.focus_workspace.toggle_remote_panel(workspace_manager.focus_workspace);
 		} else if (keyname == "Ctrl + A") {
 			workspace_manager.focus_workspace.toggle_select_all();
 		} else if (keyname == "Ctrl + h") {

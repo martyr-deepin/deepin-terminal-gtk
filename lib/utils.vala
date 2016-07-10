@@ -150,4 +150,8 @@ namespace Utils {
 	public string get_config_file_path(string config_name) {
 		return GLib.Path.build_path(Path.DIR_SEPARATOR_S, Environment.get_user_config_dir(), "deepin-terminal_new", config_name);
 	}
+
+    public string get_ssh_script_path() {
+        return GLib.Path.build_path(Path.DIR_SEPARATOR_S, GLib.Path.get_dirname((string) project_path()), "ssh_login.sh");
+    }
 }

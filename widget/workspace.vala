@@ -444,20 +444,20 @@ namespace Widgets {
             }
         }
 
-		public void toggle_remote_panel() {
+		public void toggle_remote_panel(Workspace workspace) {
 			if (remote_panel == null) {
-				show_remote_panel();
+				show_remote_panel(workspace);
 			} else {
 				remove_remote_panel();
 			}
 		}
 		
-		public void show_remote_panel() {
+		public void show_remote_panel(Workspace workspace) {
 			if (remote_panel == null) {
 				Gtk.Allocation rect;
 				get_allocation(out rect);
 				
-				remote_panel = new RemotePanel();
+				remote_panel = new RemotePanel(workspace);
 				remote_panel.set_size_request(200, rect.height);
                 remote_panel.set_valign(Gtk.Align.START);
                 remote_panel.set_halign(Gtk.Align.START);
