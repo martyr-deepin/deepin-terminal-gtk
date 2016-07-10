@@ -25,7 +25,11 @@ namespace Widgets {
         Cairo.ImageSurface icon_surface;
         Cairo.ImageSurface logo_surface;
         
-        public AboutDialog(Gtk.Window window) {
+        public Gtk.Widget focus_widget;
+        
+        public AboutDialog(Gtk.Window window, Gtk.Widget widget) {
+            focus_widget = widget;
+            
             set_transient_for(window);
             set_default_geometry(window_width, window_height);
             set_resizable(false);
@@ -53,6 +57,11 @@ namespace Widgets {
                 });
             
             draw.connect(on_draw);
+            destroy.connect((w) => {
+                    if (focus_widget != null) {
+                        focus_widget.grab_focus();
+                    }
+                });
             
             show_all();
         }

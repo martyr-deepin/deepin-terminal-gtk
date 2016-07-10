@@ -93,7 +93,7 @@ namespace Widgets {
 				case "help":
 					break;
 			    case "about":
-                    new AboutDialog((Gtk.Window) this.get_toplevel());
+                    new AboutDialog((Gtk.Window) this.get_toplevel(), focus_widget);
 			    	break;
 				case "exit":
                     application.quit();
