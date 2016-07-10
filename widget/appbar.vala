@@ -36,7 +36,14 @@ namespace Widgets {
                     menu_content.append(new Menu.MenuItem("about", "About"));
                     menu_content.append(new Menu.MenuItem("exit", "Exit"));
                     
-                    menu = new Menu.Menu((int) b.x_root, (int) b.y_root, menu_content);
+                    int menu_x, menu_y;
+                    menu_button.translate_coordinates(menu_button.get_toplevel(), 0, 0, out menu_x, out menu_y);
+                    Gtk.Allocation menu_rect;
+                    menu_button.get_allocation(out menu_rect);
+                    int window_x, window_y;
+                    menu_button.get_toplevel().get_window().get_origin(out window_x, out window_y);
+                    
+                    menu = new Menu.Menu(window_x + menu_x, window_y + menu_y + menu_rect.height, menu_content);
                     menu.click_item.connect(handle_menu_item_click);
                     menu.destroy.connect(handle_menu_destroy);
                     
