@@ -13,6 +13,8 @@ namespace Widgets {
         public ImageButton close_button;
         public Application application;
         
+        public Gtk.Widget focus_widget;
+        
 		public Menu.Menu menu;
         
         public Appbar(Tabbar tab_bar, bool quake_mode, Application app) {
@@ -29,6 +31,8 @@ namespace Widgets {
             close_button = new ImageButton("window_close");
             
             menu_button.button_press_event.connect((b) => {
+                    focus_widget = ((Gtk.Window) menu_button.get_toplevel()).get_focus();
+                    
                     var menu_content = new List<Menu.MenuItem>();
                     menu_content.append(new Menu.MenuItem("new_window", "New window"));
                     menu_content.append(new Menu.MenuItem("", ""));
@@ -99,6 +103,10 @@ namespace Widgets {
         
 		public void handle_menu_destroy() {
 			menu = null;
+            
+            if (focus_widget != null) {
+                focus_widget.grab_focus();
+            }
         }
         
         public void update_max_button() {
