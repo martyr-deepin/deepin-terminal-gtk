@@ -26,7 +26,7 @@ GtkEntry {
 	border-color: #393937;
 }
 
-GtkEntry:focused {
+GtkEntry:focus {
     color: grey;
 	background: #272822;
 	border-color: #393937;
