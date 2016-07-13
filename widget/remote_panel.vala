@@ -14,7 +14,7 @@ namespace Widgets {
             workspace = space;
             focus_widget = ((Gtk.Window) workspace.get_toplevel()).get_focus();
             
-			show_homepage();
+			show_home_page();
 			
 			draw.connect(on_draw);
 		}
@@ -29,7 +29,7 @@ namespace Widgets {
             return false;
         }
 		
-		public void show_homepage() {
+		public void show_home_page() {
 			Utils.destroy_all_children(this);
 			
 			HashMap<string, int> groups = new HashMap<string, int>();
@@ -58,7 +58,7 @@ namespace Widgets {
 			    }
 			} catch (Error e) {
 				if (!FileUtils.test(config_file_path, FileTest.EXISTS)) {
-					print("show_homepage error: %s\n", e.message);
+					print("show_home_page error: %s\n", e.message);
 				}
 			}
 			
@@ -107,44 +107,9 @@ namespace Widgets {
                                view.model.get(activated_iter, 0, out iter_content);
                                string[] row_content = iter_content.split("\n");
                                if ("@" in row_content[1]) {
-                                    // A reference to our file
-                                   var file = File.new_for_path(Utils.get_ssh_script_path());
-
-                                   if (!file.query_exists ()) {
-                                       stderr.printf("File '%s' doesn't exist.\n", file.get_path());
-                                   }
-
-                                   try {
-                                       var dis = new DataInputStream(file.read());
-                                       string line;
-                                       string ssh_script_content = "";                                       
-                                       while ((line = dis.read_line(null)) != null) {
-                                           ssh_script_content = ssh_script_content.concat("%s\n".printf(line));
-                                       }
-                                       
-                                       ssh_script_content = ssh_script_content.replace("<<USER>>", row_content[1].split("@")[0]);
-                                       ssh_script_content = ssh_script_content.replace("<<SERVER>>", row_content[1].split("@")[1]);
-                                       ssh_script_content = ssh_script_content.replace("<<PASSWORD>>", config_file.get_value(row_content[1], "Password"));
-                                       ssh_script_content = ssh_script_content.replace("<<PORT>>", config_file.get_value(row_content[1], "Port"));
-                                       
-                                       // Create temporary expect script file, and the file will
-                                       // be delete by itself.
-                                       FileIOStream iostream;
-                                       var tmpfile = File.new_tmp("deepin-terminal-XXXXXX", out iostream);
-                                       OutputStream ostream = iostream.output_stream;
-                                       DataOutputStream dos = new DataOutputStream(ostream);
-                                       dos.put_string(ssh_script_content);
-                                       
-                                       workspace.remove_remote_panel();
-                                       focus_widget.grab_focus();
-                                       Term term = workspace.get_focus_term(workspace);
-                                       if (term != null) {
-                                           string command = "expect -f " + tmpfile.get_path() + "\n";
-                                           term.term.feed_child(command, command.length);
-                                       }
-                                   } catch (Error e) {
-                                       error ("%s", e.message);
-                                   }
+                                   login_server(row_content[1]);
+                               } else {
+                                   show_group_page(row_content[0]);
                                }
                            }
                     });
@@ -152,6 +117,130 @@ namespace Widgets {
 			
 			show_all();
 		}
+        
+        public void login_server(string server_info) {
+			KeyFile config_file = new KeyFile();
+            
+			try {
+				config_file.load_from_file(config_file_path, KeyFileFlags.NONE);
+			} catch (Error e) {
+				if (!FileUtils.test(config_file_path, FileTest.EXISTS)) {
+					print("login_server error: %s\n", e.message);
+				}
+			}
+            
+            // A reference to our file
+            var file = File.new_for_path(Utils.get_ssh_script_path());
+
+            if (!file.query_exists ()) {
+                stderr.printf("File '%s' doesn't exist.\n", file.get_path());
+            }
+
+            try {
+                var dis = new DataInputStream(file.read());
+                string line;
+                string ssh_script_content = "";                                       
+                while ((line = dis.read_line(null)) != null) {
+                    ssh_script_content = ssh_script_content.concat("%s\n".printf(line));
+                }
+                                       
+                ssh_script_content = ssh_script_content.replace("<<USER>>", server_info.split("@")[0]);
+                ssh_script_content = ssh_script_content.replace("<<SERVER>>", server_info.split("@")[1]);
+                ssh_script_content = ssh_script_content.replace("<<PASSWORD>>", config_file.get_value(server_info, "Password"));
+                ssh_script_content = ssh_script_content.replace("<<PORT>>", config_file.get_value(server_info, "Port"));
+                                       
+                // Create temporary expect script file, and the file will
+                // be delete by itself.
+                FileIOStream iostream;
+                var tmpfile = File.new_tmp("deepin-terminal-XXXXXX", out iostream);
+                OutputStream ostream = iostream.output_stream;
+                DataOutputStream dos = new DataOutputStream(ostream);
+                dos.put_string(ssh_script_content);
+                                       
+                workspace.remove_remote_panel();
+                focus_widget.grab_focus();
+                Term term = workspace.get_focus_term(workspace);
+                if (term != null) {
+                    string command = "expect -f " + tmpfile.get_path() + "\n";
+                    term.term.feed_child(command, command.length);
+                }
+            } catch (Error e) {
+                error ("%s", e.message);
+            }
+        }
+        
+        public void show_group_page(string group_name) {
+            Utils.destroy_all_children(this);
+            
+			KeyFile config_file = new KeyFile();
+            
+			ArrayList<ArrayList<string>> groups = new ArrayList<ArrayList<string>>();
+            
+			try {
+				config_file.load_from_file(config_file_path, KeyFileFlags.NONE);
+                
+                foreach (unowned string option in config_file.get_groups ()) {
+                    string gname = config_file.get_value(option, "GroupName");
+                    
+                    if (gname == group_name) {
+                        ArrayList<string> group = new ArrayList<string>();
+						group.add(config_file.get_value(option, "Name"));
+						group.add(option);
+			    		groups.add(group);
+                    }
+                }
+			} catch (Error e) {
+				if (!FileUtils.test(config_file_path, FileTest.EXISTS)) {
+					print("login_server error: %s\n", e.message);
+				}
+			}
+
+			TextButton add_server_button = new TextButton("Back");
+			add_server_button.button_press_event.connect((w, e) => {
+					show_home_page();
+					
+					return false;
+				});
+			pack_start(add_server_button, false, false, 0);
+            
+			if (groups.size > 1) {
+			    Entry search_entry = new Entry();
+			    search_entry.set_placeholder_text("Search");
+			    pack_start(search_entry, false, false, 0);
+			}
+			
+            if (groups.size > 0) {
+                var view = new TreeView();
+                var scrolledwindow = new ScrolledWindow(null, null);
+                view.set_headers_visible(false);
+                scrolledwindow.add(view);
+                pack_start(scrolledwindow, true, true, 0);
+                
+                var listmodel = new Gtk.ListStore(4, typeof(string), typeof(string), typeof(string), typeof(string));
+                view.set_model(listmodel);
+
+                view.insert_column_with_attributes(-1, "Name", new CellRendererText(), "text", 0);
+                
+                TreeIter iter;
+                
+                foreach (var group_list in groups) {
+                    listmodel.append(out iter);
+                    listmodel.set(iter, 0, "%s\n%s".printf(group_list[0], group_list[1]));
+				}
+                
+                view.row_activated.connect((path, column) => {
+                        Gtk.TreeIter activated_iter;
+                        if (view.model.get_iter(out activated_iter, path)) {
+                            string iter_content;
+                            view.model.get(activated_iter, 0, out iter_content);
+                            string[] row_content = iter_content.split("\n");
+                            login_server(row_content[1]);
+                        }
+                    });
+            }
+            
+            show_all();
+        }
 		
 		public void show_add_server_page() {
 			Utils.destroy_all_children(this);
@@ -219,7 +308,7 @@ namespace Widgets {
 						groupname_entry.get_text()
 						);
 					
-					show_homepage();
+					show_home_page();
 					
 					return false;
 				});
@@ -247,7 +336,7 @@ namespace Widgets {
 			    	config_file.load_from_file(config_file_path, KeyFileFlags.NONE);
 			    } catch (Error e) {
 					if (!FileUtils.test(config_file_path, FileTest.EXISTS)) {
-						print("show_homepage error: %s\n", e.message);
+						print("show_home_page error: %s\n", e.message);
 					}
 			    }
 			    
