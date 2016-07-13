@@ -74,42 +74,20 @@ namespace Widgets {
 			pack_start(add_server_button, false, false, 0);
 			
 			if (ungroups.size + groups.size > 0) {
-                var view = new TreeView();
-                var scrolledwindow = new ScrolledWindow(null, null);
-                view.set_headers_visible(false);
-                scrolledwindow.add(view);
-                pack_start(scrolledwindow, true, true, 0);
-                
-                var listmodel = new Gtk.ListStore(4, typeof(string), typeof(string), typeof(string), typeof(string));
-                view.set_model(listmodel);
-
-                view.insert_column_with_attributes(-1, "Name", new CellRendererText(), "text", 0);
+                var view = get_server_view(true, "");
                 
                 TreeIter iter;
                 
 				foreach (var group_entry in groups.entries) {
-                    listmodel.append(out iter);
-                    listmodel.set(iter, 0, "%s\n%i".printf(group_entry.key, group_entry.value));
+                    ((Gtk.ListStore) view.model).append(out iter);
+                    ((Gtk.ListStore) view.model).set(iter, 0, "%s\n%i".printf(group_entry.key, group_entry.value));
 				}
 				
 				foreach (var ungroup_list in ungroups) {
-                    listmodel.append(out iter);
-                    listmodel.set(iter, 0, "%s\n%s".printf(ungroup_list[0], ungroup_list[1]));
+                    ((Gtk.ListStore) view.model).append(out iter);
+                    ((Gtk.ListStore) view.model).set(iter, 0, "%s\n%s".printf(ungroup_list[0], ungroup_list[1]), 1, "go-home");
 				}
                 
-                view.row_activated.connect((path, column) => {
-                           Gtk.TreeIter activated_iter;
-                           if (view.model.get_iter(out activated_iter, path)) {
-                               string iter_content;
-                               view.model.get(activated_iter, 0, out iter_content);
-                               string[] row_content = iter_content.split("\n");
-                               if ("@" in row_content[1]) {
-                                   login_server(row_content[1]);
-                               } else {
-                                   show_group_page(row_content[0]);
-                               }
-                           }
-                    });
             }
 			
 			show_all();
@@ -204,33 +182,14 @@ namespace Widgets {
 			}
 			
             if (ungroups.size > 0) {
-                var view = new TreeView();
-                var scrolledwindow = new ScrolledWindow(null, null);
-                view.set_headers_visible(false);
-                scrolledwindow.add(view);
-                pack_start(scrolledwindow, true, true, 0);
-                
-                var listmodel = new Gtk.ListStore(4, typeof(string), typeof(string), typeof(string), typeof(string));
-                view.set_model(listmodel);
-
-                view.insert_column_with_attributes(-1, "Name", new CellRendererText(), "text", 0);
+                var view = get_server_view(false, group_name);
                 
                 TreeIter iter;
                 
                 foreach (var ungroup_list in ungroups) {
-                    listmodel.append(out iter);
-                    listmodel.set(iter, 0, "%s\n%s".printf(ungroup_list[0], ungroup_list[1]));
+                    ((Gtk.ListStore) view.model).append(out iter);
+                    ((Gtk.ListStore) view.model).set(iter, 0, "%s\n%s".printf(ungroup_list[0], ungroup_list[1]), 1, "go-home");
 				}
-                
-                view.row_activated.connect((path, column) => {
-                        Gtk.TreeIter activated_iter;
-                        if (view.model.get_iter(out activated_iter, path)) {
-                            string iter_content;
-                            view.model.get(activated_iter, 0, out iter_content);
-                            string[] row_content = iter_content.split("\n");
-                            login_server(row_content[1]);
-                        }
-                    });
             }
             
             show_all();
@@ -282,7 +241,7 @@ namespace Widgets {
 			pack_start(name_entry, false, false, 0);
 
 			Entry groupname_entry = new Entry();
-			groupname_entry.set_placeholder_text("Groupname");
+			groupname_entry.set_placeholder_text("GroupName");
 			pack_start(groupname_entry, false, false, 0);
 			
 			TextButton add_server_button = new TextButton("Add server");
@@ -355,8 +314,121 @@ namespace Widgets {
 			}
 		}
 		
-		public void show_edit_server_page() {
-			
+		public void show_edit_server_page(string server_info, bool is_homepage, string group_name) {
+            Utils.destroy_all_children(this);
+            
+			KeyFile config_file = new KeyFile();
+            
+			try {
+				config_file.load_from_file(config_file_path, KeyFileFlags.NONE);
+
+			    TextButton add_server_button = new TextButton("Back");
+			    add_server_button.button_press_event.connect((w, e) => {
+                        if (is_homepage) {
+                            show_home_page();
+                        } else {
+                            show_group_page(group_name);
+                        }
+			    		
+			    		return false;
+			    	});
+            
+			    pack_start(add_server_button, false, false, 0);
+                
+                Entry address_entry = new Entry();
+			    address_entry.set_text(server_info.split("@")[1]);
+			    address_entry.set_placeholder_text("IP address");
+			    pack_start(address_entry, false, false, 0);
+                
+			    Entry user_entry = new Entry();
+			    user_entry.set_text(server_info.split("@")[0]);
+			    user_entry.set_placeholder_text("Username");
+			    pack_start(user_entry, false, false, 0);
+                
+			    Entry password_entry = new Entry();
+			    password_entry.set_text(config_file.get_value(server_info, "Password"));
+			    password_entry.set_placeholder_text("Password");
+			    password_entry.set_input_purpose(Gtk.InputPurpose.PASSWORD);
+			    pack_start(password_entry, false, false, 0);
+			    
+			    // FIXME: split line.
+			    
+			    ThemeSelector theme_selector = new ThemeSelector();
+			    pack_start(theme_selector, false, false, 0);
+                
+			    Entry port_entry = new Entry();
+			    port_entry.set_text(config_file.get_value(server_info, "Port"));
+			    port_entry.set_placeholder_text("Port");
+			    pack_start(port_entry, false, false, 0);
+			    
+			    ComboBox encode_box = new ComboBox();
+			    pack_start(encode_box, false, false, 0);
+			    
+			    // FIXME: split line.
+			    Entry command_entry = new Entry();
+			    command_entry.set_text(config_file.get_value(server_info, "Command"));
+			    command_entry.set_placeholder_text("Command");
+			    pack_start(command_entry, false, false, 0);
+                
+			    Entry path_entry = new Entry();
+			    path_entry.set_text(config_file.get_value(server_info, "Path"));
+			    path_entry.set_placeholder_text("Path");
+			    pack_start(path_entry, false, false, 0);
+                
+			    // FIXME: split line.
+			    
+			    Entry name_entry = new Entry();
+			    name_entry.set_text(config_file.get_value(server_info, "Name"));
+			    name_entry.set_placeholder_text("Name");
+			    pack_start(name_entry, false, false, 0);
+                
+			    Entry groupname_entry = new Entry();
+			    groupname_entry.set_text(config_file.get_value(server_info, "GroupName"));
+			    groupname_entry.set_placeholder_text("GroupName");
+			    pack_start(groupname_entry, false, false, 0);
+			    
+			    TextButton save_button = new TextButton("Save");
+			    pack_start(save_button, false, false, 0);
+                
+			    save_button.button_press_event.connect((w, e) => {
+                        try {
+                            // First, remove old server info.
+                            if (config_file.has_group(server_info)) {
+                                config_file.remove_group(server_info);
+                                print("got it\n");
+                            }
+                        } catch (Error e) {
+                            error ("%s", e.message);
+                        }
+                        
+                        // Second, add new server info.
+			    		add_server(
+			    			address_entry.get_text(),
+			    			user_entry.get_text(),
+			    			password_entry.get_text(),
+			    			"",
+			    			port_entry.get_text(),
+			    			"",
+                            command_entry.get_text(),
+                            path_entry.get_text(),
+			    			name_entry.get_text(),
+			    			groupname_entry.get_text()
+			    			);
+			    		
+                        if (is_homepage) {
+                            show_home_page();
+                        } else {
+                            show_group_page(group_name);
+                        }
+                        
+			    		return false;
+			    	});
+                
+			} catch (Error e) {
+                print("show_edit_server_page error: %s\n", e.message);
+			}
+            
+            show_all();
 		}
 		
 		public void show_search_page() {
@@ -370,14 +442,67 @@ namespace Widgets {
                 list.add(option);
                 lists.add(list);
             } catch (Error e) {
-				if (!FileUtils.test(config_file_path, FileTest.EXISTS)) {
-					print("add_group_item error: %s\n", e.message);
-				}
+                print("add_group_item error: %s\n", e.message);
 			}
         }
         
-        public void add_server_item() {
+        public TreeView get_server_view(bool is_homepage, string group_name) {
+            var view = new TreeView();
+            var scrolledwindow = new ScrolledWindow(null, null);
+            view.set_headers_visible(false);
+            scrolledwindow.add(view);
+            pack_start(scrolledwindow, true, true, 0);
             
+            var listmodel = new Gtk.ListStore(4, typeof(string), typeof(string), typeof(string), typeof(string));
+            view.set_model(listmodel);
+
+            view.insert_column_with_attributes(-1, "Name", new CellRendererText(), "text", 0);
+            
+            Gtk.CellRendererPixbuf pixbuf = new Gtk.CellRendererPixbuf();
+            Gtk.TreeViewColumn column = new Gtk.TreeViewColumn();
+            column.set_title("Details");
+            column.pack_start(pixbuf, false);
+            column.add_attribute(pixbuf, "icon-name", 1);
+            view.append_column(column);
+            
+            view.row_activated.connect((path, column) => {
+                       Gtk.TreeIter activated_iter;
+                       if (view.model.get_iter(out activated_iter, path)) {
+                           string iter_content;
+                           view.model.get(activated_iter, 0, out iter_content);
+                           string[] row_content = iter_content.split("\n");
+                           if ("@" in row_content[1]) {
+                               login_server(row_content[1]);
+                           } else {
+                               show_group_page(row_content[0]);
+                           }
+                       }
+                });
+            
+            view.button_press_event.connect((e) => {
+                    if (Utils.is_left_button(e)) {
+                        Gtk.TreePath? path;
+                        Gtk.TreeViewColumn? click_column;
+                        bool valid = view.get_path_at_pos((int) e.x, (int) e.y, out path, out click_column, null, null);
+                        
+                        if (valid) {
+                            Gtk.TreeIter activated_iter;
+                            if (view.model.get_iter(out activated_iter, path)) {
+                                string iter_content;
+                                view.model.get(activated_iter, 0, out iter_content);
+                                string[] row_content = iter_content.split("\n");
+                                if ("@" in row_content[1] && click_column.get_title() == "Details") {
+                                    show_edit_server_page(row_content[1], is_homepage, group_name);
+                                }
+                            }
+                        }
+                    }
+                    
+                    return false;
+                });
+            
+            
+            return view;
         }
     }
 }
