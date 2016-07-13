@@ -43,11 +43,8 @@ namespace Widgets {
 			    	string group_name = config_file.get_value(option, "GroupName");
 					
 					if (group_name == "") {
-						ArrayList<string> ungroup = new ArrayList<string>();
-						ungroup.add(config_file.get_value(option, "Name"));
-						ungroup.add(option);
-			    		ungroups.add(ungroup);
-			    	} else {
+                        add_group_item(option, ungroups, config_file);
+                    } else {
 						if (groups.has_key(group_name)) {
 							int group_item_number = groups.get(group_name);
 							groups.set(group_name, group_item_number + 1);
@@ -174,7 +171,7 @@ namespace Widgets {
             
 			KeyFile config_file = new KeyFile();
             
-			ArrayList<ArrayList<string>> groups = new ArrayList<ArrayList<string>>();
+			ArrayList<ArrayList<string>> ungroups = new ArrayList<ArrayList<string>>();
             
 			try {
 				config_file.load_from_file(config_file_path, KeyFileFlags.NONE);
@@ -183,10 +180,7 @@ namespace Widgets {
                     string gname = config_file.get_value(option, "GroupName");
                     
                     if (gname == group_name) {
-                        ArrayList<string> group = new ArrayList<string>();
-						group.add(config_file.get_value(option, "Name"));
-						group.add(option);
-			    		groups.add(group);
+                        add_group_item(option, ungroups, config_file);
                     }
                 }
 			} catch (Error e) {
@@ -203,13 +197,13 @@ namespace Widgets {
 				});
 			pack_start(add_server_button, false, false, 0);
             
-			if (groups.size > 1) {
+			if (ungroups.size > 1) {
 			    Entry search_entry = new Entry();
 			    search_entry.set_placeholder_text("Search");
 			    pack_start(search_entry, false, false, 0);
 			}
 			
-            if (groups.size > 0) {
+            if (ungroups.size > 0) {
                 var view = new TreeView();
                 var scrolledwindow = new ScrolledWindow(null, null);
                 view.set_headers_visible(false);
@@ -223,9 +217,9 @@ namespace Widgets {
                 
                 TreeIter iter;
                 
-                foreach (var group_list in groups) {
+                foreach (var ungroup_list in ungroups) {
                     listmodel.append(out iter);
-                    listmodel.set(iter, 0, "%s\n%s".printf(group_list[0], group_list[1]));
+                    listmodel.set(iter, 0, "%s\n%s".printf(ungroup_list[0], ungroup_list[1]));
 				}
                 
                 view.row_activated.connect((path, column) => {
@@ -368,5 +362,22 @@ namespace Widgets {
 		public void show_search_page() {
 			
 		}
-	}
+        
+        public void add_group_item(string option, ArrayList<ArrayList<string>> lists, KeyFile config_file) {
+			try {
+                ArrayList<string> list = new ArrayList<string>();
+                list.add(config_file.get_value(option, "Name"));
+                list.add(option);
+                lists.add(list);
+            } catch (Error e) {
+				if (!FileUtils.test(config_file_path, FileTest.EXISTS)) {
+					print("add_group_item error: %s\n", e.message);
+				}
+			}
+        }
+        
+        public void add_server_item() {
+            
+        }
+    }
 }
