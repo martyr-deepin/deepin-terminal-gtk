@@ -29,6 +29,7 @@ main: ./project_path.c \
     --pkg=gee-1.0 \
     --pkg=json-glib-1.0 \
     --pkg=posix \
+    --pkg=libsecret-1 \
     --vapidir=./vapi \
     ./project_path.c \
     ./lib/draw.vala \
