@@ -63,6 +63,10 @@ namespace Widgets {
 			    Entry search_entry = new Entry();
 			    search_entry.set_placeholder_text("Search");
 			    pack_start(search_entry, false, false, 0);
+                
+                search_entry.activate.connect((entry) => {
+                        show_search_page(entry.get_text(), "");
+                    });
 			}
 			
 			TextButton add_server_button = new TextButton("Add server");
@@ -179,6 +183,10 @@ namespace Widgets {
 			    Entry search_entry = new Entry();
 			    search_entry.set_placeholder_text("Search");
 			    pack_start(search_entry, false, false, 0);
+                
+                search_entry.activate.connect((entry) => {
+                        show_search_page(entry.get_text(), group_name);
+                    });
 			}
 			
             if (ungroups.size > 0) {
@@ -431,8 +439,63 @@ namespace Widgets {
             show_all();
 		}
 		
-		public void show_search_page() {
-			
+		public void show_search_page(string search_text, string group_name) {
+            KeyFile config_file = new KeyFile();
+			try {
+				config_file.load_from_file(config_file_path, KeyFileFlags.NONE);
+				
+                ArrayList<ArrayList<string>> ungroups = new ArrayList<ArrayList<string>>();
+                
+			    foreach (unowned string option in config_file.get_groups ()) {
+                    if (group_name == "" || group_name == config_file.get_value(option, "GroupName")) {
+                        ArrayList<string> match_list = new ArrayList<string>();
+                        match_list.add(option);
+                        foreach (string key in config_file.get_keys(option)) {
+                            match_list.add(config_file.get_value(option, key));
+                        }
+                        foreach (string match_text in match_list) {
+                            if (match_text.contains(search_text)) {
+                                add_group_item(option, ungroups, config_file);
+
+                                // Just add option one times.
+                                break;
+                            }
+                        }
+                    }
+                }
+                
+                // Destroy child after entry.get_text(), otherwise entry.get_text() return random value.
+			    Utils.destroy_all_children(this);
+                
+                TextButton add_server_button = new TextButton("Back");
+                add_server_button.button_press_event.connect((w, e) => {
+                        if (group_name == "") {
+                            show_home_page();
+                        } else {
+                            show_group_page(group_name);
+                        }
+			        		
+                        return false;
+                    });
+                
+                pack_start(add_server_button, false, false, 0);
+
+                var view = get_server_view(true, "");
+                    
+                TreeIter iter;
+                    
+                foreach (var ungroup_list in ungroups) {
+                    ((Gtk.ListStore) view.model).append(out iter);
+                    ((Gtk.ListStore) view.model).set(iter, 0, "%s\n%s".printf(ungroup_list[0], ungroup_list[1]), 1, "go-home");
+                }
+			    
+			    show_all();
+			} catch (Error e) {
+				if (!FileUtils.test(config_file_path, FileTest.EXISTS)) {
+					print("show_home_page error: %s\n", e.message);
+				}
+			}
+            
 		}
         
         public void add_group_item(string option, ArrayList<ArrayList<string>> lists, KeyFile config_file) {
