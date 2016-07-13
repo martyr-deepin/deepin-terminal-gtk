@@ -16,7 +16,7 @@ set server "<<SERVER>>"
 set password "<<PASSWORD>>"
 set port "<<PORT>>"
 # set extopt "<<EXTOPT>>"
-set ssh_cmd "ssh"
+set ssh_cmd "ssh -o ServerAliveInterval=60"
 set ssh_opt "$user@$server -p $port"
 # set ssh_opt "$ssh_opt $extopt"
 
