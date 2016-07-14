@@ -265,8 +265,10 @@ namespace Widgets {
 			
 		}
         
-        public Gtk.FileChooserDialog create_file_chooser(string title, Gtk.FileChooserAction action) {
-            var chooser = new Gtk.FileChooserDialog(title, null, action);
+        
+        public void upload_file () {
+            Gtk.FileChooserAction action = Gtk.FileChooserAction.OPEN;
+            var chooser = new Gtk.FileChooserDialog("Open file", null, action);
             chooser.add_button("Cancel", Gtk.ResponseType.CANCEL);
             chooser.set_select_multiple(true);
             if (action == Gtk.FileChooserAction.OPEN) {
@@ -276,11 +278,6 @@ namespace Widgets {
                 chooser.set_do_overwrite_confirmation(true);
             }
             
-            return chooser;
-        }
-        
-        public void upload_file () {
-            var chooser = create_file_chooser("Open file", Gtk.FileChooserAction.OPEN);
             if (chooser.run () == Gtk.ResponseType.ACCEPT) {
                 var file_list = chooser.get_files();
                 
@@ -292,7 +289,6 @@ namespace Widgets {
                         }
                         upload_command = upload_command + "\n";
                         
-                        print(upload_command);
                         this.term.feed_child(upload_command, upload_command.length);
                         
                         return false;
