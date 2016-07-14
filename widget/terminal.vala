@@ -175,6 +175,9 @@ namespace Widgets {
 							menu_content.append(new Menu.MenuItem("search", "Search"));
 							menu_content.append(new Menu.MenuItem("remote_manage", "Connect remote"));
 							menu_content.append(new Menu.MenuItem("", ""));
+							menu_content.append(new Menu.MenuItem("upload_file", "Upload file"));
+							menu_content.append(new Menu.MenuItem("download_file", "Download file"));
+							menu_content.append(new Menu.MenuItem("", ""));
 							menu_content.append(new Menu.MenuItem("preference", "Preference"));
 							
 							menu = new Menu.Menu((int) event.x_root, (int) event.y_root, menu_content);
@@ -249,14 +252,73 @@ namespace Widgets {
 					case "remote_manage":
 						workspace_manager.focus_workspace.show_remote_panel(workspace_manager.focus_workspace);
 						break;
+                    case "upload_file":
+                        upload_file();
+                        break;
+                    case "download_file":
+                        download_file();
+                        break;
 			    }
 			} else {
 				print("handle_menu_item_click: impossible here!\n");
 			}
 			
 		}
-		
-		public WorkspaceManager get_workspace_manager(Container? container) {
+        
+        public Gtk.FileChooserDialog create_file_chooser(string title, Gtk.FileChooserAction action) {
+            var chooser = new Gtk.FileChooserDialog(title, null, action);
+            chooser.add_button("Cancel", Gtk.ResponseType.CANCEL);
+            chooser.set_select_multiple(true);
+            if (action == Gtk.FileChooserAction.OPEN) {
+                chooser.add_button("Open", Gtk.ResponseType.ACCEPT);
+            } else if (action == Gtk.FileChooserAction.SAVE) {
+                chooser.add_button("Save", Gtk.ResponseType.ACCEPT);
+                chooser.set_do_overwrite_confirmation(true);
+            }
+            
+            return chooser;
+        }
+        
+        public void upload_file () {
+            var chooser = create_file_chooser("Open file", Gtk.FileChooserAction.OPEN);
+            if (chooser.run () == Gtk.ResponseType.ACCEPT) {
+                var file_list = chooser.get_files();
+                
+                press_ctrl_at();
+                GLib.Timeout.add(500, () => {
+                        string upload_command = "sz ";
+                        foreach (File file in file_list) {
+                            upload_command = upload_command + file.get_path() + " ";
+                        }
+                        upload_command = upload_command + "\n";
+                        
+                        print(upload_command);
+                        this.term.feed_child(upload_command, upload_command.length);
+                        
+                        return false;
+                        });
+                
+            }
+            
+            chooser.destroy();
+        }
+        
+        public void download_file() {
+            
+        }
+        
+        public void press_ctrl_at() {
+            Gdk.EventKey* event;
+            event = (Gdk.EventKey*) new Gdk.Event(Gdk.EventType.KEY_PRESS);
+            var window = term.get_window();
+            event->window = window;
+            event->keyval = 64;
+            event->state = (Gdk.ModifierType) 33554437;
+            event->hardware_keycode = (uint16) 11;
+            ((Gdk.Event*) event)->put();
+        }
+        
+        public WorkspaceManager get_workspace_manager(Container? container) {
 			if (container == null) {
 				Container window = (Container) term.get_toplevel();
 				return get_workspace_manager(window);
