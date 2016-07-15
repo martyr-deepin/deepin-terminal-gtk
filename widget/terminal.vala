@@ -271,12 +271,7 @@ namespace Widgets {
             var chooser = new Gtk.FileChooserDialog("Open file", null, action);
             chooser.add_button("Cancel", Gtk.ResponseType.CANCEL);
             chooser.set_select_multiple(true);
-            if (action == Gtk.FileChooserAction.OPEN) {
-                chooser.add_button("Open", Gtk.ResponseType.ACCEPT);
-            } else if (action == Gtk.FileChooserAction.SAVE) {
-                chooser.add_button("Save", Gtk.ResponseType.ACCEPT);
-                chooser.set_do_overwrite_confirmation(true);
-            }
+            chooser.add_button("Open", Gtk.ResponseType.ACCEPT);
             
             if (chooser.run () == Gtk.ResponseType.ACCEPT) {
                 var file_list = chooser.get_files();
@@ -300,6 +295,93 @@ namespace Widgets {
         }
         
         public void download_file() {
+            press_ctrl_a();
+            
+            GLib.Timeout.add(1000, () => {
+                    long cursor_column, cursor_row;
+                    this.term.get_cursor_position(out cursor_column, out cursor_row);
+                    long end_col = this.term.get_column_count() - 1;
+            
+                    string input_command = this.term.get_text_range(cursor_row, cursor_column, cursor_row, end_col, null, null);
+                    
+                    if (is_sz_command(input_command)) {
+                        execute_download();
+                    } else {
+                        print_help_message();
+                    }
+                    
+                    return false;
+                });
+        }
+        
+        public bool is_sz_command(string command) {
+            try {
+                var regex = new Regex("^sz\\s+[^\\s]+");
+                return (regex.match(command.strip()));
+            } catch (RegexError error) {
+                warning(error.message);
+                return false;
+            }
+        }
+        
+        public void print_help_message() {
+            press_ctrl_a();
+            GLib.Timeout.add(50, () => {
+                    press_ctrl_k();
+                    
+                    GLib.Timeout.add(50, () => {
+                            string echo_command = "echo 'Please type command \"sz filepath\" before select download file menu item.'\n";
+                            this.term.feed_child(echo_command, echo_command.length);
+                            
+                            return false;
+                        });
+                    
+                    return false;
+                });
+            
+        }
+        
+        public void execute_download() {
+            press_ctrl_e();
+            
+            GLib.Timeout.add(100, () => {
+                    // Execute sz command.
+                    this.term.feed_child("\n", "\n".length);
+                    
+                    Gtk.FileChooserAction action = Gtk.FileChooserAction.SELECT_FOLDER;
+                    var chooser = new Gtk.FileChooserDialog("Select save directory", null, action);
+                    chooser.add_button("Cancel", Gtk.ResponseType.CANCEL);
+                    chooser.add_button("Save", Gtk.ResponseType.ACCEPT);
+                    
+                    if (chooser.run () == Gtk.ResponseType.ACCEPT) {
+                        // Switch to zssh local directory.
+                        press_ctrl_at();
+                        
+                        GLib.Timeout.add(500, () => {
+                                // Get save directory.
+                                string save_directory = chooser.get_filename();
+                    
+                                // Switch directory in zssh.
+                                string switch_command = "cd %s\n".printf(save_directory);
+                                this.term.feed_child(switch_command, switch_command.length);
+                                
+                                // Do rz command to download file.
+                                GLib.Timeout.add(100, () => {
+                                        string download_command = "rz\n";
+                                        this.term.feed_child(download_command, download_command.length);
+                            
+                                        return false;
+                                    });
+                                
+                                
+                                chooser.destroy();
+                                return false;
+                                });
+                        
+                    }
+            
+                    return false;
+                });
             
         }
         
@@ -311,6 +393,39 @@ namespace Widgets {
             event->keyval = 64;
             event->state = (Gdk.ModifierType) 33554437;
             event->hardware_keycode = (uint16) 11;
+            ((Gdk.Event*) event)->put();
+        }
+        
+        public void press_ctrl_k() {
+            Gdk.EventKey* event;
+            event = (Gdk.EventKey*) new Gdk.Event(Gdk.EventType.KEY_PRESS);
+            var window = term.get_window();
+            event->window = window;
+            event->keyval = 75;
+            event->state = (Gdk.ModifierType) 33554437;
+            event->hardware_keycode = (uint16) 45;
+            ((Gdk.Event*) event)->put();
+        }
+        
+        public void press_ctrl_a() {
+            Gdk.EventKey* event;
+            event = (Gdk.EventKey*) new Gdk.Event(Gdk.EventType.KEY_PRESS);
+            var window = term.get_window();
+            event->window = window;
+            event->keyval = 97;
+            event->state = (Gdk.ModifierType) 33554436;
+            event->hardware_keycode = (uint16) 38;
+            ((Gdk.Event*) event)->put();
+        }
+
+        public void press_ctrl_e() {
+            Gdk.EventKey* event;
+            event = (Gdk.EventKey*) new Gdk.Event(Gdk.EventType.KEY_PRESS);
+            var window = term.get_window();
+            event->window = window;
+            event->keyval = 69;
+            event->state = (Gdk.ModifierType) 33554437;
+            event->hardware_keycode = (uint16) 26;
             ((Gdk.Event*) event)->put();
         }
         
@@ -366,6 +481,7 @@ namespace Widgets {
             } else if (keyname == "Ctrl + 0") {
                 set_default_font_size();
             } else {
+                // print("%u %i %i\n".printf(key_event.keyval, key_event.state, key_event.hardware_keycode));
                 return false;
             }
             
