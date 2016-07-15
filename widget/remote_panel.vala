@@ -123,9 +123,11 @@ namespace Widgets {
                     ssh_script_content = ssh_script_content.concat("%s\n".printf(line));
                 }
                                        
+                string password = lookup_password(server_info.split("@")[0], server_info.split("@")[1]);
+                
                 ssh_script_content = ssh_script_content.replace("<<USER>>", server_info.split("@")[0]);
                 ssh_script_content = ssh_script_content.replace("<<SERVER>>", server_info.split("@")[1]);
-                ssh_script_content = ssh_script_content.replace("<<PASSWORD>>", lookup_password(server_info.split("@")[0], server_info.split("@")[1]));
+                ssh_script_content = ssh_script_content.replace("<<PASSWORD>>", password);
                 ssh_script_content = ssh_script_content.replace("<<PORT>>", config_file.get_value(server_info, "Port"));
                                        
                 // Create temporary expect script file, and the file will
@@ -324,31 +326,6 @@ namespace Widgets {
 			}
 		}
         
-        public void store_password(string user, string server_address, string password) {
-            var password_schema = new Secret.Schema("com.deepin.terminal.password.%s.%s".printf(user, server_address),
-                                                    Secret.SchemaFlags.NONE,
-                                                    "number", Secret.SchemaAttributeType.INTEGER,
-                                                    "string", Secret.SchemaAttributeType.STRING,
-                                                    "even", Secret.SchemaAttributeType.BOOLEAN);
-            
-            var attributes = new GLib.HashTable<string,string>(null, null);
-            attributes["number"] = "8";
-            attributes["string"] = "eight";
-            attributes["even"] = "true";
-
-            Secret.password_storev.begin(password_schema, attributes, Secret.COLLECTION_DEFAULT,
-                                         "com.deepin.terminal.password.%s.%s".printf(user, server_address),
-                                         password,
-                                         null, (obj, async_res) => {
-                                             try {
-                                                 Secret.password_store.end(async_res);
-                                             } catch (Error e) {
-                                                 error ("%s", e.message);
-                                             }
-                                         });
-
-        }
-        
         public string lookup_password(string user, string server_address) {
             var password_schema = new Secret.Schema("com.deepin.terminal.password.%s.%s".printf(user, server_address),
                                                     Secret.SchemaFlags.NONE,
@@ -360,6 +337,7 @@ namespace Widgets {
 
             try {
                 password = Secret.password_lookup_sync(password_schema, null, null, "number", 8, "string", "eight", "even", true);
+                // print("Lookup password: '%s'\n", password);
             } catch (Error e) {
                 error ("%s", e.message);
             }
@@ -371,7 +349,7 @@ namespace Widgets {
             }
         }
         
-        public void remove_password(string user, string server_address) {
+        public void store_password(string user, string server_address, string password) {
             var password_schema = new Secret.Schema("com.deepin.terminal.password.%s.%s".printf(user, server_address),
                                                     Secret.SchemaFlags.NONE,
                                                     "number", Secret.SchemaAttributeType.INTEGER,
@@ -382,16 +360,28 @@ namespace Widgets {
             attributes["number"] = "8";
             attributes["string"] = "eight";
             attributes["even"] = "true";
+            
+            try {
+                Secret.password_clear_sync(password_schema, null, "number", 8, "string", "eight", "even", true);
+                // print("Remove password: %s %s\n".printf(user, server_address));
+            } catch (Error e) {
+                error ("%s", e.message);
+            }
 
-            Secret.password_clearv.begin(password_schema, attributes, null, (obj, async_res) => {
-                    try {
-                        Secret.password_clearv.end (async_res);
-                    } catch (Error e) {
-                        error ("%s", e.message);
-                    }
-                });            
+            Secret.password_storev.begin(password_schema, attributes, Secret.COLLECTION_DEFAULT,
+                                         "com.deepin.terminal.password.%s.%s".printf(user, server_address),
+                                         password,
+                                         null, (obj, async_res) => {
+                                             try {
+                                                 Secret.password_store.end(async_res);
+                                                 // print("Store password: %s %s %s\n", user, server_address, password);
+                                             } catch (Error e) {
+                                                 error ("%s", e.message);
+                                             }
+                                         });
+
         }
-		
+        
 		public void show_edit_server_page(string server_info, bool is_homepage, string group_name) {
             Utils.destroy_all_children(this);
             
@@ -424,7 +414,8 @@ namespace Widgets {
 			    pack_start(user_entry, false, false, 0);
                 
 			    Entry password_entry = new Entry();
-			    password_entry.set_text(lookup_password(server_info.split("@")[0], server_info.split("@")[1]));
+                string password = lookup_password(server_info.split("@")[0], server_info.split("@")[1]);
+			    password_entry.set_text(password);
 			    password_entry.set_placeholder_text("Password");
                 password_entry.set_input_purpose(Gtk.InputPurpose.PASSWORD);
                 password_entry.set_visibility(false);
@@ -471,11 +462,9 @@ namespace Widgets {
                 
 			    save_button.button_press_event.connect((w, e) => {
                         try {
-                            // First, remove old server info.
+                            // First, remove old server info from config file.
                             if (config_file.has_group(server_info)) {
                                 config_file.remove_group(server_info);
-                                
-                                remove_password(server_info.split("@")[0], server_info.split("@")[1]);
                             }
                         } catch (Error e) {
                             error ("%s", e.message);
