@@ -14,6 +14,7 @@ namespace Widgets {
 
         public Terminal term;
         public GLib.Pid child_pid;
+        public uint launch_idle_id;
         public string current_dir;
 		public bool has_select_all = false;
     
@@ -206,18 +207,17 @@ namespace Widgets {
             /* Make Links Clickable */
             this.clickable(regex_strings);
             
-            if (work_directory != null) {
-                active_shell(work_directory);
-            } else {
-                active_shell();
-            }
-            
-            string program_string = "";
+            // NOTE: if terminal start with option '-e', use functional 'launch_command' and don't use function 'launch_shell'.
+            // terminal will crash if we launch_command after launch_shell.
             if (commands != null) {
+                string program_string = "";
                 foreach (string command in commands) {
                     program_string = program_string.concat(command);
                 }
-                run_program(program_string);
+                
+                launch_command(program_string, work_directory);
+            } else {
+                launch_shell(work_directory);
             }
             
             set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
@@ -564,32 +564,60 @@ namespace Widgets {
             }
         }
 
-        public void active_shell(string dir = GLib.Environment.get_current_dir()) {
-            string shell = "";
-            string?[] envv = null;
+        public void launch_shell(string? dir) {
+            string directory;
+            if (dir == null) {
+                directory = GLib.Environment.get_current_dir();
+            } else {
+                directory = dir;
+            }
+
+            string? shell;
             
-            if (shell == "") {
-                shell = Vte.get_user_shell();
+            shell = Vte.get_user_shell();
+            if (shell == null || shell[0] == '\0') {
+                shell = Environment.get_variable("SHELL");
+            }
+            if (shell == null || shell[0] == '\0') {
+                shell = "/bin/sh";
             }
             
-            try {
-                term.spawn_sync (Vte.PtyFlags.DEFAULT, dir, {shell}, envv, SpawnFlags.SEARCH_PATH, null, out child_pid, null);
-            } catch (Error e) {
-                warning(e.message);
-            }
+            launch_command(shell, directory);
         }
         
-        public void run_program(string program_string) {
-            try {
-                string[]? program_with_args = null;
-                Shell.parse_argv (program_string, out program_with_args);
-
-                term.spawn_sync (Vte.PtyFlags.DEFAULT, null, program_with_args,
-                                 null, SpawnFlags.SEARCH_PATH, null, out this.child_pid, null);
-            } catch (Error e) {
-                warning (e.message);
+        public void launch_command(string command, string? dir) {
+            string directory;
+            if (dir == null) {
+                directory = GLib.Environment.get_current_dir();
+            } else {
+                directory = dir;
             }
-        }
+            
+            string[] argv;
+
+            try {
+                Shell.parse_argv(command, out argv);
+            } catch (ShellError e) {
+                warning(e.message);
+            }
+            launch_idle_id = GLib.Idle.add(() => {
+                    try {
+                        term.spawn_sync(Vte.PtyFlags.DEFAULT,
+                                        directory,
+                                        argv,
+                                        null,
+                                        GLib.SpawnFlags.SEARCH_PATH,
+                                        null, /* child setup */
+                                        out child_pid,
+                                        null /* cancellable */);
+                    } catch (Error e) {
+                        warning(e.message);
+                    }
+                    
+                    launch_idle_id = 0;
+                    return false;
+                });
+        }        
         
         public bool try_get_foreground_pid (out int pid) {
             if (this.term.get_pty() == null) {
