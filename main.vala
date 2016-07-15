@@ -246,15 +246,12 @@ public class Application : Object {
             } else {
                 if (start_parse_command) {
                     user_command = user_command + " " + arg;
-                    print("test: '%s'\n".printf(arg));
                 }
             }
             
         }
         
-        print("commands: '%s'\n".printf(user_command));
         
-
         try {
 			var opt_context = new OptionContext();
 			opt_context.set_help_enabled(true);
@@ -265,18 +262,14 @@ public class Application : Object {
 			stdout.printf ("Run '%s --help' to see a full list of available command line options.\n", args[0]);
 		}
         
+        // User 'user_command' instead OptionContext's 'commands'.
         try {
             Shell.parse_argv(user_command, out commands);
         } catch (ShellError e) {
             warning(e.message);
         }
         
-        print("commands: '%s'\n".printf(user_command));
-        foreach (string arg in commands) {
-            print("test: '%s'\n".printf(arg));
-        }
-        
-		if (version) {
+        if (version) {
 			stdout.printf("Deepin Terminal 2.0\n");
         } else {
             Gtk.init(ref args);
