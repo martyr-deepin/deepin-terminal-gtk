@@ -212,7 +212,7 @@ namespace Widgets {
             if (commands != null) {
                 string program_string = "";
                 foreach (string command in commands) {
-                    program_string = program_string.concat(command);
+                    program_string = program_string + " " + command;
                 }
                 
                 launch_command(program_string, work_directory);

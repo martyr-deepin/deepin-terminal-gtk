@@ -221,6 +221,40 @@ public class Application : Object {
 	}
     
     public static void main(string[] args) {
+        // NOTE: Parse option '-e' or '-x' by myself.
+        // OptionContext's function always lost argument after option '-e' or '-x'.
+        string[] argv;
+        string command = "";
+        foreach (string a in args[1:args.length]) {
+            command = command + " " + a;
+        }
+
+        try {
+            Shell.parse_argv(command, out argv);
+        } catch (ShellError e) {
+            warning(e.message);
+        }
+        bool start_parse_command = false;
+        string user_command = "";
+        foreach (string arg in argv) {
+            if (arg == "-e" || arg == "-x") {
+                start_parse_command = true;
+            } else if (arg.has_prefix("-")) {
+                if (start_parse_command) {
+                    start_parse_command = false;
+                }
+            } else {
+                if (start_parse_command) {
+                    user_command = user_command + " " + arg;
+                    print("test: '%s'\n".printf(arg));
+                }
+            }
+            
+        }
+        
+        print("commands: '%s'\n".printf(user_command));
+        
+
         try {
 			var opt_context = new OptionContext();
 			opt_context.set_help_enabled(true);
@@ -230,7 +264,18 @@ public class Application : Object {
 			stdout.printf ("error: %s\n", e.message);
 			stdout.printf ("Run '%s --help' to see a full list of available command line options.\n", args[0]);
 		}
-
+        
+        try {
+            Shell.parse_argv(user_command, out commands);
+        } catch (ShellError e) {
+            warning(e.message);
+        }
+        
+        print("commands: '%s'\n".printf(user_command));
+        foreach (string arg in commands) {
+            print("test: '%s'\n".printf(arg));
+        }
+        
 		if (version) {
 			stdout.printf("Deepin Terminal 2.0\n");
         } else {
