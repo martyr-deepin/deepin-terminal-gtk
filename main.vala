@@ -48,6 +48,7 @@ public class Application : Object {
     /* command_e (-e) is used for running commands independently (not inside a shell) */
     [CCode (array_length = false, array_null_terminated = true)]
 	private static string[]? commands = null;
+    private static string title = null;
     
     private const GLib.OptionEntry[] options = {
 		{ "version", 0, 0, OptionArg.NONE, ref version, "Print version info and exit", null },
@@ -55,6 +56,7 @@ public class Application : Object {
 		{ "quake-mode", 0, 0, OptionArg.NONE, ref quake_mode, "Quake mode", null },
         { "execute", 'e', 0, OptionArg.STRING_ARRAY, ref commands, "Run a program in terminal", "" },
 		{ "execute", 'x', 0, OptionArg.STRING_ARRAY, ref commands, "Same as -e", "" },
+		{ "execute", 'T', 0, OptionArg.STRING_ARRAY, ref title, "Title, just for compliation", "" },
         
 		// list terminator
 		{ null }
