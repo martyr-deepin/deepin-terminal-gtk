@@ -55,7 +55,9 @@ namespace Widgets {
 		public Menu.Menu menu;
         
         public signal void exit();
-		
+        
+        private bool enter_sz_command = false;
+        private string save_file_directory = "";
         
         public Term(bool first_term, string[]? commands, string? work_directory) {
             is_first_term = first_term;
@@ -295,94 +297,53 @@ namespace Widgets {
         }
         
         public void download_file() {
-            press_ctrl_a();
+            Gtk.FileChooserAction action = Gtk.FileChooserAction.SELECT_FOLDER;
+            var chooser = new Gtk.FileChooserDialog("Select save directory", null, action);
+            chooser.add_button("Cancel", Gtk.ResponseType.CANCEL);
+            chooser.add_button("Save", Gtk.ResponseType.ACCEPT);
             
-            GLib.Timeout.add(1000, () => {
-                    long cursor_column, cursor_row;
-                    this.term.get_cursor_position(out cursor_column, out cursor_row);
-                    long end_col = this.term.get_column_count() - 1;
-            
-                    string input_command = this.term.get_text_range(cursor_row, cursor_column, cursor_row, end_col, null, null);
-                    
-                    if (is_sz_command(input_command)) {
-                        execute_download();
-                    } else {
-                        print_help_message();
-                    }
-                    
-                    return false;
-                });
-        }
-        
-        public bool is_sz_command(string command) {
-            try {
-                var regex = new Regex("^sz\\s+[^\\s]+");
-                return (regex.match(command.strip()));
-            } catch (RegexError error) {
-                warning(error.message);
-                return false;
+            if (chooser.run () == Gtk.ResponseType.ACCEPT) {
+                save_file_directory = chooser.get_filename();
+                
+                press_ctrl_a();
+                
+                GLib.Timeout.add(100, () => {
+                        press_ctrl_k();
+                        
+                        GLib.Timeout.add(100, () => {
+                                string command = "read -e -p \"Type file to download: \" file; sz $file\n";
+                                this.term.feed_child(command, command.length);
+                                
+                                enter_sz_command = true;
+                                
+                                return false;
+                            });
+                        
+                        return false;
+                    });
             }
-        }
-        
-        public void print_help_message() {
-            press_ctrl_a();
-            GLib.Timeout.add(50, () => {
-                    press_ctrl_k();
-                    
-                    GLib.Timeout.add(50, () => {
-                            string echo_command = "echo 'Please type command \"sz filepath\" before select download file menu item.'\n";
-                            this.term.feed_child(echo_command, echo_command.length);
-                            
-                            return false;
-                        });
-                    
-                    return false;
-                });
             
+            chooser.destroy();
         }
         
         public void execute_download() {
-            press_ctrl_e();
+            // Switch to zssh local directory.
+            press_ctrl_at();
             
             GLib.Timeout.add(100, () => {
-                    // Execute sz command.
-                    this.term.feed_child("\n", "\n".length);
+                    // Switch directory in zssh.
+                    string switch_command = "cd %s\n".printf(save_file_directory);
+                    this.term.feed_child(switch_command, switch_command.length);
                     
-                    Gtk.FileChooserAction action = Gtk.FileChooserAction.SELECT_FOLDER;
-                    var chooser = new Gtk.FileChooserDialog("Select save directory", null, action);
-                    chooser.add_button("Cancel", Gtk.ResponseType.CANCEL);
-                    chooser.add_button("Save", Gtk.ResponseType.ACCEPT);
-                    
-                    if (chooser.run () == Gtk.ResponseType.ACCEPT) {
-                        // Switch to zssh local directory.
-                        press_ctrl_at();
-                        
-                        GLib.Timeout.add(500, () => {
-                                // Get save directory.
-                                string save_directory = chooser.get_filename();
-                    
-                                // Switch directory in zssh.
-                                string switch_command = "cd %s\n".printf(save_directory);
-                                this.term.feed_child(switch_command, switch_command.length);
-                                
-                                // Do rz command to download file.
-                                GLib.Timeout.add(100, () => {
-                                        string download_command = "rz\n";
-                                        this.term.feed_child(download_command, download_command.length);
-                            
-                                        return false;
-                                    });
-                                
-                                
-                                chooser.destroy();
-                                return false;
-                                });
-                        
-                    }
-            
+                    // Do rz command to download file.
+                    GLib.Timeout.add(100, () => {
+                            string download_command = "rz\n";
+                            this.term.feed_child(download_command, download_command.length);
+                
+                            return false;
+                        });
                     return false;
-                });
-            
+                    });
         }
         
         public void press_ctrl_at() {
@@ -480,12 +441,14 @@ namespace Widgets {
                 decrement_size();
             } else if (keyname == "Ctrl + 0") {
                 set_default_font_size();
-            } else {
-                // print("%u %i %i\n".printf(key_event.keyval, key_event.state, key_event.hardware_keycode));
-                return false;
+            } else if (keyname == "Enter" || keyname == "Ctrl + m") {
+                if (enter_sz_command) {
+                    execute_download();
+                    enter_sz_command = false;
+                }
             }
             
-            return true;
+            return false;
         }
 
         public void increment_size () {
