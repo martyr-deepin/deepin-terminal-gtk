@@ -39,6 +39,7 @@ namespace Widgets {
                     menu_content.append(new Menu.MenuItem("help", "Help"));
                     menu_content.append(new Menu.MenuItem("about", "About"));
                     menu_content.append(new Menu.MenuItem("exit", "Exit"));
+                    menu_content.append(new Menu.MenuItem("preference", "Preference"));
                     
                     int menu_x, menu_y;
                     menu_button.translate_coordinates(menu_button.get_toplevel(), 0, 0, out menu_x, out menu_y);
@@ -98,6 +99,9 @@ namespace Widgets {
 				case "exit":
                     application.quit();
 					break;
+                case "preference":
+                    new Widgets.Preference((Gtk.Window) this.get_toplevel(), ((Gtk.Window) this.get_toplevel()).get_focus());
+                    break;
             }
 		}        
         

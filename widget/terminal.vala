@@ -260,6 +260,10 @@ namespace Widgets {
                     case "download_file":
                         download_file();
                         break;
+                    case "preference":
+                        new Widgets.Preference((Gtk.Window) this.get_toplevel(), ((Gtk.Window) this.get_toplevel()).get_focus());
+                        break;
+                        
 			    }
 			} else {
 				print("handle_menu_item_click: impossible here!\n");
