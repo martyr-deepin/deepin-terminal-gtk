@@ -20,6 +20,7 @@ main: ./project_path.c \
       ./widget/remote_panel.vala \
       ./widget/theme_selector.vala \
       ./widget/about_dialog.vala \
+      ./widget/about_widget.vala \
       ./widget/preference.vala \
       main.vala
 	valac -o main \
@@ -53,6 +54,7 @@ main: ./project_path.c \
     ./widget/remote_panel.vala \
     ./widget/theme_selector.vala \
     ./widget/about_dialog.vala \
+    ./widget/about_widget.vala \
     ./widget/preference.vala \
     main.vala
 clean:

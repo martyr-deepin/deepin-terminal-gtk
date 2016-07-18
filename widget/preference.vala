@@ -2,13 +2,11 @@ using Gtk;
 using Widgets;
 
 namespace Widgets {
-    public Gtk.Widget focus_widget;
-    public int window_width = 300;
-    public int window_height = 200;
-
     public class Preference : Gtk.Window {
-        
-        
+        public Gtk.Widget focus_widget;
+        public int window_width = 400;
+        public int window_height = 360;
+
         public Preference(Gtk.Window window, Gtk.Widget widget) {
             focus_widget = widget;
             
@@ -26,24 +24,30 @@ namespace Widgets {
             move(x + (window_alloc.width - window_width) / 2,
                  y + (window_alloc.height - window_height) / 3);
             
-            draw.connect(on_draw);
+            var titlebar = new Titlebar();
+            set_titlebar(titlebar);
+            
+            titlebar.close_button.button_press_event.connect((b) => {
+                    this.destroy();
+                    
+                    return false;
+                });
+            
             destroy.connect((w) => {
                     if (focus_widget != null) {
                         focus_widget.grab_focus();
                     }
                 });
             
+            var box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+            this.add(box);
+            
+            var about_widget = new AboutWidget();
+            box.pack_start(about_widget, true, true, 0);
+            
             show_all();
         }
         
-    private bool on_draw(Gtk.Widget widget, Cairo.Context cr) {
-            Gtk.Allocation rect;
-            widget.get_allocation(out rect);
             
-            cr.set_source_rgba(1, 1, 1, 1);
-            Draw.draw_rectangle(cr, 0, 0, rect.width, rect.height, true);
-            
-            return true;
-        }        
     }
 }
