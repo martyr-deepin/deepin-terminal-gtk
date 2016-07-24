@@ -3,6 +3,8 @@ using Widgets;
 
 namespace Widgets {
     public class AboutWidget : Gtk.DrawingArea {
+        public int height = 400;
+        
         public int icon_y = 30;
         public int name_y = 134;
         public int name_height = 18;
@@ -21,6 +23,8 @@ namespace Widgets {
         public AboutWidget() {
             icon_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("icon.png"));
             logo_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("logo.png"));
+            
+            set_size_request(-1, height);
 
             draw.connect(on_draw);
             

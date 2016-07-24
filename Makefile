@@ -22,6 +22,7 @@ main: ./project_path.c \
       ./widget/about_dialog.vala \
       ./widget/about_widget.vala \
       ./widget/preference.vala \
+      ./widget/preference_slidebar.vala \
       main.vala
 	valac -o main \
 	-X -w \
@@ -56,6 +57,7 @@ main: ./project_path.c \
     ./widget/about_dialog.vala \
     ./widget/about_widget.vala \
     ./widget/preference.vala \
+    ./widget/preference_slidebar.vala \
     main.vala
 clean:
 	rm -f main
