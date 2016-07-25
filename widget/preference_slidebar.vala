@@ -10,23 +10,29 @@ namespace Widgets {
             var theme_segement = new PreferenceSlideItem("Theme", false);
             this.insert(theme_segement, -1);
 
+            var hotkey_segement = new PreferenceSlideItem("Hotkey", true);
+            this.insert(hotkey_segement, -1);
+
+            var terminal_key_segement = new PreferenceSlideItem("Terminal", false);
+            this.insert(terminal_key_segement, -1);
+            
+            var workspace_key_segement = new PreferenceSlideItem("Workspace", false);
+            this.insert(workspace_key_segement, -1);
+            
+            var advanced_key_segement = new PreferenceSlideItem("Advanced", false);
+            this.insert(advanced_key_segement, -1);
+
+            var advanced_segement = new PreferenceSlideItem("Advanced", true);
+            this.insert(advanced_segement, -1);
+            
             var cursor_segement = new PreferenceSlideItem("Cursor", false);
             this.insert(cursor_segement, -1);
 
             var scroll_segement = new PreferenceSlideItem("Scroll", false);
             this.insert(scroll_segement, -1);
-            
-            var hotkey_segement = new PreferenceSlideItem("Hotkey", true);
-            this.insert(hotkey_segement, -1);
 
-            var terminal_segement = new PreferenceSlideItem("Terminal", false);
-            this.insert(terminal_segement, -1);
-            
-            var workspace_segement = new PreferenceSlideItem("Workspace", false);
-            this.insert(workspace_segement, -1);
-            
-            var advanced_segement = new PreferenceSlideItem("Advanced", false);
-            this.insert(advanced_segement, -1);
+            var window_segement = new PreferenceSlideItem("Window", false);
+            this.insert(window_segement, -1);
             
             var about_segement = new PreferenceSlideItem("About", true);
             this.insert(about_segement, -1);

@@ -4,6 +4,7 @@ main: ./project_path.c \
       ./lib/menu.vala \
       ./lib/keymap.vala \
       ./lib/utils.vala \
+      ./lib/config.vala \
       ./widget/tabbar.vala \
       ./widget/appbar.vala \
       ./widget/titlebar.vala \
@@ -39,6 +40,7 @@ main: ./project_path.c \
     ./lib/menu.vala \
     ./lib/keymap.vala \
     ./lib/utils.vala \
+    ./lib/config.vala \
     ./widget/tabbar.vala \
     ./widget/appbar.vala \
     ./widget/titlebar.vala \

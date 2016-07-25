@@ -68,11 +68,7 @@ namespace Widgets {
             var theme_grid = new Gtk.Grid();
             box.pack_start(theme_grid, false, false, 0);
             
-            var theme_label = new Gtk.Label("Theme:");
-            var theme_combox = new Gtk.ComboBox();
-            adjust_option_widgets(theme_label, theme_combox);
-            theme_grid.attach(theme_label, 0, 0, preference_name_width, grid_height);
-            theme_grid.attach_next_to(theme_combox, theme_label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
+            create_combox_row("Theme:", theme_grid);
             
             var opacity_grid = new Gtk.Grid();
             box.pack_start(opacity_grid, false, false, 0);
@@ -86,52 +82,13 @@ namespace Widgets {
             var font_grid = new Gtk.Grid();
             box.pack_start(font_grid, false, false, 0);
             
-            var font_label = new Gtk.Label("Font:");
-            var font_combox = new Gtk.ComboBox();
-            adjust_option_widgets(font_label, font_combox);
-            font_grid.attach(font_label, 0, 0, preference_name_width, grid_height);
-            font_grid.attach_next_to(font_combox, font_label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
+            var font_label = create_combox_row("Font:", font_grid);
             
             var font_size_label = new Gtk.Label("Font size:");
             var font_size_spinbutton = new Gtk.SpinButton(null, 0, 0);
             adjust_option_widgets(font_size_label, font_size_spinbutton);
             font_grid.attach_next_to(font_size_label, font_label, Gtk.PositionType.BOTTOM, preference_name_width, grid_height);
             font_grid.attach_next_to(font_size_spinbutton, font_size_label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
-            
-            var cursor_segement = get_second_segement("Cursor");
-            box.pack_start(cursor_segement, false, false, 0);
-            
-            var cursor_grid = new Gtk.Grid();
-            box.pack_start(cursor_grid, false, false, 0);
-            
-            var cursor_style_label = new Gtk.Label("Cursor style:");
-            var cursor_style_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-            var cursor_style_block_button = new Gtk.Button();
-            var cursor_style_line_button = new Gtk.Button();
-            var cursor_style_underline_button = new Gtk.Button();
-            cursor_style_box.pack_start(cursor_style_block_button, false, false, 0);
-            cursor_style_box.pack_start(cursor_style_line_button, false, false, 0);
-            cursor_style_box.pack_start(cursor_style_underline_button, false, false, 0);
-            adjust_option_widgets(cursor_style_label, cursor_style_box);
-            cursor_grid.attach(cursor_style_label, 0, 0, preference_name_width, grid_height);
-            cursor_grid.attach_next_to(cursor_style_box, cursor_style_label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
-            
-            create_follow_check_row("cursor blink", cursor_style_label, cursor_grid);
-            
-            var scroll_segement = get_second_segement("Scroll");
-            box.pack_start(scroll_segement, false, false, 0);
-            
-            var scroll_grid = new Gtk.Grid();
-            box.pack_start(scroll_grid, false, false, 0);
-            
-            var scroll_on_key_box = create_check_row("scroll on key", scroll_grid);
-            var scroll_on_outoupt_box = create_follow_check_row("scroll on output", scroll_on_key_box, scroll_grid);
-            
-            var scroll_line_label = new Gtk.Label("Scroll line:");
-            var scroll_line_spinbutton = new Gtk.SpinButton(null, 0, 0);
-            adjust_option_widgets(scroll_line_label, scroll_line_spinbutton);
-            scroll_grid.attach_next_to(scroll_line_label, scroll_on_outoupt_box, Gtk.PositionType.BOTTOM, preference_name_width, grid_height);
-            scroll_grid.attach_next_to(scroll_line_spinbutton, scroll_line_label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
             
             var hotkey_segement = get_first_segement("Hotkey");
             box.pack_start(hotkey_segement, false, false, 0);
@@ -178,6 +135,52 @@ namespace Widgets {
             var fullscreen_key_label = create_key_row("Fullscreen: ", advanced_key_grid);
             var display_hotkey_terminal_key_label = create_follow_key_row("Display hotkey: ", fullscreen_key_label, advanced_key_grid);
             create_follow_key_row("Remote manage: ", display_hotkey_terminal_key_label, advanced_key_grid);
+            
+            var advanced_segement = get_first_segement("Advanced");
+            box.pack_start(advanced_segement, false, false, 0);
+            
+            var cursor_segement = get_second_segement("Cursor");
+            box.pack_start(cursor_segement, false, false, 0);
+            
+            var cursor_grid = new Gtk.Grid();
+            box.pack_start(cursor_grid, false, false, 0);
+            
+            var cursor_style_label = new Gtk.Label("Cursor style:");
+            var cursor_style_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+            var cursor_style_block_button = new Gtk.Button();
+            var cursor_style_line_button = new Gtk.Button();
+            var cursor_style_underline_button = new Gtk.Button();
+            cursor_style_box.pack_start(cursor_style_block_button, false, false, 0);
+            cursor_style_box.pack_start(cursor_style_line_button, false, false, 0);
+            cursor_style_box.pack_start(cursor_style_underline_button, false, false, 0);
+            adjust_option_widgets(cursor_style_label, cursor_style_box);
+            cursor_grid.attach(cursor_style_label, 0, 0, preference_name_width, grid_height);
+            cursor_grid.attach_next_to(cursor_style_box, cursor_style_label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
+            
+            create_follow_check_row("cursor blink", cursor_style_label, cursor_grid);
+            
+            var scroll_segement = get_second_segement("Scroll");
+            box.pack_start(scroll_segement, false, false, 0);
+            
+            var scroll_grid = new Gtk.Grid();
+            box.pack_start(scroll_grid, false, false, 0);
+            
+            var scroll_on_key_box = create_check_row("scroll on key", scroll_grid);
+            var scroll_on_outoupt_box = create_follow_check_row("scroll on output", scroll_on_key_box, scroll_grid);
+            
+            var scroll_line_label = new Gtk.Label("Scroll line:");
+            var scroll_line_spinbutton = new Gtk.SpinButton(null, 0, 0);
+            adjust_option_widgets(scroll_line_label, scroll_line_spinbutton);
+            scroll_grid.attach_next_to(scroll_line_label, scroll_on_outoupt_box, Gtk.PositionType.BOTTOM, preference_name_width, grid_height);
+            scroll_grid.attach_next_to(scroll_line_spinbutton, scroll_line_label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
+            
+            var window_segement = get_second_segement("Window");
+            box.pack_start(window_segement, false, false, 0);
+            
+            var window_grid = new Gtk.Grid();
+            box.pack_start(window_grid, false, false, 0);
+            
+            create_combox_row("Window", window_grid);
             
             var about_segement = get_first_segement("About");
             box.pack_start(about_segement, false, false, 0);
@@ -232,6 +235,16 @@ namespace Widgets {
             return label;
         }
         
+        public Gtk.Label create_combox_row(string name, Gtk.Grid grid) {
+            var label = new Gtk.Label(name);
+            var combox = new Gtk.ComboBox();
+            adjust_option_widgets(label, combox);
+            grid.attach(label, 0, 0, preference_name_width, grid_height);
+            grid.attach_next_to(combox, label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
+            
+            return label;
+        }
+
         public void adjust_option_widgets(Gtk.Label name_widget, Gtk.Widget value_widget) {
             name_widget.set_xalign(0);
             name_widget.set_size_request(preference_name_width, grid_height);
