@@ -1,5 +1,6 @@
 using Gtk;
 using Widgets;
+using Gee;
 
 namespace Widgets {
     public class Preference : Gtk.Window {
@@ -11,8 +12,12 @@ namespace Widgets {
         public int preference_name_width = 180;
         public int preference_widget_width = 200;
         public int grid_height = 22;
+        
+        public Widgets.Window parent_window;
 
         public Preference(Gtk.Window window, Gtk.Widget widget) {
+            parent_window = (Widgets.Window) window;
+            
             focus_widget = widget;
             
             set_transient_for(window);
@@ -180,7 +185,11 @@ namespace Widgets {
             var window_grid = new Gtk.Grid();
             box.pack_start(window_grid, false, false, 0);
             
-            create_combox_row("Window", window_grid);
+            var window_state_list = new ArrayList<string>();
+            window_state_list.add("window");
+            window_state_list.add("maximize");
+            window_state_list.add("fullscreen");
+            create_combox_row("Window", window_grid, window_state_list, "advanced", "window_state");
             
             var about_segement = get_first_segement("About");
             box.pack_start(about_segement, false, false, 0);
@@ -235,9 +244,25 @@ namespace Widgets {
             return label;
         }
         
-        public Gtk.Label create_combox_row(string name, Gtk.Grid grid) {
+        public Gtk.Label create_combox_row(string name, Gtk.Grid grid, ArrayList<string>? values=null, string? group_name=null, string? key=null) {
             var label = new Gtk.Label(name);
-            var combox = new Gtk.ComboBox();
+            var combox = new Gtk.ComboBoxText();
+            if (values != null) {
+                foreach (string value in values) {
+                    combox.append(value, value);
+                }
+                
+                try {
+                    combox.set_active(values.index_of(parent_window.config.config_file.get_value(group_name, key)));
+                } catch (GLib.KeyFileError e) {
+                    print("create_combox_row error: %s\n".printf(e.message));
+                }
+                
+                combox.changed.connect((w) => {
+                        parent_window.config.config_file.set_string(group_name, key, values[combox.get_active()]);
+                        parent_window.config.save();
+                    });
+            }
             adjust_option_widgets(label, combox);
             grid.attach(label, 0, 0, preference_name_width, grid_height);
             grid.attach_next_to(combox, label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);

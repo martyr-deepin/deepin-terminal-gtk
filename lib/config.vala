@@ -3,7 +3,7 @@ using GLib;
 namespace Config {
     public class Config : GLib.Object {
         public string config_file_path = Utils.get_config_file_path("config.ini");
-        KeyFile config_file;
+        public KeyFile config_file;
         
         public Config() {
             config_file = new KeyFile();
@@ -54,14 +54,10 @@ namespace Config {
             config_file.set_boolean("advanced", "scroll_on_output", false);
             config_file.set_integer("advanced", "scroll_line", 0);
             config_file.set_string("advanced", "window_state", "window");
-            config_file.set_double("advanced", "window_width", 0.6);
-            config_file.set_double("advanced", "window_height", 0.6);
-            
-            try {
-                config_file.save_to_file(config_file_path);
-            } catch (GLib.FileError e) {
-                print("init_config: %s\n", e.message);
-            }
+            config_file.set_integer("advanced", "window_width", 0);
+            config_file.set_integer("advanced", "window_height", 0);
+
+            save();
         }
         
         public void load_config() {
@@ -72,6 +68,14 @@ namespace Config {
 					print("Config: %s\n", e.message);
 				}
 			}
+        }
+        
+        public void save() {
+            try {
+                config_file.save_to_file(config_file_path);
+            } catch (GLib.FileError e) {
+                print("save: %s\n", e.message);
+            }
         }
     }
 }

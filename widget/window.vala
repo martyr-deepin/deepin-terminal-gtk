@@ -1,11 +1,18 @@
 using Gtk;
+using Config;
 
 namespace Widgets {
     public class Window : Gtk.Window {
+        public Config.Config config;
+        
         public double background_opacity = 0.8;
         private bool is_fullscreen = false;
+        private int window_width;
+        private int window_height;
         
         public Window(bool quake_mode) {
+            config = new Config.Config();
+            
             // Make window transparent.
             set_app_paintable(true); // set_app_paintable is neccessary step to make window transparent.
             Gdk.Screen screen = Gdk.Screen.get_default();
@@ -24,8 +31,39 @@ namespace Widgets {
                 set_type_hint(Gdk.WindowTypeHint.DIALOG);  // DIALOG hint will give right window effect
                 move(rect.x, 0);
             } else {
-                set_default_size(rect.width * 2 / 3, rect.height * 2 / 3);
+                try {
+                    var window_state = config.config_file.get_value("advanced", "window_state");
+                    var width = config.config_file.get_integer("advanced", "window_width");
+                    var height = config.config_file.get_integer("advanced", "window_height");
+                    if (width == 0 || height == 0) {
+                        set_default_size(rect.width * 2 / 3, rect.height * 2 / 3);
+                    } else {
+                        set_default_size(width, height);
+                    }
+                    
+                    if (window_state == "maximize") {
+                        maximize();
+                    } else if (window_state == "fullscreen") {
+                        toggle_fullscreen();
+                    }
+                } catch (GLib.KeyFileError e) {
+                    stdout.printf(e.message);
+                }
             }
+            
+            configure_event.connect((w) => {
+                    get_size(out window_width, out window_height);
+                    
+                    return false;
+                });
+            
+            destroy.connect((w) => {
+                    if (!quake_mode && !is_fullscreen && !is_maximized) {
+                        config.config_file.set_integer("advanced", "window_width", window_width);
+                        config.config_file.set_integer("advanced", "window_height", window_height);
+                        config.save();
+                    }
+                });
 
             try{
                 set_icon_from_file(Utils.get_image_path("deepin-terminal.svg"));

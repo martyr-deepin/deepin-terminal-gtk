@@ -3,7 +3,6 @@ using Gdk;
 using Vte;
 using Widgets;
 using Keymap;
-using Config;
 
 [DBus (name = "com.deepin.terminal")]
 public class TerminalApp : Application {
@@ -41,7 +40,6 @@ public class Application : Object {
     public Widgets.Window window;
     public WorkspaceManager workspace_manager;
 	public HotkeyPreview hotkey_preview;
-    public Config.Config config;
     
 	private static bool version = false;
 	private static bool quake_mode = false;
@@ -76,8 +74,6 @@ public class Application : Object {
             Gtk.main_quit();
         } else {
             Utils.load_css_theme(Utils.get_root_path("style.css"));
-            
-            config = new Config.Config();
             
             Tabbar tabbar = new Tabbar();
             Appbar appbar = new Appbar(tabbar, quake_mode, this);
