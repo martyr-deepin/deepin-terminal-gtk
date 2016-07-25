@@ -6,6 +6,8 @@ namespace Widgets {
         private bool is_fullscreen = false;
         
         public Window(bool quake_mode) {
+            // Make window transparent.
+            set_app_paintable(true); // set_app_paintable is neccessary step to make window transparent.
             Gdk.Screen screen = Gdk.Screen.get_default();
             set_visual(screen.get_rgba_visual());
             

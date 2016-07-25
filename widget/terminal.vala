@@ -75,7 +75,7 @@ namespace Widgets {
                                      "#EEEEEE" };
 
             palette = new Gdk.RGBA[16];
-
+            
             for (int i = 0; i < hex_palette.length; i++) {
                 Gdk.RGBA new_color= Gdk.RGBA();
                 new_color.parse(hex_palette[i]);
@@ -420,10 +420,10 @@ namespace Widgets {
         
         public bool on_scroll(Gtk.Widget widget, Gdk.EventScroll scroll_event) {
             if ((scroll_event.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
-                if (scroll_event.direction == Gdk.ScrollDirection.UP) {
+                if (scroll_event.delta_y < 0) {
                     Widgets.Window window = (Widgets.Window) term.get_toplevel();
                     window.change_opacity(0.1);
-                } else if (scroll_event.direction == Gdk.ScrollDirection.DOWN) {
+                } else if (scroll_event.delta_y > 0) {
                     Widgets.Window window = (Widgets.Window) term.get_toplevel();
                     window.change_opacity(-0.1);
                 }
