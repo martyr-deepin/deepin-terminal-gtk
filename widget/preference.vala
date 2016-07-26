@@ -319,7 +319,7 @@ namespace Widgets {
         
         public Gtk.Label create_follow_spinbutton_row(string name, Gtk.Widget previous_widget, Gtk.Grid grid, string? group_name=null, string? key=null) {
             var label = new Gtk.Label(name);
-            var spinbutton = new Gtk.SpinButton(null, 0, 0);
+            var spinbutton = new Gtk.SpinButton.with_range(0, 100, 1);
             adjust_option_widgets(label, spinbutton);
             
             read_spin_value(spinbutton, group_name, key);
@@ -354,7 +354,7 @@ namespace Widgets {
         }
 
         public void monitor_spin_value(Gtk.SpinButton spinbutton, string group_name, string key) {
-            spinbutton.change_value.connect((w) => {
+            spinbutton.value_changed.connect((w) => {
                     var spin_value = spinbutton.get_value();
                     
                     parent_window.config.config_file.set_integer(group_name, key, (int) spin_value);
