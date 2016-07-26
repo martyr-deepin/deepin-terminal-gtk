@@ -4,6 +4,8 @@ namespace Config {
     public class Config : GLib.Object {
         public string config_file_path = Utils.get_config_file_path("config.ini");
         public KeyFile config_file;
+
+        public signal void update();
         
         public Config() {
             config_file = new KeyFile();

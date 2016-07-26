@@ -89,11 +89,7 @@ namespace Widgets {
             
             var font_label = create_combox_row("Font:", font_grid);
             
-            var font_size_label = new Gtk.Label("Font size:");
-            var font_size_spinbutton = new Gtk.SpinButton(null, 0, 0);
-            adjust_option_widgets(font_size_label, font_size_spinbutton);
-            font_grid.attach_next_to(font_size_label, font_label, Gtk.PositionType.BOTTOM, preference_name_width, grid_height);
-            font_grid.attach_next_to(font_size_spinbutton, font_size_label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
+            create_follow_spinbutton_row("Font size:", font_label, font_grid, "general", "font_size");
             
             var hotkey_segement = get_first_segement("Hotkey");
             box.pack_start(hotkey_segement, false, false, 0);
@@ -162,7 +158,7 @@ namespace Widgets {
             cursor_grid.attach(cursor_style_label, 0, 0, preference_name_width, grid_height);
             cursor_grid.attach_next_to(cursor_style_box, cursor_style_label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
             
-            create_follow_check_row("cursor blink", cursor_style_label, cursor_grid);
+            create_follow_check_row("cursor blink", cursor_style_label, cursor_grid, "advanced", "cursor_blink_mode");
             
             var scroll_segement = get_second_segement("Scroll");
             box.pack_start(scroll_segement, false, false, 0);
@@ -170,14 +166,10 @@ namespace Widgets {
             var scroll_grid = new Gtk.Grid();
             box.pack_start(scroll_grid, false, false, 0);
             
-            var scroll_on_key_box = create_check_row("scroll on key", scroll_grid);
-            var scroll_on_outoupt_box = create_follow_check_row("scroll on output", scroll_on_key_box, scroll_grid);
+            var scroll_on_key_box = create_check_row("scroll on key", scroll_grid, "advanced", "scroll_on_key");
+            var scroll_on_output_box = create_follow_check_row("scroll on output", scroll_on_key_box, scroll_grid, "advanced", "scroll_on_output");
             
-            var scroll_line_label = new Gtk.Label("Scroll line:");
-            var scroll_line_spinbutton = new Gtk.SpinButton(null, 0, 0);
-            adjust_option_widgets(scroll_line_label, scroll_line_spinbutton);
-            scroll_grid.attach_next_to(scroll_line_label, scroll_on_outoupt_box, Gtk.PositionType.BOTTOM, preference_name_width, grid_height);
-            scroll_grid.attach_next_to(scroll_line_spinbutton, scroll_line_label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
+            create_follow_spinbutton_row("Scroll line:", scroll_on_output_box, scroll_grid, "advanced", "scroll_line");
             
             var window_segement = get_second_segement("Window");
             box.pack_start(window_segement, false, false, 0);
@@ -283,11 +275,13 @@ namespace Widgets {
             value_widget.margin_right = 10;
         }
         
-        public Gtk.Box create_check_row(string name, Gtk.Grid grid) {
+        public Gtk.Box create_check_row(string name, Gtk.Grid grid, string? group_name=null, string? key=null) {
             var box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             var checkbutton = new Gtk.CheckButton();
             var label = new Gtk.Label(name);
             adjust_option_checkbutton(label, checkbutton);
+
+            read_check_value(checkbutton, group_name, key);
             
             box.pack_start(checkbutton, false, false, 0);
             box.pack_start(label, false, false, 0);
@@ -296,17 +290,78 @@ namespace Widgets {
             return box;
         }
         
-        public Gtk.Box create_follow_check_row(string name, Gtk.Widget previous_widget, Gtk.Grid grid) {
+        public Gtk.Box create_follow_check_row(string name, Gtk.Widget previous_widget, Gtk.Grid grid, string? group_name=null, string? key=null) {
             var box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             var checkbutton = new Gtk.CheckButton();
             var label = new Gtk.Label(name);
             adjust_option_checkbutton(label, checkbutton);
+            
+            read_check_value(checkbutton, group_name, key);
             
             box.pack_start(checkbutton, false, false, 0);
             box.pack_start(label, false, false, 0);
             grid.attach_next_to(box, previous_widget, Gtk.PositionType.BOTTOM, preference_name_width, grid_height);
             
             return box;
+        }
+        
+        public void read_check_value(Gtk.CheckButton checkbutton, string group_name, string key) {
+            if (group_name != null && key != null) {
+                try {
+                    checkbutton.set_active(parent_window.config.config_file.get_boolean(group_name, key));
+                } catch (GLib.KeyFileError e) {
+                    print("create_follow_check_row error: %s\n".printf(e.message));
+                }
+                
+                monitor_check_value(checkbutton, group_name, key);
+            }
+        }
+        
+        public Gtk.Label create_follow_spinbutton_row(string name, Gtk.Widget previous_widget, Gtk.Grid grid, string? group_name=null, string? key=null) {
+            var label = new Gtk.Label(name);
+            var spinbutton = new Gtk.SpinButton(null, 0, 0);
+            adjust_option_widgets(label, spinbutton);
+            
+            read_spin_value(spinbutton, group_name, key);
+            
+            grid.attach_next_to(label, previous_widget, Gtk.PositionType.BOTTOM, preference_name_width, grid_height);
+            grid.attach_next_to(spinbutton, label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
+            
+            return label;
+        }
+        
+        public void read_spin_value(Gtk.SpinButton spinbutton, string group_name, string key) {
+            if (group_name != null && key != null) {
+                try {
+                    spinbutton.set_value(parent_window.config.config_file.get_integer(group_name, key));
+                } catch (GLib.KeyFileError e) {
+                    print("read_spin_value error: %s\n".printf(e.message));
+                }
+                
+                monitor_spin_value(spinbutton, group_name, key);
+            }
+        }
+        
+        public void monitor_check_value(Gtk.CheckButton checkbutton, string group_name, string key) {
+            checkbutton.toggled.connect((w) => {
+                    var is_active = checkbutton.get_active();
+                    
+                    parent_window.config.config_file.set_boolean(group_name, key, is_active);
+                    parent_window.config.save();
+                    
+                    parent_window.config.update();
+                });
+        }
+
+        public void monitor_spin_value(Gtk.SpinButton spinbutton, string group_name, string key) {
+            spinbutton.change_value.connect((w) => {
+                    var spin_value = spinbutton.get_value();
+                    
+                    parent_window.config.config_file.set_integer(group_name, key, (int) spin_value);
+                    parent_window.config.save();
+                    
+                    parent_window.config.update();
+                });
         }
         
         public void adjust_option_checkbutton(Gtk.Label label, Gtk.CheckButton checkbutton) {

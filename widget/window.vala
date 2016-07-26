@@ -13,6 +13,10 @@ namespace Widgets {
         public Window(bool quake_mode) {
             config = new Config.Config();
             
+            config.update.connect((w) => {
+                    update_terminal(this);
+                });
+
             // Make window transparent.
             set_app_paintable(true); // set_app_paintable is neccessary step to make window transparent.
             Gdk.Screen screen = Gdk.Screen.get_default();
@@ -121,6 +125,18 @@ namespace Widgets {
                 show_all();
                 present();
             }
+        }
+        
+        public void update_terminal(Gtk.Container container) {
+            container.forall((child) => {
+                    var child_type = child.get_type();
+                    
+                    if (child_type.is_a(typeof(Widgets.Term))) {
+                        ((Widgets.Term) child).setup_from_config();
+                    } else if (child_type.is_a(typeof(Gtk.Container))) {
+                        update_terminal((Gtk.Container) child);
+                    }
+                });
         }
     }
 }

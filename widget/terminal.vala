@@ -84,6 +84,7 @@ namespace Widgets {
             }
 
             term = new Terminal();
+
             term.child_exited.connect ((t)=> {
                     exit();
                 });
@@ -94,6 +95,8 @@ namespace Widgets {
             
                     term.set_colors(foreground_color, background_color, palette);
                     focus_term();
+                    
+                    setup_from_config();
                 });
             term.draw.connect((t) => {
                     Widgets.Window window = (Widgets.Window) term.get_toplevel();
@@ -633,5 +636,25 @@ namespace Widgets {
 				print("complete_notify_send: error %s\n", e.message);
 			}
 		}
+        
+        public void setup_from_config() {
+            try {
+                Widgets.Window parent_window = (Widgets.Window) term.get_toplevel();
+                term.set_scroll_on_keystroke(parent_window.config.config_file.get_boolean("advanced", "scroll_on_key"));
+                term.set_scroll_on_output(parent_window.config.config_file.get_boolean("advanced", "scroll_on_output"));
+                        
+                var is_cursor_blink = parent_window.config.config_file.get_boolean("advanced", "cursor_blink_mode");
+                if (is_cursor_blink) {
+                    term.set_cursor_blink_mode(Vte.CursorBlinkMode.ON);
+                } else {
+                    term.set_cursor_blink_mode(Vte.CursorBlinkMode.OFF);
+                }
+                
+                var scroll_lines = parent_window.config.config_file.get_integer("advanced", "scroll_line");
+                term.set_scrollback_lines(scroll_lines);
+            } catch (GLib.KeyFileError e) {
+                stdout.printf(e.message);
+            }
+        }
 	}
 }
