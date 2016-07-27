@@ -74,10 +74,14 @@ namespace Config {
         
         public void save() {
             try {
+			    Utils.touch_dir(Utils.get_config_dir());
+				
                 config_file.save_to_file(config_file_path);
             } catch (GLib.FileError e) {
-                print("save: %s\n", e.message);
-            }
+				if (!FileUtils.test(config_file_path, FileTest.EXISTS)) {
+					print("save: %s\n", e.message);
+				}
+			}
         }
     }
 }

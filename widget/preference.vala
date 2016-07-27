@@ -147,16 +147,21 @@ namespace Widgets {
             box.pack_start(cursor_grid, false, false, 0);
             
             var cursor_style_label = new Gtk.Label("Cursor style:");
-            var cursor_style_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-            var cursor_style_block_button = new Gtk.Button();
-            var cursor_style_line_button = new Gtk.Button();
-            var cursor_style_underline_button = new Gtk.Button();
-            cursor_style_box.pack_start(cursor_style_block_button, false, false, 0);
-            cursor_style_box.pack_start(cursor_style_line_button, false, false, 0);
-            cursor_style_box.pack_start(cursor_style_underline_button, false, false, 0);
-            adjust_option_widgets(cursor_style_label, cursor_style_box);
+            var cursor_style_button = new Widgets.CursorToggleButton();
+			try {
+				cursor_style_button.set_cursor_state(parent_window.config.config_file.get_string("advanced", "cursor_shape"));
+			} catch (GLib.KeyFileError e) {
+				print(e.message);
+			}
+			cursor_style_button.change_cursor_state.connect((w, active_state) => {
+					parent_window.config.config_file.set_string("advanced", "cursor_shape", active_state);
+					parent_window.config.save();
+					
+					parent_window.config.update();
+				});
+			adjust_option_widgets(cursor_style_label, cursor_style_button);
             cursor_grid.attach(cursor_style_label, 0, 0, preference_name_width, grid_height);
-            cursor_grid.attach_next_to(cursor_style_box, cursor_style_label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
+            cursor_grid.attach_next_to(cursor_style_button, cursor_style_label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
             
             create_follow_check_row("cursor blink", cursor_style_label, cursor_grid, "advanced", "cursor_blink_mode");
             

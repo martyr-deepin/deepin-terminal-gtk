@@ -652,6 +652,15 @@ namespace Widgets {
                 
                 var scroll_lines = parent_window.config.config_file.get_integer("advanced", "scroll_line");
                 term.set_scrollback_lines(scroll_lines);
+				
+				var cursor_shape = parent_window.config.config_file.get_string("advanced", "cursor_shape");
+				if (cursor_shape == "block") {
+					term.set_cursor_shape(Vte.CursorShape.BLOCK);
+				} else if (cursor_shape == "ibeam") {
+					term.set_cursor_shape(Vte.CursorShape.IBEAM);
+				} else if (cursor_shape == "underline") {
+					term.set_cursor_shape(Vte.CursorShape.UNDERLINE);
+				}
             } catch (GLib.KeyFileError e) {
                 stdout.printf(e.message);
             }
