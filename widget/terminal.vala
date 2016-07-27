@@ -48,11 +48,11 @@ namespace Widgets {
         };
         
         public bool is_first_term; 
-        public Gdk.RGBA background_color;
-        public Gdk.RGBA foreground_color;
-        public Gdk.RGBA[] palette;
 		
 		public Menu.Menu menu;
+		
+        public Gdk.RGBA background_color = Gdk.RGBA();
+		public Gdk.RGBA foreground_color = Gdk.RGBA();
         
         public signal void exit();
         
@@ -62,28 +62,7 @@ namespace Widgets {
         public Term(bool first_term, string[]? commands, string? work_directory) {
             is_first_term = first_term;
             
-            background_color = Gdk.RGBA();
-            background_color.parse("#000000");
-            background_color.alpha = 0.8;
-
-            foreground_color = Gdk.RGBA();
-            foreground_color.parse("#00FF00");
-            
-            string[] hex_palette = { "#000000", "#FF6C60", "#A8FF60", "#FFFFCC", "#96CBFE",
-                                     "#FF73FE", "#C6C5FE", "#EEEEEE", "#000000", "#FF6C60",
-                                     "#A8FF60", "#FFFFB6", "#96CBFE", "#FF73FE", "#C6C5FE",
-                                     "#EEEEEE" };
-
-            palette = new Gdk.RGBA[16];
-            
-            for (int i = 0; i < hex_palette.length; i++) {
-                Gdk.RGBA new_color= Gdk.RGBA();
-                new_color.parse(hex_palette[i]);
-
-                palette[i] = new_color;
-            }
-
-            term = new Terminal();
+			term = new Terminal();
 
             term.child_exited.connect ((t)=> {
                     exit();
@@ -92,17 +71,14 @@ namespace Widgets {
                     kill_fg();
                 });
             term.realize.connect((t) => {
-            
-                    term.set_colors(foreground_color, background_color, palette);
-                    focus_term();
-                    
                     setup_from_config();
+					
+                    focus_term();
                 });
             term.draw.connect((t) => {
 					try {
 						Widgets.Window window = (Widgets.Window) term.get_toplevel();
 						background_color.alpha = window.config.config_file.get_double("general", "opacity");
-						term.set_colors(foreground_color, background_color, palette);
 					} catch (GLib.KeyFileError e) {
 						print(e.message);
 					}
@@ -665,6 +641,17 @@ namespace Widgets {
 				} else if (cursor_shape == "underline") {
 					term.set_cursor_shape(Vte.CursorShape.UNDERLINE);
 				}
+				
+				background_color.parse(parent_window.config.config_file.get_string("theme", "color1"));
+				foreground_color.parse(parent_window.config.config_file.get_string("theme", "color8"));
+				var palette = new Gdk.RGBA[16];
+				for (int i = 0; i < 16; i++) {
+					Gdk.RGBA new_color= Gdk.RGBA();
+					new_color.parse(parent_window.config.config_file.get_string("theme", "color%i".printf(i + 1)));
+
+					palette[i] = new_color;
+				}
+				term.set_colors(foreground_color, background_color, palette);
 				
 				queue_draw();
             } catch (GLib.KeyFileError e) {

@@ -1,15 +1,28 @@
 using GLib;
+using Gee;
 
 namespace Config {
     public class Config : GLib.Object {
         public string config_file_path = Utils.get_config_file_path("config.ini");
         public KeyFile config_file;
+		
+		public HashMap<string, ArrayList<string>> theme_map;
+		public ArrayList<string> theme_names;
 
         public signal void update();
         
         public Config() {
             config_file = new KeyFile();
 
+			theme_names = new ArrayList<string>();
+			string[] names = {"deepin", "solarized"};
+			foreach (string name in names) {
+				theme_names.add(name);
+			}
+			theme_map = new HashMap<string, ArrayList<string>>();
+			add_theme("deepin", {"#000000", "#073642", "#586e75", "#657b83","#839496", "#93a1a1", "#eee8d5", "#00ff00", "#b58900", "#cb4b16", "#dc322f", "#d33682", "#6c71c4", "#268bd2", "#2aa198", "#859900" });
+			add_theme("solarized", {"#002b36", "#073642", "#586e75", "#657b83","#839496", "#93a1a1", "#eee8d5", "#fdf6e3", "#b58900", "#cb4b16", "#dc322f", "#d33682", "#6c71c4", "#268bd2", "#2aa198", "#859900" });
+			
             var file = File.new_for_path(config_file_path);
             if (!file.query_exists()) {
                 init_config();
@@ -17,6 +30,22 @@ namespace Config {
                 load_config();
             }
         }
+		
+		public void add_theme(string theme_name, string[] theme_colors) {
+			var theme_list = new ArrayList<string>();
+			foreach (string color in theme_colors) {
+				theme_list.add(color);
+			}
+			
+			theme_map.set(theme_name, theme_list);
+		}
+		
+		public void set_theme(string theme_name) {
+			var theme_colors = theme_map.get(theme_name);
+			for (int i = 0; i < 16; i++) {
+				config_file.set_string("theme", "color%i".printf(i + 1), theme_colors[i]);
+			}
+		}
         
         public void init_config() {
             config_file.set_string("general", "theme", "deepin");
@@ -58,6 +87,23 @@ namespace Config {
             config_file.set_string("advanced", "window_state", "window");
             config_file.set_integer("advanced", "window_width", 0);
             config_file.set_integer("advanced", "window_height", 0);
+			
+			config_file.set_string("theme", "color1", "#000000");
+			config_file.set_string("theme", "color2", "#073642");
+			config_file.set_string("theme", "color3", "#586e75");
+			config_file.set_string("theme", "color4", "#657b83");
+			config_file.set_string("theme", "color5", "#839496");
+			config_file.set_string("theme", "color6", "#93a1a1");
+			config_file.set_string("theme", "color7", "#eee8d5");
+			config_file.set_string("theme", "color8", "#00ff00");
+			config_file.set_string("theme", "color9", "#b58900");
+			config_file.set_string("theme", "color10", "#cb4b16");
+			config_file.set_string("theme", "color11", "#dc322f");
+			config_file.set_string("theme", "color12", "#d33682");
+			config_file.set_string("theme", "color13", "#6c71c4");
+			config_file.set_string("theme", "color14", "#268bd2");
+			config_file.set_string("theme", "color15", "#2aa198");
+			config_file.set_string("theme", "color16", "#859900");
 
             save();
         }

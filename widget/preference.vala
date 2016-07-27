@@ -73,7 +73,7 @@ namespace Widgets {
             var theme_grid = new Gtk.Grid();
             box.pack_start(theme_grid, false, false, 0);
             
-            create_combox_row("Theme:", theme_grid);
+            create_theme_row("Theme:", theme_grid, parent_window.config.theme_names, "general", "theme");
             
             var opacity_grid = new Gtk.Grid();
             box.pack_start(opacity_grid, false, false, 0);
@@ -254,6 +254,44 @@ namespace Widgets {
             return label;
         }
         
+        public Gtk.Label create_theme_row(string name, Gtk.Grid grid, ArrayList<string>? values=null, string? group_name=null, string? key=null) {
+            var label = new Gtk.Label(name);
+            var combox = new Gtk.ComboBoxText();
+            if (values != null) {
+                foreach (string value in values) {
+                    combox.append(value, value);
+                }
+                
+                try {
+                    combox.set_active(values.index_of(parent_window.config.config_file.get_value(group_name, key)));
+                } catch (GLib.KeyFileError e) {
+                    print("create_combox_row error: %s\n".printf(e.message));
+                }
+                
+                combox.changed.connect((w) => {
+						try {
+							var old_theme = parent_window.config.config_file.get_string(group_name, key);
+							var new_theme = values[combox.get_active()];
+							if (new_theme != old_theme) {
+								parent_window.config.config_file.set_string(group_name, key, values[combox.get_active()]);
+								parent_window.config.set_theme(new_theme);
+							
+								parent_window.config.save();
+							
+								parent_window.config.update();
+							}
+						} catch (GLib.KeyFileError e) {
+							print(e.message);
+						}
+                    });
+            }
+            adjust_option_widgets(label, combox);
+            grid.attach(label, 0, 0, preference_name_width, grid_height);
+            grid.attach_next_to(combox, label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
+            
+            return label;
+        }
+		
         public Gtk.Label create_combox_row(string name, Gtk.Grid grid, ArrayList<string>? values=null, string? group_name=null, string? key=null) {
             var label = new Gtk.Label(name);
             var combox = new Gtk.ComboBoxText();

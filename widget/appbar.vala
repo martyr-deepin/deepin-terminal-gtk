@@ -16,6 +16,8 @@ namespace Widgets {
         public Gtk.Widget focus_widget;
         
 		public Menu.Menu menu;
+		
+		public Gdk.RGBA background_color;
         
         public Appbar(Tabbar tab_bar, bool quake_mode, Application app) {
             tabbar = tab_bar;
@@ -132,7 +134,8 @@ namespace Widgets {
             Widgets.Window window = (Widgets.Window) this.get_toplevel();
 
 			try {
-				cr.set_source_rgba(0, 0, 0, window.config.config_file.get_double("general", "opacity"));
+				background_color.parse(window.config.config_file.get_string("theme", "color1"));
+				cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, window.config.config_file.get_double("general", "opacity"));
 			} catch (GLib.KeyFileError e) {
 				print(e.message);
 			}
