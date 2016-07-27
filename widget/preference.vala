@@ -79,8 +79,21 @@ namespace Widgets {
             box.pack_start(opacity_grid, false, false, 0);
             
             var opacity_label = new Gtk.Label("Opacity:");
-            var opacity_progressbar = new Gtk.ProgressBar();
-            adjust_option_widgets(opacity_label, opacity_progressbar);
+			double opacity = 0;
+			try {
+				opacity = parent_window.config.config_file.get_double("general", "opacity");
+			} catch (GLib.KeyFileError e) {
+				print(e.message);
+			}
+			
+            var opacity_progressbar = new Widgets.ProgressBar(opacity);
+			opacity_progressbar.update.connect((w, percent) => {
+					parent_window.config.config_file.set_double("general", "opacity", percent);
+					parent_window.config.save();
+					
+					parent_window.config.update();
+				});
+			adjust_option_widgets(opacity_label, opacity_progressbar);
             opacity_grid.attach(opacity_label, 0, 0, preference_name_width, grid_height);
             opacity_grid.attach_next_to(opacity_progressbar, opacity_label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
             

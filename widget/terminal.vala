@@ -99,9 +99,13 @@ namespace Widgets {
                     setup_from_config();
                 });
             term.draw.connect((t) => {
-                    Widgets.Window window = (Widgets.Window) term.get_toplevel();
-                    background_color.alpha = window.background_opacity;
-                    term.set_colors(foreground_color, background_color, palette);
+					try {
+						Widgets.Window window = (Widgets.Window) term.get_toplevel();
+						background_color.alpha = window.config.config_file.get_double("general", "opacity");
+						term.set_colors(foreground_color, background_color, palette);
+					} catch (GLib.KeyFileError e) {
+						print(e.message);
+					}
                     
                     return false;
                 });
@@ -661,6 +665,8 @@ namespace Widgets {
 				} else if (cursor_shape == "underline") {
 					term.set_cursor_shape(Vte.CursorShape.UNDERLINE);
 				}
+				
+				queue_draw();
             } catch (GLib.KeyFileError e) {
                 stdout.printf(e.message);
             }

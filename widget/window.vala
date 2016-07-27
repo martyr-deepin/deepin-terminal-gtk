@@ -5,14 +5,13 @@ namespace Widgets {
     public class Window : Gtk.Window {
         public Config.Config config;
         
-        public double background_opacity = 0.8;
-        private bool is_fullscreen = false;
+		private bool is_fullscreen = false;
         private int window_width;
         private int window_height;
         
         public Window(bool quake_mode) {
             config = new Config.Config();
-            
+			
             config.update.connect((w) => {
                     update_terminal(this);
                 });
@@ -77,7 +76,13 @@ namespace Widgets {
         }
 
         public void change_opacity(double offset) {
-            background_opacity = double.min(double.max(background_opacity + offset, 0.2), 1);
+			try {
+				double background_opacity = config.config_file.get_double("general", "opacity");
+				config.config_file.set_double("general", "opacity", double.min(double.max(background_opacity + offset, 0.2), 1));
+				config.save();
+			} catch (GLib.KeyFileError e) {
+				print(e.message);
+			}
             
             queue_draw();
         }

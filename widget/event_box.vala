@@ -14,8 +14,12 @@ namespace Widgets {
             
             Widgets.Window window = (Widgets.Window) this.get_toplevel();
 
-            cr.set_source_rgba(0, 0, 0, window.background_opacity);
-            cr.set_operator(Cairo.Operator.SOURCE);
+ 			try {
+				cr.set_source_rgba(0, 0, 0, window.config.config_file.get_double("general", "opacity"));
+			} catch (GLib.KeyFileError e) {
+				print(e.message);
+			}
+			cr.set_operator(Cairo.Operator.SOURCE);
             cr.paint();
             cr.set_operator(Cairo.Operator.OVER);
             

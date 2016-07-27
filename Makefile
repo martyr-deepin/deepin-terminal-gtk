@@ -10,6 +10,7 @@ main: ./project_path.c \
       ./widget/titlebar.vala \
       ./widget/hotkey_preview.vala \
       ./widget/terminal.vala \
+      ./widget/progressbar.vala \
       ./widget/workspace.vala \
       ./widget/workspace_manager.vala \
       ./widget/image_button.vala \
@@ -47,6 +48,7 @@ main: ./project_path.c \
     ./widget/titlebar.vala \
     ./widget/hotkey_preview.vala \
     ./widget/terminal.vala \
+    ./widget/progressbar.vala \
     ./widget/workspace.vala \
     ./widget/workspace_manager.vala \
     ./widget/image_button.vala \
