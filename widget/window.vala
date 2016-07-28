@@ -14,6 +14,8 @@ namespace Widgets {
 			
             config.update.connect((w) => {
                     update_terminal(this);
+					
+					queue_draw();
                 });
 
             // Make window transparent.
@@ -75,19 +77,7 @@ namespace Widgets {
             }
         }
 
-        public void change_opacity(double offset) {
-			try {
-				double background_opacity = config.config_file.get_double("general", "opacity");
-				config.config_file.set_double("general", "opacity", double.min(double.max(background_opacity + offset, 0.2), 1));
-				config.save();
-			} catch (GLib.KeyFileError e) {
-				print(e.message);
-			}
-            
-            queue_draw();
-        }
-        
-        public void toggle_fullscreen () {
+		public void toggle_fullscreen () {
             if (is_fullscreen) {
                 unfullscreen();
                 is_fullscreen = false;

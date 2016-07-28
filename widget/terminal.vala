@@ -403,13 +403,27 @@ namespace Widgets {
         
         public bool on_scroll(Gtk.Widget widget, Gdk.EventScroll scroll_event) {
             if ((scroll_event.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
-                if (scroll_event.delta_y < 0) {
-                    Widgets.Window window = (Widgets.Window) term.get_toplevel();
-                    window.change_opacity(0.1);
-                } else if (scroll_event.delta_y > 0) {
-                    Widgets.Window window = (Widgets.Window) term.get_toplevel();
-                    window.change_opacity(-0.1);
-                }
+				try {
+					Widgets.Window window = (Widgets.Window) term.get_toplevel();
+				
+					double old_opacity = window.config.config_file.get_double("general", "opacity");
+					double new_opacity = old_opacity;
+				
+					if (scroll_event.delta_y < 0) {
+						new_opacity = double.min(double.max(old_opacity + 0.1, 0.2), 1);
+					} else if (scroll_event.delta_y > 0) {
+						new_opacity = double.min(double.max(old_opacity - 0.1, 0.2), 1);
+					}
+			
+					if (new_opacity != old_opacity) {
+						window.config.config_file.set_double("general", "opacity", new_opacity);
+						window.config.save();
+					
+						window.config.update();
+					}
+				} catch (GLib.KeyFileError e) {
+					print(e.message);
+				}
             }
 
             return false;
@@ -643,6 +657,7 @@ namespace Widgets {
 				}
 				
 				background_color.parse(parent_window.config.config_file.get_string("theme", "color1"));
+				background_color.alpha = parent_window.config.config_file.get_double("general", "opacity");
 				foreground_color.parse(parent_window.config.config_file.get_string("theme", "color8"));
 				var palette = new Gdk.RGBA[16];
 				for (int i = 0; i < 16; i++) {
