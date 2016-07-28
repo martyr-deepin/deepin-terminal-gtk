@@ -159,54 +159,129 @@ public class Application : Object {
     }
     
     private bool on_key_press(Gtk.Widget widget, Gdk.EventKey key_event) {
-        string keyname = Keymap.get_keyevent_name(key_event);
-        string[] ctrl_num_keys = {"Ctrl + 1", "Ctrl + 2", "Ctrl + 3", "Ctrl + 4", "Ctrl + 5", "Ctrl + 6", "Ctrl + 7", "Ctrl + 8", "Ctrl + 9"};
-        
-        if (keyname == "Ctrl + T") {
-            workspace_manager.new_workspace(null, null);
-        } else if (keyname == "Ctrl + W") {
-            workspace_manager.tabbar.close_current_tab();
-        } else if (keyname == "Ctrl + Tab") {
-            workspace_manager.tabbar.select_next_tab();
-        } else if (keyname == "Ctrl + ISO_Left_Tab") {
-            workspace_manager.tabbar.select_prev_tab();
-        } else if (keyname == "Ctrl + q") {
-            workspace_manager.focus_workspace.close_focus_term();
-        } else if (keyname == "Ctrl + Q") {
-			workspace_manager.focus_workspace.close_other_terms();
-		} else if (keyname in ctrl_num_keys) {
-            workspace_manager.switch_workspace_with_index(int.parse(Keymap.get_key_name(key_event.keyval)));
-        } else if (keyname == "F11") {
-			if (!quake_mode) {
-				window.toggle_fullscreen();
-			}
-        } else if (keyname == "Ctrl + F") {
-            workspace_manager.focus_workspace.search();
-        } else if (keyname == "Ctrl + S") {
-			workspace_manager.focus_workspace.toggle_remote_panel(workspace_manager.focus_workspace);
-		} else if (keyname == "Ctrl + A") {
-			workspace_manager.focus_workspace.toggle_select_all();
-		} else if (keyname == "Ctrl + h") {
-            workspace_manager.focus_workspace.split_horizontal();
-        } else if (keyname == "Ctrl + H") {
-            workspace_manager.focus_workspace.split_vertical();
-        } else if (keyname == "Alt + h") {
-            workspace_manager.focus_workspace.focus_left_terminal();
-        } else if (keyname == "Alt + l") {
-            workspace_manager.focus_workspace.focus_right_terminal();
-        } else if (keyname == "Alt + j") {
-            workspace_manager.focus_workspace.focus_down_terminal();
-        } else if (keyname == "Alt + k") {
-            workspace_manager.focus_workspace.focus_up_terminal();
-        } else if (keyname == "Ctrl + ?") {
-			if (hotkey_preview == null) {
-				hotkey_preview = new HotkeyPreview(quake_mode);
-			}
-		} else {
+		try {
+            string keyname = Keymap.get_keyevent_name(key_event);
+            string[] ctrl_num_keys = {"Ctrl + 1", "Ctrl + 2", "Ctrl + 3", "Ctrl + 4", "Ctrl + 5", "Ctrl + 6", "Ctrl + 7", "Ctrl + 8", "Ctrl + 9"};
+		    
+			print("%s\n", keyname);
+			
+		    var search_key = window.config.config_file.get_string("keybind", "search");
+		    if (search_key != "" && keyname == search_key) {
+		    	workspace_manager.focus_workspace.search();
+		    	return true;
+		    }
+		    
+		    var new_workspace_key = window.config.config_file.get_string("keybind", "new_workspace");
+		    if (new_workspace_key != "" && keyname == new_workspace_key) {
+		    	workspace_manager.new_workspace(null, null);
+		    	return true;
+		    }
+		    
+		    var close_workspace_key = window.config.config_file.get_string("keybind", "close_workspace");
+		    if (close_workspace_key != "" && keyname == close_workspace_key) {
+		    	workspace_manager.tabbar.close_current_tab();
+		    	return true;
+		    }
+		    	
+		    var next_workspace_key = window.config.config_file.get_string("keybind", "next_workspace");
+		    if (next_workspace_key != "" && keyname == next_workspace_key) {
+		    	workspace_manager.tabbar.select_next_tab();
+		    	return true;
+		    }
+		    	
+		    var previous_workspace_key = window.config.config_file.get_string("keybind", "previous_workspace");
+		    if (previous_workspace_key != "" && keyname == previous_workspace_key) {
+		    	workspace_manager.tabbar.select_previous_tab();
+		    	return true;
+		    }
+		    
+		    var split_vertically_key = window.config.config_file.get_string("keybind", "split_vertically");
+		    if (split_vertically_key != "" && keyname == split_vertically_key) {
+		    	workspace_manager.focus_workspace.split_vertical();
+		    	return true;
+		    }
+		    
+		    var split_horizontally_key = window.config.config_file.get_string("keybind", "split_horizontally");
+		    if (split_horizontally_key != "" && keyname == split_horizontally_key) {
+		    	workspace_manager.focus_workspace.split_horizontal();
+		    	return true;
+		    }
+		    
+		    var focus_up_terminal_key = window.config.config_file.get_string("keybind", "focus_up_terminal");
+		    if (focus_up_terminal_key != "" && keyname == focus_up_terminal_key) {
+		    	workspace_manager.focus_workspace.focus_up_terminal();
+		    	return true;
+		    }
+		    
+		    var focus_down_terminal_key = window.config.config_file.get_string("keybind", "focus_down_terminal");
+		    if (focus_down_terminal_key != "" && keyname == focus_down_terminal_key) {
+		    	workspace_manager.focus_workspace.focus_down_terminal();
+		    	return true;
+		    }
+		    
+		    var focus_left_terminal_key = window.config.config_file.get_string("keybind", "focus_left_terminal");
+		    if (focus_left_terminal_key != "" && keyname == focus_left_terminal_key) {
+		    	workspace_manager.focus_workspace.focus_left_terminal();
+		    	return true;
+		    }
+		    
+		    var focus_right_terminal_key = window.config.config_file.get_string("keybind", "focus_right_terminal");
+		    if (focus_right_terminal_key != "" && keyname == focus_right_terminal_key) {
+		    	workspace_manager.focus_workspace.focus_right_terminal();
+		    	return true;
+		    }
+		    
+		    var close_focus_terminal_key = window.config.config_file.get_string("keybind", "close_focus_terminal");
+		    if (close_focus_terminal_key != "" && keyname == close_focus_terminal_key) {
+		    	workspace_manager.focus_workspace.close_focus_term();
+		    	return true;
+		    }
+		    
+		    var close_other_terminal_key = window.config.config_file.get_string("keybind", "close_other_terminal");
+		    if (close_other_terminal_key != "" && keyname == close_other_terminal_key) {
+		    	workspace_manager.focus_workspace.close_other_terms();
+		    	return true;
+		    }
+		    
+		    var toggle_fullscreen_key = window.config.config_file.get_string("keybind", "toggle_fullscreen");
+		    if (toggle_fullscreen_key != "" && keyname == toggle_fullscreen_key) {
+		    	if (!quake_mode) {
+		    		window.toggle_fullscreen();
+		    	}
+		    	return true;
+		    }
+		    
+		    var show_helper_window_key = window.config.config_file.get_string("keybind", "show_helper_window");
+		    if (show_helper_window_key != "" && keyname == show_helper_window_key) {
+		    	if (hotkey_preview == null) {
+		    		hotkey_preview = new HotkeyPreview(quake_mode);
+		    	}
+		    	return true;
+		    }
+		    
+		    var show_remote_panel_key = window.config.config_file.get_string("keybind", "show_remote_panel");
+		    if (show_remote_panel_key != "" && keyname == show_remote_panel_key) {
+		    	workspace_manager.focus_workspace.toggle_remote_panel(workspace_manager.focus_workspace);
+		    	return true;
+		    }
+		    
+		    var select_all_key = window.config.config_file.get_string("keybind", "select_all");
+		    if (select_all_key != "" && keyname == select_all_key) {
+		    	workspace_manager.focus_workspace.toggle_select_all();
+		    	return true;
+		    }
+		    
+		    if (keyname in ctrl_num_keys) {
+                workspace_manager.switch_workspace_with_index(int.parse(Keymap.get_key_name(key_event.keyval)));
+		    	return true;
+            }
+            
             return false;
-        }
-        
-        return true;
+		} catch (GLib.KeyFileError e) {
+			print(e.message);
+			
+			return false;
+		}
     }
 	
 	private bool on_key_release(Gtk.Widget widget, Gdk.EventKey key_event) {

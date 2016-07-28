@@ -13,7 +13,9 @@ namespace Keymap {
                 return "Tab";
             } else if (key_unicode == 27) {
                 return "Esc";
-            } else {
+            } else if (key_unicode == 8) {
+				return "Backspace";
+			} else {
                 return key_unicode.to_string();
             }
         }

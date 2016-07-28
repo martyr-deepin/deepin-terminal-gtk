@@ -151,7 +151,7 @@ namespace Widgets {
             switch_tab(index);
         }
         
-        public void select_prev_tab() {
+        public void select_previous_tab() {
             var index = tab_index - 1;
             if (index < 0) {
                 index = tab_list.size - 1;

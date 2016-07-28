@@ -5,7 +5,7 @@ using Gee;
 
 namespace Widgets {
 	public class RemotePanel : Gtk.VBox {
-		string config_file_path = Utils.get_config_file_path("server_config.ini");
+		string config_file_path = Utils.get_config_file_path("server-config.conf");
         
         public Workspace workspace;
         public Gtk.Widget focus_widget;

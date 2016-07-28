@@ -146,11 +146,11 @@ namespace Utils {
     }
 	
 	public string get_config_dir() {
-		return GLib.Path.build_path(Path.DIR_SEPARATOR_S, Environment.get_user_config_dir(), "deepin-terminal_new");
+		return GLib.Path.build_path(Path.DIR_SEPARATOR_S, Environment.get_user_config_dir(), "deepin", "deepin-terminal");
 	}
 	
 	public string get_config_file_path(string config_name) {
-		return GLib.Path.build_path(Path.DIR_SEPARATOR_S, Environment.get_user_config_dir(), "deepin-terminal_new", config_name);
+		return GLib.Path.build_path(Path.DIR_SEPARATOR_S, Environment.get_user_config_dir(), "deepin", "deepin-terminal", config_name);
 	}
 
     public string get_ssh_script_path() {

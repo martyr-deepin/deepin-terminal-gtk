@@ -420,31 +420,54 @@ namespace Widgets {
         }
         
         private bool on_key_press(Gtk.Widget widget, Gdk.EventKey key_event) {
-            string keyname = Keymap.get_keyevent_name(key_event);
-            
-            if (keyname == "Ctrl + C") {
-                term.copy_clipboard();
-				return true;
-            } else if (keyname == "Ctrl + V") {
-                term.paste_clipboard();
-				return true;
-            } else if (keyname == "Ctrl + =") {
-                increment_size();
-				return true;
-            } else if (keyname == "Ctrl + -") {
-                decrement_size();
-				return true;
-            } else if (keyname == "Ctrl + 0") {
-                set_default_font_size();
-				return true;
-            } else if (keyname == "Enter" || keyname == "Ctrl + m") {
-                if (enter_sz_command) {
-                    execute_download();
-                    enter_sz_command = false;
+			try {
+                string keyname = Keymap.get_keyevent_name(key_event);
+                
+			    Widgets.Window parent_window = (Widgets.Window) term.get_toplevel();
+			    
+			    var copy_key = parent_window.config.config_file.get_string("keybind", "copy_clipboard");
+			    if (copy_key != "" && keyname == copy_key) {
+			    	term.copy_clipboard();
+			    	return true;
+			    }
+			    
+			    var paste_key = parent_window.config.config_file.get_string("keybind", "paste_clipboard");
+			    if (paste_key != "" && keyname == paste_key) {
+			    	term.paste_clipboard();
+			    	return true;
+			    }
+			    
+				var zoom_in_key = parent_window.config.config_file.get_string("keybind", "zoom_in");
+			    if (zoom_in_key != "" && keyname == zoom_in_key) {
+			    	increment_size();
+			    	return true;
+			    }
+			    
+			    var zoom_out_key = parent_window.config.config_file.get_string("keybind", "zoom_out");
+			    if (zoom_out_key != "" && keyname == zoom_out_key) {
+			    	decrement_size();
+			    	return true;
+			    }
+			    
+			    var zoom_reset_key = parent_window.config.config_file.get_string("keybind", "revert_default_size");
+			    if (zoom_reset_key != "" && keyname == zoom_reset_key) {
+			    	set_default_font_size();
+			    	return true;
+			    }
+			    
+                if (keyname == "Enter" || keyname == "Ctrl + m") {
+                    if (enter_sz_command) {
+                        execute_download();
+                        enter_sz_command = false;
+                    }
                 }
-            }
-            
-            return false;
+                
+                return false;
+			} catch (GLib.KeyFileError e) {
+				print(e.message);
+				
+				return false;
+			}
         }
 		
 		public void update_font_info() {
@@ -634,9 +657,7 @@ namespace Widgets {
         public void setup_from_config() {
             try {
                 Widgets.Window parent_window = (Widgets.Window) term.get_toplevel();
-                term.set_scroll_on_keystroke(parent_window.config.config_file.get_boolean("advanced", "scroll_on_key"));
-                term.set_scroll_on_output(parent_window.config.config_file.get_boolean("advanced", "scroll_on_output"));
-                        
+                
                 var is_cursor_blink = parent_window.config.config_file.get_boolean("advanced", "cursor_blink_mode");
                 if (is_cursor_blink) {
                     term.set_cursor_blink_mode(Vte.CursorBlinkMode.ON);

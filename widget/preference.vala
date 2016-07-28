@@ -120,14 +120,13 @@ namespace Widgets {
             var terminal_key_grid = new Gtk.Grid();
             box.pack_start(terminal_key_grid, false, false, 0);
             
-            var copy_key_label = create_key_row("Copy: ", terminal_key_grid);
-            var paste_key_label = create_follow_key_row("Paste: ", copy_key_label, terminal_key_grid);
-            var scroll_up_key_label = create_follow_key_row("Scroll up: ", paste_key_label, terminal_key_grid);
-            var scroll_down_key_label = create_follow_key_row("Scroll down: ", scroll_up_key_label, terminal_key_grid);
-            var search_key_label = create_follow_key_row("Search: ", scroll_down_key_label, terminal_key_grid);
-            var zoom_in_key_label = create_follow_key_row("Zoom in: ", search_key_label, terminal_key_grid);
-            var zoom_out_key_label = create_follow_key_row("Zoom out: ", zoom_in_key_label, terminal_key_grid);
-            create_follow_key_row("Default size: ", zoom_out_key_label, terminal_key_grid);
+            var copy_key_label = create_key_row("Copy: ", terminal_key_grid, "keybind", "copy_clipboard");
+            var paste_key_label = create_follow_key_row("Paste: ", copy_key_label, terminal_key_grid, "keybind", "paste_clipboard");
+			var search_key_label = create_follow_key_row("Search: ", paste_key_label, terminal_key_grid, "keybind", "search");
+            var zoom_in_key_label = create_follow_key_row("Zoom in: ", search_key_label, terminal_key_grid, "keybind", "zoom_in");
+            var zoom_out_key_label = create_follow_key_row("Zoom out: ", zoom_in_key_label, terminal_key_grid, "keybind", "zoom_out");
+            var zoom_reset_key_label = create_follow_key_row("Default size: ", zoom_out_key_label, terminal_key_grid, "keybind", "revert_default_size");
+            create_follow_key_row("Select all", zoom_reset_key_label, terminal_key_grid, "keybind", "select_all");
             
             var workspace_key_segement = get_second_segement("Workspace");
             box.pack_start(workspace_key_segement, false, false, 0);
@@ -135,17 +134,18 @@ namespace Widgets {
             var workspace_key_grid = new Gtk.Grid();
             box.pack_start(workspace_key_grid, false, false, 0);
             
-            var new_workspace_key_label = create_key_row("New workspace: ", workspace_key_grid);
-            var close_workspace_key_label = create_follow_key_row("Close workspace: ", new_workspace_key_label, workspace_key_grid);
-            var previous_workspace_key_label = create_follow_key_row("Previous workspace: ", close_workspace_key_label, workspace_key_grid);
-            var next_workspace_key_label = create_follow_key_row("Next workspace: ", previous_workspace_key_label, workspace_key_grid);
-            var split_vertically_key_label = create_follow_key_row("Split vertically: ", next_workspace_key_label, workspace_key_grid);
-            var split_horizontally_key_label = create_follow_key_row("Split horizontally: ", split_vertically_key_label, workspace_key_grid);
-            var select_up_terminal_key_label = create_follow_key_row("Select up terminal: ", split_horizontally_key_label, workspace_key_grid);
-            var select_down_terminal_key_label = create_follow_key_row("Select down terminal: ", select_up_terminal_key_label, workspace_key_grid);
-            var select_left_terminal_key_label = create_follow_key_row("Select left terminal: ", select_down_terminal_key_label, workspace_key_grid);
-            var select_right_terminal_key_label = create_follow_key_row("Select right terminal: ", select_left_terminal_key_label, workspace_key_grid);
-            create_follow_key_row("Close terminal: ", select_right_terminal_key_label, workspace_key_grid);
+            var new_workspace_key_label = create_key_row("New workspace: ", workspace_key_grid, "keybind", "new_workspace");
+            var close_workspace_key_label = create_follow_key_row("Close workspace: ", new_workspace_key_label, workspace_key_grid, "keybind", "close_workspace");
+            var previous_workspace_key_label = create_follow_key_row("Previous workspace: ", close_workspace_key_label, workspace_key_grid, "keybind", "previous_workspace");
+            var next_workspace_key_label = create_follow_key_row("Next workspace: ", previous_workspace_key_label, workspace_key_grid, "keybind", "next_workspace");
+            var split_vertically_key_label = create_follow_key_row("Split vertically: ", next_workspace_key_label, workspace_key_grid, "keybind", "split_vertically");
+            var split_horizontally_key_label = create_follow_key_row("Split horizontally: ", split_vertically_key_label, workspace_key_grid, "keybind", "split_horizontally");
+            var select_up_terminal_key_label = create_follow_key_row("Select up terminal: ", split_horizontally_key_label, workspace_key_grid, "keybind", "focus_up_terminal");
+            var select_down_terminal_key_label = create_follow_key_row("Select down terminal: ", select_up_terminal_key_label, workspace_key_grid, "keybind", "focus_down_terminal");
+            var select_left_terminal_key_label = create_follow_key_row("Select left terminal: ", select_down_terminal_key_label, workspace_key_grid, "keybind", "focus_left_terminal");
+            var select_right_terminal_key_label = create_follow_key_row("Select right terminal: ", select_left_terminal_key_label, workspace_key_grid, "keybind", "focus_right_terminal");
+            var close_focus_terminal_key_label = create_follow_key_row("Close focus terminal: ", select_right_terminal_key_label, workspace_key_grid, "keybind", "close_focus_terminal");
+            create_follow_key_row("Close other terminal: ", close_focus_terminal_key_label, workspace_key_grid, "keybind", "close_other_terminal");
             
             var advanced_key_segement = get_second_segement("Advanced");
             box.pack_start(advanced_key_segement, false, false, 0);
@@ -153,9 +153,9 @@ namespace Widgets {
             var advanced_key_grid = new Gtk.Grid();
             box.pack_start(advanced_key_grid, false, false, 0);
             
-            var fullscreen_key_label = create_key_row("Fullscreen: ", advanced_key_grid);
-            var display_hotkey_terminal_key_label = create_follow_key_row("Display hotkey: ", fullscreen_key_label, advanced_key_grid);
-            create_follow_key_row("Remote manage: ", display_hotkey_terminal_key_label, advanced_key_grid);
+            var fullscreen_key_label = create_key_row("Fullscreen: ", advanced_key_grid, "keybind", "toggle_fullscreen");
+            var display_hotkey_terminal_key_label = create_follow_key_row("Display hotkey: ", fullscreen_key_label, advanced_key_grid, "keybind", "show_helper_window");
+            create_follow_key_row("Remote manage: ", display_hotkey_terminal_key_label, advanced_key_grid, "keybind", "show_remote_panel");
             
             var advanced_segement = get_first_segement("Advanced");
             box.pack_start(advanced_segement, false, false, 0);
@@ -241,9 +241,12 @@ namespace Widgets {
             return (Gtk.Widget) segement;
         }
         
-        public Gtk.Label create_key_row(string name, Gtk.Grid grid) {
+        public Gtk.Label create_key_row(string name, Gtk.Grid grid, string? group_name=null, string? key=null) {
             var label = new Gtk.Label(name);
             var entry = new Gtk.Entry();
+
+			monitor_check_key(entry, group_name, key);
+			
             adjust_option_widgets(label, entry);
             grid.attach(label, 0, 0, preference_name_width, grid_height);
             grid.attach_next_to(entry, label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
@@ -251,15 +254,49 @@ namespace Widgets {
             return label;
         }
         
-        public Gtk.Label create_follow_key_row(string name, Gtk.Label previous_label, Gtk.Grid grid) {
+        public Gtk.Label create_follow_key_row(string name, Gtk.Label previous_label, Gtk.Grid grid, string? group_name=null, string? key=null) {
             var label = new Gtk.Label(name);
             var entry = new Gtk.Entry();
+			
+			monitor_check_key(entry, group_name, key);
+			
             adjust_option_widgets(label, entry);
             grid.attach_next_to(label, previous_label, Gtk.PositionType.BOTTOM, preference_name_width, grid_height);
             grid.attach_next_to(entry, label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
             
             return label;
         }
+		
+		public void monitor_check_key(Gtk.Entry entry, string group_name, string key) {
+			entry.placeholder_text = "Please input keystroke";
+			entry.editable = false;
+			entry.key_press_event.connect((w, e) => {
+					string keyname = Keymap.get_keyevent_name(e);
+					
+					if (keyname == "Backspace") {
+						entry.set_text("");
+					} else if (keyname.has_prefix("F") || keyname.contains("+")) {
+						entry.set_text(keyname);
+					} else {
+						return false;
+					}
+					
+					parent_window.config.config_file.set_string(group_name, key, keyname);
+					parent_window.config.save();
+					
+					parent_window.config.update();
+					
+					return false;
+				});
+			
+			if (group_name != null && key != null) {
+				try {
+					entry.set_text(parent_window.config.config_file.get_string(group_name, key));
+				} catch (GLib.KeyFileError e) {
+					print(e.message);
+				}
+			}
+		}
         
         public Gtk.Label create_theme_row(string name, Gtk.Grid grid, ArrayList<string>? values=null, string? group_name=null, string? key=null) {
             var label = new Gtk.Label(name);

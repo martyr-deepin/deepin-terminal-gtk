@@ -3,7 +3,7 @@ using Gee;
 
 namespace Config {
     public class Config : GLib.Object {
-        public string config_file_path = Utils.get_config_file_path("config.ini");
+        public string config_file_path = Utils.get_config_file_path("config.conf");
         public KeyFile config_file;
 		
 		public HashMap<string, ArrayList<string>> theme_map;
@@ -59,29 +59,29 @@ namespace Config {
             config_file.set_string("general", "font", default_mono_font);
             config_file.set_integer("general", "font_size", default_size);
             
-            config_file.set_string("keybind", "copy_clipboard", "Ctrl + Shift + c");
-            config_file.set_string("keybind", "paste_clipboard", "Ctrl + Shift + v");
-            config_file.set_string("keybind", "scroll_page_up", "Shift + PageUp");
-            config_file.set_string("keybind", "scroll_page_down", "Shift + PageDown");
-            config_file.set_string("keybind", "search", "Ctrl + Shift + f");
+            config_file.set_string("keybind", "copy_clipboard", "Ctrl + C");
+            config_file.set_string("keybind", "paste_clipboard", "Ctrl + V");
+			config_file.set_string("keybind", "search", "Ctrl + F");
             config_file.set_string("keybind", "zoom_in", "Ctrl + =");
             config_file.set_string("keybind", "zoom_out", "Ctrl + -");
             config_file.set_string("keybind", "revert_default_size", "Ctrl + 0");
+            config_file.set_string("keybind", "select_all", "Ctrl + A");
             
-            config_file.set_string("keybind", "new_workspace", "Ctrl + Shift + t");
-            config_file.set_string("keybind", "close_workspace", "Ctrl + Shift + w");
+            config_file.set_string("keybind", "new_workspace", "Ctrl + T");
+            config_file.set_string("keybind", "close_workspace", "Ctrl + W");
             config_file.set_string("keybind", "next_workspace", "Ctrl + Tab");
-            config_file.set_string("keybind", "previous_workspace", "Ctrl + Shift + Tab");
-            config_file.set_string("keybind", "split_vertically", "Ctrl + Shift + v");
-            config_file.set_string("keybind", "split_horizontally", "Ctrl + Shift + h");
+            config_file.set_string("keybind", "previous_workspace", "Ctrl + ISO_Left_Tab");
+            config_file.set_string("keybind", "split_vertically", "Ctrl + h");
+            config_file.set_string("keybind", "split_horizontally", "Ctrl + H");
             config_file.set_string("keybind", "focus_up_terminal", "Alt + k");
             config_file.set_string("keybind", "focus_down_terminal", "Alt + j");
             config_file.set_string("keybind", "focus_left_terminal", "Alt + h");
             config_file.set_string("keybind", "focus_right_terminal", "Alt + l");
-            config_file.set_string("keybind", "close_terminal", "Ctrl + d");
+            config_file.set_string("keybind", "close_focus_terminal", "Ctrl + q");
+            config_file.set_string("keybind", "close_other_terminal", "Ctrl + Q");
             
             config_file.set_string("keybind", "toggle_fullscreen", "F11");
-            config_file.set_string("keybind", "show_helper_window", "Ctrl + Shift + /");
+            config_file.set_string("keybind", "show_helper_window", "Ctrl + ?");
             config_file.set_string("keybind", "show_remote_panel", "Ctrl + 9");
             
             config_file.set_string("advanced", "cursor_shape", "block");
