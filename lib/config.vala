@@ -10,8 +10,14 @@ namespace Config {
 		public ArrayList<string> theme_names;
 
         public signal void update();
+		
+		public string default_mono_font = "";
+		public double default_opacity = 0.8;
+		public int default_size = 11;
         
         public Config() {
+			default_mono_font = font_match("mono");
+			
             config_file = new KeyFile();
 
 			theme_names = new ArrayList<string>();
@@ -49,9 +55,9 @@ namespace Config {
         
         public void init_config() {
             config_file.set_string("general", "theme", "deepin");
-            config_file.set_double("general", "opacity", 0.8);
-            config_file.set_string("general", "font", "文泉驿等宽微米黑");
-            config_file.set_integer("general", "font_size", 11);
+            config_file.set_double("general", "opacity", default_opacity);
+            config_file.set_string("general", "font", default_mono_font);
+            config_file.set_integer("general", "font_size", default_size);
             
             config_file.set_string("keybind", "copy_clipboard", "Ctrl + Shift + c");
             config_file.set_string("keybind", "paste_clipboard", "Ctrl + Shift + v");

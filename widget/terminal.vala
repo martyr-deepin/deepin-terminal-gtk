@@ -20,7 +20,7 @@ namespace Widgets {
     
         public signal void change_dir(string dir);
         
-        public int default_size;
+		public int font_size = 0;
         public double zoom_factor = 1.0;
 
         /* Following strings are used to build RegEx for matching URIs */
@@ -58,12 +58,12 @@ namespace Widgets {
         
         private bool enter_sz_command = false;
         private string save_file_directory = "";
-        
-        public Term(bool first_term, string[]? commands, string? work_directory) {
+		
+		public Term(bool first_term, string[]? commands, string? work_directory) {
             is_first_term = first_term;
             
 			term = new Terminal();
-
+			
             term.child_exited.connect ((t)=> {
                     exit();
                 });
@@ -424,14 +424,19 @@ namespace Widgets {
             
             if (keyname == "Ctrl + C") {
                 term.copy_clipboard();
+				return true;
             } else if (keyname == "Ctrl + V") {
                 term.paste_clipboard();
+				return true;
             } else if (keyname == "Ctrl + =") {
                 increment_size();
+				return true;
             } else if (keyname == "Ctrl + -") {
                 decrement_size();
+				return true;
             } else if (keyname == "Ctrl + 0") {
                 set_default_font_size();
+				return true;
             } else if (keyname == "Enter" || keyname == "Ctrl + m") {
                 if (enter_sz_command) {
                     execute_download();
@@ -441,35 +446,40 @@ namespace Widgets {
             
             return false;
         }
+		
+		public void update_font_info() {
+			try {
+				Widgets.Window parent_window = (Widgets.Window) term.get_toplevel();
+				var font = parent_window.config.config_file.get_string("general", "font");
+				Pango.FontDescription current_font = new Pango.FontDescription();
+				current_font.set_family(font);
+				current_font.set_size((int) (font_size * zoom_factor));
+				term.set_font(current_font);
+			} catch (GLib.KeyFileError e) {
+				print(e.message);
+			}
+		}
 
         public void increment_size () {
-            Pango.FontDescription current_font = term.get_font ();
-            if (default_size == 0) default_size = current_font.get_size ();
-            if (current_font.get_size () > 60000) return;
-
-            zoom_factor += 0.1;
-            current_font.set_size ((int) Math.floor (default_size * zoom_factor));
-            term.set_font (current_font);
-        }
+			if (zoom_factor < 3) {
+				zoom_factor += 0.1;
+				
+				update_font_info();
+			}
+		}
 
         public void decrement_size () {
-            Pango.FontDescription current_font = term.get_font ();
-            if (default_size == 0) default_size = current_font.get_size ();
-            if (current_font.get_size () < 2048) return;
-
-            zoom_factor -= 0.1;
-            current_font.set_size ((int) Math.ceil (default_size * zoom_factor));
-            term.set_font (current_font);
-        }
+			if (zoom_factor > 0.8) {
+				zoom_factor -= 0.1;
+				
+				update_font_info();
+			}
+		}
 
         public void set_default_font_size () {
-            Pango.FontDescription current_font = term.get_font ();
-            if (default_size == 0) default_size = current_font.get_size ();
-
-            zoom_factor = 1.0;
-            current_font.set_size (default_size);
-            term.set_font (current_font);
-        }
+			zoom_factor = 1.0;
+			update_font_info();
+		}
 
         public void drag_received (Gdk.DragContext context, int x, int y,
                                    Gtk.SelectionData selection_data, uint target_type, uint time_) {
@@ -657,6 +667,10 @@ namespace Widgets {
 					palette[i] = new_color;
 				}
 				term.set_colors(foreground_color, background_color, palette);
+				
+				var config_size = parent_window.config.config_file.get_integer("general", "font_size");
+				font_size = config_size * Pango.SCALE;
+				update_font_info();
 				
 				queue_draw();
             } catch (GLib.KeyFileError e) {

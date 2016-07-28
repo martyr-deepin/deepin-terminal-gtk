@@ -2,6 +2,8 @@ using Gdk;
 using Gtk;
 
 extern char* project_path();
+extern string font_match(string family);
+extern string[] list_mono_fonts(out int num);
 
 namespace Utils {
     public bool move_window(Gtk.Widget widget, Gdk.EventButton event, Gtk.Window window) {

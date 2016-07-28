@@ -5,6 +5,7 @@ main: ./project_path.c \
       ./lib/keymap.vala \
       ./lib/utils.vala \
       ./lib/config.vala \
+      ./lib/font.c \
       ./widget/tabbar.vala \
       ./widget/appbar.vala \
       ./widget/titlebar.vala \
@@ -36,6 +37,7 @@ main: ./project_path.c \
     --pkg=json-glib-1.0 \
     --pkg=posix \
     --pkg=libsecret-1 \
+    --pkg=fontconfig \
     --vapidir=./vapi \
     ./project_path.c \
     ./lib/draw.vala \
@@ -43,6 +45,7 @@ main: ./project_path.c \
     ./lib/keymap.vala \
     ./lib/utils.vala \
     ./lib/config.vala \
+    ./lib/font.c \
     ./widget/tabbar.vala \
     ./widget/appbar.vala \
     ./widget/titlebar.vala \

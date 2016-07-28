@@ -100,7 +100,14 @@ namespace Widgets {
             var font_grid = new Gtk.Grid();
             box.pack_start(font_grid, false, false, 0);
             
-            var font_label = create_combox_row("Font:", font_grid);
+			int num;
+			string[] mono_fonts = (string[]) list_mono_fonts(out num);
+			ArrayList<string> font_names = new ArrayList<string>();
+			for (int i = 0; i < num; i++) {
+				font_names.add(mono_fonts[i]);
+			}
+			
+            var font_label = create_combox_row("Font:", font_grid, font_names, "general", "font");
             
             create_follow_spinbutton_row("Font size:", font_label, font_grid, "general", "font_size");
             
@@ -309,6 +316,8 @@ namespace Widgets {
                 combox.changed.connect((w) => {
                         parent_window.config.config_file.set_string(group_name, key, values[combox.get_active()]);
                         parent_window.config.save();
+						
+						parent_window.config.update();
                     });
             }
             adjust_option_widgets(label, combox);

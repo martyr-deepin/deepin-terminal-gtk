@@ -3,8 +3,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <glib.h>
 
-char** list_mono_fonts(int* num) {
+gchar** list_mono_fonts(int* num) {
     FcInit();
 	
     FcPattern *pat = FcPatternCreate();
@@ -38,20 +39,20 @@ char** list_mono_fonts(int* num) {
     }
 
 	/* Read family name of mono font. */
-	char** fonts = NULL;
+	gchar** fonts = NULL;
 	int j;
 	int count = 0;
 	for (j = 0; j < fs->nfont; j++) {
 	    if (strcmp((char*) FcPatternFormat(fs->fonts[j], (FcChar8*)"%{spacing}"), "100") == 0) {
 		    /* Realloc was realloc(fonts, 0), and you have to take space for <char *> */
-		    fonts = realloc(fonts, (count + 1) * sizeof(char*));
+		    fonts = realloc(fonts, (count + 1) * sizeof(gchar*));
 			if (fonts == NULL) {
 			    fprintf(stderr, "Alloc memory at append %d font info failed\n", count + 1);
 			    return NULL;
 			}
 
 			/* Got font name */
-			char* font = (char*) FcPatternFormat(fs->fonts[j], (FcChar8*)"%{family}");
+			gchar* font = (gchar*) FcPatternFormat(fs->fonts[j], (FcChar8*)"%{family}");
 			
 			/* Need space for store font */
 			fonts[count] = malloc(strlen(font) + 1);
@@ -88,7 +89,7 @@ char** list_mono_fonts(int* num) {
 	return fonts;
 }
 
-char* font_match(char* family) {
+gchar* font_match(gchar* family) {
      FcPattern* pat = FcNameParse((FcChar8*)family);
      if (!pat) {
          return NULL;
@@ -112,7 +113,7 @@ char* font_match(char* family) {
 
      FcFontSetAdd(fs, match);
      FcPattern* font = FcPatternFilter(fs->fonts[0], NULL);
-     FcChar8* ret = FcPatternFormat(font, (const FcChar8*)"%{family}\n");
+     FcChar8* ret = FcPatternFormat(font, (const FcChar8*)"%{family}");
 
      FcPatternDestroy(font);
      FcFontSetDestroy(fs);
@@ -122,7 +123,7 @@ char* font_match(char* family) {
          return NULL;
      }
 
-     return (char*)ret;
+     return (gchar*)ret;
 }
 
 /* void main(int argc, char *argv[]) { */
