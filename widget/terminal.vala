@@ -75,16 +75,6 @@ namespace Widgets {
 					
                     focus_term();
                 });
-            term.draw.connect((t) => {
-					try {
-						Widgets.Window window = (Widgets.Window) term.get_toplevel();
-						background_color.alpha = window.config.config_file.get_double("general", "opacity");
-					} catch (GLib.KeyFileError e) {
-						print(e.message);
-					}
-                    
-                    return false;
-                });
             term.window_title_changed.connect((t) => {
                     string working_directory;
                     string[] spawn_args = {"readlink", "/proc/%i/cwd".printf(child_pid)};
