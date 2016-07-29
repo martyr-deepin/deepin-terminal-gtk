@@ -163,9 +163,7 @@ public class Application : Object {
             string keyname = Keymap.get_keyevent_name(key_event);
             string[] ctrl_num_keys = {"Ctrl + 1", "Ctrl + 2", "Ctrl + 3", "Ctrl + 4", "Ctrl + 5", "Ctrl + 6", "Ctrl + 7", "Ctrl + 8", "Ctrl + 9"};
 		    
-			print("%s\n", keyname);
-			
-		    var search_key = window.config.config_file.get_string("keybind", "search");
+			var search_key = window.config.config_file.get_string("keybind", "search");
 		    if (search_key != "" && keyname == search_key) {
 		    	workspace_manager.focus_workspace.search();
 		    	return true;

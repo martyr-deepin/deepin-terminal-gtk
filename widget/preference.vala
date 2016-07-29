@@ -343,7 +343,10 @@ namespace Widgets {
             
             var reset_button = new Gtk.Button();
 			reset_button.button_press_event.connect((w, e) => {
-					reset_config();
+					parent_window.config.init_config();
+					parent_window.config.update();
+			
+					init_config();
 					
 					return false;
 				});
@@ -378,11 +381,8 @@ namespace Widgets {
             show_all();
         }
 		
-		public void reset_config() {
+		public void init_config() {
 			try {
-				parent_window.config.init_config();
-				parent_window.config.update();
-			
 				theme_combox.set_active(parent_window.config.theme_names.index_of(parent_window.config.config_file.get_value("general", "theme")));
 				opacity_progressbar.set_percent(parent_window.config.config_file.get_double("general", "opacity"));
 				font_combox.set_active(font_names.index_of(parent_window.config.config_file.get_value("general", "font")));
