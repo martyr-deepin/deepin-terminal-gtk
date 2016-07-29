@@ -235,17 +235,11 @@ namespace Widgets {
             password_entry.set_visibility(false);
 			pack_start(password_entry, false, false, 0);
 			
-			// FIXME: split line.
-			
 			Entry port_entry = new Entry();
 			port_entry.set_placeholder_text("Port");
 			pack_start(port_entry, false, false, 0);
 			
 			// FIXME: split line.
-			Entry path_entry = new Entry();
-			path_entry.set_placeholder_text("Path");
-			pack_start(path_entry, false, false, 0);
-            
 			Entry command_entry = new Entry();
 			command_entry.set_placeholder_text("Command");
 			pack_start(command_entry, false, false, 0);
@@ -300,7 +294,6 @@ namespace Widgets {
 						port_entry.get_text(),
 						parent_window.config.encoding_names[encode_box.get_active()],
                         command_entry.get_text(),
-                        path_entry.get_text(),
 						name_entry.get_text(),
 						groupname_entry.get_text(),
 						parent_window.config.backspace_key_erase_names[backspace_key_box.get_active()],
@@ -323,7 +316,6 @@ namespace Widgets {
 			string port,
 			string encode,
             string command,
-            string path,
 			string name,
 			string group_name,
 			string backspace,
@@ -349,8 +341,7 @@ namespace Widgets {
 			    config_file.set_string(gname, "GroupName", group_name);
 			    config_file.set_string(gname, "Theme", theme);
                 config_file.set_string(gname, "Command", command);
-                config_file.set_string(gname, "Path", path);
-			    config_file.set_string(gname, "Port", port);
+				config_file.set_string(gname, "Port", port);
 			    config_file.set_string(gname, "Encode", encode);
 			    config_file.set_string(gname, "Backspace", backspace);
 			    config_file.set_string(gname, "Del", delete);
@@ -468,12 +459,7 @@ namespace Widgets {
 			    pack_start(port_entry, false, false, 0);
 			    
 			    // FIXME: split line.
-			    Entry path_entry = new Entry();
-			    path_entry.set_text(config_file.get_value(server_info, "Path"));
-			    path_entry.set_placeholder_text("Path");
-			    pack_start(path_entry, false, false, 0);
-                
-			    Entry command_entry = new Entry();
+				Entry command_entry = new Entry();
 			    command_entry.set_text(config_file.get_value(server_info, "Command"));
 			    command_entry.set_placeholder_text("Command");
 			    pack_start(command_entry, false, false, 0);
@@ -540,8 +526,7 @@ namespace Widgets {
 			    			port_entry.get_text(),
 			    			parent_window.config.encoding_names[encode_box.get_active()],
                             command_entry.get_text(),
-                            path_entry.get_text(),
-			    			name_entry.get_text(),
+							name_entry.get_text(),
 			    			groupname_entry.get_text(),
 							parent_window.config.backspace_key_erase_names[backspace_key_box.get_active()],
 							parent_window.config.del_key_erase_names[del_key_box.get_active()]
