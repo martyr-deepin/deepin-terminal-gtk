@@ -146,6 +146,8 @@ namespace Widgets {
                                        
                 workspace.remove_remote_panel();
                 focus_widget.grab_focus();
+
+				
 				workspace_manager.new_workspace(null, null);
 				GLib.Timeout.add(10, () => {
 						try {
@@ -182,6 +184,9 @@ namespace Widgets {
 							if (term != null) {
 								string command = "expect -f " + tmpfile.get_path() + "\n";
 								term.term.feed_child(command, command.length);
+								
+								string user_command = "%s\n".printf(config_file.get_string(server_info, "Command"));
+								term.term.feed_child(user_command, user_command.length);
 							}
 						} catch (Error e) {
 							error ("%s", e.message);
@@ -269,14 +274,11 @@ namespace Widgets {
 			pack_start(password_entry, false, false, 0);
 			
 			Entry port_entry = new Entry();
+			port_entry.set_text("22");
 			port_entry.set_placeholder_text("Port");
 			pack_start(port_entry, false, false, 0);
 			
 			// FIXME: split line.
-			Entry command_entry = new Entry();
-			command_entry.set_placeholder_text("Command");
-			pack_start(command_entry, false, false, 0);
-            
 			ComboBoxText theme_box = new ComboBoxText();
 			foreach (string theme in parent_window.config.theme_names) {
 				theme_box.append(theme, theme);
@@ -305,6 +307,10 @@ namespace Widgets {
 			del_key_box.set_active(parent_window.config.del_key_erase_names.index_of("escape-sequence"));
 			pack_start(del_key_box, false, false, 0);
 			
+			Entry command_entry = new Entry();
+			command_entry.set_placeholder_text("Command");
+			pack_start(command_entry, false, false, 0);
+            
 			// FIXME: split line.
 			
 			Entry name_entry = new Entry();
@@ -492,11 +498,6 @@ namespace Widgets {
 			    pack_start(port_entry, false, false, 0);
 			    
 			    // FIXME: split line.
-				Entry command_entry = new Entry();
-			    command_entry.set_text(config_file.get_value(server_info, "Command"));
-			    command_entry.set_placeholder_text("Command");
-			    pack_start(command_entry, false, false, 0);
-                
 			    ComboBoxText theme_box = new ComboBoxText();
 			    foreach (string theme in parent_window.config.theme_names) {
 			    	theme_box.append(theme, theme);
@@ -525,6 +526,11 @@ namespace Widgets {
 			    del_key_box.set_active(parent_window.config.del_key_erase_names.index_of(config_file.get_value(server_info, "Del")));
 			    pack_start(del_key_box, false, false, 0);
 			
+				Entry command_entry = new Entry();
+			    command_entry.set_text(config_file.get_value(server_info, "Command"));
+			    command_entry.set_placeholder_text("Command");
+			    pack_start(command_entry, false, false, 0);
+                
 			    // FIXME: split line.
 			    
 			    Entry name_entry = new Entry();
