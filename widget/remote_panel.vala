@@ -8,12 +8,14 @@ namespace Widgets {
 		string config_file_path = Utils.get_config_file_path("server-config.conf");
         
         public Workspace workspace;
+		public WorkspaceManager workspace_manager;
         public Gtk.Widget focus_widget;
 		
 		public Widgets.Window parent_window;
 		
-		public RemotePanel(Workspace space) {
+		public RemotePanel(Workspace space, WorkspaceManager manager) {
             workspace = space;
+			workspace_manager = manager;
 			
             focus_widget = ((Gtk.Window) workspace.get_toplevel()).get_focus();
 			parent_window = (Widgets.Window) workspace.get_toplevel();
@@ -144,11 +146,16 @@ namespace Widgets {
                                        
                 workspace.remove_remote_panel();
                 focus_widget.grab_focus();
-                Term term = workspace.get_focus_term(workspace);
-                if (term != null) {
-                    string command = "expect -f " + tmpfile.get_path() + "\n";
-                    term.term.feed_child(command, command.length);
-                }
+				workspace_manager.new_workspace(null, null);
+				GLib.Timeout.add(10, () => {
+                        Term term = workspace_manager.focus_workspace.get_focus_term(workspace_manager.focus_workspace);
+                        if (term != null) {
+                            string command = "expect -f " + tmpfile.get_path() + "\n";
+                            term.term.feed_child(command, command.length);
+                        }
+                        
+                        return false;
+					});
             } catch (Error e) {
                 error ("%s", e.message);
             }

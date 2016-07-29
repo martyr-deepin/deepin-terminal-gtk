@@ -11,6 +11,8 @@ namespace Widgets {
 		public RemotePanel? remote_panel;
         public Term? term_before_search;
         public string search_text;
+		
+		public WorkspaceManager workspace_manager;
         
         public int PANED_HANDLE_SIZE = 1;
         
@@ -18,9 +20,10 @@ namespace Widgets {
         public signal void highlight_tab(int index);
         public signal void exit(int index);
         
-        public Workspace(int workspace_index, string[]? commands, string? work_directory) {
+        public Workspace(int workspace_index, string[]? commands, string? work_directory, WorkspaceManager manager) {
             index = workspace_index;
             term_list = new ArrayList<Term>();
+			workspace_manager = manager;
             
             Term term = new_term(true, commands, work_directory);
             
@@ -461,7 +464,7 @@ namespace Widgets {
 				Gtk.Allocation rect;
 				get_allocation(out rect);
 				
-				remote_panel = new RemotePanel(workspace);
+				remote_panel = new RemotePanel(workspace, workspace_manager);
 				remote_panel.set_size_request(200, rect.height);
                 remote_panel.set_valign(Gtk.Align.START);
                 remote_panel.set_halign(Gtk.Align.START);

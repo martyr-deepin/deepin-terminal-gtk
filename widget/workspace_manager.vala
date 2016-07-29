@@ -27,7 +27,7 @@ namespace Widgets {
             Utils.remove_all_children(this);
             
             workspace_index++;
-            Widgets.Workspace workspace = new Widgets.Workspace(workspace_index, commands, work_directory);
+            Widgets.Workspace workspace = new Widgets.Workspace(workspace_index, commands, work_directory, this);
             workspace_map.set(workspace_index, workspace);
             workspace.change_dir.connect((workspace, index, dir) => {
                     tabbar.rename_tab(index, dir);
