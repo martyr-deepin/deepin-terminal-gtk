@@ -148,11 +148,44 @@ namespace Widgets {
                 focus_widget.grab_focus();
 				workspace_manager.new_workspace(null, null);
 				GLib.Timeout.add(10, () => {
-                        Term term = workspace_manager.focus_workspace.get_focus_term(workspace_manager.focus_workspace);
-                        if (term != null) {
-                            string command = "expect -f " + tmpfile.get_path() + "\n";
-                            term.term.feed_child(command, command.length);
-                        }
+						try {
+							Term term = workspace_manager.focus_workspace.get_focus_term(workspace_manager.focus_workspace);
+							term.term.set_encoding(config_file.get_value(server_info, "Encode"));
+						
+							var backspace_binding = config_file.get_value(server_info, "Backspace");
+							if (backspace_binding == "auto") {
+								term.term.set_backspace_binding(Vte.EraseBinding.AUTO);
+							} else if (backspace_binding == "escape-sequence") {
+								term.term.set_backspace_binding(Vte.EraseBinding.DELETE_SEQUENCE);
+							} else if (backspace_binding == "ascii-del") {
+								term.term.set_backspace_binding(Vte.EraseBinding.ASCII_DELETE);
+							} else if (backspace_binding == "control-h") {
+								term.term.set_backspace_binding(Vte.EraseBinding.ASCII_BACKSPACE);
+							} else if (backspace_binding == "tty") {
+								term.term.set_backspace_binding(Vte.EraseBinding.TTY);
+							} 
+						
+						
+							var del_binding = config_file.get_value(server_info, "Del");
+							if (del_binding == "auto") {
+								term.term.set_delete_binding(Vte.EraseBinding.AUTO);
+							} else if (del_binding == "escape-sequence") {
+								term.term.set_delete_binding(Vte.EraseBinding.DELETE_SEQUENCE);
+							} else if (del_binding == "ascii-del") {
+								term.term.set_delete_binding(Vte.EraseBinding.ASCII_DELETE);
+							} else if (del_binding == "control-h") {
+								term.term.set_delete_binding(Vte.EraseBinding.ASCII_BACKSPACE);
+							} else if (del_binding == "tty") {
+								term.term.set_delete_binding(Vte.EraseBinding.TTY);
+							} 
+						
+							if (term != null) {
+								string command = "expect -f " + tmpfile.get_path() + "\n";
+								term.term.feed_child(command, command.length);
+							}
+						} catch (Error e) {
+							error ("%s", e.message);
+						}
                         
                         return false;
 					});
@@ -489,7 +522,7 @@ namespace Widgets {
 			    foreach (string name in parent_window.config.del_key_erase_names) {
 			    	del_key_box.append(name, parent_window.config.erase_map.get(name));
 			    }
-			    del_key_box.set_active(parent_window.config.del_key_erase_names.index_of(config_file.get_value(server_info, "ESC")));
+			    del_key_box.set_active(parent_window.config.del_key_erase_names.index_of(config_file.get_value(server_info, "Del")));
 			    pack_start(del_key_box, false, false, 0);
 			
 			    // FIXME: split line.
