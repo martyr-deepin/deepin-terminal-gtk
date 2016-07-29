@@ -17,6 +17,10 @@ namespace Config {
 		
 		public HashMap<string, string> encoding_map;
 		public ArrayList<string> encoding_names;
+		
+		public HashMap<string, string> erase_map;
+		public ArrayList<string> backspace_key_erase_names;
+		public ArrayList<string> del_key_erase_names;
         
         public Config() {
 			default_mono_font = font_match("mono");
@@ -31,6 +35,25 @@ namespace Config {
 			theme_map = new HashMap<string, ArrayList<string>>();
 			add_theme("deepin", {"#000000", "#073642", "#586e75", "#657b83","#839496", "#93a1a1", "#eee8d5", "#00ff00", "#b58900", "#cb4b16", "#dc322f", "#d33682", "#6c71c4", "#268bd2", "#2aa198", "#859900" });
 			add_theme("solarized", {"#002b36", "#073642", "#586e75", "#657b83","#839496", "#93a1a1", "#eee8d5", "#fdf6e3", "#b58900", "#cb4b16", "#dc322f", "#d33682", "#6c71c4", "#268bd2", "#2aa198", "#859900" });
+			
+			backspace_key_erase_names = new ArrayList<string>();
+			string[] backspace_key_erase_list = {"ascii-del", "auto", "control-h", "escape-sequence", "tty"};
+			foreach (string name in backspace_key_erase_list) {
+				backspace_key_erase_names.add(name);
+			}
+
+			del_key_erase_names = new ArrayList<string>();
+			string[] del_key_erase_list = {"escape-sequence", "ascii-del", "auto", "control-h", "tty"};
+			foreach (string name in del_key_erase_list) {
+				del_key_erase_names.add(name);
+			}
+			
+			erase_map = new HashMap<string, string>();
+			erase_map.set("ascii-del", "ascii-del");
+			erase_map.set("auto", "auto");
+			erase_map.set("control-h", "control-h");
+			erase_map.set("escape-sequence", "escape-sequence");
+			erase_map.set("tty", "tty");
 			
 			encoding_names = new ArrayList<string>();
 			string[] encoding_list = {"UTF-8", "GB18030", "GB2312", "GBK", "BIG5", "BIG5-HKSCS", "ISO-8859-1",  "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859-6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-8-I", "ISO-8859-9", "ISO-8859-10", "ISO-8859-13", "ISO-8859-14", "ISO-8859-15", "ISO-8859-16", "ARMSCII-8", "CP866", "EUC-JP", "EUC-KR", "EUC-TW", "GEORGIAN-PS", "IBM850", "IBM852", "IBM855", "IBM857", "IBM862", "IBM864", "ISO-2022-JP", "ISO-2022-KR", "ISO-IR-111", "KOI8-R", "KOI8-U", "MAC_ARABIC", "MAC_CE", "MAC_CROATIAN", "MAC-CYRILLIC", "MAC_DEVANAGARI", "MAC_FARSI", "MAC_GREEK", "MAC_GUJARATI", "MAC_GURMUKHI", "MAC_HEBREW", "MAC_ICELANDIC", "MAC_ROMAN", "MAC_ROMANIAN", "MAC_TURKISH", "MAC_UKRAINIAN", "SHIFT_JIS", "TCVN", "TIS-620", "UHC", "VISCII", "WINDOWS-1250", "WINDOWS-1251", "WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255", "WINDOWS-1256", "WINDOWS-1257", "WINDOWS-1258"};

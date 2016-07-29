@@ -230,6 +230,19 @@ namespace Widgets {
 			
 			// FIXME: split line.
 			
+			Entry port_entry = new Entry();
+			port_entry.set_placeholder_text("Port");
+			pack_start(port_entry, false, false, 0);
+			
+			// FIXME: split line.
+			Entry path_entry = new Entry();
+			path_entry.set_placeholder_text("Path");
+			pack_start(path_entry, false, false, 0);
+            
+			Entry command_entry = new Entry();
+			command_entry.set_placeholder_text("Command");
+			pack_start(command_entry, false, false, 0);
+            
 			ComboBoxText theme_box = new ComboBoxText();
 			foreach (string theme in parent_window.config.theme_names) {
 				theme_box.append(theme, theme);
@@ -237,10 +250,6 @@ namespace Widgets {
 			theme_box.set_active(parent_window.config.theme_names.index_of("deepin"));
 			pack_start(theme_box, false, false, 0);
 
-			Entry port_entry = new Entry();
-			port_entry.set_placeholder_text("Port");
-			pack_start(port_entry, false, false, 0);
-			
 			ComboBoxText encode_box = new ComboBoxText();
 			foreach (string name in parent_window.config.encoding_names) {
 				encode_box.append(name, "%s %s".printf(name, parent_window.config.encoding_map.get(name)));
@@ -248,15 +257,20 @@ namespace Widgets {
 			encode_box.set_active(parent_window.config.encoding_names.index_of("UTF-8"));
 			pack_start(encode_box, false, false, 0);
 			
-			// FIXME: split line.
-			Entry command_entry = new Entry();
-			command_entry.set_placeholder_text("Command");
-			pack_start(command_entry, false, false, 0);
-            
-			Entry path_entry = new Entry();
-			path_entry.set_placeholder_text("Path");
-			pack_start(path_entry, false, false, 0);
-            
+			ComboBoxText backspace_key_box = new ComboBoxText();
+			foreach (string name in parent_window.config.backspace_key_erase_names) {
+				backspace_key_box.append(name, parent_window.config.erase_map.get(name));
+			}
+			backspace_key_box.set_active(parent_window.config.backspace_key_erase_names.index_of("ascii-del"));
+			pack_start(backspace_key_box, false, false, 0);
+
+			ComboBoxText del_key_box = new ComboBoxText();
+			foreach (string name in parent_window.config.del_key_erase_names) {
+				del_key_box.append(name, parent_window.config.erase_map.get(name));
+			}
+			del_key_box.set_active(parent_window.config.del_key_erase_names.index_of("escape-sequence"));
+			pack_start(del_key_box, false, false, 0);
+			
 			// FIXME: split line.
 			
 			Entry name_entry = new Entry();
@@ -281,7 +295,9 @@ namespace Widgets {
                         command_entry.get_text(),
                         path_entry.get_text(),
 						name_entry.get_text(),
-						groupname_entry.get_text()
+						groupname_entry.get_text(),
+						parent_window.config.backspace_key_erase_names[backspace_key_box.get_active()],
+						parent_window.config.del_key_erase_names[del_key_box.get_active()]
 						);
 					
 					show_home_page();
@@ -302,7 +318,9 @@ namespace Widgets {
             string command,
             string path,
 			string name,
-			string group_name
+			string group_name,
+			string backspace,
+			string delete
 			) {
 			if (user != "" && server_address != "") {
 			    Utils.touch_dir(Utils.get_config_dir());
@@ -327,6 +345,8 @@ namespace Widgets {
                 config_file.set_string(gname, "Path", path);
 			    config_file.set_string(gname, "Port", port);
 			    config_file.set_string(gname, "Encode", encode);
+			    config_file.set_string(gname, "Backspace", backspace);
+			    config_file.set_string(gname, "Del", delete);
 
                 store_password(user, server_address, password);
 			    
@@ -435,6 +455,22 @@ namespace Widgets {
 			    
 			    // FIXME: split line.
 			    
+				Entry port_entry = new Entry();
+			    port_entry.set_text(config_file.get_value(server_info, "Port"));
+			    port_entry.set_placeholder_text("Port");
+			    pack_start(port_entry, false, false, 0);
+			    
+			    // FIXME: split line.
+			    Entry path_entry = new Entry();
+			    path_entry.set_text(config_file.get_value(server_info, "Path"));
+			    path_entry.set_placeholder_text("Path");
+			    pack_start(path_entry, false, false, 0);
+                
+			    Entry command_entry = new Entry();
+			    command_entry.set_text(config_file.get_value(server_info, "Command"));
+			    command_entry.set_placeholder_text("Command");
+			    pack_start(command_entry, false, false, 0);
+                
 			    ComboBoxText theme_box = new ComboBoxText();
 			    foreach (string theme in parent_window.config.theme_names) {
 			    	theme_box.append(theme, theme);
@@ -442,11 +478,6 @@ namespace Widgets {
 			    theme_box.set_active(parent_window.config.theme_names.index_of(config_file.get_value(server_info, "Theme")));
 			    pack_start(theme_box, false, false, 0);
 				
-				Entry port_entry = new Entry();
-			    port_entry.set_text(config_file.get_value(server_info, "Port"));
-			    port_entry.set_placeholder_text("Port");
-			    pack_start(port_entry, false, false, 0);
-			    
 			    ComboBoxText encode_box = new ComboBoxText();
 				foreach (string name in parent_window.config.encoding_names) {
 					encode_box.append(name, "%s %s".printf(name, parent_window.config.encoding_map.get(name)));
@@ -454,17 +485,20 @@ namespace Widgets {
 				encode_box.set_active(parent_window.config.encoding_names.index_of(config_file.get_value(server_info, "Encode")));
 			    pack_start(encode_box, false, false, 0);
 			    
-			    // FIXME: split line.
-			    Entry command_entry = new Entry();
-			    command_entry.set_text(config_file.get_value(server_info, "Command"));
-			    command_entry.set_placeholder_text("Command");
-			    pack_start(command_entry, false, false, 0);
-                
-			    Entry path_entry = new Entry();
-			    path_entry.set_text(config_file.get_value(server_info, "Path"));
-			    path_entry.set_placeholder_text("Path");
-			    pack_start(path_entry, false, false, 0);
-                
+			    ComboBoxText backspace_key_box = new ComboBoxText();
+			    foreach (string name in parent_window.config.backspace_key_erase_names) {
+			    	backspace_key_box.append(name, parent_window.config.erase_map.get(name));
+			    }
+			    backspace_key_box.set_active(parent_window.config.backspace_key_erase_names.index_of(config_file.get_value(server_info, "Backspace")));
+			    pack_start(backspace_key_box, false, false, 0);
+			    
+			    ComboBoxText del_key_box = new ComboBoxText();
+			    foreach (string name in parent_window.config.del_key_erase_names) {
+			    	del_key_box.append(name, parent_window.config.erase_map.get(name));
+			    }
+			    del_key_box.set_active(parent_window.config.del_key_erase_names.index_of(config_file.get_value(server_info, "ESC")));
+			    pack_start(del_key_box, false, false, 0);
+			
 			    // FIXME: split line.
 			    
 			    Entry name_entry = new Entry();
@@ -501,7 +535,9 @@ namespace Widgets {
                             command_entry.get_text(),
                             path_entry.get_text(),
 			    			name_entry.get_text(),
-			    			groupname_entry.get_text()
+			    			groupname_entry.get_text(),
+							parent_window.config.backspace_key_erase_names[backspace_key_box.get_active()],
+							parent_window.config.del_key_erase_names[del_key_box.get_active()]
 			    			);
 			    		
                         if (is_homepage) {
