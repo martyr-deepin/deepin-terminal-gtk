@@ -15,6 +15,7 @@ namespace Widgets {
         public int PANED_HANDLE_SIZE = 1;
         
         public signal void change_dir(int index, string dir);
+        public signal void highlight_tab(int index);
         public signal void exit(int index);
         
         public Workspace(int workspace_index, string[]? commands, string? work_directory) {
@@ -31,6 +32,9 @@ namespace Widgets {
             term.change_dir.connect((term, dir) => {
                     change_dir(index, dir);
                 });
+			term.highlight_tab.connect((term) => {
+					highlight_tab(index);
+				});
             term.exit.connect((term) => {
                     close_term(term);
                 });

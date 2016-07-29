@@ -10,6 +10,7 @@ namespace Widgets {
     public class Tabbar : Gtk.DrawingArea {
         public ArrayList<int> tab_list;
         public HashMap<int, string> tab_name_map;
+		public HashMap<int, bool> tab_highlight_map;
         public int height = 30;
         public int tab_index = 0;
         
@@ -18,6 +19,7 @@ namespace Widgets {
         public Gdk.RGBA text_hover_color;
         public Gdk.RGBA text_active_color;
         public Gdk.RGBA text_color;
+        public Gdk.RGBA text_highlight_color;
         
         private Cairo.ImageSurface close_hover_surface;
         private Cairo.ImageSurface close_normal_surface;
@@ -61,6 +63,7 @@ namespace Widgets {
 
             tab_list = new ArrayList<int>();
             tab_name_map = new HashMap<int, string>();
+			tab_highlight_map = new HashMap<int, bool>();
             
             set_size_request(-1, height);
             
@@ -86,7 +89,10 @@ namespace Widgets {
             
             text_color = Gdk.RGBA();
             text_color.parse("#aaaaaa");
-            
+
+            text_highlight_color = Gdk.RGBA();
+            text_highlight_color.parse("#ff9600");
+			
             tab_active_center_color = Gdk.RGBA();
             tab_active_center_color.parse("#44FFC4");
             tab_active_center_color.alpha = 0.25;
@@ -133,6 +139,22 @@ namespace Widgets {
             
             queue_draw();
         }
+		
+		public void highlight_tab(int tab_id) {
+			if (!tab_highlight_map.has_key(tab_id)) {
+				tab_highlight_map.set(tab_id, true);
+				
+				queue_draw();
+			}
+		}
+		
+		public void unhighlight_tab(int tab_id) {
+			if (tab_highlight_map.has_key(tab_id)) {
+				tab_highlight_map.unset(tab_id);
+				
+				queue_draw();
+			}
+		}
 
         public bool is_focus_tab(int tab_id) {
             int? index = tab_list.index_of(tab_id);
@@ -271,6 +293,9 @@ namespace Widgets {
                         close_nth_tab(counter);
                         return false;
                     }
+					
+					// Click tab to unlight tab if have.
+					unhighlight_tab(tab_id);
                 }
                 
                 draw_x += tab_width;
@@ -339,7 +364,12 @@ namespace Widgets {
                 name_scale_width = (int) (name_width * draw_scale);
                 int tab_width = (int) (get_tab_width(name_width) * draw_scale);
                 
-                Gdk.RGBA tab_text_color = text_color;
+				Gdk.RGBA tab_text_color;
+				if (tab_highlight_map.has_key(tab_id)) {
+					tab_text_color = text_highlight_color;
+				} else {
+					tab_text_color = text_color;
+				}
                 
                 if (counter == tab_index) {
                     cr.save();

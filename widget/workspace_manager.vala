@@ -32,6 +32,9 @@ namespace Widgets {
             workspace.change_dir.connect((workspace, index, dir) => {
                     tabbar.rename_tab(index, dir);
                 });
+			workspace.highlight_tab.connect((workspace, index) => {
+					tabbar.highlight_tab(index);
+				});
             workspace.exit.connect((workspace, index) => {
                     tabbar.close_current_tab();
                 });

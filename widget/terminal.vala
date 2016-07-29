@@ -19,6 +19,7 @@ namespace Widgets {
 		public bool has_select_all = false;
     
         public signal void change_dir(string dir);
+        public signal void highlight_tab();
         
 		public int font_size = 0;
         public double zoom_factor = 1.0;
@@ -103,11 +104,10 @@ namespace Widgets {
 								
 								// Send notify when out of visible area.
 								if (value + page_size < upper) {
-									complete_notify_send();
+									highlight_tab();
 								}
 							} else {
-								// Send notify when terminal tab is hidden.
-								complete_notify_send();
+								highlight_tab();
 							}
 						}
                     }
@@ -645,16 +645,7 @@ namespace Widgets {
 			has_select_all = !has_select_all;
 		}
 		
-		public void complete_notify_send() {
-			try {
-				string notify_command = "notify-send 'Deepin terminal' 'Command finished, please check.' -i %s".printf(Utils.get_image_path("deepin-terminal.svg"));
-				Process.spawn_command_line_async(notify_command);
-			} catch (Error e) {
-				print("complete_notify_send: error %s\n", e.message);
-			}
-		}
-        
-        public void setup_from_config() {
+		public void setup_from_config() {
             try {
                 Widgets.Window parent_window = (Widgets.Window) term.get_toplevel();
                 
