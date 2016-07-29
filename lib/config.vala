@@ -175,8 +175,8 @@ namespace Config {
             config_file.set_string("keybind", "close_workspace", "Ctrl + W");
             config_file.set_string("keybind", "next_workspace", "Ctrl + Tab");
             config_file.set_string("keybind", "previous_workspace", "Ctrl + ISO_Left_Tab");
-            config_file.set_string("keybind", "split_vertically", "Ctrl + h");
-            config_file.set_string("keybind", "split_horizontally", "Ctrl + H");
+            config_file.set_string("keybind", "split_vertically", "Ctrl + H");
+            config_file.set_string("keybind", "split_horizontally", "Ctrl + h");
             config_file.set_string("keybind", "focus_up_terminal", "Alt + k");
             config_file.set_string("keybind", "focus_down_terminal", "Alt + j");
             config_file.set_string("keybind", "focus_left_terminal", "Alt + h");
