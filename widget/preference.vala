@@ -53,9 +53,8 @@ namespace Widgets {
             this.add(preference_box);
             
             var slidebar = new PreferenceSlidebar();
-            slidebar.set_size_request(slidebar_width, -1);
-            preference_box.pack_start(slidebar, false, false, 0);
-            
+			preference_box.pack_start(slidebar, false, false, 0);
+			
             var scrolledwindow = new ScrolledWindow(null, null);
             scrolledwindow.set_size_request(window_width - slidebar_width, -1);
             scrolledwindow.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
@@ -63,7 +62,7 @@ namespace Widgets {
             preference_box.pack_start(scrolledwindow, false, false, 0);
             var box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             scrolledwindow.add(box);
-            
+			
             var basic_segement = get_first_segement("Basic");
             box.pack_start(basic_segement, false, false, 0);
 
@@ -217,8 +216,42 @@ namespace Widgets {
             var reset_button = new Gtk.Button();
             box.pack_start(reset_button, false, false, 0);
             
+			slidebar.click_item.connect((w, item) => {
+					if (item == "basic") {
+						scroll_to_widget(scrolledwindow, box, basic_segement);
+					} else if (item == "theme") {
+						scroll_to_widget(scrolledwindow, box, theme_segement);
+					} else if (item == "hotkey") {
+						scroll_to_widget(scrolledwindow, box, hotkey_segement);
+					} else if (item == "temrinal_key") {
+						scroll_to_widget(scrolledwindow, box, terminal_key_segement);
+					} else if (item == "workspace_key") {
+						scroll_to_widget(scrolledwindow, box, workspace_key_segement);
+					} else if (item == "advanced_key") {
+						scroll_to_widget(scrolledwindow, box, advanced_key_segement);
+					} else if (item == "advanced") {
+						scroll_to_widget(scrolledwindow, box, advanced_segement);
+					} else if (item == "cursor") {
+						scroll_to_widget(scrolledwindow, box, cursor_segement);
+					} else if (item == "scroll") {
+						scroll_to_widget(scrolledwindow, box, scroll_segement);
+					} else if (item == "window") {
+						scroll_to_widget(scrolledwindow, box, window_segement);
+					} else if (item == "about") {
+						scroll_to_widget(scrolledwindow, box, about_segement);
+					}
+				});
+            
             show_all();
         }
+		
+		public void scroll_to_widget(ScrolledWindow scrolledwindow, Gtk.Box box, Gtk.Widget widget) {
+			int widget_x, widget_y;
+			box.translate_coordinates(widget, 0, 0, out widget_x, out widget_y);
+			
+			var adjust = scrolledwindow.get_vadjustment();
+			adjust.set_value(Math.fabs(widget_y));
+		}
         
         public Gtk.Widget get_first_segement(string name) {
             var segement = new Gtk.Label(null);
