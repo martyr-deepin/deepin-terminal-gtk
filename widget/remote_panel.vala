@@ -247,7 +247,7 @@ namespace Widgets {
 			foreach (string theme in parent_window.config.theme_names) {
 				theme_box.append(theme, theme);
 			}
-			theme_box.set_active(parent_window.config.theme_names.index_of("deepin"));
+			theme_box.set_active(parent_window.config.theme_names.index_of(parent_window.config.default_remote_theme));
 			pack_start(theme_box, false, false, 0);
 
 			ComboBoxText encode_box = new ComboBoxText();

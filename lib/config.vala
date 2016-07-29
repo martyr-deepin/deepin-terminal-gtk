@@ -14,6 +14,7 @@ namespace Config {
 		public string default_mono_font = "";
 		public double default_opacity = 0.8;
 		public int default_size = 11;
+		public string default_remote_theme = "deepin-remote";
 		
 		public HashMap<string, string> encoding_map;
 		public ArrayList<string> encoding_names;
@@ -28,12 +29,13 @@ namespace Config {
             config_file = new KeyFile();
 
 			theme_names = new ArrayList<string>();
-			string[] names = {"deepin", "solarized"};
+			string[] names = {"deepin", "deepin-remote", "solarized"};
 			foreach (string name in names) {
 				theme_names.add(name);
 			}
 			theme_map = new HashMap<string, ArrayList<string>>();
 			add_theme("deepin", {"#000000", "#073642", "#586e75", "#657b83","#839496", "#93a1a1", "#eee8d5", "#00ff00", "#b58900", "#cb4b16", "#dc322f", "#d33682", "#6c71c4", "#268bd2", "#2aa198", "#859900" });
+			add_theme("deepin-remote", {"#002b36", "#073642", "#586e75", "#657b83","#839496", "#93a1a1", "#eee8d5", "#fdf6e3", "#b58900", "#cb4b16", "#dc322f", "#d33682", "#6c71c4", "#268bd2", "#2aa198", "#859900" });
 			add_theme("solarized", {"#002b36", "#073642", "#586e75", "#657b83","#839496", "#93a1a1", "#eee8d5", "#fdf6e3", "#b58900", "#cb4b16", "#dc322f", "#d33682", "#6c71c4", "#268bd2", "#2aa198", "#859900" });
 			
 			backspace_key_erase_names = new ArrayList<string>();
