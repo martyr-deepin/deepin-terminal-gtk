@@ -34,9 +34,9 @@ namespace Widgets {
         private bool draw_hover = false;
         private bool is_button_press = false;
         
-        private int add_button_width = 16;
+        private int add_button_width = 50;
         private int add_button_padding_x = 10;
-        private int add_button_padding_y = 8;
+        private int add_button_padding_y = 0;
         
         private int tab_split_width = 1;
         
