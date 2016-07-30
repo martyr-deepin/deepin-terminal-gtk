@@ -35,6 +35,13 @@ namespace Widgets {
             max_button = new ImageButton("window_max");
             unmax_button = new ImageButton("window_unmax");
             close_button = new ImageButton("window_close");
+			
+			int margin_top = (int) (height - menu_button.normal_surface.get_height()) / 2;
+			menu_button.margin_top = margin_top;
+			min_button.margin_top = margin_top;
+			max_button.margin_top = margin_top;
+			unmax_button.margin_top = margin_top;
+			close_button.margin_top = margin_top;
             
             menu_button.button_press_event.connect((b) => {
                     focus_widget = ((Gtk.Window) menu_button.get_toplevel()).get_focus();
@@ -80,7 +87,7 @@ namespace Widgets {
                 });
             
             Box box = new Box(Gtk.Orientation.HORIZONTAL, 0);
-            
+			
 			Gtk.Image logo_image = new Gtk.Image.from_file(Utils.get_image_path("title_icon.png"));
 			logo_image.margin_left = 8;
 			box.pack_start(logo_image, false, false, 0);

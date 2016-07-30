@@ -5,9 +5,9 @@ using Utils;
 
 namespace Widgets {
     public class ImageButton : Gtk.Button {
-        Cairo.ImageSurface normal_surface;
-        Cairo.ImageSurface hover_surface;
-        Cairo.ImageSurface press_surface;
+        public Cairo.ImageSurface normal_surface;
+        public Cairo.ImageSurface hover_surface;
+        public Cairo.ImageSurface press_surface;
         
         public ImageButton(string image_path) {
             normal_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_normal.png"));
