@@ -12,6 +12,8 @@ namespace Widgets {
         public ImageButton unmax_button;
         public ImageButton close_button;
         public Application application;
+		
+		public int height = 40;
         
         public Gtk.Widget focus_widget;
         
@@ -20,6 +22,8 @@ namespace Widgets {
 		public Gdk.RGBA background_color;
         
         public Appbar(Tabbar tab_bar, bool quake_mode, Application app) {
+			set_size_request(-1, height);
+			
             tabbar = tab_bar;
             visible_window = false;
             application = app;
