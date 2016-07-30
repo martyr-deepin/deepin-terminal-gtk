@@ -49,10 +49,10 @@ namespace Widgets {
                     var menu_content = new List<Menu.MenuItem>();
                     menu_content.append(new Menu.MenuItem("new_window", "New window"));
                     menu_content.append(new Menu.MenuItem("", ""));
+                    menu_content.append(new Menu.MenuItem("preference", "Preference"));
                     menu_content.append(new Menu.MenuItem("help", "Help"));
                     menu_content.append(new Menu.MenuItem("about", "About"));
                     menu_content.append(new Menu.MenuItem("exit", "Exit"));
-                    menu_content.append(new Menu.MenuItem("preference", "Preference"));
                     
                     int menu_x, menu_y;
                     menu_button.translate_coordinates(menu_button.get_toplevel(), 0, 0, out menu_x, out menu_y);
