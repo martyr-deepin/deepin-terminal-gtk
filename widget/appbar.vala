@@ -81,6 +81,10 @@ namespace Widgets {
             
             Box box = new Box(Gtk.Orientation.HORIZONTAL, 0);
             
+			Gtk.Image logo_image = new Gtk.Image.from_file(Utils.get_image_path("title_icon.png"));
+			logo_image.margin_left = 8;
+			box.pack_start(logo_image, false, false, 0);
+			
             max_toggle_box.add(max_button);
             if (!quake_mode) {
                 box.pack_start(tabbar, true, true, 0);
