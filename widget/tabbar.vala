@@ -11,7 +11,7 @@ namespace Widgets {
         public ArrayList<int> tab_list;
         public HashMap<int, string> tab_name_map;
 		public HashMap<int, bool> tab_highlight_map;
-        public int height = 30;
+        public int height = 40;
         public int tab_index = 0;
         
         public Gdk.RGBA inactive_arrow_color;
@@ -35,7 +35,7 @@ namespace Widgets {
         private bool is_button_press = false;
         
         private int add_button_width = 50;
-        private int add_button_padding_x = 10;
+        private int add_button_padding_x = 0;
         private int add_button_padding_y = 0;
         
         private int tab_split_width = 1;
@@ -43,15 +43,10 @@ namespace Widgets {
         private int text_padding_x = 20;
         private int close_button_padding_x = 18;
         private int close_button_padding_y = 0;
-        private int draw_padding_y = 8;
+        private int draw_padding_y = 13;
         private int hover_x = 0;
         
-        public Gdk.RGBA tab_active_center_color;
-        public Gdk.RGBA tab_active_edge_color;
-        public Gdk.RGBA tab_hover_center_color;
-        public Gdk.RGBA tab_hover_edge_color;
-        
-        public signal void press_tab(int tab_index, int tab_id);
+		public signal void press_tab(int tab_index, int tab_id);
         public signal void close_tab(int tab_index, int tab_id);
         public signal void new_tab();
         
@@ -85,7 +80,7 @@ namespace Widgets {
             text_hover_color.parse("#ffffff");
             
             text_active_color = Gdk.RGBA();
-            text_active_color.parse("#ffffff");
+            text_active_color.parse("#2CA7F8");
             
             text_color = Gdk.RGBA();
             text_color.parse("#aaaaaa");
@@ -93,23 +88,7 @@ namespace Widgets {
             text_highlight_color = Gdk.RGBA();
             text_highlight_color.parse("#ff9600");
 			
-            tab_active_center_color = Gdk.RGBA();
-            tab_active_center_color.parse("#44FFC4");
-            tab_active_center_color.alpha = 0.25;
-            
-            tab_active_edge_color = Gdk.RGBA();
-            tab_active_edge_color.parse("#22FF90");
-            tab_active_edge_color.alpha = 0;
-
-            tab_hover_center_color = Gdk.RGBA();
-            tab_hover_center_color.parse("#ffffff");
-            tab_hover_center_color.alpha = 0.15;
-            
-            tab_hover_edge_color = Gdk.RGBA();
-            tab_hover_edge_color.parse("#ffffff");
-            tab_hover_edge_color.alpha = 0;
-            
-            draw.connect(on_draw);
+			draw.connect(on_draw);
             configure_event.connect(on_configure);
             button_press_event.connect(on_button_press);
             button_release_event.connect(on_button_release);
@@ -375,11 +354,8 @@ namespace Widgets {
                     cr.save();
                     clip_rectangle(cr, draw_x, 0, tab_width, height);
                     
-                    double scale_x = 1;
-                    double scale_y = ((double) height * 2) / tab_width;
-                    cr.translate(0, height / 2);
-                    cr.scale(scale_x, scale_y);
-                    Draw.draw_radial(cr, draw_x, tab_width, height, tab_active_center_color, tab_active_edge_color);
+					Utils.set_context_color(cr, text_active_color);
+					Draw.draw_rectangle(cr, draw_x, height - 2, tab_width, 2);
                     
                     cr.restore();
                     
@@ -397,11 +373,8 @@ namespace Widgets {
                         cr.save();
                         clip_rectangle(cr, draw_x, 0, tab_width, height);
                     
-                        double scale_x = 1;
-                        double scale_y = ((double) height * 2) / tab_width;
-                        cr.translate(0, height / 2);
-                        cr.scale(scale_x, scale_y);
-                        Draw.draw_radial(cr, draw_x, tab_width, height, tab_hover_center_color, tab_hover_edge_color);
+						cr.set_source_rgba(1, 1, 1, 0.1);
+						Draw.draw_rectangle(cr, draw_x, 0, tab_width, height);
                     
                         cr.restore();
                         
@@ -427,8 +400,11 @@ namespace Widgets {
                 }
                 
                 // Draw tab splitter.
+				// But don't draw last splitter to avoid duplicate with 'add' button.
                 cr.set_source_rgba(1, 1, 1, 0.1);
-                Draw.draw_rectangle(cr, draw_x + tab_width - tab_split_width, 0, tab_split_width, height);
+				if (counter < tab_list.size - 1) {
+					Draw.draw_rectangle(cr, draw_x + tab_width - tab_split_width, 0, tab_split_width, height);
+				}
                 
                 // Draw tab text.
                 cr.save();
