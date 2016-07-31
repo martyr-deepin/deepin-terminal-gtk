@@ -12,7 +12,11 @@ namespace Widgets {
 		
 		private bool is_radius = false;
 		
-        public Window(bool quake_mode) {
+		public bool quake_mode = false;
+		
+        public Window(bool mode) {
+			quake_mode = mode;
+			
             config = new Config.Config();
 			
             config.update.connect((w) => {
@@ -76,14 +80,32 @@ namespace Widgets {
 					return false;
 				});
 			
-			event.connect((w, e) => {
-					print("%s\n", e.type.to_string());
+			// event.connect((w, e) => {
+			// 		print("%s\n", e.type.to_string());
 					
-					return false;
-				});
+			// 		return false;
+			// 	});
 			
 			draw.connect((w, cr) => {
 					Utils.propagate_draw(this, cr);
+					
+					// Draw window frame.
+					cr.set_source_rgba(0, 0, 0, 0.3);
+					var state = this.get_window().get_state();
+					if (! (Gdk.WindowState.MAXIMIZED in state || Gdk.WindowState.FULLSCREEN in state || Gdk.WindowState.TILED in state)) {
+						Draw.draw_rounded_rectangle(cr, 0, 0, window_width, window_height, 4.0, false);
+					} else {
+						Draw.draw_rectangle(cr, 0, 0, window_width, window_height, false);
+					}
+
+					// Draw line below at titlebar.
+					if (quake_mode) {
+						cr.set_source_rgba(0, 0, 0, 0.3);
+						Draw.draw_rectangle(cr, 0, window_height - 40, window_width, 1);
+					} else {
+						cr.set_source_rgba(0, 0, 0, 0.3);
+						Draw.draw_rectangle(cr, 0, 40, window_width, 1);
+					}
 					
 					return true;
 				});
@@ -113,31 +135,31 @@ namespace Widgets {
         }
 		
 		public void adjust_shape() {
-			Surface surface = new ImageSurface(Format.ARGB32, window_width, window_height);
-			Context cr = new Context (surface);
+			if (!quake_mode) {
+				Surface surface = new ImageSurface(Format.ARGB32, window_width, window_height);
+				Context cr = new Context (surface);
 				
-			cr.set_source_rgb(0, 0, 0);
-			cr.set_operator(Cairo.Operator.CLEAR);
-			cr.paint();
+				cr.set_source_rgb(0, 0, 0);
+				cr.set_operator(Cairo.Operator.CLEAR);
+				cr.paint();
 				
-			cr.set_operator(Cairo.Operator.OVER);
-			cr.set_source_rgb(1, 1, 1);
+				cr.set_operator(Cairo.Operator.OVER);
+				cr.set_source_rgb(1, 1, 1);
 					
-			print(is_radius.to_string() + "\n");
-			if (is_radius) {
-				Draw.draw_rounded_rectangle(cr, 0, 0, window_width, window_height, 4.0);
-				cr.fill();
+				print(is_radius.to_string() + "\n");
+				if (is_radius) {
+					Draw.draw_rounded_rectangle(cr, 0, 0, window_width, window_height, 4.0);
 						
-				var region = Gdk.cairo_region_create_from_surface(surface);
-				this.get_window().shape_combine_region(region, 0, 0);
-				print("!!!!!! \n");
-			} else {
-				Draw.draw_rectangle(cr, 0, 0, window_width, window_height);
-				cr.fill();
+					var region = Gdk.cairo_region_create_from_surface(surface);
+					this.get_window().shape_combine_region(region, 0, 0);
+					print("!!!!!! \n");
+				} else {
+					Draw.draw_rectangle(cr, 0, 0, window_width, window_height);
 						
-				var region = Gdk.cairo_region_create_from_surface(surface);
-				this.get_window().shape_combine_region(region, 0, 0);
-				print("###### \n");
+					var region = Gdk.cairo_region_create_from_surface(surface);
+					this.get_window().shape_combine_region(region, 0, 0);
+					print("###### \n");
+				}
 			}
 		}
 

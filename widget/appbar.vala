@@ -20,8 +20,12 @@ namespace Widgets {
 		public Menu.Menu menu;
 		
 		public Gdk.RGBA background_color;
+		
+		public bool quake_mode = false;
         
-        public Appbar(Tabbar tab_bar, bool quake_mode, Application app) {
+        public Appbar(Tabbar tab_bar, bool mode, Application app) {
+			quake_mode = mode;
+			
 			set_size_request(-1, height);
 			
             tabbar = tab_bar;
@@ -156,12 +160,20 @@ namespace Widgets {
 			}
             cr.set_operator (Cairo.Operator.SOURCE);
             cr.paint();
+			
+			// Draw background under titlebar.
+            cr.set_operator(Cairo.Operator.OVER);
+			cr.set_source_rgba(0, 0, 0, 0.2);
+			Draw.draw_rectangle(cr, 0, 0, rect.width, height);
+			
+			// Draw top line.
+			cr.set_operator(Cairo.Operator.OVER);
+			cr.set_source_rgba(1, 1, 1, 0.05);
+			Draw.draw_rectangle(cr, 0, 1, rect.width, 1);
+			
             cr.set_operator (Cairo.Operator.OVER);
             
-            cr.set_source_rgba(1, 1, 1, 0.1);
-            Draw.draw_rectangle(cr, 0, rect.height - 1, rect.width, 1);
-            
-            foreach(Gtk.Widget w in this.get_children()) {
+			foreach(Gtk.Widget w in this.get_children()) {
                 w.draw(cr);
             };
 

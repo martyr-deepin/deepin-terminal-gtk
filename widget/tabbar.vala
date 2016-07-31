@@ -49,8 +49,12 @@ namespace Widgets {
 		public signal void press_tab(int tab_index, int tab_id);
         public signal void close_tab(int tab_index, int tab_id);
         public signal void new_tab();
+		
+		public bool quake_mode = false;
         
-        public Tabbar() {
+        public Tabbar(bool mode) {
+			quake_mode = mode;
+			
             add_events (Gdk.EventMask.BUTTON_PRESS_MASK
                         | Gdk.EventMask.BUTTON_RELEASE_MASK
                         | Gdk.EventMask.POINTER_MOTION_MASK
@@ -333,6 +337,18 @@ namespace Widgets {
         public bool on_draw(Gtk.Widget widget, Cairo.Context cr) {
             Gtk.Allocation alloc;
             widget.get_allocation(out alloc);
+			
+			if (quake_mode) {
+				// Draw background under titlebar.
+				cr.set_operator(Cairo.Operator.OVER);
+				cr.set_source_rgba(0, 0, 0, 0.2);
+				Draw.draw_rectangle(cr, 0, 0, alloc.width, height);
+				
+				// Draw bottom line.
+				cr.set_operator(Cairo.Operator.OVER);
+				cr.set_source_rgba(1, 1, 1, 0.05);
+				Draw.draw_rectangle(cr, 0, alloc.height - 2, alloc.width, 1);
+			}				
             
             int draw_x = 0;
             int counter = 0;
@@ -354,8 +370,13 @@ namespace Widgets {
                     cr.save();
                     clip_rectangle(cr, draw_x, 0, tab_width, height);
                     
-					Utils.set_context_color(cr, text_active_color);
-					Draw.draw_rectangle(cr, draw_x, height - 2, tab_width, 2);
+					if (quake_mode) {
+						Utils.set_context_color(cr, text_active_color);
+						Draw.draw_rectangle(cr, draw_x, 0, tab_width, 2);
+					} else {
+						Utils.set_context_color(cr, text_active_color);
+						Draw.draw_rectangle(cr, draw_x, height - 2, tab_width, 2);
+					}
                     
                     cr.restore();
                     

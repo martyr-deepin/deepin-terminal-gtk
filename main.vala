@@ -75,7 +75,7 @@ public class Application : Object {
         } else {
             Utils.load_css_theme(Utils.get_root_path("style.css"));
             
-            Tabbar tabbar = new Tabbar();
+            Tabbar tabbar = new Tabbar(quake_mode);
             Appbar appbar = new Appbar(tabbar, quake_mode, this);
             workspace_manager = new WorkspaceManager(appbar.tabbar, commands, work_directory); 
             
@@ -142,8 +142,7 @@ public class Application : Object {
 				box.pack_start(workspace_manager, true, true, 0);
 			}
             
-            // window.set_titlebar(appbar);
-            window.add(box);
+			window.add(box);
             window.show_all();
         }
     }
