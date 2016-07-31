@@ -125,8 +125,8 @@ public class Application : Object {
                 window.set_position(Gtk.WindowPosition.CENTER);
             }
             
-            box.pack_start(workspace_manager, true, true, 0);
             if (quake_mode) {
+				box.pack_start(workspace_manager, true, true, 0);
                 Widgets.EventBox event_box = new Widgets.EventBox();
                 event_box.add(tabbar);
                 box.pack_start(event_box, false, false, 0);
@@ -137,9 +137,12 @@ public class Application : Object {
                 window.show.connect((t) => {
                         window.present();
                     });
-            }
+            } else {
+				box.pack_start(appbar, false, false, 0);
+				box.pack_start(workspace_manager, true, true, 0);
+			}
             
-            window.set_titlebar(appbar);
+            // window.set_titlebar(appbar);
             window.add(box);
             window.show_all();
         }
