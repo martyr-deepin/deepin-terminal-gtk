@@ -15,11 +15,6 @@ GtkWindow .frame.scrollbar.trough:backdrop {
   border:none;
 }
 
-/* GtkPaned */
-.pane-separator {
-    background-color: rgba(255, 0, 0, 0.15);
-}
-
 GtkEntry {
     color: grey;
 	background: #272822;
