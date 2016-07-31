@@ -31,7 +31,7 @@ namespace Widgets {
         }
         
         public Term new_term(bool first_term, string[]? commands, string? work_directory) {
-            Term term = new Widgets.Term(first_term, commands, work_directory);
+            Term term = new Widgets.Term(first_term, commands, work_directory, workspace_manager);
             term.change_dir.connect((term, dir) => {
                     change_dir(index, dir);
                 });

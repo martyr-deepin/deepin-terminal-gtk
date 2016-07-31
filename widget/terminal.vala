@@ -60,7 +60,10 @@ namespace Widgets {
         private bool enter_sz_command = false;
         private string save_file_directory = "";
 		
-		public Term(bool first_term, string[]? commands, string? work_directory) {
+		public WorkspaceManager workspace_manager;
+		
+		public Term(bool first_term, string[]? commands, string? work_directory, WorkspaceManager manager) {
+			workspace_manager = manager;
             is_first_term = first_term;
             
 			term = new Terminal();
@@ -200,7 +203,6 @@ namespace Widgets {
         }
 		
 		public void handle_menu_item_click(string item_id) {
-			var workspace_manager = get_workspace_manager(null);
 			if (workspace_manager.get_type().is_a(typeof(WorkspaceManager))) {
 			    switch(item_id) {
 			    	case "paste":
@@ -367,19 +369,6 @@ namespace Widgets {
             ((Gdk.Event*) event)->put();
         }
         
-        public WorkspaceManager get_workspace_manager(Container? container) {
-			if (container == null) {
-				Container window = (Container) term.get_toplevel();
-				return get_workspace_manager(window);
-			} else {
-				if (container.get_type().is_a(typeof(WorkspaceManager))) {
-					return (WorkspaceManager) container;
-				} else {
-					return get_workspace_manager((Container) container.get_children().nth_data(0));
-				}
-			}
-		}
-		
 		public void handle_menu_destroy() {
 			menu = null;
 		}
