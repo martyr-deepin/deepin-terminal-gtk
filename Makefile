@@ -5,6 +5,7 @@ main: ./project_path.c \
       ./lib/keymap.vala \
       ./lib/utils.vala \
       ./lib/config.vala \
+      ./lib/animate_timer.vala \
       ./lib/font.c \
       ./widget/tabbar.vala \
       ./widget/appbar.vala \
@@ -44,6 +45,7 @@ main: ./project_path.c \
     ./lib/keymap.vala \
     ./lib/utils.vala \
     ./lib/config.vala \
+    ./lib/animate_timer.vala \
     ./lib/font.c \
     ./widget/tabbar.vala \
     ./widget/appbar.vala \

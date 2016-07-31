@@ -1,6 +1,7 @@
 using Gtk;
 using Widgets;
 using Gee;
+using Animation;
 
 namespace Widgets {
     public class Preference : Gtk.Window {
@@ -12,6 +13,8 @@ namespace Widgets {
         public int preference_name_width = 180;
         public int preference_widget_width = 200;
         public int grid_height = 22;
+		
+		public ScrolledWindow scrolledwindow;
 		
 		public Widgets.Window parent_window;
 		
@@ -78,6 +81,10 @@ namespace Widgets {
 		
 		public Gtk.SpinButton font_size_spinbutton;
 		public Gtk.SpinButton scroll_line_spinbutton;
+		
+		AnimateTimer timer;
+		double timer_start_value;
+		double timer_end_value;
 		
 		ArrayList<string> font_names;
 		ArrayList<string> window_state_list;
@@ -185,7 +192,7 @@ namespace Widgets {
             var slidebar = new PreferenceSlidebar();
 			preference_box.pack_start(slidebar, false, false, 0);
 			
-            var scrolledwindow = new ScrolledWindow(null, null);
+            scrolledwindow = new ScrolledWindow(null, null);
             scrolledwindow.set_size_request(window_width - slidebar_width, -1);
             scrolledwindow.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             scrolledwindow.set_shadow_type(Gtk.ShadowType.NONE);
@@ -352,6 +359,8 @@ namespace Widgets {
 				});
             box.pack_start(reset_button, false, false, 0);
             
+			timer = new AnimateTimer(AnimateTimer.ease_in_out, 700);
+			timer.animate.connect(on_animate);
 			slidebar.click_item.connect((w, item) => {
 					if (item == "basic") {
 						scroll_to_widget(scrolledwindow, box, basic_segement);
@@ -430,10 +439,22 @@ namespace Widgets {
 			box.translate_coordinates(widget, 0, 0, out widget_x, out widget_y);
 			
 			var adjust = scrolledwindow.get_vadjustment();
-			adjust.set_value(Math.fabs(widget_y));
+			timer_start_value= adjust.get_value();
+			timer_end_value = Math.fabs(widget_y);
+			
+			timer.reset();
 		}
-        
-        public Gtk.Widget get_first_segement(string name) {
+		
+		public void on_animate(double progress) {
+			var adjust = scrolledwindow.get_vadjustment();
+			adjust.set_value(timer_start_value + (timer_end_value - timer_start_value) * progress);
+			
+			if (progress >= 1.0) {
+				timer.stop();
+			}
+		}
+		
+		public Gtk.Widget get_first_segement(string name) {
             var segement = new Gtk.Label(null);
             segement.set_markup("<big><b>%s</b></big>".printf(name));
             segement.set_xalign(0);
