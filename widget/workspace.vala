@@ -182,14 +182,38 @@ namespace Widgets {
             Widget parent_widget = focus_term.get_parent();
             ((Container) parent_widget).remove(focus_term);
             Paned paned = new Paned(orientation);
-            paned.draw.connect((w, cr) => {
+			paned.draw.connect((w, cr) => {
+					Utils.propagate_draw(paned, cr);
+					
                     Gtk.Allocation rect;
                     w.get_allocation(out rect);
+					
+					int pos = paned.get_position();
+					
+					Widgets.Window parent_window = (Widgets.Window) w.get_toplevel();
+					Gdk.RGBA paned_background_color = Gdk.RGBA();
+					try {
+						paned_background_color.parse(parent_window.config.config_file.get_string("theme", "color1"));
+						paned_background_color.alpha = parent_window.config.config_file.get_double("general", "opacity");
+					} catch (GLib.KeyFileError e) {
+						print(e.message);
+					}
+					
+					Utils.set_context_color(cr, paned_background_color);
+					if (orientation == Gtk.Orientation.HORIZONTAL) {
+						Draw.draw_rectangle(cr, pos, 0, 1, rect.height);
+					} else {
+						Draw.draw_rectangle(cr, 0, pos, rect.width, 1);
+					}
+					
+					cr.set_source_rgba(1, 1, 1, 0.1);
+					if (orientation == Gtk.Orientation.HORIZONTAL) {
+						Draw.draw_rectangle(cr, pos, 0, 1, rect.height);
+					} else {
+						Draw.draw_rectangle(cr, 0, pos, rect.width, 1);
+					}
                     
-                    cr.set_source_rgba(0, 0, 0, 0.8);
-                    Draw.draw_rectangle(cr, 0, 0, rect.width, rect.height);
-                    
-                    return false;
+                    return true;
                 });
             Term term = new_term(false, null, focus_term.current_dir);
             paned.pack1(focus_term, true, false);
