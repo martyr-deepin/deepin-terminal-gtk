@@ -290,13 +290,6 @@ namespace Widgets {
 			pack_start(port_entry, false, false, 0);
 			
 			// FIXME: split line.
-			ComboBoxText theme_box = new ComboBoxText();
-			foreach (string theme in parent_window.config.theme_names) {
-				theme_box.append(theme, theme);
-			}
-			theme_box.set_active(parent_window.config.theme_names.index_of(parent_window.config.default_remote_theme));
-			pack_start(theme_box, false, false, 0);
-
 			ComboBoxText encode_box = new ComboBoxText();
 			foreach (string name in parent_window.config.encoding_names) {
 				encode_box.append(name, "%s %s".printf(name, parent_window.config.encoding_map.get(name)));
@@ -344,7 +337,6 @@ namespace Widgets {
 						address_entry.get_text(),
 						user_entry.get_text(),
 						password_entry.get_text(),
-						parent_window.config.theme_names[theme_box.get_active()],
 						port_entry.get_text(),
 						parent_window.config.encoding_names[encode_box.get_active()],
                         path_entry.get_text(),
@@ -367,7 +359,6 @@ namespace Widgets {
 			string server_address,
 			string user,
 			string password,
-			string theme,
 			string port,
 			string encode,
 			string path,
@@ -395,8 +386,7 @@ namespace Widgets {
 			    string gname = "%s@%s".printf(user, server_address);
 			    config_file.set_string(gname, "Name", name);
 			    config_file.set_string(gname, "GroupName", group_name);
-			    config_file.set_string(gname, "Theme", theme);
-                config_file.set_string(gname, "Command", command);
+				config_file.set_string(gname, "Command", command);
                 config_file.set_string(gname, "Path", path);
 				config_file.set_string(gname, "Port", port);
 			    config_file.set_string(gname, "Encode", encode);
@@ -516,14 +506,7 @@ namespace Widgets {
 			    pack_start(port_entry, false, false, 0);
 			    
 			    // FIXME: split line.
-			    ComboBoxText theme_box = new ComboBoxText();
-			    foreach (string theme in parent_window.config.theme_names) {
-			    	theme_box.append(theme, theme);
-			    }
-			    theme_box.set_active(parent_window.config.theme_names.index_of(config_file.get_value(server_info, "Theme")));
-			    pack_start(theme_box, false, false, 0);
-				
-			    ComboBoxText encode_box = new ComboBoxText();
+				ComboBoxText encode_box = new ComboBoxText();
 				foreach (string name in parent_window.config.encoding_names) {
 					encode_box.append(name, "%s %s".printf(name, parent_window.config.encoding_map.get(name)));
 				}
@@ -584,8 +567,7 @@ namespace Widgets {
 			    			address_entry.get_text(),
 			    			user_entry.get_text(),
 			    			password_entry.get_text(),
-							parent_window.config.theme_names[theme_box.get_active()],
-			    			port_entry.get_text(),
+							port_entry.get_text(),
 			    			parent_window.config.encoding_names[encode_box.get_active()],
                             path_entry.get_text(),
                             command_entry.get_text(),
