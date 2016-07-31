@@ -189,28 +189,30 @@ namespace Widgets {
                     w.get_allocation(out rect);
 					
 					int pos = paned.get_position();
+					if (pos != 0 && paned.get_child1() != null && paned.get_child2() != null) {
+						cr.set_operator(Cairo.Operator.OVER);
+						Widgets.Window parent_window = (Widgets.Window) w.get_toplevel();
+						Gdk.RGBA paned_background_color = Gdk.RGBA();
+						try {
+							paned_background_color.parse(parent_window.config.config_file.get_string("theme", "color1"));
+							paned_background_color.alpha = parent_window.config.config_file.get_double("general", "opacity");
+						} catch (GLib.KeyFileError e) {
+							print(e.message);
+						}
 					
-					Widgets.Window parent_window = (Widgets.Window) w.get_toplevel();
-					Gdk.RGBA paned_background_color = Gdk.RGBA();
-					try {
-						paned_background_color.parse(parent_window.config.config_file.get_string("theme", "color1"));
-						paned_background_color.alpha = parent_window.config.config_file.get_double("general", "opacity");
-					} catch (GLib.KeyFileError e) {
-						print(e.message);
-					}
+						Utils.set_context_color(cr, paned_background_color);
+						if (orientation == Gtk.Orientation.HORIZONTAL) {
+							Draw.draw_rectangle(cr, pos, 0, 1, rect.height);
+						} else {
+							Draw.draw_rectangle(cr, 0, pos, rect.width, 1);
+						}
 					
-					Utils.set_context_color(cr, paned_background_color);
-					if (orientation == Gtk.Orientation.HORIZONTAL) {
-						Draw.draw_rectangle(cr, pos, 0, 1, rect.height);
-					} else {
-						Draw.draw_rectangle(cr, 0, pos, rect.width, 1);
-					}
-					
-					cr.set_source_rgba(1, 1, 1, 0.1);
-					if (orientation == Gtk.Orientation.HORIZONTAL) {
-						Draw.draw_rectangle(cr, pos, 0, 1, rect.height);
-					} else {
-						Draw.draw_rectangle(cr, 0, pos, rect.width, 1);
+						cr.set_source_rgba(1, 1, 1, 0.1);
+						if (orientation == Gtk.Orientation.HORIZONTAL) {
+							Draw.draw_rectangle(cr, pos, 0, 1, rect.height);
+						} else {
+							Draw.draw_rectangle(cr, 0, pos, rect.width, 1);
+						}
 					}
                     
                     return true;
