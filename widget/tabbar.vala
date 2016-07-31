@@ -20,6 +20,7 @@ namespace Widgets {
         public Gdk.RGBA text_active_color;
         public Gdk.RGBA text_color;
         public Gdk.RGBA text_highlight_color;
+		public Gdk.RGBA tab_split_color;
         
         private Cairo.ImageSurface close_hover_surface;
         private Cairo.ImageSurface close_normal_surface;
@@ -91,6 +92,12 @@ namespace Widgets {
 
             text_highlight_color = Gdk.RGBA();
             text_highlight_color.parse("#ff9600");
+			
+			tab_split_color = Gdk.RGBA();
+			tab_split_color.red = 1;
+			tab_split_color.green = 1;
+			tab_split_color.blue = 1;
+			tab_split_color.alpha = 0.05;
 			
 			draw.connect(on_draw);
             configure_event.connect(on_configure);
@@ -394,7 +401,7 @@ namespace Widgets {
                         cr.save();
                         clip_rectangle(cr, draw_x, 0, tab_width, height);
                     
-						cr.set_source_rgba(1, 1, 1, 0.1);
+						Utils.set_context_color(cr, tab_split_color);
 						Draw.draw_rectangle(cr, draw_x, 0, tab_width, height);
                     
                         cr.restore();
@@ -422,7 +429,7 @@ namespace Widgets {
                 
                 // Draw tab splitter.
 				// But don't draw last splitter to avoid duplicate with 'add' button.
-                cr.set_source_rgba(1, 1, 1, 0.1);
+				Utils.set_context_color(cr, tab_split_color);
 				if (counter < tab_list.size - 1) {
 					Draw.draw_rectangle(cr, draw_x + tab_width - tab_split_width, 0, tab_split_width, height);
 				}
