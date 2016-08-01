@@ -41,8 +41,8 @@ namespace Widgets {
         
         private int tab_split_width = 1;
         
-        private int text_padding_x = 20;
-        private int close_button_padding_x = 18;
+        private int text_padding_x = 36;
+        private int close_button_padding_x = 28;
         private int close_button_padding_y = 0;
         private int draw_padding_y = 12;
         private int hover_x = 0;
