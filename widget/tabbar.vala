@@ -44,7 +44,7 @@ namespace Widgets {
         private int text_padding_x = 20;
         private int close_button_padding_x = 18;
         private int close_button_padding_y = 0;
-        private int draw_padding_y = 13;
+        private int draw_padding_y = 12;
         private int hover_x = 0;
         
 		public signal void press_tab(int tab_index, int tab_id);
