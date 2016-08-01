@@ -359,7 +359,7 @@ namespace Widgets {
 				});
             box.pack_start(reset_button, false, false, 0);
             
-			timer = new AnimateTimer(AnimateTimer.ease_in_out, 700);
+			timer = new AnimateTimer(AnimateTimer.ease_in_out, 500);
 			timer.animate.connect(on_animate);
 			slidebar.click_item.connect((w, item) => {
 					if (item == "basic") {
