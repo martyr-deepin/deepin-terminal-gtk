@@ -102,6 +102,9 @@ namespace Widgets {
             max_toggle_box.add(max_button);
             if (!quake_mode) {
                 box.pack_start(tabbar, true, true, 0);
+				var space_box = new Gtk.EventBox();
+				space_box.set_size_request(150, -1);
+				box.pack_start(space_box, false, false, 0);
             }
             box.pack_start(menu_button, false, false, 0);
             box.pack_start(min_button, false, false, 0);
