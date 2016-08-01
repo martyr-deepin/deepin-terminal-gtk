@@ -161,6 +161,7 @@ namespace Widgets {
             set_default_geometry(window_width, window_height);
             set_resizable(false);
             set_modal(true);
+			set_type_hint(Gdk.WindowTypeHint.DIALOG);  // DIALOG hint will give right window effect
             
             Gdk.Window gdk_window = window.get_window();
             int x, y;
