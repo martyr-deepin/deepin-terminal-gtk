@@ -76,7 +76,7 @@ namespace Widgets {
 			}
 			
 			TextButton add_server_button = new TextButton("Add server");
-			add_server_button.button_press_event.connect((w, e) => {
+			add_server_button.button_release_event.connect((w, e) => {
 					show_add_server_page();
 					
 					return false;
@@ -234,7 +234,7 @@ namespace Widgets {
 			}
 
 			TextButton add_server_button = new TextButton("Back");
-			add_server_button.button_press_event.connect((w, e) => {
+			add_server_button.button_release_event.connect((w, e) => {
 					show_home_page();
 					
 					return false;
@@ -332,7 +332,7 @@ namespace Widgets {
 			TextButton add_server_button = new TextButton("Add server");
 			pack_start(add_server_button, false, false, 0);
 			
-			add_server_button.button_press_event.connect((w, e) => {
+			add_server_button.button_release_event.connect((w, e) => {
 					add_server(
 						address_entry.get_text(),
 						user_entry.get_text(),
@@ -468,7 +468,7 @@ namespace Widgets {
 				config_file.load_from_file(config_file_path, KeyFileFlags.NONE);
 
 			    TextButton add_server_button = new TextButton("Back");
-			    add_server_button.button_press_event.connect((w, e) => {
+			    add_server_button.button_release_event.connect((w, e) => {
                         if (is_homepage) {
                             show_home_page();
                         } else {
@@ -552,7 +552,7 @@ namespace Widgets {
 			    TextButton save_button = new TextButton("Save");
 			    pack_start(save_button, false, false, 0);
                 
-			    save_button.button_press_event.connect((w, e) => {
+			    save_button.button_release_event.connect((w, e) => {
                         try {
                             // First, remove old server info from config file.
                             if (config_file.has_group(server_info)) {
@@ -622,7 +622,7 @@ namespace Widgets {
 			    Utils.destroy_all_children(this);
                 
                 TextButton add_server_button = new TextButton("Back");
-                add_server_button.button_press_event.connect((w, e) => {
+                add_server_button.button_release_event.connect((w, e) => {
                         if (group_name == "") {
                             show_home_page();
                         } else {

@@ -174,7 +174,7 @@ namespace Widgets {
             var titlebar = new Titlebar();
             set_titlebar(titlebar);
             
-            titlebar.close_button.button_press_event.connect((b) => {
+            titlebar.close_button.button_release_event.connect((b) => {
                     this.destroy();
                     
                     return false;
@@ -349,7 +349,7 @@ namespace Widgets {
             box.pack_start(about_widget, false, false, 0);
             
             var reset_button = new Gtk.Button();
-			reset_button.button_press_event.connect((w, e) => {
+			reset_button.button_release_event.connect((w, e) => {
 					parent_window.config.init_config();
 					parent_window.config.update();
 			

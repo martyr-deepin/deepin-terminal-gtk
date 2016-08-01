@@ -47,7 +47,7 @@ namespace Widgets {
 			unmax_button.margin_top = margin_top;
 			close_button.margin_top = margin_top;
             
-            menu_button.button_press_event.connect((b) => {
+            menu_button.button_release_event.connect((b) => {
                     focus_widget = ((Gtk.Window) menu_button.get_toplevel()).get_focus();
                     
                     var menu_content = new List<Menu.MenuItem>();
@@ -74,17 +74,17 @@ namespace Widgets {
             
             max_toggle_box = new Box(Gtk.Orientation.HORIZONTAL, 0);
             
-            min_button.button_press_event.connect((w, e) => {
+            min_button.button_release_event.connect((w, e) => {
                     ((Gtk.Window) w.get_toplevel()).iconify();
                     
                     return false;
                 });
-            max_button.button_press_event.connect((w, e) => {
+            max_button.button_release_event.connect((w, e) => {
                     ((Gtk.Window) w.get_toplevel()).maximize();
 
                     return false;
                 });
-            unmax_button.button_press_event.connect((w, e) => {
+            unmax_button.button_release_event.connect((w, e) => {
                     ((Gtk.Window) w.get_toplevel()).unmaximize();
 
                     return false;
@@ -110,6 +110,7 @@ namespace Widgets {
             box.pack_start(min_button, false, false, 0);
             box.pack_start(max_toggle_box, false, false, 0);
             box.pack_start(close_button, false, false, 0);
+			close_button.margin_right = 5;
             
             add(box);
         }

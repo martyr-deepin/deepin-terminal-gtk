@@ -28,7 +28,7 @@ namespace Widgets {
             var titlebar = new Titlebar();
             set_titlebar(titlebar);
             
-            titlebar.close_button.button_press_event.connect((b) => {
+            titlebar.close_button.button_release_event.connect((b) => {
                     this.destroy();
                     
                     return false;

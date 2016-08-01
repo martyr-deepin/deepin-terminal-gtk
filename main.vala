@@ -100,7 +100,7 @@ public class Application : Object {
             appbar.tabbar.new_tab.connect((t) => {
                     workspace_manager.new_workspace(null, null);
                 });
-            appbar.close_button.button_press_event.connect((w, e) => {
+            appbar.close_button.button_release_event.connect((w, e) => {
                     quit();
                     
                     return false;

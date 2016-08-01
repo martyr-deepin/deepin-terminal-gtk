@@ -410,7 +410,7 @@ namespace Widgets {
                 search_text = "";
                 
                 search_box = new SearchBox();
-                search_box.close_button.button_press_event.connect((w, e) => {
+                search_box.close_button.button_release_event.connect((w, e) => {
                         remove_search_box();
                         
                         return false;

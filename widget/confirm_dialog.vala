@@ -17,7 +17,7 @@ namespace Widgets {
             set_resizable(false);
             
             Titlebar titlebar = new Titlebar();
-            titlebar.close_button.button_press_event.connect((b) => {
+            titlebar.close_button.button_release_event.connect((b) => {
                     destroy();
                     
                     return false;
@@ -39,12 +39,12 @@ namespace Widgets {
             Box button_box = new Box(Gtk.Orientation.HORIZONTAL, 0);
             TextButton cancel_button = new TextButton("Cancel");
             TextButton confirm_button = new TextButton("OK");
-            cancel_button.button_press_event.connect((b) => {
+            cancel_button.button_release_event.connect((b) => {
                     destroy();
                     
                     return false;
                 });
-            confirm_button.button_press_event.connect((b) => {
+            confirm_button.button_release_event.connect((b) => {
                     confirm();
                     destroy();
                     
