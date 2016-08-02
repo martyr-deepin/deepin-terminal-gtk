@@ -20,6 +20,7 @@ main: ./project_path.c \
       ./widget/text_button.vala \
       ./widget/event_box.vala \
       ./widget/window.vala \
+      ./widget/window_shadow.vala \
       ./widget/confirm_dialog.vala \
       ./widget/search_box.vala \
       ./widget/remote_panel.vala \
@@ -36,6 +37,8 @@ main: ./project_path.c \
     --pkg=gee-1.0 \
     --pkg=json-glib-1.0 \
     --pkg=posix \
+    --pkg=gdk-x11-3.0 \
+    --pkg=xcb \
     --pkg=libsecret-1 \
     --pkg=fontconfig \
     --vapidir=./vapi \
@@ -60,6 +63,7 @@ main: ./project_path.c \
     ./widget/text_button.vala \
     ./widget/event_box.vala \
     ./widget/window.vala \
+    ./widget/window_shadow.vala \
     ./widget/confirm_dialog.vala \
     ./widget/search_box.vala \
     ./widget/remote_panel.vala \

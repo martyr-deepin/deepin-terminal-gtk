@@ -141,10 +141,10 @@ public class Application : Object {
 				box.pack_start(appbar, false, false, 0);
 				box.pack_start(workspace_manager, true, true, 0);
 			}
-            
+			
 			window.add(box);
-            window.show_all();
-        }
+			window.show_all();
+		}
     }
     
     public void quit() {

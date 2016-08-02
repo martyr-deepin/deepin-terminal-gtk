@@ -14,6 +14,8 @@ namespace Widgets {
 		
 		public bool quake_mode = false;
 		
+		public Widgets.WindowShadow window_shadow;
+		
         public Window(bool mode) {
 			quake_mode = mode;
 			
