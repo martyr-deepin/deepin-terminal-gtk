@@ -173,12 +173,7 @@ namespace Widgets {
 			cr.set_source_rgba(0, 0, 0, 0.2);
 			Draw.draw_rectangle(cr, 0, 0, rect.width, height);
 			
-			// Draw top line.
-			cr.set_operator(Cairo.Operator.OVER);
-			cr.set_source_rgba(1, 1, 1, 0.05);
-			Draw.draw_rectangle(cr, 0, 1, rect.width, 1);
-			
-            cr.set_operator (Cairo.Operator.OVER);
+			cr.set_operator (Cairo.Operator.OVER);
             
 			foreach(Gtk.Widget w in this.get_children()) {
                 w.draw(cr);

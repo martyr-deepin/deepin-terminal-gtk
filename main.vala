@@ -142,6 +142,8 @@ public class Application : Object {
 				box.pack_start(workspace_manager, true, true, 0);
 			}
 			
+			box.margin = 2;
+			
 			window.add(box);
 			window.show_all();
 		}

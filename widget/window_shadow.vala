@@ -7,8 +7,8 @@ namespace Widgets {
 		public WindowShadow(int width, int height) {
 			set_decorated(false);
             set_app_paintable(true); // set_app_paintable is neccessary step to make window transparent.
-            // set_skip_taskbar_hint(true);
-            // set_skip_pager_hint(true);
+            set_skip_taskbar_hint(true);
+            set_skip_pager_hint(true);
 			// set_can_focus(false);
 			
             Gdk.Screen screen = Gdk.Screen.get_default();

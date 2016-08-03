@@ -89,24 +89,178 @@ namespace Widgets {
 			// 	});
 			
 			draw.connect((w, cr) => {
-					Utils.propagate_draw(this, cr);
+					try {
+						Utils.propagate_draw(this, cr);
 					
-					// Draw window frame.
-					cr.set_source_rgba(0, 0, 0, 0.3);
-					var state = this.get_window().get_state();
-					if (! (Gdk.WindowState.MAXIMIZED in state || Gdk.WindowState.FULLSCREEN in state || Gdk.WindowState.TILED in state)) {
-						Draw.draw_rounded_rectangle(cr, 0, 0, window_width, window_height, 4.0, false);
-					} else {
-						Draw.draw_rectangle(cr, 0, 0, window_width, window_height, false);
-					}
+						// Draw line *under* of window frame.
+						cr.save();
+						Gdk.RGBA under_frame_color = Gdk.RGBA();
+						under_frame_color.parse(config.config_file.get_string("theme", "color1"));
+						cr.set_source_rgba(under_frame_color.red, under_frame_color.green, under_frame_color.blue, config.config_file.get_double("general", "opacity"));
+						// Top.
+						Draw.draw_rectangle(cr, 5, 0, window_width - 10, 1);
+						// Bottom.
+						Draw.draw_rectangle(cr, 5, window_height - 1, window_width - 10, 1);
+						// Left.
+						Draw.draw_rectangle(cr, 0, 5, 1, window_height - 10);
+						// Rigt..
+						Draw.draw_rectangle(cr, window_width - 1, 5, 1, window_height - 10);
+						cr.restore();
+					
+						// Draw inner dot *under* window　frame.
+						cr.save();
+						Gdk.RGBA inner_dot_color = Gdk.RGBA();
+						inner_dot_color.parse(config.config_file.get_string("theme", "color1"));
+						cr.set_source_rgba(inner_dot_color.red, inner_dot_color.green, inner_dot_color.blue, config.config_file.get_double("general", "opacity") * 0.6);
+						// Top.
+						Draw.draw_rectangle(cr, 4, 0, 1, 1);
+						Draw.draw_rectangle(cr, window_width - 5, 0, 1, 1);
+						// Bottom.
+						Draw.draw_rectangle(cr, 4, window_height - 1, 1, 1);
+						Draw.draw_rectangle(cr, window_width - 5, window_height - 1, 1, 1);
+						// Left.
+						Draw.draw_rectangle(cr, 0, 4, 1, 1);
+						Draw.draw_rectangle(cr, 0, window_height - 5, 1, 1);
+						// Rigt.
+						Draw.draw_rectangle(cr, window_width - 1, 4, 1, 1);
+						Draw.draw_rectangle(cr, window_width - 1, window_height - 5, 1, 1);
+						cr.restore();
+					
+						// Draw middle dot *under* window　frame.
+						cr.save();
+						Gdk.RGBA middle_dot_color = Gdk.RGBA();
+						middle_dot_color.parse(config.config_file.get_string("theme", "color1"));
+						cr.set_source_rgba(middle_dot_color.red, middle_dot_color.green, middle_dot_color.blue, config.config_file.get_double("general", "opacity") * 0.4);
+						// Top.
+						Draw.draw_rectangle(cr, 3, 0, 1, 1);
+						Draw.draw_rectangle(cr, window_width - 4, 0, 1, 1);
+						// Bottom.
+						Draw.draw_rectangle(cr, 3, window_height - 1, 1, 1);
+						Draw.draw_rectangle(cr, window_width - 4, window_height - 1, 1, 1);
+						// Left.
+						Draw.draw_rectangle(cr, 0, 3, 1, 1);
+						Draw.draw_rectangle(cr, 0, window_height - 4, 1, 1);
+						// Rigt.
+						Draw.draw_rectangle(cr, window_width - 1, 3, 1, 1);
+						Draw.draw_rectangle(cr, window_width - 1, window_height - 4, 1, 1);
+						cr.restore();
 
-					// Draw line below at titlebar.
-					if (quake_mode) {
-						cr.set_source_rgba(0, 0, 0, 0.3);
-						Draw.draw_rectangle(cr, 0, window_height - 40, window_width, 1);
-					} else {
-						cr.set_source_rgba(0, 0, 0, 0.3);
-						Draw.draw_rectangle(cr, 0, 40, window_width, 1);
+						// Draw out dot *under* window　frame.
+						cr.save();
+						Gdk.RGBA out_dot_color = Gdk.RGBA();
+						out_dot_color.parse(config.config_file.get_string("theme", "color1"));
+						cr.set_source_rgba(out_dot_color.red, out_dot_color.green, out_dot_color.blue, config.config_file.get_double("general", "opacity") * 0.2);
+						// Top.
+						Draw.draw_rectangle(cr, 2, 0, 1, 1);
+						Draw.draw_rectangle(cr, window_width - 3, 0, 1, 1);
+						// Bottom.
+						Draw.draw_rectangle(cr, 2, window_height - 1, 1, 1);
+						Draw.draw_rectangle(cr, window_width - 3, window_height - 1, 1, 1);
+						// Left.
+						Draw.draw_rectangle(cr, 0, 2, 1, 1);
+						Draw.draw_rectangle(cr, 0, window_height - 3, 1, 1);
+						// Rigt.
+						Draw.draw_rectangle(cr, window_width - 1, 2, 1, 1);
+						Draw.draw_rectangle(cr, window_width - 1, window_height - 3, 1, 1);
+						cr.restore();
+
+						// Draw out_corner dot *under* window　frame.
+						cr.save();
+						Gdk.RGBA out_corner_dot_color = Gdk.RGBA();
+						out_corner_dot_color.parse(config.config_file.get_string("theme", "color1"));
+						cr.set_source_rgba(out_corner_dot_color.red, out_corner_dot_color.green, out_corner_dot_color.blue, config.config_file.get_double("general", "opacity") * 0.25);
+						// Top left.
+						Draw.draw_rectangle(cr, 1, 1, 1, 1);
+						// Top right.
+						Draw.draw_rectangle(cr, window_width - 2, 1, 1, 1);
+						// Bottm left.
+						Draw.draw_rectangle(cr, 1, window_height - 2, 1, 1);
+						// Bottom right.
+						Draw.draw_rectangle(cr, window_width - 2, window_height - 2, 1, 1);
+						cr.restore();
+					
+						// Draw out dot *under* window　frame.
+						cr.save();
+						Gdk.RGBA inner_corner_color = Gdk.RGBA();
+						inner_corner_color.parse(config.config_file.get_string("theme", "color1"));
+						cr.set_source_rgba(inner_corner_color.red, inner_corner_color.green, inner_corner_color.blue, config.config_file.get_double("general", "opacity") * 0.5);
+						// Top.
+						Draw.draw_rectangle(cr, 2, 1, 1, 1);
+						Draw.draw_rectangle(cr, window_width - 3, 1, 1, 1);
+						// Bottom.
+						Draw.draw_rectangle(cr, 2, window_height - 2, 1, 1);
+						Draw.draw_rectangle(cr, window_width - 3, window_height - 2, 1, 1);
+						// Left.
+						Draw.draw_rectangle(cr, 1, 2, 1, 1);
+						Draw.draw_rectangle(cr, 1, window_height - 3, 1, 1);
+						// Rigt.
+						Draw.draw_rectangle(cr, window_width - 2, 2, 1, 1);
+						Draw.draw_rectangle(cr, window_width - 2, window_height - 3, 1, 1);
+						cr.restore();
+					
+						// Draw window frame.
+						cr.save();
+						Gdk.RGBA frame_color = Gdk.RGBA();
+						frame_color.parse(config.config_file.get_string("theme", "color1"));
+						cr.set_source_rgba(0, 0, 0, config.config_file.get_double("general", "opacity"));
+						// Top.
+						Draw.draw_rectangle(cr, 5, 0, window_width - 10, 1);
+						// Bottom.
+						Draw.draw_rectangle(cr, 5, window_height - 1, window_width - 10, 1);
+						// Left.
+						Draw.draw_rectangle(cr, 0, 5, 1, window_height - 10);
+						// Rigt..
+						Draw.draw_rectangle(cr, window_width - 1, 5, 1, window_height - 10);
+						cr.restore();
+
+						// Draw line *innner* of window frame.
+						cr.save();
+						Gdk.RGBA inner_frame_color = Gdk.RGBA();
+						inner_frame_color.parse(config.config_file.get_string("theme", "color1"));
+						cr.set_source_rgba(inner_frame_color.red, inner_frame_color.green, inner_frame_color.blue, config.config_file.get_double("general", "opacity"));
+						// cr.set_source_rgba(1, 0, 0, 1);
+						// Top.
+						Draw.draw_rectangle(cr, 3, 1, window_width - 6, 1);
+						// Bottom.
+						Draw.draw_rectangle(cr, 3, window_height - 2, window_width - 6, 1);
+						// Left.
+						Draw.draw_rectangle(cr, 1, 3, 1, window_height - 6);
+						// Rigt..
+						Draw.draw_rectangle(cr, window_width - 2, 3, 1, window_height - 6);
+						cr.restore();
+
+						// Draw line background below of window frame.
+						Gdk.RGBA frame_background_color = Gdk.RGBA();
+						frame_background_color.parse(config.config_file.get_string("theme", "color1"));
+						cr.set_operator(Cairo.Operator.OVER);
+						cr.set_source_rgba(frame_background_color.red, frame_background_color.green, frame_background_color.blue, config.config_file.get_double("general", "opacity"));
+						Draw.draw_rectangle(cr, 3, 1, window_width - 6, 1);
+						
+						// Draw line below of window frame.
+						cr.set_operator(Cairo.Operator.OVER);
+						cr.set_source_rgba(1, 1, 1, 0.1);
+						Draw.draw_rectangle(cr, 3, 1, window_width - 6, 1);
+					
+						// Draw line around titlebar side.
+						cr.set_operator(Cairo.Operator.OVER);
+						cr.set_source_rgba(0, 0, 0, 0.2);
+						// Left.
+						Draw.draw_rectangle(cr, 1, 3, 1, 39);
+						// Right.
+						Draw.draw_rectangle(cr, window_width - 2, 3, 1, 39);
+						
+						// Draw line below at titlebar.
+						cr.save();
+						if (quake_mode) {
+							cr.set_source_rgba(0, 0, 0, 0.3);
+							Draw.draw_rectangle(cr, 1, window_height - 40, window_width - 2, 1);
+						} else {
+							cr.set_source_rgba(0, 0, 0, 0.3);
+							Draw.draw_rectangle(cr, 1, 41, window_width - 2, 1);
+						}
+						cr.restore();
+					} catch (GLib.KeyFileError e) {
+						print(e.message);
 					}
 					
 					return true;
@@ -114,6 +268,11 @@ namespace Widgets {
 			
 			configure_event.connect((w) => {
                     get_size(out window_width, out window_height);
+					
+					int x, y;
+					get_window().get_origin(out x, out y);
+					
+					print("%i %i %i %i\n", x, y, window_width, window_height);
 					
 					adjust_shape();
 					queue_draw();
@@ -150,7 +309,14 @@ namespace Widgets {
 					
 				print(is_radius.to_string() + "\n");
 				if (is_radius) {
-					Draw.draw_rounded_rectangle(cr, 0, 0, window_width, window_height, 4.0);
+					Draw.draw_rectangle(cr, 2, 0, window_width - 4, window_height);
+					Draw.draw_rectangle(cr, 0, 2, window_width, window_height - 4);
+					
+					Draw.draw_rectangle(cr, 1, 1, 1, 1);
+					Draw.draw_rectangle(cr, window_width - 2, 1, 1, 1);
+					Draw.draw_rectangle(cr, window_width - 2, window_height - 2, 1, 1);
+					Draw.draw_rectangle(cr, 1, window_height - 2, 1, 1);
+					// Draw.draw_rounded_rectangle(cr, 0, 0, window_width, window_height, 1);
 						
 					var region = Gdk.cairo_region_create_from_surface(surface);
 					this.get_window().shape_combine_region(region, 0, 0);
