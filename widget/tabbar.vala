@@ -379,10 +379,10 @@ namespace Widgets {
                     
 					if (quake_mode) {
 						Utils.set_context_color(cr, text_active_color);
-						Draw.draw_rectangle(cr, draw_x, 0, tab_width, 2);
+						Draw.draw_rectangle(cr, draw_x, 1, tab_width, 2);
 					} else {
 						Utils.set_context_color(cr, text_active_color);
-						Draw.draw_rectangle(cr, draw_x, height - 2, tab_width, 2);
+						Draw.draw_rectangle(cr, draw_x, height - 3, tab_width, 2);
 					}
                     
                     cr.restore();
