@@ -88,7 +88,10 @@ namespace Widgets {
             text_active_color.parse("#2CA7F8");
             
             text_color = Gdk.RGBA();
-            text_color.parse("#aaaaaa");
+			text_color.red = 1;
+			text_color.green = 1;
+			text_color.blue = 1;
+			text_color.alpha = 0.8;
 
             text_highlight_color = Gdk.RGBA();
             text_highlight_color.parse("#ff9600");
