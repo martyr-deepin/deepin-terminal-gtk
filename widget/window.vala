@@ -238,7 +238,7 @@ namespace Widgets {
 						
 						// Draw line below of window frame.
 						cr.set_operator(Cairo.Operator.OVER);
-						cr.set_source_rgba(1, 1, 1, 0.1);
+						cr.set_source_rgba(1, 1, 1, 0.0625 * config.config_file.get_double("general", "opacity"));
 						Draw.draw_rectangle(cr, 3, 1, window_width - 6, 1);
 					
 						// Draw line around titlebar side.
