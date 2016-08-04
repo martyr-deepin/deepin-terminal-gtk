@@ -50,8 +50,10 @@ namespace Widgets {
 		public signal void press_tab(int tab_index, int tab_id);
         public signal void close_tab(int tab_index, int tab_id);
         public signal void new_tab();
+		public signal void draw_active_tab_underline(int x, int width);
 		
 		public bool quake_mode = false;
+		
         
         public Tabbar(bool mode) {
 			quake_mode = mode;
@@ -380,14 +382,8 @@ namespace Widgets {
                     cr.save();
                     clip_rectangle(cr, draw_x, 0, tab_width, height);
                     
-					if (quake_mode) {
-						Utils.set_context_color(cr, text_active_color);
-						Draw.draw_rectangle(cr, draw_x, 1, tab_width, 2);
-					} else {
-						Utils.set_context_color(cr, text_active_color);
-						Draw.draw_rectangle(cr, draw_x, height - 3, tab_width, 2);
-					}
-                    
+					draw_active_tab_underline(draw_x, tab_width - 1);
+					
                     cr.restore();
                     
                     tab_text_color = text_active_color;

@@ -49,8 +49,8 @@ public class Application : Object {
     [CCode (array_length = false, array_null_terminated = true)]
 	private static string[]? commands = null;
     private static string title = null;
-    
-    private const GLib.OptionEntry[] options = {
+	
+	private const GLib.OptionEntry[] options = {
 		{ "version", 0, 0, OptionArg.NONE, ref version, "Print version info and exit", null },
 		{ "work-directory", 'w', 0, OptionArg.FILENAME, ref work_directory, "Set shell working directory", "DIRECTORY" },
 		{ "quake-mode", 0, 0, OptionArg.NONE, ref quake_mode, "Quake mode", null },
@@ -109,6 +109,15 @@ public class Application : Object {
             Box box = new Box(Gtk.Orientation.VERTICAL, 0);
             
             window = new Widgets.Window(quake_mode);
+			tabbar.draw_active_tab_underline.connect((t, x, width) => {
+					int offset_x, offset_y;
+					tabbar.translate_coordinates(window, 0, 0, out offset_x, out offset_y);
+					
+					window.active_tab_underline_x = x + offset_x;
+					window.active_tab_underline_width = width;
+					
+					window.queue_draw();
+				});
             
             window.destroy.connect((t) => {
                     quit();
@@ -140,9 +149,9 @@ public class Application : Object {
             } else {
 				box.pack_start(appbar, false, false, 0);
 				box.pack_start(workspace_manager, true, true, 0);
+				box.margin = 2;
 			}
 			
-			box.margin = 2;
 			
 			window.add(box);
 			window.show_all();
