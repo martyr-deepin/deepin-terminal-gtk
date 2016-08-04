@@ -238,25 +238,19 @@ namespace Widgets {
 							Draw.draw_rectangle(cr, window_width - 2, 3, 1, window_height - 6);
 							cr.restore();
 
-							// Draw line background below of window frame.
-							Gdk.RGBA frame_background_color = Gdk.RGBA();
-							frame_background_color.parse(config.config_file.get_string("theme", "color1"));
-							cr.set_operator(Cairo.Operator.OVER);
-							cr.set_source_rgba(frame_background_color.red, frame_background_color.green, frame_background_color.blue, config.config_file.get_double("general", "opacity"));
-							Draw.draw_rectangle(cr, 3, 1, window_width - 6, 1);
-						
 							// Draw line below of window frame.
 							cr.set_operator(Cairo.Operator.OVER);
 							cr.set_source_rgba(1, 1, 1, 0.0625 * config.config_file.get_double("general", "opacity"));
+							// cr.set_source_rgba(1, 0, 0, 1);
 							Draw.draw_rectangle(cr, 3, 1, window_width - 6, 1);
 					
 							// Draw line around titlebar side.
 							cr.set_operator(Cairo.Operator.OVER);
 							cr.set_source_rgba(0, 0, 0, 0.2);
 							// Left.
-							Draw.draw_rectangle(cr, 1, 3, 1, 39);
+							Draw.draw_rectangle(cr, 1, 3, 1, 38);
 							// Right.
-							Draw.draw_rectangle(cr, window_width - 2, 3, 1, 39);
+							Draw.draw_rectangle(cr, window_width - 2, 3, 1, 38);
 						}
 						
 						// Draw line below at titlebar.
