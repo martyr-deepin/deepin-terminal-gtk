@@ -401,7 +401,7 @@ namespace Widgets {
                         clip_rectangle(cr, draw_x, 0, tab_width, height);
                     
 						Utils.set_context_color(cr, tab_split_color);
-						Draw.draw_rectangle(cr, draw_x, 0, tab_width, height);
+						Draw.draw_rectangle(cr, draw_x, 0, tab_width, height - 1);
                     
                         cr.restore();
                         
