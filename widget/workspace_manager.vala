@@ -40,7 +40,7 @@ namespace Widgets {
                 });
             
             pack_workspace(workspace);
-            tabbar.add_tab("", workspace_index);
+            tabbar.add_tab("deepin", workspace_index);
             tabbar.select_tab_with_id(workspace_index);
             
             show_all();
