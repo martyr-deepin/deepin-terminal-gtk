@@ -23,6 +23,7 @@ gchar** list_mono_fonts(int* num) {
         FC_FILE,
         FC_LANG,
         FC_SPACING,
+		FC_CHARSET,
         NULL);
     if (!os) {
         fprintf(stderr, "Build FcObjectSet Failed\n");
@@ -51,6 +52,14 @@ gchar** list_mono_fonts(int* num) {
 			    return NULL;
 			}
 
+			/* Filter charset font */
+			char *charset = (char*)FcPatternFormat(fs->fonts[j], (FcChar8*)"%{charset}");
+			if (charset == NULL || strlen(charset) == 0) {
+				free(charset);
+				continue;
+			}
+			free(charset);
+		  
 			/* Got font name */
 			gchar* font = (gchar*) FcPatternFormat(fs->fonts[j], (FcChar8*)"%{family}");
 			
