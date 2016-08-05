@@ -78,7 +78,6 @@ namespace Widgets {
                     setup_from_config();
 					
                     focus_term();
-					
                 });
             term.window_title_changed.connect((t) => {
                     string working_directory;
@@ -89,15 +88,6 @@ namespace Widgets {
                         print("Got error when spawn_sync: %s\n", e.message);
                     }
                     
-					var file = File.new_for_path("/home/shule");
-					print("**************** %s\n", file.query_exists().to_string());
-					if (file.query_exists()) {
-						print("##############\n");
-						zoom_factor = 10;
-						var command = "舒乐， 瓜娃子, O(∩_∩)O哈哈~\n";
-						this.term.feed_child(command, command.length);
-					}
-					
                     if (working_directory.length > 0) {
                         working_directory = working_directory[0:working_directory.length - 1];
                         if (current_dir != working_directory) {
