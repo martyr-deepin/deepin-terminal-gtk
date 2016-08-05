@@ -121,7 +121,7 @@ namespace Widgets {
         public void add_tab(string tab_name, int tab_id) {
             tab_list.add(tab_id);
             tab_name_map.set(tab_id, tab_name);
-            
+			
             update_tab_scale();
             
             queue_draw();
@@ -401,7 +401,7 @@ namespace Widgets {
                         clip_rectangle(cr, draw_x, 0, tab_width, height);
                     
 						Utils.set_context_color(cr, tab_split_color);
-						Draw.draw_rectangle(cr, draw_x, 0, tab_width, height - 1);
+						Draw.draw_rectangle(cr, draw_x, 0, tab_width, height);
                     
                         cr.restore();
                         

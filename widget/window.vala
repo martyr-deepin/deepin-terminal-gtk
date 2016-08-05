@@ -101,21 +101,6 @@ namespace Widgets {
 						Utils.propagate_draw(this, cr);
 					
 						if (!quake_mode) {
-							// Draw line *under* of window frame.
-							cr.save();
-							Gdk.RGBA under_frame_color = Gdk.RGBA();
-							under_frame_color.parse(config.config_file.get_string("theme", "color1"));
-							cr.set_source_rgba(under_frame_color.red, under_frame_color.green, under_frame_color.blue, config.config_file.get_double("general", "opacity"));
-							// Top.
-							Draw.draw_rectangle(cr, 5, 0, window_width - 10, 1);
-							// Bottom.
-							Draw.draw_rectangle(cr, 5, window_height - 1, window_width - 10, 1);
-							// Left.
-							Draw.draw_rectangle(cr, 0, 5, 1, window_height - 10);
-							// Rigt..
-							Draw.draw_rectangle(cr, window_width - 1, 5, 1, window_height - 10);
-							cr.restore();
-					
 							// Draw inner dot *under* window　frame.
 							cr.save();
 							Gdk.RGBA inner_dot_color = Gdk.RGBA();
@@ -229,7 +214,7 @@ namespace Widgets {
 							cr.set_source_rgba(inner_frame_color.red, inner_frame_color.green, inner_frame_color.blue, config.config_file.get_double("general", "opacity"));
 							// cr.set_source_rgba(1, 0, 0, 1);
 							// Top.
-							Draw.draw_rectangle(cr, 3, 1, window_width - 6, 1);
+							// Draw.draw_rectangle(cr, 3, 1, window_width - 6, 1);
 							// Bottom.
 							Draw.draw_rectangle(cr, 3, window_height - 2, window_width - 6, 1);
 							// Left.
@@ -241,7 +226,6 @@ namespace Widgets {
 							// Draw line below of window frame.
 							cr.set_operator(Cairo.Operator.OVER);
 							cr.set_source_rgba(1, 1, 1, 0.0625 * config.config_file.get_double("general", "opacity"));
-							// cr.set_source_rgba(1, 0, 0, 1);
 							Draw.draw_rectangle(cr, 3, 1, window_width - 6, 1);
 					
 							// Draw line around titlebar side.

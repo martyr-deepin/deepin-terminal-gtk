@@ -158,22 +158,21 @@ namespace Widgets {
             
             Widgets.Window window = (Widgets.Window) this.get_toplevel();
 
+			cr.save();
 			try {
 				background_color.parse(window.config.config_file.get_string("theme", "color1"));
 				cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, window.config.config_file.get_double("general", "opacity"));
+				Draw.draw_rectangle(cr, 1, 0, rect.width - 2, 1);
+				Draw.draw_rectangle(cr, 0, 1, rect.width, height - 1);
+				
+				cr.set_source_rgba(0, 0, 0, 0.2);				
+				Draw.draw_rectangle(cr, 1, 0, rect.width - 2, 1);
+				Draw.draw_rectangle(cr, 0, 1, rect.width, height - 1);
 			} catch (GLib.KeyFileError e) {
 				print(e.message);
 			}
-            cr.set_operator (Cairo.Operator.SOURCE);
-            cr.paint();
+			cr.restore();
 			
-			// Draw background under titlebar.
-            cr.set_operator(Cairo.Operator.OVER);
-			cr.set_source_rgba(0, 0, 0, 0.2);
-			Draw.draw_rectangle(cr, 0, 0, rect.width, height);
-			
-			cr.set_operator (Cairo.Operator.OVER);
-            
 			foreach(Gtk.Widget w in this.get_children()) {
                 w.draw(cr);
             };
