@@ -362,8 +362,28 @@ namespace Widgets {
 				Draw.draw_rectangle(cr, 0, alloc.height - 2, alloc.width, 1);
 			}				
             
+			// Draw tab splitter.
             int draw_x = 0;
             int counter = 0;
+            foreach (int tab_id in tab_list) {
+                var layout = create_pango_layout(tab_name_map.get(tab_id));
+                int name_width, name_height, name_scale_width;
+                layout.get_pixel_size(out name_width, out name_height);
+                name_scale_width = (int) (name_width * draw_scale);
+                int tab_width = (int) (get_tab_width(name_width) * draw_scale);
+                
+				Utils.set_context_color(cr, tab_split_color);
+				if (counter < tab_list.size) {
+					Draw.draw_rectangle(cr, draw_x, 0, tab_split_width, height);
+				}
+                
+                draw_x += tab_width;
+                
+                counter++;
+            }
+            
+            draw_x = 0;
+            counter = 0;
             foreach (int tab_id in tab_list) {
                 var layout = create_pango_layout(tab_name_map.get(tab_id));
                 int name_width, name_height, name_scale_width;
@@ -378,11 +398,11 @@ namespace Widgets {
 					tab_text_color = text_color;
 				}
                 
-                if (counter == tab_index) {
+				if (counter == tab_index) {
                     cr.save();
                     clip_rectangle(cr, draw_x, 0, tab_width, height);
                     
-					draw_active_tab_underline(draw_x, tab_width - 1);
+					draw_active_tab_underline(draw_x, tab_width + 1);
 					
                     cr.restore();
                     
@@ -398,10 +418,10 @@ namespace Widgets {
                     
                     if (is_hover) {
                         cr.save();
-                        clip_rectangle(cr, draw_x, 0, tab_width, height);
+                        clip_rectangle(cr, draw_x, 0, tab_width + 1, height);
                     
 						Utils.set_context_color(cr, tab_split_color);
-						Draw.draw_rectangle(cr, draw_x, 0, tab_width, height);
+						Draw.draw_rectangle(cr, draw_x, 0, tab_width + 1, height);
                     
                         cr.restore();
                         
@@ -425,13 +445,6 @@ namespace Widgets {
                         }
                     }
                 }
-                
-                // Draw tab splitter.
-				// But don't draw last splitter to avoid duplicate with 'add' button.
-				Utils.set_context_color(cr, tab_split_color);
-				if (counter < tab_list.size - 1) {
-					Draw.draw_rectangle(cr, draw_x + tab_width - tab_split_width, 0, tab_split_width, height);
-				}
                 
                 // Draw tab text.
                 cr.save();
