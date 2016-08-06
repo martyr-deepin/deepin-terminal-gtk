@@ -268,12 +268,6 @@ namespace Widgets {
 			configure_event.connect((w) => {
                     get_size(out window_width, out window_height);
 					
-					int x, y;
-					get_window().get_origin(out x, out y);
-					
-					print("%i %i %i %i\n", x, y, window_width, window_height);
-					
-					adjust_shape();
 					queue_draw();
 					
 					return false;
@@ -294,42 +288,6 @@ namespace Widgets {
             }
         }
 		
-		public void adjust_shape() {
-			if (!quake_mode) {
-				Surface surface = new ImageSurface(Format.ARGB32, window_width, window_height);
-				Context cr = new Context (surface);
-				
-				cr.set_source_rgb(0, 0, 0);
-				cr.set_operator(Cairo.Operator.CLEAR);
-				cr.paint();
-				
-				cr.set_operator(Cairo.Operator.OVER);
-				cr.set_source_rgb(1, 1, 1);
-					
-				print(is_radius.to_string() + "\n");
-				if (is_radius) {
-					Draw.draw_rectangle(cr, 2, 0, window_width - 4, window_height);
-					Draw.draw_rectangle(cr, 0, 2, window_width, window_height - 4);
-					
-					Draw.draw_rectangle(cr, 1, 1, 1, 1);
-					Draw.draw_rectangle(cr, window_width - 2, 1, 1, 1);
-					Draw.draw_rectangle(cr, window_width - 2, window_height - 2, 1, 1);
-					Draw.draw_rectangle(cr, 1, window_height - 2, 1, 1);
-					// Draw.draw_rounded_rectangle(cr, 0, 0, window_width, window_height, 1);
-						
-					var region = Gdk.cairo_region_create_from_surface(surface);
-					this.get_window().shape_combine_region(region, 0, 0);
-					print("!!!!!! \n");
-				} else {
-					Draw.draw_rectangle(cr, 0, 0, window_width, window_height);
-						
-					var region = Gdk.cairo_region_create_from_surface(surface);
-					this.get_window().shape_combine_region(region, 0, 0);
-					print("###### \n");
-				}
-			}
-		}
-
 		public void toggle_fullscreen () {
             if (is_fullscreen) {
                 unfullscreen();
