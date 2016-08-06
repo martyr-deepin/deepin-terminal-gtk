@@ -288,10 +288,7 @@ namespace Widgets {
                         close_nth_tab(counter);
                         return false;
                     }
-					
-					// Click tab to unlight tab if have.
-					unhighlight_tab(tab_id);
-                }
+				}
                 
                 draw_x += tab_width;
                 

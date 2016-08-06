@@ -80,7 +80,8 @@ public class Application : Object {
             workspace_manager = new WorkspaceManager(appbar.tabbar, commands, work_directory); 
             
             appbar.tabbar.press_tab.connect((t, tab_index, tab_id) => {
-                    workspace_manager.switch_workspace(tab_id);
+					appbar.tabbar.unhighlight_tab(tab_id);
+					workspace_manager.switch_workspace(tab_id);
                 });
             appbar.tabbar.close_tab.connect((t, tab_index, tab_id) => {
                     Workspace focus_workspace = workspace_manager.workspace_map.get(tab_id);
