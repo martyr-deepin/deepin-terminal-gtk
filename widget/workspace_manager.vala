@@ -22,6 +22,11 @@ namespace Widgets {
             focus_workspace = workspace;
             pack_start(workspace, true, true, 0);
         }
+		
+		public void new_workspace_with_current_directory() {
+			Term focus_term = focus_workspace.get_focus_term(this);
+			new_workspace(null, focus_term.current_dir);
+		}
         
         public void new_workspace(string[]? commands, string? work_directory) {
             Utils.remove_all_children(this);

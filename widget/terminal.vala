@@ -224,7 +224,7 @@ namespace Widgets {
 						workspace_manager.focus_workspace.close_focus_term();
 						break;
 					case "new_workspace":
-						workspace_manager.new_workspace(null, null);
+						workspace_manager.new_workspace_with_current_directory();
 						break;
 					case "remote_manage":
 						workspace_manager.focus_workspace.show_remote_panel(workspace_manager.focus_workspace);

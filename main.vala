@@ -98,7 +98,7 @@ public class Application : Object {
                     }
                 });
             appbar.tabbar.new_tab.connect((t) => {
-                    workspace_manager.new_workspace(null, null);
+                    workspace_manager.new_workspace_with_current_directory();
                 });
             appbar.close_button.button_release_event.connect((w, e) => {
                     quit();
@@ -187,8 +187,8 @@ public class Application : Object {
 		    
 		    var new_workspace_key = window.config.config_file.get_string("keybind", "new_workspace");
 		    if (new_workspace_key != "" && keyname == new_workspace_key) {
-		    	workspace_manager.new_workspace(null, null);
-		    	return true;
+				workspace_manager.new_workspace_with_current_directory();
+				return true;
 		    }
 		    
 		    var close_workspace_key = window.config.config_file.get_string("keybind", "close_workspace");
