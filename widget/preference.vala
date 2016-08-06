@@ -61,10 +61,10 @@ namespace Widgets {
 		public Gtk.Entry select_left_window_key_entry;
 		public Gtk.Label select_right_window_key_label;
 		public Gtk.Entry select_right_window_key_entry;
-		public Gtk.Label close_focus_window_key_label;
-		public Gtk.Entry close_focus_window_key_entry;
-		public Gtk.Label close_other_window_key_label;
-		public Gtk.Entry close_other_window_key_entry;
+		public Gtk.Label close_window_key_label;
+		public Gtk.Entry close_window_key_entry;
+		public Gtk.Label close_other_windows_key_label;
+		public Gtk.Entry close_other_windows_key_entry;
 		public Gtk.Label fullscreen_key_label;
 		public Gtk.Entry fullscreen_key_entry;
 		public Gtk.Label display_hotkey_terminal_key_label;
@@ -133,10 +133,10 @@ namespace Widgets {
 			select_left_window_key_entry = new Gtk.Entry();
 			select_right_window_key_label = new Gtk.Label(null);
 			select_right_window_key_entry = new Gtk.Entry();
-			close_focus_window_key_label = new Gtk.Label(null);
-			close_focus_window_key_entry = new Gtk.Entry();
-			close_other_window_key_label = new Gtk.Label(null);
-			close_other_window_key_entry = new Gtk.Entry();
+			close_window_key_label = new Gtk.Label(null);
+			close_window_key_entry = new Gtk.Entry();
+			close_other_windows_key_label = new Gtk.Label(null);
+			close_other_windows_key_entry = new Gtk.Entry();
 			fullscreen_key_label = new Gtk.Label(null);
 			fullscreen_key_entry = new Gtk.Entry();
 			display_hotkey_terminal_key_label = new Gtk.Label(null);
@@ -280,8 +280,8 @@ namespace Widgets {
             create_follow_key_row(select_down_window_key_label, select_down_window_key_entry, "Select down window: ", select_up_window_key_label, workspace_key_grid, "keybind", "select_down_window");
             create_follow_key_row(select_left_window_key_label, select_left_window_key_entry, "Select left window: ", select_down_window_key_label, workspace_key_grid, "keybind", "select_left_window");
             create_follow_key_row(select_right_window_key_label, select_right_window_key_entry, "Select right window: ", select_left_window_key_label, workspace_key_grid, "keybind", "select_right_window");
-            create_follow_key_row(close_focus_window_key_label, close_focus_window_key_entry, "Close focus window: ", select_right_window_key_label, workspace_key_grid, "keybind", "close_focus_window");
-            create_follow_key_row(close_other_window_key_label, close_other_window_key_entry, "Close other window: ", close_focus_window_key_label, workspace_key_grid, "keybind", "close_other_window");
+            create_follow_key_row(close_window_key_label, close_window_key_entry, "Close focus window: ", select_right_window_key_label, workspace_key_grid, "keybind", "close_window");
+            create_follow_key_row(close_other_windows_key_label, close_other_windows_key_entry, "Close other window: ", close_window_key_label, workspace_key_grid, "keybind", "close_other_windows");
             
             var advanced_key_segement = get_second_segement("Advanced");
             box.pack_start(advanced_key_segement, false, false, 0);
@@ -415,8 +415,8 @@ namespace Widgets {
 				select_down_window_key_entry.set_text(parent_window.config.config_file.get_string("keybind", "select_down_window"));
 				select_left_window_key_entry.set_text(parent_window.config.config_file.get_string("keybind", "select_left_window"));
 				select_right_window_key_entry.set_text(parent_window.config.config_file.get_string("keybind", "select_right_window"));
-				close_focus_window_key_entry.set_text(parent_window.config.config_file.get_string("keybind", "close_focus_window"));
-				close_other_window_key_entry.set_text(parent_window.config.config_file.get_string("keybind", "close_other_window"));
+				close_window_key_entry.set_text(parent_window.config.config_file.get_string("keybind", "close_window"));
+				close_other_windows_key_entry.set_text(parent_window.config.config_file.get_string("keybind", "close_other_windows"));
 				fullscreen_key_entry.set_text(parent_window.config.config_file.get_string("keybind", "toggle_fullscreen"));
 				display_hotkey_terminal_key_entry.set_text(parent_window.config.config_file.get_string("keybind", "show_helper_window"));
 				show_remote_manage_key_entry.set_text(parent_window.config.config_file.get_string("keybind", "show_remote_panel"));

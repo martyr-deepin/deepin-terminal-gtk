@@ -246,14 +246,14 @@ public class Application : Object {
 		    	return true;
 		    }
 		    
-		    var close_focus_window_key = window.config.config_file.get_string("keybind", "close_focus_window");
-		    if (close_focus_window_key != "" && keyname == close_focus_window_key) {
+		    var close_window_key = window.config.config_file.get_string("keybind", "close_window");
+		    if (close_window_key != "" && keyname == close_window_key) {
 		    	workspace_manager.focus_workspace.close_focus_term();
 		    	return true;
 		    }
 		    
-		    var close_other_window_key = window.config.config_file.get_string("keybind", "close_other_window");
-		    if (close_other_window_key != "" && keyname == close_other_window_key) {
+		    var close_other_windows_key = window.config.config_file.get_string("keybind", "close_other_windows");
+		    if (close_other_windows_key != "" && keyname == close_other_windows_key) {
 		    	workspace_manager.focus_workspace.close_other_terms();
 		    	return true;
 		    }
