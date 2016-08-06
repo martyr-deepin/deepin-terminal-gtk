@@ -242,20 +242,20 @@ namespace Widgets {
             this.show_all();
         }
         
-        public void focus_left_window() {
-            focus_horizontal_terminal(true);
+        public void select_left_window() {
+            select_horizontal_terminal(true);
         }
         
-        public void focus_right_window() {
-            focus_horizontal_terminal(false);
+        public void select_right_window() {
+            select_horizontal_terminal(false);
         }
         
-        public void focus_up_window() {
-            focus_vertical_terminal(true);
+        public void select_up_window() {
+            select_vertical_terminal(true);
         }
         
-        public void focus_down_window() {
-            focus_vertical_terminal(false);
+        public void select_down_window() {
+            select_vertical_terminal(false);
         }
         
         public ArrayList<Term> find_intersects_horizontal_terminals(Gtk.Allocation rect, bool left=true) {
@@ -279,7 +279,7 @@ namespace Widgets {
             return intersects_terminals;
         }
         
-        public void focus_horizontal_terminal(bool left=true) {
+        public void select_horizontal_terminal(bool left=true) {
             Term focus_terminal = get_focus_term(this);
             
             Gtk.Allocation rect = Utils.get_origin_allocation(focus_terminal);
@@ -352,7 +352,7 @@ namespace Widgets {
             return intersects_terminals;
         }
         
-        public void focus_vertical_terminal(bool up=true) {
+        public void select_vertical_terminal(bool up=true) {
             Term focus_terminal = get_focus_term(this);
             
             Gtk.Allocation rect = Utils.get_origin_allocation(focus_terminal);

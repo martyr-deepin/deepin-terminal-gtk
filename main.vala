@@ -222,27 +222,27 @@ public class Application : Object {
 		    	return true;
 		    }
 		    
-		    var focus_up_window_key = window.config.config_file.get_string("keybind", "focus_up_window");
-		    if (focus_up_window_key != "" && keyname == focus_up_window_key) {
-		    	workspace_manager.focus_workspace.focus_up_window();
+		    var select_up_window_key = window.config.config_file.get_string("keybind", "select_up_window");
+		    if (select_up_window_key != "" && keyname == select_up_window_key) {
+		    	workspace_manager.focus_workspace.select_up_window();
 		    	return true;
 		    }
 		    
-		    var focus_down_window_key = window.config.config_file.get_string("keybind", "focus_down_window");
-		    if (focus_down_window_key != "" && keyname == focus_down_window_key) {
-		    	workspace_manager.focus_workspace.focus_down_window();
+		    var select_down_window_key = window.config.config_file.get_string("keybind", "select_down_window");
+		    if (select_down_window_key != "" && keyname == select_down_window_key) {
+		    	workspace_manager.focus_workspace.select_down_window();
 		    	return true;
 		    }
 		    
-		    var focus_left_window_key = window.config.config_file.get_string("keybind", "focus_left_window");
-		    if (focus_left_window_key != "" && keyname == focus_left_window_key) {
-		    	workspace_manager.focus_workspace.focus_left_window();
+		    var select_left_window_key = window.config.config_file.get_string("keybind", "select_left_window");
+		    if (select_left_window_key != "" && keyname == select_left_window_key) {
+		    	workspace_manager.focus_workspace.select_left_window();
 		    	return true;
 		    }
 		    
-		    var focus_right_window_key = window.config.config_file.get_string("keybind", "focus_right_window");
-		    if (focus_right_window_key != "" && keyname == focus_right_window_key) {
-		    	workspace_manager.focus_workspace.focus_right_window();
+		    var select_right_window_key = window.config.config_file.get_string("keybind", "select_right_window");
+		    if (select_right_window_key != "" && keyname == select_right_window_key) {
+		    	workspace_manager.focus_workspace.select_right_window();
 		    	return true;
 		    }
 		    

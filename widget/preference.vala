@@ -276,10 +276,10 @@ namespace Widgets {
             create_follow_key_row(next_workspace_key_label, next_workspace_key_entry, "Next workspace: ", previous_workspace_key_label, workspace_key_grid, "keybind", "next_workspace");
             create_follow_key_row(split_vertically_key_label, split_vertically_key_entry, "Split vertically: ", next_workspace_key_label, workspace_key_grid, "keybind", "split_vertically");
             create_follow_key_row(split_horizontally_key_label, split_horizontally_key_entry, "Split horizontally: ", split_vertically_key_label, workspace_key_grid, "keybind", "split_horizontally");
-            create_follow_key_row(select_up_window_key_label, select_up_window_key_entry, "Select up window: ", split_horizontally_key_label, workspace_key_grid, "keybind", "focus_up_window");
-            create_follow_key_row(select_down_window_key_label, select_down_window_key_entry, "Select down window: ", select_up_window_key_label, workspace_key_grid, "keybind", "focus_down_window");
-            create_follow_key_row(select_left_window_key_label, select_left_window_key_entry, "Select left window: ", select_down_window_key_label, workspace_key_grid, "keybind", "focus_left_window");
-            create_follow_key_row(select_right_window_key_label, select_right_window_key_entry, "Select right window: ", select_left_window_key_label, workspace_key_grid, "keybind", "focus_right_window");
+            create_follow_key_row(select_up_window_key_label, select_up_window_key_entry, "Select up window: ", split_horizontally_key_label, workspace_key_grid, "keybind", "select_up_window");
+            create_follow_key_row(select_down_window_key_label, select_down_window_key_entry, "Select down window: ", select_up_window_key_label, workspace_key_grid, "keybind", "select_down_window");
+            create_follow_key_row(select_left_window_key_label, select_left_window_key_entry, "Select left window: ", select_down_window_key_label, workspace_key_grid, "keybind", "select_left_window");
+            create_follow_key_row(select_right_window_key_label, select_right_window_key_entry, "Select right window: ", select_left_window_key_label, workspace_key_grid, "keybind", "select_right_window");
             create_follow_key_row(close_focus_window_key_label, close_focus_window_key_entry, "Close focus window: ", select_right_window_key_label, workspace_key_grid, "keybind", "close_focus_window");
             create_follow_key_row(close_other_window_key_label, close_other_window_key_entry, "Close other window: ", close_focus_window_key_label, workspace_key_grid, "keybind", "close_other_window");
             
@@ -411,10 +411,10 @@ namespace Widgets {
 				next_workspace_key_entry.set_text(parent_window.config.config_file.get_string("keybind", "next_workspace"));
 				split_vertically_key_entry.set_text(parent_window.config.config_file.get_string("keybind", "split_vertically"));
 				split_horizontally_key_entry.set_text(parent_window.config.config_file.get_string("keybind", "split_horizontally"));
-				select_up_window_key_entry.set_text(parent_window.config.config_file.get_string("keybind", "focus_up_window"));
-				select_down_window_key_entry.set_text(parent_window.config.config_file.get_string("keybind", "focus_down_window"));
-				select_left_window_key_entry.set_text(parent_window.config.config_file.get_string("keybind", "focus_left_window"));
-				select_right_window_key_entry.set_text(parent_window.config.config_file.get_string("keybind", "focus_right_window"));
+				select_up_window_key_entry.set_text(parent_window.config.config_file.get_string("keybind", "select_up_window"));
+				select_down_window_key_entry.set_text(parent_window.config.config_file.get_string("keybind", "select_down_window"));
+				select_left_window_key_entry.set_text(parent_window.config.config_file.get_string("keybind", "select_left_window"));
+				select_right_window_key_entry.set_text(parent_window.config.config_file.get_string("keybind", "select_right_window"));
 				close_focus_window_key_entry.set_text(parent_window.config.config_file.get_string("keybind", "close_focus_window"));
 				close_other_window_key_entry.set_text(parent_window.config.config_file.get_string("keybind", "close_other_window"));
 				fullscreen_key_entry.set_text(parent_window.config.config_file.get_string("keybind", "toggle_fullscreen"));
