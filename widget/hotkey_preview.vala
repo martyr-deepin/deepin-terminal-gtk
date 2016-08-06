@@ -71,11 +71,11 @@ namespace Widgets {
 				"Switch workspace : Ctrl + number",
 				"Split vertically : Ctrl + Shift + h",
 				"Split horizontally : Ctrl + h",
-				"Focus up terminal : Alt + k",
-				"Focus down terminal : Alt + j",
-				"Focus left terminal : Alt + h",
-				"Focus right terminal : Alt + l",
-				"Close terminal : Ctrl + Shift + w",
+				"Focus up window : Alt + k",
+				"Focus down window : Alt + j",
+				"Focus left window : Alt + h",
+				"Focus right window : Alt + l",
+				"Close window : Ctrl + Shift + w",
 			};
 
 			advanced_hotkeys = {

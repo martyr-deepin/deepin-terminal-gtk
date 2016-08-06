@@ -242,19 +242,19 @@ namespace Widgets {
             this.show_all();
         }
         
-        public void focus_left_terminal() {
+        public void focus_left_window() {
             focus_horizontal_terminal(true);
         }
         
-        public void focus_right_terminal() {
+        public void focus_right_window() {
             focus_horizontal_terminal(false);
         }
         
-        public void focus_up_terminal() {
+        public void focus_up_window() {
             focus_vertical_terminal(true);
         }
         
-        public void focus_down_terminal() {
+        public void focus_down_window() {
             focus_vertical_terminal(false);
         }
         

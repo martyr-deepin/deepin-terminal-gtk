@@ -175,12 +175,12 @@ namespace Config {
             config_file.set_string("keybind", "previous_workspace", "Ctrl + ISO_Left_Tab");
             config_file.set_string("keybind", "split_vertically", "Ctrl + H");
             config_file.set_string("keybind", "split_horizontally", "Ctrl + h");
-            config_file.set_string("keybind", "focus_up_terminal", "Alt + k");
-            config_file.set_string("keybind", "focus_down_terminal", "Alt + j");
-            config_file.set_string("keybind", "focus_left_terminal", "Alt + h");
-            config_file.set_string("keybind", "focus_right_terminal", "Alt + l");
-            config_file.set_string("keybind", "close_focus_terminal", "Ctrl + q");
-            config_file.set_string("keybind", "close_other_terminal", "Ctrl + Q");
+            config_file.set_string("keybind", "focus_up_window", "Alt + k");
+            config_file.set_string("keybind", "focus_down_window", "Alt + j");
+            config_file.set_string("keybind", "focus_left_window", "Alt + h");
+            config_file.set_string("keybind", "focus_right_window", "Alt + l");
+            config_file.set_string("keybind", "close_focus_window", "Ctrl + q");
+            config_file.set_string("keybind", "close_other_window", "Ctrl + Q");
             
             config_file.set_string("keybind", "toggle_fullscreen", "F11");
             config_file.set_string("keybind", "show_helper_window", "Ctrl + ?");

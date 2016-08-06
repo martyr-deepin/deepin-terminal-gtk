@@ -222,38 +222,38 @@ public class Application : Object {
 		    	return true;
 		    }
 		    
-		    var focus_up_terminal_key = window.config.config_file.get_string("keybind", "focus_up_terminal");
-		    if (focus_up_terminal_key != "" && keyname == focus_up_terminal_key) {
-		    	workspace_manager.focus_workspace.focus_up_terminal();
+		    var focus_up_window_key = window.config.config_file.get_string("keybind", "focus_up_window");
+		    if (focus_up_window_key != "" && keyname == focus_up_window_key) {
+		    	workspace_manager.focus_workspace.focus_up_window();
 		    	return true;
 		    }
 		    
-		    var focus_down_terminal_key = window.config.config_file.get_string("keybind", "focus_down_terminal");
-		    if (focus_down_terminal_key != "" && keyname == focus_down_terminal_key) {
-		    	workspace_manager.focus_workspace.focus_down_terminal();
+		    var focus_down_window_key = window.config.config_file.get_string("keybind", "focus_down_window");
+		    if (focus_down_window_key != "" && keyname == focus_down_window_key) {
+		    	workspace_manager.focus_workspace.focus_down_window();
 		    	return true;
 		    }
 		    
-		    var focus_left_terminal_key = window.config.config_file.get_string("keybind", "focus_left_terminal");
-		    if (focus_left_terminal_key != "" && keyname == focus_left_terminal_key) {
-		    	workspace_manager.focus_workspace.focus_left_terminal();
+		    var focus_left_window_key = window.config.config_file.get_string("keybind", "focus_left_window");
+		    if (focus_left_window_key != "" && keyname == focus_left_window_key) {
+		    	workspace_manager.focus_workspace.focus_left_window();
 		    	return true;
 		    }
 		    
-		    var focus_right_terminal_key = window.config.config_file.get_string("keybind", "focus_right_terminal");
-		    if (focus_right_terminal_key != "" && keyname == focus_right_terminal_key) {
-		    	workspace_manager.focus_workspace.focus_right_terminal();
+		    var focus_right_window_key = window.config.config_file.get_string("keybind", "focus_right_window");
+		    if (focus_right_window_key != "" && keyname == focus_right_window_key) {
+		    	workspace_manager.focus_workspace.focus_right_window();
 		    	return true;
 		    }
 		    
-		    var close_focus_terminal_key = window.config.config_file.get_string("keybind", "close_focus_terminal");
-		    if (close_focus_terminal_key != "" && keyname == close_focus_terminal_key) {
+		    var close_focus_window_key = window.config.config_file.get_string("keybind", "close_focus_window");
+		    if (close_focus_window_key != "" && keyname == close_focus_window_key) {
 		    	workspace_manager.focus_workspace.close_focus_term();
 		    	return true;
 		    }
 		    
-		    var close_other_terminal_key = window.config.config_file.get_string("keybind", "close_other_terminal");
-		    if (close_other_terminal_key != "" && keyname == close_other_terminal_key) {
+		    var close_other_window_key = window.config.config_file.get_string("keybind", "close_other_window");
+		    if (close_other_window_key != "" && keyname == close_other_window_key) {
 		    	workspace_manager.focus_workspace.close_other_terms();
 		    	return true;
 		    }

@@ -18,8 +18,8 @@ Below is keymap list for deepin-terminal:
 
 | Function					      | Keymap                              |
 |---------------------------------|-------------------------------------|
-| Copy                            | **Ctrl** + **C**                    |
-| Paste                           | **Ctrl** + **V**                    |
+| Copy                            | **Ctrl** + **Shift** + **c**        |
+| Paste                           | **Ctrl** + **Shift** + **v**        |
 | Select word                     | Double click                        |
 | Open URL                        | **Ctrl** + LeftButton               |
 | Split vertically                | **Ctrl** + **Shift** + **h**        |
@@ -27,20 +27,20 @@ Below is keymap list for deepin-terminal:
 | Search history                  | **Ctrl** + **r**                    |
 |                                                                       |
 | Close current terminal          | **Ctrl** + **q**                    |
-| Close other terminals           | **Ctrl** + **Q**                    |
+| Close other terminals           | **Ctrl** + **Shift** + **q**        |
 |                                                                       |
-| Focus up terminal               | **Alt**  + **k**                    |
-| Focus down terminal             | **Alt**  + **j**                    |
-| Focus left terminal             | **Alt**  + **h**                    |
-| Focus right terminal            | **Alt**  + **l**                    |
-| Close terminal                  | **Ctrl** + **W**                    |
+| Focus up window                 | **Alt**  + **k**                    |
+| Focus down window               | **Alt**  + **j**                    |
+| Focus left window               | **Alt**  + **h**                    |
+| Focus right window              | **Alt**  + **l**                    |
+| Close window                    | **Ctrl** + **Shift** + **q**        |
 |                                                                       |
 | Zoom out                        | **Ctrl** + **=**                    |
 | Zoom in                         | **Ctrl** + **-**                    |
 | Revert default size             | **Ctrl** + **0**                    |
 |                                                                       |
-| New workspace                   | **Ctrl** + **T**                    |
-| Close workspace                 | **Ctrl** + **Q**                    |
+| New workspace                   | **Ctrl** + **Shift** + **t**        |
+| Close workspace                 | **Ctrl** + **Shift** + **q**        |
 | Switch preview workspace        | **Ctrl** + **Tab**                  |
 | Switch next workspace           | **Ctrl** + **Shift** + **Tab**      |
 | Select workspace with number    | **Ctrl** + **number**               |
