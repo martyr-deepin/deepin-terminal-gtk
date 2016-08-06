@@ -191,7 +191,7 @@ namespace Config {
             
             config_file.set_boolean("advanced", "scroll_on_key", true);
             config_file.set_boolean("advanced", "scroll_on_output", false);
-            config_file.set_integer("advanced", "scroll_line", 0);
+            config_file.set_integer("advanced", "scroll_line", -1);
             config_file.set_string("advanced", "window_state", "window");
             config_file.set_integer("advanced", "window_width", 0);
             config_file.set_integer("advanced", "window_height", 0);
