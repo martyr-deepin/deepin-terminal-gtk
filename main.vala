@@ -150,16 +150,13 @@ public class Application : Object {
             } else {
 				box.pack_start(appbar, false, false, 0);
 				box.pack_start(workspace_manager, true, true, 0);
-				box.margin_left = 2;
-				box.margin_right = 2;
-				box.margin_top = 1;
-				box.margin_bottom = 2;
-			}
+            }
 			
 			
-			window.add(box);
+			// window.add(box);
+			window.add_widget(box);
 			window.show_all();
-		}
+        }
     }
     
     public void quit() {
