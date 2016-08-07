@@ -7,15 +7,12 @@ namespace Widgets {
         public Config.Config config;
         
         public double window_frame_radius = 5.0;
-        public int window_shadow_radius;
-        public int window_active_shadow_radius = 20;
-        public int window_inactive_shadow_radius = 14;
         public int window_shadow_offset_y = 10;
         
-        public int window_frame_margin_top = 40;
-        public int window_frame_margin_bottom = 40;
-        public int window_frame_margin_left = 40;
-        public int window_frame_margin_right = 40;
+        public int window_frame_margin_top = 50;
+        public int window_frame_margin_bottom = 60;
+        public int window_frame_margin_left = 50;
+        public int window_frame_margin_right = 50;
         
         public int window_widget_margin_top = 1;
         public int window_widget_margin_bottom = 2;
@@ -33,10 +30,6 @@ namespace Widgets {
         
         public Gtk.Widget window_widget;
         
-        public Cairo.ImageSurface shadow_surface;
-        public int shadow_surface_width = 0;
-        public int shadow_surface_height = 0;
-
         public BaseWindow(bool frameless=false) {
             window_frameless = frameless;
             
@@ -58,8 +51,6 @@ namespace Widgets {
         public void init_window() {
             set_decorated(false);
             
-            window_shadow_radius = window_active_shadow_radius;
-            
             window_frame_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             window_widget_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             
@@ -67,17 +58,13 @@ namespace Widgets {
             window_frame_box.pack_start(window_widget_box, true, true, 0);
             
             focus_in_event.connect((w) => {
-                    window_shadow_radius = window_active_shadow_radius;
-
-                    queue_draw();
+                    shadow_active();
                     
                     return false;
                 });
             
             focus_out_event.connect((w) => {
-                    window_shadow_radius = window_inactive_shadow_radius;
-                    
-                    queue_draw();
+                    shadow_inactive();
                     
                     return false;
                 });
@@ -88,13 +75,6 @@ namespace Widgets {
                     window_width = width - window_frame_box.margin_left - window_frame_box.margin_right;
                     window_height = height - window_frame_box.margin_top - window_frame_box.margin_bottom;
                     
-                    if (window_width != shadow_surface_width || window_height != shadow_surface_height) {
-                        update_shadow_surface();
-                        
-                        shadow_surface_width = window_width;
-                        shadow_surface_height = window_height;
-                    }
-					
                     queue_draw();
 					
 					return false;
@@ -119,10 +99,6 @@ namespace Widgets {
             
             draw.connect_after((w, cr) => {
                     draw_window_below(cr);
-                       
-                    if (!window_frameless && window_is_normal) {
-                        draw_window_shadow(cr);
-                    }
                        
                     draw_window_widgets(cr);
 
@@ -150,58 +126,14 @@ namespace Widgets {
             window_frame_box.margin = 0;
         }
         
-        public void draw_window_shadow(Cairo.Context cr) {
-            cr.save();
-            
-            Gtk.Allocation rect;
-            get_allocation(out rect);
-
-            cr.set_source_rgba(0, 0, 0, 0);
-            Draw.draw_rectangle(cr, 0, 0, rect.width, rect.height, true);
-            cr.paint();
-            
-            // Top.
-            cr.rectangle(0, 0, rect.width, window_frame_box.margin_top);
-            // Top-Left.
-            cr.rectangle(window_frame_box.margin_left, window_frame_box.margin_top, window_frame_radius, 1);
-            cr.rectangle(window_frame_box.margin_left, window_frame_box.margin_top, 1, window_frame_radius);
-            cr.rectangle(window_frame_box.margin_left + 1, window_frame_box.margin_top + 1, 2, 1);
-            cr.rectangle(window_frame_box.margin_left + 1, window_frame_box.margin_top + 1, 1, 2);
-            // Top-Right.
-            cr.rectangle(rect.width - window_frame_box.margin_right - window_frame_radius, window_frame_box.margin_top, window_frame_radius, 1);
-            cr.rectangle(rect.width - window_frame_box.margin_right - 1, window_frame_box.margin_top, 1, window_frame_radius);
-            cr.rectangle(rect.width - window_frame_box.margin_right - 3, window_frame_box.margin_top + 1, 2, 1);
-            cr.rectangle(rect.width - window_frame_box.margin_right - 2, window_frame_box.margin_top + 1, 1, 2);
-            // Left.
-            cr.rectangle(0, 0, window_frame_box.margin_left, rect.height - window_frame_radius);
-            // Right.
-            cr.rectangle(rect.width - window_frame_box.margin_right, 0, window_frame_box.margin_right, rect.height - window_frame_radius);
-            // Bottom.
-            cr.rectangle(0, rect.height - window_frame_box.margin_bottom - window_frame_radius, rect.width, window_frame_box.margin_bottom + window_frame_radius);
-            cr.clip();
-			
-            Draw.draw_surface(cr, shadow_surface, 0, window_shadow_offset_y);                
-            cr.restore();
+        public void shadow_active() {
+            window_widget_box.get_style_context().remove_class("window_shadow_inactive");
+            window_widget_box.get_style_context().add_class("window_shadow_active");
         }
         
-        public void update_shadow_surface() {
-            Gtk.Allocation rect;
-            get_allocation(out rect);
-            
-            shadow_surface = new Cairo.ImageSurface(Cairo.Format.ARGB32, rect.width, rect.height);
-            Cairo.Context shadow_surface_cr = new Cairo.Context(shadow_surface);
-			
-            shadow_surface_cr.set_source_rgba(1, 0, 0, 1);
-            // shadow_surface_cr.set_source_rgba(0, 0, 0, 0.3);
-            Draw.draw_rounded_rectangle(
-                shadow_surface_cr,
-                window_frame_box.margin_left,
-                window_frame_box.margin_top,
-                rect.width - window_frame_box.margin_left - window_frame_box.margin_right,
-                rect.height - window_frame_box.margin_top - window_frame_box.margin_bottom,
-                window_frame_radius);
-            
-            Utils.ExponentialBlur.surface(shadow_surface, window_shadow_radius);
+        public void shadow_inactive() {
+            window_widget_box.get_style_context().remove_class("window_shadow_active");
+            window_widget_box.get_style_context().add_class("window_shadow_inactive");
         }
         
         public void draw_window_widgets(Cairo.Context cr) {

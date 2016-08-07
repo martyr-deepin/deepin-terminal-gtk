@@ -31,3 +31,15 @@ GtkEntry:selected {
     color: #272822;
 	background: grey;
 }
+
+.window_shadow_active{
+    background: transparent;
+    border-radius: 5px;
+    box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.15);
+}
+
+.window_shadow_inactive{
+    background: transparent;
+    border-radius: 5px;
+    box-shadow: 0px 10px 14px 0px rgba(0,0,0,0.08);
+}
