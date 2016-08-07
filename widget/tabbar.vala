@@ -42,7 +42,9 @@ namespace Widgets {
         private int tab_split_width = 1;
         
         private int text_padding_x = 36;
+        private int text_padding_min_x = 24;
         private int close_button_padding_x = 28;
+        private int close_button_padding_min_x = 21;
         private int close_button_padding_y = 0;
         private int draw_padding_y = 12;
         private int hover_x = 0;
@@ -250,7 +252,7 @@ namespace Widgets {
                 layout.get_pixel_size(out name_width, out name_height);
                 int tab_width = (int) (get_tab_width(name_width) * draw_scale);
 
-                if (press_x > draw_x && press_x < draw_x + tab_width - close_button_padding_x) {
+                if (press_x > draw_x && press_x < draw_x + tab_width - get_tab_close_button_padding()) {
                     select_nth_tab(counter);
                         
                     press_tab(counter, tab_id);
@@ -284,7 +286,7 @@ namespace Widgets {
                 int tab_width = (int) (get_tab_width(name_width) * draw_scale);
 
                 if (release_x > draw_x && release_x < draw_x + tab_width) {
-                    if (release_x > draw_x + tab_width - close_button_padding_x) {
+                    if (release_x > draw_x + tab_width - get_tab_close_button_padding()) {
                         close_nth_tab(counter);
                         return false;
                     }
@@ -431,24 +433,24 @@ namespace Widgets {
                 
                 if (draw_hover) {
                     if (hover_x > draw_x && hover_x < draw_x + tab_width) {
-                        if (hover_x > draw_x + tab_width - close_button_padding_x) {
+                        if (hover_x > draw_x + tab_width - get_tab_close_button_padding()) {
                             if (is_button_press) {
-                                Draw.draw_surface(cr, close_press_surface, draw_x + tab_width - close_button_padding_x, draw_padding_y + close_button_padding_y);
+                                Draw.draw_surface(cr, close_press_surface, draw_x + tab_width - get_tab_close_button_padding(), draw_padding_y + close_button_padding_y);
                             } else {
-                                Draw.draw_surface(cr, close_hover_surface, draw_x + tab_width - close_button_padding_x, draw_padding_y + close_button_padding_y);
+                                Draw.draw_surface(cr, close_hover_surface, draw_x + tab_width - get_tab_close_button_padding(), draw_padding_y + close_button_padding_y);
                             }
                         } else {
-                            Draw.draw_surface(cr, close_normal_surface, draw_x + tab_width - close_button_padding_x, draw_padding_y + close_button_padding_y);
+                            Draw.draw_surface(cr, close_normal_surface, draw_x + tab_width - get_tab_close_button_padding(), draw_padding_y + close_button_padding_y);
                         }
                     }
                 }
                 
                 // Draw tab text.
                 cr.save();
-                clip_rectangle(cr, draw_x + text_padding_x, 0, tab_width - text_padding_x * 2, height);
+                clip_rectangle(cr, draw_x + get_tab_text_padding(), 0, tab_width - get_tab_text_padding() * 2, height);
                 
                 Utils.set_context_color(cr, tab_text_color);
-                Draw.draw_layout(cr, layout, draw_x + text_padding_x, draw_padding_y);
+                Draw.draw_layout(cr, layout, draw_x + get_tab_text_padding(), draw_padding_y);
                 
                 cr.restore();
                 
@@ -471,7 +473,15 @@ namespace Widgets {
         }
 
         public int get_tab_width(int name_width) {
-            return name_width + text_padding_x * 2;
+            return name_width + get_tab_text_padding() * 2;
+        }
+        
+        public int get_tab_text_padding() {
+            return int.max(text_padding_min_x, text_padding_x - tab_list.size);
+        }
+        
+        public int get_tab_close_button_padding() {
+            return int.max(close_button_padding_min_x, close_button_padding_x - tab_list.size);
         }
         
         public void switch_tab(int new_index) {
