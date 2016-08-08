@@ -171,10 +171,6 @@ namespace Widgets {
                     cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, window.config.config_file.get_double("general", "opacity"));
                     Draw.draw_rectangle(cr, 1, 0, rect.width - 2, 1);
                     Draw.draw_rectangle(cr, 0, 1, rect.width, height - 1);
-				
-                    cr.set_source_rgba(0, 0, 0, 0.2);				
-                    Draw.draw_rectangle(cr, 1, 0, rect.width - 2, 1);
-                    Draw.draw_rectangle(cr, 0, 1, rect.width, height - 1);
                 } else {
                     background_color.parse(window.config.config_file.get_string("theme", "color1"));
                     cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, window.config.config_file.get_double("general", "opacity"));
