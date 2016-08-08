@@ -400,6 +400,8 @@ namespace Widgets {
 					
 						window.config.update();
 					}
+                    
+                    return true;
 				} catch (GLib.KeyFileError e) {
 					print(e.message);
 				}
