@@ -640,14 +640,12 @@ namespace Widgets {
             try {
                 Widgets.Window parent_window = (Widgets.Window) term.get_toplevel();
                 
-                // var is_cursor_blink = parent_window.config.config_file.get_boolean("advanced", "cursor_blink_mode");
-                // if (is_cursor_blink) {
-                //     term.set_cursor_blink_mode(Vte.CursorBlinkMode.ON);
-                // } else {
-                //     term.set_cursor_blink_mode(Vte.CursorBlinkMode.OFF);
-                // }
-                
-                term.set_cursor_blink_mode(Vte.CursorBlinkMode.OFF);
+                var is_cursor_blink = parent_window.config.config_file.get_boolean("advanced", "cursor_blink_mode");
+                if (is_cursor_blink) {
+                    term.set_cursor_blink_mode(Vte.CursorBlinkMode.ON);
+                } else {
+                    term.set_cursor_blink_mode(Vte.CursorBlinkMode.OFF);
+                }
                 
                 var scroll_lines = parent_window.config.config_file.get_integer("advanced", "scroll_line");
                 term.set_scrollback_lines(scroll_lines);
