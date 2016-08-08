@@ -291,12 +291,21 @@ namespace Widgets {
             window_widget = widget;
         }
 
-		public void toggle_fullscreen () {
+		public void toggle_fullscreen() {
             var state = get_window().get_state();
             if (Gdk.WindowState.FULLSCREEN in state) {
                 unfullscreen();
             } else {
                 fullscreen();
+            }
+        }
+        
+        public void toggle_max() {
+            var state = get_window().get_state();
+            if (Gdk.WindowState.MAXIMIZED in state) {
+                unmaximize();
+            } else {
+                maximize();
             }
         }
         

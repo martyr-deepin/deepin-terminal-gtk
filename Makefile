@@ -20,6 +20,7 @@ main: ./project_path.c \
       ./widget/text_button.vala \
       ./widget/event_box.vala \
       ./widget/window.vala \
+      ./widget/window_event_area.vala \
       ./widget/base_window.vala \
       ./widget/confirm_dialog.vala \
       ./widget/search_box.vala \
@@ -63,6 +64,7 @@ main: ./project_path.c \
     ./widget/text_button.vala \
     ./widget/event_box.vala \
     ./widget/window.vala \
+    ./widget/window_event_area.vala \
     ./widget/base_window.vala \
     ./widget/confirm_dialog.vala \
     ./widget/search_box.vala \

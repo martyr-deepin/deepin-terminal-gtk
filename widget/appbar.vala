@@ -2,7 +2,7 @@ using Gtk;
 using Widgets;
 
 namespace Widgets {
-    public class Appbar : Gtk.EventBox {
+    public class Appbar : Gtk.Overlay {
         public Tabbar tabbar;
         public Box max_toggle_box;
         
@@ -23,16 +23,16 @@ namespace Widgets {
 		
 		public bool quake_mode = false;
         
+        public Widgets.WindowEventArea event_area;
+        
         public Appbar(Tabbar tab_bar, bool mode, Application app) {
 			quake_mode = mode;
 			
 			set_size_request(-1, height);
 			
             tabbar = tab_bar;
-            visible_window = false;
             application = app;
             
-            draw.connect(on_draw);
             
             menu_button = new ImageButton("window_menu");
             min_button = new ImageButton("window_min");
@@ -102,7 +102,7 @@ namespace Widgets {
             if (!quake_mode) {
                 box.pack_start(tabbar, true, true, 0);
 				var space_box = new Gtk.EventBox();
-				space_box.set_size_request(150, -1);
+				space_box.set_size_request(30, -1);
 				box.pack_start(space_box, false, false, 0);
             }
             box.pack_start(menu_button, false, false, 0);
@@ -111,7 +111,13 @@ namespace Widgets {
             box.pack_start(close_button, false, false, 0);
 			close_button.margin_right = 5;
             
+            event_area = new Widgets.WindowEventArea(this);
+            // Don't override window button area.
+            event_area.margin_right = 27 * 4;
+            draw.connect(on_draw);
+            
             add(box);
+            add_overlay(event_area);
         }
         
         public void handle_menu_item_click(string item_id) {
