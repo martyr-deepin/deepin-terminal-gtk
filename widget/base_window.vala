@@ -28,8 +28,6 @@ namespace Widgets {
         public int window_width;
         public int window_height;
         
-        public Gtk.Widget window_widget;
-        
         public BaseWindow(bool frameless=false) {
             window_frameless = frameless;
             
@@ -85,13 +83,26 @@ namespace Widgets {
                         var state = e.new_window_state;
                         if (Gdk.WindowState.MAXIMIZED in state || Gdk.WindowState.FULLSCREEN in state || Gdk.WindowState.TILED in state) {
                             window_is_normal = false;
+                            get_window().set_shadow_width(0, 0, 0, 0);
                                 
                             remove_margins();
                         } else {
                             window_is_normal = true;
+                            get_window().set_shadow_width(window_frame_margin_left, window_frame_margin_right, window_frame_margin_top, window_frame_margin_bottom);
                                 
                             add_margins();
                         }
+                    }
+                    
+                    return false;
+                });
+            
+            motion_notify_event.connect((w, e) => {
+                    var state = get_window().get_state();
+                    if (window_frameless && !(Gdk.WindowState.MAXIMIZED in state || Gdk.WindowState.FULLSCREEN in state || Gdk.WindowState.TILED in state)) {
+                        print("################################\n");
+                    } else if (get_resizable()) {
+                        print("********************************\n");
                     }
                     
                     return false;
@@ -287,8 +298,6 @@ namespace Widgets {
         
         public void add_widget(Gtk.Widget widget) {
             window_widget_box.pack_start(widget, true, true, 0);
-            
-            window_widget = widget;
         }
 
 		public void toggle_fullscreen() {
