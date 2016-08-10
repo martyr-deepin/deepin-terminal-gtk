@@ -35,9 +35,6 @@ namespace Widgets {
             Gtk.Allocation rect;
             widget.get_allocation(out rect);
             
-            cr.set_source_rgba(1, 1, 1, 1);
-            Draw.draw_rectangle(cr, 0, 0, rect.width, rect.height, true);
-            
             // Draw icon.
             Draw.draw_surface(cr, icon_surface, (rect.width - icon_surface.get_width()) / 2, icon_y);
             
