@@ -10,9 +10,12 @@ namespace Draw {
 
     public void draw_text(Gtk.Widget widget, Cairo.Context cr, string text, int x, int y, int width, int height,
                           Pango.Alignment text_align=Pango.Alignment.LEFT) {
+        var font_description = new Pango.FontDescription();
+        font_description.set_size((int)(height * Pango.SCALE));
+        
         var layout = widget.create_pango_layout(text);
 		layout.set_width((int)(width * Pango.SCALE));
-		layout.set_height((int)(height * Pango.SCALE));
+        layout.set_font_description(font_description);
 		layout.set_alignment(text_align);
         
         draw_layout(cr, layout, x, y);
@@ -81,19 +84,4 @@ namespace Draw {
          cr.rectangle(x, y, w, h);
          cr.clip();
     }
-
-    public void render_text(Cairo.Context cr, string text, int x, int y, int width, int height,
-                            Pango.FontDescription font_description,
-                            Pango.Alignment text_align=Pango.Alignment.LEFT) {
-		var layout = Pango.cairo_create_layout(cr);
-		layout.set_text(text, (int)text.length);
-		layout.set_width((int)(width * Pango.SCALE));
-		layout.set_height((int)(height * Pango.SCALE));
-        layout.set_font_description(font_description);
-		layout.set_alignment(text_align);
-		
-        cr.move_to(x, y);
-		Pango.cairo_update_layout(cr, layout);
-		Pango.cairo_show_layout(cr, layout);
-	}
 }

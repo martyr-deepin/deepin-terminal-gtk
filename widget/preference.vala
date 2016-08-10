@@ -444,7 +444,7 @@ namespace Widgets {
 			
 			var adjust = scrolledwindow.get_vadjustment();
 			timer_start_value= adjust.get_value();
-			timer_end_value = Math.fabs(widget_y);
+			timer_end_value = Math.fabs(widget_y + 40);
 			
 			timer.reset();
 		}

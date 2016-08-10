@@ -5,17 +5,17 @@ namespace Widgets {
     public class AboutWidget : Gtk.DrawingArea {
         public int height = 400;
         
-        public int icon_y = 30;
-        public int name_y = 134;
+        public int icon_y = -10;
+        public int name_y = 94;
         public int name_height = 18;
-        public int version_y = 164;
+        public int version_y = 136;
         public int version_height = 12;
-        public int logo_y = 188;
-        public int homepage_y = 211;
+        public int logo_y = 172;
+        public int homepage_y = 195;
         public int homepage_height = 13;
-        public int about_y = 250;
+        public int about_y = 246;
         public int about_x = 38;
-        public int about_height = 140;
+        public int about_height = 11;
         
         public Cairo.ImageSurface icon_surface;
         public Cairo.ImageSurface logo_surface;
