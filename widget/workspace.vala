@@ -410,12 +410,7 @@ namespace Widgets {
                 search_text = "";
                 
                 search_box = new SearchBox();
-                search_box.close_button.button_release_event.connect((w, e) => {
-                        remove_search_box();
-                        
-                        return false;
-                    });
-                search_box.entry.key_press_event.connect((w, e) => {
+                search_box.search_entry.key_press_event.connect((w, e) => {
                         string keyname = Keymap.get_keyevent_name(e);
                         
                         if (keyname == "Esc") {
@@ -424,26 +419,52 @@ namespace Widgets {
                         
                         return false;
                     });
-                search_box.entry.get_buffer().deleted_text.connect((buffer, p, nc) => {
+                search_box.search_entry.get_buffer().deleted_text.connect((buffer, p, nc) => {
+                        string entry_text = search_box.search_entry.get_text().strip();
+                        if (entry_text == "") {
+                            search_box.hide_clear_button();
+                        }
+                        
                         update_search_text();
                     });
-                search_box.entry.get_buffer().inserted_text.connect((buffer, p, c, nc) => {
+                search_box.search_entry.get_buffer().inserted_text.connect((buffer, p, c, nc) => {
+                        string entry_text = search_box.search_entry.get_text().strip();
+                        if (entry_text != "") {
+                            search_box.show_clear_button();
+                        }
                         update_search_text();
                     });
-                search_box.entry.activate.connect((w) => {
+                search_box.clear_button.button_press_event.connect((w, e) => {
+                        search_box.search_entry.set_text("");
+                        update_search_text();
+                        
+                        return false;
+                    });
+                search_box.search_entry.activate.connect((w) => {
+                        if (search_text != "") {
+                            term_before_search.term.search_find_previous();
+                        }
+                    });
+                search_box.search_next_button.button_press_event.connect((w, e) => {
                         if (search_text != "") {
                             term_before_search.term.search_find_next();
                         }
+                        
+                        return false;
                     });
-                search_box.set_size_request(100, -1);
-                search_box.set_valign(Gtk.Align.START);
-                search_box.set_halign(Gtk.Align.END);
+                search_box.search_previous_button.button_press_event.connect((w, e) => {
+                        if (search_text != "") {
+                            term_before_search.term.search_find_previous();
+                        }
+                        
+                        return false;
+                    });
                 add_overlay(search_box);
                 show_all();            
                 
-                search_box.entry.grab_focus();
+                search_box.search_entry.grab_focus();
             } else {
-                search_box.entry.grab_focus();
+                search_box.search_entry.grab_focus();
             }
         }
         
@@ -463,7 +484,7 @@ namespace Widgets {
         }
         
         public void update_search_text() {
-            string entry_text = search_box.entry.get_text().strip();
+            string entry_text = search_box.search_entry.get_text().strip();
             if (search_text != entry_text) {
                 search_text = entry_text;
                 
