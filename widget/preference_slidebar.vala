@@ -3,7 +3,7 @@ using Widgets;
 
 namespace Widgets {
     public class PreferenceSlidebar : Gtk.Grid {
-        public int width = 150;
+        public int width = 160;
 		public int height = 30;
 		
 		public signal void click_item(string name);
@@ -11,8 +11,12 @@ namespace Widgets {
         public PreferenceSlidebar() {
 			set_size_request(width, -1);
 			
+            var spacing_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+            spacing_box.set_size_request(-1, 40);
+            this.attach(spacing_box, 0, 0, width, height);
+            
             var basic_segement = new PreferenceSlideItem(this, "Basic", "basic", true);
-			this.attach(basic_segement, 0, 0, width, height);
+			this.attach_next_to(basic_segement, spacing_box, Gtk.PositionType.BOTTOM, width, height);
             
             var theme_segement = new PreferenceSlideItem(this, "Theme", "theme", false);
 			this.attach_next_to(theme_segement, basic_segement, Gtk.PositionType.BOTTOM, width, height);
@@ -44,7 +48,19 @@ namespace Widgets {
             var about_segement = new PreferenceSlideItem(this, "About", "about", true);
 			this.attach_next_to(about_segement, window_segement, Gtk.PositionType.BOTTOM, width, height);
             
+            draw.connect(on_draw);
+            
             show_all();
+        }
+        
+        private bool on_draw(Gtk.Widget widget, Cairo.Context cr) {
+            Gtk.Allocation alloc;
+            this.get_allocation(out alloc);
+            
+            cr.set_source_rgba(0, 0, 0, 0.1);
+            Draw.draw_rectangle(cr, alloc.width - 1, 0, 1, alloc.height);
+            
+            return false;
         }
     }
 
@@ -78,7 +94,7 @@ namespace Widgets {
             widget.get_allocation(out rect);
             
             cr.set_source_rgba(1, 1, 1, 1);
-            Draw.draw_rectangle(cr, 0, 0, rect.width, rect.height, true);
+            Draw.draw_rectangle(cr, 0, 0, rect.width - 1, rect.height, true);
             
             cr.set_source_rgba(0, 0, 0, 1);
             if (is_first_segement) {

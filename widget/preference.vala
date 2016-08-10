@@ -8,7 +8,7 @@ namespace Widgets {
         public Gtk.Widget focus_widget;
         public int window_init_width = 780;
         public int window_init_height = 670;
-        public int slidebar_width = 150;
+        public int slidebar_width = 160;
         
         public int preference_name_width = 180;
         public int preference_widget_width = 200;
@@ -180,8 +180,6 @@ namespace Widgets {
                 });
             
             var box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            add_widget(box);
-            
             box.pack_start(titlebar, false, false, 0);
             
             destroy.connect((w) => {
@@ -191,16 +189,18 @@ namespace Widgets {
                 });
             
             var preference_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-            box.pack_start(preference_box, true, true, 0);
+            add_widget(preference_box);
             
             var slidebar = new PreferenceSlidebar();
 			preference_box.pack_start(slidebar, false, false, 0);
+            preference_box.set_size_request(slidebar_width, -1);
 			
             scrolledwindow = new ScrolledWindow(null, null);
-            scrolledwindow.set_size_request(window_init_width - slidebar_width, -1);
             scrolledwindow.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             scrolledwindow.set_shadow_type(Gtk.ShadowType.NONE);
-            preference_box.pack_start(scrolledwindow, false, false, 0);
+            box.pack_start(scrolledwindow, true, true, 0);
+            
+            preference_box.pack_start(box, true, true, 0);
             var content_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             scrolledwindow.add(content_box);
 			
