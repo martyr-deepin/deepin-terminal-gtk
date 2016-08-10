@@ -77,7 +77,7 @@ namespace Widgets {
 					
 					return false;
                 });
-
+            
             window_state_event.connect((w, e) => {
                     if (!window_frameless) {
                         var state = e.new_window_state;
