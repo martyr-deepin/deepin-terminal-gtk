@@ -7,6 +7,8 @@ namespace Widgets {
 		public int height = 30;
 		
 		public signal void click_item(string name);
+        
+        public PreferenceSlideItem focus_segement_item;
 		
         public PreferenceSlidebar() {
 			set_size_request(width, -1);
@@ -60,9 +62,41 @@ namespace Widgets {
             var about_segement = new PreferenceSlideItem(this, "About", "about", true);
 			this.attach_next_to(about_segement, window_spacing_box, Gtk.PositionType.BOTTOM, width, height);
             
+            add_focus_handler(basic_segement);
+            add_focus_handler(theme_segement);
+            add_focus_handler(hotkey_segement);
+            add_focus_handler(terminal_key_segement);
+            add_focus_handler(workspace_key_segement);
+            add_focus_handler(advanced_key_segement);
+            add_focus_handler(advanced_segement);
+            add_focus_handler(cursor_segement);
+            add_focus_handler(scroll_segement);
+            add_focus_handler(window_segement);
+            add_focus_handler(about_segement);
+            focus_item(basic_segement);
+            
             draw.connect(on_draw);
             
             show_all();
+        }
+        
+        public void focus_item(PreferenceSlideItem item) {
+            if (focus_segement_item != null) {
+                focus_segement_item.is_selected = false;
+                focus_segement_item.queue_draw();
+            }
+            
+            focus_segement_item = item;
+            focus_segement_item.is_selected = true;
+            queue_draw();
+        }
+        
+        public void add_focus_handler(PreferenceSlideItem item) {
+            item.button_press_event.connect((w, e) => {
+                    focus_item(item);
+                    
+                    return false;
+                });
         }
         
         private bool on_draw(Gtk.Widget widget, Cairo.Context cr) {
@@ -87,8 +121,11 @@ namespace Widgets {
         public int first_segement_size = 16;
         public int second_segement_size = 10;
         
-        public Gdk.RGBA first_segement_color;
-        public Gdk.RGBA second_segement_color;
+        public Gdk.RGBA first_segement_text_color;
+        public Gdk.RGBA second_segement_text_color;
+        public Gdk.RGBA highlight_text_color;
+        
+        public bool is_selected = false;
         
         public PreferenceSlideItem(PreferenceSlidebar bar, string display_name, string name, bool is_first) {
 			set_visible_window(false);
@@ -96,11 +133,14 @@ namespace Widgets {
             item_name = display_name;
             is_first_segement = is_first;
             
-            first_segement_color = Gdk.RGBA();
-            first_segement_color.parse("#00162C");
+            first_segement_text_color = Gdk.RGBA();
+            first_segement_text_color.parse("#00162C");
 
-            second_segement_color = Gdk.RGBA();
-            second_segement_color.parse("#303030");
+            second_segement_text_color = Gdk.RGBA();
+            second_segement_text_color.parse("#303030");
+            
+            highlight_text_color = Gdk.RGBA();
+            highlight_text_color.parse("#2ca7f8");
             
             set_size_request(160, 30);
 			
@@ -120,12 +160,34 @@ namespace Widgets {
             cr.set_source_rgba(1, 1, 1, 1);
             Draw.draw_rectangle(cr, 0, 0, rect.width - 1, rect.height, true);
             
+            if (is_selected) {
+                cr.set_source_rgba(43 / 255.0, 167 / 255.0, 248 / 255.0, 0.20);
+                Draw.draw_rectangle(cr, 0, 1, rect.width, rect.height - 2, true);
+                
+                cr.set_source_rgba(43 / 255.0, 167 / 255.0, 248 / 255.0, 0.10);
+                Draw.draw_rectangle(cr, 0, 0, rect.width, 1, true);
+
+                cr.set_source_rgba(43 / 255.0, 167 / 255.0, 248 / 255.0, 0.10);
+                Draw.draw_rectangle(cr, 0, rect.height - 1, rect.width, 1, true);
+                
+                cr.set_source_rgba(43 / 255.0, 167 / 255.0, 248 / 255.0, 1);
+                Draw.draw_rectangle(cr, rect.width - 3, 0, 3, rect.height, true);
+            }
+            
             if (is_first_segement) {
-                Utils.set_context_color(cr, first_segement_color);
-                Draw.draw_text(widget, cr, item_name, first_segement_margin, 0, rect.width - first_segement_margin, first_segement_size);
+                if (is_selected) {
+                    Utils.set_context_color(cr, highlight_text_color);
+                } else {
+                    Utils.set_context_color(cr, first_segement_text_color);
+                }
+                Draw.draw_text(widget, cr, item_name, first_segement_margin, 2, rect.width - first_segement_margin, first_segement_size);
             } else {
-                Utils.set_context_color(cr, second_segement_color);
-                Draw.draw_text(widget, cr, item_name, second_segement_margin, 0, rect.width - second_segement_margin, second_segement_size);
+                if (is_selected) {
+                    Utils.set_context_color(cr, highlight_text_color);
+                } else {
+                    Utils.set_context_color(cr, second_segement_text_color);
+                }
+                Draw.draw_text(widget, cr, item_name, second_segement_margin, 8, rect.width - second_segement_margin, second_segement_size);
             }
             
             return true;
