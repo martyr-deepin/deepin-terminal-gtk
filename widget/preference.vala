@@ -350,6 +350,7 @@ namespace Widgets {
             content_box.pack_start(about_segement, false, false, 0);
             
             var about_widget = new AboutWidget();
+            about_widget.margin_top = 30;
             content_box.pack_start(about_widget, false, false, 0);
             
             var reset_button = new Gtk.Button();
@@ -460,20 +461,39 @@ namespace Widgets {
 		
 		public Gtk.Widget get_first_segement(string name) {
             var segement = new Gtk.Label(null);
-            segement.set_markup("<big><b>%s</b></big>".printf(name));
+            segement.set_markup("<span face='#303030' size='%i'>%s</span>".printf((int) (14 * Pango.SCALE), name));
             segement.set_xalign(0);
-            segement.margin_top = 10;
-            segement.margin_end = 5;
+            
+            var box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+            box.pack_start(segement, false, false, 0);
+            
+            var line = new Gtk.EventBox();
+            line.margin_left = 2;
+            line.draw.connect((w, cr) => {
+                    Gtk.Allocation rect;
+                    this.get_allocation(out rect);
+            
+                    cr.set_source_rgba(0, 0, 0, 0.1);
+                    Draw.draw_rectangle(cr, 0, 12, rect.width, 1);
+            
+                    return true;
+                });
+            box.pack_start(line, true, true, 0);
+            
+            box.margin_top = 10;
+            box.margin_end = 5;
+            box.margin_left = 20;
+            box.margin_right = 20;
 
-            return (Gtk.Widget) segement;
+            return (Gtk.Widget) box;
         }
 
         public Gtk.Widget get_second_segement(string name) {
             var segement = new Gtk.Label(null);
-            segement.set_markup("<b>%s</b>".printf(name));
+            segement.set_markup("<span face='#303030' size='%i'>%s</span>".printf((int) (12 * Pango.SCALE), name));
             segement.set_xalign(0);
-            segement.margin_left = 5;
             segement.margin_top = 10;
+            segement.margin_left = 30;
             segement.margin_end = 5;
 
             return (Gtk.Widget) segement;
@@ -593,7 +613,7 @@ namespace Widgets {
         public void adjust_option_widgets(Gtk.Label name_widget, Gtk.Widget value_widget) {
             name_widget.set_xalign(0);
             name_widget.set_size_request(preference_name_width, grid_height);
-            name_widget.margin_left = 10;
+            name_widget.margin_left = 40;
             name_widget.margin_top = 5;
             name_widget.margin_end = 5;
             
@@ -693,7 +713,7 @@ namespace Widgets {
             label.margin_top = 5;
             label.margin_end = 5;
             
-            checkbutton.margin_left = 10;
+            checkbutton.margin_left = 40;
             checkbutton.margin_right = 5;
             checkbutton.margin_top = 5;
             checkbutton.margin_end = 5;
