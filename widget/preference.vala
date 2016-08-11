@@ -75,9 +75,9 @@ namespace Widgets {
 		public Gtk.Label cursor_style_label;
 		public Widgets.CursorToggleButton cursor_style_button;
 		
-		public Gtk.CheckButton cursor_blink_checkbutton;
-		public Gtk.CheckButton scroll_on_key_checkbutton;
-		public Gtk.CheckButton scroll_on_out_checkbutton;
+		public Widgets.CheckButton cursor_blink_checkbutton;
+		public Widgets.CheckButton scroll_on_key_checkbutton;
+		public Widgets.CheckButton scroll_on_out_checkbutton;
 		
 		public Gtk.SpinButton font_size_spinbutton;
 		public Gtk.SpinButton scroll_line_spinbutton;
@@ -627,7 +627,7 @@ namespace Widgets {
             value_widget.margin_right = 10;
         }
         
-        public Gtk.Box create_check_row(Gtk.CheckButton checkbutton, string name, Gtk.Grid grid, string? group_name=null, string? key=null) {
+        public Gtk.Box create_check_row(Widgets.CheckButton checkbutton, string name, Gtk.Grid grid, string? group_name=null, string? key=null) {
             var box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             var label = create_label(name);
             adjust_option_checkbutton(label, checkbutton);
@@ -641,7 +641,7 @@ namespace Widgets {
             return box;
         }
         
-        public Gtk.Box create_follow_check_row(Gtk.CheckButton checkbutton, string name, Gtk.Widget previous_widget, Gtk.Grid grid, string? group_name=null, string? key=null) {
+        public Gtk.Box create_follow_check_row(Widgets.CheckButton checkbutton, string name, Gtk.Widget previous_widget, Gtk.Grid grid, string? group_name=null, string? key=null) {
             var box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
 			var label = create_label(name);
             adjust_option_checkbutton(label, checkbutton);
@@ -655,7 +655,7 @@ namespace Widgets {
             return box;
         }
         
-        public void read_check_value(Gtk.CheckButton checkbutton, string group_name, string key) {
+        public void read_check_value(Widgets.CheckButton checkbutton, string group_name, string key) {
             if (group_name != null && key != null) {
                 try {
                     checkbutton.set_active(parent_window.config.config_file.get_boolean(group_name, key));
@@ -691,7 +691,7 @@ namespace Widgets {
             }
         }
         
-        public void monitor_check_value(Gtk.CheckButton checkbutton, string group_name, string key) {
+        public void monitor_check_value(Widgets.CheckButton checkbutton, string group_name, string key) {
             checkbutton.toggled.connect((w) => {
                     var is_active = checkbutton.get_active();
                     
@@ -713,7 +713,7 @@ namespace Widgets {
                 });
         }
         
-        public void adjust_option_checkbutton(Gtk.Label label, Gtk.CheckButton checkbutton) {
+        public void adjust_option_checkbutton(Gtk.Label label, Widgets.CheckButton checkbutton) {
             label.margin_top = 5;
             label.margin_end = 5;
             
@@ -752,8 +752,8 @@ namespace Widgets {
             return spinbutton;
         }
 
-        public Gtk.CheckButton create_checkbutton() {
-            var checkbutton = new Gtk.CheckButton();
+        public Widgets.CheckButton create_checkbutton() {
+            var checkbutton = new Widgets.CheckButton();
             
             return checkbutton;
         }

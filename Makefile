@@ -10,6 +10,7 @@ main: ./project_path.c \
       ./widget/tabbar.vala \
       ./widget/appbar.vala \
       ./widget/titlebar.vala \
+      ./widget/checkbutton.vala \
       ./widget/hotkey_preview.vala \
       ./widget/terminal.vala \
       ./widget/progressbar.vala \
@@ -54,6 +55,7 @@ main: ./project_path.c \
     ./widget/tabbar.vala \
     ./widget/appbar.vala \
     ./widget/titlebar.vala \
+    ./widget/checkbutton.vala \
     ./widget/hotkey_preview.vala \
     ./widget/terminal.vala \
     ./widget/progressbar.vala \
