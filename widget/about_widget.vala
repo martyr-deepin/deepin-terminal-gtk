@@ -2,7 +2,7 @@ using Gtk;
 using Widgets;
 
 namespace Widgets {
-    public class AboutWidget : Gtk.DrawingArea {
+    public class AboutWidget : Gtk.Box {
         public int height = 400;
         
         public int icon_y = 3;
@@ -12,7 +12,6 @@ namespace Widgets {
         public int version_height = 12;
         public int logo_y = 185;
         public int homepage_y = 208;
-        public int homepage_height = 13;
         public int about_y = 249;
         public int about_x = 38;
         public int about_height = 11;
@@ -25,6 +24,44 @@ namespace Widgets {
             logo_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("logo.png"));
             
             set_size_request(-1, height);
+
+            var content_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+            
+            var homepage_area = new Gtk.EventBox();
+            homepage_area.add_events(Gdk.EventMask.BUTTON_PRESS_MASK
+                                     | Gdk.EventMask.BUTTON_RELEASE_MASK
+                                     | Gdk.EventMask.POINTER_MOTION_MASK
+                                     | Gdk.EventMask.LEAVE_NOTIFY_MASK);
+            homepage_area.margin_top = homepage_y;
+            homepage_area.visible_window = false;
+            var homepage_label = new Gtk.Label(null);
+            homepage_label.set_markup("<span size='%i'>%s</span>".printf(11 * Pango.SCALE, "www.deepin.org"));
+            homepage_label.get_style_context().add_class("link");
+            homepage_area.add(homepage_label);
+            homepage_area.enter_notify_event.connect((w, e) => {
+                    var display = Gdk.Display.get_default();
+                    get_window().set_cursor(new Gdk.Cursor.for_display(display, Gdk.CursorType.HAND1));
+                    
+                    return false;
+                });
+            homepage_area.leave_notify_event.connect((w, e) => {
+                    get_window().set_cursor(null);
+                    
+                    return false;
+                });
+            homepage_area.button_release_event.connect((w, e) => {
+                    Gdk.Screen screen = Gdk.Screen.get_default();
+                    try {
+                        Gtk.show_uri(screen, "https://www.deepin.org", e.time);
+                    } catch (GLib.Error e) {
+                        print(e.message);
+                    }
+                    
+                    return false;
+                });
+            
+            content_box.pack_start(homepage_area, false, false, 0);
+            pack_start(content_box, true, true, 0);
 
             draw.connect(on_draw);
             
@@ -49,13 +86,11 @@ namespace Widgets {
             // Draw logo.
             Draw.draw_surface(cr, logo_surface, (rect.width - logo_surface.get_width()) / 2, logo_y);
             
-            // Draw homepage.
-            cr.set_source_rgba(0, 0.3, 0.9, 1);
-            Draw.draw_text(widget, cr, "www.deepin.org", 0, homepage_y, rect.width, homepage_height, Pango.Alignment.CENTER);
-            
             // Draw about.
             cr.set_source_rgba(0.1, 0.1, 0.1, 1);
             Draw.draw_text(widget, cr, "Deepin terminal is a terminal emulator with screen split, workspace and remote machine manage.\n\nDeepin terminal is a free software licensed under GNU GPLv3.", about_x, about_y, rect.width - about_x * 2, about_height, Pango.Alignment.CENTER);
+            
+            Utils.propagate_draw(this, cr);
             
             return true;
         }        

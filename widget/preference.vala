@@ -465,7 +465,7 @@ namespace Widgets {
 		
 		public Gtk.Widget get_first_segement(string name) {
             var segement = create_label();
-            segement.set_markup("<span face='#303030' size='%i'>%s</span>".printf((int) (14 * Pango.SCALE), name));
+            segement.set_markup("<span size='%i'>%s</span>".printf((int) (14 * Pango.SCALE), name));
             segement.set_xalign(0);
             
             var box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
@@ -494,7 +494,7 @@ namespace Widgets {
 
         public Gtk.Widget get_second_segement(string name) {
             var segement = create_label();
-            segement.set_markup("<span face='#303030' size='%i'>%s</span>".printf((int) (12 * Pango.SCALE), name));
+            segement.set_markup("<span size='%i'>%s</span>".printf((int) (12 * Pango.SCALE), name));
             segement.set_xalign(0);
             segement.margin_top = 10;
             segement.margin_left = 30;
