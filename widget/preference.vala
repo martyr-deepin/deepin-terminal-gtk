@@ -90,61 +90,61 @@ namespace Widgets {
 		ArrayList<string> window_state_list;
 
         public Preference(Gtk.Window window, Gtk.Widget widget) {
-			theme_label = new Gtk.Label(null);
+			theme_label = create_label();
 			theme_combox = create_combox_text();
-            opacity_label = new Gtk.Label("Opacity:");
+            opacity_label = create_label("Opacity:");
             opacity_progressbar = new Widgets.ProgressBar(opacity);
-			font_label = new Gtk.Label(null);
+			font_label = create_label();
 			font_combox = create_combox_text();
-			window_label = new Gtk.Label(null);
+			window_label = create_label();
 			window_combox = create_combox_text();
 			
-			copy_key_label = new Gtk.Label(null);
+			copy_key_label = create_label();
 			copy_key_entry = create_entry();
-			paste_key_label = new Gtk.Label(null);
+			paste_key_label = create_label();
 			paste_key_entry = create_entry();
-			search_key_label = new Gtk.Label(null);
+			search_key_label = create_label();
 			search_key_entry = create_entry();
-			zoom_in_key_label = new Gtk.Label(null);
+			zoom_in_key_label = create_label();
 			zoom_in_key_entry = create_entry();
-			zoom_out_key_label = new Gtk.Label(null);
+			zoom_out_key_label = create_label();
 			zoom_out_key_entry = create_entry();
-			zoom_reset_key_label = new Gtk.Label(null);
+			zoom_reset_key_label = create_label();
 			zoom_reset_key_entry = create_entry();
-			select_all_key_label = new Gtk.Label(null);
+			select_all_key_label = create_label();
 			select_all_key_entry = create_entry();
-			new_workspace_key_label = new Gtk.Label(null);
+			new_workspace_key_label = create_label();
 			new_workspace_key_entry = create_entry();
-			close_workspace_key_label = new Gtk.Label(null);
+			close_workspace_key_label = create_label();
 			close_workspace_key_entry = create_entry();
-			previous_workspace_key_label = new Gtk.Label(null);
+			previous_workspace_key_label = create_label();
 			previous_workspace_key_entry = create_entry();
-			next_workspace_key_label = new Gtk.Label(null);
+			next_workspace_key_label = create_label();
 			next_workspace_key_entry = create_entry();
-			split_vertically_key_label = new Gtk.Label(null);
+			split_vertically_key_label = create_label();
 			split_vertically_key_entry = create_entry();
-			split_horizontally_key_label = new Gtk.Label(null);
+			split_horizontally_key_label = create_label();
 			split_horizontally_key_entry = create_entry();
-			select_up_window_key_label = new Gtk.Label(null);
+			select_up_window_key_label = create_label();
 			select_up_window_key_entry = create_entry();
-			select_down_window_key_label = new Gtk.Label(null);
+			select_down_window_key_label = create_label();
 			select_down_window_key_entry = create_entry();
-			select_left_window_key_label = new Gtk.Label(null);
+			select_left_window_key_label = create_label();
 			select_left_window_key_entry = create_entry();
-			select_right_window_key_label = new Gtk.Label(null);
+			select_right_window_key_label = create_label();
 			select_right_window_key_entry = create_entry();
-			close_window_key_label = new Gtk.Label(null);
+			close_window_key_label = create_label();
 			close_window_key_entry = create_entry();
-			close_other_windows_key_label = new Gtk.Label(null);
+			close_other_windows_key_label = create_label();
 			close_other_windows_key_entry = create_entry();
-			fullscreen_key_label = new Gtk.Label(null);
+			fullscreen_key_label = create_label();
 			fullscreen_key_entry = create_entry();
-			display_hotkey_terminal_key_label = new Gtk.Label(null);
+			display_hotkey_terminal_key_label = create_label();
 			display_hotkey_terminal_key_entry = create_entry();
-			show_remote_manage_key_label = new Gtk.Label(null);
+			show_remote_manage_key_label = create_label();
 			show_remote_manage_key_entry = create_entry();
 			
-            cursor_style_label = new Gtk.Label("Cursor style:");
+            cursor_style_label = create_label("Cursor style:");
 			cursor_style_button = new Widgets.CursorToggleButton();
 			cursor_blink_checkbutton = create_checkbutton();
 			scroll_on_key_checkbutton = create_checkbutton();
@@ -464,7 +464,7 @@ namespace Widgets {
 		}
 		
 		public Gtk.Widget get_first_segement(string name) {
-            var segement = new Gtk.Label(null);
+            var segement = create_label();
             segement.set_markup("<span face='#303030' size='%i'>%s</span>".printf((int) (14 * Pango.SCALE), name));
             segement.set_xalign(0);
             
@@ -493,7 +493,7 @@ namespace Widgets {
         }
 
         public Gtk.Widget get_second_segement(string name) {
-            var segement = new Gtk.Label(null);
+            var segement = create_label();
             segement.set_markup("<span face='#303030' size='%i'>%s</span>".printf((int) (12 * Pango.SCALE), name));
             segement.set_xalign(0);
             segement.margin_top = 10;
@@ -629,7 +629,7 @@ namespace Widgets {
         
         public Gtk.Box create_check_row(Gtk.CheckButton checkbutton, string name, Gtk.Grid grid, string? group_name=null, string? key=null) {
             var box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-            var label = new Gtk.Label(name);
+            var label = create_label(name);
             adjust_option_checkbutton(label, checkbutton);
 
             read_check_value(checkbutton, group_name, key);
@@ -643,7 +643,7 @@ namespace Widgets {
         
         public Gtk.Box create_follow_check_row(Gtk.CheckButton checkbutton, string name, Gtk.Widget previous_widget, Gtk.Grid grid, string? group_name=null, string? key=null) {
             var box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-			var label = new Gtk.Label(name);
+			var label = create_label(name);
             adjust_option_checkbutton(label, checkbutton);
             
             read_check_value(checkbutton, group_name, key);
@@ -668,7 +668,7 @@ namespace Widgets {
         }
         
         public Gtk.Label create_follow_spinbutton_row(Gtk.SpinButton spinbutton, string name, Gtk.Widget previous_widget, Gtk.Grid grid, string? group_name=null, string? key=null) {
-            var label = new Gtk.Label(name);
+            var label = create_label(name);
             adjust_option_widgets(label, spinbutton);
             
             read_spin_value(spinbutton, group_name, key);
@@ -757,6 +757,13 @@ namespace Widgets {
             checkbutton.get_style_context().add_class("preference-checkbutton");
             
             return checkbutton;
+        }
+        
+        public Gtk.Label create_label(string? text=null) {
+            var label = new Gtk.Label(text);
+            label.get_style_context().add_class("preference-label");
+            
+            return label;
         }
         
         public void grid_attach(Gtk.Grid grid, Gtk.Widget child, int left, int top, int width, int height) {
