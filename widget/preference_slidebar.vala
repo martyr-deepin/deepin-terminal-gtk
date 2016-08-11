@@ -118,7 +118,7 @@ namespace Widgets {
         public int first_segement_margin = 30;
         public int second_segement_margin = 40;
         
-        public int first_segement_size = 16;
+        public int first_segement_size = 14;
         public int second_segement_size = 10;
         
         public Gdk.RGBA first_segement_text_color;
@@ -162,7 +162,7 @@ namespace Widgets {
             
             if (is_selected) {
                 cr.set_source_rgba(43 / 255.0, 167 / 255.0, 248 / 255.0, 0.20);
-                Draw.draw_rectangle(cr, 0, 1, rect.width, rect.height - 2, true);
+                Draw.draw_rectangle(cr, 0, 0, rect.width, rect.height, true);
                 
                 cr.set_source_rgba(43 / 255.0, 167 / 255.0, 248 / 255.0, 0.10);
                 Draw.draw_rectangle(cr, 0, 0, rect.width, 1, true);
