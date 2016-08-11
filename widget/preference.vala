@@ -354,7 +354,10 @@ namespace Widgets {
             about_widget.margin_top = 30;
             content_box.pack_start(about_widget, false, false, 0);
             
-            var reset_button = new Gtk.Button();
+            var reset_button = new Widgets.ImageButton("reset_button", "reset");
+            reset_button.margin_left = 100;
+            reset_button.margin_top = 10;
+            reset_button.margin_bottom = 10;
 			reset_button.button_release_event.connect((w, e) => {
 					parent_window.config.init_config();
 					parent_window.config.update();
