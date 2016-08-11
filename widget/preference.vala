@@ -351,7 +351,7 @@ namespace Widgets {
             content_box.pack_start(about_segement, false, false, 0);
             
             var about_widget = new AboutWidget();
-            about_widget.margin_top = 30;
+            about_widget.margin_top = 10;
             content_box.pack_start(about_widget, false, false, 0);
             
             var reset_button = new Widgets.ImageButton("reset_button", "reset");

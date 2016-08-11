@@ -4,7 +4,7 @@ using Widgets;
 namespace Widgets {
     public class AboutDialog : Widgets.BaseWindow {
         public int window_init_width = 500;
-        public int window_init_height = 470;
+        public int window_init_height = 400;
 
         public Gtk.Widget focus_widget;
         
@@ -25,9 +25,12 @@ namespace Widgets {
             move(x + (window_alloc.width - window_init_width) / 2,
                  y + (window_alloc.height - window_init_height) / 3);
             
-            var titlebar = new Titlebar();
+            var overlay = new Gtk.Overlay();
+
+            var close_button = new ImageButton("titlebar_close");
+            close_button.set_halign(Gtk.Align.END);
             
-            titlebar.close_button.button_release_event.connect((b) => {
+            close_button.button_release_event.connect((b) => {
                     this.destroy();
                     
                     return false;
@@ -39,13 +42,25 @@ namespace Widgets {
                     }
                 });
             
+            var button_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+            button_box.pack_start(close_button, true, true, 0);
+
             var box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            box.pack_start(titlebar, false, false, 0);
+            box.pack_start(button_box, false, false, 0);
             
             var about_widget = new AboutWidget();
             box.pack_start(about_widget, true, true, 0);
+
+            var event_area = new Widgets.WindowEventArea(this);
+            event_area = new Widgets.WindowEventArea(this);
+            event_area.margin_right = 27;
+            event_area.margin_bottom = 250;
             
-            add_widget(box);
+            overlay.add(box);
+            overlay.add_overlay(event_area);
+            
+            add_widget(overlay);
+            
             show_all();
         }
         

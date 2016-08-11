@@ -5,15 +5,15 @@ namespace Widgets {
     public class AboutWidget : Gtk.DrawingArea {
         public int height = 400;
         
-        public int icon_y = -10;
-        public int name_y = 94;
+        public int icon_y = 3;
+        public int name_y = 107;
         public int name_height = 18;
-        public int version_y = 136;
+        public int version_y = 149;
         public int version_height = 12;
-        public int logo_y = 172;
-        public int homepage_y = 195;
+        public int logo_y = 185;
+        public int homepage_y = 208;
         public int homepage_height = 13;
-        public int about_y = 246;
+        public int about_y = 249;
         public int about_x = 38;
         public int about_height = 11;
         
