@@ -91,67 +91,67 @@ namespace Widgets {
 
         public Preference(Gtk.Window window, Gtk.Widget widget) {
 			theme_label = new Gtk.Label(null);
-			theme_combox = new Gtk.ComboBoxText();
+			theme_combox = create_combox_text();
             opacity_label = new Gtk.Label("Opacity:");
             opacity_progressbar = new Widgets.ProgressBar(opacity);
 			font_label = new Gtk.Label(null);
-			font_combox = new Gtk.ComboBoxText();
+			font_combox = create_combox_text();
 			window_label = new Gtk.Label(null);
-			window_combox = new Gtk.ComboBoxText();
+			window_combox = create_combox_text();
 			
 			copy_key_label = new Gtk.Label(null);
-			copy_key_entry = new Gtk.Entry();
+			copy_key_entry = create_entry();
 			paste_key_label = new Gtk.Label(null);
-			paste_key_entry = new Gtk.Entry();
+			paste_key_entry = create_entry();
 			search_key_label = new Gtk.Label(null);
-			search_key_entry = new Gtk.Entry();
+			search_key_entry = create_entry();
 			zoom_in_key_label = new Gtk.Label(null);
-			zoom_in_key_entry = new Gtk.Entry();
+			zoom_in_key_entry = create_entry();
 			zoom_out_key_label = new Gtk.Label(null);
-			zoom_out_key_entry = new Gtk.Entry();
+			zoom_out_key_entry = create_entry();
 			zoom_reset_key_label = new Gtk.Label(null);
-			zoom_reset_key_entry = new Gtk.Entry();
+			zoom_reset_key_entry = create_entry();
 			select_all_key_label = new Gtk.Label(null);
-			select_all_key_entry = new Gtk.Entry();
+			select_all_key_entry = create_entry();
 			new_workspace_key_label = new Gtk.Label(null);
-			new_workspace_key_entry = new Gtk.Entry();
+			new_workspace_key_entry = create_entry();
 			close_workspace_key_label = new Gtk.Label(null);
-			close_workspace_key_entry = new Gtk.Entry();
+			close_workspace_key_entry = create_entry();
 			previous_workspace_key_label = new Gtk.Label(null);
-			previous_workspace_key_entry = new Gtk.Entry();
+			previous_workspace_key_entry = create_entry();
 			next_workspace_key_label = new Gtk.Label(null);
-			next_workspace_key_entry = new Gtk.Entry();
+			next_workspace_key_entry = create_entry();
 			split_vertically_key_label = new Gtk.Label(null);
-			split_vertically_key_entry = new Gtk.Entry();
+			split_vertically_key_entry = create_entry();
 			split_horizontally_key_label = new Gtk.Label(null);
-			split_horizontally_key_entry = new Gtk.Entry();
+			split_horizontally_key_entry = create_entry();
 			select_up_window_key_label = new Gtk.Label(null);
-			select_up_window_key_entry = new Gtk.Entry();
+			select_up_window_key_entry = create_entry();
 			select_down_window_key_label = new Gtk.Label(null);
-			select_down_window_key_entry = new Gtk.Entry();
+			select_down_window_key_entry = create_entry();
 			select_left_window_key_label = new Gtk.Label(null);
-			select_left_window_key_entry = new Gtk.Entry();
+			select_left_window_key_entry = create_entry();
 			select_right_window_key_label = new Gtk.Label(null);
-			select_right_window_key_entry = new Gtk.Entry();
+			select_right_window_key_entry = create_entry();
 			close_window_key_label = new Gtk.Label(null);
-			close_window_key_entry = new Gtk.Entry();
+			close_window_key_entry = create_entry();
 			close_other_windows_key_label = new Gtk.Label(null);
-			close_other_windows_key_entry = new Gtk.Entry();
+			close_other_windows_key_entry = create_entry();
 			fullscreen_key_label = new Gtk.Label(null);
-			fullscreen_key_entry = new Gtk.Entry();
+			fullscreen_key_entry = create_entry();
 			display_hotkey_terminal_key_label = new Gtk.Label(null);
-			display_hotkey_terminal_key_entry = new Gtk.Entry();
+			display_hotkey_terminal_key_entry = create_entry();
 			show_remote_manage_key_label = new Gtk.Label(null);
-			show_remote_manage_key_entry = new Gtk.Entry();
+			show_remote_manage_key_entry = create_entry();
 			
             cursor_style_label = new Gtk.Label("Cursor style:");
 			cursor_style_button = new Widgets.CursorToggleButton();
-			cursor_blink_checkbutton = new Gtk.CheckButton();
-			scroll_on_key_checkbutton = new Gtk.CheckButton();
-			scroll_on_out_checkbutton = new Gtk.CheckButton();
+			cursor_blink_checkbutton = create_checkbutton();
+			scroll_on_key_checkbutton = create_checkbutton();
+			scroll_on_out_checkbutton = create_checkbutton();
 			
-			font_size_spinbutton = new Gtk.SpinButton.with_range(0, 100, 1);
-			scroll_line_spinbutton = new Gtk.SpinButton.with_range(0, 100, 1);
+			font_size_spinbutton = create_spinbutton(0, 100, 1);
+			scroll_line_spinbutton = create_spinbutton(0, 100, 1);
 			
             parent_window = (Widgets.Window) window;
             
@@ -729,6 +729,34 @@ namespace Widgets {
             
             cr.set_source_rgba(1, 1, 1, 1);
             Draw.draw_rounded_rectangle(cr, window_frame_margin_left, window_frame_margin_top, window_rect.width, window_rect.height, 5);
+        }
+        
+        public Gtk.Entry create_entry() {
+            var entry = new Gtk.Entry();
+            entry.get_style_context().add_class("preference-entry");
+            
+            return entry;
+        }
+        
+        public Gtk.ComboBoxText create_combox_text() {
+            var combox = new Gtk.ComboBoxText();
+            combox.get_style_context().add_class("preference-comboboxtext");
+            
+            return combox;
+        }
+        
+        public Gtk.SpinButton create_spinbutton(int min, int max, int step) {
+            var spinbutton = new Gtk.SpinButton.with_range(min, max, step);
+            spinbutton.get_style_context().add_class("preference-spinbutton");
+            
+            return spinbutton;
+        }
+
+        public Gtk.CheckButton create_checkbutton() {
+            var checkbutton = new Gtk.CheckButton();
+            checkbutton.get_style_context().add_class("preference-checkbutton");
+            
+            return checkbutton;
         }
     }
 }
