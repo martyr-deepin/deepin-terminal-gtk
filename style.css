@@ -97,21 +97,77 @@
 .preference-comboboxtext button.combo {
 	padding-top: 1px;
 	padding-bottom: 0px;
+    color:#303030;
+    background-image:linear-gradient(-180deg,#fff 0%,#fdfdfd 100%);
+    border:0px solid rgba(0,0,0,0.1);
+    box-shadow: 0 1px rgba(0,0,0,0.02),inset 0  1px  rgba(0,0,0,0.1),inset 0 -1px  rgba(0,0,0,0.1),inset 1px 0 rgba(0,0,0,0.1),inset -1px 0 rgba(0,0,0,0.1);
+        
+}
+
+.preference-comboboxtext button.combo:hover {
+    padding-top: 1px;
+    padding-bottom: 0px;
+    color:white;
+    background-image:linear-gradient(-180deg,#8CCFFF 0%, #4BB8FF 100%);
+    box-shadow: 0 1px rgba(0,0,0,0.04),inset 0  1px  rgba(0,118,243,0.2),inset 0 -1px  rgba(0,118,243,0.2),inset 1px 0 rgba(0,118,243,0.2),inset -1px 0 rgba(0,118,243,0.2);
 }
 
 .preference-comboboxtext arrow {
-  min-height: 16px;
-  min-width: 16px;
+	min-height: 16px;
+	min-width: 12px;
 }
 
 .preference-entry {
+    color:#303030;
 	min-height: 18px;
+    background-color:white;
+    border:1px solid rgba(0,0,0,0.1);
+}
+.preference-entry:focus {
+    color:black;
+    min-height: 18px;
+    background-color:white;
+    border:1px solid #2ca7f8;
 }
 
+
 .preference-spinbutton:not(.vertical) button {
-	min-height: 23px;
+	min-height: 24px;
 	padding-top: 0px;
 	padding-bottom: 0px;
+    color:#303030;
+    background-image:linear-gradient(-180deg,#fff 0%,#fdfdfd 100%);
+    border:0px solid rgba(0,0,0,0.1);
+    box-shadow: 0 1px rgba(0,0,0,0.02),inset 0  1px  rgba(0,0,0,0.1),inset 0 -1px  rgba(0,0,0,0.1),inset 1px 0 rgba(0,0,0,0.1),inset -1px 0 rgba(0,0,0,0.1);
+
+}
+
+.preference-spinbutton:not(.vertical) button:last-child {
+	min-height: 24px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+    background-image:linear-gradient(-180deg,#fff 0%,#fdfdfd 100%);
+    border:0px solid rgba(1,0,0,0.1);
+    box-shadow: 0 1px rgba(0,0,0,0.02),inset 0  1px  rgba(0,0,0,0.1),inset 0 -1px  rgba(0,0,0,0.1),inset 1px 0 rgba(0,0,0,0.0),inset -1px 0 rgba(0,0,0,0.1);
+
+}
+.preference-spinbutton:not(.vertical) button:hover {
+	min-height: 24px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+    color:white;
+    background-image:linear-gradient(-180deg,#8CCFFF 0%, #4BB8FF 100%);
+    box-shadow: 0 1px rgba(0,0,0,0.04),inset 0  1px  rgba(0,118,243,0.2),inset 0 -1px  rgba(0,118,243,0.2),inset 1px 0 rgba(0,118,243,0.2),inset -1px 0 rgba(0,118,243,0.2);
+
+}
+.preference-spinbutton:not(.vertical) button:active {
+	min-height: 24px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+    color:white;
+    background-image:linear-gradient(-180deg,#0B8CFF 0%, #0AA1FF 100%);
+    box-shadow: 0 1px rgba(0,0,0,0.04),inset 0  1px  rgba(29,129,255,0.30),inset 0 -1px  rgba(29,129,255,0.30),inset 1px 0 rgba(29,129,255,0.30),inset -1px 0 rgba(29,129,255,0.30);
+
 }
 
 .preference-spinbutton:not(.vertical) entry {
