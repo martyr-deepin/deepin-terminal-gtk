@@ -31,7 +31,7 @@
 }
 
 .terminal-scrollbar {
-	padding-right: 4px;
+	padding-right: 2px;
 	background: transparent;
 	box-shadow: none;
 	border: none;
@@ -39,44 +39,37 @@
 }
 
 .terminal-scrollbar slider {
-	background-color: rgba(255, 255, 255, 0.2);
-	border: 1px;
-	border-color: rgba(255, 255, 255, 0.05);
-	border-style: inset;
+	background-color: rgba(255, 255, 255, 0.2); 
+    border:none;
+    box-shadow:inset 1px 1px   rgba(255,255,255,0.05),inset -1px -1px rgba(255,255,255,0.05);
     min-width: 4px;
 }
 
 .terminal-scrollbar slider:hover {
 	background-color: rgba(255, 255, 255, 0.4);
-	box-shadow: none;
-	border: 1px;
-	border-color: rgba(255, 255, 255, 0.10);
-	border-style: inset;
+    box-shadow:inset 1px 1px   rgba(255,255,255,0.1),inset -1px -1px rgba(255,255,255,0.05);
     min-width: 8px;
 }
 
 .terminal-scrollbar slider:hover:active {
 	background-color: rgba(255, 255, 255, 0.3);
-	box-shadow: none;
-	border: 1px;
-	border-color: rgba(255, 255, 255, 0.05);
-	border-style: inset;
+    box-shadow:inset 1px 1px   rgba(255,255,255,0.05),inset -1px -1px rgba(255,255,255,0.05);
     min-width: 8px;
 }
 
 .preference-scrollbar {
-	padding-right: 4px;
+	padding-right: 2px;
 	background: transparent;
 	box-shadow: none;
-	border: none;
+	border: 1px solid transparent;
     min-width: 4px;
 }
 
 .preference-scrollbar slider {
 	background-color: rgba(16, 16, 16, 0.5);
+    box-shadow:none;
 	border: 1px;
 	border-color: transparent;
-	border-style: inset;
     min-width: 4px;
 }
 
@@ -85,7 +78,6 @@
 	box-shadow: none;
 	border: 1px;
 	border-color: transparent;
-	border-style: inset;
     min-width: 8px;
 }
 
@@ -94,10 +86,8 @@
 	box-shadow: none;
 	border: 1px;
 	border-color: transparent;
-	border-style: inset;
     min-width: 8px;
 }
-
 
 .preference-comboboxtext {
 }
