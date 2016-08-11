@@ -754,7 +754,6 @@ namespace Widgets {
 
         public Gtk.CheckButton create_checkbutton() {
             var checkbutton = new Gtk.CheckButton();
-            checkbutton.get_style_context().add_class("preference-checkbutton");
             
             return checkbutton;
         }

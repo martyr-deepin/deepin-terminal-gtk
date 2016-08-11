@@ -1,8 +1,8 @@
 .window_shadow_active {
-    background: transparent;
-    border-radius: 5px;
-    box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.3);
-}
+					   background: transparent;
+					   border-radius: 5px;
+					   box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.3);
+					   }
 
 .window_shadow_inactive {
     background: transparent;
@@ -90,13 +90,32 @@
 }
 
 .preference-comboboxtext {
+	min-height: 16px;
+}
+
+
+.preference-comboboxtext button.combo {
+	padding-top: 1px;
+	padding-bottom: 0px;
+}
+
+.preference-comboboxtext arrow {
+  min-height: 16px;
+  min-width: 16px;
 }
 
 .preference-entry {
+	min-height: 18px;
 }
 
-.preference-spinbutton {
+.preference-spinbutton:not(.vertical) button {
+	min-height: 23px;
+	padding-top: 0px;
+	padding-bottom: 0px;
 }
 
-.preference-checkbutton {
+.preference-spinbutton:not(.vertical) entry {
+	min-height: 23px;
+	padding-top: 0px;
+	padding-bottom: 0px;
 }
