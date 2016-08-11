@@ -12,7 +12,7 @@ namespace Widgets {
         
         public int preference_name_width = 180;
         public int preference_widget_width = 200;
-        public int grid_height = 22;
+        public int grid_height = 24;
 		
 		public ScrolledWindow scrolledwindow;
 		
@@ -234,8 +234,8 @@ namespace Widgets {
 					parent_window.config.update();
 				});
 			adjust_option_widgets(opacity_label, opacity_progressbar);
-            opacity_grid.attach(opacity_label, 0, 0, preference_name_width, grid_height);
-            opacity_grid.attach_next_to(opacity_progressbar, opacity_label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
+            grid_attach(opacity_grid, opacity_label, 0, 0, preference_name_width, grid_height);
+            grid_attach_next_to(opacity_grid, opacity_progressbar, opacity_label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
             
             var font_grid = new Gtk.Grid();
             content_box.pack_start(font_grid, false, false, 0);
@@ -319,8 +319,8 @@ namespace Widgets {
 					parent_window.config.update();
 				});
 			adjust_option_widgets(cursor_style_label, cursor_style_button);
-            cursor_grid.attach(cursor_style_label, 0, 0, preference_name_width, grid_height);
-            cursor_grid.attach_next_to(cursor_style_button, cursor_style_label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
+            grid_attach(cursor_grid, cursor_style_label, 0, 0, preference_name_width, grid_height);
+            grid_attach_next_to(cursor_grid, cursor_style_button, cursor_style_label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
             
             create_follow_check_row(cursor_blink_checkbutton, "cursor blink", cursor_style_label, cursor_grid, "advanced", "cursor_blink_mode");
             
@@ -509,8 +509,8 @@ namespace Widgets {
 			monitor_check_key(entry, group_name, key);
 			
             adjust_option_widgets(label, entry);
-            grid.attach(label, 0, 0, preference_name_width, grid_height);
-            grid.attach_next_to(entry, label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
+            grid_attach(grid, label, 0, 0, preference_name_width, grid_height);
+            grid_attach_next_to(grid, entry, label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
 		}
         
         public void create_follow_key_row(Gtk.Label label, Gtk.Entry entry, string name, Gtk.Label previous_label, Gtk.Grid grid, string? group_name=null, string? key=null) {
@@ -519,8 +519,8 @@ namespace Widgets {
 			monitor_check_key(entry, group_name, key);
 			
             adjust_option_widgets(label, entry);
-            grid.attach_next_to(label, previous_label, Gtk.PositionType.BOTTOM, preference_name_width, grid_height);
-            grid.attach_next_to(entry, label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
+            grid_attach_next_to(grid, label, previous_label, Gtk.PositionType.BOTTOM, preference_name_width, grid_height);
+            grid_attach_next_to(grid, entry, label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
 		}
 		
 		public void monitor_check_key(Gtk.Entry entry, string group_name, string key) {
@@ -585,8 +585,8 @@ namespace Widgets {
                     });
             }
             adjust_option_widgets(label, combox);
-            grid.attach(label, 0, 0, preference_name_width, grid_height);
-            grid.attach_next_to(combox, label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
+            grid_attach(grid, label, 0, 0, preference_name_width, grid_height);
+            grid_attach_next_to(grid, combox, label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
 		}
 		
         public void create_combox_row(Gtk.Label label, Gtk.ComboBoxText combox, string name, Gtk.Grid grid, ArrayList<string>? values=null, string? group_name=null, string? key=null) {
@@ -610,8 +610,8 @@ namespace Widgets {
                     });
             }
             adjust_option_widgets(label, combox);
-            grid.attach(label, 0, 0, preference_name_width, grid_height);
-            grid.attach_next_to(combox, label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
+            grid_attach(grid, label, 0, 0, preference_name_width, grid_height);
+            grid_attach_next_to(grid, combox, label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
 		}
 
         public void adjust_option_widgets(Gtk.Label name_widget, Gtk.Widget value_widget) {
@@ -636,7 +636,7 @@ namespace Widgets {
             
             box.pack_start(checkbutton, false, false, 0);
             box.pack_start(label, false, false, 0);
-            grid.attach(box, 0, 0, preference_name_width, grid_height);
+            grid_attach(grid, box, 0, 0, preference_name_width, grid_height);
             
             return box;
         }
@@ -650,7 +650,7 @@ namespace Widgets {
             
             box.pack_start(checkbutton, false, false, 0);
             box.pack_start(label, false, false, 0);
-            grid.attach_next_to(box, previous_widget, Gtk.PositionType.BOTTOM, preference_name_width, grid_height);
+            grid_attach_next_to(grid, box, previous_widget, Gtk.PositionType.BOTTOM, preference_name_width, grid_height);
             
             return box;
         }
@@ -673,8 +673,8 @@ namespace Widgets {
             
             read_spin_value(spinbutton, group_name, key);
             
-            grid.attach_next_to(label, previous_widget, Gtk.PositionType.BOTTOM, preference_name_width, grid_height);
-            grid.attach_next_to(spinbutton, label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
+            grid_attach_next_to(grid, label, previous_widget, Gtk.PositionType.BOTTOM, preference_name_width, grid_height);
+            grid_attach_next_to(grid, spinbutton, label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
             
             return label;
         }
@@ -756,6 +756,18 @@ namespace Widgets {
             var checkbutton = new Gtk.CheckButton();
             
             return checkbutton;
+        }
+        
+        public void grid_attach(Gtk.Grid grid, Gtk.Widget child, int left, int top, int width, int height) {
+            child.margin_top = 5;
+            child.margin_bottom = 5;
+            grid.attach(child, left, top, width, height);
+        }
+        
+        public void grid_attach_next_to(Gtk.Grid grid, Gtk.Widget child, Gtk.Widget sibling, Gtk.PositionType side, int width, int height) {
+            child.margin_top = 5;
+            child.margin_bottom = 5;
+            grid.attach_next_to(child, sibling, side, width, height);
         }
     }
 }
