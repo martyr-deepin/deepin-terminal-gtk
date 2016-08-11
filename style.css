@@ -1,36 +1,36 @@
-GtkWindow.background,
-GtkWindow.background:backdrop {
-    background-color: transparent;
-}
+/* GtkWindow.background, */
+/* GtkWindow.background:backdrop { */
+/*     background-color: transparent; */
+/* } */
 
-GtkWindow .scrollbars-junction,
-GtkWindow .scrollbar.trough,
-GtkWindow .scrollbars-junction.frame,
-GtkWindow .frame.scrollbar.trough,
-GtkWindow .scrollbars-junction:backdrop, 
-GtkWindow .scrollbar.trough:backdrop,
-GtkWindow .scrollbars-junction.frame:backdrop,
-GtkWindow .frame.scrollbar.trough:backdrop {
-  background-color: rgba(39,40,34,.95); /*match scroll gutter to the bg set previously*/
-  border:none;
-}
+/* GtkWindow .scrollbars-junction, */
+/* GtkWindow .scrollbar.trough, */
+/* GtkWindow .scrollbars-junction.frame, */
+/* GtkWindow .frame.scrollbar.trough, */
+/* GtkWindow .scrollbars-junction:backdrop,  */
+/* GtkWindow .scrollbar.trough:backdrop, */
+/* GtkWindow .scrollbars-junction.frame:backdrop, */
+/* GtkWindow .frame.scrollbar.trough:backdrop { */
+/*   background-color: rgba(39,40,34,.95); /\*match scroll gutter to the bg set previously*\/ */
+/*   border:none; */
+/* } */
 
-GtkEntry {
-    color: grey;
-	background: #272822;
-	border-color: #393937;
-}
+/* GtkEntry { */
+/*     color: grey; */
+/* 	background: #272822; */
+/* 	border-color: #393937; */
+/* } */
 
-GtkEntry:focus {
-    color: grey;
-	background: #272822;
-	border-color: #393937;
-}
+/* GtkEntry:focus { */
+/*     color: grey; */
+/* 	background: #272822; */
+/* 	border-color: #393937; */
+/* } */
 
-GtkEntry:selected {
-    color: red;
-	background: grey;
-}
+/* GtkEntry:selected { */
+/*     color: red; */
+/* 	background: grey; */
+/* } */
 
 .window_shadow_active {
     background: transparent;
@@ -63,3 +63,73 @@ GtkEntry:selected {
 	color: white;
 	background-color: #61B5F8;
 }
+
+.terminal-scrollbar {
+	padding-right: 4px;
+	background: transparent;
+	box-shadow: none;
+	border: none;
+    min-width: 4px;
+}
+
+.terminal-scrollbar slider {
+	background-color: rgba(255, 255, 255, 0.2);
+	border: 1px;
+	border-color: rgba(255, 255, 255, 0.05);
+	border-style: inset;
+    min-width: 4px;
+}
+
+.terminal-scrollbar slider:hover {
+	background-color: rgba(255, 255, 255, 0.4);
+	box-shadow: none;
+	border: 1px;
+	border-color: rgba(255, 255, 255, 0.10);
+	border-style: inset;
+    min-width: 8px;
+}
+
+.terminal-scrollbar slider:hover:active {
+	background-color: rgba(255, 255, 255, 0.3);
+	box-shadow: none;
+	border: 1px;
+	border-color: rgba(255, 255, 255, 0.05);
+	border-style: inset;
+    min-width: 8px;
+}
+
+.preference-scrollbar {
+	padding-right: 4px;
+	background: transparent;
+	box-shadow: none;
+	border: none;
+    min-width: 4px;
+}
+
+.preference-scrollbar slider {
+	background-color: rgba(16, 16, 16, 0.5);
+	border: 1px;
+	border-color: transparent;
+	border-style: inset;
+    min-width: 4px;
+}
+
+.preference-scrollbar slider:hover {
+	background-color: rgba(16, 16, 16, 0.7);
+	box-shadow: none;
+	border: 1px;
+	border-color: transparent;
+	border-style: inset;
+    min-width: 8px;
+}
+
+.preference-scrollbar slider:hover:active {
+	background-color: rgba(16, 16, 16, 0.8);
+	box-shadow: none;
+	border: 1px;
+	border-color: transparent;
+	border-style: inset;
+    min-width: 8px;
+}
+
+
