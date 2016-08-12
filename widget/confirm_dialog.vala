@@ -7,12 +7,10 @@ namespace Widgets {
         private int window_init_height = 230;
         
         private int logo_margin_left = 20;
-        private int text_margin_left = 104;
-        private int box_margin_right = 20;
+        private int logo_margin_right = 20;
+        private int text_margin_right = 20;
         private int box_margin_top = 14;
-        private int text_size = 12;
-        
-        private Cairo.ImageSurface icon_surface;
+        private int box_margin_bottom = 14;
         
         public signal void confirm();
         
@@ -24,13 +22,6 @@ namespace Widgets {
             set_size_request(window_init_width, window_init_height);
             set_resizable(false);
             
-            Titlebar titlebar = new Titlebar();
-            titlebar.close_button.button_release_event.connect((b) => {
-                    destroy();
-                    
-                    return false;
-                });
-            
             Gdk.Window gdk_window = window.get_window();
             int x, y;
             gdk_window.get_root_origin(out x, out y);
@@ -40,15 +31,36 @@ namespace Widgets {
             move(x + (window_alloc.width - window_init_width) / 2,
                  y + (window_alloc.height - window_init_height) / 2);
             
-            icon_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("dialog_icon.png"));
-            Box box = new Box(Gtk.Orientation.VERTICAL, 0);
+            // Add widgets.
+            var overlay = new Gtk.Overlay();
+            var box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             
-            Box content_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            content_box.set_size_request(-1, 92);
+            var close_button = new ImageButton("titlebar_close");
+            close_button.set_halign(Gtk.Align.END);
+            
+            close_button.button_release_event.connect((b) => {
+                    this.destroy();
+                    
+                    return false;
+                });
+            var close_button_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+            close_button_box.pack_start(close_button, true, true, 0);
+
+            var content_button_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+            content_button_box.margin_top = box_margin_top;
+            content_button_box.margin_bottom = box_margin_bottom;
+            
+            Gtk.Image logo_image = new Gtk.Image.from_file(Utils.get_image_path("dialog_icon.png"));
+            logo_image.margin_left = logo_margin_left;
+            logo_image.margin_right = logo_margin_right;
+            Label label = new Gtk.Label(null);
+            label.get_style_context().add_class("dialog-label");
+            label.set_text("Terminal still has running programs. \nAre you sure you want to quit?");
+            label.margin_right = text_margin_right;
             
             Box button_box = new Box(Gtk.Orientation.HORIZONTAL, 0);
-            Temp_TextButton cancel_button = new Temp_TextButton("Cancel");
-            Temp_TextButton confirm_button = new Temp_TextButton("Quit");
+            DialogButton cancel_button = new Widgets.DialogButton("Cancel", "left", "text");
+            DialogButton confirm_button = new Widgets.DialogButton("Quit", "right", "warning");
             cancel_button.button_release_event.connect((b) => {
                     destroy();
                     
@@ -60,16 +72,25 @@ namespace Widgets {
                     
                     return false;
                 });
-            cancel_button.set_size_request(-1, 20);
-            confirm_button.set_size_request(-1, 20);
             
+            close_button_box.pack_start(close_button, true, true, 0);
+            content_button_box.pack_start(logo_image, false, false, 0);
+            content_button_box.pack_start(label, true, true, 0);
             button_box.pack_start(cancel_button, true, true, 0);
             button_box.pack_start(confirm_button, true, true, 0);
+            box.pack_start(close_button_box, false, false, 0);
+            box.pack_start(content_button_box, true, true, 0);
+            box.pack_start(button_box, true, true, 0);
             
-            box.pack_start(titlebar, false, false, 0);
-            box.pack_start(content_box, true, true, 0);
-            box.pack_start(button_box, false, false, 0);
-            add_widget(box);
+            var event_area = new Widgets.WindowEventArea(this);
+            event_area = new Widgets.WindowEventArea(this);
+            event_area.margin_right = 27;
+            event_area.margin_bottom = window_init_height - 40;
+            
+            overlay.add(box);
+            overlay.add_overlay(event_area);
+            
+            add_widget(overlay);
             
             show_all();
         }
@@ -80,20 +101,6 @@ namespace Widgets {
             
             cr.set_source_rgba(1, 1, 1, 1);
             Draw.draw_rounded_rectangle(cr, window_frame_margin_left, window_frame_margin_top, window_rect.width, window_rect.height, 5);
-            
-            // Draw icon.
-            Draw.draw_surface(cr, icon_surface,
-                              window_frame_margin_left + logo_margin_left,
-                              window_frame_margin_top + box_margin_top);
-
-            // Draw content.
-            cr.set_source_rgba(0, 0, 0, 1);
-            Draw.draw_text(this, cr, "Terminal still has running programs. \nAre you sure you want to quit?",
-                           window_frame_margin_left + text_margin_left,
-                           window_frame_margin_top + box_margin_top,
-                           window_rect.width - text_margin_left - box_margin_right,
-                           text_size);
-            
-        }
-   }
+        }        
+    }
 }
