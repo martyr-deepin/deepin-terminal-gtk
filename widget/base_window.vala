@@ -90,9 +90,9 @@ namespace Widgets {
                             window_is_normal = true;
                             Cairo.RectangleInt rect;
                             get_window().get_frame_extents(out rect);
-                            rect.x = window_frame_margin_left;
+                            rect.x = window_frame_margin_start;
                             rect.y = window_frame_margin_top;
-                            rect.width -= window_frame_margin_right + rect.x;
+                            rect.width -= window_frame_margin_end + rect.x;
                             rect.height -= window_frame_margin_bottom + rect.y;
                             var shape = new Cairo.Region.rectangle(rect);
                             get_window().input_shape_combine_region(shape, 0, 0);

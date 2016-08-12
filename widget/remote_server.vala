@@ -63,22 +63,21 @@ namespace Widgets {
 
             // Address.
             Label address_label = new Gtk.Label(null);
-            // address_label.margin_start = 14;
+            address_label.margin_start = 14;
 			address_label.set_text("IP Address:");
 			address_label.get_style_context().add_class("preference-label");
 			Entry address_entry = new Entry();
 			address_entry.set_placeholder_text("fill");
-            // address_entry.margin_start = 14;
+            address_entry.margin_start = 14;
             address_entry.get_style_context().add_class("preference-entry");
             Label port_label = new Gtk.Label(null);
-            // port_label.margin_start = 14;
+            port_label.margin_start = 28;
             port_label.set_text("Port:");
-            // port_label.margin_start = 28;
             port_label.get_style_context().add_class("preference-label");
 			Entry port_entry = new Entry();
             port_entry.set_width_chars(4);
 			port_entry.set_text("22");
-            // port_entry.margin_start = 14;
+            port_entry.margin_start = 14;
             port_entry.get_style_context().add_class("preference-entry");
             
             var address_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
@@ -86,7 +85,6 @@ namespace Widgets {
             address_box.pack_start(port_label, false, false, 0);
             address_box.pack_start(port_entry, false, false, 0);
             
-            // address_entry.set_size_request(50, grid_height);
             grid_attach_next_to(grid, address_label, name_label, Gtk.PositionType.BOTTOM, preference_name_width, grid_height);
             grid_attach_next_to(grid, address_box, address_label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
             
@@ -154,8 +152,8 @@ namespace Widgets {
                     
                     return false;
                 });
-            button_box.pack_start(cancel_button, true, true, 0);
-            button_box.pack_start(confirm_button, true, true, 0);
+            button_box.pack_start(cancel_button, false, false, 0);
+            button_box.pack_start(confirm_button, false, false, 0);
             box.pack_start(button_box, false, false, 0);
             
             add_widget(box);
