@@ -355,7 +355,7 @@ namespace Widgets {
             content_box.pack_start(about_widget, false, false, 0);
             
             var reset_button = new Widgets.ImageButton("reset_button", "reset");
-            reset_button.margin_left = 100;
+            reset_button.margin_start = 100;
             reset_button.margin_top = 10;
             reset_button.margin_bottom = 10;
 			reset_button.button_release_event.connect((w, e) => {
@@ -472,7 +472,7 @@ namespace Widgets {
             box.pack_start(segement, false, false, 0);
             
             var line = new Gtk.EventBox();
-            line.margin_left = 2;
+            line.margin_start = 2;
             line.draw.connect((w, cr) => {
                     Gtk.Allocation rect;
                     this.get_allocation(out rect);
@@ -485,9 +485,9 @@ namespace Widgets {
             box.pack_start(line, true, true, 0);
             
             box.margin_top = 10;
-            box.margin_end = 5;
-            box.margin_left = 20;
-            box.margin_right = 20;
+            box.margin_bottom = 5;
+            box.margin_start = 20;
+            box.margin_end = 20;
 
             return (Gtk.Widget) box;
         }
@@ -497,8 +497,8 @@ namespace Widgets {
             segement.set_markup("<span size='%i'>%s</span>".printf((int) (12 * Pango.SCALE), name));
             segement.set_xalign(0);
             segement.margin_top = 10;
-            segement.margin_left = 30;
-            segement.margin_end = 5;
+            segement.margin_start = 30;
+            segement.margin_bottom = 5;
 
             return (Gtk.Widget) segement;
         }
@@ -617,14 +617,14 @@ namespace Widgets {
         public void adjust_option_widgets(Gtk.Label name_widget, Gtk.Widget value_widget) {
             name_widget.set_xalign(0);
             name_widget.set_size_request(preference_name_width, grid_height);
-            name_widget.margin_left = 40;
+            name_widget.margin_start = 40;
             name_widget.margin_top = 5;
-            name_widget.margin_end = 5;
+            name_widget.margin_bottom = 5;
             
             value_widget.set_size_request(preference_widget_width, grid_height);
             value_widget.margin_top = 5;
-            value_widget.margin_end = 5;
-            value_widget.margin_right = 10;
+            value_widget.margin_bottom = 5;
+            value_widget.margin_end = 10;
         }
         
         public Gtk.Box create_check_row(Widgets.CheckButton checkbutton, string name, Gtk.Grid grid, string? group_name=null, string? key=null) {
@@ -715,12 +715,12 @@ namespace Widgets {
         
         public void adjust_option_checkbutton(Gtk.Label label, Widgets.CheckButton checkbutton) {
             label.margin_top = 5;
-            label.margin_end = 5;
+            label.margin_bottom = 5;
             
-            checkbutton.margin_left = 40;
-            checkbutton.margin_right = 5;
-            checkbutton.margin_top = 5;
+            checkbutton.margin_start = 40;
             checkbutton.margin_end = 5;
+            checkbutton.margin_top = 5;
+            checkbutton.margin_bottom = 5;
         }
         
         public override void draw_window_below(Cairo.Context cr) {
@@ -728,7 +728,7 @@ namespace Widgets {
             window_frame_box.get_allocation(out window_rect);
             
             cr.set_source_rgba(1, 1, 1, 1);
-            Draw.draw_rounded_rectangle(cr, window_frame_margin_left, window_frame_margin_top, window_rect.width, window_rect.height, 5);
+            Draw.draw_rounded_rectangle(cr, window_frame_margin_start, window_frame_margin_top, window_rect.width, window_rect.height, 5);
         }
         
         public Gtk.Entry create_entry() {

@@ -17,7 +17,7 @@ namespace Widgets {
             box.pack_start(close_button, true, true, 0);
             
             event_area = new Widgets.WindowEventArea(this);
-            event_area.margin_right = 27;
+            event_area.margin_end = 27;
 
             add(box);
             add_overlay(event_area);

@@ -53,7 +53,7 @@ namespace Widgets {
 
             var event_area = new Widgets.WindowEventArea(this);
             event_area = new Widgets.WindowEventArea(this);
-            event_area.margin_right = 27;
+            event_area.margin_end = 27;
             event_area.margin_bottom = 250;
             
             overlay.add(box);
@@ -69,7 +69,7 @@ namespace Widgets {
             window_frame_box.get_allocation(out window_rect);
             
             cr.set_source_rgba(1, 1, 1, 1);
-            Draw.draw_rounded_rectangle(cr, window_frame_margin_left, window_frame_margin_top, window_rect.width, window_rect.height, 5);
+            Draw.draw_rounded_rectangle(cr, window_frame_margin_start, window_frame_margin_top, window_rect.width, window_rect.height, 5);
         }
     }
 }

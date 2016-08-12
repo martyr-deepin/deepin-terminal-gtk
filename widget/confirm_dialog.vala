@@ -6,11 +6,11 @@ namespace Widgets {
         private int window_init_width = 480;
         private int window_init_height = 230;
         
-        private int logo_margin_left = 20;
-        private int logo_margin_right = 20;
+        private int logo_margin_start = 20;
+        private int logo_margin_end = 20;
         private int box_margin_top = 4;
         private int box_margin_bottom = 24;
-        private int box_margin_right = 20;
+        private int box_margin_end = 20;
         private int title_margin_top = 12;
         private int content_margin_top = 8;
         
@@ -51,11 +51,11 @@ namespace Widgets {
             var content_button_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             content_button_box.margin_top = box_margin_top;
             content_button_box.margin_bottom = box_margin_bottom;
-            content_button_box.margin_right = box_margin_right;
+            content_button_box.margin_end = box_margin_end;
             
             Gtk.Image logo_image = new Gtk.Image.from_file(Utils.get_image_path("dialog_icon.png"));
-            logo_image.margin_left = logo_margin_left;
-            logo_image.margin_right = logo_margin_right;
+            logo_image.margin_start = logo_margin_start;
+            logo_image.margin_end = logo_margin_end;
             
             var label_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             Label title_label = new Gtk.Label(null);
@@ -98,7 +98,7 @@ namespace Widgets {
             
             var event_area = new Widgets.WindowEventArea(this);
             event_area = new Widgets.WindowEventArea(this);
-            event_area.margin_right = 27;
+            event_area.margin_end = 27;
             event_area.margin_bottom = window_init_height - 40;
             
             overlay.add(box);
@@ -114,7 +114,7 @@ namespace Widgets {
             window_frame_box.get_allocation(out window_rect);
             
             cr.set_source_rgba(1, 1, 1, 1);
-            Draw.draw_rounded_rectangle(cr, window_frame_margin_left, window_frame_margin_top, window_rect.width, window_rect.height, 5);
+            Draw.draw_rounded_rectangle(cr, window_frame_margin_start, window_frame_margin_top, window_rect.width, window_rect.height, 5);
         }        
     }
 }

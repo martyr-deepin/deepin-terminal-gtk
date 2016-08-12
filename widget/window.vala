@@ -111,7 +111,7 @@ namespace Widgets {
             Gtk.Allocation window_frame_rect;
             window_frame_box.get_allocation(out window_frame_rect);
             
-            int x = window_frame_box.margin_left;
+            int x = window_frame_box.margin_start;
             int y = window_frame_box.margin_top;
             int width = window_frame_rect.width;
             int height = window_frame_rect.height;
@@ -157,7 +157,7 @@ namespace Widgets {
                 Draw.draw_rectangle(cr, x + active_tab_underline_x, y + height - 41, active_tab_underline_width, 2);
             } else {
                 Utils.set_context_color(cr, active_tab_color);
-                Draw.draw_rectangle(cr, x + active_tab_underline_x - window_frame_box.margin_left, y + 40, active_tab_underline_width, 2);
+                Draw.draw_rectangle(cr, x + active_tab_underline_x - window_frame_box.margin_start, y + 40, active_tab_underline_width, 2);
             }
             cr.restore();
         }
