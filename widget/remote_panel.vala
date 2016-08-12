@@ -291,7 +291,7 @@ namespace Widgets {
 			// FIXME: split line.
 			ComboBoxText encode_box = new ComboBoxText();
 			foreach (string name in parent_window.config.encoding_names) {
-				encode_box.append(name, "%s %s".printf(name, parent_window.config.encoding_map.get(name)));
+				encode_box.append(name, name);
 			}
 			encode_box.set_active(parent_window.config.encoding_names.index_of("UTF-8"));
 			pack_start(encode_box, false, false, 0);
@@ -507,7 +507,7 @@ namespace Widgets {
 			    // FIXME: split line.
 				ComboBoxText encode_box = new ComboBoxText();
 				foreach (string name in parent_window.config.encoding_names) {
-					encode_box.append(name, "%s %s".printf(name, parent_window.config.encoding_map.get(name)));
+					encode_box.append(name, name);
 				}
 				encode_box.set_active(parent_window.config.encoding_names.index_of(config_file.get_value(server_info, "Encode")));
 			    pack_start(encode_box, false, false, 0);

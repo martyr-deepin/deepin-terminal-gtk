@@ -15,8 +15,10 @@ namespace Widgets {
         public Gtk.Box advanced_options_box;
         public Gtk.Box show_advanced_box;
         public Gtk.Box box;
+        public Widgets.BaseWindow parent_window;
         
-        public RemoteServer(Gtk.Window window, Gtk.Widget widget) {
+        public RemoteServer(Widgets.BaseWindow window, Gtk.Widget widget) {
+            parent_window = window;
             focus_widget = widget;
             
             set_transient_for(window);
@@ -67,6 +69,7 @@ namespace Widgets {
 			address_label.set_text("IP Address:");
 			address_label.get_style_context().add_class("preference-label");
 			Entry address_entry = new Entry();
+            address_entry.set_width_chars(14);
 			address_entry.set_placeholder_text("fill");
             address_entry.margin_start = 14;
             address_entry.get_style_context().add_class("preference-entry");
@@ -104,7 +107,7 @@ namespace Widgets {
             password_entry.set_visibility(false);
             create_follow_key_row(password_label, password_entry, "Password:", user_label, grid);
             
-            var advanced_options_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+            advanced_options_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             box.pack_start(advanced_options_box, false, false, 0);
             
             show_advanced_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
@@ -140,6 +143,7 @@ namespace Widgets {
             box.pack_start(show_advanced_box, true, true, 0);
             
             Box button_box = new Box(Gtk.Orientation.HORIZONTAL, 0);
+            button_box.margin_top = 30;
             DialogButton cancel_button = new Widgets.DialogButton("Cancel", "left", "text");
             DialogButton confirm_button = new Widgets.DialogButton("Add", "right", "action");
             cancel_button.button_release_event.connect((b) => {
@@ -173,7 +177,8 @@ namespace Widgets {
             group_name_label.margin_start = 14;
 			Entry group_name_entry = new Entry();
 			group_name_entry.set_placeholder_text("option");
-            create_key_row(group_name_label, group_name_entry, "Group name:", grid);
+            group_name_entry.set_width_chars(30);
+            create_key_row(group_name_label, group_name_entry, "Group:", grid);
 
             // Path.
             Label path_label = new Gtk.Label(null);
@@ -188,30 +193,75 @@ namespace Widgets {
 			Entry command_entry = new Entry();
 			command_entry.set_placeholder_text("option");
             create_follow_key_row(command_label, command_entry, "Command:", path_label, grid);
+            
+            // Encoding.
+            Label encode_label = new Gtk.Label(null);
+            encode_label.margin_start = 14;
+			ComboBoxText encode_box = new ComboBoxText();
+			foreach (string name in parent_window.config.encoding_names) {
+				encode_box.append(name, name);
+			}
+			encode_box.set_active(parent_window.config.encoding_names.index_of("UTF-8"));
+            create_follow_key_row(encode_label, encode_box, "Encode:", command_label, grid, "preference-comboboxtext");
+            
+            // Backspace sequence.
+            Label backspace_key_label = new Gtk.Label(null);
+            backspace_key_label.margin_start = 14;
+			ComboBoxText backspace_key_box = new ComboBoxText();
+			foreach (string name in parent_window.config.backspace_key_erase_names) {
+				backspace_key_box.append(name, parent_window.config.erase_map.get(name));
+			}
+			backspace_key_box.set_active(parent_window.config.backspace_key_erase_names.index_of("ascii-del"));
+            create_follow_key_row(backspace_key_label, backspace_key_box, "Backspace:", encode_label, grid, "preference-comboboxtext");
+
+            // Delete sequence.
+            Label del_key_label = new Gtk.Label(null);
+            del_key_label.margin_start = 14;
+			ComboBoxText del_key_box = new ComboBoxText();
+			foreach (string name in parent_window.config.del_key_erase_names) {
+				del_key_box.append(name, parent_window.config.erase_map.get(name));
+			}
+			del_key_box.set_active(parent_window.config.del_key_erase_names.index_of("escape-sequence"));
+			create_follow_key_row(del_key_label, del_key_box, "Delete:", backspace_key_label, grid, "preference-comboboxtext");
+            
+            show_all();
         }
         
-        public void create_key_row(Gtk.Label label, Gtk.Entry entry, string name, Gtk.Grid grid) {
+        public void create_key_row(Gtk.Label label, Gtk.Widget widget, string name, Gtk.Grid grid, string class_name="preference-entry") {
 			label.set_text(name);
             label.margin_start = 14;
             label.get_style_context().add_class("preference-label");
-            entry.get_style_context().add_class("preference-entry");
-            entry.margin_start = 14;
+            widget.get_style_context().add_class(class_name);
+            widget.margin_start = 14;
 
+            adjust_option_widgets(label, widget);
             grid_attach(grid, label, 0, 0, preference_name_width, grid_height);
-            grid_attach_next_to(grid, entry, label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
+            grid_attach_next_to(grid, widget, label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
 		}
         
-        public void create_follow_key_row(Gtk.Label label, Gtk.Entry entry, string name, Gtk.Label previous_label, Gtk.Grid grid) {
+        public void create_follow_key_row(Gtk.Label label, Gtk.Widget widget, string name, Gtk.Label previous_label, Gtk.Grid grid, string class_name="preference-entry") {
 			label.set_text(name);
             label.margin_start = 14;
             label.get_style_context().add_class("preference-label");
-            entry.get_style_context().add_class("preference-entry");
-            entry.margin_start = 14;
+            widget.get_style_context().add_class(class_name);
+            widget.margin_start = 14;
             
+            adjust_option_widgets(label, widget);
             grid_attach_next_to(grid, label, previous_label, Gtk.PositionType.BOTTOM, preference_name_width, grid_height);
-            grid_attach_next_to(grid, entry, label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
+            grid_attach_next_to(grid, widget, label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
 		}
 		
+        public void adjust_option_widgets(Gtk.Label name_widget, Gtk.Widget value_widget) {
+            name_widget.set_xalign(0);
+            name_widget.set_size_request(preference_name_width, grid_height);
+            name_widget.margin_top = 5;
+            name_widget.margin_bottom = 5;
+            
+            value_widget.set_size_request(preference_widget_width, grid_height);
+            value_widget.margin_top = 5;
+            value_widget.margin_bottom = 5;
+        }
+        
         public void grid_attach(Gtk.Grid grid, Gtk.Widget child, int left, int top, int width, int height) {
             child.margin_top = 5;
             child.margin_bottom = 5;
