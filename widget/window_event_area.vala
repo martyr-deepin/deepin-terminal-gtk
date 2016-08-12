@@ -85,7 +85,8 @@ namespace Widgets {
                             e.device.get_position(null, out pointer_x, out pointer_y);
                                 
                             if (pointer_x != press_x || pointer_y != press_y) {
-                                this.display.ungrab_pointer((int) e.time);
+                                var seat = this.gdk_display.get_default_seat();
+                                seat.ungrab();
                                 send_message((long) (pointer_x),
                                              (long) (pointer_y),
                                              _NET_WM_MOVERESIZE_MOVE,
