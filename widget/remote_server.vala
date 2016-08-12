@@ -17,6 +17,43 @@ namespace Widgets {
         public Gtk.Box box;
         public Widgets.BaseWindow parent_window;
         
+        public Gtk.Entry address_entry;
+        public Gtk.Entry user_entry;
+        public Gtk.Entry password_entry;
+        public Gtk.Entry port_entry;
+        public Gtk.ComboBoxText encode_box;
+        public Gtk.Entry path_entry;
+        public Gtk.Entry name_entry;
+        public Gtk.Entry command_entry;
+        public Gtk.Entry groupname_entry;
+        public Gtk.ComboBoxText backspace_key_box;
+        public Gtk.ComboBoxText del_key_box;
+        
+        public signal void add_server(string address,
+                                      string username,
+                                      string password,
+                                      string port,
+                                      string encode,
+                                      string path,
+                                      string command,
+                                      string nickname,
+                                      string groupname,
+                                      string backspace_key,
+                                      string delete_key
+                                      );
+        public signal void edit_server(string address,
+                                       string username,
+                                       string password,
+                                       string port,
+                                       string encode,
+                                       string path,
+                                       string command,
+                                       string nickname,
+                                       string groupname,
+                                       string backspace_key,
+                                       string delete_key
+                                       );
+        
         public RemoteServer(Widgets.BaseWindow window, Gtk.Widget widget) {
             parent_window = window;
             focus_widget = widget;
@@ -59,7 +96,7 @@ namespace Widgets {
             // Nick name.
             Label name_label = new Gtk.Label(null);
             name_label.margin_start = 14;
-			Entry name_entry = new Entry();
+			name_entry = new Entry();
 			name_entry.set_placeholder_text("fill");
             create_key_row(name_label, name_entry, "Nick name:", grid);
 
@@ -68,7 +105,7 @@ namespace Widgets {
             address_label.margin_start = 14;
 			address_label.set_text("IP Address:");
 			address_label.get_style_context().add_class("preference-label");
-			Entry address_entry = new Entry();
+			address_entry = new Entry();
             address_entry.set_width_chars(14);
 			address_entry.set_placeholder_text("fill");
             address_entry.margin_start = 14;
@@ -77,7 +114,7 @@ namespace Widgets {
             port_label.margin_start = 28;
             port_label.set_text("Port:");
             port_label.get_style_context().add_class("preference-label");
-			Entry port_entry = new Entry();
+			port_entry = new Entry();
             port_entry.set_width_chars(4);
 			port_entry.set_text("22");
             port_entry.margin_start = 14;
@@ -94,14 +131,14 @@ namespace Widgets {
             // Username.
             Label user_label = new Gtk.Label(null);
             user_label.margin_start = 14;
-			Entry user_entry = new Entry();
+			user_entry = new Entry();
 			user_entry.set_placeholder_text("fill");
             create_follow_key_row(user_label, user_entry, "User name:", address_label, grid);
             
             // Password.
             Label password_label = new Gtk.Label(null);
             password_label.margin_start = 14;
-			Entry password_entry = new Entry();
+			password_entry = new Entry();
 			password_entry.set_placeholder_text("fill");
 			password_entry.set_input_purpose(Gtk.InputPurpose.PASSWORD);
             password_entry.set_visibility(false);
@@ -152,6 +189,19 @@ namespace Widgets {
                     return false;
                 });
             confirm_button.button_release_event.connect((b) => {
+                    add_server(address_entry.get_text(),
+                               user_entry.get_text(),
+                               password_entry.get_text(),
+                               port_entry.get_text(),
+                               parent_window.config.encoding_names[encode_box.get_active()],
+                               path_entry.get_text(),
+                               command_entry.get_text(),
+                               name_entry.get_text(),
+                               groupname_entry.get_text(),
+                               parent_window.config.backspace_key_erase_names[backspace_key_box.get_active()],
+                               parent_window.config.del_key_erase_names[del_key_box.get_active()]
+                               );
+                    
                     destroy();
                     
                     return false;
@@ -175,29 +225,29 @@ namespace Widgets {
             // Group name.
             Label group_name_label = new Gtk.Label(null);
             group_name_label.margin_start = 14;
-			Entry group_name_entry = new Entry();
-			group_name_entry.set_placeholder_text("option");
-            group_name_entry.set_width_chars(30);
-            create_key_row(group_name_label, group_name_entry, "Group:", grid);
+			groupname_entry = new Entry();
+			groupname_entry.set_placeholder_text("option");
+            groupname_entry.set_width_chars(30);  // this line is expand width of entry.
+            create_key_row(group_name_label, groupname_entry, "Group:", grid);
 
             // Path.
             Label path_label = new Gtk.Label(null);
             path_label.margin_start = 14;
-			Entry path_entry = new Entry();
+			path_entry = new Entry();
 			path_entry.set_placeholder_text("option");
             create_follow_key_row(path_label, path_entry, "Path:", group_name_label, grid);
 
             // Command.
             Label command_label = new Gtk.Label(null);
             command_label.margin_start = 14;
-			Entry command_entry = new Entry();
+			command_entry = new Entry();
 			command_entry.set_placeholder_text("option");
             create_follow_key_row(command_label, command_entry, "Command:", path_label, grid);
             
             // Encoding.
             Label encode_label = new Gtk.Label(null);
             encode_label.margin_start = 14;
-			ComboBoxText encode_box = new ComboBoxText();
+			encode_box = new ComboBoxText();
 			foreach (string name in parent_window.config.encoding_names) {
 				encode_box.append(name, name);
 			}
@@ -207,7 +257,7 @@ namespace Widgets {
             // Backspace sequence.
             Label backspace_key_label = new Gtk.Label(null);
             backspace_key_label.margin_start = 14;
-			ComboBoxText backspace_key_box = new ComboBoxText();
+			backspace_key_box = new ComboBoxText();
 			foreach (string name in parent_window.config.backspace_key_erase_names) {
 				backspace_key_box.append(name, parent_window.config.erase_map.get(name));
 			}
@@ -217,7 +267,7 @@ namespace Widgets {
             // Delete sequence.
             Label del_key_label = new Gtk.Label(null);
             del_key_label.margin_start = 14;
-			ComboBoxText del_key_box = new ComboBoxText();
+			del_key_box = new ComboBoxText();
 			foreach (string name in parent_window.config.del_key_erase_names) {
 				del_key_box.append(name, parent_window.config.erase_map.get(name));
 			}
