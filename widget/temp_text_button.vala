@@ -4,10 +4,10 @@ using Gtk;
 using Pango;
 
 namespace Widgets {
-    public class TextButton : Gtk.Button {
+    public class Temp_TextButton : Gtk.Button {
         public string button_text;
         
-        public TextButton(string text) {
+        public Temp_TextButton(string text) {
             button_text = text;
 			set_size_request(-1, 22);
             

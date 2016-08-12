@@ -18,7 +18,7 @@ main: ./project_path.c \
       ./widget/workspace_manager.vala \
       ./widget/image_button.vala \
       ./widget/cursor_toggle_button.vala \
-      ./widget/text_button.vala \
+      ./widget/temp_text_button.vala \
       ./widget/event_box.vala \
       ./widget/window.vala \
       ./widget/window_event_area.vala \
@@ -63,7 +63,7 @@ main: ./project_path.c \
     ./widget/workspace_manager.vala \
     ./widget/image_button.vala \
     ./widget/cursor_toggle_button.vala \
-    ./widget/text_button.vala \
+    ./widget/temp_text_button.vala \
     ./widget/event_box.vala \
     ./widget/window.vala \
     ./widget/window_event_area.vala \

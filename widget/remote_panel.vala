@@ -75,7 +75,7 @@ namespace Widgets {
                     });
 			}
 			
-			TextButton add_server_button = new TextButton("Add server");
+			Temp_TextButton add_server_button = new Temp_TextButton("Add server");
 			add_server_button.button_release_event.connect((w, e) => {
 					show_add_server_page();
 					
@@ -232,7 +232,7 @@ namespace Widgets {
 				}
 			}
 
-			TextButton add_server_button = new TextButton("Back");
+			Temp_TextButton add_server_button = new Temp_TextButton("Back");
 			add_server_button.button_release_event.connect((w, e) => {
 					show_home_page();
 					
@@ -328,7 +328,7 @@ namespace Widgets {
 			groupname_entry.set_placeholder_text("GroupName");
 			pack_start(groupname_entry, false, false, 0);
 			
-			TextButton add_server_button = new TextButton("Add server");
+			Temp_TextButton add_server_button = new Temp_TextButton("Add server");
 			pack_start(add_server_button, false, false, 0);
 			
 			add_server_button.button_release_event.connect((w, e) => {
@@ -466,7 +466,7 @@ namespace Widgets {
 			try {
 				config_file.load_from_file(config_file_path, KeyFileFlags.NONE);
 
-			    TextButton add_server_button = new TextButton("Back");
+			    Temp_TextButton add_server_button = new Temp_TextButton("Back");
 			    add_server_button.button_release_event.connect((w, e) => {
                         if (is_homepage) {
                             show_home_page();
@@ -548,7 +548,7 @@ namespace Widgets {
 			    groupname_entry.set_placeholder_text("GroupName");
 			    pack_start(groupname_entry, false, false, 0);
 			    
-			    TextButton save_button = new TextButton("Save");
+			    Temp_TextButton save_button = new Temp_TextButton("Save");
 			    pack_start(save_button, false, false, 0);
                 
 			    save_button.button_release_event.connect((w, e) => {
@@ -620,7 +620,7 @@ namespace Widgets {
                 // Destroy child after entry.get_text(), otherwise entry.get_text() return random value.
 			    Utils.destroy_all_children(this);
                 
-                TextButton add_server_button = new TextButton("Back");
+                Temp_TextButton add_server_button = new Temp_TextButton("Back");
                 add_server_button.button_release_event.connect((w, e) => {
                         if (group_name == "") {
                             show_home_page();

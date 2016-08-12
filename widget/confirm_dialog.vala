@@ -47,8 +47,8 @@ namespace Widgets {
             content_box.set_size_request(-1, 92);
             
             Box button_box = new Box(Gtk.Orientation.HORIZONTAL, 0);
-            TextButton cancel_button = new TextButton("Cancel");
-            TextButton confirm_button = new TextButton("Quit");
+            Temp_TextButton cancel_button = new Temp_TextButton("Cancel");
+            Temp_TextButton confirm_button = new Temp_TextButton("Quit");
             cancel_button.button_release_event.connect((b) => {
                     destroy();
                     
