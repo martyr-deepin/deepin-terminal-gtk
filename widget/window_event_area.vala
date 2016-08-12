@@ -15,6 +15,8 @@ namespace Widgets {
         private Gdk.X11.Window x11_root_window;
         
         public const int _NET_WM_MOVERESIZE_MOVE = 8;
+        
+        public Gtk.Widget? child_before_leave;
     
         public WindowEventArea(Gtk.Container area) {
             drawing_area = area;
@@ -49,10 +51,25 @@ namespace Widgets {
             //         return true;
             //     });
             
+            leave_notify_event.connect((w, e) => {
+                    if (child_before_leave != null) {
+                        var e2 = e.copy();
+                        e2.crossing.window = child_before_leave.get_window();
+                        
+                        child_before_leave.get_window().ref();
+                        ((Gdk.Event*) e2)->put();
+                        
+                        child_before_leave = null;
+                    }
+                    
+                    return false;
+            });
+            
             motion_notify_event.connect((w, e) => {
                     this.display.ungrab_pointer((int) e.time);
                     
                     var child = get_child_at_pos(drawing_area, (int) e.x, (int) e.y);
+                    child_before_leave = child;
                     
                     if (child != null) {
                         int x, y;
