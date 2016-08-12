@@ -156,4 +156,60 @@ namespace Utils {
     public string get_ssh_script_path() {
         return GLib.Path.build_path(Path.DIR_SEPARATOR_S, GLib.Path.get_dirname((string) project_path()), "ssh_login.sh");
     }
+
+    public string lookup_password(string user, string server_address) {
+        var password_schema = new Secret.Schema("com.deepin.terminal.password.%s.%s".printf(user, server_address),
+                                                Secret.SchemaFlags.NONE,
+                                                "number", Secret.SchemaAttributeType.INTEGER,
+                                                "string", Secret.SchemaAttributeType.STRING,
+                                                "even", Secret.SchemaAttributeType.BOOLEAN);
+            
+        string password;
+        
+        try {
+            password = Secret.password_lookup_sync(password_schema, null, null, "number", 8, "string", "eight", "even", true);
+                // print("Lookup password: '%s'\n", password);
+        } catch (Error e) {
+            error ("%s", e.message);
+        }
+        
+        if (password == null) {
+            return "";
+        } else {
+            return password;
+        }
+    }
+    
+    public void store_password(string user, string server_address, string password) {
+        var password_schema = new Secret.Schema("com.deepin.terminal.password.%s.%s".printf(user, server_address),
+                                                Secret.SchemaFlags.NONE,
+                                                "number", Secret.SchemaAttributeType.INTEGER,
+                                                "string", Secret.SchemaAttributeType.STRING,
+                                                "even", Secret.SchemaAttributeType.BOOLEAN);
+        
+        var attributes = new GLib.HashTable<string,string>(null, null);
+        attributes["number"] = "8";
+        attributes["string"] = "eight";
+        attributes["even"] = "true";
+        
+        try {
+            Secret.password_clear_sync(password_schema, null, "number", 8, "string", "eight", "even", true);
+            // print("Remove password: %s %s\n".printf(user, server_address));
+        } catch (Error e) {
+            error ("%s", e.message);
+        }
+
+        Secret.password_storev.begin(password_schema, attributes, Secret.COLLECTION_DEFAULT,
+                                     "com.deepin.terminal.password.%s.%s".printf(user, server_address),
+                                     password,
+                                     null, (obj, async_res) => {
+                                         try {
+                                             Secret.password_store.end(async_res);
+                                             // print("Store password: %s %s %s\n", user, server_address, password);
+                                         } catch (Error e) {
+                                             error ("%s", e.message);
+                                         }
+                                     });
+
+    }
 }

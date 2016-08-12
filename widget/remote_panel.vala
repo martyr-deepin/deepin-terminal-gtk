@@ -133,7 +133,7 @@ namespace Widgets {
                     ssh_script_content = ssh_script_content.concat("%s\n".printf(line));
                 }
                                        
-                string password = lookup_password(server_info.split("@")[0], server_info.split("@")[1]);
+                string password = Utils.lookup_password(server_info.split("@")[0], server_info.split("@")[1]);
                 
                 ssh_script_content = ssh_script_content.replace("<<USER>>", server_info.split("@")[0]);
                 ssh_script_content = ssh_script_content.replace("<<SERVER>>", server_info.split("@")[1]);
@@ -306,7 +306,7 @@ namespace Widgets {
 			    config_file.set_string(gname, "Backspace", backspace);
 			    config_file.set_string(gname, "Del", delete);
 
-                store_password(user, server_address, password);
+                Utils.store_password(user, server_address, password);
 			    
 			    try {
 			    	config_file.save_to_file(config_file_path);
@@ -316,197 +316,7 @@ namespace Widgets {
 			}
 		}
         
-        public string lookup_password(string user, string server_address) {
-            var password_schema = new Secret.Schema("com.deepin.terminal.password.%s.%s".printf(user, server_address),
-                                                    Secret.SchemaFlags.NONE,
-                                                    "number", Secret.SchemaAttributeType.INTEGER,
-                                                    "string", Secret.SchemaAttributeType.STRING,
-                                                    "even", Secret.SchemaAttributeType.BOOLEAN);
-            
-            string password;
-
-            try {
-                password = Secret.password_lookup_sync(password_schema, null, null, "number", 8, "string", "eight", "even", true);
-                // print("Lookup password: '%s'\n", password);
-            } catch (Error e) {
-                error ("%s", e.message);
-            }
-            
-            if (password == null) {
-                return "";
-            } else {
-                return password;
-            }
-        }
-        
-        public void store_password(string user, string server_address, string password) {
-            var password_schema = new Secret.Schema("com.deepin.terminal.password.%s.%s".printf(user, server_address),
-                                                    Secret.SchemaFlags.NONE,
-                                                    "number", Secret.SchemaAttributeType.INTEGER,
-                                                    "string", Secret.SchemaAttributeType.STRING,
-                                                    "even", Secret.SchemaAttributeType.BOOLEAN);
-            
-            var attributes = new GLib.HashTable<string,string>(null, null);
-            attributes["number"] = "8";
-            attributes["string"] = "eight";
-            attributes["even"] = "true";
-            
-            try {
-                Secret.password_clear_sync(password_schema, null, "number", 8, "string", "eight", "even", true);
-                // print("Remove password: %s %s\n".printf(user, server_address));
-            } catch (Error e) {
-                error ("%s", e.message);
-            }
-
-            Secret.password_storev.begin(password_schema, attributes, Secret.COLLECTION_DEFAULT,
-                                         "com.deepin.terminal.password.%s.%s".printf(user, server_address),
-                                         password,
-                                         null, (obj, async_res) => {
-                                             try {
-                                                 Secret.password_store.end(async_res);
-                                                 // print("Store password: %s %s %s\n", user, server_address, password);
-                                             } catch (Error e) {
-                                                 error ("%s", e.message);
-                                             }
-                                         });
-
-        }
-        
-		public void show_edit_server_page(string server_info, bool is_homepage, string group_name) {
-            Utils.destroy_all_children(this);
-            
-			KeyFile config_file = new KeyFile();
-            
-			try {
-				config_file.load_from_file(config_file_path, KeyFileFlags.NONE);
-
-			    Temp_TextButton add_server_button = new Temp_TextButton("Back");
-			    add_server_button.button_release_event.connect((w, e) => {
-                        if (is_homepage) {
-                            show_home_page();
-                        } else {
-                            show_group_page(group_name);
-                        }
-			    		
-			    		return false;
-			    	});
-            
-			    pack_start(add_server_button, false, false, 0);
-                
-                Entry address_entry = new Entry();
-			    address_entry.set_text(server_info.split("@")[1]);
-			    address_entry.set_placeholder_text("IP address");
-			    pack_start(address_entry, false, false, 0);
-                
-			    Entry user_entry = new Entry();
-			    user_entry.set_text(server_info.split("@")[0]);
-			    user_entry.set_placeholder_text("Username");
-			    pack_start(user_entry, false, false, 0);
-                
-			    Entry password_entry = new Entry();
-                string password = lookup_password(server_info.split("@")[0], server_info.split("@")[1]);
-			    password_entry.set_text(password);
-			    password_entry.set_placeholder_text("Password");
-                password_entry.set_input_purpose(Gtk.InputPurpose.PASSWORD);
-                password_entry.set_visibility(false);
-			    pack_start(password_entry, false, false, 0);
-			    
-			    // FIXME: split line.
-			    
-				Entry port_entry = new Entry();
-			    port_entry.set_text(config_file.get_value(server_info, "Port"));
-			    port_entry.set_placeholder_text("Port");
-			    pack_start(port_entry, false, false, 0);
-			    
-			    // FIXME: split line.
-				ComboBoxText encode_box = new ComboBoxText();
-				foreach (string name in parent_window.config.encoding_names) {
-					encode_box.append(name, name);
-				}
-				encode_box.set_active(parent_window.config.encoding_names.index_of(config_file.get_value(server_info, "Encode")));
-			    pack_start(encode_box, false, false, 0);
-			    
-			    ComboBoxText backspace_key_box = new ComboBoxText();
-			    foreach (string name in parent_window.config.backspace_key_erase_names) {
-			    	backspace_key_box.append(name, parent_window.config.erase_map.get(name));
-			    }
-			    backspace_key_box.set_active(parent_window.config.backspace_key_erase_names.index_of(config_file.get_value(server_info, "Backspace")));
-			    pack_start(backspace_key_box, false, false, 0);
-			    
-			    ComboBoxText del_key_box = new ComboBoxText();
-			    foreach (string name in parent_window.config.del_key_erase_names) {
-			    	del_key_box.append(name, parent_window.config.erase_map.get(name));
-			    }
-			    del_key_box.set_active(parent_window.config.del_key_erase_names.index_of(config_file.get_value(server_info, "Del")));
-			    pack_start(del_key_box, false, false, 0);
-			
-				Entry path_entry = new Entry();
-			    path_entry.set_text(config_file.get_value(server_info, "Path"));
-			    path_entry.set_placeholder_text("Path");
-			    pack_start(path_entry, false, false, 0);
-				
-				Entry command_entry = new Entry();
-			    command_entry.set_text(config_file.get_value(server_info, "Command"));
-			    command_entry.set_placeholder_text("Command");
-			    pack_start(command_entry, false, false, 0);
-                
-			    // FIXME: split line.
-			    
-			    Entry name_entry = new Entry();
-			    name_entry.set_text(config_file.get_value(server_info, "Name"));
-			    name_entry.set_placeholder_text("Name");
-			    pack_start(name_entry, false, false, 0);
-                
-			    Entry groupname_entry = new Entry();
-			    groupname_entry.set_text(config_file.get_value(server_info, "GroupName"));
-			    groupname_entry.set_placeholder_text("GroupName");
-			    pack_start(groupname_entry, false, false, 0);
-			    
-			    Temp_TextButton save_button = new Temp_TextButton("Save");
-			    pack_start(save_button, false, false, 0);
-                
-			    save_button.button_release_event.connect((w, e) => {
-                        try {
-                            // First, remove old server info from config file.
-                            if (config_file.has_group(server_info)) {
-                                config_file.remove_group(server_info);
-                            }
-                        } catch (Error e) {
-                            error ("%s", e.message);
-                        }
-                        
-                        // Second, add new server info.
-			    		add_server(
-			    			address_entry.get_text(),
-			    			user_entry.get_text(),
-			    			password_entry.get_text(),
-							port_entry.get_text(),
-			    			parent_window.config.encoding_names[encode_box.get_active()],
-                            path_entry.get_text(),
-                            command_entry.get_text(),
-							name_entry.get_text(),
-			    			groupname_entry.get_text(),
-							parent_window.config.backspace_key_erase_names[backspace_key_box.get_active()],
-							parent_window.config.del_key_erase_names[del_key_box.get_active()]
-			    			);
-			    		
-                        if (is_homepage) {
-                            show_home_page();
-                        } else {
-                            show_group_page(group_name);
-                        }
-                        
-			    		return false;
-			    	});
-                
-			} catch (Error e) {
-                print("show_edit_server_page error: %s\n", e.message);
-			}
-            
-            show_all();
-		}
-		
-		public void show_search_page(string search_text, string group_name) {
+        public void show_search_page(string search_text, string group_name) {
             KeyFile config_file = new KeyFile();
 			try {
 				config_file.load_from_file(config_file_path, KeyFileFlags.NONE);
@@ -622,7 +432,37 @@ namespace Widgets {
                                 view.model.get(activated_iter, 0, out iter_content);
                                 string[] row_content = iter_content.split("\n");
                                 if ("@" in row_content[1] && click_column.get_title() == "Details") {
-                                    show_edit_server_page(row_content[1], is_homepage, group_name);
+                                    // show_edit_server_page(row_content[1], is_homepage, group_name);
+                                    string server_info = row_content[1];
+                                    KeyFile config_file = new KeyFile();
+                                    try {
+                                        config_file.load_from_file(config_file_path, KeyFileFlags.NONE);
+                                    } catch (Error e) {
+                                        if (!FileUtils.test(config_file_path, FileTest.EXISTS)) {
+                                            print("show_home_page error: %s\n", e.message);
+                                        }
+                                    }
+                                    var remote_server = new Widgets.RemoteServer(parent_window, this, server_info, config_file);
+                                    remote_server.edit_server.connect((
+                                        server, address, username, password, port, 
+                                        encode, path, command, nickname, groupname, 
+                                        backspace_key, delete_key) => {
+                                                                          try {
+                                                                              // First, remove old server info from config file.
+                                                                              if (config_file.has_group(server_info)) {
+                                                                                  config_file.remove_group(server_info);
+                                                                                  config_file.save_to_file(config_file_path);
+                                                                              }
+                                                                          } catch (Error e) {
+                                                                              error ("%s", e.message);
+                                                                          }
+                                                                          
+                                                                          // Second, add new server info.
+                                                                          add_server(address, username, password, port, encode, path, 
+                                                                                     command, nickname, groupname, backspace_key, delete_key);
+                                        });
+                                    
+                                    remote_server.show_all();
                                 }
                             }
                         }
