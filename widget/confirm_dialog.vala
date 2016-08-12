@@ -8,9 +8,11 @@ namespace Widgets {
         
         private int logo_margin_left = 20;
         private int logo_margin_right = 20;
-        private int text_margin_right = 20;
-        private int box_margin_top = 14;
-        private int box_margin_bottom = 14;
+        private int box_margin_top = 4;
+        private int box_margin_bottom = 24;
+        private int box_margin_right = 20;
+        private int title_margin_top = 12;
+        private int content_margin_top = 8;
         
         public signal void confirm();
         
@@ -49,14 +51,24 @@ namespace Widgets {
             var content_button_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             content_button_box.margin_top = box_margin_top;
             content_button_box.margin_bottom = box_margin_bottom;
+            content_button_box.margin_right = box_margin_right;
             
             Gtk.Image logo_image = new Gtk.Image.from_file(Utils.get_image_path("dialog_icon.png"));
             logo_image.margin_left = logo_margin_left;
             logo_image.margin_right = logo_margin_right;
-            Label label = new Gtk.Label(null);
-            label.get_style_context().add_class("dialog-label");
-            label.set_text("Terminal still has running programs. \nAre you sure you want to quit?");
-            label.margin_right = text_margin_right;
+            
+            var label_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+            Label title_label = new Gtk.Label(null);
+            title_label.set_halign(Gtk.Align.START);
+            title_label.get_style_context().add_class("dialog-title");
+            title_label.set_text("Terminal still has running programs");
+            title_label.margin_top = title_margin_top;
+
+            Label content_label = new Gtk.Label(null);
+            content_label.set_halign(Gtk.Align.START);
+            content_label.get_style_context().add_class("dialog-content");
+            content_label.set_text("Are you sure you want to quit?");
+            content_label.margin_top = content_margin_top;
             
             Box button_box = new Box(Gtk.Orientation.HORIZONTAL, 0);
             DialogButton cancel_button = new Widgets.DialogButton("Cancel", "left", "text");
@@ -74,8 +86,10 @@ namespace Widgets {
                 });
             
             close_button_box.pack_start(close_button, true, true, 0);
+            label_box.pack_start(title_label, false, false, 0);
+            label_box.pack_start(content_label, false, false, 0);
             content_button_box.pack_start(logo_image, false, false, 0);
-            content_button_box.pack_start(label, true, true, 0);
+            content_button_box.pack_start(label_box, true, true, 0);
             button_box.pack_start(cancel_button, true, true, 0);
             button_box.pack_start(confirm_button, true, true, 0);
             box.pack_start(close_button_box, false, false, 0);

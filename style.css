@@ -191,7 +191,12 @@
 	color: #303030;
 }
 
-.dialog-label {
+.dialog-title {
+	color: #303030;
+	font-weight: bold;
+}
+
+.dialog-content {
 	color: #303030;
 }
 

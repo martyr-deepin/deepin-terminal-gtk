@@ -20,6 +20,7 @@ namespace Widgets {
         
         public string? button_text;
         public int button_text_size = 12;
+        public int button_margin_y = 6;
 		
 		public bool is_hover = false;
 		public bool is_press = false;
@@ -92,13 +93,13 @@ namespace Widgets {
                     Draw.draw_surface(cr, left_press_surface);
                     if (button_text != null) {
                         Utils.set_context_color(cr, text_press_color);
-                        Draw.draw_text(widget, cr, button_text, 0, 10, left_normal_surface.get_width(), button_text_size, Pango.Alignment.CENTER);
+                        Draw.draw_text(widget, cr, button_text, 0, button_margin_y, left_normal_surface.get_width(), button_text_size, Pango.Alignment.CENTER);
                     }
                 } else if (is_hover) {
                     Draw.draw_surface(cr, left_hover_surface);
                     if (button_text != null) {
                         Utils.set_context_color(cr, text_hover_color);
-                        Draw.draw_text(widget, cr, button_text, 0, 10, left_normal_surface.get_width(), button_text_size, Pango.Alignment.CENTER);
+                        Draw.draw_text(widget, cr, button_text, 0, button_margin_y, left_normal_surface.get_width(), button_text_size, Pango.Alignment.CENTER);
                     }
                 } else {
                     Draw.draw_surface(cr, left_normal_surface);                
@@ -110,7 +111,7 @@ namespace Widgets {
                         } else if (button_type == "warning") {
                             Utils.set_context_color(cr, text_warning_color);
                         }
-                        Draw.draw_text(widget, cr, button_text, 0, 10, left_normal_surface.get_width(), button_text_size, Pango.Alignment.CENTER);
+                        Draw.draw_text(widget, cr, button_text, 0, button_margin_y, left_normal_surface.get_width(), button_text_size, Pango.Alignment.CENTER);
                     }
                 }
             } else {
@@ -118,13 +119,13 @@ namespace Widgets {
                     Draw.draw_surface(cr, right_press_surface);
                     if (button_text != null) {
                         Utils.set_context_color(cr, text_press_color);
-                        Draw.draw_text(widget, cr, button_text, 0, 10, right_normal_surface.get_width(), button_text_size, Pango.Alignment.CENTER);
+                        Draw.draw_text(widget, cr, button_text, 0, button_margin_y, right_normal_surface.get_width(), button_text_size, Pango.Alignment.CENTER);
                     }
                 } else if (is_hover) {
                     Draw.draw_surface(cr, right_hover_surface);
                     if (button_text != null) {
                         Utils.set_context_color(cr, text_hover_color);
-                        Draw.draw_text(widget, cr, button_text, 0, 10, right_normal_surface.get_width(), button_text_size, Pango.Alignment.CENTER);
+                        Draw.draw_text(widget, cr, button_text, 0, button_margin_y, right_normal_surface.get_width(), button_text_size, Pango.Alignment.CENTER);
                     }
                 } else {
                     Draw.draw_surface(cr, right_normal_surface);                
@@ -136,7 +137,7 @@ namespace Widgets {
                         } else if (button_type == "warning") {
                             Utils.set_context_color(cr, text_warning_color);
                         }
-                        Draw.draw_text(widget, cr, button_text, 0, 10, right_normal_surface.get_width(), button_text_size, Pango.Alignment.CENTER);
+                        Draw.draw_text(widget, cr, button_text, 0, button_margin_y, right_normal_surface.get_width(), button_text_size, Pango.Alignment.CENTER);
                     }
                 }
             }
