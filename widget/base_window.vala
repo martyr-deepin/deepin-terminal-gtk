@@ -89,6 +89,14 @@ namespace Widgets {
                         } else {
                             window_is_normal = true;
                             get_window().set_shadow_width(window_frame_margin_left, window_frame_margin_right, window_frame_margin_top, window_frame_margin_bottom);
+                            Cairo.RectangleInt rect;
+                            get_window().get_frame_extents(out rect);
+                            rect.x = window_frame_margin_left;
+                            rect.y = window_frame_margin_top;
+                            rect.width -= window_frame_margin_right + rect.x;
+                            rect.height -= window_frame_margin_bottom + rect.y;
+                            var shape = new Cairo.Region.rectangle(rect);
+                            get_window().input_shape_combine_region(shape, 0, 0);
                                 
                             add_margins();
                         }
