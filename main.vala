@@ -156,6 +156,9 @@ public class Application : Object {
 			// window.add(box);
 			window.add_widget(box);
 			window.show_all();
+            
+            var test = new Widgets.RemoteServer(window, window);
+            test.show_all();
         }
     }
     

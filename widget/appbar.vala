@@ -109,11 +109,11 @@ namespace Widgets {
             box.pack_start(min_button, false, false, 0);
             box.pack_start(max_toggle_box, false, false, 0);
             box.pack_start(close_button, false, false, 0);
-			close_button.margin_right = 5;
+			close_button.margin_end = 5;
             
             event_area = new Widgets.WindowEventArea(this);
             // Don't override window button area.
-            event_area.margin_right = 27 * 4;
+            event_area.margin_end = 27 * 4;
             draw.connect(on_draw);
             
             add(box);

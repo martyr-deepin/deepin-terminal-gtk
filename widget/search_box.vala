@@ -24,14 +24,14 @@ namespace Widgets {
             pack_start(search_previous_button, false, false, 0);
             pack_start(search_next_button, false, false, 0);
             
-            search_image.margin_left = 10;
-            search_entry.margin_right = 4;
+            search_image.margin_start = 10;
+            search_entry.margin_end = 4;
             search_next_button.margin_top = 6;
-            search_next_button.margin_right = 6;
+            search_next_button.margin_end = 6;
             clear_button_box.margin_top = 12;
-            clear_button_box.margin_right = 10;
+            clear_button_box.margin_end = 10;
             search_previous_button.margin_top = 6;
-            search_previous_button.margin_right = 10;
+            search_previous_button.margin_end = 10;
             
             set_size_request(322, 40);
             set_valign(Gtk.Align.START);

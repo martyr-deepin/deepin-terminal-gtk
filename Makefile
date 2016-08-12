@@ -27,6 +27,7 @@ main: ./project_path.c \
       ./widget/confirm_dialog.vala \
       ./widget/search_box.vala \
       ./widget/remote_panel.vala \
+      ./widget/remote_server.vala \
       ./widget/about_dialog.vala \
       ./widget/about_widget.vala \
       ./widget/preference.vala \
@@ -73,6 +74,7 @@ main: ./project_path.c \
     ./widget/confirm_dialog.vala \
     ./widget/search_box.vala \
     ./widget/remote_panel.vala \
+    ./widget/remote_server.vala \
     ./widget/about_dialog.vala \
     ./widget/about_widget.vala \
     ./widget/preference.vala \

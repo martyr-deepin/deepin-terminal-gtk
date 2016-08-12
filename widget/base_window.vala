@@ -11,13 +11,13 @@ namespace Widgets {
         
         public int window_frame_margin_top = 50;
         public int window_frame_margin_bottom = 60;
-        public int window_frame_margin_left = 50;
-        public int window_frame_margin_right = 50;
+        public int window_frame_margin_start = 50;
+        public int window_frame_margin_end = 50;
         
         public int window_widget_margin_top = 1;
         public int window_widget_margin_bottom = 2;
-        public int window_widget_margin_left = 2;
-        public int window_widget_margin_right = 2;
+        public int window_widget_margin_start = 2;
+        public int window_widget_margin_end = 2;
         
         public Gtk.Box window_frame_box;
         public Gtk.Box window_widget_box;
@@ -70,7 +70,7 @@ namespace Widgets {
             configure_event.connect((w) => {
                     int width, height;
                     get_size(out width, out height);
-                    window_width = width - window_frame_box.margin_left - window_frame_box.margin_right;
+                    window_width = width - window_frame_box.margin_start - window_frame_box.margin_end;
                     window_height = height - window_frame_box.margin_top - window_frame_box.margin_bottom;
                     
                     queue_draw();
@@ -88,7 +88,7 @@ namespace Widgets {
                             remove_margins();
                         } else {
                             window_is_normal = true;
-                            get_window().set_shadow_width(window_frame_margin_left, window_frame_margin_right, window_frame_margin_top, window_frame_margin_bottom);
+                            get_window().set_shadow_width(window_frame_margin_start, window_frame_margin_end, window_frame_margin_top, window_frame_margin_bottom);
                                 
                             add_margins();
                         }
@@ -108,10 +108,10 @@ namespace Widgets {
                         int width, height;
                         get_size(out width, out height);
                         
-                        var left_side_start = window_x + window_frame_margin_left;
-                        var left_side_end = window_x + window_frame_margin_left + response_radius;
-                        var right_side_start = window_x + width - window_frame_margin_right - response_radius;
-                        var right_side_end = window_x + width - window_frame_margin_right;
+                        var left_side_start = window_x + window_frame_margin_start;
+                        var left_side_end = window_x + window_frame_margin_start + response_radius;
+                        var right_side_start = window_x + width - window_frame_margin_end - response_radius;
+                        var right_side_end = window_x + width - window_frame_margin_end;
                         var top_side_start = window_y + window_frame_margin_top;
                         var top_side_end = window_y + window_frame_margin_top + response_radius;
                         var bottom_side_start = window_y + height - window_frame_margin_bottom - response_radius;
@@ -163,13 +163,13 @@ namespace Widgets {
         public void add_margins() {
             window_frame_box.margin_top = window_frame_margin_top;
             window_frame_box.margin_bottom = window_frame_margin_bottom;
-            window_frame_box.margin_left = window_frame_margin_left;
-            window_frame_box.margin_right = window_frame_margin_right;
+            window_frame_box.margin_start = window_frame_margin_start;
+            window_frame_box.margin_end = window_frame_margin_end;
             
             window_widget_box.margin_top = window_widget_margin_top;
             window_widget_box.margin_bottom = window_widget_margin_bottom;
-            window_widget_box.margin_left = window_widget_margin_left;
-            window_widget_box.margin_right = window_widget_margin_right;
+            window_widget_box.margin_start = window_widget_margin_start;
+            window_widget_box.margin_end = window_widget_margin_end;
         }
         
         public void remove_margins() {
@@ -195,7 +195,7 @@ namespace Widgets {
             Gtk.Allocation window_frame_rect;
             window_frame_box.get_allocation(out window_frame_rect);
             
-            int x = window_frame_box.margin_left;
+            int x = window_frame_box.margin_start;
             int y = window_frame_box.margin_top;
             int width = window_frame_rect.width;
             int height = window_frame_rect.height;
@@ -362,7 +362,7 @@ namespace Widgets {
                 set_size_request(width, height);
             } else {
                 set_default_size(
-                    width + window_frame_margin_left + window_frame_margin_right,
+                    width + window_frame_margin_start + window_frame_margin_end,
                     height + window_frame_margin_top + window_frame_margin_bottom);
             }
         }
