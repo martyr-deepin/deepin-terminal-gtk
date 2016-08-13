@@ -20,6 +20,8 @@ namespace Widgets {
             box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             
             entry = new Gtk.Entry();
+            entry.margin_top = 1;
+            entry.margin_bottom = 1;
             entry.set_input_purpose(Gtk.InputPurpose.PASSWORD);
             entry.get_style_context().add_class("password-entry");
 
