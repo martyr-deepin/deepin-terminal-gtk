@@ -37,8 +37,6 @@ namespace Widgets {
             search_label.set_text("search");
             search_label.get_style_context().add_class("remote_search_label");
             display_box.pack_start(search_image, false, false, 0);
-            display_box.pack_start(search_label, false, false, 0);
-            display_box.set_halign(Gtk.Align.CENTER);
             
             search_entry = new Entry();
             search_entry.set_placeholder_text("Search");
@@ -59,6 +57,15 @@ namespace Widgets {
                     return false;
                 });
             
+            key_press_event.connect((w, e) => {
+                    string keyname = Keymap.get_keyevent_name(e);
+                    if (keyname == "Esc") {
+                        switch_to_display();
+                    }
+                    
+                    return false;
+                });
+            
             add(box);
         }
         
@@ -72,15 +79,20 @@ namespace Widgets {
 		}
 		
         public void switch_to_display() {
-            Utils.destroy_all_children(box);
+            Utils.remove_all_children(box);
             
+            search_image.margin_left = 0;
+            display_box.pack_start(search_image, false, false, 0);
+            display_box.pack_start(search_label, false, false, 0);
+            display_box.set_halign(Gtk.Align.CENTER);
             box.pack_start(display_box, true, true, 0);
             
             show_all();
         }
         
         public void switch_to_input() {
-             Utils.destroy_all_children(box);
+             Utils.remove_all_children(box);
+             Utils.remove_all_children(display_box);
 
              box.pack_start(search_image, false, false, 0);
              box.pack_start(search_entry, true, true, 0);
