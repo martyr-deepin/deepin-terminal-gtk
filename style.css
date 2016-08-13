@@ -237,6 +237,8 @@
 	min-height: 18px;
     background-color:white;
     border:1px solid rgba(0,0,0,0.1);
+	border-right:1px solid white;
+	border-radius:4px 0 0 4px;
 }
 .password-entry:focus {
     color:black;
