@@ -33,6 +33,7 @@ namespace Widgets {
             Draw.draw_text(widget, cr, button_text, 0, 0, 
                            widget.get_allocated_width(),
                            widget.get_allocated_height(),
+                           widget.get_allocated_height(),
                            Pango.Alignment.CENTER
                            );
             

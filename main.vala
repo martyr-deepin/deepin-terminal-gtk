@@ -39,7 +39,6 @@ interface QuakeDaemon : Object {
 public class Application : Object {
     public Widgets.Window window;
     public WorkspaceManager workspace_manager;
-	public HotkeyPreview hotkey_preview;
     
 	private static bool version = false;
 	private static bool quake_mode = false;
@@ -265,9 +264,6 @@ public class Application : Object {
 		    
 		    var show_helper_window_key = window.config.config_file.get_string("keybind", "show_helper_window");
 		    if (show_helper_window_key != "" && keyname == show_helper_window_key) {
-		    	if (hotkey_preview == null) {
-		    		hotkey_preview = new HotkeyPreview(quake_mode);
-		    	}
 		    	return true;
 		    }
 		    
@@ -298,10 +294,7 @@ public class Application : Object {
 	
 	private bool on_key_release(Gtk.Widget widget, Gdk.EventKey key_event) {
 		if (Keymap.is_no_key_press(key_event)) {
-			if (hotkey_preview != null) {
-				hotkey_preview.destroy();
-				hotkey_preview = null;
-			}
+
 		}
 		
 		return false;
