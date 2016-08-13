@@ -37,7 +37,7 @@ namespace Widgets {
             Gtk.Allocation rect;
             widget.get_allocation(out rect);
 			
-            cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, 0.95);
+            cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, 0.8);
             Draw.draw_rectangle(cr, 1, 0, rect.width - 1, rect.height);
             
             cr.set_source_rgba(1, 1, 1, 0.1);
