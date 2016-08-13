@@ -22,9 +22,9 @@ namespace Widgets {
             entry = new Gtk.Entry();
             entry.margin_top = 1;
             entry.margin_bottom = 1;
+            entry.set_invisible_char('•');
             entry.set_input_purpose(Gtk.InputPurpose.PASSWORD);
-            entry.get_style_context().add_class("password-entry");
-
+            
             show_password_button = new ImageButton("password_show");
             hide_password_button = new ImageButton("password_hide");
             
@@ -53,6 +53,8 @@ namespace Widgets {
         public void show_password() {
             Utils.remove_all_children(button_box);
             
+            entry.get_style_context().remove_class("password-invisible-entry");
+            entry.get_style_context().add_class("password-visible-entry");
             entry.set_visibility(true);
             button_box.pack_start(hide_password_button, false, false, 0);
             
@@ -62,6 +64,8 @@ namespace Widgets {
         public void hide_password() {
             Utils.remove_all_children(button_box);
             
+            entry.get_style_context().remove_class("password-visible-entry");
+            entry.get_style_context().add_class("password-invisible-entry");
             entry.set_visibility(false);
             button_box.pack_start(show_password_button, false, false, 0);
             
