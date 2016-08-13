@@ -123,6 +123,12 @@ namespace Widgets {
         public void handle_menu_item_click(string item_id) {
             switch(item_id) {
                 case "new_window":
+                    try {
+                        GLib.AppInfo appinfo = GLib.AppInfo.create_from_commandline(application.start_path, null, GLib.AppInfoCreateFlags.NONE);
+                        appinfo.launch(null, null);
+                    } catch (GLib.Error e) {
+                        print(e.message);
+                    }
 			    	break;
 				case "help":
 					break;

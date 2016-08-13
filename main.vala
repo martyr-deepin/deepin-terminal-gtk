@@ -40,6 +40,8 @@ public class Application : Object {
     public Widgets.Window window;
     public WorkspaceManager workspace_manager;
     
+    public string start_path;
+    
 	private static bool version = false;
 	private static bool quake_mode = false;
 	private static string? work_directory = null;
@@ -61,7 +63,7 @@ public class Application : Object {
 		{ null }
 	};
     
-    public void run(bool has_start) {
+    public void run(string path, bool has_start) {
         if (has_start && quake_mode) {
             try {
                 QuakeDaemon daemon = Bus.get_proxy_sync(BusType.SESSION, "com.deepin.quake_terminal", "/com/deepin/quake_terminal");
@@ -72,6 +74,7 @@ public class Application : Object {
             
             Gtk.main_quit();
         } else {
+            start_path = path;
             Utils.load_css_theme(Utils.get_root_path("style.css"));
             
             Tabbar tabbar = new Tabbar(quake_mode);
@@ -305,6 +308,9 @@ public class Application : Object {
         // OptionContext's function always lost argument after option '-e' or '-x'.
         string[] argv;
         string command = "";
+
+        var start_path = GLib.File.new_for_path(args[0]).get_path();
+        
         foreach (string a in args[1:args.length]) {
             command = command + " " + a;
         }
@@ -360,16 +366,16 @@ public class Application : Object {
                              "com.deepin.quake_terminal",
                              BusNameOwnerFlags.NONE,
                              ((con) => {QuakeTerminalApp.on_bus_acquired(con, app);}),
-                             () => {app.run(false);},
-                             () => {app.run(true);});
+                             () => {app.run(start_path, false);},
+                             () => {app.run(start_path, true);});
             } else {
                 TerminalApp app = new TerminalApp();
                 Bus.own_name(BusType.SESSION,
                              "com.deepin.terminal",
                              BusNameOwnerFlags.NONE,
                              ((con) => {TerminalApp.on_bus_acquired(con, app);}),
-                             () => {app.run(false);},
-                             () => {app.run(true);});
+                             () => {app.run(start_path, false);},
+                             () => {app.run(start_path, true);});
             }
             
             Gtk.main();
