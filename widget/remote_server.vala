@@ -19,7 +19,7 @@ namespace Widgets {
         
         public Gtk.Entry address_entry;
         public Gtk.Entry user_entry;
-        public Widgets.PasswordButton password_entry;
+        public Widgets.PasswordButton password_button;
         public Gtk.Entry port_entry;
         public Gtk.ComboBoxText encode_box;
         public Gtk.Entry path_entry;
@@ -160,13 +160,13 @@ namespace Widgets {
                 // Password.
                 Label password_label = new Gtk.Label(null);
                 password_label.margin_start = 14;
-                password_entry = new Widgets.PasswordButton();
+                password_button = new Widgets.PasswordButton();
                 if (server_info != null) {
                     string password = Utils.lookup_password(server_info.split("@")[0], server_info.split("@")[1]);
-                    password_entry.entry.set_text(password);
+                    password_button.entry.set_text(password);
                 }
-                password_entry.entry.set_placeholder_text("fill");
-                create_follow_key_row(password_label, password_entry, "Password:", user_label, grid);
+                password_button.entry.set_placeholder_text("fill");
+                create_follow_key_row(password_label, password_button, "Password:", user_label, grid);
             
                 advanced_options_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
                 advanced_grid = new Gtk.Grid();
@@ -297,7 +297,7 @@ namespace Widgets {
                         if (server_info != null) {
                             edit_server(address_entry.get_text(),
                                         user_entry.get_text(),
-                                        password_entry.entry.get_text(),
+                                        password_button.entry.get_text(),
                                         port_entry.get_text(),
                                         parent_window.config.encoding_names[encode_box.get_active()],
                                         path_entry.get_text(),
@@ -310,7 +310,7 @@ namespace Widgets {
                         } else {
                             add_server(address_entry.get_text(),
                                        user_entry.get_text(),
-                                       password_entry.entry.get_text(),
+                                       password_button.entry.get_text(),
                                        port_entry.get_text(),
                                        parent_window.config.encoding_names[encode_box.get_active()],
                                        path_entry.get_text(),
