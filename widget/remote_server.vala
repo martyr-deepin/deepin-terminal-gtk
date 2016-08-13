@@ -116,7 +116,7 @@ namespace Widgets {
                 Label address_label = new Gtk.Label(null);
                 address_label.margin_start = 14;
                 address_label.set_text("IP Address:");
-                address_label.get_style_context().add_class("preference-label");
+                address_label.get_style_context().add_class("preference_label");
                 address_entry = new Entry();
                 if (server_info != null) {
                     address_entry.set_text(server_info.split("@")[1]);
@@ -124,11 +124,11 @@ namespace Widgets {
                 address_entry.set_width_chars(14);
                 address_entry.set_placeholder_text("fill");
                 address_entry.margin_start = 14;
-                address_entry.get_style_context().add_class("preference-entry");
+                address_entry.get_style_context().add_class("preference_entry");
                 Label port_label = new Gtk.Label(null);
                 port_label.margin_start = 28;
                 port_label.set_text("Port:");
-                port_label.get_style_context().add_class("preference-label");
+                port_label.get_style_context().add_class("preference_label");
                 port_entry = new Entry();
                 if (server_info != null) {
                     port_entry.set_text(config_file.get_value(server_info, "Port"));
@@ -137,7 +137,7 @@ namespace Widgets {
                 }
                 port_entry.set_width_chars(4);
                 port_entry.margin_start = 14;
-                port_entry.get_style_context().add_class("preference-entry");
+                port_entry.get_style_context().add_class("preference_entry");
             
                 var address_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
                 address_box.pack_start(address_entry, true, true, 0);
@@ -216,7 +216,7 @@ namespace Widgets {
                 } else {
                     encode_box.set_active(parent_window.config.encoding_names.index_of("UTF-8"));
                 }
-                create_follow_key_row(encode_label, encode_box, "Encode:", command_label, advanced_grid, "preference-comboboxtext");
+                create_follow_key_row(encode_label, encode_box, "Encode:", command_label, advanced_grid, "preference_comboboxtext");
             
                 // Backspace sequence.
                 Label backspace_key_label = new Gtk.Label(null);
@@ -230,7 +230,7 @@ namespace Widgets {
                 } else {
                     backspace_key_box.set_active(parent_window.config.backspace_key_erase_names.index_of("ascii-del"));
                 }
-                create_follow_key_row(backspace_key_label, backspace_key_box, "Backspace:", encode_label, advanced_grid, "preference-comboboxtext");
+                create_follow_key_row(backspace_key_label, backspace_key_box, "Backspace:", encode_label, advanced_grid, "preference_comboboxtext");
 
                 // Delete sequence.
                 Label del_key_label = new Gtk.Label(null);
@@ -244,7 +244,7 @@ namespace Widgets {
                 } else {
                     del_key_box.set_active(parent_window.config.del_key_erase_names.index_of("escape-sequence"));
                 }
-                create_follow_key_row(del_key_label, del_key_box, "Delete:", backspace_key_label, advanced_grid, "preference-comboboxtext");
+                create_follow_key_row(del_key_label, del_key_box, "Delete:", backspace_key_label, advanced_grid, "preference_comboboxtext");
             
                 show_advanced_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
                 var show_advanced_area = new Gtk.EventBox();
@@ -345,10 +345,10 @@ namespace Widgets {
             show_all();
         }
         
-        public void create_key_row(Gtk.Label label, Gtk.Widget widget, string name, Gtk.Grid grid, string class_name="preference-entry") {
+        public void create_key_row(Gtk.Label label, Gtk.Widget widget, string name, Gtk.Grid grid, string class_name="preference_entry") {
 			label.set_text(name);
             label.margin_start = 14;
-            label.get_style_context().add_class("preference-label");
+            label.get_style_context().add_class("preference_label");
             widget.get_style_context().add_class(class_name);
             widget.margin_start = 14;
 
@@ -357,10 +357,10 @@ namespace Widgets {
             grid_attach_next_to(grid, widget, label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
 		}
         
-        public void create_follow_key_row(Gtk.Label label, Gtk.Widget widget, string name, Gtk.Label previous_label, Gtk.Grid grid, string class_name="preference-entry") {
+        public void create_follow_key_row(Gtk.Label label, Gtk.Widget widget, string name, Gtk.Label previous_label, Gtk.Grid grid, string class_name="preference_entry") {
 			label.set_text(name);
             label.margin_start = 14;
-            label.get_style_context().add_class("preference-label");
+            label.get_style_context().add_class("preference_label");
             widget.get_style_context().add_class(class_name);
             widget.margin_start = 14;
             

@@ -67,7 +67,7 @@ namespace Widgets {
             is_first_term = first_term;
             
             get_style_context().add_class("scrolledwindow");
-            get_vscrollbar().get_style_context().add_class("terminal-scrollbar");
+            get_vscrollbar().get_style_context().add_class("terminal_scrollbar");
             
 			term = new Terminal();
 			

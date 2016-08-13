@@ -199,7 +199,7 @@ namespace Widgets {
             scrolledwindow.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             scrolledwindow.set_shadow_type(Gtk.ShadowType.NONE);
             scrolledwindow.get_style_context().add_class("scrolledwindow");
-            scrolledwindow.get_vscrollbar().get_style_context().add_class("preference-scrollbar");
+            scrolledwindow.get_vscrollbar().get_style_context().add_class("preference_scrollbar");
             box.pack_start(scrolledwindow, true, true, 0);
             
             preference_box.pack_start(box, true, true, 0);
@@ -734,21 +734,21 @@ namespace Widgets {
         
         public Gtk.Entry create_entry() {
             var entry = new Gtk.Entry();
-            entry.get_style_context().add_class("preference-entry");
+            entry.get_style_context().add_class("preference_entry");
             
             return entry;
         }
         
         public Gtk.ComboBoxText create_combox_text() {
             var combox = new Gtk.ComboBoxText();
-            combox.get_style_context().add_class("preference-comboboxtext");
+            combox.get_style_context().add_class("preference_comboboxtext");
             
             return combox;
         }
         
         public Gtk.SpinButton create_spinbutton(int min, int max, int step) {
             var spinbutton = new Gtk.SpinButton.with_range(min, max, step);
-            spinbutton.get_style_context().add_class("preference-spinbutton");
+            spinbutton.get_style_context().add_class("preference_spinbutton");
             
             return spinbutton;
         }
@@ -761,7 +761,7 @@ namespace Widgets {
         
         public Gtk.Label create_label(string? text=null) {
             var label = new Gtk.Label(text);
-            label.get_style_context().add_class("preference-label");
+            label.get_style_context().add_class("preference_label");
             
             return label;
         }

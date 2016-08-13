@@ -60,13 +60,13 @@ namespace Widgets {
             var label_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             Label title_label = new Gtk.Label(null);
             title_label.set_halign(Gtk.Align.START);
-            title_label.get_style_context().add_class("dialog-title");
+            title_label.get_style_context().add_class("dialog_title");
             title_label.set_text("Terminal still has running programs");
             title_label.margin_top = title_margin_top;
 
             Label content_label = new Gtk.Label(null);
             content_label.set_halign(Gtk.Align.START);
-            content_label.get_style_context().add_class("dialog-content");
+            content_label.get_style_context().add_class("dialog_content");
             content_label.set_text("Are you sure you want to quit?");
             content_label.margin_top = content_margin_top;
             

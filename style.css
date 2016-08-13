@@ -62,7 +62,7 @@
 	background-color: #61B5F8;
 }
 
-.terminal-scrollbar {
+.terminal_scrollbar {
 	padding-right: 2px;
 	background: transparent;
 	box-shadow: none;
@@ -70,26 +70,26 @@
     min-width: 4px;
 }
 
-.terminal-scrollbar slider {
+.terminal_scrollbar slider {
 	background-color: rgba(255, 255, 255, 0.2); 
     border:none;
     box-shadow:inset 1px 1px   rgba(255,255,255,0.05),inset -1px -1px rgba(255,255,255,0.05);
     min-width: 4px;
 }
 
-.terminal-scrollbar slider:hover {
+.terminal_scrollbar slider:hover {
 	background-color: rgba(255, 255, 255, 0.4);
     box-shadow:inset 1px 1px   rgba(255,255,255,0.1),inset -1px -1px rgba(255,255,255,0.05);
     min-width: 8px;
 }
 
-.terminal-scrollbar slider:hover:active {
+.terminal_scrollbar slider:hover:active {
 	background-color: rgba(255, 255, 255, 0.3);
     box-shadow:inset 1px 1px   rgba(255,255,255,0.05),inset -1px -1px rgba(255,255,255,0.05);
     min-width: 8px;
 }
 
-.preference-scrollbar {
+.preference_scrollbar {
 	padding-right: 2px;
 	background: transparent;
 	box-shadow: none;
@@ -97,7 +97,7 @@
     min-width: 4px;
 }
 
-.preference-scrollbar slider {
+.preference_scrollbar slider {
 	background-color: rgba(16, 16, 16, 0.5);
     box-shadow:none;
 	border: 1px;
@@ -105,7 +105,7 @@
     min-width: 4px;
 }
 
-.preference-scrollbar slider:hover {
+.preference_scrollbar slider:hover {
 	background-color: rgba(16, 16, 16, 0.7);
 	box-shadow: none;
 	border: 1px;
@@ -113,7 +113,7 @@
     min-width: 8px;
 }
 
-.preference-scrollbar slider:hover:active {
+.preference_scrollbar slider:hover:active {
 	background-color: rgba(16, 16, 16, 0.8);
 	box-shadow: none;
 	border: 1px;
@@ -121,31 +121,31 @@
     min-width: 8px;
 }
 
-.preference-comboboxtext {
+.preference_comboboxtext {
 	min-height: 16px;
 }
 
-.preference-comboboxtext menu{
+.preference_comboboxtext menu{
 	background-color:white;
 	border:1px solid rgba(0,0,0,0.1);
 	border-radius:4px;
 }
 
-.preference-comboboxtext menu > arrow{
+.preference_comboboxtext menu > arrow{
 	background-color:white;
 }
 
-.preference-comboboxtext arrow {
+.preference_comboboxtext arrow {
 	min-height: 16px;
 	min-width: 12px;
 }
 
-.preference-comboboxtext menu menuitem:hover{
+.preference_comboboxtext menu menuitem:hover{
 	background-color:#2ca7f8;
 	color:white;
 }
 
-.preference-comboboxtext button.combo {
+.preference_comboboxtext button.combo {
 	padding-top: 1px;
 	padding-bottom: 0px;
     color:#303030;
@@ -155,7 +155,7 @@
     
 }
 
-.preference-comboboxtext button.combo:hover {
+.preference_comboboxtext button.combo:hover {
     padding-top: 1px;
     padding-bottom: 0px;
     color:white;
@@ -163,18 +163,18 @@
     box-shadow: 0 1px rgba(0,0,0,0.04),inset 0  1px  rgba(0,118,243,0.2),inset 0 -1px  rgba(0,118,243,0.2),inset 1px 0 rgba(0,118,243,0.2),inset -1px 0 rgba(0,118,243,0.2);
 }
 
-.preference-comboboxtext arrow {
+.preference_comboboxtext arrow {
 	min-height: 16px;
 	min-width: 12px;
 }
 
-.preference-entry {
+.preference_entry {
     color:#303030;
 	min-height: 18px;
     background-color:white;
     border:1px solid rgba(0,0,0,0.1);
 }
-.preference-entry:focus {
+.preference_entry:focus {
     color:black;
     min-height: 18px;
     background-color:white;
@@ -182,7 +182,7 @@
 }
 
 
-.preference-spinbutton:not(.vertical) button {
+.preference_spinbutton:not(.vertical) button {
 	min-height: 24px;
 	padding-top: 0px;
 	padding-bottom: 0px;
@@ -193,7 +193,7 @@
 
 }
 
-.preference-spinbutton:not(.vertical) button:last-child {
+.preference_spinbutton:not(.vertical) button:last-child {
 	min-height: 24px;
 	padding-top: 0px;
 	padding-bottom: 0px;
@@ -203,7 +203,7 @@
     box-shadow: 0 1px rgba(0,0,0,0.02),inset 0  1px  rgba(0,0,0,0.1),inset 0 -1px  rgba(0,0,0,0.1),inset 1px 0 rgba(0,0,0,0.0),inset -1px 0 rgba(0,0,0,0.1);
 
 }
-.preference-spinbutton:not(.vertical) button:hover {
+.preference_spinbutton:not(.vertical) button:hover {
 	min-height: 24px;
 	padding-top: 0px;
 	padding-bottom: 0px;
@@ -212,7 +212,7 @@
     box-shadow: 0 1px rgba(0,0,0,0.04),inset 0  1px  rgba(0,118,243,0.2),inset 0 -1px  rgba(0,118,243,0.2),inset 1px 0 rgba(0,118,243,0.2),inset -1px 0 rgba(0,118,243,0.2);
 
 }
-.preference-spinbutton:not(.vertical) button:active {
+.preference_spinbutton:not(.vertical) button:active {
 	min-height: 24px;
 	padding-top: 0px;
 	padding-bottom: 0px;
@@ -222,7 +222,7 @@
 
 }
 
-.preference-spinbutton:not(.vertical) entry {
+.preference_spinbutton:not(.vertical) entry {
 	min-height: 23px;
 	padding-top: 0px;
 	padding-bottom: 0px;
@@ -232,22 +232,22 @@
     border-width:1px 0 1px 1px;
 }
 
-.preference-spinbutton:not(.vertical) entry selection {
+.preference_spinbutton:not(.vertical) entry selection {
     color:white;
     background-color:#2ca7f8;
 
 }
 
-.preference-label {
+.preference_label {
 	color: #303030;
 }
 
-.dialog-title {
+.dialog_title {
 	color: #303030;
 	font-weight: bold;
 }
 
-.dialog-content {
+.dialog_content {
 	color: #303030;
 }
 
@@ -273,7 +273,7 @@
 	color: #ffffff;
 }
 
-.password-invisible-entry {
+.password_invisible_entry {
     color:#303030;
 	min-height: 18px;
     background-color:white;
@@ -283,14 +283,14 @@
 	letter-spacing: 5px;
 }
 
-.password-invisible-entry:focus {
+.password_invisible_entry:focus {
     color:black;
     min-height: 18px;
     background-color:white;
     border:1px solid #2ca7f8;
 }
 
-.password-visible-entry {
+.password_visible_entry {
     color:#303030;
 	min-height: 18px;
     background-color:white;
@@ -300,7 +300,7 @@
 	letter-spacing: 0px;
 }
 
-.password-visible-entry:focus {
+.password_visible_entry:focus {
     color:black;
     min-height: 18px;
     background-color:white;

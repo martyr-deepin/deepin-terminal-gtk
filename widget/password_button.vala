@@ -53,8 +53,8 @@ namespace Widgets {
         public void show_password() {
             Utils.remove_all_children(button_box);
             
-            entry.get_style_context().remove_class("password-invisible-entry");
-            entry.get_style_context().add_class("password-visible-entry");
+            entry.get_style_context().remove_class("password_invisible_entry");
+            entry.get_style_context().add_class("password_visible_entry");
             entry.set_visibility(true);
             button_box.pack_start(hide_password_button, false, false, 0);
             
@@ -64,8 +64,8 @@ namespace Widgets {
         public void hide_password() {
             Utils.remove_all_children(button_box);
             
-            entry.get_style_context().remove_class("password-visible-entry");
-            entry.get_style_context().add_class("password-invisible-entry");
+            entry.get_style_context().remove_class("password_visible_entry");
+            entry.get_style_context().add_class("password_invisible_entry");
             entry.set_visibility(false);
             button_box.pack_start(show_password_button, false, false, 0);
             

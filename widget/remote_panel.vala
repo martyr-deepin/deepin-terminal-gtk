@@ -456,7 +456,7 @@ namespace Widgets {
             scrolledwindow.get_style_context().add_class("scrolledwindow");
             scrolledwindow.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             scrolledwindow.set_shadow_type(Gtk.ShadowType.NONE);
-            scrolledwindow.get_vscrollbar().get_style_context().add_class("preference-scrollbar");
+            scrolledwindow.get_vscrollbar().get_style_context().add_class("preference_scrollbar");
 
             return scrolledwindow;
         }
