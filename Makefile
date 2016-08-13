@@ -11,6 +11,9 @@ main: ./project_path.c \
       ./widget/appbar.vala \
       ./widget/titlebar.vala \
       ./widget/checkbutton.vala \
+      ./widget/add_server_button.vala \
+      ./widget/server_button.vala \
+      ./widget/server_group_button.vala \
       ./widget/terminal.vala \
       ./widget/progressbar.vala \
       ./widget/workspace.vala \
@@ -57,6 +60,9 @@ main: ./project_path.c \
     ./widget/appbar.vala \
     ./widget/titlebar.vala \
     ./widget/checkbutton.vala \
+    ./widget/add_server_button.vala \
+    ./widget/server_button.vala \
+    ./widget/server_group_button.vala \
     ./widget/terminal.vala \
     ./widget/progressbar.vala \
     ./widget/workspace.vala \
