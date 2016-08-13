@@ -7,6 +7,8 @@ namespace Widgets {
         public Gtk.Image search_image;
         public Gtk.Label search_label;
         public Gtk.Entry search_entry;
+        
+        public ImageButton clear_button;
 
         public Gtk.Box display_box;
         public Gtk.Box box;
@@ -36,11 +38,17 @@ namespace Widgets {
             search_label = new Gtk.Label(null);
             search_label.set_text("search");
             search_label.get_style_context().add_class("remote_search_label");
-            display_box.pack_start(search_image, false, false, 0);
-            
             search_entry = new Entry();
             search_entry.set_placeholder_text("Search");
             search_entry.get_style_context().add_class("remote_search_entry");
+            clear_button = new ImageButton("search_clear");
+            clear_button.margin_right = 8;
+            clear_button.margin_top = 11;
+            clear_button.button_release_event.connect((w, e) => {
+                    search_entry.set_text("");
+                    
+                    return false;
+                });
             
             switch_to_display();
             
@@ -96,6 +104,7 @@ namespace Widgets {
 
              box.pack_start(search_image, false, false, 0);
              box.pack_start(search_entry, true, true, 0);
+             box.pack_start(clear_button, false, false, 0);
              
              search_image.margin_left = search_image_margin_x;
              search_entry.grab_focus();
