@@ -38,7 +38,7 @@ namespace Widgets {
             widget.get_allocation(out rect);
 			
             cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, 0.95);
-            Draw.draw_rectangle(cr, 0, 0, rect.width, rect.height);
+            Draw.draw_rectangle(cr, 1, 0, rect.width - 1, rect.height);
             
             cr.set_source_rgba(1, 1, 1, 0.1);
             Draw.draw_rectangle(cr, 0, 0, 1, rect.height);
@@ -85,6 +85,7 @@ namespace Widgets {
                     });
                 
                 var split_line = create_split_line();
+                split_line.margin_left = 1;
                 pack_start(split_line, false, false, 0);
 			}
 
@@ -257,6 +258,7 @@ namespace Widgets {
 			top_box.pack_start(back_button, false, false, 0);
             
             var split_line = create_split_line();
+            split_line.margin_left = 1;
             pack_start(split_line, false, false, 0);
             
 			if (ungroups.size > 1) {
@@ -377,6 +379,7 @@ namespace Widgets {
                 pack_start(back_button, false, false, 0);
                 
                 var split_line = create_split_line();
+                split_line.margin_left = 1;
                 pack_start(split_line, false, false, 0);
                 
                 var scrolledwindow = create_scrolled_window();
