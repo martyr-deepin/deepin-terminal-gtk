@@ -231,3 +231,17 @@
 .remote_search_label {
 	color: #ffffff;
 }
+
+.password-entry {
+    color:#303030;
+	min-height: 18px;
+    background-color:white;
+    border:1px solid rgba(0,0,0,0.1);
+}
+.password-entry:focus {
+    color:black;
+    min-height: 18px;
+    background-color:white;
+    border:1px solid #2ca7f8;
+}
+

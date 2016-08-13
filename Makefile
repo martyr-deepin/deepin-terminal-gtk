@@ -11,6 +11,7 @@ main: ./project_path.c \
       ./widget/appbar.vala \
       ./widget/titlebar.vala \
       ./widget/checkbutton.vala \
+      ./widget/password_button.vala \
       ./widget/add_server_button.vala \
       ./widget/server_button.vala \
       ./widget/server_group_button.vala \
@@ -60,6 +61,7 @@ main: ./project_path.c \
     ./widget/appbar.vala \
     ./widget/titlebar.vala \
     ./widget/checkbutton.vala \
+    ./widget/password_button.vala \
     ./widget/add_server_button.vala \
     ./widget/server_button.vala \
     ./widget/server_group_button.vala \
