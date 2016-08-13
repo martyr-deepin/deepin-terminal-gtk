@@ -14,6 +14,22 @@
   background-image: none;
 }
 
+.scrolledwindow overshoot.top {
+  background-image: none;
+}
+
+.scrolledwindow overshoot.bottom {
+  background-image: none;
+}
+
+.scrolledwindow overshoot.left  {
+  background-image: none;
+}
+
+.scrolledwindow overshoot.right {
+  background-image: none;
+}
+
 .window_shadow_active {
 	background: transparent;
 	border-radius: 5px;
