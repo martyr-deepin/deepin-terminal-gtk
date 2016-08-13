@@ -198,6 +198,7 @@ namespace Widgets {
             scrolledwindow = new ScrolledWindow(null, null);
             scrolledwindow.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             scrolledwindow.set_shadow_type(Gtk.ShadowType.NONE);
+            scrolledwindow.get_style_context().add_class("scrolledwindow");
             scrolledwindow.get_vscrollbar().get_style_context().add_class("preference-scrollbar");
             box.pack_start(scrolledwindow, true, true, 0);
             

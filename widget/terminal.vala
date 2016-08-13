@@ -66,6 +66,7 @@ namespace Widgets {
 			workspace_manager = manager;
             is_first_term = first_term;
             
+            get_style_context().add_class("scrolledwindow");
             get_vscrollbar().get_style_context().add_class("terminal-scrollbar");
             
 			term = new Terminal();

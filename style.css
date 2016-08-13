@@ -1,3 +1,19 @@
+.scrolledwindow undershoot.top {
+  background-image: none;
+}
+
+.scrolledwindow undershoot.bottom {
+  background-image: none;
+}
+
+.scrolledwindow undershoot.left  {
+  background-image: none;
+}
+
+.scrolledwindow undershoot.right {
+  background-image: none;
+}
+
 .window_shadow_active {
 	background: transparent;
 	border-radius: 5px;
