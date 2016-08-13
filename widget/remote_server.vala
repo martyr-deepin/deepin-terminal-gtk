@@ -169,7 +169,82 @@ namespace Widgets {
                 create_follow_key_row(password_label, password_entry, "Password:", user_label, grid);
             
                 advanced_options_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-                box.pack_start(advanced_options_box, false, false, 0);
+                var advanced_grid = new Gtk.Grid();
+                advanced_grid.margin_end = 14;
+                advanced_options_box.pack_start(advanced_grid, false, false, 0);
+
+                // Group name.
+                Label group_name_label = new Gtk.Label(null);
+                group_name_label.margin_start = 14;
+                groupname_entry = new Entry();
+                if (server_info != null) {
+                    groupname_entry.set_text(config_file.get_value(server_info, "GroupName"));
+                }
+                groupname_entry.set_placeholder_text("option");
+                groupname_entry.set_width_chars(30);  // this line is expand width of entry.
+                create_key_row(group_name_label, groupname_entry, "Group:", advanced_grid);
+
+                // Path.
+                Label path_label = new Gtk.Label(null);
+                path_label.margin_start = 14;
+                path_entry = new Entry();
+                if (server_info != null) {
+                    path_entry.set_text(config_file.get_value(server_info, "Path"));
+                }
+                path_entry.set_placeholder_text("option");
+                create_follow_key_row(path_label, path_entry, "Path:", group_name_label, advanced_grid);
+
+                // Command.
+                Label command_label = new Gtk.Label(null);
+                command_label.margin_start = 14;
+                command_entry = new Entry();
+                if (server_info != null) {
+                    command_entry.set_text(config_file.get_value(server_info, "Command"));
+                }
+                command_entry.set_placeholder_text("option");
+                create_follow_key_row(command_label, command_entry, "Command:", path_label, advanced_grid);
+            
+                // Encoding.
+                Label encode_label = new Gtk.Label(null);
+                encode_label.margin_start = 14;
+                encode_box = new ComboBoxText();
+                foreach (string name in parent_window.config.encoding_names) {
+                    encode_box.append(name, name);
+                }
+                if (server_info != null) {
+                    encode_box.set_active(parent_window.config.encoding_names.index_of(config_file.get_value(server_info, "Encode")));
+                } else {
+                    encode_box.set_active(parent_window.config.encoding_names.index_of("UTF-8"));
+                }
+                create_follow_key_row(encode_label, encode_box, "Encode:", command_label, advanced_grid, "preference-comboboxtext");
+            
+                // Backspace sequence.
+                Label backspace_key_label = new Gtk.Label(null);
+                backspace_key_label.margin_start = 14;
+                backspace_key_box = new ComboBoxText();
+                foreach (string name in parent_window.config.backspace_key_erase_names) {
+                    backspace_key_box.append(name, parent_window.config.erase_map.get(name));
+                }
+                if (server_info != null) {
+                    backspace_key_box.set_active(parent_window.config.backspace_key_erase_names.index_of(config_file.get_value(server_info, "Backspace")));
+                } else {
+                    backspace_key_box.set_active(parent_window.config.backspace_key_erase_names.index_of("ascii-del"));
+                }
+                create_follow_key_row(backspace_key_label, backspace_key_box, "Backspace:", encode_label, advanced_grid, "preference-comboboxtext");
+
+                // Delete sequence.
+                Label del_key_label = new Gtk.Label(null);
+                del_key_label.margin_start = 14;
+                del_key_box = new ComboBoxText();
+                foreach (string name in parent_window.config.del_key_erase_names) {
+                    del_key_box.append(name, parent_window.config.erase_map.get(name));
+                }
+                if (server_info != null) {
+                    del_key_box.set_active(parent_window.config.del_key_erase_names.index_of(config_file.get_value(server_info, "Del")));
+                } else {
+                    del_key_box.set_active(parent_window.config.del_key_erase_names.index_of("escape-sequence"));
+                }
+                create_follow_key_row(del_key_label, del_key_box, "Delete:", backspace_key_label, advanced_grid, "preference-comboboxtext");
             
                 show_advanced_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
                 var show_advanced_area = new Gtk.EventBox();
@@ -262,92 +337,12 @@ namespace Widgets {
         }
         
         public void show_advanced_options() {
-            try {
-                set_default_geometry(window_init_width, window_expand_height);
+            set_default_geometry(window_init_width, window_expand_height);
             
-                box.remove(show_advanced_box);
+            box.remove(show_advanced_box);
+            box.pack_start(advanced_options_box, false, false, 0);
             
-                var grid = new Gtk.Grid();
-                grid.margin_end = 14;
-                advanced_options_box.pack_start(grid, false, false, 0);
-
-                // Group name.
-                Label group_name_label = new Gtk.Label(null);
-                group_name_label.margin_start = 14;
-                groupname_entry = new Entry();
-                if (server_info != null) {
-                    groupname_entry.set_text(config_file.get_value(server_info, "GroupName"));
-                }
-                groupname_entry.set_placeholder_text("option");
-                groupname_entry.set_width_chars(30);  // this line is expand width of entry.
-                create_key_row(group_name_label, groupname_entry, "Group:", grid);
-
-                // Path.
-                Label path_label = new Gtk.Label(null);
-                path_label.margin_start = 14;
-                path_entry = new Entry();
-                if (server_info != null) {
-                    path_entry.set_text(config_file.get_value(server_info, "Path"));
-                }
-                path_entry.set_placeholder_text("option");
-                create_follow_key_row(path_label, path_entry, "Path:", group_name_label, grid);
-
-                // Command.
-                Label command_label = new Gtk.Label(null);
-                command_label.margin_start = 14;
-                command_entry = new Entry();
-                if (server_info != null) {
-                    command_entry.set_text(config_file.get_value(server_info, "Command"));
-                }
-                command_entry.set_placeholder_text("option");
-                create_follow_key_row(command_label, command_entry, "Command:", path_label, grid);
-            
-                // Encoding.
-                Label encode_label = new Gtk.Label(null);
-                encode_label.margin_start = 14;
-                encode_box = new ComboBoxText();
-                foreach (string name in parent_window.config.encoding_names) {
-                    encode_box.append(name, name);
-                }
-                if (server_info != null) {
-                    encode_box.set_active(parent_window.config.encoding_names.index_of(config_file.get_value(server_info, "Encode")));
-                } else {
-                    encode_box.set_active(parent_window.config.encoding_names.index_of("UTF-8"));
-                }
-                create_follow_key_row(encode_label, encode_box, "Encode:", command_label, grid, "preference-comboboxtext");
-            
-                // Backspace sequence.
-                Label backspace_key_label = new Gtk.Label(null);
-                backspace_key_label.margin_start = 14;
-                backspace_key_box = new ComboBoxText();
-                foreach (string name in parent_window.config.backspace_key_erase_names) {
-                    backspace_key_box.append(name, parent_window.config.erase_map.get(name));
-                }
-                if (server_info != null) {
-                    backspace_key_box.set_active(parent_window.config.backspace_key_erase_names.index_of(config_file.get_value(server_info, "Backspace")));
-                } else {
-                    backspace_key_box.set_active(parent_window.config.backspace_key_erase_names.index_of("ascii-del"));
-                }
-                create_follow_key_row(backspace_key_label, backspace_key_box, "Backspace:", encode_label, grid, "preference-comboboxtext");
-
-                // Delete sequence.
-                Label del_key_label = new Gtk.Label(null);
-                del_key_label.margin_start = 14;
-                del_key_box = new ComboBoxText();
-                foreach (string name in parent_window.config.del_key_erase_names) {
-                    del_key_box.append(name, parent_window.config.erase_map.get(name));
-                }
-                if (server_info != null) {
-                    del_key_box.set_active(parent_window.config.del_key_erase_names.index_of(config_file.get_value(server_info, "Del")));
-                } else {
-                    del_key_box.set_active(parent_window.config.del_key_erase_names.index_of("escape-sequence"));
-                }
-                create_follow_key_row(del_key_label, del_key_box, "Delete:", backspace_key_label, grid, "preference-comboboxtext");
-            
-                show_all();
-            } catch (Error e) {
-                error ("%s", e.message);
-            }
+            show_all();
         }
         
         public void create_key_row(Gtk.Label label, Gtk.Widget widget, string name, Gtk.Grid grid, string class_name="preference-entry") {
