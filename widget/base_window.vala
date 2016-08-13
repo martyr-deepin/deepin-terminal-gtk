@@ -72,6 +72,19 @@ namespace Widgets {
                     get_size(out width, out height);
                     window_width = width - window_frame_box.margin_start - window_frame_box.margin_end;
                     window_height = height - window_frame_box.margin_top - window_frame_box.margin_bottom;
+
+                    Cairo.RectangleInt rect;
+                    get_window().get_frame_extents(out rect);
+                    
+                    var state = get_window().get_state();
+                    if (!(Gdk.WindowState.MAXIMIZED in state || Gdk.WindowState.FULLSCREEN in state || Gdk.WindowState.TILED in state)) {
+                        rect.x = window_frame_margin_start;
+                        rect.y = window_frame_margin_top;
+                        rect.width -= window_frame_margin_end + rect.x;
+                        rect.height -= window_frame_margin_bottom + rect.y;
+                    }
+                    var shape = new Cairo.Region.rectangle(rect);
+                    get_window().input_shape_combine_region(shape, 0, 0);
                     
                     queue_draw();
 					
@@ -88,14 +101,7 @@ namespace Widgets {
                             remove_margins();
                         } else {
                             window_is_normal = true;
-                            Cairo.RectangleInt rect;
-                            get_window().get_frame_extents(out rect);
-                            rect.x = window_frame_margin_start;
-                            rect.y = window_frame_margin_top;
-                            rect.width -= window_frame_margin_end + rect.x;
-                            rect.height -= window_frame_margin_bottom + rect.y;
-                            var shape = new Cairo.Region.rectangle(rect);
-                            get_window().input_shape_combine_region(shape, 0, 0);
+                            
                             get_window().set_shadow_width(window_frame_margin_start, window_frame_margin_end, window_frame_margin_top, window_frame_margin_bottom);
                                 
                             add_margins();
