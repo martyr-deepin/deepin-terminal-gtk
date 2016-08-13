@@ -93,6 +93,16 @@
 	min-height: 16px;
 }
 
+.preference-comboboxtext menu{
+	background-color:white;
+	border:1px solid rgba(0,0,0,0.1);
+	border-radius:4px;
+}
+
+.preference-comboboxtext menu menuitem:hover{
+	background-color:#2ca7f8;
+	color:white;
+}
 
 .preference-comboboxtext button.combo {
 	padding-top: 1px;
