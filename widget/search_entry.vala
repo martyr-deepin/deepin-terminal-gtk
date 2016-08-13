@@ -14,6 +14,7 @@ namespace Widgets {
         public int height = 36;
         
 		AnimateTimer timer;
+        public int animation_time = 600;
         public int search_image_margin_x = 18;
         public int search_image_animate_start_x;
         
@@ -25,7 +26,7 @@ namespace Widgets {
             visible_window = false;
             set_size_request(-1, height);
             
-			timer = new AnimateTimer(AnimateTimer.ease_in_out, 600);
+			timer = new AnimateTimer(AnimateTimer.ease_in_out, animation_time);
 			timer.animate.connect(on_animate);
             
             box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
