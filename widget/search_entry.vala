@@ -42,7 +42,7 @@ namespace Widgets {
             search_entry.set_placeholder_text("Search");
             search_entry.get_style_context().add_class("remote_search_entry");
             clear_button = new ImageButton("search_clear");
-            clear_button.margin_right = 8;
+            clear_button.margin_right = 12;
             clear_button.margin_top = 11;
             clear_button.button_release_event.connect((w, e) => {
                     search_entry.set_text("");
