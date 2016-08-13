@@ -203,3 +203,21 @@
 .link {
 	color: #004DE6;
 }
+
+.remote_search_entry {
+	background: transparent;
+	border: 0px solid rgba(0,0,0,0.10);
+}
+
+.remote_search_entry:focus {
+	color: white;
+}
+
+.remote_search_entry selection:focus {
+	color: white;
+	background-color: #61B5F8;
+}
+
+.remote_search_label {
+	color: #ffffff;
+}

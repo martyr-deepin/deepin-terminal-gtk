@@ -12,6 +12,8 @@ namespace Widgets {
         public Gtk.Widget focus_widget;
 		
 		public Widgets.Window parent_window;
+        
+        public Gdk.RGBA background_color;
 		
 		public RemotePanel(Workspace space, WorkspaceManager manager) {
             workspace = space;
@@ -19,6 +21,12 @@ namespace Widgets {
 			
             focus_widget = ((Gtk.Window) workspace.get_toplevel()).get_focus();
 			parent_window = (Widgets.Window) workspace.get_toplevel();
+            background_color = Gdk.RGBA();
+            try {
+                background_color.parse(parent_window.config.config_file.get_string("theme", "color1"));
+            } catch (Error e) {
+                print(e.message);
+            }
             
 			show_home_page();
 			
@@ -29,7 +37,7 @@ namespace Widgets {
             Gtk.Allocation rect;
             widget.get_allocation(out rect);
 			
-            cr.set_source_rgba(0, 0, 0, 0.8);
+            cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, 0.95);
             Draw.draw_rectangle(cr, 0, 0, rect.width, rect.height);
             
             cr.set_source_rgba(1, 1, 1, 0.1);
@@ -69,13 +77,15 @@ namespace Widgets {
 			}
 			
 			if (groups.size > 0 || ungroups.size > 1) {
-			    Entry search_entry = new Entry();
-			    search_entry.set_placeholder_text("Search");
-			    pack_start(search_entry, false, false, 0);
+			    Widgets.SearchEntry search_entry = new Widgets.SearchEntry();
+                pack_start(search_entry, false, false, 0);
                 
-                search_entry.activate.connect((entry) => {
+                search_entry.search_entry.activate.connect((entry) => {
                         show_search_page(entry.get_text(), "");
                     });
+                
+                var split_line = create_split_line();
+                pack_start(split_line, false, false, 0);
 			}
 
             var scrolledwindow = create_scrolled_window();
@@ -232,20 +242,29 @@ namespace Widgets {
 				}
 			}
 
-			Temp_TextButton back_button = new Temp_TextButton("Back");
+            var top_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+            top_box.set_size_request(-1, 36);
+			pack_start(top_box, false, false, 0);
+            
+			ImageButton back_button = new Widgets.ImageButton("back");
+            back_button.margin_left = 8;
+            back_button.margin_top = 8;
 			back_button.button_release_event.connect((w, e) => {
 					show_home_page();
 					
 					return false;
 				});
-			pack_start(back_button, false, false, 0);
+			top_box.pack_start(back_button, false, false, 0);
+            
+            var split_line = create_split_line();
+            pack_start(split_line, false, false, 0);
             
 			if (ungroups.size > 1) {
-			    Entry search_entry = new Entry();
-			    search_entry.set_placeholder_text("Search");
-			    pack_start(search_entry, false, false, 0);
+			    Widgets.SearchEntry search_entry = new Widgets.SearchEntry();
+                search_entry.search_image_margin_x = 8;
+                top_box.pack_start(search_entry, true, true, 0);
                 
-                search_entry.activate.connect((entry) => {
+                search_entry.search_entry.activate.connect((entry) => {
                         show_search_page(entry.get_text(), group_name);
                     });
 			}
@@ -342,7 +361,10 @@ namespace Widgets {
                 // Destroy child after entry.get_text(), otherwise entry.get_text() return random value.
 			    Utils.destroy_all_children(this);
 
-                Temp_TextButton back_button = new Temp_TextButton("Back");
+                ImageButton back_button = new Widgets.ImageButton("back");
+                back_button.margin_left = 8;
+                back_button.margin_top = 8;
+                back_button.set_size_request(-1, 36);
                 back_button.button_release_event.connect((w, e) => {
                         if (group_name == "") {
                             show_home_page();
@@ -353,6 +375,9 @@ namespace Widgets {
                         return false;
                     });
                 pack_start(back_button, false, false, 0);
+                
+                var split_line = create_split_line();
+                pack_start(split_line, false, false, 0);
                 
                 var scrolledwindow = create_scrolled_window();
                 pack_start(scrolledwindow, true, true, 0);
@@ -463,6 +488,23 @@ namespace Widgets {
 				});
 
             return add_server_button;
+        }
+        
+        public Gtk.Box create_split_line() {
+            var box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+            box.set_size_request(-1, 1);
+            
+            box.draw.connect((w, cr) => {
+                    Gtk.Allocation rect;
+                    w.get_allocation(out rect);
+                    
+                    cr.set_source_rgba(1, 1, 1, 0.1);
+                    Draw.draw_rectangle(cr, 0, 0, rect.width, 1);
+                    
+                    return true;
+                });
+            
+            return box;
         }
     }
 }
