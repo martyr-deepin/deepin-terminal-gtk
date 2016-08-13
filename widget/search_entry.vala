@@ -25,7 +25,7 @@ namespace Widgets {
             visible_window = false;
             set_size_request(-1, height);
             
-			timer = new AnimateTimer(AnimateTimer.ease_in_out, 400);
+			timer = new AnimateTimer(AnimateTimer.ease_in_out, 600);
 			timer.animate.connect(on_animate);
             
             box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);

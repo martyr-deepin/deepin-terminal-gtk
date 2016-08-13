@@ -249,7 +249,7 @@ namespace Widgets {
             
 			ImageButton back_button = new Widgets.ImageButton("back");
             back_button.margin_left = 8;
-            back_button.margin_top = 8;
+            back_button.margin_top = 6;
 			back_button.button_release_event.connect((w, e) => {
 					show_home_page();
 					
@@ -363,10 +363,13 @@ namespace Widgets {
                 // Destroy child after entry.get_text(), otherwise entry.get_text() return random value.
 			    Utils.destroy_all_children(this);
 
+                var top_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+                top_box.set_size_request(-1, 36);
+                pack_start(top_box, false, false, 0);
+            
                 ImageButton back_button = new Widgets.ImageButton("back");
                 back_button.margin_left = 8;
-                back_button.margin_top = 8;
-                back_button.set_size_request(-1, 36);
+                back_button.margin_top = 6;
                 back_button.button_release_event.connect((w, e) => {
                         if (group_name == "") {
                             show_home_page();
@@ -376,7 +379,7 @@ namespace Widgets {
 			        		
                         return false;
                     });
-                pack_start(back_button, false, false, 0);
+                top_box.pack_start(back_button, false, false, 0);
                 
                 var split_line = create_split_line();
                 split_line.margin_left = 1;
