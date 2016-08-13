@@ -17,7 +17,7 @@ namespace Widgets {
         public int image_x = 12;
         public int image_y = 4;
 
-        public int arrow_x = 244;
+        public int arrow_x = 280 - 22;
         public int arrow_y = 23;
         
         public int text_x = 72;
