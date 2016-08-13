@@ -29,6 +29,8 @@ namespace Widgets {
         public Gtk.ComboBoxText backspace_key_box;
         public Gtk.ComboBoxText del_key_box;
         
+        public Gtk.Grid advanced_grid;
+        
         public string? server_info;
         
         public KeyFile? config_file;
@@ -169,9 +171,9 @@ namespace Widgets {
                 create_follow_key_row(password_label, password_entry, "Password:", user_label, grid);
             
                 advanced_options_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-                var advanced_grid = new Gtk.Grid();
+                advanced_grid = new Gtk.Grid();
                 advanced_grid.margin_end = 14;
-                advanced_options_box.pack_start(advanced_grid, false, false, 0);
+                box.pack_start(advanced_options_box, false, false, 0);
 
                 // Group name.
                 Label group_name_label = new Gtk.Label(null);
@@ -340,7 +342,7 @@ namespace Widgets {
             set_default_geometry(window_init_width, window_expand_height);
             
             box.remove(show_advanced_box);
-            box.pack_start(advanced_options_box, false, false, 0);
+            advanced_options_box.pack_start(advanced_grid, false, false, 0);
             
             show_all();
         }
