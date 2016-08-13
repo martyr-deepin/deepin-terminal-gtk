@@ -99,6 +99,15 @@
 	border-radius:4px;
 }
 
+.preference-comboboxtext menu > arrow{
+	background-color:white;
+}
+
+.preference-comboboxtext arrow {
+	min-height: 16px;
+	min-width: 12px;
+}
+
 .preference-comboboxtext menu menuitem:hover{
 	background-color:#2ca7f8;
 	color:white;
@@ -240,6 +249,7 @@
 	border-right:1px solid white;
 	border-radius:4px 0 0 4px;
 }
+
 .password-entry:focus {
     color:black;
     min-height: 18px;
