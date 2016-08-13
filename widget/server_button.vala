@@ -38,6 +38,8 @@ namespace Widgets {
         public int width = 280;
         public int height = 56;
         
+        public bool display_bottom_line = true;
+        
         public signal void login_server(string server_info);
         public signal void edit_server(string server_info);
         
@@ -138,7 +140,12 @@ namespace Widgets {
             Utils.set_context_color(cr, content_color);
             Draw.draw_text(widget, cr, content, text_x, content_y, text_width, height, content_size, Pango.Alignment.LEFT);
             
-            if (is_press) {
+            if (display_bottom_line) {
+                cr.set_source_rgba(1, 1, 1, 0.05);
+                Draw.draw_rectangle(cr, 8, height - 1, width - 16, 1);
+            }
+            
+           if (is_press) {
                 Utils.set_context_color(cr, press_color);
                 Draw.draw_rectangle(cr, 0, 0, width, height);
             } else if (is_hover) {

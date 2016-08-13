@@ -33,6 +33,8 @@ namespace Widgets {
         public int width = 280;
         public int height = 56;
         
+        public bool display_bottom_line = true;
+        
         public signal void show_group_servers(string group_name);
         
         public ServerGroupButton(string server_title, int number) {
@@ -108,6 +110,11 @@ namespace Widgets {
                 content = "1 server";
             }
             Draw.draw_text(widget, cr, content, text_x, content_y, text_width, height, content_size, Pango.Alignment.LEFT);
+            
+            if (display_bottom_line) {
+                cr.set_source_rgba(1, 1, 1, 0.05);
+                Draw.draw_rectangle(cr, 8, height - 1, width - 16, 1);
+            }
             
             if (is_press) {
                 Utils.set_context_color(cr, press_color);
