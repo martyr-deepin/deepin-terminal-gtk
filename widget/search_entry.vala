@@ -14,7 +14,7 @@ namespace Widgets {
         public int height = 36;
         
 		AnimateTimer timer;
-        public int animation_time = 600;
+        public int animation_time = 100;
         public int search_image_margin_x = 18;
         public int search_image_animate_start_x;
         
@@ -50,7 +50,8 @@ namespace Widgets {
                     display_box.set_halign(Gtk.Align.START);
                     display_box.remove(search_label);
                     
-                    search_label.translate_coordinates(this, 0, 0, out search_image_animate_start_x, null);
+                    this.translate_coordinates(search_image, 0, 0, out search_image_animate_start_x, null);
+                    search_image_animate_start_x = search_image_animate_start_x.abs() - search_image_margin_x;
                     search_image.margin_left = search_image_margin_x + search_image_animate_start_x;
                     
                     timer.reset();
