@@ -51,15 +51,18 @@
 .search_entry {
 	background: transparent;
 	border: 0px solid rgba(0,0,0,0.10);
+	font-size: 11px;
 }
 
 .search_entry:focus {
 	color: white;
+	font-size: 11px;
 }
 
 .search_entry selection:focus {
 	color: white;
 	background-color: #61B5F8;
+	font-size: 11px;
 }
 
 .terminal_scrollbar {
@@ -169,12 +172,15 @@
 	min-height: 18px;
     background-color:white;
     border:1px solid rgba(0,0,0,0.1);
+	font-size: 11px;
 }
+
 .preference_entry:focus {
     color:black;
     min-height: 18px;
     background-color:white;
     border:1px solid #2ca7f8;
+	font-size: 11px;
 }
 
 
@@ -226,12 +232,13 @@
     color:#303030;
     border:1px solid rgba(0,0,0,0.1);
     border-width:1px 0 1px 1px;
+	font-size: 11px;
 }
 
 .preference_spinbutton:not(.vertical) entry selection {
     color:white;
     background-color:#2ca7f8;
-
+	font-size: 11px;
 }
 
 .preference_label {
@@ -241,28 +248,34 @@
 .dialog_title {
 	color: #303030;
 	font-weight: bold;
+	font-size: 10px;
 }
 
 .dialog_content {
 	color: #303030;
+	font-size: 10px;
 }
 
 .link {
 	color: #004DE6;
+	font-size: 9px;
 }
 
 .remote_search_entry {
 	background: transparent;
 	border: 0px solid rgba(0,0,0,0.10);
+	font-size: 11px;
 }
 
 .remote_search_entry:focus {
 	color: white;
+	font-size: 11px;
 }
 
 .remote_search_entry selection:focus {
 	color: white;
 	background-color: #61B5F8;
+	font-size: 11px;
 }
 
 .remote_search_label {
@@ -277,6 +290,7 @@
 	border-right:1px solid white;
 	border-radius:4px 0 0 4px;
 	letter-spacing: 5px;
+	font-size: 11px;
 }
 
 .password_invisible_entry:focus {
@@ -284,6 +298,7 @@
     min-height: 18px;
     background-color:white;
     border:1px solid #2ca7f8;
+	font-size: 11px;
 }
 
 .password_visible_entry {
@@ -294,6 +309,7 @@
 	border-right:1px solid white;
 	border-radius:4px 0 0 4px;
 	letter-spacing: 0px;
+	font-size: 11px;
 }
 
 .password_visible_entry:focus {
@@ -301,5 +317,20 @@
     min-height: 18px;
     background-color:white;
     border:1px solid #2ca7f8;
+	font-size: 11px;
 }
+
+.preference_first_segement {
+	color: #303030;
+	font-size: 10px;
+	font-weight: bold;
+}
+
+.preference_second_segement {
+	color: #303030;
+	font-size: 9px;
+	font-weight: bold;
+}
+
+
 

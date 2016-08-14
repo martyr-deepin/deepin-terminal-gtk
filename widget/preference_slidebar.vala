@@ -118,7 +118,7 @@ namespace Widgets {
         public int first_segement_margin = 30;
         public int second_segement_margin = Constant.TITLEBAR_HEIGHT;
         
-        public int first_segement_size = 14;
+        public int first_segement_size = 12;
         public int second_segement_size = 10;
         
         public Gdk.RGBA first_segement_text_color;

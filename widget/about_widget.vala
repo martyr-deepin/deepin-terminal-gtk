@@ -7,14 +7,15 @@ namespace Widgets {
         
         public int icon_y = 3;
         public int name_y = 107;
-        public int name_height = 18;
+        public int name_height = 13;
         public int version_y = 149;
         public int version_height = 12;
+        public int version_size = 11;
         public int logo_y = 185;
         public int homepage_y = 208;
         public int about_y = 249;
         public int about_x = 38;
-        public int about_height = 11;
+        public int about_height = 9;
         
         public Cairo.ImageSurface icon_surface;
         public Cairo.ImageSurface logo_surface;
@@ -35,7 +36,7 @@ namespace Widgets {
             homepage_area.margin_top = homepage_y;
             homepage_area.visible_window = false;
             var homepage_label = new Gtk.Label(null);
-            homepage_label.set_markup("<span size='%i'>%s</span>".printf(11 * Pango.SCALE, "www.deepin.org"));
+            homepage_label.set_text("www.deepin.org");
             homepage_label.get_style_context().add_class("link");
             homepage_area.add(homepage_label);
             homepage_area.enter_notify_event.connect((w, e) => {
@@ -81,7 +82,7 @@ namespace Widgets {
             
             // Draw version.
             cr.set_source_rgba(0.4, 0.4, 0.4, 1);
-            Draw.draw_text(widget, cr, "Version: 2.0", 0, version_y, rect.width, version_height, version_height, Pango.Alignment.CENTER);
+            Draw.draw_text(widget, cr, "Version: 2.0", 0, version_y, rect.width, version_height, version_size, Pango.Alignment.CENTER);
             
             // Draw logo.
             Draw.draw_surface(cr, logo_surface, (rect.width - logo_surface.get_width()) / 2, logo_y);

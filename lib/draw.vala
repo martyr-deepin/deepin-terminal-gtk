@@ -13,7 +13,8 @@ namespace Draw {
         var font_description = new Pango.FontDescription();
         font_description.set_size((int)(size * Pango.SCALE));
         
-        var layout = widget.create_pango_layout(text);
+        var layout = widget.create_pango_layout(null);
+        layout.set_markup(text, text.length);
 		layout.set_height((int)(height * Pango.SCALE));
 		layout.set_width((int)(width * Pango.SCALE));
         layout.set_font_description(font_description);
