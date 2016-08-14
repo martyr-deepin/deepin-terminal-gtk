@@ -33,7 +33,7 @@ namespace Widgets {
             box.pack_start(entry, true, true, 0);
             box.pack_start(button_box, false, false, 0);
             
-            hide_password();
+            init();
             
             show_password_button.button_release_event.connect((w, e) => {
                     show_password();
@@ -47,7 +47,51 @@ namespace Widgets {
                     return false;
                 });
             
+            entry.get_buffer().deleted_text.connect((buffer, p, nc) => {
+                    string entry_text = entry.get_text().strip();
+                    if (entry_text == "") {
+                        entry.get_style_context().remove_class("password_invisible_entry");
+                        entry.get_style_context().add_class("password_visible_entry");
+                    } else {
+                        if (entry.get_visibility()) {
+                            entry.get_style_context().remove_class("password_invisible_entry");
+                            entry.get_style_context().add_class("password_visible_entry");
+                        } else {
+                            entry.get_style_context().remove_class("password_visible_entry");
+                            entry.get_style_context().add_class("password_invisible_entry");
+                        }
+                    }
+                });
+            
+            entry.get_buffer().inserted_text.connect((buffer, p, c, nc) => {
+                    string entry_text = entry.get_text().strip();
+                    if (entry_text == "") {
+                        entry.get_style_context().remove_class("password_invisible_entry");
+                        entry.get_style_context().add_class("password_visible_entry");
+                    } else {
+                        if (entry.get_visibility()) {
+                            entry.get_style_context().remove_class("password_invisible_entry");
+                            entry.get_style_context().add_class("password_visible_entry");
+                        } else {
+                            entry.get_style_context().remove_class("password_visible_entry");
+                            entry.get_style_context().add_class("password_invisible_entry");
+                        }
+                    }
+                });
+            
+            
             add(box);
+        }
+        
+        public void init() {
+            Utils.remove_all_children(button_box);
+            
+            entry.get_style_context().remove_class("password_invisible_entry");
+            entry.get_style_context().add_class("password_visible_entry");
+            entry.set_visibility(false);
+            button_box.pack_start(show_password_button, false, false, 0);
+            
+            show_all();
         }
         
         public void show_password() {
