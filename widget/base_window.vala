@@ -105,8 +105,7 @@ namespace Widgets {
             
             window_state_event.connect((w, e) => {
                     if (!window_frameless) {
-                        var state = e.new_window_state;
-                        if (Gdk.WindowState.MAXIMIZED in state || Gdk.WindowState.FULLSCREEN in state || Gdk.WindowState.TILED in state) {
+                        if (window_is_max() || window_is_fullscreen() || window_is_tiled()) {
                             window_is_normal = false;
                             get_window().set_shadow_width(0, 0, 0, 0);
                                 
@@ -366,8 +365,7 @@ namespace Widgets {
         }
 
 		public void toggle_fullscreen() {
-            var state = get_window().get_state();
-            if (Gdk.WindowState.FULLSCREEN in state) {
+            if (window_is_fullscreen()) {
                 unfullscreen();
             } else {
                 fullscreen();
@@ -375,8 +373,7 @@ namespace Widgets {
         }
         
         public void toggle_max() {
-            var state = get_window().get_state();
-            if (Gdk.WindowState.MAXIMIZED in state) {
+            if (window_is_max()) {
                 unmaximize();
             } else {
                 maximize();
