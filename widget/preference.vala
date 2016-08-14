@@ -358,7 +358,7 @@ namespace Widgets {
             var reset_button = new Widgets.ImageButton("reset_button", "reset");
             reset_button.margin_start = 100;
             reset_button.margin_top = 10;
-            reset_button.margin_bottom = 10;
+            reset_button.margin_bottom = 35;
 			reset_button.button_release_event.connect((w, e) => {
 					parent_window.config.init_config();
 					parent_window.config.update();

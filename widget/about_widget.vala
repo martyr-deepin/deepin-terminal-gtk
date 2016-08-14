@@ -3,7 +3,7 @@ using Widgets;
 
 namespace Widgets {
     public class AboutWidget : Gtk.Box {
-        public int height = 400;
+        public int height = 320;
         
         public int icon_y = 3;
         public int name_y = 107;

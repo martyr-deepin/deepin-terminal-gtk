@@ -4,7 +4,7 @@ using Widgets;
 namespace Widgets {
     public class AboutDialog : Widgets.BaseWindow {
         public int window_init_width = 500;
-        public int window_init_height = 400;
+        public int window_init_height = 320;
 
         public Gtk.Widget focus_widget;
         
