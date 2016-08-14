@@ -25,6 +25,8 @@ namespace Widgets {
         public Gtk.ScrolledWindow? search_page_scrolledwindow;
         
         public int width = Constant.SLIDER_WIDTH;
+        
+        public delegate void UpdatePageAfterEdit();
 		
 		public RemotePanel(Workspace space, WorkspaceManager manager) {
             workspace = space;
@@ -143,7 +145,9 @@ namespace Widgets {
 				foreach (var ungroup_list in ungroups) {
                     var server_button = create_server_button(ungroup_list[0], ungroup_list[1]);
                     server_button.edit_server.connect((w, server_info) => {
-                            edit_server(server_info);
+                            edit_server(server_info, () => {
+                                    update_home_page();
+                                });
                         });
                     server_box.pack_start(server_button, false, false, 0);
                 }
@@ -336,7 +340,10 @@ namespace Widgets {
                 foreach (var ungroup_list in ungroups) {
                     var server_button = create_server_button(ungroup_list[0], ungroup_list[1]);
                     server_button.edit_server.connect((w, server_info) => {
-                            edit_server(server_info);
+                            edit_server(server_info, () => {
+                                    print("Edit: %s\n", group_name);
+                                    update_group_page(group_name);
+                                });
                         });
                     server_box.pack_start(server_button, false, false, 0);
                 }
@@ -467,7 +474,9 @@ namespace Widgets {
                 foreach (var ungroup_list in ungroups) {
                     var server_button = create_server_button(ungroup_list[0], ungroup_list[1]);
                     server_button.edit_server.connect((w, server_info) => {
-                            edit_server(server_info);
+                            edit_server(server_info, () => {
+                                    update_search_page(search_text, group_name);
+                                });
                         });
                     server_box.pack_start(server_button, false, false, 0);
                 }
@@ -490,7 +499,7 @@ namespace Widgets {
 			}
         }
         
-        public void edit_server(string server_info) {
+        public void edit_server(string server_info, UpdatePageAfterEdit func) {
             KeyFile config_file = new KeyFile();
             try {
                 config_file.load_from_file(config_file_path, KeyFileFlags.NONE);
@@ -517,6 +526,8 @@ namespace Widgets {
                                                   // Second, add new server info.
                                                   add_server(address, username, password, port, encode, path, 
                                                              command, nickname, groupname, backspace_key, delete_key);
+                                                  
+                                                  func();
                                               });
                                     
             remote_server.show_all();

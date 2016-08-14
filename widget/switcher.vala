@@ -43,6 +43,7 @@ namespace Widgets {
         
         public void add_to_left_box(Gtk.Widget start_widget) {
             Utils.remove_all_children(left_box);
+            Utils.remove_all_children(right_box);
             
             left_box.pack_start(start_widget, true, true, 0);
         }

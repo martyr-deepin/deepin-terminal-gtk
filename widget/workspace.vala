@@ -542,10 +542,7 @@ namespace Widgets {
 			if (remote_panel != null) {
 				Gtk.Allocation rect;
 				get_allocation(out rect);
-				// remove(remote_panel);
-				// remote_panel.destroy();
-				// remote_panel = null;
-
+                
                 hide_slider_start_x = rect.width - Constant.SLIDER_WIDTH;
                 hide_timer.reset();
 			}

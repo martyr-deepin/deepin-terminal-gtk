@@ -68,17 +68,19 @@ namespace Widgets {
         }
         
         private bool on_draw(Gtk.Widget widget, Cairo.Context cr) {
-            if (is_press) {
-                Draw.draw_surface(cr, press_surface);
-                if (button_text != null) {
-                    Utils.set_context_color(cr, text_press_color);
-                    Draw.draw_text(widget, cr, button_text, 0, 10, normal_surface.get_width(), button_text_size, button_text_size, Pango.Alignment.CENTER);
-                }
-            } else if (is_hover) {
-                Draw.draw_surface(cr, hover_surface);
-                if (button_text != null) {
-                    Utils.set_context_color(cr, text_hover_color);
-                    Draw.draw_text(widget, cr, button_text, 0, 10, normal_surface.get_width(), button_text_size, button_text_size, Pango.Alignment.CENTER);
+            if (is_hover) {
+                if (is_press) {
+                    Draw.draw_surface(cr, press_surface);
+                    if (button_text != null) {
+                        Utils.set_context_color(cr, text_press_color);
+                        Draw.draw_text(widget, cr, button_text, 0, 10, normal_surface.get_width(), button_text_size, button_text_size, Pango.Alignment.CENTER);
+                    }
+                } else {
+                    Draw.draw_surface(cr, hover_surface);
+                    if (button_text != null) {
+                        Utils.set_context_color(cr, text_hover_color);
+                        Draw.draw_text(widget, cr, button_text, 0, 10, normal_surface.get_width(), button_text_size, button_text_size, Pango.Alignment.CENTER);
+                    }
                 }
             } else {
                 Draw.draw_surface(cr, normal_surface);                
