@@ -71,9 +71,10 @@ namespace Widgets {
                 });
             
             configure_event.connect((w) => {
+                    int width, height;
+                    get_size(out width, out height);
+                    
                     if (!window_is_max() && !window_is_fullscreen() && !window_is_tiled()) {
-                        int width, height;
-                        get_size(out width, out height);
                     
                         window_save_width = width - window_frame_margin_start - window_frame_margin_end;
                         window_save_height = height - window_frame_margin_top - window_frame_margin_bottom;
@@ -82,13 +83,18 @@ namespace Widgets {
                     Cairo.RectangleInt rect;
                     get_window().get_frame_extents(out rect);
                     
-                    var state = get_window().get_state();
-                    if (!(Gdk.WindowState.MAXIMIZED in state || Gdk.WindowState.FULLSCREEN in state || Gdk.WindowState.TILED in state)) {
+                    if (window_is_max() || window_is_fullscreen() || window_is_tiled()) {
+                        rect.x = 0;
+                        rect.y = 0;
+                        rect.width = width;
+                        rect.height = height;
+                    } else {
                         rect.x = window_frame_margin_start;
                         rect.y = window_frame_margin_top;
-                        rect.width -= window_frame_margin_end + rect.x;
-                        rect.height -= window_frame_margin_bottom + rect.y;
+                        rect.width = width - window_frame_margin_start - window_frame_margin_end;
+                        rect.height = height - window_frame_margin_top - window_frame_margin_bottom;
                     }
+                    
                     var shape = new Cairo.Region.rectangle(rect);
                     get_window().input_shape_combine_region(shape, 0, 0);
                     
