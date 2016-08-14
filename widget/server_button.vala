@@ -55,7 +55,7 @@ namespace Widgets {
 			surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("server.png"));
 			server_edit_normal_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("server_edit_normal.png"));
 			server_edit_hover_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("server_edit_hover.png"));
-			server_edit_press_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("server_edito_press.png"));
+			server_edit_press_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("server_edit_press.png"));
             
             title_color = Gdk.RGBA();
             title_color.parse("#FFFFFF");
@@ -145,7 +145,7 @@ namespace Widgets {
                 Draw.draw_rectangle(cr, 8, height - 1, width - 16, 1);
             }
             
-           if (is_press) {
+            if (is_press) {
                 Utils.set_context_color(cr, press_color);
                 Draw.draw_rectangle(cr, 0, 0, width, height);
             } else if (is_hover) {
