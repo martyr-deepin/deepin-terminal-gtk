@@ -429,6 +429,11 @@ namespace Widgets {
                     });
                 top_box.pack_start(back_button, false, false, 0);
                 
+                var search_label = new Gtk.Label(null);
+                search_label.set_text("search: %s".printf(search_text));
+                search_label.get_style_context().add_class("remote_search_label");
+                top_box.pack_start(search_label, true, true, 0);
+                
                 var split_line = create_split_line();
                 split_line.margin_left = 1;
                 search_page_box.pack_start(split_line, false, false, 0);
