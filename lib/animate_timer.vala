@@ -124,17 +124,17 @@ namespace Animation {
             return (1 - Math.cos (Math.PI * x)) / 2;
         }
 
-        /*public static double ease_in_quad (double x) {
+        public static double ease_in_quad (double x) {
           return Math.pow (x, 2);
-          }*/
+          }
     
-        /*public static double ease_out_quad (double x) {
+        public static double ease_out_quad (double x) {
           return -1 * Math.pow (x - 1, 2) + 1;
-          }*/
+          }
 
-        /*public static double ease_in_quint (double x) {
+        public static double ease_in_quint (double x) {
           return Math.pow (x, 5);
-          }*/
+          }
     
         public static double ease_out_quint (double x) {
             return Math.pow (x - 1, 5) + 1;

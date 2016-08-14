@@ -4,7 +4,7 @@ using Utils;
 using Gee;
 
 namespace Widgets {
-	public class RemotePanel : Gtk.VBox {
+	public class RemotePanel : Gtk.EventBox {
 		string config_file_path = Utils.get_config_file_path("server-config.conf");
         
         public Workspace workspace;
@@ -25,6 +25,8 @@ namespace Widgets {
 		public RemotePanel(Workspace space, WorkspaceManager manager) {
             workspace = space;
 			workspace_manager = manager;
+            
+            visible_window = false;
 			
             focus_widget = ((Gtk.Window) workspace.get_toplevel()).get_focus();
 			parent_window = (Widgets.Window) workspace.get_toplevel();
@@ -46,7 +48,7 @@ namespace Widgets {
             group_page_box.set_size_request(width, -1);
             search_page_box.set_size_request(width, -1);
             
-            pack_start(switcher, true, true, 0);
+            add(switcher);
             
             show_home_page();
 			
@@ -57,8 +59,7 @@ namespace Widgets {
             Gtk.Allocation rect;
             widget.get_allocation(out rect);
 			
-            // cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, 0.8);
-            cr.set_source_rgba(1, 0, 0, 1);
+            cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, 0.8);
             Draw.draw_rectangle(cr, 1, 0, rect.width - 1, rect.height);
             
             cr.set_source_rgba(1, 1, 1, 0.1);

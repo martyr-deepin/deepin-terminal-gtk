@@ -513,6 +513,7 @@ namespace Widgets {
 				
 				remote_panel = new RemotePanel(workspace, workspace_manager);
 				remote_panel.set_size_request(Constant.SLIDER_WIDTH, rect.height);
+                // remote_panel.margin_left = rect.width - Constant.SLIDER_WIDTH;
                 remote_panel.set_valign(Gtk.Align.START);
                 remote_panel.set_halign(Gtk.Align.END);
 				add_overlay(remote_panel);
