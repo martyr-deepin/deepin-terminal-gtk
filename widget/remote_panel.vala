@@ -12,8 +12,15 @@ namespace Widgets {
         public Gtk.Widget focus_widget;
 		
 		public Widgets.Window parent_window;
-        
         public Gdk.RGBA background_color;
+        
+        public Widgets.Switcher switcher;
+        
+        public Gtk.Box home_page_box;
+        public Gtk.Box group_page_box;
+        public Gtk.Box search_page_box;
+        
+        public int width = 280;
 		
 		public RemotePanel(Workspace space, WorkspaceManager manager) {
             workspace = space;
@@ -28,7 +35,20 @@ namespace Widgets {
                 print(e.message);
             }
             
-			show_home_page();
+            switcher = new Widgets.Switcher(width);
+            
+            home_page_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+            group_page_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+            search_page_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+
+            set_size_request(width, -1);
+            home_page_box.set_size_request(width, -1);
+            group_page_box.set_size_request(width, -1);
+            search_page_box.set_size_request(width, -1);
+            
+            pack_start(switcher, true, true, 0);
+            
+            show_home_page();
 			
 			draw.connect(on_draw);
 		}
@@ -37,7 +57,8 @@ namespace Widgets {
             Gtk.Allocation rect;
             widget.get_allocation(out rect);
 			
-            cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, 0.8);
+            // cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, 0.8);
+            cr.set_source_rgba(1, 0, 0, 1);
             Draw.draw_rectangle(cr, 1, 0, rect.width - 1, rect.height);
             
             cr.set_source_rgba(1, 1, 1, 0.1);
@@ -46,10 +67,22 @@ namespace Widgets {
             return false;
         }
 		
-		public void show_home_page() {
-			Utils.destroy_all_children(this);
+		public void show_home_page(Gtk.Widget? start_widget=null) {
+			Utils.destroy_all_children(home_page_box);
+            
+            create_home_page();
+            
+            if (start_widget == null) {
+                switcher.add_to_left_box(home_page_box);
+            } else {
+                switcher.scroll_to_left(start_widget, home_page_box);
+            }
 			
-			HashMap<string, int> groups = new HashMap<string, int>();
+			show_all();
+		}
+
+        public void create_home_page() {
+            HashMap<string, int> groups = new HashMap<string, int>();
 			ArrayList<ArrayList<string>> ungroups = new ArrayList<ArrayList<string>>();
 			        
 			KeyFile config_file = new KeyFile();
@@ -78,19 +111,19 @@ namespace Widgets {
 			
 			if (groups.size > 0 || ungroups.size > 1) {
 			    Widgets.SearchEntry search_entry = new Widgets.SearchEntry();
-                pack_start(search_entry, false, false, 0);
+                home_page_box.pack_start(search_entry, false, false, 0);
                 
                 search_entry.search_entry.activate.connect((entry) => {
-                        show_search_page(entry.get_text(), "");
+                        show_search_page(entry.get_text(), "", home_page_box);
                     });
                 
                 var split_line = create_split_line();
                 split_line.margin_left = 1;
-                pack_start(split_line, false, false, 0);
+                home_page_box.pack_start(split_line, false, false, 0);
 			}
 
             var scrolledwindow = create_scrolled_window();
-            pack_start(scrolledwindow, true, true, 0);
+            home_page_box.pack_start(scrolledwindow, true, true, 0);
             
             var server_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             scrolledwindow.add(server_box);
@@ -109,10 +142,8 @@ namespace Widgets {
             }
 			
 			Widgets.AddServerButton add_server_button = create_add_server_button();
-            pack_start(add_server_button, false, false, 0);
-			
-			show_all();
-		}
+            home_page_box.pack_start(add_server_button, false, false, 0);
+        }
         
         public void login_server(string server_info) {
 			KeyFile config_file = new KeyFile();
@@ -220,9 +251,20 @@ namespace Widgets {
             }
         }
         
-        public void show_group_page(string group_name) {
-            Utils.destroy_all_children(this);
+        public void show_group_page(string group_name, Gtk.Widget start_widget, string directoin) {
+			Utils.destroy_all_children(group_page_box);
+            create_group_page(group_name);
+
+            if (directoin == "scroll_to_right") {
+                switcher.scroll_to_right(start_widget, group_page_box);
+            } else if (directoin == "scroll_to_left") {
+                switcher.scroll_to_left(start_widget, group_page_box);
+            }
             
+            show_all();
+        }
+        
+        public void create_group_page(string group_name) {
 			KeyFile config_file = new KeyFile();
             
 			ArrayList<ArrayList<string>> ungroups = new ArrayList<ArrayList<string>>();
@@ -245,13 +287,13 @@ namespace Widgets {
 
             var top_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             top_box.set_size_request(-1, 36);
-			pack_start(top_box, false, false, 0);
+			group_page_box.pack_start(top_box, false, false, 0);
             
 			ImageButton back_button = new Widgets.ImageButton("back");
             back_button.margin_left = 8;
             back_button.margin_top = 6;
 			back_button.button_release_event.connect((w, e) => {
-					show_home_page();
+					show_home_page(group_page_box);
 					
 					return false;
 				});
@@ -259,7 +301,7 @@ namespace Widgets {
             
             var split_line = create_split_line();
             split_line.margin_left = 1;
-            pack_start(split_line, false, false, 0);
+            group_page_box.pack_start(split_line, false, false, 0);
             
 			if (ungroups.size > 1) {
 			    Widgets.SearchEntry search_entry = new Widgets.SearchEntry();
@@ -267,12 +309,12 @@ namespace Widgets {
                 top_box.pack_start(search_entry, true, true, 0);
                 
                 search_entry.search_entry.activate.connect((entry) => {
-                        show_search_page(entry.get_text(), group_name);
+                        show_search_page(entry.get_text(), group_name, group_page_box);
                     });
 			}
 			
             var scrolledwindow = create_scrolled_window();
-            pack_start(scrolledwindow, true, true, 0);
+            group_page_box.pack_start(scrolledwindow, true, true, 0);
             
             var server_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             scrolledwindow.add(server_box);
@@ -283,8 +325,6 @@ namespace Widgets {
                     server_box.pack_start(server_button, false, false, 0);
                 }
             }
-            
-            show_all();
         }
 		
         public void add_server(
@@ -335,7 +375,17 @@ namespace Widgets {
 			}
 		}
         
-        public void show_search_page(string search_text, string group_name) {
+        public void show_search_page(string search_text, string group_name, Gtk.Widget start_widget) {
+            Utils.destroy_all_children(search_page_box);
+            
+			create_search_page(search_text, group_name);
+
+            switcher.scroll_to_right(start_widget, search_page_box);
+            
+            show_all();
+		}
+
+        public void create_search_page(string search_text, string group_name) {
             KeyFile config_file = new KeyFile();
 			try {
 				config_file.load_from_file(config_file_path, KeyFileFlags.NONE);
@@ -360,21 +410,18 @@ namespace Widgets {
                     }
                 }
                 
-                // Destroy child after entry.get_text(), otherwise entry.get_text() return random value.
-			    Utils.destroy_all_children(this);
-
                 var top_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
                 top_box.set_size_request(-1, 36);
-                pack_start(top_box, false, false, 0);
+                search_page_box.pack_start(top_box, false, false, 0);
             
                 ImageButton back_button = new Widgets.ImageButton("back");
                 back_button.margin_left = 8;
                 back_button.margin_top = 6;
                 back_button.button_release_event.connect((w, e) => {
                         if (group_name == "") {
-                            show_home_page();
+                            show_home_page(search_page_box);
                         } else {
-                            show_group_page(group_name);
+                            show_group_page(group_name, search_page_box, "scroll_to_left");
                         }
 			        		
                         return false;
@@ -383,10 +430,10 @@ namespace Widgets {
                 
                 var split_line = create_split_line();
                 split_line.margin_left = 1;
-                pack_start(split_line, false, false, 0);
+                search_page_box.pack_start(split_line, false, false, 0);
                 
                 var scrolledwindow = create_scrolled_window();
-                pack_start(scrolledwindow, true, true, 0);
+                search_page_box.pack_start(scrolledwindow, true, true, 0);
             
                 var server_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
                 scrolledwindow.add(server_box);
@@ -397,16 +444,14 @@ namespace Widgets {
                 }
                 
                 Widgets.AddServerButton add_server_button = create_add_server_button();
-                pack_start(add_server_button, false, false, 0);
-			    
-			    show_all();
+                search_page_box.pack_start(add_server_button, false, false, 0);
 			} catch (Error e) {
 				if (!FileUtils.test(config_file_path, FileTest.EXISTS)) {
 					print("show_home_page error: %s\n", e.message);
 				}
 			}
             
-		}
+        }
         
         public void add_group_item(string option, ArrayList<ArrayList<string>> lists, KeyFile config_file) {
 			try {
@@ -476,7 +521,7 @@ namespace Widgets {
         public Widgets.ServerGroupButton create_server_group_button(string group_name, int server_number) {
             var server_group_button = new Widgets.ServerGroupButton(group_name, server_number);
             server_group_button.show_group_servers.connect((w, group_name) => {
-                    show_group_page(group_name);
+                    show_group_page(group_name, home_page_box, "scroll_to_right");
                 });
 
             return server_group_button;
