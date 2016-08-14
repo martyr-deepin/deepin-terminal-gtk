@@ -19,6 +19,9 @@ namespace Widgets {
         public int window_widget_margin_start = 2;
         public int window_widget_margin_end = 2;
         
+        public int window_save_width = 0;
+        public int window_save_height = 0;
+        
         public Gtk.Box window_frame_box;
         public Gtk.Box window_widget_box;
         
@@ -68,11 +71,14 @@ namespace Widgets {
                 });
             
             configure_event.connect((w) => {
-                    int width, height;
-                    get_size(out width, out height);
-                    window_width = width - window_frame_box.margin_start - window_frame_box.margin_end;
-                    window_height = height - window_frame_box.margin_top - window_frame_box.margin_bottom;
-
+                    if (!window_is_max() && !window_is_fullscreen() && !window_is_tiled()) {
+                        int width, height;
+                        get_size(out width, out height);
+                    
+                        window_save_width = width - window_frame_margin_start - window_frame_margin_end;
+                        window_save_height = height - window_frame_margin_top - window_frame_margin_bottom;
+                    }
+                    
                     Cairo.RectangleInt rect;
                     get_window().get_frame_extents(out rect);
                     
@@ -387,6 +393,18 @@ namespace Widgets {
         
         public virtual void draw_window_above(Cairo.Context cr) {
             
+        }
+        
+        public bool window_is_max() {
+            return Gdk.WindowState.MAXIMIZED in get_window().get_state();
+        }
+        
+        public bool window_is_tiled() {
+            return Gdk.WindowState.TILED in get_window().get_state();
+        }
+        
+        public bool window_is_fullscreen() {
+            return Gdk.WindowState.FULLSCREEN in get_window().get_state();
         }
     }
 }

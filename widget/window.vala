@@ -57,12 +57,10 @@ namespace Widgets {
             }
             
             destroy.connect((w) => {
-                    var state = get_window().get_state();
-                    if (!window_frameless && !(Gdk.WindowState.FULLSCREEN in state) && !is_maximized) {
-                        config.config_file.set_integer("advanced", "window_width", window_width);
-                        config.config_file.set_integer("advanced", "window_height", window_height);
-                        config.save();
-                    }
+                    print("%i %i\n", window_save_width, window_save_height);
+                    config.config_file.set_integer("advanced", "window_width", window_save_width);
+                    config.config_file.set_integer("advanced", "window_height", window_save_height);
+                    config.save();
                 });
 
             try{
