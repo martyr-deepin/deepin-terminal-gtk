@@ -3,7 +3,7 @@ using Widgets;
 using Animation;
 
 namespace Widgets {
-    public class Switcher : Gtk.EventBox {
+    public class Switcher : Gtk.HBox {
         public int width;
         
         public Gtk.ScrolledWindow scrolledwindow;
@@ -18,9 +18,7 @@ namespace Widgets {
         public Switcher(int w) {
             width = w;
             
-            visible_window = false;
-            
-			timer = new AnimateTimer(AnimateTimer.ease_out_quint, 500);
+            timer = new AnimateTimer(AnimateTimer.ease_out_quint, 500);
 			timer.animate.connect(on_animate);
             
             // NOTE: don's set policy of scrolledwindow to NEVER.
@@ -40,7 +38,7 @@ namespace Widgets {
             box.pack_start(left_box, false, false, 0);
             box.pack_start(right_box, false, false, 0);
             scrolledwindow.add(box);
-            add(scrolledwindow);
+            pack_start(scrolledwindow, true, true, 0);
         }
         
         public void add_to_left_box(Gtk.Widget start_widget) {
@@ -66,6 +64,8 @@ namespace Widgets {
         }
         
         public void scroll_to_left(Gtk.Widget start_widget, Gtk.Widget end_widget) {
+            print("Scroll to left\n");
+            
             Utils.remove_all_children(left_box);
             Utils.remove_all_children(right_box);
             

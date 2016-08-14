@@ -4,7 +4,7 @@ using Utils;
 using Gee;
 
 namespace Widgets {
-	public class RemotePanel : Gtk.EventBox {
+	public class RemotePanel : Gtk.HBox {
 		string config_file_path = Utils.get_config_file_path("server-config.conf");
         
         public Workspace workspace;
@@ -21,6 +21,8 @@ namespace Widgets {
         public Gtk.Box search_page_box;
         
         public Gtk.ScrolledWindow? home_page_scrolledwindow;
+        public Gtk.ScrolledWindow? group_page_scrolledwindow;
+        public Gtk.ScrolledWindow? search_page_scrolledwindow;
         
         public int width = Constant.SLIDER_WIDTH;
 		
@@ -28,8 +30,6 @@ namespace Widgets {
             workspace = space;
 			workspace_manager = manager;
             
-            visible_window = false;
-			
             focus_widget = ((Gtk.Window) workspace.get_toplevel()).get_focus();
 			parent_window = (Widgets.Window) workspace.get_toplevel();
             background_color = Gdk.RGBA();
@@ -50,7 +50,7 @@ namespace Widgets {
             group_page_box.set_size_request(width, -1);
             search_page_box.set_size_request(width, -1);
             
-            add(switcher);
+            pack_start(switcher, true, true, 0);
             
             show_home_page();
 			
@@ -71,6 +71,8 @@ namespace Widgets {
         }
 		
 		public void show_home_page(Gtk.Widget? start_widget=null) {
+            print("show home page\n");
+            
 			Utils.destroy_all_children(home_page_box);
             home_page_scrolledwindow = null;
             
@@ -140,6 +142,9 @@ namespace Widgets {
 				
 				foreach (var ungroup_list in ungroups) {
                     var server_button = create_server_button(ungroup_list[0], ungroup_list[1]);
+                    server_button.edit_server.connect((w, server_info) => {
+                            edit_server(server_info);
+                        });
                     server_box.pack_start(server_button, false, false, 0);
                 }
                 
@@ -255,11 +260,15 @@ namespace Widgets {
             }
         }
         
-        public void show_group_page(string group_name, Gtk.Widget start_widget, string directoin) {
+        public void show_group_page(string group_name, Gtk.Widget? start_widget=null, string? directoin=null) {
 			Utils.destroy_all_children(group_page_box);
+            group_page_scrolledwindow = null;
+            
             create_group_page(group_name);
 
-            if (directoin == "scroll_to_right") {
+            if (start_widget == null) {
+                switcher.add_to_left_box(group_page_box);
+            } else if (directoin == "scroll_to_right") {
                 switcher.scroll_to_right(start_widget, group_page_box);
             } else if (directoin == "scroll_to_left") {
                 switcher.scroll_to_left(start_widget, group_page_box);
@@ -317,15 +326,18 @@ namespace Widgets {
                     });
 			}
 			
-            var scrolledwindow = create_scrolled_window();
-            group_page_box.pack_start(scrolledwindow, true, true, 0);
+            group_page_scrolledwindow = create_scrolled_window();
+            group_page_box.pack_start(group_page_scrolledwindow, true, true, 0);
             
             var server_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            scrolledwindow.add(server_box);
+            group_page_scrolledwindow.add(server_box);
             
             if (ungroups.size > 0) {
                 foreach (var ungroup_list in ungroups) {
                     var server_button = create_server_button(ungroup_list[0], ungroup_list[1]);
+                    server_button.edit_server.connect((w, server_info) => {
+                            edit_server(server_info);
+                        });
                     server_box.pack_start(server_button, false, false, 0);
                 }
             }
@@ -379,12 +391,17 @@ namespace Widgets {
 			}
 		}
         
-        public void show_search_page(string search_text, string group_name, Gtk.Widget start_widget) {
+        public void show_search_page(string search_text, string group_name, Gtk.Widget? start_widget=null) {
             Utils.destroy_all_children(search_page_box);
-            
+            search_page_scrolledwindow = null;
+
 			create_search_page(search_text, group_name);
 
-            switcher.scroll_to_right(start_widget, search_page_box);
+            if (start_widget == null) {
+                switcher.add_to_left_box(search_page_box);
+            } else {
+                switcher.scroll_to_right(start_widget, search_page_box);
+            }
             
             show_all();
 		}
@@ -441,14 +458,17 @@ namespace Widgets {
                 split_line.margin_left = 1;
                 search_page_box.pack_start(split_line, false, false, 0);
                 
-                var scrolledwindow = create_scrolled_window();
-                search_page_box.pack_start(scrolledwindow, true, true, 0);
+                search_page_scrolledwindow = create_scrolled_window();
+                search_page_box.pack_start(search_page_scrolledwindow, true, true, 0);
             
                 var server_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-                scrolledwindow.add(server_box);
+                search_page_scrolledwindow.add(server_box);
             
                 foreach (var ungroup_list in ungroups) {
                     var server_button = create_server_button(ungroup_list[0], ungroup_list[1]);
+                    server_button.edit_server.connect((w, server_info) => {
+                            edit_server(server_info);
+                        });
                     server_box.pack_start(server_button, false, false, 0);
                 }
             } catch (Error e) {
@@ -517,10 +537,6 @@ namespace Widgets {
             server_button.login_server.connect((w, server_info) => {
                     login_server(server_info);
                 });
-            server_button.edit_server.connect((w, server_info) => {
-                    edit_server(server_info);
-                });
-
             return server_button;
         }
         
@@ -540,16 +556,7 @@ namespace Widgets {
                     remote_server.add_server.connect((server, address, username, password, port, encode, path, command, nickname, groupname, backspace_key, delete_key) => {
                             add_server(address, username, password, port, encode, path, command, nickname, groupname, backspace_key, delete_key);
 
-                            double scroll_value = 0;
-                            if (home_page_scrolledwindow != null) {
-                                scroll_value = home_page_scrolledwindow.get_vadjustment().get_value();
-                            }
-                            
-                            show_home_page();
-                            
-                            if (home_page_scrolledwindow != null) {
-                                home_page_scrolledwindow.get_vadjustment().set_value(scroll_value);
-                            }
+                            update_home_page();
                         });
                     remote_server.show_all();
 					
@@ -557,6 +564,51 @@ namespace Widgets {
 				});
 
             return add_server_button;
+        }
+        
+        public void update_home_page() {
+            double scroll_value = 0;
+            if (home_page_scrolledwindow != null) {
+                scroll_value = home_page_scrolledwindow.get_vadjustment().get_value();
+            }
+                            
+            show_home_page();
+                            
+            if (home_page_scrolledwindow != null) {
+                home_page_scrolledwindow.get_vadjustment().set_value(scroll_value);
+            }
+            
+            print("Update home page\n");
+        }
+        
+        public void update_group_page(string group_name) {
+            double scroll_value = 0;
+            if (group_page_scrolledwindow != null) {
+                scroll_value = group_page_scrolledwindow.get_vadjustment().get_value();
+            }
+                            
+            show_group_page(group_name);
+                            
+            if (group_page_scrolledwindow != null) {
+                group_page_scrolledwindow.get_vadjustment().set_value(scroll_value);
+            }
+
+            print("Update group page\n");
+        }
+        
+        public void update_search_page(string search_text, string group_name) {
+            double scroll_value = 0;
+            if (search_page_scrolledwindow != null) {
+                scroll_value = search_page_scrolledwindow.get_vadjustment().get_value();
+            }
+                            
+            show_search_page(search_text, group_name);
+                            
+            if (search_page_scrolledwindow != null) {
+                search_page_scrolledwindow.get_vadjustment().set_value(scroll_value);
+            }
+            
+            print("Update search page\n");
         }
         
         public Gtk.Box create_split_line() {

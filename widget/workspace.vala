@@ -35,7 +35,7 @@ namespace Widgets {
 			show_timer = new AnimateTimer(AnimateTimer.ease_out_quint, 500);
 			show_timer.animate.connect(on_show_animate);
 
-			hide_timer = new AnimateTimer(AnimateTimer.ease_in_quint, 1000);
+			hide_timer = new AnimateTimer(AnimateTimer.ease_in_quint, 400);
 			hide_timer.animate.connect(on_hide_animate);
             
             Term term = new_term(true, commands, work_directory);
@@ -560,7 +560,7 @@ namespace Widgets {
 		}
 
 		public void on_hide_animate(double progress) {
-            remote_panel.margin_left = (int) (show_slider_start_x + Constant.SLIDER_WIDTH * progress);
+            remote_panel.margin_left = (int) (hide_slider_start_x + Constant.SLIDER_WIDTH * progress);
             
             if (progress >= 1.0) {
 				hide_timer.stop();
