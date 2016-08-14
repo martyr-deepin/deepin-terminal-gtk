@@ -20,6 +20,8 @@ namespace Widgets {
         public Gtk.Box group_page_box;
         public Gtk.Box search_page_box;
         
+        public Gtk.ScrolledWindow? home_page_scrolledwindow;
+        
         public int width = Constant.SLIDER_WIDTH;
 		
 		public RemotePanel(Workspace space, WorkspaceManager manager) {
@@ -70,6 +72,7 @@ namespace Widgets {
 		
 		public void show_home_page(Gtk.Widget? start_widget=null) {
 			Utils.destroy_all_children(home_page_box);
+            home_page_scrolledwindow = null;
             
             create_home_page();
             
@@ -123,11 +126,11 @@ namespace Widgets {
                 home_page_box.pack_start(split_line, false, false, 0);
 			}
 
-            var scrolledwindow = create_scrolled_window();
-            home_page_box.pack_start(scrolledwindow, true, true, 0);
+            home_page_scrolledwindow = create_scrolled_window();
+            home_page_box.pack_start(home_page_scrolledwindow, true, true, 0);
             
             var server_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            scrolledwindow.add(server_box);
+            home_page_scrolledwindow.add(server_box);
             
 			if (ungroups.size + groups.size > 0) {
                 foreach (var group_entry in groups.entries) {
@@ -536,6 +539,17 @@ namespace Widgets {
                     var remote_server = new Widgets.RemoteServer(parent_window, this);
                     remote_server.add_server.connect((server, address, username, password, port, encode, path, command, nickname, groupname, backspace_key, delete_key) => {
                             add_server(address, username, password, port, encode, path, command, nickname, groupname, backspace_key, delete_key);
+
+                            double scroll_value = 0;
+                            if (home_page_scrolledwindow != null) {
+                                scroll_value = home_page_scrolledwindow.get_vadjustment().get_value();
+                            }
+                            
+                            show_home_page();
+                            
+                            if (home_page_scrolledwindow != null) {
+                                home_page_scrolledwindow.get_vadjustment().set_value(scroll_value);
+                            }
                         });
                     remote_server.show_all();
 					
