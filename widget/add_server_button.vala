@@ -18,7 +18,7 @@ namespace Widgets {
         public int text_x = 72;
         public int text_y = 18;
         public int text_width = 136;
-        public int text_size = 12;
+        public int text_size = 11;
 		
 		public bool is_hover = false;
 		public bool is_press = false;
