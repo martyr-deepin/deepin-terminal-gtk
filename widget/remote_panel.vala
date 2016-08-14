@@ -448,10 +448,7 @@ namespace Widgets {
                     var server_button = create_server_button(ungroup_list[0], ungroup_list[1]);
                     server_box.pack_start(server_button, false, false, 0);
                 }
-                
-                Widgets.AddServerButton add_server_button = create_add_server_button();
-                search_page_box.pack_start(add_server_button, false, false, 0);
-			} catch (Error e) {
+            } catch (Error e) {
 				if (!FileUtils.test(config_file_path, FileTest.EXISTS)) {
 					print("show_home_page error: %s\n", e.message);
 				}
