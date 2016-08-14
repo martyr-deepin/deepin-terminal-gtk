@@ -583,6 +583,8 @@ namespace Widgets {
                             
             create_home_page();
             
+            switcher.add_to_left_box(home_page_box);
+            
             if (home_page_scrolledwindow != null) {
                 home_page_scrolledwindow.get_vadjustment().set_value(scroll_value);
             }
