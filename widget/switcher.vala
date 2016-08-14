@@ -65,8 +65,6 @@ namespace Widgets {
         }
         
         public void scroll_to_left(Gtk.Widget start_widget, Gtk.Widget end_widget) {
-            print("Scroll to left\n");
-            
             Utils.remove_all_children(left_box);
             Utils.remove_all_children(right_box);
             
@@ -85,8 +83,6 @@ namespace Widgets {
 		public void on_animate(double progress) {
 			var adjust = scrolledwindow.get_hadjustment();
 			adjust.set_value(animation_start_x + (int) (animation_end_x - animation_start_x) * progress);
-            
-            // print("%f\n", (animation_start_x + (int) (animation_end_x - animation_start_x) * progress));
             
             if (progress >= 1.0) {
 				timer.stop();

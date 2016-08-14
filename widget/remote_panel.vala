@@ -73,8 +73,6 @@ namespace Widgets {
         }
 		
 		public void show_home_page(Gtk.Widget? start_widget=null) {
-            print("show home page\n");
-            
             create_home_page();
             
             if (start_widget == null) {
@@ -269,12 +267,8 @@ namespace Widgets {
 
             if (directoin == "scroll_to_right") {
                 switcher.scroll_to_right(start_widget, group_page_box);
-                
-                print("2\n");
             } else if (directoin == "scroll_to_left") {
                 switcher.scroll_to_left(start_widget, group_page_box);
-
-                print("3\n");
             }
             
             show_all();
@@ -343,7 +337,6 @@ namespace Widgets {
                     var server_button = create_server_button(ungroup_list[0], ungroup_list[1]);
                     server_button.edit_server.connect((w, server_info) => {
                             edit_server(server_info, () => {
-                                    print("Edit: %s\n", group_name);
                                     update_group_page(group_name);
                                 });
                         });
@@ -590,8 +583,6 @@ namespace Widgets {
             }
             
             show_all();
-            
-            print("Update home page\n");
         }
         
         public void update_group_page(string group_name) {
@@ -609,8 +600,6 @@ namespace Widgets {
             }
             
             show_all();
-
-            print("Update group page\n");
         }
         
         public void update_search_page(string search_text, string group_name) {
@@ -628,8 +617,6 @@ namespace Widgets {
             }
             
             show_all();
-            
-            print("Update search page\n");
         }
         
         public Gtk.Box create_split_line() {
