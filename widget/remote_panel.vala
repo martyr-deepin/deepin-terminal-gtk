@@ -113,7 +113,7 @@ namespace Widgets {
 			    }
 			} catch (Error e) {
 				if (!FileUtils.test(config_file_path, FileTest.EXISTS)) {
-					print("show_home_page error: %s\n", e.message);
+                    print(e.message);
 				}
 			}
 			
@@ -373,7 +373,7 @@ namespace Widgets {
 			    	config_file.load_from_file(config_file_path, KeyFileFlags.NONE);
 			    } catch (Error e) {
 					if (!FileUtils.test(config_file_path, FileTest.EXISTS)) {
-						print("show_home_page error: %s\n", e.message);
+                        print(e.message);
 					}
 			    }
 			    
@@ -480,7 +480,7 @@ namespace Widgets {
                 }
             } catch (Error e) {
 				if (!FileUtils.test(config_file_path, FileTest.EXISTS)) {
-					print("show_home_page error: %s\n", e.message);
+                    print(e.message);
 				}
 			}
             
@@ -503,7 +503,7 @@ namespace Widgets {
                 config_file.load_from_file(config_file_path, KeyFileFlags.NONE);
             } catch (Error e) {
                 if (!FileUtils.test(config_file_path, FileTest.EXISTS)) {
-                    print("show_home_page error: %s\n", e.message);
+                    print(e.message);
                 }
             }
             var remote_server = new Widgets.RemoteServer(parent_window, this, server_info, config_file);

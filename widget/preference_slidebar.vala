@@ -180,7 +180,7 @@ namespace Widgets {
                 } else {
                     Utils.set_context_color(cr, first_segement_text_color);
                 }
-                Draw.draw_text(widget, cr, item_name, first_segement_margin, 2, rect.width - first_segement_margin, first_segement_size, first_segement_size);
+                Draw.draw_text(widget, cr, item_name, first_segement_margin, 6, rect.width - first_segement_margin, first_segement_size, first_segement_size);
             } else {
                 if (is_selected) {
                     Utils.set_context_color(cr, highlight_text_color);

@@ -5,15 +5,15 @@ namespace Widgets {
     public class AboutWidget : Gtk.Box {
         public int height = 320;
         
-        public int icon_y = 3;
+        public int icon_y = 13;
         public int name_y = 107;
         public int name_height = 13;
-        public int version_y = 149;
+        public int version_y = 159;
         public int version_height = 12;
         public int version_size = 11;
-        public int logo_y = 185;
-        public int homepage_y = 208;
-        public int about_y = 249;
+        public int logo_y = 195;
+        public int homepage_y = 218;
+        public int about_y = 259;
         public int about_x = 38;
         public int about_height = 9;
         
