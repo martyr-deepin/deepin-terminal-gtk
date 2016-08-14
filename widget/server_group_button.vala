@@ -86,10 +86,12 @@ namespace Widgets {
 					return false;
 				});
 			button_release_event.connect((w, e) => {
+                    if (is_press) {
+                        show_group_servers(server_title);
+                    }
+                    
                     is_press = false;
 					queue_draw();
-                    
-                    show_group_servers(server_title);
                     
 					return false;
 				});

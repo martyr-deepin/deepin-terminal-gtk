@@ -94,16 +94,18 @@ namespace Widgets {
 					return false;
 				});
 			button_release_event.connect((w, e) => {
+                    if (is_press) {
+                        if (e.x > edit_button_x && e.x < edit_button_x + server_edit_normal_surface.get_width()
+                            && e.y > edit_button_y && e.y < height - server_edit_normal_surface.get_height()) {
+                            edit_server(server_content);
+                        } else {
+                            login_server(server_content);
+                        }
+                    }
+					
 					is_press = false;
 					queue_draw();
                     
-                    if (e.x > edit_button_x && e.x < edit_button_x + server_edit_normal_surface.get_width()
-                        && e.y > edit_button_y && e.y < height - server_edit_normal_surface.get_height()) {
-                        edit_server(server_content);
-                    } else {
-                        login_server(server_content);
-                    }
-					
 					return false;
 				});
             motion_notify_event.connect((w, e) => {

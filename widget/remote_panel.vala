@@ -75,9 +75,6 @@ namespace Widgets {
 		public void show_home_page(Gtk.Widget? start_widget=null) {
             print("show home page\n");
             
-			Utils.destroy_all_children(home_page_box);
-            home_page_scrolledwindow = null;
-            
             create_home_page();
             
             if (start_widget == null) {
@@ -90,6 +87,9 @@ namespace Widgets {
 		}
 
         public void create_home_page() {
+			Utils.destroy_all_children(home_page_box);
+            home_page_scrolledwindow = null;
+            
             HashMap<string, int> groups = new HashMap<string, int>();
 			ArrayList<ArrayList<string>> ungroups = new ArrayList<ArrayList<string>>();
 			        
@@ -264,24 +264,26 @@ namespace Widgets {
             }
         }
         
-        public void show_group_page(string group_name, Gtk.Widget? start_widget=null, string? directoin=null) {
-			Utils.destroy_all_children(group_page_box);
-            group_page_scrolledwindow = null;
-            
+        public void show_group_page(string group_name, Gtk.Widget start_widget, string directoin) {
             create_group_page(group_name);
 
-            if (start_widget == null) {
-                switcher.add_to_left_box(group_page_box);
-            } else if (directoin == "scroll_to_right") {
+            if (directoin == "scroll_to_right") {
                 switcher.scroll_to_right(start_widget, group_page_box);
+                
+                print("2\n");
             } else if (directoin == "scroll_to_left") {
                 switcher.scroll_to_left(start_widget, group_page_box);
+
+                print("3\n");
             }
             
             show_all();
         }
         
         public void create_group_page(string group_name) {
+			Utils.destroy_all_children(group_page_box);
+            group_page_scrolledwindow = null;
+            
 			KeyFile config_file = new KeyFile();
             
 			ArrayList<ArrayList<string>> ungroups = new ArrayList<ArrayList<string>>();
@@ -398,22 +400,18 @@ namespace Widgets {
 			}
 		}
         
-        public void show_search_page(string search_text, string group_name, Gtk.Widget? start_widget=null) {
-            Utils.destroy_all_children(search_page_box);
-            search_page_scrolledwindow = null;
+        public void show_search_page(string search_text, string group_name, Gtk.Widget start_widget) {
+            create_search_page(search_text, group_name);
 
-			create_search_page(search_text, group_name);
-
-            if (start_widget == null) {
-                switcher.add_to_left_box(search_page_box);
-            } else {
-                switcher.scroll_to_right(start_widget, search_page_box);
-            }
+            switcher.scroll_to_right(start_widget, search_page_box);
             
             show_all();
 		}
 
         public void create_search_page(string search_text, string group_name) {
+            Utils.destroy_all_children(search_page_box);
+            search_page_scrolledwindow = null;
+
             KeyFile config_file = new KeyFile();
 			try {
 				config_file.load_from_file(config_file_path, KeyFileFlags.NONE);
@@ -583,11 +581,13 @@ namespace Widgets {
                 scroll_value = home_page_scrolledwindow.get_vadjustment().get_value();
             }
                             
-            show_home_page();
-                            
+            create_home_page();
+            
             if (home_page_scrolledwindow != null) {
                 home_page_scrolledwindow.get_vadjustment().set_value(scroll_value);
             }
+            
+            show_all();
             
             print("Update home page\n");
         }
@@ -598,11 +598,13 @@ namespace Widgets {
                 scroll_value = group_page_scrolledwindow.get_vadjustment().get_value();
             }
                             
-            show_group_page(group_name);
-                            
+            create_group_page(group_name);
+
             if (group_page_scrolledwindow != null) {
                 group_page_scrolledwindow.get_vadjustment().set_value(scroll_value);
             }
+            
+            show_all();
 
             print("Update group page\n");
         }
@@ -613,11 +615,13 @@ namespace Widgets {
                 scroll_value = search_page_scrolledwindow.get_vadjustment().get_value();
             }
                             
-            show_search_page(search_text, group_name);
-                            
+			create_search_page(search_text, group_name);
+
             if (search_page_scrolledwindow != null) {
                 search_page_scrolledwindow.get_vadjustment().set_value(scroll_value);
             }
+            
+            show_all();
             
             print("Update search page\n");
         }
