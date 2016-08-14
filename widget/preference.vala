@@ -450,7 +450,7 @@ namespace Widgets {
 			
 			var adjust = scrolledwindow.get_vadjustment();
 			timer_start_value= adjust.get_value();
-			timer_end_value = Math.fabs(widget_y + 40);
+			timer_end_value = Math.fabs(widget_y + Constant.TITLEBAR_HEIGHT);
 			
 			timer.reset();
 		}
@@ -618,7 +618,7 @@ namespace Widgets {
         public void adjust_option_widgets(Gtk.Label name_widget, Gtk.Widget value_widget) {
             name_widget.set_xalign(0);
             name_widget.set_size_request(preference_name_width, grid_height);
-            name_widget.margin_start = 40;
+            name_widget.margin_start = Constant.TITLEBAR_HEIGHT;
             name_widget.margin_top = 5;
             name_widget.margin_bottom = 5;
             
@@ -718,7 +718,7 @@ namespace Widgets {
             label.margin_top = 5;
             label.margin_bottom = 5;
             
-            checkbutton.margin_start = 40;
+            checkbutton.margin_start = Constant.TITLEBAR_HEIGHT;
             checkbutton.margin_end = 5;
             checkbutton.margin_top = 5;
             checkbutton.margin_bottom = 5;

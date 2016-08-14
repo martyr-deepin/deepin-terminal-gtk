@@ -17,7 +17,7 @@ namespace Widgets {
         public int image_x = 12;
         public int image_y = 4;
 
-        public int arrow_x = 280 - 22;
+        public int arrow_x = Constant.SLIDER_WIDTH - 22;
         public int arrow_y = 23;
         
         public int text_x = 72;
@@ -30,7 +30,7 @@ namespace Widgets {
 		public bool is_hover = false;
 		public bool is_press = false;
         
-        public int width = 280;
+        public int width = Constant.SLIDER_WIDTH;
         public int height = 56;
         
         public bool display_bottom_line = true;

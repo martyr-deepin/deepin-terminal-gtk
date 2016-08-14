@@ -20,7 +20,7 @@ namespace Widgets {
         public Gtk.Box group_page_box;
         public Gtk.Box search_page_box;
         
-        public int width = 280;
+        public int width = Constant.SLIDER_WIDTH;
 		
 		public RemotePanel(Workspace space, WorkspaceManager manager) {
             workspace = space;

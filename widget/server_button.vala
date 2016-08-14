@@ -35,7 +35,7 @@ namespace Widgets {
 
 		public bool is_at_edit_button_area = false;
 		
-        public int width = 280;
+        public int width = Constant.SLIDER_WIDTH;
         public int height = 56;
         
         public bool display_bottom_line = true;

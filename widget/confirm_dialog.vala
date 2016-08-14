@@ -99,7 +99,7 @@ namespace Widgets {
             var event_area = new Widgets.WindowEventArea(this);
             event_area = new Widgets.WindowEventArea(this);
             event_area.margin_end = 27;
-            event_area.margin_bottom = window_init_height - 40;
+            event_area.margin_bottom = window_init_height - Constant.TITLEBAR_HEIGHT;
             
             overlay.add(box);
             overlay.add_overlay(event_area);

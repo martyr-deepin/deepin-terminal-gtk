@@ -14,7 +14,7 @@ namespace Widgets {
 			set_size_request(width, -1);
 			
             var spacing_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            spacing_box.set_size_request(-1, 40);
+            spacing_box.set_size_request(-1, Constant.TITLEBAR_HEIGHT);
             this.attach(spacing_box, 0, 0, width, height);
             
             var basic_segement = new PreferenceSlideItem(this, "Basic", "basic", true);
@@ -116,7 +116,7 @@ namespace Widgets {
         public bool is_first_segement;
         
         public int first_segement_margin = 30;
-        public int second_segement_margin = 40;
+        public int second_segement_margin = Constant.TITLEBAR_HEIGHT;
         
         public int first_segement_size = 14;
         public int second_segement_size = 10;

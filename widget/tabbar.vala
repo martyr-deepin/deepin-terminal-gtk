@@ -11,7 +11,7 @@ namespace Widgets {
         public ArrayList<int> tab_list;
         public HashMap<int, string> tab_name_map;
 		public HashMap<int, bool> tab_highlight_map;
-        public int height = 40;
+        public int height = Constant.TITLEBAR_HEIGHT;
         public int tab_index = 0;
         
         public Gdk.RGBA inactive_arrow_color;

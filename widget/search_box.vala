@@ -33,7 +33,7 @@ namespace Widgets {
             search_previous_button.margin_top = 6;
             search_previous_button.margin_end = 10;
             
-            set_size_request(322, 40);
+            set_size_request(322, Constant.TITLEBAR_HEIGHT);
             set_valign(Gtk.Align.START);
             set_halign(Gtk.Align.END);
             

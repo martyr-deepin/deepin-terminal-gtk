@@ -157,7 +157,7 @@ namespace Widgets {
                 Draw.draw_rectangle(cr, x + active_tab_underline_x, y + height - 41, active_tab_underline_width, 2);
             } else {
                 Utils.set_context_color(cr, active_tab_color);
-                Draw.draw_rectangle(cr, x + active_tab_underline_x - window_frame_box.margin_start, y + 40, active_tab_underline_width, 2);
+                Draw.draw_rectangle(cr, x + active_tab_underline_x - window_frame_box.margin_start, y + Constant.TITLEBAR_HEIGHT, active_tab_underline_width, 2);
             }
             cr.restore();
         }

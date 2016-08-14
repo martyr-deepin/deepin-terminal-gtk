@@ -23,7 +23,7 @@ namespace Widgets {
 		public bool is_hover = false;
 		public bool is_press = false;
         
-        public int width = 280;
+        public int width = Constant.SLIDER_WIDTH;
         public int height = 56;
         
         public AddServerButton() {

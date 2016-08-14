@@ -13,7 +13,7 @@ namespace Widgets {
         public ImageButton close_button;
         public Application application;
 		
-		public int height = 40;
+		public int height = Constant.TITLEBAR_HEIGHT;
         
         public Gtk.Widget focus_widget;
         
@@ -93,7 +93,7 @@ namespace Widgets {
             Box box = new Box(Gtk.Orientation.HORIZONTAL, 0);
 			
 			var logo_box = new Box(Gtk.Orientation.VERTICAL, 0);
-			logo_box.set_size_request(48, 40);
+			logo_box.set_size_request(48, Constant.TITLEBAR_HEIGHT);
 			Gtk.Image logo_image = new Gtk.Image.from_file(Utils.get_image_path("title_icon.png"));
 			logo_box.pack_start(logo_image, true, true, 0);
 			box.pack_start(logo_box, false, false, 0);

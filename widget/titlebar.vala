@@ -22,7 +22,7 @@ namespace Widgets {
             add(box);
             add_overlay(event_area);
             
-            set_size_request(-1, 40);
+            set_size_request(-1, Constant.TITLEBAR_HEIGHT);
         }
     }
 }
