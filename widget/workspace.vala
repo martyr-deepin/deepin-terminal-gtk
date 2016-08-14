@@ -2,6 +2,7 @@ using Gtk;
 using Widgets;
 using Gee;
 using Utils;
+using Animation;
 
 namespace Widgets {
     public class Workspace : Gtk.Overlay {
@@ -14,6 +15,12 @@ namespace Widgets {
 		
 		public WorkspaceManager workspace_manager;
         
+        public AnimateTimer show_timer;
+        public int show_slider_start_x;
+
+        public AnimateTimer hide_timer;
+        public int hide_slider_start_x;
+        
         public int PANED_HANDLE_SIZE = 1;
         
         public signal void change_dir(int index, string dir);
@@ -24,6 +31,12 @@ namespace Widgets {
             index = workspace_index;
             term_list = new ArrayList<Term>();
 			workspace_manager = manager;
+            
+			show_timer = new AnimateTimer(AnimateTimer.ease_out_quint, 500);
+			show_timer.animate.connect(on_show_animate);
+
+			hide_timer = new AnimateTimer(AnimateTimer.ease_in_quint, 1000);
+			hide_timer.animate.connect(on_hide_animate);
             
             Term term = new_term(true, commands, work_directory);
             
@@ -513,20 +526,48 @@ namespace Widgets {
 				
 				remote_panel = new RemotePanel(workspace, workspace_manager);
 				remote_panel.set_size_request(Constant.SLIDER_WIDTH, rect.height);
-                // remote_panel.margin_left = rect.width - Constant.SLIDER_WIDTH;
-                remote_panel.set_valign(Gtk.Align.START);
-                remote_panel.set_halign(Gtk.Align.END);
+                // remote_panel.set_valign(Gtk.Align.START);
+                // remote_panel.set_halign(Gtk.Align.END);
 				add_overlay(remote_panel);
 				
 				show_all();
+                
+                remote_panel.margin_left = rect.width;
+                show_slider_start_x = rect.width;
+                show_timer.reset();
 			}
 		}
 		
 		public void remove_remote_panel() {
 			if (remote_panel != null) {
-				remove(remote_panel);
-				remote_panel.destroy();
-				remote_panel = null;
+				Gtk.Allocation rect;
+				get_allocation(out rect);
+				// remove(remote_panel);
+				// remote_panel.destroy();
+				// remote_panel = null;
+
+                hide_slider_start_x = rect.width - Constant.SLIDER_WIDTH;
+                hide_timer.reset();
+			}
+		}
+        
+		public void on_show_animate(double progress) {
+            remote_panel.margin_left = (int) (show_slider_start_x - Constant.SLIDER_WIDTH * progress);
+            
+            if (progress >= 1.0) {
+				show_timer.stop();
+			}
+		}
+
+		public void on_hide_animate(double progress) {
+            remote_panel.margin_left = (int) (show_slider_start_x + Constant.SLIDER_WIDTH * progress);
+            
+            if (progress >= 1.0) {
+				hide_timer.stop();
+                
+                remove(remote_panel);
+                remote_panel.destroy();
+                remote_panel = null;
 			}
 		}
     }
