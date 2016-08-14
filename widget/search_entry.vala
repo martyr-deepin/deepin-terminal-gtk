@@ -25,7 +25,6 @@ namespace Widgets {
                             | Gdk.EventMask.BUTTON_RELEASE_MASK
                             | Gdk.EventMask.POINTER_MOTION_MASK
                             | Gdk.EventMask.LEAVE_NOTIFY_MASK);
-            visible_window = false;
             set_size_request(-1, height);
             
 			timer = new AnimateTimer(AnimateTimer.ease_in_out, animation_time);

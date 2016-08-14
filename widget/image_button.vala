@@ -19,6 +19,8 @@ namespace Widgets {
 		public bool is_hover = false;
 		public bool is_press = false;
         
+		public signal void click();
+        
         public ImageButton(string image_path, string? text=null, int text_size=12) {
 			normal_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_normal.png"));
             hover_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_hover.png"));
@@ -60,6 +62,10 @@ namespace Widgets {
 					return false;
 				});
 			button_release_event.connect((w, e) => {
+                    if (is_press) {
+                        click();
+                    }
+                    
 					is_press = false;
 					queue_draw();
 					

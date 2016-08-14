@@ -305,11 +305,9 @@ namespace Widgets {
 			ImageButton back_button = new Widgets.ImageButton("back");
             back_button.margin_left = 8;
             back_button.margin_top = 6;
-			back_button.button_release_event.connect((w, e) => {
+			back_button.click.connect((w) => {
 					show_home_page(group_page_box);
-					
-					return false;
-				});
+                });
 			top_box.pack_start(back_button, false, false, 0);
             
             var split_line = create_split_line();
@@ -318,7 +316,6 @@ namespace Widgets {
             
 			if (ungroups.size > 1) {
 			    Widgets.SearchEntry search_entry = new Widgets.SearchEntry();
-                search_entry.search_image_margin_x = 8;
                 top_box.pack_start(search_entry, true, true, 0);
                 
                 search_entry.search_entry.activate.connect((entry) => {
@@ -436,14 +433,12 @@ namespace Widgets {
                 ImageButton back_button = new Widgets.ImageButton("back");
                 back_button.margin_left = 8;
                 back_button.margin_top = 6;
-                back_button.button_release_event.connect((w, e) => {
+                back_button.click.connect((w) => {
                         if (group_name == "") {
                             show_home_page(search_page_box);
                         } else {
                             show_group_page(group_name, search_page_box, "scroll_to_left");
                         }
-			        		
-                        return false;
                     });
                 top_box.pack_start(back_button, false, false, 0);
                 

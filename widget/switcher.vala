@@ -11,15 +11,22 @@ namespace Widgets {
         public Gtk.Box left_box;
         public Gtk.Box right_box;
         
-        public AnimateTimer timer;
-        public int animation_start_x;
-        public int animation_end_x;
+        public AnimateTimer scroll_to_left_timer;
+        public int scroll_to_left_start_x;
+        public int scroll_to_left_end_x;
+        
+        public AnimateTimer scroll_to_right_timer;
+        public int scroll_to_right_start_x;
+        public int scroll_to_right_end_x;
         
         public Switcher(int w) {
             width = w;
             
-            timer = new AnimateTimer(AnimateTimer.ease_out_quint, 500);
-			timer.animate.connect(on_animate);
+            scroll_to_left_timer = new AnimateTimer(AnimateTimer.ease_out_quint, 500);
+			scroll_to_left_timer.animate.connect(scroll_to_left_animate);
+
+            scroll_to_right_timer = new AnimateTimer(AnimateTimer.ease_out_quint, 500);
+			scroll_to_right_timer.animate.connect(scroll_to_right_animate);
             
             // NOTE: don's set policy of scrolledwindow to NEVER.
             // Otherwise scrolledwindow will increate width with child's size.
@@ -48,22 +55,6 @@ namespace Widgets {
             left_box.pack_start(start_widget, true, true, 0);
         }
         
-        public void scroll_to_right(Gtk.Widget start_widget, Gtk.Widget end_widget) {
-            Utils.remove_all_children(left_box);
-            Utils.remove_all_children(right_box);
-            
-            left_box.pack_start(start_widget, true, true, 0);
-            right_box.pack_start(end_widget, true, true, 0);
-
-            var adjust = scrolledwindow.get_hadjustment();
-            adjust.set_value(0);
-            
-            animation_start_x = 0;
-            animation_end_x = width;
-
-            timer.reset();
-        }
-        
         public void scroll_to_left(Gtk.Widget start_widget, Gtk.Widget end_widget) {
             Utils.remove_all_children(left_box);
             Utils.remove_all_children(right_box);
@@ -74,18 +65,43 @@ namespace Widgets {
             var adjust = scrolledwindow.get_hadjustment();
             adjust.set_value(width);
             
-            animation_start_x = width;
-            animation_end_x = 0;
+            scroll_to_left_start_x = width;
+            scroll_to_left_end_x = 0;
 
-            timer.reset();
+            scroll_to_left_timer.reset();
         }
         
-		public void on_animate(double progress) {
+        public void scroll_to_right(Gtk.Widget start_widget, Gtk.Widget end_widget) {
+            Utils.remove_all_children(left_box);
+            Utils.remove_all_children(right_box);
+            
+            left_box.pack_start(start_widget, true, true, 0);
+            right_box.pack_start(end_widget, true, true, 0);
+
+            var adjust = scrolledwindow.get_hadjustment();
+            adjust.set_value(0);
+            
+            scroll_to_right_start_x = 0;
+            scroll_to_right_end_x = width;
+
+            scroll_to_right_timer.reset();
+        }
+        
+		public void scroll_to_left_animate(double progress) {
 			var adjust = scrolledwindow.get_hadjustment();
-			adjust.set_value(animation_start_x + (int) (animation_end_x - animation_start_x) * progress);
+			adjust.set_value(scroll_to_left_start_x + (int) (scroll_to_left_end_x - scroll_to_left_start_x) * progress);
             
             if (progress >= 1.0) {
-				timer.stop();
+				scroll_to_left_timer.stop();
+			}
+		}
+
+		public void scroll_to_right_animate(double progress) {
+			var adjust = scrolledwindow.get_hadjustment();
+			adjust.set_value(scroll_to_right_start_x + (int) (scroll_to_right_end_x - scroll_to_right_start_x) * progress);
+            
+            if (progress >= 1.0) {
+				scroll_to_right_timer.stop();
 			}
 		}
     }
