@@ -599,6 +599,8 @@ namespace Widgets {
             }
                             
             create_group_page(group_name);
+            
+            switcher.add_to_left_box(group_page_box);
 
             if (group_page_scrolledwindow != null) {
                 group_page_scrolledwindow.get_vadjustment().set_value(scroll_value);
@@ -616,6 +618,8 @@ namespace Widgets {
             }
                             
 			create_search_page(search_text, group_name);
+            
+            switcher.add_to_left_box(search_page_box);
 
             if (search_page_scrolledwindow != null) {
                 search_page_scrolledwindow.get_vadjustment().set_value(scroll_value);
