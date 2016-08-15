@@ -138,6 +138,12 @@ namespace Widgets {
                     workspace_manager.focus_workspace.show_remote_panel(workspace_manager.focus_workspace);
                     break;
 				case "help":
+                    try {
+                        GLib.AppInfo appinfo = GLib.AppInfo.create_from_commandline("dman deepin-terminal", null, GLib.AppInfoCreateFlags.NONE);
+                        appinfo.launch(null, null);
+                    } catch (GLib.Error e) {
+                        print(e.message);
+                    }
 					break;
 			    case "about":
                     new AboutDialog((Gtk.Window) this.get_toplevel(), focus_widget);
