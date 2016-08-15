@@ -1,3 +1,4 @@
+PREFIX=/usr/local
 all: main
 main: ./project_path.c \
       ./lib/draw.vala \
@@ -99,6 +100,18 @@ main: ./project_path.c \
     ./widget/preference.vala \
     ./widget/preference_slidebar.vala \
     main.vala
+
+install:
+	mkdir -p ${DESTDIR}${PREFIX}/bin
+	mkdir -p ${DESTDIR}${PREFIX}/share/applications
+	mkdir -p ${DESTDIR}${PREFIX}/share/deepin-terminal
+	mkdir -p ${DESTDIR}${PREFIX}/share/icons
+	mkdir -p ${DESTDIR}${PREFIX}/share/dman/deepin-terminal
+	cp -r image ${DESTDIR}${PREFIX}/share/deepin-terminal
+	cp deepin-terminal.desktop ${DESTDIR}${PREFIX}/share/applications
+	cp -r main ${DESTDIR}${PREFIX}/share/deepin-terminal
+	ln -sf ${PREFIX}/share/deepin-terminal/main ${DESTDIR}${PREFIX}/bin/deepin-terminal
+
 clean:
 	rm -f main
 
