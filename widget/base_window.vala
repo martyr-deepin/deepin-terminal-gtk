@@ -6,7 +6,6 @@ using XUtils;
 namespace Widgets {
     public class BaseWindow : Widgets.ConfigWindow {
         public double window_frame_radius = 5.0;
-        public int window_shadow_offset_y = 10;
         
         public int window_frame_margin_top = 50;
         public int window_frame_margin_bottom = 60;
@@ -20,8 +19,6 @@ namespace Widgets {
         
         public int window_save_width = 0;
         public int window_save_height = 0;
-        
-        public bool window_is_normal = true;
         
         public int window_width;
         public int window_height;
@@ -108,24 +105,24 @@ namespace Widgets {
             
             window_state_event.connect((w, e) => {
                     if (window_is_fullscreen()) {
-                        window_is_normal = false;
-                        
                         get_window().set_shadow_width(0, 0, 0, 0);
                                 
                         window_frame_box.margin = 0;
-                        window_widget_box.margin_top = window_widget_margin_top;
+                        
+                        window_widget_box.margin_top = 1;
                         window_widget_box.margin_bottom = 0;
                         window_widget_box.margin_start = 0;
                         window_widget_box.margin_end = 0;
                     } else if (window_is_max()) {
-                        window_is_normal = false;
-                        
                         get_window().set_shadow_width(0, 0, 0, 0);
                                 
                         window_frame_box.margin = 0;
-                    } else if (window_is_tiled()) {
-                        window_is_normal = false;
                         
+                        window_widget_box.margin_top = 2;
+                        window_widget_box.margin_bottom = 1;
+                        window_widget_box.margin_start = 1;
+                        window_widget_box.margin_end = 1;
+                    } else if (window_is_tiled()) {
                         Cairo.RectangleInt rect;
                         get_window().get_frame_extents(out rect);
                         
@@ -151,12 +148,23 @@ namespace Widgets {
                             window_frame_box.margin_top = 0;
                             window_frame_box.margin_bottom = 0;
                         }
+                        
+                        window_widget_box.margin_top = 2;
+                        window_widget_box.margin_bottom = 1;
+                        window_widget_box.margin_start = 1;
+                        window_widget_box.margin_end = 1;
                     } else {
-                        window_is_normal = true;
-                            
                         get_window().set_shadow_width(window_frame_margin_start, window_frame_margin_end, window_frame_margin_top, window_frame_margin_bottom);
                                 
-                        add_margins();
+                        window_frame_box.margin_top = window_frame_margin_top;
+                        window_frame_box.margin_bottom = window_frame_margin_bottom;
+                        window_frame_box.margin_start = window_frame_margin_start;
+                        window_frame_box.margin_end = window_frame_margin_end;
+            
+                        window_widget_box.margin_top = 2;
+                        window_widget_box.margin_bottom = 2;
+                        window_widget_box.margin_start = 2;
+                        window_widget_box.margin_end = 2;
                     }
                     
                     return false;
@@ -272,18 +280,6 @@ namespace Widgets {
                 });
         }
         
-        public void add_margins() {
-            window_frame_box.margin_top = window_frame_margin_top;
-            window_frame_box.margin_bottom = window_frame_margin_bottom;
-            window_frame_box.margin_start = window_frame_margin_start;
-            window_frame_box.margin_end = window_frame_margin_end;
-            
-            window_widget_box.margin_top = window_widget_margin_top;
-            window_widget_box.margin_bottom = window_widget_margin_bottom;
-            window_widget_box.margin_start = window_widget_margin_start;
-            window_widget_box.margin_end = window_widget_margin_end;
-        }
-        
         public void shadow_active() {
             window_widget_box.get_style_context().remove_class("window_shadow_inactive");
             window_widget_box.get_style_context().add_class("window_shadow_active");
@@ -308,7 +304,21 @@ namespace Widgets {
             int height = window_frame_rect.height;
             Gdk.RGBA frame_color = Gdk.RGBA();
             
-            if (window_is_normal) {
+            if (window_is_max() || window_is_tiled()) {
+                // Draw window frame.
+                cr.save();
+                cr.set_source_rgba(0, 0, 0, config.config_file.get_double("general", "opacity"));
+                // cr.set_source_rgba(1, 0, 0, 1);
+                // Top.
+                Draw.draw_rectangle(cr, x, y, width, 1);
+                // Bottom.
+                Draw.draw_rectangle(cr, x, y + height - 1, width, 1);
+                // Left.
+                Draw.draw_rectangle(cr, x, y, 1, height - 1);
+                // Rigt..
+                Draw.draw_rectangle(cr, x + width - 1, y + 1, 1, height - 1);
+                cr.restore();
+            } else if (!window_is_fullscreen()) {
                 try {
                     frame_color.parse(config.config_file.get_string("theme", "color1"));
                 

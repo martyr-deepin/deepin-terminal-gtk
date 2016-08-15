@@ -188,29 +188,29 @@ namespace Widgets {
                     Widgets.QuakeWindow window = (Widgets.QuakeWindow) this.get_toplevel();
                     
                     background_color.parse(window.config.config_file.get_string("theme", "color1"));
-                    cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, window.config.config_file.get_double("general", "opacity"));
-                    // cr.set_source_rgba(1, 0, 0, 1);				
+                    // cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, window.config.config_file.get_double("general", "opacity"));
+                    cr.set_source_rgba(0, 1, 0, 1);				
                     Draw.draw_rectangle(cr, 0, 0, rect.width, height);
                     
-                    cr.set_source_rgba(0, 0, 0, 0.2);				
-                    // cr.set_source_rgba(1, 0, 0, 1);				
+                    // cr.set_source_rgba(0, 0, 0, 0.2);				
+                    cr.set_source_rgba(0, 1, 0, 1);				
                     Draw.draw_rectangle(cr, 0, 0, rect.width, height);
                 } else {
                     Widgets.Window window = (Widgets.Window) this.get_toplevel();
                     if (window.window_is_fullscreen()) {
                         background_color.parse(window.config.config_file.get_string("theme", "color1"));
                         cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, window.config.config_file.get_double("general", "opacity"));
-                        // cr.set_source_rgba(1, 0, 0, 1);				
                         Draw.draw_rectangle(cr, 0, 0, rect.width, height);
                     
                         cr.set_source_rgba(0, 0, 0, 0.2);				
-                        // cr.set_source_rgba(1, 0, 0, 1);				
                         Draw.draw_rectangle(cr, 0, 0, rect.width, height);
-                    } else if (window.window_is_normal) {
+                    } else if (window.window_is_max() || window.window_is_tiled()) {
                         background_color.parse(window.config.config_file.get_string("theme", "color1"));
                         cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, window.config.config_file.get_double("general", "opacity"));
-                        Draw.draw_rectangle(cr, 1, 0, rect.width - 2, 1);
-                        Draw.draw_rectangle(cr, 0, 1, rect.width, height - 1);
+                        Draw.draw_rectangle(cr, 0, 0, rect.width, height);
+                    
+                        cr.set_source_rgba(0, 0, 0, 0.2);				
+                        Draw.draw_rectangle(cr, 0, 0, rect.width, height);
                     } else {
                         background_color.parse(window.config.config_file.get_string("theme", "color1"));
                         cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, window.config.config_file.get_double("general", "opacity"));

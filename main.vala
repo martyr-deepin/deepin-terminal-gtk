@@ -83,11 +83,11 @@ public class Application : Object {
             workspace_manager = new WorkspaceManager(tabbar, commands, work_directory); 
             Appbar appbar = new Appbar(tabbar, quake_mode, this, workspace_manager);
             
-            appbar.tabbar.press_tab.connect((t, tab_index, tab_id) => {
-					appbar.tabbar.unhighlight_tab(tab_id);
+            tabbar.press_tab.connect((t, tab_index, tab_id) => {
+					tabbar.unhighlight_tab(tab_id);
 					workspace_manager.switch_workspace(tab_id);
                 });
-            appbar.tabbar.close_tab.connect((t, tab_index, tab_id) => {
+            tabbar.close_tab.connect((t, tab_index, tab_id) => {
                     Widgets.Workspace focus_workspace = workspace_manager.workspace_map.get(tab_id);
                     if (focus_workspace.has_active_term()) {
                         ConfirmDialog dialog;
@@ -97,15 +97,15 @@ public class Application : Object {
                             dialog = new ConfirmDialog(window);
                         }
                         dialog.confirm.connect((d) => {
-                                appbar.tabbar.destroy_tab(tab_index);
+                                tabbar.destroy_tab(tab_index);
                                 workspace_manager.remove_workspace(tab_id);
                             });
                     } else {
-                        appbar.tabbar.destroy_tab(tab_index);
+                        tabbar.destroy_tab(tab_index);
                         workspace_manager.remove_workspace(tab_id);
                     }
                 });
-            appbar.tabbar.new_tab.connect((t) => {
+            tabbar.new_tab.connect((t) => {
                     workspace_manager.new_workspace_with_current_directory();
                 });
             appbar.close_button.button_release_event.connect((w, e) => {

@@ -149,12 +149,8 @@ namespace Widgets {
                 });
             
             draw.connect_after((w, cr) => {
-                    draw_window_below(cr);
-                       
                     draw_window_widgets(cr);
-
-                    draw_window_frame(cr);
-                       
+                    
                     draw_window_above(cr);
                     
                     return true;
@@ -201,45 +197,17 @@ namespace Widgets {
         }
 
         public void shadow_active() {
-            window_widget_box.get_style_context().remove_class("window_shadow_inactive");
-            window_widget_box.get_style_context().add_class("window_shadow_active");
+            window_frame_box.get_style_context().remove_class("window_shadow_inactive");
+            window_frame_box.get_style_context().add_class("window_shadow_active");
         }
         
         public void shadow_inactive() {
-            window_widget_box.get_style_context().remove_class("window_shadow_active");
-            window_widget_box.get_style_context().add_class("window_shadow_inactive");
+            window_frame_box.get_style_context().remove_class("window_shadow_active");
+            window_frame_box.get_style_context().add_class("window_shadow_inactive");
         }
         
         public void draw_window_widgets(Cairo.Context cr) {
             Utils.propagate_draw(this, cr);
-        }
-        
-        public void draw_window_frame(Cairo.Context cr) {
-            Gtk.Allocation window_frame_rect;
-            window_frame_box.get_allocation(out window_frame_rect);
-            
-            int x = window_frame_box.margin_start;
-            int y = window_frame_box.margin_top;
-            int width = window_frame_rect.width;
-            int height = window_frame_rect.height;
-            Gdk.RGBA frame_color = Gdk.RGBA();
-            
-            try {
-                // Draw window frame.
-                cr.save();
-                cr.set_source_rgba(0, 0, 0, config.config_file.get_double("general", "opacity"));
-                Draw.draw_rectangle(cr, x, y, width, height, false);
-                    
-                // Draw line *innner* of window frame.
-                frame_color.parse(config.config_file.get_string("theme", "color1"));
-                cr.set_source_rgba(frame_color.red, frame_color.green, frame_color.blue, config.config_file.get_double("general", "opacity"));
-                Draw.draw_rectangle(cr, x + 1, y + 1, width - 2 , height - 2, false);
-            } catch (GLib.KeyFileError e) {
-                print(e.message);
-            }
-        }
-        
-        public void draw_window_below(Cairo.Context cr) {
         }
         
         public void draw_window_above(Cairo.Context cr) {
@@ -261,7 +229,7 @@ namespace Widgets {
             cr.save();
             cr.set_source_rgba(0, 0, 0, 0.3);
             // cr.set_source_rgba(1, 0, 0, 1);
-            Draw.draw_rectangle(cr, x + 1, y + height - 41, width - 2, 1);
+            Draw.draw_rectangle(cr, x, y + height - 41, width, 1);
             cr.restore();
 						
             // Draw active tab underline *above* titlebar underline.
