@@ -107,7 +107,17 @@ namespace Widgets {
                 });
             
             window_state_event.connect((w, e) => {
-                    if (window_is_max() || window_is_fullscreen()) {
+                    if (window_is_fullscreen()) {
+                        window_is_normal = false;
+                        
+                        get_window().set_shadow_width(0, 0, 0, 0);
+                                
+                        window_frame_box.margin = 0;
+                        window_widget_box.margin_top = window_widget_margin_top;
+                        window_widget_box.margin_bottom = 0;
+                        window_widget_box.margin_start = 0;
+                        window_widget_box.margin_end = 0;
+                    } else if (window_is_max()) {
                         window_is_normal = false;
                         
                         get_window().set_shadow_width(0, 0, 0, 0);
@@ -406,12 +416,6 @@ namespace Widgets {
                     // Rigt..
                     Draw.draw_rectangle(cr, x + width - 2, y + 3, 1, height - 6);
                     cr.restore();
-
-                    // Draw line below of window frame.
-                    // cr.set_operator(Cairo.Operator.OVER);
-                    cr.set_source_rgba(1, 1, 1, 0.0625 * config.config_file.get_double("general", "opacity"));
-                    // cr.set_source_rgba(1, 0, 0, 1);
-                    Draw.draw_rectangle(cr, x + 3, y + 1, width - 6, 1);
                 } catch (GLib.KeyFileError e) {
                     print(e.message);
                 }

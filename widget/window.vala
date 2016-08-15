@@ -70,33 +70,61 @@ namespace Widgets {
                 print(e.message);
             }
             
-            // Draw line around titlebar side.
-            Utils.set_context_color(cr, frame_color);
-            // cr.set_source_rgba(1, 0, 0, 1);
-            if (window_is_normal) {
-                // Left.
-                Draw.draw_rectangle(cr, x + 1, y + 3, 1, 38);
-                // Right.
-                Draw.draw_rectangle(cr, x + width - 2, y + 3, 1, 38);
-            } else {
-                // Left.
-                Draw.draw_rectangle(cr, x + 1, y, 1, 41);
-                // Right.
-                Draw.draw_rectangle(cr, x + width - 2, y, 1, 41);
-            }
-                            
-            // Draw line below at titlebar.
-            cr.save();
-            cr.set_source_rgba(0, 0, 0, 0.3);
-            // cr.set_source_rgba(1, 0, 0, 1);
-            Draw.draw_rectangle(cr, x + 1, y + 41, width - 2, 1);
-            cr.restore();
+            if (window_is_fullscreen()) {
+                // Draw top line.
+                Utils.set_context_color(cr, frame_color);  // Draw terminal background color.
+                Draw.draw_rectangle(cr, x, y, width, 1);
+                
+                cr.set_source_rgba(0, 0, 0, 0.2);  // Draw same black color as appbar.
+                Draw.draw_rectangle(cr, x, y, width, 1);
+                
+                cr.set_source_rgba(1, 1, 1, 0.0625 * config.config_file.get_double("general", "opacity")); // Draw top line at window.
+                Draw.draw_rectangle(cr, x, y, width, 1);
+                
+                // Draw line below at titlebar.
+                cr.save();
+                cr.set_source_rgba(0, 0, 0, 0.3);
+                // cr.set_source_rgba(1, 0, 0, 1);
+                Draw.draw_rectangle(cr, x, y + Constant.TITLEBAR_HEIGHT + 1, width, 1);
+                cr.restore();
 						
-            // Draw active tab underline *above* titlebar underline.
-            cr.save();
-            Utils.set_context_color(cr, active_tab_color);
-            Draw.draw_rectangle(cr, x + active_tab_underline_x - window_frame_box.margin_start, y + Constant.TITLEBAR_HEIGHT, active_tab_underline_width, 2);
-            cr.restore();
+                // Draw active tab underline *above* titlebar underline.
+                cr.save();
+                Utils.set_context_color(cr, active_tab_color);
+                Draw.draw_rectangle(cr, x + active_tab_underline_x - window_frame_box.margin_start, y + Constant.TITLEBAR_HEIGHT, active_tab_underline_width, 2);
+                cr.restore();
+            
+                
+            } else {
+                // Draw line around titlebar side.
+                Utils.set_context_color(cr, frame_color);
+                // cr.set_source_rgba(1, 0, 0, 1);
+                if (window_is_normal) {
+                    // Left.
+                    Draw.draw_rectangle(cr, x + 1, y + 3, 1, 38);
+                    // Right.
+                    Draw.draw_rectangle(cr, x + width - 2, y + 3, 1, 38);
+                } else {
+                    // Left.
+                    Draw.draw_rectangle(cr, x + 1, y, 1, 41);
+                    // Right.
+                    Draw.draw_rectangle(cr, x + width - 2, y, 1, 41);
+                }
+                            
+                // Draw line below at titlebar.
+                cr.save();
+                cr.set_source_rgba(0, 0, 0, 0.3);
+                // cr.set_source_rgba(1, 0, 0, 1);
+                Draw.draw_rectangle(cr, x + 1, y + 41, width - 2, 1);
+                cr.restore();
+						
+                // Draw active tab underline *above* titlebar underline.
+                cr.save();
+                Utils.set_context_color(cr, active_tab_color);
+                Draw.draw_rectangle(cr, x + active_tab_underline_x - window_frame_box.margin_start, y + Constant.TITLEBAR_HEIGHT, active_tab_underline_width, 2);
+                cr.restore();
+            
+            }
         }
     }
 }
