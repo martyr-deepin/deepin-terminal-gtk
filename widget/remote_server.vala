@@ -357,17 +357,10 @@ namespace Widgets {
                 box.pack_start(button_box, false, false, 0);
             
                 var event_area = new Widgets.WindowEventArea(this);
+                event_area.margin_top = 0;
                 event_area.margin_end = 27;
+                event_area.set_size_request(-1, 27);
                 
-                configure_event.connect((w) => {
-                        int width, height;
-                        get_size(out width, out height);
-                        
-                        event_area.margin_bottom = height - 27;
-                        
-                        return false;
-                    });
-            
                 overlay.add(box);
                 overlay.add_overlay(event_area);
             
