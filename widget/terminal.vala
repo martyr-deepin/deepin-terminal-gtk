@@ -102,7 +102,7 @@ namespace Widgets {
 						// we will notify user if terminal is hide or cursor out of visible area.
 						var test = term.get_toplevel();
 						if (test != null) {
-							if (test.get_type().is_a(typeof(Window))) {
+							if (test.get_type().is_a(typeof(Window)) || test.get_type().is_a(typeof(QuakeWindow))) {
 								Gtk.Adjustment vadj = term.get_vadjustment();
 								double value = vadj.get_value();
 								double page_size = vadj.get_page_size();
