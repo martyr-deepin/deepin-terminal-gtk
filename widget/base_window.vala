@@ -63,8 +63,8 @@ namespace Widgets {
                     get_size(out width, out height);
                     
                     if (!window_is_max() && !window_is_fullscreen() && !window_is_tiled()) {
-                        window_save_width = width - window_frame_margin_start - window_frame_margin_end;
-                        window_save_height = height - window_frame_margin_top - window_frame_margin_bottom;
+                        window_save_width = width;
+                        window_save_height = height;
                     }
                     
                     Cairo.RectangleInt rect;
@@ -441,11 +441,6 @@ namespace Widgets {
             } else {
                 maximize();
             }
-        }
-        
-        public void set_window_size(int width, int height) {
-            set_default_size(width + window_frame_margin_start + window_frame_margin_end,
-                             height + window_frame_margin_top + window_frame_margin_bottom);
         }
         
         public virtual void draw_window_below(Cairo.Context cr) {

@@ -28,9 +28,9 @@ namespace Widgets {
                 var width = config.config_file.get_integer("advanced", "window_width");
                 var height = config.config_file.get_integer("advanced", "window_height");
                 if (width == 0 || height == 0) {
-                    set_window_size(rect.width * 2 / 3, rect.height * 2 / 3);
+                    set_default_size(rect.width * 2 / 3, rect.height * 2 / 3);
                 } else {
-                    set_window_size(width, height);
+                    set_default_size(width, height);
                 }
 					
                     
