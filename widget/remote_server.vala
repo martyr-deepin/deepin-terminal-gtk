@@ -15,7 +15,7 @@ namespace Widgets {
         public Gtk.Box advanced_options_box;
         public Gtk.Box show_advanced_box;
         public Gtk.Box box;
-        public Widgets.BaseWindow parent_window;
+        public Widgets.ConfigWindow parent_window;
         
         public Gtk.Entry address_entry;
         public Gtk.Entry user_entry;
@@ -60,7 +60,7 @@ namespace Widgets {
                                        string delete_key
                                        );
         
-        public RemoteServer(Widgets.BaseWindow window, Gtk.Widget widget, string? info=null, KeyFile? config=null) {
+        public RemoteServer(Widgets.ConfigWindow window, Gtk.Widget widget, string? info=null, KeyFile? config=null) {
             try {
                 parent_window = window;
                 focus_widget = widget;

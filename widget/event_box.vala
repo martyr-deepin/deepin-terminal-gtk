@@ -12,7 +12,7 @@ namespace Widgets {
             Gtk.Allocation rect;
             widget.get_allocation(out rect);
             
-            Widgets.Window window = (Widgets.Window) this.get_toplevel();
+            Widgets.ConfigWindow window = (Widgets.ConfigWindow) this.get_toplevel();
 
  			try {
 				cr.set_source_rgba(0, 0, 0, window.config.config_file.get_double("general", "opacity"));

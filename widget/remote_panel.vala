@@ -11,7 +11,7 @@ namespace Widgets {
 		public WorkspaceManager workspace_manager;
         public Gtk.Widget focus_widget;
 		
-		public Widgets.Window parent_window;
+		public Widgets.ConfigWindow parent_window;
         public Gdk.RGBA background_color;
         
         public Widgets.Switcher switcher;
@@ -33,7 +33,7 @@ namespace Widgets {
 			workspace_manager = manager;
             
             focus_widget = ((Gtk.Window) workspace.get_toplevel()).get_focus();
-			parent_window = (Widgets.Window) workspace.get_toplevel();
+			parent_window = (Widgets.ConfigWindow) workspace.get_toplevel();
             background_color = Gdk.RGBA();
             try {
                 background_color.parse(parent_window.config.config_file.get_string("theme", "color1"));

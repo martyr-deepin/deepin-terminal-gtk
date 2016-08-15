@@ -29,6 +29,8 @@ main: ./project_path.c \
       ./widget/window.vala \
       ./widget/window_event_area.vala \
       ./widget/base_window.vala \
+      ./widget/config_window.vala \
+      ./widget/quake_window.vala \
       ./widget/confirm_dialog.vala \
       ./widget/search_box.vala \
       ./widget/remote_panel.vala \
@@ -82,6 +84,8 @@ main: ./project_path.c \
     ./widget/window.vala \
     ./widget/window_event_area.vala \
     ./widget/base_window.vala \
+    ./widget/config_window.vala \
+    ./widget/quake_window.vala \
     ./widget/confirm_dialog.vala \
     ./widget/search_box.vala \
     ./widget/remote_panel.vala \

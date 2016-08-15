@@ -79,9 +79,7 @@ namespace Widgets {
         public void close_focus_term() {
             Term focus_term = get_focus_term(this);
             if (focus_term.has_foreground_process()) {
-                ConfirmDialog dialog = new ConfirmDialog(
-                    "Terminal still has running programs. Are you sure you want to quit?",
-                    (Window) focus_term.get_toplevel());
+                ConfirmDialog dialog = new ConfirmDialog((Window) focus_term.get_toplevel());
                 dialog.confirm.connect((d) => {
                         close_term(focus_term);
                     });
@@ -110,9 +108,7 @@ namespace Widgets {
 			}
 			
 			if (has_active_process) {
-				ConfirmDialog dialog = new ConfirmDialog(
-					"Terminal still has running programs. Are you sure you want to quit?",
-					(Window) focus_term.get_toplevel());
+				ConfirmDialog dialog = new ConfirmDialog((Window) focus_term.get_toplevel());
 				dialog.confirm.connect((d) => {
 						close_term_except(focus_term);
 					});
@@ -204,7 +200,7 @@ namespace Widgets {
 					int pos = paned.get_position();
 					if (pos != 0 && paned.get_child1() != null && paned.get_child2() != null) {
 						cr.set_operator(Cairo.Operator.OVER);
-						Widgets.Window parent_window = (Widgets.Window) w.get_toplevel();
+						Widgets.ConfigWindow parent_window = (Widgets.ConfigWindow) w.get_toplevel();
 						Gdk.RGBA paned_background_color = Gdk.RGBA();
 						try {
 							paned_background_color.parse(parent_window.config.config_file.get_string("theme", "color1"));

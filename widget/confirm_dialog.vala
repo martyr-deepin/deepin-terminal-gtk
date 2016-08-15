@@ -16,7 +16,7 @@ namespace Widgets {
         
         public signal void confirm();
         
-        public ConfirmDialog(string confirm_message, Gtk.Window window) {
+        public ConfirmDialog(Gtk.Window window) {
             modal = true;
             set_transient_for(window);
             set_skip_taskbar_hint(true);

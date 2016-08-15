@@ -168,16 +168,12 @@ namespace Widgets {
             Gtk.Allocation rect;
             widget.get_allocation(out rect);
             
-            Widgets.Window window = (Widgets.Window) this.get_toplevel();
 
 			cr.save();
 			try {
-                if (!window.window_frameless && window.window_is_normal) {
-                    background_color.parse(window.config.config_file.get_string("theme", "color1"));
-                    cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, window.config.config_file.get_double("general", "opacity"));
-                    Draw.draw_rectangle(cr, 1, 0, rect.width - 2, 1);
-                    Draw.draw_rectangle(cr, 0, 1, rect.width, height - 1);
-                } else {
+                if (quake_mode) {
+                    Widgets.QuakeWindow window = (Widgets.QuakeWindow) this.get_toplevel();
+                    
                     background_color.parse(window.config.config_file.get_string("theme", "color1"));
                     cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, window.config.config_file.get_double("general", "opacity"));
                     // cr.set_source_rgba(1, 0, 0, 1);				
@@ -186,6 +182,23 @@ namespace Widgets {
                     cr.set_source_rgba(0, 0, 0, 0.2);				
                     // cr.set_source_rgba(1, 0, 0, 1);				
                     Draw.draw_rectangle(cr, 0, 0, rect.width, height);
+                } else {
+                    Widgets.Window window = (Widgets.Window) this.get_toplevel();
+                    if (window.window_is_normal) {
+                        background_color.parse(window.config.config_file.get_string("theme", "color1"));
+                        cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, window.config.config_file.get_double("general", "opacity"));
+                        Draw.draw_rectangle(cr, 1, 0, rect.width - 2, 1);
+                        Draw.draw_rectangle(cr, 0, 1, rect.width, height - 1);
+                    } else {
+                        background_color.parse(window.config.config_file.get_string("theme", "color1"));
+                        cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, window.config.config_file.get_double("general", "opacity"));
+                        // cr.set_source_rgba(1, 0, 0, 1);				
+                        Draw.draw_rectangle(cr, 0, 0, rect.width, height);
+                    
+                        cr.set_source_rgba(0, 0, 0, 0.2);				
+                        // cr.set_source_rgba(1, 0, 0, 1);				
+                        Draw.draw_rectangle(cr, 0, 0, rect.width, height);
+                    }
                 }
 			} catch (GLib.KeyFileError e) {
 				print(e.message);

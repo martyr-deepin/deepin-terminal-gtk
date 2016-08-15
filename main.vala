@@ -26,7 +26,7 @@ public class QuakeTerminalApp : Application {
     }
     
     public void show_or_hide() {
-        this.window.toggle_quake_window();
+        this.quake_window.toggle_quake_window();
     }
 }
 
@@ -38,6 +38,7 @@ interface QuakeDaemon : Object {
 
 public class Application : Object {
     public Widgets.Window window;
+    public Widgets.QuakeWindow quake_window;
     public WorkspaceManager workspace_manager;
     
     public string start_path;
@@ -88,9 +89,12 @@ public class Application : Object {
             appbar.tabbar.close_tab.connect((t, tab_index, tab_id) => {
                     Workspace focus_workspace = workspace_manager.workspace_map.get(tab_id);
                     if (focus_workspace.has_active_term()) {
-                        ConfirmDialog dialog = new ConfirmDialog(
-                            "Terminal still has running programs. Are you sure you want to quit?",
-                            window);
+                        ConfirmDialog dialog;
+                        if (quake_mode) {
+                            dialog = new ConfirmDialog(quake_window);
+                        } else {
+                            dialog = new ConfirmDialog(window);
+                        }
                         dialog.confirm.connect((d) => {
                                 appbar.tabbar.destroy_tab(tab_index);
                                 workspace_manager.remove_workspace(tab_id);
@@ -111,34 +115,26 @@ public class Application : Object {
             
             Box box = new Box(Gtk.Orientation.VERTICAL, 0);
             
-            window = new Widgets.Window(quake_mode);
-			tabbar.draw_active_tab_underline.connect((t, x, width) => {
-					int offset_x, offset_y;
-					tabbar.translate_coordinates(window, 0, 0, out offset_x, out offset_y);
-					
-					window.active_tab_underline_x = x + offset_x;
-					window.active_tab_underline_width = width;
-					
-					window.queue_draw();
-				});
-            
-            window.destroy.connect((t) => {
-                    quit();
-                });
-            window.window_state_event.connect((w) => {
-                    appbar.update_max_button();
-                    
-                    return false;
-                });
-            window.key_press_event.connect(on_key_press);
-			window.key_release_event.connect(on_key_release);
-            
-            if (!has_start) {
-                window.set_position(Gtk.WindowPosition.CENTER);
-            }
-            
             if (quake_mode) {
-				box.pack_start(workspace_manager, true, true, 0);
+                quake_window = new Widgets.QuakeWindow();
+                tabbar.draw_active_tab_underline.connect((t, x, width) => {
+                        int offset_x, offset_y;
+                        tabbar.translate_coordinates(quake_window, 0, 0, out offset_x, out offset_y);
+					
+                        quake_window.active_tab_underline_x = x + offset_x;
+                        quake_window.active_tab_underline_width = width;
+					
+                        quake_window.queue_draw();
+                    });
+            
+                quake_window.destroy.connect((t) => {
+                        quit();
+                    });
+                quake_window.key_press_event.connect((w, e) => {
+                        return on_key_press(w, e);
+                    });
+                
+                box.pack_start(workspace_manager, true, true, 0);
                 Widgets.EventBox event_box = new Widgets.EventBox();
                 event_box.add(tabbar);
                 box.pack_start(event_box, false, false, 0);
@@ -146,26 +142,52 @@ public class Application : Object {
                 // First focus terminal after show quake terminal.
                 // Sometimes, some popup window (like wine program's popup notify window) will grab focus,
                 // so call window.present to make terminal get focus.
-                window.show.connect((t) => {
-                        window.present();
+                quake_window.show.connect((t) => {
+                        quake_window.present();
                     });
+                
+                quake_window.add_widget(box);
+                quake_window.show_all();
             } else {
-				box.pack_start(appbar, false, false, 0);
-				box.pack_start(workspace_manager, true, true, 0);
+                window = new Widgets.Window();
+                tabbar.draw_active_tab_underline.connect((t, x, width) => {
+                        int offset_x, offset_y;
+                        tabbar.translate_coordinates(window, 0, 0, out offset_x, out offset_y);
+					
+                        window.active_tab_underline_x = x + offset_x;
+                        window.active_tab_underline_width = width;
+					
+                        window.queue_draw();
+                    });
+            
+                window.destroy.connect((t) => {
+                        quit();
+                    });
+                window.window_state_event.connect((w) => {
+                        appbar.update_max_button();
+                    
+                        return false;
+                    });
+                window.key_press_event.connect((w, e) => {
+                        return on_key_press(w, e);
+                    });
+                
+                if (!has_start) {
+                    window.set_position(Gtk.WindowPosition.CENTER);
+                }
+            
+                box.pack_start(appbar, false, false, 0);
+                box.pack_start(workspace_manager, true, true, 0);
+			
+                window.add_widget(box);
+                window.show_all();
             }
-			
-			
-			// window.add(box);
-			window.add_widget(box);
-			window.show_all();
         }
     }
     
     public void quit() {
         if (workspace_manager.has_active_term()) {
-            ConfirmDialog dialog = new ConfirmDialog(
-                "Terminal still has running programs. Are you sure you want to quit?",
-                window);
+            ConfirmDialog dialog = new ConfirmDialog(window);
             dialog.confirm.connect((d) => {
                     Gtk.main_quit();
                 });
@@ -178,86 +200,93 @@ public class Application : Object {
 		try {
             string keyname = Keymap.get_keyevent_name(key_event);
             string[] ctrl_num_keys = {"Ctrl + 1", "Ctrl + 2", "Ctrl + 3", "Ctrl + 4", "Ctrl + 5", "Ctrl + 6", "Ctrl + 7", "Ctrl + 8", "Ctrl + 9"};
+            
+            KeyFile config_file;
+            if (quake_mode) {
+                config_file = quake_window.config.config_file;
+            } else {
+                config_file = window.config.config_file;
+            }
 		    
-			var search_key = window.config.config_file.get_string("keybind", "search");
+            var search_key = config_file.get_string("keybind", "search");
 		    if (search_key != "" && keyname == search_key) {
 		    	workspace_manager.focus_workspace.search();
 		    	return true;
 		    }
 		    
-		    var new_workspace_key = window.config.config_file.get_string("keybind", "new_workspace");
+		    var new_workspace_key = config_file.get_string("keybind", "new_workspace");
 		    if (new_workspace_key != "" && keyname == new_workspace_key) {
 				workspace_manager.new_workspace_with_current_directory();
 				return true;
 		    }
 		    
-		    var close_workspace_key = window.config.config_file.get_string("keybind", "close_workspace");
+		    var close_workspace_key = config_file.get_string("keybind", "close_workspace");
 		    if (close_workspace_key != "" && keyname == close_workspace_key) {
 		    	workspace_manager.tabbar.close_current_tab();
 		    	return true;
 		    }
 		    	
-		    var next_workspace_key = window.config.config_file.get_string("keybind", "next_workspace");
+		    var next_workspace_key = config_file.get_string("keybind", "next_workspace");
 		    if (next_workspace_key != "" && keyname == next_workspace_key) {
 		    	workspace_manager.tabbar.select_next_tab();
 		    	return true;
 		    }
 		    	
-		    var previous_workspace_key = window.config.config_file.get_string("keybind", "previous_workspace");
+		    var previous_workspace_key = config_file.get_string("keybind", "previous_workspace");
 		    if (previous_workspace_key != "" && keyname == previous_workspace_key) {
 		    	workspace_manager.tabbar.select_previous_tab();
 		    	return true;
 		    }
 		    
-		    var split_vertically_key = window.config.config_file.get_string("keybind", "split_vertically");
+		    var split_vertically_key = config_file.get_string("keybind", "split_vertically");
 		    if (split_vertically_key != "" && keyname == split_vertically_key) {
 		    	workspace_manager.focus_workspace.split_vertical();
 		    	return true;
 		    }
 		    
-		    var split_horizontally_key = window.config.config_file.get_string("keybind", "split_horizontally");
+		    var split_horizontally_key = config_file.get_string("keybind", "split_horizontally");
 		    if (split_horizontally_key != "" && keyname == split_horizontally_key) {
 		    	workspace_manager.focus_workspace.split_horizontal();
 		    	return true;
 		    }
 		    
-		    var select_up_window_key = window.config.config_file.get_string("keybind", "select_up_window");
+		    var select_up_window_key = config_file.get_string("keybind", "select_up_window");
 		    if (select_up_window_key != "" && keyname == select_up_window_key) {
 		    	workspace_manager.focus_workspace.select_up_window();
 		    	return true;
 		    }
 		    
-		    var select_down_window_key = window.config.config_file.get_string("keybind", "select_down_window");
+		    var select_down_window_key = config_file.get_string("keybind", "select_down_window");
 		    if (select_down_window_key != "" && keyname == select_down_window_key) {
 		    	workspace_manager.focus_workspace.select_down_window();
 		    	return true;
 		    }
 		    
-		    var select_left_window_key = window.config.config_file.get_string("keybind", "select_left_window");
+		    var select_left_window_key = config_file.get_string("keybind", "select_left_window");
 		    if (select_left_window_key != "" && keyname == select_left_window_key) {
 		    	workspace_manager.focus_workspace.select_left_window();
 		    	return true;
 		    }
 		    
-		    var select_right_window_key = window.config.config_file.get_string("keybind", "select_right_window");
+		    var select_right_window_key = config_file.get_string("keybind", "select_right_window");
 		    if (select_right_window_key != "" && keyname == select_right_window_key) {
 		    	workspace_manager.focus_workspace.select_right_window();
 		    	return true;
 		    }
 		    
-		    var close_window_key = window.config.config_file.get_string("keybind", "close_window");
+		    var close_window_key = config_file.get_string("keybind", "close_window");
 		    if (close_window_key != "" && keyname == close_window_key) {
 		    	workspace_manager.focus_workspace.close_focus_term();
 		    	return true;
 		    }
 		    
-		    var close_other_windows_key = window.config.config_file.get_string("keybind", "close_other_windows");
+		    var close_other_windows_key = config_file.get_string("keybind", "close_other_windows");
 		    if (close_other_windows_key != "" && keyname == close_other_windows_key) {
 		    	workspace_manager.focus_workspace.close_other_terms();
 		    	return true;
 		    }
 		    
-		    var toggle_fullscreen_key = window.config.config_file.get_string("keybind", "toggle_fullscreen");
+		    var toggle_fullscreen_key = config_file.get_string("keybind", "toggle_fullscreen");
 		    if (toggle_fullscreen_key != "" && keyname == toggle_fullscreen_key) {
 		    	if (!quake_mode) {
 		    		window.toggle_fullscreen();
@@ -265,18 +294,18 @@ public class Application : Object {
 		    	return true;
 		    }
 		    
-		    var show_helper_window_key = window.config.config_file.get_string("keybind", "show_helper_window");
+		    var show_helper_window_key = config_file.get_string("keybind", "show_helper_window");
 		    if (show_helper_window_key != "" && keyname == show_helper_window_key) {
 		    	return true;
 		    }
 		    
-		    var show_remote_panel_key = window.config.config_file.get_string("keybind", "show_remote_panel");
+		    var show_remote_panel_key = config_file.get_string("keybind", "show_remote_panel");
 		    if (show_remote_panel_key != "" && keyname == show_remote_panel_key) {
 		    	workspace_manager.focus_workspace.toggle_remote_panel(workspace_manager.focus_workspace);
 		    	return true;
 		    }
 		    
-		    var select_all_key = window.config.config_file.get_string("keybind", "select_all");
+		    var select_all_key = config_file.get_string("keybind", "select_all");
 		    if (select_all_key != "" && keyname == select_all_key) {
 		    	workspace_manager.focus_workspace.toggle_select_all();
 		    	return true;
@@ -295,14 +324,6 @@ public class Application : Object {
 		}
     }
 	
-	private bool on_key_release(Gtk.Widget widget, Gdk.EventKey key_event) {
-		if (Keymap.is_no_key_press(key_event)) {
-
-		}
-		
-		return false;
-	}
-    
     public static void main(string[] args) {
         // NOTE: Parse option '-e' or '-x' by myself.
         // OptionContext's function always lost argument after option '-e' or '-x'.

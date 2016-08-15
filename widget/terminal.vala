@@ -386,7 +386,7 @@ namespace Widgets {
         public bool on_scroll(Gtk.Widget widget, Gdk.EventScroll scroll_event) {
             if ((scroll_event.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
 				try {
-					Widgets.Window window = (Widgets.Window) term.get_toplevel();
+					Widgets.ConfigWindow window = (Widgets.ConfigWindow) term.get_toplevel();
 				
 					double old_opacity = window.config.config_file.get_double("general", "opacity");
 					double new_opacity = old_opacity;
@@ -417,7 +417,7 @@ namespace Widgets {
 			try {
                 string keyname = Keymap.get_keyevent_name(key_event);
                 
-			    Widgets.Window parent_window = (Widgets.Window) term.get_toplevel();
+			    Widgets.ConfigWindow parent_window = (Widgets.ConfigWindow) term.get_toplevel();
 			    
 			    var copy_key = parent_window.config.config_file.get_string("keybind", "copy_clipboard");
 			    if (copy_key != "" && keyname == copy_key) {
@@ -466,7 +466,7 @@ namespace Widgets {
 		
 		public void update_font_info() {
 			try {
-				Widgets.Window parent_window = (Widgets.Window) term.get_toplevel();
+				Widgets.ConfigWindow parent_window = (Widgets.ConfigWindow) term.get_toplevel();
 				var font = parent_window.config.config_file.get_string("general", "font");
 				Pango.FontDescription current_font = new Pango.FontDescription();
 				current_font.set_family(font);
@@ -641,7 +641,7 @@ namespace Widgets {
 		
 		public void setup_from_config() {
             try {
-                Widgets.Window parent_window = (Widgets.Window) term.get_toplevel();
+                Widgets.ConfigWindow parent_window = (Widgets.ConfigWindow) term.get_toplevel();
                 
                 var is_cursor_blink = parent_window.config.config_file.get_boolean("advanced", "cursor_blink_mode");
                 if (is_cursor_blink) {

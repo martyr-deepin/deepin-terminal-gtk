@@ -3,9 +3,7 @@ using Config;
 using Cairo;
 
 namespace Widgets {
-    public class BaseWindow : Gtk.Window {
-        public Config.Config config;
-        
+    public class BaseWindow : Widgets.ConfigWindow {
         public double window_frame_radius = 5.0;
         public int window_shadow_offset_y = 10;
         
@@ -22,25 +20,14 @@ namespace Widgets {
         public int window_save_width = 0;
         public int window_save_height = 0;
         
-        public Gtk.Box window_frame_box;
-        public Gtk.Box window_widget_box;
-        
         public bool window_is_normal = true;
-        public bool window_frameless;
         
         public int window_width;
         public int window_height;
         
-        public BaseWindow(bool frameless=false) {
-            window_frameless = frameless;
-            
-            load_config();
+        public BaseWindow() {
             transparent_window();
             init_window();
-        }
-        
-        public void load_config() {
-            config = new Config.Config();
         }
         
         public void transparent_window() {
@@ -104,19 +91,17 @@ namespace Widgets {
                 });
             
             window_state_event.connect((w, e) => {
-                    if (!window_frameless) {
-                        if (window_is_max() || window_is_fullscreen() || window_is_tiled()) {
-                            window_is_normal = false;
-                            get_window().set_shadow_width(0, 0, 0, 0);
+                    if (window_is_max() || window_is_fullscreen() || window_is_tiled()) {
+                        window_is_normal = false;
+                        get_window().set_shadow_width(0, 0, 0, 0);
                                 
-                            remove_margins();
-                        } else {
-                            window_is_normal = true;
+                        remove_margins();
+                    } else {
+                        window_is_normal = true;
                             
-                            get_window().set_shadow_width(window_frame_margin_start, window_frame_margin_end, window_frame_margin_top, window_frame_margin_bottom);
+                        get_window().set_shadow_width(window_frame_margin_start, window_frame_margin_end, window_frame_margin_top, window_frame_margin_bottom);
                                 
-                            add_margins();
-                        }
+                        add_margins();
                     }
                     
                     return false;
@@ -124,7 +109,7 @@ namespace Widgets {
             
             motion_notify_event.connect((w, e) => {
                     int response_radius = 5;
-                    if (!window_frameless && get_resizable()) {
+                    if (get_resizable()) {
                         var display = Gdk.Display.get_default();
                         
                         int window_x, window_y;
@@ -226,7 +211,7 @@ namespace Widgets {
             int height = window_frame_rect.height;
             Gdk.RGBA frame_color = Gdk.RGBA();
             
-            if (!window_frameless && window_is_normal) {
+            if (window_is_normal) {
                 try {
                     frame_color.parse(config.config_file.get_string("theme", "color1"));
                 
@@ -343,20 +328,6 @@ namespace Widgets {
                 } catch (GLib.KeyFileError e) {
                     print(e.message);
                 }
-            } else {
-                try {
-                    // Draw window frame.
-                    cr.save();
-                    cr.set_source_rgba(0, 0, 0, config.config_file.get_double("general", "opacity"));
-                    Draw.draw_rectangle(cr, x, y, width, height, false);
-                    
-                    // Draw line *innner* of window frame.
-                    frame_color.parse(config.config_file.get_string("theme", "color1"));
-                    cr.set_source_rgba(frame_color.red, frame_color.green, frame_color.blue, config.config_file.get_double("general", "opacity"));
-                    Draw.draw_rectangle(cr, x + 1, y + 1, width - 2 , height - 2, false);
-                } catch (GLib.KeyFileError e) {
-                    print(e.message);
-                }
             }
         }
         
@@ -381,13 +352,8 @@ namespace Widgets {
         }
         
         public void set_window_size(int width, int height) {
-            if (window_frameless) {
-                set_size_request(width, height);
-            } else {
-                set_default_size(
-                    width + window_frame_margin_start + window_frame_margin_end,
-                    height + window_frame_margin_top + window_frame_margin_bottom);
-            }
+            set_default_size(width + window_frame_margin_start + window_frame_margin_end,
+                             height + window_frame_margin_top + window_frame_margin_bottom);
         }
         
         public virtual void draw_window_below(Cairo.Context cr) {

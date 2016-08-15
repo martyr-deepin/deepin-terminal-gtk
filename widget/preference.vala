@@ -16,7 +16,7 @@ namespace Widgets {
 		
 		public ScrolledWindow scrolledwindow;
 		
-		public Widgets.Window parent_window;
+		public Widgets.ConfigWindow parent_window;
 		
 		public Gtk.Label theme_label;
 		public Gtk.ComboBoxText theme_combox;
@@ -153,7 +153,7 @@ namespace Widgets {
 			font_size_spinbutton = create_spinbutton(0, 100, 1);
 			scroll_line_spinbutton = create_spinbutton(0, 100, 1);
 			
-            parent_window = (Widgets.Window) window;
+            parent_window = (Widgets.ConfigWindow) window;
             
             focus_widget = widget;
             
