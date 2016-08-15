@@ -79,7 +79,7 @@ namespace Widgets {
                         Gdk.Rectangle screen_rect;
                         screen.get_monitor_geometry(monitor, out screen_rect);
 
-                        if (rect.x + rect.width == screen_rect.width) {
+                        if (rect.x + rect.width - window_frame_margin_start == screen_rect.width) {
                             rect.x = window_frame_margin_start;
                             rect.y = 0;
                             rect.width = width - window_frame_margin_start;
@@ -121,8 +121,11 @@ namespace Widgets {
                         int monitor = screen.get_monitor_at_window(screen.get_active_window());
                         Gdk.Rectangle screen_rect;
                         screen.get_monitor_geometry(monitor, out screen_rect);
+                        
+                        int width, height;
+                        get_size(out width, out height);
 
-                        if (rect.x + rect.width == screen_rect.width) {
+                        if (rect.x + rect.width - window_frame_margin_start == screen_rect.width) {
                             get_window().set_shadow_width(window_frame_margin_start, 0, 0, 0);
                             
                             window_frame_box.margin_left = window_frame_margin_start;
