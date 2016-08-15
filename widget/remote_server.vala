@@ -66,7 +66,7 @@ namespace Widgets {
                 focus_widget = widget;
                 server_info = info;
                 config_file = config;
-            
+                
                 set_transient_for(window);
                 set_default_geometry(window_init_width, window_init_height);
                 set_resizable(false);
@@ -82,15 +82,41 @@ namespace Widgets {
                 move(x + (window_alloc.width - window_init_width) / 2,
                      y + (window_alloc.height - window_init_height) / 3);
             
-                var titlebar = new Titlebar();
-                titlebar.close_button.button_release_event.connect((b) => {
+                var overlay = new Gtk.Overlay();
+            
+                box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+                
+                var top_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+                top_box.margin_bottom = 10;
+                box.pack_start(top_box, false, false, 0);
+                
+                // Make label center of titlebar.
+                var spacing_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+                spacing_box.set_size_request(27, -1);
+                top_box.pack_start(spacing_box, false, false, 0);
+                
+                Gtk.Label title_label = new Gtk.Label(null);
+                title_label.get_style_context().add_class("remote_server_label");
+                top_box.pack_start(title_label, true, true, 0);
+                                  
+                if (server_info != null) {
+                    title_label.set_text("Edit server");
+                } else {
+                    title_label.set_text("Add server");
+                }
+                
+                var close_button = new ImageButton("titlebar_close");
+                close_button.margin_top = 3;
+                close_button.margin_right = 3;
+                close_button.set_halign(Gtk.Align.END);
+            
+                close_button.button_release_event.connect((b) => {
                         this.destroy();
                     
                         return false;
                     });
             
-                box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-                box.pack_start(titlebar, false, false, 0);
+                top_box.pack_start(close_button, false, false, 0);
             
                 destroy.connect((w) => {
                         if (focus_widget != null) {
@@ -330,7 +356,22 @@ namespace Widgets {
                 button_box.pack_start(confirm_button, false, false, 0);
                 box.pack_start(button_box, false, false, 0);
             
-                add_widget(box);
+                var event_area = new Widgets.WindowEventArea(this);
+                event_area.margin_end = 27;
+                
+                configure_event.connect((w) => {
+                        int width, height;
+                        get_size(out width, out height);
+                        
+                        event_area.margin_bottom = height - 27;
+                        
+                        return false;
+                    });
+            
+                overlay.add(box);
+                overlay.add_overlay(event_area);
+            
+                add_widget(overlay);
             } catch (Error e) {
                 error ("%s", e.message);
             }

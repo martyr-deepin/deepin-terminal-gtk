@@ -28,6 +28,8 @@ namespace Widgets {
             var overlay = new Gtk.Overlay();
 
             var close_button = new ImageButton("titlebar_close");
+            close_button.margin_top = 3;
+            close_button.margin_right = 3;
             close_button.set_halign(Gtk.Align.END);
             
             close_button.button_release_event.connect((b) => {
@@ -52,7 +54,6 @@ namespace Widgets {
             box.pack_start(about_widget, true, true, 0);
 
             var event_area = new Widgets.WindowEventArea(this);
-            event_area = new Widgets.WindowEventArea(this);
             event_area.margin_end = 27;
             event_area.margin_bottom = 250;
             

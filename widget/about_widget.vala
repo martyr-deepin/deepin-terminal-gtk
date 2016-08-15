@@ -6,14 +6,15 @@ namespace Widgets {
         public int height = 320;
         
         public int icon_y = 13;
-        public int name_y = 107;
+        public int name_y = 107 + 6;
+        public int version_y = 140 + 6;
+        public int logo_y = 170 + 6;
+        public int homepage_y = 204 + 6;
+        public int about_y = 245 + 6;
+        
         public int name_height = 13;
-        public int version_y = 159;
         public int version_height = 12;
         public int version_size = 11;
-        public int logo_y = 195;
-        public int homepage_y = 218;
-        public int about_y = 259;
         public int about_x = 38;
         public int about_height = 9;
         

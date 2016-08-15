@@ -38,6 +38,8 @@ namespace Widgets {
             var box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             
             var close_button = new ImageButton("titlebar_close");
+            close_button.margin_top = 3;
+            close_button.margin_right = 3;
             close_button.set_halign(Gtk.Align.END);
             
             close_button.button_release_event.connect((b) => {
@@ -97,7 +99,6 @@ namespace Widgets {
             box.pack_start(button_box, true, true, 0);
             
             var event_area = new Widgets.WindowEventArea(this);
-            event_area = new Widgets.WindowEventArea(this);
             event_area.margin_end = 27;
             event_area.margin_bottom = window_init_height - Constant.TITLEBAR_HEIGHT;
             

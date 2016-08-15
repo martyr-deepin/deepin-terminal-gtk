@@ -152,6 +152,10 @@ namespace Widgets {
                 
             }
 			
+            var split_line = create_split_line();
+            split_line.margin_left = 1;
+            home_page_box.pack_start(split_line, false, false, 0);
+                
 			Widgets.AddServerButton add_server_button = create_add_server_button();
             home_page_box.pack_start(add_server_button, false, false, 0);
         }

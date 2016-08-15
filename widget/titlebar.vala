@@ -11,6 +11,8 @@ namespace Widgets {
         
         public Titlebar() {
             close_button = new ImageButton("titlebar_close");
+            close_button.margin_top = 3;
+            close_button.margin_right = 3;
             close_button.set_halign(Gtk.Align.END);
             
             Box box = new Box(Gtk.Orientation.HORIZONTAL, 0);
