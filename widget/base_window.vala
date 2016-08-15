@@ -274,10 +274,6 @@ namespace Widgets {
             window_widget_box.margin_end = window_widget_margin_end;
         }
         
-        public void remove_margins() {
-            window_frame_box.margin = 0;
-        }
-        
         public void shadow_active() {
             window_widget_box.get_style_context().remove_class("window_shadow_inactive");
             window_widget_box.get_style_context().add_class("window_shadow_active");
@@ -290,7 +286,6 @@ namespace Widgets {
         
         public void draw_window_widgets(Cairo.Context cr) {
             Utils.propagate_draw(this, cr);
-            // Utils.propagate_draw((Gtk.Container) window_widget, cr);
         }
         
         public void draw_window_frame(Cairo.Context cr) {
