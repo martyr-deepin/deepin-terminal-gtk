@@ -79,8 +79,8 @@ public class Application : Object {
             Utils.load_css_theme(Utils.get_root_path("style.css"));
             
             Tabbar tabbar = new Tabbar(quake_mode);
-            Appbar appbar = new Appbar(tabbar, quake_mode, this);
-            workspace_manager = new WorkspaceManager(appbar.tabbar, commands, work_directory); 
+            workspace_manager = new WorkspaceManager(tabbar, commands, work_directory); 
+            Appbar appbar = new Appbar(tabbar, quake_mode, this, workspace_manager);
             
             appbar.tabbar.press_tab.connect((t, tab_index, tab_id) => {
 					appbar.tabbar.unhighlight_tab(tab_id);

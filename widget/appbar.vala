@@ -25,8 +25,11 @@ namespace Widgets {
         
         public Widgets.WindowEventArea event_area;
         
-        public Appbar(Tabbar tab_bar, bool mode, Application app) {
+        public WorkspaceManager workspace_manager;
+        
+        public Appbar(Tabbar tab_bar, bool mode, Application app, WorkspaceManager manager) {
 			quake_mode = mode;
+            workspace_manager = manager;
 			
 			set_size_request(-1, height);
 			
@@ -52,6 +55,7 @@ namespace Widgets {
                     
                     var menu_content = new List<Menu.MenuItem>();
                     menu_content.append(new Menu.MenuItem("new_window", "New window"));
+                    menu_content.append(new Menu.MenuItem("remote_manage", "Connect remote"));
                     menu_content.append(new Menu.MenuItem("", ""));
                     menu_content.append(new Menu.MenuItem("preference", "Preference"));
                     menu_content.append(new Menu.MenuItem("help", "Help"));
@@ -130,6 +134,9 @@ namespace Widgets {
                         print(e.message);
                     }
 			    	break;
+                case "remote_manage":
+                    workspace_manager.focus_workspace.show_remote_panel(workspace_manager.focus_workspace);
+                    break;
 				case "help":
 					break;
 			    case "about":
