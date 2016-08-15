@@ -39,7 +39,6 @@ namespace Widgets {
             }
             
             destroy.connect((w) => {
-                    print("%i %i\n", window_save_width, window_save_height);
                     config.config_file.set_integer("advanced", "window_width", window_save_width);
                     config.config_file.set_integer("advanced", "window_height", window_save_height);
                     config.save();

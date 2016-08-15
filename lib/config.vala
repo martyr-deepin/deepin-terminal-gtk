@@ -124,6 +124,7 @@ namespace Config {
             config_file.set_string("advanced", "window_state", "window");
             config_file.set_integer("advanced", "window_width", 0);
             config_file.set_integer("advanced", "window_height", 0);
+            config_file.set_integer("advanced", "quake_window_height", 0);
 			
 			config_file.set_string("theme", "color1", "#000000");
 			config_file.set_string("theme", "color2", "#073642");

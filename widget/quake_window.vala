@@ -1,5 +1,6 @@
 using Gtk;
 using Widgets;
+using XUtils;
 
 namespace Widgets {
     public class QuakeWindow : Widgets.ConfigWindow {
@@ -8,9 +9,12 @@ namespace Widgets {
         public int active_tab_underline_x;
 		public int active_tab_underline_width;
         
-        public int window_save_height;
+        public int window_save_height = 0;
         
         public int window_frame_margin_bottom = 60;
+        
+        public int press_x;
+        public int press_y;
         
         public QuakeWindow() {
             active_tab_color = Gdk.RGBA();
@@ -26,7 +30,25 @@ namespace Widgets {
             
             set_decorated(false);
             set_keep_above(true);
-            set_size_request(rect.width, rect.height / 3);
+            
+            Gdk.Geometry geo = Gdk.Geometry();
+            geo.min_width = rect.width;
+            geo.min_height = rect.height / 3;
+            geo.max_width = rect.width;
+            geo.max_height = rect.height / 2;
+            this.set_geometry_hints(null, geo, Gdk.WindowHints.MIN_SIZE | Gdk.WindowHints.MAX_SIZE);            
+            
+            try {
+                var config_height = config.config_file.get_integer("advanced", "quake_window_height");
+                if (config_height == 0) {
+                    set_default_size(rect.width, rect.height / 3);
+                } else {
+                    set_default_size(rect.width, config_height);
+                }
+            } catch (Error e) {
+                print(e.message);
+            }
+            
             set_skip_taskbar_hint(true);
             set_skip_pager_hint(true);
             set_type_hint(Gdk.WindowTypeHint.DIALOG);  // DIALOG hint will give right window effect
@@ -50,12 +72,14 @@ namespace Widgets {
                     
                     return false;
                 });
-
+            
             configure_event.connect((w) => {
                     int width, height;
                     get_size(out width, out height);
 
                     window_save_height = height - window_frame_margin_bottom;
+                    config.config_file.set_integer("advanced", "quake_window_height", window_save_height);
+                    config.save();
                     
                     Cairo.RectangleInt input_shape_rect;
                     get_window().get_frame_extents(out input_shape_rect);
@@ -69,6 +93,60 @@ namespace Widgets {
                     get_window().input_shape_combine_region(shape, 0, 0);
                     
                     queue_draw();
+                    
+                    return false;
+                });
+            
+            button_press_event.connect((w, e) => {
+                    int response_radius = 5;
+                        
+                    int window_x, window_y;
+                    get_window().get_origin(out window_x, out window_y);
+                        
+                    int width, height;
+                    get_size(out width, out height);
+
+                    var bottom_side_start = window_y + height - window_frame_margin_bottom - response_radius;
+                    var bottom_side_end = window_y + height - window_frame_margin_bottom;
+                    
+                    if (e.y_root > bottom_side_start && e.y_root < bottom_side_end) {
+                        e.device.get_position(null, out press_x, out press_y);
+                        
+                        GLib.Timeout.add(10, () => {
+                                int pointer_x, pointer_y;
+                                e.device.get_position(null, out pointer_x, out pointer_y);
+                                    
+                                if (pointer_x != press_x || pointer_y != press_y) {
+                                    resize_window(this, pointer_x, pointer_y, (int) e.button, Gdk.CursorType.BOTTOM_SIDE);
+                                    
+                                    return false;
+                                } else {
+                                    return true;
+                                }
+                            });
+                    }
+                    
+                    return false;
+                });
+            
+            motion_notify_event.connect((w, e) => {
+                    int response_radius = 5;
+                    var display = Gdk.Display.get_default();
+                        
+                    int window_x, window_y;
+                    get_window().get_origin(out window_x, out window_y);
+                        
+                    int width, height;
+                    get_size(out width, out height);
+
+                    var bottom_side_start = window_y + height - window_frame_margin_bottom - response_radius;
+                    var bottom_side_end = window_y + height - window_frame_margin_bottom;
+                    
+                    if (e.y_root > bottom_side_start && e.y_root < bottom_side_end) {
+                        get_window().set_cursor(new Gdk.Cursor.for_display(display, Gdk.CursorType.BOTTOM_SIDE));
+                    } else {
+                        get_window().set_cursor(null);
+                    }
                     
                     return false;
                 });

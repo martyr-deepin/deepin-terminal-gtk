@@ -1,5 +1,6 @@
 using Gtk;
 using Widgets;
+using XUtils;
 
 namespace Widgets {
     public class WindowEventArea : Gtk.EventBox {
@@ -8,33 +9,12 @@ namespace Widgets {
         public double press_x = 0;
         public double press_y = 0;
         
-        public Gdk.Window root_window;
-        public weak X.Display display;
-        public weak X.Window xrootwindow;
-        private weak Gdk.Display gdk_display;
-        private Gdk.X11.Window x11_root_window;
-        
-        public const int _NET_WM_MOVERESIZE_MOVE = 8;
-        
         public Gtk.Widget? child_before_leave;
     
         public WindowEventArea(Gtk.Container area) {
             drawing_area = area;
             
             visible_window = false;
-            
-            // Get default gdk display
-            this.gdk_display = Gdk.Display.get_default();
-	    
-            // Get default xdisplay
-            this.display = Gdk.X11.get_default_xdisplay();
-	    
-            // Get rootwindow
-            this.root_window = Gdk.get_default_root_window();
-            this.xrootwindow = this.display.root_window(0);
-	    
-            // And set x11_root_window!
-            this.x11_root_window = (Gdk.X11.Window)this.root_window;            
             
             add_events(Gdk.EventMask.BUTTON_PRESS_MASK
                        | Gdk.EventMask.BUTTON_RELEASE_MASK
@@ -66,8 +46,6 @@ namespace Widgets {
             });
             
             motion_notify_event.connect((w, e) => {
-                    this.display.ungrab_pointer((int) e.time);
-                    
                     var child = get_child_at_pos(drawing_area, (int) e.x, (int) e.y);
                     child_before_leave = child;
                     
@@ -102,14 +80,7 @@ namespace Widgets {
                             e.device.get_position(null, out pointer_x, out pointer_y);
                                 
                             if (pointer_x != press_x || pointer_y != press_y) {
-                                var seat = this.gdk_display.get_default_seat();
-                                seat.ungrab();
-                                send_message((long) (pointer_x),
-                                             (long) (pointer_y),
-                                             _NET_WM_MOVERESIZE_MOVE,
-                                             (int) e.button
-                                             );
-                                        
+                                move_window(this, pointer_x, pointer_y, (int) e.button);
                                 return false;
                             } else {
                                 return true;
@@ -167,29 +138,6 @@ namespace Widgets {
                     
                     return true;
                 });
-        }
-        
-        public void send_message(long x, long y, int action, int button) {
-            X.Event event = X.Event();
-	    
-            event.xclient.type = X.EventType.ClientMessage;
-            event.xclient.message_type = Gdk.X11.get_xatom_by_name("_NET_WM_MOVERESIZE");
-            event.xclient.display = this.display;
-            event.xclient.window = (int)((Gdk.X11.Window) this.get_toplevel().get_window()).get_xid();
-            event.xclient.format = 32;
-            event.xclient.data.l[0] = x;
-            event.xclient.data.l[1] = y;
-            event.xclient.data.l[2] = action;
-            event.xclient.data.l[3] = button;
-            event.xclient.data.l[4] = 0;  // this value must be 0, otherwise moveresize won't work.
-	    
-            this.display.send_event(
-                this.xrootwindow,
-                false,
-                X.EventMask.SubstructureNotifyMask | X.EventMask.SubstructureRedirectMask,
-                ref event);
-                                        
-            this.display.flush();
         }
         
         public Gtk.Widget? get_child_at_pos(Gtk.Container container, int x, int y) {
