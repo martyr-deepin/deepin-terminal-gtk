@@ -98,15 +98,13 @@ namespace Widgets {
                 });
             
             button_press_event.connect((w, e) => {
-                    int response_radius = 5;
-                        
                     int window_x, window_y;
                     get_window().get_origin(out window_x, out window_y);
                         
                     int width, height;
                     get_size(out width, out height);
 
-                    var bottom_side_start = window_y + height - window_frame_margin_bottom - response_radius;
+                    var bottom_side_start = window_y + height - window_frame_margin_bottom - Constant.RESPONSE_RADIUS;
                     var bottom_side_end = window_y + height - window_frame_margin_bottom;
                     
                     if (e.y_root > bottom_side_start && e.y_root < bottom_side_end) {
@@ -130,7 +128,6 @@ namespace Widgets {
                 });
             
             motion_notify_event.connect((w, e) => {
-                    int response_radius = 5;
                     var display = Gdk.Display.get_default();
                         
                     int window_x, window_y;
@@ -139,7 +136,7 @@ namespace Widgets {
                     int width, height;
                     get_size(out width, out height);
 
-                    var bottom_side_start = window_y + height - window_frame_margin_bottom - response_radius;
+                    var bottom_side_start = window_y + height - window_frame_margin_bottom - Constant.RESPONSE_RADIUS;
                     var bottom_side_end = window_y + height - window_frame_margin_bottom;
                     
                     if (e.y_root > bottom_side_start && e.y_root < bottom_side_end) {

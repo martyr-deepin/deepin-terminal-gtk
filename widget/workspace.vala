@@ -56,7 +56,7 @@ namespace Widgets {
                 });
             term.term.button_press_event.connect((w, e) => {
                     remove_search_box();
-					remove_remote_panel();
+					hide_remote_panel();
                     
                     return false;
                 });
@@ -511,7 +511,7 @@ namespace Widgets {
 			if (remote_panel == null) {
 				show_remote_panel(workspace);
 			} else {
-				remove_remote_panel();
+				hide_remote_panel();
 			}
 		}
 		
@@ -532,7 +532,7 @@ namespace Widgets {
 			}
 		}
 		
-		public void remove_remote_panel() {
+		public void hide_remote_panel() {
 			if (remote_panel != null) {
 				Gtk.Allocation rect;
 				get_allocation(out rect);
@@ -541,6 +541,14 @@ namespace Widgets {
                 hide_timer.reset();
 			}
 		}
+        
+        public void remove_remote_panel() {
+            if (remote_panel != null) {
+                remove(remote_panel);
+                remote_panel.destroy();
+                remote_panel = null;
+            }
+        }
         
 		public void on_show_animate(double progress) {
             remote_panel.margin_left = (int) (show_slider_start_x - Constant.SLIDER_WIDTH * progress);
@@ -555,11 +563,10 @@ namespace Widgets {
             
             if (progress >= 1.0) {
 				hide_timer.stop();
-                
-                remove(remote_panel);
-                remote_panel.destroy();
-                remote_panel = null;
+
+                remove_remote_panel();
 			}
 		}
+        
     }
 }

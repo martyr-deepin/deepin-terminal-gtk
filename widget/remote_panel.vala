@@ -57,7 +57,7 @@ namespace Widgets {
             show_home_page();
 			
 			draw.connect(on_draw);
-		}
+        }
 		
 		private bool on_draw(Gtk.Widget widget, Cairo.Context cr) {
             Gtk.Allocation rect;
@@ -197,7 +197,7 @@ namespace Widgets {
                 DataOutputStream dos = new DataOutputStream(ostream);
                 dos.put_string(ssh_script_content);
                                        
-                workspace.remove_remote_panel();
+                workspace.hide_remote_panel();
                 focus_widget.grab_focus();
 
 				workspace_manager.new_workspace_with_current_directory();

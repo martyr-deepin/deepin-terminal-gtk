@@ -153,7 +153,6 @@ namespace Widgets {
                 });
             
             button_press_event.connect((w, e) => {
-                    int response_radius = 5;
                     if (get_resizable()) {
                         int window_x, window_y;
                         get_window().get_origin(out window_x, out window_y);
@@ -162,12 +161,12 @@ namespace Widgets {
                         get_size(out width, out height);
                         
                         var left_side_start = window_x + window_frame_margin_start;
-                        var left_side_end = window_x + window_frame_margin_start + response_radius;
-                        var right_side_start = window_x + width - window_frame_margin_end - response_radius;
+                        var left_side_end = window_x + window_frame_margin_start + Constant.RESPONSE_RADIUS;
+                        var right_side_start = window_x + width - window_frame_margin_end - Constant.RESPONSE_RADIUS;
                         var right_side_end = window_x + width - window_frame_margin_end;
                         var top_side_start = window_y + window_frame_margin_top;
-                        var top_side_end = window_y + window_frame_margin_top + response_radius;
-                        var bottom_side_start = window_y + height - window_frame_margin_bottom - response_radius;
+                        var top_side_end = window_y + window_frame_margin_top + Constant.RESPONSE_RADIUS;
+                        var bottom_side_start = window_y + height - window_frame_margin_bottom - Constant.RESPONSE_RADIUS;
                         var bottom_side_end = window_y + height - window_frame_margin_bottom;
                         
                         int pointer_x, pointer_y;
@@ -202,7 +201,6 @@ namespace Widgets {
                 });
             
             motion_notify_event.connect((w, e) => {
-                    int response_radius = 5;
                     if (get_resizable()) {
                         var display = Gdk.Display.get_default();
                         
@@ -213,12 +211,12 @@ namespace Widgets {
                         get_size(out width, out height);
                         
                         var left_side_start = window_x + window_frame_margin_start;
-                        var left_side_end = window_x + window_frame_margin_start + response_radius;
-                        var right_side_start = window_x + width - window_frame_margin_end - response_radius;
+                        var left_side_end = window_x + window_frame_margin_start + Constant.RESPONSE_RADIUS;
+                        var right_side_start = window_x + width - window_frame_margin_end - Constant.RESPONSE_RADIUS;
                         var right_side_end = window_x + width - window_frame_margin_end;
                         var top_side_start = window_y + window_frame_margin_top;
-                        var top_side_end = window_y + window_frame_margin_top + response_radius;
-                        var bottom_side_start = window_y + height - window_frame_margin_bottom - response_radius;
+                        var top_side_end = window_y + window_frame_margin_top + Constant.RESPONSE_RADIUS;
+                        var bottom_side_start = window_y + height - window_frame_margin_bottom - Constant.RESPONSE_RADIUS;
                         var bottom_side_end = window_y + height - window_frame_margin_bottom;
                         
                         if (e.x_root > left_side_start && e.x_root < left_side_end) {

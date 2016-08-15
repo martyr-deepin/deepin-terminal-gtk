@@ -172,6 +172,12 @@ public class Application : Object {
                         return on_key_press(w, e);
                     });
                 
+                window.configure_event.connect((w) => {
+                        workspace_manager.focus_workspace.remove_remote_panel();
+                        
+                        return false;
+                    });
+                
                 if (!has_start) {
                     window.set_position(Gtk.WindowPosition.CENTER);
                 }
