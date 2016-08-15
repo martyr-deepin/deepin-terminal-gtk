@@ -44,11 +44,13 @@ main: ./project_path.c \
 	valac -o main \
 	-X -w \
 	-X -lm \
+	--Xcc=-DWNCK_I_KNOW_THIS_IS_UNSTABLE \
     --pkg=gtk+-3.0 \
     --pkg=vte-2.91 \
     --pkg=gee-1.0 \
     --pkg=json-glib-1.0 \
     --pkg=gio-2.0 \
+    --pkg=libwnck-3.0 \
     --pkg=posix \
     --pkg=gdk-x11-3.0 \
     --pkg=xcb \
