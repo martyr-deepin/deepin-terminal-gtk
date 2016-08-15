@@ -1,6 +1,7 @@
 using Gtk;
 using Config;
 using Cairo;
+using XUtils;
 
 namespace Widgets {
     public class BaseWindow : Widgets.ConfigWindow {
@@ -146,6 +147,55 @@ namespace Widgets {
                         get_window().set_shadow_width(window_frame_margin_start, window_frame_margin_end, window_frame_margin_top, window_frame_margin_bottom);
                                 
                         add_margins();
+                    }
+                    
+                    return false;
+                });
+            
+            button_press_event.connect((w, e) => {
+                    int response_radius = 5;
+                    if (get_resizable()) {
+                        int window_x, window_y;
+                        get_window().get_origin(out window_x, out window_y);
+                        
+                        int width, height;
+                        get_size(out width, out height);
+                        
+                        var left_side_start = window_x + window_frame_margin_start;
+                        var left_side_end = window_x + window_frame_margin_start + response_radius;
+                        var right_side_start = window_x + width - window_frame_margin_end - response_radius;
+                        var right_side_end = window_x + width - window_frame_margin_end;
+                        var top_side_start = window_y + window_frame_margin_top;
+                        var top_side_end = window_y + window_frame_margin_top + response_radius;
+                        var bottom_side_start = window_y + height - window_frame_margin_bottom - response_radius;
+                        var bottom_side_end = window_y + height - window_frame_margin_bottom;
+                        
+                        int pointer_x, pointer_y;
+                        e.device.get_position(null, out pointer_x, out pointer_y);
+                                
+                        if (e.x_root > left_side_start && e.x_root < left_side_end) {
+                            if (e.y_root > top_side_start && e.y_root < top_side_end) {
+                                resize_window(this, pointer_x, pointer_y, (int) e.button, Gdk.CursorType.TOP_LEFT_CORNER);
+                            } else if (e.y_root > bottom_side_start && e.y_root < bottom_side_end) {
+                                resize_window(this, pointer_x, pointer_y, (int) e.button, Gdk.CursorType.BOTTOM_LEFT_CORNER);
+                            } else {
+                                resize_window(this, pointer_x, pointer_y, (int) e.button, Gdk.CursorType.LEFT_SIDE);
+                            }
+                        } else if (e.x_root > right_side_start && e.x_root < right_side_end) {
+                            if (e.y_root > top_side_start && e.y_root < top_side_end) {
+                                resize_window(this, pointer_x, pointer_y, (int) e.button, Gdk.CursorType.TOP_RIGHT_CORNER);
+                            } else if (e.y_root > bottom_side_start && e.y_root < bottom_side_end) {
+                                resize_window(this, pointer_x, pointer_y, (int) e.button, Gdk.CursorType.BOTTOM_RIGHT_CORNER);
+                            } else {
+                                resize_window(this, pointer_x, pointer_y, (int) e.button, Gdk.CursorType.RIGHT_SIDE);
+                            }
+                        } else {
+                            if (e.y_root > top_side_start && e.y_root < top_side_end) {
+                                resize_window(this, pointer_x, pointer_y, (int) e.button, Gdk.CursorType.TOP_SIDE);
+                            } else if (e.y_root > bottom_side_start && e.y_root < bottom_side_end) {
+                                resize_window(this, pointer_x, pointer_y, (int) e.button, Gdk.CursorType.BOTTOM_SIDE);
+                            }
+                        }
                     }
                     
                     return false;

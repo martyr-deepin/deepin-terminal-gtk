@@ -17,6 +17,11 @@ namespace Widgets {
             Gdk.Rectangle rect;
             screen.get_monitor_geometry(monitor, out rect);
             
+            Gdk.Geometry geo = Gdk.Geometry();
+            geo.min_width = rect.width / 3;
+            geo.min_height = rect.height / 3;
+            this.set_geometry_hints(null, geo, Gdk.WindowHints.MIN_SIZE);
+            
             add_margins();
             try {
                 var window_state = config.config_file.get_value("advanced", "window_state");
