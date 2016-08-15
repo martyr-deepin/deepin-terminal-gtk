@@ -62,7 +62,6 @@ namespace Widgets {
                     get_size(out width, out height);
                     
                     if (!window_is_max() && !window_is_fullscreen() && !window_is_tiled()) {
-                    
                         window_save_width = width - window_frame_margin_start - window_frame_margin_end;
                         window_save_height = height - window_frame_margin_top - window_frame_margin_bottom;
                     }
@@ -70,11 +69,27 @@ namespace Widgets {
                     Cairo.RectangleInt rect;
                     get_window().get_frame_extents(out rect);
                     
-                    if (window_is_max() || window_is_fullscreen() || window_is_tiled()) {
+                    if (window_is_max() || window_is_fullscreen()) {
                         rect.x = 0;
                         rect.y = 0;
                         rect.width = width;
                         rect.height = height;
+                    } else if (window_is_tiled()) {
+                        int monitor = screen.get_monitor_at_window(screen.get_active_window());
+                        Gdk.Rectangle screen_rect;
+                        screen.get_monitor_geometry(monitor, out screen_rect);
+
+                        if (rect.x + rect.width == screen_rect.width) {
+                            rect.x = window_frame_margin_start;
+                            rect.y = 0;
+                            rect.width = width - window_frame_margin_start;
+                            rect.height = height;
+                        } else {
+                            rect.x = 0;
+                            rect.y = 0;
+                            rect.width = width - window_frame_margin_end;
+                            rect.height = height;
+                        }
                     } else {
                         rect.x = window_frame_margin_start;
                         rect.y = window_frame_margin_top;
@@ -91,11 +106,37 @@ namespace Widgets {
                 });
             
             window_state_event.connect((w, e) => {
-                    if (window_is_max() || window_is_fullscreen() || window_is_tiled()) {
+                    if (window_is_max() || window_is_fullscreen()) {
                         window_is_normal = false;
+                        
                         get_window().set_shadow_width(0, 0, 0, 0);
                                 
-                        remove_margins();
+                        window_frame_box.margin = 0;
+                    } else if (window_is_tiled()) {
+                        window_is_normal = false;
+                        
+                        Cairo.RectangleInt rect;
+                        get_window().get_frame_extents(out rect);
+                        
+                        int monitor = screen.get_monitor_at_window(screen.get_active_window());
+                        Gdk.Rectangle screen_rect;
+                        screen.get_monitor_geometry(monitor, out screen_rect);
+
+                        if (rect.x + rect.width == screen_rect.width) {
+                            get_window().set_shadow_width(window_frame_margin_start, 0, 0, 0);
+                            
+                            window_frame_box.margin_left = window_frame_margin_start;
+                            window_frame_box.margin_right = 0;
+                            window_frame_box.margin_top = 0;
+                            window_frame_box.margin_bottom = 0;
+                        } else {
+                            get_window().set_shadow_width(0, window_frame_margin_end, 0, 0);
+                            
+                            window_frame_box.margin_left = 0;
+                            window_frame_box.margin_right = window_frame_margin_end;
+                            window_frame_box.margin_top = 0;
+                            window_frame_box.margin_bottom = 0;
+                        }
                     } else {
                         window_is_normal = true;
                             
