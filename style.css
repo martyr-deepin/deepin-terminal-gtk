@@ -33,15 +33,26 @@
 .window_shadow_active {
 	background: transparent;
 	border-radius: 5px;
-	box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.3);
-	/* box-shadow: 0px 10px 20px 0px rgba(255,0,0,0.3); */
+	box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.3),inset 0 1px rgba(0,0,0,0.7),inset 0 -1px rgba(0,0,0,0.7),inset 1px 0 rgba(0,0,0,0.7),inset -1px 0 rgba(0,0,0,0.7) ;
 }
 
 .window_shadow_inactive {
     background: transparent;
     border-radius: 5px;
-    box-shadow: 0px 10px 14px 0px rgba(0,0,0,0.15);
-    /* box-shadow: 0px 10px 14px 0px rgba(0,255,0,0.15); */
+    box-shadow: 0px 10px 14px 0px rgba(0,0,0,0.15),inset 0 1px rgba(0,0,0,0.5),inset 0 -1px rgba(0,0,0,0.5),inset 1px 0 rgba(0,0,0,0.5),inset -1px 0 rgba(0,0,0,0.5) ;
+}
+
+
+.window_noradius_shadow_active {
+	background: transparent;
+	border-radius: 0px;
+	box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.3),inset 0 1px rgba(0,0,0,0.7),inset 0 -1px rgba(0,0,0,0.7),inset 1px 0 rgba(0,0,0,0.7),inset -1px 0 rgba(0,0,0,0.7) ;
+}
+
+.window_noradius_shadow_inactive {
+    background: transparent;
+    border-radius: 0px;
+    box-shadow: 0px 10px 14px 0px rgba(0,0,0,0.15),inset 0 1px rgba(0,0,0,0.5),inset 0 -1px rgba(0,0,0,0.5),inset 1px 0 rgba(0,0,0,0.5),inset -1px 0 rgba(0,0,0,0.5) ;
 }
 
 .dialog_shadow_active {

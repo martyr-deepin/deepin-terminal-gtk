@@ -42,13 +42,13 @@ namespace Widgets {
             window_frame_box.pack_start(window_widget_box, true, true, 0);
             
             focus_in_event.connect((w) => {
-                    shadow_active();
+                    update_style();
                     
                     return false;
                 });
             
             focus_out_event.connect((w) => {
-                    shadow_inactive();
+                    update_style();
                     
                     return false;
                 });
@@ -102,6 +102,8 @@ namespace Widgets {
                 });
             
             window_state_event.connect((w, e) => {
+                    update_style();
+                    
                     if (window_is_fullscreen()) {
                         get_window().set_shadow_width(0, 0, 0, 0);
                                 
@@ -282,14 +284,29 @@ namespace Widgets {
                 });
         }
         
-        public void shadow_active() {
-            window_frame_box.get_style_context().remove_class("window_shadow_inactive");
-            window_frame_box.get_style_context().add_class("window_shadow_active");
+        public void update_style() {
+            clean_style();
+            
+            if (is_active) {
+                if (!window_is_max() && !window_is_fullscreen() && !window_is_tiled()) {
+                    window_frame_box.get_style_context().add_class("window_shadow_active");
+                } else {
+                    window_frame_box.get_style_context().add_class("window_noradius_shadow_active");
+                }
+            } else {
+                if (!window_is_max() && !window_is_fullscreen() && !window_is_tiled()) {
+                    window_frame_box.get_style_context().add_class("window_shadow_inactive");
+                } else {
+                    window_frame_box.get_style_context().add_class("window_noradius_shadow_inactive");
+                }
+            }
         }
         
-        public void shadow_inactive() {
+        public void clean_style() {
+            window_frame_box.get_style_context().remove_class("window_shadow_inactive");
             window_frame_box.get_style_context().remove_class("window_shadow_active");
-            window_frame_box.get_style_context().add_class("window_shadow_inactive");
+            window_frame_box.get_style_context().remove_class("window_noradius_shadow_inactive");
+            window_frame_box.get_style_context().remove_class("window_noradius_shadow_active");
         }
         
         public void draw_window_widgets(Cairo.Context cr) {
