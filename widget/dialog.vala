@@ -4,6 +4,7 @@ using Widgets;
 namespace Widgets {
     public class Dialog : Widgets.BaseWindow {
         public Dialog() {
+            
         }
             
         public override void draw_window_frame(Cairo.Context cr) {

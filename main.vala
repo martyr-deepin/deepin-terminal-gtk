@@ -142,6 +142,11 @@ public class Application : Object {
                     });
             
             
+                quake_window.delete_event.connect((w) => {
+                        quit();
+                        
+                        return true;
+                    });
                 quake_window.destroy.connect((t) => {
                         quit();
                     });
@@ -200,6 +205,11 @@ public class Application : Object {
                         window.queue_draw();
                     });
             
+                window.delete_event.connect((w) => {
+                        quit();
+                        
+                        return true;
+                    });
                 window.destroy.connect((t) => {
                         quit();
                     });
