@@ -172,45 +172,47 @@ namespace Widgets {
             
             button_press_event.connect((w, e) => {
                     if (get_resizable()) {
-                        int window_x, window_y;
-                        get_window().get_origin(out window_x, out window_y);
+                        if (!window_is_max() && !window_is_fullscreen() && !window_is_tiled()) {
+                            int window_x, window_y;
+                            get_window().get_origin(out window_x, out window_y);
                         
-                        int width, height;
-                        get_size(out width, out height);
+                            int width, height;
+                            get_size(out width, out height);
                         
-                        var left_side_start = window_x + window_frame_margin_start;
-                        var left_side_end = window_x + window_frame_margin_start + Constant.RESPONSE_RADIUS;
-                        var right_side_start = window_x + width - window_frame_margin_end - Constant.RESPONSE_RADIUS;
-                        var right_side_end = window_x + width - window_frame_margin_end;
-                        var top_side_start = window_y + window_frame_margin_top;
-                        var top_side_end = window_y + window_frame_margin_top + Constant.RESPONSE_RADIUS;
-                        var bottom_side_start = window_y + height - window_frame_margin_bottom - Constant.RESPONSE_RADIUS;
-                        var bottom_side_end = window_y + height - window_frame_margin_bottom;
+                            var left_side_start = window_x + window_frame_margin_start;
+                            var left_side_end = window_x + window_frame_margin_start + Constant.RESPONSE_RADIUS;
+                            var right_side_start = window_x + width - window_frame_margin_end - Constant.RESPONSE_RADIUS;
+                            var right_side_end = window_x + width - window_frame_margin_end;
+                            var top_side_start = window_y + window_frame_margin_top;
+                            var top_side_end = window_y + window_frame_margin_top + Constant.RESPONSE_RADIUS;
+                            var bottom_side_start = window_y + height - window_frame_margin_bottom - Constant.RESPONSE_RADIUS;
+                            var bottom_side_end = window_y + height - window_frame_margin_bottom;
                         
-                        int pointer_x, pointer_y;
-                        e.device.get_position(null, out pointer_x, out pointer_y);
+                            int pointer_x, pointer_y;
+                            e.device.get_position(null, out pointer_x, out pointer_y);
                                 
-                        if (e.x_root > left_side_start && e.x_root < left_side_end) {
-                            if (e.y_root > top_side_start && e.y_root < top_side_end) {
-                                resize_window(this, pointer_x, pointer_y, (int) e.button, Gdk.CursorType.TOP_LEFT_CORNER);
-                            } else if (e.y_root > bottom_side_start && e.y_root < bottom_side_end) {
-                                resize_window(this, pointer_x, pointer_y, (int) e.button, Gdk.CursorType.BOTTOM_LEFT_CORNER);
+                            if (e.x_root > left_side_start && e.x_root < left_side_end) {
+                                if (e.y_root > top_side_start && e.y_root < top_side_end) {
+                                    resize_window(this, pointer_x, pointer_y, (int) e.button, Gdk.CursorType.TOP_LEFT_CORNER);
+                                } else if (e.y_root > bottom_side_start && e.y_root < bottom_side_end) {
+                                    resize_window(this, pointer_x, pointer_y, (int) e.button, Gdk.CursorType.BOTTOM_LEFT_CORNER);
+                                } else {
+                                    resize_window(this, pointer_x, pointer_y, (int) e.button, Gdk.CursorType.LEFT_SIDE);
+                                }
+                            } else if (e.x_root > right_side_start && e.x_root < right_side_end) {
+                                if (e.y_root > top_side_start && e.y_root < top_side_end) {
+                                    resize_window(this, pointer_x, pointer_y, (int) e.button, Gdk.CursorType.TOP_RIGHT_CORNER);
+                                } else if (e.y_root > bottom_side_start && e.y_root < bottom_side_end) {
+                                    resize_window(this, pointer_x, pointer_y, (int) e.button, Gdk.CursorType.BOTTOM_RIGHT_CORNER);
+                                } else {
+                                    resize_window(this, pointer_x, pointer_y, (int) e.button, Gdk.CursorType.RIGHT_SIDE);
+                                }
                             } else {
-                                resize_window(this, pointer_x, pointer_y, (int) e.button, Gdk.CursorType.LEFT_SIDE);
-                            }
-                        } else if (e.x_root > right_side_start && e.x_root < right_side_end) {
-                            if (e.y_root > top_side_start && e.y_root < top_side_end) {
-                                resize_window(this, pointer_x, pointer_y, (int) e.button, Gdk.CursorType.TOP_RIGHT_CORNER);
-                            } else if (e.y_root > bottom_side_start && e.y_root < bottom_side_end) {
-                                resize_window(this, pointer_x, pointer_y, (int) e.button, Gdk.CursorType.BOTTOM_RIGHT_CORNER);
-                            } else {
-                                resize_window(this, pointer_x, pointer_y, (int) e.button, Gdk.CursorType.RIGHT_SIDE);
-                            }
-                        } else {
-                            if (e.y_root > top_side_start && e.y_root < top_side_end) {
-                                resize_window(this, pointer_x, pointer_y, (int) e.button, Gdk.CursorType.TOP_SIDE);
-                            } else if (e.y_root > bottom_side_start && e.y_root < bottom_side_end) {
-                                resize_window(this, pointer_x, pointer_y, (int) e.button, Gdk.CursorType.BOTTOM_SIDE);
+                                if (e.y_root > top_side_start && e.y_root < top_side_end) {
+                                    resize_window(this, pointer_x, pointer_y, (int) e.button, Gdk.CursorType.TOP_SIDE);
+                                } else if (e.y_root > bottom_side_start && e.y_root < bottom_side_end) {
+                                    resize_window(this, pointer_x, pointer_y, (int) e.button, Gdk.CursorType.BOTTOM_SIDE);
+                                }
                             }
                         }
                     }
@@ -220,46 +222,48 @@ namespace Widgets {
             
             motion_notify_event.connect((w, e) => {
                     if (get_resizable()) {
-                        var display = Gdk.Display.get_default();
+                        if (!window_is_max() && !window_is_fullscreen() && !window_is_tiled()) {
+                            var display = Gdk.Display.get_default();
                         
-                        int window_x, window_y;
-                        get_window().get_origin(out window_x, out window_y);
+                            int window_x, window_y;
+                            get_window().get_origin(out window_x, out window_y);
                         
-                        int width, height;
-                        get_size(out width, out height);
+                            int width, height;
+                            get_size(out width, out height);
                         
-                        var left_side_start = window_x + window_frame_margin_start;
-                        var left_side_end = window_x + window_frame_margin_start + Constant.RESPONSE_RADIUS;
-                        var right_side_start = window_x + width - window_frame_margin_end - Constant.RESPONSE_RADIUS;
-                        var right_side_end = window_x + width - window_frame_margin_end;
-                        var top_side_start = window_y + window_frame_margin_top;
-                        var top_side_end = window_y + window_frame_margin_top + Constant.RESPONSE_RADIUS;
-                        var bottom_side_start = window_y + height - window_frame_margin_bottom - Constant.RESPONSE_RADIUS;
-                        var bottom_side_end = window_y + height - window_frame_margin_bottom;
+                            var left_side_start = window_x + window_frame_margin_start;
+                            var left_side_end = window_x + window_frame_margin_start + Constant.RESPONSE_RADIUS;
+                            var right_side_start = window_x + width - window_frame_margin_end - Constant.RESPONSE_RADIUS;
+                            var right_side_end = window_x + width - window_frame_margin_end;
+                            var top_side_start = window_y + window_frame_margin_top;
+                            var top_side_end = window_y + window_frame_margin_top + Constant.RESPONSE_RADIUS;
+                            var bottom_side_start = window_y + height - window_frame_margin_bottom - Constant.RESPONSE_RADIUS;
+                            var bottom_side_end = window_y + height - window_frame_margin_bottom;
                         
-                        if (e.x_root > left_side_start && e.x_root < left_side_end) {
-                            if (e.y_root > top_side_start && e.y_root < top_side_end) {
-                                get_window().set_cursor(new Gdk.Cursor.for_display(display, Gdk.CursorType.TOP_LEFT_CORNER));
-                            } else if (e.y_root > bottom_side_start && e.y_root < bottom_side_end) {
-                                get_window().set_cursor(new Gdk.Cursor.for_display(display, Gdk.CursorType.BOTTOM_LEFT_CORNER));
+                            if (e.x_root > left_side_start && e.x_root < left_side_end) {
+                                if (e.y_root > top_side_start && e.y_root < top_side_end) {
+                                    get_window().set_cursor(new Gdk.Cursor.for_display(display, Gdk.CursorType.TOP_LEFT_CORNER));
+                                } else if (e.y_root > bottom_side_start && e.y_root < bottom_side_end) {
+                                    get_window().set_cursor(new Gdk.Cursor.for_display(display, Gdk.CursorType.BOTTOM_LEFT_CORNER));
+                                } else {
+                                    get_window().set_cursor(new Gdk.Cursor.for_display(display, Gdk.CursorType.LEFT_SIDE));
+                                }
+                            } else if (e.x_root > right_side_start && e.x_root < right_side_end) {
+                                if (e.y_root > top_side_start && e.y_root < top_side_end) {
+                                    get_window().set_cursor(new Gdk.Cursor.for_display(display, Gdk.CursorType.TOP_RIGHT_CORNER));
+                                } else if (e.y_root > bottom_side_start && e.y_root < bottom_side_end) {
+                                    get_window().set_cursor(new Gdk.Cursor.for_display(display, Gdk.CursorType.BOTTOM_RIGHT_CORNER));
+                                } else {
+                                    get_window().set_cursor(new Gdk.Cursor.for_display(display, Gdk.CursorType.RIGHT_SIDE));
+                                }
                             } else {
-                                get_window().set_cursor(new Gdk.Cursor.for_display(display, Gdk.CursorType.LEFT_SIDE));
-                            }
-                        } else if (e.x_root > right_side_start && e.x_root < right_side_end) {
-                            if (e.y_root > top_side_start && e.y_root < top_side_end) {
-                                get_window().set_cursor(new Gdk.Cursor.for_display(display, Gdk.CursorType.TOP_RIGHT_CORNER));
-                            } else if (e.y_root > bottom_side_start && e.y_root < bottom_side_end) {
-                                get_window().set_cursor(new Gdk.Cursor.for_display(display, Gdk.CursorType.BOTTOM_RIGHT_CORNER));
-                            } else {
-                                get_window().set_cursor(new Gdk.Cursor.for_display(display, Gdk.CursorType.RIGHT_SIDE));
-                            }
-                        } else {
-                            if (e.y_root > top_side_start && e.y_root < top_side_end) {
-                                get_window().set_cursor(new Gdk.Cursor.for_display(display, Gdk.CursorType.TOP_SIDE));
-                            } else if (e.y_root > bottom_side_start && e.y_root < bottom_side_end) {
-                                get_window().set_cursor(new Gdk.Cursor.for_display(display, Gdk.CursorType.BOTTOM_SIDE));
-                            } else {
-                                get_window().set_cursor(null);
+                                if (e.y_root > top_side_start && e.y_root < top_side_end) {
+                                    get_window().set_cursor(new Gdk.Cursor.for_display(display, Gdk.CursorType.TOP_SIDE));
+                                } else if (e.y_root > bottom_side_start && e.y_root < bottom_side_end) {
+                                    get_window().set_cursor(new Gdk.Cursor.for_display(display, Gdk.CursorType.BOTTOM_SIDE));
+                                } else {
+                                    get_window().set_cursor(null);
+                                }
                             }
                         }
                     }
