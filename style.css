@@ -34,12 +34,14 @@
 	background: transparent;
 	border-radius: 5px;
 	box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.3);
+	/* box-shadow: 0px 10px 20px 0px rgba(255,0,0,0.3); */
 }
 
 .window_shadow_inactive {
     background: transparent;
     border-radius: 5px;
     box-shadow: 0px 10px 14px 0px rgba(0,0,0,0.15);
+    /* box-shadow: 0px 10px 14px 0px rgba(0,255,0,0.15); */
 }
 
 .search_box {
