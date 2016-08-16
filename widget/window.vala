@@ -7,12 +7,7 @@ namespace Widgets {
         public int active_tab_underline_x;
 		public int active_tab_underline_width;
 		
-		public Gdk.RGBA active_tab_color;
-
         public Window() {
-            active_tab_color = Gdk.RGBA();
-            active_tab_color.parse("#2CA7F8");
-			
             int monitor = screen.get_monitor_at_window(screen.get_active_window());
             Gdk.Rectangle rect;
             screen.get_monitor_geometry(monitor, out rect);
@@ -105,8 +100,11 @@ namespace Widgets {
             int y = window_frame_box.margin_top;
             int width = window_frame_rect.width;
             Gdk.RGBA frame_color = Gdk.RGBA();
+            Gdk.RGBA active_tab_color = Gdk.RGBA();
+            
             try {
                 frame_color.parse(config.config_file.get_string("theme", "background"));
+                active_tab_color.parse(config.config_file.get_string("theme", "tab"));
             } catch (GLib.KeyFileError e) {
                 print("Window draw_window_above: %s\n", e.message);
             }

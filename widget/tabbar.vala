@@ -17,7 +17,6 @@ namespace Widgets {
         public Gdk.RGBA inactive_arrow_color;
         public Gdk.RGBA hover_arrow_color;
         public Gdk.RGBA text_hover_color;
-        public Gdk.RGBA text_active_color;
         public Gdk.RGBA text_color;
         public Gdk.RGBA text_highlight_color;
 		public Gdk.RGBA tab_split_color;
@@ -83,9 +82,6 @@ namespace Widgets {
             
             text_hover_color = Gdk.RGBA();
             text_hover_color.parse("#ffffff");
-            
-            text_active_color = Gdk.RGBA();
-            text_active_color.parse("#2CA7F8");
             
             text_color = Gdk.RGBA();
 			text_color.red = 1;
@@ -367,6 +363,13 @@ namespace Widgets {
             
             draw_x = 0;
             counter = 0;
+            Gdk.RGBA text_active_color = Gdk.RGBA();
+            try {
+                text_active_color.parse(((Widgets.ConfigWindow) this.get_toplevel()).config.config_file.get_string("theme", "tab"));
+            } catch (Error e) {
+                print("Tabbar draw: %s\n", e.message);
+            }
+            
             foreach (int tab_id in tab_list) {
                 var layout = create_pango_layout(tab_name_map.get(tab_id));
                 int name_width, name_height, name_scale_width;
@@ -375,6 +378,7 @@ namespace Widgets {
                 int tab_width = (int) (get_tab_width(name_width) * draw_scale);
                 
 				Gdk.RGBA tab_text_color;
+                
 				if (tab_highlight_map.has_key(tab_id)) {
 					tab_text_color = text_highlight_color;
 				} else {

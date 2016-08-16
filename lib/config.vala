@@ -133,6 +133,7 @@ namespace Config {
 			config_file.set_string("theme", "color_16", "#fdf6e3");
 			config_file.set_string("theme", "background", "#000000");  // background
 			config_file.set_string("theme", "foreground", "#00cd00");  // foreground
+			config_file.set_string("theme", "tab", "#2CA7F8");         // tab
 
             save();
         }

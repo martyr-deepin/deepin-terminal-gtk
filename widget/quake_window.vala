@@ -4,8 +4,6 @@ using XUtils;
 
 namespace Widgets {
     public class QuakeWindow : Widgets.ConfigWindow {
-        public Gdk.RGBA active_tab_color;
-        
         public int active_tab_underline_x;
 		public int active_tab_underline_width;
         
@@ -17,9 +15,6 @@ namespace Widgets {
         public int press_y;
         
         public QuakeWindow() {
-            active_tab_color = Gdk.RGBA();
-            active_tab_color.parse("#2CA7F8");
-            
             set_app_paintable(true); // set_app_paintable is neccessary step to make window transparent.
             Gdk.Screen screen = Gdk.Screen.get_default();
             set_visual(screen.get_rgba_visual());
@@ -219,8 +214,11 @@ namespace Widgets {
             int width = window_frame_rect.width;
             int height = window_frame_rect.height;
             Gdk.RGBA frame_color = Gdk.RGBA();
+            Gdk.RGBA active_tab_color = Gdk.RGBA();
+            
             try {
                 frame_color.parse(config.config_file.get_string("theme", "background"));
+                active_tab_color.parse(config.config_file.get_string("theme", "tab"));
             } catch (GLib.KeyFileError e) {
                 print("QuakeWindow draw_window_above: %s\n", e.message);
             }
