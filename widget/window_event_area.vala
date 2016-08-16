@@ -33,6 +33,9 @@ namespace Widgets {
         public double press_y = 0;
         
         public Gtk.Widget? child_before_leave;
+        
+        public int double_clicked_max_delay = 150;
+        public bool is_double_clicked = false;
     
         public WindowEventArea(Gtk.Container area) {
             drawing_area = area;
@@ -130,8 +133,17 @@ namespace Widgets {
                         ((Gdk.Event*) event)->put();
                     }
                     
-                    if (e.type == Gdk.EventType.2BUTTON_PRESS) {
-                        ((Widgets.BaseWindow) this.get_toplevel()).toggle_max();
+                    if (e.type == Gdk.EventType.BUTTON_PRESS) {
+                        is_double_clicked = true;
+                        GLib.Timeout.add(double_clicked_max_delay, () => {
+                                is_double_clicked = false;
+                                
+                                return false;
+                            });
+                    } else if (e.type == Gdk.EventType.2BUTTON_PRESS) {
+                        if (is_double_clicked) {
+                            ((Widgets.BaseWindow) this.get_toplevel()).toggle_max();
+                        }
                     }
                     
                     return true;
