@@ -11,7 +11,7 @@ namespace Config {
         public signal void update();
 		
 		public string default_mono_font = "";
-		public double default_opacity = 0.8;
+		public double default_opacity = 0.9;
 		public int default_size = 11;
 		
 		public ArrayList<string> encoding_names;
