@@ -46,7 +46,7 @@ namespace Widgets {
                     set_default_size(rect.width, config_height);
                 }
             } catch (Error e) {
-                print(e.message);
+                print("QuakeWindow init: %s\n", e.message);
             }
             
             set_skip_taskbar_hint(true);
@@ -222,7 +222,7 @@ namespace Widgets {
             try {
                 frame_color.parse(config.config_file.get_string("theme", "color1"));
             } catch (GLib.KeyFileError e) {
-                print(e.message);
+                print("QuakeWindow draw_window_above: %s\n", e.message);
             }
 
             // Draw line below at titlebar.

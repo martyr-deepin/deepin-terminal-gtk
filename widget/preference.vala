@@ -210,7 +210,7 @@ namespace Widgets {
 			try {
 				opacity = parent_window.config.config_file.get_double("general", "opacity");
 			} catch (GLib.KeyFileError e) {
-				print(e.message);
+				print("Preference get window config: %s\n", e.message);
 			}
 			
 			opacity_progressbar.set_percent(opacity);
@@ -297,7 +297,7 @@ namespace Widgets {
 			try {
 				cursor_style_button.set_cursor_state(parent_window.config.config_file.get_string("advanced", "cursor_shape"));
 			} catch (GLib.KeyFileError e) {
-				print(e.message);
+				print("Preference set cursor shape: %s\n", e.message);
 			}
 			cursor_style_button.change_cursor_state.connect((w, active_state) => {
 					parent_window.config.config_file.set_string("advanced", "cursor_shape", active_state);
@@ -423,7 +423,7 @@ namespace Widgets {
 				font_size_spinbutton.set_value(parent_window.config.config_file.get_integer("general", "font_size"));
 				scroll_line_spinbutton.set_value(parent_window.config.config_file.get_integer("advanced", "scroll_line"));
 			} catch (GLib.KeyFileError e) {
-				print(e.message);
+				print("Preference init_config: %s\n", e.message);
 			}
 			
 		}
@@ -536,7 +536,7 @@ namespace Widgets {
 				try {
 					entry.set_text(parent_window.config.config_file.get_string(group_name, key));
 				} catch (GLib.KeyFileError e) {
-					print(e.message);
+					print("Preference monitor_check_key: %s\n", e.message);
 				}
 			}
 		}
@@ -567,7 +567,7 @@ namespace Widgets {
 								parent_window.config.update();
 							}
 						} catch (GLib.KeyFileError e) {
-							print(e.message);
+							print("Preference create_theme_row: %s\n", e.message);
 						}
                     });
             }

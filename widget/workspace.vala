@@ -208,7 +208,7 @@ namespace Widgets {
 							paned_background_color.parse(parent_window.config.config_file.get_string("theme", "color1"));
 							paned_background_color.alpha = parent_window.config.config_file.get_double("general", "opacity");
 						} catch (GLib.KeyFileError e) {
-							print(e.message);
+							print("Workapce split: %s\n", e.message);
 						}
 					
 						Utils.set_context_color(cr, paned_background_color);

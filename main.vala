@@ -135,7 +135,7 @@ public class Application : Object {
                             cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, quake_window.config.config_file.get_double("general", "opacity"));
                             Draw.draw_rectangle(cr, 0, 0, rect.width, Constant.TITLEBAR_HEIGHT);
                         } catch (Error e) {
-                            print(e.message);
+                            print("Main quake mode: %s\n", e.message);
                         }
                     
                         Utils.propagate_draw(top_box, cr);
@@ -189,7 +189,7 @@ public class Application : Object {
                             cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, window.config.config_file.get_double("general", "opacity"));
                             Draw.draw_rectangle(cr, 0, 0, rect.width, Constant.TITLEBAR_HEIGHT);
                         } catch (Error e) {
-                            print(e.message);
+                            print("Main window: %s\n", e.message);
                         }
                     
                         Utils.propagate_draw(top_box, cr);
@@ -395,7 +395,7 @@ public class Application : Object {
             
             return false;
 		} catch (GLib.KeyFileError e) {
-			print(e.message);
+			print("Main on_key_press: %s\n", e.message);
 			
 			return false;
 		}

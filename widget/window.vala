@@ -301,7 +301,7 @@ namespace Widgets {
                     cr.restore();
                 }
             } catch (Error e) {
-                print(e.message);
+                print("Window draw_window_frame: %s\n", e.message);
             }
         }
 
@@ -316,7 +316,7 @@ namespace Widgets {
             try {
                 frame_color.parse(config.config_file.get_string("theme", "color1"));
             } catch (GLib.KeyFileError e) {
-                print(e.message);
+                print("Window draw_window_above: %s\n", e.message);
             }
             
             try {
@@ -384,7 +384,7 @@ namespace Widgets {
                     cr.restore();
                 }
             } catch (Error e) {
-                print(e.message);
+                print("Window draw_window_above: %s\n", e.message);
             }
        }
     }

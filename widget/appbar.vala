@@ -124,7 +124,7 @@ namespace Widgets {
                         GLib.AppInfo appinfo = GLib.AppInfo.create_from_commandline(application.start_path, null, GLib.AppInfoCreateFlags.NONE);
                         appinfo.launch(null, null);
                     } catch (GLib.Error e) {
-                        print(e.message);
+                        print("Appbar menu item 'new window': %s\n", e.message);
                     }
 			    	break;
                 case "remote_manage":
@@ -135,7 +135,7 @@ namespace Widgets {
                         GLib.AppInfo appinfo = GLib.AppInfo.create_from_commandline("dman deepin-terminal", null, GLib.AppInfoCreateFlags.NONE);
                         appinfo.launch(null, null);
                     } catch (GLib.Error e) {
-                        print(e.message);
+                        print("Appbar menu item 'help': %s\n", e.message);
                     }
 					break;
 			    case "about":

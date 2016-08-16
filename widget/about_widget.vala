@@ -56,7 +56,7 @@ namespace Widgets {
                     try {
                         Gtk.show_uri(screen, "https://www.deepin.org", e.time);
                     } catch (GLib.Error e) {
-                        print(e.message);
+                        print("About dialog homepage: %s\n", e.message);
                     }
                     
                     return false;

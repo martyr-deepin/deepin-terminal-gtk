@@ -17,7 +17,7 @@ namespace Widgets {
  			try {
 				cr.set_source_rgba(0, 0, 0, window.config.config_file.get_double("general", "opacity"));
 			} catch (GLib.KeyFileError e) {
-				print(e.message);
+				print("EventBox: %s\n", e.message);
 			}
 			cr.set_operator(Cairo.Operator.SOURCE);
             cr.paint();

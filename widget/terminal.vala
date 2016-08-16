@@ -420,7 +420,7 @@ namespace Widgets {
                     
                     return true;
 				} catch (GLib.KeyFileError e) {
-					print(e.message);
+					print("Terminal on_scroll: %s\n", e.message);
 				}
             }
 
@@ -472,7 +472,7 @@ namespace Widgets {
                 
                 return false;
 			} catch (GLib.KeyFileError e) {
-				print(e.message);
+				print("Terminal on_key_press: %s\n", e.message);
 				
 				return false;
 			}
@@ -487,7 +487,7 @@ namespace Widgets {
 				current_font.set_size((int) (font_size * zoom_factor));
 				term.set_font(current_font);
 			} catch (GLib.KeyFileError e) {
-				print(e.message);
+				print("Terminal update_font_info: %s\n", e.message);
 			}
 		}
 

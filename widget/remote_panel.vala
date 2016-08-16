@@ -38,7 +38,7 @@ namespace Widgets {
             try {
                 background_color.parse(parent_window.config.config_file.get_string("theme", "color1"));
             } catch (Error e) {
-                print(e.message);
+                print("RemotePanel init: %s\n", e.message);
             }
             
             switcher = new Widgets.Switcher(width);
@@ -111,7 +111,7 @@ namespace Widgets {
 			    }
 			} catch (Error e) {
 				if (!FileUtils.test(config_file_path, FileTest.EXISTS)) {
-                    print(e.message);
+                    print("RemotePanel create_home_page: %s\n", e.message);
 				}
 			}
 			
@@ -367,7 +367,7 @@ namespace Widgets {
 			    	config_file.load_from_file(config_file_path, KeyFileFlags.NONE);
 			    } catch (Error e) {
 					if (!FileUtils.test(config_file_path, FileTest.EXISTS)) {
-                        print(e.message);
+                        print("RemtoePanel add_server: %s\n", e.message);
 					}
 			    }
 			    
@@ -472,7 +472,7 @@ namespace Widgets {
                 }
             } catch (Error e) {
 				if (!FileUtils.test(config_file_path, FileTest.EXISTS)) {
-                    print(e.message);
+                    print("RemotePanel create_search_page: %s\n", e.message);
 				}
 			}
             
@@ -495,7 +495,7 @@ namespace Widgets {
                 config_file.load_from_file(config_file_path, KeyFileFlags.NONE);
             } catch (Error e) {
                 if (!FileUtils.test(config_file_path, FileTest.EXISTS)) {
-                    print(e.message);
+                    print("RemotePanel edit_server: %s\n", e.message);
                 }
             }
             var remote_server = new Widgets.RemoteServer(parent_window, this, server_info, config_file);
