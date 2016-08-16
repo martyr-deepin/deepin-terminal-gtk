@@ -66,7 +66,7 @@ namespace Config {
                 theme_file.load_from_file(Utils.get_theme_path(theme_name), KeyFileFlags.NONE);
             
                 foreach (string key in theme_file.get_keys("theme")) {
-                    config_file.set_string("theme", key, theme_file.get_string("theme", key));
+                    config_file.set_string("theme", key, theme_file.get_string("theme", key).strip());
                 }
             } catch (Error e) {
                 print("Config set_theme: %s\n", e.message);
