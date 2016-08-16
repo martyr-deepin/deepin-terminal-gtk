@@ -73,6 +73,8 @@
 	box-shadow: none;
 	border: none;
     min-width: 4px;
+	margin-top: 2px;
+	margin-bottom: 2px;
 }
 
 .terminal_scrollbar slider {
@@ -100,6 +102,8 @@
 	box-shadow: none;
 	border: 1px solid transparent;
     min-width: 4px;
+	margin-top: 2px;
+	margin-bottom: 2px;
 }
 
 .preference_scrollbar slider {
