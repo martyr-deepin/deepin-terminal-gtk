@@ -488,11 +488,11 @@ namespace Widgets {
         }
         
         public int get_tab_text_padding() {
-            return int.max(text_padding_min_x, text_padding_x - tab_list.size);
+            return int.max(text_padding_min_x, (int) (text_padding_x * draw_scale));
         }
         
         public int get_tab_close_button_padding() {
-            return int.max(close_button_padding_min_x, close_button_padding_x - tab_list.size);
+            return int.max(close_button_padding_min_x, (int) (close_button_padding_x * draw_scale));
         }
         
         public void switch_tab(int new_index) {
