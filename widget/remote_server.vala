@@ -82,13 +82,20 @@ namespace Widgets {
                 move(x + (window_alloc.width - window_init_width) / 2,
                      y + (window_alloc.height - window_init_height) / 3);
             
-                var overlay = new Gtk.Overlay();
             
                 box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
                 
                 var top_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
                 top_box.margin_bottom = 10;
-                box.pack_start(top_box, false, false, 0);
+                
+                var event_area = new Widgets.WindowEventArea(this);
+                event_area.margin_end = 27;
+                
+                var overlay = new Gtk.Overlay();
+                overlay.add(top_box);
+                overlay.add_overlay(event_area);
+                
+                box.pack_start(overlay, false, false, 0);
                 
                 // Make label center of titlebar.
                 var spacing_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
@@ -356,15 +363,7 @@ namespace Widgets {
                 button_box.pack_start(confirm_button, false, false, 0);
                 box.pack_start(button_box, false, false, 0);
             
-                var event_area = new Widgets.WindowEventArea(this);
-                event_area.margin_top = 0;
-                event_area.margin_end = 27;
-                event_area.set_size_request(-1, 27);
-                
-                overlay.add(box);
-                overlay.add_overlay(event_area);
-            
-                add_widget(overlay);
+                add_widget(box);
             } catch (Error e) {
                 error ("%s", e.message);
             }
