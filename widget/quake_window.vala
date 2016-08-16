@@ -51,7 +51,7 @@ namespace Widgets {
             
             set_skip_taskbar_hint(true);
             set_skip_pager_hint(true);
-            set_type_hint(Gdk.WindowTypeHint.DIALOG);  // DIALOG hint will give right window effect
+            set_type_hint(Gdk.WindowTypeHint.POPUP_MENU);  // DIALOG hint will give right window effect
             move(rect.x, 0);
             
             window_frame_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
