@@ -214,11 +214,9 @@ namespace Widgets {
                     } else {
                         background_color.parse(window.config.config_file.get_string("theme", "color1"));
                         cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, window.config.config_file.get_double("general", "opacity"));
-                        // cr.set_source_rgba(1, 0, 0, 1);				
                         Draw.draw_rectangle(cr, 0, 0, rect.width, height);
                     
                         cr.set_source_rgba(0, 0, 0, 0.2);				
-                        // cr.set_source_rgba(1, 0, 0, 1);				
                         Draw.draw_rectangle(cr, 0, 0, rect.width, height);
                     }
                 }

@@ -130,11 +130,26 @@ namespace Widgets {
             } else {
                 // Draw line around titlebar side.
                 Utils.set_context_color(cr, frame_color);
-                // cr.set_source_rgba(1, 0, 0, 1);
                 // Left.
-                Draw.draw_rectangle(cr, x + 1, y + 3, 1, 38);
+                Draw.draw_rectangle(cr, x + 1, y + 3, 1, 39);
                 // Right.
-                Draw.draw_rectangle(cr, x + width - 2, y + 3, 1, 38);
+                Draw.draw_rectangle(cr, x + width - 2, y + 3, 1, 39);
+                
+                cr.set_source_rgba(0, 0, 0, 0.2);				
+                // Left.
+                Draw.draw_rectangle(cr, x + 1, y + 3, 1, 39);
+                // Right.
+                Draw.draw_rectangle(cr, x + width - 2, y + 3, 1, 39);
+                
+                // Draw line above at titlebar.
+                Utils.set_context_color(cr, frame_color);
+                Draw.draw_rectangle(cr, x + 3, y + 1, width - 6, 1);
+
+                cr.set_source_rgba(0, 0, 0, 0.2);				
+                Draw.draw_rectangle(cr, x + 3, y + 1, width - 6, 1);
+                
+                cr.set_source_rgba(1, 1, 1, 0.0625 * config.config_file.get_double("general", "opacity")); // Draw top line at window.
+                Draw.draw_rectangle(cr, x + 3, y + 1, width - 6, 1);
                 
                 // Draw line below at titlebar.
                 cr.save();
