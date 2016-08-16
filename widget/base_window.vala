@@ -304,22 +304,22 @@ namespace Widgets {
             int height = window_frame_rect.height;
             Gdk.RGBA frame_color = Gdk.RGBA();
             
-            if (window_is_max() || window_is_tiled()) {
-                // Draw window frame.
-                cr.save();
-                cr.set_source_rgba(0, 0, 0, config.config_file.get_double("general", "opacity"));
-                // cr.set_source_rgba(1, 0, 0, 1);
-                // Top.
-                Draw.draw_rectangle(cr, x, y, width, 1);
-                // Bottom.
-                Draw.draw_rectangle(cr, x, y + height - 1, width, 1);
-                // Left.
-                Draw.draw_rectangle(cr, x, y, 1, height - 1);
-                // Rigt..
-                Draw.draw_rectangle(cr, x + width - 1, y + 1, 1, height - 1);
-                cr.restore();
-            } else if (!window_is_fullscreen()) {
-                try {
+            try {
+                if (window_is_max() || window_is_tiled()) {
+                    // Draw window frame.
+                    cr.save();
+                    cr.set_source_rgba(0, 0, 0, config.config_file.get_double("general", "opacity"));
+                    // cr.set_source_rgba(1, 0, 0, 1);
+                    // Top.
+                    Draw.draw_rectangle(cr, x, y, width, 1);
+                    // Bottom.
+                    Draw.draw_rectangle(cr, x, y + height - 1, width, 1);
+                    // Left.
+                    Draw.draw_rectangle(cr, x, y, 1, height - 1);
+                    // Rigt..
+                    Draw.draw_rectangle(cr, x + width - 1, y + 1, 1, height - 1);
+                    cr.restore();
+                } else if (!window_is_fullscreen()) {
                     frame_color.parse(config.config_file.get_string("theme", "color1"));
                     
                     // |---+---+---+---+---+---|
@@ -515,9 +515,9 @@ namespace Widgets {
                     // Rigt..
                     Draw.draw_rectangle(cr, x + width - 2, y + 42, 1, height - 45);
                     cr.restore();
-                } catch (GLib.KeyFileError e) {
-                    print(e.message);
                 }
+            } catch (Error e) {
+                print(e.message);
             }
         }
         
