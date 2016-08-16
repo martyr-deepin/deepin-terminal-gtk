@@ -102,7 +102,7 @@ namespace Widgets {
         public void close_focus_term() {
             Term focus_term = get_focus_term(this);
             if (focus_term.has_foreground_process()) {
-                ConfirmDialog dialog = new ConfirmDialog();
+                ConfirmDialog dialog = new ConfirmDialog("Terminal still has running programs", "Are you sure you want to quit?", "Cancel", "Quit");
                 dialog.transient_for_window((Window) focus_term.get_toplevel());
                 dialog.confirm.connect((d) => {
                         close_term(focus_term);
@@ -132,7 +132,7 @@ namespace Widgets {
 			}
 			
 			if (has_active_process) {
-				ConfirmDialog dialog = new ConfirmDialog();
+                ConfirmDialog dialog = new ConfirmDialog("Terminal still has running programs", "Are you sure you want to quit?", "Cancel", "Quit");
                 dialog.transient_for_window((Window) focus_term.get_toplevel());
 				dialog.confirm.connect((d) => {
 						close_term_except(focus_term);

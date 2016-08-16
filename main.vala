@@ -114,10 +114,10 @@ public class Application : Object {
                     if (focus_workspace.has_active_term()) {
                         ConfirmDialog dialog;
                         if (quake_mode) {
-                            dialog = new ConfirmDialog();
+                            dialog = new ConfirmDialog("Terminal still has running programs", "Are you sure you want to quit?", "Cancel", "Quit");
                             dialog.transient_for_window(quake_window);
                         } else {
-                            dialog = new ConfirmDialog();
+                            dialog = new ConfirmDialog("Terminal still has running programs", "Are you sure you want to quit?", "Cancel", "Quit");
                             dialog.transient_for_window(window);
                         }
                         dialog.confirm.connect((d) => {
@@ -286,7 +286,7 @@ public class Application : Object {
     
     public void quit() {
         if (workspace_manager.has_active_term()) {
-            ConfirmDialog dialog = new ConfirmDialog();
+            ConfirmDialog dialog = new ConfirmDialog("Terminal still has running programs", "Are you sure you want to quit?", "Cancel", "Quit");
             dialog.transient_for_window(window);
             dialog.confirm.connect((d) => {
                     Gtk.main_quit();

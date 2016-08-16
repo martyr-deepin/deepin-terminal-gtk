@@ -135,6 +135,8 @@ namespace Widgets {
                     
                     if (e.type == Gdk.EventType.BUTTON_PRESS) {
                         is_double_clicked = true;
+                        
+                        // Add timeout to avoid long-long-long time double clicked to cause toggle maximize action.
                         GLib.Timeout.add(double_clicked_max_delay, () => {
                                 is_double_clicked = false;
                                 

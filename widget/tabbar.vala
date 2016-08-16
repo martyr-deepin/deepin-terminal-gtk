@@ -51,6 +51,9 @@ namespace Widgets {
         private Cairo.ImageSurface add_hover_surface;
         private Cairo.ImageSurface add_normal_surface;
         private Cairo.ImageSurface add_press_surface;
+        
+        public bool allowed_add_tab = true;
+        public int min_tab_width = 32;
 
         private double draw_scale = 1.0;
         
@@ -135,13 +138,19 @@ namespace Widgets {
             tab_index = 0;
         }
         
-        public void add_tab(string tab_name, int tab_id) {
-            tab_list.add(tab_id);
-            tab_name_map.set(tab_id, tab_name);
+        public bool add_tab(string tab_name, int tab_id) {
+            if (allowed_add_tab) {
+                tab_list.add(tab_id);
+                tab_name_map.set(tab_id, tab_name);
 			
-            update_tab_scale();
+                update_tab_scale();
             
-            queue_draw();
+                queue_draw();
+                
+                return true;
+            } else {
+                return false;
+            }
         }
         
         public void rename_tab(int tab_id, string tab_name) {
@@ -459,6 +468,8 @@ namespace Widgets {
                 // Draw tab text.
                 cr.save();
                 clip_rectangle(cr, draw_x + get_tab_text_padding(), 0, tab_width - get_tab_text_padding() * 2, height);
+                
+                allowed_add_tab = (tab_width - get_tab_text_padding() * 2) > min_tab_width;
                 
                 Utils.set_context_color(cr, tab_text_color);
                 Draw.draw_layout(cr, layout, draw_x + get_tab_text_padding(), draw_padding_y);

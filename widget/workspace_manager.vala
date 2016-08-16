@@ -52,37 +52,44 @@ namespace Widgets {
 		}
         
         public void new_workspace(string[]? commands, string? work_directory) {
-            Utils.remove_all_children(this);
+            var add_tab_success = tabbar.add_tab("", workspace_index + 1);
             
-            workspace_index++;
-            Widgets.Workspace workspace = new Widgets.Workspace(workspace_index, commands, work_directory, this);
-            workspace_map.set(workspace_index, workspace);
-            workspace.change_dir.connect((workspace, index, dir) => {
-                    tabbar.rename_tab(index, dir);
-                });
-			workspace.highlight_tab.connect((workspace, index) => {
-					tabbar.highlight_tab(index);
-				});
-            workspace.exit.connect((workspace, index) => {
-                    tabbar.close_current_tab();
-                });
+            if (add_tab_success) {
+                Utils.remove_all_children(this);
             
-            pack_workspace(workspace);
-            tabbar.add_tab("", workspace_index);
+                workspace_index++;
+                Widgets.Workspace workspace = new Widgets.Workspace(workspace_index, commands, work_directory, this);
+                workspace_map.set(workspace_index, workspace);
+                workspace.change_dir.connect((workspace, index, dir) => {
+                        tabbar.rename_tab(index, dir);
+                    });
+                workspace.highlight_tab.connect((workspace, index) => {
+                        tabbar.highlight_tab(index);
+                    });
+                workspace.exit.connect((workspace, index) => {
+                        tabbar.close_current_tab();
+                    });
+            
+                pack_workspace(workspace);
+            
 			
-			// Some shell can't pass working directory to vte terminal. 
-			// We check tab name when tab first time add.
-			// If tab haven't name, we named with "deepin".
-			GLib.Timeout.add(200, () => {
-					if (tabbar.tab_name_map.get(workspace_index) == "") {
-						tabbar.rename_tab(workspace_index, "deepin");
-					}
+                // Some shell can't pass working directory to vte terminal. 
+                // We check tab name when tab first time add.
+                // If tab haven't name, we named with "deepin".
+                GLib.Timeout.add(200, () => {
+                        if (tabbar.tab_name_map.get(workspace_index) == "") {
+                            tabbar.rename_tab(workspace_index, "deepin");
+                        }
 					
-					return false;
-				});
-			tabbar.select_tab_with_id(workspace_index);
+                        return false;
+                    });
+                tabbar.select_tab_with_id(workspace_index);
             
-            show_all();
+                show_all();
+            } else {
+                ConfirmDialog dialog = new ConfirmDialog("Haven't space to add tab", "Please remove unused tab first", "Cancel", "OK");
+                dialog.transient_for_window((Gtk.Window) (this.get_toplevel()));
+            }
         }
         
         public void switch_workspace_with_index(int index) {

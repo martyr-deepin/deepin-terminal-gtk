@@ -36,7 +36,7 @@ namespace Widgets {
         
         public signal void confirm();
         
-        public ConfirmDialog() {
+        public ConfirmDialog(string title, string content, string cancel_text, string confirm_text) {
             window_init_width = 480;
             window_init_height = 230;
             
@@ -70,18 +70,18 @@ namespace Widgets {
             Label title_label = new Gtk.Label(null);
             title_label.set_halign(Gtk.Align.START);
             title_label.get_style_context().add_class("dialog_title");
-            title_label.set_text("Terminal still has running programs");
+            title_label.set_text(title);
             title_label.margin_top = title_margin_top;
 
             Label content_label = new Gtk.Label(null);
             content_label.set_halign(Gtk.Align.START);
             content_label.get_style_context().add_class("dialog_content");
-            content_label.set_text("Are you sure you want to quit?");
+            content_label.set_text(content);
             content_label.margin_top = content_margin_top;
             
             Box button_box = new Box(Gtk.Orientation.HORIZONTAL, 0);
-            DialogButton cancel_button = new Widgets.DialogButton("Cancel", "left", "text");
-            DialogButton confirm_button = new Widgets.DialogButton("Quit", "right", "warning");
+            DialogButton cancel_button = new Widgets.DialogButton(cancel_text, "left", "text");
+            DialogButton confirm_button = new Widgets.DialogButton(confirm_text, "right", "warning");
             cancel_button.button_release_event.connect((b) => {
                     destroy();
                     
