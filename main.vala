@@ -416,7 +416,9 @@ public class Application : Object {
         try {
             Shell.parse_argv(command, out argv);
         } catch (ShellError e) {
-            warning(e.message);
+            if (!(e is ShellError.EMPTY_STRING)) {
+                warning("Main main: %s\n", e.message);
+            }
         }
         bool start_parse_command = false;
         string user_command = "";
@@ -450,7 +452,9 @@ public class Application : Object {
         try {
             Shell.parse_argv(user_command, out commands);
         } catch (ShellError e) {
-            warning(e.message);
+            if (!(e is ShellError.EMPTY_STRING)) {
+                warning("Main main: %s\n", e.message);
+            }
         }
         
         if (version) {

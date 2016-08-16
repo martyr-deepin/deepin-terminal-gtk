@@ -593,7 +593,9 @@ namespace Widgets {
             try {
                 Shell.parse_argv(command, out argv);
             } catch (ShellError e) {
-                warning(e.message);
+            if (!(e is ShellError.EMPTY_STRING)) {
+                warning("Terminal launch_command: %s\n", e.message);
+            }
             }
             launch_idle_id = GLib.Idle.add(() => {
                     try {
@@ -606,7 +608,7 @@ namespace Widgets {
                                         out child_pid,
                                         null /* cancellable */);
                     } catch (Error e) {
-                        warning(e.message);
+                        warning("Terminal launch_idle_id: %s\n", e.message);
                     }
                     
                     launch_idle_id = 0;
