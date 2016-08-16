@@ -116,23 +116,23 @@ namespace Config {
             config_file.set_integer("advanced", "quake_window_height", 0);
 			
 			config_file.set_string("theme", "color_1", "#073642");
-			config_file.set_string("theme", "color_2", "#dc322f");
+			config_file.set_string("theme", "color_2", "#bdb76b");  // string
 			config_file.set_string("theme", "color_3", "#859900");
 			config_file.set_string("theme", "color_4", "#b58900");
-			config_file.set_string("theme", "color_5", "#268bd2");
+			config_file.set_string("theme", "color_5", "#ffd700");  // path
 			config_file.set_string("theme", "color_6", "#d33682");
 			config_file.set_string("theme", "color_7", "#2aa198");
 			config_file.set_string("theme", "color_8", "#eee8d5");
 			config_file.set_string("theme", "color_9", "#002b36");
-			config_file.set_string("theme", "color_10", "#cb4b16");
-			config_file.set_string("theme", "color_11", "#586e75");
+			config_file.set_string("theme", "color_10", "#8b0000");  // error
+			config_file.set_string("theme", "color_11", "#00ff00");  // exec
 			config_file.set_string("theme", "color_12", "#657b83");
-			config_file.set_string("theme", "color_13", "#839496");
+			config_file.set_string("theme", "color_13", "#1e90ff");  // folder
 			config_file.set_string("theme", "color_14", "#6c71c4");
 			config_file.set_string("theme", "color_15", "#93a1a1");
 			config_file.set_string("theme", "color_16", "#fdf6e3");
-			config_file.set_string("theme", "background", "#002B36");
-			config_file.set_string("theme", "foreground", "#839496");
+			config_file.set_string("theme", "background", "#000000");  // background
+			config_file.set_string("theme", "foreground", "#00cd00");  // foreground
 
             save();
         }
