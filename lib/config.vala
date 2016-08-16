@@ -6,7 +6,6 @@ namespace Config {
         public string config_file_path = Utils.get_config_file_path("config.conf");
         public KeyFile config_file;
 		
-		public HashMap<string, ArrayList<string>> theme_map;
 		public ArrayList<string> theme_names;
 
         public signal void update();
@@ -26,14 +25,7 @@ namespace Config {
 			
             config_file = new KeyFile();
 
-			theme_names = new ArrayList<string>();
-			string[] names = {"deepin", "solarized"};
-			foreach (string name in names) {
-				theme_names.add(name);
-			}
-			theme_map = new HashMap<string, ArrayList<string>>();
-			add_theme("deepin", {"#000000", "#073642", "#586e75", "#657b83","#839496", "#93a1a1", "#eee8d5", "#00ff00", "#b58900", "#cb4b16", "#dc322f", "#d33682", "#6c71c4", "#268bd2", "#2aa198", "#859900" });
-			add_theme("solarized", {"#002b36", "#073642", "#586e75", "#657b83","#839496", "#93a1a1", "#eee8d5", "#fdf6e3", "#b58900", "#cb4b16", "#dc322f", "#d33682", "#6c71c4", "#268bd2", "#2aa198", "#859900" });
+			theme_names = Utils.list_files(Utils.get_theme_dir());
 			
 			backspace_key_erase_names = new ArrayList<string>();
 			string[] backspace_key_erase_list = {"ascii-del", "auto", "control-h", "escape-sequence", "tty"};
@@ -68,21 +60,18 @@ namespace Config {
             }
         }
 		
-		public void add_theme(string theme_name, string[] theme_colors) {
-			var theme_list = new ArrayList<string>();
-			foreach (string color in theme_colors) {
-				theme_list.add(color);
-			}
-			
-			theme_map.set(theme_name, theme_list);
-		}
-		
-		public void set_theme(string theme_name) {
-			var theme_colors = theme_map.get(theme_name);
-			for (int i = 0; i < 16; i++) {
-				config_file.set_string("theme", "color%i".printf(i + 1), theme_colors[i]);
-			}
-		}
+        public void set_theme(string theme_name) {
+            try {
+                KeyFile theme_file = new KeyFile();
+                theme_file.load_from_file(Utils.get_theme_path(theme_name), KeyFileFlags.NONE);
+            
+                foreach (string key in theme_file.get_keys("theme")) {
+                    config_file.set_string("theme", key, theme_file.get_string("theme", key));
+                }
+            } catch (Error e) {
+                print("Config set_theme: %s\n", e.message);
+            }
+        }
         
         public void init_config() {
             config_file.set_string("general", "theme", "deepin");
@@ -126,22 +115,24 @@ namespace Config {
             config_file.set_integer("advanced", "window_height", 0);
             config_file.set_integer("advanced", "quake_window_height", 0);
 			
-			config_file.set_string("theme", "color1", "#000000");
-			config_file.set_string("theme", "color2", "#073642");
-			config_file.set_string("theme", "color3", "#586e75");
-			config_file.set_string("theme", "color4", "#657b83");
-			config_file.set_string("theme", "color5", "#839496");
-			config_file.set_string("theme", "color6", "#93a1a1");
-			config_file.set_string("theme", "color7", "#eee8d5");
-			config_file.set_string("theme", "color8", "#00ff00");
-			config_file.set_string("theme", "color9", "#b58900");
-			config_file.set_string("theme", "color10", "#cb4b16");
-			config_file.set_string("theme", "color11", "#dc322f");
-			config_file.set_string("theme", "color12", "#d33682");
-			config_file.set_string("theme", "color13", "#6c71c4");
-			config_file.set_string("theme", "color14", "#268bd2");
-			config_file.set_string("theme", "color15", "#2aa198");
-			config_file.set_string("theme", "color16", "#859900");
+			config_file.set_string("theme", "color_1", "#073642");
+			config_file.set_string("theme", "color_2", "#dc322f");
+			config_file.set_string("theme", "color_3", "#859900");
+			config_file.set_string("theme", "color_4", "#b58900");
+			config_file.set_string("theme", "color_5", "#268bd2");
+			config_file.set_string("theme", "color_6", "#d33682");
+			config_file.set_string("theme", "color_7", "#2aa198");
+			config_file.set_string("theme", "color_8", "#eee8d5");
+			config_file.set_string("theme", "color_9", "#002b36");
+			config_file.set_string("theme", "color_10", "#cb4b16");
+			config_file.set_string("theme", "color_11", "#586e75");
+			config_file.set_string("theme", "color_12", "#657b83");
+			config_file.set_string("theme", "color_13", "#839496");
+			config_file.set_string("theme", "color_14", "#6c71c4");
+			config_file.set_string("theme", "color_15", "#93a1a1");
+			config_file.set_string("theme", "color_16", "#fdf6e3");
+			config_file.set_string("theme", "background", "#002B36");
+			config_file.set_string("theme", "foreground", "#839496");
 
             save();
         }

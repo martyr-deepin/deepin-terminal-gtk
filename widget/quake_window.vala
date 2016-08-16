@@ -220,7 +220,7 @@ namespace Widgets {
             int height = window_frame_rect.height;
             Gdk.RGBA frame_color = Gdk.RGBA();
             try {
-                frame_color.parse(config.config_file.get_string("theme", "color1"));
+                frame_color.parse(config.config_file.get_string("theme", "background"));
             } catch (GLib.KeyFileError e) {
                 print("QuakeWindow draw_window_above: %s\n", e.message);
             }

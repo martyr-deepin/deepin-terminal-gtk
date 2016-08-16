@@ -36,7 +36,7 @@ namespace Widgets {
 			parent_window = (Widgets.ConfigWindow) workspace.get_toplevel();
             background_color = Gdk.RGBA();
             try {
-                background_color.parse(parent_window.config.config_file.get_string("theme", "color1"));
+                background_color.parse(parent_window.config.config_file.get_string("theme", "background"));
             } catch (Error e) {
                 print("RemotePanel init: %s\n", e.message);
             }

@@ -678,13 +678,13 @@ namespace Widgets {
 					term.set_cursor_shape(Vte.CursorShape.UNDERLINE);
 				}
 				
-				background_color.parse(parent_window.config.config_file.get_string("theme", "color1"));
+				background_color.parse(parent_window.config.config_file.get_string("theme", "background"));
 				background_color.alpha = parent_window.config.config_file.get_double("general", "opacity");
-				foreground_color.parse(parent_window.config.config_file.get_string("theme", "color8"));
+				foreground_color.parse(parent_window.config.config_file.get_string("theme", "foreground"));
 				var palette = new Gdk.RGBA[16];
 				for (int i = 0; i < 16; i++) {
 					Gdk.RGBA new_color= Gdk.RGBA();
-					new_color.parse(parent_window.config.config_file.get_string("theme", "color%i".printf(i + 1)));
+					new_color.parse(parent_window.config.config_file.get_string("theme", "color_%i".printf(i + 1)));
 
 					palette[i] = new_color;
 				}

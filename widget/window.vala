@@ -79,7 +79,7 @@ namespace Widgets {
             
             try {
                 if (!window_is_max() && !window_is_fullscreen() && !window_is_tiled()) {
-                    frame_color.parse(config.config_file.get_string("theme", "color1"));
+                    frame_color.parse(config.config_file.get_string("theme", "background"));
                     
                     // Draw line *innner* of window frame.
                     cr.save();
@@ -106,7 +106,7 @@ namespace Widgets {
             int width = window_frame_rect.width;
             Gdk.RGBA frame_color = Gdk.RGBA();
             try {
-                frame_color.parse(config.config_file.get_string("theme", "color1"));
+                frame_color.parse(config.config_file.get_string("theme", "background"));
             } catch (GLib.KeyFileError e) {
                 print("Window draw_window_above: %s\n", e.message);
             }

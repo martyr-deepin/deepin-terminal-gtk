@@ -131,7 +131,7 @@ public class Application : Object {
                         w.get_allocation(out rect);
                         
                         try {
-                            background_color.parse(quake_window.config.config_file.get_string("theme", "color1"));
+                            background_color.parse(quake_window.config.config_file.get_string("theme", "background"));
                             cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, quake_window.config.config_file.get_double("general", "opacity"));
                             Draw.draw_rectangle(cr, 0, 0, rect.width, Constant.TITLEBAR_HEIGHT);
                         } catch (Error e) {
@@ -185,7 +185,7 @@ public class Application : Object {
                         w.get_allocation(out rect);
                         
                         try {
-                            background_color.parse(window.config.config_file.get_string("theme", "color1"));
+                            background_color.parse(window.config.config_file.get_string("theme", "background"));
                             cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, window.config.config_file.get_double("general", "opacity"));
                             Draw.draw_rectangle(cr, 0, 0, rect.width, Constant.TITLEBAR_HEIGHT);
                         } catch (Error e) {

@@ -1,11 +1,33 @@
 using Gdk;
 using Gtk;
+using Gee;
 
 extern char* project_path();
 extern string font_match(string family);
 extern string[] list_mono_fonts(out int num);
 
 namespace Utils {
+    public ArrayList<string> list_files(string path) {
+        ArrayList<string> files = new ArrayList<string>();
+        
+        try {
+            FileEnumerator enumerator = File.new_for_path(path).enumerate_children(
+                "standard::*",
+                FileQueryInfoFlags.NOFOLLOW_SYMLINKS);
+                
+            FileInfo info = null;
+            while (((info = enumerator.next_file()) != null)) {
+                if (info.get_file_type() != FileType.DIRECTORY) {
+                    files.add(info.get_name());
+                }
+            }
+        } catch (Error e) {
+            print("list_files: %s\n", e.message);
+        }
+        
+        return files;
+    }
+
     public bool move_window(Gtk.Widget widget, Gdk.EventButton event, Gtk.Window window) {
         if (is_left_button(event)) {
             window.begin_move_drag(
@@ -139,6 +161,14 @@ namespace Utils {
 
     public string get_image_path(string image_name) {
         return GLib.Path.build_path(Path.DIR_SEPARATOR_S, GLib.Path.get_dirname((string) project_path()), "image", image_name);
+    }
+
+    public string get_theme_path(string theme_name) {
+        return GLib.Path.build_path(Path.DIR_SEPARATOR_S, GLib.Path.get_dirname((string) project_path()), "theme", theme_name);
+    }
+
+    public string get_theme_dir() {
+        return GLib.Path.build_path(Path.DIR_SEPARATOR_S, GLib.Path.get_dirname((string) project_path()), "theme");
     }
 
     public string get_root_path(string file_path) {
