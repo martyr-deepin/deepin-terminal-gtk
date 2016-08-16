@@ -2,7 +2,7 @@ using Gtk;
 using Widgets;
 
 namespace Widgets {
-    public class AboutDialog : Widgets.BaseWindow {
+    public class AboutDialog : Widgets.Dialog {
         public int window_init_width = 500;
         public int window_init_height = 320;
 

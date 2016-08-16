@@ -2,7 +2,7 @@ using Gtk;
 using Widgets;
 
 namespace Widgets {
-    public class RemoteServer : Widgets.BaseWindow {
+    public class RemoteServer : Widgets.Dialog {
         public int window_init_width = 480;
         public int window_init_height = 370;
         public int window_expand_height = 540;

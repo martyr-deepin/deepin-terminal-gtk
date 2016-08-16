@@ -2,7 +2,7 @@ using Gtk;
 using Widgets;
 
 namespace Widgets {
-    public class ConfirmDialog : Widgets.BaseWindow {
+    public class ConfirmDialog : Widgets.Dialog {
         private int window_init_width = 480;
         private int window_init_height = 230;
         

@@ -4,7 +4,7 @@ using Gee;
 using Animation;
 
 namespace Widgets {
-    public class Preference : Widgets.BaseWindow {
+    public class Preference : Widgets.Dialog {
         public Gtk.Widget focus_widget;
         public int window_init_width = 780;
         public int window_init_height = 670;
