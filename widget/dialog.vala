@@ -33,7 +33,7 @@ namespace Widgets {
                 // |***|   |   |   |   |   |
                 // |---+---+---+---+---+---|
                 cr.save();
-                cr.set_source_rgba(0, 0, 0, 0.63);
+                cr.set_source_rgba(0, 0, 0, 0.63 * 0.2);
                 // Top.
                 Draw.draw_rectangle(cr, x + 5, y, 1, 1);
                 Draw.draw_rectangle(cr, x + width - 6, y, 1, 1);
@@ -62,7 +62,7 @@ namespace Widgets {
                 // |   |***|   |   |   |   |
                 // |---+---+---+---+---+---|
                 cr.save();
-                cr.set_source_rgba(0, 0, 0, 0.56);
+                cr.set_source_rgba(0, 0, 0, 0.56 * 0.2);
                 // Top.
                 Draw.draw_rectangle(cr, x + 4, y, 1, 1);
                 Draw.draw_rectangle(cr, x + width - 5, y, 1, 1);
@@ -91,7 +91,7 @@ namespace Widgets {
                 // |   |   |***|   |   |   |
                 // |---+---+---+---+---+---|
                 cr.save();
-                cr.set_source_rgba(0, 0, 0, 0.47);
+                cr.set_source_rgba(0, 0, 0, 0.47 * 0.2);
                 // Top.
                 Draw.draw_rectangle(cr, x + 3, y, 1, 1);
                 Draw.draw_rectangle(cr, x + width - 4, y, 1, 1);
@@ -120,7 +120,7 @@ namespace Widgets {
                 // |   |   |   |***|   |   |
                 // |---+---+---+---+---+---|
                 cr.save();
-                cr.set_source_rgba(0, 0, 0, 0.21);
+                cr.set_source_rgba(0, 0, 0, 0.21 * 0.2);
                 // Top.
                 Draw.draw_rectangle(cr, x + 2, y, 1, 1);
                 Draw.draw_rectangle(cr, x + width - 3, y, 1, 1);
@@ -149,7 +149,7 @@ namespace Widgets {
                 // |   |   |   |   |   |   |
                 // |---+---+---+---+---+---|
                 cr.save();
-                cr.set_source_rgba(0, 0, 0, 0.28);
+                cr.set_source_rgba(0, 0, 0, 0.28 * 0.2);
                 // Top left.
                 Draw.draw_rectangle(cr, x + 1, y + 1, 1, 1);
                 // Top right.
@@ -174,7 +174,7 @@ namespace Widgets {
                 // |   |   |   |   |   |   |
                 // |---+---+---+---+---+---|
                 cr.save();
-                cr.set_source_rgba(0, 0, 0, 0.56);
+                cr.set_source_rgba(0, 0, 0, 0.56 * 0.2);
                 // Top.
                 Draw.draw_rectangle(cr, x + 2, y + 1, 1, 1);
                 Draw.draw_rectangle(cr, x + width - 3, y + 1, 1, 1);
@@ -191,7 +191,7 @@ namespace Widgets {
     					
                 // Draw window frame.
                 cr.save();
-                cr.set_source_rgba(0, 0, 0, 0.70);
+                cr.set_source_rgba(0, 0, 0, 0.70 * 0.2);
                 // Top.
                 Draw.draw_rectangle(cr, x + 6, y, width - 12, 1);
                 // Bottom.
