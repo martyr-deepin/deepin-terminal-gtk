@@ -79,9 +79,8 @@ public class Application : Object {
             start_path = path;
             Utils.load_css_theme(Utils.get_root_path("style.css"));
             
-            Tabbar tabbar = new Tabbar(quake_mode);
+            Tabbar tabbar = new Tabbar();
             workspace_manager = new WorkspaceManager(tabbar, commands, work_directory); 
-            Appbar appbar = new Appbar(tabbar, quake_mode, this, workspace_manager);
             
             tabbar.press_tab.connect((t, tab_index, tab_id) => {
 					tabbar.unhighlight_tab(tab_id);
@@ -108,13 +107,10 @@ public class Application : Object {
             tabbar.new_tab.connect((t) => {
                     workspace_manager.new_workspace_with_current_directory();
                 });
-            appbar.close_button.button_release_event.connect((w, e) => {
-                    quit();
-                    
-                    return false;
-                });
             
             Box box = new Box(Gtk.Orientation.VERTICAL, 0);
+            Box top_box = new Box(Gtk.Orientation.HORIZONTAL, 0);
+            Gdk.RGBA background_color = Gdk.RGBA();
             
             if (quake_mode) {
                 quake_window = new Widgets.QuakeWindow();
@@ -127,6 +123,24 @@ public class Application : Object {
 					
                         quake_window.queue_draw();
                     });
+                
+                top_box.draw.connect((w, cr) => {
+                        Gtk.Allocation rect;
+                        w.get_allocation(out rect);
+                        
+                        try {
+                            background_color.parse(quake_window.config.config_file.get_string("theme", "color1"));
+                            cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, quake_window.config.config_file.get_double("general", "opacity"));
+                            Draw.draw_rectangle(cr, 0, 0, rect.width, Constant.TITLEBAR_HEIGHT);
+                        } catch (Error e) {
+                            print(e.message);
+                        }
+                    
+                        Utils.propagate_draw(top_box, cr);
+                        
+                        return true;
+                    });
+            
             
                 quake_window.destroy.connect((t) => {
                         quit();
@@ -137,7 +151,8 @@ public class Application : Object {
                 
                 box.pack_start(workspace_manager, true, true, 0);
                 Widgets.EventBox event_box = new Widgets.EventBox();
-                event_box.add(tabbar);
+                top_box.pack_start(tabbar, true, true, 0);
+                event_box.add(top_box);
                 box.pack_start(event_box, false, false, 0);
                 
                 // First focus terminal after show quake terminal.
@@ -151,6 +166,30 @@ public class Application : Object {
                 quake_window.show_all();
             } else {
                 window = new Widgets.Window();
+                Appbar appbar = new Appbar(tabbar, this, workspace_manager);
+                appbar.close_button.button_release_event.connect((w, e) => {
+                        quit();
+                    
+                        return false;
+                    });
+            
+                top_box.draw.connect((w, cr) => {
+                        Gtk.Allocation rect;
+                        w.get_allocation(out rect);
+                        
+                        try {
+                            background_color.parse(window.config.config_file.get_string("theme", "color1"));
+                            cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, window.config.config_file.get_double("general", "opacity"));
+                            Draw.draw_rectangle(cr, 0, 0, rect.width, Constant.TITLEBAR_HEIGHT);
+                        } catch (Error e) {
+                            print(e.message);
+                        }
+                    
+                        Utils.propagate_draw(top_box, cr);
+
+                        return true;
+                    });
+            
                 tabbar.draw_active_tab_underline.connect((t, x, width) => {
                         int offset_x, offset_y;
                         tabbar.translate_coordinates(window, 0, 0, out offset_x, out offset_y);
@@ -183,7 +222,8 @@ public class Application : Object {
                     window.set_position(Gtk.WindowPosition.CENTER);
                 }
             
-                box.pack_start(appbar, false, false, 0);
+                top_box.pack_start(appbar, true, true, 0);
+                box.pack_start(top_box, false, false, 0);
                 box.pack_start(workspace_manager, true, true, 0);
 			
                 window.add_widget(box);

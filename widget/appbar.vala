@@ -19,16 +19,12 @@ namespace Widgets {
         
 		public Menu.Menu menu;
 		
-		public Gdk.RGBA background_color;
 		
-		public bool quake_mode = false;
-        
         public Widgets.WindowEventArea event_area;
         
         public WorkspaceManager workspace_manager;
         
-        public Appbar(Tabbar tab_bar, bool mode, Application app, WorkspaceManager manager) {
-			quake_mode = mode;
+        public Appbar(Tabbar tab_bar, Application app, WorkspaceManager manager) {
             workspace_manager = manager;
 			
 			set_size_request(-1, height);
@@ -103,12 +99,10 @@ namespace Widgets {
 			box.pack_start(logo_box, false, false, 0);
 			
             max_toggle_box.add(max_button);
-            if (!quake_mode) {
-                box.pack_start(tabbar, true, true, 0);
-				var space_box = new Gtk.EventBox();
-				space_box.set_size_request(30, -1);
-				box.pack_start(space_box, false, false, 0);
-            }
+            box.pack_start(tabbar, true, true, 0);
+            var space_box = new Gtk.EventBox();
+            space_box.set_size_request(30, -1);
+            box.pack_start(space_box, false, false, 0);
             box.pack_start(menu_button, false, false, 0);
             box.pack_start(min_button, false, false, 0);
             box.pack_start(max_toggle_box, false, false, 0);
@@ -118,7 +112,6 @@ namespace Widgets {
             event_area = new Widgets.WindowEventArea(this);
             // Don't override window button area.
             event_area.margin_end = 27 * 4;
-            draw.connect(on_draw);
             
             add(box);
             add_overlay(event_area);
@@ -176,43 +169,5 @@ namespace Widgets {
             
             max_toggle_box.show_all();
         }
-        
-        private bool on_draw(Gtk.Widget widget, Cairo.Context cr) {
-            Gtk.Allocation rect;
-            widget.get_allocation(out rect);
-            
-
-			cr.save();
-			try {
-                
-                if (quake_mode) {
-                    Widgets.QuakeWindow window = (Widgets.QuakeWindow) this.get_toplevel();
-                    
-                    background_color.parse(window.config.config_file.get_string("theme", "color1"));
-                    cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, window.config.config_file.get_double("general", "opacity"));
-                    Draw.draw_rectangle(cr, 0, 0, rect.width, height);
-                    
-                    cr.set_source_rgba(0, 0, 0, 0.2);				
-                    Draw.draw_rectangle(cr, 0, 0, rect.width, height);
-                } else {
-                    Widgets.Window window = (Widgets.Window) this.get_toplevel();
-                    background_color.parse(window.config.config_file.get_string("theme", "color1"));
-                    cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, window.config.config_file.get_double("general", "opacity"));
-                    Draw.draw_rectangle(cr, 0, 0, rect.width, height);
-                    
-                    cr.set_source_rgba(0, 0, 0, 0.2);				
-                    Draw.draw_rectangle(cr, 0, 0, rect.width, height);
-                }
-			} catch (GLib.KeyFileError e) {
-				print(e.message);
-			}
-			cr.restore();
-			
-			foreach(Gtk.Widget w in this.get_children()) {
-                w.draw(cr);
-            };
-
-            return true;
-        }        
     }
 }

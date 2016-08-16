@@ -24,7 +24,6 @@ namespace Widgets {
             // draw.connect((w, cr) => {
             //         Gtk.Allocation rect;
             //         w.get_allocation(out rect);
-
             //         cr.set_source_rgba(1, 0, 0, 0.5);
             //         Draw.draw_rectangle(cr, 0, 0, rect.width, rect.height);
                     

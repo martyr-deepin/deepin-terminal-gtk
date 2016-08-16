@@ -54,12 +54,8 @@ namespace Widgets {
         public signal void new_tab();
 		public signal void draw_active_tab_underline(int x, int width);
 		
-		public bool quake_mode = false;
 		
-        
-        public Tabbar(bool mode) {
-			quake_mode = mode;
-			
+        public Tabbar() {
             add_events (Gdk.EventMask.BUTTON_PRESS_MASK
                         | Gdk.EventMask.BUTTON_RELEASE_MASK
                         | Gdk.EventMask.POINTER_MOTION_MASK
@@ -349,19 +345,7 @@ namespace Widgets {
             Gtk.Allocation alloc;
             widget.get_allocation(out alloc);
 			
-			if (quake_mode) {
-				// Draw background under titlebar.
-				cr.set_operator(Cairo.Operator.OVER);
-				cr.set_source_rgba(0, 0, 0, 0.2);
-				Draw.draw_rectangle(cr, 0, 0, alloc.width, height);
-				
-				// Draw bottom line.
-				cr.set_operator(Cairo.Operator.OVER);
-				cr.set_source_rgba(1, 1, 1, 0.05);
-				Draw.draw_rectangle(cr, 0, alloc.height - 2, alloc.width, 1);
-			}				
-            
-			// Draw tab splitter.
+            // Draw tab splitter.
             int draw_x = 0;
             int counter = 0;
             foreach (int tab_id in tab_list) {
