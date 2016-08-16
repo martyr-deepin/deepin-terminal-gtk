@@ -83,16 +83,6 @@ namespace Widgets {
             
             try {
                 if (window_is_fullscreen()) {
-                    // Draw top line.
-                    cr.set_source_rgba(frame_color.red, frame_color.green, frame_color.blue, config.config_file.get_double("general", "opacity"));
-                    Draw.draw_rectangle(cr, x, y, width, 1);
-                
-                    cr.set_source_rgba(0, 0, 0, 0.2);  // Draw same black color as appbar.
-                    Draw.draw_rectangle(cr, x, y, width, 1);
-                
-                    cr.set_source_rgba(1, 1, 1, 0.0625 * config.config_file.get_double("general", "opacity")); // Draw top line at window.
-                    Draw.draw_rectangle(cr, x, y, width, 1);
-                
                     // Draw line below at titlebar.
                     cr.save();
                     cr.set_source_rgba(0, 0, 0, 0.3);
@@ -106,21 +96,11 @@ namespace Widgets {
                     Draw.draw_rectangle(cr, x + active_tab_underline_x - window_frame_box.margin_start, y + Constant.TITLEBAR_HEIGHT, active_tab_underline_width, 2);
                     cr.restore();
                 } else if (window_is_max() || window_is_tiled()) {
-                    // Draw top line.
-                    cr.set_source_rgba(frame_color.red, frame_color.green, frame_color.blue, config.config_file.get_double("general", "opacity"));
-                    Draw.draw_rectangle(cr, x + 1, y + 1, width - 2, 1);
-                
-                    cr.set_source_rgba(0, 0, 0, 0.2);  // Draw same black color as appbar.
-                    Draw.draw_rectangle(cr, x + 1, y + 1, width - 2, 1);
-                
-                    cr.set_source_rgba(1, 1, 1, 0.0625 * config.config_file.get_double("general", "opacity")); // Draw top line at window.
-                    Draw.draw_rectangle(cr, x + 1, y + 1, width - 2, 1);
-                
                     // Draw line below at titlebar.
                     cr.save();
                     cr.set_source_rgba(0, 0, 0, 0.3);
                     // cr.set_source_rgba(1, 0, 0, 1);
-                    Draw.draw_rectangle(cr, x + 1, y + Constant.TITLEBAR_HEIGHT + 2, width - 2, 1);
+                    Draw.draw_rectangle(cr, x + 1, y + Constant.TITLEBAR_HEIGHT + 1, width - 2, 1);
                     cr.restore();
 						
                     // Draw active tab underline *above* titlebar underline.

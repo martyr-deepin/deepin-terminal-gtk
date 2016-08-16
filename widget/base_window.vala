@@ -118,7 +118,7 @@ namespace Widgets {
                                 
                         window_frame_box.margin = 0;
                         
-                        window_widget_box.margin_top = 2;
+                        window_widget_box.margin_top = 1;
                         window_widget_box.margin_bottom = 1;
                         window_widget_box.margin_start = 1;
                         window_widget_box.margin_end = 1;
@@ -149,7 +149,7 @@ namespace Widgets {
                             window_frame_box.margin_bottom = 0;
                         }
                         
-                        window_widget_box.margin_top = 2;
+                        window_widget_box.margin_top = 1;
                         window_widget_box.margin_bottom = 1;
                         window_widget_box.margin_start = 1;
                         window_widget_box.margin_end = 1;
@@ -309,11 +309,10 @@ namespace Widgets {
             Gdk.RGBA frame_color = Gdk.RGBA();
             
             try {
-                if (window_is_max() || window_is_tiled()) {
+                if (window_is_max() || window_is_tiled() || window_is_fullscreen()) {
                     // Draw window frame.
                     cr.save();
-                    cr.set_source_rgba(0, 0, 0, config.config_file.get_double("general", "opacity"));
-                    // cr.set_source_rgba(1, 0, 0, 1);
+                    cr.set_source_rgba(frame_color.red, frame_color.green, frame_color.blue, config.config_file.get_double("general", "opacity"));
                     // Top.
                     Draw.draw_rectangle(cr, x, y, width, 1);
                     // Bottom.
@@ -323,7 +322,19 @@ namespace Widgets {
                     // Rigt..
                     Draw.draw_rectangle(cr, x + width - 1, y + 1, 1, height - 1);
                     cr.restore();
-                } else if (!window_is_fullscreen()) {
+                    
+                    cr.save();
+                    cr.set_source_rgba(0, 0, 0, 0.7);
+                    // Top.
+                    Draw.draw_rectangle(cr, x, y, width, 1);
+                    // Bottom.
+                    Draw.draw_rectangle(cr, x, y + height - 1, width, 1);
+                    // Left.
+                    Draw.draw_rectangle(cr, x, y, 1, height - 1);
+                    // Rigt..
+                    Draw.draw_rectangle(cr, x + width - 1, y + 1, 1, height - 1);
+                    cr.restore();
+                } else {
                     frame_color.parse(config.config_file.get_string("theme", "color1"));
                     
                     // |---+---+---+---+---+---|
