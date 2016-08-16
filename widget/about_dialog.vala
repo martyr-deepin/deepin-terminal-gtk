@@ -3,27 +3,13 @@ using Widgets;
 
 namespace Widgets {
     public class AboutDialog : Widgets.Dialog {
-        public int window_init_width = 500;
-        public int window_init_height = 320;
-
         public Gtk.Widget focus_widget;
         
-        public AboutDialog(Gtk.Window window, Gtk.Widget widget) {
+        public AboutDialog(Gtk.Widget widget) {
+            window_init_width = 500;
+            window_init_height = 320;
+
             focus_widget = widget;
-            
-            set_transient_for(window);
-            set_default_geometry(window_init_width, window_init_height);
-            set_resizable(false);
-            set_modal(true);
-            
-            Gdk.Window gdk_window = window.get_window();
-            int x, y;
-            gdk_window.get_root_origin(out x, out y);
-            Gtk.Allocation window_alloc;
-            window.get_allocation(out window_alloc);
-            
-            move(x + (window_alloc.width - window_init_width) / 2,
-                 y + (window_alloc.height - window_init_height) / 3);
             
             var overlay = new Gtk.Overlay();
 
@@ -60,8 +46,6 @@ namespace Widgets {
             overlay.add_overlay(event_area);
             
             add_widget(overlay);
-            
-            show_all();
         }
         
         public override void draw_window_below(Cairo.Context cr) {

@@ -3,9 +3,6 @@ using Widgets;
 
 namespace Widgets {
     public class ConfirmDialog : Widgets.Dialog {
-        private int window_init_width = 480;
-        private int window_init_height = 230;
-        
         private int logo_margin_start = 20;
         private int logo_margin_end = 20;
         private int box_margin_top = 4;
@@ -16,22 +13,9 @@ namespace Widgets {
         
         public signal void confirm();
         
-        public ConfirmDialog(Gtk.Window window) {
-            modal = true;
-            set_transient_for(window);
-            set_skip_taskbar_hint(true);
-            set_skip_pager_hint(true);
-            set_size_request(window_init_width, window_init_height);
-            set_resizable(false);
-            
-            Gdk.Window gdk_window = window.get_window();
-            int x, y;
-            gdk_window.get_root_origin(out x, out y);
-            Gtk.Allocation window_alloc;
-            window.get_allocation(out window_alloc);
-            
-            move(x + (window_alloc.width - window_init_width) / 2,
-                 y + (window_alloc.height - window_init_height) / 2);
+        public ConfirmDialog() {
+            window_init_width = 480;
+            window_init_height = 230;
             
             // Add widgets.
             var overlay = new Gtk.Overlay();
@@ -106,8 +90,6 @@ namespace Widgets {
             overlay.add_overlay(event_area);
             
             add_widget(overlay);
-            
-            show_all();
         }
         
         public override void draw_window_below(Cairo.Context cr) {

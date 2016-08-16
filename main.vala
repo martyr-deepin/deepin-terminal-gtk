@@ -91,9 +91,11 @@ public class Application : Object {
                     if (focus_workspace.has_active_term()) {
                         ConfirmDialog dialog;
                         if (quake_mode) {
-                            dialog = new ConfirmDialog(quake_window);
+                            dialog = new ConfirmDialog();
+                            dialog.transient_for_window(quake_window);
                         } else {
-                            dialog = new ConfirmDialog(window);
+                            dialog = new ConfirmDialog();
+                            dialog.transient_for_window(window);
                         }
                         dialog.confirm.connect((d) => {
                                 tabbar.destroy_tab(tab_index);
@@ -261,7 +263,8 @@ public class Application : Object {
     
     public void quit() {
         if (workspace_manager.has_active_term()) {
-            ConfirmDialog dialog = new ConfirmDialog(window);
+            ConfirmDialog dialog = new ConfirmDialog();
+            dialog.transient_for_window(window);
             dialog.confirm.connect((d) => {
                     Gtk.main_quit();
                 });

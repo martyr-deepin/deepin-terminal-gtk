@@ -139,7 +139,8 @@ namespace Widgets {
                     }
 					break;
 			    case "about":
-                    new AboutDialog((Gtk.Window) this.get_toplevel(), focus_widget);
+                    var dialog = new AboutDialog(focus_widget);
+                    dialog.transient_for_window((Gtk.Window) this.get_toplevel());
 			    	break;
 				case "exit":
                     application.quit();

@@ -499,6 +499,7 @@ namespace Widgets {
                 }
             }
             var remote_server = new Widgets.RemoteServer(parent_window, this, server_info, config_file);
+            remote_server.transient_for_window(parent_window);
             remote_server.edit_server.connect((
                 server, address, username, password, port, 
                 encode, path, command, nickname, groupname, 
@@ -554,6 +555,7 @@ namespace Widgets {
 			Widgets.AddServerButton add_server_button = new Widgets.AddServerButton();
 			add_server_button.button_release_event.connect((w, e) => {
                     var remote_server = new Widgets.RemoteServer(parent_window, this);
+                    remote_server.transient_for_window(parent_window);
                     remote_server.add_server.connect((server, address, username, password, port, encode, path, command, nickname, groupname, backspace_key, delete_key) => {
                             add_server(address, username, password, port, encode, path, command, nickname, groupname, backspace_key, delete_key);
 

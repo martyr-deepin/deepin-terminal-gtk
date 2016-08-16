@@ -5,8 +5,6 @@ using XUtils;
 
 namespace Widgets {
     public class BaseWindow : Widgets.ConfigWindow {
-        public double window_frame_radius = 5.0;
-        
         public int window_frame_margin_top = 50;
         public int window_frame_margin_bottom = 60;
         public int window_frame_margin_start = 50;

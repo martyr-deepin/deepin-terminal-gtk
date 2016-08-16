@@ -6,8 +6,6 @@ using Animation;
 namespace Widgets {
     public class Preference : Widgets.Dialog {
         public Gtk.Widget focus_widget;
-        public int window_init_width = 780;
-        public int window_init_height = 670;
         public int slidebar_width = 160;
         
         public int preference_name_width = 180;
@@ -90,6 +88,9 @@ namespace Widgets {
 		ArrayList<string> window_state_list;
 
         public Preference(Gtk.Window window, Gtk.Widget widget) {
+            window_init_width = 780;
+            window_init_height = 670;
+        
 			theme_label = create_label();
 			theme_combox = create_combox_text();
             opacity_label = create_label("Opacity:");
@@ -156,21 +157,6 @@ namespace Widgets {
             parent_window = (Widgets.ConfigWindow) window;
             
             focus_widget = widget;
-            
-            set_transient_for(window);
-            set_default_geometry(window_init_width, window_init_height);
-            set_resizable(false);
-            set_modal(true);
-			set_type_hint(Gdk.WindowTypeHint.DIALOG);  // DIALOG hint will give right window effect
-            
-            Gdk.Window gdk_window = window.get_window();
-            int x, y;
-            gdk_window.get_root_origin(out x, out y);
-            Gtk.Allocation window_alloc;
-            window.get_allocation(out window_alloc);
-            
-            move(x + (window_alloc.width - window_init_width) / 2,
-                 y + (window_alloc.height - window_init_height) / 3);
             
             var titlebar = new Titlebar();
             titlebar.close_button.button_release_event.connect((b) => {
@@ -396,8 +382,6 @@ namespace Widgets {
 						scroll_to_widget(scrolledwindow, box, about_segement);
 					}
 				});
-            
-            show_all();
         }
 		
 		public void init_config() {
