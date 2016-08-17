@@ -30,8 +30,11 @@ namespace Widgets {
         public int active_tab_underline_x;
 		public int active_tab_underline_width;
 		
-        public Gdk.RGBA line_dark_color;
-        public Gdk.RGBA line_light_color;
+        public Gdk.RGBA top_line_dark_color;
+        public Gdk.RGBA top_line_light_color;
+
+        public Gdk.RGBA title_line_dark_color;
+        public Gdk.RGBA title_line_light_color;
         
         public Window() {
             int monitor = screen.get_monitor_at_window(screen.get_active_window());
@@ -43,13 +46,21 @@ namespace Widgets {
             geo.min_height = rect.height / 3;
             this.set_geometry_hints(null, geo, Gdk.WindowHints.MIN_SIZE);
             
-            line_dark_color = Gdk.RGBA();
-            line_dark_color.parse("#000000");
-            line_dark_color.alpha = 0.2;
+            top_line_dark_color = Gdk.RGBA();
+            top_line_dark_color.parse("#000000");
+            top_line_dark_color.alpha = 0.2;
 
-            line_light_color = Gdk.RGBA();
-            line_light_color.parse("#ffffff");
-            line_light_color.alpha = 0.2;
+            top_line_light_color = Gdk.RGBA();
+            top_line_light_color.parse("#ffffff");
+            top_line_light_color.alpha = 0.2;
+
+            title_line_dark_color = Gdk.RGBA();
+            title_line_dark_color.parse("#000000");
+            title_line_dark_color.alpha = 0.3;
+
+            title_line_light_color = Gdk.RGBA();
+            title_line_light_color.parse("#000000");
+            title_line_light_color.alpha = 0.1;
             
             window_frame_box.margin_top = window_frame_margin_top;
             window_frame_box.margin_bottom = window_frame_margin_bottom;
@@ -154,7 +165,11 @@ namespace Widgets {
                 if (window_is_fullscreen()) {
                     // Draw line below at titlebar.
                     cr.save();
-                    cr.set_source_rgba(0, 0, 0, 0.3);
+                    if (is_light_theme) {
+                        Utils.set_context_color(cr, title_line_light_color);
+                    } else {
+                        Utils.set_context_color(cr, title_line_dark_color);
+                    }
                     // cr.set_source_rgba(1, 0, 0, 1);
                     Draw.draw_rectangle(cr, x, y + Constant.TITLEBAR_HEIGHT + 1, width, 1);
                     cr.restore();
@@ -167,8 +182,11 @@ namespace Widgets {
                 } else if (window_is_max() || window_is_tiled()) {
                     // Draw line below at titlebar.
                     cr.save();
-                    cr.set_source_rgba(0, 0, 0, 0.3);
-                    // cr.set_source_rgba(1, 0, 0, 1);
+                    if (is_light_theme) {
+                        Utils.set_context_color(cr, title_line_light_color);
+                    } else {
+                        Utils.set_context_color(cr, title_line_dark_color);
+                    }
                     Draw.draw_rectangle(cr, x + 1, y + Constant.TITLEBAR_HEIGHT + 1, width - 2, 1);
                     cr.restore();
 						
@@ -183,9 +201,9 @@ namespace Widgets {
                     Draw.draw_rectangle(cr, x + 3, y + 1, width - 6, 1);
 
                     if (is_light_theme) {
-                        Utils.set_context_color(cr, line_light_color);
+                        Utils.set_context_color(cr, top_line_light_color);
                     } else {
-                        Utils.set_context_color(cr, line_dark_color);
+                        Utils.set_context_color(cr, top_line_dark_color);
                     }
                     Draw.draw_rectangle(cr, x + 3, y + 1, width - 6, 1);
                 
@@ -200,9 +218,9 @@ namespace Widgets {
                     Draw.draw_rectangle(cr, x + width - 2, y + 3, 1, 39);
                 
                     if (is_light_theme) {
-                        Utils.set_context_color(cr, line_light_color);
+                        Utils.set_context_color(cr, top_line_light_color);
                     } else {
-                        Utils.set_context_color(cr, line_dark_color);
+                        Utils.set_context_color(cr, top_line_dark_color);
                     }
                     // Left.
                     Draw.draw_rectangle(cr, x + 1, y + 3, 1, 39);
@@ -211,8 +229,11 @@ namespace Widgets {
                 
                     // Draw line below at titlebar.
                     cr.save();
-                    cr.set_source_rgba(0, 0, 0, 0.3);
-                    // cr.set_source_rgba(1, 0, 0, 1);
+                    if (is_light_theme) {
+                        Utils.set_context_color(cr, title_line_light_color);
+                    } else {
+                        Utils.set_context_color(cr, title_line_dark_color);
+                    }
                     Draw.draw_rectangle(cr, x + 1, y + 41, width - 2, 1);
                     cr.restore();
 						

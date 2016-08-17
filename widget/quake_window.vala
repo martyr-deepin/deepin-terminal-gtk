@@ -37,6 +37,9 @@ namespace Widgets {
         public int press_x;
         public int press_y;
         
+        public Gdk.RGBA title_line_dark_color;
+        public Gdk.RGBA title_line_light_color;
+        
         public QuakeWindow() {
             set_app_paintable(true); // set_app_paintable is neccessary step to make window transparent.
             Gdk.Screen screen = Gdk.Screen.get_default();
@@ -48,6 +51,14 @@ namespace Widgets {
             
             set_decorated(false);
             set_keep_above(true);
+            
+            title_line_dark_color = Gdk.RGBA();
+            title_line_dark_color.parse("#000000");
+            title_line_dark_color.alpha = 0.3;
+
+            title_line_light_color = Gdk.RGBA();
+            title_line_light_color.parse("#000000");
+            title_line_light_color.alpha = 0.1;
             
             Gdk.Geometry geo = Gdk.Geometry();
             geo.min_width = rect.width;
@@ -269,7 +280,14 @@ namespace Widgets {
             Gdk.RGBA frame_color = Gdk.RGBA();
             Gdk.RGBA active_tab_color = Gdk.RGBA();
             
+            bool is_light_theme = false;
             try {
+                is_light_theme = config.config_file.get_string("theme", "style") == "light";
+            } catch (Error e) {
+                print("ImageButton on_draw: %s\n", e.message);
+            }
+            
+           try {
                 frame_color.parse(config.config_file.get_string("theme", "background"));
                 active_tab_color.parse(config.config_file.get_string("theme", "tab"));
             } catch (GLib.KeyFileError e) {
@@ -278,8 +296,11 @@ namespace Widgets {
 
             // Draw line below at titlebar.
             cr.save();
-            cr.set_source_rgba(0, 0, 0, 0.3);
-            // cr.set_source_rgba(1, 0, 0, 1);
+            if (is_light_theme) {
+                Utils.set_context_color(cr, title_line_light_color);
+            } else {
+                Utils.set_context_color(cr, title_line_dark_color);
+            }
             Draw.draw_rectangle(cr, x, y + height - 41, width, 1);
             cr.restore();
 						
