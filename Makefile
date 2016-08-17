@@ -110,6 +110,9 @@ install:
 	mkdir -p ${DESTDIR}${PREFIX}/share/icons
 	mkdir -p ${DESTDIR}${PREFIX}/share/dman/deepin-terminal
 	cp -r image ${DESTDIR}${PREFIX}/share/deepin-terminal
+	cp -r theme ${DESTDIR}${PREFIX}/share/deepin-terminal
+	cp style.css ${DESTDIR}${PREFIX}/share/deepin-terminal
+	cp ssh_login.sh ${DESTDIR}${PREFIX}/share/deepin-terminal
 	cp deepin-terminal.desktop ${DESTDIR}${PREFIX}/share/applications
 	cp -r main ${DESTDIR}${PREFIX}/share/deepin-terminal
 	ln -sf ${PREFIX}/share/deepin-terminal/main ${DESTDIR}${PREFIX}/bin/deepin-terminal
