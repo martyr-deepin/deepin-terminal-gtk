@@ -176,8 +176,8 @@ namespace Widgets {
 			scroll_on_key_checkbutton = create_checkbutton();
 			scroll_on_out_checkbutton = create_checkbutton();
 			
-			font_size_spinbutton = create_spinbutton(0, 100, 1);
-			scroll_line_spinbutton = create_spinbutton(0, 100, 1);
+			font_size_spinbutton = create_spinbutton(5, 50, 1);
+			scroll_line_spinbutton = create_spinbutton(0, 1000, 1);
 			
             parent_window = (Widgets.ConfigWindow) window;
             
