@@ -179,6 +179,7 @@ namespace Widgets {
                 port_entry.set_width_chars(4);
                 port_entry.margin_start = 14;
                 port_entry.get_style_context().add_class("preference_entry");
+                port_entry.insert_text.connect(on_port_entry_insert);
             
                 var address_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
                 address_box.pack_start(address_entry, true, true, 0);
@@ -376,6 +377,13 @@ namespace Widgets {
                 error ("%s", e.message);
             }
         }
+        
+        private void on_port_entry_insert(Gtk.Editable editable, string new_text, int new_text_length, ref int position) {
+            if (!"0123456789".contains(new_text)) {
+                Signal.stop_emission_by_name(editable, "insert-text");
+            }
+        }
+        
         
         public void show_advanced_options() {
             set_default_geometry(window_init_width, window_expand_height);
