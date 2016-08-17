@@ -49,7 +49,7 @@ main: ./project_path.c \
 	--Xcc=-DWNCK_I_KNOW_THIS_IS_UNSTABLE \
     --pkg=gtk+-3.0 \
     --pkg=vte-2.91 \
-    --pkg=gee-1.0 \
+    --pkg=gee-0.8 \
     --pkg=json-glib-1.0 \
     --pkg=gio-2.0 \
     --pkg=libwnck-3.0 \
