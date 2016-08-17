@@ -67,6 +67,8 @@ public class Application : Object {
     
     public string start_path;
     
+    private bool show_shortcut_viewer = false;
+    
 	private static bool version = false;
 	private static bool quake_mode = false;
 	private static string? work_directory = null;
@@ -178,6 +180,9 @@ public class Application : Object {
                 quake_window.key_press_event.connect((w, e) => {
                         return on_key_press(w, e);
                     });
+                quake_window.key_release_event.connect((w, e) => {
+                        return on_key_release(w, e);
+                    });
                 
                 box.pack_start(workspace_manager, true, true, 0);
                 Widgets.EventBox event_box = new Widgets.EventBox();
@@ -245,6 +250,9 @@ public class Application : Object {
                     });
                 window.key_press_event.connect((w, e) => {
                         return on_key_press(w, e);
+                    });
+                window.key_release_event.connect((w, e) => {
+                        return on_key_release(w, e);
                     });
                 
                 window.configure_event.connect((w) => {
@@ -396,6 +404,25 @@ public class Application : Object {
 		    
 		    var show_helper_window_key = config_file.get_string("keybind", "show_helper_window");
 		    if (show_helper_window_key != "" && keyname == show_helper_window_key) {
+                string data;
+                if (quake_mode) {
+                    data = get_shortcut_data(quake_window);
+                } else {
+                    data = get_shortcut_data(window);
+                }
+                
+                try {
+                    GLib.AppInfo appinfo = GLib.AppInfo.create_from_commandline(
+                        "deepin-shortcut-viewer -j='%s' -r=200,200,1200,800".printf(data),
+                        null,
+                        GLib.AppInfoCreateFlags.NONE);
+                    appinfo.launch(null, null);
+                } catch (Error e) {
+                    print("Main on_key_press: %s\n", e.message);
+                }
+                
+                show_shortcut_viewer = true;
+                
 		    	return true;
 		    }
 		    
@@ -422,6 +449,26 @@ public class Application : Object {
 			
 			return false;
 		}
+    }
+    
+    private bool on_key_release(Gtk.Widget widget, Gdk.EventKey key_event) {
+        if (Keymap.is_no_key_press(key_event)) {
+            if (show_shortcut_viewer) {
+                try {
+                    GLib.AppInfo appinfo = GLib.AppInfo.create_from_commandline(
+                        "deepin-shortcut-viewer -j=''",
+                        null,
+                        GLib.AppInfoCreateFlags.NONE);
+                    appinfo.launch(null, null);
+                } catch (Error e) {
+                    print("Main on_key_press: %s\n", e.message);
+                }
+                
+                show_shortcut_viewer = false;
+            }
+        }
+        
+        return false;
     }
 	
     public static void main(string[] args) {
@@ -505,5 +552,104 @@ public class Application : Object {
             
             Gtk.main();
         }
+    }
+    
+    public string get_shortcut_data(Widgets.ConfigWindow config_window) {
+        // Build a object:
+        Json.Builder builder = new Json.Builder();
+        
+        try {
+
+            builder.begin_object ();
+            builder.set_member_name("shortcut");
+                
+            builder.begin_array();
+
+            // Terminal shortcuts.
+            builder.begin_object ();
+            builder.set_member_name("groupItems");
+        
+            builder.begin_array();
+
+            insert_shortcut_key(builder, "Copy clipboard", config_window.config.config_file.get_string("keybind", "copy_clipboard"));;
+            insert_shortcut_key(builder, "Paste clipboard", config_window.config.config_file.get_string("keybind", "paste_clipboard"));;
+            insert_shortcut_key(builder, "Search", config_window.config.config_file.get_string("keybind", "search"));;
+            insert_shortcut_key(builder, "Zoom in", config_window.config.config_file.get_string("keybind", "zoom_in"));;
+            insert_shortcut_key(builder, "Zoom out", config_window.config.config_file.get_string("keybind", "zoom_out"));;
+            insert_shortcut_key(builder, "Default size", config_window.config.config_file.get_string("keybind", "revert_default_size"));;
+            insert_shortcut_key(builder, "Select all", config_window.config.config_file.get_string("keybind", "select_all"));;
+                
+            builder.end_array();
+                
+            builder.set_member_name("groupName");
+            builder.add_string_value("Terminal");
+            builder.end_object();
+        
+            // Workspace shortcuts.
+                
+            builder.begin_object ();
+            builder.set_member_name("groupItems");
+        
+            builder.begin_array();
+
+            insert_shortcut_key(builder, "New workspace", config_window.config.config_file.get_string("keybind", "new_workspace"));;
+            insert_shortcut_key(builder, "Close workspace", config_window.config.config_file.get_string("keybind", "close_workspace"));;
+            insert_shortcut_key(builder, "Next workspace", config_window.config.config_file.get_string("keybind", "next_workspace"));;
+            insert_shortcut_key(builder, "Previous workspace", config_window.config.config_file.get_string("keybind", "previous_workspace"));;
+            insert_shortcut_key(builder, "Split vertically", config_window.config.config_file.get_string("keybind", "split_vertically"));;
+            insert_shortcut_key(builder, "Split horizontally", config_window.config.config_file.get_string("keybind", "split_horizontally"));;
+            insert_shortcut_key(builder, "Select up down", config_window.config.config_file.get_string("keybind", "select_up_window"));;
+            insert_shortcut_key(builder, "Select down down", config_window.config.config_file.get_string("keybind", "select_down_window"));;
+            insert_shortcut_key(builder, "Select left down", config_window.config.config_file.get_string("keybind", "select_left_window"));;
+            insert_shortcut_key(builder, "Select right down", config_window.config.config_file.get_string("keybind", "select_right_window"));;
+            insert_shortcut_key(builder, "Close window", config_window.config.config_file.get_string("keybind", "close_window"));;
+            insert_shortcut_key(builder, "Close other window", config_window.config.config_file.get_string("keybind", "close_other_windows"));;
+                
+            builder.end_array();
+                
+            builder.set_member_name("groupName");
+            builder.add_string_value("Workspace");
+            builder.end_object();
+        
+            // Advanced shortcuts.
+            builder.begin_object ();
+            builder.set_member_name("groupItems");
+        
+            builder.begin_array();
+
+            insert_shortcut_key(builder, "Toggle fullscreen", config_window.config.config_file.get_string("keybind", "toggle_fullscreen"));;
+            insert_shortcut_key(builder, "Show helper window", config_window.config.config_file.get_string("keybind", "show_helper_window"));;
+            insert_shortcut_key(builder, "Show remote panel", config_window.config.config_file.get_string("keybind", "show_remote_panel"));;
+        
+            builder.end_array();
+                
+            builder.set_member_name("groupName");
+            builder.add_string_value("Advanced");
+            builder.end_object();
+        
+                
+            builder.end_array();
+
+            builder.end_object();
+        } catch (Error e) {
+            print("Main get_shortcut_data: %s\n", e.message);
+        }
+
+        // Generate a string:
+        Json.Generator generator = new Json.Generator();
+        Json.Node root = builder.get_root();
+        generator.set_root(root);
+
+        return generator.to_data(null);
+    }
+    
+    public void insert_shortcut_key(Json.Builder builder, string name, string key) {
+        builder.begin_object ();
+        builder.set_member_name("name");
+        builder.add_string_value(name);
+        
+        builder.set_member_name("value");
+        builder.add_string_value(key);
+        builder.end_object();
     }
 }
