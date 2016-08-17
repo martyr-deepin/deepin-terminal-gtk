@@ -305,6 +305,10 @@ namespace Widgets {
                     
                     return true;
                 });
+            
+            config.update.connect((w) => {
+                    update_style();
+                });
         }
         
         public void update_style() {

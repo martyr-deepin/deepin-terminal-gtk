@@ -169,7 +169,8 @@ namespace Widgets {
                     application.quit();
 					break;
                 case "preference":
-                    new Widgets.Preference((Gtk.Window) this.get_toplevel(), ((Gtk.Window) this.get_toplevel()).get_focus());
+                    var preference = new Widgets.Preference((Gtk.Window) this.get_toplevel(), ((Gtk.Window) this.get_toplevel()).get_focus());
+                    preference.transient_for_window((Gtk.Window) this.get_toplevel());
                     break;
             }
 		}        

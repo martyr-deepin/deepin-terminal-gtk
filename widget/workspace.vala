@@ -443,7 +443,7 @@ namespace Widgets {
                 term_before_search = get_focus_term(this);
                 search_text = "";
                 
-                search_box = new SearchBox();
+                search_box = new SearchBox(((Widgets.ConfigWindow) get_toplevel()));
                 search_box.search_entry.key_press_event.connect((w, e) => {
                         string keyname = Keymap.get_keyevent_name(e);
                         

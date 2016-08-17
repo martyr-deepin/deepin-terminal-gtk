@@ -101,9 +101,16 @@
     box-shadow: 0px 10px 14px 0px rgba(0,0,0,0.15),0 0 0 1px rgba(0,0,0,0.1);
 }
 
-.search_box {
-	background: transparent;
-	border: 0px;
+.search_dark_box {
+    background: rgba(32,32,32,0.5);
+    border-radius: 0px 0px 0px 10px;
+    border: 1px solid rgba(1,1,1,0.10);
+}
+
+.search_light_box {
+    background: rgba(255,255,255,0.5);
+    border-radius: 0px 0px 0px 10px;
+    border: 1px solid rgba(0,0,0,0.10);
 }
 
 .search_dark_entry {

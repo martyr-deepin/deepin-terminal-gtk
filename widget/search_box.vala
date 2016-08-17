@@ -33,7 +33,7 @@ namespace Widgets {
         public ImageButton search_next_button;
         public ImageButton search_previous_button;
         
-        public SearchBox() {
+        public SearchBox(Widgets.ConfigWindow config_window) {
             search_image = new ImageButton("search", true);
             search_entry = new Entry();
             clear_button_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
@@ -61,50 +61,33 @@ namespace Widgets {
             set_valign(Gtk.Align.START);
             set_halign(Gtk.Align.END);
             
+            adjust_css_with_theme(config_window);
             realize.connect((w) => {
-                    adjust_css_with_theme();
-                });
-            
-            draw.connect((w, cr) =>  {
-                    Gtk.Allocation rect;
-                    w.get_allocation(out rect);
-
-                    Gdk.RGBA background_color = Gdk.RGBA();
-            
-                    try {
-                        background_color.parse(((Widgets.ConfigWindow) get_toplevel()).config.config_file.get_string("theme", "background"));
-                    } catch (GLib.KeyFileError e) {
-                        print("Window draw_window_above: %s\n", e.message);
-                    }
-                    
-                    cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, 0.8);
-                    Draw.draw_rectangle(cr, 0, 0, rect.width, rect.height);
-                    
-                    cr.set_source_rgba(0.19, 0.19, 0.19, 0.1);
-                    Draw.draw_search_rectangle(cr, 0, 0, rect.width, rect.height, 5, false);
-                    
-                    Utils.propagate_draw(this, cr);
-                    
-                    return true;
+                    ((Widgets.ConfigWindow) this.get_toplevel()).config.update.connect((w) => {
+                            adjust_css_with_theme(config_window);
+                        });
                 });
         }
         
-        public void adjust_css_with_theme() {
+        public void adjust_css_with_theme(Widgets.ConfigWindow config_window) {
             bool is_light_theme = false;
             try {
-                is_light_theme = ((Widgets.ConfigWindow) get_toplevel()).config.config_file.get_string("theme", "style") == "light";
+                is_light_theme = config_window.config.config_file.get_string("theme", "style") == "light";
             } catch (Error e) {
-                print("ImageButton on_draw: %s\n", e.message);
+                print("SearchBox adjust_css_with_theme: %s\n", e.message);
             }
                          
-            get_style_context().add_class("search_box");
+            get_style_context().remove_class("search_light_box");
+            get_style_context().remove_class("search_dark_box");
             search_entry.get_style_context().remove_class("search_dark_entry");
             search_entry.get_style_context().remove_class("search_light_entry");
                     
             if (is_light_theme) {
                 search_entry.get_style_context().add_class("search_light_entry");
+                get_style_context().add_class("search_light_box");
             } else {
                 search_entry.get_style_context().add_class("search_dark_entry");
+                get_style_context().add_class("search_dark_box");
             }
         }
         

@@ -173,6 +173,10 @@ namespace Widgets {
                     
                     return true;
                 });
+
+            config.update.connect((w) => {
+                    update_style();
+                });
         }
         
         public void toggle_quake_window() {
