@@ -91,6 +91,13 @@ namespace Config {
                 foreach (string key in theme_file.get_keys("theme")) {
                     config_file.set_string("theme", key, theme_file.get_string("theme", key).strip());
                 }
+                
+                var background = theme_file.get_string("theme", "background").strip();
+                if (Utils.is_light_color(background)) {
+                    config_file.set_string("theme", "style", "light");
+                } else {
+                    config_file.set_string("theme", "style", "dark");
+                }
             } catch (Error e) {
                 print("Config set_theme: %s\n", e.message);
             }
@@ -157,6 +164,7 @@ namespace Config {
 			config_file.set_string("theme", "background", "#000000");  // background
 			config_file.set_string("theme", "foreground", "#00cd00");  // foreground
 			config_file.set_string("theme", "tab", "#2CA7F8");         // tab
+			config_file.set_string("theme", "style", "dark");          // style
 
             save();
         }

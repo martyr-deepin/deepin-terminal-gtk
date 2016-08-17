@@ -56,13 +56,13 @@ namespace Widgets {
             application = app;
             
             
-            menu_button = new ImageButton("window_menu");
-            min_button = new ImageButton("window_min");
-            max_button = new ImageButton("window_max");
-            unmax_button = new ImageButton("window_unmax");
-            close_button = new ImageButton("window_close");
+            menu_button = new ImageButton("window_menu", true);
+            min_button = new ImageButton("window_min", true);
+            max_button = new ImageButton("window_max", true);
+            unmax_button = new ImageButton("window_unmax", true);
+            close_button = new ImageButton("window_close", true);
 			
-			int margin_top = (int) (height - menu_button.normal_surface.get_height()) / 2;
+			int margin_top = (int) (height - menu_button.normal_dark_surface.get_height()) / 2;
 			menu_button.margin_top = margin_top;
 			min_button.margin_top = margin_top;
 			max_button.margin_top = margin_top;

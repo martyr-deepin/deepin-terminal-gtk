@@ -27,7 +27,7 @@ using Animation;
 
 namespace Widgets {
     public class SearchEntry : Gtk.EventBox {
-        public Gtk.Image search_image;
+        public Widgets.ImageButton search_image;
         public Gtk.Label search_label;
         public Gtk.Entry search_entry;
         
@@ -56,14 +56,16 @@ namespace Widgets {
             box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             display_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             
-            search_image = new Gtk.Image.from_file(Utils.get_image_path("search.png"));
+            search_image = new ImageButton("search", true);
+            search_image.set_valign(Gtk.Align.CENTER);
             search_label = new Gtk.Label(null);
+            search_label.set_valign(Gtk.Align.CENTER);
             search_label.set_text("search");
             search_label.get_style_context().add_class("remote_search_label");
             search_entry = new Entry();
             search_entry.set_placeholder_text("Search");
             search_entry.get_style_context().add_class("remote_search_entry");
-            clear_button = new ImageButton("search_clear");
+            clear_button = new ImageButton("search_clear", true);
             clear_button.margin_right = 12;
             clear_button.margin_top = 11;
             clear_button.button_release_event.connect((w, e) => {

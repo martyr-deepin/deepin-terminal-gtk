@@ -366,7 +366,7 @@ namespace Widgets {
             about_widget.margin_top = 10;
             content_box.pack_start(about_widget, false, false, 0);
             
-            var reset_button = new Widgets.ImageButton("reset_button", "reset");
+            var reset_button = new Widgets.ImageButton("reset_button", false, "reset");
             reset_button.margin_start = 100;
             reset_button.margin_top = 10;
             reset_button.margin_bottom = 35;

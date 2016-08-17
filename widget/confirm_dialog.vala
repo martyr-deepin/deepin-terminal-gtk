@@ -31,8 +31,8 @@ namespace Widgets {
         private int box_margin_top = 4;
         private int box_margin_bottom = 24;
         private int box_margin_end = 20;
-        private int title_margin_top = 12;
-        private int content_margin_top = 8;
+        private int title_margin_top = 7;
+        private int content_margin_top = 3;
         
         public signal void confirm();
         

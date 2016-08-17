@@ -28,9 +28,12 @@ using Utils;
 
 namespace Widgets {
     public class ImageButton : Gtk.EventBox {
-        public Cairo.ImageSurface normal_surface;
-        public Cairo.ImageSurface hover_surface;
-        public Cairo.ImageSurface press_surface;
+        public Cairo.ImageSurface normal_dark_surface;
+        public Cairo.ImageSurface hover_dark_surface;
+        public Cairo.ImageSurface press_dark_surface;
+        public Cairo.ImageSurface normal_light_surface;
+        public Cairo.ImageSurface hover_light_surface;
+        public Cairo.ImageSurface press_light_surface;
         
         public Gdk.RGBA text_normal_color;
         public Gdk.RGBA text_hover_color;
@@ -44,10 +47,24 @@ namespace Widgets {
         
 		public signal void click();
         
-        public ImageButton(string image_path, string? text=null, int text_size=12) {
-			normal_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_normal.png"));
-            hover_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_hover.png"));
-            press_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_press.png"));
+        public bool is_theme_button;
+        
+        public ImageButton(string image_path, bool theme_button=false, string? text=null, int text_size=12) {
+            is_theme_button = theme_button;
+            
+            if (is_theme_button) {
+                normal_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_dark_normal.png"));
+                hover_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_dark_hover.png"));
+                press_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_dark_press.png"));
+
+                normal_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_light_normal.png"));
+                hover_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_light_hover.png"));
+                press_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_light_press.png"));
+            } else {
+                normal_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_normal.png"));
+                hover_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_hover.png"));
+                press_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_press.png"));
+            }
             
             button_text = text;
             button_text_size = text_size;
@@ -63,7 +80,7 @@ namespace Widgets {
                 text_press_color.parse("#FFFFFF");
             }
             
-            set_size_request(this.normal_surface.get_width(), this.normal_surface.get_height());
+            set_size_request(this.normal_dark_surface.get_width(), this.normal_dark_surface.get_height());
             
             draw.connect(on_draw);
 			enter_notify_event.connect((w, e) => {
@@ -97,25 +114,49 @@ namespace Widgets {
         }
         
         private bool on_draw(Gtk.Widget widget, Cairo.Context cr) {
+            bool is_light_theme = false;
+            if (is_theme_button) {
+                try {
+                    is_light_theme = ((Widgets.ConfigWindow) get_toplevel()).config.config_file.get_string("theme", "style") == "light";
+                } catch (Error e) {
+                    print("ImageButton on_draw: %s\n", e.message);
+                }
+            }
+            
             if (is_hover) {
                 if (is_press) {
-                    Draw.draw_surface(cr, press_surface);
+                    if (is_theme_button && is_light_theme) {
+                        Draw.draw_surface(cr, press_light_surface);
+                    } else {
+                        Draw.draw_surface(cr, press_dark_surface);
+                    }
+                    
                     if (button_text != null) {
                         Utils.set_context_color(cr, text_press_color);
-                        Draw.draw_text(widget, cr, button_text, 0, 10, normal_surface.get_width(), button_text_size, button_text_size, Pango.Alignment.CENTER);
+                        Draw.draw_text(widget, cr, button_text, 0, 10, normal_dark_surface.get_width(), button_text_size, button_text_size, Pango.Alignment.CENTER);
                     }
                 } else {
-                    Draw.draw_surface(cr, hover_surface);
+                    if (is_theme_button && is_light_theme) {
+                        Draw.draw_surface(cr, hover_light_surface);
+                    } else {
+                        Draw.draw_surface(cr, hover_dark_surface);
+                    }
+                    
                     if (button_text != null) {
                         Utils.set_context_color(cr, text_hover_color);
-                        Draw.draw_text(widget, cr, button_text, 0, 10, normal_surface.get_width(), button_text_size, button_text_size, Pango.Alignment.CENTER);
+                        Draw.draw_text(widget, cr, button_text, 0, 10, normal_dark_surface.get_width(), button_text_size, button_text_size, Pango.Alignment.CENTER);
                     }
                 }
             } else {
-                Draw.draw_surface(cr, normal_surface);                
+                if (is_theme_button && is_light_theme) {
+                    Draw.draw_surface(cr, normal_light_surface);
+                } else {
+                    Draw.draw_surface(cr, normal_dark_surface);
+                }
+                    
                 if (button_text != null) {
                     Utils.set_context_color(cr, text_normal_color);
-                    Draw.draw_text(widget, cr, button_text, 0, 10, normal_surface.get_width(), button_text_size, button_text_size, Pango.Alignment.CENTER);
+                    Draw.draw_text(widget, cr, button_text, 0, 10, normal_dark_surface.get_width(), button_text_size, button_text_size, Pango.Alignment.CENTER);
                 }
             }
             

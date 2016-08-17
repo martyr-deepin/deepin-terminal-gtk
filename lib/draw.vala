@@ -97,6 +97,33 @@ namespace Draw {
 		}
 	}
 
+	public void draw_search_rectangle(Context cr, int x, int y, int width, int height, double r, bool fill=true) {
+        // Top side.
+        cr.move_to(x, y);
+        cr.line_to(x + width, y);
+	    
+        // Right side.
+        cr.line_to(x + width, y + height);
+	    
+        // Bottom side.
+        cr.line_to(x + r, y + height);
+	    
+        // Bottom-left corner.
+        cr.arc(x + r, y + height - r, r, Math.PI / 2, Math.PI);
+	    
+        // Left side.
+        cr.line_to(x, y);
+	    
+        // Close path.
+        cr.close_path();
+		
+		if (fill) {
+			cr.fill();
+		} else {
+			cr.stroke();
+		}
+	}
+
 	public void draw_radial(Cairo.Context cr, int x, int width, int height, Gdk.RGBA center_color, Gdk.RGBA edge_color) {
         Cairo.Pattern pattern = new Cairo.Pattern.radial(x + width / 2, height, width / 2, x + width / 2, height, 0);
         pattern.add_color_stop_rgba(1, center_color.red, center_color.green, center_color.blue, center_color.alpha);

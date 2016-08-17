@@ -39,18 +39,24 @@ namespace Widgets {
         
         public Gdk.RGBA inactive_arrow_color;
         public Gdk.RGBA hover_arrow_color;
-        public Gdk.RGBA text_hover_color;
-        public Gdk.RGBA text_color;
+        public Gdk.RGBA text_hover_dark_color;
+        public Gdk.RGBA text_hover_light_color;
+        public Gdk.RGBA text_dark_color;
+        public Gdk.RGBA text_light_color;
         public Gdk.RGBA text_highlight_color;
-		public Gdk.RGBA tab_split_color;
+		public Gdk.RGBA tab_split_dark_color;
+		public Gdk.RGBA tab_split_light_color;
         
         private Cairo.ImageSurface close_hover_surface;
         private Cairo.ImageSurface close_normal_surface;
         private Cairo.ImageSurface close_press_surface;
         
-        private Cairo.ImageSurface add_hover_surface;
-        private Cairo.ImageSurface add_normal_surface;
-        private Cairo.ImageSurface add_press_surface;
+        private Cairo.ImageSurface add_hover_dark_surface;
+        private Cairo.ImageSurface add_normal_dark_surface;
+        private Cairo.ImageSurface add_press_dark_surface;
+        private Cairo.ImageSurface add_hover_light_surface;
+        private Cairo.ImageSurface add_normal_light_surface;
+        private Cairo.ImageSurface add_press_light_surface;
         
         public bool allowed_add_tab = true;
         public int min_tab_width = 32;
@@ -70,8 +76,8 @@ namespace Widgets {
         private int text_padding_min_x = 24;
         private int close_button_padding_x = 28;
         private int close_button_padding_min_x = 21;
-        private int close_button_padding_y = 0;
-        private int draw_padding_y = 12;
+        private int close_button_padding_y = 5;
+        private int draw_padding_y = 7;
         private int hover_x = 0;
         
 		public signal void press_tab(int tab_index, int tab_id);
@@ -96,9 +102,12 @@ namespace Widgets {
             close_hover_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("tab_close_hover.png"));
             close_press_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("tab_close_press.png"));
 
-            add_normal_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("tab_add_normal.png"));
-            add_hover_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("tab_add_hover.png"));
-            add_press_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("tab_add_press.png"));
+            add_normal_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("tab_add_dark_normal.png"));
+            add_hover_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("tab_add_dark_hover.png"));
+            add_press_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("tab_add_dark_press.png"));
+            add_normal_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("tab_add_light_normal.png"));
+            add_hover_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("tab_add_light_hover.png"));
+            add_press_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("tab_add_light_press.png"));
             
             inactive_arrow_color = Gdk.RGBA();
             inactive_arrow_color.parse("#393937");
@@ -106,23 +115,38 @@ namespace Widgets {
             hover_arrow_color = Gdk.RGBA();
             hover_arrow_color.parse("#494943");
             
-            text_hover_color = Gdk.RGBA();
-            text_hover_color.parse("#ffffff");
-            
-            text_color = Gdk.RGBA();
-			text_color.red = 1;
-			text_color.green = 1;
-			text_color.blue = 1;
-			text_color.alpha = 0.8;
+            text_hover_dark_color = Gdk.RGBA();
+            text_hover_dark_color.parse("#ffffff");
 
+            text_hover_light_color = Gdk.RGBA();
+            text_hover_light_color.parse("#000000");
+            
+            text_dark_color = Gdk.RGBA();
+			text_dark_color.red = 1;
+			text_dark_color.green = 1;
+			text_dark_color.blue = 1;
+			text_dark_color.alpha = 0.8;
+
+            text_light_color = Gdk.RGBA();
+			text_light_color.red = 0;
+			text_light_color.green = 0;
+			text_light_color.blue = 0;
+			text_light_color.alpha = 0.8;
+            
             text_highlight_color = Gdk.RGBA();
             text_highlight_color.parse("#ff9600");
 			
-			tab_split_color = Gdk.RGBA();
-			tab_split_color.red = 1;
-			tab_split_color.green = 1;
-			tab_split_color.blue = 1;
-			tab_split_color.alpha = 0.05;
+			tab_split_dark_color = Gdk.RGBA();
+			tab_split_dark_color.red = 1;
+			tab_split_dark_color.green = 1;
+			tab_split_dark_color.blue = 1;
+			tab_split_dark_color.alpha = 0.05;
+			
+			tab_split_light_color = Gdk.RGBA();
+			tab_split_light_color.red = 0;
+			tab_split_light_color.green = 0;
+			tab_split_light_color.blue = 0;
+			tab_split_light_color.alpha = 0.05;
 			
 			draw.connect(on_draw);
             configure_event.connect(on_configure);
@@ -372,7 +396,15 @@ namespace Widgets {
         public bool on_draw(Gtk.Widget widget, Cairo.Context cr) {
             Gtk.Allocation alloc;
             widget.get_allocation(out alloc);
-			
+            
+            bool is_light_theme = false;
+            try {
+                var config = ((Widgets.ConfigWindow) get_toplevel()).config;
+                is_light_theme = config.config_file.get_string("theme", "style") == "light";
+            } catch (Error e) {
+                print("Tabbar on_draw: %s\n", e.message);
+            }
+
             // Draw tab splitter.
             int draw_x = 0;
             int counter = 0;
@@ -383,7 +415,11 @@ namespace Widgets {
                 name_scale_width = (int) (name_width * draw_scale);
                 int tab_width = (int) (get_tab_width(name_width) * draw_scale);
                 
-				Utils.set_context_color(cr, tab_split_color);
+                if (is_light_theme) {
+                    Utils.set_context_color(cr, tab_split_light_color);
+                } else {
+                    Utils.set_context_color(cr, tab_split_dark_color);
+                }
 				if (counter < tab_list.size) {
 					Draw.draw_rectangle(cr, draw_x, 0, tab_split_width, height);
 				}
@@ -414,7 +450,11 @@ namespace Widgets {
 				if (tab_highlight_map.has_key(tab_id)) {
 					tab_text_color = text_highlight_color;
 				} else {
-					tab_text_color = text_color;
+                    if (is_light_theme) {
+                        tab_text_color = text_light_color;    
+                    } else {
+                        tab_text_color = text_dark_color;
+                    }
 				}
                 
 				if (counter == tab_index) {
@@ -439,12 +479,20 @@ namespace Widgets {
                         cr.save();
                         clip_rectangle(cr, draw_x, 0, tab_width + 1, height);
                     
-						Utils.set_context_color(cr, tab_split_color);
+                        if (is_light_theme) {
+                            Utils.set_context_color(cr, tab_split_light_color);
+                        } else {
+                            Utils.set_context_color(cr, tab_split_dark_color);
+                        }
 						Draw.draw_rectangle(cr, draw_x, 0, tab_width + 1, height);
                     
                         cr.restore();
                         
-                        tab_text_color = text_active_color;
+                        if (is_light_theme) {
+                            tab_text_color = text_hover_light_color;
+                        } else {
+                            tab_text_color = text_hover_dark_color;
+                        }
                     } else {
                         cr.set_source_rgba(0, 0, 0, 0);
                         Draw.draw_rectangle(cr, draw_x, 0, tab_width, height);
@@ -483,12 +531,24 @@ namespace Widgets {
             
             if (hover_x > draw_x + add_button_padding_x && hover_x < draw_x + add_button_padding_x + add_button_width) {
                 if (is_button_press) {
-                    Draw.draw_surface(cr, add_press_surface, draw_x + add_button_padding_x, add_button_padding_y);
+                    if (is_light_theme) {
+                        Draw.draw_surface(cr, add_press_light_surface, draw_x + add_button_padding_x, add_button_padding_y);
+                    } else {
+                        Draw.draw_surface(cr, add_press_dark_surface, draw_x + add_button_padding_x, add_button_padding_y);
+                    }
                 } else if (draw_hover) {
-                    Draw.draw_surface(cr, add_hover_surface, draw_x + add_button_padding_x, add_button_padding_y);
+                    if (is_light_theme) {
+                        Draw.draw_surface(cr, add_hover_light_surface, draw_x + add_button_padding_x, add_button_padding_y);
+                    } else {
+                        Draw.draw_surface(cr, add_hover_dark_surface, draw_x + add_button_padding_x, add_button_padding_y);
+                    }
                 }
             } else {
-                Draw.draw_surface(cr, add_normal_surface, draw_x + add_button_padding_x, add_button_padding_y);
+                if (is_light_theme) {
+                    Draw.draw_surface(cr, add_normal_light_surface, draw_x + add_button_padding_x, add_button_padding_y);
+                } else {
+                    Draw.draw_surface(cr, add_normal_dark_surface, draw_x + add_button_padding_x, add_button_padding_y);
+                }
             }
             
             return true;

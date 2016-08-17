@@ -26,7 +26,7 @@ using Widgets;
 
 namespace Widgets {
     public class SearchBox : Gtk.Box {
-        public Gtk.Image search_image;
+        public Widgets.ImageButton search_image;
         public Entry search_entry;
         public Gtk.Box clear_button_box;
         public ImageButton clear_button;
@@ -34,12 +34,12 @@ namespace Widgets {
         public ImageButton search_previous_button;
         
         public SearchBox() {
-            search_image = new Gtk.Image.from_file(Utils.get_image_path("search.png"));
+            search_image = new ImageButton("search", true);
             search_entry = new Entry();
             clear_button_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            clear_button = new ImageButton("search_clear");
-            search_next_button = new ImageButton("search_next");
-            search_previous_button = new ImageButton("search_previous");
+            clear_button = new ImageButton("search_clear", true);
+            search_next_button = new ImageButton("search_next", true);
+            search_previous_button = new ImageButton("search_previous", true);
             
             pack_start(search_image, false, false, 0);
             pack_start(search_entry, true, true, 0);
@@ -48,6 +48,7 @@ namespace Widgets {
             pack_start(search_next_button, false, false, 0);
             
             search_image.margin_start = 10;
+            search_image.set_valign(Gtk.Align.CENTER);
             search_entry.margin_end = 4;
             search_next_button.margin_top = 6;
             search_next_button.margin_end = 6;
@@ -60,8 +61,51 @@ namespace Widgets {
             set_valign(Gtk.Align.START);
             set_halign(Gtk.Align.END);
             
+            realize.connect((w) => {
+                    adjust_css_with_theme();
+                });
+            
+            draw.connect((w, cr) =>  {
+                    Gtk.Allocation rect;
+                    w.get_allocation(out rect);
+
+                    Gdk.RGBA background_color = Gdk.RGBA();
+            
+                    try {
+                        background_color.parse(((Widgets.ConfigWindow) get_toplevel()).config.config_file.get_string("theme", "background"));
+                    } catch (GLib.KeyFileError e) {
+                        print("Window draw_window_above: %s\n", e.message);
+                    }
+                    
+                    cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, 0.8);
+                    Draw.draw_rectangle(cr, 0, 0, rect.width, rect.height);
+                    
+                    cr.set_source_rgba(0.19, 0.19, 0.19, 0.1);
+                    Draw.draw_search_rectangle(cr, 0, 0, rect.width, rect.height, 5, false);
+                    
+                    Utils.propagate_draw(this, cr);
+                    
+                    return true;
+                });
+        }
+        
+        public void adjust_css_with_theme() {
+            bool is_light_theme = false;
+            try {
+                is_light_theme = ((Widgets.ConfigWindow) get_toplevel()).config.config_file.get_string("theme", "style") == "light";
+            } catch (Error e) {
+                print("ImageButton on_draw: %s\n", e.message);
+            }
+                         
             get_style_context().add_class("search_box");
-            search_entry.get_style_context().add_class("search_entry");
+            search_entry.get_style_context().remove_class("search_dark_entry");
+            search_entry.get_style_context().remove_class("search_light_entry");
+                    
+            if (is_light_theme) {
+                search_entry.get_style_context().add_class("search_light_entry");
+            } else {
+                search_entry.get_style_context().add_class("search_dark_entry");
+            }
         }
         
         public void show_clear_button() {

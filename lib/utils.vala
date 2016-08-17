@@ -30,6 +30,30 @@ extern string font_match(string family);
 extern string[] list_mono_fonts(out int num);
 
 namespace Utils {
+    public bool is_light_color(string color_string) {
+        Gdk.RGBA color = Gdk.RGBA();
+        color.parse(color_string);
+        
+        double r = color.red;
+        double g = color.green;
+        double b = color.blue;
+
+        double max_v = double.max(r, double.max(g, b));
+        double min_v = double.min(r, double.min(g, b));
+
+        double s;
+
+        if (max_v == 0) {
+            s = 0.0;
+        } else {
+            s = 1.0 - min_v / max_v;
+        }
+
+        b = max_v;
+        
+        return b > 0.35 && s < 0.7;
+    }
+
     public ArrayList<string> list_files(string path) {
         ArrayList<string> files = new ArrayList<string>();
         

@@ -44,7 +44,7 @@ namespace Widgets {
         public string? button_text;
         public int button_text_height = 28;
         public int button_text_size = 11;
-        public int button_text_y = 7;
+        public int button_text_y = 2;
 		
 		public bool is_hover = false;
 		public bool is_press = false;

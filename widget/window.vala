@@ -30,6 +30,9 @@ namespace Widgets {
         public int active_tab_underline_x;
 		public int active_tab_underline_width;
 		
+        public Gdk.RGBA line_dark_color;
+        public Gdk.RGBA line_light_color;
+        
         public Window() {
             int monitor = screen.get_monitor_at_window(screen.get_active_window());
             Gdk.Rectangle rect;
@@ -39,6 +42,14 @@ namespace Widgets {
             geo.min_width = rect.width / 3;
             geo.min_height = rect.height / 3;
             this.set_geometry_hints(null, geo, Gdk.WindowHints.MIN_SIZE);
+            
+            line_dark_color = Gdk.RGBA();
+            line_dark_color.parse("#000000");
+            line_dark_color.alpha = 0.2;
+
+            line_light_color = Gdk.RGBA();
+            line_light_color.parse("#ffffff");
+            line_light_color.alpha = 0.2;
             
             window_frame_box.margin_top = window_frame_margin_top;
             window_frame_box.margin_bottom = window_frame_margin_bottom;
@@ -125,6 +136,13 @@ namespace Widgets {
             Gdk.RGBA frame_color = Gdk.RGBA();
             Gdk.RGBA active_tab_color = Gdk.RGBA();
             
+            bool is_light_theme = false;
+            try {
+                is_light_theme = config.config_file.get_string("theme", "style") == "light";
+            } catch (Error e) {
+                print("ImageButton on_draw: %s\n", e.message);
+            }
+            
             try {
                 frame_color.parse(config.config_file.get_string("theme", "background"));
                 active_tab_color.parse(config.config_file.get_string("theme", "tab"));
@@ -164,7 +182,11 @@ namespace Widgets {
                     cr.set_source_rgba(frame_color.red, frame_color.green, frame_color.blue, config.config_file.get_double("general", "opacity"));
                     Draw.draw_rectangle(cr, x + 3, y + 1, width - 6, 1);
 
-                    cr.set_source_rgba(0, 0, 0, 0.2);				
+                    if (is_light_theme) {
+                        Utils.set_context_color(cr, line_light_color);
+                    } else {
+                        Utils.set_context_color(cr, line_dark_color);
+                    }
                     Draw.draw_rectangle(cr, x + 3, y + 1, width - 6, 1);
                 
                     cr.set_source_rgba(1, 1, 1, 0.0625 * config.config_file.get_double("general", "opacity")); // Draw top line at window.
@@ -177,7 +199,11 @@ namespace Widgets {
                     // Right.
                     Draw.draw_rectangle(cr, x + width - 2, y + 3, 1, 39);
                 
-                    cr.set_source_rgba(0, 0, 0, 0.2);				
+                    if (is_light_theme) {
+                        Utils.set_context_color(cr, line_light_color);
+                    } else {
+                        Utils.set_context_color(cr, line_dark_color);
+                    }
                     // Left.
                     Draw.draw_rectangle(cr, x + 1, y + 3, 1, 39);
                     // Right.

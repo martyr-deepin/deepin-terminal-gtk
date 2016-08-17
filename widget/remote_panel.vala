@@ -43,6 +43,9 @@ namespace Widgets {
         public Gtk.Box group_page_box;
         public Gtk.Box search_page_box;
         
+        public Gdk.RGBA line_dark_color;
+        public Gdk.RGBA line_light_color;
+        
         public Gtk.ScrolledWindow? home_page_scrolledwindow;
         public Gtk.ScrolledWindow? group_page_scrolledwindow;
         public Gtk.ScrolledWindow? search_page_scrolledwindow;
@@ -58,6 +61,14 @@ namespace Widgets {
 			workspace_manager = manager;
             
             config_file = new KeyFile();
+            
+            line_dark_color = Gdk.RGBA();
+            line_dark_color.parse("#ffffff");
+            line_dark_color.alpha = 0.1;
+
+            line_light_color = Gdk.RGBA();
+            line_light_color.parse("#000000");
+            line_light_color.alpha = 0.1;
             
             focus_widget = ((Gtk.Window) workspace.get_toplevel()).get_focus();
 			parent_window = (Widgets.ConfigWindow) workspace.get_toplevel();
@@ -103,13 +114,24 @@ namespace Widgets {
         }
 		
 		private bool on_draw(Gtk.Widget widget, Cairo.Context cr) {
+            bool is_light_theme = false;
+            try {
+                is_light_theme = ((Widgets.ConfigWindow) get_toplevel()).config.config_file.get_string("theme", "style") == "light";
+            } catch (Error e) {
+                print("RemotePanel on_draw: %s\n", e.message);
+            }
+                         
             Gtk.Allocation rect;
             widget.get_allocation(out rect);
 			
             cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, 0.8);
             Draw.draw_rectangle(cr, 1, 0, rect.width - 1, rect.height);
             
-            cr.set_source_rgba(1, 1, 1, 0.1);
+            if (is_light_theme) {
+                Utils.set_context_color(cr, line_light_color);
+            } else {
+                Utils.set_context_color(cr, line_dark_color);
+            }
             Draw.draw_rectangle(cr, 0, 0, 1, rect.height);
             
             return false;
@@ -340,7 +362,7 @@ namespace Widgets {
             top_box.set_size_request(-1, 36);
 			group_page_box.pack_start(top_box, false, false, 0);
             
-			ImageButton back_button = new Widgets.ImageButton("back");
+			ImageButton back_button = new Widgets.ImageButton("back", true);
             back_button.margin_left = 8;
             back_button.margin_top = 6;
 			back_button.click.connect((w) => {
@@ -460,7 +482,7 @@ namespace Widgets {
                 top_box.set_size_request(-1, 36);
                 search_page_box.pack_start(top_box, false, false, 0);
             
-                ImageButton back_button = new Widgets.ImageButton("back");
+                ImageButton back_button = new Widgets.ImageButton("back", true);
                 back_button.margin_left = 8;
                 back_button.margin_top = 6;
                 back_button.click.connect((w) => {
@@ -641,6 +663,13 @@ namespace Widgets {
         }
         
         public Gtk.Box create_split_line() {
+            bool is_light_theme = false;
+            try {
+                is_light_theme = parent_window.config.config_file.get_string("theme", "style") == "light";
+            } catch (Error e) {
+                print("RemogePanel create_split_line: %s\n", e.message);
+            }
+                         
             var box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             box.set_size_request(-1, 1);
             
@@ -648,7 +677,11 @@ namespace Widgets {
                     Gtk.Allocation rect;
                     w.get_allocation(out rect);
                     
-                    cr.set_source_rgba(1, 1, 1, 0.1);
+                    if (is_light_theme) {
+                        cr.set_source_rgba(0, 0, 0, 0.1);
+                    } else {
+                        cr.set_source_rgba(1, 1, 1, 0.1);
+                    }
                     Draw.draw_rectangle(cr, 0, 0, rect.width, 1);
                     
                     return true;

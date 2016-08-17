@@ -53,18 +53,29 @@
   background-image: none;
 }
 
-.window_shadow_active {
+.window_dark_shadow_active {
 	background: transparent;
 	border-radius: 5px;
 	box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.3),inset 0 1px rgba(0,0,0,0.7),inset 0 -1px rgba(0,0,0,0.7),inset 1px 0 rgba(0,0,0,0.7),inset -1px 0 rgba(0,0,0,0.7) ;
 }
 
-.window_shadow_inactive {
+.window_dark_shadow_inactive {
     background: transparent;
     border-radius: 5px;
     box-shadow: 0px 10px 14px 0px rgba(0,0,0,0.15),inset 0 1px rgba(0,0,0,0.5),inset 0 -1px rgba(0,0,0,0.5),inset 1px 0 rgba(0,0,0,0.5),inset -1px 0 rgba(0,0,0,0.5) ;
 }
 
+.window_light_shadow_active {
+	background: transparent;
+	border-radius: 5px;
+	box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.2),inset 0 1px rgba(0,0,0,0.2),inset 0 -1px rgba(0,0,0,0.2),inset 1px 0 rgba(0,0,0,0.2),inset -1px 0 rgba(0,0,0,0.2) ;
+}
+
+.window_light_shadow_inactive {
+    background: transparent;
+    border-radius: 5px;
+    box-shadow: 0px 10px 14px 0px rgba(0,0,0,0.1),inset 0 1px rgba(0,0,0,0.15),inset 0 -1px rgba(0,0,0,0.15),inset 1px 0 rgba(0,0,0,0.15),inset -1px 0 rgba(0,0,0,0.15) ;
+}
 
 .window_noradius_shadow_active {
 	background: transparent;
@@ -91,23 +102,39 @@
 }
 
 .search_box {
-	background: rgba(32,32,32,0.80);
-    border-radius: 0px 0px 0px 4px;
-	border: 1px solid rgba(0,0,0,0.10);
+	background: transparent;
+	border: 0px;
 }
 
-.search_entry {
+.search_dark_entry {
 	background: transparent;
 	border: 0px solid rgba(0,0,0,0.10);
 	font-size: 11px;
 }
 
-.search_entry:focus {
+.search_dark_entry:focus {
 	color: white;
 	font-size: 11px;
 }
 
-.search_entry selection:focus {
+.search_dark_entry selection:focus {
+	color: white;
+	background-color: #61B5F8;
+	font-size: 11px;
+}
+
+.search_light_entry {
+	background: transparent;
+	border: 0px solid rgba(0,0,0,0.10);
+	font-size: 11px;
+}
+
+.search_light_entry:focus {
+	color: #303030;
+	font-size: 11px;
+}
+
+.search_light_entry selection:focus {
 	color: white;
 	background-color: #61B5F8;
 	font-size: 11px;
@@ -147,33 +174,15 @@
 	background: transparent;
 	box-shadow: none;
 	border: 1px solid transparent;
-    min-width: 4px;
-	margin-top: 2px;
-	margin-bottom: 2px;
+    min-width: 0px;
 }
 
 .preference_scrollbar slider {
-	background-color: rgba(16, 16, 16, 0.5);
+	background-color: transparent;
     box-shadow:none;
 	border: 1px;
 	border-color: transparent;
-    min-width: 4px;
-}
-
-.preference_scrollbar slider:hover {
-	background-color: rgba(16, 16, 16, 0.7);
-	box-shadow: none;
-	border: 1px;
-	border-color: transparent;
-    min-width: 8px;
-}
-
-.preference_scrollbar slider:hover:active {
-	background-color: rgba(16, 16, 16, 0.8);
-	box-shadow: none;
-	border: 1px;
-	border-color: transparent;
-    min-width: 8px;
+    min-width: 0px;
 }
 
 .preference_comboboxtext {

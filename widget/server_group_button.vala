@@ -26,13 +26,23 @@ using Widgets;
 
 namespace Widgets {
     public class ServerGroupButton : Gtk.EventBox {
-        public Cairo.ImageSurface surface;
-        public Cairo.ImageSurface arrow_surface;
+        public Cairo.ImageSurface server_group_dark_surface;
+        public Cairo.ImageSurface server_group_light_surface;
+        public Cairo.ImageSurface arrow_dark_surface;
+        public Cairo.ImageSurface arrow_light_surface;
         
-        public Gdk.RGBA title_color;
-        public Gdk.RGBA content_color;
-        public Gdk.RGBA press_color;
-        public Gdk.RGBA hover_color;
+        public Gdk.RGBA title_dark_color;
+        public Gdk.RGBA content_dark_color;
+        public Gdk.RGBA press_dark_color;
+        public Gdk.RGBA hover_dark_color;
+
+        public Gdk.RGBA title_light_color;
+        public Gdk.RGBA content_light_color;
+        public Gdk.RGBA press_light_color;
+        public Gdk.RGBA hover_light_color;
+        
+        public Gdk.RGBA line_dark_color;
+        public Gdk.RGBA line_light_color;
         
         public string title;
         public int server_number;
@@ -44,8 +54,8 @@ namespace Widgets {
         public int arrow_y = 23;
         
         public int text_x = 72;
-        public int title_y = 8;
-        public int content_y = 30;
+        public int title_y = 5;
+        public int content_y = 27;
         public int text_width = 136;
         public int title_size = 11;
         public int content_size = 10;
@@ -69,23 +79,48 @@ namespace Widgets {
             title = server_title;
             server_number = number;
             
-			surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("server_group.png"));
-			arrow_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("list_arrow.png"));
+			server_group_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("server_group_dark.png"));
+			server_group_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("server_group_light.png"));
+			arrow_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("list_arrow_dark.png"));
+			arrow_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("list_arrow_light.png"));
             
-            title_color = Gdk.RGBA();
-            title_color.parse("#FFFFFF");
+            title_dark_color = Gdk.RGBA();
+            title_dark_color.parse("#FFFFFF");
                 
-            content_color = Gdk.RGBA();
-            content_color.parse("#FFFFFF");
-            content_color.alpha = 0.5;
+            content_dark_color = Gdk.RGBA();
+            content_dark_color.parse("#FFFFFF");
+            content_dark_color.alpha = 0.5;
 
-            press_color = Gdk.RGBA();
-            press_color.parse("#FFFFFF");
-            press_color.alpha = 0.1;
+            press_dark_color = Gdk.RGBA();
+            press_dark_color.parse("#FFFFFF");
+            press_dark_color.alpha = 0.1;
             
-            hover_color = Gdk.RGBA();
-            hover_color.parse("#FFFFFF");
-            hover_color.alpha = 0.1;
+            hover_dark_color = Gdk.RGBA();
+            hover_dark_color.parse("#FFFFFF");
+            hover_dark_color.alpha = 0.1;
+
+            title_light_color = Gdk.RGBA();
+            title_light_color.parse("#303030");
+                
+            content_light_color = Gdk.RGBA();
+            content_light_color.parse("#000000");
+            content_light_color.alpha = 0.5;
+
+            press_light_color = Gdk.RGBA();
+            press_light_color.parse("#000000");
+            press_light_color.alpha = 0.1;
+            
+            hover_light_color = Gdk.RGBA();
+            hover_light_color.parse("#000000");
+            hover_light_color.alpha = 0.1;
+            
+            line_dark_color = Gdk.RGBA();
+            line_dark_color.parse("#ffffff");
+            line_dark_color.alpha = 0.05;
+
+            line_light_color = Gdk.RGBA();
+            line_light_color.parse("#000000");
+            line_light_color.alpha = 0.05;
             
             set_size_request(width, height);
             
@@ -121,13 +156,35 @@ namespace Widgets {
         }
         
         private bool on_draw(Gtk.Widget widget, Cairo.Context cr) {
-            Draw.draw_surface(cr, surface, image_x, image_y);
-            Draw.draw_surface(cr, arrow_surface, arrow_x, arrow_y);
+            bool is_light_theme = false;
+            try {
+                var config = ((Widgets.ConfigWindow) get_toplevel()).config;
+                is_light_theme = config.config_file.get_string("theme", "style") == "light";
+            } catch (Error e) {
+                print("ServerGroupButton on_draw: %s\n", e.message);
+            }
+
+            if (is_light_theme) {
+                Draw.draw_surface(cr, server_group_light_surface, image_x, image_y);
+                Draw.draw_surface(cr, arrow_light_surface, arrow_x, arrow_y);
+            } else {
+                Draw.draw_surface(cr, server_group_dark_surface, image_x, image_y);
+                Draw.draw_surface(cr, arrow_dark_surface, arrow_x, arrow_y);
+            }
             
-            Utils.set_context_color(cr, title_color);
+            
+            if (is_light_theme) {
+                Utils.set_context_color(cr, title_light_color);
+            } else {
+                Utils.set_context_color(cr, title_dark_color);
+            }
             Draw.draw_text(widget, cr, title, text_x, title_y, text_width, height, title_size, Pango.Alignment.LEFT);
 
-            Utils.set_context_color(cr, content_color);
+            if (is_light_theme) {
+                Utils.set_context_color(cr, content_light_color);
+            } else {
+                Utils.set_context_color(cr, content_dark_color);
+            }
             string content;
             if (server_number > 1) {
                 content = "%i servers".printf(server_number);
@@ -137,15 +194,27 @@ namespace Widgets {
             Draw.draw_text(widget, cr, content, text_x, content_y, text_width, height, content_size, Pango.Alignment.LEFT);
             
             if (display_bottom_line) {
-                cr.set_source_rgba(1, 1, 1, 0.05);
+                 if (is_light_theme) {
+                    Utils.set_context_color(cr, line_light_color);
+                } else {
+                    Utils.set_context_color(cr, line_dark_color);
+                }
                 Draw.draw_rectangle(cr, 8, height - 1, width - 16, 1);
             }
             
             if (is_press) {
-                Utils.set_context_color(cr, press_color);
+                if (is_light_theme) {
+                    Utils.set_context_color(cr, press_light_color);
+                } else {
+                    Utils.set_context_color(cr, content_dark_color);
+                }
                 Draw.draw_rectangle(cr, 0, 0, width, height);
             } else if (is_hover) {
-                Utils.set_context_color(cr, hover_color);
+                if (is_light_theme) {
+                    Utils.set_context_color(cr, hover_light_color);
+                } else {
+                    Utils.set_context_color(cr, hover_dark_color);
+                }
                 Draw.draw_rectangle(cr, 0, 0, width, height);
             }
             
