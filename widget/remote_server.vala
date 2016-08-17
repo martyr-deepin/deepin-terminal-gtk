@@ -427,12 +427,8 @@ namespace Widgets {
         public void adjust_option_widgets(Gtk.Label name_widget, Gtk.Widget value_widget) {
             name_widget.set_xalign(0);
             name_widget.set_size_request(preference_name_width, grid_height);
-            name_widget.margin_top = 5;
-            name_widget.margin_bottom = 5;
             
             value_widget.set_size_request(preference_widget_width, grid_height);
-            value_widget.margin_top = 5;
-            value_widget.margin_bottom = 5;
         }
         
         public void grid_attach(Gtk.Grid grid, Gtk.Widget child, int left, int top, int width, int height) {
