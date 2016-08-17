@@ -62,10 +62,10 @@ namespace Widgets {
             var image_path = "add_server";
 			normal_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_dark_normal.png"));
             hover_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_dark_hover.png"));
-            press_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_dakr_press.png"));
+            press_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_dark_press.png"));
 			normal_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_light_normal.png"));
             hover_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_light_hover.png"));
-            press_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_dakr_press.png"));
+            press_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_dark_press.png"));
             
             if (button_text != null) {
                 text_normal_color = Gdk.RGBA();
