@@ -166,6 +166,7 @@ namespace Widgets {
                 address_entry.set_placeholder_text("fill");
                 address_entry.margin_start = 14;
                 address_entry.get_style_context().add_class("preference_entry");
+                address_entry.insert_text.connect(on_address_entry_insert);
                 Label port_label = new Gtk.Label(null);
                 port_label.margin_start = 28;
                 port_label.set_text("Port:");
@@ -384,6 +385,11 @@ namespace Widgets {
             }
         }
         
+        private void on_address_entry_insert(Gtk.Editable editable, string new_text, int new_text_length, ref int position) {
+            if (!".0123456789".contains(new_text)) {
+                Signal.stop_emission_by_name(editable, "insert-text");
+            }
+        }
         
         public void show_advanced_options() {
             set_default_geometry(window_init_width, window_expand_height);
