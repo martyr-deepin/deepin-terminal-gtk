@@ -133,6 +133,8 @@ namespace Widgets {
 			    	}
 			    }
 			} catch (Error e) {
+                print("RemotePanel config path: %s\n", config_file_path);
+                
 				if (!FileUtils.test(config_file_path, FileTest.EXISTS)) {
                     print("RemotePanel create_home_page: %s\n", e.message);
 				}
