@@ -150,6 +150,17 @@ namespace Utils {
         }
     }
 
+    public void create_file(string file_path) {
+        var file = GLib.File.new_for_path(file_path);
+        if (!file.query_exists()) {
+            try {
+                file.create(GLib.FileCreateFlags.NONE, null);
+            } catch (GLib.Error e) {
+                print("create_file: %s\n", e.message);
+            }
+        }
+    }
+
     public void remove_all_children(Gtk.Container container) {
         foreach (Widget w in container.get_children()) {
             container.remove(w);

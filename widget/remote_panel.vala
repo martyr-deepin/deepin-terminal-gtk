@@ -47,6 +47,8 @@ namespace Widgets {
         public Gtk.ScrolledWindow? group_page_scrolledwindow;
         public Gtk.ScrolledWindow? search_page_scrolledwindow;
         
+        public KeyFile config_file;
+        
         public int width = Constant.SLIDER_WIDTH;
         
         public delegate void UpdatePageAfterEdit();
@@ -54,6 +56,8 @@ namespace Widgets {
 		public RemotePanel(Workspace space, WorkspaceManager manager) {
             workspace = space;
 			workspace_manager = manager;
+            
+            config_file = new KeyFile();
             
             focus_widget = ((Gtk.Window) workspace.get_toplevel()).get_focus();
 			parent_window = (Widgets.ConfigWindow) workspace.get_toplevel();
@@ -80,6 +84,22 @@ namespace Widgets {
             show_home_page();
 			
 			draw.connect(on_draw);
+        }
+        
+        public void load_config() {
+            var file = File.new_for_path(config_file_path);
+            if (!file.query_exists()) {
+			    Utils.touch_dir(Utils.get_config_dir());
+                Utils.create_file(config_file_path);
+            } else {
+                try {
+                    config_file.load_from_file(config_file_path, KeyFileFlags.NONE);
+                } catch (Error e) {
+                    if (!FileUtils.test(config_file_path, FileTest.EXISTS)) {
+                        print("Config: %s\n", e.message);
+                    }
+                }
+            }
         }
 		
 		private bool on_draw(Gtk.Widget widget, Cairo.Context cr) {
@@ -114,9 +134,8 @@ namespace Widgets {
             HashMap<string, int> groups = new HashMap<string, int>();
 			ArrayList<ArrayList<string>> ungroups = new ArrayList<ArrayList<string>>();
 			        
-			KeyFile config_file = new KeyFile();
 			try {
-				config_file.load_from_file(config_file_path, KeyFileFlags.NONE);
+                load_config();
 				
 			    foreach (unowned string option in config_file.get_groups ()) {
 			    	string group_name = config_file.get_value(option, "GroupName");
@@ -186,15 +205,7 @@ namespace Widgets {
         }
         
         public void login_server(string server_info) {
-			KeyFile config_file = new KeyFile();
-            
-			try {
-				config_file.load_from_file(config_file_path, KeyFileFlags.NONE);
-			} catch (Error e) {
-				if (!FileUtils.test(config_file_path, FileTest.EXISTS)) {
-					print("login_server error: %s\n", e.message);
-				}
-			}
+            load_config();
             
             // A reference to our file
             var file = File.new_for_path(Utils.get_ssh_script_path());
@@ -307,12 +318,10 @@ namespace Widgets {
 			Utils.destroy_all_children(group_page_box);
             group_page_scrolledwindow = null;
             
-			KeyFile config_file = new KeyFile();
-            
-			ArrayList<ArrayList<string>> ungroups = new ArrayList<ArrayList<string>>();
+            ArrayList<ArrayList<string>> ungroups = new ArrayList<ArrayList<string>>();
             
 			try {
-				config_file.load_from_file(config_file_path, KeyFileFlags.NONE);
+                load_config();
                 
                 foreach (unowned string option in config_file.get_groups ()) {
                     string gname = config_file.get_value(option, "GroupName");
@@ -387,14 +396,7 @@ namespace Widgets {
 			if (user != "" && server_address != "") {
 			    Utils.touch_dir(Utils.get_config_dir());
 			    
-			    KeyFile config_file = new KeyFile();
-			    try {
-			    	config_file.load_from_file(config_file_path, KeyFileFlags.NONE);
-			    } catch (Error e) {
-					if (!FileUtils.test(config_file_path, FileTest.EXISTS)) {
-                        print("RemtoePanel add_server: %s\n", e.message);
-					}
-			    }
+                load_config();
 			    
 			    // Use ',' as array-element-separator instead of ';'.
 			    config_file.set_list_separator (',');
@@ -431,9 +433,8 @@ namespace Widgets {
             Utils.destroy_all_children(search_page_box);
             search_page_scrolledwindow = null;
 
-            KeyFile config_file = new KeyFile();
 			try {
-				config_file.load_from_file(config_file_path, KeyFileFlags.NONE);
+                load_config();
 				
                 ArrayList<ArrayList<string>> ungroups = new ArrayList<ArrayList<string>>();
                 
@@ -515,14 +516,8 @@ namespace Widgets {
         }
         
         public void edit_server(string server_info, UpdatePageAfterEdit func) {
-            KeyFile config_file = new KeyFile();
-            try {
-                config_file.load_from_file(config_file_path, KeyFileFlags.NONE);
-            } catch (Error e) {
-                if (!FileUtils.test(config_file_path, FileTest.EXISTS)) {
-                    print("RemotePanel edit_server: %s\n", e.message);
-                }
-            }
+            load_config();
+            
             var remote_server = new Widgets.RemoteServer(parent_window, this, server_info, config_file);
             remote_server.transient_for_window(parent_window);
             remote_server.edit_server.connect((
