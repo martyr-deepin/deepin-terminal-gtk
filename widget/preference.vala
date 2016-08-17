@@ -630,12 +630,8 @@ namespace Widgets {
             name_widget.set_xalign(0);
             name_widget.set_size_request(preference_name_width, grid_height);
             name_widget.margin_start = Constant.TITLEBAR_HEIGHT;
-            name_widget.margin_top = 5;
-            name_widget.margin_bottom = 5;
             
             value_widget.set_size_request(preference_widget_width, grid_height);
-            value_widget.margin_top = 5;
-            value_widget.margin_bottom = 5;
             value_widget.margin_end = 10;
         }
         
@@ -726,13 +722,8 @@ namespace Widgets {
         }
         
         public void adjust_option_checkbutton(Gtk.Label label, Widgets.CheckButton checkbutton) {
-            label.margin_top = 5;
-            label.margin_bottom = 5;
-            
             checkbutton.margin_start = Constant.TITLEBAR_HEIGHT;
             checkbutton.margin_end = 5;
-            checkbutton.margin_top = 5;
-            checkbutton.margin_bottom = 5;
         }
         
         public override void draw_window_below(Cairo.Context cr) {
