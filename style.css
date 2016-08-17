@@ -241,6 +241,8 @@
     background-color:white;
     border:1px solid rgba(0,0,0,0.1);
 	font-size: 11px;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
 
 .preference_entry:focus {
@@ -249,6 +251,8 @@
     background-color:white;
     border:1px solid #2ca7f8;
 	font-size: 11px;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
 
 
@@ -359,6 +363,8 @@
 	border-radius:4px 0 0 4px;
 	letter-spacing: 5px;
 	font-size: 11px;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
 
 .password_invisible_entry:focus {
@@ -367,6 +373,8 @@
     background-color:white;
     border:1px solid #2ca7f8;
 	font-size: 11px;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
 
 .password_visible_entry {
@@ -378,6 +386,8 @@
 	border-radius:4px 0 0 4px;
 	letter-spacing: 0px;
 	font-size: 11px;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
 
 .password_visible_entry:focus {
@@ -386,6 +396,8 @@
     background-color:white;
     border:1px solid #2ca7f8;
 	font-size: 11px;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
 
 .preference_first_segement {
