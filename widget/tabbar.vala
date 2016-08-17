@@ -76,7 +76,7 @@ namespace Widgets {
         private int text_padding_min_x = 24;
         private int close_button_padding_x = 28;
         private int close_button_padding_min_x = 21;
-        private int close_button_padding_y = 5;
+        private int close_button_padding_y = 4;
         private int draw_padding_y = 7;
         private int hover_x = 0;
         
