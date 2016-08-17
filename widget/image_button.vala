@@ -133,7 +133,7 @@ namespace Widgets {
                     
                     if (button_text != null) {
                         Utils.set_context_color(cr, text_press_color);
-                        Draw.draw_text(widget, cr, button_text, 0, 10, normal_dark_surface.get_width(), button_text_size, button_text_size, Pango.Alignment.CENTER);
+                        Draw.draw_text(widget, cr, button_text, 0, 7, normal_dark_surface.get_width(), button_text_size, button_text_size, Pango.Alignment.CENTER);
                     }
                 } else {
                     if (is_theme_button && is_light_theme) {
@@ -144,7 +144,7 @@ namespace Widgets {
                     
                     if (button_text != null) {
                         Utils.set_context_color(cr, text_hover_color);
-                        Draw.draw_text(widget, cr, button_text, 0, 10, normal_dark_surface.get_width(), button_text_size, button_text_size, Pango.Alignment.CENTER);
+                        Draw.draw_text(widget, cr, button_text, 0, 7, normal_dark_surface.get_width(), button_text_size, button_text_size, Pango.Alignment.CENTER);
                     }
                 }
             } else {
@@ -156,7 +156,7 @@ namespace Widgets {
                     
                 if (button_text != null) {
                     Utils.set_context_color(cr, text_normal_color);
-                    Draw.draw_text(widget, cr, button_text, 0, 10, normal_dark_surface.get_width(), button_text_size, button_text_size, Pango.Alignment.CENTER);
+                    Draw.draw_text(widget, cr, button_text, 0, 7, normal_dark_surface.get_width(), button_text_size, button_text_size, Pango.Alignment.CENTER);
                 }
             }
             
