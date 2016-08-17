@@ -47,6 +47,8 @@ namespace Widgets {
 		public Gtk.ComboBoxText font_combox;
 		public Gtk.Label window_label;
 		public Gtk.ComboBoxText window_combox;
+        
+        public Gtk.Box content_box;
 		
 		public Gtk.Label copy_key_label;
 		public Gtk.Entry copy_key_entry;
@@ -212,7 +214,7 @@ namespace Widgets {
             box.pack_start(scrolledwindow, true, true, 0);
             
             preference_box.pack_start(box, true, true, 0);
-            var content_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+            content_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             scrolledwindow.add(content_box);
 			
             var basic_segement = get_first_segement("Basic");
@@ -453,11 +455,11 @@ namespace Widgets {
 		
 		public void scroll_to_widget(ScrolledWindow scrolledwindow, Gtk.Box box, Gtk.Widget widget) {
 			int widget_x, widget_y;
-			box.translate_coordinates(widget, 0, 0, out widget_x, out widget_y);
+			content_box.translate_coordinates(widget, 0, 0, out widget_x, out widget_y);
 			
-			var adjust = scrolledwindow.get_vadjustment();
+            var adjust = scrolledwindow.get_vadjustment();
 			timer_start_value= adjust.get_value();
-			timer_end_value = Math.fabs(widget_y + Constant.TITLEBAR_HEIGHT);
+            timer_end_value = Math.fabs(widget_y);
 			
 			timer.reset();
 		}
