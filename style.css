@@ -22,35 +22,35 @@
  */ 
 
 .scrolledwindow undershoot.top {
-  background-image: none;
+    background-image: none;
 }
 
 .scrolledwindow undershoot.bottom {
-  background-image: none;
+    background-image: none;
 }
 
 .scrolledwindow undershoot.left  {
-  background-image: none;
+    background-image: none;
 }
 
 .scrolledwindow undershoot.right {
-  background-image: none;
+    background-image: none;
 }
 
 .scrolledwindow overshoot.top {
-  background-image: none;
+    background-image: none;
 }
 
 .scrolledwindow overshoot.bottom {
-  background-image: none;
+    background-image: none;
 }
 
 .scrolledwindow overshoot.left  {
-  background-image: none;
+    background-image: none;
 }
 
 .scrolledwindow overshoot.right {
-  background-image: none;
+    background-image: none;
 }
 
 .window_dark_shadow_active {
@@ -193,7 +193,7 @@
 }
 
 .preference_comboboxtext {
-	min-height: 16px;
+	min-height: 2px;
 }
 
 .preference_comboboxtext menu{
@@ -218,17 +218,18 @@
 }
 
 .preference_comboboxtext button.combo {
-	padding-top: 1px;
+	padding-top: 0px;
 	padding-bottom: 0px;
     color:#303030;
+    font-size:9px;
     background-image:linear-gradient(-180deg,#fff 0%,#fdfdfd 100%);
-    border:0px solid rgba(0,0,0,0.1);
+    border:none;
     box-shadow: 0 1px rgba(0,0,0,0.02),inset 0  1px  rgba(0,0,0,0.1),inset 0 -1px  rgba(0,0,0,0.1),inset 1px 0 rgba(0,0,0,0.1),inset -1px 0 rgba(0,0,0,0.1);
     
 }
 
 .preference_comboboxtext button.combo:hover {
-    padding-top: 1px;
+    padding-top: 0px;
     padding-bottom: 0px;
     color:white;
     background-image:linear-gradient(-180deg,#8CCFFF 0%, #4BB8FF 100%);
@@ -240,7 +241,7 @@
 	min-height: 18px;
     background-color:white;
     border:1px solid rgba(0,0,0,0.1);
-	font-size: 11px;
+	font-size: 9px;
     padding-top: 0px;
     padding-bottom: 0px;
 }
@@ -250,7 +251,7 @@
     min-height: 18px;
     background-color:white;
     border:1px solid #2ca7f8;
-	font-size: 11px;
+	font-size: 9px;
     padding-top: 0px;
     padding-bottom: 0px;
 }
@@ -361,8 +362,8 @@
     border:1px solid rgba(0,0,0,0.1);
 	border-right:1px solid white;
 	border-radius:4px 0 0 4px;
-	letter-spacing: 5px;
-	font-size: 11px;
+	letter-spacing: 4px;
+	font-size: 9px;
     padding-top: 0px;
     padding-bottom: 0px;
 }
@@ -372,7 +373,7 @@
     min-height: 18px;
     background-color:white;
     border:1px solid #2ca7f8;
-	font-size: 11px;
+	font-size: 9px;
     padding-top: 0px;
     padding-bottom: 0px;
 }
@@ -385,7 +386,7 @@
 	border-right:1px solid white;
 	border-radius:4px 0 0 4px;
 	letter-spacing: 0px;
-	font-size: 11px;
+	font-size: 9px;
     padding-top: 0px;
     padding-bottom: 0px;
 }
@@ -395,7 +396,7 @@
     min-height: 18px;
     background-color:white;
     border:1px solid #2ca7f8;
-	font-size: 11px;
+	font-size: 9px;
     padding-top: 0px;
     padding-bottom: 0px;
 }
