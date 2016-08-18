@@ -80,7 +80,8 @@ namespace Widgets {
             
             set_skip_taskbar_hint(true);
             set_skip_pager_hint(true);
-            set_type_hint(Gdk.WindowTypeHint.POPUP_MENU);  // DIALOG hint will give right window effect
+            // NOTE: Don't change other type, otherwise window can't resize by user.
+            set_type_hint(Gdk.WindowTypeHint.MENU);
             move(rect.x, 0);
             
             window_frame_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
@@ -139,11 +140,17 @@ namespace Widgets {
                     if (e.y_root > bottom_side_start && e.y_root < bottom_side_end) {
                         e.device.get_position(null, out press_x, out press_y);
                         
+                        print("*****************\n");
+                        
                         GLib.Timeout.add(10, () => {
                                 int pointer_x, pointer_y;
                                 e.device.get_position(null, out pointer_x, out pointer_y);
+                                
                                     
                                 if (pointer_x != press_x || pointer_y != press_y) {
+                                    print("#################\n");
+                                    
+                                    
                                     resize_window(this, pointer_x, pointer_y, (int) e.button, Gdk.CursorType.BOTTOM_SIDE);
                                     
                                     return false;
