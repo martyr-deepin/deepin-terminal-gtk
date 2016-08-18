@@ -463,8 +463,21 @@ namespace Widgets {
 			try {
                 string keyname = Keymap.get_keyevent_name(key_event);
                 
-			    Widgets.ConfigWindow parent_window = (Widgets.ConfigWindow) term.get_toplevel();
-			    
+                Widgets.ConfigWindow parent_window = (Widgets.ConfigWindow) term.get_toplevel();
+
+                if (keyname == "Menu") {
+                    Gdk.Display gdk_display = Gdk.Display.get_default();
+                    var seat = gdk_display.get_default_seat();
+                    var device = seat.get_pointer();
+                    
+                    int pointer_x, pointer_y;
+                    device.get_position(null, out pointer_x, out pointer_y);
+                    
+                    show_menu(pointer_x, pointer_y);
+                    
+                    return true;
+                }
+                
 			    var copy_key = parent_window.config.config_file.get_string("keybind", "copy_clipboard");
 			    if (copy_key != "" && keyname == copy_key) {
 			    	term.copy_clipboard();
