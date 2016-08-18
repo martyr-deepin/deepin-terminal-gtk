@@ -50,6 +50,8 @@ namespace Widgets {
         public Gtk.ComboBoxText backspace_key_box;
         public Gtk.ComboBoxText del_key_box;
         
+        public int label_margin_left = 14;
+        
         public Gtk.Grid advanced_grid;
         
         public string? server_info;
@@ -139,9 +141,13 @@ namespace Widgets {
                         }
                     });
             
+                var content_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+                content_box.set_halign(Gtk.Align.CENTER);
+                box.pack_start(content_box, false, false, 0);
+                
                 var grid = new Gtk.Grid();
-                grid.margin_end = 14;
-                box.pack_start(grid, false, false, 0);
+                grid.margin_end = label_margin_left;
+                content_box.pack_start(grid, false, false, 0);
 
                 // Nick name.
                 Label name_label = new Gtk.Label(null);
@@ -154,7 +160,7 @@ namespace Widgets {
 
                 // Address.
                 Label address_label = new Gtk.Label(null);
-                address_label.margin_start = 14;
+                address_label.margin_start = label_margin_left;
                 address_label.set_text("IP Address:");
                 address_label.get_style_context().add_class("preference_label");
                 address_label.set_xalign(0);
@@ -162,9 +168,9 @@ namespace Widgets {
                 if (server_info != null) {
                     address_entry.set_text(server_info.split("@")[1]);
                 }
-                address_entry.set_width_chars(14);
+                address_entry.set_width_chars(label_margin_left);
                 address_entry.set_placeholder_text("fill");
-                address_entry.margin_start = 14;
+                address_entry.margin_start = label_margin_left;
                 address_entry.get_style_context().add_class("preference_entry");
                 address_entry.insert_text.connect(on_address_entry_insert);
                 Label port_label = new Gtk.Label(null);
@@ -178,7 +184,7 @@ namespace Widgets {
                     port_entry.set_text("22");
                 }
                 port_entry.set_width_chars(4);
-                port_entry.margin_start = 14;
+                port_entry.margin_start = label_margin_left;
                 port_entry.get_style_context().add_class("preference_entry");
                 port_entry.insert_text.connect(on_port_entry_insert);
             
@@ -211,8 +217,8 @@ namespace Widgets {
             
                 advanced_options_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
                 advanced_grid = new Gtk.Grid();
-                advanced_grid.margin_end = 14;
-                box.pack_start(advanced_options_box, false, false, 0);
+                advanced_grid.margin_end = label_margin_left;
+                content_box.pack_start(advanced_options_box, false, false, 0);
 
                 // Group name.
                 Label group_name_label = new Gtk.Label(null);
@@ -310,7 +316,7 @@ namespace Widgets {
                     });
                 show_advanced_area.set_halign(Gtk.Align.CENTER);
                 show_advanced_box.pack_start(show_advanced_area, true, true, 0);
-                box.pack_start(show_advanced_box, true, true, 0);
+                content_box.pack_start(show_advanced_box, true, true, 0);
             
                 Box button_box = new Box(Gtk.Orientation.HORIZONTAL, 0);
                 button_box.margin_top = 30;
@@ -393,10 +399,10 @@ namespace Widgets {
         
         public void create_key_row(Gtk.Label label, Gtk.Widget widget, string name, Gtk.Grid grid, string class_name="preference_entry") {
 			label.set_text(name);
-            label.margin_start = 14;
+            label.margin_start = label_margin_left;
             label.get_style_context().add_class("preference_label");
             widget.get_style_context().add_class(class_name);
-            widget.margin_start = 14;
+            widget.margin_start = label_margin_left;
 
             adjust_option_widgets(label, widget);
             grid_attach(grid, label, 0, 0, preference_name_width, grid_height);
@@ -405,10 +411,10 @@ namespace Widgets {
         
         public void create_follow_key_row(Gtk.Label label, Gtk.Widget widget, string name, Gtk.Label previous_label, Gtk.Grid grid, string class_name="preference_entry") {
 			label.set_text(name);
-            label.margin_start = 14;
+            label.margin_start = label_margin_left;
             label.get_style_context().add_class("preference_label");
             widget.get_style_context().add_class(class_name);
-            widget.margin_start = 14;
+            widget.margin_start = label_margin_left;
             
             adjust_option_widgets(label, widget);
             grid_attach_next_to(grid, label, previous_label, Gtk.PositionType.BOTTOM, preference_name_width, grid_height);
