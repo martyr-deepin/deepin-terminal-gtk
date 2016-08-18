@@ -103,6 +103,6 @@ namespace Widgets {
     }
 
     public TextButton create_delete_button(string text) {
-        return new TextButton(text, "FF5A5A", "#FF142D", "#AF0000");
+        return new TextButton(text, "#FF5A5A", "#FF142D", "#AF0000");
     }
 }
