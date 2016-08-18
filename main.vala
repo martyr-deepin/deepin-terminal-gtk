@@ -412,8 +412,28 @@ public class Application : Object {
                 }
                 
                 try {
+                    int x, y;
+                    if (quake_mode) {
+                        Gdk.Screen screen = Gdk.Screen.get_default();
+                        int monitor = screen.get_monitor_at_window(screen.get_active_window());
+                        Gdk.Rectangle rect;
+                        screen.get_monitor_geometry(monitor, out rect);
+                        
+                        x = rect.width / 2;
+                        y = rect.height / 2;
+                    } else {
+                        Gtk.Allocation window_rect;
+                        window.get_allocation(out window_rect);
+
+                        int win_x, win_y;
+                        window.get_window().get_origin(out win_x, out win_y);
+                        
+                        x = win_x + window_rect.width / 2;
+                        y = win_y + window_rect.height / 2;
+                    }
+                    
                     GLib.AppInfo appinfo = GLib.AppInfo.create_from_commandline(
-                        "deepin-shortcut-viewer -j='%s' -r=200,200,1200,800".printf(data),
+                        "deepin-shortcut-viewer -j='%s' -p=%i,%i".printf(data, x, y),
                         null,
                         GLib.AppInfoCreateFlags.NONE);
                     appinfo.launch(null, null);
