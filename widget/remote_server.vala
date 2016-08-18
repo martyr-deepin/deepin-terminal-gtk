@@ -145,7 +145,6 @@ namespace Widgets {
 
                 // Nick name.
                 Label name_label = new Gtk.Label(null);
-                name_label.margin_start = 14;
                 name_entry = new Entry();
                 if (server_info != null) {
                     name_entry.set_text(config_file.get_value(server_info, "Name"));
@@ -158,6 +157,7 @@ namespace Widgets {
                 address_label.margin_start = 14;
                 address_label.set_text("IP Address:");
                 address_label.get_style_context().add_class("preference_label");
+                address_label.set_xalign(0);
                 address_entry = new Entry();
                 if (server_info != null) {
                     address_entry.set_text(server_info.split("@")[1]);
@@ -168,7 +168,7 @@ namespace Widgets {
                 address_entry.get_style_context().add_class("preference_entry");
                 address_entry.insert_text.connect(on_address_entry_insert);
                 Label port_label = new Gtk.Label(null);
-                port_label.margin_start = 28;
+                port_label.margin_start = 21;
                 port_label.set_text("Port:");
                 port_label.get_style_context().add_class("preference_label");
                 port_entry = new Entry();
@@ -192,7 +192,6 @@ namespace Widgets {
             
                 // Username.
                 Label user_label = new Gtk.Label(null);
-                user_label.margin_start = 14;
                 user_entry = new Entry();
                 if (server_info != null) {
                     user_entry.set_text(server_info.split("@")[0]);
@@ -202,7 +201,6 @@ namespace Widgets {
             
                 // Password.
                 Label password_label = new Gtk.Label(null);
-                password_label.margin_start = 14;
                 password_button = new Widgets.PasswordButton();
                 if (server_info != null) {
                     string password = Utils.lookup_password(server_info.split("@")[0], server_info.split("@")[1]);
@@ -218,7 +216,6 @@ namespace Widgets {
 
                 // Group name.
                 Label group_name_label = new Gtk.Label(null);
-                group_name_label.margin_start = 14;
                 groupname_entry = new Entry();
                 if (server_info != null) {
                     groupname_entry.set_text(config_file.get_value(server_info, "GroupName"));
@@ -229,7 +226,6 @@ namespace Widgets {
 
                 // Path.
                 Label path_label = new Gtk.Label(null);
-                path_label.margin_start = 14;
                 path_entry = new Entry();
                 if (server_info != null) {
                     path_entry.set_text(config_file.get_value(server_info, "Path"));
@@ -239,7 +235,6 @@ namespace Widgets {
 
                 // Command.
                 Label command_label = new Gtk.Label(null);
-                command_label.margin_start = 14;
                 command_entry = new Entry();
                 if (server_info != null) {
                     command_entry.set_text(config_file.get_value(server_info, "Command"));
@@ -249,7 +244,6 @@ namespace Widgets {
             
                 // Encoding.
                 Label encode_label = new Gtk.Label(null);
-                encode_label.margin_start = 14;
                 encode_box = new ComboBoxText();
                 foreach (string name in parent_window.config.encoding_names) {
                     encode_box.append(name, name);
@@ -263,7 +257,6 @@ namespace Widgets {
             
                 // Backspace sequence.
                 Label backspace_key_label = new Gtk.Label(null);
-                backspace_key_label.margin_start = 14;
                 backspace_key_box = new ComboBoxText();
                 foreach (string name in parent_window.config.backspace_key_erase_names) {
                     backspace_key_box.append(name, parent_window.config.erase_map.get(name));
@@ -277,7 +270,6 @@ namespace Widgets {
 
                 // Delete sequence.
                 Label del_key_label = new Gtk.Label(null);
-                del_key_label.margin_start = 14;
                 del_key_box = new ComboBoxText();
                 foreach (string name in parent_window.config.del_key_erase_names) {
                     del_key_box.append(name, parent_window.config.erase_map.get(name));
@@ -297,7 +289,6 @@ namespace Widgets {
                                               | Gdk.EventMask.LEAVE_NOTIFY_MASK);
                 show_advanced_area.visible_window = false;
                 var show_advanced_label = new Gtk.Label(null);
-                show_advanced_label.margin_start = 14;
                 show_advanced_label.set_markup("<span size='%i'>%s</span>".printf(11 * Pango.SCALE, "advanced options"));
                 show_advanced_label.get_style_context().add_class("link");
                 show_advanced_area.add(show_advanced_label);

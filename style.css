@@ -122,6 +122,8 @@
 .search_dark_entry:focus {
 	color: white;
 	font-size: 11px;
+    padding-top: 1px;
+    padding-bottom: 1px;
 }
 
 .search_dark_entry selection:focus {
@@ -139,6 +141,8 @@
 .search_light_entry:focus {
 	color: #303030;
 	font-size: 11px;
+    padding-top: 1px;
+    padding-bottom: 1px;
 }
 
 .search_light_entry selection:focus {
@@ -252,8 +256,8 @@
     background-color:white;
     border:1px solid #2ca7f8;
 	font-size: 9px;
-    padding-top: 0px;
-    padding-bottom: 0px;
+    padding-top: 1px;
+    padding-bottom: 1px;
 }
 
 
@@ -316,6 +320,7 @@
 
 .preference_label {
 	color: #303030;
+    font-size: 10px;
 }
 
 .dialog_title {
@@ -343,6 +348,8 @@
 .remote_search_entry:focus {
 	color: white;
 	font-size: 11px;
+    padding-top: 1px;
+    padding-bottom: 1px;
 }
 
 .remote_search_entry selection:focus {
@@ -374,8 +381,8 @@
     background-color:white;
     border:1px solid #2ca7f8;
 	font-size: 9px;
-    padding-top: 0px;
-    padding-bottom: 0px;
+    padding-top: 1px;
+    padding-bottom: 1px;
 }
 
 .password_visible_entry {
@@ -397,8 +404,8 @@
     background-color:white;
     border:1px solid #2ca7f8;
 	font-size: 9px;
-    padding-top: 0px;
-    padding-bottom: 0px;
+    padding-top: 1px;
+    padding-bottom: 1px;
 }
 
 .preference_first_segement {
