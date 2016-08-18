@@ -164,45 +164,8 @@ namespace Widgets {
 							// Grab focus terminal first. 
 							term.grab_focus();
                             
-                            bool in_quake_window = this.get_toplevel().get_type().is_a(typeof(Widgets.QuakeWindow));
+                            show_menu((int) event.x_root, (int) event.y_root);
                             
-                            var menu_content = new List<Menu.MenuItem>();
-							if (term.get_has_selection()) {
-								menu_content.append(new Menu.MenuItem("copy", "Copy"));
-							}
-							menu_content.append(new Menu.MenuItem("paste", "Paste"));
-							menu_content.append(new Menu.MenuItem("", ""));
-                            
-                            if (!in_quake_window) {
-                                menu_content.append(new Menu.MenuItem("horizontal_split", "Horizontal split"));
-                                menu_content.append(new Menu.MenuItem("vertical_split", "Vertical split"));
-                                menu_content.append(new Menu.MenuItem("close_window", "Close window"));
-                                menu_content.append(new Menu.MenuItem("close_other_windows", "Close other windows"));
-                                menu_content.append(new Menu.MenuItem("", ""));
-                            }
-                            
-							menu_content.append(new Menu.MenuItem("new_workspace", "New workspace"));
-							menu_content.append(new Menu.MenuItem("", ""));
-                            
-                            if (!in_quake_window) {
-                                menu_content.append(new Menu.MenuItem("fullscreen", "Fullscreen"));
-                            }
-                            
-							menu_content.append(new Menu.MenuItem("search", "Search"));
-                            menu_content.append(new Menu.MenuItem("remote_manage", "Connect remote"));
-                            menu_content.append(new Menu.MenuItem("", ""));
-                            menu_content.append(new Menu.MenuItem("upload_file", "Upload file"));
-							menu_content.append(new Menu.MenuItem("download_file", "Download file"));
-                            
-                            if (!in_quake_window) {
-                                menu_content.append(new Menu.MenuItem("", ""));
-                                menu_content.append(new Menu.MenuItem("preference", "Preference"));
-                            }
-							
-							menu = new Menu.Menu((int) event.x_root, (int) event.y_root, menu_content);
-							menu.click_item.connect(handle_menu_item_click);
-							menu.destroy.connect(handle_menu_destroy);
-							
 							return false;
                     }
 					
@@ -240,6 +203,48 @@ namespace Widgets {
             
             set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             add(term);
+        }
+        
+        public void show_menu(int x, int y) {
+            bool in_quake_window = this.get_toplevel().get_type().is_a(typeof(Widgets.QuakeWindow));
+                            
+            var menu_content = new List<Menu.MenuItem>();
+            if (term.get_has_selection()) {
+                menu_content.append(new Menu.MenuItem("copy", "Copy"));
+            }
+            menu_content.append(new Menu.MenuItem("paste", "Paste"));
+            menu_content.append(new Menu.MenuItem("", ""));
+                            
+            if (!in_quake_window) {
+                menu_content.append(new Menu.MenuItem("horizontal_split", "Horizontal split"));
+                menu_content.append(new Menu.MenuItem("vertical_split", "Vertical split"));
+                menu_content.append(new Menu.MenuItem("close_window", "Close window"));
+                menu_content.append(new Menu.MenuItem("close_other_windows", "Close other windows"));
+                menu_content.append(new Menu.MenuItem("", ""));
+            }
+                            
+            menu_content.append(new Menu.MenuItem("new_workspace", "New workspace"));
+            menu_content.append(new Menu.MenuItem("", ""));
+                            
+            if (!in_quake_window) {
+                menu_content.append(new Menu.MenuItem("fullscreen", "Fullscreen"));
+            }
+                            
+            menu_content.append(new Menu.MenuItem("search", "Search"));
+            menu_content.append(new Menu.MenuItem("remote_manage", "Connect remote"));
+            menu_content.append(new Menu.MenuItem("", ""));
+            menu_content.append(new Menu.MenuItem("upload_file", "Upload file"));
+            menu_content.append(new Menu.MenuItem("download_file", "Download file"));
+                            
+            if (!in_quake_window) {
+                menu_content.append(new Menu.MenuItem("", ""));
+                menu_content.append(new Menu.MenuItem("preference", "Preference"));
+            }
+							
+            menu = new Menu.Menu(x, y, menu_content);
+            menu.click_item.connect(handle_menu_item_click);
+            menu.destroy.connect(handle_menu_destroy);
+							
         }
 		
 		public void handle_menu_item_click(string item_id) {
