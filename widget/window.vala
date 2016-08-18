@@ -53,6 +53,8 @@ namespace Widgets {
         public Gdk.RGBA title_line_dark_color;
         public Gdk.RGBA title_line_light_color;
         
+        public bool draw_tabbar_line = true;
+        
         public Window() {
             transparent_window();
             init_window();
@@ -528,22 +530,24 @@ namespace Widgets {
             
             try {
                 if (window_is_fullscreen()) {
-                    // Draw line below at titlebar.
-                    cr.save();
-                    if (is_light_theme) {
-                        Utils.set_context_color(cr, title_line_light_color);
-                    } else {
-                        Utils.set_context_color(cr, title_line_dark_color);
-                    }
-                    // cr.set_source_rgba(1, 0, 0, 1);
-                    Draw.draw_rectangle(cr, x, y + Constant.TITLEBAR_HEIGHT + 1, width, 1);
-                    cr.restore();
+                    if (draw_tabbar_line) {
+                        // Draw line below at titlebar.
+                        cr.save();
+                        if (is_light_theme) {
+                            Utils.set_context_color(cr, title_line_light_color);
+                        } else {
+                            Utils.set_context_color(cr, title_line_dark_color);
+                        }
+                        // cr.set_source_rgba(1, 0, 0, 1);
+                        Draw.draw_rectangle(cr, x, y + Constant.TITLEBAR_HEIGHT + 1, width, 1);
+                        cr.restore();
 						
-                    // Draw active tab underline *above* titlebar underline.
-                    cr.save();
-                    Utils.set_context_color(cr, active_tab_color);
-                    Draw.draw_rectangle(cr, x + active_tab_underline_x - window_frame_box.margin_start, y + Constant.TITLEBAR_HEIGHT, active_tab_underline_width, 2);
-                    cr.restore();
+                        // Draw active tab underline *above* titlebar underline.
+                        cr.save();
+                        Utils.set_context_color(cr, active_tab_color);
+                        Draw.draw_rectangle(cr, x + active_tab_underline_x - window_frame_box.margin_start, y + Constant.TITLEBAR_HEIGHT, active_tab_underline_width, 2);
+                        cr.restore();
+                    }
                 } else if (window_is_max() || window_is_tiled()) {
                     // Draw line below at titlebar.
                     cr.save();

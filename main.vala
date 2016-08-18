@@ -205,28 +205,29 @@ public class Application : Object {
                 quake_window.show_all();
             } else {
                 window = new Widgets.Window();
-                Appbar appbar = new Appbar(tabbar, this, workspace_manager);
+                Appbar appbar = new Appbar(window, tabbar, this, workspace_manager);
+                var overlay = new Gtk.Overlay();
+                
+                appbar.set_valign(Gtk.Align.START);
+                
+                var fullscreen_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+                top_box.pack_start(fullscreen_box, false, false, 0);
+                
+                var spacing_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+                spacing_box.set_size_request(-1, Constant.TITLEBAR_HEIGHT);
+                fullscreen_box.pack_start(spacing_box, false, false, 0);
+                
+                box.pack_start(top_box, false, false, 0);
+                box.pack_start(workspace_manager, true, true, 0);
+                
                 appbar.close_button.button_release_event.connect((w, e) => {
-                        quit();
-                    
-                        return false;
-                    });
-            
-                top_box.draw.connect((w, cr) => {
-                        Gtk.Allocation rect;
-                        w.get_allocation(out rect);
-                        
-                        try {
-                            background_color.parse(window.config.config_file.get_string("theme", "background"));
-                            cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, window.config.config_file.get_double("general", "opacity"));
-                            Draw.draw_rectangle(cr, 0, 0, rect.width, Constant.TITLEBAR_HEIGHT);
-                        } catch (Error e) {
-                            print("Main window: %s\n", e.message);
+                        if (window.window_is_fullscreen()) {
+                            window.toggle_fullscreen();
+                        } else {
+                            quit();
                         }
                     
-                        Utils.propagate_draw(top_box, cr);
-
-                        return true;
+                        return false;
                     });
             
                 tabbar.draw_active_tab_underline.connect((t, x, width) => {
@@ -272,12 +273,48 @@ public class Application : Object {
                 if (!have_terminal_at_same_workspace()) {
                     window.set_position(Gtk.WindowPosition.CENTER);
                 }
-            
-                top_box.pack_start(appbar, true, true, 0);
-                box.pack_start(top_box, false, false, 0);
-                box.pack_start(workspace_manager, true, true, 0);
+
+                window.configure_event.connect((w) => {
+                        if (window.window_is_fullscreen()) {
+                            Utils.remove_all_children(fullscreen_box);
+                            appbar.hide();
+                            appbar.hide_window_button();
+                            window.draw_tabbar_line = false;
+                        } else {
+                            Gtk.Widget? parent = spacing_box.get_parent();
+                            if (parent == null) {
+                                fullscreen_box.pack_start(spacing_box, false, false, 0);
+                                appbar.show_all();
+                                appbar.show_window_button();
+                                window.draw_tabbar_line = true;
+                            }
+                        }
+                        
+                        return false;
+                    });
+                
+                window.motion_notify_event.connect((w, e) => {
+                        if (window.window_is_fullscreen()) {
+                            if (e.y_root < 10) {
+                                appbar.show_all();
+                                window.draw_tabbar_line = true;
+                                
+                                window.queue_draw();
+                            } else if (e.y_root > Constant.TITLEBAR_HEIGHT) {
+                                appbar.hide();
+                                window.draw_tabbar_line = false;                                
+                                
+                                window.queue_draw();
+                            }
+                        }
+                        
+                        return false;
+                    });
+                
+                overlay.add(box);
+                overlay.add_overlay(appbar);
 			
-                window.add_widget(box);
+                window.add_widget(overlay);
                 window.show_all();
             }
         }

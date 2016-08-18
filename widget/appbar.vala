@@ -29,6 +29,8 @@ namespace Widgets {
         public Tabbar tabbar;
         public Box max_toggle_box;
         
+        public Box window_button_box;
+        
         public ImageButton menu_button;
         public ImageButton min_button;
         public ImageButton max_button;
@@ -47,7 +49,7 @@ namespace Widgets {
         
         public WorkspaceManager workspace_manager;
         
-        public Appbar(Tabbar tab_bar, Application app, WorkspaceManager manager) {
+        public Appbar(Widgets.Window window, Tabbar tab_bar, Application app, WorkspaceManager manager) {
             workspace_manager = manager;
 			
 			set_size_request(-1, height);
@@ -55,6 +57,7 @@ namespace Widgets {
             tabbar = tab_bar;
             application = app;
             
+            window_button_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             
             menu_button = new ImageButton("window_menu", true);
             min_button = new ImageButton("window_min", true);
@@ -122,15 +125,16 @@ namespace Widgets {
 			box.pack_start(logo_box, false, false, 0);
 			
             max_toggle_box.add(max_button);
+
             box.pack_start(tabbar, true, true, 0);
             var space_box = new Gtk.EventBox();
             space_box.set_size_request(30, -1);
             box.pack_start(space_box, false, false, 0);
-            box.pack_start(menu_button, false, false, 0);
-            box.pack_start(min_button, false, false, 0);
-            box.pack_start(max_toggle_box, false, false, 0);
+            box.pack_start(window_button_box, false, false, 0);
             box.pack_start(close_button, false, false, 0);
-			close_button.margin_end = 5;
+            close_button.margin_end = 5;
+            
+            show_window_button();
             
             event_area = new Widgets.WindowEventArea(this);
             // Don't override window button area.
@@ -138,6 +142,37 @@ namespace Widgets {
             
             add(box);
             add_overlay(event_area);
+            
+            Gdk.RGBA background_color = Gdk.RGBA();
+            
+            box.draw.connect((w, cr) => {
+                    Gtk.Allocation rect;
+                    w.get_allocation(out rect);
+                        
+                    try {
+                        background_color.parse(window.config.config_file.get_string("theme", "background"));
+                        cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, window.config.config_file.get_double("general", "opacity"));
+                        Draw.draw_rectangle(cr, 0, 0, rect.width, Constant.TITLEBAR_HEIGHT);
+                    } catch (Error e) {
+                        print("Main window: %s\n", e.message);
+                    }
+                    
+                    Utils.propagate_draw(box, cr);
+
+                    return true;
+                });
+        }
+        
+        public void show_window_button() {
+            window_button_box.pack_start(menu_button, false, false, 0);
+            window_button_box.pack_start(min_button, false, false, 0);
+            window_button_box.pack_start(max_toggle_box, false, false, 0);
+            
+            show_all();
+        }
+        
+        public void hide_window_button() {
+            Utils.remove_all_children(window_button_box);
         }
         
         public void handle_menu_item_click(string item_id) {
