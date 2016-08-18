@@ -40,6 +40,8 @@ namespace Widgets {
         public uint launch_idle_id;
         public string current_dir;
 		public bool has_select_all = false;
+        
+        public string? uri_at_right_press;
     
         public signal void change_dir(string dir);
         public signal void highlight_tab();
@@ -163,7 +165,8 @@ namespace Widgets {
 						case Gdk.BUTTON_SECONDARY:
 							// Grab focus terminal first. 
 							term.grab_focus();
-                            
+
+                            uri_at_right_press = term.match_check_event(event, null);
                             show_menu((int) event.x_root, (int) event.y_root);
                             
 							return false;
@@ -182,7 +185,7 @@ namespace Widgets {
             targets += string_entry;
             targets += text_entry;
 
-            Gtk.drag_dest_set (this, Gtk.DestDefaults.ALL, targets, Gdk.DragAction.COPY);
+            Gtk.drag_dest_set(this, Gtk.DestDefaults.ALL, targets, Gdk.DragAction.COPY);
             this.drag_data_received.connect(drag_received);
 
             /* Make Links Clickable */
@@ -209,7 +212,7 @@ namespace Widgets {
             bool in_quake_window = this.get_toplevel().get_type().is_a(typeof(Widgets.QuakeWindow));
                             
             var menu_content = new List<Menu.MenuItem>();
-            if (term.get_has_selection()) {
+            if (term.get_has_selection() || uri_at_right_press != null) {
                 menu_content.append(new Menu.MenuItem("copy", "Copy"));
             }
             menu_content.append(new Menu.MenuItem("paste", "Paste"));
@@ -254,7 +257,13 @@ namespace Widgets {
 			    		term.paste_clipboard();
 			    		break;
 					case "copy":
-						term.copy_clipboard();
+                        if (term.get_has_selection()) {
+                            term.copy_clipboard();
+                        } else if (uri_at_right_press != null) {
+                            var display = ((Gtk.Window) this.get_toplevel()).get_display();
+                            var clipboard = Gtk.Clipboard.get_for_display(display, Gdk.SELECTION_CLIPBOARD);
+                            clipboard.set_text(uri_at_right_press, uri_at_right_press.length);
+                        }
 						break;
 			    	case "search":
 						workspace_manager.focus_workspace.search();
