@@ -195,6 +195,8 @@ namespace Widgets {
             
                 grid_attach_next_to(grid, address_label, name_label, Gtk.PositionType.BOTTOM, preference_name_width, grid_height);
                 grid_attach_next_to(grid, address_box, address_label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
+                
+                adjust_option_widgets(address_label, address_box);
             
                 // Username.
                 Label user_label = new Gtk.Label(null);
