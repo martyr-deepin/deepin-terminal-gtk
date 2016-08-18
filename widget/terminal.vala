@@ -177,6 +177,7 @@ namespace Widgets {
                                 menu_content.append(new Menu.MenuItem("horizontal_split", "Horizontal split"));
                                 menu_content.append(new Menu.MenuItem("vertical_split", "Vertical split"));
                                 menu_content.append(new Menu.MenuItem("close_window", "Close window"));
+                                menu_content.append(new Menu.MenuItem("close_other_windows", "Close other windows"));
                                 menu_content.append(new Menu.MenuItem("", ""));
                             }
                             
@@ -261,6 +262,9 @@ namespace Widgets {
 						break;
 					case "close_window":
 						workspace_manager.focus_workspace.close_focus_term();
+						break;
+					case "close_other_windows":
+						workspace_manager.focus_workspace.close_other_terms();
 						break;
 					case "new_workspace":
 						workspace_manager.new_workspace_with_current_directory();
