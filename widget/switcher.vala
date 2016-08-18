@@ -56,8 +56,8 @@ namespace Widgets {
             scrolledwindow = new ScrolledWindow(null, null);
             scrolledwindow.set_shadow_type(Gtk.ShadowType.NONE);
             scrolledwindow.get_style_context().add_class("scrolledwindow");
-            scrolledwindow.get_vscrollbar().get_style_context().add_class("preference_scrollbar");
-            scrolledwindow.get_hscrollbar().get_style_context().add_class("preference_scrollbar");
+            scrolledwindow.get_vscrollbar().get_style_context().add_class("switcher_scrollbar");
+            scrolledwindow.get_hscrollbar().get_style_context().add_class("switcher_scrollbar");
             
             box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             left_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
