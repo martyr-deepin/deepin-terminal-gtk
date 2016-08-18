@@ -140,17 +140,11 @@ namespace Widgets {
                     if (e.y_root > bottom_side_start && e.y_root < bottom_side_end) {
                         e.device.get_position(null, out press_x, out press_y);
                         
-                        print("*****************\n");
-                        
                         GLib.Timeout.add(10, () => {
                                 int pointer_x, pointer_y;
                                 e.device.get_position(null, out pointer_x, out pointer_y);
-                                
                                     
                                 if (pointer_x != press_x || pointer_y != press_y) {
-                                    print("#################\n");
-                                    
-                                    
                                     resize_window(this, pointer_x, pointer_y, (int) e.button, Gdk.CursorType.BOTTOM_SIDE);
                                     
                                     return false;
@@ -207,10 +201,10 @@ namespace Widgets {
                 
             if (active_monitor == window_monitor) {
                 var window_state = get_window().get_state();
-                if ((window_state & Gdk.WindowState.WITHDRAWN) == Gdk.WindowState.WITHDRAWN) {
-                    move(rect.x, 0);
+                if (Gdk.WindowState.WITHDRAWN in window_state) {
                     show_all();
                     present();
+                    move(rect.x, 0);
                 } else {
                     // Because some desktop environment, such as DDE will grab keyboard focus when press keystroke. :(
                     // So i add 200ms timeout to wait desktop environment release keyboard focus and then get window active state.
@@ -226,9 +220,9 @@ namespace Widgets {
                         });
                 }
             } else {
-                move(rect.x, 0);
                 show_all();
                 present();
+                move(rect.x, 0);
             }
         }
         
