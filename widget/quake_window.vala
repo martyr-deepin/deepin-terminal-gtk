@@ -238,7 +238,7 @@ namespace Widgets {
             try {
                 is_light_theme = config.config_file.get_string("theme", "style") == "light";
             } catch (Error e) {
-                print("BaseWindow update_style: %s\n", e.message);
+                print("QuakeWindow update_style: %s\n", e.message);
             }
             
             

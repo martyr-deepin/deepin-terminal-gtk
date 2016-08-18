@@ -186,7 +186,7 @@ namespace Widgets {
         public void update_max_button() {
             Utils.remove_all_children(max_toggle_box);
             
-            if (((Widgets.BaseWindow) get_toplevel()).window_is_max()) {
+            if (((Widgets.Window) get_toplevel()).window_is_max()) {
                 max_toggle_box.add(unmax_button);
             } else {
                 max_toggle_box.add(max_button);

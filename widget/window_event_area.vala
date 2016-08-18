@@ -144,7 +144,7 @@ namespace Widgets {
                             });
                     } else if (e.type == Gdk.EventType.2BUTTON_PRESS) {
                         if (is_double_clicked) {
-                            ((Widgets.BaseWindow) this.get_toplevel()).toggle_max();
+                            ((Widgets.Window) this.get_toplevel()).toggle_max();
                         }
                     }
                     
