@@ -26,7 +26,7 @@ using Widgets;
 
 namespace Widgets {
     public class RemoteServer : Widgets.Dialog {
-        public int window_expand_height = 540;
+        public int window_expand_height = 530;
         
         public int preference_name_width = 80;
         public int preference_widget_width = 100;
@@ -34,7 +34,9 @@ namespace Widgets {
         
         public Gtk.Widget focus_widget;
         public Gtk.Box advanced_options_box;
-        public Gtk.Box show_advanced_box;
+        public Gtk.Box server_action_box;
+        public Widgets.TextButton show_advanced_button;
+        public Widgets.TextButton delete_server_button;
         public Gtk.Box box;
         public Widgets.ConfigWindow parent_window;
         
@@ -83,9 +85,11 @@ namespace Widgets {
                                        string delete_key
                                        );
         
+        public signal void delete_server(string address, string username);
+        
         public RemoteServer(Widgets.ConfigWindow window, Gtk.Widget widget, string? info=null, KeyFile? config=null) {
             window_init_width = 480;
-            window_init_height = 370;
+            window_init_height = 360;
             
             try {
                 parent_window = window;
@@ -289,39 +293,17 @@ namespace Widgets {
                 }
                 create_follow_key_row(del_key_label, del_key_box, "Delete:", backspace_key_label, advanced_grid, "preference_comboboxtext");
             
-                show_advanced_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-                var show_advanced_area = new Gtk.EventBox();
-                show_advanced_area.add_events(Gdk.EventMask.BUTTON_PRESS_MASK
-                                              | Gdk.EventMask.BUTTON_RELEASE_MASK
-                                              | Gdk.EventMask.POINTER_MOTION_MASK
-                                              | Gdk.EventMask.LEAVE_NOTIFY_MASK);
-                show_advanced_area.visible_window = false;
-                var show_advanced_label = new Gtk.Label(null);
-                show_advanced_label.set_markup("<span size='%i'>%s</span>".printf(11 * Pango.SCALE, "advanced options"));
-                show_advanced_label.get_style_context().add_class("link");
-                show_advanced_area.add(show_advanced_label);
-                show_advanced_area.enter_notify_event.connect((w, e) => {
-                        var display = Gdk.Display.get_default();
-                        get_window().set_cursor(new Gdk.Cursor.for_display(display, Gdk.CursorType.HAND1));
-                    
-                        return false;
-                    });
-                show_advanced_area.leave_notify_event.connect((w, e) => {
-                        get_window().set_cursor(null);
-                    
-                        return false;
-                    });
-                show_advanced_area.button_release_event.connect((w, e) => {
+                server_action_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+                show_advanced_button = Widgets.create_link_button("advanced options");
+                show_advanced_button.click.connect((w) => {
                         show_advanced_options();
-                    
-                        return false;
                     });
-                show_advanced_area.set_halign(Gtk.Align.CENTER);
-                show_advanced_box.pack_start(show_advanced_area, true, true, 0);
-                content_box.pack_start(show_advanced_box, true, true, 0);
+                
+                server_action_box.pack_start(show_advanced_button, true, true, 0);
+                content_box.pack_start(server_action_box, true, true, 0);
             
                 Box button_box = new Box(Gtk.Orientation.HORIZONTAL, 0);
-                button_box.margin_top = 30;
+                button_box.margin_top = 20;
                 DialogButton cancel_button = new Widgets.DialogButton("Cancel", "left", "text");
                 string button_name;
                 if (server_info != null) {
@@ -393,7 +375,25 @@ namespace Widgets {
         public void show_advanced_options() {
             set_default_geometry(window_init_width, window_expand_height);
             
-            box.remove(show_advanced_box);
+            Utils.destroy_all_children(server_action_box);
+            if (server_info != null) {
+                delete_server_button = Widgets.create_delete_button("delete server");
+                delete_server_button.click.connect((w) => {
+                        var confirm_dialog = new Widgets.ConfirmDialog("Delete server", "Are you sure delete %s?".printf(name_entry.get_text()), "Cancel", "Delete");
+                        confirm_dialog.transient_for_window(parent_window);
+                        confirm_dialog.cancel.connect((w) => {
+                                this.destroy();
+                            });
+                        confirm_dialog.confirm.connect((w) => {
+                                delete_server(address_entry.get_text(), user_entry.get_text());
+                                this.destroy();
+                            });
+
+                        this.hide();
+                    });
+                server_action_box.pack_start(delete_server_button, true, true, 0);
+            }
+            
             advanced_options_box.pack_start(advanced_grid, false, false, 0);
             
             show_all();

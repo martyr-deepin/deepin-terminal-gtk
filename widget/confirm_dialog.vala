@@ -34,6 +34,7 @@ namespace Widgets {
         private int title_margin_top = 7;
         private int content_margin_top = 3;
         
+        public signal void cancel();
         public signal void confirm();
         
         public ConfirmDialog(string title, string content, string cancel_text, string confirm_text) {
@@ -83,6 +84,7 @@ namespace Widgets {
             DialogButton cancel_button = new Widgets.DialogButton(cancel_text, "left", "text");
             DialogButton confirm_button = new Widgets.DialogButton(confirm_text, "right", "warning");
             cancel_button.button_release_event.connect((b) => {
+                    cancel();
                     destroy();
                     
                     return false;

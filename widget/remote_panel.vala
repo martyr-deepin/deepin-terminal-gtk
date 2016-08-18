@@ -542,6 +542,19 @@ namespace Widgets {
             
             var remote_server = new Widgets.RemoteServer(parent_window, this, server_info, config_file);
             remote_server.transient_for_window(parent_window);
+            remote_server.delete_server.connect((server, address, username) => {
+                    try {
+                        // First, remove old server info from config file.
+                        if (config_file.has_group(server_info)) {
+                            config_file.remove_group(server_info);
+                            config_file.save_to_file(config_file_path);
+                        }
+                        
+                        func();
+                    } catch (Error e) {
+                        error ("%s", e.message);
+                    }
+                });
             remote_server.edit_server.connect((
                 server, address, username, password, port, 
                 encode, path, command, nickname, groupname, 
@@ -552,15 +565,15 @@ namespace Widgets {
                                                           config_file.remove_group(server_info);
                                                           config_file.save_to_file(config_file_path);
                                                       }
+                                                      
+                                                      // Second, add new server info.
+                                                      add_server(address, username, password, port, encode, path, 
+                                                                 command, nickname, groupname, backspace_key, delete_key);
+                                                  
+                                                      func();
                                                   } catch (Error e) {
                                                       error ("%s", e.message);
                                                   }
-                                                                          
-                                                  // Second, add new server info.
-                                                  add_server(address, username, password, port, encode, path, 
-                                                             command, nickname, groupname, backspace_key, delete_key);
-                                                  
-                                                  func();
                                               });
                                     
             remote_server.show_all();
