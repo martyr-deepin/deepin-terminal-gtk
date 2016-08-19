@@ -101,6 +101,16 @@ namespace Widgets {
                     return false;
                 });
             
+            
+            key_press_event.connect((w, e) => {
+                    string keyname = Keymap.get_keyevent_name(e);
+                    if (keyname == "Esc") {
+                        this.destroy();
+                    }
+                    
+                    return false;
+                });
+            
             draw.connect_after((w, cr) => {
                     draw_window_below(cr);
                        
