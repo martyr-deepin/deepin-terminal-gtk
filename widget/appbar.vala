@@ -96,7 +96,9 @@ namespace Widgets {
                     menu_content.append(new Menu.MenuItem("remote_manage", "Connect remote"));
                     menu_content.append(new Menu.MenuItem("", ""));
                     menu_content.append(new Menu.MenuItem("preference", "Preference"));
-                    menu_content.append(new Menu.MenuItem("help", "Help"));
+                    if (Utils.is_command_exist("dman")) {
+                        menu_content.append(new Menu.MenuItem("help", "Help"));
+                    }
                     menu_content.append(new Menu.MenuItem("about", "About"));
                     menu_content.append(new Menu.MenuItem("exit", "Exit"));
                     

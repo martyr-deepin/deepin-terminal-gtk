@@ -69,6 +69,7 @@ namespace Widgets {
                         "deepin-shortcut-viewer -j='%s' -p=%i,%i".printf(data, x, y),
                         null,
                         GLib.AppInfoCreateFlags.NONE);
+                    
                     appinfo.launch(null, null);
                     is_show_shortcut_viewer = true;
                 } catch (Error e) {

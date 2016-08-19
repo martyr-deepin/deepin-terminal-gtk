@@ -245,6 +245,19 @@ namespace Utils {
         return GLib.Path.build_path(Path.DIR_SEPARATOR_S, GLib.Path.get_dirname((string) project_path()), "ssh_login.sh");
     }
 
+    public bool is_command_exist(string command_name) {
+        string? paths = Environment.get_variable("PATH");
+        
+        foreach (string bin_path in paths.split(":")) {
+            var file = File.new_for_path(GLib.Path.build_path(Path.DIR_SEPARATOR_S, bin_path, command_name));
+            if (file.query_exists()) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+
     public string lookup_password(string user, string server_address) {
         var password_schema = new Secret.Schema("com.deepin.terminal.password.%s.%s".printf(user, server_address),
                                                 Secret.SchemaFlags.NONE,

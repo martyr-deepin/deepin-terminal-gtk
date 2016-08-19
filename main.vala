@@ -457,34 +457,36 @@ public class Application : Object {
 		    	return true;
 		    }
 		    
-		    var show_helper_window_key = config_file.get_string("keybind", "show_helper_window");
-		    if (show_helper_window_key != "" && keyname == show_helper_window_key) {
-                int x, y;
-                if (quake_mode) {
-                    Gdk.Screen screen = Gdk.Screen.get_default();
-                    int monitor = screen.get_monitor_at_window(screen.get_active_window());
-                    Gdk.Rectangle rect;
-                    screen.get_monitor_geometry(monitor, out rect);
+            if (Utils.is_command_exist("deepin-shortcut-viewer")) {
+                var show_helper_window_key = config_file.get_string("keybind", "show_helper_window");
+                if (show_helper_window_key != "" && keyname == show_helper_window_key) {
+                    int x, y;
+                    if (quake_mode) {
+                        Gdk.Screen screen = Gdk.Screen.get_default();
+                        int monitor = screen.get_monitor_at_window(screen.get_active_window());
+                        Gdk.Rectangle rect;
+                        screen.get_monitor_geometry(monitor, out rect);
                         
-                    x = rect.width / 2;
-                    y = rect.height / 2;
+                        x = rect.width / 2;
+                        y = rect.height / 2;
                         
-                    quake_window.show_shortcut_viewer(x, y);
-                } else {
-                    Gtk.Allocation window_rect;
-                    window.get_allocation(out window_rect);
+                        quake_window.show_shortcut_viewer(x, y);
+                    } else {
+                        Gtk.Allocation window_rect;
+                        window.get_allocation(out window_rect);
 
-                    int win_x, win_y;
-                    window.get_window().get_origin(out win_x, out win_y);
+                        int win_x, win_y;
+                        window.get_window().get_origin(out win_x, out win_y);
                         
-                    x = win_x + window_rect.width / 2;
-                    y = win_y + window_rect.height / 2;
-                    window.show_shortcut_viewer(x, y);
-                }
+                        x = win_x + window_rect.width / 2;
+                        y = win_y + window_rect.height / 2;
+                        window.show_shortcut_viewer(x, y);
+                    }
                 
-		    	return true;
-		    }
-		    
+                    return true;
+                }
+            }
+            
 		    var show_remote_panel_key = config_file.get_string("keybind", "show_remote_panel");
 		    if (show_remote_panel_key != "" && keyname == show_remote_panel_key) {
 		    	workspace_manager.focus_workspace.toggle_remote_panel(workspace_manager.focus_workspace);
@@ -512,10 +514,12 @@ public class Application : Object {
     
     private bool on_key_release(Gtk.Widget widget, Gdk.EventKey key_event) {
         if (Keymap.is_no_key_press(key_event)) {
-            if (quake_mode) {
-                quake_window.remove_shortcut_viewer();
-            } else {
-                window.remove_shortcut_viewer();
+            if (Utils.is_command_exist("deepin-shortcut-viewer")) {
+                if (quake_mode) {
+                    quake_window.remove_shortcut_viewer();
+                } else {
+                    window.remove_shortcut_viewer();
+                }
             }
         }
         
