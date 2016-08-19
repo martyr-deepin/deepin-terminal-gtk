@@ -30,8 +30,6 @@ namespace Widgets {
         public int active_tab_underline_x;
 		public int active_tab_underline_width;
         
-        public int window_save_height = 0;
-        
         public int window_frame_margin_bottom = 60;
         
         public int press_x;
@@ -60,23 +58,38 @@ namespace Widgets {
             title_line_light_color.parse("#000000");
             title_line_light_color.alpha = 0.1;
             
-            Gdk.Geometry geo = Gdk.Geometry();
-            geo.min_width = rect.width;
-            geo.min_height = rect.height / 3;
-            geo.max_width = rect.width;
-            geo.max_height = rect.height * 2 / 3;
-            this.set_geometry_hints(null, geo, Gdk.WindowHints.MIN_SIZE | Gdk.WindowHints.MAX_SIZE);            
-            
             try {
-                var config_height = config.config_file.get_integer("advanced", "quake_window_height");
+                var config_height = config.config_file.get_double("advanced", "quake_window_height");
                 if (config_height == 0) {
                     set_default_size(rect.width, rect.height / 3);
                 } else {
-                    set_default_size(rect.width, config_height);
+                    set_default_size(rect.width, (int) (rect.height * double.min(config_height, 1.0)));
+                }
+                
+                if (config_height > 2 / 3) {
+                    Gdk.Geometry geo = Gdk.Geometry();
+                    geo.min_width = rect.width;
+                    geo.min_height = rect.height / 3;
+                    this.set_geometry_hints(null, geo, Gdk.WindowHints.MIN_SIZE);            
+                    
+                    if (config_height >= 1.0) {
+                        maximize();
+                    }
+                } else {
+                    Gdk.Geometry geo = Gdk.Geometry();
+                    geo.min_width = rect.width;
+                    geo.min_height = rect.height / 3;
+                    geo.max_width = rect.width;
+                    geo.max_height = rect.height * 2 / 3;
+                    this.set_geometry_hints(null, geo, Gdk.WindowHints.MIN_SIZE | Gdk.WindowHints.MAX_SIZE);            
                 }
             } catch (Error e) {
                 print("QuakeWindow init: %s\n", e.message);
             }
+            
+            realize.connect((w) => {
+                    get_window().set_shadow_width(0, 0, 0, window_frame_margin_bottom);
+                });
             
             set_skip_taskbar_hint(true);
             set_skip_pager_hint(true);
@@ -107,8 +120,7 @@ namespace Widgets {
                     int width, height;
                     get_size(out width, out height);
 
-                    window_save_height = height;
-                    config.config_file.set_integer("advanced", "quake_window_height", window_save_height);
+                    config.config_file.set_double("advanced", "quake_window_height", height * 1.0 / rect.height);
                     config.save();
                     
                     Cairo.RectangleInt input_shape_rect;
