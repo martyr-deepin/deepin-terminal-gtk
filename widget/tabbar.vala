@@ -59,7 +59,6 @@ namespace Widgets {
         private Cairo.ImageSurface add_press_light_surface;
         
         public bool allowed_add_tab = true;
-        public int min_tab_width = 32;
 
         private double draw_scale = 1.0;
         
@@ -511,8 +510,6 @@ namespace Widgets {
                 cr.save();
                 clip_rectangle(cr, draw_x + get_tab_text_padding(), 0, tab_width - get_tab_text_padding() * 2, height);
                 
-                allowed_add_tab = (tab_width - get_tab_text_padding() * 2) > min_tab_width;
-                
                 Utils.set_context_color(cr, tab_text_color);
                 Draw.draw_layout(cr, layout, draw_x + get_tab_text_padding(), draw_padding_y);
                 
@@ -522,6 +519,9 @@ namespace Widgets {
                 
                 counter++;
             }
+            
+            // Don't allowed add tab when scale too small.
+            allowed_add_tab = draw_scale > 0.45;
             
             if (hover_x > draw_x + add_button_padding_x && hover_x < draw_x + add_button_padding_x + add_button_width) {
                 if (is_button_press) {
