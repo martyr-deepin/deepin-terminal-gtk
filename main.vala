@@ -295,16 +295,29 @@ public class Application : Object {
                 
                 window.motion_notify_event.connect((w, e) => {
                         if (window.window_is_fullscreen()) {
-                            if (e.y_root < 10) {
-                                appbar.show_all();
-                                window.draw_tabbar_line = true;
+                            if (e.y_root < Constant.TITLEBAR_HEIGHT * 2) {
+                                GLib.Timeout.add(150, () => {
+                                        Gdk.Display gdk_display = Gdk.Display.get_default();
+                                        var seat = gdk_display.get_default_seat();
+                                        var device = seat.get_pointer();
+                    
+                                        int pointer_x, pointer_y;
+                                        device.get_position(null, out pointer_x, out pointer_y);
+
+                                        if (pointer_y < 5) {
+                                            appbar.show_all();
+                                            window.draw_tabbar_line = true;
                                 
-                                window.queue_draw();
-                            } else if (e.y_root > Constant.TITLEBAR_HEIGHT) {
-                                appbar.hide();
-                                window.draw_tabbar_line = false;                                
+                                            window.queue_draw();
+                                        } else if (pointer_y > Constant.TITLEBAR_HEIGHT) {
+                                            appbar.hide();
+                                            window.draw_tabbar_line = false;                                
                                 
-                                window.queue_draw();
+                                            window.queue_draw();
+                                        }
+                                        
+                                        return false;
+                                    });
                             }
                         }
                         
