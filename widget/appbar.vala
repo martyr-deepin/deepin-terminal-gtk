@@ -30,12 +30,14 @@ namespace Widgets {
         public Box max_toggle_box;
         
         public Box window_button_box;
+        public Box window_close_button_box;
         
         public ImageButton menu_button;
         public ImageButton min_button;
         public ImageButton max_button;
         public ImageButton unmax_button;
         public ImageButton close_button;
+        public ImageButton quit_fullscreen_button;
         public Application application;
 		
 		public int height = Constant.TITLEBAR_HEIGHT;
@@ -44,10 +46,12 @@ namespace Widgets {
         
 		public Menu.Menu menu;
 		
-		
         public Widgets.WindowEventArea event_area;
         
         public WorkspaceManager workspace_manager;
+        
+        public signal void close_window();
+        public signal void quit_fullscreen();
         
         public Appbar(Widgets.Window window, Tabbar tab_bar, Application app, WorkspaceManager manager) {
             workspace_manager = manager;
@@ -58,12 +62,14 @@ namespace Widgets {
             application = app;
             
             window_button_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+            window_close_button_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             
             menu_button = new ImageButton("window_menu", true);
             min_button = new ImageButton("window_min", true);
             max_button = new ImageButton("window_max", true);
             unmax_button = new ImageButton("window_unmax", true);
             close_button = new ImageButton("window_close", true);
+            quit_fullscreen_button = new ImageButton("quit_fullscreen", true);
 			
 			int margin_top = (int) (height - menu_button.normal_dark_surface.get_height()) / 2;
 			menu_button.margin_top = margin_top;
@@ -71,6 +77,14 @@ namespace Widgets {
 			max_button.margin_top = margin_top;
 			unmax_button.margin_top = margin_top;
 			close_button.margin_top = margin_top;
+            quit_fullscreen_button.margin_top = margin_top;
+            
+            close_button.click.connect((w) => {
+                    close_window();
+                });
+            quit_fullscreen_button.click.connect((w) => {
+                    quit_fullscreen();
+                });
             
             menu_button.button_release_event.connect((b) => {
                     focus_widget = ((Gtk.Window) menu_button.get_toplevel()).get_focus();
@@ -131,7 +145,7 @@ namespace Widgets {
             space_box.set_size_request(30, -1);
             box.pack_start(space_box, false, false, 0);
             box.pack_start(window_button_box, false, false, 0);
-            box.pack_start(close_button, false, false, 0);
+            box.pack_start(window_close_button_box, false, false, 0);
             close_button.margin_end = 5;
             
             show_window_button();
@@ -172,11 +186,17 @@ namespace Widgets {
             window_button_box.pack_start(min_button, false, false, 0);
             window_button_box.pack_start(max_toggle_box, false, false, 0);
             
+            Utils.remove_all_children(window_close_button_box);
+            window_close_button_box.pack_start(close_button, false, false, 0);
+            
             show_all();
         }
         
         public void hide_window_button() {
             Utils.remove_all_children(window_button_box);
+            Utils.remove_all_children(window_close_button_box);
+            
+            window_close_button_box.pack_start(quit_fullscreen_button, false, false, 0);
         }
         
         public void handle_menu_item_click(string item_id) {

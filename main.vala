@@ -220,14 +220,11 @@ public class Application : Object {
                 box.pack_start(top_box, false, false, 0);
                 box.pack_start(workspace_manager, true, true, 0);
                 
-                appbar.close_button.button_release_event.connect((w, e) => {
-                        if (window.window_is_fullscreen()) {
-                            window.toggle_fullscreen();
-                        } else {
-                            quit();
-                        }
-                    
-                        return false;
+                appbar.close_window.connect((w) => {
+                        quit();
+                    });
+                appbar.quit_fullscreen.connect((w) => {
+                        window.toggle_fullscreen();
                     });
             
                 tabbar.draw_active_tab_underline.connect((t, x, width) => {
