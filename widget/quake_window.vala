@@ -64,7 +64,7 @@ namespace Widgets {
             geo.min_width = rect.width;
             geo.min_height = rect.height / 3;
             geo.max_width = rect.width;
-            geo.max_height = rect.height / 2;
+            geo.max_height = rect.height * 2 / 3;
             this.set_geometry_hints(null, geo, Gdk.WindowHints.MIN_SIZE | Gdk.WindowHints.MAX_SIZE);            
             
             try {
