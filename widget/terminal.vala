@@ -230,7 +230,12 @@ namespace Widgets {
             menu_content.append(new Menu.MenuItem("", ""));
                             
             if (!in_quake_window) {
-                menu_content.append(new Menu.MenuItem("fullscreen", "Fullscreen"));
+                var window = ((Widgets.Window) get_toplevel());
+                if (window.window_is_fullscreen()) {
+                    menu_content.append(new Menu.MenuItem("quit_fullscreen", "Quit fullscreen"));
+                } else {
+                    menu_content.append(new Menu.MenuItem("fullscreen", "Fullscreen"));
+                }
             }
                             
             menu_content.append(new Menu.MenuItem("search", "Search"));
@@ -265,6 +270,14 @@ namespace Widgets {
                             clipboard.set_text(uri_at_right_press, uri_at_right_press.length);
                         }
 						break;
+                    case "fullscreen":
+                        var window = ((Widgets.Window) get_toplevel());
+                        window.toggle_fullscreen();
+                        break;
+                    case "quit_fullscreen":
+                        var window = ((Widgets.Window) get_toplevel());
+                        window.toggle_fullscreen();
+                        break;
 			    	case "search":
 						workspace_manager.focus_workspace.search();
 			    		break;
