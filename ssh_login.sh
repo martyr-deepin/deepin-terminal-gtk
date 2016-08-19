@@ -30,14 +30,12 @@ file delete $argv0
 
 # Setup variables
 set timeout 10
-set user "<<USER>>"
-set server "<<SERVER>>"
-set password "<<PASSWORD>>"
-set port "<<PORT>>"
-# set extopt "<<EXTOPT>>"
-set ssh_cmd "zssh -o ServerAliveInterval=60"
-set ssh_opt "$user@$server -p $port"
-# set ssh_opt "$ssh_opt $extopt"
+set user {<<USER>>}
+set server {<<SERVER>>}
+set password {<<PASSWORD>>}
+set port {<<PORT>>}
+set ssh_cmd {zssh -o ServerAliveInterval=60}
+set ssh_opt {$user@$server -p $port}
 
 # Spawn and expect
 eval spawn $ssh_cmd $ssh_opt
