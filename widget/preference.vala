@@ -210,7 +210,7 @@ namespace Widgets {
             scrolledwindow.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             scrolledwindow.set_shadow_type(Gtk.ShadowType.NONE);
             scrolledwindow.get_style_context().add_class("scrolledwindow");
-            scrolledwindow.get_vscrollbar().get_style_context().add_class("preference_scrollbar");
+            scrolledwindow.get_vscrollbar().get_style_context().add_class("light_scrollbar");
             box.pack_start(scrolledwindow, true, true, 0);
             
             preference_box.pack_start(box, true, true, 0);

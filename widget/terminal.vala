@@ -92,7 +92,7 @@ namespace Widgets {
             is_first_term = first_term;
             
             get_style_context().add_class("scrolledwindow");
-            get_vscrollbar().get_style_context().add_class("terminal_scrollbar");
+            
             
 			term = new Terminal();
 			
@@ -756,6 +756,18 @@ namespace Widgets {
 					palette[i] = new_color;
 				}
 				term.set_colors(foreground_color, background_color, palette);
+                
+                if (parent_window.config.config_file.get_string("theme", "style") == "light") {
+                    get_vscrollbar().get_style_context().remove_class("light_scrollbar");
+                    get_vscrollbar().get_style_context().remove_class("dark_scrollbar");
+                    
+                    get_vscrollbar().get_style_context().add_class("light_scrollbar");
+                } else {
+                    get_vscrollbar().get_style_context().remove_class("light_scrollbar");
+                    get_vscrollbar().get_style_context().remove_class("dark_scrollbar");
+                    
+                    get_vscrollbar().get_style_context().add_class("dark_scrollbar");
+                }
 				
 				var config_size = parent_window.config.config_file.get_integer("general", "font_size");
 				font_size = config_size * Pango.SCALE;

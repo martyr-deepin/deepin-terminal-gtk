@@ -151,7 +151,7 @@
 	font-size: 11px;
 }
 
-.terminal_scrollbar {
+.dark_scrollbar {
 	padding-right: 2px;
 	background: transparent;
 	box-shadow: none;
@@ -161,26 +161,26 @@
 	margin-bottom: 2px;
 }
 
-.terminal_scrollbar slider {
+.dark_scrollbar slider {
 	background-color: rgba(255, 255, 255, 0.2); 
     border:none;
     box-shadow:inset 1px 1px   rgba(255,255,255,0.05),inset -1px -1px rgba(255,255,255,0.05);
     min-width: 4px;
 }
 
-.terminal_scrollbar slider:hover {
+.dark_scrollbar slider:hover {
 	background-color: rgba(255, 255, 255, 0.4);
     box-shadow:inset 1px 1px   rgba(255,255,255,0.1),inset -1px -1px rgba(255,255,255,0.05);
     min-width: 8px;
 }
 
-.terminal_scrollbar slider:hover:active {
+.dark_scrollbar slider:hover:active {
 	background-color: rgba(255, 255, 255, 0.3);
     box-shadow:inset 1px 1px   rgba(255,255,255,0.05),inset -1px -1px rgba(255,255,255,0.05);
     min-width: 8px;
 }
 
-.preference_scrollbar slider {
+.light_scrollbar slider {
  	background-color: rgba(16, 16, 16, 0.5);
     box-shadow:none;
   	border: 1px;
@@ -190,7 +190,7 @@
 	margin-bottom: 2px;
 }
 
-.preference_scrollbar slider:hover {
+.light_scrollbar slider:hover {
  	background-color: rgba(16, 16, 16, 0.7);
  	box-shadow: none;
  	border: 1px;
@@ -200,7 +200,7 @@
 	margin-bottom: 2px;
 }
 
-.preference_scrollbar slider:hover:active {
+.light_scrollbar slider:hover:active {
  	background-color: rgba(16, 16, 16, 0.8);
  	box-shadow: none;
  	border: 1px;
