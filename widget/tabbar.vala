@@ -162,19 +162,13 @@ namespace Widgets {
             tab_index = 0;
         }
         
-        public bool add_tab(string tab_name, int tab_id) {
-            if (allowed_add_tab) {
-                tab_list.add(tab_id);
-                tab_name_map.set(tab_id, tab_name);
+        public void add_tab(string tab_name, int tab_id) {
+            tab_list.add(tab_id);
+            tab_name_map.set(tab_id, tab_name);
 			
-                update_tab_scale();
+            update_tab_scale();
             
-                queue_draw();
-                
-                return true;
-            } else {
-                return false;
-            }
+            queue_draw();
         }
         
         public void rename_tab(int tab_id, string tab_name) {

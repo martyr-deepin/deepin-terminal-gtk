@@ -262,7 +262,7 @@ namespace Widgets {
                 workspace.hide_remote_panel();
                 focus_widget.grab_focus();
 
-				workspace_manager.new_workspace_with_current_directory();
+				workspace_manager.new_workspace_with_current_directory(true);
 				GLib.Timeout.add(10, () => {
 						try {
 							Term term = workspace_manager.focus_workspace.get_focus_term(workspace_manager.focus_workspace);

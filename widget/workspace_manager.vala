@@ -46,18 +46,18 @@ namespace Widgets {
             pack_start(workspace, true, true, 0);
         }
 		
-		public void new_workspace_with_current_directory() {
+		public void new_workspace_with_current_directory(bool remote_serve_action=false) {
 			Term focus_term = focus_workspace.get_focus_term(this);
-			new_workspace(null, focus_term.current_dir);
+			new_workspace(null, focus_term.current_dir, remote_serve_action);
 		}
         
-        public void new_workspace(string[]? commands, string? work_directory) {
-            var add_tab_success = tabbar.add_tab("", workspace_index + 1);
-            
-            if (add_tab_success) {
+        public void new_workspace(string[]? commands, string? work_directory, bool remote_serve_action=false) {
+            if (tabbar.allowed_add_tab || remote_serve_action) {
                 Utils.remove_all_children(this);
             
                 workspace_index++;
+                
+                tabbar.add_tab("", workspace_index);
                 Widgets.Workspace workspace = new Widgets.Workspace(workspace_index, commands, work_directory, this);
                 workspace_map.set(workspace_index, workspace);
                 workspace.change_dir.connect((workspace, index, dir) => {
