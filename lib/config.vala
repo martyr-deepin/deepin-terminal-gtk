@@ -109,29 +109,29 @@ namespace Config {
             config_file.set_string("general", "font", default_mono_font);
             config_file.set_integer("general", "font_size", default_size);
             
-            config_file.set_string("keybind", "copy_clipboard", "Ctrl + C");
-            config_file.set_string("keybind", "paste_clipboard", "Ctrl + V");
-			config_file.set_string("keybind", "search", "Ctrl + F");
+            config_file.set_string("keybind", "copy_clipboard", "Ctrl + Shift + c");
+            config_file.set_string("keybind", "paste_clipboard", "Ctrl + Shift + v");
+			config_file.set_string("keybind", "search", "Ctrl + Shift + f");
             config_file.set_string("keybind", "zoom_in", "Ctrl + =");
             config_file.set_string("keybind", "zoom_out", "Ctrl + -");
             config_file.set_string("keybind", "revert_default_size", "Ctrl + 0");
-            config_file.set_string("keybind", "select_all", "Ctrl + A");
+            config_file.set_string("keybind", "select_all", "Ctrl + Shift + a");
             
-            config_file.set_string("keybind", "new_workspace", "Ctrl + T");
-            config_file.set_string("keybind", "close_workspace", "Ctrl + W");
+            config_file.set_string("keybind", "new_workspace", "Ctrl + Shift + t");
+            config_file.set_string("keybind", "close_workspace", "Ctrl + Shift + w");
             config_file.set_string("keybind", "next_workspace", "Ctrl + Tab");
-            config_file.set_string("keybind", "previous_workspace", "Ctrl + ISO_Left_Tab");
-            config_file.set_string("keybind", "split_vertically", "Ctrl + H");
+            config_file.set_string("keybind", "previous_workspace", "Ctrl + Shift + Tab");
+            config_file.set_string("keybind", "split_vertically", "Ctrl + Shift + h");
             config_file.set_string("keybind", "split_horizontally", "Ctrl + h");
             config_file.set_string("keybind", "select_up_window", "Alt + k");
             config_file.set_string("keybind", "select_down_window", "Alt + j");
             config_file.set_string("keybind", "select_left_window", "Alt + h");
             config_file.set_string("keybind", "select_right_window", "Alt + l");
             config_file.set_string("keybind", "close_window", "Ctrl + q");
-            config_file.set_string("keybind", "close_other_windows", "Ctrl + Q");
+            config_file.set_string("keybind", "close_other_windows", "Ctrl + Shift + q");
             
             config_file.set_string("keybind", "toggle_fullscreen", "F11");
-            config_file.set_string("keybind", "show_helper_window", "Ctrl + ?");
+            config_file.set_string("keybind", "show_helper_window", "Ctrl + Shift + ?");
             config_file.set_string("keybind", "show_remote_panel", "Ctrl + 9");
             
             config_file.set_string("advanced", "cursor_shape", "block");

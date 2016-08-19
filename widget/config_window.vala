@@ -136,6 +136,7 @@ namespace Widgets {
                 insert_shortcut_key(builder, "Close workspace", config.config_file.get_string("keybind", "close_workspace"));;
                 insert_shortcut_key(builder, "Next workspace", config.config_file.get_string("keybind", "next_workspace"));;
                 insert_shortcut_key(builder, "Previous workspace", config.config_file.get_string("keybind", "previous_workspace"));;
+                insert_shortcut_key(builder, "Select workspace", "Ctrl + 1 ~ Ctrl + 9");;
                 insert_shortcut_key(builder, "Split vertically", config.config_file.get_string("keybind", "split_vertically"));;
                 insert_shortcut_key(builder, "Split horizontally", config.config_file.get_string("keybind", "split_horizontally"));;
                 insert_shortcut_key(builder, "Select up down", config.config_file.get_string("keybind", "select_up_window"));;

@@ -25,10 +25,16 @@ using GLib;
 
 namespace Keymap {
     public string get_key_name(uint keyval) {
-        unichar key_unicode = Gdk.keyval_to_unicode(keyval);
+        unichar key_unicode = Gdk.keyval_to_unicode(Gdk.keyval_to_lower(keyval));
         
-        if (key_unicode == 0) {
-            return Gdk.keyval_name(keyval);
+        if (key_unicode == 0) {  // function keys at top line of keyboard
+            var keyname = Gdk.keyval_name(keyval);
+
+            if (keyname == "ISO_Left_Tab") {
+                return "Tab";
+            } else {
+                return keyname;
+            }
         } else {
             if (key_unicode == 13) {
                 return "Enter";
@@ -38,7 +44,11 @@ namespace Keymap {
                 return "Esc";
             } else if (key_unicode == 8) {
 				return "Backspace";
-			} else {
+			} else if (key_unicode == 127) {
+                return "Delete";
+            } else if (key_unicode == 32) {
+                return "Space";
+            } else {
                 return key_unicode.to_string();
             }
         }
@@ -63,6 +73,10 @@ namespace Keymap {
             modifiers += "Alt";
         }
         
+        if ((key_event.state & Gdk.ModifierType.SHIFT_MASK) != 0) {
+            modifiers += "Shift";
+        }
+        
         return modifiers;
     }
 	
@@ -73,10 +87,6 @@ namespace Keymap {
             var key_modifiers = get_key_event_modifiers(key_event);
             var key_name = get_key_name(key_event.keyval);
             
-            if (key_name == " ") {
-                key_name = "Space";
-            }
-
             if (key_modifiers.length == 0) {
                 return key_name;
             } else {
