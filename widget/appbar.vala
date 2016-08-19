@@ -72,12 +72,14 @@ namespace Widgets {
             quit_fullscreen_button = new ImageButton("quit_fullscreen", true);
 			
 			int margin_top = (int) (height - menu_button.normal_dark_surface.get_height()) / 2;
+            int margin_right = 6;
 			menu_button.margin_top = margin_top;
 			min_button.margin_top = margin_top;
 			max_button.margin_top = margin_top;
 			unmax_button.margin_top = margin_top;
 			close_button.margin_top = margin_top;
             quit_fullscreen_button.margin_top = margin_top;
+            quit_fullscreen_button.margin_right = margin_right;
             
             close_button.click.connect((w) => {
                     close_window();
