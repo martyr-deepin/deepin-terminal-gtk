@@ -107,7 +107,7 @@ namespace Widgets {
                     int width, height;
                     get_size(out width, out height);
 
-                    window_save_height = height - window_frame_margin_bottom;
+                    window_save_height = height;
                     config.config_file.set_integer("advanced", "quake_window_height", window_save_height);
                     config.save();
                     
