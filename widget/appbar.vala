@@ -151,7 +151,11 @@ namespace Widgets {
                         
                     try {
                         background_color.parse(window.config.config_file.get_string("theme", "background"));
-                        cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, window.config.config_file.get_double("general", "opacity"));
+                        if (window.window_is_fullscreen()) {
+                            cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, 0.8);
+                        } else {
+                            cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, window.config.config_file.get_double("general", "opacity"));
+                        }
                         Draw.draw_rectangle(cr, 0, 0, rect.width, Constant.TITLEBAR_HEIGHT);
                     } catch (Error e) {
                         print("Main window: %s\n", e.message);
