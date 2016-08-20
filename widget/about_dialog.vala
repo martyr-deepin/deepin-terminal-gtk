@@ -30,7 +30,7 @@ namespace Widgets {
         
         public AboutDialog(Gtk.Widget widget) {
             window_init_width = 500;
-            window_init_height = 320;
+            window_init_height = 510;
 
             focus_widget = widget;
             

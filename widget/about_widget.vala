@@ -102,18 +102,18 @@ namespace Widgets {
             
             // Draw name.
             cr.set_source_rgba(0, 0, 0, 1);
-            Draw.draw_text(widget, cr, "Deepin Terminal", 0, name_y, rect.width, name_height, name_height, Pango.Alignment.CENTER);
+            Draw.draw_text(cr, "Deepin Terminal", 0, name_y, rect.width, name_height, name_height, Pango.Alignment.CENTER, "top");
             
             // Draw version.
             cr.set_source_rgba(0.4, 0.4, 0.4, 1);
-            Draw.draw_text(widget, cr, "Version: 2.0", 0, version_y, rect.width, version_height, version_size, Pango.Alignment.CENTER);
+            Draw.draw_text(cr, "Version: 2.0", 0, version_y, rect.width, version_height, version_size, Pango.Alignment.CENTER, "top");
             
             // Draw logo.
             Draw.draw_surface(cr, logo_surface, (rect.width - logo_surface.get_width()) / 2, logo_y);
             
             // Draw about.
             cr.set_source_rgba(0.1, 0.1, 0.1, 1);
-            Draw.draw_text(widget, cr, "Deepin terminal is a terminal emulator with screen split, workspace and remote machine manage.\n\nDeepin terminal is a free software licensed under GNU GPLv3.", about_x, about_y, rect.width - about_x * 2, about_height, about_height, Pango.Alignment.CENTER);
+            Draw.draw_text(cr, "    Deepin terminal is a terminal emulator with screen split, workspace and remote machine manage.\n\n    Deepin terminal is a free software licensed under GNU GPLv3.", about_x, about_y, rect.width - about_x * 2, about_height, about_height, Pango.Alignment.LEFT, "top", rect.width - about_x * 2);
             
             Utils.propagate_draw(this, cr);
             

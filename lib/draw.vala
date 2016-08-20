@@ -31,19 +31,45 @@ namespace Draw {
         }
     }
 
-    public void draw_text(Gtk.Widget widget, Cairo.Context cr, string text, int x, int y, int width, int height, int size,
-                          Pango.Alignment text_align=Pango.Alignment.LEFT) {
+    public void draw_text(Cairo.Context cr, string text, int x, int y, int width, int height, int size,
+                            Pango.Alignment horizontal_alignment=Pango.Alignment.LEFT,
+                            string vertical_align = "middle",
+                            int? wrap_width=null) {
+        cr.save();
+        
         var font_description = new Pango.FontDescription();
         font_description.set_size((int)(size * Pango.SCALE));
         
-        var layout = widget.create_pango_layout(null);
-        layout.set_markup(text, text.length);
-		layout.set_height((int)(height * Pango.SCALE));
-		layout.set_width((int)(width * Pango.SCALE));
+        var layout = Pango.cairo_create_layout(cr);
         layout.set_font_description(font_description);
-		layout.set_alignment(text_align);
+        layout.set_markup(text, text.length);
+        layout.set_alignment(horizontal_alignment);
+        if (wrap_width == null) {
+            layout.set_single_paragraph_mode(true);
+            layout.set_width(width * Pango.SCALE);
+            layout.set_ellipsize(Pango.EllipsizeMode.END);
+        } else {
+            layout.set_width(wrap_width * Pango.SCALE);
+            layout.set_wrap(Pango.WrapMode.WORD);
+        }
+
+        int text_width, text_height;
+        layout.get_pixel_size(out text_width, out text_height);
+
+        int render_y;
+        if (vertical_align == "top") {
+            render_y = y;
+        } else if (vertical_align == "middle") {
+            render_y = y + int.max(0, (height - text_height) / 2);
+        } else {
+            render_y = y + int.max(0, height - text_height);
+        }
         
-        draw_layout(cr, layout, x, y);
+        cr.move_to(x, render_y);
+        Pango.cairo_update_layout(cr, layout);
+        Pango.cairo_show_layout(cr, layout);
+        
+        cr.restore();
     }
 
     public void draw_layout(Cairo.Context cr, Pango.Layout layout, int x, int y) {

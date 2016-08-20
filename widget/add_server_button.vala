@@ -48,8 +48,6 @@ namespace Widgets {
         public int image_x = 12;
         public int image_y = 4;
         public int text_x = 72;
-        public int text_y = 18;
-        public int text_width = 136;
         public int text_size = 11;
 		
 		public bool is_hover = false;
@@ -140,7 +138,7 @@ namespace Widgets {
                 }
                 if (button_text != null) {
                     Utils.set_context_color(cr, text_press_color);
-                    Draw.draw_text(widget, cr, button_text, text_x, text_y, text_width, height, text_size, Pango.Alignment.LEFT);
+                    Draw.draw_text(cr, button_text, text_x, 0, width, height, text_size);
                 }
             } else if (is_hover) {
                 if (is_light_theme) {
@@ -150,7 +148,7 @@ namespace Widgets {
                 }
                 if (button_text != null) {
                     Utils.set_context_color(cr, text_hover_color);
-                    Draw.draw_text(widget, cr, button_text, text_x, text_y, text_width, height, text_size, Pango.Alignment.LEFT);
+                    Draw.draw_text(cr, button_text, text_x, 0, width, height, text_size);
                 }
             } else {
                 if (is_light_theme) {
@@ -160,7 +158,7 @@ namespace Widgets {
                 }
                 if (button_text != null) {
                     Utils.set_context_color(cr, text_normal_color);
-                    Draw.draw_text(widget, cr, button_text, text_x, text_y, text_width, height, text_size, Pango.Alignment.LEFT);
+                    Draw.draw_text(cr, button_text, text_x, 0, width, height, text_size);
                 }
             }
             

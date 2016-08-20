@@ -9,7 +9,6 @@ namespace Widgets {
         
         public int height = 30;
         public int button_text_size = 10;
-        public int button_y = 7;
         
         public string button_text;
         
@@ -84,14 +83,14 @@ namespace Widgets {
             if (is_hover) {
                 if (is_press) {
                     Utils.set_context_color(cr, text_press_color);
-                    Draw.draw_text(widget, cr, button_text, 0, button_y, rect.width, button_text_size, button_text_size, Pango.Alignment.CENTER);
+                    Draw.draw_text(cr, button_text, 0, 0, rect.width, rect.height, button_text_size, Pango.Alignment.CENTER);
                 } else {
                     Utils.set_context_color(cr, text_hover_color);
-                    Draw.draw_text(widget, cr, button_text, 0, button_y, rect.width, button_text_size, button_text_size, Pango.Alignment.CENTER);
+                    Draw.draw_text(cr, button_text, 0, 0, rect.width, rect.height, button_text_size, Pango.Alignment.CENTER);
                 }
             } else {
                 Utils.set_context_color(cr, text_normal_color);
-                Draw.draw_text(widget, cr, button_text, 0, button_y, rect.width, button_text_size, button_text_size, Pango.Alignment.CENTER);
+                Draw.draw_text(cr, button_text, 0, 0, rect.width, rect.height, button_text_size, Pango.Alignment.CENTER);
             }
             
             return true;            

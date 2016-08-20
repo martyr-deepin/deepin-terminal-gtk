@@ -230,14 +230,14 @@ namespace Widgets {
             } else {
                 Utils.set_context_color(cr, title_dark_color);
             }
-            Draw.draw_text(widget, cr, title, text_x, title_y, text_width, height, title_size, Pango.Alignment.LEFT);
+            Draw.draw_text(cr, title, text_x, title_y, text_width, height, title_size, Pango.Alignment.LEFT, "top");
 
             if (is_light_theme) {
                 Utils.set_context_color(cr, content_light_color);
             } else {
                 Utils.set_context_color(cr, content_dark_color);
             }
-            Draw.draw_text(widget, cr, content, text_x, content_y, text_width, height, content_size, Pango.Alignment.LEFT);
+            Draw.draw_text(cr, content, text_x, content_y, text_width, height, content_size, Pango.Alignment.LEFT, "top");
             
             if (display_bottom_line) {
                 if (is_light_theme) {
