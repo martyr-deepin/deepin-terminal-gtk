@@ -29,8 +29,8 @@ namespace Widgets {
     public class QuakeWindow : Widgets.ConfigWindow {
         public int window_frame_margin_bottom = 60;
         
-        public double window_default_height_scale = 1 / 3;
-        public double window_max_height_scale = 2 / 3;
+        public double window_default_height_scale = 0.3;
+        public double window_max_height_scale = 0.7;
         
         public int press_x;
         public int press_y;
