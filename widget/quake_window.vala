@@ -27,9 +27,6 @@ using XUtils;
 
 namespace Widgets {
     public class QuakeWindow : Widgets.ConfigWindow {
-        public int active_tab_underline_x;
-		public int active_tab_underline_width;
-        
         public int window_frame_margin_bottom = 60;
         
         public double window_default_height_scale = 1 / 3;

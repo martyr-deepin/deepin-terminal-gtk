@@ -134,15 +134,7 @@ public class Application : Object {
             
             if (quake_mode) {
                 quake_window = new Widgets.QuakeWindow();
-                tabbar.draw_active_tab_underline.connect((t, x, width) => {
-                        int offset_x, offset_y;
-                        tabbar.translate_coordinates(quake_window, 0, 0, out offset_x, out offset_y);
-					
-                        quake_window.active_tab_underline_x = x + offset_x;
-                        quake_window.active_tab_underline_width = width;
-					
-                        quake_window.queue_draw();
-                    });
+                quake_window.draw_active_tab_underline(tabbar);
                 
                 top_box.draw.connect((w, cr) => {
                         Gtk.Allocation rect;
@@ -221,16 +213,8 @@ public class Application : Object {
                         window.toggle_fullscreen();
                     });
             
-                tabbar.draw_active_tab_underline.connect((t, x, width) => {
-                        int offset_x, offset_y;
-                        tabbar.translate_coordinates(window, 0, 0, out offset_x, out offset_y);
-					
-                        window.active_tab_underline_x = x + offset_x;
-                        window.active_tab_underline_width = width;
-					
-                        window.queue_draw();
-                    });
-            
+                window.draw_active_tab_underline(tabbar);
+                
                 window.delete_event.connect((w) => {
                         quit();
                         

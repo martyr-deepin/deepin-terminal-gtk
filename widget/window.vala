@@ -48,9 +48,6 @@ namespace Widgets {
         public int window_width;
         public int window_height;
         
-        public int active_tab_underline_x;
-		public int active_tab_underline_width;
-		
         public Gdk.RGBA top_line_dark_color;
         public Gdk.RGBA top_line_light_color;
 

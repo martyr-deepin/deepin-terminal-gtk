@@ -31,6 +31,9 @@ namespace Widgets {
         public Gtk.Box window_frame_box;
         public Gtk.Box window_widget_box;
             
+        public int active_tab_underline_x;
+		public int active_tab_underline_width;
+		
         private bool is_show_shortcut_viewer = false;
             
         public ConfigWindow() {
@@ -192,6 +195,18 @@ namespace Widgets {
             builder.set_member_name("value");
             builder.add_string_value(key);
             builder.end_object();
+        }
+        
+        public void draw_active_tab_underline(Tabbar tabbar) {
+            tabbar.draw_active_tab_underline.connect((t, x, width) => {
+                    int offset_x, offset_y;
+                    tabbar.translate_coordinates(this, 0, 0, out offset_x, out offset_y);
+					
+                    active_tab_underline_x = x + offset_x;
+                    active_tab_underline_width = width;
+					
+                    queue_draw();
+                });
         }
     }
 }
