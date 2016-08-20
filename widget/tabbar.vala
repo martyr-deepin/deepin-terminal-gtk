@@ -565,5 +565,32 @@ namespace Widgets {
                 
             queue_draw();
         }
+        
+        public void init(WorkspaceManager workspace_manager, Widgets.ConfigWindow window) {
+            press_tab.connect((t, tab_index, tab_id) => {
+					unhighlight_tab(tab_id);
+					workspace_manager.switch_workspace(tab_id);
+                });
+            
+            close_tab.connect((t, tab_index, tab_id) => {
+                    Widgets.Workspace focus_workspace = workspace_manager.workspace_map.get(tab_id);
+                    if (focus_workspace.has_active_term()) {
+                        ConfirmDialog dialog;
+                        dialog = Widgets.create_running_confirm_dialog(window);
+                        
+                        dialog.confirm.connect((d) => {
+                                destroy_tab(tab_index);
+                                workspace_manager.remove_workspace(tab_id);
+                            });
+                    } else {
+                        destroy_tab(tab_index);
+                        workspace_manager.remove_workspace(tab_id);
+                    }
+                });
+            
+            new_tab.connect((t) => {
+                    workspace_manager.new_workspace_with_current_directory();
+                });
+        }
     }
 }

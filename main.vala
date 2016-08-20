@@ -101,40 +101,16 @@ public class Application : Object {
             Tabbar tabbar = new Tabbar();
             workspace_manager = new WorkspaceManager(tabbar, commands, work_directory); 
             
-            tabbar.press_tab.connect((t, tab_index, tab_id) => {
-					tabbar.unhighlight_tab(tab_id);
-					workspace_manager.switch_workspace(tab_id);
-                });
-            tabbar.close_tab.connect((t, tab_index, tab_id) => {
-                    Widgets.Workspace focus_workspace = workspace_manager.workspace_map.get(tab_id);
-                    if (focus_workspace.has_active_term()) {
-                        ConfirmDialog dialog;
-                        if (quake_mode) {
-                            dialog = Widgets.create_running_confirm_dialog(quake_window);
-                        } else {
-                            dialog = Widgets.create_running_confirm_dialog(window);
-                        }
-                        dialog.confirm.connect((d) => {
-                                tabbar.destroy_tab(tab_index);
-                                workspace_manager.remove_workspace(tab_id);
-                            });
-                    } else {
-                        tabbar.destroy_tab(tab_index);
-                        workspace_manager.remove_workspace(tab_id);
-                    }
-                });
-            tabbar.new_tab.connect((t) => {
-                    workspace_manager.new_workspace_with_current_directory();
-                });
-            
-            
             if (quake_mode) {
                 quake_window = new Widgets.QuakeWindow();
                 quake_window.show_window(workspace_manager, tabbar);
+                tabbar.init(workspace_manager, quake_window);
             } else {
                 window = new Widgets.Window();
                 window.show_window(workspace_manager, tabbar);
+                tabbar.init(workspace_manager, window);
             }
+            
         }
     }
     
