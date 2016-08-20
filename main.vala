@@ -153,15 +153,7 @@ public class Application : Object {
                         return true;
                     });
             
-            
-                quake_window.delete_event.connect((w) => {
-                        quit();
-                        
-                        return true;
-                    });
-                quake_window.destroy.connect((t) => {
-                        quit();
-                    });
+                quake_window.init_quit_handler(workspace_manager);
                 quake_window.key_press_event.connect((w, e) => {
                         return on_key_press(w, e);
                     });
@@ -191,7 +183,7 @@ public class Application : Object {
                 quake_window.show_all();
             } else {
                 window = new Widgets.Window();
-                Appbar appbar = new Appbar(window, tabbar, this, workspace_manager);
+                Appbar appbar = new Appbar(window, tabbar, workspace_manager);
                 var overlay = new Gtk.Overlay();
                 
                 appbar.set_valign(Gtk.Align.START);
@@ -207,7 +199,7 @@ public class Application : Object {
                 box.pack_start(workspace_manager, true, true, 0);
                 
                 appbar.close_window.connect((w) => {
-                        quit();
+                        window.quit();
                     });
                 appbar.quit_fullscreen.connect((w) => {
                         window.toggle_fullscreen();
@@ -215,14 +207,7 @@ public class Application : Object {
             
                 window.draw_active_tab_underline(tabbar);
                 
-                window.delete_event.connect((w) => {
-                        quit();
-                        
-                        return true;
-                    });
-                window.destroy.connect((t) => {
-                        quit();
-                    });
+                window.init_quit_handler(workspace_manager);
                 window.window_state_event.connect((w) => {
                         appbar.update_max_button();
                     
@@ -323,17 +308,6 @@ public class Application : Object {
         }
         
         return false;
-    }
-    
-    public void quit() {
-        if (workspace_manager.has_active_term()) {
-            ConfirmDialog dialog = Widgets.create_running_confirm_dialog(window);
-            dialog.confirm.connect((d) => {
-                    Gtk.main_quit();
-                });
-        } else {
-            Gtk.main_quit();
-        }
     }
     
     private bool on_key_press(Gtk.Widget widget, Gdk.EventKey key_event) {

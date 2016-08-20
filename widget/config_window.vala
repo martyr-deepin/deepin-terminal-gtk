@@ -35,9 +35,12 @@ namespace Widgets {
 		public int active_tab_underline_width;
 		
         private bool is_show_shortcut_viewer = false;
+        
+        public WorkspaceManager workspace_manager;
             
         public ConfigWindow() {
             load_config();
+            
         }
             
         public void load_config() {
@@ -207,6 +210,31 @@ namespace Widgets {
 					
                     queue_draw();
                 });
+        }
+        
+        public void init_quit_handler(WorkspaceManager manager) {
+            workspace_manager = manager;
+            
+            delete_event.connect((w) => {
+                    quit();
+                        
+                    return true;
+                });
+            
+            destroy.connect((t) => {
+                    quit();
+                });
+        }
+        
+        public void quit() {
+            if (workspace_manager.has_active_term()) {
+                ConfirmDialog dialog = Widgets.create_running_confirm_dialog(this);
+                dialog.confirm.connect((d) => {
+                        Gtk.main_quit();
+                    });
+            } else {
+                Gtk.main_quit();
+            }
         }
     }
 }

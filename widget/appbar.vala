@@ -38,7 +38,6 @@ namespace Widgets {
         public ImageButton unmax_button;
         public ImageButton close_button;
         public ImageButton quit_fullscreen_button;
-        public Application application;
 		
 		public int height = Constant.TITLEBAR_HEIGHT;
         public int close_button_margin_right = 5;
@@ -51,18 +50,20 @@ namespace Widgets {
 		
         public Widgets.WindowEventArea event_area;
         
+        public Widgets.Window window;
+        
         public WorkspaceManager workspace_manager;
         
         public signal void close_window();
         public signal void quit_fullscreen();
         
-        public Appbar(Widgets.Window window, Tabbar tab_bar, Application app, WorkspaceManager manager) {
+        public Appbar(Widgets.Window win, Tabbar tab_bar, WorkspaceManager manager) {
+            window = win;
             workspace_manager = manager;
 			
 			set_size_request(-1, height);
 			
             tabbar = tab_bar;
-            application = app;
             
             window_button_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             window_close_button_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
@@ -232,7 +233,7 @@ namespace Widgets {
                     dialog.transient_for_window((Gtk.Window) this.get_toplevel());
 			    	break;
 				case "exit":
-                    application.quit();
+                    window.quit();
 					break;
                 case "preference":
                     var preference = new Widgets.Preference((Gtk.Window) this.get_toplevel(), ((Gtk.Window) this.get_toplevel()).get_focus());
