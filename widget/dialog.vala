@@ -30,6 +30,7 @@ namespace Widgets {
         public int window_frame_margin_bottom = 60;
         public int window_frame_margin_start = 50;
         public int window_frame_margin_end = 50;
+        public int window_frame_radius = 5;
         
         public int window_init_width;
         public int window_init_height;
@@ -162,8 +163,12 @@ namespace Widgets {
             
         }
         
-        public virtual void draw_window_below(Cairo.Context cr) {
+        public void draw_window_below(Cairo.Context cr) {
+             Gtk.Allocation window_rect;
+            window_frame_box.get_allocation(out window_rect);
             
+            cr.set_source_rgba(1, 1, 1, 1);
+            Draw.draw_rounded_rectangle(cr, window_frame_margin_start, window_frame_margin_top, window_rect.width, window_rect.height, window_frame_radius);
         }
         
         public virtual void draw_window_above(Cairo.Context cr) {

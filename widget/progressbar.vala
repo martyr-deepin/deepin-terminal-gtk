@@ -30,6 +30,7 @@ namespace Widgets {
 		public int height = 22;
         public int line_height = 2;
         public int line_margin_top = 10;
+        public int draw_pointer_offset = 3;
 		public double percent;
 		
         public Gdk.RGBA foreground_color;
@@ -74,7 +75,7 @@ namespace Widgets {
 		}
 		
 		public void set_percent(double new_percent) {
-            percent = double.max(0.2, double.min(new_percent, 1.0));
+            percent = double.max(Constant.TERMINAL_MIN_OPACITY, double.min(new_percent, 1.0));
             
 			update(percent);
 			
@@ -94,7 +95,7 @@ namespace Widgets {
             
             Draw.draw_surface(cr,
                               pointer_surface,
-                              int.max(0, int.min((int) (rect.width * percent) - pointer_surface.get_width() / 2, rect.width - pointer_surface.get_width() + 3)),
+                              int.max(0, int.min((int) (rect.width * percent) - pointer_surface.get_width() / 2, rect.width - pointer_surface.get_width() + draw_pointer_offset)),
                               0);
             
             return true;

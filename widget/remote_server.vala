@@ -32,6 +32,14 @@ namespace Widgets {
         public int preference_widget_width = 100;
         public int grid_height = 24;
         
+        public int action_button_margin_top = 20;
+        
+        public int port_label_margin_left = 21;
+        
+        public int preference_margin_top = 10;
+        public int option_widget_margin_top = 5;
+        public int option_widget_margin_end = 5;
+        
         public Gtk.Widget focus_widget;
         public Gtk.Box advanced_options_box;
         public Gtk.Box server_action_box;
@@ -100,10 +108,10 @@ namespace Widgets {
                 box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
                 
                 var top_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-                top_box.margin_bottom = 10;
+                top_box.margin_bottom = preference_margin_top;
                 
                 var event_area = new Widgets.WindowEventArea(this);
-                event_area.margin_end = 27;
+                event_area.margin_end = Constant.CLOSE_BUTTON_WIDTH;
                 
                 var overlay = new Gtk.Overlay();
                 overlay.add(top_box);
@@ -113,7 +121,7 @@ namespace Widgets {
                 
                 // Make label center of titlebar.
                 var spacing_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-                spacing_box.set_size_request(27, -1);
+                spacing_box.set_size_request(Constant.CLOSE_BUTTON_WIDTH, -1);
                 top_box.pack_start(spacing_box, false, false, 0);
                 
                 Gtk.Label title_label = new Gtk.Label(null);
@@ -126,11 +134,7 @@ namespace Widgets {
                     title_label.set_text("Add server");
                 }
                 
-                var close_button = new ImageButton("titlebar_close");
-                close_button.margin_top = 3;
-                close_button.margin_right = 3;
-                close_button.set_halign(Gtk.Align.END);
-            
+                var close_button = Widgets.create_close_button();
                 close_button.button_release_event.connect((b) => {
                         this.destroy();
                     
@@ -178,7 +182,7 @@ namespace Widgets {
                 address_entry.get_style_context().add_class("preference_entry");
                 address_entry.insert_text.connect(on_address_entry_insert);
                 Label port_label = new Gtk.Label(null);
-                port_label.margin_start = 21;
+                port_label.margin_start = port_label_margin_left;
                 port_label.set_text("Port:");
                 port_label.get_style_context().add_class("preference_label");
                 port_entry = new Entry();
@@ -303,7 +307,7 @@ namespace Widgets {
                 content_box.pack_start(server_action_box, true, true, 0);
             
                 Box button_box = new Box(Gtk.Orientation.HORIZONTAL, 0);
-                button_box.margin_top = 20;
+                button_box.margin_top = action_button_margin_top;
                 DialogButton cancel_button = new Widgets.DialogButton("Cancel", "left", "text");
                 string button_name;
                 if (server_info != null) {
@@ -431,23 +435,15 @@ namespace Widgets {
         }
         
         public void grid_attach(Gtk.Grid grid, Gtk.Widget child, int left, int top, int width, int height) {
-            child.margin_top = 5;
-            child.margin_bottom = 5;
+            child.margin_top = option_widget_margin_top;
+            child.margin_bottom = option_widget_margin_end;
             grid.attach(child, left, top, width, height);
         }
         
         public void grid_attach_next_to(Gtk.Grid grid, Gtk.Widget child, Gtk.Widget sibling, Gtk.PositionType side, int width, int height) {
-            child.margin_top = 5;
-            child.margin_bottom = 5;
+            child.margin_top = option_widget_margin_top;
+            child.margin_bottom = option_widget_margin_end;
             grid.attach_next_to(child, sibling, side, width, height);
-        }
-         
-        public override void draw_window_below(Cairo.Context cr) {
-            Gtk.Allocation window_rect;
-            window_frame_box.get_allocation(out window_rect);
-            
-            cr.set_source_rgba(1, 1, 1, 1);
-            Draw.draw_rounded_rectangle(cr, window_frame_margin_start, window_frame_margin_top, window_rect.width, window_rect.height, 5);
         }
     }
 }

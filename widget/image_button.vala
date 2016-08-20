@@ -163,4 +163,13 @@ namespace Widgets {
             return true;
         }
     }
+
+    public ImageButton create_close_button() {
+        var close_button = new ImageButton("titlebar_close");
+        close_button.margin_top = Constant.CLOSE_BUTTON_MARGIN_TOP;
+        close_button.margin_right = Constant.CLOSE_BUTTON_MARGIN_RIGHT;
+        close_button.set_halign(Gtk.Align.END);
+        
+        return close_button;
+    }
 }

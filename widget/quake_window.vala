@@ -32,6 +32,9 @@ namespace Widgets {
         
         public int window_frame_margin_bottom = 60;
         
+        public double window_default_height_scale = 1 / 3;
+        public double window_max_height_scale = 2 / 3;
+        
         public int press_x;
         public int press_y;
         
@@ -61,7 +64,7 @@ namespace Widgets {
             try {
                 var config_height = config.config_file.get_double("advanced", "quake_window_height");
                 if (config_height == 0) {
-                    set_default_size(rect.width, rect.height / 3);
+                    set_default_size(rect.width, (int) (rect.height * window_default_height_scale));
                 } else {
                     set_default_size(rect.width, (int) (rect.height * double.min(config_height, 1.0)));
                 }
@@ -69,7 +72,7 @@ namespace Widgets {
                 if (config_height > 2 / 3) {
                     Gdk.Geometry geo = Gdk.Geometry();
                     geo.min_width = rect.width;
-                    geo.min_height = rect.height / 3;
+                    geo.min_height = (int) (rect.height * window_default_height_scale);
                     this.set_geometry_hints(null, geo, Gdk.WindowHints.MIN_SIZE);            
                     
                     if (config_height >= 1.0) {
@@ -78,9 +81,9 @@ namespace Widgets {
                 } else {
                     Gdk.Geometry geo = Gdk.Geometry();
                     geo.min_width = rect.width;
-                    geo.min_height = rect.height / 3;
+                    geo.min_height = (int) (rect.height * window_default_height_scale);
                     geo.max_width = rect.width;
-                    geo.max_height = rect.height * 2 / 3;
+                    geo.max_height = (int) (rect.height * window_max_height_scale);
                     this.set_geometry_hints(null, geo, Gdk.WindowHints.MIN_SIZE | Gdk.WindowHints.MAX_SIZE);            
                 }
             } catch (Error e) {
@@ -314,13 +317,13 @@ namespace Widgets {
             } else {
                 Utils.set_context_color(cr, title_line_dark_color);
             }
-            Draw.draw_rectangle(cr, x, y + height - 41, width, 1);
+            Draw.draw_rectangle(cr, x, y + height - Constant.TITLEBAR_HEIGHT - 1, width, 1);
             cr.restore();
 						
             // Draw active tab underline *above* titlebar underline.
             cr.save();
             Utils.set_context_color(cr, active_tab_color);
-            Draw.draw_rectangle(cr, x + active_tab_underline_x, y + height - 41, active_tab_underline_width, 2);
+            Draw.draw_rectangle(cr, x + active_tab_underline_x, y + height - Constant.TITLEBAR_HEIGHT - 1, active_tab_underline_width, Constant.ACTIVE_TAB_UNDERLINE_HEIGHT);
             cr.restore();
         }
     }

@@ -32,6 +32,8 @@ namespace Widgets {
         public Gtk.Entry search_entry;
         
         public ImageButton clear_button;
+        public int clear_button_margin_right = 12;
+        public int search_image_margin_right = 5;
 
         public Gtk.Box display_box;
         public Gtk.Box box;
@@ -57,6 +59,7 @@ namespace Widgets {
             display_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             
             search_image = new ImageButton("search", true);
+            search_image.margin_end = search_image_margin_right;
             search_image.set_valign(Gtk.Align.CENTER);
             search_label = new Gtk.Label(null);
             search_label.set_valign(Gtk.Align.CENTER);
@@ -66,8 +69,8 @@ namespace Widgets {
             search_entry.set_placeholder_text("Search");
             search_entry.get_style_context().add_class("remote_search_entry");
             clear_button = new ImageButton("search_clear", true);
-            clear_button.margin_right = 12;
-            clear_button.margin_top = 11;
+            clear_button.margin_right = clear_button_margin_right;
+            clear_button.set_valign(Gtk.Align.CENTER);
             clear_button.button_release_event.connect((w, e) => {
                     search_entry.set_text("");
                     

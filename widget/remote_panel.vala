@@ -33,6 +33,10 @@ namespace Widgets {
         public Workspace workspace;
 		public WorkspaceManager workspace_manager;
         public Gtk.Widget focus_widget;
+        
+        public int back_button_margin_left = 8;
+        public int back_button_margin_top = 6;
+        public int split_line_margin_left = 1;
 		
 		public Widgets.ConfigWindow parent_window;
         public Gdk.RGBA background_color;
@@ -190,7 +194,6 @@ namespace Widgets {
                     });
                 
                 var split_line = create_split_line();
-                split_line.margin_left = 1;
                 home_page_box.pack_start(split_line, false, false, 0);
 			}
 
@@ -219,7 +222,6 @@ namespace Widgets {
             }
 			
             var split_line = create_split_line();
-            split_line.margin_left = 1;
             home_page_box.pack_start(split_line, false, false, 0);
                 
 			Widgets.AddServerButton add_server_button = create_add_server_button();
@@ -359,19 +361,18 @@ namespace Widgets {
 			}
 
             var top_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-            top_box.set_size_request(-1, 36);
+            top_box.set_size_request(-1, Constant.REMOTE_PANEL_SEARCHBAR_HEIGHT);
 			group_page_box.pack_start(top_box, false, false, 0);
             
 			ImageButton back_button = new Widgets.ImageButton("back", true);
-            back_button.margin_left = 8;
-            back_button.margin_top = 6;
+            back_button.margin_left = back_button_margin_left;
+            back_button.margin_top = back_button_margin_top;
 			back_button.click.connect((w) => {
 					show_home_page(group_page_box);
                 });
 			top_box.pack_start(back_button, false, false, 0);
             
             var split_line = create_split_line();
-            split_line.margin_left = 1;
             group_page_box.pack_start(split_line, false, false, 0);
             
 			if (ungroups.size > 1) {
@@ -479,12 +480,12 @@ namespace Widgets {
                 }
                 
                 var top_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-                top_box.set_size_request(-1, 36);
+                top_box.set_size_request(-1, Constant.REMOTE_PANEL_SEARCHBAR_HEIGHT);
                 search_page_box.pack_start(top_box, false, false, 0);
             
                 ImageButton back_button = new Widgets.ImageButton("back", true);
-                back_button.margin_left = 8;
-                back_button.margin_top = 6;
+                back_button.margin_left = back_button_margin_left;
+                back_button.margin_top = back_button_margin_top;
                 back_button.click.connect((w) => {
                         if (group_name == "") {
                             show_home_page(search_page_box);
@@ -500,7 +501,6 @@ namespace Widgets {
                 top_box.pack_start(search_label, true, true, 0);
                 
                 var split_line = create_split_line();
-                split_line.margin_left = 1;
                 search_page_box.pack_start(split_line, false, false, 0);
                 
                 search_page_scrolledwindow = create_scrolled_window();
@@ -684,6 +684,7 @@ namespace Widgets {
             }
                          
             var box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+            box.margin_left = split_line_margin_left;
             box.set_size_request(-1, 1);
             
             box.draw.connect((w, cr) => {

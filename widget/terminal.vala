@@ -460,9 +460,9 @@ namespace Widgets {
 					double new_opacity = old_opacity;
 				
 					if (scroll_event.delta_y < 0) {
-						new_opacity = double.min(double.max(old_opacity + 0.1, 0.2), 1);
+						new_opacity = double.min(double.max(old_opacity + 0.1, Constant.TERMINAL_MIN_OPACITY), 1);
 					} else if (scroll_event.delta_y > 0) {
-						new_opacity = double.min(double.max(old_opacity - 0.1, 0.2), 1);
+						new_opacity = double.min(double.max(old_opacity - 0.1, Constant.TERMINAL_MIN_OPACITY), 1);
 					}
 			
 					if (new_opacity != old_opacity) {

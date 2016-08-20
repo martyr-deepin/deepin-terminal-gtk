@@ -41,6 +41,9 @@ namespace Widgets {
         public Application application;
 		
 		public int height = Constant.TITLEBAR_HEIGHT;
+        public int close_button_margin_right = 5;
+        public int logo_width = 48;
+        public int titlebar_right_cache_width = 30;
         
         public Gtk.Widget focus_widget;
         
@@ -137,7 +140,7 @@ namespace Widgets {
             Box box = new Box(Gtk.Orientation.HORIZONTAL, 0);
 			
 			var logo_box = new Box(Gtk.Orientation.VERTICAL, 0);
-			logo_box.set_size_request(48, Constant.TITLEBAR_HEIGHT);
+			logo_box.set_size_request(logo_width, Constant.TITLEBAR_HEIGHT);
 			Gtk.Image logo_image = new Gtk.Image.from_file(Utils.get_image_path("title_icon.png"));
 			logo_box.pack_start(logo_image, true, true, 0);
 			box.pack_start(logo_box, false, false, 0);
@@ -145,18 +148,18 @@ namespace Widgets {
             max_toggle_box.add(max_button);
 
             box.pack_start(tabbar, true, true, 0);
-            var space_box = new Gtk.EventBox();
-            space_box.set_size_request(30, -1);
-            box.pack_start(space_box, false, false, 0);
+            var cache_area = new Gtk.EventBox();
+            cache_area.set_size_request(titlebar_right_cache_width, -1);
+            box.pack_start(cache_area, false, false, 0);
             box.pack_start(window_button_box, false, false, 0);
             box.pack_start(window_close_button_box, false, false, 0);
-            close_button.margin_end = 5;
+            close_button.margin_end = close_button_margin_right;
             
             show_window_button();
             
             event_area = new Widgets.WindowEventArea(this);
             // Don't override window button area.
-            event_area.margin_end = 27 * 4;
+            event_area.margin_end = Constant.CLOSE_BUTTON_WIDTH * 4;
             
             add(box);
             add_overlay(event_area);

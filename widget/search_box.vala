@@ -25,13 +25,16 @@ using Gtk;
 using Widgets;
 
 namespace Widgets {
-    public class SearchBox : Gtk.Box {
+    public class SearchBox : Gtk.HBox {
         public Widgets.ImageButton search_image;
         public Entry search_entry;
         public Gtk.Box clear_button_box;
         public ImageButton clear_button;
         public ImageButton search_next_button;
         public ImageButton search_previous_button;
+        
+        public int margin_horizontal = 10;
+        public int button_margin = 4;
         
         public SearchBox(Widgets.ConfigWindow config_window) {
             search_image = new ImageButton("search", true);
@@ -47,15 +50,17 @@ namespace Widgets {
             pack_start(search_previous_button, false, false, 0);
             pack_start(search_next_button, false, false, 0);
             
-            search_image.margin_start = 10;
             search_image.set_valign(Gtk.Align.CENTER);
-            search_entry.margin_end = 4;
-            search_next_button.margin_top = 6;
-            search_next_button.margin_end = 6;
-            clear_button_box.margin_top = 12;
-            clear_button_box.margin_end = 10;
-            search_previous_button.margin_top = 6;
-            search_previous_button.margin_end = 10;
+            search_entry.set_valign(Gtk.Align.CENTER);
+            search_next_button.set_valign(Gtk.Align.CENTER);
+            search_previous_button.set_valign(Gtk.Align.CENTER);
+            clear_button_box.set_valign(Gtk.Align.CENTER);
+            
+            search_image.margin_start = margin_horizontal;
+            clear_button_box.margin_end = margin_horizontal;
+            search_previous_button.margin_end = margin_horizontal;
+            search_entry.margin_end = button_margin;
+            search_next_button.margin_end = button_margin;
             
             set_size_request(322, Constant.TITLEBAR_HEIGHT);
             set_valign(Gtk.Align.START);

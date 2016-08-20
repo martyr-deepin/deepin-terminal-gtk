@@ -28,6 +28,8 @@ namespace Widgets {
     public class PreferenceSlidebar : Gtk.Grid {
         public int width = 160;
 		public int height = 30;
+        
+        public int segement_spacing = 20;
 		
 		public signal void click_item(string name);
         
@@ -47,7 +49,7 @@ namespace Widgets {
 			this.attach_next_to(theme_segement, basic_segement, Gtk.PositionType.BOTTOM, width, height);
             
             var theme_spacing_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            theme_spacing_box.set_size_request(-1, 20);
+            theme_spacing_box.set_size_request(-1, segement_spacing);
             this.attach_next_to(theme_spacing_box, theme_segement, Gtk.PositionType.BOTTOM, width, height);
             
             var hotkey_segement = new PreferenceSlideItem(this, "Hotkey", "hotkey", true);
@@ -63,7 +65,7 @@ namespace Widgets {
 			this.attach_next_to(advanced_key_segement, workspace_key_segement, Gtk.PositionType.BOTTOM, width, height);
 
             var advanced_key_spacing_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            advanced_key_spacing_box.set_size_request(-1, 20);
+            advanced_key_spacing_box.set_size_request(-1, segement_spacing);
             this.attach_next_to(advanced_key_spacing_box, advanced_key_segement, Gtk.PositionType.BOTTOM, width, height);
             
             var advanced_segement = new PreferenceSlideItem(this, "Advanced", "advanced", true);
@@ -79,7 +81,7 @@ namespace Widgets {
 			this.attach_next_to(window_segement, cursor_segement, Gtk.PositionType.BOTTOM, width, height);
             
             var window_spacing_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            window_spacing_box.set_size_request(-1, 20);
+            window_spacing_box.set_size_request(-1, segement_spacing);
             this.attach_next_to(window_spacing_box, window_segement, Gtk.PositionType.BOTTOM, width, height);
             
             var about_segement = new PreferenceSlideItem(this, "About", "about", true);
@@ -139,7 +141,7 @@ namespace Widgets {
         public bool is_first_segement;
         
         public int first_segement_margin = 30;
-        public int second_segement_margin = Constant.TITLEBAR_HEIGHT;
+        public int second_segement_margin = 40;
         
         public int first_segement_size = 12;
         public int second_segement_size = 10;
@@ -149,6 +151,9 @@ namespace Widgets {
         public Gdk.RGBA highlight_text_color;
         
         public bool is_selected = false;
+        
+        public int width = 160;
+        public int height = 30;
         
         public PreferenceSlideItem(PreferenceSlidebar bar, string display_name, string name, bool is_first) {
 			set_visible_window(false);
@@ -165,7 +170,7 @@ namespace Widgets {
             highlight_text_color = Gdk.RGBA();
             highlight_text_color.parse("#2ca7f8");
             
-            set_size_request(160, 30);
+            set_size_request(width, height);
 			
 			button_press_event.connect((w, e) => {
 					bar.click_item(name);

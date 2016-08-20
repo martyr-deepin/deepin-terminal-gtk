@@ -288,8 +288,8 @@ public class Application : Object {
                 
                 window.motion_notify_event.connect((w, e) => {
                         if (window.window_is_fullscreen()) {
-                            if (e.y_root < Constant.TITLEBAR_HEIGHT * 2) {
-                                GLib.Timeout.add(150, () => {
+                            if (e.y_root < window.window_fullscreen_monitor_height) {
+                                GLib.Timeout.add(window.window_fullscreen_monitor_timeout, () => {
                                         Gdk.Display gdk_display = Gdk.Display.get_default();
                                         var seat = gdk_display.get_default_seat();
                                         var device = seat.get_pointer();
@@ -297,7 +297,7 @@ public class Application : Object {
                                         int pointer_x, pointer_y;
                                         device.get_position(null, out pointer_x, out pointer_y);
 
-                                        if (pointer_y < 5) {
+                                        if (pointer_y < window.window_fullscreen_response_height) {
                                             appbar.show_all();
                                             window.draw_tabbar_line = true;
                                 

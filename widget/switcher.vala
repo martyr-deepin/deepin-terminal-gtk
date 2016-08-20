@@ -37,18 +37,20 @@ namespace Widgets {
         public AnimateTimer scroll_to_left_timer;
         public int scroll_to_left_start_x;
         public int scroll_to_left_end_x;
+        public int scroll_to_left_interval = 500;
         
         public AnimateTimer scroll_to_right_timer;
         public int scroll_to_right_start_x;
         public int scroll_to_right_end_x;
+        public int scroll_to_right_interval = 500;
         
         public Switcher(int w) {
             width = w;
             
-            scroll_to_left_timer = new AnimateTimer(AnimateTimer.ease_out_quint, 500);
+            scroll_to_left_timer = new AnimateTimer(AnimateTimer.ease_out_quint, scroll_to_left_interval);
 			scroll_to_left_timer.animate.connect(scroll_to_left_animate);
 
-            scroll_to_right_timer = new AnimateTimer(AnimateTimer.ease_out_quint, 500);
+            scroll_to_right_timer = new AnimateTimer(AnimateTimer.ease_out_quint, scroll_to_right_interval);
 			scroll_to_right_timer.animate.connect(scroll_to_right_animate);
             
             // NOTE: don's set policy of scrolledwindow to NEVER.

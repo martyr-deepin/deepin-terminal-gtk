@@ -40,9 +40,11 @@ namespace Widgets {
         
         public AnimateTimer show_timer;
         public int show_slider_start_x;
+        public int show_slider_interval = 500;
 
         public AnimateTimer hide_timer;
         public int hide_slider_start_x;
+        public int hide_slider_interval = 500;
         
         public int PANED_HANDLE_SIZE = 1;
         
@@ -55,10 +57,10 @@ namespace Widgets {
             term_list = new ArrayList<Term>();
 			workspace_manager = manager;
             
-			show_timer = new AnimateTimer(AnimateTimer.ease_out_quint, 500);
+			show_timer = new AnimateTimer(AnimateTimer.ease_out_quint, show_slider_interval);
 			show_timer.animate.connect(on_show_animate);
 
-			hide_timer = new AnimateTimer(AnimateTimer.ease_in_quint, 400);
+			hide_timer = new AnimateTimer(AnimateTimer.ease_in_quint, hide_slider_interval);
 			hide_timer.animate.connect(on_hide_animate);
             
             Term term = new_term(true, commands, work_directory);

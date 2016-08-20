@@ -378,7 +378,7 @@ namespace Widgets {
             }
             
             if (tab_width + tab_add_button_width > alloc.width) {
-                draw_scale = (double) alloc.width / tab_width * 0.97;
+                draw_scale = (double) alloc.width / (tab_width + tab_add_button_width) * 0.97;
             } else {
                 draw_scale = 1.0;
             }

@@ -41,6 +41,10 @@ namespace Widgets {
         public int window_save_width = 0;
         public int window_save_height = 0;
         
+        public int window_fullscreen_response_height = 5;
+        public int window_fullscreen_monitor_height = Constant.TITLEBAR_HEIGHT * 2;
+        public int window_fullscreen_monitor_timeout = 150;
+        
         public int window_width;
         public int window_height;
         
@@ -494,9 +498,9 @@ namespace Widgets {
                     // Bottom.
                     Draw.draw_rectangle(cr, x + 3, y + height - 2, width - 6, 1);
                     // Left.
-                    Draw.draw_rectangle(cr, x + 1, y + 42, 1, height - 45);
+                    Draw.draw_rectangle(cr, x + 1, y + Constant.TITLEBAR_HEIGHT + 2, 1, height - 45);
                     // Rigt..
-                    Draw.draw_rectangle(cr, x + width - 2, y + 42, 1, height - 45);
+                    Draw.draw_rectangle(cr, x + width - 2, y + Constant.TITLEBAR_HEIGHT + 2, 1, height - 45);
                     cr.restore();
                 }
             } catch (Error e) {
@@ -545,7 +549,7 @@ namespace Widgets {
                         // Draw active tab underline *above* titlebar underline.
                         cr.save();
                         Utils.set_context_color(cr, active_tab_color);
-                        Draw.draw_rectangle(cr, x + active_tab_underline_x - window_frame_box.margin_start, y + Constant.TITLEBAR_HEIGHT, active_tab_underline_width, 2);
+                        Draw.draw_rectangle(cr, x + active_tab_underline_x - window_frame_box.margin_start, y + Constant.TITLEBAR_HEIGHT, active_tab_underline_width, Constant.ACTIVE_TAB_UNDERLINE_HEIGHT);
                         cr.restore();
                     }
                 } else if (window_is_max() || window_is_tiled()) {
@@ -562,7 +566,7 @@ namespace Widgets {
                     // Draw active tab underline *above* titlebar underline.
                     cr.save();
                     Utils.set_context_color(cr, active_tab_color);
-                    Draw.draw_rectangle(cr, x + active_tab_underline_x - window_frame_box.margin_start, y + Constant.TITLEBAR_HEIGHT + 1, active_tab_underline_width, 2);
+                    Draw.draw_rectangle(cr, x + active_tab_underline_x - window_frame_box.margin_start, y + Constant.TITLEBAR_HEIGHT + 1, active_tab_underline_width, Constant.ACTIVE_TAB_UNDERLINE_HEIGHT);
                     cr.restore();
                 } else {
                     // Draw line above at titlebar.
@@ -582,9 +586,9 @@ namespace Widgets {
                     // Draw line around titlebar side.
                     cr.set_source_rgba(frame_color.red, frame_color.green, frame_color.blue, config.config_file.get_double("general", "opacity"));
                     // Left.
-                    Draw.draw_rectangle(cr, x + 1, y + 3, 1, 39);
+                    Draw.draw_rectangle(cr, x + 1, y + 3, 1, Constant.TITLEBAR_HEIGHT - 1);
                     // Right.
-                    Draw.draw_rectangle(cr, x + width - 2, y + 3, 1, 39);
+                    Draw.draw_rectangle(cr, x + width - 2, y + 3, 1, Constant.TITLEBAR_HEIGHT - 1);
                 
                     if (is_light_theme) {
                         Utils.set_context_color(cr, top_line_light_color);
@@ -592,9 +596,9 @@ namespace Widgets {
                         Utils.set_context_color(cr, top_line_dark_color);
                     }
                     // Left.
-                    Draw.draw_rectangle(cr, x + 1, y + 3, 1, 39);
+                    Draw.draw_rectangle(cr, x + 1, y + 3, 1, Constant.TITLEBAR_HEIGHT - 1);
                     // Right.
-                    Draw.draw_rectangle(cr, x + width - 2, y + 3, 1, 39);
+                    Draw.draw_rectangle(cr, x + width - 2, y + 3, 1, Constant.TITLEBAR_HEIGHT - 1);
                 
                     // Draw line below at titlebar.
                     cr.save();
@@ -603,13 +607,13 @@ namespace Widgets {
                     } else {
                         Utils.set_context_color(cr, title_line_dark_color);
                     }
-                    Draw.draw_rectangle(cr, x + 1, y + 41, width - 2, 1);
+                    Draw.draw_rectangle(cr, x + 1, y + Constant.TITLEBAR_HEIGHT + 1, width - 2, 1);
                     cr.restore();
 						
                     // Draw active tab underline *above* titlebar underline.
                     cr.save();
                     Utils.set_context_color(cr, active_tab_color);
-                    Draw.draw_rectangle(cr, x + active_tab_underline_x - window_frame_box.margin_start, y + Constant.TITLEBAR_HEIGHT, active_tab_underline_width, 2);
+                    Draw.draw_rectangle(cr, x + active_tab_underline_x - window_frame_box.margin_start, y + Constant.TITLEBAR_HEIGHT, active_tab_underline_width, Constant.ACTIVE_TAB_UNDERLINE_HEIGHT);
                     cr.restore();
                 }
             } catch (Error e) {

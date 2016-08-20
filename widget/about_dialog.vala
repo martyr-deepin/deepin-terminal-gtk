@@ -33,11 +33,7 @@ namespace Widgets {
             
             var overlay = new Gtk.Overlay();
 
-            var close_button = new ImageButton("titlebar_close");
-            close_button.margin_top = 3;
-            close_button.margin_right = 3;
-            close_button.set_halign(Gtk.Align.END);
-            
+            var close_button = Widgets.create_close_button();
             close_button.button_release_event.connect((b) => {
                     this.destroy();
                     
@@ -77,20 +73,12 @@ namespace Widgets {
             window_init_height += about_text_height;
 
             var event_area = new Widgets.WindowEventArea(this);
-            event_area.margin_end = 27;
+            event_area.margin_end = Constant.CLOSE_BUTTON_WIDTH;
             
             overlay.add(box);
             overlay.add_overlay(event_area);
             
             add_widget(overlay);
-        }
-        
-        public override void draw_window_below(Cairo.Context cr) {
-            Gtk.Allocation window_rect;
-            window_frame_box.get_allocation(out window_rect);
-            
-            cr.set_source_rgba(1, 1, 1, 1);
-            Draw.draw_rounded_rectangle(cr, window_frame_margin_start, window_frame_margin_top, window_rect.width, window_rect.height, 5);
         }
     }
 }
