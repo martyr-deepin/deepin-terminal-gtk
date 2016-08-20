@@ -158,11 +158,9 @@ public class Application : Object {
                         return true;
                     });
                 
-                box.pack_start(workspace_manager, true, true, 0);
-                Widgets.EventBox event_box = new Widgets.EventBox();
                 top_box.pack_start(tabbar, true, true, 0);
-                event_box.add(top_box);
-                box.pack_start(event_box, false, false, 0);
+                box.pack_start(workspace_manager, true, true, 0);
+                box.pack_start(top_box, false, false, 0);
                 
                 quake_window.add_widget(box);
                 quake_window.show_all();
@@ -193,7 +191,6 @@ public class Application : Object {
                 
                 var overlay = new Gtk.Overlay();
                 top_box.pack_start(window.fullscreen_box, false, false, 0);
-                
                 box.pack_start(top_box, false, false, 0);
                 box.pack_start(workspace_manager, true, true, 0);
                 
