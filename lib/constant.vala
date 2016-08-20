@@ -33,5 +33,6 @@ public class Constant {
     public static int MAX_SCROLL_LINES = 1000;
     public static int ACTIVE_TAB_UNDERLINE_HEIGHT = 2;
     public static int REMOTE_PANEL_SEARCHBAR_HEIGHT = 36;
+    public static int PREFERENCE_SLIDEBAR_WIDTH = 160;
     public static double TERMINAL_MIN_OPACITY = 0.2;
 }                         

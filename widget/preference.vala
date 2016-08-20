@@ -29,7 +29,7 @@ using Animation;
 namespace Widgets {
     public class Preference : Widgets.Dialog {
         public Gtk.Widget focus_widget;
-        public int slidebar_width = 160;
+        public int slidebar_width = Constant.PREFERENCE_SLIDEBAR_WIDTH;
         
         public int preference_name_width = 180;
         public int preference_widget_width = 200;

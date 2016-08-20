@@ -26,7 +26,7 @@ using Widgets;
 
 namespace Widgets {
     public class PreferenceSlidebar : Gtk.Grid {
-        public int width = 160;
+        public int width = Constant.PREFERENCE_SLIDEBAR_WIDTH;
 		public int height = 30;
         
         public int segement_spacing = 20;
@@ -152,7 +152,7 @@ namespace Widgets {
         
         public bool is_selected = false;
         
-        public int width = 160;
+        public int width = Constant.PREFERENCE_SLIDEBAR_WIDTH;
         public int height = 30;
         
         public PreferenceSlideItem(PreferenceSlidebar bar, string display_name, string name, bool is_first) {
