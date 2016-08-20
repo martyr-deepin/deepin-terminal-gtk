@@ -41,6 +41,8 @@ namespace Widgets {
         public int about_x = 38;
         public int about_height = 9;
         
+        public string about_text = "    Deepin terminal is a terminal emulator with screen split, workspace and remote machine manage.\n\n    Deepin terminal is a free software licensed under GNU GPLv3.";
+        
         public Cairo.ImageSurface icon_surface;
         public Cairo.ImageSurface logo_surface;
         
@@ -113,7 +115,7 @@ namespace Widgets {
             
             // Draw about.
             cr.set_source_rgba(0.1, 0.1, 0.1, 1);
-            Draw.draw_text(cr, "    Deepin terminal is a terminal emulator with screen split, workspace and remote machine manage.\n\n    Deepin terminal is a free software licensed under GNU GPLv3.", about_x, about_y, rect.width - about_x * 2, about_height, about_height, Pango.Alignment.LEFT, "top", rect.width - about_x * 2);
+            Draw.draw_text(cr, about_text, about_x, about_y, rect.width - about_x * 2, about_height, about_height, Pango.Alignment.LEFT, "top", rect.width - about_x * 2);
             
             Utils.propagate_draw(this, cr);
             

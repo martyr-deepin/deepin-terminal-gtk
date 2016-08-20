@@ -29,9 +29,6 @@ namespace Widgets {
         public Gtk.Widget focus_widget;
         
         public AboutDialog(Gtk.Widget widget) {
-            window_init_width = 500;
-            window_init_height = 510;
-
             focus_widget = widget;
             
             var overlay = new Gtk.Overlay();
@@ -61,6 +58,23 @@ namespace Widgets {
             
             var about_widget = new AboutWidget();
             box.pack_start(about_widget, true, true, 0);
+            
+            window_init_width = 500;
+            window_init_height = 440;
+
+            int about_text_height = Draw.get_text_render_height(
+                about_widget,
+                about_widget.about_text,
+                about_widget.about_x,
+                about_widget.about_y,
+                window_init_width - about_widget.about_x * 2,
+                about_widget.about_height,
+                about_widget.about_height,
+                Pango.Alignment.LEFT,
+                "top",
+                window_init_width - about_widget.about_x * 2);
+            
+            window_init_height += about_text_height;
 
             var event_area = new Widgets.WindowEventArea(this);
             event_area.margin_end = 27;
