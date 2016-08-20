@@ -113,4 +113,11 @@ namespace Widgets {
             add_widget(overlay);
         }
     }
+
+    public ConfirmDialog create_running_confirm_dialog(Gtk.Window window) {
+        ConfirmDialog dialog = new ConfirmDialog("Terminal still has running programs", "Are you sure you want to quit?", "Cancel", "Quit");
+        dialog.transient_for_window(window);
+        
+        return dialog;
+    }
 }
