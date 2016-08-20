@@ -26,7 +26,6 @@ using Gdk;
 using Vte;
 using Widgets;
 using Keymap;
-using Wnck;
 
 [DBus (name = "com.deepin.terminal")]
 public class TerminalApp : Application {
@@ -203,7 +202,7 @@ public class Application : Object {
                         return false;
                     });
                 
-                if (!have_terminal_at_same_workspace()) {
+                if (!window.have_terminal_at_same_workspace()) {
                     window.set_position(Gtk.WindowPosition.CENTER);
                 }
 
@@ -264,23 +263,6 @@ public class Application : Object {
                 window.show_all();
             }
         }
-    }
-    
-    public bool have_terminal_at_same_workspace() {
-        var screen = Wnck.Screen.get_default();
-        screen.force_update();
-        
-        var active_workspace = screen.get_active_workspace();
-        foreach (Wnck.Window window in screen.get_windows()) {
-            var workspace = window.get_workspace();
-            if (workspace.get_number() == active_workspace.get_number()) {
-                if (window.get_name() == "deepin-terminal") {
-                    return true;
-                }
-            }
-        }
-        
-        return false;
     }
     
     public static void main(string[] args) {

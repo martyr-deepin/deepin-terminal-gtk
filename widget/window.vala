@@ -25,6 +25,7 @@ using Gtk;
 using Config;
 using Cairo;
 using XUtils;
+using Wnck;
 
 namespace Widgets {
     public class Window : Widgets.ConfigWindow {
@@ -443,6 +444,23 @@ namespace Widgets {
             window_widget_box.pack_start(widget, true, true, 0);
         }
 
+        public bool have_terminal_at_same_workspace() {
+            var screen = Wnck.Screen.get_default();
+            screen.force_update();
+        
+            var active_workspace = screen.get_active_workspace();
+            foreach (Wnck.Window window in screen.get_windows()) {
+                var workspace = window.get_workspace();
+                if (workspace.get_number() == active_workspace.get_number()) {
+                    if (window.get_name() == "deepin-terminal") {
+                        return true;
+                    }
+                }
+            }
+        
+            return false;
+        }
+    
 		public override void toggle_fullscreen() {
             if (window_is_fullscreen()) {
                 unfullscreen();
