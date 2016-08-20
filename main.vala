@@ -133,7 +133,13 @@ public class Application : Object {
             
             if (quake_mode) {
                 quake_window = new Widgets.QuakeWindow();
-                quake_window.draw_active_tab_underline(tabbar);
+                quake_window.init(workspace_manager, tabbar);
+                // First focus terminal after show quake terminal.
+                // Sometimes, some popup window (like wine program's popup notify window) will grab focus,
+                // so call window.present to make terminal get focus.
+                quake_window.show.connect((t) => {
+                        quake_window.present();
+                    });
                 
                 top_box.draw.connect((w, cr) => {
                         Gtk.Allocation rect;
@@ -151,8 +157,6 @@ public class Application : Object {
                         
                         return true;
                     });
-            
-                quake_window.init_event_handler(workspace_manager);
                 
                 box.pack_start(workspace_manager, true, true, 0);
                 Widgets.EventBox event_box = new Widgets.EventBox();
@@ -160,32 +164,13 @@ public class Application : Object {
                 event_box.add(top_box);
                 box.pack_start(event_box, false, false, 0);
                 
-                // First focus terminal after show quake terminal.
-                // Sometimes, some popup window (like wine program's popup notify window) will grab focus,
-                // so call window.present to make terminal get focus.
-                quake_window.show.connect((t) => {
-                        quake_window.present();
-                    });
-                
                 quake_window.add_widget(box);
                 quake_window.show_all();
             } else {
                 window = new Widgets.Window();
                 Appbar appbar = new Appbar(window, tabbar, workspace_manager);
-                var overlay = new Gtk.Overlay();
                 
                 appbar.set_valign(Gtk.Align.START);
-                
-                var fullscreen_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-                top_box.pack_start(fullscreen_box, false, false, 0);
-                
-                var spacing_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-                spacing_box.set_size_request(-1, Constant.TITLEBAR_HEIGHT);
-                fullscreen_box.pack_start(spacing_box, false, false, 0);
-                
-                box.pack_start(top_box, false, false, 0);
-                box.pack_start(workspace_manager, true, true, 0);
-                
                 appbar.close_window.connect((w) => {
                         window.quit();
                     });
@@ -193,9 +178,9 @@ public class Application : Object {
                         window.toggle_fullscreen();
                     });
             
-                window.draw_active_tab_underline(tabbar);
+                window.init(workspace_manager, tabbar);
+                window.init_fullscreen_handler(appbar);
                 
-                window.init_event_handler(workspace_manager);
                 window.window_state_event.connect((w) => {
                         appbar.update_max_button();
                     
@@ -205,56 +190,12 @@ public class Application : Object {
                 if (!window.have_terminal_at_same_workspace()) {
                     window.set_position(Gtk.WindowPosition.CENTER);
                 }
-
-                window.configure_event.connect((w) => {
-                        if (window.window_is_fullscreen()) {
-                            Utils.remove_all_children(fullscreen_box);
-                            appbar.hide();
-                            appbar.hide_window_button();
-                            window.draw_tabbar_line = false;
-                        } else {
-                            Gtk.Widget? parent = spacing_box.get_parent();
-                            if (parent == null) {
-                                fullscreen_box.pack_start(spacing_box, false, false, 0);
-                                appbar.show_all();
-                                appbar.show_window_button();
-                                window.draw_tabbar_line = true;
-                            }
-                        }
-                        
-                        return false;
-                    });
                 
-                window.motion_notify_event.connect((w, e) => {
-                        if (window.window_is_fullscreen()) {
-                            if (e.y_root < window.window_fullscreen_monitor_height) {
-                                GLib.Timeout.add(window.window_fullscreen_monitor_timeout, () => {
-                                        Gdk.Display gdk_display = Gdk.Display.get_default();
-                                        var seat = gdk_display.get_default_seat();
-                                        var device = seat.get_pointer();
-                    
-                                        int pointer_x, pointer_y;
-                                        device.get_position(null, out pointer_x, out pointer_y);
-
-                                        if (pointer_y < window.window_fullscreen_response_height) {
-                                            appbar.show_all();
-                                            window.draw_tabbar_line = true;
-                                
-                                            window.queue_draw();
-                                        } else if (pointer_y > Constant.TITLEBAR_HEIGHT) {
-                                            appbar.hide();
-                                            window.draw_tabbar_line = false;                                
-                                
-                                            window.queue_draw();
-                                        }
-                                        
-                                        return false;
-                                    });
-                            }
-                        }
-                        
-                        return false;
-                    });
+                var overlay = new Gtk.Overlay();
+                top_box.pack_start(window.fullscreen_box, false, false, 0);
+                
+                box.pack_start(top_box, false, false, 0);
+                box.pack_start(workspace_manager, true, true, 0);
                 
                 overlay.add(box);
                 overlay.add_overlay(appbar);

@@ -49,6 +49,9 @@ namespace Widgets {
         public int window_width;
         public int window_height;
         
+        public Gtk.Box fullscreen_box;
+        public Gtk.Box spacing_box;
+        
         public Gdk.RGBA top_line_dark_color;
         public Gdk.RGBA top_line_light_color;
 
@@ -634,6 +637,64 @@ namespace Widgets {
             } catch (Error e) {
                 print("Window draw_window_above: %s\n", e.message);
             }
-       }
+        }
+
+        public void init_fullscreen_handler(Appbar appbar) {
+            fullscreen_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+            spacing_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+            
+            spacing_box.set_size_request(-1, Constant.TITLEBAR_HEIGHT);
+            fullscreen_box.pack_start(spacing_box, false, false, 0);
+            
+            configure_event.connect((w) => {
+                    if (window_is_fullscreen()) {
+                        Utils.remove_all_children(fullscreen_box);
+                        appbar.hide();
+                        appbar.hide_window_button();
+                        draw_tabbar_line = false;
+                    } else {
+                        Gtk.Widget? parent = spacing_box.get_parent();
+                        if (parent == null) {
+                            fullscreen_box.pack_start(spacing_box, false, false, 0);
+                            appbar.show_all();
+                            appbar.show_window_button();
+                            draw_tabbar_line = true;
+                        }
+                    }
+                        
+                    return false;
+                });
+                
+            motion_notify_event.connect((w, e) => {
+                    if (window_is_fullscreen()) {
+                        if (e.y_root < window_fullscreen_monitor_height) {
+                            GLib.Timeout.add(window_fullscreen_monitor_timeout, () => {
+                                    Gdk.Display gdk_display = Gdk.Display.get_default();
+                                    var seat = gdk_display.get_default_seat();
+                                    var device = seat.get_pointer();
+                    
+                                    int pointer_x, pointer_y;
+                                    device.get_position(null, out pointer_x, out pointer_y);
+
+                                    if (pointer_y < window_fullscreen_response_height) {
+                                        appbar.show_all();
+                                        draw_tabbar_line = true;
+                                
+                                        queue_draw();
+                                    } else if (pointer_y > Constant.TITLEBAR_HEIGHT) {
+                                        appbar.hide();
+                                        draw_tabbar_line = false;                                
+                                
+                                        queue_draw();
+                                    }
+                                        
+                                    return false;
+                                });
+                        }
+                    }
+                        
+                    return false;
+                });
+        }
     }
 }

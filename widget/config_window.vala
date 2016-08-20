@@ -214,7 +214,7 @@ namespace Widgets {
                 });
         }
         
-        public void init_event_handler(WorkspaceManager manager) {
+        public void init(WorkspaceManager manager, Tabbar tabbar) {
             workspace_manager = manager;
             
             delete_event.connect((w) => {
@@ -246,6 +246,8 @@ namespace Widgets {
                         
                     return false;
                 });
+            
+            draw_active_tab_underline(tabbar);
         }
         
         public void quit() {
