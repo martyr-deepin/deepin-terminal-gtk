@@ -33,6 +33,8 @@ namespace Widgets {
             
         public int active_tab_underline_x;
 		public int active_tab_underline_width;
+        
+        public bool quake_mode = false;
 		
         private bool is_show_shortcut_viewer = false;
         
@@ -212,7 +214,7 @@ namespace Widgets {
                 });
         }
         
-        public void init_quit_handler(WorkspaceManager manager) {
+        public void init_event_handler(WorkspaceManager manager) {
             workspace_manager = manager;
             
             delete_event.connect((w) => {
@@ -223,6 +225,14 @@ namespace Widgets {
             
             destroy.connect((t) => {
                     quit();
+                });
+            
+            key_press_event.connect((w, e) => {
+                    return on_key_press(w, e);
+                });
+            
+            key_release_event.connect((w, e) => {
+                    return on_key_release(w, e);
                 });
         }
         
@@ -235,6 +245,167 @@ namespace Widgets {
             } else {
                 Gtk.main_quit();
             }
+        }
+        
+        private bool on_key_press(Gtk.Widget widget, Gdk.EventKey key_event) {
+            try {
+                string keyname = Keymap.get_keyevent_name(key_event);
+                string[] ctrl_num_keys = {"Ctrl + 1", "Ctrl + 2", "Ctrl + 3", "Ctrl + 4", "Ctrl + 5", "Ctrl + 6", "Ctrl + 7", "Ctrl + 8", "Ctrl + 9"};
+            
+                KeyFile config_file = config.config_file;
+		    
+                var search_key = config_file.get_string("keybind", "search");
+                if (search_key != "" && keyname == search_key) {
+                    workspace_manager.focus_workspace.search();
+                    return true;
+                }
+		    
+                var new_workspace_key = config_file.get_string("keybind", "new_workspace");
+                if (new_workspace_key != "" && keyname == new_workspace_key) {
+                    workspace_manager.new_workspace_with_current_directory();
+                    return true;
+                }
+		    
+                var close_workspace_key = config_file.get_string("keybind", "close_workspace");
+                if (close_workspace_key != "" && keyname == close_workspace_key) {
+                    workspace_manager.tabbar.close_current_tab();
+                    return true;
+                }
+		    	
+                var next_workspace_key = config_file.get_string("keybind", "next_workspace");
+                if (next_workspace_key != "" && keyname == next_workspace_key) {
+                    workspace_manager.tabbar.select_next_tab();
+                    return true;
+                }
+		    	
+                var previous_workspace_key = config_file.get_string("keybind", "previous_workspace");
+                if (previous_workspace_key != "" && keyname == previous_workspace_key) {
+                    workspace_manager.tabbar.select_previous_tab();
+                    return true;
+                }
+		    
+                var split_vertically_key = config_file.get_string("keybind", "split_vertically");
+                if (split_vertically_key != "" && keyname == split_vertically_key) {
+                    workspace_manager.focus_workspace.split_vertical();
+                    return true;
+                }
+		    
+                var split_horizontally_key = config_file.get_string("keybind", "split_horizontally");
+                if (split_horizontally_key != "" && keyname == split_horizontally_key) {
+                    workspace_manager.focus_workspace.split_horizontal();
+                    return true;
+                }
+		    
+                var select_up_window_key = config_file.get_string("keybind", "select_up_window");
+                if (select_up_window_key != "" && keyname == select_up_window_key) {
+                    workspace_manager.focus_workspace.select_up_window();
+                    return true;
+                }
+		    
+                var select_down_window_key = config_file.get_string("keybind", "select_down_window");
+                if (select_down_window_key != "" && keyname == select_down_window_key) {
+                    workspace_manager.focus_workspace.select_down_window();
+                    return true;
+                }
+		    
+                var select_left_window_key = config_file.get_string("keybind", "select_left_window");
+                if (select_left_window_key != "" && keyname == select_left_window_key) {
+                    workspace_manager.focus_workspace.select_left_window();
+                    return true;
+                }
+		    
+                var select_right_window_key = config_file.get_string("keybind", "select_right_window");
+                if (select_right_window_key != "" && keyname == select_right_window_key) {
+                    workspace_manager.focus_workspace.select_right_window();
+                    return true;
+                }
+		    
+                var close_window_key = config_file.get_string("keybind", "close_window");
+                if (close_window_key != "" && keyname == close_window_key) {
+                    workspace_manager.focus_workspace.close_focus_term();
+                    return true;
+                }
+		    
+                var close_other_windows_key = config_file.get_string("keybind", "close_other_windows");
+                if (close_other_windows_key != "" && keyname == close_other_windows_key) {
+                    workspace_manager.focus_workspace.close_other_terms();
+                    return true;
+                }
+		    
+                var toggle_fullscreen_key = config_file.get_string("keybind", "toggle_fullscreen");
+                if (toggle_fullscreen_key != "" && keyname == toggle_fullscreen_key) {
+                    if (!quake_mode) {
+                        toggle_fullscreen();
+                    }
+                    return true;
+                }
+		    
+                if (Utils.is_command_exist("deepin-shortcut-viewer")) {
+                    var show_helper_window_key = config_file.get_string("keybind", "show_helper_window");
+                    if (show_helper_window_key != "" && keyname == show_helper_window_key) {
+                        int x, y;
+                        if (quake_mode) {
+                            Gdk.Screen screen = Gdk.Screen.get_default();
+                            int monitor = screen.get_monitor_at_window(screen.get_active_window());
+                            Gdk.Rectangle rect;
+                            screen.get_monitor_geometry(monitor, out rect);
+                        
+                            x = rect.width / 2;
+                            y = rect.height / 2;
+                        
+                            show_shortcut_viewer(x, y);
+                        } else {
+                            Gtk.Allocation window_rect;
+                            get_allocation(out window_rect);
+
+                            int win_x, win_y;
+                            get_window().get_origin(out win_x, out win_y);
+                        
+                            x = win_x + window_rect.width / 2;
+                            y = win_y + window_rect.height / 2;
+                            show_shortcut_viewer(x, y);
+                        }
+                
+                        return true;
+                    }
+                }
+            
+                var show_remote_panel_key = config_file.get_string("keybind", "show_remote_panel");
+                if (show_remote_panel_key != "" && keyname == show_remote_panel_key) {
+                    workspace_manager.focus_workspace.toggle_remote_panel(workspace_manager.focus_workspace);
+                    return true;
+                }
+		    
+                var select_all_key = config_file.get_string("keybind", "select_all");
+                if (select_all_key != "" && keyname == select_all_key) {
+                    workspace_manager.focus_workspace.toggle_select_all();
+                    return true;
+                }
+		    
+                if (keyname in ctrl_num_keys) {
+                    workspace_manager.switch_workspace_with_index(int.parse(Keymap.get_key_name(key_event.keyval)));
+                    return true;
+                }
+            
+                return false;
+            } catch (GLib.KeyFileError e) {
+                print("Main on_key_press: %s\n", e.message);
+			
+                return false;
+            }
+        }
+
+        private bool on_key_release(Gtk.Widget widget, Gdk.EventKey key_event) {
+            if (Keymap.is_no_key_press(key_event)) {
+                if (Utils.is_command_exist("deepin-shortcut-viewer")) {
+                    remove_shortcut_viewer();
+                }
+            }
+        
+            return false;
+        }
+        
+        public virtual void toggle_fullscreen() {
         }
     }
 }

@@ -443,7 +443,7 @@ namespace Widgets {
             window_widget_box.pack_start(widget, true, true, 0);
         }
 
-		public void toggle_fullscreen() {
+		public override void toggle_fullscreen() {
             if (window_is_fullscreen()) {
                 unfullscreen();
             } else {
