@@ -52,14 +52,13 @@ namespace Widgets {
         public string content;
         
         public int image_x = 12;
-        public int image_y = 4;
         
         public int text_x = 72;
         public int title_y = 5;
         public int content_y = 27;
         
         public int edit_button_x = 254;
-        public int edit_button_y = 19;
+        public int edit_button_y;
         
         public int text_width = 136;
         public int title_size = 11;
@@ -136,6 +135,8 @@ namespace Widgets {
             
             set_size_request(width, height);
             
+            edit_button_y = (height - server_edit_press_dark_surface.get_height()) / 2;
+            
             draw.connect(on_draw);
 			enter_notify_event.connect((w, e) => {
 					is_hover = true;
@@ -194,9 +195,9 @@ namespace Widgets {
             }
 
             if (is_light_theme) {
-                Draw.draw_surface(cr, server_light_surface, image_x, image_y);
+                Draw.draw_surface(cr, server_light_surface, image_x, 0, 0, height);
             } else {
-                Draw.draw_surface(cr, server_dark_surface, image_x, image_y);
+                Draw.draw_surface(cr, server_dark_surface, image_x, 0, 0, height);
             }
             
             
@@ -204,22 +205,22 @@ namespace Widgets {
                 if (is_at_edit_button_area) {
                     if (is_press) {
                         if (is_light_theme) {
-                            Draw.draw_surface(cr, server_edit_press_light_surface, edit_button_x, edit_button_y);
+                            Draw.draw_surface(cr, server_edit_press_light_surface, edit_button_x, 0, 0, height);
                         } else {
-                            Draw.draw_surface(cr, server_edit_press_dark_surface, edit_button_x, edit_button_y);
+                            Draw.draw_surface(cr, server_edit_press_dark_surface, edit_button_x, 0, 0, height);
                         }
                     } else if (is_hover) {
                         if (is_light_theme) {
-                            Draw.draw_surface(cr, server_edit_hover_light_surface, edit_button_x, edit_button_y);
+                            Draw.draw_surface(cr, server_edit_hover_light_surface, edit_button_x, 0, 0, height);
                         } else {
-                            Draw.draw_surface(cr, server_edit_hover_dark_surface, edit_button_x, edit_button_y);
+                            Draw.draw_surface(cr, server_edit_hover_dark_surface, edit_button_x, 0, 0, height);
                         }
                     }
                 } else {
                     if (is_light_theme) {
-                        Draw.draw_surface(cr, server_edit_normal_light_surface, edit_button_x, edit_button_y);
+                        Draw.draw_surface(cr, server_edit_normal_light_surface, edit_button_x, 0, 0, height);
                     } else {
-                        Draw.draw_surface(cr, server_edit_normal_dark_surface, edit_button_x, edit_button_y);
+                        Draw.draw_surface(cr, server_edit_normal_dark_surface, edit_button_x, 0, 0, height);
                     }
                     
                 }

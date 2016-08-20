@@ -67,7 +67,6 @@ namespace Widgets {
         
         private int add_button_width = 50;
         private int add_button_padding_x = 0;
-        private int add_button_padding_y = 0;
         
         private int tab_split_width = 1;
         
@@ -75,7 +74,6 @@ namespace Widgets {
         private int text_padding_min_x = 24;
         private int close_button_padding_x = 28;
         private int close_button_padding_min_x = 21;
-        private int close_button_padding_y = 4;
         private int draw_padding_y = 7;
         private int hover_x = 0;
         
@@ -496,12 +494,12 @@ namespace Widgets {
                     if (hover_x > draw_x && hover_x < draw_x + tab_width) {
                         if (hover_x > draw_x + tab_width - get_tab_close_button_padding()) {
                             if (is_button_press) {
-                                Draw.draw_surface(cr, close_press_surface, draw_x + tab_width - get_tab_close_button_padding(), draw_padding_y + close_button_padding_y);
+                                Draw.draw_surface(cr, close_press_surface, draw_x + tab_width - get_tab_close_button_padding(), 0, 0, height);
                             } else {
-                                Draw.draw_surface(cr, close_hover_surface, draw_x + tab_width - get_tab_close_button_padding(), draw_padding_y + close_button_padding_y);
+                                Draw.draw_surface(cr, close_hover_surface, draw_x + tab_width - get_tab_close_button_padding(), 0, 0, height);
                             }
                         } else {
-                            Draw.draw_surface(cr, close_normal_surface, draw_x + tab_width - get_tab_close_button_padding(), draw_padding_y + close_button_padding_y);
+                            Draw.draw_surface(cr, close_normal_surface, draw_x + tab_width - get_tab_close_button_padding(), 0, 0, height);
                         }
                     }
                 }
@@ -526,22 +524,22 @@ namespace Widgets {
             if (hover_x > draw_x + add_button_padding_x && hover_x < draw_x + add_button_padding_x + add_button_width) {
                 if (is_button_press) {
                     if (is_light_theme) {
-                        Draw.draw_surface(cr, add_press_light_surface, draw_x + add_button_padding_x, add_button_padding_y);
+                        Draw.draw_surface(cr, add_press_light_surface, draw_x + add_button_padding_x, 0, 0, height);
                     } else {
-                        Draw.draw_surface(cr, add_press_dark_surface, draw_x + add_button_padding_x, add_button_padding_y);
+                        Draw.draw_surface(cr, add_press_dark_surface, draw_x + add_button_padding_x, 0, 0, height);
                     }
                 } else if (draw_hover) {
                     if (is_light_theme) {
-                        Draw.draw_surface(cr, add_hover_light_surface, draw_x + add_button_padding_x, add_button_padding_y);
+                        Draw.draw_surface(cr, add_hover_light_surface, draw_x + add_button_padding_x, 0, 0, height);
                     } else {
-                        Draw.draw_surface(cr, add_hover_dark_surface, draw_x + add_button_padding_x, add_button_padding_y);
+                        Draw.draw_surface(cr, add_hover_dark_surface, draw_x + add_button_padding_x, 0, 0, height);
                     }
                 }
             } else {
                 if (is_light_theme) {
-                    Draw.draw_surface(cr, add_normal_light_surface, draw_x + add_button_padding_x, add_button_padding_y);
+                    Draw.draw_surface(cr, add_normal_light_surface, draw_x + add_button_padding_x, 0, 0, height);
                 } else {
-                    Draw.draw_surface(cr, add_normal_dark_surface, draw_x + add_button_padding_x, add_button_padding_y);
+                    Draw.draw_surface(cr, add_normal_dark_surface, draw_x + add_button_padding_x, 0, 0, height);
                 }
             }
             

@@ -46,7 +46,6 @@ namespace Widgets {
         public string button_text = "add server";
         
         public int image_x = 12;
-        public int image_y = 4;
         public int text_x = 72;
         public int text_size = 11;
 		
@@ -132,9 +131,9 @@ namespace Widgets {
             
             if (is_press) {
                 if (is_light_theme) {
-                    Draw.draw_surface(cr, press_light_surface, image_x, image_y);
+                    Draw.draw_surface(cr, press_light_surface, image_x, 0, 0, height);
                 } else {
-                    Draw.draw_surface(cr, press_dark_surface, image_x, image_y);
+                    Draw.draw_surface(cr, press_dark_surface, image_x, 0, 0, height);
                 }
                 if (button_text != null) {
                     Utils.set_context_color(cr, text_press_color);
@@ -142,9 +141,9 @@ namespace Widgets {
                 }
             } else if (is_hover) {
                 if (is_light_theme) {
-                    Draw.draw_surface(cr, hover_light_surface, image_x, image_y);
+                    Draw.draw_surface(cr, hover_light_surface, image_x, 0, 0, height);
                 } else {
-                    Draw.draw_surface(cr, hover_dark_surface, image_x, image_y);
+                    Draw.draw_surface(cr, hover_dark_surface, image_x, 0, 0, height);
                 }
                 if (button_text != null) {
                     Utils.set_context_color(cr, text_hover_color);
@@ -152,9 +151,9 @@ namespace Widgets {
                 }
             } else {
                 if (is_light_theme) {
-                    Draw.draw_surface(cr, normal_light_surface, image_x, image_y);                
+                    Draw.draw_surface(cr, normal_light_surface, image_x, 0, 0, height);                
                 } else {
-                    Draw.draw_surface(cr, normal_dark_surface, image_x, image_y);                
+                    Draw.draw_surface(cr, normal_dark_surface, image_x, 0, 0, height);                
                 }
                 if (button_text != null) {
                     Utils.set_context_color(cr, text_normal_color);

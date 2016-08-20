@@ -24,10 +24,10 @@
 using Cairo;
 
 namespace Draw {
-    public void draw_surface(Cairo.Context cr, ImageSurface surface, int x = 0, int y = 0, double alpha = 1.0) {
+    public void draw_surface(Cairo.Context cr, ImageSurface surface, int x = 0, int y = 0, int width=0, int height=0) {
         if (surface != null) {
-            cr.set_source_surface(surface, x, y);
-            cr.paint_with_alpha(alpha);
+            cr.set_source_surface(surface, x + int.max(0, (width - surface.get_width()) / 2), y + int.max(0, (height - surface.get_height()) / 2));
+            cr.paint_with_alpha(1.0);
         }
     }
 

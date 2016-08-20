@@ -48,10 +48,8 @@ namespace Widgets {
         public int server_number;
         
         public int image_x = 12;
-        public int image_y = 4;
 
         public int arrow_x = Constant.SLIDER_WIDTH - 22;
-        public int arrow_y = 23;
         
         public int text_x = 72;
         public int title_y = 5;
@@ -165,11 +163,11 @@ namespace Widgets {
             }
 
             if (is_light_theme) {
-                Draw.draw_surface(cr, server_group_light_surface, image_x, image_y);
-                Draw.draw_surface(cr, arrow_light_surface, arrow_x, arrow_y);
+                Draw.draw_surface(cr, server_group_light_surface, image_x, 0, 0, height);
+                Draw.draw_surface(cr, arrow_light_surface, arrow_x, 0, 0, height);
             } else {
-                Draw.draw_surface(cr, server_group_dark_surface, image_x, image_y);
-                Draw.draw_surface(cr, arrow_dark_surface, arrow_x, arrow_y);
+                Draw.draw_surface(cr, server_group_dark_surface, image_x, 0, 0, height);
+                Draw.draw_surface(cr, arrow_dark_surface, arrow_x, 0, 0, height);
             }
             
             
