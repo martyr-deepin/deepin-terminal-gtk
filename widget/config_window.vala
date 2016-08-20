@@ -234,6 +234,18 @@ namespace Widgets {
             key_release_event.connect((w, e) => {
                     return on_key_release(w, e);
                 });
+            
+            focus_out_event.connect((w) => {
+                    remove_shortcut_viewer();
+                        
+                    return false;
+                });
+            
+            configure_event.connect((w) => {
+                    workspace_manager.focus_workspace.remove_remote_panel();
+                        
+                    return false;
+                });
         }
         
         public void quit() {

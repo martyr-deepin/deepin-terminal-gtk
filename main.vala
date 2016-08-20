@@ -154,11 +154,6 @@ public class Application : Object {
                     });
             
                 quake_window.init_event_handler(workspace_manager);
-                quake_window.focus_out_event.connect((w) => {
-                        quake_window.remove_shortcut_viewer();
-                        
-                        return false;
-                    });
                 
                 box.pack_start(workspace_manager, true, true, 0);
                 Widgets.EventBox event_box = new Widgets.EventBox();
@@ -205,16 +200,6 @@ public class Application : Object {
                 window.window_state_event.connect((w) => {
                         appbar.update_max_button();
                     
-                        return false;
-                    });
-                window.focus_out_event.connect((w) => {
-                        window.remove_shortcut_viewer();
-                        
-                        return false;
-                    });
-                window.configure_event.connect((w) => {
-                        workspace_manager.focus_workspace.remove_remote_panel();
-                        
                         return false;
                     });
                 
