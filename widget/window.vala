@@ -696,5 +696,41 @@ namespace Widgets {
                     return false;
                 });
         }
+
+        public void show_window(WorkspaceManager workspace_manager, Tabbar tabbar) {
+            Appbar appbar = new Appbar(this, tabbar, workspace_manager);
+                
+            appbar.set_valign(Gtk.Align.START);
+            appbar.close_window.connect((w) => {
+                    quit();
+                });
+            appbar.quit_fullscreen.connect((w) => {
+                    toggle_fullscreen();
+                });
+            
+            init(workspace_manager, tabbar);
+            init_fullscreen_handler(appbar);
+                
+            window_state_event.connect((w) => {
+                    appbar.update_max_button();
+                    
+                    return false;
+                });
+                
+            if (!have_terminal_at_same_workspace()) {
+                set_position(Gtk.WindowPosition.CENTER);
+            }
+                
+            var overlay = new Gtk.Overlay();
+            top_box.pack_start(fullscreen_box, false, false, 0);
+            box.pack_start(top_box, false, false, 0);
+            box.pack_start(workspace_manager, true, true, 0);
+                
+            overlay.add(box);
+            overlay.add_overlay(appbar);
+			
+            add_widget(overlay);
+            show_all();
+        }
     }
 }

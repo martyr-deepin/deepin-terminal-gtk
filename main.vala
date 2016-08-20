@@ -127,78 +127,13 @@ public class Application : Object {
                     workspace_manager.new_workspace_with_current_directory();
                 });
             
-            Box box = new Box(Gtk.Orientation.VERTICAL, 0);
-            Box top_box = new Box(Gtk.Orientation.HORIZONTAL, 0);
-            Gdk.RGBA background_color = Gdk.RGBA();
             
             if (quake_mode) {
                 quake_window = new Widgets.QuakeWindow();
-                quake_window.init(workspace_manager, tabbar);
-                // First focus terminal after show quake terminal.
-                // Sometimes, some popup window (like wine program's popup notify window) will grab focus,
-                // so call window.present to make terminal get focus.
-                quake_window.show.connect((t) => {
-                        quake_window.present();
-                    });
-                
-                top_box.draw.connect((w, cr) => {
-                        Gtk.Allocation rect;
-                        w.get_allocation(out rect);
-                        
-                        try {
-                            background_color.parse(quake_window.config.config_file.get_string("theme", "background"));
-                            cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, quake_window.config.config_file.get_double("general", "opacity"));
-                            Draw.draw_rectangle(cr, 0, 0, rect.width, Constant.TITLEBAR_HEIGHT);
-                        } catch (Error e) {
-                            print("Main quake mode: %s\n", e.message);
-                        }
-                    
-                        Utils.propagate_draw(top_box, cr);
-                        
-                        return true;
-                    });
-                
-                top_box.pack_start(tabbar, true, true, 0);
-                box.pack_start(workspace_manager, true, true, 0);
-                box.pack_start(top_box, false, false, 0);
-                
-                quake_window.add_widget(box);
-                quake_window.show_all();
+                quake_window.show_window(workspace_manager, tabbar);
             } else {
                 window = new Widgets.Window();
-                Appbar appbar = new Appbar(window, tabbar, workspace_manager);
-                
-                appbar.set_valign(Gtk.Align.START);
-                appbar.close_window.connect((w) => {
-                        window.quit();
-                    });
-                appbar.quit_fullscreen.connect((w) => {
-                        window.toggle_fullscreen();
-                    });
-            
-                window.init(workspace_manager, tabbar);
-                window.init_fullscreen_handler(appbar);
-                
-                window.window_state_event.connect((w) => {
-                        appbar.update_max_button();
-                    
-                        return false;
-                    });
-                
-                if (!window.have_terminal_at_same_workspace()) {
-                    window.set_position(Gtk.WindowPosition.CENTER);
-                }
-                
-                var overlay = new Gtk.Overlay();
-                top_box.pack_start(window.fullscreen_box, false, false, 0);
-                box.pack_start(top_box, false, false, 0);
-                box.pack_start(workspace_manager, true, true, 0);
-                
-                overlay.add(box);
-                overlay.add_overlay(appbar);
-			
-                window.add_widget(overlay);
-                window.show_all();
+                window.show_window(workspace_manager, tabbar);
             }
         }
     }

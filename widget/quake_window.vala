@@ -325,5 +325,41 @@ namespace Widgets {
             Draw.draw_rectangle(cr, x + active_tab_underline_x, y + height - Constant.TITLEBAR_HEIGHT - 1, active_tab_underline_width, Constant.ACTIVE_TAB_UNDERLINE_HEIGHT);
             cr.restore();
         }
+
+        public void show_window(WorkspaceManager workspace_manager, Tabbar tabbar) {
+            Gdk.RGBA background_color = Gdk.RGBA();
+            
+            init(workspace_manager, tabbar);
+            // First focus terminal after show quake terminal.
+            // Sometimes, some popup window (like wine program's popup notify window) will grab focus,
+            // so call window.present to make terminal get focus.
+            show.connect((t) => {
+                    present();
+                });
+                
+            top_box.draw.connect((w, cr) => {
+                    Gtk.Allocation rect;
+                    w.get_allocation(out rect);
+                        
+                    try {
+                        background_color.parse(config.config_file.get_string("theme", "background"));
+                        cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, config.config_file.get_double("general", "opacity"));
+                        Draw.draw_rectangle(cr, 0, 0, rect.width, Constant.TITLEBAR_HEIGHT);
+                    } catch (Error e) {
+                        print("Main quake mode: %s\n", e.message);
+                    }
+                    
+                    Utils.propagate_draw(top_box, cr);
+                        
+                    return true;
+                });
+                
+            top_box.pack_start(tabbar, true, true, 0);
+            box.pack_start(workspace_manager, true, true, 0);
+            box.pack_start(top_box, false, false, 0);
+                
+            add_widget(box);
+            show_all();
+        }
     }
 }

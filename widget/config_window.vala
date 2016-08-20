@@ -28,6 +28,8 @@ namespace Widgets {
     public class ConfigWindow : Gtk.Window {
         public Config.Config config;
     
+        public Gtk.Box box;
+        public Gtk.Box top_box;
         public Gtk.Box window_frame_box;
         public Gtk.Box window_widget_box;
             
@@ -216,6 +218,8 @@ namespace Widgets {
         
         public void init(WorkspaceManager manager, Tabbar tabbar) {
             workspace_manager = manager;
+            box = new Box(Gtk.Orientation.VERTICAL, 0);
+            top_box = new Box(Gtk.Orientation.HORIZONTAL, 0);
             
             delete_event.connect((w) => {
                     quit();
