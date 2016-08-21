@@ -108,7 +108,7 @@ namespace Config {
             
             config_file.set_string("keybind", "toggle_fullscreen", "F11");
             config_file.set_string("keybind", "show_helper_window", "Ctrl + Shift + ?");
-            config_file.set_string("keybind", "show_remote_panel", "Ctrl + 9");
+            config_file.set_string("keybind", "show_remote_panel", "Ctrl + /");
             
             config_file.set_string("advanced", "cursor_shape", "block");
             config_file.set_boolean("advanced", "cursor_blink_mode", true);
