@@ -263,7 +263,7 @@ namespace Widgets {
                 print("QuakeWindow draw_window_above: %s\n", e.message);
             }
 
-            draw_titlebar_underline(cr, x, y, width, -1);
+            draw_titlebar_underline(cr, x, y + height - Constant.TITLEBAR_HEIGHT - 1, width, -1);
             draw_active_tab_underline(cr, x + active_tab_underline_x, y + height - Constant.TITLEBAR_HEIGHT - 1);
         }
 
