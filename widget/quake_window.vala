@@ -137,16 +137,8 @@ namespace Widgets {
                 });
             
             button_press_event.connect((w, e) => {
-                    int window_x, window_y;
-                    get_window().get_origin(out window_x, out window_y);
-                        
-                    int width, height;
-                    get_size(out width, out height);
-
-                    var bottom_side_start = window_y + height - window_frame_margin_bottom - Constant.RESPONSE_RADIUS;
-                    var bottom_side_end = window_y + height - window_frame_margin_bottom;
-                    
-                    if (e.y_root > bottom_side_start && e.y_root < bottom_side_end) {
+                    var cursor_type = get_cursor_type(e.y_root);
+                    if (cursor_type != null) {
                         e.device.get_position(null, out press_x, out press_y);
                         
                         GLib.Timeout.add(10, () => {
@@ -167,23 +159,14 @@ namespace Widgets {
                 });
             
             motion_notify_event.connect((w, e) => {
+                    var cursor_type = get_cursor_type(e.y_root);
                     var display = Gdk.Display.get_default();
-                        
-                    int window_x, window_y;
-                    get_window().get_origin(out window_x, out window_y);
-                        
-                    int width, height;
-                    get_size(out width, out height);
-
-                    var bottom_side_start = window_y + height - window_frame_margin_bottom - Constant.RESPONSE_RADIUS;
-                    var bottom_side_end = window_y + height - window_frame_margin_bottom;
-                    
-                    if (e.y_root > bottom_side_start && e.y_root < bottom_side_end) {
-                        get_window().set_cursor(new Gdk.Cursor.for_display(display, Gdk.CursorType.BOTTOM_SIDE));
+                    if (cursor_type != null) {
+                        get_window().set_cursor(new Gdk.Cursor.for_display(display, cursor_type));
                     } else {
                         get_window().set_cursor(null);
                     }
-                    
+                        
                     return false;
                 });
             
@@ -344,6 +327,23 @@ namespace Widgets {
                 
             add_widget(box);
             show_all();
+        }
+        
+        public Gdk.CursorType? get_cursor_type(double y) {
+            int window_x, window_y;
+            get_window().get_origin(out window_x, out window_y);
+                        
+            int width, height;
+            get_size(out width, out height);
+
+            var bottom_side_start = window_y + height - window_frame_margin_bottom - Constant.RESPONSE_RADIUS;
+            var bottom_side_end = window_y + height - window_frame_margin_bottom;
+                    
+            if (y > bottom_side_start && y < bottom_side_end) {
+                return Gdk.CursorType.BOTTOM_SIDE;
+            } else {
+                return null;
+            }
         }
     }
 }
