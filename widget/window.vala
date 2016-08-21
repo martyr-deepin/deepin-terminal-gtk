@@ -55,9 +55,6 @@ namespace Widgets {
         public Gdk.RGBA top_line_dark_color;
         public Gdk.RGBA top_line_light_color;
 
-        public Gdk.RGBA title_line_dark_color;
-        public Gdk.RGBA title_line_light_color;
-        
         public bool draw_tabbar_line = true;
         
         public Window() {
@@ -75,8 +72,6 @@ namespace Widgets {
             
             top_line_dark_color = Utils.hex_to_rgba("#000000", 0.2);
             top_line_light_color = Utils.hex_to_rgba("#ffffff", 0.2);
-            title_line_dark_color = Utils.hex_to_rgba("#000000", 0.3);
-            title_line_light_color = Utils.hex_to_rgba("#000000", 0.1);
             
             window_frame_box.margin_top = window_frame_margin_top;
             window_frame_box.margin_bottom = window_frame_margin_bottom;
@@ -460,16 +455,7 @@ namespace Widgets {
             try {
                 if (window_is_fullscreen()) {
                     if (draw_tabbar_line) {
-                        // Draw line below at titlebar.
-                        cr.save();
-                        if (is_light_theme) {
-                            Utils.set_context_color(cr, title_line_light_color);
-                        } else {
-                            Utils.set_context_color(cr, title_line_dark_color);
-                        }
-                        // cr.set_source_rgba(1, 0, 0, 1);
-                        Draw.draw_rectangle(cr, x, y + Constant.TITLEBAR_HEIGHT + 1, width, 1);
-                        cr.restore();
+                        draw_titlebar_underline(cr, x, y, width, 1);
 						
                         // Draw active tab underline *above* titlebar underline.
                         cr.save();
@@ -478,15 +464,7 @@ namespace Widgets {
                         cr.restore();
                     }
                 } else if (window_is_max() || window_is_tiled()) {
-                    // Draw line below at titlebar.
-                    cr.save();
-                    if (is_light_theme) {
-                        Utils.set_context_color(cr, title_line_light_color);
-                    } else {
-                        Utils.set_context_color(cr, title_line_dark_color);
-                    }
-                    Draw.draw_rectangle(cr, x + 1, y + Constant.TITLEBAR_HEIGHT + 1, width - 2, 1);
-                    cr.restore();
+                    draw_titlebar_underline(cr, x + 1, y, width - 2, 1);
 						
                     // Draw active tab underline *above* titlebar underline.
                     cr.save();
@@ -525,15 +503,7 @@ namespace Widgets {
                     // Right.
                     Draw.draw_rectangle(cr, x + width - 2, y + 3, 1, Constant.TITLEBAR_HEIGHT - 1);
                 
-                    // Draw line below at titlebar.
-                    cr.save();
-                    if (is_light_theme) {
-                        Utils.set_context_color(cr, title_line_light_color);
-                    } else {
-                        Utils.set_context_color(cr, title_line_dark_color);
-                    }
-                    Draw.draw_rectangle(cr, x + 1, y + Constant.TITLEBAR_HEIGHT + 1, width - 2, 1);
-                    cr.restore();
+                    draw_titlebar_underline(cr, x + 1, y, width - 2, 1);
 						
                     // Draw active tab underline *above* titlebar underline.
                     cr.save();

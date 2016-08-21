@@ -36,6 +36,9 @@ namespace Widgets {
         public int active_tab_underline_x;
 		public int active_tab_underline_width;
         
+        public Gdk.RGBA title_line_dark_color;
+        public Gdk.RGBA title_line_light_color;
+        
         public bool quake_mode = false;
         
         public int cache_width = 0;
@@ -48,6 +51,8 @@ namespace Widgets {
         public ConfigWindow() {
             load_config();
             
+            title_line_dark_color = Utils.hex_to_rgba("#000000", 0.3);
+            title_line_light_color = Utils.hex_to_rgba("#000000", 0.1);
         }
             
         public void load_config() {
@@ -443,6 +448,19 @@ namespace Widgets {
             }
 
             return is_light_theme;
+        }
+        
+        public void draw_titlebar_underline(Cairo.Context cr, int x, int y, int width, int offset) {
+            // Draw line below at titlebar.
+            cr.save();
+            if (is_light_theme()) {
+                Utils.set_context_color(cr, title_line_light_color);
+            } else {
+                Utils.set_context_color(cr, title_line_dark_color);
+            }
+            // cr.set_source_rgba(1, 0, 0, 1);
+            Draw.draw_rectangle(cr, x, y + Constant.TITLEBAR_HEIGHT + offset, width, 1);
+            cr.restore();
         }
         
         public virtual void toggle_fullscreen() {

@@ -35,9 +35,6 @@ namespace Widgets {
         public int press_x;
         public int press_y;
         
-        public Gdk.RGBA title_line_dark_color;
-        public Gdk.RGBA title_line_light_color;
-        
         public QuakeWindow() {
             quake_mode = true;
             
@@ -51,9 +48,6 @@ namespace Widgets {
             
             set_decorated(false);
             set_keep_above(true);
-            
-            title_line_dark_color = Utils.hex_to_rgba("#000000", 0.3);
-            title_line_light_color = Utils.hex_to_rgba("#000000", 0.1);
             
             try {
                 var config_height = config.config_file.get_double("advanced", "quake_window_height");
@@ -267,24 +261,14 @@ namespace Widgets {
             Gdk.RGBA frame_color = Gdk.RGBA();
             Gdk.RGBA active_tab_color = Gdk.RGBA();
             
-            bool is_light_theme = is_light_theme();
-            
-           try {
+            try {
                 frame_color = Utils.hex_to_rgba(config.config_file.get_string("theme", "background"));
                 active_tab_color = Utils.hex_to_rgba(config.config_file.get_string("theme", "tab"));
             } catch (GLib.KeyFileError e) {
                 print("QuakeWindow draw_window_above: %s\n", e.message);
             }
 
-            // Draw line below at titlebar.
-            cr.save();
-            if (is_light_theme) {
-                Utils.set_context_color(cr, title_line_light_color);
-            } else {
-                Utils.set_context_color(cr, title_line_dark_color);
-            }
-            Draw.draw_rectangle(cr, x, y + height - Constant.TITLEBAR_HEIGHT - 1, width, 1);
-            cr.restore();
+            draw_titlebar_underline(cr, x, y, width, -1);
 						
             // Draw active tab underline *above* titlebar underline.
             cr.save();
