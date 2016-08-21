@@ -37,6 +37,9 @@ namespace Widgets {
 		public int active_tab_underline_width;
         
         public bool quake_mode = false;
+        
+        public int cache_width = 0;
+        public int cache_height = 0;
 		
         private bool is_show_shortcut_viewer = false;
         
@@ -246,7 +249,15 @@ namespace Widgets {
                 });
             
             configure_event.connect((w) => {
-                    workspace_manager.focus_workspace.remove_remote_panel();
+                    int width, height;
+                    get_size(out width, out height);
+
+                    if (cache_width != width || cache_height != height) {
+                        workspace_manager.focus_workspace.remove_remote_panel();
+                        
+                        cache_width = width;
+                        cache_height = height;
+                    }
                         
                     return false;
                 });
