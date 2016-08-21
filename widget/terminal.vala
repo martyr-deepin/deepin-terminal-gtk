@@ -54,7 +54,27 @@ namespace Widgets {
         public string? uri_at_right_press;
         public uint launch_idle_id;
 
-		public Term(bool first_term, string[]? commands, string? work_directory, WorkspaceManager manager) {
+        public static string USERCHARS = "-[:alnum:]";
+        public static string USERCHARS_CLASS = "[" + USERCHARS + "]";
+        public static string PASSCHARS_CLASS = "[-[:alnum:]\\Q,?;.:/!%$^*&~\"#'\\E]";
+        public static string HOSTCHARS_CLASS = "[-[:alnum:]]";
+        public static string HOST = HOSTCHARS_CLASS + "+(\\." + HOSTCHARS_CLASS + "+)*";
+        public static string PORT = "(?:\\:[[:digit:]]{1,5})?";
+        public static string PATHCHARS_CLASS = "[-[:alnum:]\\Q_$.+!*,;:@&=?/~#%\\E]";
+        public static string PATHTERM_CLASS = "[^\\Q]'.}>) \t\r\n,\"\\E]";
+
+        public static string SCHEME = """(?:news:|telnet:|nntp:|file:\/|https?:|ftps?:|sftp:|webcal:|irc:|sftp:|ldaps?:|nfs:|smb:|rsync:|ssh:|rlogin:|telnet:|git:|git\+ssh:|bzr:|bzr\+ssh:|svn:|svn\+ssh:|hg:|mailto:|magnet:)""";
+        public static string USERPASS = USERCHARS_CLASS + "+(?:" + PASSCHARS_CLASS + "+)?";
+        public static string URLPATH = "(?:(/" + PATHCHARS_CLASS + "+(?:[(]" + PATHCHARS_CLASS + "*[)])*" + PATHCHARS_CLASS + "*)*" + PATHTERM_CLASS + ")?";
+        public static string[] REGEX_STRINGS = {
+            SCHEME + "//(?:" + USERPASS + "\\@)?" + HOST + PORT + URLPATH,
+            "(?:www|ftp)" + HOSTCHARS_CLASS + "*\\." + HOST + PORT + URLPATH,
+            "(?:callto:|h323:|sip:)" + USERCHARS_CLASS + "[" + USERCHARS + ".]*(?:" + PORT + "/[a-z0-9]+)?\\@" + HOST,
+            "(?:mailto:)?" + USERCHARS_CLASS + "[" + USERCHARS + ".]*\\@" + HOSTCHARS_CLASS + "+\\." + HOST,
+            "(?:news:|man:|info:)[[:alnum:]\\Q^_{|}~!\"#$%&'()*+,./;:=?`\\E]+"
+        };
+        
+        public Term(bool first_term, string[]? commands, string? work_directory, WorkspaceManager manager) {
             Intl.bindtextdomain(GETTEXT_PACKAGE, "./locale");
             
 			workspace_manager = manager;
@@ -158,7 +178,7 @@ namespace Widgets {
             this.drag_data_received.connect(drag_received);
 
             /* Make Links Clickable */
-            this.clickable(Constant.REGEX_STRINGS);
+            this.clickable(REGEX_STRINGS);
             
             // NOTE: if terminal start with option '-e', use functional 'launch_command' and don't use function 'launch_shell'.
             // terminal will crash if we launch_command after launch_shell.
@@ -181,8 +201,11 @@ namespace Widgets {
             bool in_quake_window = this.get_toplevel().get_type().is_a(typeof(Widgets.QuakeWindow));
                             
             var menu_content = new List<Menu.MenuItem>();
-            if (term.get_has_selection() || uri_at_right_press != null) {
+            print("%s\n", uri_at_right_press.to_string());
+            if (term.get_has_selection()) {
                 menu_content.append(new Menu.MenuItem("copy", _("Copy")));
+            } else if (uri_at_right_press != null) {
+                menu_content.append(new Menu.MenuItem("copy", _("Copy link")));
             }
             menu_content.append(new Menu.MenuItem("paste", _("Paste")));
             menu_content.append(new Menu.MenuItem("", ""));

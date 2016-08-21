@@ -98,6 +98,10 @@ msgstr "命令"
 msgid "Copy"
 msgstr "拷贝"
 
+#: ../widget/terminal.vala:207
+msgid "Copy link"
+msgstr "拷贝链接"
+
 #: ../widget/preference_slidebar.vala:74 ../widget/preference.vala:319
 msgid "Cursor"
 msgstr "光标"
