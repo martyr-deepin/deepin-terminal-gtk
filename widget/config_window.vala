@@ -423,6 +423,17 @@ namespace Widgets {
             return false;
         }
         
+        public bool is_light_theme() {
+            bool is_light_theme = false;
+            try {
+                is_light_theme = config.config_file.get_string("theme", "style") == "light";
+            } catch (Error e) {
+                print("ConfigWindow is_light_theme: %s\n", e.message);
+            }
+
+            return is_light_theme;
+        }
+        
         public virtual void toggle_fullscreen() {
         }
     }

@@ -38,6 +38,8 @@ namespace Widgets {
         public Gtk.Box window_frame_box;
         public Gtk.Box window_widget_box;
         
+        public Widgets.ConfigWindow transient_window;
+        
         public Dialog() {
             set_app_paintable(true); // set_app_paintable is neccessary step to make window transparent.
             Gdk.Screen screen = Gdk.Screen.get_default();
@@ -125,7 +127,9 @@ namespace Widgets {
                 });
         }
         
-        public void transient_for_window(Gtk.Window window) {
+        public void transient_for_window(Widgets.ConfigWindow window) {
+            transient_window = window;
+            
             set_default_geometry(window_init_width, window_init_height);
 
             set_transient_for(window);

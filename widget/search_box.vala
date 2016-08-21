@@ -75,12 +75,7 @@ namespace Widgets {
         }
         
         public void adjust_css_with_theme(Widgets.ConfigWindow config_window) {
-            bool is_light_theme = false;
-            try {
-                is_light_theme = config_window.config.config_file.get_string("theme", "style") == "light";
-            } catch (Error e) {
-                print("SearchBox adjust_css_with_theme: %s\n", e.message);
-            }
+            bool is_light_theme = config_window.is_light_theme();
                          
             get_style_context().remove_class("search_light_box");
             get_style_context().remove_class("search_dark_box");

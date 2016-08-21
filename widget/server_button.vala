@@ -159,14 +159,8 @@ namespace Widgets {
         
         private bool on_draw(Gtk.Widget widget, Cairo.Context cr) {
             
-            bool is_light_theme = false;
-            try {
-                var config = ((Widgets.ConfigWindow) get_toplevel()).config;
-                is_light_theme = config.config_file.get_string("theme", "style") == "light";
-            } catch (Error e) {
-                print("SearchButton: %s\n", e.message);
-            }
-
+            bool is_light_theme = ((Widgets.ConfigWindow) get_toplevel()).is_light_theme();
+            
             if (is_light_theme) {
                 Draw.draw_surface(cr, server_light_surface, image_x, 0, 0, height);
             } else {

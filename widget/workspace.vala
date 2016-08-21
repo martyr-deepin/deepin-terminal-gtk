@@ -104,7 +104,7 @@ namespace Widgets {
         public void close_focus_term() {
             Term focus_term = get_focus_term(this);
             if (focus_term.has_foreground_process()) {
-                ConfirmDialog dialog = Widgets.create_running_confirm_dialog((Gtk.Window) focus_term.get_toplevel());
+                ConfirmDialog dialog = Widgets.create_running_confirm_dialog((Widgets.ConfigWindow) focus_term.get_toplevel());
                 dialog.confirm.connect((d) => {
                         close_term(focus_term);
                     });
@@ -133,7 +133,7 @@ namespace Widgets {
 			}
 			
 			if (has_active_process) {
-                ConfirmDialog dialog = Widgets.create_running_confirm_dialog((Gtk.Window) focus_term.get_toplevel());
+                ConfirmDialog dialog = Widgets.create_running_confirm_dialog((Widgets.ConfigWindow) focus_term.get_toplevel());
 				dialog.confirm.connect((d) => {
 						close_term_except(focus_term);
 					});

@@ -88,7 +88,7 @@ namespace Widgets {
                 show_all();
             } else {
                 ConfirmDialog dialog = new ConfirmDialog("Haven't space to add tab", "Please remove unused tab first", "Cancel", "OK");
-                dialog.transient_for_window((Gtk.Window) (this.get_toplevel()));
+                dialog.transient_for_window((Widgets.ConfigWindow) (this.get_toplevel()));
             }
         }
         

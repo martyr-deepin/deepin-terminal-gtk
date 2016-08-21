@@ -230,14 +230,14 @@ namespace Widgets {
 					break;
 			    case "about":
                     var dialog = new AboutDialog(focus_widget);
-                    dialog.transient_for_window((Gtk.Window) this.get_toplevel());
+                    dialog.transient_for_window((Widgets.ConfigWindow) this.get_toplevel());
 			    	break;
 				case "exit":
                     window.quit();
 					break;
                 case "preference":
-                    var preference = new Widgets.Preference((Gtk.Window) this.get_toplevel(), ((Gtk.Window) this.get_toplevel()).get_focus());
-                    preference.transient_for_window((Gtk.Window) this.get_toplevel());
+                    var preference = new Widgets.Preference((Widgets.ConfigWindow) this.get_toplevel(), ((Gtk.Window) this.get_toplevel()).get_focus());
+                    preference.transient_for_window((Widgets.ConfigWindow) this.get_toplevel());
                     break;
             }
 		}        

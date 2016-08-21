@@ -112,13 +112,8 @@ namespace Widgets {
         }
 		
 		private bool on_draw(Gtk.Widget widget, Cairo.Context cr) {
-            bool is_light_theme = false;
-            try {
-                is_light_theme = ((Widgets.ConfigWindow) get_toplevel()).config.config_file.get_string("theme", "style") == "light";
-            } catch (Error e) {
-                print("RemotePanel on_draw: %s\n", e.message);
-            }
-                         
+            bool is_light_theme = ((Widgets.ConfigWindow) get_toplevel()).is_light_theme();
+            
             Gtk.Allocation rect;
             widget.get_allocation(out rect);
 			
@@ -670,12 +665,7 @@ namespace Widgets {
         }
         
         public Gtk.Box create_split_line() {
-            bool is_light_theme = false;
-            try {
-                is_light_theme = parent_window.config.config_file.get_string("theme", "style") == "light";
-            } catch (Error e) {
-                print("RemogePanel create_split_line: %s\n", e.message);
-            }
+            bool is_light_theme = parent_window.is_light_theme();
                          
             var box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             box.margin_left = split_line_margin_left;

@@ -388,13 +388,7 @@ namespace Widgets {
         public void update_style() {
             clean_style();
             
-            bool is_light_theme = false;
-            try {
-                is_light_theme = config.config_file.get_string("theme", "style") == "light";
-            } catch (Error e) {
-                print("Window update_style: %s\n", e.message);
-            }
-            
+            bool is_light_theme = is_light_theme();
             
             if (is_active) {
                 if (!window_is_max() && !window_is_fullscreen() && !window_is_tiled()) {
@@ -525,12 +519,7 @@ namespace Widgets {
             Gdk.RGBA frame_color = Gdk.RGBA();
             Gdk.RGBA active_tab_color = Gdk.RGBA();
             
-            bool is_light_theme = false;
-            try {
-                is_light_theme = config.config_file.get_string("theme", "style") == "light";
-            } catch (Error e) {
-                print("ImageButton on_draw: %s\n", e.message);
-            }
+            bool is_light_theme = is_light_theme();
             
             try {
                 frame_color = Utils.hex_to_rgba(config.config_file.get_string("theme", "background"));

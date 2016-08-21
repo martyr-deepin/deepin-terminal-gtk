@@ -131,7 +131,7 @@ namespace Widgets {
 		public ArrayList<string> font_names;
 		public ArrayList<string> window_state_list;
 
-        public Preference(Gtk.Window window, Gtk.Widget widget) {
+        public Preference(Widgets.ConfigWindow window, Gtk.Widget widget) {
             window_init_width = 720;
             window_init_height = 670;
         
@@ -198,7 +198,7 @@ namespace Widgets {
 			font_size_spinbutton = create_spinbutton(Constant.FONT_MIN_SIZE, Constant.FONT_MAX_SIZE, 1);
 			scroll_line_spinbutton = create_spinbutton(0, Constant.MAX_SCROLL_LINES, 1);
 			
-            parent_window = (Widgets.ConfigWindow) window;
+            parent_window = window;
             
             focus_widget = widget;
             

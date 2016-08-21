@@ -110,12 +110,11 @@ namespace Widgets {
         
         private bool on_draw(Gtk.Widget widget, Cairo.Context cr) {
             bool is_light_theme = false;
-            if (is_theme_button) {
-                try {
-                    is_light_theme = ((Widgets.ConfigWindow) get_toplevel()).config.config_file.get_string("theme", "style") == "light";
-                } catch (Error e) {
-                    print("ImageButton on_draw: %s\n", e.message);
-                }
+            var top_level = get_toplevel();
+            if (top_level.get_type().is_a(typeof(Widgets.Dialog))) {
+                is_light_theme = ((Widgets.Dialog) top_level).transient_window.is_light_theme();
+            } else {
+                is_light_theme = ((Widgets.ConfigWindow) get_toplevel()).is_light_theme();
             }
             
             if (is_hover) {

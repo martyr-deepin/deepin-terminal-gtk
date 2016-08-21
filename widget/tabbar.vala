@@ -359,14 +359,8 @@ namespace Widgets {
             Gtk.Allocation alloc;
             widget.get_allocation(out alloc);
             
-            bool is_light_theme = false;
-            try {
-                var config = ((Widgets.ConfigWindow) get_toplevel()).config;
-                is_light_theme = config.config_file.get_string("theme", "style") == "light";
-            } catch (Error e) {
-                print("Tabbar on_draw: %s\n", e.message);
-            }
-
+            bool is_light_theme = ((Widgets.ConfigWindow) get_toplevel()).is_light_theme();
+            
             // Draw tab splitter.
             int draw_x = 0;
             int counter = 0;
