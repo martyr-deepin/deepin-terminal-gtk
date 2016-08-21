@@ -29,7 +29,6 @@ main: ./project_path.c \
       ./widget/cursor_toggle_button.vala \
       ./widget/dialog.vala \
       ./widget/dialog_button.vala \
-      ./widget/event_box.vala \
       ./widget/window.vala \
       ./widget/window_event_area.vala \
       ./widget/config_window.vala \
@@ -88,7 +87,6 @@ main: ./project_path.c \
     ./widget/cursor_toggle_button.vala \
     ./widget/dialog.vala \
     ./widget/dialog_button.vala \
-    ./widget/event_box.vala \
     ./widget/window.vala \
     ./widget/window_event_area.vala \
     ./widget/config_window.vala \
