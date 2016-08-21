@@ -86,6 +86,8 @@ namespace Widgets {
         public signal void delete_server(string address, string username);
         
         public RemoteServerDialog(Widgets.ConfigWindow window, Gtk.Widget widget, string? info=null, KeyFile? config=null) {
+            Intl.bindtextdomain(GETTEXT_PACKAGE, "./locale");
+            
             window_init_width = 480;
             window_init_height = 360;
             
@@ -119,9 +121,9 @@ namespace Widgets {
                 top_box.pack_start(title_label, true, true, 0);
                                   
                 if (server_info != null) {
-                    title_label.set_text("Edit server");
+                    title_label.set_text(_("Edit server"));
                 } else {
-                    title_label.set_text("Add server");
+                    title_label.set_text(_("Add server"));
                 }
                 
                 var close_button = Widgets.create_close_button();
@@ -154,12 +156,12 @@ namespace Widgets {
                     name_entry.set_text(config_file.get_value(server_info, "Name"));
                 }
                 name_entry.set_placeholder_text("fill");
-                create_key_row(name_label, name_entry, "Nick name:", grid);
+                create_key_row(name_label, name_entry, "%s:".printf(_("Server name")), grid);
 
                 // Address.
                 Label address_label = new Gtk.Label(null);
                 address_label.margin_start = label_margin_left;
-                address_label.set_text("IP Address:");
+                address_label.set_text("%s:".printf(_("Address")));
                 address_label.get_style_context().add_class("preference_label");
                 address_label.set_xalign(0);
                 address_entry = new Entry();
@@ -173,7 +175,7 @@ namespace Widgets {
                 address_entry.insert_text.connect(on_address_entry_insert);
                 Label port_label = new Gtk.Label(null);
                 port_label.margin_start = port_label_margin_left;
-                port_label.set_text("Port:");
+                port_label.set_text("%s:".printf(_("Port")));
                 port_label.get_style_context().add_class("preference_label");
                 port_entry = new Entry();
                 if (server_info != null) {
@@ -203,7 +205,7 @@ namespace Widgets {
                     user_entry.set_text(server_info.split("@")[0]);
                 }
                 user_entry.set_placeholder_text("fill");
-                create_follow_key_row(user_label, user_entry, "User name:", address_label, grid);
+                create_follow_key_row(user_label, user_entry, "%s:".printf(_("Username")), address_label, grid);
             
                 // Password.
                 Label password_label = new Gtk.Label(null);
@@ -213,7 +215,7 @@ namespace Widgets {
                     password_button.entry.set_text(password);
                 }
                 password_button.entry.set_placeholder_text("fill");
-                create_follow_key_row(password_label, password_button, "Password:", user_label, grid);
+                create_follow_key_row(password_label, password_button, "%s:".printf(_("Password")), user_label, grid);
             
                 advanced_options_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
                 advanced_grid = new Gtk.Grid();
@@ -228,7 +230,7 @@ namespace Widgets {
                 }
                 groupname_entry.set_placeholder_text("option");
                 groupname_entry.set_width_chars(30);  // this line is expand width of entry.
-                create_key_row(group_name_label, groupname_entry, "Group:", advanced_grid);
+                create_key_row(group_name_label, groupname_entry, "%s:".printf(_("Group")), advanced_grid);
 
                 // Path.
                 Label path_label = new Gtk.Label(null);
@@ -237,7 +239,7 @@ namespace Widgets {
                     path_entry.set_text(config_file.get_value(server_info, "Path"));
                 }
                 path_entry.set_placeholder_text("option");
-                create_follow_key_row(path_label, path_entry, "Path:", group_name_label, advanced_grid);
+                create_follow_key_row(path_label, path_entry, "%s:".printf(_("Path")), group_name_label, advanced_grid);
 
                 // Command.
                 Label command_label = new Gtk.Label(null);
@@ -246,7 +248,7 @@ namespace Widgets {
                     command_entry.set_text(config_file.get_value(server_info, "Command"));
                 }
                 command_entry.set_placeholder_text("option");
-                create_follow_key_row(command_label, command_entry, "Command:", path_label, advanced_grid);
+                create_follow_key_row(command_label, command_entry, "%s:".printf(_("Command")), path_label, advanced_grid);
             
                 // Encoding.
                 Label encode_label = new Gtk.Label(null);
@@ -259,7 +261,7 @@ namespace Widgets {
                 } else {
                     encode_box.set_active(parent_window.config.encoding_names.index_of("UTF-8"));
                 }
-                create_follow_key_row(encode_label, encode_box, "Encode:", command_label, advanced_grid, "preference_comboboxtext");
+                create_follow_key_row(encode_label, encode_box, "%s:".printf(_("Encode")), command_label, advanced_grid, "preference_comboboxtext");
             
                 // Backspace sequence.
                 Label backspace_key_label = new Gtk.Label(null);
@@ -272,7 +274,7 @@ namespace Widgets {
                 } else {
                     backspace_key_box.set_active(parent_window.config.backspace_key_erase_names.index_of("ascii-del"));
                 }
-                create_follow_key_row(backspace_key_label, backspace_key_box, "Backspace:", encode_label, advanced_grid, "preference_comboboxtext");
+                create_follow_key_row(backspace_key_label, backspace_key_box, "%s:".printf(_("Backspace key")), encode_label, advanced_grid, "preference_comboboxtext");
 
                 // Delete sequence.
                 Label del_key_label = new Gtk.Label(null);
@@ -285,10 +287,10 @@ namespace Widgets {
                 } else {
                     del_key_box.set_active(parent_window.config.del_key_erase_names.index_of("escape-sequence"));
                 }
-                create_follow_key_row(del_key_label, del_key_box, "Delete:", backspace_key_label, advanced_grid, "preference_comboboxtext");
+                create_follow_key_row(del_key_label, del_key_box, "%s:".printf(_("Delete key")), backspace_key_label, advanced_grid, "preference_comboboxtext");
             
                 server_action_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-                show_advanced_button = Widgets.create_link_button("advanced options");
+                show_advanced_button = Widgets.create_link_button(_("Advanced options"));
                 show_advanced_button.click.connect((w) => {
                         show_advanced_options();
                     });
@@ -298,12 +300,12 @@ namespace Widgets {
             
                 Box button_box = new Box(Gtk.Orientation.HORIZONTAL, 0);
                 button_box.margin_top = action_button_margin_top;
-                DialogButton cancel_button = new Widgets.DialogButton("Cancel", "left", "text");
+                DialogButton cancel_button = new Widgets.DialogButton(_("Cancel"), "left", "text");
                 string button_name;
                 if (server_info != null) {
-                    button_name = "Save";
+                    button_name = _("Save");
                 } else {
-                    button_name = "Add";
+                    button_name = _("Add");
                 }
                 DialogButton confirm_button = new Widgets.DialogButton(button_name, "right", "action");
                 cancel_button.button_release_event.connect((b) => {
@@ -369,9 +371,9 @@ namespace Widgets {
             
             Utils.destroy_all_children(server_action_box);
             if (server_info != null) {
-                delete_server_button = Widgets.create_delete_button("delete server");
+                delete_server_button = Widgets.create_delete_button(_("Delete server"));
                 delete_server_button.click.connect((w) => {
-                        var confirm_dialog = new Widgets.ConfirmDialog("Delete server", "Are you sure delete %s?".printf(name_entry.get_text()), "Cancel", "Delete");
+                        var confirm_dialog = new Widgets.ConfirmDialog(_("Delete server"), "%s %s?".printf(_("Are you sure delete"), name_entry.get_text()), _("Cancel"), _("Delete"));
                         confirm_dialog.transient_for_window(parent_window);
                         confirm_dialog.cancel.connect((w) => {
                                 this.destroy();

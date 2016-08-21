@@ -35,4 +35,26 @@ public class Constant {
     public static int RESPONSE_RADIUS = 8;
     public static int SLIDER_WIDTH = 280;
     public static int TITLEBAR_HEIGHT = 40;
+
+    public static string USERCHARS = "-[:alnum:]";
+    public static string USERCHARS_CLASS = "[" + USERCHARS + "]";
+    public static string PASSCHARS_CLASS = "[-[:alnum:]\\Q,?;.:/!%$^*&~\"#'\\E]";
+    public static string HOSTCHARS_CLASS = "[-[:alnum:]]";
+    public static string HOST = HOSTCHARS_CLASS + "+(\\." + HOSTCHARS_CLASS + "+)*";
+    public static string PORT = "(?:\\:[[:digit:]]{1,5})?";
+    public static string PATHCHARS_CLASS = "[-[:alnum:]\\Q_$.+!*,;:@&=?/~#%\\E]";
+    public static string PATHTERM_CLASS = "[^\\Q]'.}>) \t\r\n,\"\\E]";
+    public static string SCHEME = """(?:news:|telnet:|nntp:|file:\/|https?:|ftps?:|sftp:|webcal:
+                                 |irc:|sftp:|ldaps?:|nfs:|smb:|rsync:|ssh:|rlogin:|telnet:|git:
+                                 |git\+ssh:|bzr:|bzr\+ssh:|svn:|svn\+ssh:|hg:|mailto:|magnet:)""";
+
+    public static string USERPASS = USERCHARS_CLASS + "+(?:" + PASSCHARS_CLASS + "+)?";
+    public static string URLPATH = "(?:(/" + PATHCHARS_CLASS + "+(?:[(]" + PATHCHARS_CLASS + "*[)])*" + PATHCHARS_CLASS + "*)*" + PATHTERM_CLASS + ")?";
+    public static string[] REGEX_STRINGS = {
+            SCHEME + "//(?:" + USERPASS + "\\@)?" + HOST + PORT + URLPATH,
+            "(?:www|ftp)" + HOSTCHARS_CLASS + "*\\." + HOST + PORT + URLPATH,
+            "(?:callto:|h323:|sip:)" + USERCHARS_CLASS + "[" + USERCHARS + ".]*(?:" + PORT + "/[a-z0-9]+)?\\@" + HOST,
+            "(?:mailto:)?" + USERCHARS_CLASS + "[" + USERCHARS + ".]*\\@" + HOSTCHARS_CLASS + "+\\." + HOST,
+            "(?:news:|man:|info:)[[:alnum:]\\Q^_{|}~!\"#$%&'()*+,./;:=?`\\E]+"
+        };
 }                         

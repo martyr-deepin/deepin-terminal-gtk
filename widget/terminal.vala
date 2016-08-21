@@ -54,31 +54,9 @@ namespace Widgets {
         public string? uri_at_right_press;
         public uint launch_idle_id;
 
-        /* Following strings are used to build RegEx for matching URIs */
-        const string USERCHARS = "-[:alnum:]";
-        const string USERCHARS_CLASS = "[" + USERCHARS + "]";
-        const string PASSCHARS_CLASS = "[-[:alnum:]\\Q,?;.:/!%$^*&~\"#'\\E]";
-        const string HOSTCHARS_CLASS = "[-[:alnum:]]";
-        const string HOST = HOSTCHARS_CLASS + "+(\\." + HOSTCHARS_CLASS + "+)*";
-        const string PORT = "(?:\\:[[:digit:]]{1,5})?";
-        const string PATHCHARS_CLASS = "[-[:alnum:]\\Q_$.+!*,;:@&=?/~#%\\E]";
-        const string PATHTERM_CLASS = "[^\\Q]'.}>) \t\r\n,\"\\E]";
-        const string SCHEME = """(?:news:|telnet:|nntp:|file:\/|https?:|ftps?:|sftp:|webcal:
-                                 |irc:|sftp:|ldaps?:|nfs:|smb:|rsync:|ssh:|rlogin:|telnet:|git:
-                                 |git\+ssh:|bzr:|bzr\+ssh:|svn:|svn\+ssh:|hg:|mailto:|magnet:)""";
-
-        const string USERPASS = USERCHARS_CLASS + "+(?:" + PASSCHARS_CLASS + "+)?";
-        const string URLPATH = "(?:(/" + PATHCHARS_CLASS + "+(?:[(]" + PATHCHARS_CLASS + "*[)])*" + PATHCHARS_CLASS + "*)*" + PATHTERM_CLASS + ")?";
-
-        static const string[] regex_strings = {
-            SCHEME + "//(?:" + USERPASS + "\\@)?" + HOST + PORT + URLPATH,
-            "(?:www|ftp)" + HOSTCHARS_CLASS + "*\\." + HOST + PORT + URLPATH,
-            "(?:callto:|h323:|sip:)" + USERCHARS_CLASS + "[" + USERCHARS + ".]*(?:" + PORT + "/[a-z0-9]+)?\\@" + HOST,
-            "(?:mailto:)?" + USERCHARS_CLASS + "[" + USERCHARS + ".]*\\@" + HOSTCHARS_CLASS + "+\\." + HOST,
-            "(?:news:|man:|info:)[[:alnum:]\\Q^_{|}~!\"#$%&'()*+,./;:=?`\\E]+"
-        };
-		
 		public Term(bool first_term, string[]? commands, string? work_directory, WorkspaceManager manager) {
+            Intl.bindtextdomain(GETTEXT_PACKAGE, "./locale");
+            
 			workspace_manager = manager;
             is_first_term = first_term;
             
@@ -180,7 +158,7 @@ namespace Widgets {
             this.drag_data_received.connect(drag_received);
 
             /* Make Links Clickable */
-            this.clickable(regex_strings);
+            this.clickable(Constant.REGEX_STRINGS);
             
             // NOTE: if terminal start with option '-e', use functional 'launch_command' and don't use function 'launch_shell'.
             // terminal will crash if we launch_command after launch_shell.
@@ -204,40 +182,40 @@ namespace Widgets {
                             
             var menu_content = new List<Menu.MenuItem>();
             if (term.get_has_selection() || uri_at_right_press != null) {
-                menu_content.append(new Menu.MenuItem("copy", "Copy"));
+                menu_content.append(new Menu.MenuItem("copy", _("Copy")));
             }
-            menu_content.append(new Menu.MenuItem("paste", "Paste"));
+            menu_content.append(new Menu.MenuItem("paste", _("Paste")));
             menu_content.append(new Menu.MenuItem("", ""));
                             
             if (!in_quake_window) {
-                menu_content.append(new Menu.MenuItem("horizontal_split", "Horizontal split"));
-                menu_content.append(new Menu.MenuItem("vertical_split", "Vertical split"));
-                menu_content.append(new Menu.MenuItem("close_window", "Close window"));
-                menu_content.append(new Menu.MenuItem("close_other_windows", "Close other windows"));
+                menu_content.append(new Menu.MenuItem("horizontal_split", _("Horizontal split")));
+                menu_content.append(new Menu.MenuItem("vertical_split", _("Vertical split")));
+                menu_content.append(new Menu.MenuItem("close_window", _("Close window")));
+                menu_content.append(new Menu.MenuItem("close_other_windows", _("Close other windows")));
                 menu_content.append(new Menu.MenuItem("", ""));
             }
                             
-            menu_content.append(new Menu.MenuItem("new_workspace", "New workspace"));
+            menu_content.append(new Menu.MenuItem("new_workspace", _("New workspace")));
             menu_content.append(new Menu.MenuItem("", ""));
                             
             if (!in_quake_window) {
                 var window = ((Widgets.Window) get_toplevel());
                 if (window.window_is_fullscreen()) {
-                    menu_content.append(new Menu.MenuItem("quit_fullscreen", "Quit fullscreen"));
+                    menu_content.append(new Menu.MenuItem("quit_fullscreen", _("Quit fullscreen")));
                 } else {
-                    menu_content.append(new Menu.MenuItem("fullscreen", "Fullscreen"));
+                    menu_content.append(new Menu.MenuItem("fullscreen", _("Fullscreen")));
                 }
             }
                             
-            menu_content.append(new Menu.MenuItem("search", "Search"));
-            menu_content.append(new Menu.MenuItem("remote_manage", "Connect remote"));
+            menu_content.append(new Menu.MenuItem("search", _("Search")));
+            menu_content.append(new Menu.MenuItem("remote_manage", _("Remote management")));
             menu_content.append(new Menu.MenuItem("", ""));
-            menu_content.append(new Menu.MenuItem("upload_file", "Upload file"));
-            menu_content.append(new Menu.MenuItem("download_file", "Download file"));
+            menu_content.append(new Menu.MenuItem("upload_file", _("Upload file")));
+            menu_content.append(new Menu.MenuItem("download_file", _("Download file")));
                             
             if (!in_quake_window) {
                 menu_content.append(new Menu.MenuItem("", ""));
-                menu_content.append(new Menu.MenuItem("preference", "Preference"));
+                menu_content.append(new Menu.MenuItem("preference", _("Preference")));
             }
 							
             menu = new Menu.Menu(x, y, menu_content);
@@ -311,10 +289,10 @@ namespace Widgets {
         
         public void upload_file () {
             Gtk.FileChooserAction action = Gtk.FileChooserAction.OPEN;
-            var chooser = new Gtk.FileChooserDialog("Open file", null, action);
-            chooser.add_button("Cancel", Gtk.ResponseType.CANCEL);
+            var chooser = new Gtk.FileChooserDialog(_("Select file to upload"), null, action);
+            chooser.add_button(_("Cancel"), Gtk.ResponseType.CANCEL);
             chooser.set_select_multiple(true);
-            chooser.add_button("Open", Gtk.ResponseType.ACCEPT);
+            chooser.add_button(_("Open"), Gtk.ResponseType.ACCEPT);
             
             if (chooser.run () == Gtk.ResponseType.ACCEPT) {
                 var file_list = chooser.get_files();
@@ -339,9 +317,9 @@ namespace Widgets {
         
         public void download_file() {
             Gtk.FileChooserAction action = Gtk.FileChooserAction.SELECT_FOLDER;
-            var chooser = new Gtk.FileChooserDialog("Select save directory", null, action);
-            chooser.add_button("Cancel", Gtk.ResponseType.CANCEL);
-            chooser.add_button("Save", Gtk.ResponseType.ACCEPT);
+            var chooser = new Gtk.FileChooserDialog(_("Please enter a new shortcut"), null, action);
+            chooser.add_button(_("Cancel"), Gtk.ResponseType.CANCEL);
+            chooser.add_button(_("Save"), Gtk.ResponseType.ACCEPT);
             
             if (chooser.run () == Gtk.ResponseType.ACCEPT) {
                 save_file_directory = chooser.get_filename();
@@ -352,7 +330,7 @@ namespace Widgets {
                         press_ctrl_k();
                         
                         GLib.Timeout.add(100, () => {
-                                string command = "read -e -p \"Type file to download: \" file; sz $file\n";
+                                string command = "read -e -p \"%s: \" file; sz $file\n".printf(_("Type the file you want to download"));
                                 this.term.feed_child(command, command.length);
                                 
                                 enter_sz_command = true;

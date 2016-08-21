@@ -1,0 +1,379 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-08-22 01:03+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../widget/about_widget.vala:48
+msgid ""
+"    Deepin terminal is a terminal emulator has advanced features such as "
+"workspace, multiple windows, remote management, quake window etc.\n"
+"\n"
+"    Deepin terminal, allowing you to focus more on the command line in the "
+"world.\n"
+msgstr ""
+
+#: ../widget/preference_slidebar.vala:87 ../widget/preference.vala:366
+#: ../widget/appbar.vala:100
+msgid "About"
+msgstr ""
+
+#: ../widget/remote_server_dialog.vala:308
+msgid "Add"
+msgstr ""
+
+#: ../widget/add_server_button.vala:53 ../widget/remote_server_dialog.vala:126
+msgid "Add server"
+msgstr ""
+
+#: ../widget/remote_server_dialog.vala:164
+msgid "Address"
+msgstr ""
+
+#: ../widget/preference_slidebar.vala:64 ../widget/preference_slidebar.vala:71
+#: ../widget/preference.vala:306 ../widget/preference.vala:316
+#: ../widget/config_window.vala:239
+msgid "Advanced"
+msgstr ""
+
+#: ../widget/remote_server_dialog.vala:293
+msgid "Advanced options"
+msgstr ""
+
+#: ../widget/remote_server_dialog.vala:376
+msgid "Are you sure delete"
+msgstr ""
+
+#: ../widget/confirm_dialog.vala:120
+msgid "Are you sure you want to quit?"
+msgstr ""
+
+#: ../widget/remote_server_dialog.vala:277
+msgid "Backspace key"
+msgstr ""
+
+#: ../widget/preference_slidebar.vala:45 ../widget/preference.vala:224
+msgid "Basic"
+msgstr ""
+
+#: ../widget/workspace_manager.vala:92 ../widget/remote_server_dialog.vala:303
+#: ../widget/remote_server_dialog.vala:376 ../widget/confirm_dialog.vala:120
+#: ../widget/terminal.vala:293 ../widget/terminal.vala:321
+msgid "Cancel"
+msgstr ""
+
+#: ../widget/preference.vala:304 ../widget/terminal.vala:194
+#: ../widget/config_window.vala:218
+msgid "Close other windows"
+msgstr ""
+
+#: ../widget/preference.vala:303 ../widget/terminal.vala:193
+#: ../widget/config_window.vala:217
+msgid "Close window"
+msgstr ""
+
+#: ../widget/preference.vala:294 ../widget/config_window.vala:207
+msgid "Close workspace"
+msgstr ""
+
+#: ../widget/remote_server_dialog.vala:251
+msgid "Command"
+msgstr ""
+
+#: ../widget/preference.vala:279 ../widget/terminal.vala:185
+#: ../widget/config_window.vala:185
+msgid "Copy"
+msgstr ""
+
+#: ../widget/preference_slidebar.vala:74 ../widget/preference.vala:319
+msgid "Cursor"
+msgstr ""
+
+#: ../widget/preference.vala:341
+msgid "Cursor blink"
+msgstr ""
+
+#: ../widget/preference.vala:177
+msgid "Cursor style"
+msgstr ""
+
+#: ../widget/about_widget.vala:107
+msgid "Deepin Terminal"
+msgstr ""
+
+#: ../widget/preference.vala:284 ../widget/config_window.vala:190
+msgid "Default size"
+msgstr ""
+
+#: ../widget/remote_server_dialog.vala:376
+msgid "Delete"
+msgstr ""
+
+#: ../widget/remote_server_dialog.vala:290
+msgid "Delete key"
+msgstr ""
+
+#: ../widget/remote_server_dialog.vala:374
+#: ../widget/remote_server_dialog.vala:376
+msgid "Delete server"
+msgstr ""
+
+#: ../widget/preference.vala:313 ../widget/config_window.vala:233
+msgid "Display shortcut"
+msgstr ""
+
+#: ../widget/terminal.vala:214
+msgid "Download file"
+msgstr ""
+
+#: ../widget/remote_server_dialog.vala:124
+msgid "Edit server"
+msgstr ""
+
+#: ../widget/remote_server_dialog.vala:264
+msgid "Encode"
+msgstr ""
+
+#: ../widget/appbar.vala:101
+msgid "Exit"
+msgstr ""
+
+#: ../widget/preference.vala:266
+msgid "Font"
+msgstr ""
+
+#: ../widget/preference.vala:268
+msgid "Font size"
+msgstr ""
+
+#: ../widget/preference.vala:312 ../widget/terminal.vala:206
+msgid "Fullscreen"
+msgstr ""
+
+#: ../widget/remote_server_dialog.vala:233
+msgid "Group"
+msgstr ""
+
+#: ../widget/appbar.vala:98
+msgid "Help"
+msgstr ""
+
+#: ../widget/preference.vala:298 ../widget/terminal.vala:191
+#: ../widget/config_window.vala:212
+msgid "Horizontal split"
+msgstr ""
+
+#: ../widget/appbar.vala:93
+msgid "New window"
+msgstr ""
+
+#: ../widget/preference.vala:293 ../widget/terminal.vala:198
+#: ../widget/config_window.vala:206
+msgid "New workspace"
+msgstr ""
+
+#: ../widget/preference.vala:296 ../widget/config_window.vala:208
+msgid "Next workspace"
+msgstr ""
+
+#: ../widget/workspace_manager.vala:92
+msgid "OK"
+msgstr ""
+
+#: ../widget/preference.vala:125
+msgid "Opacity"
+msgstr ""
+
+#: ../widget/terminal.vala:295
+msgid "Open"
+msgstr ""
+
+#: ../widget/remote_server_dialog.vala:218
+msgid "Password"
+msgstr ""
+
+#: ../widget/preference.vala:280 ../widget/terminal.vala:187
+#: ../widget/config_window.vala:186
+msgid "Paste"
+msgstr ""
+
+#: ../widget/remote_server_dialog.vala:242
+msgid "Path"
+msgstr ""
+
+#: ../widget/preference.vala:541 ../widget/terminal.vala:320
+msgid "Please enter a new shortcut"
+msgstr ""
+
+#: ../widget/remote_server_dialog.vala:178
+msgid "Port"
+msgstr ""
+
+#: ../widget/terminal.vala:218 ../widget/appbar.vala:96
+msgid "Preference"
+msgstr ""
+
+#: ../widget/preference.vala:295 ../widget/config_window.vala:209
+msgid "Previous workspace"
+msgstr ""
+
+#: ../widget/confirm_dialog.vala:120
+msgid "Quit"
+msgstr ""
+
+#: ../widget/terminal.vala:204
+msgid "Quit fullscreen"
+msgstr ""
+
+#: ../widget/preference.vala:314 ../widget/terminal.vala:211
+#: ../widget/config_window.vala:234 ../widget/appbar.vala:94
+msgid "Remote management"
+msgstr ""
+
+#: ../widget/preference.vala:372
+msgid "Restore all"
+msgstr ""
+
+#: ../widget/remote_server_dialog.vala:306 ../widget/terminal.vala:322
+msgid "Save"
+msgstr ""
+
+#: ../widget/preference_slidebar.vala:77 ../widget/preference.vala:343
+msgid "Scroll"
+msgstr ""
+
+#: ../widget/preference.vala:352
+msgid "Scroll lines"
+msgstr ""
+
+#: ../widget/preference.vala:349
+msgid "Scroll on key"
+msgstr ""
+
+#: ../widget/preference.vala:350
+msgid "Scroll on output"
+msgstr ""
+
+#: ../widget/preference.vala:281 ../widget/terminal.vala:210
+#: ../widget/search_entry.vala:64 ../widget/search_entry.vala:67
+#: ../widget/config_window.vala:187
+msgid "Search"
+msgstr ""
+
+#: ../widget/preference.vala:285 ../widget/config_window.vala:191
+msgid "Select all"
+msgstr ""
+
+#: ../widget/terminal.vala:292
+msgid "Select file to upload"
+msgstr ""
+
+#: ../widget/preference.vala:300 ../widget/config_window.vala:214
+msgid "Select the following window"
+msgstr ""
+
+#: ../widget/preference.vala:301 ../widget/config_window.vala:215
+msgid "Select the left window"
+msgstr ""
+
+#: ../widget/preference.vala:302 ../widget/config_window.vala:216
+msgid "Select the right window"
+msgstr ""
+
+#: ../widget/preference.vala:299 ../widget/config_window.vala:213
+msgid "Select the upper window"
+msgstr ""
+
+#: ../widget/config_window.vala:210
+msgid "Select workspace"
+msgstr ""
+
+#: ../widget/remote_server_dialog.vala:159
+msgid "Server name"
+msgstr ""
+
+#: ../widget/preference_slidebar.vala:55 ../widget/preference.vala:270
+msgid "Shortcut"
+msgstr ""
+
+#: ../widget/preference_slidebar.vala:58 ../widget/preference.vala:273
+#: ../widget/config_window.vala:196
+msgid "Terminal"
+msgstr ""
+
+#: ../widget/confirm_dialog.vala:120
+msgid "Terminal still has running programs"
+msgstr ""
+
+#: ../widget/preference_slidebar.vala:48 ../widget/preference.vala:227
+#: ../widget/preference.vala:233
+msgid "Theme"
+msgstr ""
+
+#: ../widget/workspace_manager.vala:92
+msgid "There is not enough space to create a new workspace"
+msgstr ""
+
+#: ../widget/config_window.vala:232
+msgid "Toggle fullscreen"
+msgstr ""
+
+#: ../widget/workspace_manager.vala:92
+msgid "Turn off some of the work area is not used"
+msgstr ""
+
+#: ../widget/terminal.vala:333
+msgid "Type the file you want to download"
+msgstr ""
+
+#: ../widget/terminal.vala:213
+msgid "Upload file"
+msgstr ""
+
+#: ../widget/remote_server_dialog.vala:208
+msgid "Username"
+msgstr ""
+
+#: ../widget/about_widget.vala:111
+msgid "Version"
+msgstr ""
+
+#: ../widget/preference.vala:297 ../widget/terminal.vala:192
+#: ../widget/config_window.vala:211
+msgid "Vertical split"
+msgstr ""
+
+#: ../widget/preference_slidebar.vala:80 ../widget/preference.vala:354
+#: ../widget/preference.vala:364
+msgid "Window"
+msgstr ""
+
+#: ../widget/preference_slidebar.vala:61 ../widget/preference.vala:287
+#: ../widget/config_window.vala:223
+msgid "Workspace"
+msgstr ""
+
+#: ../widget/preference.vala:282 ../widget/config_window.vala:188
+msgid "Zoom in"
+msgstr ""
+
+#: ../widget/preference.vala:283 ../widget/config_window.vala:189
+msgid "Zoom out"
+msgstr ""
+
+#: ../widget/workspace_manager.vala:83
+msgid "deepin"
+msgstr ""

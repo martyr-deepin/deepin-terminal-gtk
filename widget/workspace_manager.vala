@@ -33,6 +33,8 @@ namespace Widgets {
         public int workspace_index;
         
         public WorkspaceManager(Tabbar t, string[]? commands, string? work_directory) {
+            Intl.bindtextdomain(GETTEXT_PACKAGE, "./locale");
+            
             tabbar = t;
 
             workspace_index = 0;
@@ -78,7 +80,7 @@ namespace Widgets {
                 // If tab haven't name, we named with "deepin".
                 GLib.Timeout.add(200, () => {
                         if (tabbar.tab_name_map.get(workspace_index) == "") {
-                            tabbar.rename_tab(workspace_index, "deepin");
+                            tabbar.rename_tab(workspace_index, _("deepin"));
                         }
 					
                         return false;
@@ -87,7 +89,7 @@ namespace Widgets {
             
                 show_all();
             } else {
-                ConfirmDialog dialog = new ConfirmDialog("Haven't space to add tab", "Please remove unused tab first", "Cancel", "OK");
+                ConfirmDialog dialog = new ConfirmDialog(_("There is not enough space to create a new workspace"), _("Turn off some of the work area is not used"), _("Cancel"), _("OK"));
                 dialog.transient_for_window((Widgets.ConfigWindow) (this.get_toplevel()));
             }
         }

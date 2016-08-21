@@ -49,6 +49,9 @@ namespace Widgets {
         public string button_text = "add server";
         
         public AddServerButton() {
+            Intl.bindtextdomain(GETTEXT_PACKAGE, "./locale");
+            button_text = _("Add server");
+            
             var image_path = "add_server";
 			normal_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_dark_normal.png"));
             hover_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_dark_hover.png"));

@@ -45,6 +45,7 @@ main: ./lib/animation.vala \
 	valac -o main \
 	-X -w \
 	-X -lm \
+	-X -DGETTEXT_PACKAGE="deepin-terminal" \
 	--Xcc=-DWNCK_I_KNOW_THIS_IS_UNSTABLE \
     --pkg=gtk+-3.0 \
     --pkg=vte-2.91 \

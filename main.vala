@@ -59,7 +59,10 @@ interface QuakeDaemon : Object {
 }
 
 
+const string GETTEXT_PACKAGE = "deepin-terminal"; 
+
 public class Application : Object {
+    
 	private static bool quake_mode = false;
 	private static string? work_directory = null;
     /* command_e (-e) is used for running commands independently (not inside a shell) */
@@ -84,6 +87,10 @@ public class Application : Object {
 	};
 
     public static void main(string[] args) {
+        Intl.setlocale(LocaleCategory.MESSAGES, "");
+        Intl.bind_textdomain_codeset(GETTEXT_PACKAGE, "utf-8");
+        Intl.bindtextdomain(GETTEXT_PACKAGE, "./locale");
+        
         // NOTE: Parse option '-e' or '-x' by myself.
         // OptionContext's function always lost argument after option '-e' or '-x'.
         string[] argv;

@@ -50,6 +50,8 @@ namespace Widgets {
         public signal void quit_fullscreen();
         
         public Appbar(Widgets.Window win, Tabbar tab_bar, WorkspaceManager manager) {
+            Intl.bindtextdomain(GETTEXT_PACKAGE, "./locale");
+
             window = win;
             workspace_manager = manager;
 			
@@ -88,15 +90,15 @@ namespace Widgets {
                     focus_widget = ((Gtk.Window) menu_button.get_toplevel()).get_focus();
                     
                     var menu_content = new List<Menu.MenuItem>();
-                    menu_content.append(new Menu.MenuItem("new_window", "New window"));
-                    menu_content.append(new Menu.MenuItem("remote_manage", "Connect remote"));
+                    menu_content.append(new Menu.MenuItem("new_window", _("New window")));
+                    menu_content.append(new Menu.MenuItem("remote_manage", _("Remote management")));
                     menu_content.append(new Menu.MenuItem("", ""));
-                    menu_content.append(new Menu.MenuItem("preference", "Preference"));
+                    menu_content.append(new Menu.MenuItem("preference", _("Preference")));
                     if (Utils.is_command_exist("dman")) {
-                        menu_content.append(new Menu.MenuItem("help", "Help"));
+                        menu_content.append(new Menu.MenuItem("help", _("Help")));
                     }
-                    menu_content.append(new Menu.MenuItem("about", "About"));
-                    menu_content.append(new Menu.MenuItem("exit", "Exit"));
+                    menu_content.append(new Menu.MenuItem("about", _("About")));
+                    menu_content.append(new Menu.MenuItem("exit", _("Exit")));
                     
                     int menu_x, menu_y;
                     menu_button.translate_coordinates(menu_button.get_toplevel(), 0, 0, out menu_x, out menu_y);

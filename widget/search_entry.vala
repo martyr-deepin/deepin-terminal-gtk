@@ -42,6 +42,8 @@ namespace Widgets {
         public int search_image_margin_x = 18;
         
         public SearchEntry() {
+            Intl.bindtextdomain(GETTEXT_PACKAGE, "./locale");
+
             this.add_events(Gdk.EventMask.BUTTON_PRESS_MASK
                             | Gdk.EventMask.BUTTON_RELEASE_MASK
                             | Gdk.EventMask.POINTER_MOTION_MASK
@@ -59,10 +61,10 @@ namespace Widgets {
             search_image.set_valign(Gtk.Align.CENTER);
             search_label = new Gtk.Label(null);
             search_label.set_valign(Gtk.Align.CENTER);
-            search_label.set_text("search");
+            search_label.set_text(_("Search"));
             search_label.get_style_context().add_class("remote_search_label");
             search_entry = new Entry();
-            search_entry.set_placeholder_text("Search");
+            search_entry.set_placeholder_text(_("Search"));
             search_entry.get_style_context().add_class("remote_search_entry");
             clear_button = new ImageButton("search_clear", true);
             clear_button.margin_right = clear_button_margin_right;

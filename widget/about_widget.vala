@@ -40,9 +40,13 @@ namespace Widgets {
         public int version_height = 12;
         public int version_size = 11;
         public int version_y = 146;
-        public string about_text = "    Deepin terminal is a terminal emulator with screen split, workspace and remote machine manage.\n\n    Deepin terminal is a free software licensed under GNU GPLv3.";
+        public string about_text;
         
         public AboutWidget() {
+            Intl.bindtextdomain(GETTEXT_PACKAGE, "./locale");
+            
+            about_text = _("    Deepin terminal is a terminal emulator has advanced features such as workspace, multiple windows, remote management, quake window etc.\n\n    Deepin terminal, allowing you to focus more on the command line in the world.\n");
+            
             icon_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("icon.png"));
             logo_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("logo.png"));
             
@@ -100,11 +104,11 @@ namespace Widgets {
             
             // Draw name.
             cr.set_source_rgba(0, 0, 0, 1);
-            Draw.draw_text(cr, "Deepin Terminal", 0, name_y, rect.width, name_height, name_height, Pango.Alignment.CENTER, "top");
+            Draw.draw_text(cr, _("Deepin Terminal"), 0, name_y, rect.width, name_height, name_height, Pango.Alignment.CENTER, "top");
             
             // Draw version.
             cr.set_source_rgba(0.4, 0.4, 0.4, 1);
-            Draw.draw_text(cr, "Version: 2.0", 0, version_y, rect.width, version_height, version_size, Pango.Alignment.CENTER, "top");
+            Draw.draw_text(cr, "%s: %s".printf(_("Version"), "2.0"), 0, version_y, rect.width, version_height, version_size, Pango.Alignment.CENTER, "top");
             
             // Draw logo.
             Draw.draw_surface(cr, logo_surface, (rect.width - logo_surface.get_width()) / 2, logo_y);

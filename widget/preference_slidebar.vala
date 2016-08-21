@@ -34,55 +34,57 @@ namespace Widgets {
 		public signal void click_item(string name);
 		
         public PreferenceSlidebar() {
+            Intl.bindtextdomain(GETTEXT_PACKAGE, "./locale");
+            
 			set_size_request(width, -1);
 			
             var spacing_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             spacing_box.set_size_request(-1, Constant.TITLEBAR_HEIGHT);
             this.attach(spacing_box, 0, 0, width, height);
             
-            var basic_segement = new PreferenceSlideItem(this, "Basic", "basic", true);
+            var basic_segement = new PreferenceSlideItem(this, _("Basic"), "basic", true);
 			this.attach_next_to(basic_segement, spacing_box, Gtk.PositionType.BOTTOM, width, height);
             
-            var theme_segement = new PreferenceSlideItem(this, "Theme", "theme", false);
+            var theme_segement = new PreferenceSlideItem(this, _("Theme"), "theme", false);
 			this.attach_next_to(theme_segement, basic_segement, Gtk.PositionType.BOTTOM, width, height);
             
             var theme_spacing_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             theme_spacing_box.set_size_request(-1, segement_spacing);
             this.attach_next_to(theme_spacing_box, theme_segement, Gtk.PositionType.BOTTOM, width, height);
             
-            var hotkey_segement = new PreferenceSlideItem(this, "Hotkey", "hotkey", true);
+            var hotkey_segement = new PreferenceSlideItem(this, _("Shortcut"), "hotkey", true);
 			this.attach_next_to(hotkey_segement, theme_spacing_box, Gtk.PositionType.BOTTOM, width, height);
 
-            var terminal_key_segement = new PreferenceSlideItem(this, "Terminal", "temrinal_key", false);
+            var terminal_key_segement = new PreferenceSlideItem(this, _("Terminal"), "temrinal_key", false);
 			this.attach_next_to(terminal_key_segement, hotkey_segement, Gtk.PositionType.BOTTOM, width, height);
             
-            var workspace_key_segement = new PreferenceSlideItem(this, "Workspace", "workspace_key", false);
+            var workspace_key_segement = new PreferenceSlideItem(this, _("Workspace"), "workspace_key", false);
 			this.attach_next_to(workspace_key_segement, terminal_key_segement, Gtk.PositionType.BOTTOM, width, height);
             
-            var advanced_key_segement = new PreferenceSlideItem(this, "Advanced", "advanced_key", false);
+            var advanced_key_segement = new PreferenceSlideItem(this, _("Advanced"), "advanced_key", false);
 			this.attach_next_to(advanced_key_segement, workspace_key_segement, Gtk.PositionType.BOTTOM, width, height);
 
             var advanced_key_spacing_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             advanced_key_spacing_box.set_size_request(-1, segement_spacing);
             this.attach_next_to(advanced_key_spacing_box, advanced_key_segement, Gtk.PositionType.BOTTOM, width, height);
             
-            var advanced_segement = new PreferenceSlideItem(this, "Advanced", "advanced", true);
+            var advanced_segement = new PreferenceSlideItem(this, _("Advanced"), "advanced", true);
 			this.attach_next_to(advanced_segement, advanced_key_spacing_box, Gtk.PositionType.BOTTOM, width, height);
             
-            var cursor_segement = new PreferenceSlideItem(this, "Cursor", "cursor", false);
+            var cursor_segement = new PreferenceSlideItem(this, _("Cursor"), "cursor", false);
 			this.attach_next_to(cursor_segement, advanced_segement, Gtk.PositionType.BOTTOM, width, height);
 
-            var scroll_segement = new PreferenceSlideItem(this, "Scroll", "scroll", false);
+            var scroll_segement = new PreferenceSlideItem(this, _("Scroll"), "scroll", false);
 			this.attach_next_to(scroll_segement, cursor_segement, Gtk.PositionType.BOTTOM, width, height);
 
-            var window_segement = new PreferenceSlideItem(this, "Window", "window", false);
+            var window_segement = new PreferenceSlideItem(this, _("Window"), "window", false);
 			this.attach_next_to(window_segement, cursor_segement, Gtk.PositionType.BOTTOM, width, height);
             
             var window_spacing_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             window_spacing_box.set_size_request(-1, segement_spacing);
             this.attach_next_to(window_spacing_box, window_segement, Gtk.PositionType.BOTTOM, width, height);
             
-            var about_segement = new PreferenceSlideItem(this, "About", "about", true);
+            var about_segement = new PreferenceSlideItem(this, _("About"), "about", true);
 			this.attach_next_to(about_segement, window_spacing_box, Gtk.PositionType.BOTTOM, width, height);
             
             add_focus_handler(basic_segement);

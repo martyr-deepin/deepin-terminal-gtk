@@ -38,6 +38,8 @@ namespace Widgets {
         public signal void confirm();
         
         public ConfirmDialog(string title, string content, string cancel_text, string confirm_text) {
+            Intl.bindtextdomain(GETTEXT_PACKAGE, "./locale");
+            
             window_init_width = 480;
             window_init_height = 230;
             
@@ -115,7 +117,7 @@ namespace Widgets {
     }
 
     public ConfirmDialog create_running_confirm_dialog(Widgets.ConfigWindow window) {
-        ConfirmDialog dialog = new ConfirmDialog("Terminal still has running programs", "Are you sure you want to quit?", "Cancel", "Quit");
+        ConfirmDialog dialog = new ConfirmDialog(_("Terminal still has running programs"), _("Are you sure you want to quit?"), _("Cancel"), _("Quit"));
         dialog.transient_for_window(window);
         
         return dialog;

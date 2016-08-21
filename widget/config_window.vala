@@ -42,6 +42,8 @@ namespace Widgets {
         public int cache_width = 0;
             
         public ConfigWindow() {
+            Intl.bindtextdomain(GETTEXT_PACKAGE, "./locale");
+
             load_config();
             
             title_line_dark_color = Utils.hex_to_rgba("#000000", 0.3);
@@ -180,18 +182,18 @@ namespace Widgets {
             
                 builder.begin_array();
     
-                insert_shortcut_key(builder, "Copy clipboard", config.config_file.get_string("keybind", "copy_clipboard"));;
-                insert_shortcut_key(builder, "Paste clipboard", config.config_file.get_string("keybind", "paste_clipboard"));;
-                insert_shortcut_key(builder, "Search", config.config_file.get_string("keybind", "search"));;
-                insert_shortcut_key(builder, "Zoom in", config.config_file.get_string("keybind", "zoom_in"));;
-                insert_shortcut_key(builder, "Zoom out", config.config_file.get_string("keybind", "zoom_out"));;
-                insert_shortcut_key(builder, "Default size", config.config_file.get_string("keybind", "revert_default_size"));;
-                insert_shortcut_key(builder, "Select all", config.config_file.get_string("keybind", "select_all"));;
+                insert_shortcut_key(builder, _("Copy"), config.config_file.get_string("keybind", "copy_clipboard"));;
+                insert_shortcut_key(builder, _("Paste"), config.config_file.get_string("keybind", "paste_clipboard"));;
+                insert_shortcut_key(builder, _("Search"), config.config_file.get_string("keybind", "search"));;
+                insert_shortcut_key(builder, _("Zoom in"), config.config_file.get_string("keybind", "zoom_in"));;
+                insert_shortcut_key(builder, _("Zoom out"), config.config_file.get_string("keybind", "zoom_out"));;
+                insert_shortcut_key(builder, _("Default size"), config.config_file.get_string("keybind", "revert_default_size"));;
+                insert_shortcut_key(builder, _("Select all"), config.config_file.get_string("keybind", "select_all"));;
                     
                 builder.end_array();
                     
                 builder.set_member_name("groupName");
-                builder.add_string_value("Terminal");
+                builder.add_string_value(_("Terminal"));
                 builder.end_object();
             
                 // Workspace shortcuts.
@@ -201,24 +203,24 @@ namespace Widgets {
             
                 builder.begin_array();
     
-                insert_shortcut_key(builder, "New workspace", config.config_file.get_string("keybind", "new_workspace"));;
-                insert_shortcut_key(builder, "Close workspace", config.config_file.get_string("keybind", "close_workspace"));;
-                insert_shortcut_key(builder, "Next workspace", config.config_file.get_string("keybind", "next_workspace"));;
-                insert_shortcut_key(builder, "Previous workspace", config.config_file.get_string("keybind", "previous_workspace"));;
-                insert_shortcut_key(builder, "Select workspace", "Ctrl + 1 ~ Ctrl + 9");;
-                insert_shortcut_key(builder, "Split vertically", config.config_file.get_string("keybind", "split_vertically"));;
-                insert_shortcut_key(builder, "Split horizontally", config.config_file.get_string("keybind", "split_horizontally"));;
-                insert_shortcut_key(builder, "Select up down", config.config_file.get_string("keybind", "select_up_window"));;
-                insert_shortcut_key(builder, "Select down down", config.config_file.get_string("keybind", "select_down_window"));;
-                insert_shortcut_key(builder, "Select left down", config.config_file.get_string("keybind", "select_left_window"));;
-                insert_shortcut_key(builder, "Select right down", config.config_file.get_string("keybind", "select_right_window"));;
-                insert_shortcut_key(builder, "Close window", config.config_file.get_string("keybind", "close_window"));;
-                insert_shortcut_key(builder, "Close other window", config.config_file.get_string("keybind", "close_other_windows"));;
+                insert_shortcut_key(builder, _("New workspace"), config.config_file.get_string("keybind", "new_workspace"));;
+                insert_shortcut_key(builder, _("Close workspace"), config.config_file.get_string("keybind", "close_workspace"));;
+                insert_shortcut_key(builder, _("Next workspace"), config.config_file.get_string("keybind", "next_workspace"));;
+                insert_shortcut_key(builder, _("Previous workspace"), config.config_file.get_string("keybind", "previous_workspace"));;
+                insert_shortcut_key(builder, _("Select workspace"), "Ctrl + 1 ~ Ctrl + 9");;
+                insert_shortcut_key(builder, _("Vertical split"), config.config_file.get_string("keybind", "split_vertically"));;
+                insert_shortcut_key(builder, _("Horizontal split"), config.config_file.get_string("keybind", "split_horizontally"));;
+                insert_shortcut_key(builder, _("Select the upper window"), config.config_file.get_string("keybind", "select_up_window"));;
+                insert_shortcut_key(builder, _("Select the following window"), config.config_file.get_string("keybind", "select_down_window"));;
+                insert_shortcut_key(builder, _("Select the left window"), config.config_file.get_string("keybind", "select_left_window"));;
+                insert_shortcut_key(builder, _("Select the right window"), config.config_file.get_string("keybind", "select_right_window"));;
+                insert_shortcut_key(builder, _("Close window"), config.config_file.get_string("keybind", "close_window"));;
+                insert_shortcut_key(builder, _("Close other windows"), config.config_file.get_string("keybind", "close_other_windows"));;
                     
                 builder.end_array();
                     
                 builder.set_member_name("groupName");
-                builder.add_string_value("Workspace");
+                builder.add_string_value(_("Workspace"));
                 builder.end_object();
             
                 // Advanced shortcuts.
@@ -227,14 +229,14 @@ namespace Widgets {
             
                 builder.begin_array();
     
-                insert_shortcut_key(builder, "Toggle fullscreen", config.config_file.get_string("keybind", "toggle_fullscreen"));;
-                insert_shortcut_key(builder, "Show helper window", config.config_file.get_string("keybind", "show_helper_window"));;
-                insert_shortcut_key(builder, "Show remote panel", config.config_file.get_string("keybind", "show_remote_panel"));;
+                insert_shortcut_key(builder, _("Toggle fullscreen"), config.config_file.get_string("keybind", "toggle_fullscreen"));;
+                insert_shortcut_key(builder, _("Display shortcut"), config.config_file.get_string("keybind", "show_helper_window"));;
+                insert_shortcut_key(builder, _("Remote management"), config.config_file.get_string("keybind", "show_remote_panel"));;
             
                 builder.end_array();
                     
                 builder.set_member_name("groupName");
-                builder.add_string_value("Advanced");
+                builder.add_string_value(_("Advanced"));
                 builder.end_object();
             
                     
