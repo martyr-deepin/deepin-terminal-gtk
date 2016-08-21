@@ -33,10 +33,18 @@ namespace Widgets {
         public ImageButton search_next_button;
         public ImageButton search_previous_button;
         
+        public Term terminal;
+        public string search_text;
+        
         public int margin_horizontal = 10;
         public int button_margin = 4;
         
-        public SearchBox(Widgets.ConfigWindow config_window) {
+        public signal void quit_search();
+        
+        public SearchBox(Widgets.ConfigWindow config_window, Term term) {
+            terminal = term;
+            search_text = "";
+            
             search_image = new ImageButton("search", true);
             search_entry = new Entry();
             clear_button_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
@@ -72,8 +80,73 @@ namespace Widgets {
                             adjust_css_with_theme(config_window);
                         });
                 });
+            
+            search_entry.key_press_event.connect((w, e) => {
+                    string keyname = Keymap.get_keyevent_name(e);
+                        
+                    if (keyname == "Esc") {
+                        quit_search();
+                    }
+                        
+                    return false;
+                });
+            search_entry.get_buffer().deleted_text.connect((buffer, p, nc) => {
+                    string entry_text = search_entry.get_text().strip();
+                    if (entry_text == "") {
+                        hide_clear_button();
+                    }
+                        
+                    update_search_text();
+                });
+            search_entry.get_buffer().inserted_text.connect((buffer, p, c, nc) => {
+                    string entry_text = search_entry.get_text().strip();
+                    if (entry_text != "") {
+                        show_clear_button();
+                    }
+                    update_search_text();
+                });
+            clear_button.button_press_event.connect((w, e) => {
+                    search_entry.set_text("");
+                    update_search_text();
+                        
+                    return false;
+                });
+            search_entry.activate.connect((w) => {
+                    if (search_text != "") {
+                        terminal.term.search_find_previous();
+                    }
+                });
+            search_next_button.button_press_event.connect((w, e) => {
+                    if (search_text != "") {
+                        terminal.term.search_find_next();
+                    }
+                        
+                    return false;
+                });
+            search_previous_button.button_press_event.connect((w, e) => {
+                    if (search_text != "") {
+                        terminal.term.search_find_previous();
+                    }
+                        
+                    return false;
+                });
         }
         
+        public void update_search_text() {
+            string entry_text = search_entry.get_text().strip();
+            if (search_text != entry_text) {
+                search_text = entry_text;
+                
+                try {
+                    var regex = new Regex(Regex.escape_string(search_text), RegexCompileFlags.CASELESS);
+                    terminal.term.search_set_gregex(regex, 0);
+                    terminal.term.search_set_wrap_around(true);
+                } catch (GLib.RegexError e) {
+                    stdout.printf("Got error %s", e.message);
+                }
+            }
+        }
+
         public void adjust_css_with_theme(Widgets.ConfigWindow config_window) {
             bool is_light_theme = config_window.is_light_theme();
                          

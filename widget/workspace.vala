@@ -34,7 +34,6 @@ namespace Widgets {
         public SearchBox? search_box;
 		public RemotePanel? remote_panel;
         public Term? term_before_search;
-        public string search_text;
 		
 		public WorkspaceManager workspace_manager;
         
@@ -194,6 +193,8 @@ namespace Widgets {
             Widget focus_child = container.get_focus_child();
             if (focus_child.get_type().is_a(typeof(Term))) {
                 return (Term) focus_child;
+            } else if (focus_child.get_type().is_a(typeof(SearchBox))) {
+                return search_box.terminal;
             } else {
                 return get_focus_term((Container) focus_child);
             }
@@ -440,72 +441,21 @@ namespace Widgets {
         }
         
         public void search() {
-            if (search_box == null) {
-                term_before_search = get_focus_term(this);
-                search_text = "";
+            term_before_search = get_focus_term(this);
+            if (search_box == null && term_before_search != null) {
                 
-                search_box = new SearchBox(((Widgets.ConfigWindow) get_toplevel()));
-                search_box.search_entry.key_press_event.connect((w, e) => {
-                        string keyname = Keymap.get_keyevent_name(e);
-                        
-                        if (keyname == "Esc") {
-                            remove_search_box();
-                        }
-                        
-                        return false;
-                    });
-                search_box.search_entry.get_buffer().deleted_text.connect((buffer, p, nc) => {
-                        string entry_text = search_box.search_entry.get_text().strip();
-                        if (entry_text == "") {
-                            search_box.hide_clear_button();
-                        }
-                        
-                        update_search_text();
-                    });
-                search_box.search_entry.get_buffer().inserted_text.connect((buffer, p, c, nc) => {
-                        string entry_text = search_box.search_entry.get_text().strip();
-                        if (entry_text != "") {
-                            search_box.show_clear_button();
-                        }
-                        update_search_text();
-                    });
-                search_box.clear_button.button_press_event.connect((w, e) => {
-                        search_box.search_entry.set_text("");
-                        update_search_text();
-                        
-                        return false;
-                    });
-                search_box.search_entry.activate.connect((w) => {
-                        if (search_text != "") {
-                            term_before_search.term.search_find_previous();
-                        }
-                    });
-                search_box.search_next_button.button_press_event.connect((w, e) => {
-                        if (search_text != "") {
-                            term_before_search.term.search_find_next();
-                        }
-                        
-                        return false;
-                    });
-                search_box.search_previous_button.button_press_event.connect((w, e) => {
-                        if (search_text != "") {
-                            term_before_search.term.search_find_previous();
-                        }
-                        
-                        return false;
+                search_box = new SearchBox(((Widgets.ConfigWindow) get_toplevel()), term_before_search);
+                search_box.quit_search.connect((w) => {
+                        remove_search_box();
                     });
                 add_overlay(search_box);
                 show_all();            
-                
-                search_box.search_entry.grab_focus();
-            } else {
-                search_box.search_entry.grab_focus();
             }
+            
+            search_box.search_entry.grab_focus();
         }
         
         public void remove_search_box() {
-            search_text = "";
-            
             if (search_box != null) {
                 remove(search_box);
                 search_box.destroy();
@@ -518,21 +468,6 @@ namespace Widgets {
             }
         }
         
-        public void update_search_text() {
-            string entry_text = search_box.search_entry.get_text().strip();
-            if (search_text != entry_text) {
-                search_text = entry_text;
-                
-                try {
-                    var regex = new Regex(Regex.escape_string(search_text), RegexCompileFlags.CASELESS);
-                    term_before_search.term.search_set_gregex(regex, 0);
-                    term_before_search.term.search_set_wrap_around(true);
-                } catch (GLib.RegexError e) {
-                    stdout.printf("Got error %s", e.message);
-                }
-            }
-        }
-
 		public void toggle_remote_panel(Workspace workspace) {
 			if (remote_panel == null) {
 				show_remote_panel(workspace);
