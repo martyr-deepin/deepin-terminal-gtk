@@ -33,7 +33,7 @@ namespace Widgets {
         public ArrayList<Term> term_list;
         public SearchBox? search_box;
 		public RemotePanel? remote_panel;
-        public Term? term_before_search;
+        public Term? terminal_before_popup;
 		
 		public WorkspaceManager workspace_manager;
         
@@ -191,10 +191,10 @@ namespace Widgets {
         
         public Term get_focus_term(Container container) {
             Widget focus_child = container.get_focus_child();
-            if (focus_child.get_type().is_a(typeof(Term))) {
+            if (terminal_before_popup != null) {
+                return terminal_before_popup;
+            } else if (focus_child.get_type().is_a(typeof(Term))) {
                 return (Term) focus_child;
-            } else if (focus_child.get_type().is_a(typeof(SearchBox))) {
-                return search_box.terminal;
             } else {
                 return get_focus_term((Container) focus_child);
             }
@@ -441,10 +441,10 @@ namespace Widgets {
         }
         
         public void search() {
-            term_before_search = get_focus_term(this);
-            if (search_box == null && term_before_search != null) {
+            terminal_before_popup = get_focus_term(this);
+            if (search_box == null && terminal_before_popup != null) {
                 
-                search_box = new SearchBox(((Widgets.ConfigWindow) get_toplevel()), term_before_search);
+                search_box = new SearchBox(((Widgets.ConfigWindow) get_toplevel()), terminal_before_popup);
                 search_box.quit_search.connect((w) => {
                         remove_search_box();
                     });
@@ -462,9 +462,9 @@ namespace Widgets {
                 search_box = null;
             }
             
-            if (term_before_search != null) {
-                term_before_search.focus_term();
-                term_before_search = null;
+            if (terminal_before_popup != null) {
+                terminal_before_popup.focus_term();
+                terminal_before_popup = null;
             }
         }
         
@@ -491,6 +491,8 @@ namespace Widgets {
                 show_slider_start_x = rect.width;
                 show_timer.reset();
 			}
+            
+            terminal_before_popup = get_focus_term(this);
 		}
 		
 		public void hide_remote_panel() {
@@ -508,6 +510,11 @@ namespace Widgets {
                 remove(remote_panel);
                 remote_panel.destroy();
                 remote_panel = null;
+            }
+            
+            if (terminal_before_popup != null) {
+                terminal_before_popup.focus_term();
+                terminal_before_popup = null;
             }
         }
         
