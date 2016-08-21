@@ -1,6 +1,6 @@
 PREFIX=/usr/local
 all: main
-main: ./lib/animate_timer.vala \
+main: ./lib/animation.vala \
       ./lib/config.vala \
       ./lib/constant.vala \
       ./lib/draw.vala \
@@ -14,7 +14,7 @@ main: ./lib/animate_timer.vala \
       ./widget/about_widget.vala \
       ./widget/add_server_button.vala \
       ./widget/appbar.vala \
-      ./widget/checkbutton.vala \
+      ./widget/check_button.vala \
       ./widget/config_window.vala \
       ./widget/confirm_dialog.vala \
       ./widget/cursor_toggle_button.vala \
@@ -27,15 +27,15 @@ main: ./lib/animate_timer.vala \
       ./widget/progressbar.vala \
       ./widget/quake_window.vala \
       ./widget/remote_panel.vala \
-      ./widget/remote_server.vala \
-      ./widget/search_box.vala \
+      ./widget/remote_server_dialog.vala \
+      ./widget/search_panel.vala \
       ./widget/search_entry.vala \
       ./widget/server_button.vala \
       ./widget/server_group_button.vala \
       ./widget/switcher.vala \
       ./widget/tabbar.vala \
       ./widget/terminal.vala \
-      ./widget/textbutton.vala \
+      ./widget/text_button.vala \
       ./widget/titlebar.vala \
       ./widget/window.vala \
       ./widget/window_event_area.vala \
@@ -58,7 +58,7 @@ main: ./lib/animate_timer.vala \
     --pkg=libsecret-1 \
     --pkg=fontconfig \
     --vapidir=./vapi \
-    ./lib/animate_timer.vala \
+    ./lib/animation.vala \
     ./lib/config.vala \
     ./lib/constant.vala \
     ./lib/draw.vala \
@@ -72,7 +72,7 @@ main: ./lib/animate_timer.vala \
     ./widget/about_widget.vala \
     ./widget/add_server_button.vala \
     ./widget/appbar.vala \
-    ./widget/checkbutton.vala \
+    ./widget/check_button.vala \
     ./widget/config_window.vala \
     ./widget/confirm_dialog.vala \
     ./widget/cursor_toggle_button.vala \
@@ -85,15 +85,15 @@ main: ./lib/animate_timer.vala \
     ./widget/progressbar.vala \
     ./widget/quake_window.vala \
     ./widget/remote_panel.vala \
-    ./widget/remote_server.vala \
-    ./widget/search_box.vala \
+    ./widget/remote_server_dialog.vala \
+    ./widget/search_panel.vala \
     ./widget/search_entry.vala \
     ./widget/server_button.vala \
     ./widget/server_group_button.vala \
     ./widget/switcher.vala \
     ./widget/tabbar.vala \
     ./widget/terminal.vala \
-    ./widget/textbutton.vala \
+    ./widget/text_button.vala \
     ./widget/titlebar.vala \
     ./widget/window.vala \
     ./widget/window_event_area.vala \

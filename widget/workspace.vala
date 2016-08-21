@@ -34,7 +34,7 @@ namespace Widgets {
         public AnimateTimer hide_timer;
         public AnimateTimer show_timer;
         public ArrayList<Term> term_list;
-        public SearchBox? search_box;
+        public SearchPanel? search_panel;
         public Term? terminal_before_popup;
         public int PANED_HANDLE_SIZE = 1;
         public int hide_slider_interval = 500;
@@ -75,7 +75,7 @@ namespace Widgets {
                     close_term(term);
                 });
             term.term.button_press_event.connect((w, e) => {
-                    remove_search_box();
+                    remove_search_panel();
 					hide_remote_panel();
                     
                     return false;
@@ -438,24 +438,24 @@ namespace Widgets {
         
         public void search() {
             terminal_before_popup = get_focus_term(this);
-            if (search_box == null && terminal_before_popup != null) {
+            if (search_panel == null && terminal_before_popup != null) {
                 
-                search_box = new SearchBox(((Widgets.ConfigWindow) get_toplevel()), terminal_before_popup);
-                search_box.quit_search.connect((w) => {
-                        remove_search_box();
+                search_panel = new SearchPanel(((Widgets.ConfigWindow) get_toplevel()), terminal_before_popup);
+                search_panel.quit_search.connect((w) => {
+                        remove_search_panel();
                     });
-                add_overlay(search_box);
+                add_overlay(search_panel);
                 show_all();            
             }
             
-            search_box.search_entry.grab_focus();
+            search_panel.search_entry.grab_focus();
         }
         
-        public void remove_search_box() {
-            if (search_box != null) {
-                remove(search_box);
-                search_box.destroy();
-                search_box = null;
+        public void remove_search_panel() {
+            if (search_panel != null) {
+                remove(search_panel);
+                search_panel.destroy();
+                search_panel = null;
             }
             
             if (terminal_before_popup != null) {

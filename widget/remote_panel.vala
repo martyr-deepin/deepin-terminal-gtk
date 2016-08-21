@@ -520,9 +520,9 @@ namespace Widgets {
         public void edit_server(string server_info, UpdatePageAfterEdit func) {
             load_config();
             
-            var remote_server = new Widgets.RemoteServer(parent_window, this, server_info, config_file);
-            remote_server.transient_for_window(parent_window);
-            remote_server.delete_server.connect((server, address, username) => {
+            var remote_server_dialog = new Widgets.RemoteServerDialog(parent_window, this, server_info, config_file);
+            remote_server_dialog.transient_for_window(parent_window);
+            remote_server_dialog.delete_server.connect((server, address, username) => {
                     try {
                         // First, remove old server info from config file.
                         if (config_file.has_group(server_info)) {
@@ -535,7 +535,7 @@ namespace Widgets {
                         error ("%s", e.message);
                     }
                 });
-            remote_server.edit_server.connect((
+            remote_server_dialog.edit_server.connect((
                 server, address, username, password, port, 
                 encode, path, command, nickname, groupname, 
                 backspace_key, delete_key) => {
@@ -552,13 +552,13 @@ namespace Widgets {
                                                   
                                                       func();
                                                       
-                                                      remote_server.destroy();
+                                                      remote_server_dialog.destroy();
                                                   } catch (Error e) {
                                                       error ("%s", e.message);
                                                   }
                                               });
                                     
-            remote_server.show_all();
+            remote_server_dialog.show_all();
         }
         
         public Gtk.ScrolledWindow create_scrolled_window() {
@@ -591,16 +591,16 @@ namespace Widgets {
         public Widgets.AddServerButton create_add_server_button() {
 			Widgets.AddServerButton add_server_button = new Widgets.AddServerButton();
 			add_server_button.button_release_event.connect((w, e) => {
-                    var remote_server = new Widgets.RemoteServer(parent_window, this);
-                    remote_server.transient_for_window(parent_window);
-                    remote_server.add_server.connect((server, address, username, password, port, encode, path, command, nickname, groupname, backspace_key, delete_key) => {
+                    var remote_server_dialog = new Widgets.RemoteServerDialog(parent_window, this);
+                    remote_server_dialog.transient_for_window(parent_window);
+                    remote_server_dialog.add_server.connect((server, address, username, password, port, encode, path, command, nickname, groupname, backspace_key, delete_key) => {
                             add_server(address, username, password, port, encode, path, command, nickname, groupname, backspace_key, delete_key);
                             
                             update_home_page();
                             
-                            remote_server.destroy();
+                            remote_server_dialog.destroy();
                         });
-                    remote_server.show_all();
+                    remote_server_dialog.show_all();
 					
 					return false;
 				});

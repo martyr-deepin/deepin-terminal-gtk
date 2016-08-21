@@ -25,7 +25,7 @@ using Gtk;
 using Widgets;
 
 namespace Widgets {
-    public class SearchBox : Gtk.HBox {
+    public class SearchPanel : Gtk.HBox {
         public Entry search_entry;
         public Gtk.Box clear_button_box;
         public ImageButton clear_button;
@@ -39,7 +39,7 @@ namespace Widgets {
         
         public signal void quit_search();
         
-        public SearchBox(Widgets.ConfigWindow config_window, Term term) {
+        public SearchPanel(Widgets.ConfigWindow config_window, Term term) {
             terminal = term;
             search_text = "";
             

@@ -25,7 +25,7 @@ using Gtk;
 using Widgets;
 
 namespace Widgets {
-    public class RemoteServer : Widgets.Dialog {
+    public class RemoteServerDialog : Widgets.Dialog {
         public Gtk.Box advanced_options_box;
         public Gtk.Box box;
         public Gtk.Box server_action_box;
@@ -85,7 +85,7 @@ namespace Widgets {
         
         public signal void delete_server(string address, string username);
         
-        public RemoteServer(Widgets.ConfigWindow window, Gtk.Widget widget, string? info=null, KeyFile? config=null) {
+        public RemoteServerDialog(Widgets.ConfigWindow window, Gtk.Widget widget, string? info=null, KeyFile? config=null) {
             window_init_width = 480;
             window_init_height = 360;
             
