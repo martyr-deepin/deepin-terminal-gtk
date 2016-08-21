@@ -136,18 +136,11 @@ public class Application : Object {
         foreach (string arg in argv) {
             if (arg == "-e" || arg == "-x") {
                 start_parse_command = true;
-            } else if (arg.has_prefix("-")) {
-                if (start_parse_command) {
-                    start_parse_command = false;
-                }
-            } else {
-                if (start_parse_command) {
-                    user_command = user_command + " " + arg;
-                }
+            } else if (start_parse_command) {
+                user_command = user_command + " " + arg;
             }
-            
         }
-        
+        user_command = user_command.strip();
         
         try {
 			var opt_context = new OptionContext();
@@ -159,7 +152,7 @@ public class Application : Object {
 			stdout.printf ("Run '%s --help' to see a full list of available command line options.\n", args[0]);
 		}
         
-        // User 'user_command' instead OptionContext's 'commands'.
+        // Use 'user_command' instead OptionContext's 'commands'.
         try {
             Shell.parse_argv(user_command, out commands);
         } catch (ShellError e) {
