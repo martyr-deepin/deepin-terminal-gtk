@@ -155,7 +155,7 @@ namespace Widgets {
                 if (server_info != null) {
                     name_entry.set_text(config_file.get_value(server_info, "Name"));
                 }
-                name_entry.set_placeholder_text("fill");
+                name_entry.set_placeholder_text(_("Required"));
                 create_key_row(name_label, name_entry, "%s:".printf(_("Server name")), grid);
 
                 // Address.
@@ -169,7 +169,7 @@ namespace Widgets {
                     address_entry.set_text(server_info.split("@")[1]);
                 }
                 address_entry.set_width_chars(label_margin_left);
-                address_entry.set_placeholder_text("fill");
+                address_entry.set_placeholder_text(_("Required"));
                 address_entry.margin_start = label_margin_left;
                 address_entry.get_style_context().add_class("preference_entry");
                 address_entry.insert_text.connect(on_address_entry_insert);
@@ -204,7 +204,7 @@ namespace Widgets {
                 if (server_info != null) {
                     user_entry.set_text(server_info.split("@")[0]);
                 }
-                user_entry.set_placeholder_text("fill");
+                user_entry.set_placeholder_text(_("Required"));
                 create_follow_key_row(user_label, user_entry, "%s:".printf(_("Username")), address_label, grid);
             
                 // Password.
@@ -214,7 +214,7 @@ namespace Widgets {
                     string password = Utils.lookup_password(server_info.split("@")[0], server_info.split("@")[1]);
                     password_button.entry.set_text(password);
                 }
-                password_button.entry.set_placeholder_text("fill");
+                password_button.entry.set_placeholder_text(_("Required"));
                 create_follow_key_row(password_label, password_button, "%s:".printf(_("Password")), user_label, grid);
             
                 advanced_options_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
@@ -228,7 +228,7 @@ namespace Widgets {
                 if (server_info != null) {
                     groupname_entry.set_text(config_file.get_value(server_info, "GroupName"));
                 }
-                groupname_entry.set_placeholder_text("option");
+                groupname_entry.set_placeholder_text(_("Optional"));
                 groupname_entry.set_width_chars(30);  // this line is expand width of entry.
                 create_key_row(group_name_label, groupname_entry, "%s:".printf(_("Group")), advanced_grid);
 
@@ -238,7 +238,7 @@ namespace Widgets {
                 if (server_info != null) {
                     path_entry.set_text(config_file.get_value(server_info, "Path"));
                 }
-                path_entry.set_placeholder_text("option");
+                path_entry.set_placeholder_text(_("Optional"));
                 create_follow_key_row(path_label, path_entry, "%s:".printf(_("Path")), group_name_label, advanced_grid);
 
                 // Command.
@@ -247,7 +247,7 @@ namespace Widgets {
                 if (server_info != null) {
                     command_entry.set_text(config_file.get_value(server_info, "Command"));
                 }
-                command_entry.set_placeholder_text("option");
+                command_entry.set_placeholder_text(_("Optional"));
                 create_follow_key_row(command_label, command_entry, "%s:".printf(_("Command")), path_label, advanced_grid);
             
                 // Encoding.

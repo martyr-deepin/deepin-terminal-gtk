@@ -205,6 +205,12 @@ msgstr "透明度"
 msgid "Open"
 msgstr "打开"
 
+#: ../widget/remote_server_dialog.vala:231
+#: ../widget/remote_server_dialog.vala:241
+#: ../widget/remote_server_dialog.vala:250
+msgid "Optional"
+msgstr "选填"
+
 #: ../widget/remote_server_dialog.vala:218
 msgid "Password"
 msgstr "密码"
@@ -246,6 +252,13 @@ msgstr "退出全屏"
 #: ../widget/config_window.vala:234 ../widget/appbar.vala:94
 msgid "Remote management"
 msgstr "远程管理"
+
+#: ../widget/remote_server_dialog.vala:158
+#: ../widget/remote_server_dialog.vala:172
+#: ../widget/remote_server_dialog.vala:207
+#: ../widget/remote_server_dialog.vala:217
+msgid "Required"
+msgstr "必填"
 
 #: ../widget/preference.vala:372
 msgid "Restore all"
