@@ -22,10 +22,10 @@
  */ 
 
 using Gtk;
-using Vte;
-using Widgets;
 using Menu;
 using Utils;
+using Vte;
+using Widgets;
 
 namespace Widgets {
     public class Term : Gtk.ScrolledWindow {
@@ -34,20 +34,25 @@ namespace Widgets {
             STRING,
             TEXT
         }
-
-        public Terminal term;
-        public GLib.Pid child_pid;
-        public uint launch_idle_id;
-        public string current_dir;
+        
+        public Gdk.RGBA foreground_color = Gdk.RGBA();
+		public Menu.Menu menu;
+		public WorkspaceManager workspace_manager;
 		public bool has_select_all = false;
-        
-        public string? uri_at_right_press;
-    
-        public signal void change_dir(string dir);
-        public signal void highlight_tab();
-        
 		public int font_size = 0;
+        private bool enter_sz_command = false;
+        private string save_file_directory = "";
+        public GLib.Pid child_pid;
+        public Gdk.RGBA background_color = Gdk.RGBA();
+        public Terminal term;
+        public bool is_first_term; 
         public double zoom_factor = 1.0;
+        public signal void change_dir(string dir);
+        public signal void exit();
+        public signal void highlight_tab();
+        public string current_dir;
+        public string? uri_at_right_press;
+        public uint launch_idle_id;
 
         /* Following strings are used to build RegEx for matching URIs */
         const string USERCHARS = "-[:alnum:]";
@@ -72,20 +77,6 @@ namespace Widgets {
             "(?:mailto:)?" + USERCHARS_CLASS + "[" + USERCHARS + ".]*\\@" + HOSTCHARS_CLASS + "+\\." + HOST,
             "(?:news:|man:|info:)[[:alnum:]\\Q^_{|}~!\"#$%&'()*+,./;:=?`\\E]+"
         };
-        
-        public bool is_first_term; 
-		
-		public Menu.Menu menu;
-		
-        public Gdk.RGBA background_color = Gdk.RGBA();
-		public Gdk.RGBA foreground_color = Gdk.RGBA();
-        
-        public signal void exit();
-        
-        private bool enter_sz_command = false;
-        private string save_file_directory = "";
-		
-		public WorkspaceManager workspace_manager;
 		
 		public Term(bool first_term, string[]? commands, string? work_directory, WorkspaceManager manager) {
 			workspace_manager = manager;

@@ -26,19 +26,16 @@ using Widgets;
 
 namespace Widgets {
     public class Dialog : Gtk.Window {
-        public int window_frame_margin_top = 50;
-        public int window_frame_margin_bottom = 60;
-        public int window_frame_margin_start = 50;
-        public int window_frame_margin_end = 50;
-        public int window_frame_radius = 5;
-        
-        public int window_init_width;
-        public int window_init_height;
-        
         public Gtk.Box window_frame_box;
         public Gtk.Box window_widget_box;
-        
         public Widgets.ConfigWindow transient_window;
+        public int window_frame_margin_bottom = 60;
+        public int window_frame_margin_end = 50;
+        public int window_frame_margin_start = 50;
+        public int window_frame_margin_top = 50;
+        public int window_frame_radius = 5;
+        public int window_init_height;
+        public int window_init_width;
         
         public Dialog() {
             set_app_paintable(true); // set_app_paintable is neccessary step to make window transparent.

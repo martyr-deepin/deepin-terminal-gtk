@@ -27,13 +27,11 @@ using XUtils;
 
 namespace Widgets {
     public class QuakeWindow : Widgets.ConfigWindow {
-        public int window_frame_margin_bottom = 60;
-        
         public double window_default_height_scale = 0.3;
         public double window_max_height_scale = 0.7;
-        
         public int press_x;
         public int press_y;
+        public int window_frame_margin_bottom = 60;
         
         public QuakeWindow() {
             quake_mode = true;

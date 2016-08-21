@@ -26,18 +26,16 @@ using Widgets;
 
 namespace Widgets {
     public class SearchBox : Gtk.HBox {
-        public Widgets.ImageButton search_image;
         public Entry search_entry;
         public Gtk.Box clear_button_box;
         public ImageButton clear_button;
         public ImageButton search_next_button;
         public ImageButton search_previous_button;
-        
         public Term terminal;
-        public string search_text;
-        
-        public int margin_horizontal = 10;
+        public Widgets.ImageButton search_image;
         public int button_margin = 4;
+        public int margin_horizontal = 10;
+        public string search_text;
         
         public signal void quit_search();
         

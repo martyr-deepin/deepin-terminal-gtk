@@ -26,14 +26,12 @@ using Widgets;
 
 namespace Widgets {
     public class PreferenceSlidebar : Gtk.Grid {
-        public int width = Constant.PREFERENCE_SLIDEBAR_WIDTH;
 		public int height = 30;
-        
-        public int segement_spacing = 20;
-		
-		public signal void click_item(string name);
-        
         public PreferenceSlideItem focus_segement_item;
+        public int segement_spacing = 20;
+        public int width = Constant.PREFERENCE_SLIDEBAR_WIDTH;
+        
+		public signal void click_item(string name);
 		
         public PreferenceSlidebar() {
 			set_size_request(width, -1);

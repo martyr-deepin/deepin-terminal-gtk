@@ -22,8 +22,8 @@
  */ 
 
 using Gdk;
-using Gtk;
 using Gee;
+using Gtk;
 
 extern char* project_path();
 extern string font_match(string family);

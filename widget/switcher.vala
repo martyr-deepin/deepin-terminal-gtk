@@ -21,28 +21,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */ 
 
+using Animation;
 using Gtk;
 using Widgets;
-using Animation;
 
 namespace Widgets {
     public class Switcher : Gtk.HBox {
-        public int width;
-        
-        public Gtk.ScrolledWindow scrolledwindow;
+        public AnimateTimer scroll_to_left_timer;
+        public AnimateTimer scroll_to_right_timer;
         public Gtk.Box box;
         public Gtk.Box left_box;
         public Gtk.Box right_box;
-        
-        public AnimateTimer scroll_to_left_timer;
-        public int scroll_to_left_start_x;
+        public Gtk.ScrolledWindow scrolledwindow;
         public int scroll_to_left_end_x;
         public int scroll_to_left_interval = 500;
-        
-        public AnimateTimer scroll_to_right_timer;
-        public int scroll_to_right_start_x;
+        public int scroll_to_left_start_x;
         public int scroll_to_right_end_x;
         public int scroll_to_right_interval = 500;
+        public int scroll_to_right_start_x;
+        public int width;
         
         public Switcher(int w) {
             width = w;

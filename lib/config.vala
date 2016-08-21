@@ -26,22 +26,18 @@ using Gee;
 
 namespace Config {
     public class Config : GLib.Object {
-        public string config_file_path = Utils.get_config_file_path("config.conf");
-        public KeyFile config_file;
-		
+        public ArrayList<string> backspace_key_erase_names;
+		public ArrayList<string> del_key_erase_names;
+		public ArrayList<string> encoding_names;
 		public ArrayList<string> theme_names;
-
-        public signal void update();
-		
-		public string default_mono_font = "";
+		public HashMap<string, string> erase_map;
 		public double default_opacity = 0.9;
 		public int default_size = 11;
-		
-		public ArrayList<string> encoding_names;
-		
-		public HashMap<string, string> erase_map;
-		public ArrayList<string> backspace_key_erase_names;
-		public ArrayList<string> del_key_erase_names;
+		public string default_mono_font = "";
+        public KeyFile config_file;
+        public string config_file_path = Utils.get_config_file_path("config.conf");
+        
+        public signal void update();
         
         public Config() {
 			default_mono_font = font_match("mono");

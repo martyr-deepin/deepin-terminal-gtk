@@ -20,9 +20,6 @@
 
 namespace Animation {
     public class AnimateTimer : Object {
-        /* x and y are 0.0 to 1.0 */
-        public delegate double EasingFunc (double x);
-
         /* The following are the same intervals that Unity uses */
         public static const int INSTANT = 150; /* Good for animations that don't convey any information */
         public static const int FAST = 250; /* Good for animations that convey duplicated information */
@@ -30,10 +27,10 @@ namespace Animation {
         public static const int SLOW = 1000; /* Good for animations that convey information that is only presented in the animation */
 
         /* speed is in milliseconds */
-        public unowned EasingFunc easing_func { get; private set; }
-        public int speed { get; set; }
         public bool is_running { get { return timeout != 0; } }
         public double progress { get; private set; }
+        public int speed { get; set; }
+        public unowned EasingFunc easing_func { get; private set; }
 
         /* progress is from 0.0 to 1.0 */
         public signal void animate (double progress);
@@ -52,6 +49,10 @@ namespace Animation {
            ease_out_quint.
         */
         /* speed is in milliseconds */
+        
+        /* x and y are 0.0 to 1.0 */
+        public delegate double EasingFunc (double x);
+
         public AnimateTimer (EasingFunc func, int speed) {
             Object (speed: speed);
             this.easing_func = func;

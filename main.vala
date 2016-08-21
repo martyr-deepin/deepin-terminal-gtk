@@ -21,11 +21,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */ 
 
-using Gtk;
 using Gdk;
+using Gtk;
+using Keymap;
 using Vte;
 using Widgets;
-using Keymap;
 
 [DBus (name = "com.deepin.terminal")]
 public class TerminalApp : Application {
@@ -60,18 +60,16 @@ interface QuakeDaemon : Object {
 
 
 public class Application : Object {
-    public Widgets.Window window;
-    public Widgets.QuakeWindow quake_window;
-    public WorkspaceManager workspace_manager;
-    
-    private static bool version = false;
 	private static bool quake_mode = false;
 	private static string? work_directory = null;
-    
     /* command_e (-e) is used for running commands independently (not inside a shell) */
     [CCode (array_length = false, array_null_terminated = true)]
 	private static string[]? commands = null;
+    private static bool version = false;
     private static string title = null;
+    public Widgets.QuakeWindow quake_window;
+    public Widgets.Window window;
+    public WorkspaceManager workspace_manager;
 	
 	private const GLib.OptionEntry[] options = {
 		{ "version", 0, 0, OptionArg.NONE, ref version, "Print version info and exit", null },

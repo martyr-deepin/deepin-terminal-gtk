@@ -23,65 +23,55 @@
 
 using Cairo;
 using Draw;
+using GLib;
 using Gee;
 using Gtk;
 using Utils;
 using Widgets;
-using GLib;
 
 namespace Widgets {
     public class Tabbar : Gtk.DrawingArea {
-        public ArrayList<int> tab_list;
-        public HashMap<int, string> tab_name_map;
-		public HashMap<int, bool> tab_highlight_map;
-        public int height = Constant.TITLEBAR_HEIGHT;
-        public int tab_index = 0;
-        
-        public Gdk.RGBA inactive_arrow_color;
-        public Gdk.RGBA hover_arrow_color;
-        public Gdk.RGBA text_hover_dark_color;
-        public Gdk.RGBA text_hover_light_color;
-        public Gdk.RGBA text_dark_color;
-        public Gdk.RGBA text_light_color;
-        public Gdk.RGBA text_highlight_color;
 		public Gdk.RGBA tab_split_dark_color;
 		public Gdk.RGBA tab_split_light_color;
-        
+		public HashMap<int, bool> tab_highlight_map;
+        private Cairo.ImageSurface add_hover_dark_surface;
+        private Cairo.ImageSurface add_hover_light_surface;
+        private Cairo.ImageSurface add_normal_dark_surface;
+        private Cairo.ImageSurface add_normal_light_surface;
+        private Cairo.ImageSurface add_press_dark_surface;
+        private Cairo.ImageSurface add_press_light_surface;
         private Cairo.ImageSurface close_hover_surface;
         private Cairo.ImageSurface close_normal_surface;
         private Cairo.ImageSurface close_press_surface;
-        
-        private Cairo.ImageSurface add_hover_dark_surface;
-        private Cairo.ImageSurface add_normal_dark_surface;
-        private Cairo.ImageSurface add_press_dark_surface;
-        private Cairo.ImageSurface add_hover_light_surface;
-        private Cairo.ImageSurface add_normal_light_surface;
-        private Cairo.ImageSurface add_press_light_surface;
-        
-        public bool allowed_add_tab = true;
-
-        private double draw_scale = 1.0;
-        
         private bool draw_hover = false;
         private bool is_button_press = false;
-        
-        private int add_button_width = 50;
+        private double draw_scale = 1.0;
         private int add_button_padding_x = 0;
-        
-        private int tab_split_width = 1;
-        
-        private int text_padding_x = 36;
-        private int text_padding_min_x = 24;
-        private int close_button_padding_x = 28;
+        private int add_button_width = 50;
         private int close_button_padding_min_x = 21;
+        private int close_button_padding_x = 28;
         private int draw_padding_y = 7;
         private int hover_x = 0;
+        private int tab_split_width = 1;
+        private int text_padding_min_x = 24;
+        private int text_padding_x = 36;
+        public ArrayList<int> tab_list;
+        public Gdk.RGBA hover_arrow_color;
+        public Gdk.RGBA inactive_arrow_color;
+        public Gdk.RGBA text_dark_color;
+        public Gdk.RGBA text_highlight_color;
+        public Gdk.RGBA text_hover_dark_color;
+        public Gdk.RGBA text_hover_light_color;
+        public Gdk.RGBA text_light_color;
+        public HashMap<int, string> tab_name_map;
+        public bool allowed_add_tab = true;
+        public int height = Constant.TITLEBAR_HEIGHT;
+        public int tab_index = 0;
         
+		public signal void draw_active_tab_underline(int x, int width);
 		public signal void press_tab(int tab_index, int tab_id);
         public signal void close_tab(int tab_index, int tab_id);
         public signal void new_tab();
-		public signal void draw_active_tab_underline(int x, int width);
-		
 		
         public Tabbar() {
             add_events (Gdk.EventMask.BUTTON_PRESS_MASK

@@ -22,17 +22,17 @@
  */ 
 
 public class Constant {
+    public static double TERMINAL_MIN_OPACITY = 0.2;
+    public static int ACTIVE_TAB_UNDERLINE_HEIGHT = 2;
+    public static int CLOSE_BUTTON_MARGIN_RIGHT = 3;
+    public static int CLOSE_BUTTON_MARGIN_TOP = 3;
+    public static int CLOSE_BUTTON_WIDTH = 27;
+    public static int FONT_MAX_SIZE = 50;
+    public static int FONT_MIN_SIZE = 5;
+    public static int MAX_SCROLL_LINES = 1000;
+    public static int PREFERENCE_SLIDEBAR_WIDTH = 160;
+    public static int REMOTE_PANEL_SEARCHBAR_HEIGHT = 36;
     public static int RESPONSE_RADIUS = 8;
     public static int SLIDER_WIDTH = 280;
     public static int TITLEBAR_HEIGHT = 40;
-    public static int CLOSE_BUTTON_MARGIN_TOP = 3;
-    public static int CLOSE_BUTTON_MARGIN_RIGHT = 3;
-    public static int CLOSE_BUTTON_WIDTH = 27;
-    public static int FONT_MIN_SIZE = 5;
-    public static int FONT_MAX_SIZE = 50;
-    public static int MAX_SCROLL_LINES = 1000;
-    public static int ACTIVE_TAB_UNDERLINE_HEIGHT = 2;
-    public static int REMOTE_PANEL_SEARCHBAR_HEIGHT = 36;
-    public static int PREFERENCE_SLIDEBAR_WIDTH = 160;
-    public static double TERMINAL_MIN_OPACITY = 0.2;
 }                         

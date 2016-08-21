@@ -26,25 +26,21 @@ using Widgets;
 
 namespace Widgets {
     public class AboutWidget : Gtk.Box {
-        public int height = 320;
-        
-        public int icon_y = 13;
-        public int name_y = 113;
-        public int version_y = 146;
-        public int logo_y = 176;
-        public int homepage_y = 210;
-        public int about_y = 251;
-        
-        public int name_height = 13;
-        public int version_height = 12;
-        public int version_size = 11;
-        public int about_x = 38;
-        public int about_height = 9;
-        
-        public string about_text = "    Deepin terminal is a terminal emulator with screen split, workspace and remote machine manage.\n\n    Deepin terminal is a free software licensed under GNU GPLv3.";
-        
         public Cairo.ImageSurface icon_surface;
         public Cairo.ImageSurface logo_surface;
+        public int about_height = 9;
+        public int about_x = 38;
+        public int about_y = 251;
+        public int height = 320;
+        public int homepage_y = 210;
+        public int icon_y = 13;
+        public int logo_y = 176;
+        public int name_height = 13;
+        public int name_y = 113;
+        public int version_height = 12;
+        public int version_size = 11;
+        public int version_y = 146;
+        public string about_text = "    Deepin terminal is a terminal emulator with screen split, workspace and remote machine manage.\n\n    Deepin terminal is a free software licensed under GNU GPLv3.";
         
         public AboutWidget() {
             icon_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("icon.png"));

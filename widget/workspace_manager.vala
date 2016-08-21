@@ -21,16 +21,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */ 
 
+using Gee;
 using Gtk;
 using Widgets;
-using Gee;
 
 namespace Widgets {
     public class WorkspaceManager : Gtk.Box {
-        public Tabbar tabbar;
-        public int workspace_index;
         public HashMap<int, Workspace> workspace_map;
+        public Tabbar tabbar;
         public Workspace focus_workspace;
+        public int workspace_index;
         
         public WorkspaceManager(Tabbar t, string[]? commands, string? work_directory) {
             tabbar = t;

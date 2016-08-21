@@ -21,29 +21,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */ 
 
+using Animation;
 using Gtk;
 using Widgets;
-using Animation;
 
 namespace Widgets {
     public class SearchEntry : Gtk.EventBox {
-        public Widgets.ImageButton search_image;
-        public Gtk.Label search_label;
-        public Gtk.Entry search_entry;
-        
-        public ImageButton clear_button;
-        public int clear_button_margin_right = 12;
-        public int search_image_margin_right = 5;
-
-        public Gtk.Box display_box;
+		public AnimateTimer timer;
         public Gtk.Box box;
-        
-        public int height = 36;
-        
-		AnimateTimer timer;
+        public Gtk.Box display_box;
+        public Gtk.Entry search_entry;
+        public Gtk.Label search_label;
+        public ImageButton clear_button;
+        public Widgets.ImageButton search_image;
         public int animation_time = 100;
-        public int search_image_margin_x = 18;
+        public int clear_button_margin_right = 12;
+        public int height = 36;
         public int search_image_animate_start_x;
+        public int search_image_margin_right = 5;
+        public int search_image_margin_x = 18;
         
         public SearchEntry() {
             this.add_events(Gdk.EventMask.BUTTON_PRESS_MASK

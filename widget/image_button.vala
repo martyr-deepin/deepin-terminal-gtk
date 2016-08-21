@@ -28,26 +28,22 @@ using Utils;
 
 namespace Widgets {
     public class ImageButton : Gtk.EventBox {
-        public Cairo.ImageSurface normal_dark_surface;
-        public Cairo.ImageSurface hover_dark_surface;
-        public Cairo.ImageSurface press_dark_surface;
-        public Cairo.ImageSurface normal_light_surface;
-        public Cairo.ImageSurface hover_light_surface;
-        public Cairo.ImageSurface press_light_surface;
-        
-        public Gdk.RGBA text_normal_color;
-        public Gdk.RGBA text_hover_color;
-        public Gdk.RGBA text_press_color;
-        
-        public string? button_text;
-        public int button_text_size = 14;
-		
 		public bool is_hover = false;
 		public bool is_press = false;
+        public Cairo.ImageSurface hover_dark_surface;
+        public Cairo.ImageSurface hover_light_surface;
+        public Cairo.ImageSurface normal_dark_surface;
+        public Cairo.ImageSurface normal_light_surface;
+        public Cairo.ImageSurface press_dark_surface;
+        public Cairo.ImageSurface press_light_surface;
+        public Gdk.RGBA text_hover_color;
+        public Gdk.RGBA text_normal_color;
+        public Gdk.RGBA text_press_color;
+        public bool is_theme_button;
+        public int button_text_size = 14;
+        public string? button_text;
         
 		public signal void click();
-        
-        public bool is_theme_button;
         
         public ImageButton(string image_path, bool theme_button=false, string? text=null, int text_size=12) {
             is_theme_button = theme_button;

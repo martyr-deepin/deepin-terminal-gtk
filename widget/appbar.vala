@@ -26,33 +26,25 @@ using Widgets;
 
 namespace Widgets {
     public class Appbar : Gtk.Overlay {
-        public Tabbar tabbar;
+        public Menu.Menu menu;
+		public int height = Constant.TITLEBAR_HEIGHT;
         public Box max_toggle_box;
-        
         public Box window_button_box;
         public Box window_close_button_box;
-        
+        public Gtk.Widget focus_widget;
+        public ImageButton close_button;
+        public ImageButton max_button;
         public ImageButton menu_button;
         public ImageButton min_button;
-        public ImageButton max_button;
-        public ImageButton unmax_button;
-        public ImageButton close_button;
         public ImageButton quit_fullscreen_button;
-		
-		public int height = Constant.TITLEBAR_HEIGHT;
+        public ImageButton unmax_button;
+        public Tabbar tabbar;
+        public Widgets.Window window;
+        public Widgets.WindowEventArea event_area;
+        public WorkspaceManager workspace_manager;
         public int close_button_margin_right = 5;
         public int logo_width = 48;
         public int titlebar_right_cache_width = 30;
-        
-        public Gtk.Widget focus_widget;
-        
-		public Menu.Menu menu;
-		
-        public Widgets.WindowEventArea event_area;
-        
-        public Widgets.Window window;
-        
-        public WorkspaceManager workspace_manager;
         
         public signal void close_window();
         public signal void quit_fullscreen();

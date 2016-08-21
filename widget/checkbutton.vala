@@ -26,17 +26,16 @@ using Widgets;
 
 namespace Widgets {
     public class CheckButton : Gtk.CheckButton {
-        public Cairo.ImageSurface checked_normal_surface;
-        public Cairo.ImageSurface checked_hover_surface;
-        public Cairo.ImageSurface checked_press_surface;
-        public Cairo.ImageSurface checked_insensitive_surface;
-        public Cairo.ImageSurface unchecked_normal_surface;
-        public Cairo.ImageSurface unchecked_hover_surface;
-        public Cairo.ImageSurface unchecked_press_surface;
-        public Cairo.ImageSurface unchecked_insensitive_surface;
-        
 		public bool is_hover = false;
 		public bool is_press = false;
+        public Cairo.ImageSurface checked_hover_surface;
+        public Cairo.ImageSurface checked_insensitive_surface;
+        public Cairo.ImageSurface checked_normal_surface;
+        public Cairo.ImageSurface checked_press_surface;
+        public Cairo.ImageSurface unchecked_hover_surface;
+        public Cairo.ImageSurface unchecked_insensitive_surface;
+        public Cairo.ImageSurface unchecked_normal_surface;
+        public Cairo.ImageSurface unchecked_press_surface;
         
         public CheckButton() {
             checked_normal_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("checkbox_checked_normal.png"));

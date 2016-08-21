@@ -28,14 +28,11 @@ using XUtils;
 namespace Widgets {
     public class WindowEventArea : Gtk.EventBox {
         public Gtk.Container drawing_area;
-        
+        public Gtk.Widget? child_before_leave;
+        public bool is_double_clicked = false;
         public double press_x = 0;
         public double press_y = 0;
-        
-        public Gtk.Widget? child_before_leave;
-        
         public int double_clicked_max_delay = 150;
-        public bool is_double_clicked = false;
     
         public WindowEventArea(Gtk.Container area) {
             drawing_area = area;

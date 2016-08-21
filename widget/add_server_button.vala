@@ -26,34 +26,27 @@ using Widgets;
 
 namespace Widgets {
     public class AddServerButton : Gtk.EventBox {
-        public Cairo.ImageSurface normal_dark_surface;
-        public Cairo.ImageSurface hover_dark_surface;
-        public Cairo.ImageSurface press_dark_surface;
-        public Cairo.ImageSurface normal_light_surface;
-        public Cairo.ImageSurface hover_light_surface;
-        public Cairo.ImageSurface press_light_surface;
-        
-        public Gdk.RGBA text_normal_color;
-        public Gdk.RGBA text_hover_color;
-        public Gdk.RGBA text_press_color;
-        
-        public Gdk.RGBA press_dark_color;
-        public Gdk.RGBA hover_dark_color;
-        
-        public Gdk.RGBA press_light_color;
-        public Gdk.RGBA hover_light_color;
-        
-        public string button_text = "add server";
-        
-        public int image_x = 12;
-        public int text_x = 72;
-        public int text_size = 11;
-		
 		public bool is_hover = false;
 		public bool is_press = false;
-        
-        public int width = Constant.SLIDER_WIDTH;
+        public Cairo.ImageSurface hover_dark_surface;
+        public Cairo.ImageSurface hover_light_surface;
+        public Cairo.ImageSurface normal_dark_surface;
+        public Cairo.ImageSurface normal_light_surface;
+        public Cairo.ImageSurface press_dark_surface;
+        public Cairo.ImageSurface press_light_surface;
+        public Gdk.RGBA hover_dark_color;
+        public Gdk.RGBA hover_light_color;
+        public Gdk.RGBA press_dark_color;
+        public Gdk.RGBA press_light_color;
+        public Gdk.RGBA text_hover_color;
+        public Gdk.RGBA text_normal_color;
+        public Gdk.RGBA text_press_color;
         public int height = 56;
+        public int image_x = 12;
+        public int text_size = 11;
+        public int text_x = 72;
+        public int width = Constant.SLIDER_WIDTH;
+        public string button_text = "add server";
         
         public AddServerButton() {
             var image_path = "add_server";

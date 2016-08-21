@@ -21,41 +21,34 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */ 
 
-using Gtk;
-using Config;
 using Cairo;
-using XUtils;
+using Config;
+using Gtk;
 using Wnck;
+using XUtils;
 
 namespace Widgets {
     public class Window : Widgets.ConfigWindow {
-        public int window_frame_margin_top = 50;
-        public int window_frame_margin_bottom = 60;
-        public int window_frame_margin_start = 50;
-        public int window_frame_margin_end = 50;
-        
-        public int window_widget_margin_top = 1;
-        public int window_widget_margin_bottom = 2;
-        public int window_widget_margin_start = 2;
-        public int window_widget_margin_end = 2;
-        
-        public int window_save_width = 0;
-        public int window_save_height = 0;
-        
-        public int window_fullscreen_response_height = 5;
-        public int window_fullscreen_monitor_height = Constant.TITLEBAR_HEIGHT * 2;
-        public int window_fullscreen_monitor_timeout = 150;
-        
-        public int window_width;
-        public int window_height;
-        
-        public Gtk.Box fullscreen_box;
-        public Gtk.Box spacing_box;
-        
         public Gdk.RGBA top_line_dark_color;
         public Gdk.RGBA top_line_light_color;
-
+        public Gtk.Box fullscreen_box;
+        public Gtk.Box spacing_box;
         public bool draw_tabbar_line = true;
+        public int window_frame_margin_bottom = 60;
+        public int window_frame_margin_end = 50;
+        public int window_frame_margin_start = 50;
+        public int window_frame_margin_top = 50;
+        public int window_fullscreen_monitor_height = Constant.TITLEBAR_HEIGHT * 2;
+        public int window_fullscreen_monitor_timeout = 150;
+        public int window_fullscreen_response_height = 5;
+        public int window_height;
+        public int window_save_height = 0;
+        public int window_save_width = 0;
+        public int window_widget_margin_bottom = 2;
+        public int window_widget_margin_end = 2;
+        public int window_widget_margin_start = 2;
+        public int window_widget_margin_top = 1;
+        public int window_width;
         
         public Window() {
             transparent_window();

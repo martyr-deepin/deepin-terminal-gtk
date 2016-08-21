@@ -21,35 +21,31 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */ 
 
-using Gtk;
-using Widgets;
-using Gee;
-using Utils;
 using Animation;
+using Gee;
+using Gtk;
+using Utils;
+using Widgets;
 
 namespace Widgets {
     public class Workspace : Gtk.Overlay {
-        public int index;
+        public RemotePanel? remote_panel;
+		public WorkspaceManager workspace_manager;
+        public AnimateTimer hide_timer;
+        public AnimateTimer show_timer;
         public ArrayList<Term> term_list;
         public SearchBox? search_box;
-		public RemotePanel? remote_panel;
         public Term? terminal_before_popup;
-		
-		public WorkspaceManager workspace_manager;
-        
-        public AnimateTimer show_timer;
-        public int show_slider_start_x;
-        public int show_slider_interval = 500;
-
-        public AnimateTimer hide_timer;
-        public int hide_slider_start_x;
-        public int hide_slider_interval = 500;
-        
         public int PANED_HANDLE_SIZE = 1;
+        public int hide_slider_interval = 500;
+        public int hide_slider_start_x;
+        public int index;
+        public int show_slider_interval = 500;
+        public int show_slider_start_x;
         
         public signal void change_dir(int index, string dir);
-        public signal void highlight_tab(int index);
         public signal void exit(int index);
+        public signal void highlight_tab(int index);
         
         public Workspace(int workspace_index, string[]? commands, string? work_directory, WorkspaceManager manager) {
             index = workspace_index;

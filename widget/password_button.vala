@@ -27,12 +27,10 @@ using Widgets;
 namespace Widgets {
     public class PasswordButton : Gtk.EventBox {
         public Gtk.Box box;
-        public Gtk.Entry entry;
         public Gtk.Box button_box;
-        
-        public ImageButton show_password_button;
+        public Gtk.Entry entry;
         public ImageButton hide_password_button;
-        
+        public ImageButton show_password_button;
         public int height = 26;
         
         public PasswordButton() {

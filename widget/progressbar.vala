@@ -26,17 +26,15 @@ using Widgets;
 
 namespace Widgets {
 	public class ProgressBar : Gtk.EventBox {
-        public int width = 200;
+		public double percent;
 		public int height = 22;
+        public Cairo.ImageSurface pointer_surface;
+        public Gdk.RGBA background_color;
+        public Gdk.RGBA foreground_color;
+        public int draw_pointer_offset = 3;
         public int line_height = 2;
         public int line_margin_top = 10;
-        public int draw_pointer_offset = 3;
-		public double percent;
-		
-        public Gdk.RGBA foreground_color;
-        public Gdk.RGBA background_color;
-        
-        public Cairo.ImageSurface pointer_surface;
+        public int width = 200;
         
 		public signal void update(double percent);
 		

@@ -26,56 +26,44 @@ using Widgets;
 
 namespace Widgets {
     public class ServerButton : Gtk.EventBox {
-        public Cairo.ImageSurface server_dark_surface;
-        public Cairo.ImageSurface server_light_surface;
-        public Cairo.ImageSurface server_edit_normal_dark_surface;
-        public Cairo.ImageSurface server_edit_hover_dark_surface;
-        public Cairo.ImageSurface server_edit_press_dark_surface;
-        public Cairo.ImageSurface server_edit_normal_light_surface;
-        public Cairo.ImageSurface server_edit_hover_light_surface;
-        public Cairo.ImageSurface server_edit_press_light_surface;
-        
-        public Gdk.RGBA title_dark_color;
-        public Gdk.RGBA content_dark_color;
-        public Gdk.RGBA press_dark_color;
-        public Gdk.RGBA hover_dark_color;
-
-        public Gdk.RGBA title_light_color;
-        public Gdk.RGBA content_light_color;
-        public Gdk.RGBA press_light_color;
-        public Gdk.RGBA hover_light_color;
-        
-        public Gdk.RGBA line_dark_color;
-        public Gdk.RGBA line_light_color;
-        
-        public string title;
-        public string content;
-        
-        public int image_x = 12;
-        
-        public int text_x = 72;
-        public int title_y = 5;
-        public int content_y = 27;
-        
-        public int edit_button_x = 254;
-        public int edit_button_y;
-        
-        public int text_width = 136;
-        public int title_size = 11;
-        public int content_size = 10;
-		
+        public bool is_at_edit_button_area = false;
 		public bool is_hover = false;
 		public bool is_press = false;
-
-		public bool is_at_edit_button_area = false;
-		
-        public int width = Constant.SLIDER_WIDTH;
-        public int height = 56;
-        
+        public Cairo.ImageSurface server_dark_surface;
+        public Cairo.ImageSurface server_edit_hover_dark_surface;
+        public Cairo.ImageSurface server_edit_hover_light_surface;
+        public Cairo.ImageSurface server_edit_normal_dark_surface;
+        public Cairo.ImageSurface server_edit_normal_light_surface;
+        public Cairo.ImageSurface server_edit_press_dark_surface;
+        public Cairo.ImageSurface server_edit_press_light_surface;
+        public Cairo.ImageSurface server_light_surface;
+        public Gdk.RGBA content_dark_color;
+        public Gdk.RGBA content_light_color;
+        public Gdk.RGBA hover_dark_color;
+        public Gdk.RGBA hover_light_color;
+        public Gdk.RGBA line_dark_color;
+        public Gdk.RGBA line_light_color;
+        public Gdk.RGBA press_dark_color;
+        public Gdk.RGBA press_light_color;
+        public Gdk.RGBA title_dark_color;
+        public Gdk.RGBA title_light_color;
         public bool display_bottom_line = true;
+        public int content_size = 10;
+        public int content_y = 27;
+        public int edit_button_x = 254;
+        public int edit_button_y;
+        public int height = 56;
+        public int image_x = 12;
+        public int text_width = 136;
+        public int text_x = 72;
+        public int title_size = 11;
+        public int title_y = 5;
+        public int width = Constant.SLIDER_WIDTH;
+        public string content;
+        public string title;
         
-        public signal void login_server(string server_info);
         public signal void edit_server(string server_info);
+        public signal void login_server(string server_info);
         
         public ServerButton(string server_title, string server_content) {
             this.add_events(Gdk.EventMask.BUTTON_PRESS_MASK

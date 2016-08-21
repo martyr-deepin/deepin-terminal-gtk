@@ -26,45 +26,35 @@ using Widgets;
 
 namespace Widgets {
     public class ServerGroupButton : Gtk.EventBox {
-        public Cairo.ImageSurface server_group_dark_surface;
-        public Cairo.ImageSurface server_group_light_surface;
+        public bool is_hover = false;
+		public bool is_press = false;
         public Cairo.ImageSurface arrow_dark_surface;
         public Cairo.ImageSurface arrow_light_surface;
-        
-        public Gdk.RGBA title_dark_color;
+        public Cairo.ImageSurface server_group_dark_surface;
+        public Cairo.ImageSurface server_group_light_surface;
         public Gdk.RGBA content_dark_color;
-        public Gdk.RGBA press_dark_color;
-        public Gdk.RGBA hover_dark_color;
-
-        public Gdk.RGBA title_light_color;
         public Gdk.RGBA content_light_color;
-        public Gdk.RGBA press_light_color;
+        public Gdk.RGBA hover_dark_color;
         public Gdk.RGBA hover_light_color;
-        
         public Gdk.RGBA line_dark_color;
         public Gdk.RGBA line_light_color;
-        
-        public string title;
-        public int server_number;
-        
-        public int image_x = 12;
-
-        public int arrow_x = Constant.SLIDER_WIDTH - 22;
-        
-        public int text_x = 72;
-        public int title_y = 5;
-        public int content_y = 27;
-        public int text_width = 136;
-        public int title_size = 11;
-        public int content_size = 10;
-		
-		public bool is_hover = false;
-		public bool is_press = false;
-        
-        public int width = Constant.SLIDER_WIDTH;
-        public int height = 56;
-        
+        public Gdk.RGBA press_dark_color;
+        public Gdk.RGBA press_light_color;
+        public Gdk.RGBA title_dark_color;
+        public Gdk.RGBA title_light_color;
         public bool display_bottom_line = true;
+        public int arrow_x = Constant.SLIDER_WIDTH - 22;
+        public int content_size = 10;
+        public int content_y = 27;
+        public int height = 56;
+        public int image_x = 12;
+        public int server_number;
+        public int text_width = 136;
+        public int text_x = 72;
+        public int title_size = 11;
+        public int title_y = 5;
+        public int width = Constant.SLIDER_WIDTH;
+        public string title;
         
         public signal void show_group_servers(string group_name);
         

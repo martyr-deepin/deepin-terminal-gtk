@@ -28,108 +28,91 @@ using Animation;
 
 namespace Widgets {
     public class Preference : Widgets.Dialog {
-        public Gtk.Widget focus_widget;
-        public int slidebar_width = Constant.PREFERENCE_SLIDEBAR_WIDTH;
-        
-        public int preference_name_width = 180;
-        public int preference_widget_width = 200;
-        public int grid_height = 24;
-        
-        public int segement_margin_top = 10;
-        public int segement_margin_bottom = 5;
-        public int first_segement_margin_left = 20;
-        public int second_segement_margin_left = 30;
-        
-        public int preference_split_line_margin_left = 2;
-        
-        public int option_widget_margin_right = 10;
-        public int option_widget_margin_left = 40;
-        public int option_widget_margin_top = 5;
-        public int option_widget_margin_end = 5;
-        
-        public int checkbutton_margin_top = 4;
-        public int checkbutton_margin_right = 5;
-        
-		
-		public ScrolledWindow scrolledwindow;
-		
-		public Widgets.ConfigWindow parent_window;
-		
-		public Gtk.Label theme_label;
-		public Gtk.ComboBoxText theme_combox;
-		public Gtk.Label opacity_label;
-		public Widgets.ProgressBar opacity_progressbar;
-		public Gtk.Label font_label;
+        public AnimateTimer timer;
+		public ArrayList<string> font_names;
+		public ArrayList<string> window_state_list;
 		public Gtk.ComboBoxText font_combox;
-		public Gtk.Label window_label;
+		public Gtk.ComboBoxText theme_combox;
 		public Gtk.ComboBoxText window_combox;
-        
-        public Gtk.Box content_box;
-		
-		public Gtk.Label copy_key_label;
-		public Gtk.Entry copy_key_entry;
-		public Gtk.Label paste_key_label;
-		public Gtk.Entry paste_key_entry;
-		public Gtk.Label search_key_label;
-		public Gtk.Entry search_key_entry;
-		public Gtk.Label zoom_in_key_label;
-		public Gtk.Entry zoom_in_key_entry;
-		public Gtk.Label zoom_out_key_label;
-		public Gtk.Entry zoom_out_key_entry;
-		public Gtk.Label zoom_reset_key_label;
-		public Gtk.Entry zoom_reset_key_entry;
-		public Gtk.Label select_all_key_label;
-		public Gtk.Entry select_all_key_entry;
-		public Gtk.Label new_workspace_key_label;
-		public Gtk.Entry new_workspace_key_entry;
-		public Gtk.Label close_workspace_key_label;
-		public Gtk.Entry close_workspace_key_entry;
-		public Gtk.Label previous_workspace_key_label;
-		public Gtk.Entry previous_workspace_key_entry;
-		public Gtk.Label next_workspace_key_label;
-		public Gtk.Entry next_workspace_key_entry;
-		public Gtk.Label split_vertically_key_label;
-		public Gtk.Entry split_vertically_key_entry;
-		public Gtk.Label split_horizontally_key_label;
-		public Gtk.Entry split_horizontally_key_entry;
-		public Gtk.Label select_up_window_key_label;
-		public Gtk.Entry select_up_window_key_entry;
-		public Gtk.Label select_down_window_key_label;
-		public Gtk.Entry select_down_window_key_entry;
-		public Gtk.Label select_left_window_key_label;
-		public Gtk.Entry select_left_window_key_entry;
-		public Gtk.Label select_right_window_key_label;
-		public Gtk.Entry select_right_window_key_entry;
-		public Gtk.Label close_window_key_label;
-		public Gtk.Entry close_window_key_entry;
-		public Gtk.Label close_other_windows_key_label;
 		public Gtk.Entry close_other_windows_key_entry;
-		public Gtk.Label fullscreen_key_label;
-		public Gtk.Entry fullscreen_key_entry;
-		public Gtk.Label display_hotkey_terminal_key_label;
+		public Gtk.Entry close_window_key_entry;
+		public Gtk.Entry close_workspace_key_entry;
+		public Gtk.Entry copy_key_entry;
 		public Gtk.Entry display_hotkey_terminal_key_entry;
-		public Gtk.Label show_remote_manage_key_label;
+		public Gtk.Entry fullscreen_key_entry;
+		public Gtk.Entry new_workspace_key_entry;
+		public Gtk.Entry next_workspace_key_entry;
+		public Gtk.Entry paste_key_entry;
+		public Gtk.Entry previous_workspace_key_entry;
+		public Gtk.Entry search_key_entry;
+		public Gtk.Entry select_all_key_entry;
+		public Gtk.Entry select_down_window_key_entry;
+		public Gtk.Entry select_left_window_key_entry;
+		public Gtk.Entry select_right_window_key_entry;
+		public Gtk.Entry select_up_window_key_entry;
 		public Gtk.Entry show_remote_manage_key_entry;
-        
-        public int reset_button_margin = 35;
-		
+		public Gtk.Entry split_horizontally_key_entry;
+		public Gtk.Entry split_vertically_key_entry;
+		public Gtk.Entry zoom_in_key_entry;
+		public Gtk.Entry zoom_out_key_entry;
+		public Gtk.Entry zoom_reset_key_entry;
+		public Gtk.Label close_other_windows_key_label;
+		public Gtk.Label close_window_key_label;
+		public Gtk.Label close_workspace_key_label;
+		public Gtk.Label copy_key_label;
 		public Gtk.Label cursor_style_label;
-		public Widgets.CursorToggleButton cursor_style_button;
-		
+		public Gtk.Label display_hotkey_terminal_key_label;
+		public Gtk.Label font_label;
+		public Gtk.Label fullscreen_key_label;
+		public Gtk.Label new_workspace_key_label;
+		public Gtk.Label next_workspace_key_label;
+		public Gtk.Label opacity_label;
+		public Gtk.Label paste_key_label;
+		public Gtk.Label previous_workspace_key_label;
+		public Gtk.Label search_key_label;
+		public Gtk.Label select_all_key_label;
+		public Gtk.Label select_down_window_key_label;
+		public Gtk.Label select_left_window_key_label;
+		public Gtk.Label select_right_window_key_label;
+		public Gtk.Label select_up_window_key_label;
+		public Gtk.Label show_remote_manage_key_label;
+		public Gtk.Label split_horizontally_key_label;
+		public Gtk.Label split_vertically_key_label;
+		public Gtk.Label theme_label;
+		public Gtk.Label window_label;
+		public Gtk.Label zoom_in_key_label;
+		public Gtk.Label zoom_out_key_label;
+		public Gtk.Label zoom_reset_key_label;
+		public Gtk.SpinButton font_size_spinbutton;
+		public Gtk.SpinButton scroll_line_spinbutton;
+		public ScrolledWindow scrolledwindow;
 		public Widgets.CheckButton cursor_blink_checkbutton;
 		public Widgets.CheckButton scroll_on_key_checkbutton;
 		public Widgets.CheckButton scroll_on_out_checkbutton;
-		
-		public Gtk.SpinButton font_size_spinbutton;
-		public Gtk.SpinButton scroll_line_spinbutton;
-		
-		public AnimateTimer timer;
-        public int timer_interval = 400;
-		public double timer_start_value;
+		public Widgets.ConfigWindow parent_window;
+		public Widgets.CursorToggleButton cursor_style_button;
+		public Widgets.ProgressBar opacity_progressbar;
 		public double timer_end_value;
-		
-		public ArrayList<string> font_names;
-		public ArrayList<string> window_state_list;
+		public double timer_start_value;
+        public Gtk.Box content_box;
+        public Gtk.Widget focus_widget;
+        public int checkbutton_margin_right = 5;
+        public int checkbutton_margin_top = 4;
+        public int first_segement_margin_left = 20;
+        public int grid_height = 24;
+        public int option_widget_margin_end = 5;
+        public int option_widget_margin_left = 40;
+        public int option_widget_margin_right = 10;
+        public int option_widget_margin_top = 5;
+        public int preference_name_width = 180;
+        public int preference_split_line_margin_left = 2;
+        public int preference_widget_width = 200;
+        public int reset_button_margin = 35;
+        public int second_segement_margin_left = 30;
+        public int segement_margin_bottom = 5;
+        public int segement_margin_top = 10;
+        public int slidebar_width = Constant.PREFERENCE_SLIDEBAR_WIDTH;
+        public int timer_interval = 400;
 
         public Preference(Widgets.ConfigWindow window, Gtk.Widget widget) {
             window_init_width = 720;

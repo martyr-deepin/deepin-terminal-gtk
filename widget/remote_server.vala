@@ -26,47 +26,37 @@ using Widgets;
 
 namespace Widgets {
     public class RemoteServer : Widgets.Dialog {
-        public int window_expand_height = 530;
-        
-        public int preference_name_width = 80;
-        public int preference_widget_width = 100;
-        public int grid_height = 24;
-        
-        public int action_button_margin_top = 20;
-        
-        public int port_label_margin_left = 21;
-        
-        public int preference_margin_top = 10;
-        public int option_widget_margin_top = 5;
-        public int option_widget_margin_end = 5;
-        
-        public Gtk.Widget focus_widget;
         public Gtk.Box advanced_options_box;
-        public Gtk.Box server_action_box;
-        public Widgets.TextButton show_advanced_button;
-        public Widgets.TextButton delete_server_button;
         public Gtk.Box box;
-        public Widgets.ConfigWindow parent_window;
-        
-        public Gtk.Entry address_entry;
-        public Gtk.Entry user_entry;
-        public Widgets.PasswordButton password_button;
-        public Gtk.Entry port_entry;
-        public Gtk.ComboBoxText encode_box;
-        public Gtk.Entry path_entry;
-        public Gtk.Entry name_entry;
-        public Gtk.Entry command_entry;
-        public Gtk.Entry groupname_entry;
+        public Gtk.Box server_action_box;
         public Gtk.ComboBoxText backspace_key_box;
         public Gtk.ComboBoxText del_key_box;
-        
-        public int label_margin_left = 14;
-        
+        public Gtk.ComboBoxText encode_box;
+        public Gtk.Entry address_entry;
+        public Gtk.Entry command_entry;
+        public Gtk.Entry groupname_entry;
+        public Gtk.Entry name_entry;
+        public Gtk.Entry path_entry;
+        public Gtk.Entry port_entry;
+        public Gtk.Entry user_entry;
         public Gtk.Grid advanced_grid;
-        
-        public string? server_info;
-        
+        public Gtk.Widget focus_widget;
         public KeyFile? config_file;
+        public Widgets.ConfigWindow parent_window;
+        public Widgets.PasswordButton password_button;
+        public Widgets.TextButton delete_server_button;
+        public Widgets.TextButton show_advanced_button;
+        public int action_button_margin_top = 20;
+        public int grid_height = 24;
+        public int label_margin_left = 14;
+        public int option_widget_margin_end = 5;
+        public int option_widget_margin_top = 5;
+        public int port_label_margin_left = 21;
+        public int preference_margin_top = 10;
+        public int preference_name_width = 80;
+        public int preference_widget_width = 100;
+        public int window_expand_height = 530;
+        public string? server_info;
         
         public signal void add_server(string address,
                                       string username,

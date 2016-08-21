@@ -26,13 +26,13 @@ using Widgets;
 
 namespace Widgets {
     public class ConfirmDialog : Widgets.Dialog {
-        private int logo_margin_start = 20;
-        private int logo_margin_end = 20;
-        private int box_margin_top = 4;
         private int box_margin_bottom = 24;
         private int box_margin_end = 20;
-        private int title_margin_top = 7;
+        private int box_margin_top = 4;
         private int content_margin_top = 3;
+        private int logo_margin_end = 20;
+        private int logo_margin_start = 20;
+        private int title_margin_top = 7;
         
         public signal void cancel();
         public signal void confirm();

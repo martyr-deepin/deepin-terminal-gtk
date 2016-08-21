@@ -28,34 +28,25 @@ using Gee;
 
 namespace Widgets {
 	public class RemotePanel : Gtk.HBox {
-		string config_file_path = Utils.get_config_file_path("server-config.conf");
-        
-        public Workspace workspace;
+		public Widgets.ConfigWindow parent_window;
 		public WorkspaceManager workspace_manager;
+		public string config_file_path = Utils.get_config_file_path("server-config.conf");
+        public Gdk.RGBA background_color;
+        public Gdk.RGBA line_dark_color;
+        public Gdk.RGBA line_light_color;
+        public Gtk.Box group_page_box;
+        public Gtk.Box home_page_box;
+        public Gtk.Box search_page_box;
+        public Gtk.ScrolledWindow? group_page_scrolledwindow;
+        public Gtk.ScrolledWindow? home_page_scrolledwindow;
+        public Gtk.ScrolledWindow? search_page_scrolledwindow;
         public Gtk.Widget focus_widget;
-        
+        public KeyFile config_file;
+        public Widgets.Switcher switcher;
+        public Workspace workspace;
         public int back_button_margin_left = 8;
         public int back_button_margin_top = 6;
         public int split_line_margin_left = 1;
-		
-		public Widgets.ConfigWindow parent_window;
-        public Gdk.RGBA background_color;
-        
-        public Widgets.Switcher switcher;
-        
-        public Gtk.Box home_page_box;
-        public Gtk.Box group_page_box;
-        public Gtk.Box search_page_box;
-        
-        public Gdk.RGBA line_dark_color;
-        public Gdk.RGBA line_light_color;
-        
-        public Gtk.ScrolledWindow? home_page_scrolledwindow;
-        public Gtk.ScrolledWindow? group_page_scrolledwindow;
-        public Gtk.ScrolledWindow? search_page_scrolledwindow;
-        
-        public KeyFile config_file;
-        
         public int width = Constant.SLIDER_WIDTH;
         
         public delegate void UpdatePageAfterEdit();

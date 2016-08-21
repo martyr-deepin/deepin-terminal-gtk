@@ -28,27 +28,23 @@ using Utils;
 
 namespace Widgets {
     public class DialogButton : Gtk.EventBox {
-        public Cairo.ImageSurface left_normal_surface;
-        public Cairo.ImageSurface left_hover_surface;
-        public Cairo.ImageSurface left_press_surface;
-        public Cairo.ImageSurface right_normal_surface;
-        public Cairo.ImageSurface right_hover_surface;
-        public Cairo.ImageSurface right_press_surface;
-        
-        public Gdk.RGBA text_normal_color;
-        public Gdk.RGBA text_hover_color;
-        public Gdk.RGBA text_press_color;
-        public Gdk.RGBA text_action_color;
-        public Gdk.RGBA text_warning_color;
-        
-        public string? button_text;
-        public int button_text_size = 11;
-		
 		public bool is_hover = false;
 		public bool is_press = false;
-        
+        public Cairo.ImageSurface left_hover_surface;
+        public Cairo.ImageSurface left_normal_surface;
+        public Cairo.ImageSurface left_press_surface;
+        public Cairo.ImageSurface right_hover_surface;
+        public Cairo.ImageSurface right_normal_surface;
+        public Cairo.ImageSurface right_press_surface;
+        public Gdk.RGBA text_action_color;
+        public Gdk.RGBA text_hover_color;
+        public Gdk.RGBA text_normal_color;
+        public Gdk.RGBA text_press_color;
+        public Gdk.RGBA text_warning_color;
+        public int button_text_size = 11;
         public string button_direction;
         public string button_type;
+        public string? button_text;
         
         public DialogButton(string? text=null, string direction="left", string type="text") {
             var image_path = "dialog_button";
