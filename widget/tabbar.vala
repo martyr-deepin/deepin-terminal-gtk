@@ -106,45 +106,16 @@ namespace Widgets {
             add_hover_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("tab_add_light_hover.png"));
             add_press_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("tab_add_light_press.png"));
             
-            inactive_arrow_color = Gdk.RGBA();
-            inactive_arrow_color.parse("#393937");
-
-            hover_arrow_color = Gdk.RGBA();
-            hover_arrow_color.parse("#494943");
+            inactive_arrow_color = Utils.hex_to_rgba("#393937");
+            hover_arrow_color = Utils.hex_to_rgba("#494943");
+            text_hover_dark_color = Utils.hex_to_rgba("#ffffff");
+            text_hover_light_color = Utils.hex_to_rgba("#000000");
+            text_dark_color = Utils.hex_to_rgba("#ffffff", 0.8);
+            text_light_color = Utils.hex_to_rgba("#000000", 0.8);
+            text_highlight_color = Utils.hex_to_rgba("#ff9600");
+			tab_split_dark_color = Utils.hex_to_rgba("#ffffff", 0.05);
+			tab_split_light_color = Utils.hex_to_rgba("#000000", 0.05);
             
-            text_hover_dark_color = Gdk.RGBA();
-            text_hover_dark_color.parse("#ffffff");
-
-            text_hover_light_color = Gdk.RGBA();
-            text_hover_light_color.parse("#000000");
-            
-            text_dark_color = Gdk.RGBA();
-			text_dark_color.red = 1;
-			text_dark_color.green = 1;
-			text_dark_color.blue = 1;
-			text_dark_color.alpha = 0.8;
-
-            text_light_color = Gdk.RGBA();
-			text_light_color.red = 0;
-			text_light_color.green = 0;
-			text_light_color.blue = 0;
-			text_light_color.alpha = 0.8;
-            
-            text_highlight_color = Gdk.RGBA();
-            text_highlight_color.parse("#ff9600");
-			
-			tab_split_dark_color = Gdk.RGBA();
-			tab_split_dark_color.red = 1;
-			tab_split_dark_color.green = 1;
-			tab_split_dark_color.blue = 1;
-			tab_split_dark_color.alpha = 0.05;
-			
-			tab_split_light_color = Gdk.RGBA();
-			tab_split_light_color.red = 0;
-			tab_split_light_color.green = 0;
-			tab_split_light_color.blue = 0;
-			tab_split_light_color.alpha = 0.05;
-			
 			draw.connect(on_draw);
             configure_event.connect(on_configure);
             button_press_event.connect(on_button_press);
@@ -424,7 +395,7 @@ namespace Widgets {
             counter = 0;
             Gdk.RGBA text_active_color = Gdk.RGBA();
             try {
-                text_active_color.parse(((Widgets.ConfigWindow) this.get_toplevel()).config.config_file.get_string("theme", "tab"));
+                text_active_color = Utils.hex_to_rgba(((Widgets.ConfigWindow) this.get_toplevel()).config.config_file.get_string("theme", "tab"));
             } catch (Error e) {
                 print("Tabbar draw: %s\n", e.message);
             }

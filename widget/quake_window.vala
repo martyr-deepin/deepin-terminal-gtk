@@ -52,13 +52,8 @@ namespace Widgets {
             set_decorated(false);
             set_keep_above(true);
             
-            title_line_dark_color = Gdk.RGBA();
-            title_line_dark_color.parse("#000000");
-            title_line_dark_color.alpha = 0.3;
-
-            title_line_light_color = Gdk.RGBA();
-            title_line_light_color.parse("#000000");
-            title_line_light_color.alpha = 0.1;
+            title_line_dark_color = Utils.hex_to_rgba("#000000", 0.3);
+            title_line_light_color = Utils.hex_to_rgba("#000000", 0.1);
             
             try {
                 var config_height = config.config_file.get_double("advanced", "quake_window_height");
@@ -303,8 +298,8 @@ namespace Widgets {
             }
             
            try {
-                frame_color.parse(config.config_file.get_string("theme", "background"));
-                active_tab_color.parse(config.config_file.get_string("theme", "tab"));
+                frame_color = Utils.hex_to_rgba(config.config_file.get_string("theme", "background"));
+                active_tab_color = Utils.hex_to_rgba(config.config_file.get_string("theme", "tab"));
             } catch (GLib.KeyFileError e) {
                 print("QuakeWindow draw_window_above: %s\n", e.message);
             }
@@ -342,7 +337,7 @@ namespace Widgets {
                     w.get_allocation(out rect);
                         
                     try {
-                        background_color.parse(config.config_file.get_string("theme", "background"));
+                        background_color = Utils.hex_to_rgba(config.config_file.get_string("theme", "background"));
                         cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, config.config_file.get_double("general", "opacity"));
                         Draw.draw_rectangle(cr, 0, 0, rect.width, Constant.TITLEBAR_HEIGHT);
                     } catch (Error e) {

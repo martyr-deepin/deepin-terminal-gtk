@@ -70,14 +70,9 @@ namespace Widgets {
             button_text_size = text_size;
             
             if (button_text != null) {
-                text_normal_color = Gdk.RGBA();
-                text_normal_color.parse("#0699FF");
-                
-                text_hover_color = Gdk.RGBA();
-                text_hover_color.parse("#FFFFFF");
-
-                text_press_color = Gdk.RGBA();
-                text_press_color.parse("#FFFFFF");
+                text_normal_color = Utils.hex_to_rgba("#0699FF");
+                text_hover_color = Utils.hex_to_rgba("#FFFFFF");
+                text_press_color = Utils.hex_to_rgba("#FFFFFF");
             }
             
             set_size_request(this.normal_dark_surface.get_width(), this.normal_dark_surface.get_height());

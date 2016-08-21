@@ -65,31 +65,15 @@ namespace Widgets {
             press_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_dark_press.png"));
             
             if (button_text != null) {
-                text_normal_color = Gdk.RGBA();
-                text_normal_color.parse("#0699FF");
-                
-                text_hover_color = Gdk.RGBA();
-                text_hover_color.parse("#6DC5FF");
-
-                text_press_color = Gdk.RGBA();
-                text_press_color.parse("#2ca7f8");
+                text_normal_color = Utils.hex_to_rgba("#0699FF");
+                text_hover_color = Utils.hex_to_rgba("#6DC5FF");
+                text_press_color = Utils.hex_to_rgba("#2ca7f8");
             }
             
-            press_dark_color = Gdk.RGBA();
-            press_dark_color.parse("#FFFFFF");
-            press_dark_color.alpha = 0.1;
-            
-            hover_dark_color = Gdk.RGBA();
-            hover_dark_color.parse("#FFFFFF");
-            hover_dark_color.alpha = 0.1;
-            
-            press_light_color = Gdk.RGBA();
-            press_light_color.parse("#000000");
-            press_light_color.alpha = 0.1;
-            
-            hover_light_color = Gdk.RGBA();
-            hover_light_color.parse("#000000");
-            hover_light_color.alpha = 0.1;
+            press_dark_color = Utils.hex_to_rgba("#FFFFFF", 0.1);
+            hover_dark_color = Utils.hex_to_rgba("#FFFFFF", 0.1);
+            press_light_color = Utils.hex_to_rgba("#000000", 0.1);
+            hover_light_color = Utils.hex_to_rgba("#000000", 0.1);
             
             set_size_request(width, height);
             

@@ -226,15 +226,16 @@ namespace Widgets {
 					if (pos != 0 && paned.get_child1() != null && paned.get_child2() != null) {
 						cr.set_operator(Cairo.Operator.OVER);
 						Widgets.ConfigWindow parent_window = (Widgets.ConfigWindow) w.get_toplevel();
-						Gdk.RGBA paned_background_color = Gdk.RGBA();
+                        Gdk.RGBA paned_background_color;
 						try {
-							paned_background_color.parse(parent_window.config.config_file.get_string("theme", "background"));
-							paned_background_color.alpha = parent_window.config.config_file.get_double("general", "opacity");
+                            paned_background_color = Utils.hex_to_rgba(
+                                parent_window.config.config_file.get_string("theme", "background"),
+                                parent_window.config.config_file.get_double("general", "opacity"));
+                            Utils.set_context_color(cr, paned_background_color);
 						} catch (GLib.KeyFileError e) {
 							print("Workapce split: %s\n", e.message);
 						}
 					
-						Utils.set_context_color(cr, paned_background_color);
 						if (orientation == Gtk.Orientation.HORIZONTAL) {
 							Draw.draw_rectangle(cr, pos, 0, 1, rect.height);
 						} else {

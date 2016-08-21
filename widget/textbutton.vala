@@ -22,14 +22,9 @@ namespace Widgets {
             
             button_text = text;
             
-            text_normal_color = Gdk.RGBA();
-            text_normal_color.parse(normal_color_string);
-
-            text_hover_color = Gdk.RGBA();
-            text_hover_color.parse(hover_color_string);
-
-            text_press_color = Gdk.RGBA();
-            text_press_color.parse(press_color_string);
+            text_normal_color = Utils.hex_to_rgba(normal_color_string);
+            text_hover_color = Utils.hex_to_rgba(hover_color_string);
+            text_press_color = Utils.hex_to_rgba(press_color_string);
             
             add_events(Gdk.EventMask.BUTTON_PRESS_MASK
                        | Gdk.EventMask.BUTTON_RELEASE_MASK

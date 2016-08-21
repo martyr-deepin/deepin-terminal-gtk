@@ -313,4 +313,12 @@ namespace Utils {
                                      });
 
     }
+
+    public Gdk.RGBA hex_to_rgba(string hex_color, double alpha=1.0) {
+        Gdk.RGBA rgba_color = Gdk.RGBA();
+        rgba_color.parse(hex_color);
+        rgba_color.alpha = alpha;
+        
+        return rgba_color;
+    }
 }

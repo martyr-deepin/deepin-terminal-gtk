@@ -73,21 +73,10 @@ namespace Widgets {
             geo.min_height = rect.height / 3;
             this.set_geometry_hints(null, geo, Gdk.WindowHints.MIN_SIZE);
             
-            top_line_dark_color = Gdk.RGBA();
-            top_line_dark_color.parse("#000000");
-            top_line_dark_color.alpha = 0.2;
-
-            top_line_light_color = Gdk.RGBA();
-            top_line_light_color.parse("#ffffff");
-            top_line_light_color.alpha = 0.2;
-
-            title_line_dark_color = Gdk.RGBA();
-            title_line_dark_color.parse("#000000");
-            title_line_dark_color.alpha = 0.3;
-
-            title_line_light_color = Gdk.RGBA();
-            title_line_light_color.parse("#000000");
-            title_line_light_color.alpha = 0.1;
+            top_line_dark_color = Utils.hex_to_rgba("#000000", 0.2);
+            top_line_light_color = Utils.hex_to_rgba("#ffffff", 0.2);
+            title_line_dark_color = Utils.hex_to_rgba("#000000", 0.3);
+            title_line_light_color = Utils.hex_to_rgba("#000000", 0.1);
             
             window_frame_box.margin_top = window_frame_margin_top;
             window_frame_box.margin_bottom = window_frame_margin_bottom;
@@ -504,11 +493,11 @@ namespace Widgets {
             int y = window_frame_box.margin_top;
             int width = window_frame_rect.width;
             int height = window_frame_rect.height;
-            Gdk.RGBA frame_color = Gdk.RGBA();
+            Gdk.RGBA frame_color;
             
             try {
                 if (!window_is_max() && !window_is_fullscreen() && !window_is_tiled()) {
-                    frame_color.parse(config.config_file.get_string("theme", "background"));
+                    frame_color = Utils.hex_to_rgba(config.config_file.get_string("theme", "background"));
                     
                     // Draw line *innner* of window frame.
                     cr.save();
@@ -544,8 +533,8 @@ namespace Widgets {
             }
             
             try {
-                frame_color.parse(config.config_file.get_string("theme", "background"));
-                active_tab_color.parse(config.config_file.get_string("theme", "tab"));
+                frame_color = Utils.hex_to_rgba(config.config_file.get_string("theme", "background"));
+                active_tab_color = Utils.hex_to_rgba(config.config_file.get_string("theme", "tab"));
             } catch (GLib.KeyFileError e) {
                 print("Window draw_window_above: %s\n", e.message);
             }

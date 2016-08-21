@@ -66,19 +66,13 @@ namespace Widgets {
             
             config_file = new KeyFile();
             
-            line_dark_color = Gdk.RGBA();
-            line_dark_color.parse("#ffffff");
-            line_dark_color.alpha = 0.1;
-
-            line_light_color = Gdk.RGBA();
-            line_light_color.parse("#000000");
-            line_light_color.alpha = 0.1;
+            line_dark_color = Utils.hex_to_rgba("#ffffff", 0.1);
+            line_light_color = Utils.hex_to_rgba("#000000", 0.1);
             
             focus_widget = ((Gtk.Window) workspace.get_toplevel()).get_focus();
 			parent_window = (Widgets.ConfigWindow) workspace.get_toplevel();
-            background_color = Gdk.RGBA();
             try {
-                background_color.parse(parent_window.config.config_file.get_string("theme", "background"));
+                background_color = Utils.hex_to_rgba(parent_window.config.config_file.get_string("theme", "background"));
             } catch (Error e) {
                 print("RemotePanel init: %s\n", e.message);
             }

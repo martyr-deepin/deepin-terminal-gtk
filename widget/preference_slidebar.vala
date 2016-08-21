@@ -161,14 +161,9 @@ namespace Widgets {
             item_name = display_name;
             is_first_segement = is_first;
             
-            first_segement_text_color = Gdk.RGBA();
-            first_segement_text_color.parse("#00162C");
-
-            second_segement_text_color = Gdk.RGBA();
-            second_segement_text_color.parse("#303030");
-            
-            highlight_text_color = Gdk.RGBA();
-            highlight_text_color.parse("#2ca7f8");
+            first_segement_text_color = Utils.hex_to_rgba("#00162C");
+            second_segement_text_color = Utils.hex_to_rgba("#303030");
+            highlight_text_color = Utils.hex_to_rgba("#2ca7f8");
             
             set_size_request(width, height);
 			

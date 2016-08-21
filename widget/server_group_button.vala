@@ -82,44 +82,17 @@ namespace Widgets {
 			arrow_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("list_arrow_dark.png"));
 			arrow_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("list_arrow_light.png"));
             
-            title_dark_color = Gdk.RGBA();
-            title_dark_color.parse("#FFFFFF");
-                
-            content_dark_color = Gdk.RGBA();
-            content_dark_color.parse("#FFFFFF");
-            content_dark_color.alpha = 0.5;
+            title_dark_color = Utils.hex_to_rgba("#FFFFFF");
+            content_dark_color = Utils.hex_to_rgba("#FFFFFF", 0.5);
+            press_dark_color = Utils.hex_to_rgba("#FFFFFF", 0.1);
+            hover_dark_color = Utils.hex_to_rgba("#FFFFFF", 0.1);
+            title_light_color = Utils.hex_to_rgba("#303030");
+            content_light_color = Utils.hex_to_rgba("#000000", 0.5);
+            press_light_color = Utils.hex_to_rgba("#000000", 0.1);
+            hover_light_color = Utils.hex_to_rgba("#000000", 0.1);
+            line_dark_color = Utils.hex_to_rgba("#ffffff", 0.05);
+            line_light_color = Utils.hex_to_rgba("#000000", 0.05);
 
-            press_dark_color = Gdk.RGBA();
-            press_dark_color.parse("#FFFFFF");
-            press_dark_color.alpha = 0.1;
-            
-            hover_dark_color = Gdk.RGBA();
-            hover_dark_color.parse("#FFFFFF");
-            hover_dark_color.alpha = 0.1;
-
-            title_light_color = Gdk.RGBA();
-            title_light_color.parse("#303030");
-                
-            content_light_color = Gdk.RGBA();
-            content_light_color.parse("#000000");
-            content_light_color.alpha = 0.5;
-
-            press_light_color = Gdk.RGBA();
-            press_light_color.parse("#000000");
-            press_light_color.alpha = 0.1;
-            
-            hover_light_color = Gdk.RGBA();
-            hover_light_color.parse("#000000");
-            hover_light_color.alpha = 0.1;
-            
-            line_dark_color = Gdk.RGBA();
-            line_dark_color.parse("#ffffff");
-            line_dark_color.alpha = 0.05;
-
-            line_light_color = Gdk.RGBA();
-            line_light_color.parse("#000000");
-            line_light_color.alpha = 0.05;
-            
             set_size_request(width, height);
             
             draw.connect(on_draw);

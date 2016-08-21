@@ -172,7 +172,7 @@ namespace Widgets {
                     w.get_allocation(out rect);
                         
                     try {
-                        background_color.parse(window.config.config_file.get_string("theme", "background"));
+                        background_color = Utils.hex_to_rgba(window.config.config_file.get_string("theme", "background"));
                         if (window.window_is_fullscreen()) {
                             cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, 0.8);
                         } else {

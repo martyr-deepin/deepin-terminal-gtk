@@ -44,10 +44,8 @@ namespace Widgets {
 			percent = init_percent;
 			set_size_request(width, height);
             
-            foreground_color = Gdk.RGBA();
-            foreground_color.parse("#2ca7f8");
-            background_color = Gdk.RGBA();
-            background_color.parse("#A4A4A4");
+            foreground_color = Utils.hex_to_rgba("#2ca7f8");
+            background_color = Utils.hex_to_rgba("#A4A4A4");
             pointer_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("progress_pointer.png"));
 			
 			set_visible_window(false);

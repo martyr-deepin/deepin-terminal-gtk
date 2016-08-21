@@ -64,20 +64,11 @@ namespace Widgets {
             button_type = type;
             
             if (button_text != null) {
-                text_normal_color = Gdk.RGBA();
-                text_normal_color.parse("#303030");
-                
-                text_hover_color = Gdk.RGBA();
-                text_hover_color.parse("#FFFFFF");
-
-                text_press_color = Gdk.RGBA();
-                text_press_color.parse("#FFFFFF");
-                
-                text_action_color = Gdk.RGBA();
-                text_action_color.parse("#0087FF");
-                
-                text_warning_color = Gdk.RGBA();
-                text_warning_color.parse("#FF4343");
+                text_normal_color = Utils.hex_to_rgba("#303030");
+                text_hover_color = Utils.hex_to_rgba("#FFFFFF");
+                text_press_color = Utils.hex_to_rgba("#FFFFFF");
+                text_action_color = Utils.hex_to_rgba("#0087FF");
+                text_warning_color = Utils.hex_to_rgba("#FF4343");
             }
             
             set_size_request(this.left_normal_surface.get_width(), this.left_normal_surface.get_height());
