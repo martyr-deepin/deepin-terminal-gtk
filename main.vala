@@ -82,36 +82,7 @@ public class Application : Object {
 		// list terminator
 		{ null }
 	};
-    
-    public void run(bool has_start) {
-        if (has_start && quake_mode) {
-            try {
-                QuakeDaemon daemon = Bus.get_proxy_sync(BusType.SESSION, "com.deepin.quake_terminal", "/com/deepin/quake_terminal");
-                daemon.show_or_hide();
-            } catch (IOError e) {
-                stderr.printf("%s\n", e.message);
-            }
-            
-            Gtk.main_quit();
-        } else {
-            Utils.load_css_theme(Utils.get_root_path("style.css"));
-            
-            Tabbar tabbar = new Tabbar();
-            workspace_manager = new WorkspaceManager(tabbar, commands, work_directory); 
-            
-            if (quake_mode) {
-                quake_window = new Widgets.QuakeWindow();
-                quake_window.show_window(workspace_manager, tabbar);
-                tabbar.init(workspace_manager, quake_window);
-            } else {
-                window = new Widgets.Window();
-                window.show_window(workspace_manager, tabbar);
-                tabbar.init(workspace_manager, window);
-            }
-            
-        }
-    }
-    
+
     public static void main(string[] args) {
         // NOTE: Parse option '-e' or '-x' by myself.
         // OptionContext's function always lost argument after option '-e' or '-x'.
@@ -183,6 +154,35 @@ public class Application : Object {
             }
             
             Gtk.main();
+        }
+    }
+    
+    public void run(bool has_start) {
+        if (has_start && quake_mode) {
+            try {
+                QuakeDaemon daemon = Bus.get_proxy_sync(BusType.SESSION, "com.deepin.quake_terminal", "/com/deepin/quake_terminal");
+                daemon.show_or_hide();
+            } catch (IOError e) {
+                stderr.printf("%s\n", e.message);
+            }
+            
+            Gtk.main_quit();
+        } else {
+            Utils.load_css_theme(Utils.get_root_path("style.css"));
+            
+            Tabbar tabbar = new Tabbar();
+            workspace_manager = new WorkspaceManager(tabbar, commands, work_directory); 
+            
+            if (quake_mode) {
+                quake_window = new Widgets.QuakeWindow();
+                quake_window.show_window(workspace_manager, tabbar);
+                tabbar.init(workspace_manager, quake_window);
+            } else {
+                window = new Widgets.Window();
+                window.show_window(workspace_manager, tabbar);
+                tabbar.init(workspace_manager, window);
+            }
+            
         }
     }
 }

@@ -79,26 +79,6 @@ namespace Config {
             }
         }
 		
-        public void set_theme(string theme_name) {
-            try {
-                KeyFile theme_file = new KeyFile();
-                theme_file.load_from_file(Utils.get_theme_path(theme_name), KeyFileFlags.NONE);
-            
-                foreach (string key in theme_file.get_keys("theme")) {
-                    config_file.set_string("theme", key, theme_file.get_string("theme", key).strip());
-                }
-                
-                var background = theme_file.get_string("theme", "background").strip();
-                if (Utils.is_light_color(background)) {
-                    config_file.set_string("theme", "style", "light");
-                } else {
-                    config_file.set_string("theme", "style", "dark");
-                }
-            } catch (Error e) {
-                print("Config set_theme: %s\n", e.message);
-            }
-        }
-        
         public void init_config() {
             config_file.set_string("general", "theme", "deepin");
             config_file.set_double("general", "opacity", default_opacity);
@@ -173,6 +153,26 @@ namespace Config {
 					print("Config: %s\n", e.message);
 				}
 			}
+        }
+        
+        public void set_theme(string theme_name) {
+            try {
+                KeyFile theme_file = new KeyFile();
+                theme_file.load_from_file(Utils.get_theme_path(theme_name), KeyFileFlags.NONE);
+            
+                foreach (string key in theme_file.get_keys("theme")) {
+                    config_file.set_string("theme", key, theme_file.get_string("theme", key).strip());
+                }
+                
+                var background = theme_file.get_string("theme", "background").strip();
+                if (Utils.is_light_color(background)) {
+                    config_file.set_string("theme", "style", "light");
+                } else {
+                    config_file.set_string("theme", "style", "dark");
+                }
+            } catch (Error e) {
+                print("Config set_theme: %s\n", e.message);
+            }
         }
         
         public void save() {

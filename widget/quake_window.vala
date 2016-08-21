@@ -175,6 +175,10 @@ namespace Widgets {
                 });
         }
         
+        public void add_widget(Gtk.Widget widget) {
+            window_widget_box.pack_start(widget, true, true, 0);
+        }
+        
         public void toggle_quake_window() {
             Gdk.Screen screen = Gdk.Screen.get_default();
             int active_monitor = screen.get_monitor_at_window(screen.get_active_window());
@@ -209,11 +213,6 @@ namespace Widgets {
                 move(rect.x, 0);
             }
         }
-        
-        public void add_widget(Gtk.Widget widget) {
-            window_widget_box.pack_start(widget, true, true, 0);
-        }
-
         
         public void update_style() {
             clean_style();

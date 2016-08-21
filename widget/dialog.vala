@@ -160,10 +160,6 @@ namespace Widgets {
             window_widget_box.pack_start(widget, true, true, 0);
         }
         
-        public void draw_window_frame(Cairo.Context cr) {
-            
-        }
-        
         public void draw_window_below(Cairo.Context cr) {
              Gtk.Allocation window_rect;
             window_frame_box.get_allocation(out window_rect);
@@ -172,9 +168,12 @@ namespace Widgets {
             Draw.draw_rounded_rectangle(cr, window_frame_margin_start, window_frame_margin_top, window_rect.width, window_rect.height, window_frame_radius);
         }
         
-        public virtual void draw_window_above(Cairo.Context cr) {
+        public void draw_window_frame(Cairo.Context cr) {
             
         }
         
+        public virtual void draw_window_above(Cairo.Context cr) {
+            
+        }
     }
 }

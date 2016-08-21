@@ -47,7 +47,65 @@ namespace Widgets {
             title_line_dark_color = Utils.hex_to_rgba("#000000", 0.3);
             title_line_light_color = Utils.hex_to_rgba("#000000", 0.1);
         }
+        
+        public void init(WorkspaceManager manager, Tabbar tabbar) {
+            workspace_manager = manager;
+            box = new Box(Gtk.Orientation.VERTICAL, 0);
+            top_box = new Box(Gtk.Orientation.HORIZONTAL, 0);
             
+            delete_event.connect((w) => {
+                    quit();
+                        
+                    return true;
+                });
+            
+            destroy.connect((t) => {
+                    quit();
+                });
+            
+            key_press_event.connect((w, e) => {
+                    return on_key_press(w, e);
+                });
+            
+            key_release_event.connect((w, e) => {
+                    return on_key_release(w, e);
+                });
+            
+            focus_out_event.connect((w) => {
+                    remove_shortcut_viewer();
+                        
+                    return false;
+                });
+            
+            configure_event.connect((w) => {
+                    int width, height;
+                    get_size(out width, out height);
+
+                    if (cache_width != width || cache_height != height) {
+                        workspace_manager.focus_workspace.remove_remote_panel();
+                        
+                        cache_width = width;
+                        cache_height = height;
+                    }
+                        
+                    return false;
+                });
+            
+            init_active_tab_underline(tabbar);
+        }
+        
+        public void init_active_tab_underline(Tabbar tabbar) {
+            tabbar.draw_active_tab_underline.connect((t, x, width) => {
+                    int offset_x, offset_y;
+                    tabbar.translate_coordinates(this, 0, 0, out offset_x, out offset_y);
+					
+                    active_tab_underline_x = x + offset_x;
+                    active_tab_underline_width = width;
+					
+                    queue_draw();
+                });
+        }
+        
         public void load_config() {
             config = new Config.Config();
             config.update.connect((w) => {
@@ -203,64 +261,6 @@ namespace Widgets {
             builder.set_member_name("value");
             builder.add_string_value(key);
             builder.end_object();
-        }
-        
-        public void init_active_tab_underline(Tabbar tabbar) {
-            tabbar.draw_active_tab_underline.connect((t, x, width) => {
-                    int offset_x, offset_y;
-                    tabbar.translate_coordinates(this, 0, 0, out offset_x, out offset_y);
-					
-                    active_tab_underline_x = x + offset_x;
-                    active_tab_underline_width = width;
-					
-                    queue_draw();
-                });
-        }
-        
-        public void init(WorkspaceManager manager, Tabbar tabbar) {
-            workspace_manager = manager;
-            box = new Box(Gtk.Orientation.VERTICAL, 0);
-            top_box = new Box(Gtk.Orientation.HORIZONTAL, 0);
-            
-            delete_event.connect((w) => {
-                    quit();
-                        
-                    return true;
-                });
-            
-            destroy.connect((t) => {
-                    quit();
-                });
-            
-            key_press_event.connect((w, e) => {
-                    return on_key_press(w, e);
-                });
-            
-            key_release_event.connect((w, e) => {
-                    return on_key_release(w, e);
-                });
-            
-            focus_out_event.connect((w) => {
-                    remove_shortcut_viewer();
-                        
-                    return false;
-                });
-            
-            configure_event.connect((w) => {
-                    int width, height;
-                    get_size(out width, out height);
-
-                    if (cache_width != width || cache_height != height) {
-                        workspace_manager.focus_workspace.remove_remote_panel();
-                        
-                        cache_width = width;
-                        cache_height = height;
-                    }
-                        
-                    return false;
-                });
-            
-            init_active_tab_underline(tabbar);
         }
         
         public void quit() {

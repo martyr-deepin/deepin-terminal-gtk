@@ -21,15 +21,19 @@
 namespace Animation {
     public class AnimateTimer : Object {
         /* The following are the same intervals that Unity uses */
-        public static const int INSTANT = 150; /* Good for animations that don't convey any information */
-        public static const int FAST = 250; /* Good for animations that convey duplicated information */
-        public static const int NORMAL = 500;
-        public static const int SLOW = 1000; /* Good for animations that convey information that is only presented in the animation */
-
-        /* speed is in milliseconds */
+        private TimeSpan extra_time = 0;
+        private TimeSpan length = 0;
+        private TimeSpan start_time = 0;
+        private double extra_progress = 0.0;
+        private uint timeout = 0;
         public bool is_running { get { return timeout != 0; } }
         public double progress { get; private set; }
+        /* speed is in milliseconds */
         public int speed { get; set; }
+        public static const int FAST = 250; /* Good for animations that convey duplicated information */
+        public static const int INSTANT = 150; /* Good for animations that don't convey any information */
+        public static const int NORMAL = 500;
+        public static const int SLOW = 1000; /* Good for animations that convey information that is only presented in the animation */
         public unowned EasingFunc easing_func { get; private set; }
 
         /* progress is from 0.0 to 1.0 */
@@ -83,12 +87,6 @@ namespace Animation {
                 Source.remove (timeout);
             timeout = 0;
         }
-
-        private uint timeout = 0;
-        private TimeSpan start_time = 0;
-        private TimeSpan length = 0;
-        private TimeSpan extra_time = 0;
-        private double extra_progress = 0.0;
 
         private bool animate_cb () {
             if (start_time == 0)

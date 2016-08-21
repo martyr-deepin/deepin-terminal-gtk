@@ -31,32 +31,6 @@ namespace Draw {
         }
     }
 
-    public int get_text_render_height(Gtk.Widget widget, string text, int x, int y, int width, int height, int size,
-                                      Pango.Alignment horizontal_alignment=Pango.Alignment.LEFT,
-                                      string vertical_align = "middle",
-                                      int? wrap_width=null) {
-        var font_description = new Pango.FontDescription();
-        font_description.set_size((int)(size * Pango.SCALE));
-        
-        var layout = widget.create_pango_layout(null);
-        layout.set_font_description(font_description);
-        layout.set_markup(text, text.length);
-        layout.set_alignment(horizontal_alignment);
-        if (wrap_width == null) {
-            layout.set_single_paragraph_mode(true);
-            layout.set_width(width * Pango.SCALE);
-            layout.set_ellipsize(Pango.EllipsizeMode.END);
-        } else {
-            layout.set_width(wrap_width * Pango.SCALE);
-            layout.set_wrap(Pango.WrapMode.WORD);
-        }
-
-        int text_width, text_height;
-        layout.get_pixel_size(out text_width, out text_height);
-
-        return text_height;
-    }
-
     public void draw_text(Cairo.Context cr, string text, int x, int y, int width, int height, int size,
                             Pango.Alignment horizontal_alignment=Pango.Alignment.LEFT,
                             string vertical_align = "middle",
@@ -102,6 +76,32 @@ namespace Draw {
         cr.move_to(x, y);
         Pango.cairo_update_layout(cr, layout);
         Pango.cairo_show_layout(cr, layout);
+    }
+
+    public int get_text_render_height(Gtk.Widget widget, string text, int x, int y, int width, int height, int size,
+                                      Pango.Alignment horizontal_alignment=Pango.Alignment.LEFT,
+                                      string vertical_align = "middle",
+                                      int? wrap_width=null) {
+        var font_description = new Pango.FontDescription();
+        font_description.set_size((int)(size * Pango.SCALE));
+        
+        var layout = widget.create_pango_layout(null);
+        layout.set_font_description(font_description);
+        layout.set_markup(text, text.length);
+        layout.set_alignment(horizontal_alignment);
+        if (wrap_width == null) {
+            layout.set_single_paragraph_mode(true);
+            layout.set_width(width * Pango.SCALE);
+            layout.set_ellipsize(Pango.EllipsizeMode.END);
+        } else {
+            layout.set_width(wrap_width * Pango.SCALE);
+            layout.set_wrap(Pango.WrapMode.WORD);
+        }
+
+        int text_width, text_height;
+        layout.get_pixel_size(out text_width, out text_height);
+
+        return text_height;
     }
 
     public void draw_rectangle(Cairo.Context cr, int x, int y, int w, int h, bool fill=true) {

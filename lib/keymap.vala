@@ -24,6 +24,54 @@
 using GLib;
 
 namespace Keymap {
+	
+    public string get_keyevent_name(Gdk.EventKey key_event) {
+        if ((key_event.is_modifier) != 0) {
+            return "";
+        } else {
+            var key_modifiers = get_key_event_modifiers(key_event);
+            var key_name = get_key_name(key_event.keyval);
+            
+            if (key_modifiers.length == 0) {
+                return key_name;
+            } else {
+                var name = "";
+                foreach (string modifier in key_modifiers) {
+                    name += modifier + " + ";
+                }
+                name += key_name;
+                        
+                return name;
+            }
+        }
+    }
+
+    public string[] get_key_event_modifiers(Gdk.EventKey key_event) {
+        string[] modifiers = {};
+
+        if ((key_event.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
+            modifiers += "Ctrl";
+        }
+
+        if ((key_event.state & Gdk.ModifierType.SUPER_MASK) != 0) {
+            modifiers += "Super";
+        }
+
+        if ((key_event.state & Gdk.ModifierType.HYPER_MASK) != 0) {
+            modifiers += "Hyper";
+        }
+
+        if ((key_event.state & Gdk.ModifierType.MOD1_MASK) != 0) {
+            modifiers += "Alt";
+        }
+        
+        if ((key_event.state & Gdk.ModifierType.SHIFT_MASK) != 0) {
+            modifiers += "Shift";
+        }
+        
+        return modifiers;
+    }
+
     public string get_key_name(uint keyval) {
         unichar key_unicode = Gdk.keyval_to_unicode(Gdk.keyval_to_lower(keyval));
         
@@ -54,58 +102,6 @@ namespace Keymap {
         }
     }
 
-    public string[] get_key_event_modifiers(Gdk.EventKey key_event) {
-        string[] modifiers = {};
-
-        if ((key_event.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
-            modifiers += "Ctrl";
-        }
-
-        if ((key_event.state & Gdk.ModifierType.SUPER_MASK) != 0) {
-            modifiers += "Super";
-        }
-
-        if ((key_event.state & Gdk.ModifierType.HYPER_MASK) != 0) {
-            modifiers += "Hyper";
-        }
-
-        if ((key_event.state & Gdk.ModifierType.MOD1_MASK) != 0) {
-            modifiers += "Alt";
-        }
-        
-        if ((key_event.state & Gdk.ModifierType.SHIFT_MASK) != 0) {
-            modifiers += "Shift";
-        }
-        
-        return modifiers;
-    }
-	
-    public string get_keyevent_name(Gdk.EventKey key_event) {
-        if ((key_event.is_modifier) != 0) {
-            return "";
-        } else {
-            var key_modifiers = get_key_event_modifiers(key_event);
-            var key_name = get_key_name(key_event.keyval);
-            
-            if (key_modifiers.length == 0) {
-                return key_name;
-            } else {
-                var name = "";
-                foreach (string modifier in key_modifiers) {
-                    name += modifier + " + ";
-                }
-                name += key_name;
-                        
-                return name;
-            }
-        }
-    }
-
-	public bool is_no_key_press(Gdk.EventKey key_event) {
-		return (key_event.is_modifier == 0 && get_key_name(key_event.keyval) == get_keyevent_name(key_event) ||
-				key_event.is_modifier != 0 && get_key_event_modifiers(key_event).length == 1);
-	}
-	
     public bool has_ctrl_mask(Gdk.EventKey key_event) {
         string[] mask_list = {"Control_L", "Control_R"};
         
@@ -116,4 +112,9 @@ namespace Keymap {
         string[] mask_list = {"Shift_L", "Shift_R"};
         return get_key_name(key_event.keyval) in mask_list;
     }
+
+	public bool is_no_key_press(Gdk.EventKey key_event) {
+		return (key_event.is_modifier == 0 && get_key_name(key_event.keyval) == get_keyevent_name(key_event) ||
+				key_event.is_modifier != 0 && get_key_event_modifiers(key_event).length == 1);
+	}
 }
