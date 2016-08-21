@@ -259,22 +259,15 @@ namespace Widgets {
             int width = window_frame_rect.width;
             int height = window_frame_rect.height;
             Gdk.RGBA frame_color = Gdk.RGBA();
-            Gdk.RGBA active_tab_color = Gdk.RGBA();
             
             try {
                 frame_color = Utils.hex_to_rgba(config.config_file.get_string("theme", "background"));
-                active_tab_color = Utils.hex_to_rgba(config.config_file.get_string("theme", "tab"));
             } catch (GLib.KeyFileError e) {
                 print("QuakeWindow draw_window_above: %s\n", e.message);
             }
 
             draw_titlebar_underline(cr, x, y, width, -1);
-						
-            // Draw active tab underline *above* titlebar underline.
-            cr.save();
-            Utils.set_context_color(cr, active_tab_color);
-            Draw.draw_rectangle(cr, x + active_tab_underline_x, y + height - Constant.TITLEBAR_HEIGHT - 1, active_tab_underline_width, Constant.ACTIVE_TAB_UNDERLINE_HEIGHT);
-            cr.restore();
+            draw_active_tab_underline(cr, x + active_tab_underline_x, y + height - Constant.TITLEBAR_HEIGHT - 1);
         }
 
         public void show_window(WorkspaceManager workspace_manager, Tabbar tabbar) {

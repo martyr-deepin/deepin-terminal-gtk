@@ -212,7 +212,7 @@ namespace Widgets {
             builder.end_object();
         }
         
-        public void draw_active_tab_underline(Tabbar tabbar) {
+        public void init_active_tab_underline(Tabbar tabbar) {
             tabbar.draw_active_tab_underline.connect((t, x, width) => {
                     int offset_x, offset_y;
                     tabbar.translate_coordinates(this, 0, 0, out offset_x, out offset_y);
@@ -267,7 +267,7 @@ namespace Widgets {
                     return false;
                 });
             
-            draw_active_tab_underline(tabbar);
+            init_active_tab_underline(tabbar);
         }
         
         public void quit() {
@@ -460,6 +460,21 @@ namespace Widgets {
             }
             // cr.set_source_rgba(1, 0, 0, 1);
             Draw.draw_rectangle(cr, x, y + Constant.TITLEBAR_HEIGHT + offset, width, 1);
+            cr.restore();
+        }
+        
+        public void draw_active_tab_underline(Cairo.Context cr, int x, int y) {
+            Gdk.RGBA active_tab_color = Gdk.RGBA();
+            
+            try {
+                active_tab_color = Utils.hex_to_rgba(config.config_file.get_string("theme", "tab"));
+            } catch (GLib.KeyFileError e) {
+                print("QuakeWindow draw_window_above: %s\n", e.message);
+            }
+            
+            cr.save();
+            Utils.set_context_color(cr, active_tab_color);
+            Draw.draw_rectangle(cr, x, y, active_tab_underline_width, Constant.ACTIVE_TAB_UNDERLINE_HEIGHT);
             cr.restore();
         }
         
