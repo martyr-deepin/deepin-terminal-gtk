@@ -427,7 +427,7 @@ namespace Widgets {
 			    
 			    try {
 			    	config_file.save_to_file(config_file_path);
-			    } catch (Error e) {
+                } catch (Error e) {
 			    	print("add_server error occur when config_file.save_to_file %s: %s\n", config_file_path, e.message);
 			    }
 			}
@@ -560,6 +560,8 @@ namespace Widgets {
                                                                  command, nickname, groupname, backspace_key, delete_key);
                                                   
                                                       func();
+                                                      
+                                                      remote_server.destroy();
                                                   } catch (Error e) {
                                                       error ("%s", e.message);
                                                   }
@@ -602,8 +604,10 @@ namespace Widgets {
                     remote_server.transient_for_window(parent_window);
                     remote_server.add_server.connect((server, address, username, password, port, encode, path, command, nickname, groupname, backspace_key, delete_key) => {
                             add_server(address, username, password, port, encode, path, command, nickname, groupname, backspace_key, delete_key);
-
+                            
                             update_home_page();
+                            
+                            remote_server.destroy();
                         });
                     remote_server.show_all();
 					

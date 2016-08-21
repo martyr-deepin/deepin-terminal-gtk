@@ -350,8 +350,6 @@ namespace Widgets {
                                        );
                         }
                     
-                        destroy();
-                    
                         return false;
                     });
                 button_box.pack_start(cancel_button, false, false, 0);
