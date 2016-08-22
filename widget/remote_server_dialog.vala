@@ -313,12 +313,10 @@ namespace Widgets {
                     button_name = _("Add");
                 }
                 DialogButton confirm_button = new Widgets.DialogButton(button_name, "right", "action");
-                cancel_button.button_release_event.connect((b) => {
+                cancel_button.clicked.connect((b) => {
                         destroy();
-                    
-                        return false;
                     });
-                confirm_button.button_release_event.connect((b) => {
+                confirm_button.clicked.connect((b) => {
                         if (server_info != null) {
                             edit_server(address_entry.get_text(),
                                         user_entry.get_text(),
@@ -346,9 +344,14 @@ namespace Widgets {
                                        parent_window.config.del_key_erase_names[del_key_box.get_active()]
                                        );
                         }
-                    
-                        return false;
                     });
+                
+                var tab_order_list = new List<Gtk.Widget>();
+                tab_order_list.append((Gtk.Widget) cancel_button);
+                tab_order_list.append((Gtk.Widget) confirm_button);
+                button_box.set_focus_chain(tab_order_list);
+                button_box.set_focus_child(confirm_button);
+            
                 button_box.pack_start(cancel_button, true, true, 0);
                 button_box.pack_start(confirm_button, true, true, 0);
                 box.pack_start(button_box, false, false, 0);

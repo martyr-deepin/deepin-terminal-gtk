@@ -81,19 +81,21 @@ namespace Widgets {
             Box button_box = new Box(Gtk.Orientation.HORIZONTAL, 0);
             DialogButton cancel_button = new Widgets.DialogButton(cancel_text, "left", "text");
             DialogButton confirm_button = new Widgets.DialogButton(confirm_text, "right", "warning");
-            cancel_button.button_release_event.connect((b) => {
+            cancel_button.clicked.connect((b) => {
                     cancel();
                     destroy();
-                    
-                    return false;
                 });
-            confirm_button.button_release_event.connect((b) => {
+            confirm_button.clicked.connect((b) => {
                     confirm();
                     destroy();
-                    
-                    return false;
                 });
             
+            var tab_order_list = new List<Gtk.Widget>();
+            tab_order_list.append((Gtk.Widget) cancel_button);
+            tab_order_list.append((Gtk.Widget) confirm_button);
+            button_box.set_focus_chain(tab_order_list);
+            button_box.set_focus_child(confirm_button);
+                
             close_button_box.pack_start(close_button, true, true, 0);
             label_box.pack_start(title_label, false, false, 0);
             label_box.pack_start(content_label, false, false, 0);
