@@ -64,7 +64,9 @@ namespace Widgets {
         public Gdk.RGBA text_hover_light_color;
         public Gdk.RGBA text_light_color;
         public HashMap<int, string> tab_name_map;
+        public Pango.FontDescription font_description;
         public bool allowed_add_tab = true;
+        public int font_size = 11;
         public int height = Constant.TITLEBAR_HEIGHT;
         public int tab_index = 0;
         
@@ -83,6 +85,9 @@ namespace Widgets {
             tab_name_map = new HashMap<int, string>();
 			tab_highlight_map = new HashMap<int, bool>();
             
+            font_description = new Pango.FontDescription();
+            font_description.set_size((int)(font_size * Pango.SCALE));
+        
             set_size_request(-1, height);
             
             close_normal_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("tab_close_normal.png"));
@@ -275,6 +280,7 @@ namespace Widgets {
             int counter = 0;
             foreach (int tab_id in tab_list) {
                 var layout = create_pango_layout(tab_name_map.get(tab_id));
+                layout.set_font_description(font_description);
                 int name_width, name_height;
                 layout.get_pixel_size(out name_width, out name_height);
                 int tab_width = (int) (get_tab_width(name_width) * draw_scale);
@@ -308,6 +314,7 @@ namespace Widgets {
             int counter = 0;
             foreach (int tab_id in tab_list) {
                 var layout = create_pango_layout(tab_name_map.get(tab_id));
+                layout.set_font_description(font_description);
                 int name_width, name_height;
                 layout.get_pixel_size(out name_width, out name_height);
                 int tab_width = (int) (get_tab_width(name_width) * draw_scale);
@@ -359,6 +366,7 @@ namespace Widgets {
             int tab_width = 0;
             foreach (int tab_id in tab_list) {
                 var layout = create_pango_layout(tab_name_map.get(tab_id));
+                layout.set_font_description(font_description);
                 int name_width, name_height;
                 layout.get_pixel_size(out name_width, out name_height);
                 
@@ -383,6 +391,7 @@ namespace Widgets {
             int counter = 0;
             foreach (int tab_id in tab_list) {
                 var layout = create_pango_layout(tab_name_map.get(tab_id));
+                layout.set_font_description(font_description);
                 int name_width, name_height, name_scale_width;
                 layout.get_pixel_size(out name_width, out name_height);
                 name_scale_width = (int) (name_width * draw_scale);
@@ -413,6 +422,7 @@ namespace Widgets {
             
             foreach (int tab_id in tab_list) {
                 var layout = create_pango_layout(tab_name_map.get(tab_id));
+                layout.set_font_description(font_description);
                 int name_width, name_height, name_scale_width;
                 layout.get_pixel_size(out name_width, out name_height);
                 name_scale_width = (int) (name_width * draw_scale);
