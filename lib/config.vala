@@ -97,8 +97,8 @@ namespace Config {
             config_file.set_string("keybind", "close_workspace", "Ctrl + Shift + w");
             config_file.set_string("keybind", "next_workspace", "Ctrl + Tab");
             config_file.set_string("keybind", "previous_workspace", "Ctrl + Shift + Tab");
-            config_file.set_string("keybind", "split_vertically", "Ctrl + Shift + h");
-            config_file.set_string("keybind", "split_horizontally", "Ctrl + h");
+            config_file.set_string("keybind", "split_vertically", "Ctrl + h");
+            config_file.set_string("keybind", "split_horizontally", "Ctrl + Shift + h");
             config_file.set_string("keybind", "select_up_window", "Alt + k");
             config_file.set_string("keybind", "select_down_window", "Alt + j");
             config_file.set_string("keybind", "select_left_window", "Alt + h");
