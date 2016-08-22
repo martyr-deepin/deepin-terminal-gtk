@@ -43,7 +43,7 @@ namespace Widgets {
             entry = new Gtk.Entry();
             entry.margin_top = 1;
             entry.margin_bottom = 1;
-            entry.set_invisible_char('•');
+            entry.set_invisible_char('●');
             entry.set_input_purpose(Gtk.InputPurpose.PASSWORD);
             
             show_password_button = new ImageButton("password_show");
