@@ -231,7 +231,8 @@
 }
 
 .preference_comboboxtext menu{
-	border-radius:0px;
+	border-radius:4px;
+    font-size:9px;
 	background: white;
 	border: 1px;
 }
