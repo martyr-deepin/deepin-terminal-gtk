@@ -355,14 +355,26 @@ namespace Widgets {
         }
         
         private void on_port_entry_insert(Gtk.Editable editable, string new_text, int new_text_length, ref int position) {
-            if (!"0123456789".contains(new_text)) {
-                Signal.stop_emission_by_name(editable, "insert-text");
+            try {
+                Regex r = new Regex("^[0-9]+$");
+                MatchInfo info;
+                if (!r.match(new_text, 0, out info)) {
+                    Signal.stop_emission_by_name(editable, "insert-text");
+                }
+            } catch (GLib.RegexError e) {
+                print("RemoteServerDialog on_port_entry_insert: %s\n", e.message);
             }
         }
         
         private void on_address_entry_insert(Gtk.Editable editable, string new_text, int new_text_length, ref int position) {
-            if (!".0123456789".contains(new_text)) {
-                Signal.stop_emission_by_name(editable, "insert-text");
+            try {
+                Regex r = new Regex("^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$");
+                MatchInfo info;
+                if (!r.match(new_text, 0, out info)) {
+                    Signal.stop_emission_by_name(editable, "insert-text");
+                }
+            } catch (GLib.RegexError e) {
+                print("RemoteServerDialog on_address_entry_insert: %s\n", e.message);
             }
         }
         
