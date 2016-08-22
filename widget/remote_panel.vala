@@ -566,8 +566,6 @@ namespace Widgets {
                                                       error ("%s", e.message);
                                                   }
                                               });
-                                    
-            remote_server_dialog.show_all();
         }
         
         public Gtk.ScrolledWindow create_scrolled_window() {
@@ -609,7 +607,6 @@ namespace Widgets {
                             
                             remote_server_dialog.destroy();
                         });
-                    remote_server_dialog.show_all();
 					
 					return false;
 				});
