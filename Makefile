@@ -103,35 +103,10 @@ main: ./lib/animation.vala \
     main.vala
 
 install:
-	mkdir -p ${DESTDIR}${PREFIX}/bin
-	mkdir -p ${DESTDIR}${PREFIX}/share/applications
-	mkdir -p ${DESTDIR}${PREFIX}/share/deepin-terminal
-	mkdir -p ${DESTDIR}${PREFIX}/share/icons
-	mkdir -p ${DESTDIR}${PREFIX}/share/dman/deepin-terminal
-	cp -r image ${DESTDIR}${PREFIX}/share/deepin-terminal
-	cp -r theme ${DESTDIR}${PREFIX}/share/deepin-terminal
-	cp style.css ${DESTDIR}${PREFIX}/share/deepin-terminal
-	cp ssh_login.sh ${DESTDIR}${PREFIX}/share/deepin-terminal
-
-	for lang in ./po/*
-	do
-		mkdir -p ${DESTDIR}${PREFIX}/share/locale/$(basename ${lang})/LC_MESSAGES/
-		msgfmt --output ${DESTDIR}${PREFIX}/share/locale/$(basename ${lang})/LC_MESSAGES/deepin-terminal.mo po/$(basename ${lang})/LC_MESSAGES/deepin-terminal.po
-	done	
-
-	cp deepin-terminal.desktop ${DESTDIR}${PREFIX}/share/applications
-	cp -fr main ${DESTDIR}${PREFIX}/share/deepin-terminal
-	mkdir -p ${DESTDIR}${PREFIX}/share/icons/hicolor/32x32/apps
-	cp hicolor/32x32/deepin-terminal.png ${DESTDIR}${PREFIX}/share/icons/hicolor/32x32/apps
-	mkdir -p ${DESTDIR}${PREFIX}/share/icons/hicolor/48x48/apps
-	cp hicolor/48x48/deepin-terminal.png ${DESTDIR}${PREFIX}/share/icons/hicolor/48x48/apps
-	mkdir -p ${DESTDIR}${PREFIX}/share/icons/hicolor/96x96/apps
-	cp hicolor/96x96/deepin-terminal.png ${DESTDIR}${PREFIX}/share/icons/hicolor/96x96/apps
-	mkdir -p ${DESTDIR}${PREFIX}/share/icons/hicolor/128x128/apps
-	cp hicolor/128x128/deepin-terminal.png ${DESTDIR}${PREFIX}/share/icons/hicolor/128x128/apps
-	mkdir -p ${DESTDIR}${PREFIX}/share/icons/hicolor/scalable/apps
-	cp hicolor/deepin-terminal.svg ${DESTDIR}${PREFIX}/share/icons/hicolor/scalable/apps
-	ln -sf ${PREFIX}/share/deepin-terminal/main ${DESTDIR}${PREFIX}/bin/deepin-terminal
+	./install_script/update_mo.sh
+	./install_script/copy_resource.sh
+	./install_script/copy_icons.sh
+	./install_script/copy_bin.sh
 
 clean:
 	rm -f main
