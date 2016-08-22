@@ -399,6 +399,7 @@ namespace Widgets {
                 delete_server_button = Widgets.create_delete_button(_("Delete server"));
                 delete_server_button.click.connect((w) => {
                         var confirm_dialog = new Widgets.ConfirmDialog(_("Delete server"), "%s %s?".printf(_("Are you sure delete"), name_entry.get_text()), _("Cancel"), _("Delete"));
+                        confirm_dialog.transient_for_window(parent_window);
                         confirm_dialog.cancel.connect((w) => {
                                 this.destroy();
                             });
@@ -408,9 +409,6 @@ namespace Widgets {
                             });
 
                         this.hide();
-                        
-                        // Show before edit dialog hide, otherwise delete dialog will jump randaom.
-                        confirm_dialog.transient_for_window(parent_window);
                     });
                 server_action_box.pack_start(delete_server_button, true, true, 0);
             }

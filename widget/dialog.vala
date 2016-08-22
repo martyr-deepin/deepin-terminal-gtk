@@ -127,7 +127,18 @@ namespace Widgets {
         public void transient_for_window(Widgets.ConfigWindow window) {
             transient_window = window;
             
+            set_default_geometry(window_init_width, window_init_height);
+
             set_transient_for(window);
+            Gdk.Window gdk_window = window.get_window();
+            int x, y;
+            gdk_window.get_root_origin(out x, out y);
+            Gtk.Allocation window_alloc;
+            window.get_allocation(out window_alloc);
+            
+            move(x + (window_alloc.width - window_init_width) / 2,
+                 y + (window_alloc.height - window_init_height) / 2);
+            
             show_all();
         }
         
