@@ -205,6 +205,7 @@ namespace Widgets {
                     user_entry.set_text(server_info.split("@")[0]);
                 }
                 user_entry.set_placeholder_text(_("Required"));
+                user_entry.insert_text.connect(on_user_entry_insert);
                 create_follow_key_row(user_label, user_entry, "%s:".printf(_("Username")), address_label, grid);
             
                 // Password.
@@ -368,13 +369,25 @@ namespace Widgets {
         
         private void on_address_entry_insert(Gtk.Editable editable, string new_text, int new_text_length, ref int position) {
             try {
-                Regex r = new Regex("^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$");
+                Regex r = new Regex("""^(?:(?:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){7})|(?:(?!(?:.*[a-f0-9](?::|$)){7,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?)))|(?:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){5}:)|(?:(?!(?:.*[a-f0-9]:){5,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3}:)?))?(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))(?:\.(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))){3}))$""");
                 MatchInfo info;
                 if (!r.match(new_text, 0, out info)) {
                     Signal.stop_emission_by_name(editable, "insert-text");
                 }
             } catch (GLib.RegexError e) {
                 print("RemoteServerDialog on_address_entry_insert: %s\n", e.message);
+            }
+        }
+
+        private void on_user_entry_insert(Gtk.Editable editable, string new_text, int new_text_length, ref int position) {
+            try {
+                Regex r = new Regex("""^[\d\w_.-]{2,6}$""");
+                MatchInfo info;
+                if (!r.match(new_text, 0, out info)) {
+                    Signal.stop_emission_by_name(editable, "insert-text");
+                }
+            } catch (GLib.RegexError e) {
+                print("RemoteServerDialog on_user_entry_insert: %s\n", e.message);
             }
         }
         
