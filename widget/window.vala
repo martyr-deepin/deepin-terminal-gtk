@@ -42,8 +42,6 @@ namespace Widgets {
         public int window_fullscreen_monitor_timeout = 150;
         public int window_fullscreen_response_height = 5;
         public int window_height;
-        public int window_save_height = 0;
-        public int window_save_width = 0;
         public int window_widget_margin_bottom = 2;
         public int window_widget_margin_end = 2;
         public int window_widget_margin_start = 2;
@@ -97,13 +95,6 @@ namespace Widgets {
             } catch (GLib.KeyFileError e) {
                 stdout.printf(e.message);
             }
-            
-            destroy.connect((w) => {
-                    config.config_file.set_integer("advanced", "window_width", window_save_width);
-                    config.config_file.set_integer("advanced", "window_height", window_save_height);
-                    config.save();
-                });
-
             try{
                 set_icon_from_file(Utils.get_image_path("deepin-terminal.svg"));
             } catch(Error er) {
@@ -143,8 +134,9 @@ namespace Widgets {
                     get_size(out width, out height);
                     
                     if (!window_is_max() && !window_is_fullscreen() && !window_is_tiled()) {
-                        window_save_width = width;
-                        window_save_height = height;
+                        config.config_file.set_integer("advanced", "window_width", width);
+                        config.config_file.set_integer("advanced", "window_height", height);
+                        config.save();
                     }
                     
                     Cairo.RectangleInt rect;
