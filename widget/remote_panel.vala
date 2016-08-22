@@ -281,13 +281,18 @@ namespace Widgets {
 								string command = "expect -f " + tmpfile.get_path() + "\n";
 								term.term.feed_child(command, command.length);
 								
-								string user_path_command = "cd %s\n".printf(config_file.get_string(server_info, "Path"));
-								term.term.feed_child(user_path_command, user_path_command.length);
+                                var path = config_file.get_string(server_info, "Path");
+                                if (path.strip() != "") {
+                                    string user_path_command = "cd %s\n".printf(config_file.get_string(server_info, "Path"));
+                                    term.term.feed_child(user_path_command, user_path_command.length);
+                                }
 								
 								GLib.Timeout.add(10, () => {
 										try {
 											string user_command = "%s\n".printf(config_file.get_string(server_info, "Command"));
-											term.term.feed_child(user_command, user_command.length);
+                                            if (user_command.strip() != "") {
+                                                term.term.feed_child(user_command, user_command.length);
+                                            }
 										} catch (GLib.KeyFileError e) {
 											error("%s", e.message);
 										}
