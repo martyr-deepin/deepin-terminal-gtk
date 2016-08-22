@@ -28,7 +28,7 @@ using Animation;
 
 namespace Widgets {
     public class Preference : Widgets.Dialog {
-        public AnimateTimer timer;
+		// public Gtk.SpinButton scroll_line_spinbutton;
 		public ArrayList<string> font_names;
 		public ArrayList<string> window_state_list;
 		public ArrayList<string> window_state_name_list;
@@ -85,7 +85,6 @@ namespace Widgets {
 		public Gtk.Label zoom_out_key_label;
 		public Gtk.Label zoom_reset_key_label;
 		public Gtk.SpinButton font_size_spinbutton;
-		// public Gtk.SpinButton scroll_line_spinbutton;
 		public ScrolledWindow scrolledwindow;
 		public Widgets.CheckButton cursor_blink_checkbutton;
 		public Widgets.CheckButton scroll_on_key_checkbutton;
@@ -93,10 +92,13 @@ namespace Widgets {
 		public Widgets.ConfigWindow parent_window;
 		public Widgets.CursorToggleButton cursor_style_button;
 		public Widgets.ProgressBar opacity_progressbar;
+        public Widgets.PreferenceSlidebar slidebar;
 		public double timer_end_value;
 		public double timer_start_value;
+        public AnimateTimer timer;
         public Gtk.Box content_box;
         public Gtk.Widget focus_widget;
+        public bool in_animation = false;
         public int checkbutton_margin_right = 5;
         public int checkbutton_margin_top = 4;
         public int first_segement_margin_left = 20;
@@ -207,7 +209,7 @@ namespace Widgets {
             var preference_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             add_widget(preference_box);
             
-            var slidebar = new PreferenceSlidebar();
+            slidebar = new PreferenceSlidebar();
 			preference_box.pack_start(slidebar, false, false, 0);
             preference_box.set_size_request(slidebar_width, -1);
 			
@@ -415,6 +417,34 @@ namespace Widgets {
 						scroll_to_widget(scrolledwindow, box, about_segement);
 					}
 				});
+            
+            scrolledwindow.get_vadjustment().value_changed.connect((w) => {
+                    if (!in_animation) {
+                        if (item_in_visible_area(basic_segement)) {
+                            slidebar.focus_item(slidebar.basic_segement);
+                        } else if (item_in_visible_area(theme_segement)) {
+                            slidebar.focus_item(slidebar.theme_segement);
+                        } else if (item_in_visible_area(hotkey_segement)) {
+                            slidebar.focus_item(slidebar.hotkey_segement);
+                        } else if (item_in_visible_area(terminal_key_segement)) {
+                            slidebar.focus_item(slidebar.terminal_key_segement);
+                        } else if (item_in_visible_area(workspace_key_segement)) {
+                            slidebar.focus_item(slidebar.workspace_key_segement);
+                        } else if (item_in_visible_area(advanced_key_segement)) {
+                            slidebar.focus_item(slidebar.advanced_key_segement);
+                        } else if (item_in_visible_area(advanced_segement)) {
+                            slidebar.focus_item(slidebar.advanced_segement);
+                        } else if (item_in_visible_area(cursor_segement)) {
+                            slidebar.focus_item(slidebar.cursor_segement);
+                        } else if (item_in_visible_area(scroll_segement)) {
+                            slidebar.focus_item(slidebar.scroll_segement);
+                        } else if (item_in_visible_area(window_segement)) {
+                            slidebar.focus_item(slidebar.window_segement);
+                        } else if (item_in_visible_area(about_segement)) {
+                            slidebar.focus_item(slidebar.about_segement);
+                        }
+                    }
+                });
         }
 		
 		public void init_config() {
@@ -461,7 +491,14 @@ namespace Widgets {
 			
 		}
 		
-		public void scroll_to_widget(ScrolledWindow scrolledwindow, Gtk.Box box, Gtk.Widget widget) {
+        public bool item_in_visible_area(Gtk.Widget item) {
+			int widget_x, widget_y;
+            content_box.translate_coordinates(item, 0, 0, out widget_x, out widget_y);
+            
+            return Math.fabs(widget_y) > scrolledwindow.get_vadjustment().get_value() - segement_margin_top * 2;
+        }
+        
+        public void scroll_to_widget(ScrolledWindow scrolledwindow, Gtk.Box box, Gtk.Widget widget) {
 			int widget_x, widget_y;
 			content_box.translate_coordinates(widget, 0, 0, out widget_x, out widget_y);
 			
@@ -469,6 +506,7 @@ namespace Widgets {
 			timer_start_value= adjust.get_value();
             timer_end_value = Math.fabs(widget_y);
 			
+            in_animation = true;
 			timer.reset();
 		}
 		
@@ -478,6 +516,7 @@ namespace Widgets {
 			
 			if (progress >= 1.0) {
 				timer.stop();
+                in_animation = false;
 			}
 		}
 		
