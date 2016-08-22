@@ -180,6 +180,10 @@ msgstr "帮助"
 msgid "Horizontal split"
 msgstr "横向分屏"
 
+#: ../widget/preference.vala:367
+msgid "Maximize"
+msgstr "最大化"
+
 #: ../widget/appbar.vala:93
 msgid "New window"
 msgstr "新建窗口"
@@ -192,6 +196,10 @@ msgstr "新建工作区"
 #: ../widget/preference.vala:296 ../widget/config_window.vala:208
 msgid "Next workspace"
 msgstr "下一个工作区"
+
+#: ../widget/preference.vala:366
+msgid "Normal window"
+msgstr "正常窗口"
 
 #: ../widget/workspace_manager.vala:92
 msgid "OK"
@@ -372,6 +380,10 @@ msgstr "版本"
 #: ../widget/config_window.vala:211
 msgid "Vertical split"
 msgstr "纵向分屏"
+
+#: ../widget/preference.vala:369
+msgid "When start using"
+msgstr "启动时使用"
 
 #: ../widget/preference_slidebar.vala:80 ../widget/preference.vala:354
 #: ../widget/preference.vala:364

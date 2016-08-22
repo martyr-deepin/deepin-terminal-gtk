@@ -31,6 +31,7 @@ namespace Widgets {
         public AnimateTimer timer;
 		public ArrayList<string> font_names;
 		public ArrayList<string> window_state_list;
+		public ArrayList<string> window_state_name_list;
 		public Gtk.ComboBoxText font_combox;
 		public Gtk.ComboBoxText theme_combox;
 		public Gtk.ComboBoxText window_combox;
@@ -361,7 +362,11 @@ namespace Widgets {
             window_state_list.add("window");
             window_state_list.add("maximize");
             window_state_list.add("fullscreen");
-            create_combox_row(window_label, window_combox, _("Window"), window_grid, window_state_list, "advanced", "window_state");
+            window_state_name_list = new ArrayList<string>();
+            window_state_name_list.add(_("Normal window"));
+            window_state_name_list.add(_("Maximize"));
+            window_state_name_list.add(_("Fullscreen"));
+            create_combox_row_with_name(window_label, window_combox, _("When start using"), window_grid, window_state_list, window_state_name_list, "advanced", "window_state");
             
             var about_segement = get_first_segement(_("About"));
             content_box.pack_start(about_segement, false, false, 0);
@@ -608,6 +613,33 @@ namespace Widgets {
 			if (values != null) {
                 foreach (string value in values) {
                     combox.append(value, value);
+                }
+                
+                try {
+                    combox.set_active(values.index_of(parent_window.config.config_file.get_value(group_name, key)));
+                } catch (GLib.KeyFileError e) {
+                    print("create_combox_row error: %s\n".printf(e.message));
+                }
+                
+                combox.changed.connect((w) => {
+                        parent_window.config.config_file.set_string(group_name, key, values[combox.get_active()]);
+                        parent_window.config.save();
+						
+						parent_window.config.update();
+                    });
+            }
+            adjust_option_widgets(label, combox);
+            grid_attach(grid, label, 0, 0, preference_name_width, grid_height);
+            grid_attach_next_to(grid, combox, label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
+		}
+
+        public void create_combox_row_with_name(Gtk.Label label, Gtk.ComboBoxText combox, string name, Gtk.Grid grid, ArrayList<string>? values=null, ArrayList<string>? names=null, string? group_name=null, string? key=null) {
+			label.set_text(name);
+			if (values != null) {
+                int index = 0;
+                foreach (string value in values) {
+                    combox.append(value, names[index]);
+                    index++;
                 }
                 
                 try {

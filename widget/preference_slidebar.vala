@@ -78,7 +78,7 @@ namespace Widgets {
 			this.attach_next_to(scroll_segement, cursor_segement, Gtk.PositionType.BOTTOM, width, height);
 
             var window_segement = new PreferenceSlideItem(this, _("Window"), "window", false);
-			this.attach_next_to(window_segement, cursor_segement, Gtk.PositionType.BOTTOM, width, height);
+			this.attach_next_to(window_segement, scroll_segement, Gtk.PositionType.BOTTOM, width, height);
             
             var window_spacing_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             window_spacing_box.set_size_request(-1, segement_spacing);
