@@ -85,7 +85,7 @@ namespace Widgets {
 		public Gtk.Label zoom_out_key_label;
 		public Gtk.Label zoom_reset_key_label;
 		public Gtk.SpinButton font_size_spinbutton;
-		public Gtk.SpinButton scroll_line_spinbutton;
+		// public Gtk.SpinButton scroll_line_spinbutton;
 		public ScrolledWindow scrolledwindow;
 		public Widgets.CheckButton cursor_blink_checkbutton;
 		public Widgets.CheckButton scroll_on_key_checkbutton;
@@ -182,7 +182,7 @@ namespace Widgets {
 			scroll_on_out_checkbutton = create_checkbutton();
 			
 			font_size_spinbutton = create_spinbutton(Constant.FONT_MIN_SIZE, Constant.FONT_MAX_SIZE, 1);
-			scroll_line_spinbutton = create_spinbutton(0, Constant.MAX_SCROLL_LINES, 1);
+			// scroll_line_spinbutton = create_spinbutton(0, Constant.MAX_SCROLL_LINES, 1);
 			
             parent_window = window;
             
@@ -348,9 +348,9 @@ namespace Widgets {
             content_box.pack_start(scroll_grid, false, false, 0);
             
             var scroll_on_key_box = create_check_row(scroll_on_key_checkbutton, _("Scroll on key"), scroll_grid, "advanced", "scroll_on_key");
-            var scroll_on_output_box = create_follow_check_row(scroll_on_out_checkbutton, _("Scroll on output"), scroll_on_key_box, scroll_grid, "advanced", "scroll_on_output");
+            create_follow_check_row(scroll_on_out_checkbutton, _("Scroll on output"), scroll_on_key_box, scroll_grid, "advanced", "scroll_on_output");
             
-            create_follow_spinbutton_row(scroll_line_spinbutton, "%s:".printf(_("Scroll lines")), scroll_on_output_box, scroll_grid, "advanced", "scroll_line");
+            // create_follow_spinbutton_row(scroll_line_spinbutton, "%s:".printf(_("Scroll lines")), scroll_on_output_box, scroll_grid, "advanced", "scroll_line");
             
             var window_segement = get_second_segement(_("Window"));
             content_box.pack_start(window_segement, false, false, 0);
@@ -454,7 +454,7 @@ namespace Widgets {
 				scroll_on_out_checkbutton.set_active(parent_window.config.config_file.get_boolean("advanced", "scroll_on_output"));
 		    
 				font_size_spinbutton.set_value(parent_window.config.config_file.get_integer("general", "font_size"));
-				scroll_line_spinbutton.set_value(parent_window.config.config_file.get_integer("advanced", "scroll_line"));
+				// scroll_line_spinbutton.set_value(parent_window.config.config_file.get_integer("advanced", "scroll_line"));
 			} catch (GLib.KeyFileError e) {
 				print("Preference init_config: %s\n", e.message);
 			}

@@ -286,7 +286,7 @@ msgstr "回滚行数"
 
 #: ../widget/preference.vala:349
 msgid "Scroll on key"
-msgstr "击键时滚动"
+msgstr "按键时滚动"
 
 #: ../widget/preference.vala:350
 msgid "Scroll on output"
