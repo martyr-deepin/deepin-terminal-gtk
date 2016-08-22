@@ -298,9 +298,17 @@ msgstr "输出时滚动"
 msgid "Search"
 msgstr "搜索"
 
+#: ../widget/terminal.vala:345
+msgid "Select"
+msgstr "选择"
+
 #: ../widget/preference.vala:285 ../widget/config_window.vala:191
 msgid "Select all"
 msgstr "全选"
+
+#: ../widget/terminal.vala:343
+msgid "Select directory to save download file"
+msgstr "选择下载文件的保存目录"
 
 #: ../widget/terminal.vala:292
 msgid "Select file to upload"
@@ -363,6 +371,10 @@ msgstr "关闭一些不用的工作区"
 #: ../widget/terminal.vala:333
 msgid "Type the file you want to download"
 msgstr "键入你要下载的文件"
+
+#: ../widget/terminal.vala:318
+msgid "Upload"
+msgstr "上传"
 
 #: ../widget/terminal.vala:213
 msgid "Upload file"

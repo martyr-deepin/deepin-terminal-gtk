@@ -315,7 +315,7 @@ namespace Widgets {
             var chooser = new Gtk.FileChooserDialog(_("Select file to upload"), null, action);
             chooser.add_button(_("Cancel"), Gtk.ResponseType.CANCEL);
             chooser.set_select_multiple(true);
-            chooser.add_button(_("Open"), Gtk.ResponseType.ACCEPT);
+            chooser.add_button(_("Upload"), Gtk.ResponseType.ACCEPT);
             
             if (chooser.run () == Gtk.ResponseType.ACCEPT) {
                 var file_list = chooser.get_files();
@@ -324,7 +324,7 @@ namespace Widgets {
                 GLib.Timeout.add(500, () => {
                         string upload_command = "sz ";
                         foreach (File file in file_list) {
-                            upload_command = upload_command + file.get_path() + " ";
+                            upload_command = upload_command + "'" + file.get_path() + "' ";
                         }
                         upload_command = upload_command + "\n";
                         
@@ -340,9 +340,9 @@ namespace Widgets {
         
         public void download_file() {
             Gtk.FileChooserAction action = Gtk.FileChooserAction.SELECT_FOLDER;
-            var chooser = new Gtk.FileChooserDialog(_("Please enter a new shortcut"), null, action);
+            var chooser = new Gtk.FileChooserDialog(_("Select directory to save download file"), null, action);
             chooser.add_button(_("Cancel"), Gtk.ResponseType.CANCEL);
-            chooser.add_button(_("Save"), Gtk.ResponseType.ACCEPT);
+            chooser.add_button(_("Select"), Gtk.ResponseType.ACCEPT);
             
             if (chooser.run () == Gtk.ResponseType.ACCEPT) {
                 save_file_directory = chooser.get_filename();

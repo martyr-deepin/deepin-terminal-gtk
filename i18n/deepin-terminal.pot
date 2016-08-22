@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-22 08:07+0800\n"
+"POT-Creation-Date: 2016-08-22 11:46+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -210,10 +210,6 @@ msgstr ""
 msgid "Opacity"
 msgstr ""
 
-#: ../widget/terminal.vala:318
-msgid "Open"
-msgstr ""
-
 #: ../widget/remote_server_dialog.vala:231
 #: ../widget/remote_server_dialog.vala:241
 #: ../widget/remote_server_dialog.vala:250
@@ -233,7 +229,7 @@ msgstr ""
 msgid "Path"
 msgstr ""
 
-#: ../widget/preference.vala:546 ../widget/terminal.vala:343
+#: ../widget/preference.vala:546
 msgid "Please enter a new shortcut"
 msgstr ""
 
@@ -273,7 +269,7 @@ msgstr ""
 msgid "Restore all"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:306 ../widget/terminal.vala:345
+#: ../widget/remote_server_dialog.vala:306
 msgid "Save"
 msgstr ""
 
@@ -299,8 +295,16 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
+#: ../widget/terminal.vala:345
+msgid "Select"
+msgstr ""
+
 #: ../widget/preference.vala:286 ../widget/config_window.vala:191
 msgid "Select all"
+msgstr ""
+
+#: ../widget/terminal.vala:343
+msgid "Select directory to save download file"
 msgstr ""
 
 #: ../widget/terminal.vala:315
@@ -363,6 +367,10 @@ msgstr ""
 
 #: ../widget/terminal.vala:356
 msgid "Type the file you want to download"
+msgstr ""
+
+#: ../widget/terminal.vala:318
+msgid "Upload"
 msgstr ""
 
 #: ../widget/terminal.vala:236
