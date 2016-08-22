@@ -107,7 +107,7 @@ namespace Widgets {
             
             var event_area = new Widgets.WindowEventArea(this);
             event_area.margin_end = Constant.CLOSE_BUTTON_WIDTH;
-            event_area.margin_bottom = cancel_button.left_normal_surface.get_height();
+            event_area.margin_bottom = Constant.DIALOG_BUTTON_HEIGHT;
             
             overlay.add(box);
             overlay.add_overlay(event_area);

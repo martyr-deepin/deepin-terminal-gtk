@@ -53,7 +53,9 @@ namespace Widgets {
         public int option_widget_margin_top = 5;
         public int port_label_margin_left = 21;
         public int preference_margin_top = 10;
-        public int preference_name_width = 80;
+        public int preference_margin_start = 20;
+        public int preference_margin_end = 20;
+        public int preference_name_width = 120;
         public int preference_widget_width = 100;
         public int window_expand_height = 530;
         public string? server_info;
@@ -143,6 +145,8 @@ namespace Widgets {
             
                 var content_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
                 content_box.set_halign(Gtk.Align.CENTER);
+                content_box.margin_start = preference_margin_start;
+                content_box.margin_end = preference_margin_end;
                 box.pack_start(content_box, false, false, 0);
                 
                 var grid = new Gtk.Grid();
@@ -345,8 +349,8 @@ namespace Widgets {
                     
                         return false;
                     });
-                button_box.pack_start(cancel_button, false, false, 0);
-                button_box.pack_start(confirm_button, false, false, 0);
+                button_box.pack_start(cancel_button, true, true, 0);
+                button_box.pack_start(confirm_button, true, true, 0);
                 box.pack_start(button_box, false, false, 0);
             
                 add_widget(box);
