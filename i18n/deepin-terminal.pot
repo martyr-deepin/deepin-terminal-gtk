@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-22 13:18+0800\n"
+"POT-Creation-Date: 2016-08-22 19:30+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,15 +16,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: ../widget/about_widget.vala:48
-msgid ""
-"    Deepin terminal is a terminal emulator has advanced features such as "
-"workspace, multiple windows, remote management, quake window etc.\n"
-"\n"
-"    Deepin terminal, allowing you to focus more on the command line in the "
-"world.\n"
-msgstr ""
 
 #: ../widget/preference_slidebar.vala:87 ../widget/preference.vala:371
 #: ../widget/appbar.vala:100
@@ -71,7 +62,7 @@ msgstr ""
 
 #: ../widget/workspace_manager.vala:92 ../widget/remote_server_dialog.vala:303
 #: ../widget/remote_server_dialog.vala:376 ../widget/confirm_dialog.vala:120
-#: ../widget/terminal.vala:316 ../widget/terminal.vala:344
+#: ../widget/terminal.vala:317 ../widget/terminal.vala:345
 msgid "Cancel"
 msgstr ""
 
@@ -116,6 +107,15 @@ msgstr ""
 
 #: ../widget/about_widget.vala:107
 msgid "Deepin Terminal"
+msgstr ""
+
+#: ../widget/about_widget.vala:48
+msgid ""
+"Deepin terminal is a terminal emulator has advanced features such as "
+"workspace, multiple windows, remote management, quake window etc.\n"
+"\n"
+"Deepin terminal, allowing you to focus more on the command line in the "
+"world.\n"
 msgstr ""
 
 #: ../widget/preference.vala:285 ../widget/config_window.vala:190
@@ -277,10 +277,6 @@ msgstr ""
 msgid "Scroll"
 msgstr ""
 
-#: ../widget/preference.vala:353
-msgid "Scroll lines"
-msgstr ""
-
 #: ../widget/preference.vala:350
 msgid "Scroll on key"
 msgstr ""
@@ -295,7 +291,7 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: ../widget/terminal.vala:345
+#: ../widget/terminal.vala:346
 msgid "Select"
 msgstr ""
 
@@ -303,11 +299,11 @@ msgstr ""
 msgid "Select all"
 msgstr ""
 
-#: ../widget/terminal.vala:343
+#: ../widget/terminal.vala:344
 msgid "Select directory to save download file"
 msgstr ""
 
-#: ../widget/terminal.vala:315
+#: ../widget/terminal.vala:316
 msgid "Select file to upload"
 msgstr ""
 
@@ -365,11 +361,11 @@ msgstr ""
 msgid "Turn off some of the work area is not used"
 msgstr ""
 
-#: ../widget/terminal.vala:356
+#: ../widget/terminal.vala:357
 msgid "Type the file you want to download"
 msgstr ""
 
-#: ../widget/terminal.vala:318
+#: ../widget/terminal.vala:319
 msgid "Upload"
 msgstr ""
 
