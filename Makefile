@@ -112,7 +112,7 @@ install:
 	cp -r theme ${DESTDIR}${PREFIX}/share/deepin-terminal
 	cp style.css ${DESTDIR}${PREFIX}/share/deepin-terminal
 	cp ssh_login.sh ${DESTDIR}${PREFIX}/share/deepin-terminal
-	cp -f locale/zh_CN/LC_MESSAGES/deepin-terminal.mo /usr/share/locale/zh_CN/LC_MESSAGES/
+	msgfmt --output ${DESTDIR}${PREFIX}/share/locale/zh_CN/LC_MESSAGES/deepin-terminal.mo po/zh_CN/LC_MESSAGES/deepin-terminal.po
 	cp deepin-terminal.desktop ${DESTDIR}${PREFIX}/share/applications
 	cp -fr main ${DESTDIR}${PREFIX}/share/deepin-terminal
 	ln -sf ${PREFIX}/share/deepin-terminal/main ${DESTDIR}${PREFIX}/bin/deepin-terminal
