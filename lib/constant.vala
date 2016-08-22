@@ -27,6 +27,7 @@ public class Constant {
     public static int CLOSE_BUTTON_MARGIN_RIGHT = 3;
     public static int CLOSE_BUTTON_MARGIN_TOP = 3;
     public static int CLOSE_BUTTON_WIDTH = 27;
+    public static int DIALOG_BUTTON_HEIGHT = 28;
     public static int FONT_MAX_SIZE = 50;
     public static int FONT_MIN_SIZE = 5;
     public static int MAX_SCROLL_LINES = 1000;
@@ -35,5 +36,5 @@ public class Constant {
     public static int RESPONSE_RADIUS = 8;
     public static int SLIDER_WIDTH = 280;
     public static int TITLEBAR_HEIGHT = 40;
-    public static int DIALOG_BUTTON_HEIGHT = 28;
+    public static double VERSION = 2.0;
 }                         

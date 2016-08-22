@@ -79,15 +79,13 @@ public class Application : Object {
 	private const GLib.OptionEntry[] options = {
 		{ "version", 0, 0, OptionArg.NONE, ref version, "Print version info and exit", null },
 		{ "work-directory", 'w', 0, OptionArg.FILENAME, ref work_directory, "Set shell working directory", "DIRECTORY" },
-		{ "quake-mode", 0, 0, OptionArg.NONE, ref quake_mode, "Quake mode", null },
         { "execute", 'e', 0, OptionArg.STRING, ref command, "Run a program in terminal", null },
 		{ "execute", 'x', 0, OptionArg.STRING, ref command, "Same as -e", null },
-		{ "execute", 'T', 0, OptionArg.STRING_ARRAY, ref title, "Title, just for compliation", "" },
+		{ "title", 'T', 0, OptionArg.STRING, ref title, "Title, this option does not make sense for the deepin terminal", null },
 		{ "debug", 'd', 0, OptionArg.NONE, ref debug, "Enable various debugging checks", null },
+		{ "quake-mode", 0, 0, OptionArg.NONE, ref quake_mode, "Quake mode", null },
         { "env", 0, 0, OptionArg.STRING_ARRAY, ref environment, "Add environment variable to the child\'s environment", "VAR=VALUE" },
-        
-		// list terminator
-		{ null }
+        { null }
 	};
 
     public static void main(string[] args) {
@@ -96,7 +94,8 @@ public class Application : Object {
         Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
         
         try {
-			var opt_context = new OptionContext();
+			var opt_context = new OptionContext("Deepin terminal");
+            opt_context.set_summary ("Deepin terminal, allowing you to focus more on the command line in the world.");
 			opt_context.set_help_enabled(true);
 			opt_context.add_main_entries(options, null);
 			opt_context.parse(ref args);
@@ -106,7 +105,8 @@ public class Application : Object {
 		}
         
         if (version) {
-			stdout.printf("Deepin Terminal 2.0\n");
+			stdout.printf("Deepin Terminal %.01f\n".printf(Constant.VERSION));
+            stdout.printf ("Copyright 2011-2016 Deepin, Inc.\n");
         } else {
             Gtk.init(ref args);
             
