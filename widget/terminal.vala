@@ -258,8 +258,9 @@ namespace Widgets {
                             term.copy_clipboard();
                         } else if (uri_at_right_press != null) {
                             var display = ((Gtk.Window) this.get_toplevel()).get_display();
-                            var clipboard = Gtk.Clipboard.get_for_display(display, Gdk.SELECTION_CLIPBOARD);
-                            clipboard.set_text(uri_at_right_press, uri_at_right_press.length);
+                            Gtk.Clipboard.get_for_display(display, Gdk.SELECTION_CLIPBOARD).set_text(uri_at_right_press, uri_at_right_press.length);
+                            Gtk.Clipboard.get_for_display(display, Gdk.SELECTION_PRIMARY).set_text(uri_at_right_press, uri_at_right_press.length);
+                            
                         }
 						break;
                     case "fullscreen":
