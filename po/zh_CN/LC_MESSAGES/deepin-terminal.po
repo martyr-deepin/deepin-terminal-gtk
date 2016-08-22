@@ -409,11 +409,11 @@ msgstr "工作区"
 
 #: ../widget/preference.vala:282 ../widget/config_window.vala:188
 msgid "Zoom in"
-msgstr "缩小"
+msgstr "放大"
 
 #: ../widget/preference.vala:283 ../widget/config_window.vala:189
 msgid "Zoom out"
-msgstr "放大"
+msgstr "缩小"
 
 #: ../widget/workspace_manager.vala:83
 msgid "deepin"
