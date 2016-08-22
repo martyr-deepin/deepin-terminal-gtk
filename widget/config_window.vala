@@ -42,7 +42,7 @@ namespace Widgets {
         public int cache_width = 0;
             
         public ConfigWindow() {
-            Intl.bindtextdomain(GETTEXT_PACKAGE, "./locale");
+            Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
 
             load_config();
             

@@ -38,7 +38,7 @@ namespace Widgets {
         public signal void confirm();
         
         public ConfirmDialog(string title, string content, string cancel_text, string confirm_text) {
-            Intl.bindtextdomain(GETTEXT_PACKAGE, "./locale");
+            Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
             
             window_init_width = 480;
             window_init_height = 230;

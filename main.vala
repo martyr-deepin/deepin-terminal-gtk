@@ -89,7 +89,7 @@ public class Application : Object {
     public static void main(string[] args) {
         Intl.setlocale(LocaleCategory.MESSAGES, "");
         Intl.bind_textdomain_codeset(GETTEXT_PACKAGE, "utf-8");
-        Intl.bindtextdomain(GETTEXT_PACKAGE, "./locale");
+        Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
         
         // NOTE: Parse option '-e' or '-x' by myself.
         // OptionContext's function always lost argument after option '-e' or '-x'.

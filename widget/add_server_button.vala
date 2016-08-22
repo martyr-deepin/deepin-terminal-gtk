@@ -49,7 +49,7 @@ namespace Widgets {
         public string button_text = "add server";
         
         public AddServerButton() {
-            Intl.bindtextdomain(GETTEXT_PACKAGE, "./locale");
+            Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
             button_text = _("Add server");
             
             var image_path = "add_server";

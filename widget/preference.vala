@@ -116,7 +116,7 @@ namespace Widgets {
         public int timer_interval = 400;
 
         public Preference(Widgets.ConfigWindow window, Gtk.Widget widget) {
-            Intl.bindtextdomain(GETTEXT_PACKAGE, "./locale");
+            Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
             
             window_init_width = 720;
             window_init_height = 670;

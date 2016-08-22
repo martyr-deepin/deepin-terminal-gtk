@@ -50,7 +50,7 @@ namespace Widgets {
         public signal void quit_fullscreen();
         
         public Appbar(Widgets.Window win, Tabbar tab_bar, WorkspaceManager manager) {
-            Intl.bindtextdomain(GETTEXT_PACKAGE, "./locale");
+            Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
 
             window = win;
             workspace_manager = manager;

@@ -75,7 +75,7 @@ namespace Widgets {
         };
         
         public Term(bool first_term, string[]? commands, string? work_directory, WorkspaceManager manager) {
-            Intl.bindtextdomain(GETTEXT_PACKAGE, "./locale");
+            Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
             
 			workspace_manager = manager;
             is_first_term = first_term;

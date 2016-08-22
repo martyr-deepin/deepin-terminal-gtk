@@ -34,7 +34,7 @@ namespace Widgets {
 		public signal void click_item(string name);
 		
         public PreferenceSlidebar() {
-            Intl.bindtextdomain(GETTEXT_PACKAGE, "./locale");
+            Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
             
 			set_size_request(width, -1);
 			

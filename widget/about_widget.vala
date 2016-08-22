@@ -43,7 +43,7 @@ namespace Widgets {
         public string about_text;
         
         public AboutWidget() {
-            Intl.bindtextdomain(GETTEXT_PACKAGE, "./locale");
+            Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
             
             about_text = _("    Deepin terminal is a terminal emulator has advanced features such as workspace, multiple windows, remote management, quake window etc.\n\n    Deepin terminal, allowing you to focus more on the command line in the world.\n");
             

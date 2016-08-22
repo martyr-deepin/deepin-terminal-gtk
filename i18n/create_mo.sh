@@ -1,4 +1,3 @@
 #!/bin/sh
 
-cd ../locale/zh_CN//LC_MESSAGES/
-msgfmt --output deepin-terminal.mo deepin-terminal.po
+msgfmt --output ../locale/zh_CN//LC_MESSAGES/deepin-terminal.mo ../po/zh_CN//LC_MESSAGES/deepin-terminal.po
