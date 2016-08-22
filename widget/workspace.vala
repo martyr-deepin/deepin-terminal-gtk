@@ -47,7 +47,7 @@ namespace Widgets {
         public signal void exit(int index);
         public signal void highlight_tab(int index);
         
-        public Workspace(int workspace_index, string[]? commands, string? work_directory, WorkspaceManager manager) {
+        public Workspace(int workspace_index, string? work_directory, WorkspaceManager manager) {
             index = workspace_index;
             term_list = new ArrayList<Term>();
 			workspace_manager = manager;
@@ -58,13 +58,13 @@ namespace Widgets {
 			hide_timer = new AnimateTimer(AnimateTimer.ease_in_quint, hide_slider_interval);
 			hide_timer.animate.connect(on_hide_animate);
             
-            Term term = new_term(true, commands, work_directory);
+            Term term = new_term(true, work_directory);
             
             add(term);
         }
         
-        public Term new_term(bool first_term, string[]? commands, string? work_directory) {
-            Term term = new Widgets.Term(first_term, commands, work_directory, workspace_manager);
+        public Term new_term(bool first_term, string? work_directory) {
+            Term term = new Widgets.Term(first_term, work_directory, workspace_manager);
             term.change_dir.connect((term, dir) => {
                     change_dir(index, dir);
                 });
@@ -249,7 +249,7 @@ namespace Widgets {
                     
                     return true;
                 });
-            Term term = new_term(false, null, focus_term.current_dir);
+            Term term = new_term(false, focus_term.current_dir);
             paned.pack1(focus_term, true, false);
             paned.pack2(term, true, false);
             

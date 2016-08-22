@@ -74,7 +74,7 @@ namespace Widgets {
             "(?:news:|man:|info:)[[:alnum:]\\Q^_{|}~!\"#$%&'()*+,./;:=?`\\E]+"
         };
         
-        public Term(bool first_term, string[]? commands, string? work_directory, WorkspaceManager manager) {
+        public Term(bool first_term, string? work_directory, WorkspaceManager manager) {
             Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
             
 			workspace_manager = manager;
@@ -182,13 +182,8 @@ namespace Widgets {
             
             // NOTE: if terminal start with option '-e', use functional 'launch_command' and don't use function 'launch_shell'.
             // terminal will crash if we launch_command after launch_shell.
-            if (commands != null) {
-                string program_string = "";
-                foreach (string command in commands) {
-                    program_string = program_string + " " + command;
-                }
-                
-                launch_command(program_string, work_directory);
+            if (Application.command != null) {
+                launch_command(Application.command, work_directory);
             } else {
                 launch_shell(work_directory);
             }
@@ -637,32 +632,53 @@ namespace Widgets {
                 shell = "/bin/sh";
             }
             
-            launch_command(shell, directory);
-        }
-        
-        public void launch_command(string command, string? dir) {
-            string directory;
-            if (dir == null) {
-                directory = GLib.Environment.get_current_dir();
-            } else {
-                directory = dir;
-            }
-            
             string[] argv;
 
             try {
-                Shell.parse_argv(command, out argv);
+                Shell.parse_argv(shell, out argv);
             } catch (ShellError e) {
-            if (!(e is ShellError.EMPTY_STRING)) {
-                warning("Terminal launch_command: %s\n", e.message);
-            }
+                if (!(e is ShellError.EMPTY_STRING)) {
+                    warning("Terminal launch_shell: %s\n", e.message);
+                }
             }
             launch_idle_id = GLib.Idle.add(() => {
                     try {
                         term.spawn_sync(Vte.PtyFlags.DEFAULT,
                                         directory,
                                         argv,
-                                        null,
+                                        Application.environment,
+                                        GLib.SpawnFlags.SEARCH_PATH,
+                                        null, /* child setup */
+                                        out child_pid,
+                                        null /* cancellable */);
+                    } catch (Error e) {
+                        warning("Terminal launch_idle_id: %s\n", e.message);
+                    }
+                    
+                    launch_idle_id = 0;
+                    return false;
+                });
+        }
+        
+        public void launch_command(string command, string? dir) {
+            string[] argv;
+            try {
+                Shell.parse_argv(command, out argv);
+            } catch (ShellError e) {
+                if (!(e is ShellError.EMPTY_STRING)) {
+                    warning("Terminal launch_command: %s\n", e.message);
+                }
+            }
+            foreach (string arg in argv) {
+                print("***: '%s'\n", arg);
+            }
+            
+            launch_idle_id = GLib.Idle.add(() => {
+                    try {
+                        term.spawn_sync(Vte.PtyFlags.DEFAULT,
+                                        dir,
+                                        argv,
+                                        Application.environment,
                                         GLib.SpawnFlags.SEARCH_PATH,
                                         null, /* child setup */
                                         out child_pid,

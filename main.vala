@@ -67,20 +67,24 @@ public class Application : Object {
 	private static string? work_directory = null;
     /* command_e (-e) is used for running commands independently (not inside a shell) */
     [CCode (array_length = false, array_null_terminated = true)]
-	private static string[]? commands = null;
+	public static string? command = null;
+    public static string[]? environment = null;
     private static bool version = false;
     private static string title = null;
     public Widgets.QuakeWindow quake_window;
     public Widgets.Window window;
     public WorkspaceManager workspace_manager;
+    public static bool debug = false;
 	
 	private const GLib.OptionEntry[] options = {
 		{ "version", 0, 0, OptionArg.NONE, ref version, "Print version info and exit", null },
 		{ "work-directory", 'w', 0, OptionArg.FILENAME, ref work_directory, "Set shell working directory", "DIRECTORY" },
 		{ "quake-mode", 0, 0, OptionArg.NONE, ref quake_mode, "Quake mode", null },
-        { "execute", 'e', 0, OptionArg.STRING_ARRAY, ref commands, "Run a program in terminal", "" },
-		{ "execute", 'x', 0, OptionArg.STRING_ARRAY, ref commands, "Same as -e", "" },
+        { "execute", 'e', 0, OptionArg.STRING, ref command, "Run a program in terminal", null },
+		{ "execute", 'x', 0, OptionArg.STRING, ref command, "Same as -e", null },
 		{ "execute", 'T', 0, OptionArg.STRING_ARRAY, ref title, "Title, just for compliation", "" },
+		{ "debug", 'd', 0, OptionArg.NONE, ref debug, "Enable various debugging checks", null },
+        { "env", 0, 0, OptionArg.STRING_ARRAY, ref environment, "Add environment variable to the child\'s environment", "VAR=VALUE" },
         
 		// list terminator
 		{ null }
@@ -90,33 +94,6 @@ public class Application : Object {
         Intl.setlocale(LocaleCategory.MESSAGES, "");
         Intl.bind_textdomain_codeset(GETTEXT_PACKAGE, "utf-8");
         Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
-        
-        // NOTE: Parse option '-e' or '-x' by myself.
-        // OptionContext's function always lost argument after option '-e' or '-x'.
-        string[] argv;
-        string command = "";
-
-        foreach (string a in args[1:args.length]) {
-            command = command + " " + a;
-        }
-
-        try {
-            Shell.parse_argv(command, out argv);
-        } catch (ShellError e) {
-            if (!(e is ShellError.EMPTY_STRING)) {
-                warning("Main main: %s\n", e.message);
-            }
-        }
-        bool start_parse_command = false;
-        string user_command = "";
-        foreach (string arg in argv) {
-            if (arg == "-e" || arg == "-x") {
-                start_parse_command = true;
-            } else if (start_parse_command) {
-                user_command = user_command + " " + arg;
-            }
-        }
-        user_command = user_command.strip();
         
         try {
 			var opt_context = new OptionContext();
@@ -128,19 +105,14 @@ public class Application : Object {
 			stdout.printf ("Run '%s --help' to see a full list of available command line options.\n", args[0]);
 		}
         
-        // Use 'user_command' instead OptionContext's 'commands'.
-        try {
-            Shell.parse_argv(user_command, out commands);
-        } catch (ShellError e) {
-            if (!(e is ShellError.EMPTY_STRING)) {
-                warning("Main main: %s\n", e.message);
-            }
-        }
-        
         if (version) {
 			stdout.printf("Deepin Terminal 2.0\n");
         } else {
             Gtk.init(ref args);
+            
+            if (debug) {
+                Gdk.Window.set_debug_updates(debug);
+            }
             
             if (quake_mode) {
                 QuakeTerminalApp app = new QuakeTerminalApp();
@@ -178,7 +150,7 @@ public class Application : Object {
             Utils.load_css_theme(Utils.get_root_path("style.css"));
             
             Tabbar tabbar = new Tabbar();
-            workspace_manager = new WorkspaceManager(tabbar, commands, work_directory); 
+            workspace_manager = new WorkspaceManager(tabbar, work_directory); 
             
             if (quake_mode) {
                 quake_window = new Widgets.QuakeWindow();

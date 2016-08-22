@@ -32,7 +32,7 @@ namespace Widgets {
         public Workspace focus_workspace;
         public int workspace_index;
         
-        public WorkspaceManager(Tabbar t, string[]? commands, string? work_directory) {
+        public WorkspaceManager(Tabbar t, string? work_directory) {
             Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
             
             tabbar = t;
@@ -40,7 +40,7 @@ namespace Widgets {
             workspace_index = 0;
             workspace_map = new HashMap<int, Workspace>();
             
-            new_workspace(commands, work_directory);
+            new_workspace(work_directory);
         }
         
         public void pack_workspace(Workspace workspace) {
@@ -50,17 +50,17 @@ namespace Widgets {
 		
 		public void new_workspace_with_current_directory(bool remote_serve_action=false) {
 			Term focus_term = focus_workspace.get_focus_term(this);
-			new_workspace(null, focus_term.current_dir, remote_serve_action);
+			new_workspace(focus_term.current_dir, remote_serve_action);
 		}
         
-        public void new_workspace(string[]? commands, string? work_directory, bool remote_serve_action=false) {
+        public void new_workspace(string? work_directory, bool remote_serve_action=false) {
             if (tabbar.allowed_add_tab || remote_serve_action) {
                 Utils.remove_all_children(this);
             
                 workspace_index++;
                 
                 tabbar.add_tab("", workspace_index);
-                Widgets.Workspace workspace = new Widgets.Workspace(workspace_index, commands, work_directory, this);
+                Widgets.Workspace workspace = new Widgets.Workspace(workspace_index, work_directory, this);
                 workspace_map.set(workspace_index, workspace);
                 workspace.change_dir.connect((workspace, index, dir) => {
                         tabbar.rename_tab(index, dir);
