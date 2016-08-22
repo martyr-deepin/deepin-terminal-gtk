@@ -1,6 +1,4 @@
 #!/bin/sh
-PREFIX=/usr/local
-
 mkdir -p ${DESTDIR}${PREFIX}/bin
 mkdir -p ${DESTDIR}${PREFIX}/share/applications
 mkdir -p ${DESTDIR}${PREFIX}/share/deepin-terminal

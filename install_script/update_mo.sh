@@ -1,6 +1,4 @@
 #!/bin/sh
-PREFIX=/usr/local
-
 for lang in po/*
 do
     mkdir -p ${DESTDIR}${PREFIX}/share/locale/$(basename ${lang})/LC_MESSAGES/

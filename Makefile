@@ -1,4 +1,3 @@
-PREFIX=/usr/local
 all: main
 main: ./lib/animation.vala \
       ./lib/config.vala \
