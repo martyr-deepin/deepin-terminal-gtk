@@ -52,6 +52,8 @@ namespace Widgets {
         public delegate void UpdatePageAfterEdit();
 		
 		public RemotePanel(Workspace space, WorkspaceManager manager) {
+            Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
+            
             workspace = space;
 			workspace_manager = manager;
             
@@ -451,7 +453,9 @@ namespace Widgets {
                         ArrayList<string> match_list = new ArrayList<string>();
                         match_list.add(option);
                         foreach (string key in config_file.get_keys(option)) {
-                            match_list.add(config_file.get_value(option, key));
+                            if (key == "Name" || key == "GroupName" || key == "Command" || key == "Path") {
+                                match_list.add(config_file.get_value(option, key));
+                            }
                         }
                         foreach (string match_text in match_list) {
                             if (match_text.contains(search_text)) {
@@ -481,7 +485,7 @@ namespace Widgets {
                 top_box.pack_start(back_button, false, false, 0);
                 
                 var search_label = new Gtk.Label(null);
-                search_label.set_text("search: %s".printf(search_text));
+                search_label.set_text("%s: %s".printf(_("Search"), search_text));
                 search_label.get_style_context().add_class("remote_search_label");
                 top_box.pack_start(search_label, true, true, 0);
                 
