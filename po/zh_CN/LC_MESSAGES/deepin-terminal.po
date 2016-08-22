@@ -19,12 +19,12 @@ msgstr ""
 
 #: ../widget/about_widget.vala:48
 msgid ""
-"    Deepin terminal is a terminal emulator has advanced features such as "
+"Deepin terminal is a terminal emulator has advanced features such as "
 "workspace, multiple windows, remote management, quake window etc.\n"
 "\n"
-"    Deepin terminal, allowing you to focus more on the command line in the "
+"Deepin terminal, allowing you to focus more on the command line in the "
 "world.\n"
-msgstr "    深度终端是一款集工作区、多窗口、远程管理、雷神模式等功能的高级的终端模拟器。\n\n    深度终端， 让你更专注于命令行世界。\n"
+msgstr "深度终端是一款集工作区、多窗口、远程管理、雷神模式等功能的高级的终端模拟器。\n\n深度终端， 让你更专注于命令行世界。\n"
 
 #: ../widget/preference_slidebar.vala:87 ../widget/preference.vala:366
 #: ../widget/appbar.vala:100

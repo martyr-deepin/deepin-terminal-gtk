@@ -45,7 +45,7 @@ namespace Widgets {
         public AboutWidget() {
             Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
             
-            about_text = _("    Deepin terminal is a terminal emulator has advanced features such as workspace, multiple windows, remote management, quake window etc.\n\n    Deepin terminal, allowing you to focus more on the command line in the world.\n");
+            about_text = _("Deepin terminal is a terminal emulator has advanced features such as workspace, multiple windows, remote management, quake window etc.\n\nDeepin terminal, allowing you to focus more on the command line in the world.\n");
             
             icon_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("icon.png"));
             logo_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("logo.png"));
@@ -115,7 +115,7 @@ namespace Widgets {
             
             // Draw about.
             cr.set_source_rgba(0.1, 0.1, 0.1, 1);
-            Draw.draw_text(cr, about_text, about_x, about_y, rect.width - about_x * 2, about_height, about_height, Pango.Alignment.LEFT, "top", rect.width - about_x * 2);
+            Draw.draw_text(cr, about_text, about_x, about_y, rect.width - about_x * 2, about_height, about_height, Pango.Alignment.CENTER, "top", rect.width - about_x * 2);
             
             Utils.propagate_draw(this, cr);
             
