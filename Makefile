@@ -103,10 +103,10 @@ main: ./lib/animation.vala \
     main.vala
 
 install:
-	./install_script/update_mo.sh
 	./install_script/copy_resource.sh
 	./install_script/copy_icons.sh
 	./install_script/copy_bin.sh
+	./install_script/update_mo.sh
 
 clean:
 	rm -f main
