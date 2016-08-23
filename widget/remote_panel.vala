@@ -234,6 +234,19 @@ namespace Widgets {
                 ssh_script_content = ssh_script_content.replace("<<SERVER>>", server_info.split("@")[1]);
                 ssh_script_content = ssh_script_content.replace("<<PASSWORD>>", password);
                 ssh_script_content = ssh_script_content.replace("<<PORT>>", config_file.get_value(server_info, "Port"));
+                
+                var path = config_file.get_string(server_info, "Path");
+                var command = config_file.get_string(server_info, "Command");
+                
+                string remote_command = "";
+                if (path.strip() != "") {
+                    remote_command += "cd %s && ".printf(path);
+                }
+                if (command.strip() != "") {
+                    remote_command += "%s && ".printf(command);
+                }
+                
+                ssh_script_content = ssh_script_content.replace("<<REMOTE_COMMAND>>", remote_command);
                                        
                 // Create temporary expect script file, and the file will
                 // be delete by itself.
@@ -242,6 +255,8 @@ namespace Widgets {
                 OutputStream ostream = iostream.output_stream;
                 DataOutputStream dos = new DataOutputStream(ostream);
                 dos.put_string(ssh_script_content);
+                
+                print("%s\n", ssh_script_content);
                                        
                 workspace.hide_remote_panel();
                 focus_widget.grab_focus();
@@ -280,27 +295,8 @@ namespace Widgets {
 							} 
 						
 							if (term != null) {
-								string command = "expect -f " + tmpfile.get_path() + "\n";
-								term.term.feed_child(command, command.length);
-								
-                                var path = config_file.get_string(server_info, "Path");
-                                if (path.strip() != "") {
-                                    string user_path_command = "cd %s\n".printf(config_file.get_string(server_info, "Path"));
-                                    term.term.feed_child(user_path_command, user_path_command.length);
-                                }
-								
-								GLib.Timeout.add(10, () => {
-										try {
-											string user_command = "%s\n".printf(config_file.get_string(server_info, "Command"));
-                                            if (user_command.strip() != "") {
-                                                term.term.feed_child(user_command, user_command.length);
-                                            }
-										} catch (GLib.KeyFileError e) {
-											error("%s", e.message);
-										}
-										
-										return false;
-									});
+								string login_command = "expect -f " + tmpfile.get_path() + "\n";
+								term.term.feed_child(login_command, login_command.length);
 							}
 						} catch (Error e) {
 							error ("%s", e.message);

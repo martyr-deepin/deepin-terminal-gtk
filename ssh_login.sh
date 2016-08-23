@@ -36,16 +36,17 @@ set password {<<PASSWORD>>}
 set port {<<PORT>>}
 set ssh_cmd {zssh -o ServerAliveInterval=60}
 set ssh_opt {$user@$server -p $port}
+set remote_command {<<REMOTE_COMMAND>>}
 
 # Spawn and expect
-eval spawn $ssh_cmd $ssh_opt
+eval spawn $ssh_cmd $ssh_opt -t $remote_command bash -l
 if {[string length $password]} {
     expect {
         timeout {send_user "ssh connection time out, please operate manually\n"}
         -nocase "(yes/no)\\?" {send "yes\r"; exp_continue}
         -nocase -re "password:|enter passphrase for key" {
             send "$password\r"
-        }
+		}
     }
 }
 
