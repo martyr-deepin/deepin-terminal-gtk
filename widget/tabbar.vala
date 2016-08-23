@@ -69,6 +69,7 @@ namespace Widgets {
         public int font_size = 11;
         public int height = Constant.TITLEBAR_HEIGHT;
         public int tab_index = 0;
+        public int min_tab_width = 70;
         
 		public signal void draw_active_tab_underline(int x, int width);
 		public signal void press_tab(int tab_index, int tab_id);
@@ -420,6 +421,7 @@ namespace Widgets {
                 print("Tabbar draw: %s\n", e.message);
             }
             
+            int tab_min_width = 100000;
             foreach (int tab_id in tab_list) {
                 var layout = create_pango_layout(tab_name_map.get(tab_id));
                 layout.set_font_description(font_description);
@@ -507,12 +509,14 @@ namespace Widgets {
                 
                 draw_x += tab_width;
                 
+                tab_min_width = int.min(tab_min_width, tab_width);
+                
                 counter++;
             }
             
             // Don't allowed add tab when scale too small.
-            print("**********: %f\n", draw_scale);
-            allowed_add_tab = draw_scale > 0.45;
+            print("****: %i\n", tab_min_width);
+            allowed_add_tab = tab_min_width > min_tab_width;
             
             if (hover_x > draw_x + add_button_padding_x && hover_x < draw_x + add_button_padding_x + add_button_width) {
                 if (is_button_press) {
