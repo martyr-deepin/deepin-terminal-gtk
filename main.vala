@@ -91,7 +91,7 @@ public class Application : Object {
 	};
 
     public static void main(string[] args) {
-        Intl.setlocale(LocaleCategory.MESSAGES, "");
+        Intl.setlocale();
         Intl.bind_textdomain_codeset(GETTEXT_PACKAGE, "utf-8");
         Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
         
