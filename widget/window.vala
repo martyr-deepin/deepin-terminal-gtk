@@ -34,8 +34,6 @@ namespace Widgets {
         public Gtk.Box fullscreen_box;
         public Gtk.Box spacing_box;
         public bool draw_tabbar_line = true;
-        public int window_cache_height = 0;
-        public int window_cache_width = 0;
         public int window_frame_margin_bottom = 60;
         public int window_frame_margin_end = 50;
         public int window_frame_margin_start = 50;
@@ -134,17 +132,6 @@ namespace Widgets {
             configure_event.connect((w) => {
                     int width, height;
                     get_size(out width, out height);
-                    
-                    if (!window_is_max() && !window_is_fullscreen() && !window_is_tiled()) {
-                        if (window_cache_width != width || window_cache_height != height) {
-                            config.config_file.set_integer("advanced", "window_width", width - window_frame_margin_start - window_frame_margin_end);
-                            config.config_file.set_integer("advanced", "window_height", height - window_frame_margin_top - window_frame_margin_bottom);
-                            config.save();
-                            
-                            window_cache_width = width;
-                            window_cache_height = height;
-                        }
-                    }
                     
                     Cairo.RectangleInt rect;
                     get_window().get_frame_extents(out rect);
@@ -585,6 +572,17 @@ namespace Widgets {
 			
             add_widget(overlay);
             show_all();
+        }
+        
+        public override void window_save_before_quit() {
+            int width, height;
+            get_size(out width, out height);
+                    
+            if (!window_is_max() && !window_is_fullscreen() && !window_is_tiled()) {
+                config.config_file.set_integer("advanced", "window_width", width);
+                config.config_file.set_integer("advanced", "window_height", height);
+                config.save();
+            }
         }
         
         public Gdk.CursorType? get_cursor_type(double x, double y) {
