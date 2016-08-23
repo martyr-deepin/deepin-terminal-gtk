@@ -76,6 +76,8 @@ public class Application : Object {
     public WorkspaceManager workspace_manager;
     public static bool debug = false;
 	
+    private bool inited = false;
+
 	private const GLib.OptionEntry[] options = {
 		{ "version", 0, 0, OptionArg.NONE, ref version, "Print version info and exit", null },
 		{ "work-directory", 'w', 0, OptionArg.FILENAME, ref work_directory, "Set shell working directory", "DIRECTORY" },
@@ -137,6 +139,9 @@ public class Application : Object {
     }
     
     public void run(bool has_start) {
+        if (inited) return;
+        inited = true;
+
         if (has_start && quake_mode) {
             try {
                 QuakeDaemon daemon = Bus.get_proxy_sync(BusType.SESSION, "com.deepin.quake_terminal", "/com/deepin/quake_terminal");
