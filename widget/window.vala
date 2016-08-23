@@ -34,6 +34,8 @@ namespace Widgets {
         public Gtk.Box fullscreen_box;
         public Gtk.Box spacing_box;
         public bool draw_tabbar_line = true;
+        public int window_cache_height = 0;
+        public int window_cache_width = 0;
         public int window_frame_margin_bottom = 60;
         public int window_frame_margin_end = 50;
         public int window_frame_margin_start = 50;
@@ -134,9 +136,14 @@ namespace Widgets {
                     get_size(out width, out height);
                     
                     if (!window_is_max() && !window_is_fullscreen() && !window_is_tiled()) {
-                        config.config_file.set_integer("advanced", "window_width", width);
-                        config.config_file.set_integer("advanced", "window_height", height);
-                        config.save();
+                        if (window_cache_width != width || window_cache_height != height) {
+                            config.config_file.set_integer("advanced", "window_width", width);
+                            config.config_file.set_integer("advanced", "window_height", height);
+                            config.save();
+                            
+                            window_cache_width = width;
+                            window_cache_height = height;
+                        }
                     }
                     
                     Cairo.RectangleInt rect;
