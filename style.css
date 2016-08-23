@@ -263,6 +263,10 @@
     
 }
 
+.preference_comboboxtext button.combo:focus {
+    box-shadow: 0 1px rgba(0,0,0,0.04),inset 0  1px  #2ca7f8,inset 0 -1px  #2ca7f8,inset 1px 0 #2ca7f8,inset -1px 0 #2ca7f8;
+}
+
 .preference_comboboxtext button.combo:hover {
     padding-top: 0px;
     padding-bottom: 0px;
