@@ -194,6 +194,25 @@ namespace Widgets {
         
         public void show_menu(int x, int y) {
             bool in_quake_window = this.get_toplevel().get_type().is_a(typeof(Widgets.QuakeWindow));
+            
+            bool in_remote_server = false; 
+            int foreground_pid;
+            var has_foreground_process = try_get_foreground_pid(out foreground_pid);
+            if (has_foreground_process) {
+                string[] spawn_args = {"cat", "/proc/%i/comm".printf(foreground_pid)};
+                try {
+                    string? foreground_pid_command;
+                    Process.spawn_sync(null, spawn_args, null, SpawnFlags.SEARCH_PATH, null, out foreground_pid_command);
+                    foreground_pid_command = foreground_pid_command.strip();
+                    if (foreground_pid_command != null) {
+                        if (foreground_pid_command == "expect" || foreground_pid_command == "ssh" || foreground_pid_command == "zssh") {
+                            in_remote_server = true;
+                        }
+                    }
+                } catch (SpawnError e) {
+                    print("Got error when spawn_sync: %s\n", e.message);
+                }
+            }
                             
             var menu_content = new List<Menu.MenuItem>();
             print("%s\n", uri_at_right_press.to_string());
@@ -227,9 +246,11 @@ namespace Widgets {
                             
             menu_content.append(new Menu.MenuItem("search", _("Search")));
             menu_content.append(new Menu.MenuItem("remote_manage", _("Remote management")));
-            menu_content.append(new Menu.MenuItem("", ""));
-            menu_content.append(new Menu.MenuItem("upload_file", _("Upload file")));
-            menu_content.append(new Menu.MenuItem("download_file", _("Download file")));
+            if (in_remote_server) {
+                menu_content.append(new Menu.MenuItem("", ""));
+                menu_content.append(new Menu.MenuItem("upload_file", _("Upload file")));
+                menu_content.append(new Menu.MenuItem("download_file", _("Download file")));
+            }
                             
             if (!in_quake_window) {
                 menu_content.append(new Menu.MenuItem("", ""));
