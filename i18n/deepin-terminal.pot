@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-23 12:28+0800\n"
+"POT-Creation-Date: 2016-08-23 14:24+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,12 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../widget/preference_slidebar.vala:99 ../widget/preference.vala:373
 #: ../widget/appbar.vala:100
 msgid "About"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:313
+#: ../widget/remote_server_dialog.vala:310
 msgid "Add"
 msgstr ""
 
@@ -34,17 +33,17 @@ msgstr ""
 msgid "Address"
 msgstr ""
 
-#: ../widget/preference_slidebar.vala:76 ../widget/preference_slidebar.vala:83
+#: ../widget/preference_slidebar.vala:75 ../widget/preference_slidebar.vala:82
 #: ../widget/preference.vala:309 ../widget/preference.vala:319
 #: ../widget/config_window.vala:239
 msgid "Advanced"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:298
+#: ../widget/remote_server_dialog.vala:295
 msgid "Advanced options"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:408
+#: ../widget/remote_server_dialog.vala:369
 msgid "Are you sure delete"
 msgstr ""
 
@@ -52,16 +51,16 @@ msgstr ""
 msgid "Are you sure to exit?"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:282
+#: ../widget/remote_server_dialog.vala:279
 msgid "Backspace key"
 msgstr ""
 
-#: ../widget/preference_slidebar.vala:57 ../widget/preference.vala:227
+#: ../widget/preference_slidebar.vala:56 ../widget/preference.vala:227
 msgid "Basic"
 msgstr ""
 
-#: ../widget/workspace_manager.vala:92 ../widget/remote_server_dialog.vala:308
-#: ../widget/remote_server_dialog.vala:408 ../widget/confirm_dialog.vala:122
+#: ../widget/workspace_manager.vala:92 ../widget/remote_server_dialog.vala:305
+#: ../widget/remote_server_dialog.vala:369 ../widget/confirm_dialog.vala:122
 #: ../widget/terminal.vala:312 ../widget/terminal.vala:340
 msgid "Cancel"
 msgstr ""
@@ -84,7 +83,7 @@ msgstr ""
 msgid "Close workspace"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:256
+#: ../widget/remote_server_dialog.vala:253
 msgid "Command"
 msgstr ""
 
@@ -97,7 +96,7 @@ msgstr ""
 msgid "Copy link"
 msgstr ""
 
-#: ../widget/preference_slidebar.vala:86 ../widget/preference.vala:322
+#: ../widget/preference_slidebar.vala:85 ../widget/preference.vala:322
 msgid "Cursor"
 msgstr ""
 
@@ -125,16 +124,16 @@ msgstr ""
 msgid "Default size"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:408
+#: ../widget/remote_server_dialog.vala:369
 msgid "Delete"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:295
+#: ../widget/remote_server_dialog.vala:292
 msgid "Delete key"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:406
-#: ../widget/remote_server_dialog.vala:408
+#: ../widget/remote_server_dialog.vala:367
+#: ../widget/remote_server_dialog.vala:369
 msgid "Delete server"
 msgstr ""
 
@@ -150,7 +149,7 @@ msgstr ""
 msgid "Edit server"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:269
+#: ../widget/remote_server_dialog.vala:266
 msgid "Encoding"
 msgstr ""
 
@@ -171,7 +170,7 @@ msgstr ""
 msgid "Fullscreen"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:238
+#: ../widget/remote_server_dialog.vala:235
 msgid "Group"
 msgstr ""
 
@@ -217,13 +216,13 @@ msgstr ""
 msgid "Opacity"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:236
-#: ../widget/remote_server_dialog.vala:246
-#: ../widget/remote_server_dialog.vala:255
+#: ../widget/remote_server_dialog.vala:233
+#: ../widget/remote_server_dialog.vala:243
+#: ../widget/remote_server_dialog.vala:252
 msgid "Optional"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:223
+#: ../widget/remote_server_dialog.vala:220
 msgid "Password"
 msgstr ""
 
@@ -232,15 +231,15 @@ msgstr ""
 msgid "Paste"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:247
+#: ../widget/remote_server_dialog.vala:244
 msgid "Path"
 msgstr ""
 
-#: ../widget/preference.vala:585
+#: ../widget/preference.vala:575
 msgid "Please enter a new shortcut"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:182
+#: ../widget/remote_server_dialog.vala:181
 msgid "Port"
 msgstr ""
 
@@ -263,20 +262,20 @@ msgstr ""
 
 #: ../widget/remote_server_dialog.vala:162
 #: ../widget/remote_server_dialog.vala:176
-#: ../widget/remote_server_dialog.vala:211
-#: ../widget/remote_server_dialog.vala:222
+#: ../widget/remote_server_dialog.vala:209
+#: ../widget/remote_server_dialog.vala:219
 msgid "Required"
 msgstr ""
 
-#: ../widget/preference.vala:379
+#: ../widget/preference.vala:373
 msgid "Restore default settings"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:311
+#: ../widget/remote_server_dialog.vala:308
 msgid "Save"
 msgstr ""
 
-#: ../widget/preference_slidebar.vala:89 ../widget/preference.vala:346
+#: ../widget/preference_slidebar.vala:88 ../widget/preference.vala:346
 msgid "Scroll"
 msgstr ""
 
@@ -338,7 +337,7 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: ../widget/preference_slidebar.vala:67 ../widget/preference.vala:273
+#: ../widget/preference_slidebar.vala:66 ../widget/preference.vala:273
 msgid "Shortcuts"
 msgstr ""
 
@@ -346,12 +345,12 @@ msgstr ""
 msgid "Switch fullscreen"
 msgstr ""
 
-#: ../widget/preference_slidebar.vala:70 ../widget/preference.vala:276
+#: ../widget/preference_slidebar.vala:69 ../widget/preference.vala:276
 #: ../widget/config_window.vala:196
 msgid "Terminal"
 msgstr ""
 
-#: ../widget/preference_slidebar.vala:60 ../widget/preference.vala:230
+#: ../widget/preference_slidebar.vala:59 ../widget/preference.vala:230
 #: ../widget/preference.vala:236
 msgid "Theme"
 msgstr ""
@@ -372,7 +371,7 @@ msgstr ""
 msgid "Use on starting"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:213
+#: ../widget/remote_server_dialog.vala:210
 msgid "Username"
 msgstr ""
 
@@ -385,11 +384,11 @@ msgstr ""
 msgid "Vertical split"
 msgstr ""
 
-#: ../widget/preference_slidebar.vala:92 ../widget/preference.vala:357
+#: ../widget/preference_slidebar.vala:91 ../widget/preference.vala:357
 msgid "Window"
 msgstr ""
 
-#: ../widget/preference_slidebar.vala:73 ../widget/preference.vala:290
+#: ../widget/preference_slidebar.vala:72 ../widget/preference.vala:290
 #: ../widget/config_window.vala:223
 msgid "Workspace"
 msgstr ""
