@@ -606,15 +606,21 @@ namespace Widgets {
                     return Gdk.CursorType.TOP_LEFT_CORNER;
                 } else if (y > bottom_side_start && y < bottom_side_end) {
                     return Gdk.CursorType.BOTTOM_LEFT_CORNER;
-                } else {
-                    return Gdk.CursorType.LEFT_SIDE;
                 }
             } else if (x > right_side_start && x < right_side_end) {
                 if (y > top_side_start && y < top_side_end) {
                     return Gdk.CursorType.TOP_RIGHT_CORNER;
                 } else if (y > bottom_side_start && y < bottom_side_end) {
                     return Gdk.CursorType.BOTTOM_RIGHT_CORNER;
-                } else {
+                }
+            }
+
+            if (x > left_side_start && x < left_side_end) {
+                if (y > top_side_end && y < bottom_side_start) {
+                    return Gdk.CursorType.LEFT_SIDE;
+                }
+            } else if (x > right_side_start && x < right_side_end) {
+                if (y > top_side_end && y < bottom_side_start) {
                     return Gdk.CursorType.RIGHT_SIDE;
                 }
             } else {
@@ -622,10 +628,10 @@ namespace Widgets {
                     return Gdk.CursorType.TOP_SIDE;
                 } else if (y > bottom_side_start && y < bottom_side_end) {
                     return Gdk.CursorType.BOTTOM_SIDE;
-                } else {
-                    return null;
                 }
             }
+            
+            return null;
         }
     }
 }
