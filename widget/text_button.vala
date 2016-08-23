@@ -55,6 +55,7 @@ namespace Widgets {
                 });
             button_release_event.connect((w, e) => {
                     if (is_press) {
+                        get_window().set_cursor(null);
                         click();
                     }
                     
