@@ -176,7 +176,6 @@ namespace Widgets {
                 address_entry.set_placeholder_text(_("Required"));
                 address_entry.margin_start = label_margin_left;
                 address_entry.get_style_context().add_class("preference_entry");
-                address_entry.insert_text.connect(on_address_entry_insert);
                 Label port_label = new Gtk.Label(null);
                 port_label.margin_start = port_label_margin_left;
                 port_label.set_text("%s:".printf(_("Port")));
@@ -190,7 +189,6 @@ namespace Widgets {
                 port_entry.set_width_chars(4);
                 port_entry.margin_start = label_margin_left;
                 port_entry.get_style_context().add_class("preference_entry");
-                port_entry.insert_text.connect(on_port_entry_insert);
             
                 var address_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
                 address_box.pack_start(address_entry, true, true, 0);
@@ -209,7 +207,6 @@ namespace Widgets {
                     user_entry.set_text(server_info.split("@")[0]);
                 }
                 user_entry.set_placeholder_text(_("Required"));
-                user_entry.insert_text.connect(on_user_entry_insert);
                 create_follow_key_row(user_label, user_entry, "%s:".printf(_("Username")), address_label, grid);
             
                 // Password.
@@ -359,42 +356,6 @@ namespace Widgets {
                 add_widget(box);
             } catch (Error e) {
                 error ("%s", e.message);
-            }
-        }
-        
-        private void on_port_entry_insert(Gtk.Editable editable, string new_text, int new_text_length, ref int position) {
-            try {
-                Regex r = new Regex("^[0-9]+$");
-                MatchInfo info;
-                if (!r.match(new_text, 0, out info)) {
-                    Signal.stop_emission_by_name(editable, "insert-text");
-                }
-            } catch (GLib.RegexError e) {
-                print("RemoteServerDialog on_port_entry_insert: %s\n", e.message);
-            }
-        }
-        
-        private void on_address_entry_insert(Gtk.Editable editable, string new_text, int new_text_length, ref int position) {
-            try {
-                Regex r = new Regex("""^(?:(?:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){7})|(?:(?!(?:.*[a-f0-9](?::|$)){7,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?)))|(?:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){5}:)|(?:(?!(?:.*[a-f0-9]:){5,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3}:)?))?(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))(?:\.(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))){3}))$""");
-                MatchInfo info;
-                if (!r.match(new_text, 0, out info)) {
-                    Signal.stop_emission_by_name(editable, "insert-text");
-                }
-            } catch (GLib.RegexError e) {
-                print("RemoteServerDialog on_address_entry_insert: %s\n", e.message);
-            }
-        }
-
-        private void on_user_entry_insert(Gtk.Editable editable, string new_text, int new_text_length, ref int position) {
-            try {
-                Regex r = new Regex("""^[\d\w_.-]{2,6}$""");
-                MatchInfo info;
-                if (!r.match(new_text, 0, out info)) {
-                    Signal.stop_emission_by_name(editable, "insert-text");
-                }
-            } catch (GLib.RegexError e) {
-                print("RemoteServerDialog on_user_entry_insert: %s\n", e.message);
             }
         }
         
