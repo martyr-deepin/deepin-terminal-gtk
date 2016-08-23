@@ -1,6 +1,4 @@
 #!/bin/sh
-PREFIX=/usr/
-
 mkdir -p ${DESTDIR}${PREFIX}/share/icons/hicolor/32x32/apps
 cp hicolor/32x32/deepin-terminal.png ${DESTDIR}${PREFIX}/share/icons/hicolor/32x32/apps
 mkdir -p ${DESTDIR}${PREFIX}/share/icons/hicolor/48x48/apps
