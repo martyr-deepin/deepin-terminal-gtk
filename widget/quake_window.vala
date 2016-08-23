@@ -31,6 +31,7 @@ namespace Widgets {
         public double window_max_height_scale = 0.7;
         public int press_x;
         public int press_y;
+        public int window_cache_height = 0;
         public int window_frame_margin_bottom = 60;
         
         public QuakeWindow() {
@@ -109,8 +110,12 @@ namespace Widgets {
                     int width, height;
                     get_size(out width, out height);
 
-                    config.config_file.set_double("advanced", "quake_window_height", height * 1.0 / rect.height);
-                    config.save();
+                    if (window_cache_height != height) {
+                        config.config_file.set_double("advanced", "quake_window_height", height * 1.0 / rect.height);
+                        config.save();
+                        
+                        window_cache_height = height;
+                    }
                     
                     Cairo.RectangleInt input_shape_rect;
                     get_window().get_frame_extents(out input_shape_rect);
