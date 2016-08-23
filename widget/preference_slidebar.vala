@@ -41,7 +41,6 @@ namespace Widgets {
         public PreferenceSlideItem cursor_segement;
         public PreferenceSlideItem scroll_segement;
         public PreferenceSlideItem window_segement;
-        public PreferenceSlideItem about_segement;
         
 		public signal void click_item(string name);
 		
@@ -96,9 +95,6 @@ namespace Widgets {
             window_spacing_box.set_size_request(-1, segement_spacing);
             this.attach_next_to(window_spacing_box, window_segement, Gtk.PositionType.BOTTOM, width, height);
             
-            about_segement = new PreferenceSlideItem(this, _("About"), "about", true);
-			this.attach_next_to(about_segement, window_spacing_box, Gtk.PositionType.BOTTOM, width, height);
-            
             add_focus_handler(basic_segement);
             add_focus_handler(theme_segement);
             add_focus_handler(hotkey_segement);
@@ -109,7 +105,6 @@ namespace Widgets {
             add_focus_handler(cursor_segement);
             add_focus_handler(scroll_segement);
             add_focus_handler(window_segement);
-            add_focus_handler(about_segement);
             focus_item(basic_segement);
             
             draw.connect(on_draw);

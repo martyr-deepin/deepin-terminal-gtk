@@ -370,12 +370,6 @@ namespace Widgets {
             window_state_name_list.add(_("Fullscreen"));
             create_combox_row_with_name(window_label, window_combox, _("Use on starting"), window_grid, window_state_list, window_state_name_list, "advanced", "window_state");
             
-            var about_segement = get_first_segement(_("About"));
-            content_box.pack_start(about_segement, false, false, 0);
-            
-            var about_widget = new AboutWidget();
-            content_box.pack_start(about_widget, false, false, 0);
-            
             var reset_button = new Widgets.ImageButton("reset_button", false, _("Restore default settings"));
             reset_button.set_halign(Gtk.Align.CENTER);
             reset_button.margin_top = reset_button_margin;
@@ -413,8 +407,6 @@ namespace Widgets {
 						scroll_to_widget(scrolledwindow, box, scroll_segement);
 					} else if (item == "window") {
 						scroll_to_widget(scrolledwindow, box, window_segement);
-					} else if (item == "about") {
-						scroll_to_widget(scrolledwindow, box, about_segement);
 					}
 				});
             
@@ -440,8 +432,6 @@ namespace Widgets {
                             slidebar.focus_item(slidebar.scroll_segement);
                         } else if (item_in_visible_area(window_segement)) {
                             slidebar.focus_item(slidebar.window_segement);
-                        } else if (item_in_visible_area(about_segement)) {
-                            slidebar.focus_item(slidebar.about_segement);
                         }
                     }
                 });
