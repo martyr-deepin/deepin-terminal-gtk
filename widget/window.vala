@@ -80,8 +80,8 @@ namespace Widgets {
                 var height = config.config_file.get_integer("advanced", "window_height");
                 if (width == 0 || height == 0) {
                     set_default_size(
-                        rect.width * 2 / 3 + window_frame_margin_start + window_frame_margin_end,
-                        rect.height * 2 / 3 + window_frame_margin_top + window_frame_margin_bottom);
+                        rect.width / 2 + window_frame_margin_start + window_frame_margin_end,
+                        rect.height / 2 + window_frame_margin_top + window_frame_margin_bottom);
                 } else {
                     set_default_size(width, height);
                 }
