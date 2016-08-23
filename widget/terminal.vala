@@ -219,7 +219,7 @@ namespace Widgets {
             if (!in_quake_window) {
                 var window = ((Widgets.Window) get_toplevel());
                 if (window.window_is_fullscreen()) {
-                    menu_content.append(new Menu.MenuItem("quit_fullscreen", _("Quit fullscreen")));
+                    menu_content.append(new Menu.MenuItem("quit_fullscreen", _("Exit fullscreen")));
                 } else {
                     menu_content.append(new Menu.MenuItem("fullscreen", _("Fullscreen")));
                 }

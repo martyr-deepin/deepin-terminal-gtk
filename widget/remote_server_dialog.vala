@@ -123,9 +123,9 @@ namespace Widgets {
                 top_box.pack_start(title_label, true, true, 0);
                                   
                 if (server_info != null) {
-                    title_label.set_text(_("Edit server"));
+                    title_label.set_text(_("Edit Server"));
                 } else {
-                    title_label.set_text(_("Add server"));
+                    title_label.set_text(_("Add Server"));
                 }
                 
                 var close_button = Widgets.create_close_button();
@@ -366,7 +366,7 @@ namespace Widgets {
             if (server_info != null) {
                 delete_server_button = Widgets.create_delete_button(_("Delete server"));
                 delete_server_button.click.connect((w) => {
-                        var confirm_dialog = new Widgets.ConfirmDialog(_("Delete server"), "%s %s?".printf(_("Are you sure delete"), name_entry.get_text()), _("Cancel"), _("Delete"));
+                        var confirm_dialog = new Widgets.ConfirmDialog(_("Delete server"), "%s %s?".printf(_("Are you sure to delete"), name_entry.get_text()), _("Cancel"), _("Delete"));
                         confirm_dialog.transient_for_window(parent_window);
                         confirm_dialog.cancel.connect((w) => {
                                 this.destroy();

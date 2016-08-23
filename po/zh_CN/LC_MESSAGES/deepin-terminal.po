@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-23 14:24+0800\n"
+"POT-Creation-Date: 2016-08-23 16:01+0800\n"
 "PO-Revision-Date: 2016-08-22 00:55+0800\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -25,7 +25,11 @@ msgstr "关于"
 msgid "Add"
 msgstr "添加"
 
-#: ../widget/add_server_button.vala:53 ../widget/remote_server_dialog.vala:128
+#: ../widget/remote_server_dialog.vala:128
+msgid "Add Server"
+msgstr "添加服务器"
+
+#: ../widget/add_server_button.vala:53
 msgid "Add server"
 msgstr "添加服务器"
 
@@ -44,12 +48,12 @@ msgid "Advanced options"
 msgstr "高级选项"
 
 #: ../widget/remote_server_dialog.vala:369
-msgid "Are you sure delete"
+msgid "Are you sure to delete"
 msgstr "你确定要删除"
 
 #: ../widget/confirm_dialog.vala:122
 msgid "Are you sure to exit?"
-msgstr "你确定要退出?"
+msgstr "你确定要退出吗?"
 
 #: ../widget/remote_server_dialog.vala:279
 msgid "Backspace key"
@@ -149,7 +153,7 @@ msgid "Download file"
 msgstr "下载文件"
 
 #: ../widget/remote_server_dialog.vala:126
-msgid "Edit server"
+msgid "Edit Server"
 msgstr "编辑服务器"
 
 #: ../widget/remote_server_dialog.vala:266
@@ -159,6 +163,10 @@ msgstr "编码"
 #: ../widget/confirm_dialog.vala:122 ../widget/appbar.vala:101
 msgid "Exit"
 msgstr "退出"
+
+#: ../widget/terminal.vala:222
+msgid "Exit fullscreen"
+msgstr "退出全屏"
 
 #: ../widget/preference.vala:269
 msgid "Font"
@@ -253,10 +261,6 @@ msgstr "上一个工作区"
 #: ../widget/confirm_dialog.vala:122
 msgid "Programs are still running in terminal"
 msgstr "终端仍然有程序在运行"
-
-#: ../widget/terminal.vala:222
-msgid "Quit fullscreen"
-msgstr "退出全屏"
 
 #: ../widget/preference.vala:317 ../widget/terminal.vala:229
 #: ../widget/config_window.vala:234 ../widget/appbar.vala:94

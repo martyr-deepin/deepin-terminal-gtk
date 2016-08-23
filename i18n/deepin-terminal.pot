@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-23 14:24+0800\n"
+"POT-Creation-Date: 2016-08-23 16:01+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,11 @@ msgstr ""
 msgid "Add"
 msgstr ""
 
-#: ../widget/add_server_button.vala:53 ../widget/remote_server_dialog.vala:128
+#: ../widget/remote_server_dialog.vala:128
+msgid "Add Server"
+msgstr ""
+
+#: ../widget/add_server_button.vala:53
 msgid "Add server"
 msgstr ""
 
@@ -44,7 +48,7 @@ msgid "Advanced options"
 msgstr ""
 
 #: ../widget/remote_server_dialog.vala:369
-msgid "Are you sure delete"
+msgid "Are you sure to delete"
 msgstr ""
 
 #: ../widget/confirm_dialog.vala:122
@@ -146,7 +150,7 @@ msgid "Download file"
 msgstr ""
 
 #: ../widget/remote_server_dialog.vala:126
-msgid "Edit server"
+msgid "Edit Server"
 msgstr ""
 
 #: ../widget/remote_server_dialog.vala:266
@@ -155,6 +159,10 @@ msgstr ""
 
 #: ../widget/confirm_dialog.vala:122 ../widget/appbar.vala:101
 msgid "Exit"
+msgstr ""
+
+#: ../widget/terminal.vala:222
+msgid "Exit fullscreen"
 msgstr ""
 
 #: ../widget/preference.vala:269
@@ -249,10 +257,6 @@ msgstr ""
 
 #: ../widget/confirm_dialog.vala:122
 msgid "Programs are still running in terminal"
-msgstr ""
-
-#: ../widget/terminal.vala:222
-msgid "Quit fullscreen"
 msgstr ""
 
 #: ../widget/preference.vala:317 ../widget/terminal.vala:229
