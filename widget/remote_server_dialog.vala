@@ -266,7 +266,7 @@ namespace Widgets {
                 } else {
                     encode_box.set_active(parent_window.config.encoding_names.index_of("UTF-8"));
                 }
-                create_follow_key_row(encode_label, encode_box, "%s:".printf(_("Encode")), command_label, advanced_grid, "preference_comboboxtext");
+                create_follow_key_row(encode_label, encode_box, "%s:".printf(_("Encoding")), command_label, advanced_grid, "preference_comboboxtext");
             
                 // Backspace sequence.
                 Label backspace_key_label = new Gtk.Label(null);

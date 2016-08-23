@@ -210,10 +210,10 @@ namespace Widgets {
                 insert_shortcut_key(builder, _("Select workspace"), "Ctrl + 1 ~ Ctrl + 9");;
                 insert_shortcut_key(builder, _("Vertical split"), config.config_file.get_string("keybind", "split_vertically"));;
                 insert_shortcut_key(builder, _("Horizontal split"), config.config_file.get_string("keybind", "split_horizontally"));;
-                insert_shortcut_key(builder, _("Select the upper window"), config.config_file.get_string("keybind", "select_up_window"));;
-                insert_shortcut_key(builder, _("Select the following window"), config.config_file.get_string("keybind", "select_down_window"));;
-                insert_shortcut_key(builder, _("Select the left window"), config.config_file.get_string("keybind", "select_left_window"));;
-                insert_shortcut_key(builder, _("Select the right window"), config.config_file.get_string("keybind", "select_right_window"));;
+                insert_shortcut_key(builder, _("Select upper window"), config.config_file.get_string("keybind", "select_up_window"));;
+                insert_shortcut_key(builder, _("Select lower window"), config.config_file.get_string("keybind", "select_down_window"));;
+                insert_shortcut_key(builder, _("Select left window"), config.config_file.get_string("keybind", "select_left_window"));;
+                insert_shortcut_key(builder, _("Select right window"), config.config_file.get_string("keybind", "select_right_window"));;
                 insert_shortcut_key(builder, _("Close window"), config.config_file.get_string("keybind", "close_window"));;
                 insert_shortcut_key(builder, _("Close other windows"), config.config_file.get_string("keybind", "close_other_windows"));;
                     
@@ -229,8 +229,8 @@ namespace Widgets {
             
                 builder.begin_array();
     
-                insert_shortcut_key(builder, _("Toggle fullscreen"), config.config_file.get_string("keybind", "toggle_fullscreen"));;
-                insert_shortcut_key(builder, _("Display shortcut"), config.config_file.get_string("keybind", "show_helper_window"));;
+                insert_shortcut_key(builder, _("Switch fullscreen"), config.config_file.get_string("keybind", "toggle_fullscreen"));;
+                insert_shortcut_key(builder, _("Display shortcuts"), config.config_file.get_string("keybind", "show_helper_window"));;
                 insert_shortcut_key(builder, _("Remote management"), config.config_file.get_string("keybind", "show_remote_panel"));;
             
                 builder.end_array();

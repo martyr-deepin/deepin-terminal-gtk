@@ -93,7 +93,7 @@ namespace Widgets {
                     menu_content.append(new Menu.MenuItem("new_window", _("New window")));
                     menu_content.append(new Menu.MenuItem("remote_manage", _("Remote management")));
                     menu_content.append(new Menu.MenuItem("", ""));
-                    menu_content.append(new Menu.MenuItem("preference", _("Preference")));
+                    menu_content.append(new Menu.MenuItem("preference", _("Settings")));
                     if (Utils.is_command_exist("dman")) {
                         menu_content.append(new Menu.MenuItem("help", _("Help")));
                     }

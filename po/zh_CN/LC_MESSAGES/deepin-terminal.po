@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-23 10:15+0800\n"
+"POT-Creation-Date: 2016-08-23 11:54+0800\n"
 "PO-Revision-Date: 2016-08-22 00:55+0800\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -49,8 +49,8 @@ msgid "Are you sure delete"
 msgstr "你确定要删除"
 
 #: ../widget/confirm_dialog.vala:122
-msgid "Are you sure you want to quit?"
-msgstr "你确定要退出吗？"
+msgid "Are you sure to exit?"
+msgstr "你确定要退出?"
 
 #: ../widget/remote_server_dialog.vala:282
 msgid "Backspace key"
@@ -70,6 +70,10 @@ msgstr "取消"
 #: ../widget/config_window.vala:218
 msgid "Close other windows"
 msgstr "关闭其他窗口"
+
+#: ../widget/workspace_manager.vala:92
+msgid "Close unused workspaces"
+msgstr "关闭一些不用的工作区"
 
 #: ../widget/preference.vala:306 ../widget/terminal.vala:211
 #: ../widget/config_window.vala:217
@@ -111,16 +115,13 @@ msgstr "深度终端"
 
 #: ../widget/about_widget.vala:48
 msgid ""
-"Deepin terminal is a terminal emulator has advanced features such as "
-"workspace, multiple windows, remote management, quake window etc.\n"
-"\n"
-"Deepin terminal, allowing you to focus more on the command line in the "
-"world.\n"
+"Deepin Terminal is an advanced terminal emulator with workspace, multiple "
+"windows, remote management, quake mode and other features. It helps you put "
+"more focus on the command-line world."
 msgstr ""
-"深度终端是一款集工作区、多窗口、远程管理、雷神模式等功能的高级的终端模拟"
-"器。\n"
+"深度终端是一款集工作区、多窗口、远程管理、雷神模式等功能的高级的终端模拟器\n"
 "\n"
-"深度终端， 让你更专注于命令行世界。\n"
+"深度终端， 让你更专注于命令行世界\n"
 
 #: ../widget/preference.vala:287 ../widget/config_window.vala:190
 msgid "Default size"
@@ -140,7 +141,7 @@ msgid "Delete server"
 msgstr "删除服务器"
 
 #: ../widget/preference.vala:316 ../widget/config_window.vala:233
-msgid "Display shortcut"
+msgid "Display shortcuts"
 msgstr "显示快捷键"
 
 #: ../widget/terminal.vala:232
@@ -152,10 +153,10 @@ msgid "Edit server"
 msgstr "编辑服务器"
 
 #: ../widget/remote_server_dialog.vala:269
-msgid "Encode"
+msgid "Encoding"
 msgstr "编码"
 
-#: ../widget/appbar.vala:101
+#: ../widget/confirm_dialog.vala:122 ../widget/appbar.vala:101
 msgid "Exit"
 msgstr "退出"
 
@@ -207,6 +208,10 @@ msgid "Normal window"
 msgstr "正常窗口"
 
 #: ../widget/workspace_manager.vala:92
+msgid "Not enough space to create a workspace"
+msgstr "没有足够的空间新建工作区"
+
+#: ../widget/workspace_manager.vala:92
 msgid "OK"
 msgstr "确认"
 
@@ -241,17 +246,13 @@ msgstr "请输入新的快捷键"
 msgid "Port"
 msgstr "端口"
 
-#: ../widget/terminal.vala:236 ../widget/appbar.vala:96
-msgid "Preference"
-msgstr "设置"
-
 #: ../widget/preference.vala:298 ../widget/config_window.vala:209
 msgid "Previous workspace"
-msgstr "前一个工作区"
+msgstr "上一个工作区"
 
 #: ../widget/confirm_dialog.vala:122
-msgid "Quit"
-msgstr "退出"
+msgid "Programs are still running in terminal"
+msgstr "终端仍然有程序在运行"
 
 #: ../widget/terminal.vala:222
 msgid "Quit fullscreen"
@@ -270,7 +271,7 @@ msgid "Required"
 msgstr "必填"
 
 #: ../widget/preference.vala:379
-msgid "Restore Default Settings"
+msgid "Restore default settings"
 msgstr "恢复默认设置"
 
 #: ../widget/remote_server_dialog.vala:311
@@ -282,7 +283,7 @@ msgid "Scroll"
 msgstr "滚动"
 
 #: ../widget/preference.vala:352
-msgid "Scroll on key"
+msgid "Scroll on keystroke"
 msgstr "按键时滚动"
 
 #: ../widget/preference.vala:353
@@ -311,20 +312,20 @@ msgstr "选择下载文件的保存目录"
 msgid "Select file to upload"
 msgstr "选择要上传的文件"
 
-#: ../widget/preference.vala:303 ../widget/config_window.vala:214
-msgid "Select the following window"
-msgstr "选择下面窗口"
-
 #: ../widget/preference.vala:304 ../widget/config_window.vala:215
-msgid "Select the left window"
+msgid "Select left window"
 msgstr "选择左边的窗口"
 
+#: ../widget/preference.vala:303 ../widget/config_window.vala:214
+msgid "Select lower window"
+msgstr "选择下面的窗口"
+
 #: ../widget/preference.vala:305 ../widget/config_window.vala:216
-msgid "Select the right window"
+msgid "Select right window"
 msgstr "选择右边的窗口"
 
 #: ../widget/preference.vala:302 ../widget/config_window.vala:213
-msgid "Select the upper window"
+msgid "Select upper window"
 msgstr "选择上面的窗口"
 
 #: ../widget/config_window.vala:210
@@ -335,39 +336,31 @@ msgstr "选择工作区"
 msgid "Server name"
 msgstr "服务器名"
 
+#: ../widget/terminal.vala:236 ../widget/appbar.vala:96
+msgid "Settings"
+msgstr "设置"
+
 #: ../widget/preference_slidebar.vala:67 ../widget/preference.vala:273
-msgid "Shortcut"
+msgid "Shortcuts"
 msgstr "快捷键"
+
+#: ../widget/config_window.vala:232
+msgid "Switch fullscreen"
+msgstr "切换全屏"
 
 #: ../widget/preference_slidebar.vala:70 ../widget/preference.vala:276
 #: ../widget/config_window.vala:196
 msgid "Terminal"
 msgstr "终端"
 
-#: ../widget/confirm_dialog.vala:122
-msgid "Terminal still has running programs"
-msgstr "终端仍然有程序在运行"
-
 #: ../widget/preference_slidebar.vala:60 ../widget/preference.vala:230
 #: ../widget/preference.vala:236
 msgid "Theme"
 msgstr "主题"
 
-#: ../widget/workspace_manager.vala:92
-msgid "There is not enough space to create a new workspace"
-msgstr "没有足够的空间新建工作区"
-
-#: ../widget/config_window.vala:232
-msgid "Toggle fullscreen"
-msgstr "切换全屏"
-
-#: ../widget/workspace_manager.vala:92
-msgid "Turn off some of the work area is not used"
-msgstr "关闭一些不用的工作区"
-
 #: ../widget/terminal.vala:352
-msgid "Type the file you want to download"
-msgstr "键入你要下载的文件"
+msgid "Type path for download file"
+msgstr "请输入下载文件的路径"
 
 #: ../widget/terminal.vala:314
 msgid "Upload"
@@ -376,6 +369,10 @@ msgstr "上传"
 #: ../widget/terminal.vala:231
 msgid "Upload file"
 msgstr "上传文件"
+
+#: ../widget/preference.vala:371
+msgid "Use on starting"
+msgstr "启动时使用"
 
 #: ../widget/remote_server_dialog.vala:213
 msgid "Username"
@@ -389,10 +386,6 @@ msgstr "版本"
 #: ../widget/config_window.vala:211
 msgid "Vertical split"
 msgstr "纵向分屏"
-
-#: ../widget/preference.vala:371
-msgid "When start using"
-msgstr "启动时使用"
 
 #: ../widget/preference_slidebar.vala:92 ../widget/preference.vala:357
 msgid "Window"

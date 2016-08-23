@@ -89,7 +89,7 @@ namespace Widgets {
             
                 show_all();
             } else {
-                ConfirmDialog dialog = new ConfirmDialog(_("There is not enough space to create a new workspace"), _("Turn off some of the work area is not used"), _("Cancel"), _("OK"));
+                ConfirmDialog dialog = new ConfirmDialog(_("Not enough space to create a workspace"), _("Close unused workspaces"), _("Cancel"), _("OK"));
                 dialog.transient_for_window((Widgets.ConfigWindow) (this.get_toplevel()));
             }
         }

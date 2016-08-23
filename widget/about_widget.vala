@@ -45,7 +45,7 @@ namespace Widgets {
         public AboutWidget() {
             Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
             
-            about_text = _("Deepin terminal is a terminal emulator has advanced features such as workspace, multiple windows, remote management, quake window etc.\n\nDeepin terminal, allowing you to focus more on the command line in the world.\n");
+            about_text = _("Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features. It helps you put more focus on the command-line world.");
             
             icon_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("icon.png"));
             logo_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("logo.png"));

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-23 10:15+0800\n"
+"POT-Creation-Date: 2016-08-23 11:54+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,7 +49,7 @@ msgid "Are you sure delete"
 msgstr ""
 
 #: ../widget/confirm_dialog.vala:122
-msgid "Are you sure you want to quit?"
+msgid "Are you sure to exit?"
 msgstr ""
 
 #: ../widget/remote_server_dialog.vala:282
@@ -69,6 +69,10 @@ msgstr ""
 #: ../widget/preference.vala:307 ../widget/terminal.vala:212
 #: ../widget/config_window.vala:218
 msgid "Close other windows"
+msgstr ""
+
+#: ../widget/workspace_manager.vala:92
+msgid "Close unused workspaces"
 msgstr ""
 
 #: ../widget/preference.vala:306 ../widget/terminal.vala:211
@@ -111,11 +115,9 @@ msgstr ""
 
 #: ../widget/about_widget.vala:48
 msgid ""
-"Deepin terminal is a terminal emulator has advanced features such as "
-"workspace, multiple windows, remote management, quake window etc.\n"
-"\n"
-"Deepin terminal, allowing you to focus more on the command line in the "
-"world.\n"
+"Deepin Terminal is an advanced terminal emulator with workspace, multiple "
+"windows, remote management, quake mode and other features. It helps you put "
+"more focus on the command-line world."
 msgstr ""
 
 #: ../widget/preference.vala:287 ../widget/config_window.vala:190
@@ -136,7 +138,7 @@ msgid "Delete server"
 msgstr ""
 
 #: ../widget/preference.vala:316 ../widget/config_window.vala:233
-msgid "Display shortcut"
+msgid "Display shortcuts"
 msgstr ""
 
 #: ../widget/terminal.vala:232
@@ -148,10 +150,10 @@ msgid "Edit server"
 msgstr ""
 
 #: ../widget/remote_server_dialog.vala:269
-msgid "Encode"
+msgid "Encoding"
 msgstr ""
 
-#: ../widget/appbar.vala:101
+#: ../widget/confirm_dialog.vala:122 ../widget/appbar.vala:101
 msgid "Exit"
 msgstr ""
 
@@ -203,6 +205,10 @@ msgid "Normal window"
 msgstr ""
 
 #: ../widget/workspace_manager.vala:92
+msgid "Not enough space to create a workspace"
+msgstr ""
+
+#: ../widget/workspace_manager.vala:92
 msgid "OK"
 msgstr ""
 
@@ -237,16 +243,12 @@ msgstr ""
 msgid "Port"
 msgstr ""
 
-#: ../widget/terminal.vala:236 ../widget/appbar.vala:96
-msgid "Preference"
-msgstr ""
-
 #: ../widget/preference.vala:298 ../widget/config_window.vala:209
 msgid "Previous workspace"
 msgstr ""
 
 #: ../widget/confirm_dialog.vala:122
-msgid "Quit"
+msgid "Programs are still running in terminal"
 msgstr ""
 
 #: ../widget/terminal.vala:222
@@ -266,7 +268,7 @@ msgid "Required"
 msgstr ""
 
 #: ../widget/preference.vala:379
-msgid "Restore Default Settings"
+msgid "Restore default settings"
 msgstr ""
 
 #: ../widget/remote_server_dialog.vala:311
@@ -278,7 +280,7 @@ msgid "Scroll"
 msgstr ""
 
 #: ../widget/preference.vala:352
-msgid "Scroll on key"
+msgid "Scroll on keystroke"
 msgstr ""
 
 #: ../widget/preference.vala:353
@@ -307,20 +309,20 @@ msgstr ""
 msgid "Select file to upload"
 msgstr ""
 
-#: ../widget/preference.vala:303 ../widget/config_window.vala:214
-msgid "Select the following window"
+#: ../widget/preference.vala:304 ../widget/config_window.vala:215
+msgid "Select left window"
 msgstr ""
 
-#: ../widget/preference.vala:304 ../widget/config_window.vala:215
-msgid "Select the left window"
+#: ../widget/preference.vala:303 ../widget/config_window.vala:214
+msgid "Select lower window"
 msgstr ""
 
 #: ../widget/preference.vala:305 ../widget/config_window.vala:216
-msgid "Select the right window"
+msgid "Select right window"
 msgstr ""
 
 #: ../widget/preference.vala:302 ../widget/config_window.vala:213
-msgid "Select the upper window"
+msgid "Select upper window"
 msgstr ""
 
 #: ../widget/config_window.vala:210
@@ -331,8 +333,16 @@ msgstr ""
 msgid "Server name"
 msgstr ""
 
+#: ../widget/terminal.vala:236 ../widget/appbar.vala:96
+msgid "Settings"
+msgstr ""
+
 #: ../widget/preference_slidebar.vala:67 ../widget/preference.vala:273
-msgid "Shortcut"
+msgid "Shortcuts"
+msgstr ""
+
+#: ../widget/config_window.vala:232
+msgid "Switch fullscreen"
 msgstr ""
 
 #: ../widget/preference_slidebar.vala:70 ../widget/preference.vala:276
@@ -340,29 +350,13 @@ msgstr ""
 msgid "Terminal"
 msgstr ""
 
-#: ../widget/confirm_dialog.vala:122
-msgid "Terminal still has running programs"
-msgstr ""
-
 #: ../widget/preference_slidebar.vala:60 ../widget/preference.vala:230
 #: ../widget/preference.vala:236
 msgid "Theme"
 msgstr ""
 
-#: ../widget/workspace_manager.vala:92
-msgid "There is not enough space to create a new workspace"
-msgstr ""
-
-#: ../widget/config_window.vala:232
-msgid "Toggle fullscreen"
-msgstr ""
-
-#: ../widget/workspace_manager.vala:92
-msgid "Turn off some of the work area is not used"
-msgstr ""
-
 #: ../widget/terminal.vala:352
-msgid "Type the file you want to download"
+msgid "Type path for download file"
 msgstr ""
 
 #: ../widget/terminal.vala:314
@@ -371,6 +365,10 @@ msgstr ""
 
 #: ../widget/terminal.vala:231
 msgid "Upload file"
+msgstr ""
+
+#: ../widget/preference.vala:371
+msgid "Use on starting"
 msgstr ""
 
 #: ../widget/remote_server_dialog.vala:213
@@ -384,10 +382,6 @@ msgstr ""
 #: ../widget/preference.vala:300 ../widget/terminal.vala:210
 #: ../widget/config_window.vala:211
 msgid "Vertical split"
-msgstr ""
-
-#: ../widget/preference.vala:371
-msgid "When start using"
 msgstr ""
 
 #: ../widget/preference_slidebar.vala:92 ../widget/preference.vala:357

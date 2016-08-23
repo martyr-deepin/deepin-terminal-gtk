@@ -64,7 +64,7 @@ namespace Widgets {
             theme_spacing_box.set_size_request(-1, segement_spacing);
             this.attach_next_to(theme_spacing_box, theme_segement, Gtk.PositionType.BOTTOM, width, height);
             
-            hotkey_segement = new PreferenceSlideItem(this, _("Shortcut"), "hotkey", true);
+            hotkey_segement = new PreferenceSlideItem(this, _("Shortcuts"), "hotkey", true);
 			this.attach_next_to(hotkey_segement, theme_spacing_box, Gtk.PositionType.BOTTOM, width, height);
 
             terminal_key_segement = new PreferenceSlideItem(this, _("Terminal"), "temrinal_key", false);

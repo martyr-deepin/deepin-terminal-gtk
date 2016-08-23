@@ -270,7 +270,7 @@ namespace Widgets {
             
             create_follow_spinbutton_row(font_size_spinbutton, "%s:".printf(_("Font size")), font_label, font_grid, "general", "font_size");
             
-            var hotkey_segement = get_first_segement(_("Shortcut"));
+            var hotkey_segement = get_first_segement(_("Shortcuts"));
             content_box.pack_start(hotkey_segement, false, false, 0);
             
             var terminal_key_segement = get_second_segement(_("Terminal"));
@@ -299,10 +299,10 @@ namespace Widgets {
             create_follow_key_row(next_workspace_key_label, next_workspace_key_entry, "%s:".printf(_("Next workspace")), previous_workspace_key_label, workspace_key_grid, "keybind", "next_workspace");
             create_follow_key_row(split_vertically_key_label, split_vertically_key_entry, "%s:".printf(_("Vertical split")), next_workspace_key_label, workspace_key_grid, "keybind", "split_vertically");
             create_follow_key_row(split_horizontally_key_label, split_horizontally_key_entry, "%s:".printf(_("Horizontal split")), split_vertically_key_label, workspace_key_grid, "keybind", "split_horizontally");
-            create_follow_key_row(select_up_window_key_label, select_up_window_key_entry, "%s:".printf(_("Select the upper window")), split_horizontally_key_label, workspace_key_grid, "keybind", "select_up_window");
-            create_follow_key_row(select_down_window_key_label, select_down_window_key_entry, "%s:".printf(_("Select the following window")), select_up_window_key_label, workspace_key_grid, "keybind", "select_down_window");
-            create_follow_key_row(select_left_window_key_label, select_left_window_key_entry, "%s:".printf(_("Select the left window")), select_down_window_key_label, workspace_key_grid, "keybind", "select_left_window");
-            create_follow_key_row(select_right_window_key_label, select_right_window_key_entry, "%s:".printf(_("Select the right window")), select_left_window_key_label, workspace_key_grid, "keybind", "select_right_window");
+            create_follow_key_row(select_up_window_key_label, select_up_window_key_entry, "%s:".printf(_("Select upper window")), split_horizontally_key_label, workspace_key_grid, "keybind", "select_up_window");
+            create_follow_key_row(select_down_window_key_label, select_down_window_key_entry, "%s:".printf(_("Select lower window")), select_up_window_key_label, workspace_key_grid, "keybind", "select_down_window");
+            create_follow_key_row(select_left_window_key_label, select_left_window_key_entry, "%s:".printf(_("Select left window")), select_down_window_key_label, workspace_key_grid, "keybind", "select_left_window");
+            create_follow_key_row(select_right_window_key_label, select_right_window_key_entry, "%s:".printf(_("Select right window")), select_left_window_key_label, workspace_key_grid, "keybind", "select_right_window");
             create_follow_key_row(close_window_key_label, close_window_key_entry, "%s:".printf(_("Close window")), select_right_window_key_label, workspace_key_grid, "keybind", "close_window");
             create_follow_key_row(close_other_windows_key_label, close_other_windows_key_entry, "%s:".printf(_("Close other windows")), close_window_key_label, workspace_key_grid, "keybind", "close_other_windows");
             
@@ -313,7 +313,7 @@ namespace Widgets {
             content_box.pack_start(advanced_key_grid, false, false, 0);
             
             create_key_row(fullscreen_key_label, fullscreen_key_entry, "%s:".printf(_("Fullscreen")), advanced_key_grid, "keybind", "toggle_fullscreen");
-            create_follow_key_row(display_hotkey_terminal_key_label, display_hotkey_terminal_key_entry, "%s:".printf(_("Display shortcut")), fullscreen_key_label, advanced_key_grid, "keybind", "show_helper_window");
+            create_follow_key_row(display_hotkey_terminal_key_label, display_hotkey_terminal_key_entry, "%s:".printf(_("Display shortcuts")), fullscreen_key_label, advanced_key_grid, "keybind", "show_helper_window");
             create_follow_key_row(show_remote_manage_key_label, show_remote_manage_key_entry, "%s:".printf(_("Remote management")), display_hotkey_terminal_key_label, advanced_key_grid, "keybind", "show_remote_panel");
             
             var advanced_segement = get_first_segement(_("Advanced"));
@@ -349,7 +349,7 @@ namespace Widgets {
             var scroll_grid = new Gtk.Grid();
             content_box.pack_start(scroll_grid, false, false, 0);
             
-            var scroll_on_key_box = create_check_row(scroll_on_key_checkbutton, _("Scroll on key"), scroll_grid, "advanced", "scroll_on_key");
+            var scroll_on_key_box = create_check_row(scroll_on_key_checkbutton, _("Scroll on keystroke"), scroll_grid, "advanced", "scroll_on_key");
             create_follow_check_row(scroll_on_out_checkbutton, _("Scroll on output"), scroll_on_key_box, scroll_grid, "advanced", "scroll_on_output");
             
             // create_follow_spinbutton_row(scroll_line_spinbutton, "%s:".printf(_("Scroll lines")), scroll_on_output_box, scroll_grid, "advanced", "scroll_line");
@@ -368,7 +368,7 @@ namespace Widgets {
             window_state_name_list.add(_("Normal window"));
             window_state_name_list.add(_("Maximize"));
             window_state_name_list.add(_("Fullscreen"));
-            create_combox_row_with_name(window_label, window_combox, _("When start using"), window_grid, window_state_list, window_state_name_list, "advanced", "window_state");
+            create_combox_row_with_name(window_label, window_combox, _("Use on starting"), window_grid, window_state_list, window_state_name_list, "advanced", "window_state");
             
             var about_segement = get_first_segement(_("About"));
             content_box.pack_start(about_segement, false, false, 0);
@@ -376,7 +376,7 @@ namespace Widgets {
             var about_widget = new AboutWidget();
             content_box.pack_start(about_widget, false, false, 0);
             
-            var reset_button = new Widgets.ImageButton("reset_button", false, _("Restore Default Settings"));
+            var reset_button = new Widgets.ImageButton("reset_button", false, _("Restore default settings"));
             reset_button.set_halign(Gtk.Align.CENTER);
             reset_button.margin_top = reset_button_margin;
             reset_button.margin_bottom = reset_button_margin;

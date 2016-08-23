@@ -233,7 +233,7 @@ namespace Widgets {
                             
             if (!in_quake_window) {
                 menu_content.append(new Menu.MenuItem("", ""));
-                menu_content.append(new Menu.MenuItem("preference", _("Preference")));
+                menu_content.append(new Menu.MenuItem("preference", _("Settings")));
             }
 							
             menu = new Menu.Menu(x, y, menu_content);
@@ -349,7 +349,7 @@ namespace Widgets {
                         press_ctrl_k();
                         
                         GLib.Timeout.add(100, () => {
-                                string command = "read -e -p \"%s: \" file; sz $file\n".printf(_("Type the file you want to download"));
+                                string command = "read -e -p \"%s: \" file; sz $file\n".printf(_("Type path for download file"));
                                 this.term.feed_child(command, command.length);
                                 
                                 enter_sz_command = true;
