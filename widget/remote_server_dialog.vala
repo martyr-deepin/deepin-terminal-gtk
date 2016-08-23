@@ -47,15 +47,17 @@ namespace Widgets {
         public Widgets.TextButton delete_server_button;
         public Widgets.TextButton show_advanced_button;
         public int action_button_margin_top = 20;
+        public int font_size = 11;
         public int grid_height = 24;
         public int label_margin_left = 14;
         public int option_widget_margin_end = 5;
         public int option_widget_margin_top = 5;
         public int port_label_margin_left = 21;
-        public int preference_margin_top = 10;
-        public int preference_margin_start = 20;
         public int preference_margin_end = 20;
-        public int preference_name_width = 120;
+        public int preference_margin_start = 20;
+        public int preference_margin_top = 10;
+        public int preference_name_width = 0;
+        public int preference_name_margin_left = 10;
         public int preference_widget_width = 100;
         public int window_expand_height = 530;
         public string? server_info;
@@ -92,6 +94,20 @@ namespace Widgets {
             
             window_init_width = 480;
             window_init_height = 360;
+            
+            var font_description = new Pango.FontDescription();
+            font_description.set_size((int)(font_size * Pango.SCALE));
+            int max_width = 0;
+            string[] label_names = {_("Server name"), _("Address"), _("Username"), _("Password"), _("Path"), _("Command"), _("Group"), _("Encoding"), _("Backspace key"), _("Delete key")};
+            foreach (string label_name in label_names) {
+                var layout = create_pango_layout(label_name);
+                layout.set_font_description(font_description);
+                int name_width, name_height;
+                layout.get_pixel_size(out name_width, out name_height);
+
+                max_width = int.max(max_width, name_width);
+            }
+            preference_name_width = max_width + preference_name_margin_left;
             
             try {
                 parent_window = window;
