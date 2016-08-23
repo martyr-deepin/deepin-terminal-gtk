@@ -511,6 +511,7 @@ namespace Widgets {
             }
             
             // Don't allowed add tab when scale too small.
+            print("**********: %f\n", draw_scale);
             allowed_add_tab = draw_scale > 0.45;
             
             if (hover_x > draw_x + add_button_padding_x && hover_x < draw_x + add_button_padding_x + add_button_width) {

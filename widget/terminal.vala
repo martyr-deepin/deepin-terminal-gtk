@@ -669,9 +669,6 @@ namespace Widgets {
                     warning("Terminal launch_command: %s\n", e.message);
                 }
             }
-            foreach (string arg in argv) {
-                print("***: '%s'\n", arg);
-            }
             
             launch_idle_id = GLib.Idle.add(() => {
                     try {
