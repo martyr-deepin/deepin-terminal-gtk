@@ -803,8 +803,6 @@ namespace Widgets {
 				var config_size = parent_window.config.config_file.get_integer("general", "font_size");
 				font_size = config_size * Pango.SCALE;
 				update_font_info();
-				
-				queue_draw();
             } catch (GLib.KeyFileError e) {
                 stdout.printf(e.message);
             }
