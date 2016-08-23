@@ -216,6 +216,27 @@ namespace Utils {
     	}
     }
 
+    public string get_proc_file_content(string proc_file_path) {
+        try {
+            uint8[] data;
+            GLib.FileUtils.get_data(proc_file_path, out data);
+            if (data != null) {
+                for(var i=0; i<data.length-1; i++){
+                    if (data[i]==0) {
+                        data[i]=' ';
+                    }
+                }
+            
+                return (string) data;
+            } else {
+                return "";
+            }
+        } catch (Error e) {
+            print("get_proc_file_content: %s\n", e.message);
+            return "";
+        }
+    }
+
     public string get_image_path(string image_name) {
         return GLib.Path.build_path(Path.DIR_SEPARATOR_S, GLib.Path.get_dirname((string) project_path()), "image", image_name);
     }

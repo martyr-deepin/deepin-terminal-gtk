@@ -51,6 +51,7 @@ namespace Widgets {
         public signal void exit();
         public signal void highlight_tab();
         public string current_dir;
+        public string expect_file_path = "";
         public string? uri_at_right_press;
         public uint launch_idle_id;
 
@@ -192,27 +193,27 @@ namespace Widgets {
             add(term);
         }
         
-        public void show_menu(int x, int y) {
-            bool in_quake_window = this.get_toplevel().get_type().is_a(typeof(Widgets.QuakeWindow));
-            
+        public bool is_in_remote_server() {
             bool in_remote_server = false; 
             int foreground_pid;
             var has_foreground_process = try_get_foreground_pid(out foreground_pid);
             if (has_foreground_process) {
-                string[] spawn_args = {"cat", "/proc/%i/comm".printf(foreground_pid)};
-                try {
-                    string? foreground_pid_command;
-                    Process.spawn_sync(null, spawn_args, null, SpawnFlags.SEARCH_PATH, null, out foreground_pid_command);
-                    foreground_pid_command = foreground_pid_command.strip();
-                    if (foreground_pid_command != null) {
-                        if (foreground_pid_command == "expect" || foreground_pid_command == "ssh" || foreground_pid_command == "zssh") {
-                            in_remote_server = true;
-                        }
+                string command = get_proc_file_content("/proc/%i/comm".printf(foreground_pid)).strip();
+                if (command == "ssh" || command == "zssh") {
+                    in_remote_server = true;
+                } else if (command == "expect") {
+                    string[] cmdline = get_proc_file_content("/proc/%i/cmdline".printf(foreground_pid)).strip().split(" ");
+                    if (cmdline.length == 3 && cmdline[1] == "-f" && cmdline[2] == expect_file_path) {
+                        in_remote_server = true;
                     }
-                } catch (SpawnError e) {
-                    print("Got error when spawn_sync: %s\n", e.message);
                 }
             }
+            
+            return in_remote_server;
+        }
+        
+        public void show_menu(int x, int y) {
+            bool in_quake_window = this.get_toplevel().get_type().is_a(typeof(Widgets.QuakeWindow));
                             
             var menu_content = new List<Menu.MenuItem>();
             print("%s\n", uri_at_right_press.to_string());
@@ -246,7 +247,7 @@ namespace Widgets {
                             
             menu_content.append(new Menu.MenuItem("search", _("Search")));
             menu_content.append(new Menu.MenuItem("remote_manage", _("Remote management")));
-            if (in_remote_server) {
+            if (is_in_remote_server()) {
                 menu_content.append(new Menu.MenuItem("", ""));
                 menu_content.append(new Menu.MenuItem("upload_file", _("Upload file")));
                 menu_content.append(new Menu.MenuItem("download_file", _("Download file")));

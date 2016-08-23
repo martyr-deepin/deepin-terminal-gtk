@@ -256,8 +256,6 @@ namespace Widgets {
                 DataOutputStream dos = new DataOutputStream(ostream);
                 dos.put_string(ssh_script_content);
                 
-                print("%s\n", ssh_script_content);
-                                       
                 workspace.hide_remote_panel();
                 focus_widget.grab_focus();
 
@@ -296,6 +294,7 @@ namespace Widgets {
 						
 							if (term != null) {
 								string login_command = "expect -f " + tmpfile.get_path() + "\n";
+                                term.expect_file_path = tmpfile.get_path();
 								term.term.feed_child(login_command, login_command.length);
 							}
 						} catch (Error e) {
