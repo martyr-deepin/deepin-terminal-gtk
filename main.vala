@@ -139,7 +139,11 @@ public class Application : Object {
     }
     
     public void run(bool has_start) {
-        if (inited) return;
+        // Bus.own_name is callback, when application exit will execute `run` function.
+        // Use inited variable to avoid application run by Bus.own_name release.
+        if (inited) {
+            return;
+        }
         inited = true;
 
         if (has_start && quake_mode) {
