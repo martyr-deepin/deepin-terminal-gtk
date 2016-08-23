@@ -376,7 +376,7 @@ namespace Widgets {
             var about_widget = new AboutWidget();
             content_box.pack_start(about_widget, false, false, 0);
             
-            var reset_button = new Widgets.ImageButton("reset_button", false, _("Restore all"));
+            var reset_button = new Widgets.ImageButton("reset_button", false, _("Restore Default Settings"));
             reset_button.set_halign(Gtk.Align.CENTER);
             reset_button.margin_top = reset_button_margin;
             reset_button.margin_bottom = reset_button_margin;

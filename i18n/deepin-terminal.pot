@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-22 19:30+0800\n"
+"POT-Creation-Date: 2016-08-23 10:15+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,91 +17,91 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../widget/preference_slidebar.vala:87 ../widget/preference.vala:371
+#: ../widget/preference_slidebar.vala:99 ../widget/preference.vala:373
 #: ../widget/appbar.vala:100
 msgid "About"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:308
+#: ../widget/remote_server_dialog.vala:313
 msgid "Add"
 msgstr ""
 
-#: ../widget/add_server_button.vala:53 ../widget/remote_server_dialog.vala:126
+#: ../widget/add_server_button.vala:53 ../widget/remote_server_dialog.vala:128
 msgid "Add server"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:164
+#: ../widget/remote_server_dialog.vala:168
 msgid "Address"
 msgstr ""
 
-#: ../widget/preference_slidebar.vala:64 ../widget/preference_slidebar.vala:71
-#: ../widget/preference.vala:307 ../widget/preference.vala:317
+#: ../widget/preference_slidebar.vala:76 ../widget/preference_slidebar.vala:83
+#: ../widget/preference.vala:309 ../widget/preference.vala:319
 #: ../widget/config_window.vala:239
 msgid "Advanced"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:293
+#: ../widget/remote_server_dialog.vala:298
 msgid "Advanced options"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:376
+#: ../widget/remote_server_dialog.vala:408
 msgid "Are you sure delete"
 msgstr ""
 
-#: ../widget/confirm_dialog.vala:120
+#: ../widget/confirm_dialog.vala:122
 msgid "Are you sure you want to quit?"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:277
+#: ../widget/remote_server_dialog.vala:282
 msgid "Backspace key"
 msgstr ""
 
-#: ../widget/preference_slidebar.vala:45 ../widget/preference.vala:225
+#: ../widget/preference_slidebar.vala:57 ../widget/preference.vala:227
 msgid "Basic"
 msgstr ""
 
-#: ../widget/workspace_manager.vala:92 ../widget/remote_server_dialog.vala:303
-#: ../widget/remote_server_dialog.vala:376 ../widget/confirm_dialog.vala:120
-#: ../widget/terminal.vala:317 ../widget/terminal.vala:345
+#: ../widget/workspace_manager.vala:92 ../widget/remote_server_dialog.vala:308
+#: ../widget/remote_server_dialog.vala:408 ../widget/confirm_dialog.vala:122
+#: ../widget/terminal.vala:312 ../widget/terminal.vala:340
 msgid "Cancel"
 msgstr ""
 
-#: ../widget/preference.vala:305 ../widget/terminal.vala:217
+#: ../widget/preference.vala:307 ../widget/terminal.vala:212
 #: ../widget/config_window.vala:218
 msgid "Close other windows"
 msgstr ""
 
-#: ../widget/preference.vala:304 ../widget/terminal.vala:216
+#: ../widget/preference.vala:306 ../widget/terminal.vala:211
 #: ../widget/config_window.vala:217
 msgid "Close window"
 msgstr ""
 
-#: ../widget/preference.vala:295 ../widget/config_window.vala:207
+#: ../widget/preference.vala:297 ../widget/config_window.vala:207
 msgid "Close workspace"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:251
+#: ../widget/remote_server_dialog.vala:256
 msgid "Command"
 msgstr ""
 
-#: ../widget/preference.vala:280 ../widget/terminal.vala:206
+#: ../widget/preference.vala:282 ../widget/terminal.vala:201
 #: ../widget/config_window.vala:185
 msgid "Copy"
 msgstr ""
 
-#: ../widget/terminal.vala:208
+#: ../widget/terminal.vala:203
 msgid "Copy link"
 msgstr ""
 
-#: ../widget/preference_slidebar.vala:74 ../widget/preference.vala:320
+#: ../widget/preference_slidebar.vala:86 ../widget/preference.vala:322
 msgid "Cursor"
 msgstr ""
 
-#: ../widget/preference.vala:342
+#: ../widget/preference.vala:344
 msgid "Cursor blink"
 msgstr ""
 
-#: ../widget/preference.vala:178
+#: ../widget/preference.vala:180
 msgid "Cursor style"
 msgstr ""
 
@@ -118,36 +118,36 @@ msgid ""
 "world.\n"
 msgstr ""
 
-#: ../widget/preference.vala:285 ../widget/config_window.vala:190
+#: ../widget/preference.vala:287 ../widget/config_window.vala:190
 msgid "Default size"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:376
+#: ../widget/remote_server_dialog.vala:408
 msgid "Delete"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:290
+#: ../widget/remote_server_dialog.vala:295
 msgid "Delete key"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:374
-#: ../widget/remote_server_dialog.vala:376
+#: ../widget/remote_server_dialog.vala:406
+#: ../widget/remote_server_dialog.vala:408
 msgid "Delete server"
 msgstr ""
 
-#: ../widget/preference.vala:314 ../widget/config_window.vala:233
+#: ../widget/preference.vala:316 ../widget/config_window.vala:233
 msgid "Display shortcut"
 msgstr ""
 
-#: ../widget/terminal.vala:237
+#: ../widget/terminal.vala:232
 msgid "Download file"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:124
+#: ../widget/remote_server_dialog.vala:126
 msgid "Edit server"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:264
+#: ../widget/remote_server_dialog.vala:269
 msgid "Encode"
 msgstr ""
 
@@ -155,20 +155,20 @@ msgstr ""
 msgid "Exit"
 msgstr ""
 
-#: ../widget/preference.vala:267
+#: ../widget/preference.vala:269
 msgid "Font"
 msgstr ""
 
-#: ../widget/preference.vala:269
+#: ../widget/preference.vala:271
 msgid "Font size"
 msgstr ""
 
-#: ../widget/preference.vala:313 ../widget/preference.vala:368
-#: ../widget/terminal.vala:229
+#: ../widget/preference.vala:315 ../widget/preference.vala:370
+#: ../widget/terminal.vala:224
 msgid "Fullscreen"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:233
+#: ../widget/remote_server_dialog.vala:238
 msgid "Group"
 msgstr ""
 
@@ -176,12 +176,12 @@ msgstr ""
 msgid "Help"
 msgstr ""
 
-#: ../widget/preference.vala:299 ../widget/terminal.vala:214
+#: ../widget/preference.vala:301 ../widget/terminal.vala:209
 #: ../widget/config_window.vala:212
 msgid "Horizontal split"
 msgstr ""
 
-#: ../widget/preference.vala:367
+#: ../widget/preference.vala:369
 msgid "Maximize"
 msgstr ""
 
@@ -189,16 +189,16 @@ msgstr ""
 msgid "New window"
 msgstr ""
 
-#: ../widget/preference.vala:294 ../widget/terminal.vala:221
+#: ../widget/preference.vala:296 ../widget/terminal.vala:216
 #: ../widget/config_window.vala:206
 msgid "New workspace"
 msgstr ""
 
-#: ../widget/preference.vala:297 ../widget/config_window.vala:208
+#: ../widget/preference.vala:299 ../widget/config_window.vala:208
 msgid "Next workspace"
 msgstr ""
 
-#: ../widget/preference.vala:366
+#: ../widget/preference.vala:368
 msgid "Normal window"
 msgstr ""
 
@@ -206,120 +206,120 @@ msgstr ""
 msgid "OK"
 msgstr ""
 
-#: ../widget/preference.vala:126
+#: ../widget/preference.vala:128
 msgid "Opacity"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:231
-#: ../widget/remote_server_dialog.vala:241
-#: ../widget/remote_server_dialog.vala:250
+#: ../widget/remote_server_dialog.vala:236
+#: ../widget/remote_server_dialog.vala:246
+#: ../widget/remote_server_dialog.vala:255
 msgid "Optional"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:218
+#: ../widget/remote_server_dialog.vala:223
 msgid "Password"
 msgstr ""
 
-#: ../widget/preference.vala:281 ../widget/terminal.vala:210
+#: ../widget/preference.vala:283 ../widget/terminal.vala:205
 #: ../widget/config_window.vala:186
 msgid "Paste"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:242
+#: ../widget/remote_server_dialog.vala:247
 msgid "Path"
 msgstr ""
 
-#: ../widget/preference.vala:546
+#: ../widget/preference.vala:585
 msgid "Please enter a new shortcut"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:178
+#: ../widget/remote_server_dialog.vala:182
 msgid "Port"
 msgstr ""
 
-#: ../widget/terminal.vala:241 ../widget/appbar.vala:96
+#: ../widget/terminal.vala:236 ../widget/appbar.vala:96
 msgid "Preference"
 msgstr ""
 
-#: ../widget/preference.vala:296 ../widget/config_window.vala:209
+#: ../widget/preference.vala:298 ../widget/config_window.vala:209
 msgid "Previous workspace"
 msgstr ""
 
-#: ../widget/confirm_dialog.vala:120
+#: ../widget/confirm_dialog.vala:122
 msgid "Quit"
 msgstr ""
 
-#: ../widget/terminal.vala:227
+#: ../widget/terminal.vala:222
 msgid "Quit fullscreen"
 msgstr ""
 
-#: ../widget/preference.vala:315 ../widget/terminal.vala:234
+#: ../widget/preference.vala:317 ../widget/terminal.vala:229
 #: ../widget/config_window.vala:234 ../widget/appbar.vala:94
 msgid "Remote management"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:158
-#: ../widget/remote_server_dialog.vala:172
-#: ../widget/remote_server_dialog.vala:207
-#: ../widget/remote_server_dialog.vala:217
+#: ../widget/remote_server_dialog.vala:162
+#: ../widget/remote_server_dialog.vala:176
+#: ../widget/remote_server_dialog.vala:211
+#: ../widget/remote_server_dialog.vala:222
 msgid "Required"
 msgstr ""
 
-#: ../widget/preference.vala:377
-msgid "Restore all"
+#: ../widget/preference.vala:379
+msgid "Restore Default Settings"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:306
+#: ../widget/remote_server_dialog.vala:311
 msgid "Save"
 msgstr ""
 
-#: ../widget/preference_slidebar.vala:77 ../widget/preference.vala:344
+#: ../widget/preference_slidebar.vala:89 ../widget/preference.vala:346
 msgid "Scroll"
 msgstr ""
 
-#: ../widget/preference.vala:350
+#: ../widget/preference.vala:352
 msgid "Scroll on key"
 msgstr ""
 
-#: ../widget/preference.vala:351
+#: ../widget/preference.vala:353
 msgid "Scroll on output"
 msgstr ""
 
-#: ../widget/preference.vala:282 ../widget/terminal.vala:233
+#: ../widget/preference.vala:284 ../widget/terminal.vala:228
 #: ../widget/search_entry.vala:64 ../widget/search_entry.vala:67
 #: ../widget/config_window.vala:187
 msgid "Search"
 msgstr ""
 
-#: ../widget/terminal.vala:346
+#: ../widget/terminal.vala:341
 msgid "Select"
 msgstr ""
 
-#: ../widget/preference.vala:286 ../widget/config_window.vala:191
+#: ../widget/preference.vala:288 ../widget/config_window.vala:191
 msgid "Select all"
 msgstr ""
 
-#: ../widget/terminal.vala:344
+#: ../widget/terminal.vala:339
 msgid "Select directory to save download file"
 msgstr ""
 
-#: ../widget/terminal.vala:316
+#: ../widget/terminal.vala:311
 msgid "Select file to upload"
 msgstr ""
 
-#: ../widget/preference.vala:301 ../widget/config_window.vala:214
+#: ../widget/preference.vala:303 ../widget/config_window.vala:214
 msgid "Select the following window"
 msgstr ""
 
-#: ../widget/preference.vala:302 ../widget/config_window.vala:215
+#: ../widget/preference.vala:304 ../widget/config_window.vala:215
 msgid "Select the left window"
 msgstr ""
 
-#: ../widget/preference.vala:303 ../widget/config_window.vala:216
+#: ../widget/preference.vala:305 ../widget/config_window.vala:216
 msgid "Select the right window"
 msgstr ""
 
-#: ../widget/preference.vala:300 ../widget/config_window.vala:213
+#: ../widget/preference.vala:302 ../widget/config_window.vala:213
 msgid "Select the upper window"
 msgstr ""
 
@@ -327,25 +327,25 @@ msgstr ""
 msgid "Select workspace"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:159
+#: ../widget/remote_server_dialog.vala:163
 msgid "Server name"
 msgstr ""
 
-#: ../widget/preference_slidebar.vala:55 ../widget/preference.vala:271
+#: ../widget/preference_slidebar.vala:67 ../widget/preference.vala:273
 msgid "Shortcut"
 msgstr ""
 
-#: ../widget/preference_slidebar.vala:58 ../widget/preference.vala:274
+#: ../widget/preference_slidebar.vala:70 ../widget/preference.vala:276
 #: ../widget/config_window.vala:196
 msgid "Terminal"
 msgstr ""
 
-#: ../widget/confirm_dialog.vala:120
+#: ../widget/confirm_dialog.vala:122
 msgid "Terminal still has running programs"
 msgstr ""
 
-#: ../widget/preference_slidebar.vala:48 ../widget/preference.vala:228
-#: ../widget/preference.vala:234
+#: ../widget/preference_slidebar.vala:60 ../widget/preference.vala:230
+#: ../widget/preference.vala:236
 msgid "Theme"
 msgstr ""
 
@@ -361,19 +361,19 @@ msgstr ""
 msgid "Turn off some of the work area is not used"
 msgstr ""
 
-#: ../widget/terminal.vala:357
+#: ../widget/terminal.vala:352
 msgid "Type the file you want to download"
 msgstr ""
 
-#: ../widget/terminal.vala:319
+#: ../widget/terminal.vala:314
 msgid "Upload"
 msgstr ""
 
-#: ../widget/terminal.vala:236
+#: ../widget/terminal.vala:231
 msgid "Upload file"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:208
+#: ../widget/remote_server_dialog.vala:213
 msgid "Username"
 msgstr ""
 
@@ -381,29 +381,29 @@ msgstr ""
 msgid "Version"
 msgstr ""
 
-#: ../widget/preference.vala:298 ../widget/terminal.vala:215
+#: ../widget/preference.vala:300 ../widget/terminal.vala:210
 #: ../widget/config_window.vala:211
 msgid "Vertical split"
 msgstr ""
 
-#: ../widget/preference.vala:369
+#: ../widget/preference.vala:371
 msgid "When start using"
 msgstr ""
 
-#: ../widget/preference_slidebar.vala:80 ../widget/preference.vala:355
+#: ../widget/preference_slidebar.vala:92 ../widget/preference.vala:357
 msgid "Window"
 msgstr ""
 
-#: ../widget/preference_slidebar.vala:61 ../widget/preference.vala:288
+#: ../widget/preference_slidebar.vala:73 ../widget/preference.vala:290
 #: ../widget/config_window.vala:223
 msgid "Workspace"
 msgstr ""
 
-#: ../widget/preference.vala:283 ../widget/config_window.vala:188
+#: ../widget/preference.vala:285 ../widget/config_window.vala:188
 msgid "Zoom in"
 msgstr ""
 
-#: ../widget/preference.vala:284 ../widget/config_window.vala:189
+#: ../widget/preference.vala:286 ../widget/config_window.vala:189
 msgid "Zoom out"
 msgstr ""
 
