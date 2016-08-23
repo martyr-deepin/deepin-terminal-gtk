@@ -32,6 +32,12 @@ namespace Widgets {
             set_label(text);
             set_size_request(-1, Constant.DIALOG_BUTTON_HEIGHT);
             get_style_context().add_class("dialog_button_%s_%s".printf(direction, type));
+            
+            enter_notify_event.connect((w) => {
+                    grab_focus();
+                    
+                    return false;
+                });
         }
     }
 }
