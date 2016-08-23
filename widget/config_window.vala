@@ -51,6 +51,8 @@ namespace Widgets {
         }
         
         public void init(WorkspaceManager manager, Tabbar tabbar) {
+            set_redraw_on_allocate(false);
+            
             workspace_manager = manager;
             box = new Box(Gtk.Orientation.VERTICAL, 0);
             top_box = new Box(Gtk.Orientation.HORIZONTAL, 0);
@@ -93,18 +95,30 @@ namespace Widgets {
                     return false;
                 });
             
+            draw.connect((w) => {
+                    print("**********************\n");
+                    
+                    return false;
+                });
+            
             init_active_tab_underline(tabbar);
         }
         
         public void init_active_tab_underline(Tabbar tabbar) {
-            tabbar.draw_active_tab_underline.connect((t, x, width) => {
+            tabbar.update_tab_underline.connect((t, x, width) => {
                     int offset_x, offset_y;
                     tabbar.translate_coordinates(this, 0, 0, out offset_x, out offset_y);
+                    
+                    int tab_x = x + offset_x;
+                    int tab_width = width;
+                    
+                    if (tab_x != active_tab_underline_x || tab_width != active_tab_underline_width) {
+                        active_tab_underline_x = x + offset_x;
+                        active_tab_underline_width = width;
 					
-                    active_tab_underline_x = x + offset_x;
-                    active_tab_underline_width = width;
-					
-                    queue_draw();
+                        print("init_active_tab_underline\n");
+                        redraw_window();
+                    }
                 });
         }
         
@@ -113,7 +127,8 @@ namespace Widgets {
             config.update.connect((w) => {
                     update_terminal(this);
                         
-                    queue_draw();
+                    print("load_config\n");
+                    redraw_window();
                 });
         }
             
@@ -479,6 +494,11 @@ namespace Widgets {
         }
         
         public virtual void window_save_before_quit() {
+        }
+        
+        public void redraw_window() {
+            print("########################\n");
+            queue_draw();
         }
     }
 }

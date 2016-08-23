@@ -167,9 +167,7 @@ namespace Widgets {
                     var shape = new Cairo.Region.rectangle(rect);
                     get_window().input_shape_combine_region(shape, 0, 0);
                     
-                    queue_draw();
-					
-					return false;
+                    return false;
                 });
             
             window_state_event.connect((w, e) => {
@@ -521,12 +519,12 @@ namespace Widgets {
                                         appbar.show_all();
                                         draw_tabbar_line = true;
                                 
-                                        queue_draw();
+                                        redraw_window();
                                     } else if (pointer_y > Constant.TITLEBAR_HEIGHT) {
                                         appbar.hide();
                                         draw_tabbar_line = false;                                
                                 
-                                        queue_draw();
+                                        redraw_window();
                                     }
                                         
                                     return false;

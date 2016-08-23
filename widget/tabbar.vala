@@ -71,7 +71,7 @@ namespace Widgets {
         public int tab_index = 0;
         public int min_tab_width = 70;
         
-		public signal void draw_active_tab_underline(int x, int width);
+		public signal void update_tab_underline(int x, int width);
 		public signal void press_tab(int tab_index, int tab_id);
         public signal void close_tab(int tab_index, int tab_id);
         public signal void new_tab();
@@ -446,7 +446,7 @@ namespace Widgets {
                     cr.save();
                     clip_rectangle(cr, draw_x, 0, tab_width, height);
                     
-					draw_active_tab_underline(draw_x, tab_width + 1);
+					update_tab_underline(draw_x, tab_width + 1);
 					
                     cr.restore();
                     
