@@ -137,8 +137,8 @@ namespace Widgets {
                     
                     if (!window_is_max() && !window_is_fullscreen() && !window_is_tiled()) {
                         if (window_cache_width != width || window_cache_height != height) {
-                            config.config_file.set_integer("advanced", "window_width", width);
-                            config.config_file.set_integer("advanced", "window_height", height);
+                            config.config_file.set_integer("advanced", "window_width", width - window_frame_margin_start - window_frame_margin_end);
+                            config.config_file.set_integer("advanced", "window_height", height - window_frame_margin_top - window_frame_margin_bottom);
                             config.save();
                             
                             window_cache_width = width;
