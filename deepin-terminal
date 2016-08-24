@@ -1,2 +1,0 @@
-#!/bin/sh
-IBUS_NO_SNOOPER_APPS=main ./main 
