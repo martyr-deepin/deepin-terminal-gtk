@@ -232,7 +232,6 @@ namespace Widgets {
                     string password = Utils.lookup_password(server_info.split("@")[0], server_info.split("@")[1]);
                     password_button.entry.set_text(password);
                 }
-                password_button.entry.set_placeholder_text(_("Required"));
                 create_follow_key_row(password_label, password_button, "%s:".printf(_("Password")), user_label, grid);
             
                 advanced_options_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
