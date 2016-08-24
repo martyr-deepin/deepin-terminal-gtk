@@ -91,6 +91,9 @@ public class Application : Object {
 	};
 
     public static void main(string[] args) {
+        // NOTE: set IBUS_NO_SNOOPER_APPS variable to avoid Ctrl + 5 eat by input method (such as fcitx.);
+        Environment.set_variable("IBUS_DISABLE_SNOOPER", "1", true);
+        
         Intl.setlocale();
         Intl.bind_textdomain_codeset(GETTEXT_PACKAGE, "utf-8");
         Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
