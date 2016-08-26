@@ -575,3 +575,60 @@
     border-left-color: transparent;
     border-radius: 0 0 5px 0; 
 }
+
+
+.dialog_button_text {
+    background-color: transparent;
+    color:#303030;
+    box-shadow: none;
+    border-width: 1px 1px 0 0;
+    border-color: rgba(0,0,0,0.1);
+    border-radius: 0 0 5px 5px;
+}
+
+.dialog_button_text:hover,
+.dialog_button_action:hover,
+.dialog_button_warning:hover,
+.dialog_button_text:focus,
+.dialog_button_action:focus,
+.dialog_button_warning:focus {
+    background-image: linear-gradient(-180deg,#8ccfff 0%, #4bb8ff 100%);
+    color:white;
+    box-shadow: none;
+    transition: all 200ms ease;
+    border-width: 1px 1px 0 0;
+    border-color: #3cabfd;
+    border-radius: 0 0 5px 5px;
+}
+
+.dialog_button_text:active,
+.dialog_button_action:active,
+.dialog_button_warning:active {
+    background-image: linear-gradient(-180deg,#0b8cff 0%, #0aa1ff 100%);
+    color:white;
+    box-shadow: none;
+    transition: all 200ms ease;
+    border-width: 1px 1px 0 0;
+    border-color: #0f97ff;
+    border-radius: 0 0 5px 5px;
+}
+
+
+.dialog_button_action {
+    background-color: transparent;
+    color:#0087ff;
+    box-shadow: none;
+    border-width: 1px 1px 0 0;
+    border-color: rgba(0,0,0,0.1);
+    border-radius: 0 0 5px 5px;  
+}
+
+
+.dialog_button_warning {
+    background-color: transparent;
+    color:#ff5a5a;
+    box-shadow: none;
+    border-width: 1px 1px 0 0;
+    border-color: rgba(0,0,0,0.1);
+    border-radius: 0 0 5px 5px; 
+}

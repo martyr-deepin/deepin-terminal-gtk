@@ -33,6 +33,8 @@ namespace Widgets {
         private int logo_margin_end = 20;
         private int logo_margin_start = 20;
         private int title_margin_top = 7;
+        private DialogButton cancel_button;
+        private DialogButton confirm_button;
         
         public signal void cancel();
         public signal void confirm();
@@ -79,19 +81,27 @@ namespace Widgets {
             content_label.margin_top = content_margin_top;
             
             Box button_box = new Box(Gtk.Orientation.HORIZONTAL, 0);
-            DialogButton cancel_button = new Widgets.DialogButton(cancel_text, "left", "text");
-            DialogButton confirm_button = new Widgets.DialogButton(confirm_text, "right", "warning");
-            cancel_button.clicked.connect((b) => {
-                    cancel();
-                    destroy();
-                });
+            if (cancel_text != "") {
+                cancel_button = new Widgets.DialogButton(cancel_text, "left", "text");
+                cancel_button.clicked.connect((b) => {
+                        cancel();
+                        destroy();
+                    });
+            }
+            if (cancel_text != "") {
+                confirm_button = new Widgets.DialogButton(confirm_text, "right", "warning");
+            } else {
+                confirm_button = new Widgets.DialogButton(confirm_text, "middle", "warning");
+            }
             confirm_button.clicked.connect((b) => {
                     confirm();
                     destroy();
                 });
             
             var tab_order_list = new List<Gtk.Widget>();
-            tab_order_list.append((Gtk.Widget) cancel_button);
+            if (cancel_text != "") {
+                tab_order_list.append((Gtk.Widget) cancel_button);
+            }
             tab_order_list.append((Gtk.Widget) confirm_button);
             button_box.set_focus_chain(tab_order_list);
             button_box.set_focus_child(confirm_button);
@@ -101,7 +111,9 @@ namespace Widgets {
             label_box.pack_start(content_label, false, false, 0);
             content_button_box.pack_start(logo_image, false, false, 0);
             content_button_box.pack_start(label_box, true, true, 0);
-            button_box.pack_start(cancel_button, true, true, 0);
+            if (cancel_text != "") {
+                button_box.pack_start(cancel_button, true, true, 0);
+            }
             button_box.pack_start(confirm_button, true, true, 0);
             box.pack_start(close_button_box, false, false, 0);
             box.pack_start(content_button_box, true, true, 0);
