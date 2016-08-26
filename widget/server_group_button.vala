@@ -109,6 +109,7 @@ namespace Widgets {
                         show_group_servers(server_title);
                     }
                     
+					is_hover = false;
                     is_press = false;
 					queue_draw();
                     

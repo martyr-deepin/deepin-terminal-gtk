@@ -59,6 +59,7 @@ namespace Widgets {
                         click();
                     }
                     
+					is_hover = false;
                     is_press = false;
                     queue_draw();
                     

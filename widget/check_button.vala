@@ -69,6 +69,7 @@ namespace Widgets {
 					return false;
 				});
 			button_release_event.connect((w, e) => {
+					is_hover = false;
 					is_press = false;
 					queue_draw();
 					
