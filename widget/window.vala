@@ -158,10 +158,10 @@ namespace Widgets {
                             rect.height = height;
                         }
                     } else {
-                        rect.x = window_frame_margin_start;
-                        rect.y = window_frame_margin_top;
-                        rect.width = width - window_frame_margin_start - window_frame_margin_end;
-                        rect.height = height - window_frame_margin_top - window_frame_margin_bottom;
+                        rect.x = window_frame_margin_start - Constant.RESPONSE_RADIUS;
+                        rect.y = window_frame_margin_top - Constant.RESPONSE_RADIUS;
+                        rect.width = width - window_frame_margin_start - window_frame_margin_end + Constant.RESPONSE_RADIUS * 2;
+                        rect.height = height - window_frame_margin_top - window_frame_margin_bottom + Constant.RESPONSE_RADIUS * 2;
                     }
                     
                     var shape = new Cairo.Region.rectangle(rect);
@@ -231,30 +231,37 @@ namespace Widgets {
                 });
             
             button_press_event.connect((w, e) => {
-                    if (get_resizable()) {
-                        if (!window_is_max() && !window_is_fullscreen() && !window_is_tiled()) {
-                            var cursor_type = get_cursor_type(e.x_root, e.y_root);
-                            if (cursor_type != null) {
-                                int pointer_x, pointer_y;
-                                e.device.get_position(null, out pointer_x, out pointer_y);
-                                resize_window(this, pointer_x, pointer_y, (int) e.button, cursor_type);
-                            }
+                    if (window_is_normal()) {
+                        int pointer_x, pointer_y;
+                        e.device.get_position(null, out pointer_x, out pointer_y);
+                            
+                        var cursor_type = get_cursor_type(e.x_root, e.y_root);
+                        if (cursor_type != null) {
+                            resize_window(this, pointer_x, pointer_y, (int) e.button, cursor_type);
                         }
                     }
                     
                     return false;
                 });
             
-            motion_notify_event.connect((w, e) => {
-                    if (get_resizable()) {
-                        if (!window_is_max() && !window_is_fullscreen() && !window_is_tiled()) {
-                            var cursor_type = get_cursor_type(e.x_root, e.y_root);
-                            if (cursor_type != null) {
-                                get_window().set_cursor(new Gdk.Cursor.for_display(Gdk.Display.get_default(), cursor_type));
-                            } else {
-                                get_window().set_cursor(null);
-                            }
-                        }
+            leave_notify_event.connect((w, e) => {
+                    if (window_is_normal()) {
+                        GLib.Timeout.add(100, () => {
+                                Gdk.Display gdk_display = Gdk.Display.get_default();
+                                var seat = gdk_display.get_default_seat();
+                                var device = seat.get_pointer();
+                    
+                                int pointer_x, pointer_y;
+                                device.get_position(null, out pointer_x, out pointer_y);
+                                var cursor_type = get_cursor_type(pointer_x, pointer_y);
+                                if (cursor_type != null) {
+                                    get_window().set_cursor(new Gdk.Cursor.for_display(Gdk.Display.get_default(), cursor_type));
+                                } else {
+                                    get_window().set_cursor(null);
+                                }
+                                
+                                return focus_window;
+                            });
                     }
                     
                     return false;
@@ -283,7 +290,7 @@ namespace Widgets {
             bool is_light_theme = is_light_theme();
             
             if (is_active) {
-                if (!window_is_max() && !window_is_fullscreen() && !window_is_tiled()) {
+                if (window_is_normal()) {
                     if (is_light_theme) {
                         window_frame_box.get_style_context().add_class("window_light_shadow_active");
                     } else {
@@ -293,7 +300,7 @@ namespace Widgets {
                     window_frame_box.get_style_context().add_class("window_noradius_shadow_active");
                 }
             } else {
-                if (!window_is_max() && !window_is_fullscreen() && !window_is_tiled()) {
+                if (window_is_normal()) {
                     if (is_light_theme) {
                         window_frame_box.get_style_context().add_class("window_light_shadow_inactive");
                     } else {
@@ -371,6 +378,10 @@ namespace Widgets {
             return Gdk.WindowState.FULLSCREEN in get_window().get_state();
         }
         
+        public bool window_is_normal() {
+            return !window_is_max() && !window_is_fullscreen() && !window_is_tiled();
+        }
+        
         public void draw_window_frame(Cairo.Context cr) {
             Gtk.Allocation window_frame_rect;
             window_frame_box.get_allocation(out window_frame_rect);
@@ -382,7 +393,7 @@ namespace Widgets {
             Gdk.RGBA frame_color;
             
             try {
-                if (!window_is_max() && !window_is_fullscreen() && !window_is_tiled()) {
+                if (window_is_normal()) {
                     frame_color = Utils.hex_to_rgba(config.config_file.get_string("theme", "background"));
                     
                     // Draw line *innner* of window frame.
@@ -567,7 +578,7 @@ namespace Widgets {
             int width, height;
             get_size(out width, out height);
                     
-            if (!window_is_max() && !window_is_fullscreen() && !window_is_tiled()) {
+            if (window_is_normal()) {
                 config.config_file.set_integer("advanced", "window_width", width);
                 config.config_file.set_integer("advanced", "window_height", height);
                 config.save();
@@ -580,15 +591,22 @@ namespace Widgets {
                         
             int width, height;
             get_size(out width, out height);
-                        
-            var left_side_start = window_x + window_frame_margin_start;
-            var left_side_end = window_x + window_frame_margin_start + Constant.RESPONSE_RADIUS;
-            var right_side_start = window_x + width - window_frame_margin_end - Constant.RESPONSE_RADIUS;
-            var right_side_end = window_x + width - window_frame_margin_end;
-            var top_side_start = window_y + window_frame_margin_top;
-            var top_side_end = window_y + window_frame_margin_top + Constant.RESPONSE_RADIUS;
-            var bottom_side_start = window_y + height - window_frame_margin_bottom - Constant.RESPONSE_RADIUS;
-            var bottom_side_end = window_y + height - window_frame_margin_bottom;
+            
+            print("** %f %f %f %f %i %i\n", x, y, window_x, window_y, width, height);
+            
+            var left_side_start = window_x + window_frame_margin_start - Constant.RESPONSE_RADIUS;
+            var left_side_end = window_x + window_frame_margin_start;
+            var right_side_start = window_x + width - window_frame_margin_end;
+            var right_side_end = window_x + width - window_frame_margin_end + Constant.RESPONSE_RADIUS;
+            var top_side_start = window_y + window_frame_margin_top - Constant.RESPONSE_RADIUS;;
+            var top_side_end = window_y + window_frame_margin_top;
+            var bottom_side_start = window_y + height - window_frame_margin_bottom;
+            var bottom_side_end = window_y + height - window_frame_margin_bottom + Constant.RESPONSE_RADIUS;
+            
+            print("**** %s %s\n", 
+                  (x > left_side_start && x < left_side_end).to_string(),
+                  (y > top_side_end && y < bottom_side_start).to_string()
+                  );
                             
             if (x > left_side_start && x < left_side_end) {
                 if (y > top_side_start && y < top_side_end) {

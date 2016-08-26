@@ -115,7 +115,7 @@ namespace Widgets {
                     input_shape_rect.x = 0;
                     input_shape_rect.y = 0;
                     input_shape_rect.width = width;
-                    input_shape_rect.height = height - window_frame_margin_bottom;
+                    input_shape_rect.height = height - window_frame_margin_bottom + Constant.RESPONSE_RADIUS;
                     
                     var shape = new Cairo.Region.rectangle(input_shape_rect);
                     get_window().input_shape_combine_region(shape, 0, 0);
@@ -145,14 +145,25 @@ namespace Widgets {
                     return false;
                 });
             
-            motion_notify_event.connect((w, e) => {
-                    var cursor_type = get_cursor_type(e.y_root);
-                    var display = Gdk.Display.get_default();
-                    if (cursor_type != null) {
-                        get_window().set_cursor(new Gdk.Cursor.for_display(display, cursor_type));
-                    } else {
-                        get_window().set_cursor(null);
-                    }
+            leave_notify_event.connect((w, e) => {
+                    GLib.Timeout.add(100, () => {
+                            Gdk.Display gdk_display = Gdk.Display.get_default();
+                            var seat = gdk_display.get_default_seat();
+                            var device = seat.get_pointer();
+                    
+                            int pointer_x, pointer_y;
+                            device.get_position(null, out pointer_x, out pointer_y);
+                                
+                            var cursor_type = get_cursor_type(pointer_y);
+                            var display = Gdk.Display.get_default();
+                            if (cursor_type != null) {
+                                get_window().set_cursor(new Gdk.Cursor.for_display(display, cursor_type));
+                            } else {
+                                get_window().set_cursor(null);
+                            }
+                            
+                            return focus_window;
+                        });
                         
                     return false;
                 });
@@ -317,8 +328,8 @@ namespace Widgets {
             int width, height;
             get_size(out width, out height);
 
-            var bottom_side_start = window_y + height - window_frame_margin_bottom - Constant.RESPONSE_RADIUS;
-            var bottom_side_end = window_y + height - window_frame_margin_bottom;
+            var bottom_side_start = window_y + height - window_frame_margin_bottom;
+            var bottom_side_end = window_y + height - window_frame_margin_bottom + Constant.RESPONSE_RADIUS;;
                     
             if (y > bottom_side_start && y < bottom_side_end) {
                 return Gdk.CursorType.BOTTOM_SIDE;
