@@ -341,6 +341,33 @@ namespace Widgets {
             return false;
         }
         
+        public int is_at_tab_close_button(int x) {
+            Gtk.Allocation alloc;
+            this.get_allocation(out alloc);
+            
+            int draw_x = 0;
+            int counter = 0;
+            foreach (int tab_id in tab_list) {
+                var layout = create_pango_layout(tab_name_map.get(tab_id));
+                layout.set_font_description(font_description);
+                int name_width, name_height;
+                layout.get_pixel_size(out name_width, out name_height);
+                int tab_width = (int) (get_tab_width(name_width) * draw_scale);
+
+                if (x > draw_x && x < draw_x + tab_width) {
+                    if (x > draw_x + tab_width - get_tab_close_button_padding()) {
+                        return counter;
+                    }
+				}
+                
+                draw_x += tab_width;
+                
+                counter++;
+            }
+            
+            return -1;
+        }
+        
         public bool on_motion_notify(Gtk.Widget widget, Gdk.EventMotion event) {
             draw_hover = true;
             hover_x = (int) event.x;

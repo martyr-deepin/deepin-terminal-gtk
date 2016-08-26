@@ -155,6 +155,12 @@ namespace Widgets {
             event_area = new Widgets.WindowEventArea(this);
             // Don't override window button area.
             event_area.margin_end = Constant.CLOSE_BUTTON_WIDTH * 4;
+            event_area.filter_double_click_callback = ((x, y) => {
+                    int tabbar_x, tabbar_y;
+                    this.translate_coordinates(tabbar, x, y, out tabbar_x, out tabbar_y);
+                    
+                    return tabbar.is_at_tab_close_button((int) tabbar_x) != -1;
+                });
             
             add(box);
             add_overlay(event_area);

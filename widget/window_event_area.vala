@@ -33,7 +33,10 @@ namespace Widgets {
         public double press_x = 0;
         public double press_y = 0;
         public int double_clicked_max_delay = 150;
+        public FilterDoubleClick? filter_double_click_callback = null;
     
+        public delegate bool FilterDoubleClick(int x, int y);
+        
         public WindowEventArea(Gtk.Container area) {
             drawing_area = area;
             
@@ -141,7 +144,9 @@ namespace Widgets {
                             });
                     } else if (e.type == Gdk.EventType.2BUTTON_PRESS) {
                         if (is_double_clicked) {
-                            ((Widgets.Window) this.get_toplevel()).toggle_max();
+                            if (filter_double_click_callback == null || !filter_double_click_callback((int) e.x, (int) e.y)) {
+                                ((Widgets.Window) this.get_toplevel()).toggle_max();
+                            }
                         }
                     }
                     
