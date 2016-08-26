@@ -173,7 +173,7 @@ namespace Widgets {
             window_state_event.connect((w, e) => {
                     update_style();
                     
-                    if (window_is_fullscreen()) {
+                    if (window_is_fullscreen() || window_is_max()) {
                         get_window().set_shadow_width(0, 0, 0, 0);
                                 
                         window_frame_box.margin = 0;
@@ -182,15 +182,6 @@ namespace Widgets {
                         window_widget_box.margin_bottom = 0;
                         window_widget_box.margin_start = 0;
                         window_widget_box.margin_end = 0;
-                    } else if (window_is_max()) {
-                        get_window().set_shadow_width(0, 0, 0, 0);
-                                
-                        window_frame_box.margin = 0;
-                        
-                        window_widget_box.margin_top = 1;
-                        window_widget_box.margin_bottom = 1;
-                        window_widget_box.margin_start = 1;
-                        window_widget_box.margin_end = 1;
                     } else if (window_is_tiled()) {
                         Cairo.RectangleInt rect;
                         get_window().get_frame_extents(out rect);
