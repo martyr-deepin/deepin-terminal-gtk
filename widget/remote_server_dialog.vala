@@ -50,14 +50,15 @@ namespace Widgets {
         public int font_size = 11;
         public int grid_height = 24;
         public int label_margin_left = 14;
+        public int max_server_name_length = 50;
         public int option_widget_margin_end = 5;
         public int option_widget_margin_top = 5;
         public int port_label_margin_left = 21;
         public int preference_margin_end = 20;
         public int preference_margin_start = 20;
         public int preference_margin_top = 10;
-        public int preference_name_width = 0;
         public int preference_name_margin_left = 10;
+        public int preference_name_width = 0;
         public int preference_widget_width = 100;
         public int window_expand_height = 530;
         public string? server_info;
@@ -381,7 +382,16 @@ namespace Widgets {
             if (server_info != null) {
                 delete_server_button = Widgets.create_delete_button(_("Delete server"));
                 delete_server_button.click.connect((w) => {
-                        var confirm_dialog = new Widgets.ConfirmDialog(_("Delete server"), "%s %s?".printf(_("Are you sure to delete"), name_entry.get_text()), _("Cancel"), _("Delete"));
+                        var server_name = name_entry.get_text();
+                        if (server_name.length > max_server_name_length) {
+                            server_name = server_name.substring(0, max_server_name_length) + " ... "; 
+                        }
+                        print("%s\n", server_name);
+                        var confirm_dialog = new Widgets.ConfirmDialog(
+                            _("Delete server"), 
+                            "%s %s?".printf(_("Are you sure to delete"), server_name), 
+                            _("Cancel"), 
+                            _("Delete"));
                         confirm_dialog.transient_for_window(parent_window);
                         confirm_dialog.cancel.connect((w) => {
                                 this.destroy();
