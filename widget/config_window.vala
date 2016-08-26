@@ -296,7 +296,7 @@ namespace Widgets {
         private bool on_key_press(Gtk.Widget widget, Gdk.EventKey key_event) {
             try {
                 string keyname = Keymap.get_keyevent_name(key_event);
-                string[] ctrl_num_keys = {"Ctrl + 1", "Ctrl + 2", "Ctrl + 3", "Ctrl + 4", "Ctrl + 5", "Ctrl + 6", "Ctrl + 7", "Ctrl + 8", "Ctrl + 9"};
+                string[] ctrl_num_keys = {"Alt + 1", "Alt + 2", "Alt + 3", "Alt + 4", "Alt + 5", "Alt + 6", "Alt + 7", "Alt + 8", "Alt + 9"};
             
                 KeyFile config_file = config.config_file;
 		    
