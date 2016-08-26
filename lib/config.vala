@@ -215,8 +215,6 @@ namespace Config {
 				}
 			}
             
-            print("####################### !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
-            
             check_string("general", "theme", "deepin");
             check_double("general", "opacity", default_opacity);
             check_string("general", "font", default_mono_font);
