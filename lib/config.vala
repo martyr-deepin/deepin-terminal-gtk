@@ -144,13 +144,129 @@ namespace Config {
 
             save();
         }
+
+        public void check_string(string group, string key, string value) {
+            try {
+                if (!config_file.has_group(group) || !config_file.has_key(group, key)) {
+                    config_file.set_string(group, key, value);
+                }
+            } catch (KeyFileError e) {
+                print("check_string: %s\n", e.message);
+            }
+        }
         
-        public void load_config() {
+        public void check_integer(string group, string key, int value) {
+            try {
+                if (!config_file.has_group(group) || !config_file.has_key(group, key)) {
+                    config_file.set_integer(group, key, value);
+                }
+            } catch (KeyFileError e) {
+                print("check_integer: %s\n", e.message);
+            }
+        }
+
+        public void check_double(string group, string key, double value) {
+            try {
+                if (!config_file.has_group(group) || !config_file.has_key(group, key)) {
+                    config_file.set_double(group, key, value);
+                }
+            } catch (KeyFileError e) {
+                print("check_double: %s\n", e.message);
+            }
+        }
+        
+        public void check_boolean(string group, string key, bool value) {
+            try {
+                if (!config_file.has_group(group) || !config_file.has_key(group, key)) {
+                    config_file.set_boolean(group, key, value);
+                }
+            } catch (KeyFileError e) {
+                print("check_boolean: %s\n", e.message);
+            }
+        }
+        
+        public void check_config() {
             try {
                 config_file.load_from_file(config_file_path, KeyFileFlags.NONE);
             } catch (Error e) {
 				if (!FileUtils.test(config_file_path, FileTest.EXISTS)) {
-					print("Config: %s\n", e.message);
+					print("Config check_config: %s\n", e.message);
+				}
+			}
+            
+            check_string("general", "theme", "deepin");
+            check_double("general", "opacity", default_opacity);
+            check_string("general", "font", default_mono_font);
+            check_integer("general", "font_size", default_size);
+            
+            check_string("keybind", "copy_clipboard", "Ctrl + Shift + c");
+            check_string("keybind", "paste_clipboard", "Ctrl + Shift + v");
+			check_string("keybind", "search", "Ctrl + Shift + f");
+            check_string("keybind", "zoom_in", "Ctrl + =");
+            check_string("keybind", "zoom_out", "Ctrl + -");
+            check_string("keybind", "revert_default_size", "Ctrl + 0");
+            check_string("keybind", "select_all", "Ctrl + Shift + a");
+            
+            check_string("keybind", "new_workspace", "Ctrl + Shift + t");
+            check_string("keybind", "close_workspace", "Ctrl + Shift + w");
+            check_string("keybind", "next_workspace", "Ctrl + Tab");
+            check_string("keybind", "previous_workspace", "Ctrl + Shift + Tab");
+            check_string("keybind", "split_vertically", "Ctrl + Shift + j");
+            check_string("keybind", "split_horizontally", "Ctrl + Shift + h");
+            check_string("keybind", "select_up_window", "Alt + k");
+            check_string("keybind", "select_down_window", "Alt + j");
+            check_string("keybind", "select_left_window", "Alt + h");
+            check_string("keybind", "select_right_window", "Alt + l");
+            check_string("keybind", "close_window", "Ctrl + Alt + q");
+            check_string("keybind", "close_other_windows", "Ctrl + Shift + q");
+            
+            check_string("keybind", "toggle_fullscreen", "F11");
+            check_string("keybind", "show_helper_window", "Ctrl + Shift + ?");
+            check_string("keybind", "show_remote_panel", "Ctrl + /");
+            
+            check_string("advanced", "cursor_shape", "block");
+            check_boolean("advanced", "cursor_blink_mode", true);
+            
+            check_boolean("advanced", "scroll_on_key", true);
+            check_boolean("advanced", "scroll_on_output", false);
+            check_integer("advanced", "scroll_line", -1);
+            check_string("advanced", "window_state", "window");
+            check_integer("advanced", "window_width", 0);
+            check_integer("advanced", "window_height", 0);
+            check_double("advanced", "quake_window_height", 0);
+			
+			check_string("theme", "color_1", "#073642");
+			check_string("theme", "color_2", "#bdb76b");  // string
+			check_string("theme", "color_3", "#859900");
+			check_string("theme", "color_4", "#b58900");
+			check_string("theme", "color_5", "#ffd700");  // path
+			check_string("theme", "color_6", "#d33682");
+			check_string("theme", "color_7", "#2aa198");
+			check_string("theme", "color_8", "#eee8d5");
+			check_string("theme", "color_9", "#002b36");
+			check_string("theme", "color_10", "#8b0000");  // error
+			check_string("theme", "color_11", "#00ff00");  // exec
+			check_string("theme", "color_12", "#657b83");
+			check_string("theme", "color_13", "#1e90ff");  // folder
+			check_string("theme", "color_14", "#6c71c4");
+			check_string("theme", "color_15", "#93a1a1");
+			check_string("theme", "color_16", "#fdf6e3");
+			check_string("theme", "background", "#000000");  // background
+			check_string("theme", "foreground", "#00cd00");  // foreground
+			check_string("theme", "tab", "#2CA7F8");         // tab
+			check_string("theme", "style", "dark");          // style
+
+            save();
+        }
+        
+        public void load_config() {
+            try {
+                check_config();
+                
+                config_file.load_from_file(config_file_path, KeyFileFlags.NONE);
+            } catch (Error e) {
+				if (!FileUtils.test(config_file_path, FileTest.EXISTS)) {
+					print("Config load_config: %s\n", e.message);
 				}
 			}
         }
