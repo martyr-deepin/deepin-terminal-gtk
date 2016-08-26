@@ -149,19 +149,30 @@ namespace Config {
             try {
                 if (!config_file.has_group(group) || !config_file.has_key(group, key)) {
                     config_file.set_string(group, key, value);
+                } else {
+                    config_file.get_string(group, key);
                 }
             } catch (KeyFileError e) {
                 print("check_string: %s\n", e.message);
+                
+                config_file.set_string(group, key, value);
+                print("Reset [%s] %s with %s\n", group, key, value);
             }
         }
         
         public void check_integer(string group, string key, int value) {
             try {
                 if (!config_file.has_group(group) || !config_file.has_key(group, key)) {
+                    print("** start!\n");
                     config_file.set_integer(group, key, value);
+                } else {
+                    config_file.get_integer(group, key);
                 }
             } catch (KeyFileError e) {
                 print("check_integer: %s\n", e.message);
+                
+                config_file.set_integer(group, key, value);
+                print("Reset [%s] %s with %i\n", group, key, value);
             }
         }
 
@@ -169,9 +180,14 @@ namespace Config {
             try {
                 if (!config_file.has_group(group) || !config_file.has_key(group, key)) {
                     config_file.set_double(group, key, value);
+                } else {
+                    config_file.get_double(group, key);
                 }
             } catch (KeyFileError e) {
                 print("check_double: %s\n", e.message);
+
+                config_file.set_double(group, key, value);
+                print("Reset [%s] %s with %f\n", group, key, value);
             }
         }
         
@@ -179,9 +195,14 @@ namespace Config {
             try {
                 if (!config_file.has_group(group) || !config_file.has_key(group, key)) {
                     config_file.set_boolean(group, key, value);
+                } else {
+                    config_file.get_boolean(group, key);
                 }
             } catch (KeyFileError e) {
                 print("check_boolean: %s\n", e.message);
+
+                config_file.set_boolean(group, key, value);
+                print("Reset [%s] %s with %s\n", group, key, value.to_string());
             }
         }
         
@@ -193,6 +214,8 @@ namespace Config {
 					print("Config check_config: %s\n", e.message);
 				}
 			}
+            
+            print("####################### !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
             
             check_string("general", "theme", "deepin");
             check_double("general", "opacity", default_opacity);
