@@ -63,7 +63,6 @@ namespace Widgets {
         public static string PORT = "(?:\\:[[:digit:]]{1,5})?";
         public static string PATHCHARS_CLASS = "[-[:alnum:]\\Q_$.+!*,;:@&=?/~#%\\E]";
         public static string PATHTERM_CLASS = "[^\\Q]'.}>) \t\r\n,\"\\E]";
-
         public static string SCHEME = """(?:news:|telnet:|nntp:|file:\/|https?:|ftps?:|sftp:|webcal:|irc:|sftp:|ldaps?:|nfs:|smb:|rsync:|ssh:|rlogin:|telnet:|git:|git\+ssh:|bzr:|bzr\+ssh:|svn:|svn\+ssh:|hg:|mailto:|magnet:)""";
         public static string USERPASS = USERCHARS_CLASS + "+(?:" + PASSCHARS_CLASS + "+)?";
         public static string URLPATH = "(?:(/" + PATHCHARS_CLASS + "+(?:[(]" + PATHCHARS_CLASS + "*[)])*" + PATHCHARS_CLASS + "*)*" + PATHTERM_CLASS + ")?";
@@ -144,10 +143,15 @@ namespace Widgets {
                         case Gdk.BUTTON_PRIMARY:
                             if (event.state == Gdk.ModifierType.CONTROL_MASK && uri != null) {
                                 try {
-                                    Gtk.show_uri (null, (!) uri, Gtk.get_current_event_time ());
+                                    Gtk.show_uri(null, (!) uri, Gtk.get_current_event_time());
                                     return true;
                                 } catch (GLib.Error error) {
-                                    warning ("Could Not Open link");
+                                    try {
+                                        uri = "http://%s".printf(uri);
+                                        Gtk.show_uri(null, (!) uri, Gtk.get_current_event_time());
+                                    } catch (GLib.Error error) {
+                                        warning("Could Not Open link");
+                                    }
                                 }
                             }
 				    
