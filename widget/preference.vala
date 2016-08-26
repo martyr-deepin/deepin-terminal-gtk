@@ -513,7 +513,7 @@ namespace Widgets {
 		public Gtk.Widget get_first_segement(string name) {
             var segement = create_label();
             segement.get_style_context().add_class("preference_first_segement");
-            segement.set_markup(name);
+            segement.set_text(name);
             segement.set_xalign(0);
             
             var box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
@@ -542,7 +542,7 @@ namespace Widgets {
         public Gtk.Widget get_second_segement(string name) {
             var segement = create_label();
             segement.get_style_context().add_class("preference_second_segement");
-            segement.set_markup(name);
+            segement.set_text(name);
             segement.set_xalign(0);
             segement.margin_top = segement_margin_top;
             segement.margin_bottom = segement_margin_bottom;

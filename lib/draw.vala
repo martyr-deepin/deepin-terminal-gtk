@@ -42,7 +42,7 @@ namespace Draw {
         
         var layout = Pango.cairo_create_layout(cr);
         layout.set_font_description(font_description);
-        layout.set_markup(text, text.length);
+        layout.set_text(text, text.length);
         layout.set_alignment(horizontal_alignment);
         if (wrap_width == null) {
             layout.set_single_paragraph_mode(true);
@@ -87,7 +87,7 @@ namespace Draw {
         
         var layout = widget.create_pango_layout(null);
         layout.set_font_description(font_description);
-        layout.set_markup(text, text.length);
+        layout.set_text(text, text.length);
         layout.set_alignment(horizontal_alignment);
         if (wrap_width == null) {
             layout.set_single_paragraph_mode(true);
