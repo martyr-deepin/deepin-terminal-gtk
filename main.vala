@@ -84,7 +84,7 @@ public class Application : Object {
         { "execute", 'e', 0, OptionArg.STRING, ref command, "Run a program in terminal", null },
 		{ "execute", 'x', 0, OptionArg.STRING, ref command, "Same as -e", null },
 		{ "title", 'T', 0, OptionArg.STRING, ref title, "Title, this option does not make sense for the deepin terminal", null },
-		{ "debug", 'd', 0, OptionArg.NONE, ref debug, "Enable various debugging checks", null },
+		{ "debug", 'd', 0, OptionArg.NONE, ref debug, "Enable debug mode for perfermance test", null },
 		{ "quake-mode", 0, 0, OptionArg.NONE, ref quake_mode, "Quake mode", null },
         { "env", 0, 0, OptionArg.STRING_ARRAY, ref environment, "Add environment variable to the child\'s environment", "VAR=VALUE" },
         { null }
