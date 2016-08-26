@@ -296,12 +296,13 @@ namespace Widgets {
         private bool on_key_press(Gtk.Widget widget, Gdk.EventKey key_event) {
             try {
                 string keyname = Keymap.get_keyevent_name(key_event);
-                string[] ctrl_num_keys = {"Alt + 1", "Alt + 2", "Alt + 3", "Alt + 4", "Alt + 5", "Alt + 6", "Alt + 7", "Alt + 8", "Alt + 9"};
+                string[] select_workspace_shortcuts = {"Alt + 1", "Alt + 2", "Alt + 3", "Alt + 4", "Alt + 5", "Alt + 6", "Alt + 7", "Alt + 8", "Alt + 9"};
             
                 KeyFile config_file = config.config_file;
 		    
                 var search_key = config_file.get_string("keybind", "search");
                 if (search_key != "" && keyname == search_key) {
+                    workspace_manager.focus_workspace.remove_remote_panel();
                     workspace_manager.focus_workspace.search();
                     return true;
                 }
@@ -332,48 +333,64 @@ namespace Widgets {
 		    
                 var split_vertically_key = config_file.get_string("keybind", "split_vertically");
                 if (split_vertically_key != "" && keyname == split_vertically_key) {
+                    workspace_manager.focus_workspace.remove_search_panel();
+                    workspace_manager.focus_workspace.remove_remote_panel();
                     workspace_manager.focus_workspace.split_vertical();
                     return true;
                 }
 		    
                 var split_horizontally_key = config_file.get_string("keybind", "split_horizontally");
                 if (split_horizontally_key != "" && keyname == split_horizontally_key) {
+                    workspace_manager.focus_workspace.remove_search_panel();
+                    workspace_manager.focus_workspace.remove_remote_panel();
                     workspace_manager.focus_workspace.split_horizontal();
                     return true;
                 }
 		    
                 var select_up_window_key = config_file.get_string("keybind", "select_up_window");
                 if (select_up_window_key != "" && keyname == select_up_window_key) {
+                    workspace_manager.focus_workspace.remove_search_panel();
+                    workspace_manager.focus_workspace.remove_remote_panel();
                     workspace_manager.focus_workspace.select_up_window();
                     return true;
                 }
 		    
                 var select_down_window_key = config_file.get_string("keybind", "select_down_window");
                 if (select_down_window_key != "" && keyname == select_down_window_key) {
+                    workspace_manager.focus_workspace.remove_search_panel();
+                    workspace_manager.focus_workspace.remove_remote_panel();
                     workspace_manager.focus_workspace.select_down_window();
                     return true;
                 }
 		    
                 var select_left_window_key = config_file.get_string("keybind", "select_left_window");
                 if (select_left_window_key != "" && keyname == select_left_window_key) {
+                    workspace_manager.focus_workspace.remove_search_panel();
+                    workspace_manager.focus_workspace.remove_remote_panel();
                     workspace_manager.focus_workspace.select_left_window();
                     return true;
                 }
 		    
                 var select_right_window_key = config_file.get_string("keybind", "select_right_window");
                 if (select_right_window_key != "" && keyname == select_right_window_key) {
+                    workspace_manager.focus_workspace.remove_search_panel();
+                    workspace_manager.focus_workspace.remove_remote_panel();
                     workspace_manager.focus_workspace.select_right_window();
                     return true;
                 }
 		    
                 var close_window_key = config_file.get_string("keybind", "close_window");
                 if (close_window_key != "" && keyname == close_window_key) {
+                    workspace_manager.focus_workspace.remove_search_panel();
+                    workspace_manager.focus_workspace.remove_remote_panel();
                     workspace_manager.focus_workspace.close_focus_term();
                     return true;
                 }
 		    
                 var close_other_windows_key = config_file.get_string("keybind", "close_other_windows");
                 if (close_other_windows_key != "" && keyname == close_other_windows_key) {
+                    workspace_manager.focus_workspace.remove_search_panel();
+                    workspace_manager.focus_workspace.remove_remote_panel();
                     workspace_manager.focus_workspace.close_other_terms();
                     return true;
                 }
@@ -418,17 +435,20 @@ namespace Widgets {
             
                 var show_remote_panel_key = config_file.get_string("keybind", "show_remote_panel");
                 if (show_remote_panel_key != "" && keyname == show_remote_panel_key) {
+                    workspace_manager.focus_workspace.remove_search_panel();
                     workspace_manager.focus_workspace.toggle_remote_panel(workspace_manager.focus_workspace);
                     return true;
                 }
 		    
                 var select_all_key = config_file.get_string("keybind", "select_all");
                 if (select_all_key != "" && keyname == select_all_key) {
+                    workspace_manager.focus_workspace.remove_search_panel();
+                    workspace_manager.focus_workspace.remove_remote_panel();
                     workspace_manager.focus_workspace.toggle_select_all();
                     return true;
                 }
 		    
-                if (keyname in ctrl_num_keys) {
+                if (keyname in select_workspace_shortcuts) {
                     workspace_manager.switch_workspace_with_index(int.parse(Keymap.get_key_name(key_event.keyval)));
                     return true;
                 }
