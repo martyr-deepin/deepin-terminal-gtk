@@ -203,7 +203,8 @@ namespace Widgets {
             var has_foreground_process = try_get_foreground_pid(out foreground_pid);
             if (has_foreground_process) {
                 string command = get_proc_file_content("/proc/%i/comm".printf(foreground_pid)).strip();
-                if (command == "ssh" || command == "zssh") {
+                string[] remote_commands = {"ssh", "zssh", "screen", "tmux"};
+                if (command in remote_commands) {
                     in_remote_server = true;
                 } else if (command == "expect") {
                     string[] cmdline = get_proc_file_content("/proc/%i/cmdline".printf(foreground_pid)).strip().split(" ");
