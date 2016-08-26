@@ -21,6 +21,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */ 
 
+* {
+    -GtkComboBox-appears-as-list: 1;
+}
+
 .scrolledwindow undershoot.top {
     background-image: none;
 }
