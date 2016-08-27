@@ -37,10 +37,11 @@ namespace Widgets {
         public Gtk.Box window_widget_box;
         public WorkspaceManager workspace_manager;
         public bool quake_mode = false;
-        public bool focus_window = true;
         public int active_tab_underline_x;
         public int cache_height = 0;
         public int cache_width = 0;
+        public int resize_timeout_delay = 150;
+        public uint? resize_timeout_source_id = null;
             
         public ConfigWindow() {
             Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
@@ -76,14 +77,16 @@ namespace Widgets {
                     return on_key_release(w, e);
                 });
             
-            focus_in_event.connect((w) => {
-                    focus_window = true;
+            leave_notify_event.connect((w, e) => {
+                    if (resize_timeout_source_id != null) {
+                        GLib.Source.remove(resize_timeout_source_id);
+                        resize_timeout_source_id = null;
+                    }
                     
                     return false;
                 });
             
             focus_out_event.connect((w) => {
-                    focus_window = false;
                     remove_shortcut_viewer();
                         
                     return false;

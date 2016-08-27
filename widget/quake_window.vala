@@ -145,25 +145,27 @@ namespace Widgets {
                     return false;
                 });
             
-            leave_notify_event.connect((w, e) => {
-                    GLib.Timeout.add(100, () => {
-                            Gdk.Display gdk_display = Gdk.Display.get_default();
-                            var seat = gdk_display.get_default_seat();
-                            var device = seat.get_pointer();
+            enter_notify_event.connect((w, e) => {
+                    if (resize_timeout_source_id == null) {
+                        resize_timeout_source_id = GLib.Timeout.add(resize_timeout_delay, () => {
+                                Gdk.Display gdk_display = Gdk.Display.get_default();
+                                var seat = gdk_display.get_default_seat();
+                                var device = seat.get_pointer();
                     
-                            int pointer_x, pointer_y;
-                            device.get_position(null, out pointer_x, out pointer_y);
+                                int pointer_x, pointer_y;
+                                device.get_position(null, out pointer_x, out pointer_y);
                                 
-                            var cursor_type = get_cursor_type(pointer_y);
-                            var display = Gdk.Display.get_default();
-                            if (cursor_type != null) {
-                                get_window().set_cursor(new Gdk.Cursor.for_display(display, cursor_type));
-                            } else {
-                                get_window().set_cursor(null);
-                            }
+                                var cursor_type = get_cursor_type(pointer_y);
+                                var display = Gdk.Display.get_default();
+                                if (cursor_type != null) {
+                                    get_window().set_cursor(new Gdk.Cursor.for_display(display, cursor_type));
+                                } else {
+                                    get_window().set_cursor(null);
+                                }
                             
-                            return focus_window;
-                        });
+                                return true;
+                            });
+                    }
                         
                     return false;
                 });

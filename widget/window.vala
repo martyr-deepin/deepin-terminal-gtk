@@ -244,9 +244,9 @@ namespace Widgets {
                     return false;
                 });
             
-            leave_notify_event.connect((w, e) => {
-                    if (window_is_normal()) {
-                        GLib.Timeout.add(100, () => {
+            enter_notify_event.connect((w, e) => {
+                    if (window_is_normal() && resize_timeout_source_id == null) {
+                        resize_timeout_source_id = GLib.Timeout.add(resize_timeout_delay, () => {
                                 Gdk.Display gdk_display = Gdk.Display.get_default();
                                 var seat = gdk_display.get_default_seat();
                                 var device = seat.get_pointer();
@@ -260,7 +260,7 @@ namespace Widgets {
                                     get_window().set_cursor(null);
                                 }
                                 
-                                return focus_window;
+                                return true;
                             });
                     }
                     
@@ -592,8 +592,6 @@ namespace Widgets {
             int width, height;
             get_size(out width, out height);
             
-            print("** %f %f %f %f %i %i\n", x, y, window_x, window_y, width, height);
-            
             var left_side_start = window_x + window_frame_margin_start - Constant.RESPONSE_RADIUS;
             var left_side_end = window_x + window_frame_margin_start;
             var right_side_start = window_x + width - window_frame_margin_end;
@@ -603,11 +601,6 @@ namespace Widgets {
             var bottom_side_start = window_y + height - window_frame_margin_bottom;
             var bottom_side_end = window_y + height - window_frame_margin_bottom + Constant.RESPONSE_RADIUS;
             
-            print("**** %s %s\n", 
-                  (x > left_side_start && x < left_side_end).to_string(),
-                  (y > top_side_end && y < bottom_side_start).to_string()
-                  );
-                            
             if (x > left_side_start && x < left_side_end) {
                 if (y > top_side_start && y < top_side_end) {
                     return Gdk.CursorType.TOP_LEFT_CORNER;
