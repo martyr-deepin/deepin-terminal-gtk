@@ -48,6 +48,7 @@ namespace Widgets {
         public Gdk.RGBA title_dark_color;
         public Gdk.RGBA title_light_color;
         public bool display_bottom_line = true;
+        public bool has_login = false;
         public int content_size = 10;
         public int content_y = 27;
         public int edit_button_x = 254;
@@ -123,7 +124,11 @@ namespace Widgets {
                             && e.y > edit_button_y && e.y < height - server_edit_normal_dark_surface.get_height()) {
                             edit_server(server_content);
                         } else {
-                            login_server(server_content);
+                            // Avoid user double click on button to login server twice.
+                            if (!has_login) {
+                                has_login = true;
+                                login_server(server_content);
+                            }
                         }
                     }
 					
