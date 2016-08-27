@@ -47,37 +47,37 @@ namespace Widgets {
             set_decorated(false);
             set_keep_above(true);
             
-            try {
-                var config_height = config.config_file.get_double("advanced", "quake_window_height");
-                if (config_height == 0) {
-                    set_default_size(rect.width, (int) (rect.height * window_default_height_scale));
-                } else {
-                    set_default_size(rect.width, (int) (rect.height * double.min(config_height, 1.0)));
-                }
-                
-                if (config_height > 2 / 3) {
-                    Gdk.Geometry geo = Gdk.Geometry();
-                    geo.min_width = rect.width;
-                    geo.min_height = (int) (rect.height * window_default_height_scale);
-                    this.set_geometry_hints(null, geo, Gdk.WindowHints.MIN_SIZE);            
-                    
-                    if (config_height >= 1.0) {
-                        maximize();
-                    }
-                } else {
-                    Gdk.Geometry geo = Gdk.Geometry();
-                    geo.min_width = rect.width;
-                    geo.min_height = (int) (rect.height * window_default_height_scale);
-                    geo.max_width = rect.width;
-                    geo.max_height = (int) (rect.height * window_max_height_scale);
-                    this.set_geometry_hints(null, geo, Gdk.WindowHints.MIN_SIZE | Gdk.WindowHints.MAX_SIZE);            
-                }
-            } catch (Error e) {
-                print("QuakeWindow init: %s\n", e.message);
-            }
-            
             realize.connect((w) => {
                     get_window().set_shadow_width(0, 0, 0, window_frame_margin_bottom);
+
+                    try {
+                        var config_height = config.config_file.get_double("advanced", "quake_window_height");
+                        if (config_height == 0) {
+                            set_default_size(rect.width, (int) (rect.height * window_default_height_scale));
+                        } else {
+                            set_default_size(rect.width, (int) (rect.height * double.min(config_height, 1.0)));
+                        }
+                
+                        if (config_height > 2 / 3) {
+                            Gdk.Geometry geo = Gdk.Geometry();
+                            geo.min_width = rect.width;
+                            geo.min_height = (int) (rect.height * window_default_height_scale);
+                            this.set_geometry_hints(null, geo, Gdk.WindowHints.MIN_SIZE);            
+                    
+                            if (config_height >= 1.0) {
+                                maximize();
+                            }
+                        } else {
+                            Gdk.Geometry geo = Gdk.Geometry();
+                            geo.min_width = rect.width;
+                            geo.min_height = (int) (rect.height * window_default_height_scale);
+                            geo.max_width = rect.width;
+                            geo.max_height = (int) (rect.height * window_max_height_scale);
+                            this.set_geometry_hints(null, geo, Gdk.WindowHints.MIN_SIZE | Gdk.WindowHints.MAX_SIZE);            
+                        }
+                    } catch (Error e) {
+                        print("QuakeWindow init: %s\n", e.message);
+                    }
                 });
             
             set_skip_taskbar_hint(true);
