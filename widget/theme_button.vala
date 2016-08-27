@@ -36,15 +36,15 @@ namespace Widgets {
         public KeyFile theme_file;
         public bool is_active = false;
         public bool is_light_color;
-        public int button_radius = 4;
+        public int button_radius = 5;
         public int content_font_size = 11;
         public int content_padding_x = 14;
         public int content_padding_y = 25;
         public int title_font_size = 11;
         public int title_padding_x = 14;
         public int title_padding_y = 6;
-        public int background_padding = 3;
-        public int border_padding = 2;
+        public int background_padding = 2;
+        public int border_padding = 1;
         public string theme_name;
         
         public ThemeButton(string name) {
@@ -93,7 +93,7 @@ namespace Widgets {
             widget.get_allocation(out rect);
             
             cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, background_color.alpha);
-            Draw.draw_rounded_rectangle(cr, background_padding, background_padding, rect.width - background_padding * 2, rect.height - background_padding - 1, button_radius);
+            Draw.draw_rounded_rectangle(cr, background_padding, background_padding, rect.width - background_padding * 2, rect.height - background_padding * 2, button_radius);
 
             cr.set_source_rgba(foreground_color.red, foreground_color.green, foreground_color.blue, foreground_color.alpha);
             Draw.draw_text(cr, "deepin@linux > _", title_padding_x, title_padding_y, rect.width, rect.height, title_font_size, Pango.Alignment.LEFT, "top");
@@ -101,14 +101,12 @@ namespace Widgets {
             cr.set_source_rgba(content_color.red, content_color.green, content_color.blue, content_color.alpha);
             Draw.draw_text(cr, "hello world!", content_padding_x, content_padding_y, rect.width, rect.height, content_font_size, Pango.Alignment.LEFT, "top");
             
-            if (is_light_color) {
+            if (is_active) {
+                Draw.draw_surface(cr, active_theme_border_surface);
+            } else if (is_light_color) {
                 Draw.draw_surface(cr, light_theme_border_surface, border_padding, border_padding);
             } else {
                 Draw.draw_surface(cr, dark_theme_border_surface, border_padding, border_padding);
-            }
-            
-            if (is_active) {
-                Draw.draw_surface(cr, active_theme_border_surface);
             }
             
             return true;
