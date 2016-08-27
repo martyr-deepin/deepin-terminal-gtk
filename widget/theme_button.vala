@@ -89,8 +89,6 @@ namespace Widgets {
         }
         
         private bool on_draw(Gtk.Widget widget, Cairo.Context cr) {
-            bool is_light_theme = ((Widgets.ConfigWindow) get_toplevel()).is_light_theme();
-            
             Gtk.Allocation rect;
             widget.get_allocation(out rect);
             
@@ -103,7 +101,7 @@ namespace Widgets {
             cr.set_source_rgba(content_color.red, content_color.green, content_color.blue, content_color.alpha);
             Draw.draw_text(cr, "hello world!", content_padding_x, content_padding_y, rect.width, rect.height, content_font_size, Pango.Alignment.LEFT, "top");
             
-            if (is_light_theme) {
+            if (is_light_color) {
                 Draw.draw_surface(cr, light_theme_border_surface, border_padding, border_padding);
             } else {
                 Draw.draw_surface(cr, dark_theme_border_surface, border_padding, border_padding);
