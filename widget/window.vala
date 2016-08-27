@@ -74,27 +74,31 @@ namespace Widgets {
             window_widget_box.margin_start = 2;
             window_widget_box.margin_end = 2;
                         
-            try {
-                var window_state = config.config_file.get_value("advanced", "use_on_starting");
-                var width = config.config_file.get_integer("advanced", "window_width");
-                var height = config.config_file.get_integer("advanced", "window_height");
-                if (width == 0 || height == 0) {
-                    set_default_size(
-                        rect.width / 2 + window_frame_margin_start + window_frame_margin_end,
-                        rect.height / 2 + window_frame_margin_top + window_frame_margin_bottom);
-                } else {
-                    set_default_size(width, height);
-                }
-					
-                    
-                if (window_state == "maximize") {
-                    maximize();
-                } else if (window_state == "fullscreen") {
-                    toggle_fullscreen();
-                }
-            } catch (GLib.KeyFileError e) {
-                stdout.printf(e.message);
-            }
+            realize.connect((w) => {
+                    try {
+                        var window_state = config.config_file.get_value("advanced", "use_on_starting");
+                        if (window_state == "maximize") {
+                            maximize();
+                            get_window().set_shadow_width(0, 0, 0, 0);
+                        } else if (window_state == "fullscreen") {
+                            toggle_fullscreen();
+                            get_window().set_shadow_width(0, 0, 0, 0);
+                        } else {
+                            get_window().set_shadow_width(window_frame_margin_start, window_frame_margin_end, window_frame_margin_top, window_frame_margin_bottom);
+                        }
+                
+                        var width = config.config_file.get_integer("advanced", "window_width");
+                        var height = config.config_file.get_integer("advanced", "window_height");
+                        if (width == 0 || height == 0) {
+                            set_default_size(rect.width / 2, rect.height / 2);
+                        } else {
+                            set_default_size(width, height);
+                        }
+                    } catch (GLib.KeyFileError e) {
+                        stdout.printf(e.message);
+                    }
+                });
+            
             try{
                 set_icon_from_file(Utils.get_image_path("deepin-terminal.svg"));
             } catch(Error er) {
@@ -567,12 +571,12 @@ namespace Widgets {
         }
         
         public override void window_save_before_quit() {
-            int width, height;
-            get_size(out width, out height);
+            Cairo.RectangleInt rect;
+            get_window().get_frame_extents(out rect);
                     
             if (window_is_normal()) {
-                config.config_file.set_integer("advanced", "window_width", width - window_frame_margin_start - window_frame_margin_end);
-                config.config_file.set_integer("advanced", "window_height", height - window_frame_margin_top - window_frame_margin_bottom);
+                config.config_file.set_integer("advanced", "window_width", rect.width);
+                config.config_file.set_integer("advanced", "window_height", rect.height);
                 config.save();
             }
         }
