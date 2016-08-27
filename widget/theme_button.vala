@@ -27,22 +27,22 @@ using Gee;
 
 namespace Widgets {
     public class ThemeButton : Gtk.EventBox {
-        public string theme_name;
-        public int button_radius = 4;
-        public KeyFile theme_file;
+        public Gdk.RGBA active_color;
         public Gdk.RGBA background_color;
-        public Gdk.RGBA foreground_color;
         public Gdk.RGBA content_color;
+        public Gdk.RGBA foreground_color;
         public Gdk.RGBA frame_dark_color;
         public Gdk.RGBA frame_light_color;
-        public Gdk.RGBA active_color;
-        public int title_padding_x = 10;
-        public int title_padding_y = 15;
-        public int title_font_size = 11;
+        public KeyFile theme_file;
+        public bool is_active = false;
+        public int button_radius = 4;
+        public int content_font_size = 11;
         public int content_padding_x = 10;
         public int content_padding_y = 34;
-        public int content_font_size = 11;
-        public bool is_active = false;
+        public int title_font_size = 11;
+        public int title_padding_x = 10;
+        public int title_padding_y = 15;
+        public string theme_name;
         
         public ThemeButton(string name) {
             theme_name = name;

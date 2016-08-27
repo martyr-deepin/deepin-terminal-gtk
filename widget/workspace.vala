@@ -29,16 +29,16 @@ using Widgets;
 
 namespace Widgets {
     public class Workspace : Gtk.Overlay {
-        public RemotePanel? remote_panel;
-        public ThemePanel? theme_panel;
 		public WorkspaceManager workspace_manager;
         public AnimateTimer remote_panel_hide_timer;
         public AnimateTimer remote_panel_show_timer;
         public AnimateTimer theme_panel_hide_timer;
         public AnimateTimer theme_panel_show_timer;
         public ArrayList<Term> term_list;
+        public RemotePanel? remote_panel;
         public SearchPanel? search_panel;
         public Term? terminal_before_popup;
+        public ThemePanel? theme_panel;
         public int PANED_HANDLE_SIZE = 1;
         public int hide_slider_interval = 500;
         public int hide_slider_start_x;
