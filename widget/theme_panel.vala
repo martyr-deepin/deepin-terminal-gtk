@@ -109,6 +109,10 @@ namespace Widgets {
                 scrolledwindow.set_shadow_type(Gtk.ShadowType.NONE);
                 scrolledwindow.get_vscrollbar().get_style_context().add_class("light_scrollbar");
                 home_page_box.pack_start(scrolledwindow, true, true, 0);
+
+                realize.connect((w) => {
+                        init_scrollbar();
+                    });
             
                 var theme_name = parent_window.config.config_file.get_string("general", "theme");
                 var theme_list = new ThemeList(theme_name);
@@ -116,15 +120,8 @@ namespace Widgets {
                 theme_list.margin_bottom = theme_list_margin_bottom;
                 theme_list.active_theme.connect((active_theme_name) => {
                         parent_window.config.set_theme(active_theme_name);
-
-                        scrolledwindow.get_vscrollbar().get_style_context().remove_class("light_scrollbar");
-                        scrolledwindow.get_vscrollbar().get_style_context().remove_class("dark_scrollbar");
-                        bool is_light_theme = ((Widgets.ConfigWindow) get_toplevel()).is_light_theme();
-                        if (is_light_theme) {
-                            scrolledwindow.get_vscrollbar().get_style_context().add_class("light_scrollbar");
-                        } else {
-                            scrolledwindow.get_vscrollbar().get_style_context().add_class("dark_scrollbar");
-                        }
+                        
+                        init_scrollbar();
 
                         queue_draw();
                     });
@@ -153,5 +150,16 @@ namespace Widgets {
                 print("ThemePanel show_home_page: %s\n", e.message);
             }
 		}
+
+        public void init_scrollbar() {
+            scrolledwindow.get_vscrollbar().get_style_context().remove_class("light_scrollbar");
+            scrolledwindow.get_vscrollbar().get_style_context().remove_class("dark_scrollbar");
+            bool is_light_theme = ((Widgets.ConfigWindow) get_toplevel()).is_light_theme();
+            if (is_light_theme) {
+                scrolledwindow.get_vscrollbar().get_style_context().add_class("light_scrollbar");
+            } else {
+                scrolledwindow.get_vscrollbar().get_style_context().add_class("dark_scrollbar");
+            }
+        }
     }
 }
