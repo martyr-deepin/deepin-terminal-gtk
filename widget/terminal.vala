@@ -679,7 +679,7 @@ namespace Widgets {
                         term.spawn_sync(Vte.PtyFlags.DEFAULT,
                                         directory,
                                         argv,
-                                        Application.environment,
+                                        null,
                                         GLib.SpawnFlags.SEARCH_PATH,
                                         null, /* child setup */
                                         out child_pid,
@@ -708,7 +708,7 @@ namespace Widgets {
                         term.spawn_sync(Vte.PtyFlags.DEFAULT,
                                         dir,
                                         argv,
-                                        Application.environment,
+                                        null,
                                         GLib.SpawnFlags.SEARCH_PATH,
                                         null, /* child setup */
                                         out child_pid,

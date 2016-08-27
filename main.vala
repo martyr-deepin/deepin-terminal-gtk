@@ -68,27 +68,12 @@ public class Application : Object {
     /* command_e (-e) is used for running commands independently (not inside a shell) */
     [CCode (array_length = false, array_null_terminated = true)]
 	public static string? command = null;
-    public static string[]? environment = null;
     private static bool version = false;
-    private static string title = null;
     public Widgets.QuakeWindow quake_window;
     public Widgets.Window window;
     public WorkspaceManager workspace_manager;
-    public static bool debug = false;
 	
     private bool inited = false;
-
-	private const GLib.OptionEntry[] options = {
-		{ "version", 0, 0, OptionArg.NONE, ref version, "Print version info and exit", null },
-		{ "work-directory", 'w', 0, OptionArg.FILENAME, ref work_directory, "Set shell working directory", "DIRECTORY" },
-        { "execute", 'e', 0, OptionArg.STRING, ref command, "Run a program in terminal", null },
-		{ "execute", 'x', 0, OptionArg.STRING, ref command, "Same as -e", null },
-		{ "title", 'T', 0, OptionArg.STRING, ref title, "Title, this option does not make sense for the deepin terminal", null },
-		{ "debug", 'd', 0, OptionArg.NONE, ref debug, "Enable debug mode for perfermance test", null },
-		{ "quake-mode", 0, 0, OptionArg.NONE, ref quake_mode, "Quake mode", null },
-        { "env", 0, 0, OptionArg.STRING_ARRAY, ref environment, "Add environment variable to the child\'s environment", "VAR=VALUE" },
-        { null }
-	};
 
     public static void main(string[] args) {
         // NOTE: set IBUS_NO_SNOOPER_APPS variable to avoid Ctrl + 5 eat by input method (such as fcitx.);
@@ -99,14 +84,62 @@ public class Application : Object {
         Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
         
         try {
+            GLib.OptionEntry[] options = {
+                OptionEntry() {
+                    long_name="version", 
+                    short_name=0, 
+                    flags=0, 
+                    arg=OptionArg.NONE, 
+                    arg_data=&version,
+                    description=_("Display help information"), 
+                    arg_description=null
+                },
+                OptionEntry() {
+                    long_name="work-directory",
+                    short_name='w', 
+                    flags=0, 
+                    arg=OptionArg.FILENAME, 
+                    arg_data=&work_directory,
+                    description=_("Set the terminal startup directory"), 
+                    arg_description=null
+                },
+                OptionEntry() { 
+                    long_name="execute",
+                    short_name='e',
+                    flags=0,
+                    arg=OptionArg.STRING,
+                    arg_data=&command,
+                    description=_("Run a program in the terminal"),
+                    arg_description=null
+                },
+                OptionEntry() { 
+                    long_name="execute",
+                    short_name='x',
+                    flags=0,
+                    arg=OptionArg.STRING,
+                    arg_data=&command,
+                    description=_("Run a program in the terminal"),
+                    arg_description=null
+                },
+                OptionEntry() { 
+                    long_name="quake-mode",
+                    short_name='q',
+                    flags=0,
+                    arg=OptionArg.NONE,
+                    arg_data=&quake_mode,
+                    description=_("Quake mode"),
+                    arg_description=null
+                }
+            };
+
 			var opt_context = new OptionContext("Deepin terminal");
-            opt_context.set_summary ("Deepin terminal, allowing you to focus more on the command line in the world.");
+            opt_context.set_summary(_("Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.\n\nIt sharpens your focus in the world of command line!"));
 			opt_context.set_help_enabled(true);
 			opt_context.add_main_entries(options, null);
 			opt_context.parse(ref args);
 		} catch (OptionError e) {
-			stdout.printf ("error: %s\n", e.message);
-			stdout.printf ("Run '%s --help' to see a full list of available command line options.\n", args[0]);
+			stdout.printf("error: %s\n", e.message);
+			stdout.printf(_("Run '%s --help' to see a full list of available command line options").printf(args[0]) + "\n");
 		}
         
         if (version) {
@@ -115,9 +148,8 @@ public class Application : Object {
         } else {
             Gtk.init(ref args);
             
-            if (debug) {
-                Gdk.Window.set_debug_updates(debug);
-            }
+            // Just for debug perfermance.
+            // Gdk.Window.set_debug_updates(true);
             
             if (quake_mode) {
                 QuakeTerminalApp app = new QuakeTerminalApp();
