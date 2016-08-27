@@ -571,8 +571,8 @@ namespace Widgets {
             get_size(out width, out height);
                     
             if (window_is_normal()) {
-                config.config_file.set_integer("advanced", "window_width", width);
-                config.config_file.set_integer("advanced", "window_height", height);
+                config.config_file.set_integer("advanced", "window_width", width - window_frame_margin_start - window_frame_margin_end);
+                config.config_file.set_integer("advanced", "window_height", height - window_frame_margin_top - window_frame_margin_bottom);
                 config.save();
             }
         }
