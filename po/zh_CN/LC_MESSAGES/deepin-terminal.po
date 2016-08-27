@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-27 17:44+0800\n"
+"POT-Creation-Date: 2016-08-27 19:02+0800\n"
 "PO-Revision-Date: 2016-08-22 00:55+0800\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../widget/appbar.vala:100
+#: ../widget/appbar.vala:101
 msgid "About"
 msgstr "关于"
 
@@ -70,10 +70,6 @@ msgstr "基础"
 #: ../widget/terminal.vala:349 ../widget/terminal.vala:377
 msgid "Cancel"
 msgstr "取消"
-
-#: ../widget/terminal.vala:260
-msgid "Change theme"
-msgstr "更改主题"
 
 #: ../widget/preference.vala:303 ../widget/terminal.vala:243
 #: ../widget/config_window.vala:245
@@ -173,7 +169,7 @@ msgstr "编辑服务器"
 msgid "Encoding"
 msgstr "编码"
 
-#: ../widget/confirm_dialog.vala:134 ../widget/appbar.vala:101
+#: ../widget/confirm_dialog.vala:134 ../widget/appbar.vala:102
 msgid "Exit"
 msgstr "退出"
 
@@ -199,7 +195,7 @@ msgstr "全屏"
 msgid "Group"
 msgstr "分组"
 
-#: ../widget/appbar.vala:98
+#: ../widget/appbar.vala:99
 msgid "Help"
 msgstr "帮助"
 
@@ -283,7 +279,7 @@ msgid "Quake mode"
 msgstr "雷神模式"
 
 #: ../widget/preference.vala:313 ../widget/terminal.vala:261
-#: ../widget/config_window.vala:261 ../widget/appbar.vala:94
+#: ../widget/config_window.vala:261 ../widget/appbar.vala:95
 msgid "Remote management"
 msgstr "远程管理"
 
@@ -372,7 +368,7 @@ msgstr "服务器名"
 msgid "Set the terminal startup directory"
 msgstr "设置终端的启动目录"
 
-#: ../widget/terminal.vala:270 ../widget/appbar.vala:96
+#: ../widget/terminal.vala:270 ../widget/appbar.vala:97
 msgid "Settings"
 msgstr "设置"
 
@@ -383,6 +379,10 @@ msgstr "快捷键"
 #: ../widget/config_window.vala:259
 msgid "Switch fullscreen"
 msgstr "切换全屏"
+
+#: ../widget/terminal.vala:260 ../widget/appbar.vala:94
+msgid "Switch theme"
+msgstr "切换主题"
 
 #: ../widget/preference_slidebar.vala:69 ../widget/preference.vala:272
 #: ../widget/config_window.vala:223

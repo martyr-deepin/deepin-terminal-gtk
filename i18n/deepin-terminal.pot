@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-27 17:44+0800\n"
+"POT-Creation-Date: 2016-08-27 19:02+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../widget/appbar.vala:100
+#: ../widget/appbar.vala:101
 msgid "About"
 msgstr ""
 
@@ -69,10 +69,6 @@ msgstr ""
 #: ../widget/remote_server_dialog.vala:393 ../widget/confirm_dialog.vala:134
 #: ../widget/terminal.vala:349 ../widget/terminal.vala:377
 msgid "Cancel"
-msgstr ""
-
-#: ../widget/terminal.vala:260
-msgid "Change theme"
 msgstr ""
 
 #: ../widget/preference.vala:303 ../widget/terminal.vala:243
@@ -170,7 +166,7 @@ msgstr ""
 msgid "Encoding"
 msgstr ""
 
-#: ../widget/confirm_dialog.vala:134 ../widget/appbar.vala:101
+#: ../widget/confirm_dialog.vala:134 ../widget/appbar.vala:102
 msgid "Exit"
 msgstr ""
 
@@ -196,7 +192,7 @@ msgstr ""
 msgid "Group"
 msgstr ""
 
-#: ../widget/appbar.vala:98
+#: ../widget/appbar.vala:99
 msgid "Help"
 msgstr ""
 
@@ -280,7 +276,7 @@ msgid "Quake mode"
 msgstr ""
 
 #: ../widget/preference.vala:313 ../widget/terminal.vala:261
-#: ../widget/config_window.vala:261 ../widget/appbar.vala:94
+#: ../widget/config_window.vala:261 ../widget/appbar.vala:95
 msgid "Remote management"
 msgstr ""
 
@@ -369,7 +365,7 @@ msgstr ""
 msgid "Set the terminal startup directory"
 msgstr ""
 
-#: ../widget/terminal.vala:270 ../widget/appbar.vala:96
+#: ../widget/terminal.vala:270 ../widget/appbar.vala:97
 msgid "Settings"
 msgstr ""
 
@@ -379,6 +375,10 @@ msgstr ""
 
 #: ../widget/config_window.vala:259
 msgid "Switch fullscreen"
+msgstr ""
+
+#: ../widget/terminal.vala:260 ../widget/appbar.vala:94
+msgid "Switch theme"
 msgstr ""
 
 #: ../widget/preference_slidebar.vala:69 ../widget/preference.vala:272
