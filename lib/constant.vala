@@ -22,7 +22,7 @@
  */ 
 
 public class Constant {
-    public static double TERMINAL_MIN_OPACITY = 0.2;
+    public static double TERMINAL_MIN_OPACITY = 0;
     public static double VERSION = 2.0;
     public static int ACTIVE_TAB_UNDERLINE_HEIGHT = 2;
     public static int CLOSE_BUTTON_MARGIN_RIGHT = 3;
@@ -33,6 +33,8 @@ public class Constant {
     public static int FONT_MIN_SIZE = 5;
     public static int MAX_SCROLL_LINES = 1000;
     public static int PREFERENCE_SLIDEBAR_WIDTH = 160;
+    public static int PREFERENCE_WIDGET_WIDTH = 200;
+    public static int SEARCH_PANEL_WIDTH = 322;
     public static int REMOTE_PANEL_SEARCHBAR_HEIGHT = 36;
     public static int RESPONSE_RADIUS = 10;
     public static int SLIDER_WIDTH = 280;

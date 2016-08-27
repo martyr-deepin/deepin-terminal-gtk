@@ -447,6 +447,9 @@ namespace Widgets {
         }
         
         public void search() {
+            remove_remote_panel();
+            remove_theme_panel();
+            
             terminal_before_popup = get_focus_term(this);
             if (search_panel == null && terminal_before_popup != null) {
                 
@@ -483,6 +486,9 @@ namespace Widgets {
 		}
 		
 		public void show_remote_panel(Workspace workspace) {
+            remove_search_panel();
+            remove_theme_panel();
+            
 			if (remote_panel == null) {
 				Gtk.Allocation rect;
 				get_allocation(out rect);
@@ -551,6 +557,9 @@ namespace Widgets {
 		}
 		
 		public void show_theme_panel(Workspace workspace) {
+            remove_search_panel();
+            remove_remote_panel();
+            
 			if (theme_panel == null) {
 				Gtk.Allocation rect;
 				get_allocation(out rect);
@@ -609,5 +618,11 @@ namespace Widgets {
                 remove_theme_panel();
 			}
 		}
+        
+        public void remove_all_panel() {
+            remove_search_panel();
+            remove_remote_panel();
+            remove_theme_panel();
+        }
     }
 }

@@ -68,7 +68,7 @@ namespace Widgets {
             search_entry.margin_end = button_margin;
             search_next_button.margin_end = button_margin;
             
-            set_size_request(322, Constant.TITLEBAR_HEIGHT);
+            set_size_request(Constant.SEARCH_PANEL_WIDTH, Constant.TITLEBAR_HEIGHT);
             set_valign(Gtk.Align.START);
             set_halign(Gtk.Align.END);
             

@@ -108,7 +108,7 @@ namespace Widgets {
         public int option_widget_margin_top = 5;
         public int preference_name_width = 180;
         public int preference_split_line_margin_left = 2;
-        public int preference_widget_width = 200;
+        public int preference_widget_width = Constant.PREFERENCE_WIDGET_WIDTH;
         public int reset_button_margin = 35;
         public int second_segement_margin_left = 30;
         public int segement_margin_bottom = 5;
