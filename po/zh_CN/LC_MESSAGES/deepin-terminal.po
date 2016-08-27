@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-27 09:03+0800\n"
+"POT-Creation-Date: 2016-08-27 09:15+0800\n"
 "PO-Revision-Date: 2016-08-22 00:55+0800\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -115,7 +115,7 @@ msgstr "光标闪烁"
 msgid "Cursor style"
 msgstr "光标风格"
 
-#: ../widget/about_widget.vala:107
+#: ../main.vala:135 ../widget/about_widget.vala:107
 msgid "Deepin Terminal"
 msgstr "深度终端"
 
