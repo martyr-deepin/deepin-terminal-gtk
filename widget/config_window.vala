@@ -457,6 +457,7 @@ namespace Widgets {
                 var show_remote_panel_key = config_file.get_string("shortcut", "remote_management");
                 if (show_remote_panel_key != "" && keyname == show_remote_panel_key) {
                     workspace_manager.focus_workspace.remove_search_panel();
+                    workspace_manager.focus_workspace.remove_theme_panel();
                     workspace_manager.focus_workspace.toggle_remote_panel(workspace_manager.focus_workspace);
                     return true;
                 }
