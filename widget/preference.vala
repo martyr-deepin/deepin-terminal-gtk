@@ -597,41 +597,6 @@ namespace Widgets {
 			}
 		}
         
-        public void create_theme_row(Gtk.Label label, Gtk.ComboBoxText combox, string name, Gtk.Grid grid, ArrayList<string>? values=null, string? group_name=null, string? key=null) {
-			label.set_text(name);
-			if (values != null) {
-                foreach (string value in values) {
-                    combox.append(value, value);
-                }
-                
-                try {
-                    combox.set_active(values.index_of(parent_window.config.config_file.get_value(group_name, key)));
-                } catch (GLib.KeyFileError e) {
-                    print("create_theme_row error: %s\n".printf(e.message));
-                }
-                
-                combox.changed.connect((w) => {
-						try {
-							var old_theme = parent_window.config.config_file.get_string(group_name, key);
-							var new_theme = values[combox.get_active()];
-							if (new_theme != old_theme) {
-								parent_window.config.config_file.set_string(group_name, key, values[combox.get_active()]);
-								parent_window.config.set_theme(new_theme);
-							
-								parent_window.config.save();
-							
-								parent_window.config.update();
-							}
-						} catch (GLib.KeyFileError e) {
-							print("Preference create_theme_row: %s\n", e.message);
-						}
-                    });
-            }
-            adjust_option_widgets(label, combox);
-            grid_attach(grid, label, 0, 0, preference_name_width, grid_height);
-            grid_attach_next_to(grid, combox, label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
-		}
-		
         public void create_combox_row(Gtk.Label label, Gtk.ComboBoxText combox, string name, Gtk.Grid grid, ArrayList<string>? values=null, string? group_name=null, string? key=null) {
 			label.set_text(name);
 			if (values != null) {

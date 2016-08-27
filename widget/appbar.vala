@@ -91,6 +91,7 @@ namespace Widgets {
                     
                     var menu_content = new List<Menu.MenuItem>();
                     menu_content.append(new Menu.MenuItem("new_window", _("New window")));
+                    menu_content.append(new Menu.MenuItem("change_theme", _("Change theme")));
                     menu_content.append(new Menu.MenuItem("remote_manage", _("Remote management")));
                     menu_content.append(new Menu.MenuItem("", ""));
                     menu_content.append(new Menu.MenuItem("preference", _("Settings")));
@@ -219,6 +220,9 @@ namespace Widgets {
 			    	break;
                 case "remote_manage":
                     workspace_manager.focus_workspace.show_remote_panel(workspace_manager.focus_workspace);
+                    break;
+                case "change_theme":
+                    workspace_manager.focus_workspace.show_theme_panel(workspace_manager.focus_workspace);
                     break;
 				case "help":
                     try {

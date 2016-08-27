@@ -309,6 +309,10 @@ namespace Config {
                 } else {
                     config_file.set_string("theme", "style", "dark");
                 }
+                
+                config_file.set_string("general", "theme", theme_name);
+                save();
+                update();
             } catch (Error e) {
                 print("Config set_theme: %s\n", e.message);
             }

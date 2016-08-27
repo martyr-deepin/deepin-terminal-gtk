@@ -60,11 +60,6 @@ namespace Widgets {
             
             focus_widget = ((Gtk.Window) workspace.get_toplevel()).get_focus();
 			parent_window = (Widgets.ConfigWindow) workspace.get_toplevel();
-            try {
-                background_color = Utils.hex_to_rgba(parent_window.config.config_file.get_string("theme", "background"));
-            } catch (Error e) {
-                print("ThemePanel init: %s\n", e.message);
-            }
             
             switcher = new Widgets.Switcher(width);
             
@@ -86,6 +81,11 @@ namespace Widgets {
             Gtk.Allocation rect;
             widget.get_allocation(out rect);
 			
+            try {
+                background_color = Utils.hex_to_rgba(parent_window.config.config_file.get_string("theme", "background"));
+            } catch (Error e) {
+                print("ThemePanel init: %s\n", e.message);
+            }
             cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, 0.8);
             Draw.draw_rectangle(cr, 1, 0, rect.width - 1, rect.height);
             
@@ -111,10 +111,9 @@ namespace Widgets {
                 var theme_name = parent_window.config.config_file.get_string("general", "theme");
                 var theme_list = new ThemeList(theme_name);
                 theme_list.active_theme.connect((active_theme_name) => {
-                        parent_window.config.config_file.set_string("general", "theme", active_theme_name);
                         parent_window.config.set_theme(active_theme_name);
-                        parent_window.config.save();
-                        parent_window.config.update();
+
+                        queue_draw();
                     });
             
                 scrolledwindow.add(theme_list);
