@@ -202,15 +202,21 @@ namespace Widgets {
             int foreground_pid;
             var has_foreground_process = try_get_foreground_pid(out foreground_pid);
             if (has_foreground_process) {
-                string command = get_proc_file_content("/proc/%i/comm".printf(foreground_pid)).strip();
-                string[] remote_commands = {"ssh", "zssh", "screen", "tmux"};
-                if (command in remote_commands) {
-                    in_remote_server = true;
-                } else if (command == "expect") {
-                    string[] cmdline = get_proc_file_content("/proc/%i/cmdline".printf(foreground_pid)).strip().split(" ");
-                    if (cmdline.length == 3 && cmdline[1] == "-f" && cmdline[2] == expect_file_path) {
+                try {
+                    Widgets.ConfigWindow window = (Widgets.ConfigWindow) term.get_toplevel();
+                    
+                    string command = get_proc_file_content("/proc/%i/comm".printf(foreground_pid)).strip();
+                    string remote_commands = window.config.config_file.get_string("advanced", "remote_commands");
+                    if (command in remote_commands.split(";")) {
                         in_remote_server = true;
+                    } else if (command == "expect") {
+                        string[] cmdline = get_proc_file_content("/proc/%i/cmdline".printf(foreground_pid)).strip().split(" ");
+                        if (cmdline.length == 3 && cmdline[1] == "-f" && cmdline[2] == expect_file_path) {
+                            in_remote_server = true;
+                        }
                     }
+                } catch (Error e) {
+                    print("is_in_remote_server: %s\n", e.message);
                 }
             }
             
