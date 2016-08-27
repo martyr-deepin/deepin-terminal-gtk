@@ -93,12 +93,6 @@ Name[es_ES]=Terminal Deepin
 Comment[es_ES]=Usar linea de comandos
 Name[sv_SE]=Deepin Terminal
 
-[Quake Shortcut Group]
-Exec=deepin-terminal --quake-mode
-Name=Quake Terminal
-Name[en]=Quake Terminal
-Name[zh_CN]=雷神终端
-
 [NewWindow Shortcut Group]
 Exec=deepin-terminal
 Name=New Window
@@ -153,3 +147,10 @@ Name[uk]=Нове вікно
 Name[vi]=Cửa sổ Mới
 Name[zh_CN]=新建窗口
 Name[zh_TW]=開啟新視窗
+
+[Quake Shortcut Group]
+Exec=deepin-terminal --quake-mode
+Name=Quake Terminal
+Name[en]=Quake Terminal
+Name[zh_CN]=雷神终端
+
