@@ -43,7 +43,9 @@ namespace Widgets {
         public int back_button_margin_top = 6;
         public int split_line_margin_left = 1;
         public int theme_button_padding = 5;
-        public int width = Constant.SLIDER_WIDTH;
+        public int theme_list_margin_bottom = 5;
+        public int theme_list_margin_top = 5;
+        public int width = Constant.THEME_SLIDER_WIDTH;
         
         public delegate void UpdatePageAfterEdit();
 		
@@ -110,6 +112,8 @@ namespace Widgets {
             
                 var theme_name = parent_window.config.config_file.get_string("general", "theme");
                 var theme_list = new ThemeList(theme_name);
+                theme_list.margin_top = theme_list_margin_top;
+                theme_list.margin_bottom = theme_list_margin_bottom;
                 theme_list.active_theme.connect((active_theme_name) => {
                         parent_window.config.set_theme(active_theme_name);
 

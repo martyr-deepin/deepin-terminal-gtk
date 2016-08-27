@@ -556,7 +556,7 @@ namespace Widgets {
 				get_allocation(out rect);
 				
 				theme_panel = new ThemePanel(workspace, workspace_manager);
-				theme_panel.set_size_request(Constant.SLIDER_WIDTH, rect.height);
+				theme_panel.set_size_request(Constant.THEME_SLIDER_WIDTH, rect.height);
                 add_overlay(theme_panel);
 				
 				show_all();
@@ -574,7 +574,7 @@ namespace Widgets {
 				Gtk.Allocation rect;
 				get_allocation(out rect);
                 
-                hide_slider_start_x = rect.width - Constant.SLIDER_WIDTH;
+                hide_slider_start_x = rect.width - Constant.THEME_SLIDER_WIDTH;
                 theme_panel_hide_timer.reset();
 			}
 		}
@@ -593,7 +593,7 @@ namespace Widgets {
         }
         
 		public void theme_panel_show_animate(double progress) {
-            theme_panel.margin_left = (int) (show_slider_start_x - Constant.SLIDER_WIDTH * progress);
+            theme_panel.margin_left = (int) (show_slider_start_x - Constant.THEME_SLIDER_WIDTH * progress);
             
             if (progress >= 1.0) {
 				theme_panel_show_timer.stop();
@@ -601,7 +601,7 @@ namespace Widgets {
 		}
 
 		public void theme_panel_hide_animate(double progress) {
-            theme_panel.margin_left = (int) (hide_slider_start_x + Constant.SLIDER_WIDTH * progress);
+            theme_panel.margin_left = (int) (hide_slider_start_x + Constant.THEME_SLIDER_WIDTH * progress);
             
             if (progress >= 1.0) {
 				theme_panel_hide_timer.stop();
