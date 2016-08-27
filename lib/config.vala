@@ -85,30 +85,30 @@ namespace Config {
             config_file.set_string("general", "font", default_mono_font);
             config_file.set_integer("general", "font_size", default_size);
             
-            config_file.set_string("keybind", "copy_clipboard", "Ctrl + Shift + c");
-            config_file.set_string("keybind", "paste_clipboard", "Ctrl + Shift + v");
-			config_file.set_string("keybind", "search", "Ctrl + Shift + f");
-            config_file.set_string("keybind", "zoom_in", "Ctrl + =");
-            config_file.set_string("keybind", "zoom_out", "Ctrl + -");
-            config_file.set_string("keybind", "revert_default_size", "Ctrl + 0");
-            config_file.set_string("keybind", "select_all", "Ctrl + Shift + a");
+            config_file.set_string("shortcut", "copy", "Ctrl + Shift + c");
+            config_file.set_string("shortcut", "paste", "Ctrl + Shift + v");
+			config_file.set_string("shortcut", "search", "Ctrl + Shift + f");
+            config_file.set_string("shortcut", "zoom_in", "Ctrl + =");
+            config_file.set_string("shortcut", "zoom_out", "Ctrl + -");
+            config_file.set_string("shortcut", "default_size", "Ctrl + 0");
+            config_file.set_string("shortcut", "select_all", "Ctrl + Shift + a");
             
-            config_file.set_string("keybind", "new_workspace", "Ctrl + Shift + t");
-            config_file.set_string("keybind", "close_workspace", "Ctrl + Shift + w");
-            config_file.set_string("keybind", "next_workspace", "Ctrl + Tab");
-            config_file.set_string("keybind", "previous_workspace", "Ctrl + Shift + Tab");
-            config_file.set_string("keybind", "split_vertically", "Ctrl + Shift + j");
-            config_file.set_string("keybind", "split_horizontally", "Ctrl + Shift + h");
-            config_file.set_string("keybind", "select_up_window", "Alt + k");
-            config_file.set_string("keybind", "select_down_window", "Alt + j");
-            config_file.set_string("keybind", "select_left_window", "Alt + h");
-            config_file.set_string("keybind", "select_right_window", "Alt + l");
-            config_file.set_string("keybind", "close_window", "Ctrl + Alt + q");
-            config_file.set_string("keybind", "close_other_windows", "Ctrl + Shift + q");
+            config_file.set_string("shortcut", "new_workspace", "Ctrl + Shift + t");
+            config_file.set_string("shortcut", "close_workspace", "Ctrl + Shift + w");
+            config_file.set_string("shortcut", "next_workspace", "Ctrl + Tab");
+            config_file.set_string("shortcut", "previous_workspace", "Ctrl + Shift + Tab");
+            config_file.set_string("shortcut", "vertical_split", "Ctrl + Shift + j");
+            config_file.set_string("shortcut", "horizontal_split", "Ctrl + Shift + h");
+            config_file.set_string("shortcut", "select_upper_window", "Alt + k");
+            config_file.set_string("shortcut", "select_lower_window", "Alt + j");
+            config_file.set_string("shortcut", "select_left_window", "Alt + h");
+            config_file.set_string("shortcut", "select_right_window", "Alt + l");
+            config_file.set_string("shortcut", "close_window", "Ctrl + Alt + q");
+            config_file.set_string("shortcut", "close_other_windows", "Ctrl + Shift + q");
             
-            config_file.set_string("keybind", "toggle_fullscreen", "F11");
-            config_file.set_string("keybind", "show_helper_window", "Ctrl + Shift + ?");
-            config_file.set_string("keybind", "show_remote_panel", "Ctrl + /");
+            config_file.set_string("shortcut", "switch_fullscreen", "F11");
+            config_file.set_string("shortcut", "display_shortcuts", "Ctrl + Shift + ?");
+            config_file.set_string("shortcut", "remote_management", "Ctrl + /");
             
             config_file.set_string("advanced", "cursor_shape", "block");
             config_file.set_boolean("advanced", "cursor_blink_mode", true);
@@ -116,7 +116,7 @@ namespace Config {
             config_file.set_boolean("advanced", "scroll_on_key", true);
             config_file.set_boolean("advanced", "scroll_on_output", false);
             config_file.set_integer("advanced", "scroll_line", -1);
-            config_file.set_string("advanced", "window_state", "window");
+            config_file.set_string("advanced", "use_on_starting", "window");
             config_file.set_integer("advanced", "window_width", 0);
             config_file.set_integer("advanced", "window_height", 0);
             config_file.set_double("advanced", "quake_window_height", 0);
@@ -221,30 +221,30 @@ namespace Config {
             check_string("general", "font", default_mono_font);
             check_integer("general", "font_size", default_size);
             
-            check_string("keybind", "copy_clipboard", "Ctrl + Shift + c");
-            check_string("keybind", "paste_clipboard", "Ctrl + Shift + v");
-			check_string("keybind", "search", "Ctrl + Shift + f");
-            check_string("keybind", "zoom_in", "Ctrl + =");
-            check_string("keybind", "zoom_out", "Ctrl + -");
-            check_string("keybind", "revert_default_size", "Ctrl + 0");
-            check_string("keybind", "select_all", "Ctrl + Shift + a");
+            check_string("shortcut", "copy", "Ctrl + Shift + c");
+            check_string("shortcut", "paste", "Ctrl + Shift + v");
+			check_string("shortcut", "search", "Ctrl + Shift + f");
+            check_string("shortcut", "zoom_in", "Ctrl + =");
+            check_string("shortcut", "zoom_out", "Ctrl + -");
+            check_string("shortcut", "default_size", "Ctrl + 0");
+            check_string("shortcut", "select_all", "Ctrl + Shift + a");
             
-            check_string("keybind", "new_workspace", "Ctrl + Shift + t");
-            check_string("keybind", "close_workspace", "Ctrl + Shift + w");
-            check_string("keybind", "next_workspace", "Ctrl + Tab");
-            check_string("keybind", "previous_workspace", "Ctrl + Shift + Tab");
-            check_string("keybind", "split_vertically", "Ctrl + Shift + j");
-            check_string("keybind", "split_horizontally", "Ctrl + Shift + h");
-            check_string("keybind", "select_up_window", "Alt + k");
-            check_string("keybind", "select_down_window", "Alt + j");
-            check_string("keybind", "select_left_window", "Alt + h");
-            check_string("keybind", "select_right_window", "Alt + l");
-            check_string("keybind", "close_window", "Ctrl + Alt + q");
-            check_string("keybind", "close_other_windows", "Ctrl + Shift + q");
+            check_string("shortcut", "new_workspace", "Ctrl + Shift + t");
+            check_string("shortcut", "close_workspace", "Ctrl + Shift + w");
+            check_string("shortcut", "next_workspace", "Ctrl + Tab");
+            check_string("shortcut", "previous_workspace", "Ctrl + Shift + Tab");
+            check_string("shortcut", "vertical_split", "Ctrl + Shift + j");
+            check_string("shortcut", "horizontal_split", "Ctrl + Shift + h");
+            check_string("shortcut", "select_upper_window", "Alt + k");
+            check_string("shortcut", "select_lower_window", "Alt + j");
+            check_string("shortcut", "select_left_window", "Alt + h");
+            check_string("shortcut", "select_right_window", "Alt + l");
+            check_string("shortcut", "close_window", "Ctrl + Alt + q");
+            check_string("shortcut", "close_other_windows", "Ctrl + Shift + q");
             
-            check_string("keybind", "toggle_fullscreen", "F11");
-            check_string("keybind", "show_helper_window", "Ctrl + Shift + ?");
-            check_string("keybind", "show_remote_panel", "Ctrl + /");
+            check_string("shortcut", "switch_fullscreen", "F11");
+            check_string("shortcut", "display_shortcuts", "Ctrl + Shift + ?");
+            check_string("shortcut", "remote_management", "Ctrl + /");
             
             check_string("advanced", "cursor_shape", "block");
             check_boolean("advanced", "cursor_blink_mode", true);
@@ -252,7 +252,7 @@ namespace Config {
             check_boolean("advanced", "scroll_on_key", true);
             check_boolean("advanced", "scroll_on_output", false);
             check_integer("advanced", "scroll_line", -1);
-            check_string("advanced", "window_state", "window");
+            check_string("advanced", "use_on_starting", "window");
             check_integer("advanced", "window_width", 0);
             check_integer("advanced", "window_height", 0);
             check_double("advanced", "quake_window_height", 0);

@@ -208,13 +208,13 @@ namespace Widgets {
             
                 builder.begin_array();
     
-                insert_shortcut_key(builder, _("Copy"), config.config_file.get_string("keybind", "copy_clipboard"));;
-                insert_shortcut_key(builder, _("Paste"), config.config_file.get_string("keybind", "paste_clipboard"));;
-                insert_shortcut_key(builder, _("Search"), config.config_file.get_string("keybind", "search"));;
-                insert_shortcut_key(builder, _("Zoom in"), config.config_file.get_string("keybind", "zoom_in"));;
-                insert_shortcut_key(builder, _("Zoom out"), config.config_file.get_string("keybind", "zoom_out"));;
-                insert_shortcut_key(builder, _("Default size"), config.config_file.get_string("keybind", "revert_default_size"));;
-                insert_shortcut_key(builder, _("Select all"), config.config_file.get_string("keybind", "select_all"));;
+                insert_shortcut_key(builder, _("Copy"), config.config_file.get_string("shortcut", "copy"));;
+                insert_shortcut_key(builder, _("Paste"), config.config_file.get_string("shortcut", "paste"));;
+                insert_shortcut_key(builder, _("Search"), config.config_file.get_string("shortcut", "search"));;
+                insert_shortcut_key(builder, _("Zoom in"), config.config_file.get_string("shortcut", "zoom_in"));;
+                insert_shortcut_key(builder, _("Zoom out"), config.config_file.get_string("shortcut", "zoom_out"));;
+                insert_shortcut_key(builder, _("Default size"), config.config_file.get_string("shortcut", "default_size"));;
+                insert_shortcut_key(builder, _("Select all"), config.config_file.get_string("shortcut", "select_all"));;
                     
                 builder.end_array();
                     
@@ -229,19 +229,19 @@ namespace Widgets {
             
                 builder.begin_array();
     
-                insert_shortcut_key(builder, _("New workspace"), config.config_file.get_string("keybind", "new_workspace"));;
-                insert_shortcut_key(builder, _("Close workspace"), config.config_file.get_string("keybind", "close_workspace"));;
-                insert_shortcut_key(builder, _("Next workspace"), config.config_file.get_string("keybind", "next_workspace"));;
-                insert_shortcut_key(builder, _("Previous workspace"), config.config_file.get_string("keybind", "previous_workspace"));;
-                insert_shortcut_key(builder, _("Select workspace"), "Ctrl + 1 ~ Ctrl + 9");;
-                insert_shortcut_key(builder, _("Vertical split"), config.config_file.get_string("keybind", "split_vertically"));;
-                insert_shortcut_key(builder, _("Horizontal split"), config.config_file.get_string("keybind", "split_horizontally"));;
-                insert_shortcut_key(builder, _("Select upper window"), config.config_file.get_string("keybind", "select_up_window"));;
-                insert_shortcut_key(builder, _("Select lower window"), config.config_file.get_string("keybind", "select_down_window"));;
-                insert_shortcut_key(builder, _("Select left window"), config.config_file.get_string("keybind", "select_left_window"));;
-                insert_shortcut_key(builder, _("Select right window"), config.config_file.get_string("keybind", "select_right_window"));;
-                insert_shortcut_key(builder, _("Close window"), config.config_file.get_string("keybind", "close_window"));;
-                insert_shortcut_key(builder, _("Close other windows"), config.config_file.get_string("keybind", "close_other_windows"));;
+                insert_shortcut_key(builder, _("New workspace"), config.config_file.get_string("shortcut", "new_workspace"));;
+                insert_shortcut_key(builder, _("Close workspace"), config.config_file.get_string("shortcut", "close_workspace"));;
+                insert_shortcut_key(builder, _("Next workspace"), config.config_file.get_string("shortcut", "next_workspace"));;
+                insert_shortcut_key(builder, _("Previous workspace"), config.config_file.get_string("shortcut", "previous_workspace"));;
+                insert_shortcut_key(builder, _("Select workspace"), "Alt + 1 ~ Alt + 9");;
+                insert_shortcut_key(builder, _("Vertical split"), config.config_file.get_string("shortcut", "vertical_split"));;
+                insert_shortcut_key(builder, _("Horizontal split"), config.config_file.get_string("shortcut", "horizontal_split"));;
+                insert_shortcut_key(builder, _("Select upper window"), config.config_file.get_string("shortcut", "select_upper_window"));;
+                insert_shortcut_key(builder, _("Select lower window"), config.config_file.get_string("shortcut", "select_lower_window"));;
+                insert_shortcut_key(builder, _("Select left window"), config.config_file.get_string("shortcut", "select_left_window"));;
+                insert_shortcut_key(builder, _("Select right window"), config.config_file.get_string("shortcut", "select_right_window"));;
+                insert_shortcut_key(builder, _("Close window"), config.config_file.get_string("shortcut", "close_window"));;
+                insert_shortcut_key(builder, _("Close other windows"), config.config_file.get_string("shortcut", "close_other_windows"));;
                     
                 builder.end_array();
                     
@@ -255,9 +255,9 @@ namespace Widgets {
             
                 builder.begin_array();
     
-                insert_shortcut_key(builder, _("Switch fullscreen"), config.config_file.get_string("keybind", "toggle_fullscreen"));;
-                insert_shortcut_key(builder, _("Display shortcuts"), config.config_file.get_string("keybind", "show_helper_window"));;
-                insert_shortcut_key(builder, _("Remote management"), config.config_file.get_string("keybind", "show_remote_panel"));;
+                insert_shortcut_key(builder, _("Switch fullscreen"), config.config_file.get_string("shortcut", "switch_fullscreen"));;
+                insert_shortcut_key(builder, _("Display shortcuts"), config.config_file.get_string("shortcut", "display_shortcuts"));;
+                insert_shortcut_key(builder, _("Remote management"), config.config_file.get_string("shortcut", "remote_management"));;
             
                 builder.end_array();
                     
@@ -311,38 +311,38 @@ namespace Widgets {
             
                 KeyFile config_file = config.config_file;
 		    
-                var search_key = config_file.get_string("keybind", "search");
+                var search_key = config_file.get_string("shortcut", "search");
                 if (search_key != "" && keyname == search_key) {
                     workspace_manager.focus_workspace.remove_remote_panel();
                     workspace_manager.focus_workspace.search();
                     return true;
                 }
 		    
-                var new_workspace_key = config_file.get_string("keybind", "new_workspace");
+                var new_workspace_key = config_file.get_string("shortcut", "new_workspace");
                 if (new_workspace_key != "" && keyname == new_workspace_key) {
                     workspace_manager.new_workspace_with_current_directory();
                     return true;
                 }
 		    
-                var close_workspace_key = config_file.get_string("keybind", "close_workspace");
+                var close_workspace_key = config_file.get_string("shortcut", "close_workspace");
                 if (close_workspace_key != "" && keyname == close_workspace_key) {
                     workspace_manager.tabbar.close_current_tab();
                     return true;
                 }
 		    	
-                var next_workspace_key = config_file.get_string("keybind", "next_workspace");
+                var next_workspace_key = config_file.get_string("shortcut", "next_workspace");
                 if (next_workspace_key != "" && keyname == next_workspace_key) {
                     workspace_manager.tabbar.select_next_tab();
                     return true;
                 }
 		    	
-                var previous_workspace_key = config_file.get_string("keybind", "previous_workspace");
+                var previous_workspace_key = config_file.get_string("shortcut", "previous_workspace");
                 if (previous_workspace_key != "" && keyname == previous_workspace_key) {
                     workspace_manager.tabbar.select_previous_tab();
                     return true;
                 }
 		    
-                var split_vertically_key = config_file.get_string("keybind", "split_vertically");
+                var split_vertically_key = config_file.get_string("shortcut", "vertical_split");
                 if (split_vertically_key != "" && keyname == split_vertically_key) {
                     workspace_manager.focus_workspace.remove_search_panel();
                     workspace_manager.focus_workspace.remove_remote_panel();
@@ -350,7 +350,7 @@ namespace Widgets {
                     return true;
                 }
 		    
-                var split_horizontally_key = config_file.get_string("keybind", "split_horizontally");
+                var split_horizontally_key = config_file.get_string("shortcut", "horizontal_split");
                 if (split_horizontally_key != "" && keyname == split_horizontally_key) {
                     workspace_manager.focus_workspace.remove_search_panel();
                     workspace_manager.focus_workspace.remove_remote_panel();
@@ -358,7 +358,7 @@ namespace Widgets {
                     return true;
                 }
 		    
-                var select_up_window_key = config_file.get_string("keybind", "select_up_window");
+                var select_up_window_key = config_file.get_string("shortcut", "select_upper_window");
                 if (select_up_window_key != "" && keyname == select_up_window_key) {
                     workspace_manager.focus_workspace.remove_search_panel();
                     workspace_manager.focus_workspace.remove_remote_panel();
@@ -366,7 +366,7 @@ namespace Widgets {
                     return true;
                 }
 		    
-                var select_down_window_key = config_file.get_string("keybind", "select_down_window");
+                var select_down_window_key = config_file.get_string("shortcut", "select_lower_window");
                 if (select_down_window_key != "" && keyname == select_down_window_key) {
                     workspace_manager.focus_workspace.remove_search_panel();
                     workspace_manager.focus_workspace.remove_remote_panel();
@@ -374,7 +374,7 @@ namespace Widgets {
                     return true;
                 }
 		    
-                var select_left_window_key = config_file.get_string("keybind", "select_left_window");
+                var select_left_window_key = config_file.get_string("shortcut", "select_left_window");
                 if (select_left_window_key != "" && keyname == select_left_window_key) {
                     workspace_manager.focus_workspace.remove_search_panel();
                     workspace_manager.focus_workspace.remove_remote_panel();
@@ -382,7 +382,7 @@ namespace Widgets {
                     return true;
                 }
 		    
-                var select_right_window_key = config_file.get_string("keybind", "select_right_window");
+                var select_right_window_key = config_file.get_string("shortcut", "select_right_window");
                 if (select_right_window_key != "" && keyname == select_right_window_key) {
                     workspace_manager.focus_workspace.remove_search_panel();
                     workspace_manager.focus_workspace.remove_remote_panel();
@@ -390,7 +390,7 @@ namespace Widgets {
                     return true;
                 }
 		    
-                var close_window_key = config_file.get_string("keybind", "close_window");
+                var close_window_key = config_file.get_string("shortcut", "close_window");
                 if (close_window_key != "" && keyname == close_window_key) {
                     workspace_manager.focus_workspace.remove_search_panel();
                     workspace_manager.focus_workspace.remove_remote_panel();
@@ -398,7 +398,7 @@ namespace Widgets {
                     return true;
                 }
 		    
-                var close_other_windows_key = config_file.get_string("keybind", "close_other_windows");
+                var close_other_windows_key = config_file.get_string("shortcut", "close_other_windows");
                 if (close_other_windows_key != "" && keyname == close_other_windows_key) {
                     workspace_manager.focus_workspace.remove_search_panel();
                     workspace_manager.focus_workspace.remove_remote_panel();
@@ -406,7 +406,7 @@ namespace Widgets {
                     return true;
                 }
 		    
-                var toggle_fullscreen_key = config_file.get_string("keybind", "toggle_fullscreen");
+                var toggle_fullscreen_key = config_file.get_string("shortcut", "switch_fullscreen");
                 if (toggle_fullscreen_key != "" && keyname == toggle_fullscreen_key) {
                     if (!quake_mode) {
                         toggle_fullscreen();
@@ -415,7 +415,7 @@ namespace Widgets {
                 }
 		    
                 if (Utils.is_command_exist("deepin-shortcut-viewer")) {
-                    var show_helper_window_key = config_file.get_string("keybind", "show_helper_window");
+                    var show_helper_window_key = config_file.get_string("shortcut", "display_shortcuts");
                     if (show_helper_window_key != "" && keyname == show_helper_window_key) {
                         int x, y;
                         if (quake_mode) {
@@ -444,14 +444,14 @@ namespace Widgets {
                     }
                 }
             
-                var show_remote_panel_key = config_file.get_string("keybind", "show_remote_panel");
+                var show_remote_panel_key = config_file.get_string("shortcut", "remote_management");
                 if (show_remote_panel_key != "" && keyname == show_remote_panel_key) {
                     workspace_manager.focus_workspace.remove_search_panel();
                     workspace_manager.focus_workspace.toggle_remote_panel(workspace_manager.focus_workspace);
                     return true;
                 }
 		    
-                var select_all_key = config_file.get_string("keybind", "select_all");
+                var select_all_key = config_file.get_string("shortcut", "select_all");
                 if (select_all_key != "" && keyname == select_all_key) {
                     workspace_manager.focus_workspace.remove_search_panel();
                     workspace_manager.focus_workspace.remove_remote_panel();

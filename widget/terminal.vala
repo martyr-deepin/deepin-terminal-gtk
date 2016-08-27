@@ -517,31 +517,31 @@ namespace Widgets {
                     return true;
                 }
                 
-			    var copy_key = parent_window.config.config_file.get_string("keybind", "copy_clipboard");
+			    var copy_key = parent_window.config.config_file.get_string("shortcut", "copy");
 			    if (copy_key != "" && keyname == copy_key) {
 			    	term.copy_clipboard();
 			    	return true;
 			    }
 			    
-			    var paste_key = parent_window.config.config_file.get_string("keybind", "paste_clipboard");
+			    var paste_key = parent_window.config.config_file.get_string("shortcut", "paste");
 			    if (paste_key != "" && keyname == paste_key) {
 			    	term.paste_clipboard();
 			    	return true;
 			    }
 			    
-				var zoom_in_key = parent_window.config.config_file.get_string("keybind", "zoom_in");
+				var zoom_in_key = parent_window.config.config_file.get_string("shortcut", "zoom_in");
 			    if (zoom_in_key != "" && keyname == zoom_in_key) {
 			    	increment_size();
 			    	return true;
 			    }
 			    
-			    var zoom_out_key = parent_window.config.config_file.get_string("keybind", "zoom_out");
+			    var zoom_out_key = parent_window.config.config_file.get_string("shortcut", "zoom_out");
 			    if (zoom_out_key != "" && keyname == zoom_out_key) {
 			    	decrement_size();
 			    	return true;
 			    }
 			    
-			    var zoom_reset_key = parent_window.config.config_file.get_string("keybind", "revert_default_size");
+			    var zoom_reset_key = parent_window.config.config_file.get_string("shortcut", "default_size");
 			    if (zoom_reset_key != "" && keyname == zoom_reset_key) {
 			    	set_default_font_size();
 			    	return true;

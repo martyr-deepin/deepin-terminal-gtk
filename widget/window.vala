@@ -75,7 +75,7 @@ namespace Widgets {
             window_widget_box.margin_end = 2;
                         
             try {
-                var window_state = config.config_file.get_value("advanced", "window_state");
+                var window_state = config.config_file.get_value("advanced", "use_on_starting");
                 var width = config.config_file.get_integer("advanced", "window_width");
                 var height = config.config_file.get_integer("advanced", "window_height");
                 if (width == 0 || height == 0) {
