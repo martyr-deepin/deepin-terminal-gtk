@@ -247,12 +247,8 @@ namespace Widgets {
             enter_notify_event.connect((w, e) => {
                     if (window_is_normal() && resize_timeout_source_id == null) {
                         resize_timeout_source_id = GLib.Timeout.add(resize_timeout_delay, () => {
-                                Gdk.Display gdk_display = Gdk.Display.get_default();
-                                var seat = gdk_display.get_default_seat();
-                                var device = seat.get_pointer();
-                    
                                 int pointer_x, pointer_y;
-                                device.get_position(null, out pointer_x, out pointer_y);
+                                Utils.get_pointer_position(out pointer_x, out pointer_y);
                                 var cursor_type = get_cursor_type(pointer_x, pointer_y);
                                 if (cursor_type != null) {
                                     get_window().set_cursor(new Gdk.Cursor.for_display(Gdk.Display.get_default(), cursor_type));
@@ -510,13 +506,9 @@ namespace Widgets {
                     if (window_is_fullscreen()) {
                         if (e.y_root < window_fullscreen_monitor_height) {
                             GLib.Timeout.add(window_fullscreen_monitor_timeout, () => {
-                                    Gdk.Display gdk_display = Gdk.Display.get_default();
-                                    var seat = gdk_display.get_default_seat();
-                                    var device = seat.get_pointer();
-                    
                                     int pointer_x, pointer_y;
-                                    device.get_position(null, out pointer_x, out pointer_y);
-
+                                    Utils.get_pointer_position(out pointer_x, out pointer_y);
+                                    
                                     if (pointer_y < window_fullscreen_response_height) {
                                         appbar.show_all();
                                         draw_tabbar_line = true;

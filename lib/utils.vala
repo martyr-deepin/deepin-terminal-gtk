@@ -320,4 +320,12 @@ namespace Utils {
                                      });
 
     }
+
+    public void get_pointer_position(out int x, out int y) {
+        Gdk.Display gdk_display = Gdk.Display.get_default();
+        var seat = gdk_display.get_default_seat();
+        var device = seat.get_pointer();
+                    
+        device.get_position(null, out x, out y);
+    }
 }

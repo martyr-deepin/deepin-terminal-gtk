@@ -148,12 +148,8 @@ namespace Widgets {
             enter_notify_event.connect((w, e) => {
                     if (resize_timeout_source_id == null) {
                         resize_timeout_source_id = GLib.Timeout.add(resize_timeout_delay, () => {
-                                Gdk.Display gdk_display = Gdk.Display.get_default();
-                                var seat = gdk_display.get_default_seat();
-                                var device = seat.get_pointer();
-                    
                                 int pointer_x, pointer_y;
-                                device.get_position(null, out pointer_x, out pointer_y);
+                                Utils.get_pointer_position(out pointer_x, out pointer_y);
                                 
                                 var cursor_type = get_cursor_type(pointer_y);
                                 var display = Gdk.Display.get_default();

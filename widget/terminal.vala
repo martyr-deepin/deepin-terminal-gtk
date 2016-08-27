@@ -509,12 +509,8 @@ namespace Widgets {
                 Widgets.ConfigWindow parent_window = (Widgets.ConfigWindow) term.get_toplevel();
 
                 if (keyname == "Menu") {
-                    Gdk.Display gdk_display = Gdk.Display.get_default();
-                    var seat = gdk_display.get_default_seat();
-                    var device = seat.get_pointer();
-                    
                     int pointer_x, pointer_y;
-                    device.get_position(null, out pointer_x, out pointer_y);
+                    Utils.get_pointer_position(out pointer_x, out pointer_y);
                     
                     show_menu(pointer_x, pointer_y);
                     
