@@ -35,6 +35,7 @@ namespace Widgets {
         public Cairo.ImageSurface active_theme_border_surface;
         public KeyFile theme_file;
         public bool is_active = false;
+        public bool is_light_color;
         public int button_radius = 4;
         public int content_font_size = 11;
         public int content_padding_x = 14;
@@ -53,6 +54,7 @@ namespace Widgets {
                 theme_file = new KeyFile();
                 theme_file.load_from_file(Utils.get_theme_path(theme_name), KeyFileFlags.NONE);
                 background_color = Utils.hex_to_rgba(theme_file.get_string("theme", "background").strip());
+                is_light_color = Utils.is_light_color(theme_file.get_string("theme", "background").strip());
 
                 background_color.alpha = 0.8;
                 foreground_color = Utils.hex_to_rgba(theme_file.get_string("theme", "foreground").strip());
