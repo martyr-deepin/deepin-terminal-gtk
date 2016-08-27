@@ -53,7 +53,7 @@ namespace Widgets {
         }
         
         public void init(WorkspaceManager manager, Tabbar tabbar) {
-            set_redraw_on_allocate(false);
+            set_redraw_on_allocate(true);
             
             workspace_manager = manager;
             box = new Box(Gtk.Orientation.VERTICAL, 0);
