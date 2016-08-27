@@ -35,6 +35,8 @@ main: ./lib/animation.vala \
       ./widget/tabbar.vala \
       ./widget/terminal.vala \
       ./widget/text_button.vala \
+      ./widget/theme_button.vala \
+      ./widget/theme_panel.vala \
       ./widget/titlebar.vala \
       ./widget/window.vala \
       ./widget/window_event_area.vala \
@@ -94,6 +96,8 @@ main: ./lib/animation.vala \
     ./widget/tabbar.vala \
     ./widget/terminal.vala \
     ./widget/text_button.vala \
+    ./widget/theme_button.vala \
+    ./widget/theme_panel.vala \
     ./widget/titlebar.vala \
     ./widget/window.vala \
     ./widget/window_event_area.vala \

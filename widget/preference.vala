@@ -33,7 +33,6 @@ namespace Widgets {
 		public ArrayList<string> window_state_list;
 		public ArrayList<string> window_state_name_list;
 		public Gtk.ComboBoxText font_combox;
-		public Gtk.ComboBoxText theme_combox;
 		public Gtk.ComboBoxText window_combox;
 		public Gtk.Entry close_other_windows_key_entry;
 		public Gtk.Entry close_window_key_entry;
@@ -124,7 +123,6 @@ namespace Widgets {
             window_init_height = 670;
         
 			theme_label = create_label();
-			theme_combox = create_combox_text();
             opacity_label = create_label("%s:".printf(_("Opacity")));
             opacity_progressbar = new Widgets.ProgressBar(opacity);
 			font_label = create_label();
@@ -232,8 +230,6 @@ namespace Widgets {
             
             var theme_grid = new Gtk.Grid();
             content_box.pack_start(theme_grid, false, false, 0);
-            
-            create_theme_row(theme_label, theme_combox, "%s:".printf(_("Theme")), theme_grid, parent_window.config.theme_names, "general", "theme");
             
             var opacity_grid = new Gtk.Grid();
             content_box.pack_start(opacity_grid, false, false, 0);
@@ -439,7 +435,6 @@ namespace Widgets {
 		
 		public void init_config() {
 			try {
-				theme_combox.set_active(parent_window.config.theme_names.index_of(parent_window.config.config_file.get_value("general", "theme")));
 				opacity_progressbar.set_percent(parent_window.config.config_file.get_double("general", "opacity"));
 				font_combox.set_active(font_names.index_of(parent_window.config.config_file.get_value("general", "font")));
 				window_combox.set_active(window_state_list.index_of(parent_window.config.config_file.get_value("advanced", "use_on_starting")));

@@ -257,6 +257,7 @@ namespace Widgets {
             }
                             
             menu_content.append(new Menu.MenuItem("search", _("Search")));
+            menu_content.append(new Menu.MenuItem("change_theme", _("Change theme")));
             menu_content.append(new Menu.MenuItem("remote_manage", _("Remote management")));
             if (is_in_remote_server()) {
                 menu_content.append(new Menu.MenuItem("", ""));
@@ -317,6 +318,9 @@ namespace Widgets {
 					case "new_workspace":
 						workspace_manager.new_workspace_with_current_directory();
 						break;
+                    case "change_theme":
+						workspace_manager.focus_workspace.show_theme_panel(workspace_manager.focus_workspace);
+                        break;
 					case "remote_manage":
 						workspace_manager.focus_workspace.show_remote_panel(workspace_manager.focus_workspace);
 						break;

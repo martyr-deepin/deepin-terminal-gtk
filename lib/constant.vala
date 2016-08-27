@@ -35,6 +35,8 @@ public class Constant {
     public static int REMOTE_PANEL_SEARCHBAR_HEIGHT = 36;
     public static int RESPONSE_RADIUS = 10;
     public static int SLIDER_WIDTH = 280;
+    public static int THEME_BUTTON_WIDTH = 240;
+    public static int THEME_BUTTON_HEIGHT = 70;
     public static int TITLEBAR_HEIGHT = 40;
     public static double VERSION = 2.0;
 }                         

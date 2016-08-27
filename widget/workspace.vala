@@ -30,9 +30,12 @@ using Widgets;
 namespace Widgets {
     public class Workspace : Gtk.Overlay {
         public RemotePanel? remote_panel;
+        public ThemePanel? theme_panel;
 		public WorkspaceManager workspace_manager;
-        public AnimateTimer hide_timer;
-        public AnimateTimer show_timer;
+        public AnimateTimer remote_panel_hide_timer;
+        public AnimateTimer remote_panel_show_timer;
+        public AnimateTimer theme_panel_hide_timer;
+        public AnimateTimer theme_panel_show_timer;
         public ArrayList<Term> term_list;
         public SearchPanel? search_panel;
         public Term? terminal_before_popup;
@@ -52,11 +55,17 @@ namespace Widgets {
             term_list = new ArrayList<Term>();
 			workspace_manager = manager;
             
-			show_timer = new AnimateTimer(AnimateTimer.ease_out_quint, show_slider_interval);
-			show_timer.animate.connect(on_show_animate);
+			remote_panel_show_timer = new AnimateTimer(AnimateTimer.ease_out_quint, show_slider_interval);
+			remote_panel_show_timer.animate.connect(remote_panel_show_animate);
 
-			hide_timer = new AnimateTimer(AnimateTimer.ease_in_quint, hide_slider_interval);
-			hide_timer.animate.connect(on_hide_animate);
+			remote_panel_hide_timer = new AnimateTimer(AnimateTimer.ease_in_quint, hide_slider_interval);
+			remote_panel_hide_timer.animate.connect(remote_panel_hide_animate);
+
+			theme_panel_show_timer = new AnimateTimer(AnimateTimer.ease_out_quint, show_slider_interval);
+			theme_panel_show_timer.animate.connect(theme_panel_show_animate);
+
+			theme_panel_hide_timer = new AnimateTimer(AnimateTimer.ease_in_quint, hide_slider_interval);
+			theme_panel_hide_timer.animate.connect(theme_panel_hide_animate);
             
             Term term = new_term(true, work_directory);
             
@@ -76,6 +85,7 @@ namespace Widgets {
                 });
             term.term.button_press_event.connect((w, e) => {
                     remove_search_panel();
+					hide_theme_panel();
 					hide_remote_panel();
                     
                     return false;
@@ -485,7 +495,7 @@ namespace Widgets {
                 
                 remote_panel.margin_left = rect.width;
                 show_slider_start_x = rect.width;
-                show_timer.reset();
+                remote_panel_show_timer.reset();
 			}
             
             terminal_before_popup = get_focus_term(this);
@@ -497,7 +507,7 @@ namespace Widgets {
 				get_allocation(out rect);
                 
                 hide_slider_start_x = rect.width - Constant.SLIDER_WIDTH;
-                hide_timer.reset();
+                remote_panel_hide_timer.reset();
 			}
 		}
         
@@ -514,23 +524,90 @@ namespace Widgets {
             }
         }
         
-		public void on_show_animate(double progress) {
+		public void remote_panel_show_animate(double progress) {
             remote_panel.margin_left = (int) (show_slider_start_x - Constant.SLIDER_WIDTH * progress);
             
             if (progress >= 1.0) {
-				show_timer.stop();
+				remote_panel_show_timer.stop();
 			}
 		}
 
-		public void on_hide_animate(double progress) {
+		public void remote_panel_hide_animate(double progress) {
             remote_panel.margin_left = (int) (hide_slider_start_x + Constant.SLIDER_WIDTH * progress);
             
             if (progress >= 1.0) {
-				hide_timer.stop();
+				remote_panel_hide_timer.stop();
 
                 remove_remote_panel();
 			}
 		}
+
+		public void toggle_theme_panel(Workspace workspace) {
+			if (theme_panel == null) {
+				show_theme_panel(workspace);
+			} else {
+				hide_theme_panel();
+			}
+		}
+		
+		public void show_theme_panel(Workspace workspace) {
+			if (theme_panel == null) {
+				Gtk.Allocation rect;
+				get_allocation(out rect);
+				
+				theme_panel = new ThemePanel(workspace, workspace_manager);
+				theme_panel.set_size_request(Constant.SLIDER_WIDTH, rect.height);
+                add_overlay(theme_panel);
+				
+				show_all();
+                
+                theme_panel.margin_left = rect.width;
+                show_slider_start_x = rect.width;
+                theme_panel_show_timer.reset();
+			}
+            
+            terminal_before_popup = get_focus_term(this);
+		}
+		
+		public void hide_theme_panel() {
+			if (theme_panel != null) {
+				Gtk.Allocation rect;
+				get_allocation(out rect);
+                
+                hide_slider_start_x = rect.width - Constant.SLIDER_WIDTH;
+                theme_panel_hide_timer.reset();
+			}
+		}
         
+        public void remove_theme_panel() {
+            if (theme_panel != null) {
+                remove(theme_panel);
+                theme_panel.destroy();
+                theme_panel = null;
+            }
+            
+            if (terminal_before_popup != null) {
+                terminal_before_popup.focus_term();
+                terminal_before_popup = null;
+            }
+        }
+        
+		public void theme_panel_show_animate(double progress) {
+            theme_panel.margin_left = (int) (show_slider_start_x - Constant.SLIDER_WIDTH * progress);
+            
+            if (progress >= 1.0) {
+				theme_panel_show_timer.stop();
+			}
+		}
+
+		public void theme_panel_hide_animate(double progress) {
+            theme_panel.margin_left = (int) (hide_slider_start_x + Constant.SLIDER_WIDTH * progress);
+            
+            if (progress >= 1.0) {
+				theme_panel_hide_timer.stop();
+
+                remove_theme_panel();
+			}
+		}
     }
 }

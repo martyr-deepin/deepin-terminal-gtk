@@ -32,9 +32,9 @@ namespace Draw {
     }
 
     public void draw_text(Cairo.Context cr, string text, int x, int y, int width, int height, int size,
-                            Pango.Alignment horizontal_alignment=Pango.Alignment.LEFT,
-                            string vertical_align = "middle",
-                            int? wrap_width=null) {
+                          Pango.Alignment horizontal_alignment=Pango.Alignment.LEFT,
+                          string vertical_align = "middle",
+                          int? wrap_width=null) {
         cr.save();
         
         var font_description = new Pango.FontDescription();
