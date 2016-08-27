@@ -117,7 +117,7 @@ namespace Widgets {
     }
 
     public class ThemeList : Gtk.VBox {
-        public int theme_button_padding = 5;
+        public int theme_button_padding = Constant.THEME_BUTTON_PADDING;
         public HashMap<string, ThemeButton> theme_button_map;
         public ThemeButton? active_theme_button = null;
         

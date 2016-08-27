@@ -113,6 +113,15 @@ namespace Widgets {
                 theme_list.active_theme.connect((active_theme_name) => {
                         parent_window.config.set_theme(active_theme_name);
 
+                        scrolledwindow.get_vscrollbar().get_style_context().remove_class("light_scrollbar");
+                        scrolledwindow.get_vscrollbar().get_style_context().remove_class("dark_scrollbar");
+                        bool is_light_theme = ((Widgets.ConfigWindow) get_toplevel()).is_light_theme();
+                        if (is_light_theme) {
+                            scrolledwindow.get_vscrollbar().get_style_context().add_class("light_scrollbar");
+                        } else {
+                            scrolledwindow.get_vscrollbar().get_style_context().add_class("dark_scrollbar");
+                        }
+
                         queue_draw();
                     });
             
@@ -120,14 +129,19 @@ namespace Widgets {
             
                 switcher.add_to_left_box(home_page_box);
 
-                realize.connect((w) => {
-                        int widget_x, widget_y;
-                        theme_list.translate_coordinates(theme_list.active_theme_button, 0, 0, out widget_x, out widget_y);
-                    
-                        print("%i %i\n", widget_x, widget_y);
-                    
-                        var adjust = scrolledwindow.get_vadjustment();
-                        adjust.set_value(Math.fabs(widget_y));
+                show.connect((w) => {
+                        GLib.Timeout.add(100, () => {
+                                int widget_x, widget_y;
+                                theme_list.active_theme_button.translate_coordinates(theme_list, 0, 0, out widget_x, out widget_y);
+                        
+                                Gtk.Allocation rect;
+                                get_allocation(out rect);
+                                
+                                var adjust = scrolledwindow.get_vadjustment();
+                                adjust.set_value(widget_y - (rect.height - Constant.THEME_BUTTON_HEIGHT) / 2);
+                                
+                                return false;
+                            });
                     });
             
                 show_all();
