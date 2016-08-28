@@ -29,7 +29,8 @@
 file delete $argv0
 
 # Setup variables
-set timeout 10
+# Set timeout -1 to avoid remote server dis-connect.
+set timeout -1
 set user {<<USER>>}
 set server {<<SERVER>>}
 set password {<<PASSWORD>>}
