@@ -47,13 +47,11 @@ namespace Widgets {
         public Terminal term;
         public bool is_first_term; 
         public double zoom_factor = 1.0;
-        public signal void change_dir(string dir);
-        public signal void exit();
-        public signal void highlight_tab();
         public string current_dir;
         public string expect_file_path = "";
         public string? uri_at_right_press;
         public uint launch_idle_id;
+        public bool press_anything = false;
 
         public static string USERCHARS = "-[:alnum:]";
         public static string USERCHARS_CLASS = "[" + USERCHARS + "]";
@@ -73,6 +71,10 @@ namespace Widgets {
             "(?:mailto:)?" + USERCHARS_CLASS + "[" + USERCHARS + ".]*\\@" + HOSTCHARS_CLASS + "+\\." + HOST,
             "(?:news:|man:|info:)[[:alnum:]\\Q^_{|}~!\"#$%&'()*+,./;:=?`\\E]+"
         };
+        
+        public signal void change_dir(string dir);
+        public signal void exit();
+        public signal void highlight_tab();
         
         public Term(bool first_term, string? work_directory, WorkspaceManager manager) {
             Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
@@ -116,7 +118,7 @@ namespace Widgets {
 						// we will notify user if terminal is hide or cursor out of visible area.
 						var test = term.get_toplevel();
 						if (test != null) {
-							if (test.get_type().is_a(typeof(Window)) || test.get_type().is_a(typeof(QuakeWindow))) {
+							if (test.get_type().is_a(typeof(ConfigWindow))) {
 								Gtk.Adjustment vadj = term.get_vadjustment();
 								double value = vadj.get_value();
 								double page_size = vadj.get_page_size();
@@ -124,10 +126,10 @@ namespace Widgets {
 								
 								// Send notify when out of visible area.
 								if (value + page_size < upper) {
-									highlight_tab();
+                                    if (press_anything) {
+                                        highlight_tab();
+                                    }
 								}
-							} else {
-								highlight_tab();
 							}
 						}
                     }
@@ -510,6 +512,9 @@ namespace Widgets {
         }
         
         private bool on_key_press(Gtk.Widget widget, Gdk.EventKey key_event) {
+            // This variable use for highlight_tab.
+            press_anything = true;
+            
 			try {
                 string keyname = Keymap.get_keyevent_name(key_event);
                 
