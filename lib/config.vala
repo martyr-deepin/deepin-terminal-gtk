@@ -29,7 +29,6 @@ namespace Config {
         public ArrayList<string> backspace_key_erase_names;
 		public ArrayList<string> del_key_erase_names;
 		public ArrayList<string> encoding_names;
-		public ArrayList<string> theme_names;
 		public HashMap<string, string> erase_map;
 		public double default_opacity = 0.9;
 		public int default_size = 11;
@@ -44,9 +43,7 @@ namespace Config {
 			
             config_file = new KeyFile();
 
-			theme_names = Utils.list_files(Utils.get_theme_dir());
-			
-			backspace_key_erase_names = new ArrayList<string>();
+            backspace_key_erase_names = new ArrayList<string>();
 			string[] backspace_key_erase_list = {"ascii-del", "auto", "control-h", "escape-sequence", "tty"};
 			foreach (string name in backspace_key_erase_list) {
 				backspace_key_erase_names.add(name);
