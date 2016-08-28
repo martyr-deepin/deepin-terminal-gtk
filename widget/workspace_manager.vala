@@ -89,8 +89,17 @@ namespace Widgets {
             
                 show_all();
             } else {
-                ConfirmDialog dialog = new ConfirmDialog(_("Not enough space to create a workspace"), _("Close unused workspaces"), "", _("OK"));
-                dialog.transient_for_window((Widgets.ConfigWindow) (this.get_toplevel()));
+                try {
+                    GLib.AppInfo appinfo;
+                    if (work_directory != null) {
+                        appinfo = GLib.AppInfo.create_from_commandline("deepin-terminal --work-directory=%s".printf(work_directory), null, GLib.AppInfoCreateFlags.NONE);
+                    } else {
+                        appinfo = GLib.AppInfo.create_from_commandline("deepin-terminal", null, GLib.AppInfoCreateFlags.NONE);
+                    }
+                    appinfo.launch(null, null);
+                } catch (GLib.Error e) {
+                    print("new_workspace: %s\n", e.message);
+                }
             }
         }
         
