@@ -122,6 +122,7 @@ namespace Widgets {
                 });
             search_next_button.button_press_event.connect((w, e) => {
                     if (search_text != "") {
+                        update_search_text();
                         terminal.term.search_find_next();
                     }
                         
@@ -129,6 +130,7 @@ namespace Widgets {
                 });
             search_previous_button.button_press_event.connect((w, e) => {
                     if (search_text != "") {
+                        update_search_text();
                         terminal.term.search_find_previous();
                     }
                         

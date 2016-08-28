@@ -473,6 +473,7 @@ namespace Widgets {
             
             if (terminal_before_popup != null) {
                 terminal_before_popup.focus_term();
+                terminal_before_popup.term.unselect_all();
                 terminal_before_popup = null;
             }
         }
