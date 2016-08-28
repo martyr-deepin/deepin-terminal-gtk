@@ -50,7 +50,6 @@ namespace Widgets {
         private int add_button_width = 50;
         private int close_button_padding_min_x = 21;
         private int close_button_padding_x = 28;
-        private int draw_padding_y = 7;
         private int hover_x = 0;
         private int tab_split_width = 1;
         private int text_padding_min_x = 10;
@@ -454,6 +453,7 @@ namespace Widgets {
             }
             
             int max_tab_width = 0;
+            int max_tab_height = 0;
             foreach (int tab_id in tab_list) {
                 var layout = create_pango_layout(tab_name_map.get(tab_id));
                 layout.set_font_description(font_description);
@@ -461,6 +461,8 @@ namespace Widgets {
                 layout.get_pixel_size(out name_width, out name_height);
                 name_scale_width = (int) (name_width * draw_scale);
                 int tab_width = (int) (get_tab_width(name_width) * draw_scale);
+                
+                max_tab_height = int.max(max_tab_height, name_height);
                 
 				Gdk.RGBA tab_text_color;
                 
@@ -541,11 +543,13 @@ namespace Widgets {
                         is_hover = true;
                     }
                 }
+                
+                int text_render_y = (alloc.height - max_tab_height) / 2;
                 if (is_hover) {
-                    cr.rectangle(draw_x, draw_padding_y, tab_width - get_tab_close_button_padding() - hover_clip_right_offset, height);
+                    cr.rectangle(draw_x, text_render_y, tab_width - get_tab_close_button_padding() - hover_clip_right_offset, height);
                     cr.clip();
                 }
-                Draw.draw_layout(cr, layout, draw_x + get_tab_text_padding(), draw_padding_y);
+                Draw.draw_layout(cr, layout, draw_x + get_tab_text_padding(), text_render_y);
                 cr.restore();
                 
                 draw_x += tab_width;
