@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-27 19:02+0800\n"
+"POT-Creation-Date: 2016-08-28 09:05+0800\n"
 "PO-Revision-Date: 2016-08-22 00:55+0800\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -67,7 +67,7 @@ msgstr "基础"
 
 #: ../widget/remote_server_dialog.vala:321
 #: ../widget/remote_server_dialog.vala:393 ../widget/confirm_dialog.vala:134
-#: ../widget/terminal.vala:349 ../widget/terminal.vala:377
+#: ../widget/terminal.vala:345 ../widget/terminal.vala:373
 msgid "Cancel"
 msgstr "取消"
 
@@ -75,10 +75,6 @@ msgstr "取消"
 #: ../widget/config_window.vala:245
 msgid "Close other windows"
 msgstr "关闭其他窗口"
-
-#: ../widget/workspace_manager.vala:92
-msgid "Close unused workspaces"
-msgstr "关闭一些不用的工作区"
 
 #: ../widget/preference.vala:302 ../widget/terminal.vala:242
 #: ../widget/config_window.vala:244
@@ -156,7 +152,7 @@ msgstr "显示帮助信息"
 msgid "Display shortcuts"
 msgstr "显示快捷键"
 
-#: ../widget/terminal.vala:265
+#: ../widget/terminal.vala:264
 msgid "Download file"
 msgstr "下载文件"
 
@@ -225,14 +221,6 @@ msgstr "下一个工作区"
 msgid "Normal window"
 msgstr "正常窗口"
 
-#: ../widget/workspace_manager.vala:92
-msgid "Not enough space to create a workspace"
-msgstr "没有足够的空间新建工作区"
-
-#: ../widget/workspace_manager.vala:92
-msgid "OK"
-msgstr "确认"
-
 #: ../widget/preference.vala:126
 msgid "Opacity"
 msgstr "透明度"
@@ -278,7 +266,7 @@ msgstr "终端仍然有程序在运行"
 msgid "Quake mode"
 msgstr "雷神模式"
 
-#: ../widget/preference.vala:313 ../widget/terminal.vala:261
+#: ../widget/preference.vala:313 ../widget/terminal.vala:260
 #: ../widget/config_window.vala:261 ../widget/appbar.vala:95
 msgid "Remote management"
 msgstr "远程管理"
@@ -323,7 +311,7 @@ msgstr "输出时滚动"
 msgid "Search"
 msgstr "搜索"
 
-#: ../widget/terminal.vala:378
+#: ../widget/terminal.vala:374
 msgid "Select"
 msgstr "选择"
 
@@ -331,11 +319,11 @@ msgstr "选择"
 msgid "Select all"
 msgstr "全选"
 
-#: ../widget/terminal.vala:376
+#: ../widget/terminal.vala:372
 msgid "Select directory to save download file"
 msgstr "选择下载文件的保存目录"
 
-#: ../widget/terminal.vala:348
+#: ../widget/terminal.vala:344
 msgid "Select file to upload"
 msgstr "选择要上传的文件"
 
@@ -368,7 +356,7 @@ msgstr "服务器名"
 msgid "Set the terminal startup directory"
 msgstr "设置终端的启动目录"
 
-#: ../widget/terminal.vala:270 ../widget/appbar.vala:97
+#: ../widget/terminal.vala:269 ../widget/appbar.vala:97
 msgid "Settings"
 msgstr "设置"
 
@@ -380,7 +368,7 @@ msgstr "快捷键"
 msgid "Switch fullscreen"
 msgstr "切换全屏"
 
-#: ../widget/terminal.vala:260 ../widget/appbar.vala:94
+#: ../widget/appbar.vala:94
 msgid "Switch theme"
 msgstr "切换主题"
 
@@ -393,15 +381,15 @@ msgstr "终端"
 msgid "Theme"
 msgstr "主题"
 
-#: ../widget/terminal.vala:389
+#: ../widget/terminal.vala:385
 msgid "Type path for download file"
 msgstr "请输入下载文件的路径"
 
-#: ../widget/terminal.vala:351
+#: ../widget/terminal.vala:347
 msgid "Upload"
 msgstr "上传"
 
-#: ../widget/terminal.vala:264
+#: ../widget/terminal.vala:263
 msgid "Upload file"
 msgstr "上传文件"
 

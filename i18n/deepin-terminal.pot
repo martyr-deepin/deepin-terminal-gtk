@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-27 19:02+0800\n"
+"POT-Creation-Date: 2016-08-28 09:05+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,17 +67,13 @@ msgstr ""
 
 #: ../widget/remote_server_dialog.vala:321
 #: ../widget/remote_server_dialog.vala:393 ../widget/confirm_dialog.vala:134
-#: ../widget/terminal.vala:349 ../widget/terminal.vala:377
+#: ../widget/terminal.vala:345 ../widget/terminal.vala:373
 msgid "Cancel"
 msgstr ""
 
 #: ../widget/preference.vala:303 ../widget/terminal.vala:243
 #: ../widget/config_window.vala:245
 msgid "Close other windows"
-msgstr ""
-
-#: ../widget/workspace_manager.vala:92
-msgid "Close unused workspaces"
 msgstr ""
 
 #: ../widget/preference.vala:302 ../widget/terminal.vala:242
@@ -153,7 +149,7 @@ msgstr ""
 msgid "Display shortcuts"
 msgstr ""
 
-#: ../widget/terminal.vala:265
+#: ../widget/terminal.vala:264
 msgid "Download file"
 msgstr ""
 
@@ -222,14 +218,6 @@ msgstr ""
 msgid "Normal window"
 msgstr ""
 
-#: ../widget/workspace_manager.vala:92
-msgid "Not enough space to create a workspace"
-msgstr ""
-
-#: ../widget/workspace_manager.vala:92
-msgid "OK"
-msgstr ""
-
 #: ../widget/preference.vala:126
 msgid "Opacity"
 msgstr ""
@@ -275,7 +263,7 @@ msgstr ""
 msgid "Quake mode"
 msgstr ""
 
-#: ../widget/preference.vala:313 ../widget/terminal.vala:261
+#: ../widget/preference.vala:313 ../widget/terminal.vala:260
 #: ../widget/config_window.vala:261 ../widget/appbar.vala:95
 msgid "Remote management"
 msgstr ""
@@ -320,7 +308,7 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: ../widget/terminal.vala:378
+#: ../widget/terminal.vala:374
 msgid "Select"
 msgstr ""
 
@@ -328,11 +316,11 @@ msgstr ""
 msgid "Select all"
 msgstr ""
 
-#: ../widget/terminal.vala:376
+#: ../widget/terminal.vala:372
 msgid "Select directory to save download file"
 msgstr ""
 
-#: ../widget/terminal.vala:348
+#: ../widget/terminal.vala:344
 msgid "Select file to upload"
 msgstr ""
 
@@ -365,7 +353,7 @@ msgstr ""
 msgid "Set the terminal startup directory"
 msgstr ""
 
-#: ../widget/terminal.vala:270 ../widget/appbar.vala:97
+#: ../widget/terminal.vala:269 ../widget/appbar.vala:97
 msgid "Settings"
 msgstr ""
 
@@ -377,7 +365,7 @@ msgstr ""
 msgid "Switch fullscreen"
 msgstr ""
 
-#: ../widget/terminal.vala:260 ../widget/appbar.vala:94
+#: ../widget/appbar.vala:94
 msgid "Switch theme"
 msgstr ""
 
@@ -390,15 +378,15 @@ msgstr ""
 msgid "Theme"
 msgstr ""
 
-#: ../widget/terminal.vala:389
+#: ../widget/terminal.vala:385
 msgid "Type path for download file"
 msgstr ""
 
-#: ../widget/terminal.vala:351
+#: ../widget/terminal.vala:347
 msgid "Upload"
 msgstr ""
 
-#: ../widget/terminal.vala:264
+#: ../widget/terminal.vala:263
 msgid "Upload file"
 msgstr ""
 
