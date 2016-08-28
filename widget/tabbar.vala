@@ -399,14 +399,18 @@ namespace Widgets {
                 int name_width, name_height;
                 layout.get_pixel_size(out name_width, out name_height);
                 
-                tab_width += get_tab_width(name_width);
+                tab_width += get_tab_render_width(name_width);
             }
             
             if (tab_width + tab_add_button_width > alloc.width) {
-                draw_scale = (double) alloc.width / (tab_width + tab_add_button_width) * 0.97;
+                draw_scale = (double) alloc.width / (tab_width + tab_add_button_width);
             } else {
                 draw_scale = 1.0;
             }
+        }
+        
+        public int get_tab_render_width(int name_width) {
+            return name_width + text_padding_x * 2;
         }
         
         public bool on_draw(Gtk.Widget widget, Cairo.Context cr) {
