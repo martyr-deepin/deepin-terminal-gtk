@@ -280,10 +280,8 @@ namespace Widgets {
             int draw_x = 0;
             int counter = 0;
             foreach (int tab_id in tab_list) {
-                var layout = create_pango_layout(tab_name_map.get(tab_id));
-                layout.set_font_description(font_description);
                 int name_width, name_height;
-                layout.get_pixel_size(out name_width, out name_height);
+                get_text_size(tab_name_map.get(tab_id), out name_width, out name_height);
                 int tab_width = (int) (get_tab_width(name_width) * draw_scale);
 
                 if (press_x > draw_x && press_x < draw_x + tab_width - get_tab_close_button_padding()) {
@@ -314,10 +312,8 @@ namespace Widgets {
             int draw_x = 0;
             int counter = 0;
             foreach (int tab_id in tab_list) {
-                var layout = create_pango_layout(tab_name_map.get(tab_id));
-                layout.set_font_description(font_description);
                 int name_width, name_height;
-                layout.get_pixel_size(out name_width, out name_height);
+                get_text_size(tab_name_map.get(tab_id), out name_width, out name_height);
                 int tab_width = (int) (get_tab_width(name_width) * draw_scale);
 
                 if (release_x > draw_x && release_x < draw_x + tab_width) {
@@ -348,10 +344,8 @@ namespace Widgets {
             int draw_x = 0;
             int counter = 0;
             foreach (int tab_id in tab_list) {
-                var layout = create_pango_layout(tab_name_map.get(tab_id));
-                layout.set_font_description(font_description);
                 int name_width, name_height;
-                layout.get_pixel_size(out name_width, out name_height);
+                get_text_size(tab_name_map.get(tab_id), out name_width, out name_height);
                 int tab_width = (int) (get_tab_width(name_width) * draw_scale);
 
                 if (x > draw_x && x < draw_x + tab_width) {
@@ -393,10 +387,8 @@ namespace Widgets {
             int tab_add_button_width = add_button_width + add_button_padding_x * 2;
             int tab_width = 0;
             foreach (int tab_id in tab_list) {
-                var layout = create_pango_layout(tab_name_map.get(tab_id));
-                layout.set_font_description(font_description);
                 int name_width, name_height;
-                layout.get_pixel_size(out name_width, out name_height);
+                get_text_size(tab_name_map.get(tab_id), out name_width, out name_height);
                 
                 tab_width += get_tab_render_width(name_width);
             }
@@ -422,11 +414,9 @@ namespace Widgets {
             int draw_x = 0;
             int counter = 0;
             foreach (int tab_id in tab_list) {
-                var layout = create_pango_layout(tab_name_map.get(tab_id));
-                layout.set_font_description(font_description);
-                int name_width, name_height, name_scale_width;
-                layout.get_pixel_size(out name_width, out name_height);
-                name_scale_width = (int) (name_width * draw_scale);
+                int name_width, name_height;
+                get_text_size(tab_name_map.get(tab_id), out name_width, out name_height);
+                
                 int tab_width = (int) (get_tab_width(name_width) * draw_scale);
                 
                 if (is_light_theme) {
@@ -455,11 +445,9 @@ namespace Widgets {
             int max_tab_width = 0;
             int max_tab_height = 0;
             foreach (int tab_id in tab_list) {
-                var layout = create_pango_layout(tab_name_map.get(tab_id));
-                layout.set_font_description(font_description);
-                int name_width, name_height, name_scale_width;
-                layout.get_pixel_size(out name_width, out name_height);
-                name_scale_width = (int) (name_width * draw_scale);
+                int name_width, name_height;
+                var layout = get_text_size(tab_name_map.get(tab_id), out name_width, out name_height);
+                
                 int tab_width = (int) (get_tab_width(name_width) * draw_scale);
                 
                 max_tab_height = int.max(max_tab_height, name_height);
@@ -605,6 +593,14 @@ namespace Widgets {
             press_tab(tab_index, tab_list.get(tab_index));
                 
             queue_draw();
+        }
+        
+        public Pango.Layout get_text_size(string text, out int width, out int height) {
+            var layout = create_pango_layout(text);
+            layout.set_font_description(font_description);
+            layout.get_pixel_size(out width, out height);
+            
+            return layout;
         }
     }
 }
