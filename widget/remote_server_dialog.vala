@@ -387,11 +387,13 @@ namespace Widgets {
             if (server_info != null) {
                 delete_server_button = Widgets.create_delete_button(_("Delete server"));
                 delete_server_button.click.connect((w) => {
+                        this.hide();
+                        
                         var server_name = name_entry.get_text();
                         if (server_name.length > max_server_name_length) {
                             server_name = server_name.substring(0, max_server_name_length) + " ... "; 
                         }
-                        print("%s\n", server_name);
+                        
                         var confirm_dialog = new Widgets.ConfirmDialog(
                             _("Delete server"), 
                             "%s %s?".printf(_("Are you sure to delete"), server_name), 
@@ -405,8 +407,6 @@ namespace Widgets {
                                 delete_server(address_entry.get_text(), user_entry.get_text());
                                 this.destroy();
                             });
-
-                        this.hide();
                     });
                 server_action_box.pack_start(delete_server_button, true, true, 0);
             }
