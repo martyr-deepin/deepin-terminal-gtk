@@ -44,6 +44,7 @@ namespace Widgets {
         public WorkspaceManager workspace_manager;
         public int close_button_margin_right = 5;
         public int logo_width = 48;
+        public int titlebar_right_cache_width = 10;
         
         public signal void close_window();
         public signal void quit_fullscreen();
@@ -143,6 +144,9 @@ namespace Widgets {
             max_toggle_box.add(max_button);
 
             box.pack_start(tabbar, true, true, 0);
+            var cache_area = new Gtk.EventBox();
+            cache_area.set_size_request(titlebar_right_cache_width, -1);
+            box.pack_start(cache_area, false, false, 0);
             box.pack_start(window_button_box, false, false, 0);
             box.pack_start(window_close_button_box, false, false, 0);
             close_button.margin_end = close_button_margin_right;

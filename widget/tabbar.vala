@@ -46,13 +46,10 @@ namespace Widgets {
         private bool draw_hover = false;
         private bool is_button_press = false;
         private double draw_scale = 1.0;
-        private int add_button_padding_x = 0;
         private int add_button_width = 50;
-        private int close_button_padding_min_x = 21;
         private int close_button_padding_x = 28;
         private int hover_x = 0;
         private int tab_split_width = 1;
-        private int text_padding_min_x = 10;
         private int text_padding_x = 20;
         public ArrayList<int> tab_list;
         public Gdk.RGBA hover_arrow_color;
@@ -282,7 +279,7 @@ namespace Widgets {
             foreach (int tab_id in tab_list) {
                 int name_width, name_height;
                 get_text_size(tab_name_map.get(tab_id), out name_width, out name_height);
-                int tab_width = (int) (get_tab_width(name_width) * draw_scale);
+                int tab_width = get_tab_width(name_width);
 
                 if (press_x > draw_x && press_x < draw_x + tab_width - get_tab_close_button_padding()) {
                     select_nth_tab(counter);
@@ -314,7 +311,7 @@ namespace Widgets {
             foreach (int tab_id in tab_list) {
                 int name_width, name_height;
                 get_text_size(tab_name_map.get(tab_id), out name_width, out name_height);
-                int tab_width = (int) (get_tab_width(name_width) * draw_scale);
+                int tab_width = get_tab_width(name_width);
 
                 if (release_x > draw_x && release_x < draw_x + tab_width) {
                     if (release_x > draw_x + tab_width - get_tab_close_button_padding()) {
@@ -328,7 +325,7 @@ namespace Widgets {
                 counter++;
             }
             
-            if (release_x > draw_x + add_button_padding_x && release_x < draw_x + add_button_padding_x + add_button_width) {
+            if (release_x > draw_x && release_x < draw_x + add_button_width) {
                 new_tab();
             }
             
@@ -346,7 +343,7 @@ namespace Widgets {
             foreach (int tab_id in tab_list) {
                 int name_width, name_height;
                 get_text_size(tab_name_map.get(tab_id), out name_width, out name_height);
-                int tab_width = (int) (get_tab_width(name_width) * draw_scale);
+                int tab_width = get_tab_width(name_width);
 
                 if (x > draw_x && x < draw_x + tab_width) {
                     if (x > draw_x + tab_width - get_tab_close_button_padding()) {
@@ -384,7 +381,6 @@ namespace Widgets {
             Gtk.Allocation alloc;
             this.get_allocation(out alloc);
             
-            int tab_add_button_width = add_button_width + add_button_padding_x * 2;
             int tab_width = 0;
             foreach (int tab_id in tab_list) {
                 int name_width, name_height;
@@ -393,8 +389,10 @@ namespace Widgets {
                 tab_width += get_tab_render_width(name_width);
             }
             
-            if (tab_width + tab_add_button_width > alloc.width) {
-                draw_scale = (double) alloc.width / (tab_width + tab_add_button_width);
+            if (tab_width + add_button_width > alloc.width) {
+                // FIXEME: I know 0.97 is magic number, this number avoid add_button render out of area of tabbar.
+                // Welcome to fix this.
+                draw_scale = (double) alloc.width / (tab_width + add_button_width) * 0.97;
             } else {
                 draw_scale = 1.0;
             }
@@ -417,7 +415,7 @@ namespace Widgets {
                 int name_width, name_height;
                 get_text_size(tab_name_map.get(tab_id), out name_width, out name_height);
                 
-                int tab_width = (int) (get_tab_width(name_width) * draw_scale);
+                int tab_width = get_tab_width(name_width);
                 
                 if (is_light_theme) {
                     Utils.set_context_color(cr, tab_split_light_color);
@@ -448,7 +446,7 @@ namespace Widgets {
                 int name_width, name_height;
                 var layout = get_text_size(tab_name_map.get(tab_id), out name_width, out name_height);
                 
-                int tab_width = (int) (get_tab_width(name_width) * draw_scale);
+                int tab_width = get_tab_width(name_width);
                 
                 max_tab_height = int.max(max_tab_height, name_height);
                 
@@ -550,25 +548,25 @@ namespace Widgets {
             // Don't allowed add tab when scale too small.
             allowed_add_tab = max_tab_width > min_tab_width || draw_scale >= 1.0;
             
-            if (hover_x > draw_x + add_button_padding_x && hover_x < draw_x + add_button_padding_x + add_button_width) {
+            if (hover_x > draw_x && hover_x < draw_x + add_button_width) {
                 if (is_button_press) {
                     if (is_light_theme) {
-                        Draw.draw_surface(cr, add_press_light_surface, draw_x + add_button_padding_x, 0, 0, height);
+                        Draw.draw_surface(cr, add_press_light_surface, draw_x, 0, 0, height);
                     } else {
-                        Draw.draw_surface(cr, add_press_dark_surface, draw_x + add_button_padding_x, 0, 0, height);
+                        Draw.draw_surface(cr, add_press_dark_surface, draw_x, 0, 0, height);
                     }
                 } else if (draw_hover) {
                     if (is_light_theme) {
-                        Draw.draw_surface(cr, add_hover_light_surface, draw_x + add_button_padding_x, 0, 0, height);
+                        Draw.draw_surface(cr, add_hover_light_surface, draw_x, 0, 0, height);
                     } else {
-                        Draw.draw_surface(cr, add_hover_dark_surface, draw_x + add_button_padding_x, 0, 0, height);
+                        Draw.draw_surface(cr, add_hover_dark_surface, draw_x, 0, 0, height);
                     }
                 }
             } else {
                 if (is_light_theme) {
-                    Draw.draw_surface(cr, add_normal_light_surface, draw_x + add_button_padding_x, 0, 0, height);
+                    Draw.draw_surface(cr, add_normal_light_surface, draw_x, 0, 0, height);
                 } else {
-                    Draw.draw_surface(cr, add_normal_dark_surface, draw_x + add_button_padding_x, 0, 0, height);
+                    Draw.draw_surface(cr, add_normal_dark_surface, draw_x, 0, 0, height);
                 }
             }
             
@@ -576,15 +574,15 @@ namespace Widgets {
         }
 
         public int get_tab_width(int name_width) {
-            return name_width + get_tab_text_padding() * 2;
+            return (int) ((name_width + get_tab_text_padding() * 2) * draw_scale);
         }
         
         public int get_tab_text_padding() {
-            return int.max(text_padding_min_x, (int) (text_padding_x * draw_scale));
+            return text_padding_x;
         }
         
         public int get_tab_close_button_padding() {
-            return int.max(close_button_padding_min_x, (int) (close_button_padding_x * draw_scale));
+            return close_button_padding_x;
         }
         
         public void switch_tab(int new_index) {
