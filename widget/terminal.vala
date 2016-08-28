@@ -382,7 +382,8 @@ namespace Widgets {
                         press_ctrl_k();
                         
                         GLib.Timeout.add(100, () => {
-                                string command = "read -e -p \"%s: \" file; sz $file\n".printf(_("Type path for download file"));
+                                // NOTE: Use quote around $file to avoid escape filepath.
+                                string command = "read -e -p \"%s: \" file; sz \"$file\"\n".printf(_("Type path for download file"));
                                 this.term.feed_child(command, command.length);
                                 
                                 enter_sz_command = true;
@@ -398,21 +399,27 @@ namespace Widgets {
         }
         
         public void execute_download() {
-            // Switch to zssh local directory.
-            press_ctrl_at();
-            
-            GLib.Timeout.add(100, () => {
-                    // Switch directory in zssh.
-                    string switch_command = "cd %s\n".printf(save_file_directory);
-                    this.term.feed_child(switch_command, switch_command.length);
-                    
-                    // Do rz command to download file.
+            // Sleep 1 second to wait sz command execute.
+            GLib.Timeout.add(1000, () => {
+                    // Switch to zssh local directory.
+                    press_ctrl_at();
+
+                    // Sleep 100 millseconds to wait zssh switch local directory.
                     GLib.Timeout.add(100, () => {
-                            string download_command = "rz\n";
-                            this.term.feed_child(download_command, download_command.length);
+                            // Switch directory in zssh.
+                            string switch_command = "cd %s\n".printf(save_file_directory);
+                            this.term.feed_child(switch_command, switch_command.length);
+                    
+                            // Do rz command to download file.
+                            GLib.Timeout.add(100, () => {
+                                    string download_command = "rz\n";
+                                    this.term.feed_child(download_command, download_command.length);
                 
+                                    return false;
+                                });
                             return false;
                         });
+                    
                     return false;
                     });
         }
