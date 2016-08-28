@@ -71,6 +71,9 @@ namespace Widgets {
             });
             
             motion_notify_event.connect((w, e) => {
+                    // Make sure reset window cursor when enter in window event area.
+                    get_toplevel().get_window().set_cursor(null);
+                    
                     var child = get_child_at_pos(drawing_area, (int) e.x, (int) e.y);
                     child_before_leave = child;
                     
