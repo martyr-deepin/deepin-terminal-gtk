@@ -117,7 +117,7 @@ namespace Widgets {
             search_entry.changed.connect((w) => {
                     if (search_text != "") {
                         update_search_text();
-                        terminal.term.search_find_previous();
+                        terminal.term.search_find_next();
                     }
                 });
             search_next_button.button_press_event.connect((w, e) => {
@@ -143,7 +143,11 @@ namespace Widgets {
             search_text = entry_text;
                 
             try {
-                var regex = new Regex(Regex.escape_string(search_text), RegexCompileFlags.CASELESS | RegexCompileFlags.MULTILINE, 0);
+                GLib.RegexCompileFlags flags = GLib.RegexCompileFlags.OPTIMIZE;
+                flags |= GLib.RegexCompileFlags.CASELESS;
+                string pattern = GLib.Regex.escape_string(search_text);
+                
+                var regex = new Regex(pattern, flags, 0);
                 terminal.term.search_set_gregex(regex, 0);
                 terminal.term.search_set_wrap_around(true);
             } catch (GLib.RegexError e) {
