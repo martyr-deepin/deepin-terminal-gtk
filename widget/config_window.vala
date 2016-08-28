@@ -222,11 +222,12 @@ namespace Widgets {
             
                 builder.begin_array();
     
+                var select_workspace_key = config.config_file.get_string("shortcut", "select_workspace");
                 insert_shortcut_key(builder, _("New workspace"), config.config_file.get_string("shortcut", "new_workspace"));;
                 insert_shortcut_key(builder, _("Close workspace"), config.config_file.get_string("shortcut", "close_workspace"));;
                 insert_shortcut_key(builder, _("Next workspace"), config.config_file.get_string("shortcut", "next_workspace"));;
                 insert_shortcut_key(builder, _("Previous workspace"), config.config_file.get_string("shortcut", "previous_workspace"));;
-                insert_shortcut_key(builder, _("Select workspace"), "Alt + 1 ~ Alt + 9");;
+                insert_shortcut_key(builder, _("Select workspace"), "%s + 1 ~ %s + 9".printf(select_workspace_key, select_workspace_key));;
                 insert_shortcut_key(builder, _("Vertical split"), config.config_file.get_string("shortcut", "vertical_split"));;
                 insert_shortcut_key(builder, _("Horizontal split"), config.config_file.get_string("shortcut", "horizontal_split"));;
                 insert_shortcut_key(builder, _("Select upper window"), config.config_file.get_string("shortcut", "select_upper_window"));;
@@ -300,7 +301,17 @@ namespace Widgets {
         private bool on_key_press(Gtk.Widget widget, Gdk.EventKey key_event) {
             try {
                 string keyname = Keymap.get_keyevent_name(key_event);
-                string[] select_workspace_shortcuts = {"Alt + 1", "Alt + 2", "Alt + 3", "Alt + 4", "Alt + 5", "Alt + 6", "Alt + 7", "Alt + 8", "Alt + 9"};
+                var select_workspace_key = config.config_file.get_string("shortcut", "select_workspace");
+                string[] select_workspace_shortcuts = {
+                    "%s + 1".printf(select_workspace_key), 
+                    "%s + 2".printf(select_workspace_key), 
+                    "%s + 3".printf(select_workspace_key), 
+                    "%s + 4".printf(select_workspace_key), 
+                    "%s + 5".printf(select_workspace_key), 
+                    "%s + 6".printf(select_workspace_key), 
+                    "%s + 7".printf(select_workspace_key), 
+                    "%s + 8".printf(select_workspace_key), 
+                    "%s + 9".printf(select_workspace_key)};
             
                 KeyFile config_file = config.config_file;
 		    
