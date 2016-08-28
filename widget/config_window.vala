@@ -107,12 +107,6 @@ namespace Widgets {
                     return false;
                 });
             
-            draw.connect((w) => {
-                    print("**********************\n");
-                    
-                    return false;
-                });
-            
             init_active_tab_underline(tabbar);
         }
         
@@ -127,8 +121,7 @@ namespace Widgets {
                     if (tab_x != active_tab_underline_x || tab_width != active_tab_underline_width) {
                         active_tab_underline_x = x + offset_x;
                         active_tab_underline_width = width;
-					
-                        print("init_active_tab_underline\n");
+                        
                         redraw_window();
                     }
                 });
@@ -138,8 +131,7 @@ namespace Widgets {
             config = new Config.Config();
             config.update.connect((w) => {
                     update_terminal(this);
-                        
-                    print("load_config\n");
+                    
                     redraw_window();
                 });
         }
@@ -518,7 +510,6 @@ namespace Widgets {
         }
         
         public void redraw_window() {
-            print("########################\n");
             queue_draw();
         }
     }
