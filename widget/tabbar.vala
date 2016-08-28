@@ -449,7 +449,7 @@ namespace Widgets {
                 print("Tabbar draw: %s\n", e.message);
             }
             
-            int tab_min_width = 100000;
+            int max_tab_width = 0;
             foreach (int tab_id in tab_list) {
                 var layout = create_pango_layout(tab_name_map.get(tab_id));
                 layout.set_font_description(font_description);
@@ -546,13 +546,13 @@ namespace Widgets {
                 
                 draw_x += tab_width;
                 
-                tab_min_width = int.min(tab_min_width, tab_width);
+                max_tab_width = int.max(max_tab_width, tab_width);
                 
                 counter++;
             }
             
             // Don't allowed add tab when scale too small.
-            allowed_add_tab = tab_min_width > min_tab_width;
+            allowed_add_tab = max_tab_width > min_tab_width;
             
             if (hover_x > draw_x + add_button_padding_x && hover_x < draw_x + add_button_padding_x + add_button_width) {
                 if (is_button_press) {
