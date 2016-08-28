@@ -53,8 +53,8 @@ namespace Widgets {
         private int draw_padding_y = 7;
         private int hover_x = 0;
         private int tab_split_width = 1;
-        private int text_padding_min_x = 24;
-        private int text_padding_x = 36;
+        private int text_padding_min_x = 10;
+        private int text_padding_x = 20;
         public ArrayList<int> tab_list;
         public Gdk.RGBA hover_arrow_color;
         public Gdk.RGBA inactive_arrow_color;
@@ -70,6 +70,7 @@ namespace Widgets {
         public int height = Constant.TITLEBAR_HEIGHT;
         public int tab_index = 0;
         public int min_tab_width = 70;
+        public int hover_clip_right_offset = 6;
         
 		public signal void update_tab_underline(int x, int width);
 		public signal void press_tab(int tab_index, int tab_id);
@@ -530,8 +531,17 @@ namespace Widgets {
                 clip_rectangle(cr, draw_x + get_tab_text_padding(), 0, tab_width - get_tab_text_padding() * 2, height);
                 
                 Utils.set_context_color(cr, tab_text_color);
+                var is_hover = false;
+                if (draw_hover) {
+                    if (hover_x > draw_x && hover_x < draw_x + tab_width) {
+                        is_hover = true;
+                    }
+                }
+                if (is_hover) {
+                    cr.rectangle(draw_x, draw_padding_y, tab_width - get_tab_close_button_padding() - hover_clip_right_offset, height);
+                    cr.clip();
+                }
                 Draw.draw_layout(cr, layout, draw_x + get_tab_text_padding(), draw_padding_y);
-                
                 cr.restore();
                 
                 draw_x += tab_width;
