@@ -111,6 +111,12 @@ namespace Widgets {
                 });
             search_entry.activate.connect((w) => {
                     if (search_text != "") {
+                        terminal.term.search_find_next();
+                    }
+                });
+            search_entry.changed.connect((w) => {
+                    if (search_text != "") {
+                        update_search_text();
                         terminal.term.search_find_previous();
                     }
                 });
@@ -132,17 +138,16 @@ namespace Widgets {
         
         public void update_search_text() {
             string entry_text = search_entry.get_text().strip();
-            if (search_text != entry_text) {
-                search_text = entry_text;
+            search_text = entry_text;
                 
-                try {
-                    var regex = new Regex(Regex.escape_string(search_text), RegexCompileFlags.CASELESS);
-                    terminal.term.search_set_gregex(regex, 0);
-                    terminal.term.search_set_wrap_around(true);
-                } catch (GLib.RegexError e) {
-                    stdout.printf("Got error %s", e.message);
-                }
+            try {
+                var regex = new Regex(Regex.escape_string(search_text), RegexCompileFlags.CASELESS | RegexCompileFlags.MULTILINE, 0);
+                terminal.term.search_set_gregex(regex, 0);
+                terminal.term.search_set_wrap_around(true);
+            } catch (GLib.RegexError e) {
+                stdout.printf("Got error %s", e.message);
             }
+
         }
 
         public void adjust_css_with_theme(Widgets.ConfigWindow config_window) {
