@@ -256,10 +256,10 @@ namespace Widgets {
             content_box.pack_start(font_grid, false, false, 0);
             
 			int num;
-			string[] mono_fonts = (string[]) list_mono_fonts(out num);
+			string[] mono_or_dot_fonts = (string[]) list_mono_or_dot_fonts(out num);
 			font_names = new ArrayList<string>();
 			for (int i = 0; i < num; i++) {
-				font_names.add(mono_fonts[i]);
+				font_names.add(mono_or_dot_fonts[i]);
 			}
 			
             create_combox_row(font_label, font_combox, "%s:".printf(_("Font")), font_grid, font_names, "general", "font");

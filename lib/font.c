@@ -28,7 +28,7 @@
 #include <string.h>
 #include <glib.h>
 
-gchar** list_mono_fonts(int* num) {
+gchar** list_mono_or_dot_fonts(int* num) {
     FcInit();
 	
     FcPattern *pat = FcPatternCreate();
@@ -67,7 +67,8 @@ gchar** list_mono_fonts(int* num) {
 	int j;
 	int count = 0;
 	for (j = 0; j < fs->nfont; j++) {
-	    if (strcmp((char*) FcPatternFormat(fs->fonts[j], (FcChar8*)"%{spacing}"), "100") == 0) {
+        /* spacing 100 is mono font, spacing 110 is dot font */
+	    if (strcmp((char*) FcPatternFormat(fs->fonts[j], (FcChar8*)"%{spacing}"), "100") == 0 || strcmp((char*) FcPatternFormat(fs->fonts[j], (FcChar8*)"%{spacing}"), "110") == 0) {
 		    /* Realloc was realloc(fonts, 0), and you have to take space for <char *> */
 		    fonts = realloc(fonts, (count + 1) * sizeof(gchar*));
 			if (fonts == NULL) {
@@ -160,7 +161,7 @@ gchar* font_match(gchar* family) {
 
 /* void main(int argc, char *argv[]) { */
 /*     int font_num = 0; */
-/*     char** fonts = list_mono_fonts(&font_num); */
+/*     char** fonts = list_mono_or_dot_fonts(&font_num); */
 	
 /* 	int i; */
 /* 	for (i = 0; i < font_num; i++) { */

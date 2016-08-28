@@ -27,7 +27,7 @@ using Gtk;
 
 extern char* project_path();
 extern string font_match(string family);
-extern string[] list_mono_fonts(out int num);
+extern string[] list_mono_or_dot_fonts(out int num);
 
 namespace Utils {
     public Gdk.RGBA hex_to_rgba(string hex_color, double alpha=1.0) {
