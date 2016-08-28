@@ -198,6 +198,7 @@ namespace Widgets {
                 port_label.set_text("%s:".printf(_("Port")));
                 port_label.get_style_context().add_class("preference_label");
                 port_entry = new Entry();
+                port_entry.set_placeholder_text(_("Required"));
                 if (server_info != null) {
                     port_entry.set_text(config_file.get_value(server_info, "Port"));
                 } else {
@@ -331,31 +332,35 @@ namespace Widgets {
                     });
                 confirm_button.clicked.connect((b) => {
                         if (server_info != null) {
-                            edit_server(address_entry.get_text(),
-                                        user_entry.get_text(),
-                                        password_button.entry.get_text(),
-                                        port_entry.get_text(),
-                                        parent_window.config.encoding_names[encode_box.get_active()],
-                                        path_entry.get_text(),
-                                        command_entry.get_text(),
-                                        name_entry.get_text(),
-                                        groupname_entry.get_text(),
-                                        parent_window.config.backspace_key_erase_names[backspace_key_box.get_active()],
-                                        parent_window.config.del_key_erase_names[del_key_box.get_active()]
-                                        );
+                            if (name_entry.get_text().strip() != "" && address_entry.get_text().strip() != "" && port_entry.get_text().strip() != "" && user_entry.get_text().strip() != "") {
+                                edit_server(address_entry.get_text(),
+                                            user_entry.get_text(),
+                                            password_button.entry.get_text(),
+                                            port_entry.get_text(),
+                                            parent_window.config.encoding_names[encode_box.get_active()],
+                                            path_entry.get_text(),
+                                            command_entry.get_text(),
+                                            name_entry.get_text(),
+                                            groupname_entry.get_text(),
+                                            parent_window.config.backspace_key_erase_names[backspace_key_box.get_active()],
+                                            parent_window.config.del_key_erase_names[del_key_box.get_active()]
+                                            );
+                            }
                         } else {
-                            add_server(address_entry.get_text(),
-                                       user_entry.get_text(),
-                                       password_button.entry.get_text(),
-                                       port_entry.get_text(),
-                                       parent_window.config.encoding_names[encode_box.get_active()],
-                                       path_entry.get_text(),
-                                       command_entry.get_text(),
-                                       name_entry.get_text(),
-                                       groupname_entry.get_text(),
-                                       parent_window.config.backspace_key_erase_names[backspace_key_box.get_active()],
-                                       parent_window.config.del_key_erase_names[del_key_box.get_active()]
-                                       );
+                            if (name_entry.get_text().strip() != "" && address_entry.get_text().strip() != "" && port_entry.get_text().strip() != "" && user_entry.get_text().strip() != "") {
+                                add_server(address_entry.get_text(),
+                                           user_entry.get_text(),
+                                           password_button.entry.get_text(),
+                                           port_entry.get_text(),
+                                           parent_window.config.encoding_names[encode_box.get_active()],
+                                           path_entry.get_text(),
+                                           command_entry.get_text(),
+                                           name_entry.get_text(),
+                                           groupname_entry.get_text(),
+                                           parent_window.config.backspace_key_erase_names[backspace_key_box.get_active()],
+                                           parent_window.config.del_key_erase_names[del_key_box.get_active()]
+                                           );
+                            }
                         }
                     });
                 

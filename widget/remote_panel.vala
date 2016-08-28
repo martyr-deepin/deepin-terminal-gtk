@@ -547,23 +547,23 @@ namespace Widgets {
                 server, address, username, password, port, 
                 encode, path, command, nickname, groupname, 
                 backspace_key, delete_key) => {
-                                                  try {
-                                                      // First, remove old server info from config file.
-                                                      if (config_file.has_group(server_info)) {
-                                                          config_file.remove_group(server_info);
-                                                          config_file.save_to_file(config_file_path);
-                                                      }
+                                                         try {
+                                                             // First, remove old server info from config file.
+                                                             if (config_file.has_group(server_info)) {
+                                                                 config_file.remove_group(server_info);
+                                                                 config_file.save_to_file(config_file_path);
+                                                             }
                                                       
-                                                      // Second, add new server info.
-                                                      add_server(address, username, password, port, encode, path, 
-                                                                 command, nickname, groupname, backspace_key, delete_key);
+                                                             // Second, add new server info.
+                                                             add_server(address, username, password, port, encode, path, 
+                                                                        command, nickname, groupname, backspace_key, delete_key);
                                                   
-                                                      func();
+                                                             func();
                                                       
-                                                      remote_server_dialog.destroy();
-                                                  } catch (Error e) {
-                                                      error ("%s", e.message);
-                                                  }
+                                                             remote_server_dialog.destroy();
+                                                         } catch (Error e) {
+                                                             error ("%s", e.message);
+                                                         }
                                               });
                                     
             remote_server_dialog.show_all();
@@ -603,9 +603,7 @@ namespace Widgets {
                     remote_server_dialog.transient_for_window(parent_window);
                     remote_server_dialog.add_server.connect((server, address, username, password, port, encode, path, command, nickname, groupname, backspace_key, delete_key) => {
                             add_server(address, username, password, port, encode, path, command, nickname, groupname, backspace_key, delete_key);
-                            
                             update_home_page();
-                            
                             remote_server_dialog.destroy();
                         });
                     remote_server_dialog.show_all();
