@@ -89,16 +89,19 @@ namespace Widgets {
             
                 show_all();
             } else {
-                try {
-                    GLib.AppInfo appinfo;
-                    if (work_directory != null) {
-                        appinfo = GLib.AppInfo.create_from_commandline("deepin-terminal --work-directory=%s".printf(work_directory), null, GLib.AppInfoCreateFlags.NONE);
-                    } else {
-                        appinfo = GLib.AppInfo.create_from_commandline("deepin-terminal", null, GLib.AppInfoCreateFlags.NONE);
+                var config_window = (Widgets.ConfigWindow) get_toplevel();
+                if (!config_window.quake_mode) {
+                    try {
+                        GLib.AppInfo appinfo;
+                        if (work_directory != null) {
+                            appinfo = GLib.AppInfo.create_from_commandline("deepin-terminal --work-directory=%s".printf(work_directory), null, GLib.AppInfoCreateFlags.NONE);
+                        } else {
+                            appinfo = GLib.AppInfo.create_from_commandline("deepin-terminal", null, GLib.AppInfoCreateFlags.NONE);
+                        }
+                        appinfo.launch(null, null);
+                    } catch (GLib.Error e) {
+                        print("new_workspace: %s\n", e.message);
                     }
-                    appinfo.launch(null, null);
-                } catch (GLib.Error e) {
-                    print("new_workspace: %s\n", e.message);
                 }
             }
         }
