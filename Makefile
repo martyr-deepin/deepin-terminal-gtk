@@ -113,4 +113,7 @@ install:
 
 clean:
 	rm -f main
+	rm -f main.vala.c
+	rm -f ./lib/*.vala.c
+	rm -f ./widget/*.vala.c
 
