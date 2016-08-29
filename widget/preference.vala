@@ -225,7 +225,7 @@ namespace Widgets {
             var basic_segement = get_first_segement(_("Basic"));
             content_box.pack_start(basic_segement, false, false, 0);
 
-            var theme_segement = get_second_segement(_("Theme"));
+            var theme_segement = get_second_segement(_("Interface"));
             content_box.pack_start(theme_segement, false, false, 0);
             
             var theme_grid = new Gtk.Grid();

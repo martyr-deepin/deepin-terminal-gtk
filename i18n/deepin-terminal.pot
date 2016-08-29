@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-29 12:57+0800\n"
+"POT-Creation-Date: 2016-08-29 19:05+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,11 +21,11 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:327
+#: ../widget/remote_server_dialog.vala:325
 msgid "Add"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:145
+#: ../widget/remote_server_dialog.vala:143
 msgid "Add Server"
 msgstr ""
 
@@ -33,8 +33,8 @@ msgstr ""
 msgid "Add server"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:102
-#: ../widget/remote_server_dialog.vala:185
+#: ../widget/remote_server_dialog.vala:101
+#: ../widget/remote_server_dialog.vala:183
 msgid "Address"
 msgstr ""
 
@@ -44,11 +44,11 @@ msgstr ""
 msgid "Advanced"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:312
+#: ../widget/remote_server_dialog.vala:310
 msgid "Advanced options"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:399
+#: ../widget/remote_server_dialog.vala:397
 msgid "Are you sure to delete"
 msgstr ""
 
@@ -56,8 +56,8 @@ msgstr ""
 msgid "Are you sure to exit?"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:102
-#: ../widget/remote_server_dialog.vala:296
+#: ../widget/remote_server_dialog.vala:101
+#: ../widget/remote_server_dialog.vala:294
 msgid "Backspace key"
 msgstr ""
 
@@ -65,8 +65,8 @@ msgstr ""
 msgid "Basic"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:322
-#: ../widget/remote_server_dialog.vala:400 ../widget/confirm_dialog.vala:134
+#: ../widget/remote_server_dialog.vala:320
+#: ../widget/remote_server_dialog.vala:398 ../widget/confirm_dialog.vala:134
 #: ../widget/terminal.vala:347 ../widget/terminal.vala:375
 msgid "Cancel"
 msgstr ""
@@ -85,8 +85,8 @@ msgstr ""
 msgid "Close workspace"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:102
-#: ../widget/remote_server_dialog.vala:270
+#: ../widget/remote_server_dialog.vala:101
+#: ../widget/remote_server_dialog.vala:268
 msgid "Command"
 msgstr ""
 
@@ -127,17 +127,17 @@ msgstr ""
 msgid "Default size"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:401
+#: ../widget/remote_server_dialog.vala:399
 msgid "Delete"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:102
-#: ../widget/remote_server_dialog.vala:309
+#: ../widget/remote_server_dialog.vala:101
+#: ../widget/remote_server_dialog.vala:307
 msgid "Delete key"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:388
-#: ../widget/remote_server_dialog.vala:398
+#: ../widget/remote_server_dialog.vala:386
+#: ../widget/remote_server_dialog.vala:396
 msgid "Delete server"
 msgstr ""
 
@@ -153,12 +153,12 @@ msgstr ""
 msgid "Download file"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:143
+#: ../widget/remote_server_dialog.vala:141
 msgid "Edit Server"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:102
-#: ../widget/remote_server_dialog.vala:283
+#: ../widget/remote_server_dialog.vala:101
+#: ../widget/remote_server_dialog.vala:281
 msgid "Encoding"
 msgstr ""
 
@@ -183,8 +183,8 @@ msgstr ""
 msgid "Fullscreen"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:102
-#: ../widget/remote_server_dialog.vala:252
+#: ../widget/remote_server_dialog.vala:101
+#: ../widget/remote_server_dialog.vala:250
 msgid "Group"
 msgstr ""
 
@@ -195,6 +195,10 @@ msgstr ""
 #: ../widget/preference.vala:297 ../widget/terminal.vala:242
 #: ../widget/config_window.vala:232
 msgid "Horizontal split"
+msgstr ""
+
+#: ../widget/preference_slidebar.vala:59 ../widget/preference.vala:228
+msgid "Interface"
 msgstr ""
 
 #: ../widget/preference.vala:365
@@ -222,14 +226,14 @@ msgstr ""
 msgid "Opacity"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:250
-#: ../widget/remote_server_dialog.vala:260
-#: ../widget/remote_server_dialog.vala:269
+#: ../widget/remote_server_dialog.vala:248
+#: ../widget/remote_server_dialog.vala:258
+#: ../widget/remote_server_dialog.vala:267
 msgid "Optional"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:102
-#: ../widget/remote_server_dialog.vala:237
+#: ../widget/remote_server_dialog.vala:101
+#: ../widget/remote_server_dialog.vala:235
 msgid "Password"
 msgstr ""
 
@@ -238,8 +242,8 @@ msgstr ""
 msgid "Paste"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:102
-#: ../widget/remote_server_dialog.vala:261
+#: ../widget/remote_server_dialog.vala:101
+#: ../widget/remote_server_dialog.vala:259
 msgid "Path"
 msgstr ""
 
@@ -247,7 +251,7 @@ msgstr ""
 msgid "Please enter a new shortcut"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:198
+#: ../widget/remote_server_dialog.vala:196
 msgid "Port"
 msgstr ""
 
@@ -268,10 +272,10 @@ msgstr ""
 msgid "Remote management"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:179
-#: ../widget/remote_server_dialog.vala:193
-#: ../widget/remote_server_dialog.vala:201
-#: ../widget/remote_server_dialog.vala:227
+#: ../widget/remote_server_dialog.vala:177
+#: ../widget/remote_server_dialog.vala:191
+#: ../widget/remote_server_dialog.vala:199
+#: ../widget/remote_server_dialog.vala:225
 msgid "Required"
 msgstr ""
 
@@ -287,7 +291,7 @@ msgstr ""
 msgid "Run a program in the terminal"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:325
+#: ../widget/remote_server_dialog.vala:323
 msgid "Save"
 msgstr ""
 
@@ -345,8 +349,8 @@ msgstr ""
 msgid "Select workspace"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:102
-#: ../widget/remote_server_dialog.vala:180
+#: ../widget/remote_server_dialog.vala:101
+#: ../widget/remote_server_dialog.vala:178
 msgid "Server name"
 msgstr ""
 
@@ -375,10 +379,6 @@ msgstr ""
 msgid "Terminal"
 msgstr ""
 
-#: ../widget/preference_slidebar.vala:59 ../widget/preference.vala:228
-msgid "Theme"
-msgstr ""
-
 #: ../widget/terminal.vala:388
 msgid "Type path for download file"
 msgstr ""
@@ -395,8 +395,8 @@ msgstr ""
 msgid "Use on starting"
 msgstr ""
 
-#: ../widget/remote_server_dialog.vala:102
-#: ../widget/remote_server_dialog.vala:228
+#: ../widget/remote_server_dialog.vala:101
+#: ../widget/remote_server_dialog.vala:226
 msgid "Username"
 msgstr ""
 

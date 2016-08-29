@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-29 12:57+0800\n"
+"POT-Creation-Date: 2016-08-29 19:05+0800\n"
 "PO-Revision-Date: 2016-08-22 00:55+0800\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -21,11 +21,11 @@ msgstr ""
 msgid "About"
 msgstr "关于"
 
-#: ../widget/remote_server_dialog.vala:327
+#: ../widget/remote_server_dialog.vala:325
 msgid "Add"
 msgstr "添加"
 
-#: ../widget/remote_server_dialog.vala:145
+#: ../widget/remote_server_dialog.vala:143
 msgid "Add Server"
 msgstr "添加服务器"
 
@@ -33,8 +33,8 @@ msgstr "添加服务器"
 msgid "Add server"
 msgstr "添加服务器"
 
-#: ../widget/remote_server_dialog.vala:102
-#: ../widget/remote_server_dialog.vala:185
+#: ../widget/remote_server_dialog.vala:101
+#: ../widget/remote_server_dialog.vala:183
 msgid "Address"
 msgstr "地址"
 
@@ -44,11 +44,11 @@ msgstr "地址"
 msgid "Advanced"
 msgstr "高级"
 
-#: ../widget/remote_server_dialog.vala:312
+#: ../widget/remote_server_dialog.vala:310
 msgid "Advanced options"
 msgstr "高级选项"
 
-#: ../widget/remote_server_dialog.vala:399
+#: ../widget/remote_server_dialog.vala:397
 msgid "Are you sure to delete"
 msgstr "你确定要删除"
 
@@ -56,8 +56,8 @@ msgstr "你确定要删除"
 msgid "Are you sure to exit?"
 msgstr "你确定要退出吗?"
 
-#: ../widget/remote_server_dialog.vala:102
-#: ../widget/remote_server_dialog.vala:296
+#: ../widget/remote_server_dialog.vala:101
+#: ../widget/remote_server_dialog.vala:294
 msgid "Backspace key"
 msgstr "退格键"
 
@@ -65,8 +65,8 @@ msgstr "退格键"
 msgid "Basic"
 msgstr "基础"
 
-#: ../widget/remote_server_dialog.vala:322
-#: ../widget/remote_server_dialog.vala:400 ../widget/confirm_dialog.vala:134
+#: ../widget/remote_server_dialog.vala:320
+#: ../widget/remote_server_dialog.vala:398 ../widget/confirm_dialog.vala:134
 #: ../widget/terminal.vala:347 ../widget/terminal.vala:375
 msgid "Cancel"
 msgstr "取消"
@@ -85,8 +85,8 @@ msgstr "关闭窗口"
 msgid "Close workspace"
 msgstr "关闭工作区"
 
-#: ../widget/remote_server_dialog.vala:102
-#: ../widget/remote_server_dialog.vala:270
+#: ../widget/remote_server_dialog.vala:101
+#: ../widget/remote_server_dialog.vala:268
 msgid "Command"
 msgstr "命令"
 
@@ -130,17 +130,17 @@ msgstr ""
 msgid "Default size"
 msgstr "默认大小"
 
-#: ../widget/remote_server_dialog.vala:401
+#: ../widget/remote_server_dialog.vala:399
 msgid "Delete"
 msgstr "删除"
 
-#: ../widget/remote_server_dialog.vala:102
-#: ../widget/remote_server_dialog.vala:309
+#: ../widget/remote_server_dialog.vala:101
+#: ../widget/remote_server_dialog.vala:307
 msgid "Delete key"
 msgstr "删除键"
 
-#: ../widget/remote_server_dialog.vala:388
-#: ../widget/remote_server_dialog.vala:398
+#: ../widget/remote_server_dialog.vala:386
+#: ../widget/remote_server_dialog.vala:396
 msgid "Delete server"
 msgstr "删除服务器"
 
@@ -156,12 +156,12 @@ msgstr "显示快捷键"
 msgid "Download file"
 msgstr "下载文件"
 
-#: ../widget/remote_server_dialog.vala:143
+#: ../widget/remote_server_dialog.vala:141
 msgid "Edit Server"
 msgstr "编辑服务器"
 
-#: ../widget/remote_server_dialog.vala:102
-#: ../widget/remote_server_dialog.vala:283
+#: ../widget/remote_server_dialog.vala:101
+#: ../widget/remote_server_dialog.vala:281
 msgid "Encoding"
 msgstr "编码"
 
@@ -186,8 +186,8 @@ msgstr "字体大小"
 msgid "Fullscreen"
 msgstr "全屏"
 
-#: ../widget/remote_server_dialog.vala:102
-#: ../widget/remote_server_dialog.vala:252
+#: ../widget/remote_server_dialog.vala:101
+#: ../widget/remote_server_dialog.vala:250
 msgid "Group"
 msgstr "分组"
 
@@ -199,6 +199,10 @@ msgstr "帮助"
 #: ../widget/config_window.vala:232
 msgid "Horizontal split"
 msgstr "横向分屏"
+
+#: ../widget/preference_slidebar.vala:59 ../widget/preference.vala:228
+msgid "Interface"
+msgstr "界面"
 
 #: ../widget/preference.vala:365
 msgid "Maximize"
@@ -225,14 +229,14 @@ msgstr "正常窗口"
 msgid "Opacity"
 msgstr "透明度"
 
-#: ../widget/remote_server_dialog.vala:250
-#: ../widget/remote_server_dialog.vala:260
-#: ../widget/remote_server_dialog.vala:269
+#: ../widget/remote_server_dialog.vala:248
+#: ../widget/remote_server_dialog.vala:258
+#: ../widget/remote_server_dialog.vala:267
 msgid "Optional"
 msgstr "选填"
 
-#: ../widget/remote_server_dialog.vala:102
-#: ../widget/remote_server_dialog.vala:237
+#: ../widget/remote_server_dialog.vala:101
+#: ../widget/remote_server_dialog.vala:235
 msgid "Password"
 msgstr "密码"
 
@@ -241,8 +245,8 @@ msgstr "密码"
 msgid "Paste"
 msgstr "粘贴"
 
-#: ../widget/remote_server_dialog.vala:102
-#: ../widget/remote_server_dialog.vala:261
+#: ../widget/remote_server_dialog.vala:101
+#: ../widget/remote_server_dialog.vala:259
 msgid "Path"
 msgstr "路径"
 
@@ -250,7 +254,7 @@ msgstr "路径"
 msgid "Please enter a new shortcut"
 msgstr "请输入新的快捷键"
 
-#: ../widget/remote_server_dialog.vala:198
+#: ../widget/remote_server_dialog.vala:196
 msgid "Port"
 msgstr "端口"
 
@@ -271,10 +275,10 @@ msgstr "雷神模式"
 msgid "Remote management"
 msgstr "远程管理"
 
-#: ../widget/remote_server_dialog.vala:179
-#: ../widget/remote_server_dialog.vala:193
-#: ../widget/remote_server_dialog.vala:201
-#: ../widget/remote_server_dialog.vala:227
+#: ../widget/remote_server_dialog.vala:177
+#: ../widget/remote_server_dialog.vala:191
+#: ../widget/remote_server_dialog.vala:199
+#: ../widget/remote_server_dialog.vala:225
 msgid "Required"
 msgstr "必填"
 
@@ -290,7 +294,7 @@ msgstr "运行 '%s --help' 查看可用命令行选项的完整列表"
 msgid "Run a program in the terminal"
 msgstr "在终端运行一个程序"
 
-#: ../widget/remote_server_dialog.vala:325
+#: ../widget/remote_server_dialog.vala:323
 msgid "Save"
 msgstr "保存"
 
@@ -348,8 +352,8 @@ msgstr "选择上面的窗口"
 msgid "Select workspace"
 msgstr "选择工作区"
 
-#: ../widget/remote_server_dialog.vala:102
-#: ../widget/remote_server_dialog.vala:180
+#: ../widget/remote_server_dialog.vala:101
+#: ../widget/remote_server_dialog.vala:178
 msgid "Server name"
 msgstr "服务器名"
 
@@ -378,10 +382,6 @@ msgstr "切换主题"
 msgid "Terminal"
 msgstr "终端"
 
-#: ../widget/preference_slidebar.vala:59 ../widget/preference.vala:228
-msgid "Theme"
-msgstr "主题"
-
 #: ../widget/terminal.vala:388
 msgid "Type path for download file"
 msgstr "请输入下载文件的路径"
@@ -398,8 +398,8 @@ msgstr "上传文件"
 msgid "Use on starting"
 msgstr "启动时使用"
 
-#: ../widget/remote_server_dialog.vala:102
-#: ../widget/remote_server_dialog.vala:228
+#: ../widget/remote_server_dialog.vala:101
+#: ../widget/remote_server_dialog.vala:226
 msgid "Username"
 msgstr "用户名"
 

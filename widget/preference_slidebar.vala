@@ -56,7 +56,7 @@ namespace Widgets {
             basic_segement = new PreferenceSlideItem(this, _("Basic"), "basic", true);
 			this.attach_next_to(basic_segement, spacing_box, Gtk.PositionType.BOTTOM, width, height);
             
-            theme_segement = new PreferenceSlideItem(this, _("Theme"), "theme", false);
+            theme_segement = new PreferenceSlideItem(this, _("Interface"), "theme", false);
 			this.attach_next_to(theme_segement, basic_segement, Gtk.PositionType.BOTTOM, width, height);
             
             var theme_spacing_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
