@@ -22,6 +22,7 @@
  */ 
 
 using Gdk;
+using Gee;
 using Gtk;
 using Keymap;
 using Vte;
@@ -65,9 +66,12 @@ public class Application : Object {
     
 	private static bool quake_mode = false;
 	private static string? work_directory = null;
-    /* command_e (-e) is used for running commands independently (not inside a shell) */
+
+    // pass_options just for print help information, we need parse -e commands myself.
     [CCode (array_length = false, array_null_terminated = true)]
-	public static string? command = null;
+	public static string[]? pass_options = null;
+    
+    public static ArrayList<string> commands;
     private static bool version = false;
     public Widgets.QuakeWindow quake_window;
     public Widgets.Window window;
@@ -83,8 +87,21 @@ public class Application : Object {
         Intl.bind_textdomain_codeset(GETTEXT_PACKAGE, "utf-8");
         Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
         
+        // Need parse -e commands my self, OptionEntry just will got first argument after -e.
+        commands = new ArrayList<string>();
+        bool find_command_flag = false;
+        foreach (string arg in args) {
+            if (find_command_flag) {
+                commands.add(arg);
+            }
+            
+            if (arg == "-e") {
+                find_command_flag = true;
+            }
+        }
+        
         try {
-            GLib.OptionEntry[] options = {
+            GLib.OptionEntry[] pass_options = {
                 OptionEntry() {
                     long_name="version", 
                     short_name=0, 
@@ -107,8 +124,8 @@ public class Application : Object {
                     long_name="execute",
                     short_name='e',
                     flags=0,
-                    arg=OptionArg.STRING,
-                    arg_data=&command,
+                    arg=OptionArg.STRING_ARRAY,
+                    arg_data=&pass_options,
                     description=_("Run a program in the terminal"),
                     arg_description=null
                 },
@@ -116,8 +133,8 @@ public class Application : Object {
                     long_name="execute",
                     short_name='x',
                     flags=0,
-                    arg=OptionArg.STRING,
-                    arg_data=&command,
+                    arg=OptionArg.STRING_ARRAY,
+                    arg_data=&pass_options,
                     description=_("Run a program in the terminal"),
                     arg_description=null
                 },
@@ -135,13 +152,13 @@ public class Application : Object {
 			var opt_context = new OptionContext(_("Deepin Terminal"));
             opt_context.set_summary(_("Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.\n\nIt sharpens your focus in the world of command line!"));
 			opt_context.set_help_enabled(true);
-			opt_context.add_main_entries(options, null);
+			opt_context.add_main_entries(pass_options, null);
 			opt_context.parse(ref args);
 		} catch (OptionError e) {
 			stdout.printf("error: %s\n", e.message);
-			stdout.printf(_("Run '%s --help' to view a full list of available command line options").printf(args[0]) + "\n");
+			stdout.printf(_("Run '%s --help' to view a full list of available command line pass_options").printf(args[0]) + "\n");
 		}
-        
+
         if (version) {
 			stdout.printf("Deepin Terminal %.01f\n".printf(Constant.VERSION));
             stdout.printf ("Copyright 2011-2016 Deepin, Inc.\n");
@@ -172,7 +189,7 @@ public class Application : Object {
             Gtk.main();
         }
     }
-    
+
     public void run(bool has_start) {
         // Bus.own_name is callback, when application exit will execute `run` function.
         // Use inited variable to avoid application run by Bus.own_name release.

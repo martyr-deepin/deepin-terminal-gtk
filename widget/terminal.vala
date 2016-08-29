@@ -21,6 +21,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */ 
 
+using Gee;
 using Gtk;
 using Menu;
 using Utils;
@@ -185,8 +186,8 @@ namespace Widgets {
             
             // NOTE: if terminal start with option '-e', use functional 'launch_command' and don't use function 'launch_shell'.
             // terminal will crash if we launch_command after launch_shell.
-            if (Application.command != null) {
-                launch_command(Application.command, work_directory);
+            if (Application.commands.size > 0) {
+                launch_command(Application.commands, work_directory);
             } else {
                 launch_shell(work_directory);
             }
@@ -224,7 +225,7 @@ namespace Widgets {
         public void show_menu(int x, int y) {
             bool in_quake_window = this.get_toplevel().get_type().is_a(typeof(Widgets.QuakeWindow));
                             
-            var menu_content = new List<Menu.MenuItem>();
+            var menu_content = new GLib.List<Menu.MenuItem>();
             print("%s\n", uri_at_right_press.to_string());
             if (term.get_has_selection()) {
                 menu_content.append(new Menu.MenuItem("copy", _("Copy")));
@@ -697,15 +698,10 @@ namespace Widgets {
                 });
         }
         
-        public void launch_command(string command, string? dir) {
-            string[] argv;
-            try {
-                // NOTE: we need add single quote around -e command to avoid spawn_sync will failed if command contain blank.
-                Shell.parse_argv("'%s'".printf(command), out argv);
-            } catch (ShellError e) {
-                if (!(e is ShellError.EMPTY_STRING)) {
-                    warning("Terminal launch_command: %s\n", e.message);
-                }
+        public void launch_command(ArrayList<string> commands, string? dir) {
+            string[] argv = {};
+            foreach (string arg in commands) {
+                argv += arg;
             }
             
             launch_idle_id = GLib.Idle.add(() => {
