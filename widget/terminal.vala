@@ -704,7 +704,7 @@ namespace Widgets {
         public void launch_command(string command, string? dir) {
             string[] argv;
             try {
-                Shell.parse_argv(command, out argv);
+                Shell.parse_argv("'%s'".printf(command), out argv);
             } catch (ShellError e) {
                 if (!(e is ShellError.EMPTY_STRING)) {
                     warning("Terminal launch_command: %s\n", e.message);
