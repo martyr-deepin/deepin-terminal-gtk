@@ -139,7 +139,7 @@ public class Application : Object {
 			opt_context.parse(ref args);
 		} catch (OptionError e) {
 			stdout.printf("error: %s\n", e.message);
-			stdout.printf(_("Run '%s --help' to see a full list of available command line options").printf(args[0]) + "\n");
+			stdout.printf(_("Run '%s --help' to view a full list of available command line options").printf(args[0]) + "\n");
 		}
         
         if (version) {
