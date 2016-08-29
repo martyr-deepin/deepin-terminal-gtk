@@ -704,6 +704,7 @@ namespace Widgets {
         public void launch_command(string command, string? dir) {
             string[] argv;
             try {
+                // NOTE: we need add single quote around -e command to avoid spawn_sync will failed if command contain blank.
                 Shell.parse_argv("'%s'".printf(command), out argv);
             } catch (ShellError e) {
                 if (!(e is ShellError.EMPTY_STRING)) {
