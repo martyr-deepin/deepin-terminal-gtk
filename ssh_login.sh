@@ -39,6 +39,10 @@ set ssh_cmd {zssh -o ServerAliveInterval=60}
 set ssh_opt {$user@$server -p $port}
 set remote_command {<<REMOTE_COMMAND>>}
 
+trap {
+    stty rows [stty rows] columns [stty columns] < $spawn_out(slave,name)
+} WINCH
+
 # Spawn and expect
 eval spawn $ssh_cmd $ssh_opt -t $remote_command bash -l
 if {[string length $password]} {
