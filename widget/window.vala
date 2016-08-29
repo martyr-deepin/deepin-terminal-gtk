@@ -134,43 +134,17 @@ namespace Widgets {
                 });
             
             configure_event.connect((w) => {
-                    int width, height;
-                    get_size(out width, out height);
-                    
                     Cairo.RectangleInt rect;
                     get_window().get_frame_extents(out rect);
-                    
-                    if (window_is_max() || window_is_fullscreen()) {
-                        rect.x = 0;
-                        rect.y = 0;
-                        rect.width = width;
-                        rect.height = height;
-                    } else if (window_is_tiled()) {
-                        int monitor = screen.get_monitor_at_window(screen.get_active_window());
-                        Gdk.Rectangle screen_rect;
-                        screen.get_monitor_geometry(monitor, out screen_rect);
-
-                        if (rect.x + rect.width - window_frame_margin_start == screen_rect.width) {
-                            rect.x = window_frame_margin_start;
-                            rect.y = 0;
-                            rect.width = width - window_frame_margin_start;
-                            rect.height = height;
-                        } else {
-                            rect.x = 0;
-                            rect.y = 0;
-                            rect.width = width - window_frame_margin_end;
-                            rect.height = height;
-                        }
-                    } else {
+                    if (!window_is_fullscreen() && !window_is_max()) {
                         rect.x = window_frame_margin_start - Constant.RESPONSE_RADIUS;
                         rect.y = window_frame_margin_top - Constant.RESPONSE_RADIUS;
-                        rect.width = width - window_frame_margin_start - window_frame_margin_end + Constant.RESPONSE_RADIUS * 2;
-                        rect.height = height - window_frame_margin_top - window_frame_margin_bottom + Constant.RESPONSE_RADIUS * 2;
+                        rect.width += - window_frame_margin_start - window_frame_margin_end + Constant.RESPONSE_RADIUS * 2;
+                        rect.height += - window_frame_margin_top - window_frame_margin_bottom + Constant.RESPONSE_RADIUS * 2;
                     }
-                    
+
                     var shape = new Cairo.Region.rectangle(rect);
                     get_window().input_shape_combine_region(shape, 0, 0);
-                    
                     return false;
                 });
             
@@ -178,10 +152,6 @@ namespace Widgets {
                     update_style();
                     
                     if (window_is_fullscreen() || window_is_max()) {
-                        get_window().set_shadow_width(0, 0, 0, 0);
-                                
-                        window_frame_box.margin = 0;
-                        
                         window_widget_box.margin_top = 1;
                         window_widget_box.margin_bottom = 0;
                         window_widget_box.margin_start = 0;
@@ -197,40 +167,33 @@ namespace Widgets {
                         int width, height;
                         get_size(out width, out height);
 
-                        if (rect.x + rect.width - window_frame_margin_start == screen_rect.width) {
-                            get_window().set_shadow_width(window_frame_margin_start, 0, 0, 0);
-                            
-                            window_frame_box.margin_left = window_frame_margin_start;
-                            window_frame_box.margin_right = 0;
-                            window_frame_box.margin_top = 0;
-                            window_frame_box.margin_bottom = 0;
-                        } else {
-                            get_window().set_shadow_width(0, window_frame_margin_end, 0, 0);
-                            
-                            window_frame_box.margin_left = 0;
-                            window_frame_box.margin_right = window_frame_margin_end;
-                            window_frame_box.margin_top = 0;
-                            window_frame_box.margin_bottom = 0;
-                        }
-                        
                         window_widget_box.margin_top = 1;
                         window_widget_box.margin_bottom = 1;
                         window_widget_box.margin_start = 1;
                         window_widget_box.margin_end = 1;
                     } else {
-                        get_window().set_shadow_width(window_frame_margin_start, window_frame_margin_end, window_frame_margin_top, window_frame_margin_bottom);
-                                
-                        window_frame_box.margin_top = window_frame_margin_top;
-                        window_frame_box.margin_bottom = window_frame_margin_bottom;
-                        window_frame_box.margin_start = window_frame_margin_start;
-                        window_frame_box.margin_end = window_frame_margin_end;
-            
                         window_widget_box.margin_top = 2;
                         window_widget_box.margin_bottom = 2;
                         window_widget_box.margin_start = 2;
                         window_widget_box.margin_end = 2;
                     }
-                    
+
+                    if (window_is_fullscreen() || window_is_max()) {
+                        window_frame_box.margin_top = 0;
+                        window_frame_box.margin_bottom = 0;
+                        window_frame_box.margin_start = 0;
+                        window_frame_box.margin_end = 0;
+                        
+                        get_window().set_shadow_width(0, 0, 0, 0);
+                    } else {
+                        window_frame_box.margin_top = window_frame_margin_top;
+                        window_frame_box.margin_bottom = window_frame_margin_bottom;
+                        window_frame_box.margin_start = window_frame_margin_start;
+                        window_frame_box.margin_end = window_frame_margin_end;
+
+                        get_window().set_shadow_width(window_frame_margin_start, window_frame_margin_end,
+                                window_frame_margin_top, window_frame_margin_bottom);
+                    }
                     return false;
                 });
             
