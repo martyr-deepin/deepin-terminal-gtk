@@ -313,95 +313,93 @@ namespace Widgets {
                     "%s + 8".printf(select_workspace_key), 
                     "%s + 9".printf(select_workspace_key)};
             
-                KeyFile config_file = config.config_file;
-		    
-                var search_key = config_file.get_string("shortcut", "search");
+                var search_key = config.config_file.get_string("shortcut", "search");
                 if (search_key != "" && keyname == search_key) {
                     workspace_manager.focus_workspace.search();
                     return true;
                 }
 		    
-                var new_workspace_key = config_file.get_string("shortcut", "new_workspace");
+                var new_workspace_key = config.config_file.get_string("shortcut", "new_workspace");
                 if (new_workspace_key != "" && keyname == new_workspace_key) {
                     workspace_manager.new_workspace_with_current_directory();
                     return true;
                 }
 		    
-                var close_workspace_key = config_file.get_string("shortcut", "close_workspace");
+                var close_workspace_key = config.config_file.get_string("shortcut", "close_workspace");
                 if (close_workspace_key != "" && keyname == close_workspace_key) {
                     workspace_manager.tabbar.close_current_tab();
                     return true;
                 }
 		    	
-                var next_workspace_key = config_file.get_string("shortcut", "next_workspace");
+                var next_workspace_key = config.config_file.get_string("shortcut", "next_workspace");
                 if (next_workspace_key != "" && keyname == next_workspace_key) {
                     workspace_manager.tabbar.select_next_tab();
                     return true;
                 }
 		    	
-                var previous_workspace_key = config_file.get_string("shortcut", "previous_workspace");
+                var previous_workspace_key = config.config_file.get_string("shortcut", "previous_workspace");
                 if (previous_workspace_key != "" && keyname == previous_workspace_key) {
                     workspace_manager.tabbar.select_previous_tab();
                     return true;
                 }
 		    
-                var split_vertically_key = config_file.get_string("shortcut", "vertical_split");
+                var split_vertically_key = config.config_file.get_string("shortcut", "vertical_split");
                 if (split_vertically_key != "" && keyname == split_vertically_key) {
                     workspace_manager.focus_workspace.remove_all_panel();
                     workspace_manager.focus_workspace.split_vertical();
                     return true;
                 }
 		    
-                var split_horizontally_key = config_file.get_string("shortcut", "horizontal_split");
+                var split_horizontally_key = config.config_file.get_string("shortcut", "horizontal_split");
                 if (split_horizontally_key != "" && keyname == split_horizontally_key) {
                     workspace_manager.focus_workspace.remove_all_panel();
                     workspace_manager.focus_workspace.split_horizontal();
                     return true;
                 }
 		    
-                var select_up_window_key = config_file.get_string("shortcut", "select_upper_window");
+                var select_up_window_key = config.config_file.get_string("shortcut", "select_upper_window");
                 if (select_up_window_key != "" && keyname == select_up_window_key) {
                     workspace_manager.focus_workspace.remove_all_panel();
                     workspace_manager.focus_workspace.select_up_window();
                     return true;
                 }
 		    
-                var select_down_window_key = config_file.get_string("shortcut", "select_lower_window");
+                var select_down_window_key = config.config_file.get_string("shortcut", "select_lower_window");
                 if (select_down_window_key != "" && keyname == select_down_window_key) {
                     workspace_manager.focus_workspace.remove_all_panel();
                     workspace_manager.focus_workspace.select_down_window();
                     return true;
                 }
 		    
-                var select_left_window_key = config_file.get_string("shortcut", "select_left_window");
+                var select_left_window_key = config.config_file.get_string("shortcut", "select_left_window");
                 if (select_left_window_key != "" && keyname == select_left_window_key) {
                     workspace_manager.focus_workspace.remove_all_panel();
                     workspace_manager.focus_workspace.select_left_window();
                     return true;
                 }
 		    
-                var select_right_window_key = config_file.get_string("shortcut", "select_right_window");
+                var select_right_window_key = config.config_file.get_string("shortcut", "select_right_window");
                 if (select_right_window_key != "" && keyname == select_right_window_key) {
                     workspace_manager.focus_workspace.remove_all_panel();
                     workspace_manager.focus_workspace.select_right_window();
                     return true;
                 }
 		    
-                var close_window_key = config_file.get_string("shortcut", "close_window");
+                var close_window_key = config.config_file.get_string("shortcut", "close_window");
                 if (close_window_key != "" && keyname == close_window_key) {
                     workspace_manager.focus_workspace.remove_all_panel();
                     workspace_manager.focus_workspace.close_focus_term();
                     return true;
                 }
 		    
-                var close_other_windows_key = config_file.get_string("shortcut", "close_other_windows");
+                var close_other_windows_key = config.config_file.get_string("shortcut", "close_other_windows");
                 if (close_other_windows_key != "" && keyname == close_other_windows_key) {
                     workspace_manager.focus_workspace.remove_all_panel();
                     workspace_manager.focus_workspace.close_other_terms();
                     return true;
                 }
 		    
-                var toggle_fullscreen_key = config_file.get_string("shortcut", "switch_fullscreen");
+                var toggle_fullscreen_key = config.config_file.get_string("shortcut", "switch_fullscreen");
                 if (toggle_fullscreen_key != "" && keyname == toggle_fullscreen_key) {
                     if (!quake_mode) {
                         toggle_fullscreen();
@@ -410,7 +408,7 @@ namespace Widgets {
                 }
 		    
                 if (Utils.is_command_exist("deepin-shortcut-viewer")) {
-                    var show_helper_window_key = config_file.get_string("shortcut", "display_shortcuts");
+                    var show_helper_window_key = config.config_file.get_string("shortcut", "display_shortcuts");
                     if (show_helper_window_key != "" && keyname == show_helper_window_key) {
                         int x, y;
                         if (quake_mode) {
@@ -439,13 +437,13 @@ namespace Widgets {
                     }
                 }
             
-                var show_remote_panel_key = config_file.get_string("shortcut", "remote_management");
+                var show_remote_panel_key = config.config_file.get_string("shortcut", "remote_management");
                 if (show_remote_panel_key != "" && keyname == show_remote_panel_key) {
                     workspace_manager.focus_workspace.toggle_remote_panel(workspace_manager.focus_workspace);
                     return true;
                 }
 		    
-                var select_all_key = config_file.get_string("shortcut", "select_all");
+                var select_all_key = config.config_file.get_string("shortcut", "select_all");
                 if (select_all_key != "" && keyname == select_all_key) {
                     workspace_manager.focus_workspace.remove_all_panel();
                     workspace_manager.focus_workspace.toggle_select_all();
