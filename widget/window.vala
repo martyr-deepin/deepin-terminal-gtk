@@ -157,16 +157,6 @@ namespace Widgets {
                         window_widget_box.margin_start = 0;
                         window_widget_box.margin_end = 0;
                     } else if (window_is_tiled()) {
-                        Cairo.RectangleInt rect;
-                        get_window().get_frame_extents(out rect);
-                        
-                        int monitor = screen.get_monitor_at_window(screen.get_active_window());
-                        Gdk.Rectangle screen_rect;
-                        screen.get_monitor_geometry(monitor, out screen_rect);
-                        
-                        int width, height;
-                        get_size(out width, out height);
-
                         window_widget_box.margin_top = 1;
                         window_widget_box.margin_bottom = 1;
                         window_widget_box.margin_start = 1;
@@ -191,8 +181,7 @@ namespace Widgets {
                         window_frame_box.margin_start = window_frame_margin_start;
                         window_frame_box.margin_end = window_frame_margin_end;
 
-                        get_window().set_shadow_width(window_frame_margin_start, window_frame_margin_end,
-                                window_frame_margin_top, window_frame_margin_bottom);
+                        get_window().set_shadow_width(window_frame_margin_start, window_frame_margin_end, window_frame_margin_top, window_frame_margin_bottom);
                     }
                     return false;
                 });
