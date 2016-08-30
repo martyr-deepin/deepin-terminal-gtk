@@ -146,7 +146,8 @@ public class Application : Object {
                     arg_data=&quake_mode,
                     description=_("Quake mode"),
                     arg_description=null
-                }
+                },
+                OptionEntry()
             };
 
 			var opt_context = new OptionContext(_("Deepin Terminal"));
