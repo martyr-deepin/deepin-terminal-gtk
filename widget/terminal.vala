@@ -100,16 +100,26 @@ namespace Widgets {
                     focus_term();
                 });
             term.window_title_changed.connect((t) => {
+                    int foreground_pid;
+                    var has_foreground_process = try_get_foreground_pid(out foreground_pid);
+                    
                     string working_directory;
-                    string[] spawn_args = {"readlink", "/proc/%i/cwd".printf(child_pid)};
-                    try {
-                        Process.spawn_sync(null, spawn_args, null, SpawnFlags.SEARCH_PATH, null, out working_directory);
-                    } catch (SpawnError e) {
-                        print("Got error when spawn_sync: %s\n", e.message);
+                    if (has_foreground_process) {
+                        working_directory = term.get_window_title();
+                    } else {
+                        string[] spawn_args = {"readlink", "/proc/%i/cwd".printf(child_pid)};
+                        try {
+                            Process.spawn_sync(null, spawn_args, null, SpawnFlags.SEARCH_PATH, null, out working_directory);
+                        } catch (SpawnError e) {
+                            print("Got error when spawn_sync: %s\n", e.message);
+                        }
+                        
+                        if (working_directory.length > 0) {
+                            working_directory = working_directory[0:working_directory.length - 1];
+                        }
                     }
                     
                     if (working_directory.length > 0) {
-                        working_directory = working_directory[0:working_directory.length - 1];
                         if (current_dir != working_directory) {
                             change_dir(GLib.Path.get_basename(working_directory));
                             current_dir = working_directory;
