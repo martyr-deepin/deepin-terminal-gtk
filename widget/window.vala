@@ -356,9 +356,9 @@ namespace Widgets {
                     // Bottom.
                     Draw.draw_rectangle(cr, x + 3, y + height - 2, width - 6, 1);
                     // Left.
-                    Draw.draw_rectangle(cr, x + 1, y + Constant.TITLEBAR_HEIGHT + 2, 1, height - 45);
+                    Draw.draw_rectangle(cr, x + 1, y + Constant.TITLEBAR_HEIGHT + 2, 1, height - Constant.TITLEBAR_HEIGHT - 5);
                     // Rigt..
-                    Draw.draw_rectangle(cr, x + width - 2, y + Constant.TITLEBAR_HEIGHT + 2, 1, height - 45);
+                    Draw.draw_rectangle(cr, x + width - 2, y + Constant.TITLEBAR_HEIGHT + 2, 1, height - Constant.TITLEBAR_HEIGHT - 5);
                     cr.restore();
                 }
             } catch (Error e) {
