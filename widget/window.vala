@@ -136,6 +136,8 @@ namespace Widgets {
             configure_event.connect((w) => {
                     Cairo.RectangleInt rect;
                     get_window().get_frame_extents(out rect);
+                    rect.x = 0;
+                    rect.y = 0;
                     if (!window_is_fullscreen() && !window_is_max()) {
                         rect.x = window_frame_margin_start - Constant.RESPONSE_RADIUS;
                         rect.y = window_frame_margin_top - Constant.RESPONSE_RADIUS;
