@@ -39,12 +39,13 @@ set ssh_cmd {zssh -o ServerAliveInterval=60}
 set ssh_opt {$user@$server -p $port}
 set remote_command {<<REMOTE_COMMAND>>}
 
+# This code is use for synchronous pty's size to avoid terminal not update if login in remote server.
 trap {
     stty rows [stty rows] columns [stty columns] < $spawn_out(slave,name)
 } WINCH
 
 # Spawn and expect
-eval spawn $ssh_cmd $ssh_opt -t $remote_command bash -l
+eval spawn $ssh_cmd $ssh_opt -t $remote_command exec \\\$SHELL -l
 if {[string length $password]} {
     expect {
         timeout {send_user "ssh connection time out, please operate manually\n"}
