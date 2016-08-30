@@ -290,7 +290,7 @@ namespace Widgets {
             var active_workspace = screen.get_active_workspace();
             foreach (Wnck.Window window in screen.get_windows()) {
                 var workspace = window.get_workspace();
-                if (workspace.get_number() == active_workspace.get_number()) {
+                if (workspace != null && workspace.get_number() == active_workspace.get_number()) {
                     if (window.get_name() == "deepin-terminal") {
                         return true;
                     }
