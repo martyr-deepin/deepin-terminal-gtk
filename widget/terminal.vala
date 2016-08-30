@@ -100,12 +100,16 @@ namespace Widgets {
                     focus_term();
                 });
             term.window_title_changed.connect((t) => {
-                    string window_title = term.get_window_title();
-                    if (window_title.length > 0) {
-                        int first_blank;
-                        first_blank = window_title.index_of(" ", 0);
-                        
-                        string working_directory = window_title.substring(first_blank + 1);
+                    string working_directory;
+                    string[] spawn_args = {"readlink", "/proc/%i/cwd".printf(child_pid)};
+                    try {
+                        Process.spawn_sync(null, spawn_args, null, SpawnFlags.SEARCH_PATH, null, out working_directory);
+                    } catch (SpawnError e) {
+                        print("Got error when spawn_sync: %s\n", e.message);
+                    }
+                    
+                    if (working_directory.length > 0) {
+                        working_directory = working_directory[0:working_directory.length - 1];
                         if (current_dir != working_directory) {
                             change_dir(GLib.Path.get_basename(working_directory));
                             current_dir = working_directory;
