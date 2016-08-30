@@ -81,6 +81,7 @@ namespace Widgets {
 					highlight_tab(index);
 				});
             term.exit.connect((term) => {
+                    remove_all_panel();
                     close_term(term);
                 });
             term.term.button_press_event.connect((w, e) => {
