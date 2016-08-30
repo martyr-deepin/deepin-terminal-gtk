@@ -206,11 +206,11 @@ namespace Widgets {
             }
         }
         
-        public void split_horizontal() {
+        public void split_vertical() {
             split(Gtk.Orientation.HORIZONTAL);
         }
             
-        public void split_vertical() {
+        public void split_horizontal() {
             split(Gtk.Orientation.VERTICAL);
         }
         
