@@ -126,23 +126,12 @@ namespace Widgets {
                         }
 
 						// Command finish will trigger 'window-title-changed' signal emit.
-						// we will notify user if terminal is hide or cursor out of visible area.
-						var test = term.get_toplevel();
-						if (test != null) {
-							if (test.get_type().is_a(typeof(ConfigWindow))) {
-								Gtk.Adjustment vadj = term.get_vadjustment();
-								double value = vadj.get_value();
-								double page_size = vadj.get_page_size();
-								double upper = vadj.get_upper();
-								
-								// Send notify when out of visible area.
-								if (value + page_size < upper) {
-                                    if (press_anything) {
-                                        highlight_tab();
-                                    }
-								}
-							}
-						}
+						// we will notify user if background terminal command finish.
+                        if (!term.get_toplevel().get_type().is_a(typeof(ConfigWindow))) {
+                            if (press_anything) {
+                                highlight_tab();
+                            }
+                        }
                     }
                 });
             term.key_press_event.connect(on_key_press);
