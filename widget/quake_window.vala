@@ -124,7 +124,7 @@ namespace Widgets {
                 });
             
             button_press_event.connect((w, e) => {
-                    var cursor_type = get_cursor_type(e.y_root);
+                    var cursor_type = get_cursor_type(e.x_root, e.y_root);
                     if (cursor_type != null) {
                         e.device.get_position(null, out press_x, out press_y);
                         
@@ -142,27 +142,6 @@ namespace Widgets {
                             });
                     }
                     
-                    return false;
-                });
-            
-            enter_notify_event.connect((w, e) => {
-                    if (resize_timeout_source_id == null) {
-                        resize_timeout_source_id = GLib.Timeout.add(resize_timeout_delay, () => {
-                                int pointer_x, pointer_y;
-                                Utils.get_pointer_position(out pointer_x, out pointer_y);
-                                
-                                var cursor_type = get_cursor_type(pointer_y);
-                                var display = Gdk.Display.get_default();
-                                if (cursor_type != null) {
-                                    get_window().set_cursor(new Gdk.Cursor.for_display(display, cursor_type));
-                                } else {
-                                    get_window().set_cursor(null);
-                                }
-                            
-                                return true;
-                            });
-                    }
-                        
                     return false;
                 });
             
@@ -319,7 +298,7 @@ namespace Widgets {
             config.save();
         }
         
-        public Gdk.CursorType? get_cursor_type(double y) {
+        public override Gdk.CursorType? get_cursor_type(double x, double y) {
             int window_x, window_y;
             get_window().get_origin(out window_x, out window_y);
                         

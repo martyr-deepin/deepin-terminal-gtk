@@ -75,10 +75,7 @@ namespace Widgets {
             
             draw.connect(on_draw);
 			enter_notify_event.connect((w, e) => {
-                    // Make sure reset window cursor when enter in window event area.
-                    get_toplevel().get_window().set_cursor(null);
-                    
-					is_hover = true;
+                    is_hover = true;
 					queue_draw();
 					
 					return false;

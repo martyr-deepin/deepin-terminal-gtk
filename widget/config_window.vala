@@ -40,7 +40,9 @@ namespace Widgets {
         public int active_tab_underline_x;
         public int cache_height = 0;
         public int cache_width = 0;
+        public int reset_timeout_delay = 150;
         public int resize_timeout_delay = 150;
+        public uint? reset_timeout_source_id = null;
         public uint? resize_timeout_source_id = null;
             
         public ConfigWindow() {
@@ -77,10 +79,53 @@ namespace Widgets {
                     return on_key_release(w, e);
                 });
             
+            enter_notify_event.connect((w, e) => {
+                    if (resize_timeout_source_id == null) {
+                        resize_timeout_source_id = GLib.Timeout.add(resize_timeout_delay, () => {
+                                int pointer_x, pointer_y;
+                                Utils.get_pointer_position(out pointer_x, out pointer_y);
+                                
+                                var cursor_type = get_cursor_type(pointer_x, pointer_y);
+                                var display = Gdk.Display.get_default();
+                                if (cursor_type != null) {
+                                    get_window().set_cursor(new Gdk.Cursor.for_display(display, cursor_type));
+                                } else {
+                                    get_window().set_cursor(null);
+                                }
+                            
+                                return true;
+                            });
+                    }
+                        
+                    return false;
+                });
+            
             leave_notify_event.connect((w, e) => {
                     if (resize_timeout_source_id != null) {
                         GLib.Source.remove(resize_timeout_source_id);
                         resize_timeout_source_id = null;
+                    }
+                    
+                    if (reset_timeout_source_id == null) {
+                        reset_timeout_source_id = GLib.Timeout.add(reset_timeout_delay, () => {
+                                int pointer_x, pointer_y;
+                                Utils.get_pointer_position(out pointer_x, out pointer_y);
+                                
+                                var cursor_type = get_cursor_type(pointer_x, pointer_y);
+                                var display = Gdk.Display.get_default();
+                                if (cursor_type != null) {
+                                    get_window().set_cursor(new Gdk.Cursor.for_display(display, cursor_type));
+                                } else {
+                                    get_window().set_cursor(null);
+                                }
+                                
+                                if (cursor_type == null) {
+                                    GLib.Source.remove(reset_timeout_source_id);
+                                    reset_timeout_source_id = null;
+                                }
+                            
+                                return cursor_type != null;
+                            });
                     }
                     
                     return false;
@@ -516,6 +561,10 @@ namespace Widgets {
         }
         
         public virtual void window_save_before_quit() {
+        }
+        
+        public virtual Gdk.CursorType? get_cursor_type(double x, double y) {
+            return null;
         }
         
         public void redraw_window() {
