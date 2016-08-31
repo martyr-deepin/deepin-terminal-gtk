@@ -42,6 +42,8 @@ namespace Widgets {
         public int cache_width = 0;
         public int reset_timeout_delay = 150;
         public int resize_timeout_delay = 150;
+        public int resize_cache_x = 0;
+        public int resize_cache_y = 0;
         public uint? reset_timeout_source_id = null;
         public uint? resize_timeout_source_id = null;
             
@@ -85,14 +87,19 @@ namespace Widgets {
                                 int pointer_x, pointer_y;
                                 Utils.get_pointer_position(out pointer_x, out pointer_y);
                                 
-                                var cursor_type = get_cursor_type(pointer_x, pointer_y);
-                                var display = Gdk.Display.get_default();
-                                if (cursor_type != null) {
-                                    get_window().set_cursor(new Gdk.Cursor.for_display(display, cursor_type));
-                                } else {
-                                    get_window().set_cursor(null);
+                                if (pointer_x != resize_cache_x || pointer_y != resize_cache_y) {
+                                    resize_cache_x = pointer_x;
+                                    resize_cache_y = pointer_y;
+                                    
+                                    var cursor_type = get_cursor_type(pointer_x, pointer_y);
+                                    var display = Gdk.Display.get_default();
+                                    if (cursor_type != null) {
+                                        get_window().set_cursor(new Gdk.Cursor.for_display(display, cursor_type));
+                                    } else {
+                                        get_window().set_cursor(null);
+                                    }
                                 }
-                            
+                                
                                 return true;
                             });
                     }
