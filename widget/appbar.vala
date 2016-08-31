@@ -225,12 +225,7 @@ namespace Widgets {
                     workspace_manager.focus_workspace.show_theme_panel(workspace_manager.focus_workspace);
                     break;
 				case "help":
-                    try {
-                        GLib.AppInfo appinfo = GLib.AppInfo.create_from_commandline("dman deepin-terminal", null, GLib.AppInfoCreateFlags.NONE);
-                        appinfo.launch(null, null);
-                    } catch (GLib.Error e) {
-                        print("Appbar menu item 'help': %s\n", e.message);
-                    }
+                    Utils.show_manual();
 					break;
 			    case "about":
                     var dialog = new AboutDialog(focus_widget);

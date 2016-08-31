@@ -353,4 +353,15 @@ namespace Utils {
                     
         device.get_position(null, out x, out y);
     }
+
+    public void show_manual() {
+        if (Utils.is_command_exist("dman")) {
+            try {
+                GLib.AppInfo appinfo = GLib.AppInfo.create_from_commandline("dman deepin-terminal", null, GLib.AppInfoCreateFlags.NONE);
+                appinfo.launch(null, null);
+            } catch (GLib.Error e) {
+                print("Appbar menu item 'help': %s\n", e.message);
+            }
+        }
+    }
 }

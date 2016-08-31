@@ -367,6 +367,10 @@ namespace Widgets {
                     "%s + 8".printf(select_workspace_key), 
                     "%s + 9".printf(select_workspace_key)};
             
+                if (keyname == "F1") {
+                    Utils.show_manual();
+                }
+                
                 var search_key = config.config_file.get_string("shortcut", "search");
                 if (search_key != "" && keyname == search_key) {
                     workspace_manager.focus_workspace.search();
