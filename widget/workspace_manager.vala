@@ -62,7 +62,7 @@ namespace Widgets {
                 tabbar.add_tab("", workspace_index);
                 Widgets.Workspace workspace = new Widgets.Workspace(workspace_index, work_directory, this);
                 workspace_map.set(workspace_index, workspace);
-                workspace.change_dir.connect((workspace, index, dir) => {
+                workspace.change_title.connect((workspace, index, dir) => {
                         tabbar.rename_tab(index, dir);
                     });
                 workspace.highlight_tab.connect((workspace, index) => {

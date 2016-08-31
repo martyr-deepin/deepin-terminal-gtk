@@ -73,7 +73,7 @@ namespace Widgets {
             "(?:news:|man:|info:)[[:alnum:]\\Q^_{|}~!\"#$%&'()*+,./;:=?`\\E]+"
         };
         
-        public signal void change_dir(string dir);
+        public signal void change_title(string dir);
         public signal void exit();
         public signal void highlight_tab();
         
@@ -100,37 +100,13 @@ namespace Widgets {
                     focus_term();
                 });
             term.window_title_changed.connect((t) => {
-                    int foreground_pid;
-                    var has_foreground_process = try_get_foreground_pid(out foreground_pid);
+                    update_terminal_title();
                     
-                    string working_directory;
-                    if (has_foreground_process) {
-                        working_directory = term.get_window_title();
-                    } else {
-                        string[] spawn_args = {"readlink", "/proc/%i/cwd".printf(child_pid)};
-                        try {
-                            Process.spawn_sync(null, spawn_args, null, SpawnFlags.SEARCH_PATH, null, out working_directory);
-                        } catch (SpawnError e) {
-                            print("Got error when spawn_sync: %s\n", e.message);
-                        }
-                        
-                        if (working_directory.length > 0) {
-                            working_directory = working_directory[0:working_directory.length - 1];
-                        }
-                    }
-                    
-                    if (working_directory.length > 0) {
-                        if (current_dir != working_directory) {
-                            change_dir(GLib.Path.get_basename(working_directory));
-                            current_dir = working_directory;
-                        }
-
-						// Command finish will trigger 'window-title-changed' signal emit.
-						// we will notify user if background terminal command finish.
-                        if (!term.get_toplevel().get_type().is_a(typeof(ConfigWindow))) {
-                            if (press_anything) {
-                                highlight_tab();
-                            }
+                    // Command finish will trigger 'window-title-changed' signal emit.
+                    // we will notify user if background terminal command finish.
+                    if (!term.get_toplevel().get_type().is_a(typeof(ConfigWindow))) {
+                        if (press_anything) {
+                            highlight_tab();
                         }
                     }
                 });
@@ -476,8 +452,48 @@ namespace Widgets {
         
         public void focus_term() {
             term.grab_focus();
-            if (current_dir != null) {
-                change_dir(GLib.Path.get_basename(current_dir));
+            update_terminal_title(false);
+        }
+        
+        public void update_terminal_title(bool update_when_title_change=true) {
+            int foreground_pid;
+            var has_foreground_process = try_get_foreground_pid(out foreground_pid);
+                    
+            string title;
+            if (has_foreground_process) {
+                string title_string = term.get_window_title();
+                var title_infos = title_string.split(" ");
+                if (title_infos.length >= 2) {
+                    title = "%s %s".printf(title_infos[0], GLib.Path.get_basename(title_infos[1]));
+                } else {
+                    title = title_string;
+                }
+            } else {
+                string[] spawn_args = {"readlink", "/proc/%i/cwd".printf(child_pid)};
+                try {
+                    Process.spawn_sync(null, spawn_args, null, SpawnFlags.SEARCH_PATH, null, out title);
+                } catch (SpawnError e) {
+                    print("Got error when spawn_sync: %s\n", e.message);
+                }
+                        
+                if (title.length > 0) {
+                    title = title[0:title.length - 1];
+                }
+            }
+                    
+            if (title.length > 0) {
+                // Change title.
+                if (has_foreground_process) {
+                    change_title(title);
+                } else {
+                    if (update_when_title_change && current_dir != title) {
+                        current_dir = title;
+                                
+                        change_title(GLib.Path.get_basename(title));
+                    } else {
+                        change_title(GLib.Path.get_basename(title));
+                    }
+                }
             }
         }
         

@@ -46,7 +46,7 @@ namespace Widgets {
         public int show_slider_interval = 500;
         public int show_slider_start_x;
         
-        public signal void change_dir(int index, string dir);
+        public signal void change_title(int index, string dir);
         public signal void exit(int index);
         public signal void highlight_tab(int index);
         
@@ -74,8 +74,8 @@ namespace Widgets {
         
         public Term new_term(bool first_term, string? work_directory) {
             Term term = new Widgets.Term(first_term, work_directory, workspace_manager);
-            term.change_dir.connect((term, dir) => {
-                    change_dir(index, dir);
+            term.change_title.connect((term, dir) => {
+                    change_title(index, dir);
                 });
 			term.highlight_tab.connect((term) => {
 					highlight_tab(index);
