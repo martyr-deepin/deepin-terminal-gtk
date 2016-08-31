@@ -418,7 +418,7 @@ msgid ""
 "Welcome to deepin terminal, before you use the right-click menu to upload "
 "and download files, make sure that the server has been installed rz and sz "
 "commands."
-msgstr "欢迎使用深度终端， 在您使用右键菜单进行上传和下载文件之前， 请先确保服务器已经安装了 rz和sz 命令。"
+msgstr "欢迎使用深度终端， 在您使用右键菜单进行上传和下载文件之前， 请先确保服务器已经安装了rz和sz命令。"
 
 #: ../widget/preference_slidebar.vala:91 ../widget/preference.vala:353
 msgid "Window"
