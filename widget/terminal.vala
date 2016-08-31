@@ -393,6 +393,14 @@ namespace Widgets {
                             GLib.Timeout.add(100, () => {
                                     string download_command = "rz\n";
                                     this.term.feed_child(download_command, download_command.length);
+                                    
+                                    // Press enter automatically.
+                                    GLib.Timeout.add(100, () => {
+                                            string enter_command = "\n";
+                                            this.term.feed_child(enter_command, enter_command.length);
+                                            
+                                            return false;
+                                        });
                 
                                     return false;
                                 });
