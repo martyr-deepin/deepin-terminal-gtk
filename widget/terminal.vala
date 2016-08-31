@@ -583,6 +583,12 @@ namespace Widgets {
                     }
                 }
                 
+                if (keyname == "Ctrl + c" || keyname == "Ctrl + d") {
+                    enter_sz_command = false;
+                    
+                    return false;
+                }
+                
                 return false;
 			} catch (GLib.KeyFileError e) {
 				print("Terminal on_key_press: %s\n", e.message);
