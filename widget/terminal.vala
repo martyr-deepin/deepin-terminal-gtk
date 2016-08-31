@@ -343,7 +343,8 @@ namespace Widgets {
         
         public void upload_file () {
             Gtk.FileChooserAction action = Gtk.FileChooserAction.OPEN;
-            var chooser = new Gtk.FileChooserDialog(_("Select file to upload"), null, action);
+            var chooser = new Gtk.FileChooserDialog(_("Select file to upload"), 
+                    get_toplevel() as Gtk.Window, action);
             chooser.add_button(_("Cancel"), Gtk.ResponseType.CANCEL);
             chooser.set_select_multiple(true);
             chooser.add_button(_("Upload"), Gtk.ResponseType.ACCEPT);
