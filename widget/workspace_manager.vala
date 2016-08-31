@@ -46,6 +46,8 @@ namespace Widgets {
         public void pack_workspace(Workspace workspace) {
             focus_workspace = workspace;
             pack_start(workspace, true, true, 0);
+            
+            workspace.select_focus_terminal();
         }
 		
 		public void new_workspace_with_current_directory(bool remote_serve_action=false) {

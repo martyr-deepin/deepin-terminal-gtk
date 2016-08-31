@@ -38,6 +38,7 @@ namespace Widgets {
         public RemotePanel? remote_panel;
         public SearchPanel? search_panel;
         public Term? terminal_before_popup;
+        public Term? focus_terminal;
         public ThemePanel? theme_panel;
         public int PANED_HANDLE_SIZE = 1;
         public int hide_slider_interval = 500;
@@ -89,9 +90,11 @@ namespace Widgets {
 					hide_theme_panel();
 					hide_remote_panel();
                     
+                    update_focus_terminal(term);
+                    
                     return false;
                 });
-
+            
             term_list.add(term);
             
             return term;
@@ -209,10 +212,14 @@ namespace Widgets {
         
         public void split_vertical() {
             split(Gtk.Orientation.HORIZONTAL);
+            
+            update_focus_terminal(get_focus_term(this));
         }
             
         public void split_horizontal() {
             split(Gtk.Orientation.VERTICAL);
+            
+            update_focus_terminal(get_focus_term(this));
         }
         
         public void split(Orientation orientation) {
@@ -287,18 +294,26 @@ namespace Widgets {
         
         public void select_left_window() {
             select_horizontal_terminal(true);
+            
+            update_focus_terminal(get_focus_term(this));
         }
         
         public void select_right_window() {
             select_horizontal_terminal(false);
+            
+            update_focus_terminal(get_focus_term(this));
         }
         
         public void select_up_window() {
             select_vertical_terminal(true);
+            
+            update_focus_terminal(get_focus_term(this));
         }
         
         public void select_down_window() {
             select_vertical_terminal(false);
+            
+            update_focus_terminal(get_focus_term(this));
         }
         
         public ArrayList<Term> find_intersects_horizontal_terminals(Gtk.Allocation rect, bool left=true) {
@@ -323,9 +338,9 @@ namespace Widgets {
         }
         
         public void select_horizontal_terminal(bool left=true) {
-            Term focus_terminal = get_focus_term(this);
+            Term focus_term = get_focus_term(this);
             
-            Gtk.Allocation rect = Utils.get_origin_allocation(focus_terminal);
+            Gtk.Allocation rect = Utils.get_origin_allocation(focus_term);
             int y = rect.y;
             int h = rect.height;
 
@@ -396,9 +411,9 @@ namespace Widgets {
         }
         
         public void select_vertical_terminal(bool up=true) {
-            Term focus_terminal = get_focus_term(this);
+            Term focus_term = get_focus_term(this);
             
-            Gtk.Allocation rect = Utils.get_origin_allocation(focus_terminal);
+            Gtk.Allocation rect = Utils.get_origin_allocation(focus_term);
             int x = rect.x;
             int w = rect.width;
 
@@ -625,6 +640,16 @@ namespace Widgets {
             remove_search_panel();
             remove_remote_panel();
             remove_theme_panel();
+        }
+        
+        public void update_focus_terminal(Term term) {
+            focus_terminal = term;
+        }
+        
+        public void select_focus_terminal() {
+            if (focus_terminal != null) {
+                focus_terminal.focus_term();
+            }
         }
     }
 }
