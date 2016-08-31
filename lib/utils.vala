@@ -327,9 +327,9 @@ namespace Utils {
         
         try {
             Secret.password_clear_sync(password_schema, null, "number", 8, "string", "eight", "even", true);
-            // print("Remove password: %s %s\n".printf(user, server_address));
         } catch (Error e) {
-            error ("%s", e.message);
+            print("%s", e.message);
+            return;
         }
 
         Secret.password_storev.begin(password_schema, attributes, Secret.COLLECTION_DEFAULT,
@@ -338,9 +338,9 @@ namespace Utils {
                                      null, (obj, async_res) => {
                                          try {
                                              Secret.password_store.end(async_res);
-                                             // print("Store password: %s %s %s\n", user, server_address, password);
                                          } catch (Error e) {
-                                             error ("%s", e.message);
+                                             print("%s", e.message);
+                                             return;
                                          }
                                      });
 
