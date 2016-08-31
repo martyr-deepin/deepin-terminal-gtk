@@ -238,7 +238,7 @@ namespace Widgets {
                 var path = config_file.get_string(server_info, "Path");
                 var command = config_file.get_string(server_info, "Command");
                 
-                string remote_command = "";
+                string remote_command = "echo %s &&".printf(_("Welcome to deepin terminal, before you use the right-click menu to upload and download files, make sure that the server has been installed rz and sz commands."));
                 if (path.strip() != "") {
                     remote_command += "cd %s && ".printf(path);
                 }
