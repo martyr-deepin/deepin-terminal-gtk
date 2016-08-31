@@ -77,69 +77,83 @@ namespace Config {
         }
 		
         public void init_config() {
-            config_file.set_string("general", "theme", "deepin");
-            config_file.set_double("general", "opacity", default_opacity);
-            config_file.set_string("general", "font", default_mono_font);
-            config_file.set_integer("general", "font_size", default_size);
+            try {
+                config_file.set_string("general", "theme", "deepin");
+                config_file.set_double("general", "opacity", default_opacity);
+                config_file.set_string("general", "font", default_mono_font);
+                config_file.set_integer("general", "font_size", default_size);
             
-            config_file.set_string("shortcut", "copy", "Ctrl + Shift + c");
-            config_file.set_string("shortcut", "paste", "Ctrl + Shift + v");
-			config_file.set_string("shortcut", "search", "Ctrl + Shift + f");
-            config_file.set_string("shortcut", "zoom_in", "Ctrl + =");
-            config_file.set_string("shortcut", "zoom_out", "Ctrl + -");
-            config_file.set_string("shortcut", "default_size", "Ctrl + 0");
-            config_file.set_string("shortcut", "select_all", "Ctrl + Shift + a");
+                config_file.set_string("shortcut", "copy", "Ctrl + Shift + c");
+                config_file.set_string("shortcut", "paste", "Ctrl + Shift + v");
+                config_file.set_string("shortcut", "search", "Ctrl + Shift + f");
+                config_file.set_string("shortcut", "zoom_in", "Ctrl + =");
+                config_file.set_string("shortcut", "zoom_out", "Ctrl + -");
+                config_file.set_string("shortcut", "default_size", "Ctrl + 0");
+                config_file.set_string("shortcut", "select_all", "Ctrl + Shift + a");
             
-            config_file.set_string("shortcut", "new_workspace", "Ctrl + Shift + t");
-            config_file.set_string("shortcut", "close_workspace", "Ctrl + Shift + w");
-            config_file.set_string("shortcut", "next_workspace", "Ctrl + Tab");
-            config_file.set_string("shortcut", "previous_workspace", "Ctrl + Shift + Tab");
-            config_file.set_string("shortcut", "vertical_split", "Ctrl + Shift + j");
-            config_file.set_string("shortcut", "horizontal_split", "Ctrl + Shift + h");
-            config_file.set_string("shortcut", "select_upper_window", "Alt + k");
-            config_file.set_string("shortcut", "select_lower_window", "Alt + j");
-            config_file.set_string("shortcut", "select_left_window", "Alt + h");
-            config_file.set_string("shortcut", "select_right_window", "Alt + l");
-            config_file.set_string("shortcut", "close_window", "Ctrl + Alt + q");
-            config_file.set_string("shortcut", "close_other_windows", "Ctrl + Shift + q");
+                config_file.set_string("shortcut", "new_workspace", "Ctrl + Shift + t");
+                config_file.set_string("shortcut", "close_workspace", "Ctrl + Shift + w");
+                config_file.set_string("shortcut", "next_workspace", "Ctrl + Tab");
+                config_file.set_string("shortcut", "previous_workspace", "Ctrl + Shift + Tab");
+                config_file.set_string("shortcut", "vertical_split", "Ctrl + Shift + j");
+                config_file.set_string("shortcut", "horizontal_split", "Ctrl + Shift + h");
+                config_file.set_string("shortcut", "select_upper_window", "Alt + k");
+                config_file.set_string("shortcut", "select_lower_window", "Alt + j");
+                config_file.set_string("shortcut", "select_left_window", "Alt + h");
+                config_file.set_string("shortcut", "select_right_window", "Alt + l");
+                config_file.set_string("shortcut", "close_window", "Ctrl + Alt + q");
+                config_file.set_string("shortcut", "close_other_windows", "Ctrl + Shift + q");
             
-            config_file.set_string("shortcut", "switch_fullscreen", "F11");
-            config_file.set_string("shortcut", "display_shortcuts", "Ctrl + Shift + ?");
-            config_file.set_string("shortcut", "remote_management", "Ctrl + /");
-            config_file.set_string("shortcut", "select_workspace", "Alt");
+                config_file.set_string("shortcut", "switch_fullscreen", "F11");
+                config_file.set_string("shortcut", "display_shortcuts", "Ctrl + Shift + ?");
+                config_file.set_string("shortcut", "remote_management", "Ctrl + /");
+                config_file.set_string("shortcut", "select_workspace", "Alt");
             
-            config_file.set_string("advanced", "cursor_shape", "block");
-            config_file.set_boolean("advanced", "cursor_blink_mode", true);
+                config_file.set_string("advanced", "cursor_shape", "block");
+                config_file.set_boolean("advanced", "cursor_blink_mode", true);
             
-            config_file.set_boolean("advanced", "scroll_on_key", true);
-            config_file.set_boolean("advanced", "scroll_on_output", false);
-            config_file.set_integer("advanced", "scroll_line", -1);
-            config_file.set_string("advanced", "use_on_starting", "window");
-            config_file.set_integer("advanced", "window_width", 0);
-            config_file.set_integer("advanced", "window_height", 0);
-            config_file.set_double("advanced", "quake_window_height", 0);
-            config_file.set_string("advanced", "remote_commands", "ssh;zssh;tmux;screen");
+                config_file.set_boolean("advanced", "scroll_on_key", true);
+                config_file.set_boolean("advanced", "scroll_on_output", false);
+                config_file.set_integer("advanced", "scroll_line", -1);
+                config_file.set_string("advanced", "use_on_starting", "window");
+                config_file.set_integer("advanced", "window_width", 0);
+                config_file.set_integer("advanced", "window_height", 0);
+                config_file.set_double("advanced", "quake_window_height", 0);
+                config_file.set_string("advanced", "remote_commands", "ssh;zssh;tmux;screen");
 			
-			config_file.set_string("theme", "color_1", "#073642");
-			config_file.set_string("theme", "color_2", "#bdb76b");  // string
-			config_file.set_string("theme", "color_3", "#859900");
-			config_file.set_string("theme", "color_4", "#b58900");
-			config_file.set_string("theme", "color_5", "#ffd700");  // path
-			config_file.set_string("theme", "color_6", "#d33682");
-			config_file.set_string("theme", "color_7", "#2aa198");
-			config_file.set_string("theme", "color_8", "#eee8d5");
-			config_file.set_string("theme", "color_9", "#002b36");
-			config_file.set_string("theme", "color_10", "#8b0000");  // error
-			config_file.set_string("theme", "color_11", "#00ff00");  // exec
-			config_file.set_string("theme", "color_12", "#657b83");
-			config_file.set_string("theme", "color_13", "#1e90ff");  // folder
-			config_file.set_string("theme", "color_14", "#6c71c4");
-			config_file.set_string("theme", "color_15", "#93a1a1");
-			config_file.set_string("theme", "color_16", "#fdf6e3");
-			config_file.set_string("theme", "background", "#000000");  // background
-			config_file.set_string("theme", "foreground", "#00cd00");  // foreground
-			config_file.set_string("theme", "tab", "#2CA7F8");         // tab
-			config_file.set_string("theme", "style", "dark");          // style
+                config_file.set_string("theme", "color_1", "#073642");
+                config_file.set_comment("theme", "color_1", "host");
+                config_file.set_string("theme", "color_2", "#bdb76b");
+                config_file.set_comment("theme", "color_2", "string");
+                config_file.set_string("theme", "color_3", "#859900");
+                config_file.set_comment("theme", "color_3", "command");
+                config_file.set_string("theme", "color_4", "#b58900");
+                config_file.set_comment("theme", "color_4", "command");
+                config_file.set_string("theme", "color_5", "#ffd700"); 
+                config_file.set_comment("theme", "color_5", "path");  
+                config_file.set_string("theme", "color_6", "#d33682");
+                config_file.set_comment("theme", "color_6", "variable");
+                config_file.set_string("theme", "color_7", "#2aa198");
+                config_file.set_comment("theme", "color_7", "prompt");
+                config_file.set_string("theme", "color_8", "#eee8d5");
+                config_file.set_string("theme", "color_9", "#002b36");
+                config_file.set_string("theme", "color_10", "#8b0000"); 
+                config_file.set_comment("theme", "color_10", "error");  
+                config_file.set_string("theme", "color_11", "#00ff00"); 
+                config_file.set_comment("theme", "color_11", "execute");
+                config_file.set_string("theme", "color_12", "#657b83");
+                config_file.set_string("theme", "color_13", "#1e90ff");
+                config_file.set_comment("theme", "color_13", "folder");
+                config_file.set_string("theme", "color_14", "#6c71c4");
+                config_file.set_string("theme", "color_15", "#93a1a1");
+                config_file.set_string("theme", "color_16", "#fdf6e3");
+                config_file.set_string("theme", "background", "#000000");
+                config_file.set_string("theme", "foreground", "#00cd00");
+                config_file.set_string("theme", "tab", "#2CA7F8");       
+                config_file.set_string("theme", "style", "dark");        
+            } catch (Error e) {
+                print("Config init_config: %s\n", e.message);
+            }
 
             save();
         }
