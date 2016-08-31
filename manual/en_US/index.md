@@ -1,0 +1,371 @@
+# Deepin Terminal|../common/deepin-terminal.svg|
+
+## Overview|../common/icon_overview.svg|
+
+Deepin Terminal is a terminal emulator with simple interface, rich and powerful functions created by Deepin Technology. You can instantly start and close Deepin Terminal smoothly like normal file window, allowing you to input commands with facility and no distractions. Let's try the Quake mode, browse webs while inputting commands. When there are multiple tasks, you can add tabs in terminal to create more workspaces like in the browser or split the workspace into multiple windows. It's a piece of cake to upload and download files with remote management. More powerful functions are waiting for you to explore!
+
+ ![1|interface](png/interface.png)
+
+
+## Guide|../common/icon_guide.svg|
+
+You can run, exit or create shortcuts for Deepin Terminal.
+
+### Run Deepin Terminal ###
+
+1. Click on ![launcher-24](icon/launcher-24.svg) on dock to enter launcher interface.
+
+2. Find ![terminal-24](icon/terminal-24.svg) to click on, you can:
+
+ - Click on **Send to desktop** to create a desktop shortcut.
+ - Click on **Send to dock** to fix it on dock.
+ - Click on **Add to startup** to add it to startup, it will automatically run when the system starts up.
+
+> ![notes](icon/notes.svg): You can also press ![Ctrl](icon/Ctrl.svg)+![Alt](icon/Alt.svg)+![T](icon/T.svg) to open Deepin Terminal.
+
+
+### Exit Deepin Terminal ###
+
+1. On Deepin Terminal interface, click on ![close_icon](icon/close_icon.svg) to exit.
+
+2. Right click on ![terminal-24](icon/terminal-24.svg) on Dock and select **Close All** to exit.
+
+3. On Deepin Terminal interface, click on ![menu_icon](icon/menu_icon.svg) to select **Exit** to exit.
+
+> ![notes](icon/notes.svg): There will be a prompt when programs are still running in terminal.
+
+
+### View Shortcuts ###
+
+You can press ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![QM](icon/QM.svg) on keyboard to open shortcuts preview interface.
+
+ ![1|shorcuts](png/shortcuts.png)
+
+
+## Basic Operations|../common/icon_basicoperation.svg|
+
+You can right click on Deepin Terminal interface to do daily operations.
+
+ ![1|righ-tclick](png/right-click.png)
+
+
+### Search ###
+
+You can use the search function to quickly search contents in terminal.
+
+1. Right click on Deepin Terminal interface.
+
+2. Click on **Search**.
+
+3. Type the word in search box and click on Enter.
+
+4. Then the search results will be highlighted.
+
+5. Press ![Esc](icon/Esc.svg) on keyboard or click on any location of terminal interface to exit search.
+
+> ![tips](icon/tips.svg): Press ![Enter](icon/Enter.svg) to search up from current location. You can also click on ![up](icon/up.svg) and ![down](icon/down.svg) to search.
+
+
+### Copy/Paste ###
+
+You can freely copy and paste the contents or commands among terminal and anywhere else.
+
+1. Select the commands or contents to be copied.
+
+2. Right click to select **Copy** to copy elsewhere.
+
+3. If you want to paste on terminal, right click to select **Paste**.
+
+> ![tips](icon/tips.svg): If the content is a link, you can also right click to copy by hovering on it even no contents selected.
+
+
+### Quake Mode ###
+
+Press ![F4](icon/F4.svg) to open a quake window, and then press again to hide.
+
+> ![tips](icon/tips.svg): You can also click on ![terminal-24](icon/terminal-24.svg) on Dock to select **Quake Terminal** to open a quake window.
+
+
+## Window Operations|../common/icon_windowoperation.svg|
+
+Window is the base for you to do other operations in terminal. You can create many workspaces and split more windows.
+
+
+### New Window ###
+
+![0|new-window](png/new-window.png)
+
+1. Open Deepin Terminal and click the main menu to select **New Window**.
+
+2. Then a new terminal window will be opened.
+
+> ![notes](icon/notes.svg): You also can right click on ![terminal-24](icon/terminal-24.svg) on Dock to select **New Window**.
+
+
+### Split Window ###
+
+1. Right click on Deepin Terminal interface.
+
+ - Click on **Vertical split** to split the interface into left and right parts.
+
+ - Click on **Horizontal split** to split the interface into top and bottom parts.
+
+2. You can input commands in each terminal window, and can also view the results of command executed.
+
+> ![tips](icon/tips.svg): You also can press ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![J](icon/J.svg) on keyboard to split vertically, and press ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![H](icon/H.svg) to split horizontally.
+
+ ![1|split-window](png/split-window.png)
+
+
+### Display Window in Fullscreen ###
+
+1. Open Deepin Terminal in launcher interface.
+
+2. Press ![F11](icon/F11.svg) to display Deepin Terminal in fullscreen.
+
+3. If you want to restore the normal display, please press ![F11](icon/F11.svg).
+
+> ![notes](icon/notes.svg): You can also right click to select **Fullscreen** or **Exit fullscreen** on Deepin Terminal interface.
+
+### Close Window ###
+
+For multiple splitting windows, you can execute the following operations to close:
+
+1. On Deepin terminal interface, move the mouse pointer over one of the splitting windows.
+
+2. Right click, you can:
+
+ - Select **Close window** to close this splitting window.
+
+ - Select **Close other windows** to close other splitting windows except the current window.
+
+![1|close-window](png/close-window.png)
+
+
+## Workspace Operations|../common/icon_workspaceoperation.svg|
+
+The current workspace status will be displayed in different colors of workspace tabs.
+
+![1|workspace](png/workspace.png)
+
+
+### New Workspace ###
+
+- Right click on Deepin Terminal interface and select **New workspace** to create a new workspace.
+
+- Click on ![add](icon/add_icon.svg) on the top to create a workspace.
+
+
+### Select Workspace ###
+
+You can freely switch between multiple workspaces by one of the following operations:
+
+- Directly click the workspace tab to select a workspace.
+- Press ![Ctrl](icon/Ctrl.svg)+![Tab](icon/Tab.svg) to switch in sequence.
+- Press ![Ctrl](icon/Ctrl.svg)+ 1~9 Number key to select the workspace; when workspaces are more than 9, the last workspace will be selected rather the ninth one.
+
+
+### Close Workspace ###
+
+- Move the mouse pointer over the preview window of workspace, click on ![close_icon](icon/close_icon.svg) to close the workspace.
+
+- Press ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![W](icon/W.svg)
+
+![tips](icon/tips.svg): When there is only one window in workspace, you can also right click to select **Close window** to close.
+
+
+## Remote Server Management|../common/icon_sshconnection.svg|
+
+You can right click or click the main menu to open remote management panel to add remote servers. The remote management panel will be automatically hidden when you adjust the window size.
+
+### Add Server ###
+
+1. On Deepin Terminal interface, right click or click on ![menu_icon](icon/menu_icon.svg) in the top right corner.
+
+2. Select **Remote management** to open the panel.
+
+3. Click on **Add server** to fill out:
+
+ - Server name
+ - Address
+ - Username
+ - Password
+
+4. Click on **Add** to add.
+
+5. If you need more parameters, please click on **Advanced options** to set.
+
+> ![notes](icon/notes.svg): You can also press ![Ctrl](icon/Ctrl.svg)+![Slash](icon/Slash.png) to open the remote management panel.
+
+![1|add-server](png/add-server.png)
+
+
+### Edit Server ###
+
+1. Hover the mouse pointer over the server added, click on ![edit_icon](icon/edit_icon.svg) to enter the detailed interface.
+
+2. Edit as needed.
+
+3. Click on **Save** to save the editing.
+
+![0|edit-server](png/edit-server.png)
+
+
+### Group Servers ###
+
+When we set a group for a server, it will be added in the group and displayed in the right remote management panel.
+
+1. Enter "Edit Server" interface.
+
+2. Click on **Advanced options**.
+
+3. Fill out the group and click on **Save**.
+
+4. Then this server will be grouped.
+
+![0|group-server](png/group-server.png)
+
+
+### Delete Server ###
+
+1. Enter "Edit Server" interface.
+
+2. Click on **Advanced options**.
+
+3. Select **Delete server** at the bottom to delete.
+
+![0|group-server](png/group-server.png)
+
+
+### Search Server ###
+
+When there are many servers, the search box will be displayed on the top of remote management panel.
+
+1. Input the server name and press ![Enter](icon/Enter.svg).
+
+2. The search results will be displayed at the panel.
+
+![0|search-server](png/search-server.png)
+
+
+### Upload/Download File ###
+
+You can upload and download files after logged in a server.
+
+#### Upload File ####
+
+1. On the remote management panel, click one of the servers to log in.
+
+2. Right click to select **Upload file**.
+
+3. Select file to upload.
+
+![0|upload](png/upload.png)
+
+
+#### Download File ####
+
+1. On the remote management panel, click one of the servers to log in.
+
+2. Right click to select **Download file**.
+
+3. Select file to download.
+
+![0|download](png/download.png)
+
+
+## Option Settings|../common/icon_settings.svg|
+
+### Switch Theme ###
+
+1. On Deepin Terminal interface, click on ![menu_icon](icon/menu_icon.svg) in the top right corner.
+
+2. Click on **Switch theme**.
+
+3. The themes will be displayed on the right list, then you can select one to take effect right now.
+
+ ![0|switch-theme](png/switch-theme.png)
+
+### Basic Settings ###
+
+1. On Deepin Terminal interface, click on ![menu_icon](icon/menu_icon.svg) in the top right corner.
+
+2. Click on **Settings**.
+
+3. In the interface of **Basic**, you can:
+
+ - Set the background transparency.
+
+ - Set the font and font size.
+
+ ![0|basic-settings](png/basic-settings.png)
+
+
+### Shortcuts Settings ###
+
+1. On Deepin Terminal interface, click on ![menu_icon](icon/menu_icon.svg) in the top right corner.
+
+2. Click on **Settings**.
+
+3. In the interface of **Shortcuts**, you can:
+
+ - Click the shortcuts to be modified, and input new shortcuts by keyboard.
+
+ - Press ![Backspace](icon/Backspace.svg) if you want to disable the shortcut.
+
+ ![0|shortcuts-settings](png/shortcuts-settings.png)
+
+
+### Advanced Settings ###
+
+1. On Deepin Terminal interface, click on ![menu_icon](icon/menu_icon.svg) in the top right corner.
+
+2. Click on **Settings**.
+
+3. In the interface of **Advanced**, you can:
+
+ - Set cursor style.
+
+ - Enable or disable cursor blink.
+
+ - Enable or disable the function of **Scroll on keystroke**.
+
+ - Enable or disable the function of **Scroll on output**.
+
+ - Set window startup mode.
+
+
+> ![notes](icon/notes.svg): If you need to restore all default settings, please click on **Restore default settings**.
+
+ ![0|advanced-settings](png/advanced-settings.png)
+
+
+### Help ###
+
+You can click on **Help** to view the manual.
+
+1. On Deepin Terminal interface, click on ![menu_icon](icon/menu_icon.svg) in the top right corner.
+
+2. Click on **Help** to view the manual of Deepin Terminal.
+
+ ![1|help](png/help.png)
+
+
+### About ###
+
+You can click on **About** to view the introduction of Deepin Terminal.
+
+1. On Deepin Terminal interface, click on ![menu_icon](icon/menu_icon.svg) in the top right corner.
+
+2. Click on **About** to view the introduction of Deepin Terminal.
+
+ ![0|about](png/about.png)
+
+
+### Exit ###
+
+You can click on **Exit** to exit from Deepin Terminal.
+
+1. On Deepin Terminal interface, click on ![menu_icon](icon/menu_icon.svg) in the top right corner.
+
+2. Click on **Exit** to exit.

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="24px"
+   height="24px"
+   viewBox="0 0 24 24"
+   version="1.1"
+   id="svg2"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="next.svg">
+  <metadata
+     id="metadata15">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="640"
+     inkscape:window-height="480"
+     id="namedview13"
+     showgrid="false"
+     inkscape:zoom="9.8333333"
+     inkscape:cx="12"
+     inkscape:cy="13.127794"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg2" />
+  <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+  <title
+     id="title4">next</title>
+  <desc
+     id="desc6">Created with Sketch.</desc>
+  <defs
+     id="defs8" />
+  <g
+     id="Page-1"
+     transform="matrix(0,1,-1,0,23.999998,-9.2651366e-8)"
+     style="fill:none;fill-rule:evenodd;stroke:none;stroke-width:1">
+    <rect
+       id="rect34470"
+       transform="matrix(1,0,0,-1,0,23.999998)"
+       x="0"
+       y="0"
+       width="23.999998"
+       height="23.999998"
+       rx="1.7382798e-05" />
+    <path
+       d="M 8.4742121,5.0008305 C 8.2710317,5.0118483 8.0947892,5.1448834 8.0285097,5.3372651 7.9622303,5.5296468 8.0191331,5.7430052 8.1724121,5.8768305 l 7.0868999,6.3777995 -7.0868999,6.378 c -0.1364937,0.118391 -0.1985036,0.301207 -0.1622049,0.478208 0.036299,0.177001 0.1652596,0.320654 0.3373344,0.375765 0.1720748,0.05511 0.3604962,0.01311 0.4928705,-0.109873 l 7.4999999,-6.749999 c 0.105613,-0.09484 0.165941,-0.230102 0.165941,-0.372051 0,-0.141947 -0.06033,-0.277207 -0.165941,-0.37205 L 8.8404121,5.1326305 c -0.099243,-0.091619 -0.2313292,-0.1391946 -0.3662,-0.1319 l 0,10e-5 z"
+       id="polyline34476"
+       inkscape:connector-curvature="0"
+       style="fill:#595959" />
+  </g>
+</svg>
