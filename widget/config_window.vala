@@ -149,8 +149,10 @@ namespace Widgets {
                     get_size(out width, out height);
 
                     if (cache_width != width || cache_height != height) {
-                        workspace_manager.focus_workspace.remove_theme_panel();
-                        workspace_manager.focus_workspace.remove_remote_panel();
+                        foreach (var workspace_entry in workspace_manager.workspace_map.entries) {
+                            workspace_entry.value.remove_theme_panel();
+                            workspace_entry.value.remove_remote_panel();
+                        }
                         
                         cache_width = width;
                         cache_height = height;
