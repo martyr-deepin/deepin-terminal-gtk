@@ -58,7 +58,7 @@ namespace Widgets {
                             set_default_size(rect.width, (int) (rect.height * double.min(config_height, 1.0)));
                         }
                 
-                        if (config_height > 2 / 3) {
+                        if (config_height > window_max_height_scale) {
                             Gdk.Geometry geo = Gdk.Geometry();
                             geo.min_width = rect.width;
                             geo.min_height = (int) (rect.height * window_default_height_scale);
