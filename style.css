@@ -21,6 +21,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */ 
 
+
+.scrolledwindow {
+    color: #303030;
+}
+
 .scrolledwindow undershoot.top {
     background-image: none;
 }
