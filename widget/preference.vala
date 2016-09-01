@@ -572,15 +572,17 @@ namespace Widgets {
 			entry.key_press_event.connect((w, e) => {
 					string keyname = Keymap.get_keyevent_name(e);
 					
+                    string new_key = "";
 					if (keyname == "Backspace") {
 						entry.set_text("");
 					} else if (keyname.has_prefix("F") || keyname.contains("+")) {
 						entry.set_text(keyname);
+                        new_key = keyname;
 					} else {
 						return false;
 					}
 					
-					parent_window.config.config_file.set_string(group_name, key, keyname);
+					parent_window.config.config_file.set_string(group_name, key, new_key);
 					parent_window.config.save();
 					
 					parent_window.config.update();
