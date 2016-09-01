@@ -12,11 +12,15 @@ In debian, use below command to install dependencies:
 
 `sudo apt-get install valac libgtk-3-dev libgee-0.8-dev libvte-2.91-dev libjson-glib-dev libsecret-1-dev libwnck-3-dev`
 
+## Installation
+
+`make && ./main`
+
 ## Usage
 
 Below is keymap list for deepin-terminal:
 
-| Function					      | Keymap                              |
+| Function					      | Shortcut                            |
 |---------------------------------|-------------------------------------|
 | Copy                            | **Ctrl** + **Shift** + **c**        |
 | Paste                           | **Ctrl** + **Shift** + **v**        |
@@ -46,10 +50,6 @@ Below is keymap list for deepin-terminal:
 | Adjust background opacity       | **Ctrl** + **ScrollButton**         |
 | Display shortcuts               | **Ctrl** + **Shift** + **?**        |
 | Remote management               | **Ctrl** + **/**                    |
-
-## Installation
-
-`make && ./main`
 
 ## Getting help
 
