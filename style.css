@@ -301,9 +301,9 @@
     padding-bottom: 1px;
 }
 
-
 .preference_spinbutton:not(.vertical) button {
 	min-height: 24px;
+    min-width: 24px;
 	padding-top: 0px;
 	padding-bottom: 0px;
     color:#303030;
@@ -351,6 +351,8 @@
     border:1px solid rgba(0,0,0,0.1);
     border-width:1px 0 1px 1px;
 	font-size: 11px;
+    border-radius: 4px 0 0 4px;
+    padding: 0 6px;
 }
 
 .preference_spinbutton:not(.vertical) entry selection {
