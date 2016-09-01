@@ -117,6 +117,8 @@
 	background: transparent;
 	border: 0px solid rgba(0,0,0,0.10);
 	font-size: 11px;
+    border-radius: 4px;
+    padding: 0px 6px;
 }
 
 .search_dark_entry:focus {
@@ -136,6 +138,8 @@
 	background: transparent;
 	border: 0px solid rgba(0,0,0,0.10);
 	font-size: 11px;
+    border-radius: 4px;
+    padding: 0px 6px;
 }
 
 .search_light_entry:focus {
@@ -283,6 +287,8 @@
 	font-size: 9px;
     padding-top: 0px;
     padding-bottom: 0px;
+    border-radius: 4px;
+    padding: 0px 6px;
 }
 
 .preference_entry:focus {
@@ -406,8 +412,7 @@
 	border-radius:4px 0 0 4px;
 	letter-spacing: 2px;
 	font-size: 9px;
-    padding-top: 0px;
-    padding-bottom: 0px;
+    padding: 0px 6px;
 }
 
 .password_invisible_entry:focus {
@@ -429,8 +434,7 @@
 	border-radius:4px 0 0 4px;
 	letter-spacing: 2px;
 	font-size: 9px;
-    padding-top: 0px;
-    padding-bottom: 0px;
+    padding: 0px 6px;
 }
 
 .password_visible_entry:focus {
