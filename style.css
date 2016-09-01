@@ -511,7 +511,7 @@
 }
 
 .dialog_button_left_text {
-    background-color: transparent;
+    background-image: linear-gradient(-180deg,#ffffff 0%, #ffffff 100%);
     color:#303030;
     box-shadow: none;
     border-width: 1px 1px 0 0;
@@ -548,7 +548,7 @@
 
 
 .dialog_button_left_action {
-    background-color: transparent;
+    background-image: linear-gradient(-180deg,#ffffff 0%, #ffffff 100%);
     color:#0087ff;
     box-shadow: none;
     border-width: 1px 1px 0 0;
@@ -558,7 +558,7 @@
 
 
 .dialog_button_left_warning {
-    background-color: transparent;
+    background-image: linear-gradient(-180deg,#ffffff 0%, #ffffff 100%);
     color:#ff5a5a;
     box-shadow: none;
     border-width: 1px 1px 0 0;
@@ -567,7 +567,7 @@
 }
 
 .dialog_button_right_text {
-    background-color: transparent;
+    background-image: linear-gradient(-180deg,#ffffff 0%, #ffffff 100%);
     color:#303030;
     box-shadow: none;
     border-width: 1px 0 0 0px;
@@ -603,7 +603,7 @@
 }
 
 .dialog_button_right_action {
-    background-color: transparent;
+    background-image: linear-gradient(-180deg,#ffffff 0%, #ffffff 100%);
     color:#0087ff;
     box-shadow: none;
     border-width: 1px 0 0 0px;
@@ -613,7 +613,7 @@
 }
 
 .dialog_button_right_warning {
-    background-color: transparent;
+    background-image: linear-gradient(-180deg,#ffffff 0%, #ffffff 100%);
     color:#ff5a5a;
     box-shadow: none;
     border-width: 1px 0 0 0px;
@@ -624,7 +624,7 @@
 
 
 .dialog_button_text {
-    background-color: transparent;
+    background-image: linear-gradient(-180deg,#ffffff 0%, #ffffff 100%);
     color:#303030;
     box-shadow: none;
     border-width: 1px 1px 0 0;
@@ -661,7 +661,7 @@
 
 
 .dialog_button_action {
-    background-color: transparent;
+    background-image: linear-gradient(-180deg,#ffffff 0%, #ffffff 100%);
     color:#0087ff;
     box-shadow: none;
     border-width: 1px 1px 0 0;
@@ -671,7 +671,7 @@
 
 
 .dialog_button_warning {
-    background-color: transparent;
+    background-image: linear-gradient(-180deg,#ffffff 0%, #ffffff 100%);
     color:#ff5a5a;
     box-shadow: none;
     border-width: 1px 1px 0 0;
