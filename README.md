@@ -22,34 +22,30 @@ Below is keymap list for deepin-terminal:
 | Paste                           | **Ctrl** + **Shift** + **v**        |
 | Select word                     | **Double click**                    |
 | Open URL                        | **Ctrl** + **LeftButton**           |
-| Split vertically                | **Ctrl** + **Shift** + **h**        |
-| Split horizontally              | **Ctrl** + **h**                    |
-| Search history                  | **Ctrl** + **r**                    |
-|                                                                       |
-| Close current terminal          | **Ctrl** + **q**                    |
-| Close other terminals           | **Ctrl** + **Shift** + **q**        |
-|                                                                       |
-| Focus up window                 | **Alt**  + **k**                    |
-| Focus down window               | **Alt**  + **j**                    |
-| Focus left window               | **Alt**  + **h**                    |
-| Focus right window              | **Alt**  + **l**                    |
-| Close window                    | **Ctrl** + **Shift** + **q**        |
-|                                                                       |
-| Zoom out                        | **Ctrl** + **=**                    |
-| Zoom in                         | **Ctrl** + **-**                    |
-| Revert default size             | **Ctrl** + **0**                    |
+| Search                          | **Ctrl** + **Shfit** + **f**        |
+| Zoom in                         | **Ctrl** + **=**                    |
+| Zoom out                        | **Ctrl** + **-**                    |
+| Default size                    | **Ctrl** + **0**                    |
+| Select all                      | **Ctrl** + **Shift** + **a**        |
 |                                                                       |
 | New workspace                   | **Ctrl** + **Shift** + **t**        |
-| Close workspace                 | **Ctrl** + **Shift** + **q**        |
-| Switch preview workspace        | **Ctrl** + **Tab**                  |
-| Switch next workspace           | **Ctrl** + **Shift** + **Tab**      |
-| Select workspace with number    | **Ctrl** + **number**               |
+| Close workspace                 | **Ctrl** + **Shift** + **w**        |
+| Next workspace                  | **Ctrl** + **Tab**                  |
+| Preview workspace               | **Ctrl** + **Shfit** + **Tab**      |
+| Select workspace with number    | **Alt** + **number**                |
+| Vertical split                  | **Ctrl** + **Shift** + **j**        |
+| Horizontal split                | **Ctrl** + **Shfit** + **h**        |
+| Select upper window             | **Alt**  + **k**                    |
+| Select lower window             | **Alt**  + **j**                    |
+| Select left window              | **Alt**  + **h**                    |
+| Select right window             | **Alt**  + **l**                    |
+| Close window                    | **Ctrl** + **Alt** + **q**          |
+| Close other windows             | **Ctrl** + **Shift** + **q**        |
 |                                                                       |
-| Search                          | **Ctrl** + **Shift** + **f**		|
-|                                                                       |
+| Switch fullscreen               | **F11**                             |
 | Adjust background opacity       | **Ctrl** + **ScrollButton**         |
-| Fullscreen                      | **F11**                             |
-| Help                            | **Ctrl** + **?**                    |
+| Display shortcuts               | **Ctrl** + **Shift** + **?**        |
+| Remote management               | **Ctrl** + **/**                    |
 
 ## Installation
 
