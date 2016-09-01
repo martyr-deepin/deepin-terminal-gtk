@@ -291,6 +291,16 @@
     padding: 0px 6px;
 }
 
+.preference_entry selection:focus {
+    color:white;
+    min-height: 18px;
+	background-color: #61B5F8;
+    border:1px solid #2ca7f8;
+	font-size: 9px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
 .preference_entry:focus {
     color:black;
     min-height: 18px;
@@ -350,7 +360,7 @@
     color:#303030;
     border:1px solid rgba(0,0,0,0.1);
     border-width:1px 0 1px 1px;
-	font-size: 11px;
+	font-size: 9px;
     border-radius: 4px 0 0 4px;
     padding: 0 6px;
 }
@@ -358,7 +368,16 @@
 .preference_spinbutton:not(.vertical) entry selection {
     color:white;
     background-color:#2ca7f8;
-	font-size: 11px;
+	font-size: 9px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+.preference_spinbutton:not(.vertical) entry selection:focus {
+	font-size: 9px;
+    min-height: 18px;
+    padding-top: 1px;
+    padding-bottom: 1px;
 }
 
 .preference_label {
