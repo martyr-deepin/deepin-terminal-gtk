@@ -159,6 +159,7 @@
 	padding-right: 2px;
 	background: transparent;
 	box-shadow: none;
+    border: none;
     min-width: 4px;
 	margin-top: 2px;
 	margin-bottom: 2px;
@@ -187,6 +188,7 @@
 	padding-right: 2px;
 	background: transparent;
 	box-shadow: none;
+    border: none;
     min-width: 4px;
 	margin-top: 2px;
 	margin-bottom: 2px;
