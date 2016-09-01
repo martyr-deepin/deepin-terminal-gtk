@@ -2142,7 +2142,7 @@ namespace Xcb {
 		public static void next (ref DepthIterator iter);
 	}
 
-	[Version (deprecated = true, deprecated_since = "vala-0.26", replacement = "Xcb.Depth.visuals")]
+	// [Version (deprecated = true, deprecated_since = "vala-0.26", replacement = "Xcb.Depth.visuals")]
 	[SimpleType]
 	[CCode (cname = "xcb_visualtype_iterator_t", has_type_id = false)]
 	public struct VisualTypeIterator {
