@@ -254,11 +254,12 @@
     -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
 }
 
-.preference_comboboxtext menu{
+.preference_comboboxtext menu {
 	border-radius:4px;
     font-size:9px;
+    color: #303030;
 	background: white;
-	border: 1px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .preference_comboboxtext menu > arrow{
@@ -269,6 +270,10 @@
 .preference_comboboxtext arrow {
 	min-height: 16px;
 	min-width: 12px;
+}
+
+.preference_comboboxtext menu menuitem {
+    padding-left: 6px;
 }
 
 .preference_comboboxtext menu menuitem:hover{
