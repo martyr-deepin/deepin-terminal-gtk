@@ -234,6 +234,17 @@
 	min-height: 2px;
 }
 
+.preference_comboboxtext button {
+	border-radius: 4px;
+    padding: 0 6px;
+}
+
+.preference_comboboxtext arrow {
+	min-height: 16px;
+	min-width: 12px;
+    -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+}
+
 .preference_comboboxtext menu{
 	border-radius:4px;
     font-size:9px;
