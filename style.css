@@ -338,7 +338,7 @@
 
 .preference_spinbutton:not(.vertical) button {
 	min-height: 24px;
-    min-width: 24px;
+    min-width: 20px;
 	padding-top: 0px;
 	padding-bottom: 0px;
     color:#303030;
