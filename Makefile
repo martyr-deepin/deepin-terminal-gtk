@@ -44,6 +44,7 @@ main: ./lib/animation.vala \
       ./widget/workspace_manager.vala \
       main.vala
 	valac -o main \
+	-X -pg \
 	-X -w \
 	-X -lm \
 	-X -DGETTEXT_PACKAGE="deepin-terminal" \

@@ -33,6 +33,8 @@ namespace Widgets {
     public class Tabbar : Gtk.DrawingArea {
 		public Gdk.RGBA tab_split_dark_color;
 		public Gdk.RGBA tab_split_light_color;
+        public Gdk.RGBA text_active_color;
+        public Gdk.RGBA tab_text_color;
 		public HashMap<int, bool> tab_highlight_map;
         private Cairo.ImageSurface add_hover_dark_surface;
         private Cairo.ImageSurface add_hover_light_surface;
@@ -110,6 +112,8 @@ namespace Widgets {
             text_highlight_color = Utils.hex_to_rgba("#ff9600");
 			tab_split_dark_color = Utils.hex_to_rgba("#ffffff", 0.05);
 			tab_split_light_color = Utils.hex_to_rgba("#000000", 0.05);
+			text_active_color = Gdk.RGBA();
+            tab_text_color = Gdk.RGBA();
             
 			draw.connect(on_draw);
             configure_event.connect(on_configure);
@@ -422,7 +426,6 @@ namespace Widgets {
             
             draw_x = 0;
             counter = 0;
-            Gdk.RGBA text_active_color = Gdk.RGBA();
             try {
                 text_active_color = Utils.hex_to_rgba(((Widgets.ConfigWindow) this.get_toplevel()).config.config_file.get_string("theme", "tab"));
             } catch (Error e) {
@@ -439,9 +442,7 @@ namespace Widgets {
                 
                 max_tab_height = int.max(max_tab_height, name_height);
                 
-				Gdk.RGBA tab_text_color;
-                
-				if (tab_highlight_map.has_key(tab_id)) {
+                if (tab_highlight_map.has_key(tab_id)) {
 					tab_text_color = text_highlight_color;
 				} else {
                     if (is_light_theme) {
