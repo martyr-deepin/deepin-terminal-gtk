@@ -36,7 +36,6 @@ namespace Widgets {
             TEXT
         }
         
-        public Gdk.RGBA foreground_color = Gdk.RGBA();
 		public Menu.Menu menu;
 		public WorkspaceManager workspace_manager;
 		public bool has_select_all = false;
@@ -45,14 +44,15 @@ namespace Widgets {
         private string save_file_directory = "";
         public GLib.Pid child_pid;
         public Gdk.RGBA background_color = Gdk.RGBA();
+        public Gdk.RGBA foreground_color = Gdk.RGBA();
         public Terminal term;
         public bool is_first_term; 
+        public bool press_anything = false;
         public double zoom_factor = 1.0;
         public string current_dir;
         public string expect_file_path = "";
         public string? uri_at_right_press;
         public uint launch_idle_id;
-        public bool press_anything = false;
 
         public static string USERCHARS = "-[:alnum:]";
         public static string USERCHARS_CLASS = "[" + USERCHARS + "]";

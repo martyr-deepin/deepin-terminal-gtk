@@ -238,14 +238,7 @@ namespace Widgets {
             int y = window_frame_box.margin_top;
             int width = window_frame_rect.width;
             int height = window_frame_rect.height;
-            Gdk.RGBA frame_color = Gdk.RGBA();
             
-            try {
-                frame_color = Utils.hex_to_rgba(config.config_file.get_string("theme", "background"));
-            } catch (GLib.KeyFileError e) {
-                print("QuakeWindow draw_window_above: %s\n", e.message);
-            }
-
             draw_titlebar_underline(cr, x, y + height - Constant.TITLEBAR_HEIGHT - 1, width, -1);
             draw_active_tab_underline(cr, x + active_tab_underline_x, y + height - Constant.TITLEBAR_HEIGHT - 1);
         }

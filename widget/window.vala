@@ -356,13 +356,11 @@ namespace Widgets {
             int y = window_frame_box.margin_top;
             int width = window_frame_rect.width;
             Gdk.RGBA frame_color = Gdk.RGBA();
-            Gdk.RGBA active_tab_color = Gdk.RGBA();
             
             bool is_light_theme = is_light_theme();
             
             try {
                 frame_color = Utils.hex_to_rgba(config.config_file.get_string("theme", "background"));
-                active_tab_color = Utils.hex_to_rgba(config.config_file.get_string("theme", "tab"));
             } catch (GLib.KeyFileError e) {
                 print("Window draw_window_above: %s\n", e.message);
             }
