@@ -57,13 +57,13 @@ You can use the search function to quickly search contents in terminal.
 
 2. Click on **Search**.
 
-3. Type the word in search box and click on Enter.
+3. Type the word in search box and click on ![Enter](icon/Enter.svg).
 
 4. Then the search results will be highlighted.
 
 5. Press ![Esc](icon/Esc.svg) on keyboard or click on any location of terminal interface to exit search.
 
-> ![tips](icon/tips.svg): Press ![Enter](icon/Enter.svg) to search up from current location. You can also click on ![up](icon/up.svg) and ![down](icon/down.svg) to search.
+> ![tips](icon/tips.svg): Press ![Enter](icon/Enter.svg) to search down from current location. You can also click on ![up](icon/up.svg) and ![down](icon/down.svg) to search.
 
 
 ### Copy/Paste ###
@@ -99,7 +99,7 @@ Window is the base for you to do other operations in terminal. You can create ma
 
 2. Then a new terminal window will be opened.
 
-> ![notes](icon/notes.svg): You also can right click on ![terminal-24](icon/terminal-24.svg) on Dock to select **New Window**.
+> ![notes](icon/notes.svg): You can also right click on ![terminal-24](icon/terminal-24.svg) on Dock to select **New Window**.
 
 
 ### Split Window ###
@@ -112,7 +112,7 @@ Window is the base for you to do other operations in terminal. You can create ma
 
 2. You can input commands in each terminal window, and can also view the results of command executed.
 
-> ![tips](icon/tips.svg): You also can press ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![J](icon/J.svg) on keyboard to split vertically, and press ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![H](icon/H.svg) to split horizontally.
+> ![tips](icon/tips.svg): You can also press ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![J](icon/J.svg) on keyboard to split vertically, and press ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![H](icon/H.svg) to split horizontally.
 
  ![1|split-window](png/split-window.png)
 
@@ -162,7 +162,7 @@ You can freely switch between multiple workspaces by one of the following operat
 
 - Directly click the workspace tab to select a workspace.
 - Press ![Ctrl](icon/Ctrl.svg)+![Tab](icon/Tab.svg) to switch in sequence.
-- Press ![Ctrl](icon/Ctrl.svg)+ 1~9 Number key to select the workspace; when workspaces are more than 9, the last workspace will be selected rather the ninth one.
+- Press ![Alt](icon/Alt.svg)+ 1~9 Number key to select the workspace; when workspaces are more than 9, the last workspace will be selected rather the ninth one.
 
 
 ### Close Workspace ###
