@@ -47,6 +47,8 @@ namespace Widgets {
         private bool is_button_press = false;
         private double draw_scale = 1.0;
         private int add_button_width = 50;
+        private int button_press_x = 0;
+        private int button_press_y = 0;
         private int close_button_padding_x = 28;
         private int hover_x = 0;
         private int tab_split_width = 1;
@@ -269,31 +271,7 @@ namespace Widgets {
         public bool on_button_press(Gtk.Widget widget, Gdk.EventButton event) {
             is_button_press = true;
             
-            var press_x = (int)event.x;
-            
-            Gtk.Allocation alloc;
-            widget.get_allocation(out alloc);
-            
-            int draw_x = 0;
-            int counter = 0;
-            foreach (int tab_id in tab_list) {
-                int name_width, name_height;
-                get_text_size(tab_name_map.get(tab_id), out name_width, out name_height);
-                int tab_width = get_tab_width(name_width);
-
-                if (press_x > draw_x && press_x < draw_x + tab_width - get_tab_close_button_padding()) {
-                    select_nth_tab(counter);
-                        
-                    press_tab(counter, tab_id);
-                    return false;
-                }
-                
-                draw_x += tab_width;
-                
-                counter++;
-            }
-            
-            queue_draw();
+            event.device.get_position(null, out button_press_x, out button_press_y);
             
             return false;
         }
@@ -301,35 +279,46 @@ namespace Widgets {
         public bool on_button_release(Gtk.Widget widget, Gdk.EventButton event) {
             is_button_press = false;
             
-            var release_x = (int)event.x;
+            int button_release_x, button_release_y;
+            event.device.get_position(null, out button_release_x, out button_release_y);
             
-            Gtk.Allocation alloc;
-            widget.get_allocation(out alloc);
+            if (button_release_x == button_press_x && button_release_y == button_press_y) {
+                var release_x = (int)event.x;
             
-            int draw_x = 0;
-            int counter = 0;
-            foreach (int tab_id in tab_list) {
-                int name_width, name_height;
-                get_text_size(tab_name_map.get(tab_id), out name_width, out name_height);
-                int tab_width = get_tab_width(name_width);
+                Gtk.Allocation alloc;
+                widget.get_allocation(out alloc);
+            
+                int draw_x = 0;
+                int counter = 0;
+                foreach (int tab_id in tab_list) {
+                    int name_width, name_height;
+                    get_text_size(tab_name_map.get(tab_id), out name_width, out name_height);
+                    int tab_width = get_tab_width(name_width);
 
-                if (release_x > draw_x && release_x < draw_x + tab_width) {
-                    if (release_x > draw_x + tab_width - get_tab_close_button_padding()) {
-                        close_nth_tab(counter);
-                        return false;
+                    if (release_x > draw_x && release_x < draw_x + tab_width) {
+                        if (release_x > draw_x && release_x < draw_x + tab_width - get_tab_close_button_padding()) {
+                            select_nth_tab(counter);
+                        
+                            press_tab(counter, tab_id);
+                            return false;
+                        } else if (release_x > draw_x + tab_width - get_tab_close_button_padding()) {
+                            close_nth_tab(counter);
+                            return false;
+                        }
                     }
-				}
                 
-                draw_x += tab_width;
+                    draw_x += tab_width;
                 
-                counter++;
+                    counter++;
+                }
+            
+                if (release_x > draw_x && release_x < draw_x + add_button_width) {
+                    new_tab();
+                }
+            
+                queue_draw();
             }
             
-            if (release_x > draw_x && release_x < draw_x + add_button_width) {
-                new_tab();
-            }
-            
-            queue_draw();
             
             return false;
         }
