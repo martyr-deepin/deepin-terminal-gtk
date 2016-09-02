@@ -34,6 +34,7 @@ namespace Widgets {
         public Gtk.Box fullscreen_box;
         public Gtk.Box spacing_box;
         public bool draw_tabbar_line = true;
+        public double window_default_scale = 0.618;
         public int window_frame_margin_bottom = 60;
         public int window_frame_margin_end = 50;
         public int window_frame_margin_start = 50;
@@ -90,7 +91,7 @@ namespace Widgets {
                         var width = config.config_file.get_integer("advanced", "window_width");
                         var height = config.config_file.get_integer("advanced", "window_height");
                         if (width == 0 || height == 0) {
-                            set_default_size(rect.width / 2, rect.height / 2);
+                            set_default_size((int) (rect.width * window_default_scale), (int) (rect.height * window_default_scale));
                         } else {
                             set_default_size(width, height);
                         }
