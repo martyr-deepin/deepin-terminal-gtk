@@ -64,7 +64,7 @@
 
 ### 雷神模式
 
-雷神模式是深度终端特有的便捷功能，只需要按下键盘上的 ![F4](icon/F4.svg) 键就可以打开雷神终端窗口，再按一下 ![F4](icon/F4.svg) 键隐藏雷神终端窗口。
+雷神模式是深度终端特有的便捷功能，只需要按下键盘上的 ![Alt](icon/Alt.svg) + ![F2](icon/F2.svg) 组合键就可以打开雷神终端窗口，再按一下 ![Alt](icon/Alt.svg) + ![F2](icon/F2.svg) 组合键隐藏雷神终端窗口。
 
 > ![tips](icon/tips.svg) ：您也可以右键单击任务栏上的 ![deepin-terminal](icon/deepin-terminal.svg) 图标，选择 **雷神终端**，来打开雷神模式的终端窗口。
 
