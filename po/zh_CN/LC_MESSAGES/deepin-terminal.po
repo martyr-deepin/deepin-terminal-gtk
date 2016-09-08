@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-01 08:58+0800\n"
+"POT-Creation-Date: 2016-09-08 21:47+0800\n"
 "PO-Revision-Date: 2016-08-22 00:55+0800\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -40,7 +40,7 @@ msgstr "地址"
 
 #: ../widget/preference_slidebar.vala:75 ../widget/preference_slidebar.vala:82
 #: ../widget/preference.vala:305 ../widget/preference.vala:315
-#: ../widget/config_window.vala:313
+#: ../widget/config_window.vala:316
 msgid "Advanced"
 msgstr "高级"
 
@@ -72,16 +72,16 @@ msgid "Cancel"
 msgstr "取消"
 
 #: ../widget/preference.vala:303 ../widget/terminal.vala:221
-#: ../widget/config_window.vala:292
+#: ../widget/config_window.vala:295
 msgid "Close other windows"
 msgstr "关闭其他窗口"
 
 #: ../widget/preference.vala:302 ../widget/terminal.vala:220
-#: ../widget/config_window.vala:291
+#: ../widget/config_window.vala:294
 msgid "Close window"
 msgstr "关闭窗口"
 
-#: ../widget/preference.vala:293 ../widget/config_window.vala:281
+#: ../widget/preference.vala:293 ../widget/config_window.vala:284
 msgid "Close workspace"
 msgstr "关闭工作区"
 
@@ -91,7 +91,7 @@ msgid "Command"
 msgstr "命令"
 
 #: ../widget/preference.vala:278 ../widget/terminal.vala:210
-#: ../widget/config_window.vala:258
+#: ../widget/config_window.vala:261
 msgid "Copy"
 msgstr "复制"
 
@@ -111,11 +111,11 @@ msgstr "光标闪烁"
 msgid "Cursor style"
 msgstr "光标风格"
 
-#: ../main.vala:153 ../widget/about_widget.vala:107
+#: ../main.vala:156 ../widget/about_widget.vala:107 ../widget/tabbar.vala:174
 msgid "Deepin Terminal"
 msgstr "深度终端"
 
-#: ../main.vala:154 ../widget/about_widget.vala:48
+#: ../main.vala:157 ../widget/about_widget.vala:48
 msgid ""
 "Deepin Terminal is an advanced terminal emulator with workspace, multiple "
 "windows, remote management, quake mode and other features.\n"
@@ -126,7 +126,7 @@ msgstr ""
 "\n"
 "深度终端， 让你更专注于命令行世界"
 
-#: ../widget/preference.vala:283 ../widget/config_window.vala:263
+#: ../widget/preference.vala:283 ../widget/config_window.vala:266
 msgid "Default size"
 msgstr "默认大小"
 
@@ -144,11 +144,11 @@ msgstr "删除键"
 msgid "Delete server"
 msgstr "删除服务器"
 
-#: ../main.vala:111
+#: ../main.vala:114
 msgid "Display help information"
 msgstr "显示帮助信息"
 
-#: ../widget/preference.vala:312 ../widget/config_window.vala:307
+#: ../widget/preference.vala:312 ../widget/config_window.vala:310
 msgid "Display shortcuts"
 msgstr "显示快捷键"
 
@@ -196,7 +196,7 @@ msgid "Help"
 msgstr "帮助"
 
 #: ../widget/preference.vala:297 ../widget/terminal.vala:218
-#: ../widget/config_window.vala:286
+#: ../widget/config_window.vala:289
 msgid "Horizontal split"
 msgstr "横向分屏"
 
@@ -213,11 +213,11 @@ msgid "New window"
 msgstr "新建窗口"
 
 #: ../widget/preference.vala:292 ../widget/terminal.vala:225
-#: ../widget/config_window.vala:280
+#: ../widget/config_window.vala:283
 msgid "New workspace"
 msgstr "新建工作区"
 
-#: ../widget/preference.vala:295 ../widget/config_window.vala:282
+#: ../widget/preference.vala:295 ../widget/config_window.vala:285
 msgid "Next workspace"
 msgstr "下一个工作区"
 
@@ -241,7 +241,7 @@ msgid "Password"
 msgstr "密码"
 
 #: ../widget/preference.vala:279 ../widget/terminal.vala:214
-#: ../widget/config_window.vala:259
+#: ../widget/config_window.vala:262
 msgid "Paste"
 msgstr "粘贴"
 
@@ -258,7 +258,7 @@ msgstr "请输入新的快捷键"
 msgid "Port"
 msgstr "端口"
 
-#: ../widget/preference.vala:294 ../widget/config_window.vala:283
+#: ../widget/preference.vala:294 ../widget/config_window.vala:286
 msgid "Previous workspace"
 msgstr "上一个工作区"
 
@@ -266,12 +266,12 @@ msgstr "上一个工作区"
 msgid "Programs are still running in terminal"
 msgstr "终端仍然有程序在运行"
 
-#: ../main.vala:147
+#: ../main.vala:150
 msgid "Quake mode"
 msgstr "雷神模式"
 
 #: ../widget/preference.vala:313 ../widget/terminal.vala:238
-#: ../widget/config_window.vala:308 ../widget/appbar.vala:95
+#: ../widget/config_window.vala:311 ../widget/appbar.vala:95
 msgid "Remote management"
 msgstr "远程管理"
 
@@ -286,12 +286,12 @@ msgstr "必填"
 msgid "Restore default settings"
 msgstr "恢复默认设置"
 
-#: ../main.vala:160
+#: ../main.vala:163
 msgid ""
 "Run '%s --help' to view a full list of available command line pass_options"
 msgstr "运行 '%s --help' 查看可用命令行选项的完整列表"
 
-#: ../main.vala:129 ../main.vala:138
+#: ../main.vala:132 ../main.vala:141
 msgid "Run a program in the terminal"
 msgstr "在终端运行一个程序"
 
@@ -313,7 +313,7 @@ msgstr "输出时滚动"
 
 #: ../widget/preference.vala:280 ../widget/terminal.vala:237
 #: ../widget/search_entry.vala:64 ../widget/search_entry.vala:67
-#: ../widget/config_window.vala:260 ../widget/remote_panel.vala:487
+#: ../widget/config_window.vala:263 ../widget/remote_panel.vala:487
 msgid "Search"
 msgstr "搜索"
 
@@ -321,7 +321,7 @@ msgstr "搜索"
 msgid "Select"
 msgstr "选择"
 
-#: ../widget/preference.vala:284 ../widget/config_window.vala:264
+#: ../widget/preference.vala:284 ../widget/config_window.vala:267
 msgid "Select all"
 msgstr "全选"
 
@@ -333,23 +333,23 @@ msgstr "选择下载文件的保存目录"
 msgid "Select file to upload"
 msgstr "选择要上传的文件"
 
-#: ../widget/preference.vala:300 ../widget/config_window.vala:289
+#: ../widget/preference.vala:300 ../widget/config_window.vala:292
 msgid "Select left window"
 msgstr "选择左边的窗口"
 
-#: ../widget/preference.vala:299 ../widget/config_window.vala:288
+#: ../widget/preference.vala:299 ../widget/config_window.vala:291
 msgid "Select lower window"
 msgstr "选择下面的窗口"
 
-#: ../widget/preference.vala:301 ../widget/config_window.vala:290
+#: ../widget/preference.vala:301 ../widget/config_window.vala:293
 msgid "Select right window"
 msgstr "选择右边的窗口"
 
-#: ../widget/preference.vala:298 ../widget/config_window.vala:287
+#: ../widget/preference.vala:298 ../widget/config_window.vala:290
 msgid "Select upper window"
 msgstr "选择上面的窗口"
 
-#: ../widget/config_window.vala:284
+#: ../widget/config_window.vala:287
 msgid "Select workspace"
 msgstr "选择工作区"
 
@@ -358,7 +358,7 @@ msgstr "选择工作区"
 msgid "Server name"
 msgstr "服务器名"
 
-#: ../main.vala:120
+#: ../main.vala:123
 msgid "Set the terminal startup directory"
 msgstr "设置终端的启动目录"
 
@@ -370,7 +370,7 @@ msgstr "设置"
 msgid "Shortcuts"
 msgstr "快捷键"
 
-#: ../widget/config_window.vala:306
+#: ../widget/config_window.vala:309
 msgid "Switch fullscreen"
 msgstr "切换全屏"
 
@@ -379,7 +379,7 @@ msgid "Switch theme"
 msgstr "切换主题"
 
 #: ../widget/preference_slidebar.vala:69 ../widget/preference.vala:272
-#: ../widget/config_window.vala:269
+#: ../widget/config_window.vala:272
 msgid "Terminal"
 msgstr "终端"
 
@@ -409,7 +409,7 @@ msgid "Version"
 msgstr "版本"
 
 #: ../widget/preference.vala:296 ../widget/terminal.vala:219
-#: ../widget/config_window.vala:285
+#: ../widget/config_window.vala:288
 msgid "Vertical split"
 msgstr "纵向分屏"
 
@@ -419,23 +419,23 @@ msgid ""
 "been installed in the server before right clicking to upload and download "
 "files."
 msgstr ""
-"欢迎使用深度终端， 在您使用右键菜单进行上传和下载文件之前， 请先确保服务器"
-"已经安装了rz和sz命令。"
+"欢迎使用深度终端， 在您使用右键菜单进行上传和下载文件之前， 请先确保服务器已"
+"经安装了rz和sz命令。"
 
 #: ../widget/preference_slidebar.vala:91 ../widget/preference.vala:353
 msgid "Window"
 msgstr "窗口"
 
 #: ../widget/preference_slidebar.vala:72 ../widget/preference.vala:286
-#: ../widget/config_window.vala:297
+#: ../widget/config_window.vala:300
 msgid "Workspace"
 msgstr "工作区"
 
-#: ../widget/preference.vala:281 ../widget/config_window.vala:261
+#: ../widget/preference.vala:281 ../widget/config_window.vala:264
 msgid "Zoom in"
 msgstr "放大"
 
-#: ../widget/preference.vala:282 ../widget/config_window.vala:262
+#: ../widget/preference.vala:282 ../widget/config_window.vala:265
 msgid "Zoom out"
 msgstr "缩小"
 

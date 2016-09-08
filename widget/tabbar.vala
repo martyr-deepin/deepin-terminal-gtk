@@ -78,6 +78,8 @@ namespace Widgets {
         public signal void new_tab();
 		
         public Tabbar() {
+            Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
+            
             add_events (Gdk.EventMask.BUTTON_PRESS_MASK
                         | Gdk.EventMask.BUTTON_RELEASE_MASK
                         | Gdk.EventMask.POINTER_MOTION_MASK
@@ -167,6 +169,10 @@ namespace Widgets {
         
         public void rename_tab(int tab_id, string tab_name) {
             tab_name_map.set(tab_id, tab_name);
+            
+            if (tab_id == tab_index + 1) {
+                ((Gtk.Window) get_toplevel()).set_title("%s - %s".printf(tab_name, _("Deepin Terminal")));
+            }
             
             update_tab_scale();
             
