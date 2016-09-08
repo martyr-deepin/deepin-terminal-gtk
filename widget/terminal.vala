@@ -214,13 +214,11 @@ namespace Widgets {
             menu_content.append(new Menu.MenuItem("paste", _("Paste")));
             menu_content.append(new Menu.MenuItem("", ""));
                             
-            if (!in_quake_window) {
-                menu_content.append(new Menu.MenuItem("horizontal_split", _("Horizontal split")));
-                menu_content.append(new Menu.MenuItem("vertical_split", _("Vertical split")));
-                menu_content.append(new Menu.MenuItem("close_window", _("Close window")));
-                menu_content.append(new Menu.MenuItem("close_other_windows", _("Close other windows")));
-                menu_content.append(new Menu.MenuItem("", ""));
-            }
+            menu_content.append(new Menu.MenuItem("horizontal_split", _("Horizontal split")));
+            menu_content.append(new Menu.MenuItem("vertical_split", _("Vertical split")));
+            menu_content.append(new Menu.MenuItem("close_window", _("Close window")));
+            menu_content.append(new Menu.MenuItem("close_other_windows", _("Close other windows")));
+            menu_content.append(new Menu.MenuItem("", ""));
                             
             menu_content.append(new Menu.MenuItem("new_workspace", _("New workspace")));
             menu_content.append(new Menu.MenuItem("", ""));
@@ -242,10 +240,8 @@ namespace Widgets {
                 menu_content.append(new Menu.MenuItem("download_file", _("Download file")));
             }
                             
-            if (!in_quake_window) {
-                menu_content.append(new Menu.MenuItem("", ""));
-                menu_content.append(new Menu.MenuItem("preference", _("Settings")));
-            }
+            menu_content.append(new Menu.MenuItem("", ""));
+            menu_content.append(new Menu.MenuItem("preference", _("Settings")));
 							
             menu = new Menu.Menu(x, y, menu_content);
             menu.click_item.connect(handle_menu_item_click);
