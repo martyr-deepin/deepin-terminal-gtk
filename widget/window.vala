@@ -273,7 +273,9 @@ namespace Widgets {
             foreach (Wnck.Window window in screen.get_windows()) {
                 var workspace = window.get_workspace();
                 if (workspace != null && workspace.get_number() == active_workspace.get_number()) {
-                    if (window.get_name() == "deepin-terminal") {
+                    int pid = window.get_pid();
+                    string command = Utils.get_proc_file_content("/proc/%i/comm".printf(pid)).strip();
+                    if (command == "deepin-terminal") {
                         return true;
                     }
                 }
