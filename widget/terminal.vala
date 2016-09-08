@@ -734,6 +734,15 @@ namespace Widgets {
                 argv += arg;
             }
             
+            // Set tab name when launch command.
+            GLib.Timeout.add(200, () => {
+                    if (workspace_manager.tabbar.tab_name_map.get(workspace_manager.workspace_index) == "") {
+                        workspace_manager.tabbar.rename_tab(workspace_manager.workspace_index, _("deepin"));
+                    }
+					
+                    return false;
+                });
+            
             launch_idle_id = GLib.Idle.add(() => {
                     try {
                         term.spawn_sync(Vte.PtyFlags.DEFAULT,

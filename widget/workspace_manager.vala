@@ -76,17 +76,6 @@ namespace Widgets {
             
                 pack_workspace(workspace);
             
-			
-                // Some shell can't pass working directory to vte terminal. 
-                // We check tab name when tab first time add.
-                // If tab haven't name, we named with "deepin".
-                GLib.Timeout.add(1000, () => {
-                        if (tabbar.tab_name_map.get(workspace_index) == "") {
-                            tabbar.rename_tab(workspace_index, _("deepin"));
-                        }
-					
-                        return false;
-                    });
                 tabbar.select_tab_with_id(workspace_index);
             
                 show_all();
