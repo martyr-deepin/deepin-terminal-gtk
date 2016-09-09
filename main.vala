@@ -67,7 +67,7 @@ public class Application : Object {
 	private static bool quake_mode = false;
 	private static string? work_directory = null;
 
-    // pass_options just for print help information, we need parse -e commands myself.
+    // pass_options just for print help information, we need parse -e or -x commands myself.
     [CCode (array_length = false, array_null_terminated = true)]
 	public static string[]? pass_options = null;
     
@@ -90,7 +90,7 @@ public class Application : Object {
         Intl.bind_textdomain_codeset(GETTEXT_PACKAGE, "utf-8");
         Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
         
-        // Need parse -e commands my self, OptionEntry just will got first argument after -e.
+        // Need parse -e or -x commands my self, OptionEntry just will got first argument after -e or -x.
         commands = new ArrayList<string>();
         bool find_command_flag = false;
         foreach (string arg in args) {
@@ -98,7 +98,7 @@ public class Application : Object {
                 commands.add(arg);
             }
             
-            if (arg == "-e") {
+            if (arg == "-e" || arg == "-x") {
                 find_command_flag = true;
             }
         }
