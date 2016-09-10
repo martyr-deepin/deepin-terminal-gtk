@@ -213,7 +213,10 @@ namespace Widgets {
             }
             menu_content.append(new Menu.MenuItem("paste", _("Paste")));
             if (term.get_has_selection()) {
-                menu_content.append(new Menu.MenuItem("open", _("Open")));
+                var selection_file = get_selection_file();
+                if (selection_file != null) {
+                    menu_content.append(new Menu.MenuItem("open", _("Open")));
+                }
             }
             menu_content.append(new Menu.MenuItem("", ""));
                             
@@ -871,17 +874,30 @@ namespace Widgets {
             }
         }
         
-        public void open_selection_file() {
+        public string? get_selection_file() {
             term.copy_clipboard();
             var clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD);
             var clipboard_text = clipboard.wait_for_text().strip();
             if (clipboard_text != "") {
+                var clipboard_file_path = GLib.Path.build_path(Path.DIR_SEPARATOR_S, current_dir, clipboard_text);
+                if (FileUtils.test(clipboard_file_path, FileTest.EXISTS)) {
+                    return clipboard_file_path;
+                } else {
+                    return null;
+                }
+            } else {
+                return null;
+            }
+        }
+        
+        public void open_selection_file() {
+            var selection_file = get_selection_file();
+            if (selection_file != null) {
                 try {
-                    var clipboard_file_path = GLib.Path.build_path(Path.DIR_SEPARATOR_S, current_dir, clipboard_text);
-                    GLib.AppInfo appinfo = GLib.AppInfo.create_from_commandline("xdg-open %s".printf(clipboard_file_path), null, GLib.AppInfoCreateFlags.NONE);
+                    GLib.AppInfo appinfo = GLib.AppInfo.create_from_commandline("xdg-open %s".printf(selection_file), null, GLib.AppInfoCreateFlags.NONE);
                     appinfo.launch(null, null);
                 } catch (GLib.Error e) {
-                    print("Terminal on_key_press: %s\n", e.message);
+                    print("Terminal open_selection_file: %s\n", e.message);
                 }
             }
         }
