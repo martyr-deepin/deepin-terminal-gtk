@@ -212,6 +212,9 @@ namespace Widgets {
                 menu_content.append(new Menu.MenuItem("copy", _("Copy link")));
             }
             menu_content.append(new Menu.MenuItem("paste", _("Paste")));
+            if (term.get_has_selection()) {
+                menu_content.append(new Menu.MenuItem("open", _("Open")));
+            }
             menu_content.append(new Menu.MenuItem("", ""));
                             
             menu_content.append(new Menu.MenuItem("horizontal_split", _("Horizontal split")));
@@ -265,6 +268,9 @@ namespace Widgets {
                             
                         }
 						break;
+                    case "open":
+                        open_selection_file();
+                        break;
                     case "fullscreen":
                         var window = ((Widgets.Window) get_toplevel());
                         window.toggle_fullscreen();
@@ -561,7 +567,13 @@ namespace Widgets {
 			    	term.paste_clipboard();
 			    	return true;
 			    }
-			    
+
+			    var open_key = parent_window.config.config_file.get_string("shortcut", "open");
+			    if (open_key != "" && keyname == open_key) {
+                    open_selection_file();
+			    	return true;
+			    }
+                
 				var zoom_in_key = parent_window.config.config_file.get_string("shortcut", "zoom_in");
 			    if (zoom_in_key != "" && keyname == zoom_in_key) {
 			    	increment_size();
@@ -856,6 +868,21 @@ namespace Widgets {
 				update_font_info();
             } catch (GLib.KeyFileError e) {
                 stdout.printf(e.message);
+            }
+        }
+        
+        public void open_selection_file() {
+            term.copy_clipboard();
+            var clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD);
+            var clipboard_text = clipboard.wait_for_text().strip();
+            if (clipboard_text != "") {
+                try {
+                    var clipboard_file_path = GLib.Path.build_path(Path.DIR_SEPARATOR_S, current_dir, clipboard_text);
+                    GLib.AppInfo appinfo = GLib.AppInfo.create_from_commandline("xdg-open %s".printf(clipboard_file_path), null, GLib.AppInfoCreateFlags.NONE);
+                    appinfo.launch(null, null);
+                } catch (GLib.Error e) {
+                    print("Terminal on_key_press: %s\n", e.message);
+                }
             }
         }
 	}

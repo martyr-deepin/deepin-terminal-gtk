@@ -43,6 +43,7 @@ namespace Widgets {
 		public Gtk.Entry new_workspace_key_entry;
 		public Gtk.Entry next_workspace_key_entry;
 		public Gtk.Entry paste_key_entry;
+		public Gtk.Entry open_key_entry;
 		public Gtk.Entry previous_workspace_key_entry;
 		public Gtk.Entry search_key_entry;
 		public Gtk.Entry select_all_key_entry;
@@ -68,6 +69,7 @@ namespace Widgets {
 		public Gtk.Label next_workspace_key_label;
 		public Gtk.Label opacity_label;
 		public Gtk.Label paste_key_label;
+		public Gtk.Label open_key_label;
 		public Gtk.Label previous_workspace_key_label;
 		public Gtk.Label search_key_label;
 		public Gtk.Label select_all_key_label;
@@ -134,6 +136,8 @@ namespace Widgets {
 			copy_key_entry = create_entry();
 			paste_key_label = create_label();
 			paste_key_entry = create_entry();
+			open_key_label = create_label();
+			open_key_entry = create_entry();
 			search_key_label = create_label();
 			search_key_entry = create_entry();
 			zoom_in_key_label = create_label();
@@ -277,7 +281,8 @@ namespace Widgets {
             
             create_key_row(copy_key_label, copy_key_entry, "%s:".printf(_("Copy")), terminal_key_grid, "shortcut", "copy");
             create_follow_key_row(paste_key_label, paste_key_entry, "%s:".printf(_("Paste")), copy_key_label, terminal_key_grid, "shortcut", "paste");
-			create_follow_key_row(search_key_label, search_key_entry, "%s:".printf(_("Search")), paste_key_label, terminal_key_grid, "shortcut", "search");
+            create_follow_key_row(open_key_label, open_key_entry, "%s:".printf(_("Open")), paste_key_label, terminal_key_grid, "shortcut", "open");
+			create_follow_key_row(search_key_label, search_key_entry, "%s:".printf(_("Search")), open_key_label, terminal_key_grid, "shortcut", "search");
             create_follow_key_row(zoom_in_key_label, zoom_in_key_entry, "%s:".printf(_("Zoom in")), search_key_label, terminal_key_grid, "shortcut", "zoom_in");
             create_follow_key_row(zoom_out_key_label, zoom_out_key_entry, "%s:".printf(_("Zoom out")), zoom_in_key_label, terminal_key_grid, "shortcut", "zoom_out");
             create_follow_key_row(zoom_reset_key_label, zoom_reset_key_entry, "%s:".printf(_("Default size")), zoom_out_key_label, terminal_key_grid, "shortcut", "default_size");
@@ -441,6 +446,7 @@ namespace Widgets {
 		    
 				copy_key_entry.set_text(parent_window.config.config_file.get_string("shortcut", "copy"));
 				paste_key_entry.set_text(parent_window.config.config_file.get_string("shortcut", "paste"));
+				open_key_entry.set_text(parent_window.config.config_file.get_string("shortcut", "open"));
 				search_key_entry.set_text(parent_window.config.config_file.get_string("shortcut", "search"));
 				zoom_in_key_entry.set_text(parent_window.config.config_file.get_string("shortcut", "zoom_in"));
 				zoom_out_key_entry.set_text(parent_window.config.config_file.get_string("shortcut", "zoom_out"));

@@ -260,6 +260,7 @@ namespace Widgets {
     
                 insert_shortcut_key(builder, _("Copy"), config.config_file.get_string("shortcut", "copy"));;
                 insert_shortcut_key(builder, _("Paste"), config.config_file.get_string("shortcut", "paste"));;
+                insert_shortcut_key(builder, _("Open"), config.config_file.get_string("shortcut", "open"));;
                 insert_shortcut_key(builder, _("Search"), config.config_file.get_string("shortcut", "search"));;
                 insert_shortcut_key(builder, _("Zoom in"), config.config_file.get_string("shortcut", "zoom_in"));;
                 insert_shortcut_key(builder, _("Zoom out"), config.config_file.get_string("shortcut", "zoom_out"));;

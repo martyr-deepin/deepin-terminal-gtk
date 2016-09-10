@@ -85,6 +85,7 @@ namespace Config {
             
                 config_file.set_string("shortcut", "copy", "Ctrl + Shift + c");
                 config_file.set_string("shortcut", "paste", "Ctrl + Shift + v");
+                config_file.set_string("shortcut", "open", "Ctrl + Shift + x");
                 config_file.set_string("shortcut", "search", "Ctrl + Shift + f");
                 config_file.set_string("shortcut", "zoom_in", "Ctrl + =");
                 config_file.set_string("shortcut", "zoom_out", "Ctrl + -");
@@ -235,6 +236,7 @@ namespace Config {
             
             check_string("shortcut", "copy", "Ctrl + Shift + c");
             check_string("shortcut", "paste", "Ctrl + Shift + v");
+            check_string("shortcut", "open", "Ctrl + Shift + x");
 			check_string("shortcut", "search", "Ctrl + Shift + f");
             check_string("shortcut", "zoom_in", "Ctrl + =");
             check_string("shortcut", "zoom_out", "Ctrl + -");
