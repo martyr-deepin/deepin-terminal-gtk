@@ -875,9 +875,18 @@ namespace Widgets {
         }
         
         public string? get_selection_file() {
-            term.copy_clipboard();
+            // FIXME: vte developer private function 'get_selected_text', so i can't get selected text from api.
+            // So i get selected text from clipboard that i need save clipboard context before i test selection context.
             var clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD);
+            var current_clipboard_text = clipboard.wait_for_text();
+            
+            term.copy_clipboard();
             var clipboard_text = clipboard.wait_for_text().strip();
+            
+            // FIXME: vte developer private function 'get_selected_text', so i can't get selected text from api.
+            // So i get selected text from clipboard that i need restore clipboard context before i test selection context.
+            var display = Gdk.Display.get_default();
+            Gtk.Clipboard.get_for_display(display, Gdk.SELECTION_CLIPBOARD).set_text(current_clipboard_text, current_clipboard_text.length);
             if (clipboard_text != "") {
                 var clipboard_file_path = GLib.Path.build_path(Path.DIR_SEPARATOR_S, current_dir, clipboard_text);
                 if (FileUtils.test(clipboard_file_path, FileTest.EXISTS)) {
