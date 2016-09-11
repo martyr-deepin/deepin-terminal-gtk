@@ -364,4 +364,15 @@ namespace Utils {
             }
         }
     }
+
+    public void write_log(string log) {
+        var log_file_dir = GLib.Path.build_path(Path.DIR_SEPARATOR_S, Environment.get_user_cache_dir(), "deepin", "deepin-terminal");
+        var log_file = GLib.Path.build_path(Path.DIR_SEPARATOR_S, Environment.get_user_cache_dir(), "deepin", "deepin-terminal", "deepin-terminal.log");
+        touch_dir(log_file_dir);
+        try {
+            FileUtils.set_contents(log_file, log);        
+        } catch (Error e) {
+            print("write_log: %s\n", e.message);
+        }
+    }
 }

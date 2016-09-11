@@ -220,12 +220,12 @@ public class Application : Object {
             if (quake_mode) {
                 quake_window = new Widgets.QuakeWindow();
                 quake_window.show_window(workspace_manager, tabbar);
-                print("Deepin quake terminal start in: %s\n", (GLib.get_real_time() / 1000 - Application.start_time).to_string());
+                Utils.write_log("Deepin quake terminal start in: %s\n".printf((GLib.get_real_time() / 1000 - Application.start_time).to_string()));
                 tabbar.init(workspace_manager, quake_window);
             } else {
                 window = new Widgets.Window();
                 window.show_window(workspace_manager, tabbar);
-                print("Deepin terminal start in: %s\n", (GLib.get_real_time() / 1000 - Application.start_time).to_string());
+                Utils.write_log("Deepin terminal start in: %s\n".printf((GLib.get_real_time() / 1000 - Application.start_time).to_string()));
                 tabbar.init(workspace_manager, window);
             }
             
