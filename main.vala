@@ -76,12 +76,12 @@ public class Application : Object {
     public Widgets.QuakeWindow quake_window;
     public Widgets.Window window;
     public WorkspaceManager workspace_manager;
-    // public static int64 start_time;
+    public static int64 start_time;
 	
     private bool inited = false;
 
     public static void main(string[] args) {
-        // start_time = GLib.get_real_time() / 1000;
+        start_time = GLib.get_real_time() / 1000;
         
         // NOTE: set IBUS_NO_SNOOPER_APPS variable to avoid Ctrl + 5 eat by input method (such as fcitx.);
         Environment.set_variable("IBUS_DISABLE_SNOOPER", "1", true);
@@ -220,12 +220,12 @@ public class Application : Object {
             if (quake_mode) {
                 quake_window = new Widgets.QuakeWindow();
                 quake_window.show_window(workspace_manager, tabbar);
-                // print("Deepin quake terminal start in: %s\n", (GLib.get_real_time() / 1000 - Application.start_time).to_string());
+                print("Deepin quake terminal start in: %s\n", (GLib.get_real_time() / 1000 - Application.start_time).to_string());
                 tabbar.init(workspace_manager, quake_window);
             } else {
                 window = new Widgets.Window();
                 window.show_window(workspace_manager, tabbar);
-                // print("Deepin terminal start in: %s\n", (GLib.get_real_time() / 1000 - Application.start_time).to_string());
+                print("Deepin terminal start in: %s\n", (GLib.get_real_time() / 1000 - Application.start_time).to_string());
                 tabbar.init(workspace_manager, window);
             }
             
