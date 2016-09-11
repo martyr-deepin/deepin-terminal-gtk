@@ -205,7 +205,6 @@ namespace Widgets {
             bool in_quake_window = this.get_toplevel().get_type().is_a(typeof(Widgets.QuakeWindow));
                             
             var menu_content = new GLib.List<Menu.MenuItem>();
-            print("%s\n", uri_at_right_press.to_string());
             if (term.get_has_selection()) {
                 menu_content.append(new Menu.MenuItem("copy", _("Copy")));
             } else if (uri_at_right_press != null) {
