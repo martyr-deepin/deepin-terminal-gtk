@@ -85,6 +85,20 @@ Press ![Alt](icon/Alt.svg) + ![F2](icon/F2.svg) to open a quake window, and then
 
 > ![tips](icon/tips.svg): You can also click on ![terminal-24](icon/terminal-24.svg) on Dock to select **Quake Terminal** to open a quake window.
 
+### Open File and Application Program ###
+
+On Deepin Terminal interface, select the file in current directory and right-click to select **Open** to call the system application to open the selected file.
+
+1. On Deepin Terminal interface, input **ls -al** to display files in current directory.
+
+2. Double-click the left mouse button to select the file name.
+
+3. Right-click.
+
+4. Click on **Open**.
+
+ ![1|openfile](png/openfile.png)
+
 
 ## Window Operations|../common/icon_windowoperation.svg|
 
