@@ -476,7 +476,7 @@ namespace Widgets {
             if (has_foreground_process) {
                 string title_string = term.get_window_title();
                 var title_infos = title_string.split(" ");
-                if (title_infos.length >= 2) {
+                if (title_string != null && title_infos.length >= 2) {
                     title = "%s %s".printf(title_infos[0], GLib.Path.get_basename(title_infos[1]));
                 } else {
                     title = title_string;
