@@ -53,6 +53,7 @@ namespace Widgets {
         private int button_press_y = 0;
         private int close_button_padding_x = 28;
         private int hover_x = 0;
+        private int tab_min_width = 80;
         private int tab_split_width = 1;
         private int text_padding_x = 20;
         public ArrayList<int> tab_list;
@@ -397,10 +398,6 @@ namespace Widgets {
             }
         }
         
-        public int get_tab_render_width(int name_width) {
-            return name_width + text_padding_x * 2;
-        }
-        
         public bool on_draw(Gtk.Widget widget, Cairo.Context cr) {
             Gtk.Allocation alloc;
             widget.get_allocation(out alloc);
@@ -569,8 +566,12 @@ namespace Widgets {
             return true;
         }
 
+        public int get_tab_render_width(int name_width) {
+            return int.max(name_width + get_tab_text_padding() * 2, tab_min_width);
+        }
+        
         public int get_tab_width(int name_width) {
-            return (int) ((name_width + get_tab_text_padding() * 2) * draw_scale);
+            return int.max((int) ((name_width + get_tab_text_padding() * 2) * draw_scale), (int) (tab_min_width * draw_scale));
         }
         
         public int get_tab_text_padding() {
