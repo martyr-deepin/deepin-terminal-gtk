@@ -121,7 +121,8 @@ namespace Widgets {
             workspace_map.unset(index);
             
             if (tabbar.tab_list.size == 0) {
-                Gtk.main_quit();
+                var config_window = (Widgets.ConfigWindow) get_toplevel();
+                config_window.quit();
             } else {
                 int workspace_index = tabbar.tab_list.get(tabbar.tab_index);
                 Utils.remove_all_children(this);
