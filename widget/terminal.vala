@@ -483,6 +483,9 @@ namespace Widgets {
                         title = title_string;
                     }
                 } else {
+                    // NOTE:
+                    // Set terminal title with 'deepin' if some shell get_window_title return null.
+                    // If you install bash-it tools will cause bash return null title to make deepin-terminal crash. 
                     title = _("deepin");
                 }
             } else {
@@ -737,6 +740,12 @@ namespace Widgets {
                                         null, /* child setup */
                                         out child_pid,
                                         null /* cancellable */);
+                        
+                        GLib.Timeout.add(200, () => {
+                                update_terminal_title(false);
+                                
+                                return false;
+                            });
                     } catch (Error e) {
                         warning("Terminal launch_idle_id: %s\n", e.message);
                     }
