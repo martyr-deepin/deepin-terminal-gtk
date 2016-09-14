@@ -67,8 +67,23 @@ gchar** list_mono_or_dot_fonts(int* num) {
 	int j;
 	int count = 0;
 	for (j = 0; j < fs->nfont; j++) {
+        /* printf("family: %s\n familylang: %s\n fullname: %s\n fullnamelang: %s\n style: %s\n file: %s\n lang: %s\n spacing: %s\n charset: %s\n",  */
+        /*       FcPatternFormat(fs->fonts[j], (FcChar8*)"%{family}"), */
+        /*       FcPatternFormat(fs->fonts[j], (FcChar8*)"%{familylang}"), */
+        /*       FcPatternFormat(fs->fonts[j], (FcChar8*)"%{fullname}"), */
+        /*       FcPatternFormat(fs->fonts[j], (FcChar8*)"%{fullnamelang}"), */
+        /*       FcPatternFormat(fs->fonts[j], (FcChar8*)"%{style}"), */
+        /*       FcPatternFormat(fs->fonts[j], (FcChar8*)"%{file}"), */
+        /*       FcPatternFormat(fs->fonts[j], (FcChar8*)"%{lang}"), */
+        /*       FcPatternFormat(fs->fonts[j], (FcChar8*)"%{spacing}"), */
+        /*       FcPatternFormat(fs->fonts[j], (FcChar8*)"%{charset}") */
+        /*       ); */
+        
         /* spacing 100 is mono font, spacing 110 is dot font */
-	    if (strcmp((char*) FcPatternFormat(fs->fonts[j], (FcChar8*)"%{spacing}"), "100") == 0 || strcmp((char*) FcPatternFormat(fs->fonts[j], (FcChar8*)"%{spacing}"), "110") == 0) {
+	    if (strcmp((char*) FcPatternFormat(fs->fonts[j], (FcChar8*)"%{spacing}"), "100") == 0 
+            || strcmp((char*) FcPatternFormat(fs->fonts[j], (FcChar8*)"%{spacing}"), "110") == 0
+            || strcmp((char*) FcPatternFormat(fs->fonts[j], (FcChar8*)"%{family}"), "YaHei Consolas Hybrid") == 0
+            ) {
 		    /* Realloc was realloc(fonts, 0), and you have to take space for <char *> */
 		    fonts = realloc(fonts, (count + 1) * sizeof(gchar*));
 			if (fonts == NULL) {
