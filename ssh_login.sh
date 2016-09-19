@@ -35,7 +35,7 @@ set user {<<USER>>}
 set server {<<SERVER>>}
 set password {<<PASSWORD>>}
 set port {<<PORT>>}
-set ssh_cmd {zssh -o ServerAliveInterval=60}
+set ssh_cmd {zssh -X -o ServerAliveInterval=60}
 set ssh_opt {$user@$server -p $port}
 set remote_command {<<REMOTE_COMMAND>>}
 
