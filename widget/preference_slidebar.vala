@@ -27,20 +27,20 @@ using Widgets;
 namespace Widgets {
     public class PreferenceSlidebar : Gtk.Grid {
 		public int height = 30;
-        public PreferenceSlideItem focus_segement_item;
-        public int segement_spacing = 20;
+        public PreferenceSlideItem focus_segment_item;
+        public int segment_spacing = 20;
         public int width = Constant.PREFERENCE_SLIDEBAR_WIDTH;
         
-        public PreferenceSlideItem basic_segement;
-        public PreferenceSlideItem theme_segement;
-        public PreferenceSlideItem hotkey_segement;
-        public PreferenceSlideItem terminal_key_segement;
-        public PreferenceSlideItem workspace_key_segement;
-        public PreferenceSlideItem advanced_key_segement;
-        public PreferenceSlideItem advanced_segement;
-        public PreferenceSlideItem cursor_segement;
-        public PreferenceSlideItem scroll_segement;
-        public PreferenceSlideItem window_segement;
+        public PreferenceSlideItem basic_segment;
+        public PreferenceSlideItem theme_segment;
+        public PreferenceSlideItem hotkey_segment;
+        public PreferenceSlideItem terminal_key_segment;
+        public PreferenceSlideItem workspace_key_segment;
+        public PreferenceSlideItem advanced_key_segment;
+        public PreferenceSlideItem advanced_segment;
+        public PreferenceSlideItem cursor_segment;
+        public PreferenceSlideItem scroll_segment;
+        public PreferenceSlideItem window_segment;
         
 		public signal void click_item(string name);
 		
@@ -53,59 +53,59 @@ namespace Widgets {
             spacing_box.set_size_request(-1, Constant.TITLEBAR_HEIGHT);
             this.attach(spacing_box, 0, 0, width, height);
             
-            basic_segement = new PreferenceSlideItem(this, _("Basic"), "basic", true);
-			this.attach_next_to(basic_segement, spacing_box, Gtk.PositionType.BOTTOM, width, height);
+            basic_segment = new PreferenceSlideItem(this, _("Basic"), "basic", true);
+			this.attach_next_to(basic_segment, spacing_box, Gtk.PositionType.BOTTOM, width, height);
             
-            theme_segement = new PreferenceSlideItem(this, _("Interface"), "theme", false);
-			this.attach_next_to(theme_segement, basic_segement, Gtk.PositionType.BOTTOM, width, height);
+            theme_segment = new PreferenceSlideItem(this, _("Interface"), "theme", false);
+			this.attach_next_to(theme_segment, basic_segment, Gtk.PositionType.BOTTOM, width, height);
             
             var theme_spacing_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            theme_spacing_box.set_size_request(-1, segement_spacing);
-            this.attach_next_to(theme_spacing_box, theme_segement, Gtk.PositionType.BOTTOM, width, height);
+            theme_spacing_box.set_size_request(-1, segment_spacing);
+            this.attach_next_to(theme_spacing_box, theme_segment, Gtk.PositionType.BOTTOM, width, height);
             
-            hotkey_segement = new PreferenceSlideItem(this, _("Shortcuts"), "hotkey", true);
-			this.attach_next_to(hotkey_segement, theme_spacing_box, Gtk.PositionType.BOTTOM, width, height);
+            hotkey_segment = new PreferenceSlideItem(this, _("Shortcuts"), "hotkey", true);
+			this.attach_next_to(hotkey_segment, theme_spacing_box, Gtk.PositionType.BOTTOM, width, height);
 
-            terminal_key_segement = new PreferenceSlideItem(this, _("Terminal"), "terminal_key", false);
-			this.attach_next_to(terminal_key_segement, hotkey_segement, Gtk.PositionType.BOTTOM, width, height);
+            terminal_key_segment = new PreferenceSlideItem(this, _("Terminal"), "terminal_key", false);
+			this.attach_next_to(terminal_key_segment, hotkey_segment, Gtk.PositionType.BOTTOM, width, height);
             
-            workspace_key_segement = new PreferenceSlideItem(this, _("Workspace"), "workspace_key", false);
-			this.attach_next_to(workspace_key_segement, terminal_key_segement, Gtk.PositionType.BOTTOM, width, height);
+            workspace_key_segment = new PreferenceSlideItem(this, _("Workspace"), "workspace_key", false);
+			this.attach_next_to(workspace_key_segment, terminal_key_segment, Gtk.PositionType.BOTTOM, width, height);
             
-            advanced_key_segement = new PreferenceSlideItem(this, _("Advanced"), "advanced_key", false);
-			this.attach_next_to(advanced_key_segement, workspace_key_segement, Gtk.PositionType.BOTTOM, width, height);
+            advanced_key_segment = new PreferenceSlideItem(this, _("Advanced"), "advanced_key", false);
+			this.attach_next_to(advanced_key_segment, workspace_key_segment, Gtk.PositionType.BOTTOM, width, height);
 
             var advanced_key_spacing_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            advanced_key_spacing_box.set_size_request(-1, segement_spacing);
-            this.attach_next_to(advanced_key_spacing_box, advanced_key_segement, Gtk.PositionType.BOTTOM, width, height);
+            advanced_key_spacing_box.set_size_request(-1, segment_spacing);
+            this.attach_next_to(advanced_key_spacing_box, advanced_key_segment, Gtk.PositionType.BOTTOM, width, height);
             
-            advanced_segement = new PreferenceSlideItem(this, _("Advanced"), "advanced", true);
-			this.attach_next_to(advanced_segement, advanced_key_spacing_box, Gtk.PositionType.BOTTOM, width, height);
+            advanced_segment = new PreferenceSlideItem(this, _("Advanced"), "advanced", true);
+			this.attach_next_to(advanced_segment, advanced_key_spacing_box, Gtk.PositionType.BOTTOM, width, height);
             
-            cursor_segement = new PreferenceSlideItem(this, _("Cursor"), "cursor", false);
-			this.attach_next_to(cursor_segement, advanced_segement, Gtk.PositionType.BOTTOM, width, height);
+            cursor_segment = new PreferenceSlideItem(this, _("Cursor"), "cursor", false);
+			this.attach_next_to(cursor_segment, advanced_segment, Gtk.PositionType.BOTTOM, width, height);
 
-            scroll_segement = new PreferenceSlideItem(this, _("Scroll"), "scroll", false);
-			this.attach_next_to(scroll_segement, cursor_segement, Gtk.PositionType.BOTTOM, width, height);
+            scroll_segment = new PreferenceSlideItem(this, _("Scroll"), "scroll", false);
+			this.attach_next_to(scroll_segment, cursor_segment, Gtk.PositionType.BOTTOM, width, height);
 
-            window_segement = new PreferenceSlideItem(this, _("Window"), "window", false);
-			this.attach_next_to(window_segement, scroll_segement, Gtk.PositionType.BOTTOM, width, height);
+            window_segment = new PreferenceSlideItem(this, _("Window"), "window", false);
+			this.attach_next_to(window_segment, scroll_segment, Gtk.PositionType.BOTTOM, width, height);
             
             var window_spacing_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            window_spacing_box.set_size_request(-1, segement_spacing);
-            this.attach_next_to(window_spacing_box, window_segement, Gtk.PositionType.BOTTOM, width, height);
+            window_spacing_box.set_size_request(-1, segment_spacing);
+            this.attach_next_to(window_spacing_box, window_segment, Gtk.PositionType.BOTTOM, width, height);
             
-            add_focus_handler(basic_segement);
-            add_focus_handler(theme_segement);
-            add_focus_handler(hotkey_segement);
-            add_focus_handler(terminal_key_segement);
-            add_focus_handler(workspace_key_segement);
-            add_focus_handler(advanced_key_segement);
-            add_focus_handler(advanced_segement);
-            add_focus_handler(cursor_segement);
-            add_focus_handler(scroll_segement);
-            add_focus_handler(window_segement);
-            focus_item(basic_segement);
+            add_focus_handler(basic_segment);
+            add_focus_handler(theme_segment);
+            add_focus_handler(hotkey_segment);
+            add_focus_handler(terminal_key_segment);
+            add_focus_handler(workspace_key_segment);
+            add_focus_handler(advanced_key_segment);
+            add_focus_handler(advanced_segment);
+            add_focus_handler(cursor_segment);
+            add_focus_handler(scroll_segment);
+            add_focus_handler(window_segment);
+            focus_item(basic_segment);
             
             draw.connect(on_draw);
             
@@ -113,13 +113,13 @@ namespace Widgets {
         }
         
         public void focus_item(PreferenceSlideItem item) {
-            if (focus_segement_item != null) {
-                focus_segement_item.is_selected = false;
-                focus_segement_item.queue_draw();
+            if (focus_segment_item != null) {
+                focus_segment_item.is_selected = false;
+                focus_segment_item.queue_draw();
             }
             
-            focus_segement_item = item;
-            focus_segement_item.is_selected = true;
+            focus_segment_item = item;
+            focus_segment_item.is_selected = true;
             queue_draw();
         }
         
@@ -145,16 +145,16 @@ namespace Widgets {
     public class PreferenceSlideItem : Gtk.EventBox {
         public string item_name;
         public bool item_active;
-        public bool is_first_segement;
+        public bool is_first_segment;
         
-        public int first_segement_margin = 30;
-        public int second_segement_margin = 40;
+        public int first_segment_margin = 30;
+        public int second_segment_margin = 40;
         
-        public int first_segement_size = 12;
-        public int second_segement_size = 10;
+        public int first_segment_size = 12;
+        public int second_segment_size = 10;
         
-        public Gdk.RGBA first_segement_text_color;
-        public Gdk.RGBA second_segement_text_color;
+        public Gdk.RGBA first_segment_text_color;
+        public Gdk.RGBA second_segment_text_color;
         public Gdk.RGBA highlight_text_color;
         
         public bool is_selected = false;
@@ -166,10 +166,10 @@ namespace Widgets {
 			set_visible_window(false);
             
             item_name = display_name;
-            is_first_segement = is_first;
+            is_first_segment = is_first;
             
-            first_segement_text_color = Utils.hex_to_rgba("#00162C");
-            second_segement_text_color = Utils.hex_to_rgba("#303030");
+            first_segment_text_color = Utils.hex_to_rgba("#00162C");
+            second_segment_text_color = Utils.hex_to_rgba("#303030");
             highlight_text_color = Utils.hex_to_rgba("#2ca7f8");
             
             set_size_request(width, height);
@@ -204,20 +204,20 @@ namespace Widgets {
                 Draw.draw_rectangle(cr, rect.width - 3, 0, 3, rect.height, true);
             }
             
-            if (is_first_segement) {
+            if (is_first_segment) {
                 if (is_selected) {
                     Utils.set_context_color(cr, highlight_text_color);
                 } else {
-                    Utils.set_context_color(cr, first_segement_text_color);
+                    Utils.set_context_color(cr, first_segment_text_color);
                 }
-                Draw.draw_text(cr, item_name, first_segement_margin, 0, rect.width - first_segement_margin, rect.height, first_segement_size);
+                Draw.draw_text(cr, item_name, first_segment_margin, 0, rect.width - first_segment_margin, rect.height, first_segment_size);
             } else {
                 if (is_selected) {
                     Utils.set_context_color(cr, highlight_text_color);
                 } else {
-                    Utils.set_context_color(cr, second_segement_text_color);
+                    Utils.set_context_color(cr, second_segment_text_color);
                 }
-                Draw.draw_text(cr, item_name, second_segement_margin, 0, rect.width - second_segement_margin, rect.height, second_segement_size);
+                Draw.draw_text(cr, item_name, second_segment_margin, 0, rect.width - second_segment_margin, rect.height, second_segment_size);
             }
             
             return true;

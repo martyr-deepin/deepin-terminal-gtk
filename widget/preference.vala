@@ -102,7 +102,7 @@ namespace Widgets {
         public bool in_animation = false;
         public int checkbutton_margin_right = 5;
         public int checkbutton_margin_top = 4;
-        public int first_segement_margin_left = 20;
+        public int first_segment_margin_left = 20;
         public int grid_height = 24;
         public int option_widget_margin_end = 5;
         public int option_widget_margin_left = 40;
@@ -112,9 +112,9 @@ namespace Widgets {
         public int preference_split_line_margin_left = 2;
         public int preference_widget_width = Constant.PREFERENCE_WIDGET_WIDTH;
         public int reset_button_margin = 35;
-        public int second_segement_margin_left = 30;
-        public int segement_margin_bottom = 5;
-        public int segement_margin_top = 10;
+        public int second_segment_margin_left = 30;
+        public int segment_margin_bottom = 5;
+        public int segment_margin_top = 10;
         public int slidebar_width = Constant.PREFERENCE_SLIDEBAR_WIDTH;
         public int timer_interval = 400;
 
@@ -226,11 +226,11 @@ namespace Widgets {
             content_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             scrolledwindow.add(content_box);
 			
-            var basic_segement = get_first_segement(_("Basic"));
-            content_box.pack_start(basic_segement, false, false, 0);
+            var basic_segment = get_first_segment(_("Basic"));
+            content_box.pack_start(basic_segment, false, false, 0);
 
-            var theme_segement = get_second_segement(_("Interface"));
-            content_box.pack_start(theme_segement, false, false, 0);
+            var theme_segment = get_second_segment(_("Interface"));
+            content_box.pack_start(theme_segment, false, false, 0);
             
             var theme_grid = new Gtk.Grid();
             content_box.pack_start(theme_grid, false, false, 0);
@@ -271,11 +271,11 @@ namespace Widgets {
             
             create_follow_spinbutton_row(font_size_spinbutton, "%s:".printf(_("Font size")), font_label, font_grid, "general", "font_size");
             
-            var hotkey_segement = get_first_segement(_("Shortcuts"));
-            content_box.pack_start(hotkey_segement, false, false, 0);
+            var hotkey_segment = get_first_segment(_("Shortcuts"));
+            content_box.pack_start(hotkey_segment, false, false, 0);
             
-            var terminal_key_segement = get_second_segement(_("Terminal"));
-            content_box.pack_start(terminal_key_segement, false, false, 0);
+            var terminal_key_segment = get_second_segment(_("Terminal"));
+            content_box.pack_start(terminal_key_segment, false, false, 0);
             
             var terminal_key_grid = new Gtk.Grid();
             content_box.pack_start(terminal_key_grid, false, false, 0);
@@ -289,8 +289,8 @@ namespace Widgets {
             create_follow_key_row(zoom_reset_key_label, zoom_reset_key_entry, "%s:".printf(_("Default size")), zoom_out_key_label, terminal_key_grid, "shortcut", "default_size");
             create_follow_key_row(select_all_key_label, select_all_key_entry, "%s:".printf(_("Select all")), zoom_reset_key_label, terminal_key_grid, "shortcut", "select_all");
             
-            var workspace_key_segement = get_second_segement(_("Workspace"));
-            content_box.pack_start(workspace_key_segement, false, false, 0);
+            var workspace_key_segment = get_second_segment(_("Workspace"));
+            content_box.pack_start(workspace_key_segment, false, false, 0);
             
             var workspace_key_grid = new Gtk.Grid();
             content_box.pack_start(workspace_key_grid, false, false, 0);
@@ -308,8 +308,8 @@ namespace Widgets {
             create_follow_key_row(close_window_key_label, close_window_key_entry, "%s:".printf(_("Close window")), select_right_window_key_label, workspace_key_grid, "shortcut", "close_window");
             create_follow_key_row(close_other_windows_key_label, close_other_windows_key_entry, "%s:".printf(_("Close other windows")), close_window_key_label, workspace_key_grid, "shortcut", "close_other_windows");
             
-            var advanced_key_segement = get_second_segement(_("Advanced"));
-            content_box.pack_start(advanced_key_segement, false, false, 0);
+            var advanced_key_segment = get_second_segment(_("Advanced"));
+            content_box.pack_start(advanced_key_segment, false, false, 0);
             
             var advanced_key_grid = new Gtk.Grid();
             content_box.pack_start(advanced_key_grid, false, false, 0);
@@ -318,11 +318,11 @@ namespace Widgets {
             create_follow_key_row(display_hotkey_terminal_key_label, display_hotkey_terminal_key_entry, "%s:".printf(_("Display shortcuts")), fullscreen_key_label, advanced_key_grid, "shortcut", "display_shortcuts");
             create_follow_key_row(show_remote_manage_key_label, show_remote_manage_key_entry, "%s:".printf(_("Remote management")), display_hotkey_terminal_key_label, advanced_key_grid, "shortcut", "remote_management");
             
-            var advanced_segement = get_first_segement(_("Advanced"));
-            content_box.pack_start(advanced_segement, false, false, 0);
+            var advanced_segment = get_first_segment(_("Advanced"));
+            content_box.pack_start(advanced_segment, false, false, 0);
             
-            var cursor_segement = get_second_segement(_("Cursor"));
-            content_box.pack_start(cursor_segement, false, false, 0);
+            var cursor_segment = get_second_segment(_("Cursor"));
+            content_box.pack_start(cursor_segment, false, false, 0);
             
             var cursor_grid = new Gtk.Grid();
             content_box.pack_start(cursor_grid, false, false, 0);
@@ -345,8 +345,8 @@ namespace Widgets {
             
             create_follow_check_row(cursor_blink_checkbutton, _("Cursor blink"), cursor_style_label, cursor_grid, "advanced", "cursor_blink_mode");
             
-            var scroll_segement = get_second_segement(_("Scroll"));
-            content_box.pack_start(scroll_segement, false, false, 0);
+            var scroll_segment = get_second_segment(_("Scroll"));
+            content_box.pack_start(scroll_segment, false, false, 0);
             
             var scroll_grid = new Gtk.Grid();
             content_box.pack_start(scroll_grid, false, false, 0);
@@ -356,8 +356,8 @@ namespace Widgets {
             
             // create_follow_spinbutton_row(scroll_line_spinbutton, "%s:".printf(_("Scroll lines")), scroll_on_output_box, scroll_grid, "advanced", "scroll_line");
             
-            var window_segement = get_second_segement(_("Window"));
-            content_box.pack_start(window_segement, false, false, 0);
+            var window_segment = get_second_segment(_("Window"));
+            content_box.pack_start(window_segment, false, false, 0);
             
             var window_grid = new Gtk.Grid();
             content_box.pack_start(window_grid, false, false, 0);
@@ -390,50 +390,50 @@ namespace Widgets {
 			timer.animate.connect(on_animate);
 			slidebar.click_item.connect((w, item) => {
 					if (item == "basic") {
-						scroll_to_widget(scrolledwindow, box, basic_segement);
+						scroll_to_widget(scrolledwindow, box, basic_segment);
 					} else if (item == "theme") {
-						scroll_to_widget(scrolledwindow, box, theme_segement);
+						scroll_to_widget(scrolledwindow, box, theme_segment);
 					} else if (item == "hotkey") {
-						scroll_to_widget(scrolledwindow, box, hotkey_segement);
+						scroll_to_widget(scrolledwindow, box, hotkey_segment);
 					} else if (item == "terminal_key") {
-						scroll_to_widget(scrolledwindow, box, terminal_key_segement);
+						scroll_to_widget(scrolledwindow, box, terminal_key_segment);
 					} else if (item == "workspace_key") {
-						scroll_to_widget(scrolledwindow, box, workspace_key_segement);
+						scroll_to_widget(scrolledwindow, box, workspace_key_segment);
 					} else if (item == "advanced_key") {
-						scroll_to_widget(scrolledwindow, box, advanced_key_segement);
+						scroll_to_widget(scrolledwindow, box, advanced_key_segment);
 					} else if (item == "advanced") {
-						scroll_to_widget(scrolledwindow, box, advanced_segement);
+						scroll_to_widget(scrolledwindow, box, advanced_segment);
 					} else if (item == "cursor") {
-						scroll_to_widget(scrolledwindow, box, cursor_segement);
+						scroll_to_widget(scrolledwindow, box, cursor_segment);
 					} else if (item == "scroll") {
-						scroll_to_widget(scrolledwindow, box, scroll_segement);
+						scroll_to_widget(scrolledwindow, box, scroll_segment);
 					} else if (item == "window") {
-						scroll_to_widget(scrolledwindow, box, window_segement);
+						scroll_to_widget(scrolledwindow, box, window_segment);
 					}
 				});
             
             scrolledwindow.get_vadjustment().value_changed.connect((w) => {
                     if (!in_animation) {
-                        if (item_in_visible_area(basic_segement)) {
-                            slidebar.focus_item(slidebar.basic_segement);
-                        } else if (item_in_visible_area(theme_segement)) {
-                            slidebar.focus_item(slidebar.theme_segement);
-                        } else if (item_in_visible_area(hotkey_segement)) {
-                            slidebar.focus_item(slidebar.hotkey_segement);
-                        } else if (item_in_visible_area(terminal_key_segement)) {
-                            slidebar.focus_item(slidebar.terminal_key_segement);
-                        } else if (item_in_visible_area(workspace_key_segement)) {
-                            slidebar.focus_item(slidebar.workspace_key_segement);
-                        } else if (item_in_visible_area(advanced_key_segement)) {
-                            slidebar.focus_item(slidebar.advanced_key_segement);
-                        } else if (item_in_visible_area(advanced_segement)) {
-                            slidebar.focus_item(slidebar.advanced_segement);
-                        } else if (item_in_visible_area(cursor_segement)) {
-                            slidebar.focus_item(slidebar.cursor_segement);
-                        } else if (item_in_visible_area(scroll_segement)) {
-                            slidebar.focus_item(slidebar.scroll_segement);
-                        } else if (item_in_visible_area(window_segement)) {
-                            slidebar.focus_item(slidebar.window_segement);
+                        if (item_in_visible_area(basic_segment)) {
+                            slidebar.focus_item(slidebar.basic_segment);
+                        } else if (item_in_visible_area(theme_segment)) {
+                            slidebar.focus_item(slidebar.theme_segment);
+                        } else if (item_in_visible_area(hotkey_segment)) {
+                            slidebar.focus_item(slidebar.hotkey_segment);
+                        } else if (item_in_visible_area(terminal_key_segment)) {
+                            slidebar.focus_item(slidebar.terminal_key_segment);
+                        } else if (item_in_visible_area(workspace_key_segment)) {
+                            slidebar.focus_item(slidebar.workspace_key_segment);
+                        } else if (item_in_visible_area(advanced_key_segment)) {
+                            slidebar.focus_item(slidebar.advanced_key_segment);
+                        } else if (item_in_visible_area(advanced_segment)) {
+                            slidebar.focus_item(slidebar.advanced_segment);
+                        } else if (item_in_visible_area(cursor_segment)) {
+                            slidebar.focus_item(slidebar.cursor_segment);
+                        } else if (item_in_visible_area(scroll_segment)) {
+                            slidebar.focus_item(slidebar.scroll_segment);
+                        } else if (item_in_visible_area(window_segment)) {
+                            slidebar.focus_item(slidebar.window_segment);
                         }
                     }
                 });
@@ -487,7 +487,7 @@ namespace Widgets {
 			int widget_x, widget_y;
             content_box.translate_coordinates(item, 0, 0, out widget_x, out widget_y);
             
-            return Math.fabs(widget_y) > scrolledwindow.get_vadjustment().get_value() - segement_margin_top * 2;
+            return Math.fabs(widget_y) > scrolledwindow.get_vadjustment().get_value() - segment_margin_top * 2;
         }
         
         public void scroll_to_widget(ScrolledWindow scrolledwindow, Gtk.Box box, Gtk.Widget widget) {
@@ -512,14 +512,14 @@ namespace Widgets {
 			}
 		}
 		
-		public Gtk.Widget get_first_segement(string name) {
-            var segement = create_label();
-            segement.get_style_context().add_class("preference_first_segement");
-            segement.set_text(name);
-            segement.set_xalign(0);
+		public Gtk.Widget get_first_segment(string name) {
+            var segment = create_label();
+            segment.get_style_context().add_class("preference_first_segment");
+            segment.set_text(name);
+            segment.set_xalign(0);
             
             var box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-            box.pack_start(segement, false, false, 0);
+            box.pack_start(segment, false, false, 0);
             
             var line = new Gtk.EventBox();
             line.margin_start = preference_split_line_margin_left;
@@ -534,23 +534,23 @@ namespace Widgets {
                 });
             box.pack_start(line, true, true, 0);
             
-            box.margin_top = segement_margin_top;
-            box.margin_bottom = segement_margin_bottom;
-            box.margin_start = first_segement_margin_left;
+            box.margin_top = segment_margin_top;
+            box.margin_bottom = segment_margin_bottom;
+            box.margin_start = first_segment_margin_left;
 
             return (Gtk.Widget) box;
         }
 
-        public Gtk.Widget get_second_segement(string name) {
-            var segement = create_label();
-            segement.get_style_context().add_class("preference_second_segement");
-            segement.set_text(name);
-            segement.set_xalign(0);
-            segement.margin_top = segement_margin_top;
-            segement.margin_bottom = segement_margin_bottom;
-            segement.margin_start = second_segement_margin_left;
+        public Gtk.Widget get_second_segment(string name) {
+            var segment = create_label();
+            segment.get_style_context().add_class("preference_second_segment");
+            segment.set_text(name);
+            segment.set_xalign(0);
+            segment.margin_top = segment_margin_top;
+            segment.margin_bottom = segment_margin_bottom;
+            segment.margin_start = second_segment_margin_left;
 
-            return (Gtk.Widget) segement;
+            return (Gtk.Widget) segment;
         }
         
         public void create_key_row(Gtk.Label label, Gtk.Entry entry, string name, Gtk.Grid grid, string? group_name=null, string? key=null) {
