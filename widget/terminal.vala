@@ -238,6 +238,9 @@ namespace Widgets {
             }
                             
             menu_content.append(new Menu.MenuItem("search", _("Search")));
+            if (in_quake_window) {
+                menu_content.append(new Menu.MenuItem("switch_theme", _("Switch theme")));
+            }
             menu_content.append(new Menu.MenuItem("remote_manage", _("Remote management")));
             if (is_in_remote_server()) {
                 menu_content.append(new Menu.MenuItem("", ""));
@@ -302,6 +305,9 @@ namespace Widgets {
                     case "remote_manage":
 						workspace_manager.focus_workspace.show_remote_panel(workspace_manager.focus_workspace);
 						break;
+                    case "switch_theme":
+                        workspace_manager.focus_workspace.show_theme_panel(workspace_manager.focus_workspace);
+                        break;
                     case "upload_file":
                         upload_file();
                         break;
