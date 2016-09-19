@@ -395,7 +395,7 @@ namespace Widgets {
 						scroll_to_widget(scrolledwindow, box, theme_segement);
 					} else if (item == "hotkey") {
 						scroll_to_widget(scrolledwindow, box, hotkey_segement);
-					} else if (item == "temrinal_key") {
+					} else if (item == "terminal_key") {
 						scroll_to_widget(scrolledwindow, box, terminal_key_segement);
 					} else if (item == "workspace_key") {
 						scroll_to_widget(scrolledwindow, box, workspace_key_segement);
