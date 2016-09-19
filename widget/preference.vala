@@ -265,6 +265,7 @@ namespace Widgets {
 			for (int i = 0; i < num; i++) {
 				font_names.add(mono_or_dot_fonts[i]);
 			}
+			font_names.sort();
 			
             create_combox_row(font_label, font_combox, "%s:".printf(_("Font")), font_grid, font_names, "general", "font");
             
