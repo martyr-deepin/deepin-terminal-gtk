@@ -120,6 +120,8 @@ namespace Widgets {
                     var shape = new Cairo.Region.rectangle(input_shape_rect);
                     get_window().input_shape_combine_region(shape, 0, 0);
                     
+                    window_save_before_quit();
+                    
                     return false;
                 });
             
