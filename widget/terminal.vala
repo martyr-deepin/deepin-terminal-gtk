@@ -928,7 +928,7 @@ namespace Widgets {
             var selection_file = get_selection_file();
             if (selection_file != null) {
                 try {
-                    GLib.AppInfo appinfo = GLib.AppInfo.create_from_commandline("xdg-open %s".printf(selection_file), null, GLib.AppInfoCreateFlags.NONE);
+                    GLib.AppInfo appinfo = GLib.AppInfo.create_from_commandline("xdg-open '%s'".printf(selection_file), null, GLib.AppInfoCreateFlags.NONE);
                     appinfo.launch(null, null);
                 } catch (GLib.Error e) {
                     print("Terminal open_selection_file: %s\n", e.message);
