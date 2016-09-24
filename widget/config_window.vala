@@ -381,12 +381,6 @@ namespace Widgets {
                     return true;
                 }
 		    
-                var new_workspace_key = config.config_file.get_string("shortcut", "new_workspace");
-                if (new_workspace_key != "" && keyname == new_workspace_key) {
-                    workspace_manager.new_workspace_with_current_directory();
-                    return true;
-                }
-		    
                 var close_workspace_key = config.config_file.get_string("shortcut", "close_workspace");
                 if (close_workspace_key != "" && keyname == close_workspace_key) {
                     workspace_manager.tabbar.close_current_tab();
@@ -530,6 +524,19 @@ namespace Widgets {
                 if (Utils.is_command_exist("deepin-shortcut-viewer")) {
                     remove_shortcut_viewer();
                 }
+            }
+            
+            try {
+                string keyname = Keymap.get_keyevent_name(key_event);
+                var new_workspace_key = config.config_file.get_string("shortcut", "new_workspace");
+                if (new_workspace_key != "" && keyname == new_workspace_key) {
+                    workspace_manager.new_workspace_with_current_directory();
+                    return true;
+                }
+            } catch (GLib.KeyFileError e) {
+                print("Main on_key_release: %s\n", e.message);
+                
+                return false;
             }
         
             return false;
