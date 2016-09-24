@@ -566,6 +566,20 @@ namespace Widgets {
                     int pointer_x, pointer_y;
                     Utils.get_pointer_position(out pointer_x, out pointer_y);
                     
+                    int window_width, window_height;
+                    ((ConfigWindow) get_toplevel()).get_size(out window_width, out window_height);
+                    
+                    int window_x, window_y; 
+                    ((ConfigWindow) get_toplevel()).get_window().get_origin(out window_x, out window_y);
+                    
+                    if (pointer_x < window_x || pointer_x > window_x + window_width) {
+                        pointer_x = window_x + window_width / 2;
+                    }
+                    
+                    if (pointer_y < window_y || pointer_y > window_y + window_height) {
+                        pointer_y = window_y + window_height / 2;
+                    }
+                    
                     show_menu(pointer_x, pointer_y);
                     
                     return true;
