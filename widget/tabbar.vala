@@ -171,8 +171,8 @@ namespace Widgets {
         public void rename_tab(int tab_id, string tab_name) {
             tab_name_map.set(tab_id, tab_name);
             
-            if (tab_id == tab_index + 1) {
-                ((Gtk.Window) get_toplevel()).set_title("%s - %s".printf(tab_name, _("Deepin Terminal")));
+            if (is_focus_tab(tab_id)) {
+                update_window_title(tab_name);
             }
             
             update_tab_scale();
@@ -596,6 +596,10 @@ namespace Widgets {
             layout.get_pixel_size(out width, out height);
             
             return layout;
+        }
+        
+        public void update_window_title(string title) {
+            ((Gtk.Window) get_toplevel()).set_title("%s - %s".printf(title, _("Deepin Terminal")));
         }
     }
 }
