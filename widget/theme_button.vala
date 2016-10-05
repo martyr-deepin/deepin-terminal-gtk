@@ -99,7 +99,7 @@ namespace Widgets {
             Draw.draw_text(cr, "deepin@linux > _", title_padding_x, title_padding_y, rect.width, rect.height, title_font_size, Pango.Alignment.LEFT, "top");
 
             cr.set_source_rgba(content_color.red, content_color.green, content_color.blue, content_color.alpha);
-            Draw.draw_text(cr, "hello world!", content_padding_x, content_padding_y, rect.width, rect.height, content_font_size, Pango.Alignment.LEFT, "top");
+            Draw.draw_text(cr, theme_name, content_padding_x, content_padding_y, rect.width, rect.height, content_font_size, Pango.Alignment.LEFT, "top");
             
             if (is_active) {
                 Draw.draw_surface(cr, active_theme_border_surface);
