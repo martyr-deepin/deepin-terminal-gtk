@@ -30,15 +30,18 @@ using Widgets;
 namespace Widgets {
     public class Workspace : Gtk.Overlay {
 		public WorkspaceManager workspace_manager;
+        public AnimateTimer encoding_panel_hide_timer;
+        public AnimateTimer encoding_panel_show_timer;
         public AnimateTimer remote_panel_hide_timer;
         public AnimateTimer remote_panel_show_timer;
         public AnimateTimer theme_panel_hide_timer;
         public AnimateTimer theme_panel_show_timer;
         public ArrayList<Term> term_list;
+        public EncodingPanel? encoding_panel;
         public RemotePanel? remote_panel;
         public SearchPanel? search_panel;
-        public Term? terminal_before_popup;
         public Term? focus_terminal;
+        public Term? terminal_before_popup;
         public ThemePanel? theme_panel;
         public int PANED_HANDLE_SIZE = 1;
         public int hide_slider_interval = 500;
@@ -67,6 +70,12 @@ namespace Widgets {
 
 			theme_panel_hide_timer = new AnimateTimer(AnimateTimer.ease_in_quint, hide_slider_interval);
 			theme_panel_hide_timer.animate.connect(theme_panel_hide_animate);
+
+			encoding_panel_show_timer = new AnimateTimer(AnimateTimer.ease_out_quint, show_slider_interval);
+			encoding_panel_show_timer.animate.connect(encoding_panel_show_animate);
+
+			encoding_panel_hide_timer = new AnimateTimer(AnimateTimer.ease_in_quint, hide_slider_interval);
+			encoding_panel_hide_timer.animate.connect(encoding_panel_hide_animate);
             
             Term term = new_term(true, work_directory);
             
@@ -89,6 +98,7 @@ namespace Widgets {
                     remove_search_panel();
 					hide_theme_panel();
 					hide_remote_panel();
+                    hide_encoding_panel();
                     
                     update_focus_terminal(term);
                     
@@ -465,6 +475,7 @@ namespace Widgets {
         public void search() {
             remove_remote_panel();
             remove_theme_panel();
+            remove_encoding_panel();
             
             terminal_before_popup = get_focus_term(this);
             if (search_panel == null && terminal_before_popup != null) {
@@ -505,6 +516,7 @@ namespace Widgets {
 		public void show_remote_panel(Workspace workspace) {
             remove_search_panel();
             remove_theme_panel();
+            remove_encoding_panel();
             
 			if (remote_panel == null) {
 				Gtk.Allocation rect;
@@ -531,6 +543,40 @@ namespace Widgets {
                 
                 hide_slider_start_x = rect.width - Constant.SLIDER_WIDTH;
                 remote_panel_hide_timer.reset();
+			}
+		}
+        
+        public void show_encoding_panel(Workspace workspace) {
+            remove_search_panel();
+            remove_remote_panel();
+            remove_theme_panel();
+            
+			if (encoding_panel == null) {
+				Gtk.Allocation rect;
+				get_allocation(out rect);
+				
+                Term focus_term = get_focus_term(this);
+				encoding_panel = new EncodingPanel(workspace, workspace_manager, focus_term);
+				encoding_panel.set_size_request(Constant.ENCODING_SLIDER_WIDTH, rect.height);
+                add_overlay(encoding_panel);
+				
+				show_all();
+                
+                encoding_panel.margin_left = rect.width;
+                show_slider_start_x = rect.width;
+                encoding_panel_show_timer.reset();
+			}
+            
+            terminal_before_popup = get_focus_term(this);
+		}
+		
+		public void hide_encoding_panel() {
+			if (encoding_panel != null) {
+				Gtk.Allocation rect;
+				get_allocation(out rect);
+                
+                hide_slider_start_x = rect.width - Constant.ENCODING_SLIDER_WIDTH;
+                encoding_panel_hide_timer.reset();
 			}
 		}
         
@@ -565,17 +611,10 @@ namespace Widgets {
 			}
 		}
 
-		public void toggle_theme_panel(Workspace workspace) {
-			if (theme_panel == null) {
-				show_theme_panel(workspace);
-			} else {
-				hide_theme_panel();
-			}
-		}
-		
-		public void show_theme_panel(Workspace workspace) {
+        public void show_theme_panel(Workspace workspace) {
             remove_search_panel();
             remove_remote_panel();
+            remove_encoding_panel();
             
 			if (theme_panel == null) {
 				Gtk.Allocation rect;
@@ -617,6 +656,19 @@ namespace Widgets {
                 terminal_before_popup = null;
             }
         }
+
+        public void remove_encoding_panel() {
+            if (encoding_panel != null) {
+                remove(encoding_panel);
+                encoding_panel.destroy();
+                encoding_panel = null;
+            }
+            
+            if (terminal_before_popup != null) {
+                terminal_before_popup.focus_term();
+                terminal_before_popup = null;
+            }
+        }
         
 		public void theme_panel_show_animate(double progress) {
             theme_panel.margin_left = (int) (show_slider_start_x - Constant.THEME_SLIDER_WIDTH * progress);
@@ -636,10 +688,29 @@ namespace Widgets {
 			}
 		}
         
+		public void encoding_panel_show_animate(double progress) {
+            encoding_panel.margin_left = (int) (show_slider_start_x - Constant.ENCODING_SLIDER_WIDTH * progress);
+            
+            if (progress >= 1.0) {
+				encoding_panel_show_timer.stop();
+			}
+		}
+
+		public void encoding_panel_hide_animate(double progress) {
+            encoding_panel.margin_left = (int) (hide_slider_start_x + Constant.ENCODING_SLIDER_WIDTH * progress);
+            
+            if (progress >= 1.0) {
+				encoding_panel_hide_timer.stop();
+
+                remove_encoding_panel();
+			}
+		}
+        
         public void remove_all_panel() {
             remove_search_panel();
             remove_remote_panel();
             remove_theme_panel();
+            remove_encoding_panel();
         }
         
         public void update_focus_terminal(Term term) {

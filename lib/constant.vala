@@ -29,6 +29,10 @@ public class Constant {
     public static int CLOSE_BUTTON_MARGIN_TOP = 3;
     public static int CLOSE_BUTTON_WIDTH = 27;
     public static int DIALOG_BUTTON_HEIGHT = 28;
+    public static int ENCODING_BUTTON_HEIGHT = 54;
+    public static int ENCODING_BUTTON_PADDING = 5;
+    public static int ENCODING_BUTTON_WIDTH = 190;
+    public static int ENCODING_SLIDER_WIDTH = 230;
     public static int FONT_MAX_SIZE = 50;
     public static int FONT_MIN_SIZE = 5;
     public static int MAX_SCROLL_LINES = 1000;

@@ -241,6 +241,7 @@ namespace Widgets {
             if (in_quake_window) {
                 menu_content.append(new Menu.MenuItem("switch_theme", _("Switch theme")));
             }
+            menu_content.append(new Menu.MenuItem("encoding", _("Encoding")));
             menu_content.append(new Menu.MenuItem("remote_manage", _("Remote management")));
             if (is_in_remote_server()) {
                 menu_content.append(new Menu.MenuItem("", ""));
@@ -313,6 +314,9 @@ namespace Widgets {
                         break;
                     case "download_file":
                         download_file();
+                        break;
+                    case "encoding":
+                        workspace_manager.focus_workspace.show_encoding_panel(workspace_manager.focus_workspace);
                         break;
                     case "preference":
                         var preference = new Widgets.Preference((Widgets.ConfigWindow) this.get_toplevel(), ((Gtk.Window) this.get_toplevel()).get_focus());

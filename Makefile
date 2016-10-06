@@ -19,6 +19,8 @@ main: ./lib/animation.vala \
       ./widget/cursor_toggle_button.vala \
       ./widget/dialog.vala \
       ./widget/dialog_button.vala \
+      ./widget/encoding_button.vala \
+      ./widget/encoding_panel.vala \
       ./widget/image_button.vala \
       ./widget/password_button.vala \
       ./widget/preference.vala \
@@ -27,8 +29,8 @@ main: ./lib/animation.vala \
       ./widget/quake_window.vala \
       ./widget/remote_panel.vala \
       ./widget/remote_server_dialog.vala \
-      ./widget/search_panel.vala \
       ./widget/search_entry.vala \
+      ./widget/search_panel.vala \
       ./widget/server_button.vala \
       ./widget/server_group_button.vala \
       ./widget/switcher.vala \
@@ -80,6 +82,8 @@ main: ./lib/animation.vala \
     ./widget/cursor_toggle_button.vala \
     ./widget/dialog.vala \
     ./widget/dialog_button.vala \
+    ./widget/encoding_button.vala \
+    ./widget/encoding_panel.vala \
     ./widget/image_button.vala \
     ./widget/password_button.vala \
     ./widget/preference.vala \
@@ -88,8 +92,8 @@ main: ./lib/animation.vala \
     ./widget/quake_window.vala \
     ./widget/remote_panel.vala \
     ./widget/remote_server_dialog.vala \
-    ./widget/search_panel.vala \
     ./widget/search_entry.vala \
+    ./widget/search_panel.vala \
     ./widget/server_button.vala \
     ./widget/server_group_button.vala \
     ./widget/switcher.vala \
