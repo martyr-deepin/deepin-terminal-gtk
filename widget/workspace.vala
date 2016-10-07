@@ -59,7 +59,7 @@ namespace Widgets {
             term_list = new ArrayList<Term>();
 			workspace_manager = manager;
             
-			remote_panel_show_timer = new AnimateTimer(AnimateTimer.ease_out_quint, show_slider_interval);
+            remote_panel_show_timer = new AnimateTimer(AnimateTimer.ease_out_quint, show_slider_interval);
 			remote_panel_show_timer.animate.connect(remote_panel_show_animate);
 
 			remote_panel_hide_timer = new AnimateTimer(AnimateTimer.ease_in_quint, hide_slider_interval);
@@ -91,7 +91,7 @@ namespace Widgets {
 					highlight_tab(index);
 				});
             term.exit.connect((term) => {
-                    remove_all_panel();
+                    remove_all_panels();
                     close_term(term);
                 });
             term.term.button_press_event.connect((w, e) => {
@@ -491,20 +491,6 @@ namespace Widgets {
             search_panel.search_entry.grab_focus();
         }
         
-        public void remove_search_panel() {
-            if (search_panel != null) {
-                remove(search_panel);
-                search_panel.destroy();
-                search_panel = null;
-            }
-            
-            if (terminal_before_popup != null) {
-                terminal_before_popup.focus_term();
-                terminal_before_popup.term.unselect_all();
-                terminal_before_popup = null;
-            }
-        }
-        
 		public void toggle_remote_panel(Workspace workspace) {
 			if (remote_panel == null) {
 				show_remote_panel(workspace);
@@ -580,19 +566,6 @@ namespace Widgets {
 			}
 		}
         
-        public void remove_remote_panel() {
-            if (remote_panel != null) {
-                remove(remote_panel);
-                remote_panel.destroy();
-                remote_panel = null;
-            }
-            
-            if (terminal_before_popup != null) {
-                terminal_before_popup.focus_term();
-                terminal_before_popup = null;
-            }
-        }
-        
 		public void remote_panel_show_animate(double progress) {
             remote_panel.margin_left = (int) (show_slider_start_x - Constant.SLIDER_WIDTH * progress);
             
@@ -644,32 +617,6 @@ namespace Widgets {
 			}
 		}
         
-        public void remove_theme_panel() {
-            if (theme_panel != null) {
-                remove(theme_panel);
-                theme_panel.destroy();
-                theme_panel = null;
-            }
-            
-            if (terminal_before_popup != null) {
-                terminal_before_popup.focus_term();
-                terminal_before_popup = null;
-            }
-        }
-
-        public void remove_encoding_panel() {
-            if (encoding_panel != null) {
-                remove(encoding_panel);
-                encoding_panel.destroy();
-                encoding_panel = null;
-            }
-            
-            if (terminal_before_popup != null) {
-                terminal_before_popup.focus_term();
-                terminal_before_popup = null;
-            }
-        }
-        
 		public void theme_panel_show_animate(double progress) {
             theme_panel.margin_left = (int) (show_slider_start_x - Constant.THEME_SLIDER_WIDTH * progress);
             
@@ -706,13 +653,6 @@ namespace Widgets {
 			}
 		}
         
-        public void remove_all_panel() {
-            remove_search_panel();
-            remove_remote_panel();
-            remove_theme_panel();
-            remove_encoding_panel();
-        }
-        
         public void update_focus_terminal(Term term) {
             focus_terminal = term;
         }
@@ -720,6 +660,49 @@ namespace Widgets {
         public void select_focus_terminal() {
             if (focus_terminal != null) {
                 focus_terminal.focus_term();
+            }
+        }
+        
+        public void remove_all_panels() {
+            remove_search_panel();
+            remove_remote_panel();
+            remove_theme_panel();
+            remove_encoding_panel();
+        }
+        
+        public void remove_theme_panel() {
+            remove_panel(theme_panel);
+            theme_panel = null;
+        }
+
+        public void remove_encoding_panel() {
+            remove_panel(encoding_panel);
+            encoding_panel = null;
+        }
+        
+        public void remove_search_panel() {
+            remove_panel(search_panel);
+            search_panel = null;
+        }
+        
+        public void remove_remote_panel() {
+            remove_panel(remote_panel);
+            remote_panel = null;
+        }
+        
+        private void remove_panel(Gtk.Widget? panel) {
+            if (panel != null) {
+                Gtk.Widget? panel_parent = panel.get_parent();
+                if (panel_parent != null) {
+                    ((Gtk.Container) panel_parent).remove(panel);
+                }
+                panel.destroy();
+            }
+            
+            if (terminal_before_popup != null) {
+                terminal_before_popup.focus_term();
+                terminal_before_popup.term.unselect_all();
+                terminal_before_popup = null;
             }
         }
     }

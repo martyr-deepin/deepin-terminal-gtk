@@ -402,56 +402,56 @@ namespace Widgets {
 		    
                 var split_vertically_key = config.config_file.get_string("shortcut", "vertical_split");
                 if (split_vertically_key != "" && keyname == split_vertically_key) {
-                    workspace_manager.focus_workspace.remove_all_panel();
+                    workspace_manager.focus_workspace.remove_all_panels();
                     workspace_manager.focus_workspace.split_vertical();
                     return true;
                 }
 		    
                 var split_horizontally_key = config.config_file.get_string("shortcut", "horizontal_split");
                 if (split_horizontally_key != "" && keyname == split_horizontally_key) {
-                    workspace_manager.focus_workspace.remove_all_panel();
+                    workspace_manager.focus_workspace.remove_all_panels();
                     workspace_manager.focus_workspace.split_horizontal();
                     return true;
                 }
 		    
                 var select_up_window_key = config.config_file.get_string("shortcut", "select_upper_window");
                 if (select_up_window_key != "" && keyname == select_up_window_key) {
-                    workspace_manager.focus_workspace.remove_all_panel();
+                    workspace_manager.focus_workspace.remove_all_panels();
                     workspace_manager.focus_workspace.select_up_window();
                     return true;
                 }
 		    
                 var select_down_window_key = config.config_file.get_string("shortcut", "select_lower_window");
                 if (select_down_window_key != "" && keyname == select_down_window_key) {
-                    workspace_manager.focus_workspace.remove_all_panel();
+                    workspace_manager.focus_workspace.remove_all_panels();
                     workspace_manager.focus_workspace.select_down_window();
                     return true;
                 }
 		    
                 var select_left_window_key = config.config_file.get_string("shortcut", "select_left_window");
                 if (select_left_window_key != "" && keyname == select_left_window_key) {
-                    workspace_manager.focus_workspace.remove_all_panel();
+                    workspace_manager.focus_workspace.remove_all_panels();
                     workspace_manager.focus_workspace.select_left_window();
                     return true;
                 }
 		    
                 var select_right_window_key = config.config_file.get_string("shortcut", "select_right_window");
                 if (select_right_window_key != "" && keyname == select_right_window_key) {
-                    workspace_manager.focus_workspace.remove_all_panel();
+                    workspace_manager.focus_workspace.remove_all_panels();
                     workspace_manager.focus_workspace.select_right_window();
                     return true;
                 }
 		    
                 var close_window_key = config.config_file.get_string("shortcut", "close_window");
                 if (close_window_key != "" && keyname == close_window_key) {
-                    workspace_manager.focus_workspace.remove_all_panel();
+                    workspace_manager.focus_workspace.remove_all_panels();
                     workspace_manager.focus_workspace.close_focus_term();
                     return true;
                 }
 		    
                 var close_other_windows_key = config.config_file.get_string("shortcut", "close_other_windows");
                 if (close_other_windows_key != "" && keyname == close_other_windows_key) {
-                    workspace_manager.focus_workspace.remove_all_panel();
+                    workspace_manager.focus_workspace.remove_all_panels();
                     workspace_manager.focus_workspace.close_other_terms();
                     return true;
                 }
@@ -502,7 +502,7 @@ namespace Widgets {
 		    
                 var select_all_key = config.config_file.get_string("shortcut", "select_all");
                 if (select_all_key != "" && keyname == select_all_key) {
-                    workspace_manager.focus_workspace.remove_all_panel();
+                    workspace_manager.focus_workspace.remove_all_panels();
                     workspace_manager.focus_workspace.toggle_select_all();
                     return true;
                 }
