@@ -522,16 +522,6 @@ namespace Widgets {
             terminal_before_popup = get_focus_term(this);
 		}
 		
-		public void hide_remote_panel() {
-			if (remote_panel != null) {
-				Gtk.Allocation rect;
-				get_allocation(out rect);
-                
-                hide_slider_start_x = rect.width - Constant.SLIDER_WIDTH;
-                remote_panel_hide_timer.reset();
-			}
-		}
-        
         public void show_encoding_panel(Workspace workspace) {
             remove_search_panel();
             remove_remote_panel();
@@ -556,16 +546,6 @@ namespace Widgets {
             terminal_before_popup = get_focus_term(this);
 		}
 		
-		public void hide_encoding_panel() {
-			if (encoding_panel != null) {
-				Gtk.Allocation rect;
-				get_allocation(out rect);
-                
-                hide_slider_start_x = rect.width - Constant.ENCODING_SLIDER_WIDTH;
-                encoding_panel_hide_timer.reset();
-			}
-		}
-        
 		public void remote_panel_show_animate(double progress) {
             remote_panel.margin_left = (int) (show_slider_start_x - Constant.SLIDER_WIDTH * progress);
             
@@ -607,16 +587,6 @@ namespace Widgets {
             terminal_before_popup = get_focus_term(this);
 		}
 		
-		public void hide_theme_panel() {
-			if (theme_panel != null) {
-				Gtk.Allocation rect;
-				get_allocation(out rect);
-                
-                hide_slider_start_x = rect.width - Constant.THEME_SLIDER_WIDTH;
-                theme_panel_hide_timer.reset();
-			}
-		}
-        
 		public void theme_panel_show_animate(double progress) {
             theme_panel.margin_left = (int) (show_slider_start_x - Constant.THEME_SLIDER_WIDTH * progress);
             
@@ -704,6 +674,28 @@ namespace Widgets {
                 terminal_before_popup.term.unselect_all();
                 terminal_before_popup = null;
             }
+        }
+        
+		public void hide_remote_panel() {
+            hide_panel(remote_panel, Constant.SLIDER_WIDTH, remote_panel_hide_timer);
+		}
+        
+		public void hide_encoding_panel() {
+            hide_panel(encoding_panel, Constant.ENCODING_SLIDER_WIDTH, encoding_panel_hide_timer);
+		}
+        
+		public void hide_theme_panel() {
+            hide_panel(theme_panel, Constant.THEME_SLIDER_WIDTH, theme_panel_hide_timer);
+		}
+        
+        private void hide_panel(Gtk.Widget? panel, int panel_width, AnimateTimer timer) {
+			if (panel != null) {
+				Gtk.Allocation rect;
+				get_allocation(out rect);
+                
+                hide_slider_start_x = rect.width - panel_width;
+                timer.reset();
+			}
         }
     }
 }
