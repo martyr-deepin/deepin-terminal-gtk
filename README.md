@@ -53,6 +53,13 @@ Below is keymap list for deepin-terminal:
 | Display shortcuts               | **Ctrl** + **Shift** + **?**        |
 | Remote management               | **Ctrl** + **/**                    |
 
+## Config file
+Terminal's configure save at:
+~/.config/deepin/deepin-terminal/config.conf
+
+Remote servers' configure save at:
+~/.config/deepin/deepin-terminal/server-config.conf
+
 ## Getting help
 
 Any usage issues can ask for help via
