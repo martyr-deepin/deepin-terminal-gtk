@@ -38,7 +38,7 @@ namespace Widgets {
         public bool is_light_color;
         public int button_radius = 5;
         public int content_font_size = 11;
-        public int content_padding_x = 14;
+        public int content_padding_x = 24;
         public int content_padding_y = 15;
         public int background_padding = 2;
         public int border_padding = 1;
