@@ -515,10 +515,6 @@ namespace Widgets {
                 }
             } else {
                 title = get_cwd();
-                
-                if (title.length > 0) {
-                    title = title[0:title.length - 1];
-                }
             }
             
             Utils.write_log("change title to: %s\n".printf(title));
