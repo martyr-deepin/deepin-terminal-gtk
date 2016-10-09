@@ -204,20 +204,35 @@ namespace Widgets {
         public void show_menu(int x, int y) {
             bool in_quake_window = this.get_toplevel().get_type().is_a(typeof(Widgets.QuakeWindow));
                             
+            bool display_first_spliter = false;
+            
             var menu_content = new GLib.List<Menu.MenuItem>();
             if (term.get_has_selection()) {
                 menu_content.append(new Menu.MenuItem("copy", _("Copy")));
+                
+                display_first_spliter = true;
             } else if (uri_at_right_press != null) {
                 menu_content.append(new Menu.MenuItem("copy", _("Copy link")));
+                
+                display_first_spliter = true;
             }
-            menu_content.append(new Menu.MenuItem("paste", _("Paste")));
+            
+            if (clipboard_has_context()) {
+                menu_content.append(new Menu.MenuItem("paste", _("Paste")));
+                
+                display_first_spliter = true;
+            }
             if (term.get_has_selection()) {
                 var selection_file = get_selection_file();
                 if (selection_file != null) {
                     menu_content.append(new Menu.MenuItem("open", _("Open")));
                 }
+                
+                display_first_spliter = true;
             }
-            menu_content.append(new Menu.MenuItem("", ""));
+            if (display_first_spliter) {
+                menu_content.append(new Menu.MenuItem("", ""));
+            }
                             
             menu_content.append(new Menu.MenuItem("horizontal_split", _("Horizontal split")));
             menu_content.append(new Menu.MenuItem("vertical_split", _("Vertical split")));
@@ -908,6 +923,11 @@ namespace Widgets {
             } catch (GLib.KeyFileError e) {
                 stdout.printf(e.message);
             }
+        }
+        
+        public bool clipboard_has_context() {
+            var clipboard_text = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD).wait_for_text();
+            return clipboard_text != null && clipboard_text.strip() != "";
         }
         
         public string? get_selection_file() {
