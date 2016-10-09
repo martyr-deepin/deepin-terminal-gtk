@@ -49,7 +49,7 @@ namespace Widgets {
         public bool is_first_term; 
         public bool press_anything = false;
         public double zoom_factor = 1.0;
-        public string current_dir;
+        public string current_dir = "";
         public string expect_file_path = "";
         public string? uri_at_right_press;
         public uint launch_idle_id;
@@ -514,17 +514,14 @@ namespace Widgets {
                     title = _("deepin");
                 }
             } else {
-                string[] spawn_args = {"readlink", "/proc/%i/cwd".printf(child_pid)};
-                try {
-                    Process.spawn_sync(null, spawn_args, null, SpawnFlags.SEARCH_PATH, null, out title);
-                } catch (SpawnError e) {
-                    print("Got error when spawn_sync: %s\n", e.message);
-                }
-                        
+                title = get_cwd();
+                
                 if (title.length > 0) {
                     title = title[0:title.length - 1];
                 }
             }
+            
+            Utils.write_log("change title to: %s\n".printf(title));
                     
             if (title.length > 0) {
                 // Change title.
@@ -538,6 +535,25 @@ namespace Widgets {
                     } else {
                         change_title(GLib.Path.get_basename(title));
                     }
+                }
+            }
+        }
+        
+        public string get_cwd() {
+            if (this.term.get_pty() == null) {
+                return this.current_dir;
+            } else {
+                int pty_fd = this.term.get_pty().fd;
+                int fpid = Posix.tcgetpgrp(pty_fd);
+                if (fpid == -1) {
+                    return this.current_dir;
+                } else {
+                    try {
+                        return FileUtils.read_link("/proc/%d/cwd".printf(fpid));
+                    } catch (Error e) {
+                        stderr.printf("Parse cwd of %d failed %s\n", fpid, e.message);
+                        return this.current_dir;
+                    }            
                 }
             }
         }

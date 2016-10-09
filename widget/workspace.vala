@@ -277,7 +277,7 @@ namespace Widgets {
                     
                     return true;
                 });
-            Term term = new_term(false, focus_term.current_dir);
+            Term term = new_term(false, focus_term.get_cwd());
             paned.pack1(focus_term, true, false);
             paned.pack2(term, true, false);
             

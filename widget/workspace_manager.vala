@@ -52,7 +52,7 @@ namespace Widgets {
 		
 		public void new_workspace_with_current_directory(bool remote_serve_action=false) {
 			Term focus_term = focus_workspace.get_focus_term(this);
-			new_workspace(focus_term.current_dir, remote_serve_action);
+			new_workspace(focus_term.get_cwd(), remote_serve_action);
 		}
         
         public void new_workspace(string? work_directory, bool remote_serve_action=false) {
