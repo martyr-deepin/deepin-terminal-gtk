@@ -290,6 +290,10 @@ namespace Utils {
         return GLib.Path.build_path(Path.DIR_SEPARATOR_S, GLib.Path.get_dirname((string) project_path()), "ssh_login.sh");
     }
 
+    public string get_default_private_key_path() {
+		return GLib.Path.build_path(Path.DIR_SEPARATOR_S, Environment.get_home_dir(), ".ssh", "id_rsa");
+    }
+
     public string lookup_password(string user, string server_address) {
         var password_schema = new Secret.Schema("com.deepin.terminal.password.%s.%s".printf(user, server_address),
                                                 Secret.SchemaFlags.NONE,

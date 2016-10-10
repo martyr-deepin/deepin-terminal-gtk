@@ -239,6 +239,17 @@ namespace Widgets {
                 ssh_script_content = ssh_script_content.replace("<<PASSWORD>>", password);
                 ssh_script_content = ssh_script_content.replace("<<PORT>>", config_file.get_value(server_info, "Port"));
                 
+                try {
+                    string private_key_file = config_file.get_value(server_info, "PRIVATE_KEY");
+                    if (FileUtils.test(private_key_file, FileTest.EXISTS)) {
+                        ssh_script_content = ssh_script_content.replace("<<PRIVATE_KEY>>", " -i %s".printf(private_key_file));
+                    } else {
+                        ssh_script_content = ssh_script_content.replace("<<PRIVATE_KEY>>", "");
+                    }
+                } catch (GLib.KeyFileError e) {
+                    ssh_script_content = ssh_script_content.replace("<<PRIVATE_KEY>>", "");
+                }
+                
                 var path = config_file.get_string(server_info, "Path");
                 var command = config_file.get_string(server_info, "Command");
                 
@@ -397,6 +408,7 @@ namespace Widgets {
 			string server_address,
 			string user,
 			string password,
+            string private_key,
 			string port,
 			string encode,
 			string path,
@@ -423,6 +435,7 @@ namespace Widgets {
 			    config_file.set_string(gname, "Encode", encode);
 			    config_file.set_string(gname, "Backspace", backspace);
 			    config_file.set_string(gname, "Del", delete);
+                config_file.set_string(gname, "PrivateKey", private_key);
 
                 Utils.store_password(user, server_address, password);
 			    
@@ -548,7 +561,7 @@ namespace Widgets {
                     }
                 });
             remote_server_dialog.edit_server.connect((
-                server, address, username, password, port, 
+                server, address, username, password, private_key, port, 
                 encode, path, command, nickname, groupname, 
                 backspace_key, delete_key) => {
                                                          try {
@@ -559,7 +572,7 @@ namespace Widgets {
                                                              }
                                                       
                                                              // Second, add new server info.
-                                                             add_server(address, username, password, port, encode, path, 
+                                                             add_server(address, username, password, private_key, port, encode, path, 
                                                                         command, nickname, groupname, backspace_key, delete_key);
                                                   
                                                              func();
@@ -605,8 +618,8 @@ namespace Widgets {
 			add_server_button.button_release_event.connect((w, e) => {
                     var remote_server_dialog = new Widgets.RemoteServerDialog(parent_window, this);
                     remote_server_dialog.transient_for_window(parent_window);
-                    remote_server_dialog.add_server.connect((server, address, username, password, port, encode, path, command, nickname, groupname, backspace_key, delete_key) => {
-                            add_server(address, username, password, port, encode, path, command, nickname, groupname, backspace_key, delete_key);
+                    remote_server_dialog.add_server.connect((server, address, username, password, private_key, port, encode, path, command, nickname, groupname, backspace_key, delete_key) => {
+                            add_server(address, username, password, private_key, port, encode, path, command, nickname, groupname, backspace_key, delete_key);
                             update_home_page();
                             remote_server_dialog.destroy();
                         });

@@ -34,6 +34,7 @@ set timeout -1
 set user {<<USER>>}
 set server {<<SERVER>>}
 set password {<<PASSWORD>>}
+set private_key {<<PRIVATE_KEY>>}
 set port {<<PORT>>}
 set ssh_cmd {zssh -X -o ServerAliveInterval=60}
 set ssh_opt {$user@$server -p $port}
@@ -45,7 +46,7 @@ trap {
 } WINCH
 
 # Spawn and expect
-eval spawn $ssh_cmd $ssh_opt -t $remote_command exec \\\$SHELL -l
+eval spawn $ssh_cmd $ssh_opt $private_key -t $remote_command exec \\\$SHELL -l
 if {[string length $password]} {
     expect {
         timeout {send_user "ssh connection time out, please operate manually\n"}
@@ -53,7 +54,7 @@ if {[string length $password]} {
         -nocase -re "password:|enter passphrase for key" {
             send "$password\r"
 		}
-    }
+	}
 }
 
 interact

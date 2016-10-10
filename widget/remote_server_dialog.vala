@@ -43,6 +43,7 @@ namespace Widgets {
         public Gtk.Widget focus_widget;
         public Widgets.ConfigWindow parent_window;
         public Widgets.PasswordButton password_button;
+        public Widgets.FileButton file_button;
         public Widgets.TextButton delete_server_button;
         public Widgets.TextButton show_advanced_button;
         public int action_button_margin_top = 20;
@@ -65,6 +66,7 @@ namespace Widgets {
         public signal void add_server(string address,
                                       string username,
                                       string password,
+                                      string private_key,
                                       string port,
                                       string encode,
                                       string path,
@@ -77,6 +79,7 @@ namespace Widgets {
         public signal void edit_server(string address,
                                        string username,
                                        string password,
+                                       string private_key,
                                        string port,
                                        string encode,
                                        string path,
@@ -98,7 +101,7 @@ namespace Widgets {
             var font_description = new Pango.FontDescription();
             font_description.set_size((int)(font_size * Pango.SCALE));
             int max_width = 0;
-            string[] label_names = {_("Server name"), _("Address"), _("Username"), _("Password"), _("Path"), _("Command"), _("Group"), _("Encoding"), _("Backspace key"), _("Delete key")};
+            string[] label_names = {_("Server name"), _("Address"), _("Username"), _("Password"), _("Certificate"), _("Path"), _("Command"), _("Group"), _("Encoding"), _("Backspace key"), _("Delete key")};
             foreach (string label_name in label_names) {
                 var layout = create_pango_layout(label_name);
                 layout.set_font_description(font_description);
@@ -234,11 +237,26 @@ namespace Widgets {
                 }
                 create_follow_key_row(password_label, password_button, "%s:".printf(_("Password")), user_label, grid);
             
+                // File.
+                Label file_label = new Gtk.Label(null);
+                file_button = new Widgets.FileButton();
+                if (server_info != null) {
+                    try {
+                        file_button.entry.set_text(config_file.get_value(server_info, "PrivateKey"));
+                    } catch (GLib.KeyFileError e) {
+                        if (FileUtils.test(Utils.get_default_private_key_path(), FileTest.EXISTS)) {
+                            file_button.entry.set_text(Utils.get_default_private_key_path());
+                        }
+                    }
+                }
+                create_follow_key_row(file_label, file_button, "%s:".printf(_("Certificate")), password_label, grid);
+            
+                // Advanced box.
                 advanced_options_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
                 advanced_grid = new Gtk.Grid();
                 advanced_grid.margin_end = label_margin_left;
                 content_box.pack_start(advanced_options_box, false, false, 0);
-
+                
                 // Group name.
                 Label group_name_label = new Gtk.Label(null);
                 groupname_entry = new Entry();
@@ -334,6 +352,7 @@ namespace Widgets {
                                 edit_server(address_entry.get_text(),
                                             user_entry.get_text(),
                                             password_button.entry.get_text(),
+                                            file_button.entry.get_text(),
                                             port_entry.get_text(),
                                             parent_window.config.encoding_names[encode_box.get_active()],
                                             path_entry.get_text(),
@@ -349,6 +368,7 @@ namespace Widgets {
                                 add_server(address_entry.get_text(),
                                            user_entry.get_text(),
                                            password_button.entry.get_text(),
+                                           file_button.entry.get_text(),
                                            port_entry.get_text(),
                                            parent_window.config.encoding_names[encode_box.get_active()],
                                            path_entry.get_text(),
