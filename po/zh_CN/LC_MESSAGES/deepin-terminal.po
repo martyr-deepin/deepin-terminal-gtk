@@ -122,9 +122,9 @@ msgid ""
 "\n"
 "It sharpens your focus in the world of command line!"
 msgstr ""
-"深度终端是一款集工作区、多窗口、远程管理、雷神模式等功能的高级的终端模拟器\n"
+"深度终端是一款集工作区、多窗口、远程管理、雷神模式等功能的高级的终端模拟器。\n"
 "\n"
-"深度终端， 让你更专注于命令行世界"
+"深度终端， 让你更专注于命令行世界！"
 
 #: ../widget/preference.vala:289 ../widget/config_window.vala:268
 msgid "Default size"
