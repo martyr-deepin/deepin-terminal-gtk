@@ -615,7 +615,7 @@ namespace Widgets {
         
         public Widgets.AddServerButton create_add_server_button() {
 			Widgets.AddServerButton add_server_button = new Widgets.AddServerButton(parent_window.is_light_theme());
-			add_server_button.button_release_event.connect((w, e) => {
+			add_server_button.clicked.connect((w) => {
                     var remote_server_dialog = new Widgets.RemoteServerDialog(parent_window, this);
                     remote_server_dialog.transient_for_window(parent_window);
                     remote_server_dialog.add_server.connect((server, address, username, password, private_key, port, encode, path, command, nickname, groupname, backspace_key, delete_key) => {
@@ -624,9 +624,7 @@ namespace Widgets {
                             remote_server_dialog.destroy();
                         });
                     remote_server_dialog.show_all();
-					
-					return false;
-				});
+                });
 
             return add_server_button;
         }
