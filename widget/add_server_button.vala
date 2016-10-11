@@ -26,7 +26,7 @@ using Widgets;
 
 namespace Widgets {
     public class AddServerButton : Gtk.Button {
-        public int height = 42;
+        public int height = 36;
 
         public AddServerButton(bool is_light_theme) {
             Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
