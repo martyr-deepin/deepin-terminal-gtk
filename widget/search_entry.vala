@@ -69,7 +69,7 @@ namespace Widgets {
             clear_button = new ImageButton("search_clear", true);
             clear_button.margin_right = clear_button_margin_right;
             clear_button.set_valign(Gtk.Align.CENTER);
-            clear_button.click.connect((w, e) => {
+            clear_button.clicked.connect((w, e) => {
                     search_entry.set_text("");
                 });
             

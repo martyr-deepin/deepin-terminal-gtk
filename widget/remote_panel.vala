@@ -368,7 +368,7 @@ namespace Widgets {
 			ImageButton back_button = new Widgets.ImageButton("back", true);
             back_button.margin_left = back_button_margin_left;
             back_button.margin_top = back_button_margin_top;
-			back_button.click.connect((w) => {
+			back_button.clicked.connect((w) => {
 					show_home_page(group_page_box);
                 });
 			top_box.pack_start(back_button, false, false, 0);
@@ -491,7 +491,7 @@ namespace Widgets {
                 ImageButton back_button = new Widgets.ImageButton("back", true);
                 back_button.margin_left = back_button_margin_left;
                 back_button.margin_top = back_button_margin_top;
-                back_button.click.connect((w) => {
+                back_button.clicked.connect((w) => {
                         if (group_name == "") {
                             show_home_page(search_page_box);
                         } else {

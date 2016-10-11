@@ -25,10 +25,9 @@ using Gtk;
 using Widgets;
 
 namespace Widgets {
-    public class ServerButton : Gtk.EventBox {
+    public class ServerButton : Widgets.ClickEventBox {
         public bool is_at_edit_button_area = false;
 		public bool is_hover = false;
-		public bool is_press = false;
         public Cairo.ImageSurface server_dark_surface;
         public Cairo.ImageSurface server_edit_hover_dark_surface;
         public Cairo.ImageSurface server_edit_hover_light_surface;
@@ -113,31 +112,28 @@ namespace Widgets {
 					return false;
 				});
 			button_press_event.connect((w, e) => {
-					is_press = true;
 					queue_draw();
 					
 					return false;
 				});
 			button_release_event.connect((w, e) => {
-                    if (is_press && Utils.pointer_in_widget_area(this)) {
-                        if (e.x > edit_button_x && e.x < edit_button_x + server_edit_normal_dark_surface.get_width()
-                            && e.y > edit_button_y && e.y < height - server_edit_normal_dark_surface.get_height()) {
-                            edit_server(server_content);
-                        } else {
-                            // Avoid user double click on button to login server twice.
-                            if (!has_login) {
-                                has_login = true;
-                                login_server(server_content);
-                            }
-                        }
-                    }
-					
-					is_hover = false;
-					is_press = false;
+                    is_hover = false;
 					queue_draw();
                     
 					return false;
 				});
+            clicked.connect((w, e) => {
+                    if (e.x > edit_button_x && e.x < edit_button_x + server_edit_normal_dark_surface.get_width()
+                        && e.y > edit_button_y && e.y < height - server_edit_normal_dark_surface.get_height()) {
+                        edit_server(server_content);
+                    } else {
+                        // Avoid user double click on button to login server twice.
+                        if (!has_login) {
+                            has_login = true;
+                            login_server(server_content);
+                        }
+                    }
+                });
             motion_notify_event.connect((w, e) => {
                     if (e.x > edit_button_x && e.x < edit_button_x + server_edit_normal_dark_surface.get_width()
                         && e.y > edit_button_y && e.y < height - server_edit_normal_dark_surface.get_height()) {

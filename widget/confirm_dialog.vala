@@ -50,7 +50,7 @@ namespace Widgets {
             var box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             
             var close_button = Widgets.create_close_button();
-            close_button.click.connect((b) => {
+            close_button.clicked.connect((b) => {
                     this.destroy();
                 });
             var close_button_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);

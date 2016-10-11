@@ -79,14 +79,14 @@ namespace Widgets {
             quit_fullscreen_button.margin_top = margin_top;
             quit_fullscreen_button.margin_right = margin_right;
             
-            close_button.click.connect((w) => {
+            close_button.clicked.connect((w) => {
                     close_window();
                 });
-            quit_fullscreen_button.click.connect((w) => {
+            quit_fullscreen_button.clicked.connect((w) => {
                     quit_fullscreen();
                 });
             
-            menu_button.click.connect((b) => {
+            menu_button.clicked.connect((b) => {
                     focus_widget = ((Gtk.Window) menu_button.get_toplevel()).get_focus();
                     
                     var menu_content = new List<Menu.MenuItem>();
@@ -115,13 +115,13 @@ namespace Widgets {
             
             max_toggle_box = new Box(Gtk.Orientation.HORIZONTAL, 0);
             
-            min_button.click.connect((w, e) => {
+            min_button.clicked.connect((w, e) => {
                     ((Gtk.Window) w.get_toplevel()).iconify();
                 });
-            max_button.click.connect((w, e) => {
+            max_button.clicked.connect((w, e) => {
                     ((Gtk.Window) w.get_toplevel()).maximize();
                 });
-            unmax_button.click.connect((w, e) => {
+            unmax_button.clicked.connect((w, e) => {
                     ((Gtk.Window) w.get_toplevel()).unmaximize();
                 });
             

@@ -27,9 +27,8 @@ using Gtk;
 using Utils;
 
 namespace Widgets {
-    public class ImageButton : Gtk.EventBox {
+    public class ImageButton : Widgets.ClickEventBox {
 		public bool is_hover = false;
-		public bool is_press = false;
         public Cairo.ImageSurface hover_dark_surface;
         public Cairo.ImageSurface hover_light_surface;
         public Cairo.ImageSurface normal_dark_surface;
@@ -42,8 +41,6 @@ namespace Widgets {
         public bool is_theme_button;
         public int button_text_size = 14;
         public string? button_text;
-        
-		public signal void click(Gdk.EventButton event);
         
         public ImageButton(string image_path, bool theme_button=false, string? text=null, int text_size=12) {
             is_theme_button = theme_button;
@@ -87,19 +84,13 @@ namespace Widgets {
 					return false;
 				});
 			button_press_event.connect((w, e) => {
-					is_press = true;
 					queue_draw();
 					
 					return false;
 				});
 			button_release_event.connect((w, e) => {
-                    if (is_press && Utils.pointer_in_widget_area(this)) {
-                        click(e);
-                    }
-                    
                     is_hover = false;
-					is_press = false;
-					queue_draw();
+                    queue_draw();
 					
 					return false;
 				});

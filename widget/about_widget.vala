@@ -76,7 +76,7 @@ namespace Widgets {
                     
                     return false;
                 });
-            homepage_area.click.connect((w, e) => {
+            homepage_area.clicked.connect((w, e) => {
                     Gdk.Screen screen = Gdk.Screen.get_default();
                     try {
                         Gtk.show_uri(screen, "https://www.deepin.org", e.time);

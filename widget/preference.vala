@@ -193,7 +193,7 @@ namespace Widgets {
             focus_widget = widget;
             
             var titlebar = new Titlebar();
-            titlebar.close_button.click.connect((b) => {
+            titlebar.close_button.clicked.connect((b) => {
                     this.destroy();
                 });
             
@@ -374,7 +374,7 @@ namespace Widgets {
             reset_button.set_halign(Gtk.Align.CENTER);
             reset_button.margin_top = reset_button_margin;
             reset_button.margin_bottom = reset_button_margin;
-			reset_button.click.connect((w, e) => {
+			reset_button.clicked.connect((w, e) => {
 					parent_window.config.init_config();
 					parent_window.config.update();
 			

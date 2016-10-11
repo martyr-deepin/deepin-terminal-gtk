@@ -34,7 +34,7 @@ namespace Widgets {
             var overlay = new Gtk.Overlay();
 
             var close_button = Widgets.create_close_button();
-            close_button.click.connect((b) => {
+            close_button.clicked.connect((b) => {
                     this.destroy();
                 });
             

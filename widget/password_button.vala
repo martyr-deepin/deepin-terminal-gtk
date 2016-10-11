@@ -56,11 +56,11 @@ namespace Widgets {
             
             init();
             
-            show_password_button.click.connect((w, e) => {
+            show_password_button.clicked.connect((w, e) => {
                     show_password();
                 });
 
-            hide_password_button.click.connect((w, e) => {
+            hide_password_button.clicked.connect((w, e) => {
                     hide_password();
                 });
             

@@ -2,15 +2,13 @@ using Gtk;
 using Widgets;
 
 namespace Widgets {
-    public class TextButton : Gtk.EventBox {
+    public class TextButton : Widgets.ClickEventBox {
 		public bool is_hover = false;
         public Gdk.RGBA text_hover_color;
         public Gdk.RGBA text_normal_color;
         public Gdk.RGBA text_press_color;
-        public bool is_press = false;
         public int button_text_size = 10;
         public int height = 30;
-        public signal void click();
         public string button_text;
         
         public TextButton(string text, string normal_color_string, string hover_color_string, string press_color_string) {
@@ -47,23 +45,18 @@ namespace Widgets {
                 });
             
             button_press_event.connect((w, e) => {
-                    is_press = true; 
-                    
                     queue_draw();
                     
                     return false;
                 });
             button_release_event.connect((w, e) => {
-                    if (is_press && Utils.pointer_in_widget_area(this)) {
-                        get_window().set_cursor(null);
-                        click();
-                    }
-                    
-					is_hover = false;
-                    is_press = false;
+                    is_hover = false;
                     queue_draw();
                     
                     return false;
+                });
+            clicked.connect((w, e) => {
+                    get_window().set_cursor(null);
                 });
             
             draw.connect(on_draw);

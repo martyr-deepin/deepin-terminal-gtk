@@ -147,7 +147,7 @@ namespace Widgets {
                 }
                 
                 var close_button = Widgets.create_close_button();
-                close_button.click.connect((b) => {
+                close_button.clicked.connect((b) => {
                         this.destroy();
                     });
             
@@ -324,7 +324,7 @@ namespace Widgets {
             
                 server_action_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
                 show_advanced_button = Widgets.create_link_button(_("Advanced options"));
-                show_advanced_button.click.connect((w) => {
+                show_advanced_button.clicked.connect((w) => {
                         show_advanced_options();
                     });
                 
@@ -402,7 +402,7 @@ namespace Widgets {
             Utils.destroy_all_children(server_action_box);
             if (server_info != null) {
                 delete_server_button = Widgets.create_delete_button(_("Delete server"));
-                delete_server_button.click.connect((w) => {
+                delete_server_button.clicked.connect((w) => {
                         this.hide();
                         
                         var server_name = name_entry.get_text();

@@ -25,9 +25,8 @@ using Gtk;
 using Widgets;
 
 namespace Widgets {
-    public class ServerGroupButton : Gtk.EventBox {
+    public class ServerGroupButton : Widgets.ClickEventBox {
         public bool is_hover = false;
-		public bool is_press = false;
         public Cairo.ImageSurface arrow_dark_surface;
         public Cairo.ImageSurface arrow_light_surface;
         public Cairo.ImageSurface server_group_dark_surface;
@@ -99,22 +98,19 @@ namespace Widgets {
 					return false;
 				});
 			button_press_event.connect((w, e) => {
-					is_press = true;
 					queue_draw();
 					
 					return false;
 				});
 			button_release_event.connect((w, e) => {
-                    if (is_press && Utils.pointer_in_widget_area(this)) {
-                        show_group_servers(server_title);
-                    }
-                    
-					is_hover = false;
-                    is_press = false;
+                    is_hover = false;
 					queue_draw();
                     
 					return false;
 				});
+            clicked.connect((w, e) => {
+                    show_group_servers(server_title);
+                });
         }
         
         private bool on_draw(Gtk.Widget widget, Cairo.Context cr) {

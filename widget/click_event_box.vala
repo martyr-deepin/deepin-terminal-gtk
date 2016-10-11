@@ -5,7 +5,7 @@ namespace Widgets {
     public class ClickEventBox : Gtk.EventBox {
 		public bool is_press = false;
         
-		public signal void click(Gdk.EventButton event);
+		public signal void clicked(Gdk.EventButton event);
 
         public ClickEventBox() {
 			button_press_event.connect((w, e) => {
@@ -16,7 +16,7 @@ namespace Widgets {
             
 			button_release_event.connect((w, e) => {
                     if (is_press && Utils.pointer_in_widget_area(this)) {
-                        click(e);
+                        clicked(e);
                     }
                     
 					is_press = false;
