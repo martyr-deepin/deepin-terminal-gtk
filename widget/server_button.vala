@@ -119,7 +119,7 @@ namespace Widgets {
 					return false;
 				});
 			button_release_event.connect((w, e) => {
-                    if (is_press) {
+                    if (is_press && Utils.pointer_in_widget_area(this)) {
                         if (e.x > edit_button_x && e.x < edit_button_x + server_edit_normal_dark_surface.get_width()
                             && e.y > edit_button_y && e.y < height - server_edit_normal_dark_surface.get_height()) {
                             edit_server(server_content);

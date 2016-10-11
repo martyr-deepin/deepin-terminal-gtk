@@ -22,6 +22,7 @@ main: ./lib/animation.vala \
       ./widget/encoding_button.vala \
       ./widget/encoding_panel.vala \
       ./widget/image_button.vala \
+      ./widget/click_event_box.vala \
       ./widget/password_button.vala \
       ./widget/file_button.vala \
       ./widget/preference.vala \
@@ -86,6 +87,7 @@ main: ./lib/animation.vala \
     ./widget/encoding_button.vala \
     ./widget/encoding_panel.vala \
     ./widget/image_button.vala \
+    ./widget/click_event_box.vala \
     ./widget/password_button.vala \
     ./widget/file_button.vala \
     ./widget/preference.vala \

@@ -358,6 +358,18 @@ namespace Utils {
         device.get_position(null, out x, out y);
     }
 
+    public bool pointer_in_widget_area(Gtk.Widget widget) {
+        int pointer_x, pointer_y;
+        Utils.get_pointer_position(out pointer_x, out pointer_y);
+        
+        Gtk.Allocation widget_rect = get_origin_allocation(widget);
+
+        int window_x, window_y; 
+        widget.get_toplevel().get_window().get_root_origin(out window_x, out window_y);
+        
+        return pointer_x > window_x + widget_rect.x && pointer_x < window_x + widget_rect.x + widget_rect.width && pointer_y > window_y + widget_rect.y && pointer_y < window_y + widget_rect.y + widget_rect.height;
+    }
+
     public void show_manual() {
         if (Utils.is_command_exist("dman")) {
             try {

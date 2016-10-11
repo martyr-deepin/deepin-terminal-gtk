@@ -86,7 +86,7 @@ namespace Widgets {
                     quit_fullscreen();
                 });
             
-            menu_button.button_release_event.connect((b) => {
+            menu_button.click.connect((b) => {
                     focus_widget = ((Gtk.Window) menu_button.get_toplevel()).get_focus();
                     
                     var menu_content = new List<Menu.MenuItem>();
@@ -111,26 +111,18 @@ namespace Widgets {
                     menu = new Menu.Menu(window_x + menu_x, window_y + menu_y + menu_rect.height, menu_content);
                     menu.click_item.connect(handle_menu_item_click);
                     menu.destroy.connect(handle_menu_destroy);
-                    
-                    return false;
                 });
             
             max_toggle_box = new Box(Gtk.Orientation.HORIZONTAL, 0);
             
-            min_button.button_release_event.connect((w, e) => {
+            min_button.click.connect((w, e) => {
                     ((Gtk.Window) w.get_toplevel()).iconify();
-                    
-                    return false;
                 });
-            max_button.button_release_event.connect((w, e) => {
+            max_button.click.connect((w, e) => {
                     ((Gtk.Window) w.get_toplevel()).maximize();
-
-                    return false;
                 });
-            unmax_button.button_release_event.connect((w, e) => {
+            unmax_button.click.connect((w, e) => {
                     ((Gtk.Window) w.get_toplevel()).unmaximize();
-
-                    return false;
                 });
             
             Box box = new Box(Gtk.Orientation.HORIZONTAL, 0);

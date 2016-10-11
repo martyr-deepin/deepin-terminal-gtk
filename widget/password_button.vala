@@ -56,16 +56,12 @@ namespace Widgets {
             
             init();
             
-            show_password_button.button_release_event.connect((w, e) => {
+            show_password_button.click.connect((w, e) => {
                     show_password();
-                    
-                    return false;
                 });
 
-            hide_password_button.button_release_event.connect((w, e) => {
+            hide_password_button.click.connect((w, e) => {
                     hide_password();
-                    
-                    return false;
                 });
             
             entry.get_buffer().deleted_text.connect((buffer, p, nc) => {

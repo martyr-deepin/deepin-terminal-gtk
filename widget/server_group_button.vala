@@ -105,7 +105,7 @@ namespace Widgets {
 					return false;
 				});
 			button_release_event.connect((w, e) => {
-                    if (is_press) {
+                    if (is_press && Utils.pointer_in_widget_area(this)) {
                         show_group_servers(server_title);
                     }
                     

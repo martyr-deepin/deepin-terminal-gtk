@@ -54,7 +54,7 @@ namespace Widgets {
 
             var content_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             
-            var homepage_area = new Gtk.EventBox();
+            var homepage_area = new Widgets.ClickEventBox();
             homepage_area.add_events(Gdk.EventMask.BUTTON_PRESS_MASK
                                      | Gdk.EventMask.BUTTON_RELEASE_MASK
                                      | Gdk.EventMask.POINTER_MOTION_MASK
@@ -76,15 +76,13 @@ namespace Widgets {
                     
                     return false;
                 });
-            homepage_area.button_release_event.connect((w, e) => {
+            homepage_area.click.connect((w, e) => {
                     Gdk.Screen screen = Gdk.Screen.get_default();
                     try {
                         Gtk.show_uri(screen, "https://www.deepin.org", e.time);
                     } catch (GLib.Error e) {
                         print("About dialog homepage: %s\n", e.message);
                     }
-                    
-                    return false;
                 });
             
             content_box.pack_start(homepage_area, false, false, 0);

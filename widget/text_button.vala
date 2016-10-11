@@ -54,7 +54,7 @@ namespace Widgets {
                     return false;
                 });
             button_release_event.connect((w, e) => {
-                    if (is_press) {
+                    if (is_press && Utils.pointer_in_widget_area(this)) {
                         get_window().set_cursor(null);
                         click();
                     }

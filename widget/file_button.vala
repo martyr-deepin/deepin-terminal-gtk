@@ -55,10 +55,8 @@ namespace Widgets {
             entry.get_style_context().add_class("file_add_entry");
             button_box.pack_start(file_add_button, false, false, 0);
             
-            file_add_button.button_release_event.connect((w, e) => {
+            file_add_button.click.connect((w, e) => {
                     select_private_key_file();
-                    
-                    return false;
                 });
 
             add(box);
