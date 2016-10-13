@@ -94,6 +94,7 @@ vala_precompile(VALA_C
 	./widget/search_panel.vala
 	./widget/server_button.vala
 	./widget/server_group_button.vala
+	./widget/shortcut_entry.vala
 	./widget/switcher.vala
 	./widget/tabbar.vala
 	./widget/terminal.vala

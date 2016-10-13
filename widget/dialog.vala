@@ -165,7 +165,7 @@ namespace Widgets {
             window_frame_box.get_allocation(out window_rect);
             
             cr.set_source_rgba(1, 1, 1, 1);
-            Draw.draw_rounded_rectangle(cr, window_frame_margin_start, window_frame_margin_top, window_rect.width, window_rect.height, window_frame_radius);
+            Draw.fill_rounded_rectangle(cr, window_frame_margin_start, window_frame_margin_top, window_rect.width, window_rect.height, window_frame_radius);
         }
         
         public void draw_window_frame(Cairo.Context cr) {

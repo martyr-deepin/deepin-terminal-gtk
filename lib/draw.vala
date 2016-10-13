@@ -113,40 +113,22 @@ namespace Draw {
         }
     }
 
-	public void draw_rounded_rectangle(Context cr, int x, int y, int width, int height, double r, bool fill=true) {
-        // Top side.
-        cr.move_to(x + r, y);
-        cr.line_to(x + width - r, y);
-	    
-        // Top-right corner.
+	public void fill_rounded_rectangle(Context cr, int x, int y, int width, int height, double r) {
+        cr.new_sub_path();
         cr.arc(x + width - r, y + r, r, Math.PI * 3 / 2, Math.PI * 2);
-	    
-        // Right side.
-        cr.line_to(x + width, y + height - r);
-	    
-        // Bottom-right corner.
         cr.arc(x + width - r, y + height - r, r, 0, Math.PI / 2);
-	    
-        // Bottom side.
-        cr.line_to(x + r, y + height);
-	    
-        // Bottom-left corner.
         cr.arc(x + r, y + height - r, r, Math.PI / 2, Math.PI);
-	    
-        // Left side.
-        cr.line_to(x, y + r);
-	    
-        // Top-left corner.
         cr.arc(x + r, y + r, r, Math.PI, Math.PI * 3 / 2);
-	    
-        // Close path.
         cr.close_path();
-		
-		if (fill) {
-			cr.fill();
-		} else {
-			cr.stroke();
-		}
+        
+        cr.fill();
+	}
+
+    public void stroke_rounded_rectangle(Context cr, int x, int y, int width, int height, double r, Gdk.RGBA frame_color, Gdk.RGBA background_color, int line_width=1) {
+        cr.set_source_rgba(frame_color.red, frame_color.green, frame_color.blue, frame_color.alpha);
+        Draw.fill_rounded_rectangle(cr, x, y, width, height, r);
+        cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, background_color.alpha);
+        Draw.fill_rounded_rectangle(cr, x + line_width, y + line_width, width - line_width * 2, height - line_width * 2, r);
 	}
 
 	public void draw_search_rectangle(Context cr, int x, int y, int width, int height, double r, bool fill=true) {

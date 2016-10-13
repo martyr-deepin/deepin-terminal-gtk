@@ -34,29 +34,29 @@ namespace Widgets {
 		public ArrayList<string> window_state_name_list;
 		public Gtk.ComboBoxText font_combox;
 		public Gtk.ComboBoxText window_combox;
-		public Gtk.Entry close_other_windows_key_entry;
-		public Gtk.Entry close_window_key_entry;
-		public Gtk.Entry close_workspace_key_entry;
-		public Gtk.Entry copy_key_entry;
-		public Gtk.Entry display_hotkey_terminal_key_entry;
-		public Gtk.Entry fullscreen_key_entry;
-		public Gtk.Entry new_workspace_key_entry;
-		public Gtk.Entry next_workspace_key_entry;
-		public Gtk.Entry paste_key_entry;
-		public Gtk.Entry open_key_entry;
-		public Gtk.Entry previous_workspace_key_entry;
-		public Gtk.Entry search_key_entry;
-		public Gtk.Entry select_all_key_entry;
-		public Gtk.Entry select_down_window_key_entry;
-		public Gtk.Entry select_left_window_key_entry;
-		public Gtk.Entry select_right_window_key_entry;
-		public Gtk.Entry select_up_window_key_entry;
-		public Gtk.Entry show_remote_manage_key_entry;
-		public Gtk.Entry split_horizontally_key_entry;
-		public Gtk.Entry split_vertically_key_entry;
-		public Gtk.Entry zoom_in_key_entry;
-		public Gtk.Entry zoom_out_key_entry;
-		public Gtk.Entry zoom_reset_key_entry;
+		public ShortcutEntry close_other_windows_key_entry;
+		public ShortcutEntry close_window_key_entry;
+		public ShortcutEntry close_workspace_key_entry;
+		public ShortcutEntry copy_key_entry;
+		public ShortcutEntry display_hotkey_terminal_key_entry;
+		public ShortcutEntry fullscreen_key_entry;
+		public ShortcutEntry new_workspace_key_entry;
+		public ShortcutEntry next_workspace_key_entry;
+		public ShortcutEntry paste_key_entry;
+		public ShortcutEntry open_key_entry;
+		public ShortcutEntry previous_workspace_key_entry;
+		public ShortcutEntry search_key_entry;
+		public ShortcutEntry select_all_key_entry;
+		public ShortcutEntry select_down_window_key_entry;
+		public ShortcutEntry select_left_window_key_entry;
+		public ShortcutEntry select_right_window_key_entry;
+		public ShortcutEntry select_up_window_key_entry;
+		public ShortcutEntry show_remote_manage_key_entry;
+		public ShortcutEntry split_horizontally_key_entry;
+		public ShortcutEntry split_vertically_key_entry;
+		public ShortcutEntry zoom_in_key_entry;
+		public ShortcutEntry zoom_out_key_entry;
+		public ShortcutEntry zoom_reset_key_entry;
 		public Gtk.Label close_other_windows_key_label;
 		public Gtk.Label close_window_key_label;
 		public Gtk.Label close_workspace_key_label;
@@ -133,51 +133,51 @@ namespace Widgets {
 			window_combox = create_combox_text();
 			
 			copy_key_label = create_label();
-			copy_key_entry = create_entry();
+			copy_key_entry = new ShortcutEntry();
 			paste_key_label = create_label();
-			paste_key_entry = create_entry();
+			paste_key_entry = new ShortcutEntry();
 			open_key_label = create_label();
-			open_key_entry = create_entry();
+			open_key_entry = new ShortcutEntry();
 			search_key_label = create_label();
-			search_key_entry = create_entry();
+			search_key_entry = new ShortcutEntry();
 			zoom_in_key_label = create_label();
-			zoom_in_key_entry = create_entry();
+			zoom_in_key_entry = new ShortcutEntry();
 			zoom_out_key_label = create_label();
-			zoom_out_key_entry = create_entry();
+			zoom_out_key_entry = new ShortcutEntry();
 			zoom_reset_key_label = create_label();
-			zoom_reset_key_entry = create_entry();
+			zoom_reset_key_entry = new ShortcutEntry();
 			select_all_key_label = create_label();
-			select_all_key_entry = create_entry();
+			select_all_key_entry = new ShortcutEntry();
 			new_workspace_key_label = create_label();
-			new_workspace_key_entry = create_entry();
+			new_workspace_key_entry = new ShortcutEntry();
 			close_workspace_key_label = create_label();
-			close_workspace_key_entry = create_entry();
+			close_workspace_key_entry = new ShortcutEntry();
 			previous_workspace_key_label = create_label();
-			previous_workspace_key_entry = create_entry();
+			previous_workspace_key_entry = new ShortcutEntry();
 			next_workspace_key_label = create_label();
-			next_workspace_key_entry = create_entry();
+			next_workspace_key_entry = new ShortcutEntry();
 			split_vertically_key_label = create_label();
-			split_vertically_key_entry = create_entry();
+			split_vertically_key_entry = new ShortcutEntry();
 			split_horizontally_key_label = create_label();
-			split_horizontally_key_entry = create_entry();
+			split_horizontally_key_entry = new ShortcutEntry();
 			select_up_window_key_label = create_label();
-			select_up_window_key_entry = create_entry();
+			select_up_window_key_entry = new ShortcutEntry();
 			select_down_window_key_label = create_label();
-			select_down_window_key_entry = create_entry();
+			select_down_window_key_entry = new ShortcutEntry();
 			select_left_window_key_label = create_label();
-			select_left_window_key_entry = create_entry();
+			select_left_window_key_entry = new ShortcutEntry();
 			select_right_window_key_label = create_label();
-			select_right_window_key_entry = create_entry();
+			select_right_window_key_entry = new ShortcutEntry();
 			close_window_key_label = create_label();
-			close_window_key_entry = create_entry();
+			close_window_key_entry = new ShortcutEntry();
 			close_other_windows_key_label = create_label();
-			close_other_windows_key_entry = create_entry();
+			close_other_windows_key_entry = new ShortcutEntry();
 			fullscreen_key_label = create_label();
-			fullscreen_key_entry = create_entry();
+			fullscreen_key_entry = new ShortcutEntry();
 			display_hotkey_terminal_key_label = create_label();
-			display_hotkey_terminal_key_entry = create_entry();
+			display_hotkey_terminal_key_entry = new ShortcutEntry();
 			show_remote_manage_key_label = create_label();
-			show_remote_manage_key_entry = create_entry();
+			show_remote_manage_key_entry = new ShortcutEntry();
 			
             cursor_style_label = create_label("%s:".printf(_("Cursor style")));
 			cursor_style_button = new Widgets.CursorToggleButton();
@@ -549,7 +549,7 @@ namespace Widgets {
             return (Gtk.Widget) segment;
         }
         
-        public void create_key_row(Gtk.Label label, Gtk.Entry entry, string name, Gtk.Grid grid, string? group_name=null, string? key=null) {
+        public void create_key_row(Gtk.Label label, ShortcutEntry entry, string name, Gtk.Grid grid, string? group_name=null, string? key=null) {
 			label.set_text(name);
 
 			monitor_check_key(entry, group_name, key);
@@ -559,7 +559,7 @@ namespace Widgets {
             grid_attach_next_to(grid, entry, label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
 		}
         
-        public void create_follow_key_row(Gtk.Label label, Gtk.Entry entry, string name, Gtk.Label previous_label, Gtk.Grid grid, string? group_name=null, string? key=null) {
+        public void create_follow_key_row(Gtk.Label label, ShortcutEntry entry, string name, Gtk.Label previous_label, Gtk.Grid grid, string? group_name=null, string? key=null) {
 			label.set_text(name);
             
 			monitor_check_key(entry, group_name, key);
@@ -569,30 +569,14 @@ namespace Widgets {
             grid_attach_next_to(grid, entry, label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
 		}
 		
-		public void monitor_check_key(Gtk.Entry entry, string group_name, string key) {
-			entry.placeholder_text = _("Please enter a new shortcut");
-			entry.editable = false;
-			entry.key_press_event.connect((w, e) => {
-					string keyname = Keymap.get_keyevent_name(e);
-					
-                    string new_key = "";
-					if (keyname == "Backspace") {
-						entry.set_text("");
-					} else if (keyname.has_prefix("F") || keyname.contains("+")) {
-						entry.set_text(keyname);
-                        new_key = keyname;
-					} else {
-						return false;
-					}
-					
+		public void monitor_check_key(ShortcutEntry entry, string group_name, string key) {
+            entry.change_key.connect((e, new_key) => {
 					parent_window.config.config_file.set_string(group_name, key, new_key);
 					parent_window.config.save();
 					
 					parent_window.config.update();
-					
-					return false;
-				});
-			
+                });
+            
 			if (group_name != null && key != null) {
 				try {
 					entry.set_text(parent_window.config.config_file.get_string(group_name, key));

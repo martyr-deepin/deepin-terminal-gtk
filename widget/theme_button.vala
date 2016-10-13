@@ -93,7 +93,7 @@ namespace Widgets {
             widget.get_allocation(out rect);
             
             cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, background_color.alpha);
-            Draw.draw_rounded_rectangle(cr, background_padding, background_padding, rect.width - background_padding * 2, rect.height - background_padding * 2, button_radius);
+            Draw.fill_rounded_rectangle(cr, background_padding, background_padding, rect.width - background_padding * 2, rect.height - background_padding * 2, button_radius);
 
             cr.set_source_rgba(foreground_color.red, foreground_color.green, foreground_color.blue, foreground_color.alpha);
             Draw.draw_text(cr, "deepin@linux > _", title_padding_x, title_padding_y, rect.width, rect.height, title_font_size, Pango.Alignment.LEFT, "top");
