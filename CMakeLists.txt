@@ -140,6 +140,7 @@ INSTALL (FILES hicolor/96x96/deepin-terminal.png DESTINATION share/icons/hicolor
 INSTALL (FILES hicolor/128x128/deepin-terminal.png DESTINATION share/icons/hicolor/128x128/apps)
 INSTALL (FILES hicolor/deepin-terminal.svg DESTINATION share/icons/hicolor/scalable/apps)
 INSTALL (DIRECTORY image DESTINATION share/${target} FILES_MATCHING PATTERN "*.png")
+INSTALL (DIRECTORY image DESTINATION share/${target} FILES_MATCHING PATTERN "*.svg")
 INSTALL (DIRECTORY theme DESTINATION share/${target} FILES_MATCHING PATTERN "*")
 INSTALL (DIRECTORY manual/common  manual/en_US  manual/zh_CN DESTINATION share/dman/${target})
 INSTALL (FILES style.css ssh_login.sh DESTINATION share/${target})
