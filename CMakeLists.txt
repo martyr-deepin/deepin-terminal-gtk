@@ -71,10 +71,14 @@ vala_precompile(VALA_C
 	./widget/about_dialog.vala
 	./widget/about_widget.vala
 	./widget/add_server_button.vala
+	./widget/add_command_button.vala
 	./widget/appbar.vala
 	./widget/check_button.vala
 	./widget/click_event_box.vala 
 	./widget/config_window.vala
+	./widget/command_button.vala
+	./widget/command_dialog.vala
+	./widget/command_panel.vala
 	./widget/confirm_dialog.vala
 	./widget/cursor_toggle_button.vala
 	./widget/dialog.vala

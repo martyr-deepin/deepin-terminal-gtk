@@ -257,6 +257,7 @@ namespace Widgets {
                 menu_content.append(new Menu.MenuItem("switch_theme", _("Switch theme")));
             }
             menu_content.append(new Menu.MenuItem("encoding", _("Encoding")));
+            menu_content.append(new Menu.MenuItem("custom_commands", _("Custom commands")));
             menu_content.append(new Menu.MenuItem("remote_manage", _("Remote management")));
             if (is_in_remote_server()) {
                 menu_content.append(new Menu.MenuItem("", ""));
@@ -317,6 +318,9 @@ namespace Widgets {
 						break;
 					case "new_workspace":
 						workspace_manager.new_workspace_with_current_directory();
+						break;
+                    case "custom_commands":
+						workspace_manager.focus_workspace.show_command_panel(workspace_manager.focus_workspace);
 						break;
                     case "remote_manage":
 						workspace_manager.focus_workspace.show_remote_panel(workspace_manager.focus_workspace);
@@ -663,6 +667,31 @@ namespace Widgets {
                     enter_sz_command = false;
                     
                     return false;
+                }
+                
+                // Avoid key single character do command shorcut scan.
+                if (keyname.length > 1 && keyname != "Enter" && !has_foreground_process()) {
+                    string command_config_file_path = Utils.get_config_file_path("command-config.conf");
+                    var file = File.new_for_path(command_config_file_path);
+                    if (file.query_exists()) {
+                        try {
+                            KeyFile command_config_file = new KeyFile();
+                            command_config_file.load_from_file(command_config_file_path, KeyFileFlags.NONE);
+                            
+                            foreach (unowned string option in command_config_file.get_groups ()) {
+                                if (keyname == command_config_file.get_value(option, "Shortcut")) {
+                                    var command_string = "%s\n".printf(command_config_file.get_value(option, "Command"));
+                                    term.feed_child(command_string, command_string.length);
+                                    
+                                    return true;
+                                }
+                            }
+                        } catch (Error e) {
+                            if (!FileUtils.test(command_config_file_path, FileTest.EXISTS)) {
+                                print("Config: %s\n", e.message);
+                            }
+                        }
+                    }
                 }
                 
                 return false;

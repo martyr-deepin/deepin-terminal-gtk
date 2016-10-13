@@ -107,6 +107,7 @@ namespace Config {
             
                 config_file.set_string("shortcut", "switch_fullscreen", "F11");
                 config_file.set_string("shortcut", "display_shortcuts", "Ctrl + Shift + ?");
+                config_file.set_string("shortcut", "custom_commands", "Ctrl + [");
                 config_file.set_string("shortcut", "remote_management", "Ctrl + /");
                 config_file.set_string("shortcut", "select_workspace", "Alt");
             
@@ -258,6 +259,7 @@ namespace Config {
             
             check_string("shortcut", "switch_fullscreen", "F11");
             check_string("shortcut", "display_shortcuts", "Ctrl + Shift + ?");
+            check_string("shortcut", "custom_commands", "Ctrl + [");
             check_string("shortcut", "remote_management", "Ctrl + /");
             check_string("shortcut", "select_workspace", "Alt");
             

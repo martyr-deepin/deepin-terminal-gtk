@@ -154,6 +154,7 @@ namespace Widgets {
                             workspace_entry.value.remove_theme_panel();
                             workspace_entry.value.remove_remote_panel();
                             workspace_entry.value.remove_encoding_panel();
+                            workspace_entry.value.remove_command_panel();
                         }
                         
                         cache_width = width;
@@ -310,6 +311,7 @@ namespace Widgets {
     
                 insert_shortcut_key(builder, _("Switch fullscreen"), config.config_file.get_string("shortcut", "switch_fullscreen"));;
                 insert_shortcut_key(builder, _("Display shortcuts"), config.config_file.get_string("shortcut", "display_shortcuts"));;
+                insert_shortcut_key(builder, _("Custom commands"), config.config_file.get_string("shortcut", "custom_commands"));;
                 insert_shortcut_key(builder, _("Remote management"), config.config_file.get_string("shortcut", "remote_management"));;
             
                 builder.end_array();
@@ -494,6 +496,12 @@ namespace Widgets {
                     }
                 }
             
+                var show_command_panel_key = config.config_file.get_string("shortcut", "custom_commands");
+                if (show_command_panel_key != "" && keyname == show_command_panel_key) {
+                    workspace_manager.focus_workspace.toggle_command_panel(workspace_manager.focus_workspace);
+                    return true;
+                }
+		    
                 var show_remote_panel_key = config.config_file.get_string("shortcut", "remote_management");
                 if (show_remote_panel_key != "" && keyname == show_remote_panel_key) {
                     workspace_manager.focus_workspace.toggle_remote_panel(workspace_manager.focus_workspace);
