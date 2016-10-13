@@ -55,6 +55,7 @@ if {[string length $password]} {
             send "$password\r"
 		}
 	}
+	
 }
-
 interact
+

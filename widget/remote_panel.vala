@@ -236,19 +236,22 @@ namespace Widgets {
                 
                 ssh_script_content = ssh_script_content.replace("<<USER>>", server_info.split("@")[0]);
                 ssh_script_content = ssh_script_content.replace("<<SERVER>>", server_info.split("@")[1]);
-                ssh_script_content = ssh_script_content.replace("<<PASSWORD>>", password);
                 ssh_script_content = ssh_script_content.replace("<<PORT>>", config_file.get_value(server_info, "Port"));
                 
                 try {
-                    string private_key_file = config_file.get_value(server_info, "PRIVATE_KEY");
+                    string private_key_file = config_file.get_value(server_info, "PrivateKey");
                     if (FileUtils.test(private_key_file, FileTest.EXISTS)) {
                         ssh_script_content = ssh_script_content.replace("<<PRIVATE_KEY>>", " -i %s".printf(private_key_file));
+                        ssh_script_content = ssh_script_content.replace("<<PASSWORD>>", "");
                     } else {
                         ssh_script_content = ssh_script_content.replace("<<PRIVATE_KEY>>", "");
+                        ssh_script_content = ssh_script_content.replace("<<PASSWORD>>", password);                        
                     }
                 } catch (GLib.KeyFileError e) {
                     ssh_script_content = ssh_script_content.replace("<<PRIVATE_KEY>>", "");
+                    ssh_script_content = ssh_script_content.replace("<<PASSWORD>>", password);                        
                 }
+                
                 
                 var path = config_file.get_string(server_info, "Path");
                 var command = config_file.get_string(server_info, "Command");
@@ -270,6 +273,9 @@ namespace Widgets {
                 OutputStream ostream = iostream.output_stream;
                 DataOutputStream dos = new DataOutputStream(ostream);
                 dos.put_string(ssh_script_content);
+                
+                // Enable for debug.
+                // print("%s\n", ssh_script_content);
                 
                 workspace.hide_remote_panel();
                 focus_widget.grab_focus();
