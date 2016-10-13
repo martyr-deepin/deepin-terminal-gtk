@@ -1,3 +1,4 @@
 main
 *.h.gch
 *.swp
+build/
