@@ -16,7 +16,7 @@ And you also need `deepin-menu` from [http://mirrors.deepin.com/deepin/pool/main
 
 ## Installation
 
-`make && ./main`
+`mkdir build; cd build; cmake ..; make; deepin-terminal`
 
 ## Usage
 
