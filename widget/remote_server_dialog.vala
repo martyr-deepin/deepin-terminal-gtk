@@ -179,11 +179,7 @@ namespace Widgets {
                 create_key_row(name_label, name_entry, "%s:".printf(_("Server name")), grid);
 
                 // Address.
-                Label address_label = new Gtk.Label(null);
-                address_label.margin_start = label_margin_left;
-                address_label.set_text("%s:".printf(_("Address")));
-                address_label.get_style_context().add_class("preference_label");
-                address_label.set_xalign(0);
+                Label address_label = create_label("%s:".printf(_("Address")));
                 address_entry = new Entry();
                 if (server_info != null) {
                     address_entry.set_text(server_info.split("@")[1]);
@@ -192,10 +188,7 @@ namespace Widgets {
                 address_entry.set_placeholder_text(_("Required"));
                 address_entry.margin_start = label_margin_left;
                 address_entry.get_style_context().add_class("preference_entry");
-                Label port_label = new Gtk.Label(null);
-                port_label.margin_start = port_label_margin_left;
-                port_label.set_text("%s:".printf(_("Port")));
-                port_label.get_style_context().add_class("preference_label");
+                Label port_label = create_label("%s:".printf(_("Port")));
                 port_entry = new Entry();
                 port_entry.set_placeholder_text(_("Required"));
                 if (server_info != null) {
@@ -430,6 +423,16 @@ namespace Widgets {
             advanced_options_box.pack_start(advanced_grid, false, false, 0);
             
             show_all();
+        }
+        
+        public Label create_label(string text) {
+            Label label = new Gtk.Label(null);
+            label.margin_start = label_margin_left;
+            label.set_text(text);
+            label.get_style_context().add_class("preference_label");
+            label.set_xalign(0);
+            
+            return label;
         }
         
         public void create_key_row(Gtk.Label label, Gtk.Widget widget, string name, Gtk.Grid grid, string class_name="preference_entry") {
