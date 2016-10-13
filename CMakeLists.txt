@@ -64,12 +64,10 @@ vala_precompile(VALA_C
 	./lib/config.vala
 	./lib/constant.vala
 	./lib/draw.vala
-	./lib/font.c
 	./lib/keymap.vala
 	./lib/menu.vala
 	./lib/utils.vala
 	./lib/xutils.vala
-	./project_path.c
 	./widget/about_dialog.vala
 	./widget/about_widget.vala
 	./widget/add_server_button.vala
