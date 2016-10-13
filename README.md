@@ -51,6 +51,7 @@ Below is keymap list for deepin-terminal:
 | Switch fullscreen               | **F11**                             |
 | Adjust background opacity       | **Ctrl** + **ScrollButton**         |
 | Display shortcuts               | **Ctrl** + **Shift** + **?**        |
+| Custom commands                 | **Ctrl** + **[**                    |
 | Remote management               | **Ctrl** + **/**                    |
 
 ## Config file
