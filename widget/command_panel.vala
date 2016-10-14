@@ -44,7 +44,6 @@ namespace Widgets {
         public Workspace workspace;
         public int back_button_margin_left = 8;
         public int back_button_margin_top = 6;
-        public int split_line_margin_left = 1;
         public int width = Constant.SLIDER_WIDTH;
         
         public delegate void UpdatePageAfterEdit();
@@ -151,7 +150,7 @@ namespace Widgets {
                         show_search_page(entry.get_text(), home_page_box);
                     });
                 
-                var split_line = create_split_line();
+                var split_line = new SplitLine(parent_window.is_light_theme());
                 home_page_box.pack_start(split_line, false, false, 0);
 			}
 
@@ -174,7 +173,7 @@ namespace Widgets {
                 
             }
 			
-            var split_line = create_split_line();
+            var split_line = new SplitLine(parent_window.is_light_theme());
             home_page_box.pack_start(split_line, false, false, 0);
                 
 			Widgets.AddButton add_command_button = create_add_command_button();
@@ -260,7 +259,7 @@ namespace Widgets {
                 search_label.get_style_context().add_class("remote_search_label");
                 top_box.pack_start(search_label, true, true, 0);
                 
-                var split_line = create_split_line();
+                var split_line = new SplitLine(parent_window.is_light_theme());
                 search_page_box.pack_start(split_line, false, false, 0);
                 
                 search_page_scrolledwindow = create_scrolled_window();
@@ -415,30 +414,6 @@ namespace Widgets {
             }
             
             show_all();
-        }
-        
-        public Gtk.Box create_split_line() {
-            bool is_light_theme = parent_window.is_light_theme();
-                         
-            var box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-            box.margin_left = split_line_margin_left;
-            box.set_size_request(-1, 1);
-            
-            box.draw.connect((w, cr) => {
-                    Gtk.Allocation rect;
-                    w.get_allocation(out rect);
-                    
-                    if (is_light_theme) {
-                        cr.set_source_rgba(0, 0, 0, 0.1);
-                    } else {
-                        cr.set_source_rgba(1, 1, 1, 0.1);
-                    }
-                    Draw.draw_rectangle(cr, 0, 0, rect.width, 1);
-                    
-                    return true;
-                });
-            
-            return box;
         }
     }
 }

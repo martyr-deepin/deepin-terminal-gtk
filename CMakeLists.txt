@@ -71,14 +71,13 @@ vala_precompile(VALA_C
 	./widget/about_dialog.vala
 	./widget/about_widget.vala
 	./widget/add_button.vala
-	./widget/panel_button.vala
 	./widget/appbar.vala
 	./widget/check_button.vala
 	./widget/click_event_box.vala 
-	./widget/config_window.vala
 	./widget/command_button.vala
 	./widget/command_dialog.vala
 	./widget/command_panel.vala
+	./widget/config_window.vala
 	./widget/confirm_dialog.vala
 	./widget/cursor_toggle_button.vala
 	./widget/dialog.vala
@@ -87,6 +86,7 @@ vala_precompile(VALA_C
 	./widget/encoding_panel.vala 
 	./widget/file_button.vala 
 	./widget/image_button.vala
+	./widget/panel_button.vala
 	./widget/password_button.vala
 	./widget/preference.vala
 	./widget/preference_slidebar.vala
@@ -99,6 +99,7 @@ vala_precompile(VALA_C
 	./widget/server_button.vala
 	./widget/server_group_button.vala
 	./widget/shortcut_entry.vala
+	./widget/split_line.vala
 	./widget/switcher.vala
 	./widget/tabbar.vala
 	./widget/terminal.vala
