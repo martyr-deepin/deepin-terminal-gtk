@@ -76,12 +76,12 @@ namespace Widgets {
             
 			server_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("server_dark.png"));
 			server_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("server_light.png"));
-			server_edit_normal_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("server_edit_dark_normal.png"));
-			server_edit_hover_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("server_edit_dark_hover.png"));
-			server_edit_press_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("server_edit_dark_press.png"));
-			server_edit_normal_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("server_edit_light_normal.png"));
-			server_edit_hover_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("server_edit_light_hover.png"));
-			server_edit_press_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("server_edit_light_press.png"));
+			server_edit_normal_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("button_edit_dark_normal.png"));
+			server_edit_hover_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("button_edit_dark_hover.png"));
+			server_edit_press_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("button_edit_dark_press.png"));
+			server_edit_normal_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("button_edit_light_normal.png"));
+			server_edit_hover_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("button_edit_light_hover.png"));
+			server_edit_press_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("button_edit_light_press.png"));
             
             title_dark_color = Utils.hex_to_rgba("#FFFFFF");
             content_dark_color = Utils.hex_to_rgba("#FFFFFF", 0.5);

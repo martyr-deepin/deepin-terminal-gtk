@@ -28,14 +28,14 @@ namespace Widgets {
     public class CommandButton : Widgets.ClickEventBox {
         public bool is_at_edit_button_area = false;
 		public bool is_hover = false;
-        public Cairo.ImageSurface server_dark_surface;
-        public Cairo.ImageSurface server_edit_hover_dark_surface;
-        public Cairo.ImageSurface server_edit_hover_light_surface;
-        public Cairo.ImageSurface server_edit_normal_dark_surface;
-        public Cairo.ImageSurface server_edit_normal_light_surface;
-        public Cairo.ImageSurface server_edit_press_dark_surface;
-        public Cairo.ImageSurface server_edit_press_light_surface;
-        public Cairo.ImageSurface server_light_surface;
+        public Cairo.ImageSurface command_dark_surface;
+        public Cairo.ImageSurface command_edit_hover_dark_surface;
+        public Cairo.ImageSurface command_edit_hover_light_surface;
+        public Cairo.ImageSurface command_edit_normal_dark_surface;
+        public Cairo.ImageSurface command_edit_normal_light_surface;
+        public Cairo.ImageSurface command_edit_press_dark_surface;
+        public Cairo.ImageSurface command_edit_press_light_surface;
+        public Cairo.ImageSurface command_light_surface;
         public Gdk.RGBA command_shortcut_dark_color;
         public Gdk.RGBA command_shortcut_light_color;
         public Gdk.RGBA hover_dark_color;
@@ -76,14 +76,14 @@ namespace Widgets {
             command_value = value;
             command_shortcut = shortcut;
             
-			server_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("command_dark.png"));
-			server_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("command_light.png"));
-			server_edit_normal_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("server_edit_dark_normal.png"));
-			server_edit_hover_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("server_edit_dark_hover.png"));
-			server_edit_press_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("server_edit_dark_press.png"));
-			server_edit_normal_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("server_edit_light_normal.png"));
-			server_edit_hover_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("server_edit_light_hover.png"));
-			server_edit_press_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("server_edit_light_press.png"));
+			command_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("command_dark.png"));
+			command_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("command_light.png"));
+			command_edit_normal_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("button_edit_dark_normal.png"));
+			command_edit_hover_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("button_edit_dark_hover.png"));
+			command_edit_press_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("button_edit_dark_press.png"));
+			command_edit_normal_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("button_edit_light_normal.png"));
+			command_edit_hover_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("button_edit_light_hover.png"));
+			command_edit_press_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("button_edit_light_press.png"));
             
             command_name_dark_color = Utils.hex_to_rgba("#FFFFFF");
             command_shortcut_dark_color = Utils.hex_to_rgba("#FFFFFF", 0.5);
@@ -98,7 +98,7 @@ namespace Widgets {
             
             set_size_request(width, height);
             
-            edit_button_y = (height - server_edit_press_dark_surface.get_height()) / 2;
+            edit_button_y = (height - command_edit_press_dark_surface.get_height()) / 2;
             
             draw.connect(on_draw);
 			enter_notify_event.connect((w, e) => {
@@ -125,11 +125,11 @@ namespace Widgets {
 					return false;
 				});
             clicked.connect((w, e) => {
-                    if (e.x > edit_button_x && e.x < edit_button_x + server_edit_normal_dark_surface.get_width()
-                        && e.y > edit_button_y && e.y < height - server_edit_normal_dark_surface.get_height()) {
+                    if (e.x > edit_button_x && e.x < edit_button_x + command_edit_normal_dark_surface.get_width()
+                        && e.y > edit_button_y && e.y < height - command_edit_normal_dark_surface.get_height()) {
                         edit_command(command_name);
                     } else {
-                        // Avoid user double click on button to login server twice.
+                        // Avoid user double click on button to login command twice.
                         if (!has_login) {
                             has_login = true;
                             execute_command(command_value);
@@ -137,8 +137,8 @@ namespace Widgets {
                     }
                 });
             motion_notify_event.connect((w, e) => {
-                    if (e.x > edit_button_x && e.x < edit_button_x + server_edit_normal_dark_surface.get_width()
-                        && e.y > edit_button_y && e.y < height - server_edit_normal_dark_surface.get_height()) {
+                    if (e.x > edit_button_x && e.x < edit_button_x + command_edit_normal_dark_surface.get_width()
+                        && e.y > edit_button_y && e.y < height - command_edit_normal_dark_surface.get_height()) {
                         is_at_edit_button_area = true;
                     } else {
                         is_at_edit_button_area = false;
@@ -154,9 +154,9 @@ namespace Widgets {
             bool is_light_theme = ((Widgets.ConfigWindow) get_toplevel()).is_light_theme();
             
             if (is_light_theme) {
-                Draw.draw_surface(cr, server_light_surface, image_x, 0, 0, height);
+                Draw.draw_surface(cr, command_light_surface, image_x, 0, 0, height);
             } else {
-                Draw.draw_surface(cr, server_dark_surface, image_x, 0, 0, height);
+                Draw.draw_surface(cr, command_dark_surface, image_x, 0, 0, height);
             }
             
             
@@ -164,22 +164,22 @@ namespace Widgets {
                 if (is_at_edit_button_area) {
                     if (is_press) {
                         if (is_light_theme) {
-                            Draw.draw_surface(cr, server_edit_press_light_surface, edit_button_x, 0, 0, height);
+                            Draw.draw_surface(cr, command_edit_press_light_surface, edit_button_x, 0, 0, height);
                         } else {
-                            Draw.draw_surface(cr, server_edit_press_dark_surface, edit_button_x, 0, 0, height);
+                            Draw.draw_surface(cr, command_edit_press_dark_surface, edit_button_x, 0, 0, height);
                         }
                     } else if (is_hover) {
                         if (is_light_theme) {
-                            Draw.draw_surface(cr, server_edit_hover_light_surface, edit_button_x, 0, 0, height);
+                            Draw.draw_surface(cr, command_edit_hover_light_surface, edit_button_x, 0, 0, height);
                         } else {
-                            Draw.draw_surface(cr, server_edit_hover_dark_surface, edit_button_x, 0, 0, height);
+                            Draw.draw_surface(cr, command_edit_hover_dark_surface, edit_button_x, 0, 0, height);
                         }
                     }
                 } else {
                     if (is_light_theme) {
-                        Draw.draw_surface(cr, server_edit_normal_light_surface, edit_button_x, 0, 0, height);
+                        Draw.draw_surface(cr, command_edit_normal_light_surface, edit_button_x, 0, 0, height);
                     } else {
-                        Draw.draw_surface(cr, server_edit_normal_dark_surface, edit_button_x, 0, 0, height);
+                        Draw.draw_surface(cr, command_edit_normal_dark_surface, edit_button_x, 0, 0, height);
                     }
                     
                 }
