@@ -17,11 +17,16 @@ namespace Widgets {
         public int shortcut_key_padding_y = 0;
         public int shortcut_key_spacing = 5;
         public string shortcut = "";
+        public Cairo.ImageSurface button_left_surface;
+        public Cairo.ImageSurface button_right_surface;
         
         public signal void change_key(string new_key);
         
         public ShortcutEntry() {
             Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
+            
+			button_left_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("shortcut_button_left.png"));
+			button_right_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("shortcut_button_right.png"));
             
             set_visible_window(false);
             set_can_focus(true);
@@ -120,23 +125,21 @@ namespace Widgets {
                     layout.get_pixel_size(out text_width, out text_height);
                     
                     int key_width = int.max(text_width, 20);
+
+                    int button_width = button_left_surface.get_width();
+                    int button_height = button_left_surface.get_height();
+                    int button_y = (height - button_height) / 2;
+                    int shortcut_key_width = key_width + shortcut_key_padding_x * 2;
+                    
+                    Draw.draw_surface(cr, button_left_surface, x, button_y);
+                    Draw.draw_surface(cr, button_right_surface, x + shortcut_key_width - button_width, button_y);
                     
                     cr.set_source_rgba(shortcut_background_color.red, shortcut_background_color.green, shortcut_background_color.blue, shortcut_background_color.alpha);
-                    Draw.fill_rounded_rectangle(
-                        cr,
-                        x,
-                        (height - (text_height + shortcut_key_padding_y * 2)) / 2,
-                        key_width + shortcut_key_padding_x * 2,
-                        (text_height + shortcut_key_padding_y * 2),
-                        2);
+                    Draw.draw_rectangle(cr, x + button_width, button_y, shortcut_key_width - button_width * 2, button_height);
+                    
                     cr.set_source_rgba(shortcut_frame_color.red, shortcut_frame_color.green, shortcut_frame_color.blue, shortcut_frame_color.alpha);
-                    Draw.fill_rounded_rectangle(
-                        cr,
-                        x,
-                        (height - (text_height + shortcut_key_padding_y * 2)) / 2,
-                        key_width + shortcut_key_padding_x * 2,
-                        (text_height + shortcut_key_padding_y * 2),
-                        2);
+                    Draw.draw_rectangle(cr, x + button_width, button_y, shortcut_key_width - button_width * 2, 1);
+                    Draw.draw_rectangle(cr, x + button_width, button_y + button_height - 1, shortcut_key_width - button_width * 2, 1);
                     
                     int render_y = y + int.max(0, (height - text_height) / 2);
                     
@@ -145,7 +148,7 @@ namespace Widgets {
                     Pango.cairo_update_layout(cr, layout);
                     Pango.cairo_show_layout(cr, layout);
                     
-                    x += text_width + shortcut_key_spacing + shortcut_key_padding_x * 2;
+                    x += key_width + shortcut_key_spacing + shortcut_key_padding_x * 2;
                 }
                 
             }
