@@ -71,6 +71,7 @@ vala_precompile(VALA_C
 	./widget/about_dialog.vala
 	./widget/about_widget.vala
 	./widget/add_button.vala
+	./widget/panel_button.vala
 	./widget/appbar.vala
 	./widget/check_button.vala
 	./widget/click_event_box.vala 
