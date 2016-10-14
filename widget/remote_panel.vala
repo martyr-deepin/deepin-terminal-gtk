@@ -237,23 +237,24 @@ namespace Widgets {
                 ssh_script_content = ssh_script_content.replace("<<SERVER>>", server_info.split("@")[1]);
                 ssh_script_content = ssh_script_content.replace("<<PORT>>", config_file.get_value(server_info, "Port"));
                 
+                bool use_private_key = true;
+                string private_key_file = "";
                 try {
-                    string private_key_file = config_file.get_value(server_info, "PrivateKey");
-                    if (FileUtils.test(private_key_file, FileTest.EXISTS)) {
-                        ssh_script_content = ssh_script_content.replace("<<PRIVATE_KEY>>", " -i %s".printf(private_key_file));
-                        ssh_script_content = ssh_script_content.replace("<<PASSWORD>>", "");
-                        ssh_script_content = ssh_script_content.replace("<<AUTHENTICATION>>", "yes");
-                    } else {
-                        ssh_script_content = ssh_script_content.replace("<<PRIVATE_KEY>>", "");
-                        ssh_script_content = ssh_script_content.replace("<<PASSWORD>>", password);                        
-                        ssh_script_content = ssh_script_content.replace("<<AUTHENTICATION>>", "no");
-                    }
+                    private_key_file = config_file.get_value(server_info, "PrivateKey");
+                    use_private_key = FileUtils.test(private_key_file, FileTest.EXISTS);
                 } catch (GLib.KeyFileError e) {
+                    use_private_key = false;
+                }
+                
+                if (use_private_key) {
+                    ssh_script_content = ssh_script_content.replace("<<PRIVATE_KEY>>", " -i %s".printf(private_key_file));
+                    ssh_script_content = ssh_script_content.replace("<<PASSWORD>>", "");
+                    ssh_script_content = ssh_script_content.replace("<<AUTHENTICATION>>", "yes");
+                } else {
                     ssh_script_content = ssh_script_content.replace("<<PRIVATE_KEY>>", "");
                     ssh_script_content = ssh_script_content.replace("<<PASSWORD>>", password);                        
                     ssh_script_content = ssh_script_content.replace("<<AUTHENTICATION>>", "no");
                 }
-                
                 
                 var path = config_file.get_string(server_info, "Path");
                 var command = config_file.get_string(server_info, "Command");
