@@ -25,19 +25,17 @@ using Gtk;
 using Widgets;
 
 namespace Widgets {
-    public class AddServerButton : Gtk.Button {
+    public class AddButton : Gtk.Button {
         public int height = 36;
 
-        public AddServerButton(bool is_light_theme) {
-            Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
-            
-            set_label("＋ %s".printf(_("Add server")));
+        public AddButton(bool is_light_theme, string button_name) {
+            set_label("＋ %s".printf(button_name));
             set_size_request(-1, height);
             
             if (is_light_theme) {
-                get_style_context().add_class("add_server_button_light");
+                get_style_context().add_class("add_button_light");
             } else {
-                get_style_context().add_class("add_server_button_dark");
+                get_style_context().add_class("add_button_dark");
             }
         }
     }

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-14 00:00+0800\n"
+"POT-Creation-Date: 2016-10-14 15:48+0800\n"
 "PO-Revision-Date: 2016-08-22 00:55+0800\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -25,7 +25,7 @@ msgstr "关于"
 msgid "Add"
 msgstr "添加"
 
-#: ../widget/add_command_button.vala:34 ../widget/command_dialog.vala:127
+#: ../widget/command_dialog.vala:127
 msgid "Add Command"
 msgstr "添加命令"
 
@@ -33,7 +33,11 @@ msgstr "添加命令"
 msgid "Add Server"
 msgstr "添加服务器"
 
-#: ../widget/add_server_button.vala:34
+#: ../widget/command_panel.vala:371
+msgid "Add command"
+msgstr "添加命令"
+
+#: ../widget/remote_panel.vala:623
 msgid "Add server"
 msgstr "添加服务器"
 
@@ -287,6 +291,10 @@ msgstr "粘贴"
 #: ../widget/remote_server_dialog.vala:268
 msgid "Path"
 msgstr "路径"
+
+#: ../widget/shortcut_entry.vala:103
+msgid "Please enter a new shortcut"
+msgstr "请输入新的快捷键"
 
 #: ../widget/remote_server_dialog.vala:191
 msgid "Port"

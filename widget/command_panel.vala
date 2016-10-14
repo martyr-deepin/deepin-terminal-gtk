@@ -177,7 +177,7 @@ namespace Widgets {
             var split_line = create_split_line();
             home_page_box.pack_start(split_line, false, false, 0);
                 
-			Widgets.AddCommandButton add_command_button = create_add_command_button();
+			Widgets.AddButton add_command_button = create_add_command_button();
             add_command_button.margin_left = 16;
             add_command_button.margin_right = 16;
             add_command_button.margin_top = 16;
@@ -367,8 +367,8 @@ namespace Widgets {
             focus_widget.grab_focus();
         }
         
-        public Widgets.AddCommandButton create_add_command_button() {
-			Widgets.AddCommandButton add_command_button = new Widgets.AddCommandButton(parent_window.is_light_theme());
+        public Widgets.AddButton create_add_command_button() {
+			Widgets.AddButton add_command_button = new Widgets.AddButton(parent_window.is_light_theme(), _("Add command"));
 			add_command_button.clicked.connect((w) => {
                     var command_dialog = new Widgets.CommandDialog(parent_window, this);
                     command_dialog.transient_for_window(parent_window);

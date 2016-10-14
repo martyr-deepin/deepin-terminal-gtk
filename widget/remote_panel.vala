@@ -206,7 +206,7 @@ namespace Widgets {
             var split_line = create_split_line();
             home_page_box.pack_start(split_line, false, false, 0);
                 
-			Widgets.AddServerButton add_server_button = create_add_server_button();
+			Widgets.AddButton add_server_button = create_add_server_button();
             add_server_button.margin_left = 16;
             add_server_button.margin_right = 16;
             add_server_button.margin_top = 16;
@@ -619,8 +619,8 @@ namespace Widgets {
             return server_group_button;
         }
         
-        public Widgets.AddServerButton create_add_server_button() {
-			Widgets.AddServerButton add_server_button = new Widgets.AddServerButton(parent_window.is_light_theme());
+        public Widgets.AddButton create_add_server_button() {
+			Widgets.AddButton add_server_button = new Widgets.AddButton(parent_window.is_light_theme(), _("Add server"));
 			add_server_button.clicked.connect((w) => {
                     var remote_server_dialog = new Widgets.RemoteServerDialog(parent_window, this);
                     remote_server_dialog.transient_for_window(parent_window);

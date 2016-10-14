@@ -70,8 +70,7 @@ vala_precompile(VALA_C
 	./lib/xutils.vala
 	./widget/about_dialog.vala
 	./widget/about_widget.vala
-	./widget/add_server_button.vala
-	./widget/add_command_button.vala
+	./widget/add_button.vala
 	./widget/appbar.vala
 	./widget/check_button.vala
 	./widget/click_event_box.vala 
