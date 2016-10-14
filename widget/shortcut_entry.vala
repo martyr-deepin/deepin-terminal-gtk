@@ -10,7 +10,7 @@ namespace Widgets {
         public Gdk.RGBA shortcut_font_color;
         public Gdk.RGBA shortcut_frame_color;
         public int height = 24;
-        public int shortcut_font_padding_x = 5;
+        public int shortcut_font_padding_x = 4;
         public int shortcut_font_padding_y = 0;
         public int shortcut_font_size = 9;
         public int shortcut_key_padding_x = 4;
