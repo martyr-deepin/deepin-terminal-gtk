@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-14 15:48+0800\n"
+"POT-Creation-Date: 2016-10-14 16:59+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,11 +33,11 @@ msgstr ""
 msgid "Add Server"
 msgstr ""
 
-#: ../widget/command_panel.vala:371
+#: ../widget/command_panel.vala:370
 msgid "Add command"
 msgstr ""
 
-#: ../widget/remote_panel.vala:623
+#: ../widget/remote_panel.vala:622
 msgid "Add server"
 msgstr ""
 
@@ -135,11 +135,11 @@ msgstr ""
 msgid "Custom commands"
 msgstr ""
 
-#: ../main.vala:156 ../widget/about_widget.vala:105 ../widget/tabbar.vala:602
+#: ../main.vala:166 ../widget/about_widget.vala:105 ../widget/tabbar.vala:602
 msgid "Deepin Terminal"
 msgstr ""
 
-#: ../main.vala:157 ../widget/about_widget.vala:48
+#: ../main.vala:167 ../widget/about_widget.vala:48
 msgid ""
 "Deepin Terminal is an advanced terminal emulator with workspace, multiple "
 "windows, remote management, quake mode and other features.\n"
@@ -169,7 +169,7 @@ msgstr ""
 msgid "Delete server"
 msgstr ""
 
-#: ../main.vala:114
+#: ../main.vala:115
 msgid "Display help information"
 msgstr ""
 
@@ -304,7 +304,7 @@ msgstr ""
 msgid "Programs are still running in terminal"
 msgstr ""
 
-#: ../main.vala:150
+#: ../main.vala:160
 msgid "Quake mode"
 msgstr ""
 
@@ -325,12 +325,12 @@ msgstr ""
 msgid "Restore default settings"
 msgstr ""
 
-#: ../main.vala:163
+#: ../main.vala:173
 msgid ""
 "Run '%s --help' to view a full list of available command line pass_options"
 msgstr ""
 
-#: ../main.vala:132 ../main.vala:141
+#: ../main.vala:142 ../main.vala:151
 msgid "Run a program in the terminal"
 msgstr ""
 
@@ -352,8 +352,8 @@ msgstr ""
 
 #: ../widget/preference.vala:288 ../widget/terminal.vala:255
 #: ../widget/search_entry.vala:64 ../widget/search_entry.vala:67
-#: ../widget/config_window.vala:266 ../widget/remote_panel.vala:510
-#: ../widget/command_panel.vala:259
+#: ../widget/config_window.vala:266 ../widget/remote_panel.vala:509
+#: ../widget/command_panel.vala:258
 msgid "Search"
 msgstr ""
 
@@ -402,8 +402,12 @@ msgstr ""
 msgid "Server name"
 msgstr ""
 
-#: ../main.vala:123
+#: ../main.vala:124
 msgid "Set the terminal startup directory"
+msgstr ""
+
+#: ../main.vala:133
+msgid "Set the terminal window mode"
 msgstr ""
 
 #: ../widget/terminal.vala:269 ../widget/appbar.vala:97
@@ -458,7 +462,7 @@ msgstr ""
 msgid "Vertical split"
 msgstr ""
 
-#: ../widget/remote_panel.vala:259
+#: ../widget/remote_panel.vala:258
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "

@@ -65,6 +65,7 @@ const string GETTEXT_PACKAGE = "deepin-terminal";
 public class Application : Object {
     
 	private static bool quake_mode = false;
+    private static string? window_mode = null;
 	private static string? work_directory = null;
 
     // pass_options just for print help information, we need parse -e or -x commands myself.
@@ -121,6 +122,15 @@ public class Application : Object {
                     arg=OptionArg.FILENAME, 
                     arg_data=&work_directory,
                     description=_("Set the terminal startup directory"), 
+                    arg_description=null
+                },
+                OptionEntry() {
+                    long_name="window-mode",
+                    short_name='m', 
+                    flags=0, 
+                    arg=OptionArg.STRING, 
+                    arg_data=&window_mode,
+                    description="%s (normal, maximize, fullscreen)".printf(_("Set the terminal window mode")),
                     arg_description=null
                 },
                 OptionEntry() { 
@@ -223,7 +233,7 @@ public class Application : Object {
                 Utils.write_log("Deepin quake terminal start in: %s\n".printf((GLib.get_real_time() / 1000 - Application.start_time).to_string()));
                 tabbar.init(workspace_manager, quake_window);
             } else {
-                window = new Widgets.Window();
+                window = new Widgets.Window(window_mode);
                 window.show_window(workspace_manager, tabbar);
                 Utils.write_log("Deepin terminal start in: %s\n".printf((GLib.get_real_time() / 1000 - Application.start_time).to_string()));
                 tabbar.init(workspace_manager, window);

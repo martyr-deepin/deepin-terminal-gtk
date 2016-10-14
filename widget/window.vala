@@ -49,7 +49,7 @@ namespace Widgets {
         public int window_widget_margin_top = 1;
         public int window_width;
         
-        public Window() {
+        public Window(string? window_mode) {
             transparent_window();
             init_window();
             
@@ -77,7 +77,14 @@ namespace Widgets {
                         
             realize.connect((w) => {
                     try {
-                        var window_state = config.config_file.get_value("advanced", "use_on_starting");
+                        string window_state = "";
+                        string[] window_modes = {"normal", "maximize", "fullscreen"};
+                        if (window_mode != null && window_mode in window_modes) {
+                            window_state = window_mode;
+                        } else {
+                            window_state = config.config_file.get_value("advanced", "use_on_starting");
+                        }
+                         
                         if (window_state == "maximize") {
                             maximize();
                             get_window().set_shadow_width(0, 0, 0, 0);

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-14 15:48+0800\n"
+"POT-Creation-Date: 2016-10-14 16:59+0800\n"
 "PO-Revision-Date: 2016-08-22 00:55+0800\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -33,11 +33,11 @@ msgstr "添加命令"
 msgid "Add Server"
 msgstr "添加服务器"
 
-#: ../widget/command_panel.vala:371
+#: ../widget/command_panel.vala:370
 msgid "Add command"
 msgstr "添加命令"
 
-#: ../widget/remote_panel.vala:623
+#: ../widget/remote_panel.vala:622
 msgid "Add server"
 msgstr "添加服务器"
 
@@ -135,11 +135,11 @@ msgstr "光标风格"
 msgid "Custom commands"
 msgstr "自定义命令"
 
-#: ../main.vala:156 ../widget/about_widget.vala:105 ../widget/tabbar.vala:602
+#: ../main.vala:166 ../widget/about_widget.vala:105 ../widget/tabbar.vala:602
 msgid "Deepin Terminal"
 msgstr "深度终端"
 
-#: ../main.vala:157 ../widget/about_widget.vala:48
+#: ../main.vala:167 ../widget/about_widget.vala:48
 msgid ""
 "Deepin Terminal is an advanced terminal emulator with workspace, multiple "
 "windows, remote management, quake mode and other features.\n"
@@ -173,7 +173,7 @@ msgstr "删除键"
 msgid "Delete server"
 msgstr "删除服务器"
 
-#: ../main.vala:114
+#: ../main.vala:115
 msgid "Display help information"
 msgstr "显示帮助信息"
 
@@ -308,7 +308,7 @@ msgstr "上一个工作区"
 msgid "Programs are still running in terminal"
 msgstr "终端仍然有程序在运行"
 
-#: ../main.vala:150
+#: ../main.vala:160
 msgid "Quake mode"
 msgstr "雷神模式"
 
@@ -329,12 +329,12 @@ msgstr "必填"
 msgid "Restore default settings"
 msgstr "恢复默认设置"
 
-#: ../main.vala:163
+#: ../main.vala:173
 msgid ""
 "Run '%s --help' to view a full list of available command line pass_options"
 msgstr "运行 '%s --help' 查看可用命令行选项的完整列表"
 
-#: ../main.vala:132 ../main.vala:141
+#: ../main.vala:142 ../main.vala:151
 msgid "Run a program in the terminal"
 msgstr "在终端运行一个程序"
 
@@ -356,8 +356,8 @@ msgstr "输出时滚动"
 
 #: ../widget/preference.vala:288 ../widget/terminal.vala:255
 #: ../widget/search_entry.vala:64 ../widget/search_entry.vala:67
-#: ../widget/config_window.vala:266 ../widget/remote_panel.vala:510
-#: ../widget/command_panel.vala:259
+#: ../widget/config_window.vala:266 ../widget/remote_panel.vala:509
+#: ../widget/command_panel.vala:258
 msgid "Search"
 msgstr "搜索"
 
@@ -406,9 +406,13 @@ msgstr "选择工作区"
 msgid "Server name"
 msgstr "服务器名"
 
-#: ../main.vala:123
+#: ../main.vala:124
 msgid "Set the terminal startup directory"
 msgstr "设置终端的启动目录"
+
+#: ../main.vala:133
+msgid "Set the terminal window mode"
+msgstr "设置终端的窗口模式"
 
 #: ../widget/terminal.vala:269 ../widget/appbar.vala:97
 msgid "Settings"
@@ -462,7 +466,7 @@ msgstr "版本"
 msgid "Vertical split"
 msgstr "纵向分屏"
 
-#: ../widget/remote_panel.vala:259
+#: ../widget/remote_panel.vala:258
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "
