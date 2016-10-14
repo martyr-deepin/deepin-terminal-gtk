@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-14 16:59+0800\n"
+"POT-Creation-Date: 2016-10-14 17:22+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,10 @@ msgstr ""
 
 #: ../widget/appbar.vala:101
 msgid "About"
+msgstr ""
+
+#: ../widget/about_widget.vala:62
+msgid "Acknowledgments"
 msgstr ""
 
 #: ../widget/remote_server_dialog.vala:334 ../widget/command_dialog.vala:194
@@ -135,11 +139,11 @@ msgstr ""
 msgid "Custom commands"
 msgstr ""
 
-#: ../main.vala:166 ../widget/about_widget.vala:105 ../widget/tabbar.vala:602
+#: ../main.vala:166 ../widget/about_widget.vala:82 ../widget/tabbar.vala:602
 msgid "Deepin Terminal"
 msgstr ""
 
-#: ../main.vala:167 ../widget/about_widget.vala:48
+#: ../main.vala:167 ../widget/about_widget.vala:49
 msgid ""
 "Deepin Terminal is an advanced terminal emulator with workspace, multiple "
 "windows, remote management, quake mode and other features.\n"
@@ -453,7 +457,7 @@ msgstr ""
 msgid "Username"
 msgstr ""
 
-#: ../widget/about_widget.vala:109
+#: ../widget/about_widget.vala:86
 msgid "Version"
 msgstr ""
 

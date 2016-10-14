@@ -30,16 +30,17 @@ namespace Widgets {
         public Cairo.ImageSurface logo_surface;
         public int about_height = 9;
         public int about_x = 38;
-        public int about_y = 251;
         public int height = 320;
-        public int homepage_y = 210;
-        public int icon_y = 13;
-        public int logo_y = 176;
         public int name_height = 13;
-        public int name_y = 113;
         public int version_height = 12;
         public int version_size = 11;
+        public int icon_y = 13;
+        public int name_y = 113;
         public int version_y = 146;
+        public int logo_y = 176;
+        public int homepage_y = 200;
+        public int acknowledgments_y = 10;
+        public int about_y = 270;
         public string about_text;
         
         public AboutWidget() {
@@ -53,39 +54,15 @@ namespace Widgets {
             set_size_request(-1, height);
 
             var content_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+            content_box.margin_top = homepage_y;
             
-            var homepage_area = new Widgets.ClickEventBox();
-            homepage_area.add_events(Gdk.EventMask.BUTTON_PRESS_MASK
-                                     | Gdk.EventMask.BUTTON_RELEASE_MASK
-                                     | Gdk.EventMask.POINTER_MOTION_MASK
-                                     | Gdk.EventMask.LEAVE_NOTIFY_MASK);
-            homepage_area.margin_top = homepage_y;
-            homepage_area.visible_window = false;
-            var homepage_label = new Gtk.Label(null);
-            homepage_label.set_text("www.deepin.org");
-            homepage_label.get_style_context().add_class("link");
-            homepage_area.add(homepage_label);
-            homepage_area.enter_notify_event.connect((w, e) => {
-                    var display = Gdk.Display.get_default();
-                    get_window().set_cursor(new Gdk.Cursor.for_display(display, Gdk.CursorType.HAND1));
-                    
-                    return false;
-                });
-            homepage_area.leave_notify_event.connect((w, e) => {
-                    get_window().set_cursor(null);
-                    
-                    return false;
-                });
-            homepage_area.clicked.connect((w, e) => {
-                    Gdk.Screen screen = Gdk.Screen.get_default();
-                    try {
-                        Gtk.show_uri(screen, "https://www.deepin.org", e.time);
-                    } catch (GLib.Error e) {
-                        print("About dialog homepage: %s\n", e.message);
-                    }
-                });
-            
+            var homepage_area = new Widgets.LinkButton("www.deepin.org", "https://www.deepin.org", "homepage");
             content_box.pack_start(homepage_area, false, false, 0);
+
+            var acknowledgments_area = new Widgets.LinkButton(_("Acknowledgments"), "www.deepin.org/acknowledgments.html#deepin-terminal", "acknowledgments");
+            acknowledgments_area.margin_top = acknowledgments_y;
+            content_box.pack_start(acknowledgments_area, false, false, 0);
+            
             pack_start(content_box, true, true, 0);
 
             draw.connect(on_draw);
