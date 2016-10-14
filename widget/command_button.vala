@@ -76,8 +76,8 @@ namespace Widgets {
             command_value = value;
             command_shortcut = shortcut;
             
-			server_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("server_dark.png"));
-			server_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("server_light.png"));
+			server_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("command_dark.png"));
+			server_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("command_light.png"));
 			server_edit_normal_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("server_edit_dark_normal.png"));
 			server_edit_hover_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("server_edit_dark_hover.png"));
 			server_edit_press_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("server_edit_dark_press.png"));
