@@ -36,8 +36,9 @@ set server {<<SERVER>>}
 set password {<<PASSWORD>>}
 set private_key {<<PRIVATE_KEY>>}
 set port {<<PORT>>}
+set authentication {<<AUTHENTICATION>>}
 set ssh_cmd {zssh -X -o ServerAliveInterval=60}
-set ssh_opt {$user@$server -p $port}
+set ssh_opt {$user@$server -p $port -o PubkeyAuthentication=$authentication}
 set remote_command {<<REMOTE_COMMAND>>}
 
 # This code is use for synchronous pty's size to avoid terminal not update if login in remote server.

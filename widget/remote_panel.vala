@@ -242,13 +242,16 @@ namespace Widgets {
                     if (FileUtils.test(private_key_file, FileTest.EXISTS)) {
                         ssh_script_content = ssh_script_content.replace("<<PRIVATE_KEY>>", " -i %s".printf(private_key_file));
                         ssh_script_content = ssh_script_content.replace("<<PASSWORD>>", "");
+                        ssh_script_content = ssh_script_content.replace("<<AUTHENTICATION>>", "yes");
                     } else {
                         ssh_script_content = ssh_script_content.replace("<<PRIVATE_KEY>>", "");
                         ssh_script_content = ssh_script_content.replace("<<PASSWORD>>", password);                        
+                        ssh_script_content = ssh_script_content.replace("<<AUTHENTICATION>>", "no");
                     }
                 } catch (GLib.KeyFileError e) {
                     ssh_script_content = ssh_script_content.replace("<<PRIVATE_KEY>>", "");
                     ssh_script_content = ssh_script_content.replace("<<PASSWORD>>", password);                        
+                    ssh_script_content = ssh_script_content.replace("<<AUTHENTICATION>>", "no");
                 }
                 
                 
