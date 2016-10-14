@@ -105,6 +105,8 @@ public class Application : Object {
         }
         
         try {
+            string window_mode_description = "%s (normal, maximize, fullscreen)".printf(_("Set the terminal window mode"));
+            
             GLib.OptionEntry[] pass_options = {
                 OptionEntry() {
                     long_name="version", 
@@ -130,7 +132,7 @@ public class Application : Object {
                     flags=0, 
                     arg=OptionArg.STRING, 
                     arg_data=&window_mode,
-                    description="%s (normal, maximize, fullscreen)".printf(_("Set the terminal window mode")),
+                    description=window_mode_description,
                     arg_description=null
                 },
                 OptionEntry() { 
