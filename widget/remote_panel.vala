@@ -483,7 +483,7 @@ namespace Widgets {
                             }
                         }
                         foreach (string match_text in match_list) {
-                            if (match_text.contains(search_text)) {
+                            if (match_text.down().contains(search_text.down())) {
                                 add_group_item(option, ungroups, config_file);
 
                                 // Just add option one times.
