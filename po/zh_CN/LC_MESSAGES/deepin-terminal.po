@@ -247,7 +247,7 @@ msgstr "最大化"
 
 #: ../widget/command_dialog.vala:85 ../widget/command_dialog.vala:160
 msgid "Name"
-msgstr "名字"
+msgstr "名称"
 
 #: ../widget/appbar.vala:93
 msgid "New window"
