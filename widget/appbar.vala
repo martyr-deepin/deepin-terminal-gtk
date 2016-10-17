@@ -92,6 +92,7 @@ namespace Widgets {
                     var menu_content = new List<Menu.MenuItem>();
                     menu_content.append(new Menu.MenuItem("new_window", _("New window")));
                     menu_content.append(new Menu.MenuItem("switch_theme", _("Switch theme")));
+                    menu_content.append(new Menu.MenuItem("custom_commands", _("Custom commands")));
                     menu_content.append(new Menu.MenuItem("remote_manage", _("Remote management")));
                     menu_content.append(new Menu.MenuItem("", ""));
                     menu_content.append(new Menu.MenuItem("preference", _("Settings")));
@@ -210,6 +211,9 @@ namespace Widgets {
                         print("Appbar menu item 'new window': %s\n", e.message);
                     }
 			    	break;
+                case "custom_commands":
+                    workspace_manager.focus_workspace.show_command_panel(workspace_manager.focus_workspace);
+                    break;
                 case "remote_manage":
                     workspace_manager.focus_workspace.show_remote_panel(workspace_manager.focus_workspace);
                     break;
