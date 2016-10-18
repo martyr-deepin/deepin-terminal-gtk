@@ -127,7 +127,7 @@ namespace Widgets {
             window_init_height = 670;
         
 			theme_label = create_label();
-            opacity_label = create_label("%s:".printf(_("Opacity")));
+            opacity_label = create_label(_("Opacity:"));
             opacity_progressbar = new Widgets.ProgressBar(opacity);
 			font_label = create_label();
 			font_combox = create_combox_text();
@@ -183,7 +183,7 @@ namespace Widgets {
 			show_command_key_entry = new ShortcutEntry();
 			show_remote_manage_key_entry = new ShortcutEntry();
 			
-            cursor_style_label = create_label("%s:".printf(_("Cursor style")));
+            cursor_style_label = create_label(_("Cursor style:"));
 			cursor_style_button = new Widgets.CursorToggleButton();
 			cursor_blink_checkbutton = create_checkbutton();
 			scroll_on_key_checkbutton = create_checkbutton();
@@ -269,9 +269,9 @@ namespace Widgets {
 			}
 			font_names.sort();
 			
-            create_combox_row(font_label, font_combox, "%s:".printf(_("Font")), font_grid, font_names, "general", "font");
+            create_combox_row(font_label, font_combox, _("Font:"), font_grid, font_names, "general", "font");
             
-            create_follow_spinbutton_row(font_size_spinbutton, "%s:".printf(_("Font size")), font_label, font_grid, "general", "font_size");
+            create_follow_spinbutton_row(font_size_spinbutton, _("Font size:"), font_label, font_grid, "general", "font_size");
             
             var hotkey_segment = get_first_segment(_("Shortcuts"));
             content_box.pack_start(hotkey_segment, false, false, 0);
@@ -282,14 +282,14 @@ namespace Widgets {
             var terminal_key_grid = new Gtk.Grid();
             content_box.pack_start(terminal_key_grid, false, false, 0);
             
-            create_key_row(copy_key_label, copy_key_entry, "%s:".printf(_("Copy")), terminal_key_grid, "shortcut", "copy");
-            create_follow_key_row(paste_key_label, paste_key_entry, "%s:".printf(_("Paste")), copy_key_label, terminal_key_grid, "shortcut", "paste");
-            create_follow_key_row(open_key_label, open_key_entry, "%s:".printf(_("Open")), paste_key_label, terminal_key_grid, "shortcut", "open");
-			create_follow_key_row(search_key_label, search_key_entry, "%s:".printf(_("Search")), open_key_label, terminal_key_grid, "shortcut", "search");
-            create_follow_key_row(zoom_in_key_label, zoom_in_key_entry, "%s:".printf(_("Zoom in")), search_key_label, terminal_key_grid, "shortcut", "zoom_in");
-            create_follow_key_row(zoom_out_key_label, zoom_out_key_entry, "%s:".printf(_("Zoom out")), zoom_in_key_label, terminal_key_grid, "shortcut", "zoom_out");
-            create_follow_key_row(zoom_reset_key_label, zoom_reset_key_entry, "%s:".printf(_("Default size")), zoom_out_key_label, terminal_key_grid, "shortcut", "default_size");
-            create_follow_key_row(select_all_key_label, select_all_key_entry, "%s:".printf(_("Select all")), zoom_reset_key_label, terminal_key_grid, "shortcut", "select_all");
+            create_key_row(copy_key_label, copy_key_entry, _("Copy:"), terminal_key_grid, "shortcut", "copy");
+            create_follow_key_row(paste_key_label, paste_key_entry, _("Paste:"), copy_key_label, terminal_key_grid, "shortcut", "paste");
+            create_follow_key_row(open_key_label, open_key_entry, _("Open:"), paste_key_label, terminal_key_grid, "shortcut", "open");
+			create_follow_key_row(search_key_label, search_key_entry, _("Search:"), open_key_label, terminal_key_grid, "shortcut", "search");
+            create_follow_key_row(zoom_in_key_label, zoom_in_key_entry, _("Zoom in:"), search_key_label, terminal_key_grid, "shortcut", "zoom_in");
+            create_follow_key_row(zoom_out_key_label, zoom_out_key_entry, _("Zoom out:"), zoom_in_key_label, terminal_key_grid, "shortcut", "zoom_out");
+            create_follow_key_row(zoom_reset_key_label, zoom_reset_key_entry, _("Default size:"), zoom_out_key_label, terminal_key_grid, "shortcut", "default_size");
+            create_follow_key_row(select_all_key_label, select_all_key_entry, _("Select all:"), zoom_reset_key_label, terminal_key_grid, "shortcut", "select_all");
             
             var workspace_key_segment = get_second_segment(_("Workspace"));
             content_box.pack_start(workspace_key_segment, false, false, 0);
@@ -297,18 +297,18 @@ namespace Widgets {
             var workspace_key_grid = new Gtk.Grid();
             content_box.pack_start(workspace_key_grid, false, false, 0);
             
-            create_key_row(new_workspace_key_label, new_workspace_key_entry, "%s:".printf(_("New workspace")), workspace_key_grid, "shortcut", "new_workspace");
-            create_follow_key_row(close_workspace_key_label, close_workspace_key_entry, "%s:".printf(_("Close workspace")), new_workspace_key_label, workspace_key_grid, "shortcut", "close_workspace");
-            create_follow_key_row(previous_workspace_key_label, previous_workspace_key_entry, "%s:".printf(_("Previous workspace")), close_workspace_key_label, workspace_key_grid, "shortcut", "previous_workspace");
-            create_follow_key_row(next_workspace_key_label, next_workspace_key_entry, "%s:".printf(_("Next workspace")), previous_workspace_key_label, workspace_key_grid, "shortcut", "next_workspace");
-            create_follow_key_row(split_vertically_key_label, split_vertically_key_entry, "%s:".printf(_("Vertical split")), next_workspace_key_label, workspace_key_grid, "shortcut", "vertical_split");
-            create_follow_key_row(split_horizontally_key_label, split_horizontally_key_entry, "%s:".printf(_("Horizontal split")), split_vertically_key_label, workspace_key_grid, "shortcut", "horizontal_split");
-            create_follow_key_row(select_up_window_key_label, select_up_window_key_entry, "%s:".printf(_("Select upper window")), split_horizontally_key_label, workspace_key_grid, "shortcut", "select_upper_window");
-            create_follow_key_row(select_down_window_key_label, select_down_window_key_entry, "%s:".printf(_("Select lower window")), select_up_window_key_label, workspace_key_grid, "shortcut", "select_lower_window");
-            create_follow_key_row(select_left_window_key_label, select_left_window_key_entry, "%s:".printf(_("Select left window")), select_down_window_key_label, workspace_key_grid, "shortcut", "select_left_window");
-            create_follow_key_row(select_right_window_key_label, select_right_window_key_entry, "%s:".printf(_("Select right window")), select_left_window_key_label, workspace_key_grid, "shortcut", "select_right_window");
-            create_follow_key_row(close_window_key_label, close_window_key_entry, "%s:".printf(_("Close window")), select_right_window_key_label, workspace_key_grid, "shortcut", "close_window");
-            create_follow_key_row(close_other_windows_key_label, close_other_windows_key_entry, "%s:".printf(_("Close other windows")), close_window_key_label, workspace_key_grid, "shortcut", "close_other_windows");
+            create_key_row(new_workspace_key_label, new_workspace_key_entry, _("New workspace:"), workspace_key_grid, "shortcut", "new_workspace");
+            create_follow_key_row(close_workspace_key_label, close_workspace_key_entry, _("Close workspace:"), new_workspace_key_label, workspace_key_grid, "shortcut", "close_workspace");
+            create_follow_key_row(previous_workspace_key_label, previous_workspace_key_entry, _("Previous workspace:"), close_workspace_key_label, workspace_key_grid, "shortcut", "previous_workspace");
+            create_follow_key_row(next_workspace_key_label, next_workspace_key_entry, _("Next workspace:"), previous_workspace_key_label, workspace_key_grid, "shortcut", "next_workspace");
+            create_follow_key_row(split_vertically_key_label, split_vertically_key_entry, _("Vertical split:"), next_workspace_key_label, workspace_key_grid, "shortcut", "vertical_split");
+            create_follow_key_row(split_horizontally_key_label, split_horizontally_key_entry, _("Horizontal split:"), split_vertically_key_label, workspace_key_grid, "shortcut", "horizontal_split");
+            create_follow_key_row(select_up_window_key_label, select_up_window_key_entry, _("Select upper window:"), split_horizontally_key_label, workspace_key_grid, "shortcut", "select_upper_window");
+            create_follow_key_row(select_down_window_key_label, select_down_window_key_entry, _("Select lower window:"), select_up_window_key_label, workspace_key_grid, "shortcut", "select_lower_window");
+            create_follow_key_row(select_left_window_key_label, select_left_window_key_entry, _("Select left window:"), select_down_window_key_label, workspace_key_grid, "shortcut", "select_left_window");
+            create_follow_key_row(select_right_window_key_label, select_right_window_key_entry, _("Select right window:"), select_left_window_key_label, workspace_key_grid, "shortcut", "select_right_window");
+            create_follow_key_row(close_window_key_label, close_window_key_entry, _("Close window:"), select_right_window_key_label, workspace_key_grid, "shortcut", "close_window");
+            create_follow_key_row(close_other_windows_key_label, close_other_windows_key_entry, _("Close other windows:"), close_window_key_label, workspace_key_grid, "shortcut", "close_other_windows");
             
             var advanced_key_segment = get_second_segment(_("Advanced"));
             content_box.pack_start(advanced_key_segment, false, false, 0);
@@ -316,10 +316,10 @@ namespace Widgets {
             var advanced_key_grid = new Gtk.Grid();
             content_box.pack_start(advanced_key_grid, false, false, 0);
             
-            create_key_row(fullscreen_key_label, fullscreen_key_entry, "%s:".printf(_("Fullscreen")), advanced_key_grid, "shortcut", "switch_fullscreen");
-            create_follow_key_row(display_hotkey_terminal_key_label, display_hotkey_terminal_key_entry, "%s:".printf(_("Display shortcuts")), fullscreen_key_label, advanced_key_grid, "shortcut", "display_shortcuts");
-            create_follow_key_row(show_command_key_label, show_command_key_entry, "%s:".printf(_("Custom commands")), display_hotkey_terminal_key_label, advanced_key_grid, "shortcut", "custom_commands");
-            create_follow_key_row(show_remote_manage_key_label, show_remote_manage_key_entry, "%s:".printf(_("Remote management")), show_command_key_label, advanced_key_grid, "shortcut", "remote_management");
+            create_key_row(fullscreen_key_label, fullscreen_key_entry, _("Fullscreen:"), advanced_key_grid, "shortcut", "switch_fullscreen");
+            create_follow_key_row(display_hotkey_terminal_key_label, display_hotkey_terminal_key_entry, _("Display shortcuts:"), fullscreen_key_label, advanced_key_grid, "shortcut", "display_shortcuts");
+            create_follow_key_row(show_command_key_label, show_command_key_entry, _("Custom commands:"), display_hotkey_terminal_key_label, advanced_key_grid, "shortcut", "custom_commands");
+            create_follow_key_row(show_remote_manage_key_label, show_remote_manage_key_entry, _("Remote management:"), show_command_key_label, advanced_key_grid, "shortcut", "remote_management");
             
             var advanced_segment = get_first_segment(_("Advanced"));
             content_box.pack_start(advanced_segment, false, false, 0);
@@ -356,8 +356,6 @@ namespace Widgets {
             
             var scroll_on_key_box = create_check_row(scroll_on_key_checkbutton, _("Scroll on keystroke"), scroll_grid, "advanced", "scroll_on_key");
             create_follow_check_row(scroll_on_out_checkbutton, _("Scroll on output"), scroll_on_key_box, scroll_grid, "advanced", "scroll_on_output");
-            
-            // create_follow_spinbutton_row(scroll_line_spinbutton, "%s:".printf(_("Scroll lines")), scroll_on_output_box, scroll_grid, "advanced", "scroll_line");
             
             var window_segment = get_second_segment(_("Window"));
             content_box.pack_start(window_segment, false, false, 0);

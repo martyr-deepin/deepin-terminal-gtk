@@ -510,7 +510,7 @@ namespace Widgets {
                 top_box.pack_start(back_button, false, false, 0);
                 
                 var search_label = new Gtk.Label(null);
-                search_label.set_text("%s: %s".printf(_("Search"), search_text));
+                search_label.set_text("%s %s".printf(_("Search:"), search_text));
                 search_label.get_style_context().add_class("remote_search_label");
                 top_box.pack_start(search_label, true, true, 0);
                 

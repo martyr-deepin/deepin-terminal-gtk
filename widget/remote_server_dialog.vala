@@ -176,10 +176,10 @@ namespace Widgets {
                     name_entry.set_text(config_file.get_value(server_info, "Name"));
                 }
                 name_entry.set_placeholder_text(_("Required"));
-                create_key_row(name_label, name_entry, "%s:".printf(_("Server name")), grid);
+                create_key_row(name_label, name_entry, _("Server name:"), grid);
 
                 // Address.
-                Label address_label = create_label("%s:".printf(_("Address")));
+                Label address_label = create_label(_("Address:"));
                 address_entry = new Entry();
                 if (server_info != null) {
                     address_entry.set_text(server_info.split("@")[1]);
@@ -188,7 +188,7 @@ namespace Widgets {
                 address_entry.set_placeholder_text(_("Required"));
                 address_entry.margin_start = label_margin_left;
                 address_entry.get_style_context().add_class("preference_entry");
-                Label port_label = create_label("%s:".printf(_("Port")));
+                Label port_label = create_label(_("Port:"));
                 port_entry = new Entry();
                 port_entry.set_placeholder_text(_("Required"));
                 if (server_info != null) {
@@ -217,7 +217,7 @@ namespace Widgets {
                     user_entry.set_text(server_info.split("@")[0]);
                 }
                 user_entry.set_placeholder_text(_("Required"));
-                create_follow_key_row(user_label, user_entry, "%s:".printf(_("Username")), address_label, grid);
+                create_follow_key_row(user_label, user_entry, _("Username:"), address_label, grid);
             
                 // Password.
                 Label password_label = new Gtk.Label(null);
@@ -226,7 +226,7 @@ namespace Widgets {
                     string password = Utils.lookup_password(server_info.split("@")[0], server_info.split("@")[1]);
                     password_button.entry.set_text(password);
                 }
-                create_follow_key_row(password_label, password_button, "%s:".printf(_("Password")), user_label, grid);
+                create_follow_key_row(password_label, password_button, _("Password:"), user_label, grid);
             
                 // File.
                 Label file_label = new Gtk.Label(null);
@@ -240,7 +240,7 @@ namespace Widgets {
                         }
                     }
                 }
-                create_follow_key_row(file_label, file_button, "%s:".printf(_("Certificate")), password_label, grid);
+                create_follow_key_row(file_label, file_button, _("Certificate:"), password_label, grid);
             
                 // Advanced box.
                 advanced_options_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
@@ -256,7 +256,7 @@ namespace Widgets {
                 }
                 groupname_entry.set_placeholder_text(_("Optional"));
                 groupname_entry.set_width_chars(30);  // this line is expand width of entry.
-                create_key_row(group_name_label, groupname_entry, "%s:".printf(_("Group")), advanced_grid);
+                create_key_row(group_name_label, groupname_entry, _("Group:"), advanced_grid);
 
                 // Path.
                 Label path_label = new Gtk.Label(null);
@@ -265,7 +265,7 @@ namespace Widgets {
                     path_entry.set_text(config_file.get_value(server_info, "Path"));
                 }
                 path_entry.set_placeholder_text(_("Optional"));
-                create_follow_key_row(path_label, path_entry, "%s:".printf(_("Path")), group_name_label, advanced_grid);
+                create_follow_key_row(path_label, path_entry, _("Path:"), group_name_label, advanced_grid);
 
                 // Command.
                 Label command_label = new Gtk.Label(null);
@@ -274,7 +274,7 @@ namespace Widgets {
                     command_entry.set_text(config_file.get_value(server_info, "Command"));
                 }
                 command_entry.set_placeholder_text(_("Optional"));
-                create_follow_key_row(command_label, command_entry, "%s:".printf(_("Command")), path_label, advanced_grid);
+                create_follow_key_row(command_label, command_entry, _("Command:"), path_label, advanced_grid);
             
                 // Encoding.
                 Label encode_label = new Gtk.Label(null);
@@ -287,7 +287,7 @@ namespace Widgets {
                 } else {
                     encode_box.set_active(parent_window.config.encoding_names.index_of("UTF-8"));
                 }
-                create_follow_key_row(encode_label, encode_box, "%s:".printf(_("Encoding")), command_label, advanced_grid, "preference_comboboxtext");
+                create_follow_key_row(encode_label, encode_box, _("Encoding:"), command_label, advanced_grid, "preference_comboboxtext");
             
                 // Backspace sequence.
                 Label backspace_key_label = new Gtk.Label(null);
@@ -300,7 +300,7 @@ namespace Widgets {
                 } else {
                     backspace_key_box.set_active(parent_window.config.backspace_key_erase_names.index_of("ascii-del"));
                 }
-                create_follow_key_row(backspace_key_label, backspace_key_box, "%s:".printf(_("Backspace key")), encode_label, advanced_grid, "preference_comboboxtext");
+                create_follow_key_row(backspace_key_label, backspace_key_box, _("Backspace key:"), encode_label, advanced_grid, "preference_comboboxtext");
 
                 // Delete sequence.
                 Label del_key_label = new Gtk.Label(null);
@@ -313,7 +313,7 @@ namespace Widgets {
                 } else {
                     del_key_box.set_active(parent_window.config.del_key_erase_names.index_of("escape-sequence"));
                 }
-                create_follow_key_row(del_key_label, del_key_box, "%s:".printf(_("Delete key")), backspace_key_label, advanced_grid, "preference_comboboxtext");
+                create_follow_key_row(del_key_label, del_key_box, _("Delete key:"), backspace_key_label, advanced_grid, "preference_comboboxtext");
             
                 server_action_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
                 show_advanced_button = Widgets.create_link_button(_("Advanced options"));

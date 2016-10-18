@@ -157,7 +157,7 @@ namespace Widgets {
                     name_entry.set_text(command_info);
                 }
                 name_entry.set_placeholder_text(_("Required"));
-                create_key_row(name_label, name_entry, "%s:".printf(_("Name")), grid);
+                create_key_row(name_label, name_entry, _("Name:"), grid);
 
                 // Command.
                 Label command_label = new Gtk.Label(null);
@@ -166,7 +166,7 @@ namespace Widgets {
                     command_entry.set_text(config_file.get_value(command_info, "Command"));
                 }
                 command_entry.set_placeholder_text(_("Required"));
-                create_follow_key_row(command_label, command_entry, "%s:".printf(_("Command")), name_label, grid);
+                create_follow_key_row(command_label, command_entry, _("Command:"), name_label, grid);
 
                 // Shortcut.
                 Label shortcut_label = new Gtk.Label(null);
@@ -174,7 +174,7 @@ namespace Widgets {
                 if (command_info != null) {
                     shortcut_entry.set_text(config_file.get_value(command_info, "Shortcut"));
                 }
-                create_follow_key_row(shortcut_label, shortcut_entry, "%s:".printf(_("Shortcuts")), command_label, grid);
+                create_follow_key_row(shortcut_label, shortcut_entry, _("Shortcuts:"), command_label, grid);
                 
                 command_action_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
                 command_action_box.set_size_request(-1, 30);
