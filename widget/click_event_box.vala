@@ -15,7 +15,7 @@ namespace Widgets {
 				});
             
 			button_release_event.connect((w, e) => {
-                    if (is_press && Utils.pointer_in_widget_area(this)) {
+                    if (is_press && Utils.is_left_button(e) && Utils.pointer_in_widget_area(this)) {
                         clicked(e);
                     }
                     

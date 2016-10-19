@@ -130,8 +130,10 @@ namespace Widgets {
                 pack_start(button, false, false, theme_button_padding);
                 
                 button.button_press_event.connect((w, e) => {
-                        active_button(theme_name);
-                        active_theme(theme_name);
+                        if (Utils.is_left_button(e)) {
+                            active_button(theme_name);
+                            active_theme(theme_name);
+                        }
                         
                         return false;
                     });

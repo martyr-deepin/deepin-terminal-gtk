@@ -125,8 +125,10 @@ namespace Widgets {
                 pack_start(button, false, false, encoding_button_padding);
                 
                 button.button_press_event.connect((w, e) => {
-                        active_button(encoding_name);
-                        active_encoding(encoding_name);
+                        if (Utils.is_left_button(e)) {
+                            active_button(encoding_name);
+                            active_encoding(encoding_name);
+                        }
                         
                         return false;
                     });
