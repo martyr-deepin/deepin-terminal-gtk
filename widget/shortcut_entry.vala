@@ -109,7 +109,7 @@ namespace Widgets {
             } else {
                 int x = shortcut_font_padding_x;
                 int y = shortcut_font_padding_y;
-                var shortcut_keys = shortcut.split("+");
+                var shortcut_keys = shortcut.split(" + ");
                 foreach (string key in shortcut_keys) {
                     var font_description = new Pango.FontDescription();
                     font_description.set_size((int)(shortcut_font_size * Pango.SCALE));
