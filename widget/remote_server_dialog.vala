@@ -464,6 +464,9 @@ namespace Widgets {
             name_widget.set_size_request(preference_name_width, grid_height);
             
             value_widget.set_size_request(preference_widget_width, grid_height);
+            // NOTE:
+            // set_hexpand is very important to make widget in grid to expand space horizaontally.
+            value_widget.set_hexpand(true);
         }
         
         public void grid_attach(Gtk.Grid grid, Gtk.Widget child, int left, int top, int width, int height) {

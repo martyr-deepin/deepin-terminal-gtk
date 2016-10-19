@@ -226,6 +226,7 @@ namespace Widgets {
             
             preference_box.pack_start(box, true, true, 0);
             content_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+            content_box.margin_end = 20;
             scrolledwindow.add(content_box);
 			
             var basic_segment = get_first_segment(_("Basic"));
@@ -649,6 +650,9 @@ namespace Widgets {
             
             value_widget.set_size_request(preference_widget_width, grid_height);
             value_widget.margin_end = option_widget_margin_right;
+            // NOTE:
+            // set_hexpand is very important to make widget in grid to expand space horizaontally.
+            value_widget.set_hexpand(true);
         }
         
         public Gtk.Box create_check_row(Widgets.CheckButton checkbutton, string name, Gtk.Grid grid, string? group_name=null, string? key=null) {
