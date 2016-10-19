@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-18 16:54+0800\n"
+"POT-Creation-Date: 2016-10-19 08:56+0800\n"
 "PO-Revision-Date: 2016-08-22 00:55+0800\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -566,8 +566,8 @@ msgid "Upload file"
 msgstr "上传文件"
 
 #: ../widget/preference.vala:374
-msgid "Use on starting"
-msgstr "启动时使用"
+msgid "Use on starting:"
+msgstr "启动时使用："
 
 #: ../widget/remote_server_dialog.vala:104
 msgid "Username"

@@ -371,7 +371,7 @@ namespace Widgets {
             window_state_name_list.add(_("Normal window"));
             window_state_name_list.add(_("Maximize"));
             window_state_name_list.add(_("Fullscreen"));
-            create_combox_row_with_name(window_label, window_combox, _("Use on starting"), window_grid, window_state_list, window_state_name_list, "advanced", "use_on_starting");
+            create_combox_row_with_name(window_label, window_combox, _("Use on starting:"), window_grid, window_state_list, window_state_name_list, "advanced", "use_on_starting");
             
             var reset_button = new Widgets.ImageButton("reset_button", false, _("Restore default settings"));
             reset_button.set_halign(Gtk.Align.CENTER);
