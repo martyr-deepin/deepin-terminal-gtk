@@ -171,7 +171,9 @@ namespace Widgets {
                 home_page_box.pack_start(search_entry, false, false, 0);
                 
                 search_entry.search_entry.activate.connect((entry) => {
-                        show_search_page(entry.get_text(), "", home_page_box);
+                        if (entry.get_text().strip() != "") {
+                            show_search_page(entry.get_text(), "", home_page_box);
+                        }
                     });
                 
                 var split_line = new SplitLine(parent_window.is_light_theme());
@@ -390,7 +392,9 @@ namespace Widgets {
                 top_box.pack_start(search_entry, true, true, 0);
                 
                 search_entry.search_entry.activate.connect((entry) => {
-                        show_search_page(entry.get_text(), group_name, group_page_box);
+                        if (entry.get_text().strip() != "") {
+                            show_search_page(entry.get_text(), group_name, group_page_box);
+                        }
                     });
 			}
 			
