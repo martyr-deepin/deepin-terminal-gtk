@@ -65,6 +65,8 @@ namespace Widgets {
                         change_key(shortcut);
                         
                         queue_draw();
+                    } else if (keyname == "Ctrl + Tab" || keyname == "Ctrl + Shift + Tab") {
+                        return false;
                     } else if (keyname.has_prefix("F") || keyname.contains("+")) {
                         shortcut = keyname;
                         change_key(shortcut);
