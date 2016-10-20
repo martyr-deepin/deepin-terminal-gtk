@@ -24,9 +24,14 @@
 using Gtk;
 using Widgets;
 
+[DBus (name = "com.deepin.terminal")]
+interface TerminalBus : Object {
+    public abstract void exit() throws GLib.IOError;
+    public signal void quit();
+}
+
 namespace Widgets {
     public class Appbar : Gtk.Overlay {
-        public Menu.Menu menu;
 		public int height = Constant.TITLEBAR_HEIGHT;
         public Box max_toggle_box;
         public Box window_button_box;
@@ -38,6 +43,7 @@ namespace Widgets {
         public ImageButton min_button;
         public ImageButton quit_fullscreen_button;
         public ImageButton unmax_button;
+        public Menu.Menu menu;
         public Tabbar tabbar;
         public Widgets.Window window;
         public Widgets.WindowEventArea event_area;
@@ -48,14 +54,46 @@ namespace Widgets {
         
         public signal void close_window();
         public signal void quit_fullscreen();
+        public signal void exit_terminal();
         
-        public Appbar(Widgets.Window win, Tabbar tab_bar, WorkspaceManager manager) {
+        public Appbar(TerminalApp app, Widgets.Window win, Tabbar tab_bar, WorkspaceManager manager, bool has_start) {
             Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
 
             window = win;
             workspace_manager = manager;
 			
 			set_size_request(-1, height);
+            
+            if (has_start) {
+                // If has one terminal start,
+                // just call *first* temrinal's 'exit' function, then *first* terminal process will broadcast 'quit' signal,
+                // all other terminals will quit when catch 'quit' signal that emit from *first* terminal.
+                TerminalBus bus = null;
+                try {
+                    bus = Bus.get_proxy_sync(
+                        BusType.SESSION,
+                        "com.deepin.terminal",
+                        "/com/deepin/terminal");
+                    bus.quit.connect(() => {
+                            window.quit();
+                        });
+                    exit_terminal.connect(() => {
+                            try {
+                                bus.exit();
+                            } catch (IOError e) {
+                                stderr.printf("AppBar bus.ext: %s\n", e.message);
+                            }
+                        });
+                } catch (IOError e) {
+                    stderr.printf("AppBar bus own: %s\n", e.message);
+                }                    
+            } else {
+                // If current temrinal is *first* one,
+                // broadcast 'quit' signal to other terminals and quit itself.
+                exit_terminal.connect(() => {
+                        app.exit();
+                    });
+            }
 			
             tabbar = tab_bar;
             
@@ -228,7 +266,8 @@ namespace Widgets {
                     dialog.transient_for_window((Widgets.ConfigWindow) this.get_toplevel());
 			    	break;
 				case "exit":
-                    window.quit();
+                    // This just call exit_terminal signal, how to exit terminal looks signal exit_terminal's hooks that define at current class.
+                    exit_terminal();
 					break;
                 case "preference":
                     var preference = new Widgets.Preference((Widgets.ConfigWindow) this.get_toplevel(), ((Gtk.Window) this.get_toplevel()).get_focus());

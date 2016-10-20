@@ -477,8 +477,8 @@ namespace Widgets {
                 });
         }
 
-        public void show_window(WorkspaceManager workspace_manager, Tabbar tabbar) {
-            Appbar appbar = new Appbar(this, tabbar, workspace_manager);
+        public void show_window(TerminalApp app, WorkspaceManager workspace_manager, Tabbar tabbar, bool has_start=false) {
+            Appbar appbar = new Appbar(app, this, tabbar, workspace_manager, has_start);
                 
             appbar.set_valign(Gtk.Align.START);
             appbar.close_window.connect((w) => {
