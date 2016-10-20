@@ -88,7 +88,9 @@ namespace Widgets {
                                 int pointer_x, pointer_y;
                                 Utils.get_pointer_position(out pointer_x, out pointer_y);
                                 
-                                if (pointer_x != resize_cache_x || pointer_y != resize_cache_y) {
+                                if (!window_is_normal()) {
+                                    get_window().set_cursor(null);
+                                } else if (pointer_x != resize_cache_x || pointer_y != resize_cache_y) {
                                     resize_cache_x = pointer_x;
                                     resize_cache_y = pointer_y;
                                     
@@ -607,6 +609,22 @@ namespace Widgets {
         
         public void redraw_window() {
             queue_draw();
+        }
+        
+        public bool window_is_max() {
+            return Gdk.WindowState.MAXIMIZED in get_window().get_state();
+        }
+        
+        public bool window_is_tiled() {
+            return Gdk.WindowState.TILED in get_window().get_state();
+        }
+        
+        public bool window_is_fullscreen() {
+            return Gdk.WindowState.FULLSCREEN in get_window().get_state();
+        }
+        
+        public bool window_is_normal() {
+            return !window_is_max() && !window_is_fullscreen() && !window_is_tiled();
         }
     }
 }

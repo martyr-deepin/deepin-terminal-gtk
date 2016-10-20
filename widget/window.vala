@@ -311,22 +311,6 @@ namespace Widgets {
             
         }
         
-        public bool window_is_max() {
-            return Gdk.WindowState.MAXIMIZED in get_window().get_state();
-        }
-        
-        public bool window_is_tiled() {
-            return Gdk.WindowState.TILED in get_window().get_state();
-        }
-        
-        public bool window_is_fullscreen() {
-            return Gdk.WindowState.FULLSCREEN in get_window().get_state();
-        }
-        
-        public bool window_is_normal() {
-            return !window_is_max() && !window_is_fullscreen() && !window_is_tiled();
-        }
-        
         public void draw_window_frame(Cairo.Context cr) {
             Gtk.Allocation window_frame_rect;
             window_frame_box.get_allocation(out window_frame_rect);
