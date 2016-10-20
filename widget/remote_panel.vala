@@ -422,7 +422,7 @@ namespace Widgets {
 			string user,
 			string password,
             string private_key,
-			string port,
+			int port,
 			string encode,
 			string path,
             string command,
@@ -444,7 +444,7 @@ namespace Widgets {
 			    config_file.set_string(gname, "GroupName", group_name);
 				config_file.set_string(gname, "Command", command);
                 config_file.set_string(gname, "Path", path);
-				config_file.set_string(gname, "Port", port);
+				config_file.set_integer(gname, "Port", port);
 			    config_file.set_string(gname, "Encode", encode);
 			    config_file.set_string(gname, "Backspace", backspace);
 			    config_file.set_string(gname, "Del", delete);

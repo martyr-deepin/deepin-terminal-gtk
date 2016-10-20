@@ -37,9 +37,9 @@ namespace Widgets {
         public Gtk.Entry groupname_entry;
         public Gtk.Entry name_entry;
         public Gtk.Entry path_entry;
-        public Gtk.Entry port_entry;
         public Gtk.Entry user_entry;
         public Gtk.Grid advanced_grid;
+        public Gtk.SpinButton port_spinbutton;
         public Gtk.Widget focus_widget;
         public Widgets.ConfigWindow parent_window;
         public Widgets.PasswordButton password_button;
@@ -67,7 +67,7 @@ namespace Widgets {
                                       string username,
                                       string password,
                                       string private_key,
-                                      string port,
+                                      int port,
                                       string encode,
                                       string path,
                                       string command,
@@ -80,7 +80,7 @@ namespace Widgets {
                                        string username,
                                        string password,
                                        string private_key,
-                                       string port,
+                                       int port,
                                        string encode,
                                        string path,
                                        string command,
@@ -189,21 +189,19 @@ namespace Widgets {
                 address_entry.margin_start = label_margin_left;
                 address_entry.get_style_context().add_class("preference_entry");
                 Label port_label = create_label(_("Port:"));
-                port_entry = new Entry();
-                port_entry.set_placeholder_text(_("Required"));
+                port_spinbutton = new Gtk.SpinButton.with_range(0, 65535, 1);
+                port_spinbutton.get_style_context().add_class("preference_spinbutton");
                 if (server_info != null) {
-                    port_entry.set_text(config_file.get_value(server_info, "Port"));
+                    port_spinbutton.set_value(config_file.get_integer(server_info, "Port"));
                 } else {
-                    port_entry.set_text("22");
+                    port_spinbutton.set_value(22);
                 }
-                port_entry.set_width_chars(4);
-                port_entry.margin_start = label_margin_left;
-                port_entry.get_style_context().add_class("preference_entry");
+                port_spinbutton.margin_start = label_margin_left;
             
                 var address_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
                 address_box.pack_start(address_entry, true, true, 0);
                 address_box.pack_start(port_label, false, false, 0);
-                address_box.pack_start(port_entry, false, false, 0);
+                address_box.pack_start(port_spinbutton, false, false, 0);
             
                 grid_attach_next_to(grid, address_label, name_label, Gtk.PositionType.BOTTOM, preference_name_width, grid_height);
                 grid_attach_next_to(grid, address_box, address_label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
@@ -339,12 +337,12 @@ namespace Widgets {
                     });
                 confirm_button.clicked.connect((b) => {
                         if (server_info != null) {
-                            if (name_entry.get_text().strip() != "" && address_entry.get_text().strip() != "" && port_entry.get_text().strip() != "" && user_entry.get_text().strip() != "") {
+                            if (name_entry.get_text().strip() != "" && address_entry.get_text().strip() != "" && port_spinbutton.get_text().strip() != "" && user_entry.get_text().strip() != "") {
                                 edit_server(address_entry.get_text(),
                                             user_entry.get_text(),
                                             password_button.entry.get_text(),
                                             file_button.entry.get_text(),
-                                            port_entry.get_text(),
+                                            (int) port_spinbutton.get_value(),
                                             parent_window.config.encoding_names[encode_box.get_active()],
                                             path_entry.get_text(),
                                             command_entry.get_text(),
@@ -355,12 +353,12 @@ namespace Widgets {
                                             );
                             }
                         } else {
-                            if (name_entry.get_text().strip() != "" && address_entry.get_text().strip() != "" && port_entry.get_text().strip() != "" && user_entry.get_text().strip() != "") {
+                            if (name_entry.get_text().strip() != "" && address_entry.get_text().strip() != "" && port_spinbutton.get_text().strip() != "" && user_entry.get_text().strip() != "") {
                                 add_server(address_entry.get_text(),
                                            user_entry.get_text(),
                                            password_button.entry.get_text(),
                                            file_button.entry.get_text(),
-                                           port_entry.get_text(),
+                                           (int) port_spinbutton.get_value(),
                                            parent_window.config.encoding_names[encode_box.get_active()],
                                            path_entry.get_text(),
                                            command_entry.get_text(),

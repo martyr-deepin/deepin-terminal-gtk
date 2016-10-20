@@ -28,7 +28,6 @@ using Animation;
 
 namespace Widgets {
     public class Preference : Widgets.Dialog {
-		// public Gtk.SpinButton scroll_line_spinbutton;
 		public ArrayList<string> font_names;
 		public ArrayList<string> window_state_list;
 		public ArrayList<string> window_state_name_list;
@@ -190,7 +189,6 @@ namespace Widgets {
 			scroll_on_out_checkbutton = create_checkbutton();
 			
 			font_size_spinbutton = create_spinbutton(Constant.FONT_MIN_SIZE, Constant.FONT_MAX_SIZE, 1);
-			// scroll_line_spinbutton = create_spinbutton(0, Constant.MAX_SCROLL_LINES, 1);
 			
             parent_window = window;
             
@@ -477,7 +475,6 @@ namespace Widgets {
 				scroll_on_out_checkbutton.set_active(parent_window.config.config_file.get_boolean("advanced", "scroll_on_output"));
 		    
 				font_size_spinbutton.set_value(parent_window.config.config_file.get_integer("general", "font_size"));
-				// scroll_line_spinbutton.set_value(parent_window.config.config_file.get_integer("advanced", "scroll_line"));
 			} catch (GLib.KeyFileError e) {
 				print("Preference init_config: %s\n", e.message);
 			}
