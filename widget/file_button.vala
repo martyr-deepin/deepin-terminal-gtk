@@ -28,7 +28,7 @@ namespace Widgets {
     public class FileButton : Gtk.EventBox {
         public Gtk.Box box;
         public Gtk.Box button_box;
-        public Gtk.Entry entry;
+        public Widgets.Entry entry;
         public ImageButton file_add_button;
         public int height = 26;
         
@@ -41,7 +41,7 @@ namespace Widgets {
             
             box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             
-            entry = new Gtk.Entry();
+            entry = new Widgets.Entry();
             entry.margin_top = 1;
             entry.margin_bottom = 1;
             

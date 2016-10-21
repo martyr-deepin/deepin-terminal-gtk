@@ -84,6 +84,8 @@ vala_precompile(VALA_C
 	./widget/dialog_button.vala
 	./widget/encoding_button.vala 
 	./widget/encoding_panel.vala 
+	./widget/entry.vala 
+	./widget/entry_menu.vala 
 	./widget/file_button.vala 
 	./widget/image_button.vala
 	./widget/panel_button.vala
@@ -101,6 +103,7 @@ vala_precompile(VALA_C
 	./widget/server_group_button.vala
 	./widget/shortcut_entry.vala
 	./widget/split_line.vala
+	./widget/spinbutton.vala
 	./widget/switcher.vala
 	./widget/tabbar.vala
 	./widget/terminal.vala

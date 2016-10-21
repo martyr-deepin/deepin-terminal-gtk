@@ -30,7 +30,7 @@ namespace Widgets {
 		public AnimateTimer timer;
         public Gtk.Box box;
         public Gtk.Box display_box;
-        public Gtk.Entry search_entry;
+        public Widgets.Entry search_entry;
         public Gtk.Label search_label;
         public ImageButton clear_button;
         public Widgets.ImageButton search_image;
@@ -63,7 +63,7 @@ namespace Widgets {
             search_label.set_valign(Gtk.Align.CENTER);
             search_label.set_text(_("Search"));
             search_label.get_style_context().add_class("remote_search_label");
-            search_entry = new Entry();
+            search_entry = new Widgets.Entry();
             search_entry.set_placeholder_text(_("Search"));
             search_entry.get_style_context().add_class("remote_search_entry");
             clear_button = new ImageButton("search_clear", true);

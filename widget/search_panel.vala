@@ -44,7 +44,7 @@ namespace Widgets {
             search_text = "";
             
             search_image = new ImageButton("search", true);
-            search_entry = new Entry();
+            search_entry = new Widgets.Entry();
             clear_button_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             clear_button = new ImageButton("search_clear", true);
             search_next_button = new ImageButton("search_next", true);

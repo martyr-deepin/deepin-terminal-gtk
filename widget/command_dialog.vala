@@ -33,12 +33,12 @@ namespace Widgets {
         public Gtk.ComboBoxText del_key_box;
         public Gtk.ComboBoxText encode_box;
         public Widgets.ShortcutEntry shortcut_entry;
-        public Gtk.Entry command_entry;
-        public Gtk.Entry groupname_entry;
-        public Gtk.Entry name_entry;
-        public Gtk.Entry path_entry;
-        public Gtk.Entry port_entry;
-        public Gtk.Entry user_entry;
+        public Widgets.Entry command_entry;
+        public Widgets.Entry groupname_entry;
+        public Widgets.Entry name_entry;
+        public Widgets.Entry path_entry;
+        public Widgets.Entry port_entry;
+        public Widgets.Entry user_entry;
         public Gtk.Grid advanced_grid;
         public Gtk.Widget focus_widget;
         public Widgets.ConfigWindow parent_window;
@@ -152,7 +152,7 @@ namespace Widgets {
 
                 // Name.
                 Label name_label = new Gtk.Label(null);
-                name_entry = new Entry();
+                name_entry = new Widgets.Entry();
                 if (command_info != null) {
                     name_entry.set_text(command_info);
                 }
@@ -161,7 +161,7 @@ namespace Widgets {
 
                 // Command.
                 Label command_label = new Gtk.Label(null);
-                command_entry = new Entry();
+                command_entry = new Widgets.Entry();
                 if (command_info != null) {
                     command_entry.set_text(config_file.get_value(command_info, "Command"));
                 }

@@ -187,6 +187,10 @@ namespace Utils {
         return event.button == 1;
     }
 
+    public bool is_right_button(Gdk.EventButton event) {
+        return event.button == 3;
+    }
+
     public bool is_double_click(Gdk.EventButton event) {
         return event.button == 1 && event.type == Gdk.EventType.2BUTTON_PRESS;
     }

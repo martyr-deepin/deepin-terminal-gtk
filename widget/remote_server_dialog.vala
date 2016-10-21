@@ -32,14 +32,14 @@ namespace Widgets {
         public Gtk.ComboBoxText backspace_key_box;
         public Gtk.ComboBoxText del_key_box;
         public Gtk.ComboBoxText encode_box;
-        public Gtk.Entry address_entry;
-        public Gtk.Entry command_entry;
-        public Gtk.Entry groupname_entry;
-        public Gtk.Entry name_entry;
-        public Gtk.Entry path_entry;
-        public Gtk.Entry user_entry;
+        public Widgets.Entry address_entry;
+        public Widgets.Entry command_entry;
+        public Widgets.Entry groupname_entry;
+        public Widgets.Entry name_entry;
+        public Widgets.Entry path_entry;
+        public Widgets.Entry user_entry;
         public Gtk.Grid advanced_grid;
-        public Gtk.SpinButton port_spinbutton;
+        public Widgets.SpinButton port_spinbutton;
         public Gtk.Widget focus_widget;
         public Widgets.ConfigWindow parent_window;
         public Widgets.PasswordButton password_button;
@@ -171,7 +171,7 @@ namespace Widgets {
 
                 // Nick name.
                 Label name_label = new Gtk.Label(null);
-                name_entry = new Entry();
+                name_entry = new Widgets.Entry();
                 if (server_info != null) {
                     name_entry.set_text(config_file.get_value(server_info, "Name"));
                 }
@@ -180,7 +180,7 @@ namespace Widgets {
 
                 // Address.
                 Label address_label = create_label(_("Address:"));
-                address_entry = new Entry();
+                address_entry = new Widgets.Entry();
                 if (server_info != null) {
                     address_entry.set_text(server_info.split("@")[1]);
                 }
@@ -189,7 +189,9 @@ namespace Widgets {
                 address_entry.margin_start = label_margin_left;
                 address_entry.get_style_context().add_class("preference_entry");
                 Label port_label = create_label(_("Port:"));
-                port_spinbutton = new Gtk.SpinButton.with_range(0, 65535, 1);
+                port_spinbutton = new Widgets.SpinButton();
+                port_spinbutton.set_range(0, 65535);
+                port_spinbutton.set_increments(1, 10);
                 port_spinbutton.get_style_context().add_class("preference_spinbutton");
                 if (server_info != null) {
                     port_spinbutton.set_value(config_file.get_integer(server_info, "Port"));
@@ -210,7 +212,7 @@ namespace Widgets {
             
                 // Username.
                 Label user_label = new Gtk.Label(null);
-                user_entry = new Entry();
+                user_entry = new Widgets.Entry();
                 if (server_info != null) {
                     user_entry.set_text(server_info.split("@")[0]);
                 }
@@ -248,7 +250,7 @@ namespace Widgets {
                 
                 // Group name.
                 Label group_name_label = new Gtk.Label(null);
-                groupname_entry = new Entry();
+                groupname_entry = new Widgets.Entry();
                 if (server_info != null) {
                     groupname_entry.set_text(config_file.get_value(server_info, "GroupName"));
                 }
@@ -258,7 +260,7 @@ namespace Widgets {
 
                 // Path.
                 Label path_label = new Gtk.Label(null);
-                path_entry = new Entry();
+                path_entry = new Widgets.Entry();
                 if (server_info != null) {
                     path_entry.set_text(config_file.get_value(server_info, "Path"));
                 }
@@ -267,7 +269,7 @@ namespace Widgets {
 
                 // Command.
                 Label command_label = new Gtk.Label(null);
-                command_entry = new Entry();
+                command_entry = new Widgets.Entry();
                 if (server_info != null) {
                     command_entry.set_text(config_file.get_value(server_info, "Command"));
                 }

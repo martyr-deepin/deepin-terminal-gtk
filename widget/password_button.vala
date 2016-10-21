@@ -28,7 +28,7 @@ namespace Widgets {
     public class PasswordButton : Gtk.EventBox {
         public Gtk.Box box;
         public Gtk.Box button_box;
-        public Gtk.Entry entry;
+        public Widgets.Entry entry;
         public ImageButton hide_password_button;
         public ImageButton show_password_button;
         public int height = 26;
@@ -40,7 +40,7 @@ namespace Widgets {
             
             box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             
-            entry = new Gtk.Entry();
+            entry = new Widgets.Entry();
             entry.margin_top = 1;
             entry.margin_bottom = 1;
             entry.set_invisible_char('●');

@@ -86,7 +86,7 @@ namespace Widgets {
 		public Gtk.Label zoom_in_key_label;
 		public Gtk.Label zoom_out_key_label;
 		public Gtk.Label zoom_reset_key_label;
-		public Gtk.SpinButton font_size_spinbutton;
+		public Widgets.SpinButton font_size_spinbutton;
 		public ScrolledWindow scrolledwindow;
 		public Widgets.CheckButton cursor_blink_checkbutton;
 		public Widgets.CheckButton scroll_on_key_checkbutton;
@@ -692,7 +692,7 @@ namespace Widgets {
             }
         }
         
-        public Gtk.Label create_follow_spinbutton_row(Gtk.SpinButton spinbutton, string name, Gtk.Widget previous_widget, Gtk.Grid grid, string? group_name=null, string? key=null) {
+        public Gtk.Label create_follow_spinbutton_row(Widgets.SpinButton spinbutton, string name, Gtk.Widget previous_widget, Gtk.Grid grid, string? group_name=null, string? key=null) {
             var label = create_label(name);
             adjust_option_widgets(label, spinbutton);
             
@@ -704,7 +704,7 @@ namespace Widgets {
             return label;
         }
         
-        public void read_spin_value(Gtk.SpinButton spinbutton, string group_name, string key) {
+        public void read_spin_value(Widgets.SpinButton spinbutton, string group_name, string key) {
             if (group_name != null && key != null) {
                 try {
                     spinbutton.set_value(parent_window.config.config_file.get_integer(group_name, key));
@@ -727,7 +727,7 @@ namespace Widgets {
                 });
         }
 
-        public void monitor_spin_value(Gtk.SpinButton spinbutton, string group_name, string key) {
+        public void monitor_spin_value(Widgets.SpinButton spinbutton, string group_name, string key) {
             spinbutton.value_changed.connect((w) => {
                     var spin_value = spinbutton.get_value();
                     
@@ -744,8 +744,8 @@ namespace Widgets {
             checkbutton.margin_end = checkbutton_margin_right;
         }
         
-        public Gtk.Entry create_entry() {
-            var entry = new Gtk.Entry();
+        public Widgets.Entry create_entry() {
+            var entry = new Widgets.Entry();
             entry.get_style_context().add_class("preference_entry");
             
             return entry;
@@ -758,8 +758,10 @@ namespace Widgets {
             return combox;
         }
         
-        public Gtk.SpinButton create_spinbutton(int min, int max, int step) {
-            var spinbutton = new Gtk.SpinButton.with_range(min, max, step);
+        public Widgets.SpinButton create_spinbutton(int min, int max, int step) {
+            var spinbutton = new Widgets.SpinButton();
+            spinbutton.set_range(min, max);
+            spinbutton.set_increments(step, step * 10);
             spinbutton.get_style_context().add_class("preference_spinbutton");
             
             return spinbutton;
