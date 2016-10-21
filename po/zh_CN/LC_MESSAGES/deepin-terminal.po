@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-21 14:02+0800\n"
+"POT-Creation-Date: 2016-10-21 14:46+0800\n"
 "PO-Revision-Date: 2016-08-22 00:55+0800\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -219,10 +219,6 @@ msgstr "删除键："
 msgid "Delete server"
 msgstr "删除服务器"
 
-#: ../main.vala:124
-msgid "Display help information"
-msgstr "显示帮助信息"
-
 #: ../widget/config_window.vala:315
 msgid "Display shortcuts"
 msgstr "显示快捷键"
@@ -230,6 +226,10 @@ msgstr "显示快捷键"
 #: ../widget/preference.vala:319
 msgid "Display shortcuts:"
 msgstr "显示快捷键："
+
+#: ../main.vala:124
+msgid "Display version"
+msgstr "显示版本"
 
 #: ../widget/terminal.vala:265
 msgid "Download file"

@@ -121,7 +121,7 @@ public class Application : Object {
                     flags=0, 
                     arg=OptionArg.NONE, 
                     arg_data=&version,
-                    description=_("Display help information"), 
+                    description=_("Display version"), 
                     arg_description=null
                 },
                 OptionEntry() {
