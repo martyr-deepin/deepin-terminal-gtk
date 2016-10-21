@@ -61,6 +61,9 @@ Terminal's configure save at:
 Remote servers' configure save at:
 ~/.config/deepin/deepin-terminal/server-config.conf
 
+Customize command's configure save at:
+~/.config/deepin/deepin-terminal/command-config.conf
+
 ## Getting help
 
 Any usage issues can ask for help via
