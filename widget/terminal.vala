@@ -253,6 +253,7 @@ namespace Widgets {
             }
                             
             menu_content.append(new Menu.MenuItem("search", _("Search")));
+            menu_content.append(new Menu.MenuItem("", ""));
             if (in_quake_window) {
                 menu_content.append(new Menu.MenuItem("switch_theme", _("Switch theme")));
             }
