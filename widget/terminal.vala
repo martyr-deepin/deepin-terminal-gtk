@@ -237,7 +237,9 @@ namespace Widgets {
             menu_content.append(new Menu.MenuItem("horizontal_split", _("Horizontal split")));
             menu_content.append(new Menu.MenuItem("vertical_split", _("Vertical split")));
             menu_content.append(new Menu.MenuItem("close_window", _("Close window")));
-            menu_content.append(new Menu.MenuItem("close_other_windows", _("Close other windows")));
+            if (workspace_manager.focus_workspace.term_list.size > 1) {
+                menu_content.append(new Menu.MenuItem("close_other_windows", _("Close other windows")));
+            }
             menu_content.append(new Menu.MenuItem("", ""));
                             
             menu_content.append(new Menu.MenuItem("new_workspace", _("New workspace")));
