@@ -41,6 +41,7 @@ namespace Widgets {
         public Widgets.Entry user_entry;
         public Gtk.Grid advanced_grid;
         public Gtk.Widget focus_widget;
+        public Term? focus_term;
         public Widgets.ConfigWindow parent_window;
         public Widgets.PasswordButton password_button;
         public Widgets.FileButton file_button;
@@ -73,7 +74,7 @@ namespace Widgets {
         
         public signal void delete_command(string name);
         
-        public CommandDialog(Widgets.ConfigWindow window, Gtk.Widget widget, string? info=null, KeyFile? config_file=null) {
+        public CommandDialog(Widgets.ConfigWindow window, Term? term, Gtk.Widget widget, string? info=null, KeyFile? config_file=null) {
             Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
             
             window_init_width = 480;
@@ -95,6 +96,7 @@ namespace Widgets {
             
             try {
                 parent_window = window;
+                focus_term = term;
                 focus_widget = widget;
                 command_info = info;
                 
@@ -164,6 +166,17 @@ namespace Widgets {
                 command_entry = new Widgets.Entry();
                 if (command_info != null) {
                     command_entry.set_text(config_file.get_value(command_info, "Command"));
+                } else {
+                    if (focus_term != null) {
+                        if (focus_term.term.get_has_selection()) {
+                            focus_term.term.copy_clipboard();
+                            
+                            var clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD);
+                            var current_clipboard_text = clipboard.wait_for_text();
+                            
+                            command_entry.set_text(current_clipboard_text);                            
+                        }
+                    }
                 }
                 command_entry.set_placeholder_text(_("Required"));
                 create_follow_key_row(command_label, command_entry, _("Command:"), name_label, grid);

@@ -301,8 +301,8 @@ namespace Widgets {
         
         public void edit_command(string command_name, UpdatePageAfterEdit func) {
             load_config();
-            
-            var command_dialog = new Widgets.CommandDialog(parent_window, this, command_name, config_file);
+
+            var command_dialog = new Widgets.CommandDialog(parent_window, null, this, command_name, config_file);
             command_dialog.transient_for_window(parent_window);
             command_dialog.delete_command.connect((name) => {
                     try {
@@ -371,7 +371,8 @@ namespace Widgets {
         public Widgets.AddButton create_add_command_button() {
 			Widgets.AddButton add_command_button = new Widgets.AddButton(parent_window.is_light_theme(), _("Add command"));
 			add_command_button.clicked.connect((w) => {
-                    var command_dialog = new Widgets.CommandDialog(parent_window, this);
+                    Term focus_term = workspace_manager.focus_workspace.get_focus_term(workspace_manager.focus_workspace);
+                    var command_dialog = new Widgets.CommandDialog(parent_window, focus_term, this);
                     command_dialog.transient_for_window(parent_window);
                     command_dialog.add_command.connect((name, command, shortcut) => {
                             add_command(name, command, shortcut);
