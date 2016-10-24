@@ -57,6 +57,8 @@ namespace Widgets {
 		public ShortcutEntry zoom_in_key_entry;
 		public ShortcutEntry zoom_out_key_entry;
 		public ShortcutEntry zoom_reset_key_entry;
+		public ShortcutEntry jump_to_next_command_key_entry;
+		public ShortcutEntry jump_to_previous_command_key_entry;
 		public Gtk.Label close_other_windows_key_label;
 		public Gtk.Label close_window_key_label;
 		public Gtk.Label close_workspace_key_label;
@@ -86,6 +88,8 @@ namespace Widgets {
 		public Gtk.Label zoom_in_key_label;
 		public Gtk.Label zoom_out_key_label;
 		public Gtk.Label zoom_reset_key_label;
+		public Gtk.Label jump_to_next_command_key_label;
+		public Gtk.Label jump_to_previous_command_key_label;
 		public Widgets.SpinButton font_size_spinbutton;
 		public ScrolledWindow scrolledwindow;
 		public Widgets.CheckButton cursor_blink_checkbutton;
@@ -147,6 +151,10 @@ namespace Widgets {
 			zoom_out_key_entry = new ShortcutEntry();
 			zoom_reset_key_label = create_label();
 			zoom_reset_key_entry = new ShortcutEntry();
+			jump_to_next_command_key_label = create_label();
+			jump_to_next_command_key_entry = new ShortcutEntry();
+			jump_to_previous_command_key_label = create_label();
+			jump_to_previous_command_key_entry = new ShortcutEntry();
 			select_all_key_label = create_label();
 			select_all_key_entry = new ShortcutEntry();
 			new_workspace_key_label = create_label();
@@ -288,7 +296,9 @@ namespace Widgets {
             create_follow_key_row(zoom_in_key_label, zoom_in_key_entry, _("Zoom in:"), search_key_label, terminal_key_grid, "shortcut", "zoom_in");
             create_follow_key_row(zoom_out_key_label, zoom_out_key_entry, _("Zoom out:"), zoom_in_key_label, terminal_key_grid, "shortcut", "zoom_out");
             create_follow_key_row(zoom_reset_key_label, zoom_reset_key_entry, _("Default size:"), zoom_out_key_label, terminal_key_grid, "shortcut", "default_size");
-            create_follow_key_row(select_all_key_label, select_all_key_entry, _("Select all:"), zoom_reset_key_label, terminal_key_grid, "shortcut", "select_all");
+            create_follow_key_row(jump_to_next_command_key_label, jump_to_next_command_key_entry, _("Jump to next command:"), zoom_reset_key_label, terminal_key_grid, "shortcut", "jump_to_next_command");
+            create_follow_key_row(jump_to_previous_command_key_label, jump_to_previous_command_key_entry, _("Jump to previous command:"), jump_to_next_command_key_label, terminal_key_grid, "shortcut", "jump_to_previous_command");
+            create_follow_key_row(select_all_key_label, select_all_key_entry, _("Select all:"), jump_to_previous_command_key_label, terminal_key_grid, "shortcut", "select_all");
             
             var workspace_key_segment = get_second_segment(_("Workspace"));
             content_box.pack_start(workspace_key_segment, false, false, 0);
@@ -450,6 +460,8 @@ namespace Widgets {
 				zoom_in_key_entry.set_text(parent_window.config.config_file.get_string("shortcut", "zoom_in"));
 				zoom_out_key_entry.set_text(parent_window.config.config_file.get_string("shortcut", "zoom_out"));
 				zoom_reset_key_entry.set_text(parent_window.config.config_file.get_string("shortcut", "default_size"));
+				jump_to_next_command_key_entry.set_text(parent_window.config.config_file.get_string("shortcut", "jump_to_next_command"));
+				jump_to_previous_command_key_entry.set_text(parent_window.config.config_file.get_string("shortcut", "jump_to_previous_command"));
 				select_all_key_entry.set_text(parent_window.config.config_file.get_string("shortcut", "select_all"));
 				new_workspace_key_entry.set_text(parent_window.config.config_file.get_string("shortcut", "new_workspace"));
 				close_workspace_key_entry.set_text(parent_window.config.config_file.get_string("shortcut", "close_workspace"));

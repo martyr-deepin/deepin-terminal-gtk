@@ -270,6 +270,8 @@ namespace Widgets {
                 insert_shortcut_key(builder, _("Zoom out"), config.config_file.get_string("shortcut", "zoom_out"));;
                 insert_shortcut_key(builder, _("Default size"), config.config_file.get_string("shortcut", "default_size"));;
                 insert_shortcut_key(builder, _("Select all"), config.config_file.get_string("shortcut", "select_all"));;
+                insert_shortcut_key(builder, _("Jump to next command"), config.config_file.get_string("shortcut", "jump_to_next_command"));;
+                insert_shortcut_key(builder, _("Jump to previous command"), config.config_file.get_string("shortcut", "jump_to_previous_command"));;
                     
                 builder.end_array();
                     

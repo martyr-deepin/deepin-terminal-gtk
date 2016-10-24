@@ -35,13 +35,14 @@ namespace Widgets {
             STRING,
             TEXT
         }
-        
+
 		public Menu.Menu menu;
 		public WorkspaceManager workspace_manager;
 		public bool has_select_all = false;
 		public int font_size = 0;
         private bool enter_sz_command = false;
         private string save_file_directory = "";
+        public ArrayList<int> command_execute_y_coordinates;
         public GLib.Pid child_pid;
         public Gdk.RGBA background_color = Gdk.RGBA();
         public Gdk.RGBA foreground_color = Gdk.RGBA();
@@ -82,6 +83,7 @@ namespace Widgets {
             
 			workspace_manager = manager;
             is_first_term = first_term;
+            command_execute_y_coordinates = new ArrayList<int>();
             
             get_style_context().add_class("scrolledwindow");
             
@@ -146,7 +148,7 @@ namespace Widgets {
 					
                     return false;
 				});
-			
+            
             /* target entries specify what kind of data the terminal widget accepts */
             Gtk.TargetEntry uri_entry = { "text/uri-list", Gtk.TargetFlags.OTHER_APP, DropTargets.URILIST };
             Gtk.TargetEntry string_entry = { "STRING", Gtk.TargetFlags.OTHER_APP, DropTargets.STRING };
@@ -658,11 +660,32 @@ namespace Widgets {
 			    	set_default_font_size();
 			    	return true;
 			    }
-			    
+                
+			    var jump_to_next_command_key = parent_window.config.config_file.get_string("shortcut", "jump_to_next_command");
+			    if (jump_to_next_command_key != "" && keyname == jump_to_next_command_key) {
+			    	jump_to_next_command();
+			    	return true;
+			    }
+
+			    var jump_to_previous_command_key = parent_window.config.config_file.get_string("shortcut", "jump_to_previous_command");
+			    if (jump_to_previous_command_key != "" && keyname == jump_to_previous_command_key) {
+			    	jump_to_previous_command();
+			    	return true;
+			    }
+                
                 if (keyname == "Enter" || keyname == "Ctrl + m") {
                     if (enter_sz_command) {
                         execute_download();
                         enter_sz_command = false;
+                    } else {
+                        // If user press enter or 'ctrl + m' and not foreground(command-line) process exit.
+                        // We consider user execute command.
+                        if (!has_foreground_process()) {
+                            var y_coordinate = (int) this.get_vadjustment().get_value();
+                            if (command_execute_y_coordinates.size == 0 || y_coordinate != command_execute_y_coordinates[command_execute_y_coordinates.size - 1]) {
+                                command_execute_y_coordinates.add(y_coordinate);
+                            }
+                        }
                     }
                 }
                 
@@ -738,6 +761,27 @@ namespace Widgets {
 			zoom_factor = 1.0;
 			update_font_info();
 		}
+        
+        public void jump_to_next_command() {
+            var y_coordinate = (int) this.get_vadjustment().get_value();
+            foreach (int command_y_coordiante in command_execute_y_coordinates) {
+                if (y_coordinate < command_y_coordiante) {
+                    this.get_vadjustment().set_value(command_y_coordiante);
+                    break;
+                }
+            }
+        }
+        
+        public void jump_to_previous_command() {
+            
+            var y_coordinate = (int) this.get_vadjustment().get_value();
+            for (int count = 0; count < command_execute_y_coordinates.size; count++) {
+                if (y_coordinate > command_execute_y_coordinates[command_execute_y_coordinates.size - 1 - count]) {
+                    this.get_vadjustment().set_value(command_execute_y_coordinates[command_execute_y_coordinates.size - 1 - count]);
+                    break;
+                }
+            }
+        }
 
         public void drag_received (Gdk.DragContext context, int x, int y,
                                    Gtk.SelectionData selection_data, uint target_type, uint time_) {

@@ -91,6 +91,8 @@ namespace Config {
                 config_file.set_string("shortcut", "zoom_out", "Ctrl + -");
                 config_file.set_string("shortcut", "default_size", "Ctrl + 0");
                 config_file.set_string("shortcut", "select_all", "Ctrl + Shift + a");
+                config_file.set_string("shortcut", "jump_to_next_command", "Shift + Down");
+                config_file.set_string("shortcut", "jump_to_previous_command", "Shift + Up");
             
                 config_file.set_string("shortcut", "new_workspace", "Ctrl + Shift + t");
                 config_file.set_string("shortcut", "close_workspace", "Ctrl + Shift + w");
@@ -242,6 +244,8 @@ namespace Config {
             check_string("shortcut", "zoom_in", "Ctrl + =");
             check_string("shortcut", "zoom_out", "Ctrl + -");
             check_string("shortcut", "default_size", "Ctrl + 0");
+            check_string("shortcut", "jump_to_next_command", "Shift + Down");
+            check_string("shortcut", "jump_to_previous_command", "Shift + Up");
             check_string("shortcut", "select_all", "Ctrl + Shift + a");
             
             check_string("shortcut", "new_workspace", "Ctrl + Shift + t");
