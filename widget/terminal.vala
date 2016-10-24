@@ -763,17 +763,24 @@ namespace Widgets {
 		}
         
         public void jump_to_next_command() {
+            bool jump_once = false;
+            
             var y_coordinate = (int) this.get_vadjustment().get_value();
             foreach (int command_y_coordiante in command_execute_y_coordinates) {
                 if (y_coordinate < command_y_coordiante) {
+                    jump_once = true;
                     this.get_vadjustment().set_value(command_y_coordiante);
                     break;
                 }
             }
+            
+            // Jump to bottom if no next position to jump.
+            if (!jump_once) {
+                this.get_vadjustment().set_value(this.get_vadjustment().get_upper());
+            }
         }
         
         public void jump_to_previous_command() {
-            
             var y_coordinate = (int) this.get_vadjustment().get_value();
             for (int count = 0; count < command_execute_y_coordinates.size; count++) {
                 if (y_coordinate > command_execute_y_coordinates[command_execute_y_coordinates.size - 1 - count]) {
