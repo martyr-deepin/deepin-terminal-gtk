@@ -359,10 +359,8 @@ namespace Widgets {
         
         public void execute_command(string command) {
             Term focus_term = workspace_manager.focus_workspace.get_focus_term(workspace_manager.focus_workspace);
-            if (!focus_term.has_foreground_process()) {
-                var command_string = "%s\n".printf(command);
-                focus_term.term.feed_child(command_string, command_string.length);
-            }
+            var command_string = "%s\n".printf(command);
+            focus_term.term.feed_child(command_string, command_string.length);
             
             workspace.hide_command_panel();
             focus_widget.grab_focus();
