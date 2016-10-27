@@ -143,7 +143,7 @@ namespace Widgets {
                                 return false;
                             });
                     } else if (e.type == Gdk.EventType.2BUTTON_PRESS) {
-                        if (is_double_clicked) {
+                        if (is_double_clicked && Utils.is_left_button(e)) {
                             if (filter_double_click_callback == null || !filter_double_click_callback((int) e.x, (int) e.y)) {
                                 ((Widgets.Window) this.get_toplevel()).toggle_max();
                             }

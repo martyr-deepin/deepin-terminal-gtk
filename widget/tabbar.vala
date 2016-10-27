@@ -290,46 +290,47 @@ namespace Widgets {
         public bool on_button_release(Gtk.Widget widget, Gdk.EventButton event) {
             is_button_press = false;
             
-            int button_release_x, button_release_y;
-            event.device.get_position(null, out button_release_x, out button_release_y);
+            if (is_left_button(event)) {
+                int button_release_x, button_release_y;
+                event.device.get_position(null, out button_release_x, out button_release_y);
             
-            if (button_release_x == button_press_x && button_release_y == button_press_y) {
-                var release_x = (int)event.x;
+                if (button_release_x == button_press_x && button_release_y == button_press_y) {
+                    var release_x = (int)event.x;
             
-                Gtk.Allocation alloc;
-                widget.get_allocation(out alloc);
+                    Gtk.Allocation alloc;
+                    widget.get_allocation(out alloc);
             
-                int draw_x = 0;
-                int counter = 0;
-                foreach (int tab_id in tab_list) {
-                    int name_width, name_height;
-                    get_text_size(tab_name_map.get(tab_id), out name_width, out name_height);
-                    int tab_width = get_tab_width(name_width);
+                    int draw_x = 0;
+                    int counter = 0;
+                    foreach (int tab_id in tab_list) {
+                        int name_width, name_height;
+                        get_text_size(tab_name_map.get(tab_id), out name_width, out name_height);
+                        int tab_width = get_tab_width(name_width);
 
-                    if (release_x > draw_x && release_x < draw_x + tab_width) {
-                        if (release_x > draw_x && release_x < draw_x + tab_width - get_tab_close_button_padding()) {
-                            select_nth_tab(counter);
+                        if (release_x > draw_x && release_x < draw_x + tab_width) {
+                            if (release_x > draw_x && release_x < draw_x + tab_width - get_tab_close_button_padding()) {
+                                select_nth_tab(counter);
                         
-                            press_tab(counter, tab_id);
-                            return false;
-                        } else if (release_x > draw_x + tab_width - get_tab_close_button_padding()) {
-                            close_nth_tab(counter);
-                            return false;
+                                press_tab(counter, tab_id);
+                                return false;
+                            } else if (release_x > draw_x + tab_width - get_tab_close_button_padding()) {
+                                close_nth_tab(counter);
+                                return false;
+                            }
                         }
+                
+                        draw_x += tab_width;
+                
+                        counter++;
                     }
-                
-                    draw_x += tab_width;
-                
-                    counter++;
-                }
             
-                if (release_x > draw_x && release_x < draw_x + add_button_width) {
-                    new_tab();
-                }
+                    if (release_x > draw_x && release_x < draw_x + add_button_width) {
+                        new_tab();
+                    }
             
-                queue_draw();
+                    queue_draw();
+                }
             }
-            
             
             return false;
         }
