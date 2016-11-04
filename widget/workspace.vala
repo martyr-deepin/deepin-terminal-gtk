@@ -211,7 +211,7 @@ namespace Widgets {
                 if (container.get_type().is_a(typeof(Paned))) {
 					var first_child = container.get_children().nth_data(0);
 					if (first_child.get_type().is_a(typeof(Paned))) {
-						((Term) ((Paned) first_child).get_children().nth_data(0)).focus_term();
+                        clean_unused_parent((Paned) first_child);
 					} else {
 						((Term) first_child).focus_term();
 					}
