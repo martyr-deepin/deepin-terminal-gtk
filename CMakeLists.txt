@@ -77,6 +77,7 @@ vala_precompile(VALA_C
 	./widget/command_button.vala
 	./widget/command_dialog.vala
 	./widget/command_panel.vala
+	./widget/base_panel.vala
 	./widget/config_window.vala
 	./widget/confirm_dialog.vala
 	./widget/cursor_toggle_button.vala

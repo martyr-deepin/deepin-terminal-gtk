@@ -27,23 +27,9 @@ using Utils;
 using Gee;
 
 namespace Widgets {
-	public class CommandPanel : Gtk.HBox {
-		public Widgets.ConfigWindow parent_window;
-		public WorkspaceManager workspace_manager;
+	public class CommandPanel : BasePanel {
 		public string config_file_path = Utils.get_config_file_path("command-config.conf");
-        public Gdk.RGBA background_color;
-        public Gdk.RGBA line_dark_color;
-        public Gdk.RGBA line_light_color;
-        public Gtk.Box home_page_box;
-        public Gtk.Box search_page_box;
-        public Gtk.ScrolledWindow? home_page_scrolledwindow;
-        public Gtk.ScrolledWindow? search_page_scrolledwindow;
-        public Gtk.Widget? focus_widget;
         public KeyFile config_file;
-        public Widgets.Switcher switcher;
-        public Workspace workspace;
-        public int back_button_margin_left = 8;
-        public int back_button_margin_top = 6;
         public int width = Constant.SLIDER_WIDTH;
         
         public delegate void UpdatePageAfterEdit();
@@ -56,9 +42,6 @@ namespace Widgets {
             
             config_file = new KeyFile();
             
-            line_dark_color = Utils.hex_to_rgba("#ffffff", 0.1);
-            line_light_color = Utils.hex_to_rgba("#000000", 0.1);
-            
             focus_widget = ((Gtk.Window) workspace.get_toplevel()).get_focus();
 			parent_window = (Widgets.ConfigWindow) workspace.get_toplevel();
             try {
@@ -69,9 +52,6 @@ namespace Widgets {
             
             switcher = new Widgets.Switcher(width);
             
-            home_page_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            search_page_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-
             set_size_request(width, -1);
             home_page_box.set_size_request(width, -1);
             search_page_box.set_size_request(width, -1);
@@ -99,38 +79,7 @@ namespace Widgets {
             }
         }
 		
-		private bool on_draw(Gtk.Widget widget, Cairo.Context cr) {
-            bool is_light_theme = ((Widgets.ConfigWindow) get_toplevel()).is_light_theme();
-            
-            Gtk.Allocation rect;
-            widget.get_allocation(out rect);
-			
-            cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, 0.8);
-            Draw.draw_rectangle(cr, 1, 0, rect.width - 1, rect.height);
-            
-            if (is_light_theme) {
-                Utils.set_context_color(cr, line_light_color);
-            } else {
-                Utils.set_context_color(cr, line_dark_color);
-            }
-            Draw.draw_rectangle(cr, 0, 0, 1, rect.height);
-            
-            return false;
-        }
-		
-		public void show_home_page(Gtk.Widget? start_widget=null) {
-            create_home_page();
-            
-            if (start_widget == null) {
-                switcher.add_to_left_box(home_page_box);
-            } else {
-                switcher.scroll_to_left(start_widget, home_page_box);
-            }
-			
-			show_all();
-		}
-
-        public void create_home_page() {
+        public override void create_home_page() {
 			Utils.destroy_all_children(home_page_box);
             home_page_scrolledwindow = null;
             
@@ -148,7 +97,7 @@ namespace Widgets {
                 
                 search_entry.search_entry.activate.connect((entry) => {
                         if (entry.get_text().strip() != "") {
-                            show_search_page(entry.get_text(), home_page_box);
+                            show_search_page(entry.get_text(), "", home_page_box);
                         }
                     });
                 
@@ -209,15 +158,7 @@ namespace Widgets {
 			}
 		}
         
-        public void show_search_page(string search_text, Gtk.Widget start_widget) {
-            create_search_page(search_text);
-
-            switcher.scroll_to_right(start_widget, search_page_box);
-            
-            show_all();
-		}
-
-        public void create_search_page(string search_text) {
+        public override void create_search_page(string search_text, string group_name) {
             Utils.destroy_all_children(search_page_box);
             search_page_scrolledwindow = null;
 
@@ -274,7 +215,7 @@ namespace Widgets {
                     var command_button = create_command_button(ungroup_list[0], ungroup_list[1], ungroup_list[2]);
                     command_button.edit_command.connect((w, command_name) => {
                             edit_command(command_name, () => {
-                                    update_search_page(search_text);
+                                    update_search_page(search_text, "");
                                 });
                         });
                     command_box.pack_start(command_button, false, false, 0);
@@ -339,16 +280,6 @@ namespace Widgets {
             command_dialog.show_all();
         }
         
-        public Gtk.ScrolledWindow create_scrolled_window() {
-            var scrolledwindow = new ScrolledWindow(null, null);
-            scrolledwindow.get_style_context().add_class("scrolledwindow");
-            scrolledwindow.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
-            scrolledwindow.set_shadow_type(Gtk.ShadowType.NONE);
-            scrolledwindow.get_vscrollbar().get_style_context().add_class("light_scrollbar");
-
-            return scrolledwindow;
-        }
-        
         public Widgets.CommandButton create_command_button(string name, string value, string shortcut) {
             var command_button = new Widgets.CommandButton(name, value, shortcut);
             command_button.execute_command.connect((w, command) => {
@@ -383,40 +314,6 @@ namespace Widgets {
                 });
 
             return add_command_button;
-        }
-        
-        public void update_home_page() {
-            double scroll_value = 0;
-            if (home_page_scrolledwindow != null) {
-                scroll_value = home_page_scrolledwindow.get_vadjustment().get_value();
-            }
-                            
-            create_home_page();
-            
-            switcher.add_to_left_box(home_page_box);
-            
-            if (home_page_scrolledwindow != null) {
-                home_page_scrolledwindow.get_vadjustment().set_value(scroll_value);
-            }
-            
-            show_all();
-        }
-        
-        public void update_search_page(string search_text) {
-            double scroll_value = 0;
-            if (search_page_scrolledwindow != null) {
-                scroll_value = search_page_scrolledwindow.get_vadjustment().get_value();
-            }
-                            
-			create_search_page(search_text);
-            
-            switcher.add_to_left_box(search_page_box);
-
-            if (search_page_scrolledwindow != null) {
-                search_page_scrolledwindow.get_vadjustment().set_value(scroll_value);
-            }
-            
-            show_all();
         }
     }
 }
