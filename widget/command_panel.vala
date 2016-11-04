@@ -38,7 +38,7 @@ namespace Widgets {
         public Gtk.Box search_page_box;
         public Gtk.ScrolledWindow? home_page_scrolledwindow;
         public Gtk.ScrolledWindow? search_page_scrolledwindow;
-        public Gtk.Widget focus_widget;
+        public Gtk.Widget? focus_widget;
         public KeyFile config_file;
         public Widgets.Switcher switcher;
         public Workspace workspace;
@@ -363,7 +363,9 @@ namespace Widgets {
             focus_term.term.feed_child(command_string, command_string.length);
             
             workspace.hide_command_panel();
-            focus_widget.grab_focus();
+            if (focus_widget != null) {
+                focus_widget.grab_focus();
+            }
         }
         
         public Widgets.AddButton create_add_command_button() {

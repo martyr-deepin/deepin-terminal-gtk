@@ -40,7 +40,7 @@ namespace Widgets {
         public Widgets.Entry port_entry;
         public Widgets.Entry user_entry;
         public Gtk.Grid advanced_grid;
-        public Gtk.Widget focus_widget;
+        public Gtk.Widget? focus_widget;
         public Term? focus_term;
         public Widgets.ConfigWindow parent_window;
         public Widgets.PasswordButton password_button;
@@ -74,7 +74,7 @@ namespace Widgets {
         
         public signal void delete_command(string name);
         
-        public CommandDialog(Widgets.ConfigWindow window, Term? term, Gtk.Widget widget, string? info=null, KeyFile? config_file=null) {
+        public CommandDialog(Widgets.ConfigWindow window, Term? term, Gtk.Widget? widget, string? info=null, KeyFile? config_file=null) {
             Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
             
             window_init_width = 480;

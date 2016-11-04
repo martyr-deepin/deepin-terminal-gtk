@@ -40,7 +40,7 @@ namespace Widgets {
         public Gtk.ScrolledWindow? group_page_scrolledwindow;
         public Gtk.ScrolledWindow? home_page_scrolledwindow;
         public Gtk.ScrolledWindow? search_page_scrolledwindow;
-        public Gtk.Widget focus_widget;
+        public Gtk.Widget? focus_widget;
         public KeyFile config_file;
         public Widgets.Switcher switcher;
         public Workspace workspace;
@@ -283,7 +283,9 @@ namespace Widgets {
                 // print("%s\n", ssh_script_content);
                 
                 workspace.hide_remote_panel();
-                focus_widget.grab_focus();
+                if (focus_widget != null) {
+                    focus_widget.grab_focus();
+                }
 
                 Term focus_term = workspace_manager.focus_workspace.get_focus_term(workspace_manager.focus_workspace);
                 if (focus_term.has_foreground_process()) {

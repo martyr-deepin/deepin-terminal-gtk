@@ -36,7 +36,7 @@ namespace Widgets {
         public Box max_toggle_box;
         public Box window_button_box;
         public Box window_close_button_box;
-        public Gtk.Widget focus_widget;
+        public Gtk.Widget? focus_widget;
         public ImageButton close_button;
         public ImageButton max_button;
         public ImageButton menu_button;

@@ -26,9 +26,9 @@ using Widgets;
 
 namespace Widgets {
     public class AboutDialog : Widgets.Dialog {
-        public Gtk.Widget focus_widget;
+        public Gtk.Widget? focus_widget;
         
-        public AboutDialog(Gtk.Widget widget) {
+        public AboutDialog(Gtk.Widget? widget) {
             focus_widget = widget;
             
             var overlay = new Gtk.Overlay();

@@ -103,7 +103,7 @@ namespace Widgets {
 		public double timer_start_value;
         public AnimateTimer timer;
         public Gtk.Box content_box;
-        public Gtk.Widget focus_widget;
+        public Gtk.Widget? focus_widget;
         public bool in_animation = false;
         public int checkbutton_margin_right = 5;
         public int checkbutton_margin_top = 4;
@@ -123,7 +123,7 @@ namespace Widgets {
         public int slidebar_width = Constant.PREFERENCE_SLIDEBAR_WIDTH;
         public int timer_interval = 400;
 
-        public Preference(Widgets.ConfigWindow window, Gtk.Widget widget) {
+        public Preference(Widgets.ConfigWindow window, Gtk.Widget? widget) {
             Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
             
             window_init_width = 720;

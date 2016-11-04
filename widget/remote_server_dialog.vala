@@ -40,7 +40,7 @@ namespace Widgets {
         public Widgets.Entry user_entry;
         public Gtk.Grid advanced_grid;
         public Widgets.SpinButton port_spinbutton;
-        public Gtk.Widget focus_widget;
+        public Gtk.Widget? focus_widget;
         public Widgets.ConfigWindow parent_window;
         public Widgets.PasswordButton password_button;
         public Widgets.FileButton file_button;
@@ -92,7 +92,7 @@ namespace Widgets {
         
         public signal void delete_server(string address, string username);
         
-        public RemoteServerDialog(Widgets.ConfigWindow window, Gtk.Widget widget, string? info=null, KeyFile? config_file=null) {
+        public RemoteServerDialog(Widgets.ConfigWindow window, Gtk.Widget? widget, string? info=null, KeyFile? config_file=null) {
             Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
             
             window_init_width = 480;
