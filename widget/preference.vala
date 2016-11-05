@@ -190,9 +190,9 @@ namespace Widgets {
 			
             cursor_style_label = create_label(_("Cursor style:"));
 			cursor_style_button = new Widgets.CursorToggleButton();
-			cursor_blink_checkbutton = create_checkbutton();
-			scroll_on_key_checkbutton = create_checkbutton();
-			scroll_on_out_checkbutton = create_checkbutton();
+			cursor_blink_checkbutton = new Widgets.CheckButton();
+			scroll_on_key_checkbutton = new Widgets.CheckButton();
+			scroll_on_out_checkbutton = new Widgets.CheckButton();
 			
 			font_size_spinbutton = create_spinbutton(Constant.FONT_MIN_SIZE, Constant.FONT_MAX_SIZE, 1);
 			
@@ -777,12 +777,6 @@ namespace Widgets {
             return spinbutton;
         }
 
-        public Widgets.CheckButton create_checkbutton() {
-            var checkbutton = new Widgets.CheckButton();
-            
-            return checkbutton;
-        }
-        
         public Gtk.Label create_label(string? text=null) {
             var label = new Gtk.Label(text);
             label.get_style_context().add_class("preference_label");
