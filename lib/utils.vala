@@ -395,4 +395,8 @@ namespace Utils {
             print("write_log: %s\n", e.message);
         }
     }
+
+    public Cairo.ImageSurface create_image_surface(string surface_path) {
+        return new Cairo.ImageSurface.from_png(Utils.get_image_path(surface_path));
+    }
 }

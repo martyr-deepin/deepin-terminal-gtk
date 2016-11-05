@@ -74,14 +74,14 @@ namespace Widgets {
             button_name = name;
             button_content = content;
             
-			button_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("%s_dark.png".printf(edit_button_name)));
-			button_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("%s_light.png".printf(edit_button_name)));
-			button_edit_normal_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("button_edit_dark_normal.png"));
-			button_edit_hover_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("button_edit_dark_hover.png"));
-			button_edit_press_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("button_edit_dark_press.png"));
-			button_edit_normal_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("button_edit_light_normal.png"));
-			button_edit_hover_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("button_edit_light_hover.png"));
-			button_edit_press_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("button_edit_light_press.png"));
+			button_dark_surface = Utils.create_image_surface("%s_dark.png".printf(edit_button_name));
+			button_light_surface = Utils.create_image_surface("%s_light.png".printf(edit_button_name));
+			button_edit_normal_dark_surface = Utils.create_image_surface("button_edit_dark_normal.png");
+			button_edit_hover_dark_surface = Utils.create_image_surface("button_edit_dark_hover.png");
+			button_edit_press_dark_surface = Utils.create_image_surface("button_edit_dark_press.png");
+			button_edit_normal_light_surface = Utils.create_image_surface("button_edit_light_normal.png");
+			button_edit_hover_light_surface = Utils.create_image_surface("button_edit_light_hover.png");
+			button_edit_press_light_surface = Utils.create_image_surface("button_edit_light_press.png");
             
             button_name_dark_color = Utils.hex_to_rgba("#FFFFFF");
             button_content_dark_color = Utils.hex_to_rgba("#FFFFFF", 0.5);

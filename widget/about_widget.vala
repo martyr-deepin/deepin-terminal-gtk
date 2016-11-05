@@ -48,8 +48,8 @@ namespace Widgets {
             
             about_text = _("Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.\n\nIt sharpens your focus in the world of command line!");
             
-            icon_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("icon.png"));
-            logo_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("logo.png"));
+            icon_surface = Utils.create_image_surface("icon.png");
+            logo_surface = Utils.create_image_surface("logo.png");
             
             set_size_request(-1, height);
 

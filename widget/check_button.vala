@@ -38,14 +38,14 @@ namespace Widgets {
         public Cairo.ImageSurface unchecked_press_surface;
         
         public CheckButton() {
-            checked_normal_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("checkbox_checked_normal.png"));
-            checked_hover_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("checkbox_checked_hover.png"));
-            checked_press_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("checkbox_checked_press.png"));
-            checked_insensitive_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("checkbox_checked_insensitive.png"));
-            unchecked_normal_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("checkbox_unchecked_normal.png"));
-            unchecked_hover_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("checkbox_unchecked_hover.png"));
-            unchecked_press_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("checkbox_unchecked_press.png"));
-            unchecked_insensitive_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path("checkbox_unchecked_insensitive.png"));
+            checked_normal_surface = Utils.create_image_surface("checkbox_checked_normal.png");
+            checked_hover_surface = Utils.create_image_surface("checkbox_checked_hover.png");
+            checked_press_surface = Utils.create_image_surface("checkbox_checked_press.png");
+            checked_insensitive_surface = Utils.create_image_surface("checkbox_checked_insensitive.png");
+            unchecked_normal_surface = Utils.create_image_surface("checkbox_unchecked_normal.png");
+            unchecked_hover_surface = Utils.create_image_surface("checkbox_unchecked_hover.png");
+            unchecked_press_surface = Utils.create_image_surface("checkbox_unchecked_press.png");
+            unchecked_insensitive_surface = Utils.create_image_surface("checkbox_unchecked_insensitive.png");
             
             set_size_request(checked_normal_surface.get_width(), checked_normal_surface.get_height());
             

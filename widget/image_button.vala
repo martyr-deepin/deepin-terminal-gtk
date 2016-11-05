@@ -46,17 +46,17 @@ namespace Widgets {
             is_theme_button = theme_button;
             
             if (is_theme_button) {
-                normal_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_dark_normal.png"));
-                hover_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_dark_hover.png"));
-                press_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_dark_press.png"));
+                normal_dark_surface = Utils.create_image_surface(image_path + "_dark_normal.png");
+                hover_dark_surface = Utils.create_image_surface(image_path + "_dark_hover.png");
+                press_dark_surface = Utils.create_image_surface(image_path + "_dark_press.png");
 
-                normal_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_light_normal.png"));
-                hover_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_light_hover.png"));
-                press_light_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_light_press.png"));
+                normal_light_surface = Utils.create_image_surface(image_path + "_light_normal.png");
+                hover_light_surface = Utils.create_image_surface(image_path + "_light_hover.png");
+                press_light_surface = Utils.create_image_surface(image_path + "_light_press.png");
             } else {
-                normal_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_normal.png"));
-                hover_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_hover.png"));
-                press_dark_surface = new Cairo.ImageSurface.from_png(Utils.get_image_path(image_path + "_press.png"));
+                normal_dark_surface = Utils.create_image_surface(image_path + "_normal.png");
+                hover_dark_surface = Utils.create_image_surface(image_path + "_hover.png");
+                press_dark_surface = Utils.create_image_surface(image_path + "_press.png");
             }
             
             button_text = text;
