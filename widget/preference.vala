@@ -109,10 +109,8 @@ namespace Widgets {
         public int checkbutton_margin_top = 4;
         public int first_segment_margin_left = 20;
         public int grid_height = 24;
-        public int option_widget_margin_end = 5;
         public int option_widget_margin_left = 40;
         public int option_widget_margin_right = 10;
-        public int option_widget_margin_top = 5;
         public int preference_name_width = 180;
         public int preference_split_line_margin_left = 2;
         public int preference_widget_width = Constant.PREFERENCE_WIDGET_WIDTH;
@@ -790,12 +788,6 @@ namespace Widgets {
             label.get_style_context().add_class("preference_label");
             
             return label;
-        }
-        
-        public void grid_attach(Gtk.Grid grid, Gtk.Widget child, int left, int top, int width, int height) {
-            child.margin_top = option_widget_margin_top;
-            child.margin_bottom = option_widget_margin_end;
-            grid.attach(child, left, top, width, height);
         }
         
         public void grid_attach_next_to(Gtk.Grid grid, Gtk.Widget child, Gtk.Widget sibling, Gtk.PositionType side, int width, int height) {

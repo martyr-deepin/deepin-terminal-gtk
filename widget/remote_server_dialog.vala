@@ -51,8 +51,6 @@ namespace Widgets {
         public int grid_height = 24;
         public int label_margin_left = 14;
         public int max_server_name_length = 50;
-        public int option_widget_margin_end = 5;
-        public int option_widget_margin_top = 5;
         public int port_label_margin_left = 21;
         public int preference_margin_end = 20;
         public int preference_margin_start = 20;
@@ -467,12 +465,6 @@ namespace Widgets {
             // NOTE:
             // set_hexpand is very important to make widget in grid to expand space horizaontally.
             value_widget.set_hexpand(true);
-        }
-        
-        public void grid_attach(Gtk.Grid grid, Gtk.Widget child, int left, int top, int width, int height) {
-            child.margin_top = option_widget_margin_top;
-            child.margin_bottom = option_widget_margin_end;
-            grid.attach(child, left, top, width, height);
         }
         
         public void grid_attach_next_to(Gtk.Grid grid, Gtk.Widget child, Gtk.Widget sibling, Gtk.PositionType side, int width, int height) {

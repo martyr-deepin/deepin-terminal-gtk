@@ -29,6 +29,8 @@ namespace Widgets {
         public Gtk.Box window_frame_box;
         public Gtk.Box window_widget_box;
         public Widgets.ConfigWindow transient_window;
+        public int option_widget_margin_end = 5;
+        public int option_widget_margin_top = 5;
         public int window_frame_margin_bottom = 60;
         public int window_frame_margin_end = 50;
         public int window_frame_margin_start = 50;
@@ -166,6 +168,12 @@ namespace Widgets {
             
             cr.set_source_rgba(1, 1, 1, 1);
             Draw.fill_rounded_rectangle(cr, window_frame_margin_start, window_frame_margin_top, window_rect.width, window_rect.height, window_frame_radius);
+        }
+        
+        public void grid_attach(Gtk.Grid grid, Gtk.Widget child, int left, int top, int width, int height) {
+            child.margin_top = option_widget_margin_top;
+            child.margin_bottom = option_widget_margin_end;
+            grid.attach(child, left, top, width, height);
         }
         
         public void draw_window_frame(Cairo.Context cr) {
