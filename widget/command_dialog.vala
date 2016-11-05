@@ -315,11 +315,5 @@ namespace Widgets {
             // set_hexpand is very important to make widget in grid to expand space horizaontally.
             value_widget.set_hexpand(true);
         }
-        
-        public void grid_attach_next_to(Gtk.Grid grid, Gtk.Widget child, Gtk.Widget sibling, Gtk.PositionType side, int width, int height) {
-            child.margin_top = option_widget_margin_top;
-            child.margin_bottom = option_widget_margin_end;
-            grid.attach_next_to(child, sibling, side, width, height);
-        }
     }
 }
