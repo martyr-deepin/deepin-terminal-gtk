@@ -26,7 +26,6 @@ using Widgets;
 
 namespace Widgets {
     public class Titlebar : Gtk.Overlay {
-        public Box max_toggle_box;
         public ImageButton close_button;
         public Widgets.WindowEventArea event_area;
         
