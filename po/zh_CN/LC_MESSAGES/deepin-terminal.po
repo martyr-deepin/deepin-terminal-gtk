@@ -23,7 +23,7 @@ msgstr "关于"
 
 #: ../widget/about_widget.vala:62
 msgid "Acknowledgments"
-msgstr "致谢"
+msgstr "鸣谢"
 
 #: ../widget/remote_server_dialog.vala:334 ../widget/command_dialog.vala:207
 msgid "Add"
