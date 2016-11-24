@@ -33,9 +33,9 @@ namespace Widgets {
         public int height = 320;
         public int name_height = 13;
         public int version_height = 12;
-        public int version_size = 11;
+        public int version_size = 9;
         public int icon_y = 13;
-        public int name_y = 113;
+        public int name_y = 106;
         public int version_y = 146;
         public int logo_y = 176;
         public int homepage_y = 200;
