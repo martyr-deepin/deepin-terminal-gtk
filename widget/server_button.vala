@@ -30,7 +30,15 @@ namespace Widgets {
         public signal void login_server(string server_info);
         
         public ServerButton(string server_title, string server_content) {
-            base(server_title, server_content, "server");
+            string[] server_infos = server_content.split("@");
+            string display_name = "";
+            if (server_infos.length > 2) {
+                display_name = "%s@%s:%s".printf(server_infos[0], server_infos[1], server_infos[2]);
+            } else {
+                display_name = "%s@%s".printf(server_infos[0], server_infos[1]);
+            }
+            
+            base(server_title, server_content, display_name, "server");
             
             click_edit_button.connect((w) => {
                     edit_server(server_content);

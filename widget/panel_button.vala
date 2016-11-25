@@ -61,11 +61,12 @@ namespace Widgets {
         public int width = Constant.SLIDER_WIDTH;
         public string button_content;
         public string button_name;
+        public string? button_display_name;
         
         public signal void click_edit_button();
         public signal void click_button();
         
-        public PanelButton(string name, string content, string edit_button_name) {
+        public PanelButton(string name, string content, string? display_name, string edit_button_name) {
             this.add_events(Gdk.EventMask.BUTTON_PRESS_MASK
                             | Gdk.EventMask.BUTTON_RELEASE_MASK
                             | Gdk.EventMask.POINTER_MOTION_MASK
@@ -73,6 +74,7 @@ namespace Widgets {
             
             button_name = name;
             button_content = content;
+            button_display_name = display_name;
             
 			button_dark_surface = Utils.create_image_surface("%s_dark.png".printf(edit_button_name));
 			button_light_surface = Utils.create_image_surface("%s_light.png".printf(edit_button_name));
@@ -195,7 +197,11 @@ namespace Widgets {
             } else {
                 Utils.set_context_color(cr, button_content_dark_color);
             }
-            Draw.draw_text(cr, button_content, text_x, button_content_y, text_width, height, button_content_size, Pango.Alignment.LEFT, "top");
+            if (button_display_name != null) {
+                Draw.draw_text(cr, button_display_name, text_x, button_content_y, text_width, height, button_content_size, Pango.Alignment.LEFT, "top");
+            } else {
+                Draw.draw_text(cr, button_content, text_x, button_content_y, text_width, height, button_content_size, Pango.Alignment.LEFT, "top");
+            }
             
             if (display_bottom_line) {
                 if (is_light_theme) {
