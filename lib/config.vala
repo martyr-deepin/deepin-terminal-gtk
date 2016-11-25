@@ -177,6 +177,36 @@ namespace Config {
             }
         }
         
+        public void check_font(string group, string key, string value) {
+            try {
+                if (!config_file.has_group(group) || !config_file.has_key(group, key)) {
+                    config_file.set_string(group, key, value);
+                } else {
+                    var font = config_file.get_string(group, key);
+                    bool mono_font_exist = false;
+                    int num;
+                    string[] mono_or_dot_fonts = (string[]) list_mono_or_dot_fonts(out num);
+                    
+                    for (int i = 0; i < num; i++) {
+                        if (value == mono_or_dot_fonts[i]) {
+                            mono_font_exist = true;
+                            break;
+                        }
+                    }
+                    
+                    if (!mono_font_exist) {
+                        config_file.set_string(group, key, value);
+                        print("Font %s is not exist in system, use %s instead.\n", font, value);
+                    }
+                }
+            } catch (KeyFileError e) {
+                print("check_font: %s\n", e.message);
+                
+                config_file.set_string(group, key, value);
+                print("Reset [%s] %s with %s\n", group, key, value);
+            }
+        }
+        
         public void check_integer(string group, string key, int value) {
             try {
                 if (!config_file.has_group(group) || !config_file.has_key(group, key)) {
@@ -234,7 +264,7 @@ namespace Config {
             
             check_string("general", "theme", "deepin");
             check_double("general", "opacity", default_opacity);
-            check_string("general", "font", default_mono_font);
+            check_font("general", "font", default_mono_font);
             check_integer("general", "font_size", default_size);
             
             check_string("shortcut", "copy", "Ctrl + Shift + c");
