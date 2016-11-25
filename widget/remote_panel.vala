@@ -182,12 +182,23 @@ namespace Widgets {
                 while ((line = dis.read_line(null)) != null) {
                     ssh_script_content = ssh_script_content.concat("%s\n".printf(line));
                 }
-                                       
-                string password = Utils.lookup_password(server_info.split("@")[0], server_info.split("@")[1]);
                 
-                ssh_script_content = ssh_script_content.replace("<<USER>>", server_info.split("@")[0]);
-                ssh_script_content = ssh_script_content.replace("<<SERVER>>", server_info.split("@")[1]);
-                ssh_script_content = ssh_script_content.replace("<<PORT>>", config_file.get_value(server_info, "Port"));
+                string[] server_infos = server_info.split("@");
+                                       
+                string password = "";
+                if (server_info.length > 2) {
+                    password = Utils.lookup_password(server_infos[0], server_infos[1], server_infos[2]);
+                } else {
+                    password = Utils.lookup_password(server_infos[0], server_infos[1]);
+                }
+                
+                ssh_script_content = ssh_script_content.replace("<<USER>>", server_infos[0]);
+                ssh_script_content = ssh_script_content.replace("<<SERVER>>", server_infos[1]);
+                if (server_infos.length > 2) {
+                    ssh_script_content = ssh_script_content.replace("<<PORT>>", server_infos[2]);
+                } else {
+                    ssh_script_content = ssh_script_content.replace("<<PORT>>", config_file.get_value(server_info, "Port"));
+                }
                 
                 bool use_private_key = true;
                 string private_key_file = "";
@@ -391,18 +402,17 @@ namespace Widgets {
 			    // Use ',' as array-element-separator instead of ';'.
 			    config_file.set_list_separator (',');
 			    
-			    string gname = "%s@%s".printf(user, server_address);
+			    string gname = "%s@%s@%i".printf(user, server_address, port);
 			    config_file.set_string(gname, "Name", name);
 			    config_file.set_string(gname, "GroupName", group_name);
 				config_file.set_string(gname, "Command", command);
                 config_file.set_string(gname, "Path", path);
-				config_file.set_integer(gname, "Port", port);
 			    config_file.set_string(gname, "Encode", encode);
 			    config_file.set_string(gname, "Backspace", backspace);
 			    config_file.set_string(gname, "Del", delete);
                 config_file.set_string(gname, "PrivateKey", private_key);
 
-                Utils.store_password(user, server_address, password);
+                Utils.store_password(user, server_address, port, password);
 			    
 			    try {
 			    	config_file.save_to_file(config_file_path);

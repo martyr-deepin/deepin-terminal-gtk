@@ -115,6 +115,11 @@ namespace Widgets {
                 focus_widget = widget;
                 server_info = info;
                 
+                string[]? server_infos = null;
+                if (server_info != null) {
+                    server_infos = server_info.split("@");
+                }
+                
                 box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
                 
                 var top_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
@@ -138,7 +143,7 @@ namespace Widgets {
                 title_label.get_style_context().add_class("remote_server_label");
                 top_box.pack_start(title_label, true, true, 0);
                                   
-                if (server_info != null) {
+                if (server_infos != null) {
                     title_label.set_text(_("Edit Server"));
                 } else {
                     title_label.set_text(_("Add Server"));
@@ -170,7 +175,7 @@ namespace Widgets {
                 // Nick name.
                 Label name_label = new Gtk.Label(null);
                 name_entry = new Widgets.Entry();
-                if (server_info != null) {
+                if (server_infos != null) {
                     name_entry.set_text(config_file.get_value(server_info, "Name"));
                 }
                 name_entry.set_placeholder_text(_("Required"));
@@ -179,8 +184,8 @@ namespace Widgets {
                 // Address.
                 Label address_label = create_label(_("Address:"));
                 address_entry = new Widgets.Entry();
-                if (server_info != null) {
-                    address_entry.set_text(server_info.split("@")[1]);
+                if (server_infos != null) {
+                    address_entry.set_text(server_infos[1]);
                 }
                 address_entry.set_width_chars(label_margin_left);
                 address_entry.set_placeholder_text(_("Required"));
@@ -191,8 +196,12 @@ namespace Widgets {
                 port_spinbutton.set_range(0, 65535);
                 port_spinbutton.set_increments(1, 10);
                 port_spinbutton.get_style_context().add_class("preference_spinbutton");
-                if (server_info != null) {
-                    port_spinbutton.set_value(config_file.get_integer(server_info, "Port"));
+                if (server_infos != null) {
+                    if (server_infos.length > 2) {
+                        port_spinbutton.set_value(int.parse(server_infos[2]));
+                    } else {
+                        port_spinbutton.set_value(config_file.get_integer(server_info, "Port"));
+                    }
                 } else {
                     port_spinbutton.set_value(22);
                 }
@@ -211,8 +220,8 @@ namespace Widgets {
                 // Username.
                 Label user_label = new Gtk.Label(null);
                 user_entry = new Widgets.Entry();
-                if (server_info != null) {
-                    user_entry.set_text(server_info.split("@")[0]);
+                if (server_infos != null) {
+                    user_entry.set_text(server_infos[0]);
                 }
                 user_entry.set_placeholder_text(_("Required"));
                 create_follow_key_row(user_label, user_entry, _("Username:"), address_label, grid);
@@ -220,8 +229,13 @@ namespace Widgets {
                 // Password.
                 Label password_label = new Gtk.Label(null);
                 password_button = new Widgets.PasswordButton();
-                if (server_info != null) {
-                    string password = Utils.lookup_password(server_info.split("@")[0], server_info.split("@")[1]);
+                if (server_infos != null) {
+                    string password = "";
+                    if (server_infos.length > 2) {
+                        password = Utils.lookup_password(server_infos[0], server_infos[1], server_infos[2]);
+                    } else {
+                        password = Utils.lookup_password(server_infos[0], server_infos[1]);
+                    }
                     password_button.entry.set_text(password);
                 }
                 create_follow_key_row(password_label, password_button, _("Password:"), user_label, grid);
@@ -229,7 +243,7 @@ namespace Widgets {
                 // File.
                 Label file_label = new Gtk.Label(null);
                 file_button = new Widgets.FileButton();
-                if (server_info != null) {
+                if (server_infos != null) {
                     try {
                         file_button.entry.set_text(config_file.get_value(server_info, "PrivateKey"));
                     } catch (GLib.KeyFileError e) {
@@ -249,7 +263,7 @@ namespace Widgets {
                 // Group name.
                 Label group_name_label = new Gtk.Label(null);
                 groupname_entry = new Widgets.Entry();
-                if (server_info != null) {
+                if (server_infos != null) {
                     groupname_entry.set_text(config_file.get_value(server_info, "GroupName"));
                 }
                 groupname_entry.set_placeholder_text(_("Optional"));
@@ -259,7 +273,7 @@ namespace Widgets {
                 // Path.
                 Label path_label = new Gtk.Label(null);
                 path_entry = new Widgets.Entry();
-                if (server_info != null) {
+                if (server_infos != null) {
                     path_entry.set_text(config_file.get_value(server_info, "Path"));
                 }
                 path_entry.set_placeholder_text(_("Optional"));
@@ -268,7 +282,7 @@ namespace Widgets {
                 // Command.
                 Label command_label = new Gtk.Label(null);
                 command_entry = new Widgets.Entry();
-                if (server_info != null) {
+                if (server_infos != null) {
                     command_entry.set_text(config_file.get_value(server_info, "Command"));
                 }
                 command_entry.set_placeholder_text(_("Optional"));
@@ -280,7 +294,7 @@ namespace Widgets {
                 foreach (string name in parent_window.config.encoding_names) {
                     encode_box.append(name, name);
                 }
-                if (server_info != null) {
+                if (server_infos != null) {
                     encode_box.set_active(parent_window.config.encoding_names.index_of(config_file.get_value(server_info, "Encode")));
                 } else {
                     encode_box.set_active(parent_window.config.encoding_names.index_of("UTF-8"));
@@ -293,7 +307,7 @@ namespace Widgets {
                 foreach (string name in parent_window.config.backspace_key_erase_names) {
                     backspace_key_box.append(name, parent_window.config.erase_map.get(name));
                 }
-                if (server_info != null) {
+                if (server_infos != null) {
                     backspace_key_box.set_active(parent_window.config.backspace_key_erase_names.index_of(config_file.get_value(server_info, "Backspace")));
                 } else {
                     backspace_key_box.set_active(parent_window.config.backspace_key_erase_names.index_of("ascii-del"));
@@ -306,7 +320,7 @@ namespace Widgets {
                 foreach (string name in parent_window.config.del_key_erase_names) {
                     del_key_box.append(name, parent_window.config.erase_map.get(name));
                 }
-                if (server_info != null) {
+                if (server_infos != null) {
                     del_key_box.set_active(parent_window.config.del_key_erase_names.index_of(config_file.get_value(server_info, "Del")));
                 } else {
                     del_key_box.set_active(parent_window.config.del_key_erase_names.index_of("escape-sequence"));
@@ -326,7 +340,7 @@ namespace Widgets {
                 button_box.margin_top = action_button_margin_top;
                 DialogButton cancel_button = new Widgets.DialogButton(_("Cancel"), "left", "text");
                 string button_name;
-                if (server_info != null) {
+                if (server_infos != null) {
                     button_name = _("Save");
                 } else {
                     button_name = _("Add");
@@ -336,7 +350,7 @@ namespace Widgets {
                         destroy();
                     });
                 confirm_button.clicked.connect((b) => {
-                        if (server_info != null) {
+                        if (server_infos != null) {
                             if (name_entry.get_text().strip() != "" && address_entry.get_text().strip() != "" && port_spinbutton.get_text().strip() != "" && user_entry.get_text().strip() != "") {
                                 edit_server(address_entry.get_text(),
                                             user_entry.get_text(),
