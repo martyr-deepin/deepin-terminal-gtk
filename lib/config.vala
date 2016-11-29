@@ -188,7 +188,7 @@ namespace Config {
                     string[] mono_or_dot_fonts = (string[]) list_mono_or_dot_fonts(out num);
                     
                     for (int i = 0; i < num; i++) {
-                        if (value == mono_or_dot_fonts[i]) {
+                        if (font == mono_or_dot_fonts[i]) {
                             mono_font_exist = true;
                             break;
                         }
@@ -196,7 +196,7 @@ namespace Config {
                     
                     if (!mono_font_exist) {
                         config_file.set_string(group, key, value);
-                        print("Font %s is not exist in system, use %s instead.\n", font, value);
+                        print("Font '%s' is not exist in system, use '%s' instead.\n", font, value);
                     }
                 }
             } catch (KeyFileError e) {
