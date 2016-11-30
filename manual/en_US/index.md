@@ -14,7 +14,6 @@ You can run, exit or create shortcuts for Deepin Terminal.
 ### Run Deepin Terminal ###
 
 1. Click on ![launcher-24](icon/launcher-24.svg) on dock to enter launcher interface.
-
 2. Find ![terminal-24](icon/terminal-24.svg) to click on, you can:
 
  - Click on **Send to desktop** to create a desktop shortcut.
@@ -39,14 +38,14 @@ You can run, exit or create shortcuts for Deepin Terminal.
 
 You can press ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![QM](icon/QM.svg) on keyboard to open shortcuts preview interface.
 
- ![1|shorcuts](png/shortcuts.png)
+ ![1|hotkey](png/hotkey.png)
 
 
 ## Basic Operations|../common/icon_basicoperation.svg|
 
 You can right click on Deepin Terminal interface to do daily operations.
 
- ![1|righ-tclick](png/right-click.png)
+ ![1|rightclick](png/rightclick.png)
 
 
 ### Search ###
@@ -100,6 +99,19 @@ On Deepin Terminal interface, select the file in current directory and right-cli
  ![1|openfile](png/openfile.png)
 
 
+### Switch Encoding ###
+
+You can quickly switch the encoding according to your needs.
+
+1. On Deepin Terminal interface, right click the interface.
+
+2. Select **Encoding**.
+
+3. Select the encoding to switch in the encoding list.
+
+ ![1|unicode](png/unicode.png)
+
+
 ## Window Operations|../common/icon_windowoperation.svg|
 
 Window is the base for you to do other operations in terminal. You can create many workspaces and split more windows.
@@ -107,28 +119,26 @@ Window is the base for you to do other operations in terminal. You can create ma
 
 ### New Window ###
 
-![0|new-window](png/new-window.png)
-
 1. Open Deepin Terminal and click the main menu to select **New Window**.
 
 2. Then a new terminal window will be opened.
 
-> ![notes](icon/notes.svg): You can also right click on ![terminal-24](icon/terminal-24.svg) on Dock to select **New Window**.
+> ![tips](icon/tips.svg): You can also right click on ![terminal-24](icon/terminal-24.svg) on Dock to select **New Window**.
 
 
 ### Split Window ###
 
 1. Right click on Deepin Terminal interface.
 
- - Click on **Vertical split** to split the interface into left and right parts.
+  - Click on **Vertical split** to split the interface into left and right parts.
 
- - Click on **Horizontal split** to split the interface into top and bottom parts.
+  - Click on **Horizontal split** to split the interface into top and bottom parts.
 
 2. You can input commands in each terminal window, and can also view the results of command executed.
 
 > ![tips](icon/tips.svg): You can also press ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![J](icon/J.svg) on keyboard to split vertically, and press ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![H](icon/H.svg) to split horizontally.
 
- ![1|split-window](png/split-window.png)
+ ![1|splitscreen](png/splitscreen.png)
 
 
 ### Display Window in Fullscreen ###
@@ -149,18 +159,18 @@ For multiple splitting windows, you can execute the following operations to clos
 
 2. Right click, you can:
 
- - Select **Close window** to close this splitting window.
+  - Select **Close window** to close this splitting window.
 
- - Select **Close other windows** to close other splitting windows except the current window.
+  - Select **Close other windows** to close other splitting windows except the current window.
 
-![1|close-window](png/close-window.png)
+ ![1|closesplitscreen](png/closesplitscreen.png)
 
 
 ## Workspace Operations|../common/icon_workspaceoperation.svg|
 
 The current workspace status will be displayed in different colors of workspace tabs.
 
-![1|workspace](png/workspace.png)
+ ![1|workspace](png/workspace.png)
 
 
 ### New Workspace ###
@@ -185,7 +195,7 @@ You can freely switch between multiple workspaces by one of the following operat
 
 - Press ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![W](icon/W.svg)
 
-![tips](icon/tips.svg): When there is only one window in workspace, you can also right click to select **Close window** to close.
+> ![tips](icon/tips.svg): When there is only one window in workspace, you can also right click to select **Close window** to close.
 
 
 ## Remote Server Management|../common/icon_sshconnection.svg|
@@ -200,19 +210,19 @@ You can right click or click the main menu to open remote management panel to ad
 
 3. Click on **Add server** to fill out:
 
- - Server name
- - Address
- - Username
- - Password
+  - Server name
+  - Address
+  - Username
+  - Password
+  - Certificate
 
 4. Click on **Add** to add.
 
-5. If you need more parameters, please click on **Advanced options** to set.
+5. If you need more parameters, please click on **Advanced options** to set, the default certificate file located in ~/.ssh/id_rsa.
+
+ ![1|addssh](png/addssh-all.png)
 
 > ![notes](icon/notes.svg): You can also press ![Ctrl](icon/Ctrl.svg)+![Slash](icon/Slash.png) to open the remote management panel.
-
-![1|add-server](png/add-server.png)
-
 
 ### Edit Server ###
 
@@ -222,7 +232,7 @@ You can right click or click the main menu to open remote management panel to ad
 
 3. Click on **Save** to save the editing.
 
-![0|edit-server](png/edit-server.png)
+ ![0|editssh](png/editssh.png)
 
 
 ### Group Servers ###
@@ -237,18 +247,7 @@ When we set a group for a server, it will be added in the group and displayed in
 
 4. Then this server will be grouped.
 
-![0|group-server](png/group-server.png)
-
-
-### Delete Server ###
-
-1. Enter "Edit Server" interface.
-
-2. Click on **Advanced options**.
-
-3. Select **Delete server** at the bottom to delete.
-
-![0|group-server](png/group-server.png)
+ ![0|groupssh](png/groupssh.png)
 
 
 ### Search Server ###
@@ -259,7 +258,7 @@ When there are many servers, the search box will be displayed on the top of remo
 
 2. The search results will be displayed at the panel.
 
-![0|search-server](png/search-server.png)
+![0|searchssh](png/searchssh.png)
 
 
 ### Upload/Download File ###
@@ -274,7 +273,7 @@ You can upload and download files after logged in a server.
 
 3. Select file to upload.
 
-![0|upload](png/upload.png)
+![1|export](png/export.png)
 
 
 #### Download File ####
@@ -285,8 +284,18 @@ You can upload and download files after logged in a server.
 
 3. Select file to download.
 
-![0|download](png/download.png)
+![1|download](png/download.png)
 
+
+### Delete Server ###
+
+1. Enter "Edit Server" interface.
+
+2. Click on **Advanced options**.
+
+3. Select **Delete server** at the bottom to delete.
+
+![0|groupssh](png/groupssh.png)
 
 ## Option Settings|../common/icon_settings.svg|
 
@@ -298,7 +307,23 @@ You can upload and download files after logged in a server.
 
 3. The themes will be displayed on the right list, then you can select one to take effect right now.
 
- ![0|switch-theme](png/switch-theme.png)
+ ![1|change](png/change.png)
+
+### Custom Commands ###
+
+1. On Deepin Terminal interface, click on ![menu_icon](icon/menu_icon.svg) in the top right corner.
+
+2. Click on **Custom commands**.
+
+3. Select **Add command**, shows add command dialog.
+
+4. Input **Name**、**Command**、**Shortcuts**.
+
+5. Click on **Add**.
+
+ ![1|command](png/command.png)
+
+> ![notes](icon/notes.svg): You can also right click on the Deepin Terminal interface and select **Custom commands**.
 
 ### Basic Settings ###
 
@@ -308,12 +333,11 @@ You can upload and download files after logged in a server.
 
 3. In the interface of **Basic**, you can:
 
- - Set the background transparency.
+  - Set the background transparency.
 
- - Set the font and font size.
+  - Set the font and font size.
 
- ![0|basic-settings](png/basic-settings.png)
-
+ ![0|generalset](png/generalset.png)
 
 ### Shortcuts Settings ###
 
@@ -323,11 +347,11 @@ You can upload and download files after logged in a server.
 
 3. In the interface of **Shortcuts**, you can:
 
- - Click the shortcuts to be modified, and input new shortcuts by keyboard.
+  - Click the shortcuts to be modified, and input new shortcuts by keyboard.
 
- - Press ![Backspace](icon/Backspace.svg) if you want to disable the shortcut.
+  - Press ![Backspace](icon/Backspace.svg) if you want to disable the shortcut.
 
- ![0|shortcuts-settings](png/shortcuts-settings.png)
+ ![0|hotkeyset](png/hotkeyset.png)
 
 
 ### Advanced Settings ###
@@ -338,20 +362,19 @@ You can upload and download files after logged in a server.
 
 3. In the interface of **Advanced**, you can:
 
- - Set cursor style.
+  - Set cursor style.
 
- - Enable or disable cursor blink.
+  - Enable or disable cursor blink.
 
- - Enable or disable the function of **Scroll on keystroke**.
+  - Enable or disable the function of **Scroll on keystroke**.
 
- - Enable or disable the function of **Scroll on output**.
+  - Enable or disable the function of **Scroll on output**.
 
- - Set window startup mode.
+  - Set window startup mode.
 
+ ![0|advancedset](png/advancedset.png)
 
 > ![notes](icon/notes.svg): If you need to restore all default settings, please click on **Restore default settings**.
-
- ![0|advanced-settings](png/advanced-settings.png)
 
 
 ### Help ###
