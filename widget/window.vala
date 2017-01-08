@@ -98,7 +98,11 @@ namespace Widgets {
                         var width = config.config_file.get_integer("advanced", "window_width");
                         var height = config.config_file.get_integer("advanced", "window_height");
                         if (width == 0 || height == 0) {
-                            set_default_size((int) (rect.width * window_default_scale), (int) (rect.height * window_default_scale));
+                            if (rect.width == 0 || rect.height == 0) {
+                                set_default_size(800, 600);
+                            } else {
+                                set_default_size((int) (rect.width * window_default_scale), (int) (rect.height * window_default_scale));
+                            }
                         } else {
                             set_default_size(width, height);
                         }
