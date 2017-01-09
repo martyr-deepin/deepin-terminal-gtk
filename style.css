@@ -261,13 +261,13 @@
 
 .preference_comboboxtext arrow {
 	min-height: 16px;
-	min-width: 12px;
+	min-width: 11px;
     -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
 }
 
 .preference_comboboxtext menu {
 	border-radius:4px;
-    font-size:12px;
+    font-size:11px;
     color: #303030;
 	background: white;
 	border: 1px solid white;
@@ -281,7 +281,7 @@
 
 .preference_comboboxtext arrow {
 	min-height: 16px;
-	min-width: 12px;
+	min-width: 11px;
 }
 
 .preference_comboboxtext menu menuitem {
@@ -297,7 +297,7 @@
 	padding-top: 0px;
 	padding-bottom: 0px;
     color:#303030;
-    font-size: 12px;
+    font-size: 11px;
     background-image:linear-gradient(-180deg,#fff 0%,#fdfdfd 100%);
     border:none;
     box-shadow: 0 1px rgba(0,0,0,0.02),inset 0  1px  rgba(0,0,0,0.1),inset 0 -1px  rgba(0,0,0,0.1),inset 1px 0 rgba(0,0,0,0.1),inset -1px 0 rgba(0,0,0,0.1);
@@ -320,7 +320,7 @@
 	min-height: 18px;
     background-color:white;
     border:1px solid rgba(0,0,0,0.1);
-	font-size: 12px;
+	font-size: 11px;
     padding-top: 0px;
     padding-bottom: 0px;
     border-radius: 4px;
@@ -332,7 +332,7 @@
     min-height: 18px;
 	background-color: #61B5F8;
     border:1px solid #2ca7f8;
-	font-size: 12px;
+	font-size: 11px;
     padding-top: 1px;
     padding-bottom: 1px;
 }
@@ -342,7 +342,7 @@
     min-height: 18px;
     background-color:white;
     border:1px solid #2ca7f8;
-	font-size: 12px;
+	font-size: 11px;
     padding-top: 1px;
     padding-bottom: 1px;
 }
@@ -395,7 +395,7 @@
     color:#303030;
     border:1px solid rgba(0,0,0,0.1);
     border-width:1px 0 1px 1px;
-	font-size: 12px;
+	font-size: 11px;
     border-radius: 4px 0 0 4px;
     padding: 0 6px;
 }
@@ -403,13 +403,13 @@
 .preference_spinbutton:not(.vertical) entry selection {
     color:white;
     background-color:#2ca7f8;
-	font-size: 12px;
+	font-size: 11px;
     padding-top: 1px;
     padding-bottom: 1px;
 }
 
 .preference_spinbutton:not(.vertical) entry selection:focus {
-	font-size: 12px;
+	font-size: 11px;
     min-height: 18px;
     padding-top: 1px;
     padding-bottom: 1px;
@@ -417,23 +417,23 @@
 
 .preference_label {
 	color: #303030;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .dialog_title {
 	color: #303030;
 	font-weight: bold;
-	font-size: 13px;
+	font-size: 12px;
 }
 
 .dialog_content {
 	color: #303030;
-	font-size: 13px;
+	font-size: 12px;
 }
 
 .homepage {
 	color: #004DE6;
-	font-size: 13px;
+	font-size: 12px;
 }
 
 .acknowledgments {
@@ -472,7 +472,7 @@
 	border-right:1px solid white;
 	border-radius:4px 0 0 4px;
 	letter-spacing: 2px;
-	font-size: 12px;
+	font-size: 11px;
     padding: 0px 6px;
 }
 
@@ -481,7 +481,7 @@
     min-height: 18px;
     background-color:white;
     border:1px solid #2ca7f8;
-	font-size: 12px;
+	font-size: 11px;
     padding-top: 1px;
     padding-bottom: 1px;
 }
@@ -494,7 +494,7 @@
 	border-right:1px solid white;
 	border-radius:4px 0 0 4px;
 	letter-spacing: 2px;
-	font-size: 12px;
+	font-size: 11px;
     padding: 0px 6px;
 }
 
@@ -503,7 +503,7 @@
     min-height: 18px;
     background-color:white;
     border:1px solid #2ca7f8;
-	font-size: 12px;
+	font-size: 11px;
     padding-top: 1px;
     padding-bottom: 1px;
 }
@@ -515,7 +515,7 @@
     border:1px solid rgba(0,0,0,0.1);
 	border-right:1px solid white;
 	border-radius:4px 0 0 4px;
-	font-size: 12px;
+	font-size: 11px;
     padding: 0px 6px;
 }
 
@@ -524,20 +524,20 @@
     min-height: 18px;
     background-color:white;
     border:1px solid #2ca7f8;
-	font-size: 12px;
+	font-size: 11px;
     padding-top: 1px;
     padding-bottom: 1px;
 }
 
 .preference_first_segment {
 	color: #303030;
-	font-size: 13px;
+	font-size: 12px;
 	font-weight: bold;
 }
 
 .preference_second_segment {
 	color: #303030;
-	font-size: 12px;
+	font-size: 11px;
 	font-weight: bold;
 }
 

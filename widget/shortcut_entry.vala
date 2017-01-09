@@ -12,7 +12,7 @@ namespace Widgets {
         public int height = 24;
         public int shortcut_font_padding_x = 4;
         public int shortcut_font_padding_y = 0;
-        public int shortcut_font_size = 9;
+        public int shortcut_font_size = 8;
         public int shortcut_key_padding_x = 4;
         public int shortcut_key_padding_y = 0;
         public int shortcut_key_spacing = 5;
