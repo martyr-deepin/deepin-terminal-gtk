@@ -2,6 +2,8 @@ using Gtk;
 
 namespace Widgets {
     public class ShortcutEntry : Gtk.EventBox {
+        public Cairo.ImageSurface button_left_surface;
+        public Cairo.ImageSurface button_right_surface;
         public Gdk.RGBA active_frame_color;
         public Gdk.RGBA background_color;
         public Gdk.RGBA hint_color;
@@ -9,6 +11,8 @@ namespace Widgets {
         public Gdk.RGBA shortcut_background_color;
         public Gdk.RGBA shortcut_font_color;
         public Gdk.RGBA shortcut_frame_color;
+        public bool is_double_clicked = false;
+        public int double_clicked_max_delay = 150;
         public int height = 24;
         public int shortcut_font_padding_x = 4;
         public int shortcut_font_padding_y = 0;
@@ -17,8 +21,6 @@ namespace Widgets {
         public int shortcut_key_padding_y = 0;
         public int shortcut_key_spacing = 5;
         public string shortcut = "";
-        public Cairo.ImageSurface button_left_surface;
-        public Cairo.ImageSurface button_right_surface;
         
         public signal void change_key(string new_key);
         
@@ -52,6 +54,23 @@ namespace Widgets {
             draw.connect(on_draw);
             button_press_event.connect((w, e) => {
                     grab_focus();
+                    
+                    if (e.type == Gdk.EventType.BUTTON_PRESS) {
+                        is_double_clicked = true;
+                        
+                        GLib.Timeout.add(double_clicked_max_delay, () => {
+                                is_double_clicked = false;
+
+                                return false;
+                            });
+                    } else if (e.type == Gdk.EventType.2BUTTON_PRESS) {
+                        if (is_double_clicked) {
+                            shortcut = "";
+                            change_key(shortcut);
+                            
+                            queue_draw();
+                        }
+                    }
                     
                     queue_draw();
                     
