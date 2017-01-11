@@ -1,0 +1,16 @@
+#!/usr/bin/make -f
+%:
+	dh $@ 
+
+override_dh_auto_configure:
+	mv project_path.c project_path.c.orig
+	sed 's|__FILE__|"/usr/share/deepin-terminal/dummy\"|g' project_path.c.orig | tee project_path.c
+	cmake -DCMAKE_INSTALL_PREFIX=/usr .
+
+override_dh_auto_install:
+	dh_auto_install
+
+override_dh_clean:
+	rm -fr CMakeFiles CMakeCache.txt cmake_install.cmake install_manifest.txt Makefile || true
+	if [ -f project_path.c.orig ];then mv project_path.c.orig project_path.c ;fi
+	dh_clean
