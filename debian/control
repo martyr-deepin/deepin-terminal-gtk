@@ -9,7 +9,7 @@ Homepage: http://www.deepin.org
 Package: deepin-terminal
 Architecture: any
 Provides: x-terminal-emulator
-Depends: ${shlibs:Depends}, ${misc:Depends}, zssh, lrzsz
+Depends: ${shlibs:Depends}, ${misc:Depends}, zssh, lrzsz, expect
 Description: Deepin terminal, it sharpens your focus in the world of command line!
  Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.
  It sharpens your focus in the world of command line!
