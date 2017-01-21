@@ -554,7 +554,16 @@ namespace Widgets {
                     return this.current_dir;
                 } else {
                     try {
-                        return FileUtils.read_link("/proc/%d/cwd".printf(fpid));
+                        var path = FileUtils.read_link("/proc/%d/cwd".printf(fpid));
+                        
+                        // NOTE: 
+                        // Because 'man' command (such as 'man ls') will change active process's path.
+                        // Just read current directory when active process is 'man'.
+                        if (path == "/usr/share/man") {
+                            return this.current_dir;
+                        } else {
+                            return path;
+                        }
                     } catch (Error e) {
                         stderr.printf("Parse cwd of %d failed %s\n", fpid, e.message);
                         return this.current_dir;
