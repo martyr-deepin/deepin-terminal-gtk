@@ -307,7 +307,7 @@ namespace Widgets {
                         window.toggle_fullscreen();
                         break;
 			    	case "search":
-						workspace_manager.focus_workspace.search();
+                        workspace_manager.focus_workspace.search(get_selection_text());
 			    		break;
 					case "horizontal_split":
 						workspace_manager.focus_workspace.split_horizontal();
@@ -1035,34 +1035,42 @@ namespace Widgets {
         }
         
         public string? get_selection_file() {
-            // FIXME: vte developer private function 'get_selected_text', so i can't get selected text from api.
-            // So i get selected text from clipboard that i need save clipboard context before i test selection context.
-            var clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD);
-            var current_clipboard_text = clipboard.wait_for_text();
-            
-            term.copy_clipboard();
-            var clipboard_text = clipboard.wait_for_text();
-            
-            // FIXME: vte developer private function 'get_selected_text', so i can't get selected text from api.
-            // So i get selected text from clipboard that i need restore clipboard context before i test selection context.
-            if (current_clipboard_text != null) {
-                var display = Gdk.Display.get_default();
-                Gtk.Clipboard.get_for_display(display, Gdk.SELECTION_CLIPBOARD).set_text(current_clipboard_text, current_clipboard_text.length);
-            }
-            if (clipboard_text != null) {
-                clipboard_text = clipboard_text.strip();
-                if (clipboard_text != "") {
-                    var clipboard_file_path = GLib.Path.build_path(Path.DIR_SEPARATOR_S, current_dir, clipboard_text);
-                    if (FileUtils.test(clipboard_file_path, FileTest.EXISTS)) {
-                        return clipboard_file_path;
-                    } else {
-                        return null;
-                    }
+            string? clipboard_text = get_selection_text();
+            if (clipboard_text != "") {
+                var clipboard_file_path = GLib.Path.build_path(Path.DIR_SEPARATOR_S, current_dir, clipboard_text);
+                if (FileUtils.test(clipboard_file_path, FileTest.EXISTS)) {
+                    return clipboard_file_path;
                 } else {
                     return null;
                 }
             } else {
                 return null;
+            }
+        }
+
+        public string get_selection_text() {
+            if (term.get_has_selection()) {
+                // FIXME: vte developer private function 'get_selected_text', so i can't get selected text from api.
+                // So i get selected text from clipboard that i need save clipboard context before i test selection context.
+                var clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD);
+                var current_clipboard_text = clipboard.wait_for_text();
+            
+                term.copy_clipboard();
+                var clipboard_text = clipboard.wait_for_text();
+            
+                // FIXME: vte developer private function 'get_selected_text', so i can't get selected text from api.
+                // So i get selected text from clipboard that i need restore clipboard context before i test selection context.
+                if (current_clipboard_text != null) {
+                    var display = Gdk.Display.get_default();
+                    Gtk.Clipboard.get_for_display(display, Gdk.SELECTION_CLIPBOARD).set_text(current_clipboard_text, current_clipboard_text.length);
+                }
+                if (clipboard_text != null) {
+                    return clipboard_text.strip();
+                } else {
+                    return "";
+                }
+            } else {
+                return "";
             }
         }
         

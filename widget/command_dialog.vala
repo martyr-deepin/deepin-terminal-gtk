@@ -166,14 +166,7 @@ namespace Widgets {
                     command_entry.set_text(config_file.get_value(command_info, "Command"));
                 } else {
                     if (focus_term != null) {
-                        if (focus_term.term.get_has_selection()) {
-                            focus_term.term.copy_clipboard();
-                            
-                            var clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD);
-                            var current_clipboard_text = clipboard.wait_for_text();
-                            
-                            command_entry.set_text(current_clipboard_text);                            
-                        }
+                        command_entry.set_text(focus_term.get_selection_text());
                     }
                 }
                 command_entry.set_placeholder_text(_("Required"));

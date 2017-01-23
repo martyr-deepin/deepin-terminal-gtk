@@ -39,7 +39,7 @@ namespace Widgets {
         
         public signal void quit_search();
         
-        public SearchPanel(Widgets.ConfigWindow config_window, Term term) {
+        public SearchPanel(Widgets.ConfigWindow config_window, Term term, string init_search_text) {
             terminal = term;
             search_text = "";
             
@@ -49,6 +49,8 @@ namespace Widgets {
             clear_button = new ImageButton("search_clear", true);
             search_next_button = new ImageButton("search_next", true);
             search_previous_button = new ImageButton("search_previous", true);
+            
+            search_entry.set_text(init_search_text);
             
             pack_start(search_image, false, false, 0);
             pack_start(search_entry, true, true, 0);

@@ -384,7 +384,8 @@ namespace Widgets {
                 
                 var search_key = config.config_file.get_string("shortcut", "search");
                 if (search_key != "" && keyname == search_key) {
-                    workspace_manager.focus_workspace.search();
+                    Term focus_term = workspace_manager.focus_workspace.get_focus_term(workspace_manager.focus_workspace);
+                    workspace_manager.focus_workspace.search(focus_term.get_selection_text());
                     return true;
                 }
 		    
