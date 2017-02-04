@@ -35,7 +35,7 @@ namespace Widgets {
             STRING,
             TEXT
         }
-
+        
 		public Menu.Menu menu;
 		public WorkspaceManager workspace_manager;
 		public bool has_select_all = false;
@@ -49,6 +49,8 @@ namespace Widgets {
         public Terminal term;
         public bool is_first_term; 
         public bool press_anything = false;
+        public bool child_has_exit = false;
+        public bool has_print_exit_notify = false;
         public double zoom_factor = 1.0;
         public string current_dir = "";
         public string expect_file_path = "";
@@ -90,8 +92,16 @@ namespace Widgets {
             
 			term = new Terminal();
 			
-            term.child_exited.connect ((t)=> {
-                    exit();
+            term.child_exited.connect((t)=> {
+                    child_has_exit = true;
+                    
+                    if (is_launch_command()) {
+                        // Print exit notify if command execute finish.
+                        print_exit_notify();
+                    } else {
+                        // Just exit terminal if `child_exited' signal emit by shell.
+                        exit();
+                    }
                 });
             term.destroy.connect((t) => {
                     kill_fg();
@@ -167,7 +177,7 @@ namespace Widgets {
             
             // NOTE: if terminal start with option '-e', use functional 'launch_command' and don't use function 'launch_shell'.
             // terminal will crash if we launch_command after launch_shell.
-            if (Application.commands.size > 0) {
+            if (is_launch_command()) {
                 launch_command(Application.commands, work_directory);
             } else {
                 launch_shell(work_directory);
@@ -609,6 +619,14 @@ namespace Widgets {
         }
         
         private bool on_key_press(Gtk.Widget widget, Gdk.EventKey key_event) {
+            // Exit terminal if got `child_exited' signal by command execute finish.
+            if (child_has_exit && is_launch_command()) {
+                string keyname = Keymap.get_keyevent_name(key_event);
+                if (keyname == "Enter") {
+                    exit();
+                }
+            }
+            
             // This variable use for highlight_tab.
             press_anything = true;
             
@@ -879,6 +897,7 @@ namespace Widgets {
                     warning("Terminal launch_shell: %s\n", e.message);
                 }
             }
+            
             launch_idle_id = GLib.Idle.add(() => {
                     try {
                         term.spawn_sync(Vte.PtyFlags.DEFAULT,
@@ -902,6 +921,33 @@ namespace Widgets {
                     launch_idle_id = 0;
                     return false;
                 });
+        }
+        
+        public bool is_launch_command() {
+            return Application.commands.size > 0;
+        }
+        
+        public void print_exit_notify() {
+            if (!has_print_exit_notify) {
+                GLib.Timeout.add(200, () => {
+                        try {
+                            term.spawn_sync(Vte.PtyFlags.DEFAULT,
+                                            null,
+                                            {"echo", _("\nCommand has been completed, press ENTER to exit the terminal.")},
+                                            null,
+                                            GLib.SpawnFlags.SEARCH_PATH,
+                                            null, /* child setup */
+                                            null,
+                                            null /* cancellable */);
+                        } catch (Error e) {
+                            warning("Terminal print_exit_notify: %s\n", e.message);
+                        }
+                        
+                        return false;
+                    });
+                
+                has_print_exit_notify = true;
+            }
         }
         
         public void launch_command(ArrayList<string> commands, string? dir) {
