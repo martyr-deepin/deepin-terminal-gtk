@@ -355,12 +355,18 @@ namespace Widgets {
                 ConfirmDialog dialog = Widgets.create_running_confirm_dialog(this);
                 dialog.confirm.connect((d) => {
                         window_save_before_quit();
-                        Gtk.main_quit();
+                        fast_quit();
                     });
             } else {
                 window_save_before_quit();
-                Gtk.main_quit();
+                fast_quit();
             }
+        }
+        
+        private void fast_quit() {
+            // Hide main window before real quit, it's will make user feel terminal quit faster. ;)
+            hide();
+            Gtk.main_quit();
         }
         
         private bool on_key_press(Gtk.Widget widget, Gdk.EventKey key_event) {
