@@ -102,6 +102,14 @@ namespace Widgets {
             focus_out_event.connect((w) => {
                     update_style();
                     
+                    try {
+                        if (config.config_file.get_boolean("advanced", "hide_quakewindow_after_lost_focus")) {
+                            hide();
+                        }
+                    } catch (Error e) {
+                        print("quake_window focus_out_event: %s\n", e.message);
+                    }
+                    
                     return false;
                 });
             

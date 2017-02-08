@@ -95,6 +95,7 @@ namespace Widgets {
 		public Widgets.CheckButton cursor_blink_checkbutton;
 		public Widgets.CheckButton scroll_on_key_checkbutton;
 		public Widgets.CheckButton scroll_on_out_checkbutton;
+		public Widgets.CheckButton hide_quakewindow_after_lost_focus_checkbutton;
 		public Widgets.ConfigWindow parent_window;
 		public Widgets.CursorToggleButton cursor_style_button;
 		public Widgets.ProgressBar opacity_progressbar;
@@ -193,6 +194,7 @@ namespace Widgets {
 			cursor_blink_checkbutton = new Widgets.CheckButton();
 			scroll_on_key_checkbutton = new Widgets.CheckButton();
 			scroll_on_out_checkbutton = new Widgets.CheckButton();
+            hide_quakewindow_after_lost_focus_checkbutton = new Widgets.CheckButton();
 			
 			font_size_spinbutton = create_spinbutton(Constant.FONT_MIN_SIZE, Constant.FONT_MAX_SIZE, 1);
 			
@@ -380,6 +382,13 @@ namespace Widgets {
             window_state_name_list.add(_("Fullscreen"));
             create_combox_row_with_name(window_label, window_combox, _("Use on starting:"), window_grid, window_state_list, window_state_name_list, "advanced", "use_on_starting");
             
+            create_follow_check_row(hide_quakewindow_after_lost_focus_checkbutton, 
+                                    _("Hide quake window after lost focus"), 
+                                    window_label,
+                                    window_grid, 
+                                    "advanced", 
+                                    "hide_quakewindow_after_lost_focus");
+            
             var reset_button = new Widgets.ImageButton("reset_button", false, _("Restore default settings"));
             reset_button.set_halign(Gtk.Align.CENTER);
             reset_button.margin_top = reset_button_margin;
@@ -483,6 +492,7 @@ namespace Widgets {
 				cursor_blink_checkbutton.set_active(parent_window.config.config_file.get_boolean("advanced", "cursor_blink_mode"));
 				scroll_on_key_checkbutton.set_active(parent_window.config.config_file.get_boolean("advanced", "scroll_on_key"));
 				scroll_on_out_checkbutton.set_active(parent_window.config.config_file.get_boolean("advanced", "scroll_on_output"));
+				hide_quakewindow_after_lost_focus_checkbutton.set_active(parent_window.config.config_file.get_boolean("advanced", "hide_quakewindow_after_lost_focus"));
 		    
 				font_size_spinbutton.set_value(parent_window.config.config_file.get_integer("general", "font_size"));
 			} catch (GLib.KeyFileError e) {

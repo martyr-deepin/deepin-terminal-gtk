@@ -124,6 +124,7 @@ namespace Config {
                 config_file.set_integer("advanced", "window_height", 0);
                 config_file.set_double("advanced", "quake_window_height", 0);
                 config_file.set_string("advanced", "remote_commands", "zssh");
+                config_file.set_boolean("advanced", "hide_quakewindow_after_lost_focus", false);
 			
                 config_file.set_string("theme", "color_1", "#073642");
                 config_file.set_comment("theme", "color_1", "host");
@@ -308,6 +309,7 @@ namespace Config {
             check_integer("advanced", "window_height", 0);
             check_double("advanced", "quake_window_height", 0);
             check_string("advanced", "remote_commands", "ssh;zssh;tmux;screen");
+            check_boolean("advanced", "hide_quakewindow_after_lost_focus", false);
 			
 			check_string("theme", "color_1", "#073642");
 			check_string("theme", "color_2", "#bdb76b");  // string
