@@ -1,0 +1,664 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-02-04 13:02+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Till Robin Zickel <Ministry578@gmail.com>, 2017\n"
+"Language-Team: German (https://www.transifex.com/linuxdeepin/teams/3976/de/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../widget/terminal.vala:936
+msgid ""
+"\n"
+"Command has been completed, press ENTER to exit the terminal."
+msgstr ""
+"\n"
+"Befehl wurde abgeschlossen, drücken Sie ENTER, um das Terminal zu verlassen."
+
+#: ../widget/appbar.vala:140
+msgid "About"
+msgstr "Über"
+
+#: ../widget/about_widget.vala:62
+msgid "Acknowledgments"
+msgstr "Danksagungen"
+
+#: ../widget/remote_server_dialog.vala:346 ../widget/command_dialog.vala:198
+msgid "Add"
+msgstr "Hinzufügen"
+
+#: ../widget/command_dialog.vala:127
+msgid "Add Command"
+msgstr "Befehl hinzufügen "
+
+#: ../widget/remote_server_dialog.vala:149
+msgid "Add Server"
+msgstr "Server hinzufügen "
+
+#: ../widget/command_panel.vala:303
+msgid "Add command"
+msgstr "Befehl hinzufügen "
+
+#: ../widget/remote_panel.vala:574
+msgid "Add server"
+msgstr "Server hinzufügen "
+
+#: ../widget/remote_server_dialog.vala:102
+msgid "Address"
+msgstr "Adresse"
+
+#: ../widget/remote_server_dialog.vala:185
+msgid "Address:"
+msgstr "Adresse:"
+
+#: ../widget/preference_slidebar.vala:75 ../widget/preference_slidebar.vala:82
+#: ../widget/preference.vala:320 ../widget/preference.vala:331
+#: ../widget/config_window.vala:324
+msgid "Advanced"
+msgstr "Erweitert"
+
+#: ../widget/remote_server_dialog.vala:331
+msgid "Advanced options"
+msgstr "Erweiterte Optionen "
+
+#: ../widget/remote_server_dialog.vala:420 ../widget/command_dialog.vala:250
+msgid "Are you sure to delete"
+msgstr "Sind Sie sicher, dass folgendes gelöscht werden soll:"
+
+#: ../widget/confirm_dialog.vala:132
+msgid "Are you sure to exit?"
+msgstr "Sind sie sicher, dass Sie beenden möchten?"
+
+#: ../widget/remote_server_dialog.vala:102
+msgid "Backspace key"
+msgstr "Rücklauftaste"
+
+#: ../widget/remote_server_dialog.vala:315
+msgid "Backspace key:"
+msgstr "Rücklauftaste:"
+
+#: ../widget/preference_slidebar.vala:56 ../widget/preference.vala:236
+msgid "Basic"
+msgstr "Basis"
+
+#: ../widget/remote_server_dialog.vala:341
+#: ../widget/remote_server_dialog.vala:421 ../widget/confirm_dialog.vala:132
+#: ../widget/terminal.vala:378 ../widget/terminal.vala:406
+#: ../widget/file_button.vala:69 ../widget/command_dialog.vala:193
+#: ../widget/command_dialog.vala:251
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: ../widget/remote_server_dialog.vala:102
+msgid "Certificate"
+msgstr "Zertifikat"
+
+#: ../widget/remote_server_dialog.vala:255
+msgid "Certificate:"
+msgstr "Zertifikat:"
+
+#: ../widget/terminal.vala:253 ../widget/config_window.vala:302
+msgid "Close other windows"
+msgstr "Andere Fenster schließen"
+
+#: ../widget/preference.vala:318
+msgid "Close other windows:"
+msgstr "Andere Fenster schließen:"
+
+#: ../widget/terminal.vala:251 ../widget/config_window.vala:301
+msgid "Close window"
+msgstr "Fenster schließen"
+
+#: ../widget/preference.vala:317
+msgid "Close window:"
+msgstr "Fenster schließen:"
+
+#: ../widget/config_window.vala:291
+msgid "Close workspace"
+msgstr "Arbeitsfläche schließen"
+
+#: ../widget/preference.vala:308
+msgid "Close workspace:"
+msgstr "Arbeitsfläche schließen:"
+
+#: ../widget/remote_server_dialog.vala:102
+msgid "Command"
+msgstr "Befehl"
+
+#: ../widget/remote_server_dialog.vala:289 ../widget/command_dialog.vala:173
+msgid "Command:"
+msgstr "Befehl:"
+
+#: ../widget/command_dialog.vala:84
+msgid "Content"
+msgstr "Inhalt"
+
+#: ../widget/terminal.vala:223 ../widget/config_window.vala:265
+#: ../widget/entry_menu.vala:16
+msgid "Copy"
+msgstr "Kopieren"
+
+#: ../widget/terminal.vala:227
+msgid "Copy link"
+msgstr "Link kopieren "
+
+#: ../widget/preference.vala:290
+msgid "Copy:"
+msgstr "Kopieren:"
+
+#: ../widget/preference_slidebar.vala:85 ../widget/preference.vala:334
+msgid "Cursor"
+msgstr "Mauszeiger"
+
+#: ../widget/preference.vala:356
+msgid "Cursor blink"
+msgstr "Mauszeigerblinken"
+
+#: ../widget/preference.vala:191
+msgid "Cursor style:"
+msgstr "Mauszeigerstil:"
+
+#: ../widget/terminal.vala:278 ../widget/config_window.vala:318
+#: ../widget/appbar.vala:133
+msgid "Custom commands"
+msgstr "Benutzerdefinierte Befehle"
+
+#: ../widget/preference.vala:328
+msgid "Custom commands:"
+msgstr "Benutzerdefinierte Befehle:"
+
+#: ../widget/entry_menu.vala:15
+msgid "Cut"
+msgstr "Ausschneiden"
+
+#: ../main.vala:175 ../widget/about_widget.vala:82 ../widget/tabbar.vala:603
+msgid "Deepin Terminal"
+msgstr "Deepin Terminal"
+
+#: ../main.vala:176 ../widget/about_widget.vala:49
+msgid ""
+"Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.\n"
+"\n"
+"It sharpens your focus in the world of command line!"
+msgstr ""
+"Deepin Terminal ist ein erweiterter Terminalemulator mit Arbeitsfläche, mehreren Fenstern, Fernverwaltung, Quake-Modus und anderen Funktionen.\n"
+"\n"
+"Es schärft Ihren Fokus in der Welt der Befehlszeile!"
+
+#: ../widget/config_window.vala:271
+msgid "Default size"
+msgstr "Standardgröße"
+
+#: ../widget/preference.vala:296
+msgid "Default size:"
+msgstr "Standardgröße:"
+
+#: ../widget/remote_server_dialog.vala:422 ../widget/command_dialog.vala:252
+#: ../widget/entry_menu.vala:21
+msgid "Delete"
+msgstr "Löschen"
+
+#: ../widget/command_dialog.vala:239 ../widget/command_dialog.vala:249
+msgid "Delete command"
+msgstr "Befehl löschen"
+
+#: ../widget/remote_server_dialog.vala:102
+msgid "Delete key"
+msgstr "Taste löschen "
+
+#: ../widget/remote_server_dialog.vala:328
+msgid "Delete key:"
+msgstr "Taste löschen:"
+
+#: ../widget/remote_server_dialog.vala:409
+#: ../widget/remote_server_dialog.vala:419
+msgid "Delete server"
+msgstr "Server löschen"
+
+#: ../widget/config_window.vala:317
+msgid "Display shortcuts"
+msgstr "Tastenkürzel anzeigen "
+
+#: ../widget/preference.vala:327
+msgid "Display shortcuts:"
+msgstr "Tastenkürzel anzeigen:"
+
+#: ../main.vala:124
+msgid "Display version"
+msgstr "Version anzeigen "
+
+#: ../widget/terminal.vala:283
+msgid "Download file"
+msgstr "Datei herunterladen "
+
+#: ../widget/command_dialog.vala:125
+msgid "Edit Command"
+msgstr "Befehl bearbeiten"
+
+#: ../widget/remote_server_dialog.vala:147
+msgid "Edit Server"
+msgstr "Server bearbeiten"
+
+#: ../widget/remote_server_dialog.vala:102 ../widget/terminal.vala:277
+msgid "Encoding"
+msgstr "Kodierung"
+
+#: ../widget/remote_server_dialog.vala:302
+msgid "Encoding:"
+msgstr "Kodierung:"
+
+#: ../widget/confirm_dialog.vala:132 ../widget/appbar.vala:141
+msgid "Exit"
+msgstr "Beenden"
+
+#: ../widget/terminal.vala:263
+msgid "Exit fullscreen"
+msgstr "Vollbild beenden"
+
+#: ../widget/preference.vala:279
+msgid "Font size:"
+msgstr "Schriftgröße:"
+
+#: ../widget/preference.vala:277
+msgid "Font:"
+msgstr "Schriftart:"
+
+#: ../widget/preference.vala:380 ../widget/terminal.vala:265
+msgid "Fullscreen"
+msgstr "Vollbild"
+
+#: ../widget/preference.vala:326
+msgid "Fullscreen:"
+msgstr "Vollbild:"
+
+#: ../widget/remote_server_dialog.vala:102
+msgid "Group"
+msgstr "Gruppe "
+
+#: ../widget/remote_server_dialog.vala:271
+msgid "Group:"
+msgstr "Gruppe:"
+
+#: ../widget/appbar.vala:138
+msgid "Help"
+msgstr "Hilfe"
+
+#: ../widget/terminal.vala:249 ../widget/config_window.vala:296
+msgid "Horizontal split"
+msgstr "Horizontal teilen"
+
+#: ../widget/preference.vala:312
+msgid "Horizontal split:"
+msgstr "Horizontal teilen:"
+
+#: ../widget/preference_slidebar.vala:59 ../widget/preference.vala:239
+msgid "Interface"
+msgstr "Schnittstelle"
+
+#: ../widget/config_window.vala:273
+msgid "Jump to next command"
+msgstr "Zum nächsten Befehl springen"
+
+#: ../widget/preference.vala:297
+msgid "Jump to next command:"
+msgstr "Zum nächsten Befehl springen:"
+
+#: ../widget/config_window.vala:274
+msgid "Jump to previous command"
+msgstr "Zum vorherigen Befehl springen"
+
+#: ../widget/preference.vala:298
+msgid "Jump to previous command:"
+msgstr "Zum vorherigen Befehl springen:"
+
+#: ../widget/preference.vala:379
+msgid "Maximize"
+msgstr "Maximieren"
+
+#: ../widget/command_dialog.vala:84
+msgid "Name"
+msgstr "Name"
+
+#: ../widget/command_dialog.vala:160
+msgid "Name:"
+msgstr "Name:"
+
+#: ../widget/appbar.vala:131
+msgid "New window"
+msgstr "Neues Fenster "
+
+#: ../widget/terminal.vala:257 ../widget/config_window.vala:290
+msgid "New workspace"
+msgstr "Neue Arbeitsfläche"
+
+#: ../widget/preference.vala:307
+msgid "New workspace:"
+msgstr "Neue Arbeitsfläche:"
+
+#: ../widget/config_window.vala:292
+msgid "Next workspace"
+msgstr "Nächste Arbeitsfläche"
+
+#: ../widget/preference.vala:310
+msgid "Next workspace:"
+msgstr "Nächste Arbeitsfläche:"
+
+#: ../widget/preference.vala:378
+msgid "Normal window"
+msgstr "Normales Fenster"
+
+#: ../widget/preference.vala:131
+msgid "Opacity:"
+msgstr "Undurchsichtigkeit:"
+
+#: ../widget/terminal.vala:240 ../widget/config_window.vala:267
+msgid "Open"
+msgstr "Öffnen"
+
+#: ../widget/preference.vala:292
+msgid "Open:"
+msgstr "Öffnen:"
+
+#: ../widget/remote_server_dialog.vala:269
+#: ../widget/remote_server_dialog.vala:279
+#: ../widget/remote_server_dialog.vala:288
+msgid "Optional"
+msgstr "Optional"
+
+#: ../widget/remote_server_dialog.vala:102
+msgid "Password"
+msgstr "Passwort"
+
+#: ../widget/remote_server_dialog.vala:241
+msgid "Password:"
+msgstr "Passwort:"
+
+#: ../widget/terminal.vala:233 ../widget/config_window.vala:266
+#: ../widget/entry_menu.vala:18
+msgid "Paste"
+msgstr "Einfügen"
+
+#: ../widget/preference.vala:291
+msgid "Paste:"
+msgstr "Einfügen:"
+
+#: ../widget/remote_server_dialog.vala:102
+msgid "Path"
+msgstr "Pfad"
+
+#: ../widget/remote_server_dialog.vala:280
+msgid "Path:"
+msgstr "Pfad:"
+
+#: ../widget/shortcut_entry.vala:124
+msgid "Please enter a new shortcut"
+msgstr "Bitte geben Sie ein neues Tastenkürzel ein "
+
+#: ../widget/remote_server_dialog.vala:194
+msgid "Port:"
+msgstr "Port"
+
+#: ../widget/config_window.vala:293
+msgid "Previous workspace"
+msgstr "Vorherige Arbeitsfläche"
+
+#: ../widget/preference.vala:309
+msgid "Previous workspace:"
+msgstr "Vorherige Arbeitsfläche:"
+
+#: ../widget/confirm_dialog.vala:132
+msgid "Programs are still running in terminal"
+msgstr "Es werden noch Programme im Terminal ausgeführt"
+
+#: ../main.vala:169
+msgid "Quake mode"
+msgstr "Quake-Modus"
+
+#: ../widget/terminal.vala:279 ../widget/config_window.vala:319
+#: ../widget/appbar.vala:134
+msgid "Remote management"
+msgstr "Fernverwaltung"
+
+#: ../widget/preference.vala:329
+msgid "Remote management:"
+msgstr "Fernverwaltung:"
+
+#: ../widget/remote_server_dialog.vala:181
+#: ../widget/remote_server_dialog.vala:191
+#: ../widget/remote_server_dialog.vala:226 ../widget/command_dialog.vala:159
+#: ../widget/command_dialog.vala:172
+msgid "Required"
+msgstr "Erforderlich"
+
+#: ../widget/preference.vala:383
+msgid "Restore default settings"
+msgstr "Standardeinstellungen wiederherstellen "
+
+#: ../main.vala:182
+msgid ""
+"Run '%s --help' to view a full list of available command line pass_options"
+msgstr ""
+"Führen Sie den Befehl '%s --help' aus, um eine Vollständige Liste der "
+"Befehlszeilenparameter zu erhalten."
+
+#: ../main.vala:151 ../main.vala:160
+msgid "Run a program in the terminal"
+msgstr "Ein Programm im Terminal ausführen "
+
+#: ../widget/remote_server_dialog.vala:344 ../widget/command_dialog.vala:196
+msgid "Save"
+msgstr "Speichern"
+
+#: ../widget/preference_slidebar.vala:88 ../widget/preference.vala:358
+msgid "Scroll"
+msgstr "Bildlauf"
+
+#: ../widget/preference.vala:364
+msgid "Scroll on keystroke"
+msgstr "Bildlauf bei Tastendruck"
+
+#: ../widget/preference.vala:365
+msgid "Scroll on output"
+msgstr "Bildlauf bei Ausgabe"
+
+#: ../widget/terminal.vala:269 ../widget/search_entry.vala:64
+#: ../widget/search_entry.vala:67 ../widget/config_window.vala:268
+msgid "Search"
+msgstr "Suchen"
+
+#: ../widget/preference.vala:293 ../widget/remote_panel.vala:471
+#: ../widget/command_panel.vala:201
+msgid "Search:"
+msgstr "Suchen:"
+
+#: ../widget/terminal.vala:407 ../widget/file_button.vala:71
+msgid "Select"
+msgstr "Auswählen"
+
+#: ../widget/config_window.vala:272 ../widget/entry_menu.vala:24
+msgid "Select all"
+msgstr "Alles auswählen"
+
+#: ../widget/preference.vala:299
+msgid "Select all:"
+msgstr "Alles auswählen:"
+
+#: ../widget/terminal.vala:405
+msgid "Select directory to save download file"
+msgstr ""
+"Wählen Sie ein Verzeichnis, im dem der Download gespeichert werden soll."
+
+#: ../widget/terminal.vala:376
+msgid "Select file to upload"
+msgstr "Datei zum Hochladen auswählen"
+
+#: ../widget/config_window.vala:299
+msgid "Select left window"
+msgstr "Linkes Fenster auswählen"
+
+#: ../widget/preference.vala:315
+msgid "Select left window:"
+msgstr "Linkes Fenster auswählen:"
+
+#: ../widget/config_window.vala:298
+msgid "Select lower window"
+msgstr "Unteres Fenster auswählen"
+
+#: ../widget/preference.vala:314
+msgid "Select lower window:"
+msgstr "Unteres Fenster auswählen:"
+
+#: ../widget/config_window.vala:300
+msgid "Select right window"
+msgstr "Rechtes Fenster auswählen"
+
+#: ../widget/preference.vala:316
+msgid "Select right window:"
+msgstr "Rechtes Fenster auswählen:"
+
+#: ../widget/file_button.vala:67
+msgid "Select the private key file"
+msgstr "Private Schlüsseldatei auswählen"
+
+#: ../widget/config_window.vala:297
+msgid "Select upper window"
+msgstr "Oberes Fenster auswählen"
+
+#: ../widget/preference.vala:313
+msgid "Select upper window:"
+msgstr "Oberes Fenster auswählen:"
+
+#: ../widget/config_window.vala:294
+msgid "Select workspace"
+msgstr "Arbeitsfläche auswählen"
+
+#: ../widget/remote_server_dialog.vala:102
+msgid "Server name"
+msgstr "Servername"
+
+#: ../widget/remote_server_dialog.vala:182
+msgid "Server name:"
+msgstr "Servername:"
+
+#: ../main.vala:133
+msgid "Set the terminal startup directory"
+msgstr ""
+"Legen Sie das Verzeichnis fest, in dem Sie starten möchten, wenn das "
+"Terminal geöffnet wird."
+
+#: ../main.vala:115
+msgid "Set the terminal window mode"
+msgstr "Den Fenstermodus des Terminals festlegen."
+
+#: ../widget/terminal.vala:287 ../widget/appbar.vala:136
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: ../widget/preference_slidebar.vala:66 ../widget/preference.vala:281
+#: ../widget/command_dialog.vala:84
+msgid "Shortcuts"
+msgstr "Tastenkürzel"
+
+#: ../widget/command_dialog.vala:181
+msgid "Shortcuts:"
+msgstr "Tastenkürzel:"
+
+#: ../widget/config_window.vala:316
+msgid "Switch fullscreen"
+msgstr "Vollbild umschalten"
+
+#: ../widget/terminal.vala:275 ../widget/appbar.vala:132
+msgid "Switch theme"
+msgstr "Thema wechseln"
+
+#: ../widget/preference_slidebar.vala:69 ../widget/preference.vala:284
+#: ../widget/config_window.vala:279
+msgid "Terminal"
+msgstr "Terminal"
+
+#: ../widget/terminal.vala:419
+msgid "Type path for download file"
+msgstr "Die Pfadangabe des Speicherorts für den Downlaoid eingeben"
+
+#: ../widget/terminal.vala:380
+msgid "Upload"
+msgstr "Hochladen"
+
+#: ../widget/terminal.vala:282
+msgid "Upload file"
+msgstr "Datei hochladen"
+
+#: ../widget/preference.vala:381
+msgid "Use on starting:"
+msgstr "Beim Startvorgang verwenden:"
+
+#: ../widget/remote_server_dialog.vala:102
+msgid "Username"
+msgstr "Benutzername"
+
+#: ../widget/remote_server_dialog.vala:227
+msgid "Username:"
+msgstr "Benutzername:"
+
+#: ../widget/about_widget.vala:86
+msgid "Version:"
+msgstr "Version:"
+
+#: ../widget/terminal.vala:250 ../widget/config_window.vala:295
+msgid "Vertical split"
+msgstr "Vertikal teilen"
+
+#: ../widget/preference.vala:311
+msgid "Vertical split:"
+msgstr "Vertikal teilen:"
+
+#: ../widget/remote_panel.vala:225
+msgid ""
+"Welcome to Deepin Terminal, please make sure that rz and sz commands have "
+"been installed in the server before right clicking to upload and download "
+"files."
+msgstr ""
+"Willkommen im Deepin Terminal. Bitte stellen Sie sicher, dass Sie die "
+"Programme rz und sz auf dem Server installiert haben, bevor Sie mit einem "
+"Rechtsklick Dateien auf den Server Hochladen oder einen Download vom Server "
+"beginnen."
+
+#: ../widget/preference_slidebar.vala:91 ../widget/preference.vala:367
+msgid "Window"
+msgstr "Fenster"
+
+#: ../widget/preference_slidebar.vala:72 ../widget/preference.vala:301
+#: ../widget/config_window.vala:307
+msgid "Workspace"
+msgstr "Arbeitsfläche"
+
+#: ../widget/config_window.vala:269
+msgid "Zoom in"
+msgstr "Hineinzoomen:"
+
+#: ../widget/preference.vala:294
+msgid "Zoom in:"
+msgstr "Hineinzoomen:"
+
+#: ../widget/config_window.vala:270
+msgid "Zoom out"
+msgstr "Hinauszoomen:"
+
+#: ../widget/preference.vala:295
+msgid "Zoom out:"
+msgstr "Hinauszoomen:"
+
+#: ../widget/terminal.vala:539 ../widget/terminal.vala:962
+msgid "deepin"
+msgstr "deepin"
