@@ -95,6 +95,10 @@ namespace Widgets {
             term.child_exited.connect((t)=> {
                     child_has_exit = true;
                     
+                    foreach (var command in Application.commands) {
+                        print("Debug: %s\n", command);
+                    }
+                    
                     if (is_launch_command()) {
                         // Print exit notify if command execute finish.
                         print_exit_notify();
