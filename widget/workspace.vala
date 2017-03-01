@@ -87,6 +87,7 @@ namespace Widgets {
 			command_panel_hide_timer.animate.connect(command_panel_hide_animate);
 
             Term term = new_term(true, work_directory);
+            workspace_manager.set_first_term(term);
             
             add(term);
         }

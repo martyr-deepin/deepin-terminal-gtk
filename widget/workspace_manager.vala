@@ -32,6 +32,9 @@ namespace Widgets {
         public Workspace focus_workspace;
         public int workspace_index;
         
+        private bool has_first_term_created;
+        private Widgets.Term? first_term;
+        
         public WorkspaceManager(Tabbar t, string? work_directory) {
             Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
             
@@ -40,7 +43,26 @@ namespace Widgets {
             workspace_index = 0;
             workspace_map = new HashMap<int, Workspace>();
             
+            has_first_term_created = false;
+            
             new_workspace(work_directory);
+        }
+        
+        public void set_first_term(Widgets.Term term) {
+            // Set first terminal to make only first create tab terminal execute -e commands,
+            // all terminals created by user's new_tab action won't execute -e commands.
+            if (!has_first_term_created) {
+                first_term = term;
+                has_first_term_created = true;
+            }
+        }
+        
+        public bool is_first_term(Widgets.Term term) {
+            if (first_term == null) {
+                return true;
+            } else {
+                return first_term == term;
+            }
         }
         
         public void pack_workspace(Workspace workspace) {

@@ -95,7 +95,7 @@ namespace Widgets {
             term.child_exited.connect((t)=> {
                     child_has_exit = true;
                     
-                    if (is_launch_command()) {
+                    if (is_launch_command() && workspace_manager.is_first_term(this)) {
                         // Print exit notify if command execute finish.
                         print_exit_notify();
                     } else {
@@ -177,7 +177,7 @@ namespace Widgets {
             
             // NOTE: if terminal start with option '-e', use functional 'launch_command' and don't use function 'launch_shell'.
             // terminal will crash if we launch_command after launch_shell.
-            if (is_launch_command()) {
+            if (is_launch_command() && workspace_manager.is_first_term(this)) {
                 launch_command(Application.commands, work_directory);
             } else {
                 launch_shell(work_directory);
@@ -620,7 +620,7 @@ namespace Widgets {
         
         private bool on_key_press(Gtk.Widget widget, Gdk.EventKey key_event) {
             // Exit terminal if got `child_exited' signal by command execute finish.
-            if (child_has_exit && is_launch_command()) {
+            if (child_has_exit && is_launch_command() && workspace_manager.is_first_term(this)) {
                 string keyname = Keymap.get_keyevent_name(key_event);
                 if (keyname == "Enter") {
                     // Exit key press callback if current terminal has exit.
