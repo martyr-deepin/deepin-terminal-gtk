@@ -623,7 +623,10 @@ namespace Widgets {
             if (child_has_exit && is_launch_command()) {
                 string keyname = Keymap.get_keyevent_name(key_event);
                 if (keyname == "Enter") {
+                    // Exit key press callback if current terminal has exit.
                     exit();
+                    
+                    return true;
                 }
             }
             
