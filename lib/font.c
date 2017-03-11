@@ -86,6 +86,7 @@ gchar** list_mono_or_dot_fonts(int* num) {
             || strcmp((char*) FcPatternFormat(fs->fonts[j], (FcChar8*)"%{family}"), "mononoki") == 0
             || strcmp((char*) FcPatternFormat(fs->fonts[j], (FcChar8*)"%{family}"), "Roboto Mono") == 0
             || strcmp((char*) FcPatternFormat(fs->fonts[j], (FcChar8*)"%{family}"), "Oxygen Mono") == 0
+            || strcmp((char*) FcPatternFormat(fs->fonts[j], (FcChar8*)"%{family}"), "Monaco") == 0
             ) {
 		    /* Realloc was realloc(fonts, 0), and you have to take space for <char *> */
 		    fonts = realloc(fonts, (count + 1) * sizeof(gchar*));
