@@ -265,7 +265,7 @@ namespace Widgets {
                         Gdk.RGBA paned_background_color;
 						try {
                             paned_background_color = Utils.hex_to_rgba(
-                                parent_window.config.config_file.get_string("theme", "background"),
+                                parent_window.is_light_theme() ? "#bbbbbb" : "#111111",
                                 parent_window.config.config_file.get_double("general", "opacity"));
                             Utils.set_context_color(cr, paned_background_color);
 						} catch (GLib.KeyFileError e) {
