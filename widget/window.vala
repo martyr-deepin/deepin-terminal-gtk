@@ -166,7 +166,7 @@ namespace Widgets {
                     update_style();
                     
                     if (window_is_fullscreen() || window_is_max()) {
-                        window_widget_box.margin_top = 1;
+                        window_widget_box.margin_top = 0;
                         window_widget_box.margin_bottom = 0;
                         window_widget_box.margin_start = 0;
                         window_widget_box.margin_end = 0;
