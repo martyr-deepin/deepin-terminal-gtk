@@ -23,36 +23,36 @@ And you also need `deepin-menu` from [http://mirrors.deepin.com/deepin/pool/main
 Below is keymap list for deepin-terminal:
 
 | Function					      | Shortcut                            |
-|---------------------------------|-------------------------------------|
-| Copy                            | **Ctrl** + **Shift** + **c**        |
-| Paste                           | **Ctrl** + **Shift** + **v**        |
-| Select word                     | **Double click**                    |
-| Open URL                        | **Ctrl** + **LeftButton**           |
-| Search                          | **Ctrl** + **Shfit** + **f**        |
-| Zoom in                         | **Ctrl** + **=**                    |
-| Zoom out                        | **Ctrl** + **-**                    |
-| Default size                    | **Ctrl** + **0**                    |
-| Select all                      | **Ctrl** + **Shift** + **a**        |
-|                                                                       |
-| New workspace                   | **Ctrl** + **Shift** + **t**        |
-| Close workspace                 | **Ctrl** + **Shift** + **w**        |
-| Next workspace                  | **Ctrl** + **Tab**                  |
-| Preview workspace               | **Ctrl** + **Shfit** + **Tab**      |
-| Select workspace with number    | **Alt** + **number**                |
-| Vertical split                  | **Ctrl** + **Shift** + **j**        |
-| Horizontal split                | **Ctrl** + **Shfit** + **h**        |
-| Select upper window             | **Alt**  + **k**                    |
-| Select lower window             | **Alt**  + **j**                    |
-| Select left window              | **Alt**  + **h**                    |
-| Select right window             | **Alt**  + **l**                    |
-| Close window                    | **Ctrl** + **Alt** + **q**          |
-| Close other windows             | **Ctrl** + **Shift** + **q**        |
-|                                                                       |
-| Switch fullscreen               | **F11**                             |
-| Adjust background opacity       | **Ctrl** + **ScrollButton**         |
-| Display shortcuts               | **Ctrl** + **Shift** + **?**        |
-| Custom commands                 | **Ctrl** + **[**                    |
-| Remote management               | **Ctrl** + **/**                    |
+|---------------------------------|---------------------------------------------------------|
+| Copy                            | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>c</kbd>       |
+| Paste                           | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>v</kbd>       |
+| Select word                     | Double <kbd>click</kbd>                                 |
+| Open URL                        | <kbd>Ctrl</kbd> + <kbd>LeftButton</kbd>                 |
+| Search                          | <kbd>Ctrl</kbd> + <kbd>Shfit</kbd> + <kbd>f</kbd>       |
+| Zoom in                         | <kbd>Ctrl</kbd> + <kbd>=</kbd>                          |
+| Zoom out                        | <kbd>Ctrl</kbd> + <kbd>-</kbd>                          |
+| Default size                    | <kbd>Ctrl</kbd> + <kbd>0</kbd>                          |
+| Select all                      | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>a</kbd>       |
+|                                                                                           |
+| New workspace                   | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>t</kbd>       |
+| Close workspace                 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>w</kbd>       |
+| Next workspace                  | <kbd>Ctrl</kbd> + <kbd>Tab</kbd>                        |
+| Preview workspace               | <kbd>Ctrl</kbd> + <kbd>Shfit</kbd> + <kbd>Tab</kbd>     |
+| Select workspace with number    | <kbd>Alt</kbd> + <kbd>number</kbd>                      |
+| Vertical split                  | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>j</kbd>       |
+| Horizontal split                | <kbd>Ctrl</kbd> + <kbd>Shfit</kbd> + <kbd>h</kbd>       |
+| Select upper window             | <kbd>Alt</kbd>  + <kbd>k</kbd>                          |
+| Select lower window             | <kbd>Alt</kbd>  + <kbd>j</kbd>                          |
+| Select left window              | <kbd>Alt</kbd>  + <kbd>h</kbd>                          |
+| Select right window             | <kbd>Alt</kbd>  + <kbd>l</kbd>                          |
+| Close window                    | <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>q</kbd>         |
+| Close other windows             | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>q</kbd>       |
+|                                                                                           |
+| Switch fullscreen               | <kbd>F11</kbd>                                          |
+| Adjust background opacity       | <kbd>Ctrl</kbd> + <kbd>ScrollButton</kbd>               |
+| Display shortcuts               | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>?</kbd>       |
+| Custom commands                 | <kbd>Ctrl</kbd> + <kbd>\[</kbd>                         |
+| Remote management               | <kbd>Ctrl</kbd> + <kbd>/</kbd>                          |
 
 ## Config file
 Terminal's configure save at:
