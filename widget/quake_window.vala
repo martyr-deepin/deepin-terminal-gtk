@@ -283,7 +283,14 @@ namespace Widgets {
                 
             top_box.pack_start(tabbar, true, true, 0);
             box.pack_start(workspace_manager, true, true, 0);
-            box.pack_start(top_box, false, false, 0);
+            
+            try {
+                if (config.config_file.get_boolean("advanced", "show_quakewindow_tab")) {
+                    box.pack_start(top_box, false, false, 0);
+                }
+            } catch (Error e) {
+                print("Main quake mode: %s\n", e.message);
+            }
                 
             add_widget(box);
             show_all();
