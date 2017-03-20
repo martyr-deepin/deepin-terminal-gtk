@@ -30,6 +30,7 @@ namespace Widgets {
         public Gtk.Container drawing_area;
         public Gtk.Widget? child_before_leave;
         public bool is_double_clicked = false;
+        public bool is_press = false;
         public double press_x = 0;
         public double press_y = 0;
         public int double_clicked_max_delay = 150;
@@ -98,17 +99,24 @@ namespace Widgets {
                 });
             
             button_press_event.connect((w, e) => {
+                    is_press = true;
+                    
                     e.device.get_position(null, out press_x, out press_y);
 
                     GLib.Timeout.add(10, () => {
-                            int pointer_x, pointer_y;
-                            e.device.get_position(null, out pointer_x, out pointer_y);
+                            // Send 'move_window' event to xserver once find user first do drag.
+                            if (is_press) {
+                                int pointer_x, pointer_y;
+                                e.device.get_position(null, out pointer_x, out pointer_y);
                                 
-                            if (pointer_x != press_x || pointer_y != press_y) {
-                                move_window(this, pointer_x, pointer_y, (int) e.button);
-                                return false;
+                                if (pointer_x != press_x || pointer_y != press_y) {
+                                    move_window(this, pointer_x, pointer_y, (int) e.button);
+                                    return false;
+                                } else {
+                                    return true;
+                                }
                             } else {
-                                return true;
+                                return false;
                             }
                         });
                     
@@ -154,6 +162,8 @@ namespace Widgets {
                 });
 
             button_release_event.connect((w, e) => {
+                    is_press = false;
+                    
                     var child = get_child_at_pos(drawing_area, (int) e.x, (int) e.y);
                     if (child != null) {
                         int x, y;
