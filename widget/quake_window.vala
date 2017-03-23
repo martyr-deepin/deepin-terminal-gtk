@@ -24,6 +24,7 @@
 using Gtk;
 using Widgets;
 using XUtils;
+using Utils;
 
 namespace Widgets {
     public class QuakeWindow : Widgets.ConfigWindow {
@@ -40,7 +41,7 @@ namespace Widgets {
             Gdk.Screen screen = Gdk.Screen.get_default();
             set_visual(screen.get_rgba_visual());
 
-            int monitor = screen.get_monitor_at_window(screen.get_active_window());
+            int monitor = Utils.get_active_monitor(screen);
             Gdk.Rectangle rect;
             screen.get_monitor_geometry(monitor, out rect);
             
@@ -174,7 +175,7 @@ namespace Widgets {
         
         public void toggle_quake_window() {
             Gdk.Screen screen = Gdk.Screen.get_default();
-            int active_monitor = screen.get_monitor_at_window(screen.get_active_window());
+            int active_monitor = Utils.get_active_monitor(screen);
             int window_monitor = screen.get_monitor_at_window(get_window());
             
             Gdk.Rectangle rect;
@@ -297,7 +298,7 @@ namespace Widgets {
         }
         
         public override void window_save_before_quit() {
-            int monitor = screen.get_monitor_at_window(screen.get_active_window());
+            int monitor = Utils.get_active_monitor(screen);
             Gdk.Rectangle rect;
             screen.get_monitor_geometry(monitor, out rect);
             

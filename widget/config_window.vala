@@ -23,6 +23,7 @@
 
 using Gtk;
 using Widgets;
+using Utils;
 
 namespace Widgets {
     public class ConfigWindow : Gtk.Window {
@@ -483,7 +484,7 @@ namespace Widgets {
                         int x, y;
                         if (quake_mode) {
                             Gdk.Screen screen = Gdk.Screen.get_default();
-                            int monitor = screen.get_monitor_at_window(screen.get_active_window());
+                            int monitor = Utils.get_active_monitor(screen);
                             Gdk.Rectangle rect;
                             screen.get_monitor_geometry(monitor, out rect);
                         
