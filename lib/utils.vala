@@ -408,7 +408,7 @@ namespace Utils {
     public Cairo.ImageSurface create_image_surface(string surface_path) {
         return new Cairo.ImageSurface.from_png(Utils.get_image_path(surface_path));
     }
-    
+
     public int get_active_monitor(Gdk.Screen screen) {
         var window = screen.get_active_window();
         if (window != null) {
@@ -416,5 +416,12 @@ namespace Utils {
         } else {
             return screen.get_primary_monitor();
         }
+    }
+    
+    public int get_pointer_monitor(Gdk.Screen screen) {
+        int x, y;
+        get_pointer_position(out x, out y);
+
+        return screen.get_monitor_at_point(x, y);
     }
 }

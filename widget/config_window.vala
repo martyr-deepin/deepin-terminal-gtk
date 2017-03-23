@@ -484,7 +484,7 @@ namespace Widgets {
                         int x, y;
                         if (quake_mode) {
                             Gdk.Screen screen = Gdk.Screen.get_default();
-                            int monitor = Utils.get_active_monitor(screen);
+                            int monitor = config.get_terminal_monitor();
                             Gdk.Rectangle rect;
                             screen.get_monitor_geometry(monitor, out rect);
                         
