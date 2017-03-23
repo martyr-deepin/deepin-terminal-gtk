@@ -185,9 +185,9 @@ namespace Widgets {
             if (monitor == window_monitor) {
                 var window_state = get_window().get_state();
                 if (Gdk.WindowState.WITHDRAWN in window_state) {
+                    move(rect.x, 0);
                     show_all();
                     present();
-                    move(rect.x, 0);
                 } else {
                     // Because some desktop environment, such as DDE will grab keyboard focus when press keystroke. :(
                     // So i add 200ms timeout to wait desktop environment release keyboard focus and then get window active state.
@@ -203,9 +203,9 @@ namespace Widgets {
                         });
                 }
             } else {
+                move(rect.x, 0);
                 show_all();
                 present();
-                move(rect.x, 0);
             }
         }
 
