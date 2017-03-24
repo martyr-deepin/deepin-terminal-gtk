@@ -42,10 +42,10 @@ namespace Widgets {
             set_visual(screen.get_rgba_visual());
 
             int monitor = config.get_terminal_monitor();
-            
+
             Gdk.Rectangle rect;
             screen.get_monitor_geometry(monitor, out rect);
-            
+
             set_decorated(false);
             set_keep_above(true);
 
@@ -299,15 +299,22 @@ namespace Widgets {
         }
 
         public override void window_save_before_quit() {
-            int monitor = config.get_terminal_monitor();
-            Gdk.Rectangle rect;
-            screen.get_monitor_geometry(monitor, out rect);
+            try {
+                var config_height = config.config_file.get_double("advanced", "quake_window_height");
+                if (config_height < 1.0) {
+                    int monitor = config.get_terminal_monitor();
+                    Gdk.Rectangle rect;
+                    screen.get_monitor_geometry(monitor, out rect);
 
-            int width, height;
-            get_size(out width, out height);
+                    int width, height;
+                    get_size(out width, out height);
 
-            config.config_file.set_double("advanced", "quake_window_height", height * 1.0 / rect.height);
-            config.save();
+                    config.config_file.set_double("advanced", "quake_window_height", height * 1.0 / rect.height);
+                    config.save();
+                }
+            } catch (Error e) {
+                print("QuakeWindow window_save_before_quit: %s\n", e.message);
+            }
         }
 
         public override Gdk.CursorType? get_cursor_type(double x, double y) {
