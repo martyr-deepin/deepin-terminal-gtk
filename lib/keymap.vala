@@ -77,6 +77,12 @@ namespace Keymap {
         
         if (key_unicode == 0) {  // function keys at top line of keyboard
             var keyname = Gdk.keyval_name(keyval);
+            
+            // Gdk.keyval_name will return null when user's hardware got KEY_UNKNOWN from hardware.
+            // So, we need return emptry string to protect program won't crash later.
+            if (keyname == null) {
+                return "";
+            }
 
             if (keyname == "ISO_Left_Tab") {
                 return "Tab";

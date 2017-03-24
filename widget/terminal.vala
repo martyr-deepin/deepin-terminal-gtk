@@ -619,7 +619,6 @@ namespace Widgets {
         }
         
         private bool on_key_press(Gtk.Widget widget, Gdk.EventKey key_event) {
-            print("Code at test 1 point.\n");
             // Exit terminal if got `child_exited' signal by command execute finish.
             if (child_has_exit && is_launch_command() && workspace_manager.is_first_term(this)) {
                 string keyname = Keymap.get_keyevent_name(key_event);
@@ -631,19 +630,15 @@ namespace Widgets {
                 }
             }
             
-            print("Code at test 2 point.\n");
             // This variable use for highlight_tab.
             press_anything = true;
             
-            print("Code at test 3 point.\n");
 			try {
                 string keyname = Keymap.get_keyevent_name(key_event);
                 
-                print("Code at test 4 point.\n");
                 Widgets.ConfigWindow parent_window = (Widgets.ConfigWindow) term.get_toplevel();
 
                 if (keyname == "Menu") {
-                    print("Code at test 5 point.\n");
                     int pointer_x, pointer_y;
                     Utils.get_pointer_position(out pointer_x, out pointer_y);
                     
@@ -666,7 +661,6 @@ namespace Widgets {
                     return true;
                 }
                 
-                print("Code at test 6 point.\n");
 			    var copy_key = parent_window.config.config_file.get_string("shortcut", "copy");
 			    if (copy_key != "" && keyname == copy_key) {
 			    	term.copy_clipboard();
@@ -715,7 +709,6 @@ namespace Widgets {
 			    	return true;
 			    }
                 
-                print("Code at test 7 point.\n");
                 if (keyname == "Enter" || keyname == "Ctrl + m") {
                     if (enter_sz_command) {
                         execute_download();
@@ -732,21 +725,18 @@ namespace Widgets {
                     }
                 }
                 
-                print("Code at test 8 point.\n");
                 if (keyname == "Ctrl + c" || keyname == "Ctrl + d") {
                     enter_sz_command = false;
                     
                     return false;
                 }
                 
-                print("Code at test 9 point.\n");
                 // Avoid key single character do command shorcut scan.
                 if (keyname.length > 1 && keyname != "Enter") {
                     string command_config_file_path = Utils.get_config_file_path("command-config.conf");
                     var file = File.new_for_path(command_config_file_path);
                     if (file.query_exists()) {
                         try {
-                            print("Code at test 10 point.\n");
                             KeyFile command_config_file = new KeyFile();
                             command_config_file.load_from_file(command_config_file_path, KeyFileFlags.NONE);
                             
@@ -766,12 +756,10 @@ namespace Widgets {
                     }
                 }
                 
-                print("Code at test 11 point.\n");
                 return false;
 			} catch (GLib.KeyFileError e) {
 				print("Terminal on_key_press: %s\n", e.message);
 				
-                print("Code at test 12 point.\n");
 				return false;
 			}
         }
