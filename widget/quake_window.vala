@@ -61,13 +61,15 @@ namespace Widgets {
                         }
 
                         if (config_height > window_max_height_scale) {
-                            Gdk.Geometry geo = Gdk.Geometry();
-                            geo.min_width = rect.width;
-                            geo.min_height = (int) (rect.height * window_default_height_scale);
-                            this.set_geometry_hints(null, geo, Gdk.WindowHints.MIN_SIZE);
-
                             if (config_height >= 1.0) {
-                                maximize();
+                                // When quake_window_height >= 1.0, i just make terminal fullscreen.
+                                // Happy now? ;)
+                                fullscreen();
+                            } else {
+                                Gdk.Geometry geo = Gdk.Geometry();
+                                geo.min_width = rect.width;
+                                geo.min_height = (int) (rect.height * window_default_height_scale);
+                                this.set_geometry_hints(null, geo, Gdk.WindowHints.MIN_SIZE);
                             }
                         } else {
                             Gdk.Geometry geo = Gdk.Geometry();
