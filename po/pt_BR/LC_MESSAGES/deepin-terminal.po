@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-04 13:02+0800\n"
+"POT-Creation-Date: 2017-02-08 18:00+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Pablo Alessandro Barbosa Viana <pablo.alessandro@gmail.com>, 2017\n"
+"Last-Translator: Pablo Alessandro <pablo.alessandro@gmail.com>, 2017\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/linuxdeepin/teams/3976/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
@@ -63,7 +63,7 @@ msgid "Address:"
 msgstr "Endereço:"
 
 #: ../widget/preference_slidebar.vala:75 ../widget/preference_slidebar.vala:82
-#: ../widget/preference.vala:320 ../widget/preference.vala:331
+#: ../widget/preference.vala:322 ../widget/preference.vala:333
 #: ../widget/config_window.vala:324
 msgid "Advanced"
 msgstr "Avançado"
@@ -74,11 +74,11 @@ msgstr "Opções avançadas"
 
 #: ../widget/remote_server_dialog.vala:420 ../widget/command_dialog.vala:250
 msgid "Are you sure to delete"
-msgstr "Você deseja mesmo excluir?"
+msgstr "Tem certeza de que deseja excluir?"
 
 #: ../widget/confirm_dialog.vala:132
 msgid "Are you sure to exit?"
-msgstr "Você deseja mesmo sair?"
+msgstr "Você deseja sair?"
 
 #: ../widget/remote_server_dialog.vala:102
 msgid "Backspace key"
@@ -88,7 +88,7 @@ msgstr "Tecla backspace"
 msgid "Backspace key:"
 msgstr "Tecla backspace:"
 
-#: ../widget/preference_slidebar.vala:56 ../widget/preference.vala:236
+#: ../widget/preference_slidebar.vala:56 ../widget/preference.vala:238
 msgid "Basic"
 msgstr "Básico"
 
@@ -112,7 +112,7 @@ msgstr "Certificado:"
 msgid "Close other windows"
 msgstr "Fechar outras janelas"
 
-#: ../widget/preference.vala:318
+#: ../widget/preference.vala:320
 msgid "Close other windows:"
 msgstr "Fechar outras janelas:"
 
@@ -120,7 +120,7 @@ msgstr "Fechar outras janelas:"
 msgid "Close window"
 msgstr "Fechar janela"
 
-#: ../widget/preference.vala:317
+#: ../widget/preference.vala:319
 msgid "Close window:"
 msgstr "Fechar janela:"
 
@@ -128,7 +128,7 @@ msgstr "Fechar janela:"
 msgid "Close workspace"
 msgstr "Fechar espaço de trabalho"
 
-#: ../widget/preference.vala:308
+#: ../widget/preference.vala:310
 msgid "Close workspace:"
 msgstr "Fechar espaço de trabalho:"
 
@@ -153,19 +153,19 @@ msgstr "Copiar"
 msgid "Copy link"
 msgstr "Copiar link"
 
-#: ../widget/preference.vala:290
+#: ../widget/preference.vala:292
 msgid "Copy:"
 msgstr "Copiar:"
 
-#: ../widget/preference_slidebar.vala:85 ../widget/preference.vala:334
+#: ../widget/preference_slidebar.vala:85 ../widget/preference.vala:336
 msgid "Cursor"
 msgstr "Cursor"
 
-#: ../widget/preference.vala:356
+#: ../widget/preference.vala:358
 msgid "Cursor blink"
 msgstr "Intermitência do cursor"
 
-#: ../widget/preference.vala:191
+#: ../widget/preference.vala:192
 msgid "Cursor style:"
 msgstr "Estilo do cursor:"
 
@@ -174,7 +174,7 @@ msgstr "Estilo do cursor:"
 msgid "Custom commands"
 msgstr "Comandos personalizados"
 
-#: ../widget/preference.vala:328
+#: ../widget/preference.vala:330
 msgid "Custom commands:"
 msgstr "Comandos personalizados:"
 
@@ -194,13 +194,13 @@ msgid ""
 msgstr ""
 "Deepin Terminal é um emulador de terminal avançado, com áreas de trabalho, múltiplas janelas, gerenciamento remoto, modo quake e outras características.\n"
 "\n"
-"Isso aguça seu foco no mundo da linha de comandos!"
+"Isso aguça seu foco no mundo das linhas de comandos!"
 
 #: ../widget/config_window.vala:271
 msgid "Default size"
 msgstr "Tamanho padrão"
 
-#: ../widget/preference.vala:296
+#: ../widget/preference.vala:298
 msgid "Default size:"
 msgstr "Tamanho padrão:"
 
@@ -230,7 +230,7 @@ msgstr "Excluir servidor"
 msgid "Display shortcuts"
 msgstr "Exibir atalhos"
 
-#: ../widget/preference.vala:327
+#: ../widget/preference.vala:329
 msgid "Display shortcuts:"
 msgstr "Exibir atalhos:"
 
@@ -266,19 +266,19 @@ msgstr "Sair"
 msgid "Exit fullscreen"
 msgstr "Sair de tela cheia"
 
-#: ../widget/preference.vala:279
+#: ../widget/preference.vala:281
 msgid "Font size:"
 msgstr "Tamanho da fonte:"
 
-#: ../widget/preference.vala:277
+#: ../widget/preference.vala:279
 msgid "Font:"
 msgstr "Fonte:"
 
-#: ../widget/preference.vala:380 ../widget/terminal.vala:265
+#: ../widget/preference.vala:382 ../widget/terminal.vala:265
 msgid "Fullscreen"
 msgstr "Tela cheia"
 
-#: ../widget/preference.vala:326
+#: ../widget/preference.vala:328
 msgid "Fullscreen:"
 msgstr "Tela cheia:"
 
@@ -294,15 +294,19 @@ msgstr "Grupo:"
 msgid "Help"
 msgstr "Ajuda"
 
+#: ../widget/preference.vala:386
+msgid "Hide quake window after lost focus"
+msgstr "Ocultar janela quake depois de perder o foco"
+
 #: ../widget/terminal.vala:249 ../widget/config_window.vala:296
 msgid "Horizontal split"
 msgstr "Dividir horizontalmente"
 
-#: ../widget/preference.vala:312
+#: ../widget/preference.vala:314
 msgid "Horizontal split:"
 msgstr "Dividir horizontalmente:"
 
-#: ../widget/preference_slidebar.vala:59 ../widget/preference.vala:239
+#: ../widget/preference_slidebar.vala:59 ../widget/preference.vala:241
 msgid "Interface"
 msgstr "Interface"
 
@@ -310,7 +314,7 @@ msgstr "Interface"
 msgid "Jump to next command"
 msgstr "Pular para o próximo comando"
 
-#: ../widget/preference.vala:297
+#: ../widget/preference.vala:299
 msgid "Jump to next command:"
 msgstr "Pular para o próximo comando:"
 
@@ -318,11 +322,11 @@ msgstr "Pular para o próximo comando:"
 msgid "Jump to previous command"
 msgstr "Pular para o comando anterior"
 
-#: ../widget/preference.vala:298
+#: ../widget/preference.vala:300
 msgid "Jump to previous command:"
 msgstr "Pular para o comando anterior:"
 
-#: ../widget/preference.vala:379
+#: ../widget/preference.vala:381
 msgid "Maximize"
 msgstr "Maximizar"
 
@@ -342,7 +346,7 @@ msgstr "Nova janela"
 msgid "New workspace"
 msgstr "Novo espaço de trabalho"
 
-#: ../widget/preference.vala:307
+#: ../widget/preference.vala:309
 msgid "New workspace:"
 msgstr "Nova área de trabalho:"
 
@@ -350,15 +354,15 @@ msgstr "Nova área de trabalho:"
 msgid "Next workspace"
 msgstr "Próximo espaço de trabalho"
 
-#: ../widget/preference.vala:310
+#: ../widget/preference.vala:312
 msgid "Next workspace:"
 msgstr "Próxima área de trabalho:"
 
-#: ../widget/preference.vala:378
+#: ../widget/preference.vala:380
 msgid "Normal window"
 msgstr "Janela normal"
 
-#: ../widget/preference.vala:131
+#: ../widget/preference.vala:132
 msgid "Opacity:"
 msgstr "Opacidade:"
 
@@ -366,7 +370,7 @@ msgstr "Opacidade:"
 msgid "Open"
 msgstr "Abrir"
 
-#: ../widget/preference.vala:292
+#: ../widget/preference.vala:294
 msgid "Open:"
 msgstr "Abrir:"
 
@@ -389,7 +393,7 @@ msgstr "Senha:"
 msgid "Paste"
 msgstr "Colar"
 
-#: ../widget/preference.vala:291
+#: ../widget/preference.vala:293
 msgid "Paste:"
 msgstr "Colar:"
 
@@ -413,7 +417,7 @@ msgstr "Porta:"
 msgid "Previous workspace"
 msgstr "Área de trabalho anterior"
 
-#: ../widget/preference.vala:309
+#: ../widget/preference.vala:311
 msgid "Previous workspace:"
 msgstr "Área de trabalho anterior:"
 
@@ -430,7 +434,7 @@ msgstr "Modo Quake"
 msgid "Remote management"
 msgstr "Gerenciamento remoto"
 
-#: ../widget/preference.vala:329
+#: ../widget/preference.vala:331
 msgid "Remote management:"
 msgstr "Gerenciamento remoto:"
 
@@ -441,7 +445,7 @@ msgstr "Gerenciamento remoto:"
 msgid "Required"
 msgstr "Requerido"
 
-#: ../widget/preference.vala:383
+#: ../widget/preference.vala:392
 msgid "Restore default settings"
 msgstr "Restaurar configuração padrão"
 
@@ -460,15 +464,15 @@ msgstr "Executar um programa no terminal"
 msgid "Save"
 msgstr "Salvar"
 
-#: ../widget/preference_slidebar.vala:88 ../widget/preference.vala:358
+#: ../widget/preference_slidebar.vala:88 ../widget/preference.vala:360
 msgid "Scroll"
 msgstr "Rolagem"
 
-#: ../widget/preference.vala:364
+#: ../widget/preference.vala:366
 msgid "Scroll on keystroke"
 msgstr "Rolar ao teclar"
 
-#: ../widget/preference.vala:365
+#: ../widget/preference.vala:367
 msgid "Scroll on output"
 msgstr "Rolar com a saída de dados"
 
@@ -477,7 +481,7 @@ msgstr "Rolar com a saída de dados"
 msgid "Search"
 msgstr "Procurar"
 
-#: ../widget/preference.vala:293 ../widget/remote_panel.vala:471
+#: ../widget/preference.vala:295 ../widget/remote_panel.vala:471
 #: ../widget/command_panel.vala:201
 msgid "Search:"
 msgstr "Procurar:"
@@ -490,7 +494,7 @@ msgstr "Selecionar"
 msgid "Select all"
 msgstr "Selecionar tudo"
 
-#: ../widget/preference.vala:299
+#: ../widget/preference.vala:301
 msgid "Select all:"
 msgstr "Selecionar tudo:"
 
@@ -506,7 +510,7 @@ msgstr "Selecionar arquivo para enviar"
 msgid "Select left window"
 msgstr "Selecionar janela à esquerda"
 
-#: ../widget/preference.vala:315
+#: ../widget/preference.vala:317
 msgid "Select left window:"
 msgstr "Selecionar janela à esquerda:"
 
@@ -514,7 +518,7 @@ msgstr "Selecionar janela à esquerda:"
 msgid "Select lower window"
 msgstr "Selecionar janela abaixo"
 
-#: ../widget/preference.vala:314
+#: ../widget/preference.vala:316
 msgid "Select lower window:"
 msgstr "Selecionar janela abaixo:"
 
@@ -522,7 +526,7 @@ msgstr "Selecionar janela abaixo:"
 msgid "Select right window"
 msgstr "Selecionar janela à direita"
 
-#: ../widget/preference.vala:316
+#: ../widget/preference.vala:318
 msgid "Select right window:"
 msgstr "Selecionar janela à direita:"
 
@@ -534,7 +538,7 @@ msgstr "Selecionar o arquivo de chave privada"
 msgid "Select upper window"
 msgstr "Selecionar a janela superior"
 
-#: ../widget/preference.vala:313
+#: ../widget/preference.vala:315
 msgid "Select upper window:"
 msgstr "Selecionar a janela superior:"
 
@@ -562,7 +566,7 @@ msgstr "Definir o tipo de janela do terminal"
 msgid "Settings"
 msgstr "Configurações"
 
-#: ../widget/preference_slidebar.vala:66 ../widget/preference.vala:281
+#: ../widget/preference_slidebar.vala:66 ../widget/preference.vala:283
 #: ../widget/command_dialog.vala:84
 msgid "Shortcuts"
 msgstr "Atalhos"
@@ -579,7 +583,7 @@ msgstr "Alternar para tela cheia"
 msgid "Switch theme"
 msgstr "Alternar tema"
 
-#: ../widget/preference_slidebar.vala:69 ../widget/preference.vala:284
+#: ../widget/preference_slidebar.vala:69 ../widget/preference.vala:286
 #: ../widget/config_window.vala:279
 msgid "Terminal"
 msgstr "Terminal"
@@ -596,7 +600,7 @@ msgstr "Enviar"
 msgid "Upload file"
 msgstr "Enviar arquivo"
 
-#: ../widget/preference.vala:381
+#: ../widget/preference.vala:383
 msgid "Use on starting:"
 msgstr "Utilizar ao iniciar:"
 
@@ -616,7 +620,7 @@ msgstr "Versão:"
 msgid "Vertical split"
 msgstr "Dividir verticalmente"
 
-#: ../widget/preference.vala:311
+#: ../widget/preference.vala:313
 msgid "Vertical split:"
 msgstr "Dividir verticalmente:"
 
@@ -626,15 +630,15 @@ msgid ""
 "been installed in the server before right clicking to upload and download "
 "files."
 msgstr ""
-"Bem vindo ao Deepin Terminal, por favor, certifique-se de que os comandos rz"
-" e sz foram instalados no servidor antes de usar o botão direito do mouse "
-"para enviar e baixar arquivos."
+"Bem vindo ao Terminal, por favor, certifique-se de que os comandos rz e sz "
+"foram instalados no servidor antes de usar o botão direito do mouse para "
+"enviar e baixar arquivos."
 
-#: ../widget/preference_slidebar.vala:91 ../widget/preference.vala:367
+#: ../widget/preference_slidebar.vala:91 ../widget/preference.vala:369
 msgid "Window"
 msgstr "Janela"
 
-#: ../widget/preference_slidebar.vala:72 ../widget/preference.vala:301
+#: ../widget/preference_slidebar.vala:72 ../widget/preference.vala:303
 #: ../widget/config_window.vala:307
 msgid "Workspace"
 msgstr "Espaço de trabalho"
@@ -643,7 +647,7 @@ msgstr "Espaço de trabalho"
 msgid "Zoom in"
 msgstr "Aumentar zoom"
 
-#: ../widget/preference.vala:294
+#: ../widget/preference.vala:296
 msgid "Zoom in:"
 msgstr "Aumentar zoom:"
 
@@ -651,7 +655,7 @@ msgstr "Aumentar zoom:"
 msgid "Zoom out"
 msgstr "Diminuir zoom"
 
-#: ../widget/preference.vala:295
+#: ../widget/preference.vala:297
 msgid "Zoom out:"
 msgstr "Diminuir zoom:"
 

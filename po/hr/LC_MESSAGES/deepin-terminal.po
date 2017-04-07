@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-04 13:02+0800\n"
+"POT-Creation-Date: 2017-02-08 18:00+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Vlado V. <vlays@mail.com>, 2017\n"
 "Language-Team: Croatian (https://www.transifex.com/linuxdeepin/teams/3976/hr/)\n"
@@ -63,7 +63,7 @@ msgid "Address:"
 msgstr "Adresa:"
 
 #: ../widget/preference_slidebar.vala:75 ../widget/preference_slidebar.vala:82
-#: ../widget/preference.vala:320 ../widget/preference.vala:331
+#: ../widget/preference.vala:322 ../widget/preference.vala:333
 #: ../widget/config_window.vala:324
 msgid "Advanced"
 msgstr "Napredno"
@@ -88,7 +88,7 @@ msgstr "Backspace tipka"
 msgid "Backspace key:"
 msgstr "Backspace tipka:"
 
-#: ../widget/preference_slidebar.vala:56 ../widget/preference.vala:236
+#: ../widget/preference_slidebar.vala:56 ../widget/preference.vala:238
 msgid "Basic"
 msgstr "Osnovno"
 
@@ -112,7 +112,7 @@ msgstr "Certifikat:"
 msgid "Close other windows"
 msgstr "Zatvori ostale prozore"
 
-#: ../widget/preference.vala:318
+#: ../widget/preference.vala:320
 msgid "Close other windows:"
 msgstr "Zatvori ostale prozore:"
 
@@ -120,7 +120,7 @@ msgstr "Zatvori ostale prozore:"
 msgid "Close window"
 msgstr "Zatvori prozor"
 
-#: ../widget/preference.vala:317
+#: ../widget/preference.vala:319
 msgid "Close window:"
 msgstr "Zatvori prozor:"
 
@@ -128,7 +128,7 @@ msgstr "Zatvori prozor:"
 msgid "Close workspace"
 msgstr "Zatvori radni prostor"
 
-#: ../widget/preference.vala:308
+#: ../widget/preference.vala:310
 msgid "Close workspace:"
 msgstr "Zatvori radni prostor:"
 
@@ -153,19 +153,19 @@ msgstr "Kopiraj"
 msgid "Copy link"
 msgstr "Kopiraj poveznicu"
 
-#: ../widget/preference.vala:290
+#: ../widget/preference.vala:292
 msgid "Copy:"
 msgstr "Kopiraj:"
 
-#: ../widget/preference_slidebar.vala:85 ../widget/preference.vala:334
+#: ../widget/preference_slidebar.vala:85 ../widget/preference.vala:336
 msgid "Cursor"
 msgstr "Pokazivač"
 
-#: ../widget/preference.vala:356
+#: ../widget/preference.vala:358
 msgid "Cursor blink"
 msgstr "Treptanje pokazivača"
 
-#: ../widget/preference.vala:191
+#: ../widget/preference.vala:192
 msgid "Cursor style:"
 msgstr "Stil pokazivača:"
 
@@ -174,7 +174,7 @@ msgstr "Stil pokazivača:"
 msgid "Custom commands"
 msgstr "Prilagođene naredbe"
 
-#: ../widget/preference.vala:328
+#: ../widget/preference.vala:330
 msgid "Custom commands:"
 msgstr "Prilagođene naredbe:"
 
@@ -192,12 +192,15 @@ msgid ""
 "\n"
 "It sharpens your focus in the world of command line!"
 msgstr ""
+"Deepin Terminal je napredni emulator terminala sa radnim prostorom, višestrukim prozorima, udaljenim upravljanjem, quake načinim rada i ostalim značajkama.\n"
+"\n"
+"Izoštrava vaš fokus u svijetu naredbenog retka!"
 
 #: ../widget/config_window.vala:271
 msgid "Default size"
 msgstr "Zadana veličina"
 
-#: ../widget/preference.vala:296
+#: ../widget/preference.vala:298
 msgid "Default size:"
 msgstr "Zadana veličina:"
 
@@ -227,7 +230,7 @@ msgstr "Obriši poslužitelj"
 msgid "Display shortcuts"
 msgstr "Prikaži prečace"
 
-#: ../widget/preference.vala:327
+#: ../widget/preference.vala:329
 msgid "Display shortcuts:"
 msgstr "Prikaži prečace:"
 
@@ -263,19 +266,19 @@ msgstr "Izađi"
 msgid "Exit fullscreen"
 msgstr "Izađi iz cijelog zaslona"
 
-#: ../widget/preference.vala:279
+#: ../widget/preference.vala:281
 msgid "Font size:"
 msgstr "Veličina fonta"
 
-#: ../widget/preference.vala:277
+#: ../widget/preference.vala:279
 msgid "Font:"
 msgstr "Font: "
 
-#: ../widget/preference.vala:380 ../widget/terminal.vala:265
+#: ../widget/preference.vala:382 ../widget/terminal.vala:265
 msgid "Fullscreen"
 msgstr "Cijeli zaslon"
 
-#: ../widget/preference.vala:326
+#: ../widget/preference.vala:328
 msgid "Fullscreen:"
 msgstr "Cijeli zaslon:"
 
@@ -291,15 +294,19 @@ msgstr "Grupa:"
 msgid "Help"
 msgstr "Pomoć"
 
+#: ../widget/preference.vala:386
+msgid "Hide quake window after lost focus"
+msgstr ""
+
 #: ../widget/terminal.vala:249 ../widget/config_window.vala:296
 msgid "Horizontal split"
 msgstr "Vodoravna podjela"
 
-#: ../widget/preference.vala:312
+#: ../widget/preference.vala:314
 msgid "Horizontal split:"
 msgstr "Vodoravna podjela:"
 
-#: ../widget/preference_slidebar.vala:59 ../widget/preference.vala:239
+#: ../widget/preference_slidebar.vala:59 ../widget/preference.vala:241
 msgid "Interface"
 msgstr "Sučelje"
 
@@ -307,7 +314,7 @@ msgstr "Sučelje"
 msgid "Jump to next command"
 msgstr "Skoči na slijedeću naredbu"
 
-#: ../widget/preference.vala:297
+#: ../widget/preference.vala:299
 msgid "Jump to next command:"
 msgstr "Skoči na slijedeću naredbu:"
 
@@ -315,11 +322,11 @@ msgstr "Skoči na slijedeću naredbu:"
 msgid "Jump to previous command"
 msgstr "Skoči na prethodnu naredbu"
 
-#: ../widget/preference.vala:298
+#: ../widget/preference.vala:300
 msgid "Jump to previous command:"
 msgstr "Skoči na prethodnu naredbu:"
 
-#: ../widget/preference.vala:379
+#: ../widget/preference.vala:381
 msgid "Maximize"
 msgstr "Uvećaj"
 
@@ -339,7 +346,7 @@ msgstr "Novi prozor"
 msgid "New workspace"
 msgstr "Novi radni prostor"
 
-#: ../widget/preference.vala:307
+#: ../widget/preference.vala:309
 msgid "New workspace:"
 msgstr "Novi radni prostor:"
 
@@ -347,15 +354,15 @@ msgstr "Novi radni prostor:"
 msgid "Next workspace"
 msgstr "Slijedeći radni prostor"
 
-#: ../widget/preference.vala:310
+#: ../widget/preference.vala:312
 msgid "Next workspace:"
 msgstr "Slijedeći radni prostor:"
 
-#: ../widget/preference.vala:378
+#: ../widget/preference.vala:380
 msgid "Normal window"
 msgstr "Normalni prozor"
 
-#: ../widget/preference.vala:131
+#: ../widget/preference.vala:132
 msgid "Opacity:"
 msgstr "Neprozirnost:"
 
@@ -363,7 +370,7 @@ msgstr "Neprozirnost:"
 msgid "Open"
 msgstr "Otvori"
 
-#: ../widget/preference.vala:292
+#: ../widget/preference.vala:294
 msgid "Open:"
 msgstr "Otvori:"
 
@@ -386,7 +393,7 @@ msgstr "Lozinka:"
 msgid "Paste"
 msgstr "Zalijepi"
 
-#: ../widget/preference.vala:291
+#: ../widget/preference.vala:293
 msgid "Paste:"
 msgstr "Zalijepi:"
 
@@ -410,7 +417,7 @@ msgstr "Port: "
 msgid "Previous workspace"
 msgstr "Prethodni radni prostor"
 
-#: ../widget/preference.vala:309
+#: ../widget/preference.vala:311
 msgid "Previous workspace:"
 msgstr "Prethodni radni prostor:"
 
@@ -427,7 +434,7 @@ msgstr ""
 msgid "Remote management"
 msgstr "Udaljeno upravljanje"
 
-#: ../widget/preference.vala:329
+#: ../widget/preference.vala:331
 msgid "Remote management:"
 msgstr "Udaljeno upravljanje:"
 
@@ -438,7 +445,7 @@ msgstr "Udaljeno upravljanje:"
 msgid "Required"
 msgstr "Potrebno"
 
-#: ../widget/preference.vala:383
+#: ../widget/preference.vala:392
 msgid "Restore default settings"
 msgstr "Obnovite zadane postavke"
 
@@ -455,15 +462,15 @@ msgstr "Pokreni program u terminalu"
 msgid "Save"
 msgstr "Spremi"
 
-#: ../widget/preference_slidebar.vala:88 ../widget/preference.vala:358
+#: ../widget/preference_slidebar.vala:88 ../widget/preference.vala:360
 msgid "Scroll"
 msgstr "Kliži"
 
-#: ../widget/preference.vala:364
+#: ../widget/preference.vala:366
 msgid "Scroll on keystroke"
 msgstr ""
 
-#: ../widget/preference.vala:365
+#: ../widget/preference.vala:367
 msgid "Scroll on output"
 msgstr ""
 
@@ -472,7 +479,7 @@ msgstr ""
 msgid "Search"
 msgstr "Traži"
 
-#: ../widget/preference.vala:293 ../widget/remote_panel.vala:471
+#: ../widget/preference.vala:295 ../widget/remote_panel.vala:471
 #: ../widget/command_panel.vala:201
 msgid "Search:"
 msgstr "Traži:"
@@ -485,7 +492,7 @@ msgstr "Odaberi"
 msgid "Select all"
 msgstr "Odaberi sve"
 
-#: ../widget/preference.vala:299
+#: ../widget/preference.vala:301
 msgid "Select all:"
 msgstr "Odaberi sve:"
 
@@ -501,7 +508,7 @@ msgstr "Odaberite datoteku za slanje"
 msgid "Select left window"
 msgstr "Odaberite lijevi prozor"
 
-#: ../widget/preference.vala:315
+#: ../widget/preference.vala:317
 msgid "Select left window:"
 msgstr "Odaberite lijevi prozor:"
 
@@ -509,7 +516,7 @@ msgstr "Odaberite lijevi prozor:"
 msgid "Select lower window"
 msgstr "Odaberite donji prozor"
 
-#: ../widget/preference.vala:314
+#: ../widget/preference.vala:316
 msgid "Select lower window:"
 msgstr "Odaberite donji prozor:"
 
@@ -517,7 +524,7 @@ msgstr "Odaberite donji prozor:"
 msgid "Select right window"
 msgstr "Odaberite desni prozor"
 
-#: ../widget/preference.vala:316
+#: ../widget/preference.vala:318
 msgid "Select right window:"
 msgstr "Odaberite desni prozor:"
 
@@ -529,7 +536,7 @@ msgstr ""
 msgid "Select upper window"
 msgstr "Odaberite gornji prozor"
 
-#: ../widget/preference.vala:313
+#: ../widget/preference.vala:315
 msgid "Select upper window:"
 msgstr "Odaberite gornji prozor:"
 
@@ -547,7 +554,7 @@ msgstr "Ime poslužitelja:"
 
 #: ../main.vala:133
 msgid "Set the terminal startup directory"
-msgstr ""
+msgstr "Postavi početni direktorij terminala"
 
 #: ../main.vala:115
 msgid "Set the terminal window mode"
@@ -557,7 +564,7 @@ msgstr ""
 msgid "Settings"
 msgstr "Postavke"
 
-#: ../widget/preference_slidebar.vala:66 ../widget/preference.vala:281
+#: ../widget/preference_slidebar.vala:66 ../widget/preference.vala:283
 #: ../widget/command_dialog.vala:84
 msgid "Shortcuts"
 msgstr "Prečaci"
@@ -572,9 +579,9 @@ msgstr ""
 
 #: ../widget/terminal.vala:275 ../widget/appbar.vala:132
 msgid "Switch theme"
-msgstr ""
+msgstr "Promjeni temu"
 
-#: ../widget/preference_slidebar.vala:69 ../widget/preference.vala:284
+#: ../widget/preference_slidebar.vala:69 ../widget/preference.vala:286
 #: ../widget/config_window.vala:279
 msgid "Terminal"
 msgstr "Terminal"
@@ -591,7 +598,7 @@ msgstr "Slanje"
 msgid "Upload file"
 msgstr "Slanje datoteke"
 
-#: ../widget/preference.vala:381
+#: ../widget/preference.vala:383
 msgid "Use on starting:"
 msgstr ""
 
@@ -601,7 +608,7 @@ msgstr "Korisničko ime"
 
 #: ../widget/remote_server_dialog.vala:227
 msgid "Username:"
-msgstr ""
+msgstr "Korisničko ime:"
 
 #: ../widget/about_widget.vala:86
 msgid "Version:"
@@ -611,7 +618,7 @@ msgstr "Inačica:"
 msgid "Vertical split"
 msgstr "Okomita podjela"
 
-#: ../widget/preference.vala:311
+#: ../widget/preference.vala:313
 msgid "Vertical split:"
 msgstr "Okomita podjela:"
 
@@ -625,11 +632,11 @@ msgstr ""
 "instalirane u poslužitelj prije nego klika desnim dugmetom za slanje i "
 "preuzimanje datoteka."
 
-#: ../widget/preference_slidebar.vala:91 ../widget/preference.vala:367
+#: ../widget/preference_slidebar.vala:91 ../widget/preference.vala:369
 msgid "Window"
 msgstr "Prozor"
 
-#: ../widget/preference_slidebar.vala:72 ../widget/preference.vala:301
+#: ../widget/preference_slidebar.vala:72 ../widget/preference.vala:303
 #: ../widget/config_window.vala:307
 msgid "Workspace"
 msgstr "Radni prostor"
@@ -638,7 +645,7 @@ msgstr "Radni prostor"
 msgid "Zoom in"
 msgstr "Povećaj"
 
-#: ../widget/preference.vala:294
+#: ../widget/preference.vala:296
 msgid "Zoom in:"
 msgstr "Povećaj:"
 
@@ -646,7 +653,7 @@ msgstr "Povećaj:"
 msgid "Zoom out"
 msgstr "Smanji"
 
-#: ../widget/preference.vala:295
+#: ../widget/preference.vala:297
 msgid "Zoom out:"
 msgstr "Smanji:"
 

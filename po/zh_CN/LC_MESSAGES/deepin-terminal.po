@@ -1,21 +1,22 @@
-# Chinese translations for PACKAGE package
-# PACKAGE 软件包的简体中文翻译.
-# Copyright (C) 2016 THE PACKAGE'S COPYRIGHT HOLDER
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Automatically generated, 2016.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-02-08 18:00+0800\n"
-"PO-Revision-Date: 2016-08-22 00:55+0800\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
-"Language: zh_CN\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: szd_liufei <maggie.liufei@gmail.com>, 2017\n"
+"Language-Team: Chinese (China) (https://www.transifex.com/linuxdeepin/teams/3976/zh_CN/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../widget/terminal.vala:936
 msgid ""
@@ -65,7 +66,7 @@ msgstr "地址："
 #: ../widget/preference.vala:322 ../widget/preference.vala:333
 #: ../widget/config_window.vala:324
 msgid "Advanced"
-msgstr "高级"
+msgstr "高级设置"
 
 #: ../widget/remote_server_dialog.vala:331
 msgid "Advanced options"
@@ -73,11 +74,11 @@ msgstr "高级选项"
 
 #: ../widget/remote_server_dialog.vala:420 ../widget/command_dialog.vala:250
 msgid "Are you sure to delete"
-msgstr "你确定要删除"
+msgstr "您确定要删除"
 
 #: ../widget/confirm_dialog.vala:132
 msgid "Are you sure to exit?"
-msgstr "你确定要退出吗?"
+msgstr "您确定要退出吗?"
 
 #: ../widget/remote_server_dialog.vala:102
 msgid "Backspace key"
@@ -89,7 +90,7 @@ msgstr "退格键："
 
 #: ../widget/preference_slidebar.vala:56 ../widget/preference.vala:238
 msgid "Basic"
-msgstr "基础"
+msgstr "基础设置"
 
 #: ../widget/remote_server_dialog.vala:341
 #: ../widget/remote_server_dialog.vala:421 ../widget/confirm_dialog.vala:132
@@ -187,15 +188,13 @@ msgstr "深度终端"
 
 #: ../main.vala:176 ../widget/about_widget.vala:49
 msgid ""
-"Deepin Terminal is an advanced terminal emulator with workspace, multiple "
-"windows, remote management, quake mode and other features.\n"
+"Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.\n"
 "\n"
 "It sharpens your focus in the world of command line!"
 msgstr ""
-"深度终端是一款集工作区、多窗口、远程管理、雷神模式等功能的高级的终端模拟"
-"器。\n"
+"深度终端是一款集工作区、多窗口、远程管理、雷神模式等功能的高级的终端模拟器。\n"
 "\n"
-"深度终端， 让你更专注于命令行世界！"
+"深度终端， 让您更专注于命令行世界！"
 
 #: ../widget/config_window.vala:271
 msgid "Default size"
@@ -297,7 +296,7 @@ msgstr "帮助"
 
 #: ../widget/preference.vala:386
 msgid "Hide quake window after lost focus"
-msgstr "失去焦点后隐藏雷神窗口"
+msgstr "丢失焦点后隐藏雷神窗口"
 
 #: ../widget/terminal.vala:249 ../widget/config_window.vala:296
 msgid "Horizontal split"
@@ -628,9 +627,7 @@ msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "
 "files."
-msgstr ""
-"欢迎使用深度终端， 在您使用右键菜单进行上传和下载文件之前， 请先确保服务器已"
-"经安装了rz和sz命令。"
+msgstr "欢迎使用深度终端， 在您使用右键菜单进行上传和下载文件之前， 请先确保服务器已经安装了rz和sz命令。"
 
 #: ../widget/preference_slidebar.vala:91 ../widget/preference.vala:369
 msgid "Window"

@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-04 13:02+0800\n"
+"POT-Creation-Date: 2017-02-08 18:00+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: atari <atari@freemail.hu>, 2017\n"
+"Last-Translator: Kiss Zoltan <atari@freemail.hu>, 2017\n"
 "Language-Team: Hungarian (https://www.transifex.com/linuxdeepin/teams/3976/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
@@ -23,6 +23,8 @@ msgid ""
 "\n"
 "Command has been completed, press ENTER to exit the terminal."
 msgstr ""
+"\n"
+"A parancs végrehajtásra került. Nyomjuk meg az ENTER billentyűt a kilépéshez."
 
 #: ../widget/appbar.vala:140
 msgid "About"
@@ -34,7 +36,7 @@ msgstr "Köszönetnyilvánítás"
 
 #: ../widget/remote_server_dialog.vala:346 ../widget/command_dialog.vala:198
 msgid "Add"
-msgstr "Hozzáad"
+msgstr "Hozzáadás"
 
 #: ../widget/command_dialog.vala:127
 msgid "Add Command"
@@ -61,7 +63,7 @@ msgid "Address:"
 msgstr "Cím:"
 
 #: ../widget/preference_slidebar.vala:75 ../widget/preference_slidebar.vala:82
-#: ../widget/preference.vala:320 ../widget/preference.vala:331
+#: ../widget/preference.vala:322 ../widget/preference.vala:333
 #: ../widget/config_window.vala:324
 msgid "Advanced"
 msgstr "Kibővített"
@@ -72,11 +74,11 @@ msgstr "További opciók"
 
 #: ../widget/remote_server_dialog.vala:420 ../widget/command_dialog.vala:250
 msgid "Are you sure to delete"
-msgstr "Biztos törölni akarja?"
+msgstr "Biztos töröljük?"
 
 #: ../widget/confirm_dialog.vala:132
 msgid "Are you sure to exit?"
-msgstr "Biztosan ki akar lépni?"
+msgstr "Biztos kilépünk?"
 
 #: ../widget/remote_server_dialog.vala:102
 msgid "Backspace key"
@@ -86,7 +88,7 @@ msgstr "Backspace billentyű"
 msgid "Backspace key:"
 msgstr "Backspace billentyű:"
 
-#: ../widget/preference_slidebar.vala:56 ../widget/preference.vala:236
+#: ../widget/preference_slidebar.vala:56 ../widget/preference.vala:238
 msgid "Basic"
 msgstr "Alap"
 
@@ -108,17 +110,17 @@ msgstr "Tanúsítvány:"
 
 #: ../widget/terminal.vala:253 ../widget/config_window.vala:302
 msgid "Close other windows"
-msgstr "Többi ablak bezárása"
+msgstr "Egyéb ablakok bezárása"
 
-#: ../widget/preference.vala:318
+#: ../widget/preference.vala:320
 msgid "Close other windows:"
-msgstr "Többi ablak bezárása:"
+msgstr "Egyéb ablakok bezárása:"
 
 #: ../widget/terminal.vala:251 ../widget/config_window.vala:301
 msgid "Close window"
 msgstr "Ablak bezárása"
 
-#: ../widget/preference.vala:317
+#: ../widget/preference.vala:319
 msgid "Close window:"
 msgstr "Ablak bezárása:"
 
@@ -126,7 +128,7 @@ msgstr "Ablak bezárása:"
 msgid "Close workspace"
 msgstr "Munkaterület bezárása "
 
-#: ../widget/preference.vala:308
+#: ../widget/preference.vala:310
 msgid "Close workspace:"
 msgstr "Munkaterület bezárása:"
 
@@ -149,21 +151,21 @@ msgstr "Másolás"
 
 #: ../widget/terminal.vala:227
 msgid "Copy link"
-msgstr "Link másolása"
+msgstr "Hivatkozás másolása"
 
-#: ../widget/preference.vala:290
+#: ../widget/preference.vala:292
 msgid "Copy:"
 msgstr "Másolás:"
 
-#: ../widget/preference_slidebar.vala:85 ../widget/preference.vala:334
+#: ../widget/preference_slidebar.vala:85 ../widget/preference.vala:336
 msgid "Cursor"
 msgstr "Kurzor"
 
-#: ../widget/preference.vala:356
+#: ../widget/preference.vala:358
 msgid "Cursor blink"
 msgstr "Kurzor villogás"
 
-#: ../widget/preference.vala:191
+#: ../widget/preference.vala:192
 msgid "Cursor style:"
 msgstr "Kurzor stílus:"
 
@@ -172,7 +174,7 @@ msgstr "Kurzor stílus:"
 msgid "Custom commands"
 msgstr "Egyedi parancsok"
 
-#: ../widget/preference.vala:328
+#: ../widget/preference.vala:330
 msgid "Custom commands:"
 msgstr "Egyedi parancsok:"
 
@@ -190,7 +192,7 @@ msgid ""
 "\n"
 "It sharpens your focus in the world of command line!"
 msgstr ""
-"A Deepin Terminal egy felosztható munkaterülettel, távoli menedzsmenttel rendelkező, testreszabható billentyűzetparancsokkal rendelkező korszerű terminálemulátor.\n"
+"A Deepin Terminal egy felosztható munkaterülettel, távoli menedzsmenttel rendelkező, testre szabható billentyűzetparancsokkal rendelkező korszerű terminálemulátor.\n"
 "\n"
 "Ez egy gyöngyszem a parancssor-kezelők világában."
 
@@ -198,7 +200,7 @@ msgstr ""
 msgid "Default size"
 msgstr "Alapértelmezett méret"
 
-#: ../widget/preference.vala:296
+#: ../widget/preference.vala:298
 msgid "Default size:"
 msgstr "Alapértelmezett méret:"
 
@@ -228,13 +230,13 @@ msgstr "Szerver törlése"
 msgid "Display shortcuts"
 msgstr "Billentyűzetparancsok megjelenítése"
 
-#: ../widget/preference.vala:327
+#: ../widget/preference.vala:329
 msgid "Display shortcuts:"
 msgstr "Billentyűzetparancsok:"
 
 #: ../main.vala:124
 msgid "Display version"
-msgstr "Verzió"
+msgstr "Verzió megjelenítése"
 
 #: ../widget/terminal.vala:283
 msgid "Download file"
@@ -264,19 +266,19 @@ msgstr "Kilépés"
 msgid "Exit fullscreen"
 msgstr "Kilépés a teljes képernyőböl"
 
-#: ../widget/preference.vala:279
+#: ../widget/preference.vala:281
 msgid "Font size:"
 msgstr "Betűméret:"
 
-#: ../widget/preference.vala:277
+#: ../widget/preference.vala:279
 msgid "Font:"
 msgstr "Betűtípus:"
 
-#: ../widget/preference.vala:380 ../widget/terminal.vala:265
+#: ../widget/preference.vala:382 ../widget/terminal.vala:265
 msgid "Fullscreen"
 msgstr "Teljes képernyő"
 
-#: ../widget/preference.vala:326
+#: ../widget/preference.vala:328
 msgid "Fullscreen:"
 msgstr "Teljes képernyő:"
 
@@ -290,17 +292,21 @@ msgstr "Csoport:"
 
 #: ../widget/appbar.vala:138
 msgid "Help"
-msgstr "Segítség"
+msgstr "Súgó"
+
+#: ../widget/preference.vala:386
+msgid "Hide quake window after lost focus"
+msgstr ""
 
 #: ../widget/terminal.vala:249 ../widget/config_window.vala:296
 msgid "Horizontal split"
-msgstr "Vízszintes elválasztás"
+msgstr "Kettéosztás vízszintesen"
 
-#: ../widget/preference.vala:312
+#: ../widget/preference.vala:314
 msgid "Horizontal split:"
-msgstr "Vízszintes elválasztás:"
+msgstr "Kettéosztás vízszintesen:"
 
-#: ../widget/preference_slidebar.vala:59 ../widget/preference.vala:239
+#: ../widget/preference_slidebar.vala:59 ../widget/preference.vala:241
 msgid "Interface"
 msgstr "Felület"
 
@@ -308,7 +314,7 @@ msgstr "Felület"
 msgid "Jump to next command"
 msgstr "Ugrás a következő parancsra"
 
-#: ../widget/preference.vala:297
+#: ../widget/preference.vala:299
 msgid "Jump to next command:"
 msgstr "Ugrás a következő parancsra:"
 
@@ -316,11 +322,11 @@ msgstr "Ugrás a következő parancsra:"
 msgid "Jump to previous command"
 msgstr "Visszaugrás az előző parancsra"
 
-#: ../widget/preference.vala:298
+#: ../widget/preference.vala:300
 msgid "Jump to previous command:"
 msgstr "Visszaugrás az előző parancsra:"
 
-#: ../widget/preference.vala:379
+#: ../widget/preference.vala:381
 msgid "Maximize"
 msgstr "Maximalizálás"
 
@@ -340,7 +346,7 @@ msgstr "Új ablak"
 msgid "New workspace"
 msgstr "Új munkaterület"
 
-#: ../widget/preference.vala:307
+#: ../widget/preference.vala:309
 msgid "New workspace:"
 msgstr "Új munkaterület:"
 
@@ -348,15 +354,15 @@ msgstr "Új munkaterület:"
 msgid "Next workspace"
 msgstr "Következő munkaterület"
 
-#: ../widget/preference.vala:310
+#: ../widget/preference.vala:312
 msgid "Next workspace:"
 msgstr "Új munkaterület:"
 
-#: ../widget/preference.vala:378
+#: ../widget/preference.vala:380
 msgid "Normal window"
 msgstr "Normál ablak"
 
-#: ../widget/preference.vala:131
+#: ../widget/preference.vala:132
 msgid "Opacity:"
 msgstr "Átlátszóság:"
 
@@ -364,7 +370,7 @@ msgstr "Átlátszóság:"
 msgid "Open"
 msgstr "Megnyitás"
 
-#: ../widget/preference.vala:292
+#: ../widget/preference.vala:294
 msgid "Open:"
 msgstr "Megnyitás:"
 
@@ -372,7 +378,7 @@ msgstr "Megnyitás:"
 #: ../widget/remote_server_dialog.vala:279
 #: ../widget/remote_server_dialog.vala:288
 msgid "Optional"
-msgstr "Opcionális"
+msgstr "Tetszőleges"
 
 #: ../widget/remote_server_dialog.vala:102
 msgid "Password"
@@ -387,7 +393,7 @@ msgstr "Jelszó:"
 msgid "Paste"
 msgstr "Beillesztés"
 
-#: ../widget/preference.vala:291
+#: ../widget/preference.vala:293
 msgid "Paste:"
 msgstr "Beillesztés:"
 
@@ -401,7 +407,7 @@ msgstr "Elérési útvonal:"
 
 #: ../widget/shortcut_entry.vala:124
 msgid "Please enter a new shortcut"
-msgstr "Új parancsikon neve"
+msgstr "Új gyorsbillentyű neve"
 
 #: ../widget/remote_server_dialog.vala:194
 msgid "Port:"
@@ -411,7 +417,7 @@ msgstr "Port:"
 msgid "Previous workspace"
 msgstr "Előző munkaterület "
 
-#: ../widget/preference.vala:309
+#: ../widget/preference.vala:311
 msgid "Previous workspace:"
 msgstr "Előző munkaterület :"
 
@@ -421,14 +427,14 @@ msgstr "Még futnak programok a terminal ablakban"
 
 #: ../main.vala:169
 msgid "Quake mode"
-msgstr "Quake mód"
+msgstr "Remegő mód"
 
 #: ../widget/terminal.vala:279 ../widget/config_window.vala:319
 #: ../widget/appbar.vala:134
 msgid "Remote management"
 msgstr "Távoli elérés"
 
-#: ../widget/preference.vala:329
+#: ../widget/preference.vala:331
 msgid "Remote management:"
 msgstr "Távoli elérés:"
 
@@ -439,7 +445,7 @@ msgstr "Távoli elérés:"
 msgid "Required"
 msgstr "Szükséges"
 
-#: ../widget/preference.vala:383
+#: ../widget/preference.vala:392
 msgid "Restore default settings"
 msgstr "Visszaállítás az alapértelmezett értékekre"
 
@@ -447,6 +453,8 @@ msgstr "Visszaállítás az alapértelmezett értékekre"
 msgid ""
 "Run '%s --help' to view a full list of available command line pass_options"
 msgstr ""
+"A '%s --help' paranccsal megtekintheted az elérhető utasítások teljes "
+"listáját"
 
 #: ../main.vala:151 ../main.vala:160
 msgid "Run a program in the terminal"
@@ -456,24 +464,24 @@ msgstr "Program futtatása terminál ablakban"
 msgid "Save"
 msgstr "Mentés"
 
-#: ../widget/preference_slidebar.vala:88 ../widget/preference.vala:358
+#: ../widget/preference_slidebar.vala:88 ../widget/preference.vala:360
 msgid "Scroll"
 msgstr "Görgetés"
 
-#: ../widget/preference.vala:364
+#: ../widget/preference.vala:366
 msgid "Scroll on keystroke"
-msgstr ""
+msgstr "Görgetés gombnyomásra"
 
-#: ../widget/preference.vala:365
+#: ../widget/preference.vala:367
 msgid "Scroll on output"
-msgstr ""
+msgstr "Görgetés kimenetnél"
 
 #: ../widget/terminal.vala:269 ../widget/search_entry.vala:64
 #: ../widget/search_entry.vala:67 ../widget/config_window.vala:268
 msgid "Search"
 msgstr "Keresés"
 
-#: ../widget/preference.vala:293 ../widget/remote_panel.vala:471
+#: ../widget/preference.vala:295 ../widget/remote_panel.vala:471
 #: ../widget/command_panel.vala:201
 msgid "Search:"
 msgstr "Keresés:"
@@ -486,13 +494,13 @@ msgstr "Kiválaszt"
 msgid "Select all"
 msgstr "Összes kijelölése"
 
-#: ../widget/preference.vala:299
+#: ../widget/preference.vala:301
 msgid "Select all:"
 msgstr "Összes kijelölése:"
 
 #: ../widget/terminal.vala:405
 msgid "Select directory to save download file"
-msgstr "Mentési könyvtár kiválasztása"
+msgstr "Mentési mappa kiválasztása"
 
 #: ../widget/terminal.vala:376
 msgid "Select file to upload"
@@ -500,39 +508,39 @@ msgstr "Feltöltendő fájl kijelölése"
 
 #: ../widget/config_window.vala:299
 msgid "Select left window"
-msgstr ""
+msgstr "Bal oldali ablak kiválasztás"
 
-#: ../widget/preference.vala:315
+#: ../widget/preference.vala:317
 msgid "Select left window:"
-msgstr ""
+msgstr "Bal oldali ablak kiválasztás:"
 
 #: ../widget/config_window.vala:298
 msgid "Select lower window"
-msgstr ""
+msgstr "Lenti ablak kiválasztás"
 
-#: ../widget/preference.vala:314
+#: ../widget/preference.vala:316
 msgid "Select lower window:"
-msgstr ""
+msgstr "Lenti ablak kiválasztás:"
 
 #: ../widget/config_window.vala:300
 msgid "Select right window"
-msgstr ""
+msgstr "Jobb oldali ablak kiválasztás"
 
-#: ../widget/preference.vala:316
+#: ../widget/preference.vala:318
 msgid "Select right window:"
-msgstr ""
+msgstr "Jobb oldali ablak kiválasztás:"
 
 #: ../widget/file_button.vala:67
 msgid "Select the private key file"
-msgstr ""
+msgstr "Privát kulcs fájl kiválasztása"
 
 #: ../widget/config_window.vala:297
 msgid "Select upper window"
-msgstr ""
+msgstr "Felső ablak kiválasztás"
 
-#: ../widget/preference.vala:313
+#: ../widget/preference.vala:315
 msgid "Select upper window:"
-msgstr ""
+msgstr "Felső ablak kiválasztás:"
 
 #: ../widget/config_window.vala:294
 msgid "Select workspace"
@@ -548,17 +556,17 @@ msgstr "Szerver név:"
 
 #: ../main.vala:133
 msgid "Set the terminal startup directory"
-msgstr ""
+msgstr "Teminal indulási könyvtár beállítása"
 
 #: ../main.vala:115
 msgid "Set the terminal window mode"
-msgstr ""
+msgstr "Terminal-ablak mód beállítás"
 
 #: ../widget/terminal.vala:287 ../widget/appbar.vala:136
 msgid "Settings"
 msgstr "Beállítások"
 
-#: ../widget/preference_slidebar.vala:66 ../widget/preference.vala:281
+#: ../widget/preference_slidebar.vala:66 ../widget/preference.vala:283
 #: ../widget/command_dialog.vala:84
 msgid "Shortcuts"
 msgstr "Gyorsbillentyűk"
@@ -573,28 +581,28 @@ msgstr "Teljes képernyőre váltás"
 
 #: ../widget/terminal.vala:275 ../widget/appbar.vala:132
 msgid "Switch theme"
-msgstr "Téma váltás"
+msgstr "Sablon váltás"
 
-#: ../widget/preference_slidebar.vala:69 ../widget/preference.vala:284
+#: ../widget/preference_slidebar.vala:69 ../widget/preference.vala:286
 #: ../widget/config_window.vala:279
 msgid "Terminal"
 msgstr "Terminál"
 
 #: ../widget/terminal.vala:419
 msgid "Type path for download file"
-msgstr "Írd be a feltöltendő fájl elérési útvonalát"
+msgstr "Adjuk meg a feltöltendő fájl elérési útvonalát"
 
 #: ../widget/terminal.vala:380
 msgid "Upload"
-msgstr "Feltölt"
+msgstr "Feltöltés"
 
 #: ../widget/terminal.vala:282
 msgid "Upload file"
 msgstr "Fájl feltöltése"
 
-#: ../widget/preference.vala:381
+#: ../widget/preference.vala:383
 msgid "Use on starting:"
-msgstr ""
+msgstr "Induláskor használjuk:"
 
 #: ../widget/remote_server_dialog.vala:102
 msgid "Username"
@@ -602,7 +610,7 @@ msgstr "Felhasználónév"
 
 #: ../widget/remote_server_dialog.vala:227
 msgid "Username:"
-msgstr "Felhasználó név:"
+msgstr "Felhasználónév:"
 
 #: ../widget/about_widget.vala:86
 msgid "Version:"
@@ -612,7 +620,7 @@ msgstr "Verzió:"
 msgid "Vertical split"
 msgstr "Függőleges elválasztás"
 
-#: ../widget/preference.vala:311
+#: ../widget/preference.vala:313
 msgid "Vertical split:"
 msgstr "Függőleges elválasztás:"
 
@@ -622,12 +630,15 @@ msgid ""
 "been installed in the server before right clicking to upload and download "
 "files."
 msgstr ""
+"Üdvözlet a Deepin Terminálban, Bizonyosodjunk meg róla, hogy az rz és sz "
+"parancsok telepítve vannak a szerveren mielőtt jobb egérgombbal fel vagy le "
+"töltenénk fájlokat."
 
-#: ../widget/preference_slidebar.vala:91 ../widget/preference.vala:367
+#: ../widget/preference_slidebar.vala:91 ../widget/preference.vala:369
 msgid "Window"
 msgstr "Ablak"
 
-#: ../widget/preference_slidebar.vala:72 ../widget/preference.vala:301
+#: ../widget/preference_slidebar.vala:72 ../widget/preference.vala:303
 #: ../widget/config_window.vala:307
 msgid "Workspace"
 msgstr "Munkaterület"
@@ -636,7 +647,7 @@ msgstr "Munkaterület"
 msgid "Zoom in"
 msgstr "Nagyítás"
 
-#: ../widget/preference.vala:294
+#: ../widget/preference.vala:296
 msgid "Zoom in:"
 msgstr "Nagyítás:"
 
@@ -644,7 +655,7 @@ msgstr "Nagyítás:"
 msgid "Zoom out"
 msgstr "Kicsinyítés"
 
-#: ../widget/preference.vala:295
+#: ../widget/preference.vala:297
 msgid "Zoom out:"
 msgstr "Kicsinyítés:"
 
