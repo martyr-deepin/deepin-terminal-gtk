@@ -82,7 +82,7 @@ Name[zh_CN]=深度终端
 Comment[zh_CN]=使用命令行
 Name[zh_HK]=深度終端機
 Comment[zh_HK]=使用命令列
-Name[zh_TW]=深度終端機
+Name[zh_TW]=Deepin 終端機
 Comment[zh_TW]=使用命令列介面
 Name[es_AR]=Terminal Deepin
 Comment[es_AR]=Usar linea de comandos
@@ -146,11 +146,12 @@ Name[tr]=Yeni Pencere
 Name[uk]=Нове вікно
 Name[vi]=Cửa sổ Mới
 Name[zh_CN]=新建窗口
-Name[zh_TW]=開啟新視窗
+Name[zh_TW]=新增視窗
 
 [Quake Shortcut Group]
 Exec=deepin-terminal --quake-mode
 Name=Quake Terminal
 Name[en]=Quake Terminal
 Name[zh_CN]=雷神终端
+Name[zh_TW]=雷神模式
 
