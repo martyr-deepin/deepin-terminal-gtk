@@ -103,7 +103,7 @@ On Deepin Terminal interface, select the file in current directory and right-cli
 
 You can quickly switch the encoding according to your needs.
 
-1. On Deepin Terminal interface, right click the interface.
+1. Right click on Deepin Terminal interface.
 
 2. Select **Encoding**.
 
@@ -150,6 +150,7 @@ Window is the base for you to do other operations in terminal. You can create ma
 3. If you want to restore the normal display, please press ![F11](icon/F11.svg).
 
 > ![notes](icon/notes.svg): You can also right click to select **Fullscreen** or **Exit fullscreen** on Deepin Terminal interface.
+For developers, can use command **-m --window-mode ** to adjust the window mode.
 
 ### Close Window ###
 
@@ -297,7 +298,7 @@ You can upload and download files after logged in a server.
 
 ![0|groupssh](png/groupssh.png)
 
-## Option Settings|../common/icon_settings.svg|
+## Main Menu|../common/icon_settings.svg|
 
 ### Switch Theme ###
 
@@ -315,15 +316,15 @@ You can upload and download files after logged in a server.
 
 2. Click on **Custom commands**.
 
-3. Select **Add command**, shows add command dialog.
+3. Select **Add command**.
 
-4. Input **Name**、**Command**、**Shortcuts**.
+4. Input **Name**,**Command** and **Shortcuts**.
 
 5. Click on **Add**.
 
  ![1|command](png/command.png)
 
-> ![notes](icon/notes.svg): You can also right click on the Deepin Terminal interface and select **Custom commands**.
+> ![notes](icon/notes.svg): You can also right click on the Deepin Terminal interface and select **Custom commands** to add.
 
 ### Basic Settings ###
 
@@ -401,7 +402,7 @@ You can click on **About** to view the introduction of Deepin Terminal.
 
 ### Exit ###
 
-You can click on **Exit** to exit from Deepin Terminal.
+You can click on **Exit** to exit Deepin Terminal.
 
 1. On Deepin Terminal interface, click on ![menu_icon](icon/menu_icon.svg) in the top right corner.
 
