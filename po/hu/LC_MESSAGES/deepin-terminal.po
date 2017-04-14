@@ -13,7 +13,7 @@ msgstr ""
 "Last-Translator: Kiss Zoltan <atari@freemail.hu>, 2017\n"
 "Language-Team: Hungarian (https://www.transifex.com/linuxdeepin/teams/3976/hu/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -296,7 +296,7 @@ msgstr "Súgó"
 
 #: ../widget/preference.vala:386
 msgid "Hide quake window after lost focus"
-msgstr ""
+msgstr "Figyelmeztető jelzés megszüntetése"
 
 #: ../widget/terminal.vala:249 ../widget/config_window.vala:296
 msgid "Horizontal split"

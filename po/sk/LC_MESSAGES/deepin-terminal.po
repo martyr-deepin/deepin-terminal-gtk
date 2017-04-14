@@ -13,7 +13,7 @@ msgstr ""
 "Last-Translator: Marek Bujko <marek.bujko@gmail.com>, 2017\n"
 "Language-Team: Slovak (https://www.transifex.com/linuxdeepin/teams/3976/sk/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: sk\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
@@ -82,11 +82,11 @@ msgstr "Naozaj chcete ukončiť?"
 
 #: ../widget/remote_server_dialog.vala:102
 msgid "Backspace key"
-msgstr "Backspace kľúč"
+msgstr "Backspace klávesa"
 
 #: ../widget/remote_server_dialog.vala:315
 msgid "Backspace key:"
-msgstr "Backspace kľúč:"
+msgstr "Backspace klávesa:"
 
 #: ../widget/preference_slidebar.vala:56 ../widget/preference.vala:238
 msgid "Basic"
@@ -336,7 +336,7 @@ msgstr "Názov"
 
 #: ../widget/command_dialog.vala:160
 msgid "Name:"
-msgstr "Meno:"
+msgstr "Názov:"
 
 #: ../widget/appbar.vala:131
 msgid "New window"
