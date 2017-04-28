@@ -136,6 +136,30 @@ namespace Widgets {
                     return false;
                 });
 
+            window_frame_box.button_press_event.connect((w, e) => {
+                    if (!screen_monitor.is_composited()) {
+                        var cursor_type = get_frame_cursor_type(e.x_root, e.y_root);
+                        if (cursor_type != null) {
+                            e.device.get_position(null, out press_x, out press_y);
+
+                            GLib.Timeout.add(10, () => {
+                                    int pointer_x, pointer_y;
+                                    e.device.get_position(null, out pointer_x, out pointer_y);
+
+                                    if (pointer_x != press_x || pointer_y != press_y) {
+                                        resize_window(this, pointer_x, pointer_y, (int) e.button, Gdk.CursorType.BOTTOM_SIDE);
+
+                                        return false;
+                                    } else {
+                                        return true;
+                                    }
+                                });
+                        }
+                    }
+
+                    return false;
+                });
+
             button_press_event.connect((w, e) => {
                     var cursor_type = get_cursor_type(e.x_root, e.y_root);
                     if (cursor_type != null) {
@@ -328,6 +352,23 @@ namespace Widgets {
             var bottom_side_start = window_y + height - window_frame_margin_bottom;
             var bottom_side_end = window_y + height - window_frame_margin_bottom + Constant.RESPONSE_RADIUS;;
 
+            if (y > bottom_side_start && y < bottom_side_end) {
+                return Gdk.CursorType.BOTTOM_SIDE;
+            } else {
+                return null;
+            }
+        }
+
+        public override Gdk.CursorType? get_frame_cursor_type(double x, double y) {
+            int window_x, window_y;
+            get_window().get_origin(out window_x, out window_y);
+
+            int width, height;
+            get_size(out width, out height);
+
+            var bottom_side_start = window_y + height - Constant.RESPONSE_RADIUS;
+            var bottom_side_end = window_y + height;
+            
             if (y > bottom_side_start && y < bottom_side_end) {
                 return Gdk.CursorType.BOTTOM_SIDE;
             } else {

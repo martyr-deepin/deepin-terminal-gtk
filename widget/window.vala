@@ -175,6 +175,22 @@ namespace Widgets {
                     return false;
                 });
 
+            window_frame_box.button_press_event.connect((w, e) => {
+                    if (!screen_monitor.is_composited()) {
+                        if (window_is_normal()) {
+                            int pointer_x, pointer_y;
+                            e.device.get_position(null, out pointer_x, out pointer_y);
+
+                            var cursor_type = get_frame_cursor_type(e.x_root, e.y_root);
+                            if (cursor_type != null) {
+                                resize_window(this, pointer_x, pointer_y, (int) e.button, cursor_type);
+                            }
+                        }
+                    }
+
+                    return false;
+                });
+
             button_press_event.connect((w, e) => {
                     if (window_is_normal()) {
                         int pointer_x, pointer_y;
@@ -537,6 +553,55 @@ namespace Widgets {
             var top_side_end = window_y + window_frame_margin_top;
             var bottom_side_start = window_y + height - window_frame_margin_bottom;
             var bottom_side_end = window_y + height - window_frame_margin_bottom + Constant.RESPONSE_RADIUS;
+
+            if (x > left_side_start && x < left_side_end) {
+                if (y > top_side_start && y < top_side_end) {
+                    return Gdk.CursorType.TOP_LEFT_CORNER;
+                } else if (y > bottom_side_start && y < bottom_side_end) {
+                    return Gdk.CursorType.BOTTOM_LEFT_CORNER;
+                }
+            } else if (x > right_side_start && x < right_side_end) {
+                if (y > top_side_start && y < top_side_end) {
+                    return Gdk.CursorType.TOP_RIGHT_CORNER;
+                } else if (y > bottom_side_start && y < bottom_side_end) {
+                    return Gdk.CursorType.BOTTOM_RIGHT_CORNER;
+                }
+            }
+
+            if (x > left_side_start && x < left_side_end) {
+                if (y > top_side_end && y < bottom_side_start) {
+                    return Gdk.CursorType.LEFT_SIDE;
+                }
+            } else if (x > right_side_start && x < right_side_end) {
+                if (y > top_side_end && y < bottom_side_start) {
+                    return Gdk.CursorType.RIGHT_SIDE;
+                }
+            } else {
+                if (y > top_side_start && y < top_side_end) {
+                    return Gdk.CursorType.TOP_SIDE;
+                } else if (y > bottom_side_start && y < bottom_side_end) {
+                    return Gdk.CursorType.BOTTOM_SIDE;
+                }
+            }
+
+            return null;
+        }
+
+        public override Gdk.CursorType? get_frame_cursor_type(double x, double y) {
+            int window_x, window_y;
+            get_window().get_origin(out window_x, out window_y);
+
+            int width, height;
+            get_size(out width, out height);
+
+            var left_side_start = window_x;
+            var left_side_end = window_x + Constant.RESPONSE_RADIUS;
+            var right_side_start = window_x + width - Constant.RESPONSE_RADIUS;
+            var right_side_end = window_x + width;
+            var top_side_start = window_y;
+            var top_side_end = window_y + Constant.RESPONSE_RADIUS;
+            var bottom_side_start = window_y + height - Constant.RESPONSE_RADIUS;
+            var bottom_side_end = window_y + height;
 
             if (x > left_side_start && x < left_side_end) {
                 if (y > top_side_start && y < top_side_end) {
