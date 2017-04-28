@@ -49,8 +49,20 @@ namespace Widgets {
             set_decorated(false);
             set_keep_above(true);
 
+            set_skip_taskbar_hint(true);
+            set_skip_pager_hint(true);
+            // NOTE: Don't change other type, otherwise window can't resize by user.
+            set_type_hint(Gdk.WindowTypeHint.MENU);
+            move(rect.x, 0);
+
+            window_frame_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+            window_widget_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+
+            add(window_frame_box);
+            window_frame_box.pack_start(window_widget_box, true, true, 0);
+
             realize.connect((w) => {
-                    get_window().set_shadow_width(0, 0, 0, window_frame_margin_bottom);
+                    update_frame();
 
                     try {
                         var config_height = config.config_file.get_double("advanced", "quake_window_height");
@@ -84,19 +96,6 @@ namespace Widgets {
                     }
                 });
 
-            set_skip_taskbar_hint(true);
-            set_skip_pager_hint(true);
-            // NOTE: Don't change other type, otherwise window can't resize by user.
-            set_type_hint(Gdk.WindowTypeHint.MENU);
-            move(rect.x, 0);
-
-            window_frame_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            window_frame_box.margin_bottom = window_frame_margin_bottom;
-            window_widget_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-
-            add(window_frame_box);
-            window_frame_box.pack_start(window_widget_box, true, true, 0);
-
             focus_in_event.connect((w) => {
                     update_style();
 
@@ -127,7 +126,7 @@ namespace Widgets {
                     input_shape_rect.x = 0;
                     input_shape_rect.y = 0;
                     input_shape_rect.width = width;
-                    input_shape_rect.height = height - window_frame_margin_bottom + Constant.RESPONSE_RADIUS;
+                    input_shape_rect.height = height - window_frame_box.margin_bottom + Constant.RESPONSE_RADIUS;
 
                     var shape = new Cairo.Region.rectangle(input_shape_rect);
                     get_window().input_shape_combine_region(shape, 0, 0);
@@ -333,6 +332,16 @@ namespace Widgets {
                 return Gdk.CursorType.BOTTOM_SIDE;
             } else {
                 return null;
+            }
+        }
+
+        public override void update_frame() {
+            if (screen.is_composited()) {
+                window_frame_box.margin_bottom = window_frame_margin_bottom;
+                get_window().set_shadow_width(0, 0, 0, window_frame_margin_bottom);
+            } else {
+                window_frame_box.margin_bottom = 0;
+                get_window().set_shadow_width(0, 0, 0, 0);
             }
         }
     }

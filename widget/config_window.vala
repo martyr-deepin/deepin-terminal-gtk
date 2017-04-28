@@ -32,6 +32,7 @@ namespace Widgets {
         public Config.Config config;
         public Gdk.RGBA title_line_dark_color;
         public Gdk.RGBA title_line_light_color;
+        public Gdk.Screen screen_monitor;
         public Gtk.Box box;
         public Gtk.Box top_box;
         public Gtk.Box window_frame_box;
@@ -64,6 +65,11 @@ namespace Widgets {
             workspace_manager = manager;
             box = new Box(Gtk.Orientation.VERTICAL, 0);
             top_box = new Box(Gtk.Orientation.HORIZONTAL, 0);
+            
+            screen_monitor = Gdk.Screen.get_default();
+            screen_monitor.composited_changed.connect(() => {
+                    update_frame();
+                });
             
             delete_event.connect((w) => {
                     quit();
@@ -611,6 +617,9 @@ namespace Widgets {
         }
         
         public virtual void window_save_before_quit() {
+        }
+        
+        public virtual void update_frame() {
         }
         
         public virtual Gdk.CursorType? get_cursor_type(double x, double y) {
