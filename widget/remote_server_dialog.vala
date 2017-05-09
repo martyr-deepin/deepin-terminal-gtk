@@ -58,7 +58,7 @@ namespace Widgets {
         public int preference_name_margin_left = 10;
         public int preference_name_width = 0;
         public int preference_widget_width = 100;
-        public int window_expand_height = 530;
+        public int window_expand_height;
         public string? server_info;
         
         public signal void add_server(string address,
@@ -93,8 +93,13 @@ namespace Widgets {
         public RemoteServerDialog(Widgets.ConfigWindow window, Gtk.Widget? widget, string? info=null, KeyFile? config_file=null) {
             Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
             
-            window_init_width = 480;
-            window_init_height = 360;
+            set_init_size(480, 360);
+            
+            if (!screen.is_composited()) {
+                window_expand_height = 530 - window_frame_margin_top - window_frame_margin_bottom;
+            } else {
+                window_expand_height = 530;
+            }
             
             var font_description = new Pango.FontDescription();
             font_description.set_size((int)(font_size * Pango.SCALE));

@@ -42,8 +42,7 @@ namespace Widgets {
         public ConfirmDialog(string title, string content, string cancel_text, string confirm_text) {
             Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
             
-            window_init_width = 480;
-            window_init_height = 230;
+            set_init_size(480, 230);
             
             // Add widgets.
             var overlay = new Gtk.Overlay();

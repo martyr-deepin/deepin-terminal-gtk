@@ -53,9 +53,8 @@ namespace Widgets {
             var about_widget = new AboutWidget();
             box.pack_start(about_widget, true, true, 0);
             
-            window_init_width = 500;
-            window_init_height = 440;
-
+            set_init_size(500, 440);
+            
             int about_text_height = Draw.get_text_render_height(
                 about_widget,
                 about_widget.about_text,
@@ -72,7 +71,11 @@ namespace Widgets {
 
             var event_area = new Widgets.WindowEventArea(this);
             event_area.margin_end = Constant.CLOSE_BUTTON_WIDTH;
-            event_area.margin_bottom = window_init_height - window_frame_margin_top - window_frame_margin_bottom - Constant.TITLEBAR_HEIGHT;
+            if (screen.is_composited()) {
+                event_area.margin_bottom = window_init_height - window_frame_margin_top - window_frame_margin_bottom - Constant.TITLEBAR_HEIGHT;
+            } else {
+                event_area.margin_bottom = window_init_height - Constant.TITLEBAR_HEIGHT;
+            }
             
             overlay.add(box);
             overlay.add_overlay(event_area);

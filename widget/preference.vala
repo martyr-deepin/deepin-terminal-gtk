@@ -125,9 +125,8 @@ namespace Widgets {
         public Preference(Widgets.ConfigWindow window, Gtk.Widget? widget) {
             Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
             
-            window_init_width = 720;
-            window_init_height = 670;
-        
+            set_init_size(720, 670);
+            
 			theme_label = create_label();
             opacity_label = create_label(_("Opacity:"));
             opacity_progressbar = new Widgets.ProgressBar(opacity);

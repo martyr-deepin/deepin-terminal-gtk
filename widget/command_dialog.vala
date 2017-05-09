@@ -75,8 +75,7 @@ namespace Widgets {
         public CommandDialog(Widgets.ConfigWindow window, Term? term, Gtk.Widget? widget, string? info=null, KeyFile? config_file=null) {
             Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
             
-            window_init_width = 480;
-            window_init_height = 320;
+            set_init_size(480, 320);
             
             var font_description = new Pango.FontDescription();
             font_description.set_size((int)(font_size * Pango.SCALE));
