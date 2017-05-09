@@ -189,14 +189,14 @@ namespace Widgets {
             
                 Box button_box = new Box(Gtk.Orientation.HORIZONTAL, 0);
                 button_box.margin_top = action_button_margin_top;
-                DialogButton cancel_button = new Widgets.DialogButton(_("Cancel"), "left", "text");
+                DialogButton cancel_button = new Widgets.DialogButton(_("Cancel"), "left", "text", parent_window.screen_monitor.is_composited());
                 string button_name;
                 if (command_info != null) {
                     button_name = _("Save");
                 } else {
                     button_name = _("Add");
                 }
-                DialogButton confirm_button = new Widgets.DialogButton(button_name, "right", "action");
+                DialogButton confirm_button = new Widgets.DialogButton(button_name, "right", "action", parent_window.screen_monitor.is_composited());
                 cancel_button.clicked.connect((b) => {
                         destroy();
                     });

@@ -28,13 +28,21 @@ using Utils;
 
 namespace Widgets {
     public class DialogButton : Gtk.Button {
-        public DialogButton(string? text=null, string direction="left", string type="text") {
+        public DialogButton(string? text=null, string direction="left", string type="text", bool has_radius=true) {
             set_label(text);
             set_size_request(-1, Constant.DIALOG_BUTTON_HEIGHT);
             if (direction == "middle") {
-                get_style_context().add_class("dialog_button_%s".printf(type));
+                if (has_radius) {
+                    get_style_context().add_class("dialog_button_%s".printf(type));
+                } else {
+                    get_style_context().add_class("dialog_noradius_button_%s".printf(type));
+                }
             } else {
-                get_style_context().add_class("dialog_button_%s_%s".printf(direction, type));
+                if (has_radius) {
+                    get_style_context().add_class("dialog_button_%s_%s".printf(direction, type));
+                } else {
+                    get_style_context().add_class("dialog_noradius_button_%s_%s".printf(direction, type));
+                }
             }
             
             enter_notify_event.connect((w) => {

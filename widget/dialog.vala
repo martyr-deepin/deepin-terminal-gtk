@@ -26,6 +26,7 @@ using Widgets;
 
 namespace Widgets {
     public class Dialog : Gtk.Window {
+        public Gdk.Screen screen_monitor;
         public Gtk.Box window_frame_box;
         public Gtk.Box window_widget_box;
         public Widgets.ConfigWindow transient_window;
@@ -41,7 +42,7 @@ namespace Widgets {
 
         public Dialog() {
             set_app_paintable(true); // set_app_paintable is neccessary step to make window transparent.
-            Gdk.Screen screen = Gdk.Screen.get_default();
+            screen_monitor = Gdk.Screen.get_default();
             set_visual(screen.get_rgba_visual());
 
             set_skip_taskbar_hint(true);
@@ -58,7 +59,7 @@ namespace Widgets {
             add(window_frame_box);
             window_frame_box.pack_start(window_widget_box, true, true, 0);
 
-            screen.composited_changed.connect(() => {
+            screen_monitor.composited_changed.connect(() => {
                     update_frame();
                 });
 
@@ -78,7 +79,7 @@ namespace Widgets {
                     int width, height;
                     get_size(out width, out height);
 
-                    if (screen.is_composited()) {
+                    if (screen_monitor.is_composited()) {
                         Cairo.RectangleInt rect;
                         get_window().get_frame_extents(out rect);
 
@@ -124,9 +125,9 @@ namespace Widgets {
                     return true;
                 });
         }
-        
+
         public void set_init_size(int width, int height) {
-            if (!screen.is_composited()) {
+            if (!screen_monitor.is_composited()) {
                 window_init_width = width - window_frame_margin_start - window_frame_margin_end;
                 window_init_height = height - window_frame_margin_top - window_frame_margin_bottom;
             } else {
@@ -154,13 +155,23 @@ namespace Widgets {
         }
 
         public void shadow_active() {
-            window_frame_box.get_style_context().remove_class("dialog_shadow_inactive");
-            window_frame_box.get_style_context().add_class("dialog_shadow_active");
+            if (screen_monitor.is_composited()) {
+                window_frame_box.get_style_context().remove_class("dialog_shadow_inactive");
+                window_frame_box.get_style_context().add_class("dialog_shadow_active");
+            } else {
+                window_frame_box.get_style_context().remove_class("dialog_noshadow_inactive");
+                window_frame_box.get_style_context().add_class("dialog_noshadow_active");
+            }
         }
 
         public void shadow_inactive() {
-            window_frame_box.get_style_context().remove_class("dialog_shadow_active");
-            window_frame_box.get_style_context().add_class("dialog_shadow_inactive");
+            if (screen_monitor.is_composited()) {
+                window_frame_box.get_style_context().remove_class("dialog_shadow_active");
+                window_frame_box.get_style_context().add_class("dialog_shadow_inactive");
+            } else {
+                window_frame_box.get_style_context().remove_class("dialog_noshadow_active");
+                window_frame_box.get_style_context().add_class("dialog_noshadow_inactive");
+            }
         }
 
         public void draw_window_widgets(Cairo.Context cr) {
@@ -176,7 +187,7 @@ namespace Widgets {
             window_frame_box.get_allocation(out window_rect);
 
             cr.set_source_rgba(1, 1, 1, 1);
-            if (screen.is_composited()) {
+            if (screen_monitor.is_composited()) {
                 Draw.fill_rounded_rectangle(cr, window_frame_margin_start, window_frame_margin_top, window_rect.width, window_rect.height, window_frame_radius);
             } else {
                 Draw.fill_rounded_rectangle(cr, 0, 0, window_rect.width, window_rect.height, 0);
@@ -200,7 +211,7 @@ namespace Widgets {
         }
 
         public void update_frame() {
-            if (screen.is_composited()) {
+            if (screen_monitor.is_composited()) {
                 get_window().set_shadow_width(window_frame_margin_start, window_frame_margin_end, window_frame_margin_top, window_frame_margin_bottom);
 
                 window_frame_box.margin_top = window_frame_margin_top;

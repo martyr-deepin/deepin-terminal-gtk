@@ -26,6 +26,8 @@ using Widgets;
 
 namespace Widgets {
     public class ConfirmDialog : Widgets.Dialog {
+        private DialogButton cancel_button;
+        private DialogButton confirm_button;
         private int box_margin_bottom = 24;
         private int box_margin_end = 20;
         private int box_margin_top = 4;
@@ -33,8 +35,6 @@ namespace Widgets {
         private int logo_margin_end = 20;
         private int logo_margin_start = 20;
         private int title_margin_top = 7;
-        private DialogButton cancel_button;
-        private DialogButton confirm_button;
         
         public signal void cancel();
         public signal void confirm();
@@ -79,16 +79,16 @@ namespace Widgets {
             
             Box button_box = new Box(Gtk.Orientation.HORIZONTAL, 0);
             if (cancel_text != "") {
-                cancel_button = new Widgets.DialogButton(cancel_text, "left", "text");
+                cancel_button = new Widgets.DialogButton(cancel_text, "left", "text", screen_monitor.is_composited());
                 cancel_button.clicked.connect((b) => {
                         cancel();
                         destroy();
                     });
             }
             if (cancel_text != "") {
-                confirm_button = new Widgets.DialogButton(confirm_text, "right", "warning");
+                confirm_button = new Widgets.DialogButton(confirm_text, "right", "warning", screen_monitor.is_composited());
             } else {
-                confirm_button = new Widgets.DialogButton(confirm_text, "middle", "warning");
+                confirm_button = new Widgets.DialogButton(confirm_text, "middle", "warning", screen_monitor.is_composited());
             }
             confirm_button.clicked.connect((b) => {
                     confirm();

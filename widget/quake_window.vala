@@ -241,26 +241,51 @@ namespace Widgets {
 
             if (is_active) {
                 if (is_light_theme) {
-                    window_frame_box.get_style_context().add_class("window_light_shadow_active");
+                    if (screen_monitor.is_composited()) {
+                        window_frame_box.get_style_context().add_class("window_light_shadow_active");
+                    } else {
+                        window_frame_box.get_style_context().add_class("window_light_noshadow_active");
+                    }
                 } else {
-                    window_frame_box.get_style_context().add_class("window_dark_shadow_active");
+                    if (screen_monitor.is_composited()) {
+                        window_frame_box.get_style_context().add_class("window_dark_shadow_active");
+                    } else {
+                        window_frame_box.get_style_context().add_class("window_dark_noshadow_active");
+                    }
                 }
             } else {
                 if (is_light_theme) {
-                    window_frame_box.get_style_context().add_class("window_light_shadow_inactive");
+                    if (screen_monitor.is_composited()) {
+                        window_frame_box.get_style_context().add_class("window_light_shadow_inactive");
+                    } else {
+                        window_frame_box.get_style_context().add_class("window_light_noshadow_inactive");
+                    }
                 } else {
-                    window_frame_box.get_style_context().add_class("window_dark_shadow_inactive");
+                    if (screen_monitor.is_composited()) {
+                        window_frame_box.get_style_context().add_class("window_dark_shadow_inactive");
+                    } else {
+                        window_frame_box.get_style_context().add_class("window_dark_noshadow_inactive");
+                    }
                 }
             }
         }
 
         public void clean_style() {
-            window_frame_box.get_style_context().remove_class("window_light_shadow_inactive");
-            window_frame_box.get_style_context().remove_class("window_dark_shadow_inactive");
-            window_frame_box.get_style_context().remove_class("window_light_shadow_active");
-            window_frame_box.get_style_context().remove_class("window_dark_shadow_active");
-            window_frame_box.get_style_context().remove_class("window_noradius_shadow_inactive");
-            window_frame_box.get_style_context().remove_class("window_noradius_shadow_active");
+            if (screen_monitor.is_composited()) {
+                window_frame_box.get_style_context().remove_class("window_light_shadow_inactive");
+                window_frame_box.get_style_context().remove_class("window_dark_shadow_inactive");
+                window_frame_box.get_style_context().remove_class("window_light_shadow_active");
+                window_frame_box.get_style_context().remove_class("window_dark_shadow_active");
+                window_frame_box.get_style_context().remove_class("window_noradius_shadow_inactive");
+                window_frame_box.get_style_context().remove_class("window_noradius_shadow_active");
+            } else {
+                window_frame_box.get_style_context().remove_class("window_light_noshadow_inactive");
+                window_frame_box.get_style_context().remove_class("window_dark_noshadow_inactive");
+                window_frame_box.get_style_context().remove_class("window_light_noshadow_active");
+                window_frame_box.get_style_context().remove_class("window_dark_noshadow_active");
+                window_frame_box.get_style_context().remove_class("window_noradius_noshadow_inactive");
+                window_frame_box.get_style_context().remove_class("window_noradius_noshadow_active");
+            }
         }
 
         public void draw_window_widgets(Cairo.Context cr) {
@@ -368,7 +393,7 @@ namespace Widgets {
 
             var bottom_side_start = window_y + height - Constant.RESPONSE_RADIUS;
             var bottom_side_end = window_y + height;
-            
+
             if (y > bottom_side_start && y < bottom_side_end) {
                 return Gdk.CursorType.BOTTOM_SIDE;
             } else {
@@ -377,7 +402,7 @@ namespace Widgets {
         }
 
         public override void update_frame() {
-            if (screen.is_composited()) {
+            if (screen_monitor.is_composited()) {
                 window_frame_box.margin_bottom = window_frame_margin_bottom;
                 get_window().set_shadow_width(0, 0, 0, window_frame_margin_bottom);
             } else {

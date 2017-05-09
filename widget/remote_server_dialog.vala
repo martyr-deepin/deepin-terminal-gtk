@@ -95,7 +95,7 @@ namespace Widgets {
             
             set_init_size(480, 360);
             
-            if (!screen.is_composited()) {
+            if (!screen_monitor.is_composited()) {
                 window_expand_height = 530 - window_frame_margin_top - window_frame_margin_bottom;
             } else {
                 window_expand_height = 530;
@@ -343,14 +343,14 @@ namespace Widgets {
             
                 Box button_box = new Box(Gtk.Orientation.HORIZONTAL, 0);
                 button_box.margin_top = action_button_margin_top;
-                DialogButton cancel_button = new Widgets.DialogButton(_("Cancel"), "left", "text");
+                DialogButton cancel_button = new Widgets.DialogButton(_("Cancel"), "left", "text", parent_window.screen_monitor.is_composited());
                 string button_name;
                 if (server_infos != null) {
                     button_name = _("Save");
                 } else {
                     button_name = _("Add");
                 }
-                DialogButton confirm_button = new Widgets.DialogButton(button_name, "right", "action");
+                DialogButton confirm_button = new Widgets.DialogButton(button_name, "right", "action", parent_window.screen_monitor.is_composited());
                 cancel_button.clicked.connect((b) => {
                         destroy();
                     });

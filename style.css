@@ -100,6 +100,30 @@
     box-shadow: 0px 10px 14px 0px rgba(0,0,0,0.15),inset 0 1px rgba(0,0,0,0.5),inset 0 -1px rgba(0,0,0,0.5),inset 1px 0 rgba(0,0,0,0.5),inset -1px 0 rgba(0,0,0,0.5) ;
 }
 
+.window_dark_noshadow_active {
+    border-radius: 0px;
+}
+
+.window_dark_noshadow_inactive {
+    border-radius: 0px;
+}
+
+.window_light_noshadow_active {
+    border-radius: 0px;
+}
+
+.window_light_noshadow_inactive {
+    border-radius: 0px;
+}
+
+.window_noradius_noshadow_active {
+	border-radius: 0px;
+}
+
+.window_noradius_noshadow_inactive {
+    border-radius: 0px;
+}
+
 .dialog_shadow_active {
 	background: transparent;
 	border-radius: 5px;
@@ -110,6 +134,14 @@
     background: transparent;
     border-radius: 5px;
     box-shadow: 0px 10px 14px 0px rgba(0,0,0,0.15),0 0 0 1px rgba(0,0,0,0.1);
+}
+
+.dialog_noshadow_active {
+	border-radius: 0px;
+}
+
+.dialog_noshadow_inactive {
+    border-radius: 0px;
 }
 
 .search_dark_box {
@@ -713,6 +745,175 @@
     border-width: 1px 1px 0 0;
     border-color: rgba(0,0,0,0.1);
     border-radius: 0 0 5px 5px; 
+}
+
+.dialog_noradius_button_left_text {
+    background-image: linear-gradient(-180deg,#ffffff 0%, #ffffff 100%);
+    color:#303030;
+    box-shadow: none;
+    border-width: 1px 1px 0 0;
+    border-color: rgba(0,0,0,0.1);
+    border-radius: 0 0 0 0;
+}
+
+.dialog_noradius_button_left_text:hover,
+.dialog_noradius_button_left_action:hover,
+.dialog_noradius_button_left_warning:hover,
+.dialog_noradius_button_left_text:focus,
+.dialog_noradius_button_left_action:focus,
+.dialog_noradius_button_left_warning:focus {
+    background-image: linear-gradient(-180deg,#8ccfff 0%, #4bb8ff 100%);
+    color:white;
+    box-shadow: none;
+    transition: all 200ms ease;
+    border-width: 1px 1px 0 0;
+    border-color: #3cabfd;
+    border-radius: 0 0 0 0;
+}
+
+.dialog_noradius_button_left_text:active,
+.dialog_noradius_button_left_action:active,
+.dialog_noradius_button_left_warning:active {
+    background-image: linear-gradient(-180deg,#0b8cff 0%, #0aa1ff 100%);
+    color:white;
+    box-shadow: none;
+    transition: all 200ms ease;
+    border-width: 1px 1px 0 0;
+    border-color: #0f97ff;
+    border-radius: 0 0 0 0;
+}
+
+
+.dialog_noradius_button_left_action {
+    background-image: linear-gradient(-180deg,#ffffff 0%, #ffffff 100%);
+    color:#0087ff;
+    box-shadow: none;
+    border-width: 1px 1px 0 0;
+    border-color: rgba(0,0,0,0.1);
+    border-radius: 0 0 0 0;  
+}
+
+
+.dialog_noradius_button_left_warning {
+    background-image: linear-gradient(-180deg,#ffffff 0%, #ffffff 100%);
+    color:#ff5a5a;
+    box-shadow: none;
+    border-width: 1px 1px 0 0;
+    border-color: rgba(0,0,0,0.1);
+    border-radius: 0 0 0 0; 
+}
+
+.dialog_noradius_button_right_text {
+    background-image: linear-gradient(-180deg,#ffffff 0%, #ffffff 100%);
+    color:#303030;
+    box-shadow: none;
+    border-width: 1px 0 0 0px;
+    border-top-color: rgba(0,0,0,0.1);
+    border-left-color: transparent;
+    border-radius: 0 0 0 0;
+}
+
+.dialog_noradius_button_right_text:hover,
+.dialog_noradius_button_right_action:hover,
+.dialog_noradius_button_right_warning:hover,
+.dialog_noradius_button_right_text:focus,
+.dialog_noradius_button_right_action:focus,
+.dialog_noradius_button_right_warning:focus {
+    background-image: linear-gradient(-180deg,#8ccfff 0%, #4bb8ff 100%);
+    color:white;
+    box-shadow: inset 1px 0 #3cabfd;
+    transition: all 200ms ease;
+    border-width: 1px 0 0 0px;
+    border-color: #3cabfd;
+    border-radius: 0 0 0 0;
+}
+.dialog_noradius_button_right_text:active,
+.dialog_noradius_button_right_action:active,
+.dialog_noradius_button_right_warning:active {
+    background-image: linear-gradient(-180deg,#0b8cff 0%, #0aa1ff 100%);
+    color:white;
+    box-shadow: none;
+    transition: all 200ms ease;
+    border-width: 1px 0 0 0px;
+    border-color: #0f97ff;
+    border-radius: 0 0 0 0;
+}
+
+.dialog_noradius_button_right_action {
+    background-image: linear-gradient(-180deg,#ffffff 0%, #ffffff 100%);
+    color:#0087ff;
+    box-shadow: none;
+    border-width: 1px 0 0 0px;
+    border-top-color: rgba(0,0,0,0.1);
+    border-left-color: transparent;
+    border-radius: 0 0 0 0; 
+}
+
+.dialog_noradius_button_right_warning {
+    background-image: linear-gradient(-180deg,#ffffff 0%, #ffffff 100%);
+    color:#ff5a5a;
+    box-shadow: none;
+    border-width: 1px 0 0 0px;
+    border-top-color: rgba(0,0,0,0.1);
+    border-left-color: transparent;
+    border-radius: 0 0 0 0; 
+}
+
+
+.dialog_noradius_button_text {
+    background-image: linear-gradient(-180deg,#ffffff 0%, #ffffff 100%);
+    color:#303030;
+    box-shadow: none;
+    border-width: 1px 1px 0 0;
+    border-color: rgba(0,0,0,0.1);
+    border-radius: 0 0 0 0;
+}
+
+.dialog_noradius_button_text:hover,
+.dialog_noradius_button_action:hover,
+.dialog_noradius_button_warning:hover,
+.dialog_noradius_button_text:focus,
+.dialog_noradius_button_action:focus,
+.dialog_noradius_button_warning:focus {
+    background-image: linear-gradient(-180deg,#8ccfff 0%, #4bb8ff 100%);
+    color:white;
+    box-shadow: none;
+    transition: all 200ms ease;
+    border-width: 1px 1px 0 0;
+    border-color: #3cabfd;
+    border-radius: 0 0 0 0;
+}
+
+.dialog_noradius_button_text:active,
+.dialog_noradius_button_action:active,
+.dialog_noradius_button_warning:active {
+    background-image: linear-gradient(-180deg,#0b8cff 0%, #0aa1ff 100%);
+    color:white;
+    box-shadow: none;
+    transition: all 200ms ease;
+    border-width: 1px 1px 0 0;
+    border-color: #0f97ff;
+    border-radius: 0 0 0 0;
+}
+
+
+.dialog_noradius_button_action {
+    background-image: linear-gradient(-180deg,#ffffff 0%, #ffffff 100%);
+    color:#0087ff;
+    box-shadow: none;
+    border-width: 1px 1px 0 0;
+    border-color: rgba(0,0,0,0.1);
+    border-radius: 0 0 0 0;  
+}
+
+
+.dialog_noradius_button_warning {
+    background-image: linear-gradient(-180deg,#ffffff 0%, #ffffff 100%);
+    color:#ff5a5a;
+    box-shadow: none;
+    border-width: 1px 1px 0 0;
+    border-color: rgba(0,0,0,0.1);
+    border-radius: 0 0 0 0; 
 }
 
 .add_button_light {
