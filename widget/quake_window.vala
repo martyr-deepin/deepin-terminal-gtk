@@ -123,10 +123,12 @@ namespace Widgets {
                     Cairo.RectangleInt input_shape_rect;
                     get_window().get_frame_extents(out input_shape_rect);
 
-                    input_shape_rect.x = 0;
-                    input_shape_rect.y = 0;
-                    input_shape_rect.width = width;
-                    input_shape_rect.height = height - window_frame_box.margin_bottom + Constant.RESPONSE_RADIUS;
+                    if (screen_monitor.is_composited()) {
+                        input_shape_rect.x = 0;
+                        input_shape_rect.y = 0;
+                        input_shape_rect.width = width;
+                        input_shape_rect.height = height - window_frame_box.margin_bottom + Constant.RESPONSE_RADIUS;
+                    }
 
                     var shape = new Cairo.Region.rectangle(input_shape_rect);
                     get_window().input_shape_combine_region(shape, 0, 0);
