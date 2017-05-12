@@ -168,8 +168,6 @@ namespace Widgets {
                 });
 
             window_state_event.connect((w, e) => {
-                    update_style();
-
                     update_frame();
 
                     return false;
@@ -275,21 +273,18 @@ namespace Widgets {
         }
 
         public void clean_style() {
-            if (screen_monitor.is_composited()) {
-                window_frame_box.get_style_context().remove_class("window_light_shadow_inactive");
-                window_frame_box.get_style_context().remove_class("window_dark_shadow_inactive");
-                window_frame_box.get_style_context().remove_class("window_light_shadow_active");
-                window_frame_box.get_style_context().remove_class("window_dark_shadow_active");
-                window_frame_box.get_style_context().remove_class("window_noradius_shadow_inactive");
-                window_frame_box.get_style_context().remove_class("window_noradius_shadow_active");
-            } else {
-                window_frame_box.get_style_context().remove_class("window_light_noshadow_inactive");
-                window_frame_box.get_style_context().remove_class("window_dark_noshadow_inactive");
-                window_frame_box.get_style_context().remove_class("window_light_noshadow_active");
-                window_frame_box.get_style_context().remove_class("window_dark_noshadow_active");
-                window_frame_box.get_style_context().remove_class("window_noradius_noshadow_inactive");
-                window_frame_box.get_style_context().remove_class("window_noradius_noshadow_active");
-            }
+            window_frame_box.get_style_context().remove_class("window_light_shadow_inactive");
+            window_frame_box.get_style_context().remove_class("window_dark_shadow_inactive");
+            window_frame_box.get_style_context().remove_class("window_light_shadow_active");
+            window_frame_box.get_style_context().remove_class("window_dark_shadow_active");
+            window_frame_box.get_style_context().remove_class("window_noradius_shadow_inactive");
+            window_frame_box.get_style_context().remove_class("window_noradius_shadow_active");
+            window_frame_box.get_style_context().remove_class("window_light_noshadow_inactive");
+            window_frame_box.get_style_context().remove_class("window_dark_noshadow_inactive");
+            window_frame_box.get_style_context().remove_class("window_light_noshadow_active");
+            window_frame_box.get_style_context().remove_class("window_dark_noshadow_active");
+            window_frame_box.get_style_context().remove_class("window_noradius_noshadow_inactive");
+            window_frame_box.get_style_context().remove_class("window_noradius_noshadow_active");
         }
 
         public void draw_window_widgets(Cairo.Context cr) {
@@ -328,6 +323,8 @@ namespace Widgets {
         }
 
         public override void update_frame() {
+            update_style();
+            
             if (!screen_monitor.is_composited() || window_is_fullscreen() || window_is_max()) {
                 window_widget_box.margin_top = 0;
                 window_widget_box.margin_bottom = 0;
