@@ -124,7 +124,7 @@ namespace Widgets {
         }
 
         public void transparent_window() {
-            set_app_paintable(true); // set_app_paintable is neccessary step to make window transparent.
+            set_app_paintable(true); // set_app_paintable is necessary step to make window transparent.
             Gdk.Screen screen = Gdk.Screen.get_default();
             set_visual(screen.get_rgba_visual());
         }

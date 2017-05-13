@@ -30,7 +30,7 @@ set(CFLAGS
 	${GEE_CFLAGS}
 	${X11_CFLAGS} ${X11_CFLAGS_OTHER}
 	-DWNCK_I_KNOW_THIS_IS_UNSTABLE
-	-DGETTEXT_PACKAGE="deepin-ternimal"
+	-DGETTEXT_PACKAGE="deepin-terminal"
 	-s -O3 -w
 	#	-g
 )
