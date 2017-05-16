@@ -127,6 +127,7 @@ namespace Config {
                 config_file.set_boolean("advanced", "hide_quakewindow_after_lost_focus", false);
                 config_file.set_boolean("advanced", "show_quakewindow_tab", true);
                 config_file.set_boolean("advanced", "follow_active_window", true);
+                config_file.set_boolean("advanced", "hide_quakewindow_when_active", true);
 
                 config_file.set_string("theme", "color_1", "#073642");
                 config_file.set_comment("theme", "color_1", "host");
@@ -314,6 +315,7 @@ namespace Config {
             check_boolean("advanced", "hide_quakewindow_after_lost_focus", false);
             check_boolean("advanced", "show_quakewindow_tab", true);
             check_boolean("advanced", "follow_active_window", true);
+            check_boolean("advanced", "hide_quakewindow_when_active", true);
 
             check_string("theme", "color_1", "#073642");
             check_string("theme", "color_2", "#bdb76b");  // string

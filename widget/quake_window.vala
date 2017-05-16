@@ -216,18 +216,30 @@ namespace Widgets {
                     show_all();
                     present();
                 } else {
-                    // Because some desktop environment, such as DDE will grab keyboard focus when press keystroke. :(
-                    // So i add 200ms timeout to wait desktop environment release keyboard focus and then get window active state.
-                    // Otherwise, window is always un-active state that quake terminal can't toggle to hide.
-                    GLib.Timeout.add(200, () => {
-                            if (is_active) {
-                                hide();
-                            } else {
-                                present();
-                            }
+                    try {
+                        // When option hide_quakewindow_after_lost_focus enable.
+                        // Focus terminal if terminal is not active, only hide temrinal after terminal focus.
+                        if (config.config_file.get_boolean("advanced", "hide_quakewindow_when_active")) {
+                            // Because some desktop environment, such as DDE will grab keyboard focus when press keystroke. :(
+                            // So i add 200ms timeout to wait desktop environment release keyboard focus and then get window active state.
+                            // Otherwise, window is always un-active state that quake terminal can't toggle to hide.
+                            GLib.Timeout.add(200, () => {
+                                    if (is_active) {
+                                        hide();
+                                    } else {
+                                        present();
+                                    }
 
-                            return false;
-                        });
+                                    return false;
+                                });
+                        }
+                        // Hide terminal immediately if option hide_quakewindow_when_active is false.
+                        else {
+                            hide();
+                        }
+                    } catch (Error e) {
+                        print("quake_window toggle_quake_window: %s\n", e.message);
+                    }
                 }
             } else {
                 move(rect.x, 0);
@@ -402,7 +414,7 @@ namespace Widgets {
 
         public override void update_frame() {
             update_style();
-            
+
             if (screen_monitor.is_composited()) {
                 window_frame_box.margin_bottom = window_frame_margin_bottom;
                 get_window().set_shadow_width(0, 0, 0, window_frame_margin_bottom);
