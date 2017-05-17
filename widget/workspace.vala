@@ -177,7 +177,7 @@ namespace Widgets {
 			Widget parent_widget = except_term.get_parent();
             ((Container) parent_widget).remove(except_term);
 			
-			// Destory all other terminals, wow! ;)
+			// Destroy all other terminals, wow! ;)
 			foreach (Widget w in get_children()) {
 				w.destroy();
 			}
