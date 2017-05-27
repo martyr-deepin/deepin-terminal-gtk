@@ -28,7 +28,7 @@
 #include <string.h>
 #include <glib.h>
 
-gchar** list_mono_or_dot_fonts(int* num) {
+gchar** list_mono_or_dot_fonts(gint* num, int* result_length) {
     FcInit();
 	
     FcPattern *pat = FcPatternCreate();
@@ -107,7 +107,7 @@ gchar** list_mono_or_dot_fonts(int* num) {
 			gchar* font = (gchar*) FcPatternFormat(fs->fonts[j], (FcChar8*)"%{family}");
 			
 			/* Need space for store font */
-			fonts[count] = malloc(strlen(font) + 1);
+			fonts[count] = malloc((strlen(font) + 1) * sizeof(gchar));
 			if (fonts[count] == NULL) {
 			    fprintf(stderr, "Malloc %d failed\n", count + 1);
 			    return NULL;
@@ -135,6 +135,7 @@ gchar** list_mono_or_dot_fonts(int* num) {
 		}
     }
 	*num = count;
+	*result_length = count;
 	
 	FcFontSetDestroy(fs);
 	
