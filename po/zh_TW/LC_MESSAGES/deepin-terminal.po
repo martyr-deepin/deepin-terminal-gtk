@@ -26,6 +26,14 @@ msgstr ""
 "\n"
 "命令已完成，按 ENTER 離開終端機。"
 
+#: ../widget/terminal.vala:936
+msgid ""
+"\n"
+"Command has been completed, press ENTER to exit the terminal."
+msgstr ""
+"\n"
+"命令已完成，按 ENTER 離開終端機。"
+
 #: ../widget/appbar.vala:140
 msgid "About"
 msgstr "關於"
