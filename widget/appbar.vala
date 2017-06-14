@@ -215,7 +215,7 @@ namespace Widgets {
                         print("Main window: %s\n", e.message);
                     }
                     
-                    Utils.propagate_draw(box, cr);
+                    Utils.propagate_draw((Container) w, cr);
 
                     return true;
                 });

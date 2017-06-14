@@ -253,13 +253,15 @@ namespace Widgets {
             ((Container) parent_widget).remove(focus_term);
             Paned paned = new Paned(orientation);
 			paned.draw.connect((w, cr) => {
-					Utils.propagate_draw(paned, cr);
+                    var paned_widget = (Paned) w;
+                    
+					Utils.propagate_draw(paned_widget, cr);
 					
                     Gtk.Allocation rect;
                     w.get_allocation(out rect);
 					
-					int pos = paned.get_position();
-					if (pos != 0 && paned.get_child1() != null && paned.get_child2() != null) {
+					int pos = paned_widget.get_position();
+					if (pos != 0 && paned_widget.get_child1() != null && paned_widget.get_child2() != null) {
 						cr.set_operator(Cairo.Operator.OVER);
 						Widgets.ConfigWindow parent_window = (Widgets.ConfigWindow) w.get_toplevel();
                         Gdk.RGBA paned_background_color;

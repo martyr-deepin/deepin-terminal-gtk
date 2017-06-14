@@ -30,10 +30,7 @@ namespace Animation {
         public double progress { get; private set; }
         /* speed is in milliseconds */
         public int speed { get; set; }
-        public static const int FAST = 250; /* Good for animations that convey duplicated information */
-        public static const int INSTANT = 150; /* Good for animations that don't convey any information */
-        public static const int NORMAL = 500;
-        public static const int SLOW = 1000; /* Good for animations that convey information that is only presented in the animation */
+        
         public unowned EasingFunc easing_func { get; private set; }
 
         /* progress is from 0.0 to 1.0 */
