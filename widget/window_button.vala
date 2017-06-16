@@ -27,7 +27,7 @@ using Gtk;
 using Utils;
 
 namespace Widgets {
-    public class ImageButton : Widgets.ClickEventBox {
+    public class WindowButton : Widgets.ClickEventBox {
 		public bool is_hover = false;
         public Cairo.ImageSurface hover_dark_surface;
         public Cairo.ImageSurface hover_light_surface;
@@ -35,14 +35,10 @@ namespace Widgets {
         public Cairo.ImageSurface normal_light_surface;
         public Cairo.ImageSurface press_dark_surface;
         public Cairo.ImageSurface press_light_surface;
-        public Gdk.RGBA text_hover_color;
-        public Gdk.RGBA text_normal_color;
-        public Gdk.RGBA text_press_color;
         public bool is_theme_button;
-        public int button_text_size = 14;
-        public string? button_text;
+        public int surface_y;
         
-        public ImageButton(string image_path, bool theme_button=false, string? text=null, int text_size=12) {
+        public WindowButton(string image_path, bool theme_button=false, int width, int height) {
             is_theme_button = theme_button;
             
             if (is_theme_button) {
@@ -59,16 +55,9 @@ namespace Widgets {
                 press_dark_surface = Utils.create_image_surface(image_path + "_press.png");
             }
             
-            button_text = text;
-            button_text_size = text_size;
+            set_size_request(width, height);
             
-            if (button_text != null) {
-                text_normal_color = Utils.hex_to_rgba("#0699FF");
-                text_hover_color = Utils.hex_to_rgba("#FFFFFF");
-                text_press_color = Utils.hex_to_rgba("#FFFFFF");
-            }
-            
-            set_size_request(this.normal_dark_surface.get_width(), this.normal_dark_surface.get_height());
+            surface_y = (height - normal_dark_surface.get_height()) / 2;
             
             draw.connect(on_draw);
 			enter_notify_event.connect((w, e) => {
@@ -108,41 +97,33 @@ namespace Widgets {
             if (is_hover) {
                 if (is_press) {
                     if (is_theme_button && is_light_theme) {
-                        Draw.draw_surface(cr, press_light_surface);
+                        Draw.draw_surface(cr, press_light_surface, 0, surface_y);
                     } else {
-                        Draw.draw_surface(cr, press_dark_surface);
-                    }
-                    
-                    if (button_text != null) {
-                        Utils.set_context_color(cr, text_press_color);
-                        Draw.draw_text(cr, button_text, 0, 0, normal_dark_surface.get_width(), normal_dark_surface.get_height(), button_text_size, Pango.Alignment.CENTER);
+                        Draw.draw_surface(cr, press_dark_surface, 0, surface_y);
                     }
                 } else {
                     if (is_theme_button && is_light_theme) {
-                        Draw.draw_surface(cr, hover_light_surface);
+                        Draw.draw_surface(cr, hover_light_surface, 0, surface_y);
                     } else {
-                        Draw.draw_surface(cr, hover_dark_surface);
-                    }
-                    
-                    if (button_text != null) {
-                        Utils.set_context_color(cr, text_hover_color);
-                        Draw.draw_text(cr, button_text, 0, 0, normal_dark_surface.get_width(), normal_dark_surface.get_height(), button_text_size, Pango.Alignment.CENTER);
+                        Draw.draw_surface(cr, hover_dark_surface, 0, surface_y);
                     }
                 }
             } else {
                 if (is_theme_button && is_light_theme) {
-                    Draw.draw_surface(cr, normal_light_surface);
+                    Draw.draw_surface(cr, normal_light_surface, 0, surface_y);
                 } else {
-                    Draw.draw_surface(cr, normal_dark_surface);
-                }
-                    
-                if (button_text != null) {
-                    Utils.set_context_color(cr, text_normal_color);
-                    Draw.draw_text(cr, button_text, 0, 0, normal_dark_surface.get_width(), normal_dark_surface.get_height(), button_text_size, Pango.Alignment.CENTER);
+                    Draw.draw_surface(cr, normal_dark_surface, 0, surface_y);
                 }
             }
             
             return true;
         }
+    }
+
+    public WindowButton create_close_button() {
+        var close_button = new WindowButton("titlebar_close", false, Constant.WINDOW_BUTTON_WIDHT + Constant.CLOSE_BUTTON_MARGIN_RIGHT, Constant.TITLEBAR_HEIGHT);
+        close_button.set_halign(Gtk.Align.END);
+        
+        return close_button;
     }
 }

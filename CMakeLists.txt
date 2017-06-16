@@ -89,6 +89,7 @@ vala_precompile(VALA_C
 	./widget/entry_menu.vala 
 	./widget/file_button.vala 
 	./widget/image_button.vala
+	./widget/window_button.vala
 	./widget/panel_button.vala
 	./widget/password_button.vala
 	./widget/preference.vala

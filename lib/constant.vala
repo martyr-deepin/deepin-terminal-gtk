@@ -25,7 +25,8 @@ public class Constant {
     public static double TERMINAL_MIN_OPACITY = 0;
     public static double VERSION = 2.4;
     public static int ACTIVE_TAB_UNDERLINE_HEIGHT = 2;
-    public static int CLOSE_BUTTON_MARGIN_RIGHT = 3;
+    public static int WINDOW_BUTTON_WIDHT = 27;
+    public static int CLOSE_BUTTON_MARGIN_RIGHT = 5;
     public static int CLOSE_BUTTON_MARGIN_TOP = 3;
     public static int CLOSE_BUTTON_WIDTH = 27;
     public static int DIALOG_BUTTON_HEIGHT = 28;

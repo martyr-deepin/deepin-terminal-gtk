@@ -26,7 +26,7 @@ using Widgets;
 
 namespace Widgets {
     public class Titlebar : Gtk.Overlay {
-        public ImageButton close_button;
+        public WindowButton close_button;
         public Widgets.WindowEventArea event_area;
         
         public Titlebar() {

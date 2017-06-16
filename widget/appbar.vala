@@ -37,18 +37,17 @@ namespace Widgets {
         public Box window_button_box;
         public Box window_close_button_box;
         public Gtk.Widget? focus_widget;
-        public ImageButton close_button;
-        public ImageButton max_button;
-        public ImageButton menu_button;
-        public ImageButton min_button;
-        public ImageButton quit_fullscreen_button;
-        public ImageButton unmax_button;
+        public WindowButton close_button;
+        public WindowButton max_button;
+        public WindowButton menu_button;
+        public WindowButton min_button;
+        public WindowButton quit_fullscreen_button;
+        public WindowButton unmax_button;
         public Menu.Menu menu;
         public Tabbar tabbar;
         public Widgets.Window window;
         public Widgets.WindowEventArea event_area;
         public WorkspaceManager workspace_manager;
-        public int close_button_margin_right = 5;
         public int logo_width = 48;
         public int titlebar_right_cache_width = 10;
         
@@ -100,22 +99,12 @@ namespace Widgets {
             window_button_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             window_close_button_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             
-            menu_button = new ImageButton("window_menu", true);
-            min_button = new ImageButton("window_min", true);
-            max_button = new ImageButton("window_max", true);
-            unmax_button = new ImageButton("window_unmax", true);
-            close_button = new ImageButton("window_close", true);
-            quit_fullscreen_button = new ImageButton("quit_fullscreen", true);
-			
-			int margin_top = (int) (height - menu_button.normal_dark_surface.get_height()) / 2;
-            int margin_right = 6;
-			menu_button.margin_top = margin_top;
-			min_button.margin_top = margin_top;
-			max_button.margin_top = margin_top;
-			unmax_button.margin_top = margin_top;
-			close_button.margin_top = margin_top;
-            quit_fullscreen_button.margin_top = margin_top;
-            quit_fullscreen_button.margin_right = margin_right;
+            menu_button = new WindowButton("window_menu", true, Constant.WINDOW_BUTTON_WIDHT, Constant.TITLEBAR_HEIGHT);
+            min_button = new WindowButton("window_min", true, Constant.WINDOW_BUTTON_WIDHT, Constant.TITLEBAR_HEIGHT);
+            max_button = new WindowButton("window_max", true, Constant.WINDOW_BUTTON_WIDHT, Constant.TITLEBAR_HEIGHT);
+            unmax_button = new WindowButton("window_unmax", true, Constant.WINDOW_BUTTON_WIDHT, Constant.TITLEBAR_HEIGHT);
+            close_button = new WindowButton("window_close", true, Constant.WINDOW_BUTTON_WIDHT + Constant.CLOSE_BUTTON_MARGIN_RIGHT, Constant.TITLEBAR_HEIGHT);
+            quit_fullscreen_button = new WindowButton("quit_fullscreen", true, Constant.WINDOW_BUTTON_WIDHT + Constant.CLOSE_BUTTON_MARGIN_RIGHT, Constant.TITLEBAR_HEIGHT);
             
             close_button.clicked.connect((w) => {
                     close_window();
@@ -180,7 +169,6 @@ namespace Widgets {
             box.pack_start(cache_area, false, false, 0);
             box.pack_start(window_button_box, false, false, 0);
             box.pack_start(window_close_button_box, false, false, 0);
-            close_button.margin_end = close_button_margin_right;
             
             show_window_button();
             
