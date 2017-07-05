@@ -10,10 +10,10 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-02-08 18:00+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: roberto lopez <riscogordo@gmail.com>, 2017\n"
+"Last-Translator: Benjamin Perez Carrillo <benperezc@gmail.com>, 2017\n"
 "Language-Team: Spanish (https://www.transifex.com/linuxdeepin/teams/3976/es/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -296,7 +296,7 @@ msgstr "Ayuda"
 
 #: ../widget/preference.vala:386
 msgid "Hide quake window after lost focus"
-msgstr ""
+msgstr "Esconda la ventana después de desenfocar"
 
 #: ../widget/terminal.vala:249 ../widget/config_window.vala:296
 msgid "Horizontal split"

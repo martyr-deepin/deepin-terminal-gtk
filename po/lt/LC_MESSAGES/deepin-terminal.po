@@ -13,7 +13,7 @@ msgstr ""
 "Last-Translator: Jonas Motiejūnas <exjonas@gmail.com>, 2017\n"
 "Language-Team: Lithuanian (https://www.transifex.com/linuxdeepin/teams/3976/lt/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: lt\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
@@ -23,6 +23,8 @@ msgid ""
 "\n"
 "Command has been completed, press ENTER to exit the terminal."
 msgstr ""
+"\n"
+"Komanda užbaigta, norėdami išeiti iš terminalo, paspauskite įvedimo (ENTER) klavišą."
 
 #: ../widget/appbar.vala:140
 msgid "About"
@@ -80,11 +82,11 @@ msgstr "Ar tikrai išeiti?"
 
 #: ../widget/remote_server_dialog.vala:102
 msgid "Backspace key"
-msgstr ""
+msgstr "Naikinimo klavišas"
 
 #: ../widget/remote_server_dialog.vala:315
 msgid "Backspace key:"
-msgstr ""
+msgstr "Naikinimo klavišas:"
 
 #: ../widget/preference_slidebar.vala:56 ../widget/preference.vala:238
 msgid "Basic"
@@ -140,7 +142,7 @@ msgstr "Komanda:"
 
 #: ../widget/command_dialog.vala:84
 msgid "Content"
-msgstr ""
+msgstr "Turinys"
 
 #: ../widget/terminal.vala:223 ../widget/config_window.vala:265
 #: ../widget/entry_menu.vala:16
@@ -190,6 +192,9 @@ msgid ""
 "\n"
 "It sharpens your focus in the world of command line!"
 msgstr ""
+"Deepin terminalas yra išplėstinis terminalo emuliatorius su darbo sričių, kelių langų, nuotolinio administravimo, quake veiksenos ir kitomis ypatybės.\n"
+"\n"
+"Jis sutelkia jūsų dėmesį komandų eilutės pasaulyje!"
 
 #: ../widget/config_window.vala:271
 msgid "Default size"
@@ -210,11 +215,11 @@ msgstr "Ištrinti komandą"
 
 #: ../widget/remote_server_dialog.vala:102
 msgid "Delete key"
-msgstr ""
+msgstr "Šalinimo klavišas"
 
 #: ../widget/remote_server_dialog.vala:328
 msgid "Delete key:"
-msgstr ""
+msgstr "Šalinimo klavišas:"
 
 #: ../widget/remote_server_dialog.vala:409
 #: ../widget/remote_server_dialog.vala:419
@@ -291,15 +296,15 @@ msgstr "Pagalba"
 
 #: ../widget/preference.vala:386
 msgid "Hide quake window after lost focus"
-msgstr ""
+msgstr "Slėpti quake langą, jam praradus fokusavimą"
 
 #: ../widget/terminal.vala:249 ../widget/config_window.vala:296
 msgid "Horizontal split"
-msgstr ""
+msgstr "Horizontalus dalijimas"
 
 #: ../widget/preference.vala:314
 msgid "Horizontal split:"
-msgstr ""
+msgstr "Horizontalus dalijimas:"
 
 #: ../widget/preference_slidebar.vala:59 ../widget/preference.vala:241
 msgid "Interface"
@@ -307,19 +312,19 @@ msgstr "Sąsaja"
 
 #: ../widget/config_window.vala:273
 msgid "Jump to next command"
-msgstr ""
+msgstr "Pereiti prie kitos komandos"
 
 #: ../widget/preference.vala:299
 msgid "Jump to next command:"
-msgstr ""
+msgstr "Pereiti prie kitos komandos:"
 
 #: ../widget/config_window.vala:274
 msgid "Jump to previous command"
-msgstr ""
+msgstr "Pereiti prie ankstesnės komandos"
 
 #: ../widget/preference.vala:300
 msgid "Jump to previous command:"
-msgstr ""
+msgstr "Pereiti prie ankstesnės komandos:"
 
 #: ../widget/preference.vala:381
 msgid "Maximize"
@@ -359,7 +364,7 @@ msgstr "Normalus langas"
 
 #: ../widget/preference.vala:132
 msgid "Opacity:"
-msgstr "Skaidrumas:"
+msgstr "Nepermatomumas:"
 
 #: ../widget/terminal.vala:240 ../widget/config_window.vala:267
 msgid "Open"
@@ -373,7 +378,7 @@ msgstr "Atverti:"
 #: ../widget/remote_server_dialog.vala:279
 #: ../widget/remote_server_dialog.vala:288
 msgid "Optional"
-msgstr ""
+msgstr "Nebūtina"
 
 #: ../widget/remote_server_dialog.vala:102
 msgid "Password"
@@ -418,7 +423,7 @@ msgstr "Ankstesnė darbo sritis:"
 
 #: ../widget/confirm_dialog.vala:132
 msgid "Programs are still running in terminal"
-msgstr "Yra terminale veikiančių programų"
+msgstr "Terminale yra vis dar veikiančių programų"
 
 #: ../main.vala:169
 msgid "Quake mode"
@@ -463,11 +468,11 @@ msgstr "Slinkimas"
 
 #: ../widget/preference.vala:366
 msgid "Scroll on keystroke"
-msgstr ""
+msgstr "Slinkti paspaudus klavišą"
 
 #: ../widget/preference.vala:367
 msgid "Scroll on output"
-msgstr ""
+msgstr "Slinkti parodžius išvestį"
 
 #: ../widget/terminal.vala:269 ../widget/search_entry.vala:64
 #: ../widget/search_entry.vala:67 ../widget/config_window.vala:268
@@ -525,7 +530,7 @@ msgstr "Pasirinkti dešinįjį langą:"
 
 #: ../widget/file_button.vala:67
 msgid "Select the private key file"
-msgstr ""
+msgstr "Pasirinkite privačiojo rakto failą"
 
 #: ../widget/config_window.vala:297
 msgid "Select upper window"
@@ -549,11 +554,11 @@ msgstr "Serverio pavadinimas:"
 
 #: ../main.vala:133
 msgid "Set the terminal startup directory"
-msgstr ""
+msgstr "Nustatyti terminalo paleisties katalogą"
 
 #: ../main.vala:115
 msgid "Set the terminal window mode"
-msgstr ""
+msgstr "Nustatyti terminalo lango veikseną"
 
 #: ../widget/terminal.vala:287 ../widget/appbar.vala:136
 msgid "Settings"
@@ -562,15 +567,15 @@ msgstr "Nustatymai"
 #: ../widget/preference_slidebar.vala:66 ../widget/preference.vala:283
 #: ../widget/command_dialog.vala:84
 msgid "Shortcuts"
-msgstr "Nuorodos"
+msgstr "Trumpiniai"
 
 #: ../widget/command_dialog.vala:181
 msgid "Shortcuts:"
-msgstr "Nuorodos:"
+msgstr "Trumpiniai:"
 
 #: ../widget/config_window.vala:316
 msgid "Switch fullscreen"
-msgstr ""
+msgstr "Perjungti visą ekraną"
 
 #: ../widget/terminal.vala:275 ../widget/appbar.vala:132
 msgid "Switch theme"
@@ -595,7 +600,7 @@ msgstr "Įkelti failą"
 
 #: ../widget/preference.vala:383
 msgid "Use on starting:"
-msgstr ""
+msgstr "Paleidžiant, naudoti:"
 
 #: ../widget/remote_server_dialog.vala:102
 msgid "Username"
