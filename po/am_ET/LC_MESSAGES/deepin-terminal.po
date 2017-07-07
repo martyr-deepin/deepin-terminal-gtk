@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-08 18:00+0800\n"
+"POT-Creation-Date: 2017-08-29 22:04+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: samson <sambelet@yahoo.com>, 2017\n"
 "Language-Team: Amharic (Ethiopia) (https://www.transifex.com/linuxdeepin/teams/3976/am_ET/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: am_ET\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../widget/terminal.vala:936
+#: ../widget/terminal.vala:1017
 msgid ""
 "\n"
 "Command has been completed, press ENTER to exit the terminal."
@@ -26,7 +26,7 @@ msgstr ""
 "\n"
 "ትእዛዙ ተፈጽሟል: ይጫኑ ማስገቢያውን ከ ተርሚናል ለ መውጣት"
 
-#: ../widget/appbar.vala:140
+#: ../widget/appbar.vala:129
 msgid "About"
 msgstr "ስለ"
 
@@ -34,15 +34,15 @@ msgstr "ስለ"
 msgid "Acknowledgments"
 msgstr "ማረጋገጫ"
 
-#: ../widget/remote_server_dialog.vala:346 ../widget/command_dialog.vala:198
+#: ../widget/remote_server_dialog.vala:351 ../widget/command_dialog.vala:197
 msgid "Add"
 msgstr "መጨመሪያ"
 
-#: ../widget/command_dialog.vala:127
+#: ../widget/command_dialog.vala:126
 msgid "Add Command"
 msgstr "ትእዛዝ መጨመሪያ"
 
-#: ../widget/remote_server_dialog.vala:149
+#: ../widget/remote_server_dialog.vala:154
 msgid "Add Server"
 msgstr "ሰርቨር መጨመሪያ"
 
@@ -50,131 +50,135 @@ msgstr "ሰርቨር መጨመሪያ"
 msgid "Add command"
 msgstr "ትእዛዝ መጨመሪያ"
 
-#: ../widget/remote_panel.vala:574
+#: ../widget/remote_panel.vala:576
 msgid "Add server"
 msgstr "ሰርቨር መጨመሪያ"
 
-#: ../widget/remote_server_dialog.vala:102
+#: ../widget/remote_server_dialog.vala:107
 msgid "Address"
 msgstr "አድራሻ"
 
-#: ../widget/remote_server_dialog.vala:185
+#: ../widget/remote_server_dialog.vala:190
 msgid "Address:"
 msgstr "አድራሻ:"
 
 #: ../widget/preference_slidebar.vala:75 ../widget/preference_slidebar.vala:82
-#: ../widget/preference.vala:322 ../widget/preference.vala:333
-#: ../widget/config_window.vala:324
+#: ../widget/preference.vala:327 ../widget/preference.vala:339
+#: ../widget/config_window.vala:361
 msgid "Advanced"
 msgstr "የረቀቀ"
 
-#: ../widget/remote_server_dialog.vala:331
+#: ../widget/remote_server_dialog.vala:336
 msgid "Advanced options"
 msgstr "የረቀቀ ምርጫ"
 
-#: ../widget/remote_server_dialog.vala:420 ../widget/command_dialog.vala:250
+#: ../widget/remote_server_dialog.vala:425 ../widget/command_dialog.vala:249
 msgid "Are you sure to delete"
 msgstr "በ እርግጥ ማጥፋት ይፈልጋሉ?"
 
-#: ../widget/confirm_dialog.vala:132
+#: ../widget/confirm_dialog.vala:131
 msgid "Are you sure to exit?"
 msgstr "በ እርግጥ መውጣት ይፈልጋሉ?"
 
-#: ../widget/remote_server_dialog.vala:102
+#: ../widget/remote_server_dialog.vala:107
 msgid "Backspace key"
 msgstr "የ ኋሊት ደምሳሽ ቁልፍ"
 
-#: ../widget/remote_server_dialog.vala:315
+#: ../widget/remote_server_dialog.vala:320
 msgid "Backspace key:"
 msgstr "የ ኋሊት ደምሳሽ ቁልፍ"
 
-#: ../widget/preference_slidebar.vala:56 ../widget/preference.vala:238
+#: ../widget/preference_slidebar.vala:56 ../widget/preference.vala:243
 msgid "Basic"
 msgstr "መሰረታዊ"
 
-#: ../widget/remote_server_dialog.vala:341
-#: ../widget/remote_server_dialog.vala:421 ../widget/confirm_dialog.vala:132
-#: ../widget/terminal.vala:378 ../widget/terminal.vala:406
-#: ../widget/file_button.vala:69 ../widget/command_dialog.vala:193
-#: ../widget/command_dialog.vala:251
+#: ../widget/remote_server_dialog.vala:346
+#: ../widget/remote_server_dialog.vala:426 ../widget/confirm_dialog.vala:131
+#: ../widget/terminal.vala:402 ../widget/terminal.vala:430
+#: ../widget/terminal.vala:464 ../widget/file_button.vala:69
+#: ../widget/command_dialog.vala:192 ../widget/command_dialog.vala:250
 msgid "Cancel"
 msgstr "መሰረዣ"
 
-#: ../widget/remote_server_dialog.vala:102
+#: ../widget/remote_server_dialog.vala:107
 msgid "Certificate"
 msgstr "የምስክር ወረቀት"
 
-#: ../widget/remote_server_dialog.vala:255
+#: ../widget/remote_server_dialog.vala:260
 msgid "Certificate:"
 msgstr "የምስክር ወረቀት"
 
-#: ../widget/terminal.vala:253 ../widget/config_window.vala:302
+#: ../widget/terminal.vala:273 ../widget/config_window.vala:338
 msgid "Close other windows"
 msgstr "ሌሎች መስኮቶችን መዝጊያ"
 
-#: ../widget/preference.vala:320
+#: ../widget/preference.vala:325
 msgid "Close other windows:"
 msgstr "ሌሎች መስኮቶችን መዝጊያ"
 
-#: ../widget/terminal.vala:251 ../widget/config_window.vala:301
+#: ../widget/terminal.vala:271 ../widget/config_window.vala:337
 msgid "Close window"
 msgstr "መስኮቶች መዝጊያ"
 
-#: ../widget/preference.vala:319
+#: ../widget/preference.vala:324
 msgid "Close window:"
 msgstr "መስኮት መዝጊያ:"
 
-#: ../widget/config_window.vala:291
+#: ../widget/config_window.vala:327
 msgid "Close workspace"
 msgstr " የ ስራ ቦታ መዝጊያ"
 
-#: ../widget/preference.vala:310
+#: ../widget/preference.vala:315
 msgid "Close workspace:"
 msgstr " የ ስራ ቦታ መዝጊያ:"
 
-#: ../widget/remote_server_dialog.vala:102
+#: ../widget/remote_server_dialog.vala:107
 msgid "Command"
 msgstr "ትእዛዝ"
 
-#: ../widget/remote_server_dialog.vala:289 ../widget/command_dialog.vala:173
+#: ../widget/remote_server_dialog.vala:294 ../widget/command_dialog.vala:172
 msgid "Command:"
 msgstr "ትእዛዝ:"
 
-#: ../widget/command_dialog.vala:84
+#: ../widget/command_dialog.vala:83
 msgid "Content"
 msgstr "ይዞታው"
 
-#: ../widget/terminal.vala:223 ../widget/config_window.vala:265
+#: ../widget/terminal.vala:243 ../widget/config_window.vala:301
 #: ../widget/entry_menu.vala:16
 msgid "Copy"
 msgstr "ኮፒ"
 
-#: ../widget/terminal.vala:227
+#: ../widget/terminal.vala:247
 msgid "Copy link"
 msgstr "አገናኝ ኮፒ ማድረጊያ"
 
-#: ../widget/preference.vala:292
+#: ../widget/preference.vala:297
 msgid "Copy:"
 msgstr "ኮፒ:"
 
-#: ../widget/preference_slidebar.vala:85 ../widget/preference.vala:336
+#: ../widget/preference_slidebar.vala:85 ../widget/preference.vala:342
 msgid "Cursor"
 msgstr "መጠቆሚያ"
 
-#: ../widget/preference.vala:358
+#: ../widget/preference.vala:365
+msgid "Cursor autohide"
+msgstr ""
+
+#: ../widget/preference.vala:364
 msgid "Cursor blink"
 msgstr "የ መጠቆሚያው ብልጭ ድርግም ባይ"
 
-#: ../widget/preference.vala:192
+#: ../widget/preference.vala:196
 msgid "Cursor style:"
 msgstr "የ መጠቆሚያው ዘዴ: "
 
-#: ../widget/terminal.vala:278 ../widget/config_window.vala:318
-#: ../widget/appbar.vala:133
+#: ../widget/terminal.vala:299 ../widget/config_window.vala:355
+#: ../widget/appbar.vala:122
 msgid "Custom commands"
 msgstr "ትእዛዝ ማስተካከያ"
 
-#: ../widget/preference.vala:330
+#: ../widget/preference.vala:336
 msgid "Custom commands:"
 msgstr "ትእዛዝ ማስተካከያ"
 
@@ -196,41 +200,41 @@ msgstr ""
 "\n"
 "በ እርስዎ ትኩረት ላይ ያተኩራል ለ አለም አቀፍ ትእዛዞዝ መስመሮች!"
 
-#: ../widget/config_window.vala:271
+#: ../widget/config_window.vala:307
 msgid "Default size"
 msgstr "ነባር መጠን"
 
-#: ../widget/preference.vala:298
+#: ../widget/preference.vala:303
 msgid "Default size:"
 msgstr "ነባር መጠን:"
 
-#: ../widget/remote_server_dialog.vala:422 ../widget/command_dialog.vala:252
+#: ../widget/remote_server_dialog.vala:427 ../widget/command_dialog.vala:251
 #: ../widget/entry_menu.vala:21
 msgid "Delete"
 msgstr "ማጥፊያ"
 
-#: ../widget/command_dialog.vala:239 ../widget/command_dialog.vala:249
+#: ../widget/command_dialog.vala:238 ../widget/command_dialog.vala:248
 msgid "Delete command"
 msgstr "ትእዛዝ ማጥፊያ"
 
-#: ../widget/remote_server_dialog.vala:102
+#: ../widget/remote_server_dialog.vala:107
 msgid "Delete key"
 msgstr "ማጥፊያ ቁልፍ"
 
-#: ../widget/remote_server_dialog.vala:328
+#: ../widget/remote_server_dialog.vala:333
 msgid "Delete key:"
 msgstr "ማጥፊያ ቁልፍ:"
 
-#: ../widget/remote_server_dialog.vala:409
-#: ../widget/remote_server_dialog.vala:419
+#: ../widget/remote_server_dialog.vala:414
+#: ../widget/remote_server_dialog.vala:424
 msgid "Delete server"
 msgstr "ሰርቨር ማጥፊያ"
 
-#: ../widget/config_window.vala:317
+#: ../widget/config_window.vala:354
 msgid "Display shortcuts"
 msgstr "አቋራጭ ማሳያ"
 
-#: ../widget/preference.vala:329
+#: ../widget/preference.vala:335
 msgid "Display shortcuts:"
 msgstr "አቋራጭ ማሳያ:"
 
@@ -238,170 +242,170 @@ msgstr "አቋራጭ ማሳያ:"
 msgid "Display version"
 msgstr "እትም ማሳያ"
 
-#: ../widget/terminal.vala:283
+#: ../widget/terminal.vala:304
 msgid "Download file"
 msgstr "ፋይል ማውረጃ"
 
-#: ../widget/command_dialog.vala:125
+#: ../widget/command_dialog.vala:124
 msgid "Edit Command"
 msgstr "ትእዛዝ ማረሚያ"
 
-#: ../widget/remote_server_dialog.vala:147
+#: ../widget/remote_server_dialog.vala:152
 msgid "Edit Server"
 msgstr "ሰርቨር ማረሚያ"
 
-#: ../widget/remote_server_dialog.vala:102 ../widget/terminal.vala:277
+#: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:298
 msgid "Encoding"
 msgstr "Encoding"
 
-#: ../widget/remote_server_dialog.vala:302
+#: ../widget/remote_server_dialog.vala:307
 msgid "Encoding:"
 msgstr "Encoding:"
 
-#: ../widget/confirm_dialog.vala:132 ../widget/appbar.vala:141
+#: ../widget/confirm_dialog.vala:131 ../widget/appbar.vala:130
 msgid "Exit"
 msgstr "መውጫ"
 
-#: ../widget/terminal.vala:263
+#: ../widget/terminal.vala:283
 msgid "Exit fullscreen"
 msgstr "ከ ሙሉ መመልከቻው ዘዴ መውጫ"
 
-#: ../widget/preference.vala:281
+#: ../widget/preference.vala:286
 msgid "Font size:"
 msgstr "የ ፊደል መጠን:"
 
-#: ../widget/preference.vala:279
+#: ../widget/preference.vala:284
 msgid "Font:"
 msgstr "ፊደል:"
 
-#: ../widget/preference.vala:382 ../widget/terminal.vala:265
+#: ../widget/preference.vala:389 ../widget/terminal.vala:285
 msgid "Fullscreen"
 msgstr "በሙሉ መመልከቻ ዘዴ"
 
-#: ../widget/preference.vala:328
+#: ../widget/preference.vala:333
 msgid "Fullscreen:"
 msgstr "በሙሉ መመልከቻ ዘዴ"
 
-#: ../widget/remote_server_dialog.vala:102
+#: ../widget/remote_server_dialog.vala:107
 msgid "Group"
 msgstr "ቡድን"
 
-#: ../widget/remote_server_dialog.vala:271
+#: ../widget/remote_server_dialog.vala:276
 msgid "Group:"
 msgstr "ቡድን:"
 
-#: ../widget/appbar.vala:138
+#: ../widget/appbar.vala:127
 msgid "Help"
 msgstr "እርዳታ"
 
-#: ../widget/preference.vala:386
+#: ../widget/preference.vala:393
 msgid "Hide quake window after lost focus"
 msgstr ""
 
-#: ../widget/terminal.vala:249 ../widget/config_window.vala:296
+#: ../widget/terminal.vala:269 ../widget/config_window.vala:332
 msgid "Horizontal split"
 msgstr "በ አግድም መክፈያ"
 
-#: ../widget/preference.vala:314
+#: ../widget/preference.vala:319
 msgid "Horizontal split:"
 msgstr "በ አግድም መክፈያ:"
 
-#: ../widget/preference_slidebar.vala:59 ../widget/preference.vala:241
+#: ../widget/preference_slidebar.vala:59 ../widget/preference.vala:246
 msgid "Interface"
 msgstr "ገጽታ"
 
-#: ../widget/config_window.vala:273
+#: ../widget/config_window.vala:309
 msgid "Jump to next command"
 msgstr "ወደሚቀጥለው ትእዛዝ መዝለያ"
 
-#: ../widget/preference.vala:299
+#: ../widget/preference.vala:304
 msgid "Jump to next command:"
 msgstr "ወደሚቀጥለው ትእዛዝ መዝለያ:"
 
-#: ../widget/config_window.vala:274
+#: ../widget/config_window.vala:310
 msgid "Jump to previous command"
 msgstr "ወዳለፈው ትእዛዝ መዝለያ"
 
-#: ../widget/preference.vala:300
+#: ../widget/preference.vala:305
 msgid "Jump to previous command:"
 msgstr "ወዳለፈው ትእዛዝ መዝለያ:"
 
-#: ../widget/preference.vala:381
+#: ../widget/preference.vala:388
 msgid "Maximize"
 msgstr "ማሳደጊያ"
 
-#: ../widget/command_dialog.vala:84
+#: ../widget/command_dialog.vala:83
 msgid "Name"
 msgstr "ስም"
 
-#: ../widget/command_dialog.vala:160
+#: ../widget/command_dialog.vala:159
 msgid "Name:"
 msgstr "ስም: "
 
-#: ../widget/appbar.vala:131
+#: ../widget/appbar.vala:120
 msgid "New window"
 msgstr "አዲስ መስኮት"
 
-#: ../widget/terminal.vala:257 ../widget/config_window.vala:290
+#: ../widget/terminal.vala:277 ../widget/config_window.vala:326
 msgid "New workspace"
 msgstr "አዲስ የ ስራ ቦታ"
 
-#: ../widget/preference.vala:309
+#: ../widget/preference.vala:314
 msgid "New workspace:"
 msgstr "አዲስ የ ስራ ቦታ:"
 
-#: ../widget/config_window.vala:292
+#: ../widget/config_window.vala:328
 msgid "Next workspace"
 msgstr "የሚቀጥለው የ ስራ ቦታ"
 
-#: ../widget/preference.vala:312
+#: ../widget/preference.vala:317
 msgid "Next workspace:"
 msgstr "የሚቀጥለው የ ስራ ቦታ:"
 
-#: ../widget/preference.vala:380
+#: ../widget/preference.vala:387
 msgid "Normal window"
 msgstr "መደበኛ መስኮት"
 
-#: ../widget/preference.vala:132
+#: ../widget/preference.vala:134
 msgid "Opacity:"
 msgstr "በ ውስጡ ብርሀን የማያሳልፍ"
 
-#: ../widget/terminal.vala:240 ../widget/config_window.vala:267
+#: ../widget/terminal.vala:260 ../widget/config_window.vala:303
 msgid "Open"
 msgstr "መክፈቻ"
 
-#: ../widget/preference.vala:294
+#: ../widget/preference.vala:299
 msgid "Open:"
 msgstr "መክፈቻ"
 
-#: ../widget/remote_server_dialog.vala:269
-#: ../widget/remote_server_dialog.vala:279
-#: ../widget/remote_server_dialog.vala:288
+#: ../widget/remote_server_dialog.vala:274
+#: ../widget/remote_server_dialog.vala:284
+#: ../widget/remote_server_dialog.vala:293
 msgid "Optional"
 msgstr "ምርጫ"
 
-#: ../widget/remote_server_dialog.vala:102
+#: ../widget/remote_server_dialog.vala:107
 msgid "Password"
 msgstr "የ መግቢያ ቃል"
 
-#: ../widget/remote_server_dialog.vala:241
+#: ../widget/remote_server_dialog.vala:246
 msgid "Password:"
 msgstr "የ መግቢያ ቃል"
 
-#: ../widget/terminal.vala:233 ../widget/config_window.vala:266
+#: ../widget/terminal.vala:253 ../widget/config_window.vala:302
 #: ../widget/entry_menu.vala:18
 msgid "Paste"
 msgstr "መለጠፊያ"
 
-#: ../widget/preference.vala:293
+#: ../widget/preference.vala:298
 msgid "Paste:"
 msgstr "መለጠፊያ:"
 
-#: ../widget/remote_server_dialog.vala:102
+#: ../widget/remote_server_dialog.vala:107
 msgid "Path"
 msgstr "መንገድ"
 
-#: ../widget/remote_server_dialog.vala:280
+#: ../widget/remote_server_dialog.vala:285
 msgid "Path:"
 msgstr "መንገድ:"
 
@@ -409,19 +413,19 @@ msgstr "መንገድ:"
 msgid "Please enter a new shortcut"
 msgstr "እባክዎን አዲስ አቋራ ያስገቡ"
 
-#: ../widget/remote_server_dialog.vala:194
+#: ../widget/remote_server_dialog.vala:199
 msgid "Port:"
 msgstr "Port:"
 
-#: ../widget/config_window.vala:293
+#: ../widget/config_window.vala:329
 msgid "Previous workspace"
 msgstr "ቀደም ያለው የ ስራ ቦታ"
 
-#: ../widget/preference.vala:311
+#: ../widget/preference.vala:316
 msgid "Previous workspace:"
 msgstr "ቀደም ያለው የ ስራ ቦታ"
 
-#: ../widget/confirm_dialog.vala:132
+#: ../widget/confirm_dialog.vala:131
 msgid "Programs are still running in terminal"
 msgstr "ፕሮግራም በ ተርሚናል ውስጥ እየሄደ ነው"
 
@@ -429,23 +433,36 @@ msgstr "ፕሮግራም በ ተርሚናል ውስጥ እየሄደ ነው"
 msgid "Quake mode"
 msgstr "በ Quake ዘዴ"
 
-#: ../widget/terminal.vala:279 ../widget/config_window.vala:319
-#: ../widget/appbar.vala:134
+#: ../widget/terminal.vala:300 ../widget/config_window.vala:356
+#: ../widget/appbar.vala:123
 msgid "Remote management"
 msgstr "የ ሩቅ አስተዳዳሪ"
 
-#: ../widget/preference.vala:331
+#: ../widget/preference.vala:337
 msgid "Remote management:"
 msgstr "የ ሩቅ አስተዳዳሪ:"
 
-#: ../widget/remote_server_dialog.vala:181
-#: ../widget/remote_server_dialog.vala:191
-#: ../widget/remote_server_dialog.vala:226 ../widget/command_dialog.vala:159
-#: ../widget/command_dialog.vala:172
+#: ../widget/terminal.vala:465
+msgid "Rename"
+msgstr "እንደገና መሰየሚያ"
+
+#: ../widget/terminal.vala:297 ../widget/terminal.vala:462
+#: ../widget/config_window.vala:352
+msgid "Rename title"
+msgstr ""
+
+#: ../widget/preference.vala:334
+msgid "Rename title:"
+msgstr ""
+
+#: ../widget/remote_server_dialog.vala:186
+#: ../widget/remote_server_dialog.vala:196
+#: ../widget/remote_server_dialog.vala:231 ../widget/command_dialog.vala:158
+#: ../widget/command_dialog.vala:171
 msgid "Required"
 msgstr "ያስፈልጋል "
 
-#: ../widget/preference.vala:392
+#: ../widget/preference.vala:399
 msgid "Restore default settings"
 msgstr "ነባር ማሰጃ እንደ ነበር መመለሻ"
 
@@ -458,73 +475,73 @@ msgstr "ማስኬጃ '%s --እርዳታ' ዝግጁ የሆኑ ሙሉ የ ትእ�
 msgid "Run a program in the terminal"
 msgstr "ፕሮግራም በ ተርሚናል ውስጥ ማስኬጃ"
 
-#: ../widget/remote_server_dialog.vala:344 ../widget/command_dialog.vala:196
+#: ../widget/remote_server_dialog.vala:349 ../widget/command_dialog.vala:195
 msgid "Save"
 msgstr "ማስቀመጫ"
 
-#: ../widget/preference_slidebar.vala:88 ../widget/preference.vala:360
+#: ../widget/preference_slidebar.vala:88 ../widget/preference.vala:367
 msgid "Scroll"
 msgstr "መሸብለያ"
 
-#: ../widget/preference.vala:366
+#: ../widget/preference.vala:373
 msgid "Scroll on keystroke"
 msgstr "መሸብለያ ቁልፍ በሚጫኑ ጊዜ:"
 
-#: ../widget/preference.vala:367
+#: ../widget/preference.vala:374
 msgid "Scroll on output"
 msgstr "መሸብለያ በ ውጤት ላይ:"
 
-#: ../widget/terminal.vala:269 ../widget/search_entry.vala:64
-#: ../widget/search_entry.vala:67 ../widget/config_window.vala:268
+#: ../widget/terminal.vala:289 ../widget/search_entry.vala:64
+#: ../widget/search_entry.vala:67 ../widget/config_window.vala:304
 msgid "Search"
 msgstr "መፈለጊያ"
 
-#: ../widget/preference.vala:295 ../widget/remote_panel.vala:471
+#: ../widget/preference.vala:300 ../widget/remote_panel.vala:473
 #: ../widget/command_panel.vala:201
 msgid "Search:"
 msgstr "መፈለጊያ:"
 
-#: ../widget/terminal.vala:407 ../widget/file_button.vala:71
+#: ../widget/terminal.vala:431 ../widget/file_button.vala:71
 msgid "Select"
 msgstr "ይምረጡ"
 
-#: ../widget/config_window.vala:272 ../widget/entry_menu.vala:24
+#: ../widget/config_window.vala:308 ../widget/entry_menu.vala:24
 msgid "Select all"
 msgstr "ሁሉንም መምረጫ"
 
-#: ../widget/preference.vala:301
+#: ../widget/preference.vala:306
 msgid "Select all:"
 msgstr "ሁሉንም መምረጫ:"
 
-#: ../widget/terminal.vala:405
+#: ../widget/terminal.vala:429
 msgid "Select directory to save download file"
 msgstr "የ ወረዱ ፋይሎችን ማስቀመጫ ዳይሬክቶሪ ይምረጡ"
 
-#: ../widget/terminal.vala:376
+#: ../widget/terminal.vala:400
 msgid "Select file to upload"
 msgstr "የሚጫን ፋይል ይምረጡ"
 
-#: ../widget/config_window.vala:299
+#: ../widget/config_window.vala:335
 msgid "Select left window"
 msgstr "የ ግራ መስኮት ይምረጡ"
 
-#: ../widget/preference.vala:317
+#: ../widget/preference.vala:322
 msgid "Select left window:"
 msgstr "የ ግራ መስኮት ይምረጡ:"
 
-#: ../widget/config_window.vala:298
+#: ../widget/config_window.vala:334
 msgid "Select lower window"
 msgstr "የ ታችኛውን መስኮት ይምረጡ"
 
-#: ../widget/preference.vala:316
+#: ../widget/preference.vala:321
 msgid "Select lower window:"
 msgstr "የ ታችኛውን መስኮት ይምረጡ:"
 
-#: ../widget/config_window.vala:300
+#: ../widget/config_window.vala:336
 msgid "Select right window"
 msgstr "የ ቀኝ መስኮት ይምረጡ"
 
-#: ../widget/preference.vala:318
+#: ../widget/preference.vala:323
 msgid "Select right window:"
 msgstr "የ ቀኝ መስኮት ይምረጡ:"
 
@@ -532,23 +549,23 @@ msgstr "የ ቀኝ መስኮት ይምረጡ:"
 msgid "Select the private key file"
 msgstr "የ ግል ቁልፍ ፋይል ይምረጡ"
 
-#: ../widget/config_window.vala:297
+#: ../widget/config_window.vala:333
 msgid "Select upper window"
 msgstr "የ ላይኛውን መስኮት ይምረጡ"
 
-#: ../widget/preference.vala:315
+#: ../widget/preference.vala:320
 msgid "Select upper window:"
 msgstr "የ ላይኛውን መስኮት ይምረጡ:"
 
-#: ../widget/config_window.vala:294
+#: ../widget/config_window.vala:330
 msgid "Select workspace"
 msgstr " የ ስራ ቦታ ይምረጡ"
 
-#: ../widget/remote_server_dialog.vala:102
+#: ../widget/remote_server_dialog.vala:107
 msgid "Server name"
 msgstr "የ ሰርቨር ስም"
 
-#: ../widget/remote_server_dialog.vala:182
+#: ../widget/remote_server_dialog.vala:187
 msgid "Server name:"
 msgstr "የ ሰርቨር ስም:"
 
@@ -560,53 +577,53 @@ msgstr "ተርሚናል በማስጀመሪያ ዳይሬክቶሪ ውስጥ ማ�
 msgid "Set the terminal window mode"
 msgstr "ተርሚናል በ መስኮት ዘዴ ማሰናጃ"
 
-#: ../widget/terminal.vala:287 ../widget/appbar.vala:136
+#: ../widget/terminal.vala:308 ../widget/appbar.vala:125
 msgid "Settings"
 msgstr "ማሰናጃዎች"
 
-#: ../widget/preference_slidebar.vala:66 ../widget/preference.vala:283
-#: ../widget/command_dialog.vala:84
+#: ../widget/preference_slidebar.vala:66 ../widget/preference.vala:288
+#: ../widget/command_dialog.vala:83
 msgid "Shortcuts"
 msgstr "አቋራጭ "
 
-#: ../widget/command_dialog.vala:181
+#: ../widget/command_dialog.vala:180
 msgid "Shortcuts:"
 msgstr "አቋራጮች:"
 
-#: ../widget/config_window.vala:316
+#: ../widget/config_window.vala:353
 msgid "Switch fullscreen"
 msgstr "ከ ሙሉ መመልከቻው ዘዴ መቀየሪያ"
 
-#: ../widget/terminal.vala:275 ../widget/appbar.vala:132
+#: ../widget/terminal.vala:295 ../widget/appbar.vala:121
 msgid "Switch theme"
 msgstr "ገጽታ መቀየሪያ"
 
-#: ../widget/preference_slidebar.vala:69 ../widget/preference.vala:286
-#: ../widget/config_window.vala:279
+#: ../widget/preference_slidebar.vala:69 ../widget/preference.vala:291
+#: ../widget/config_window.vala:315
 msgid "Terminal"
 msgstr "ተርሚናል"
 
-#: ../widget/terminal.vala:419
+#: ../widget/terminal.vala:443
 msgid "Type path for download file"
 msgstr "ለሚወርደው ፋይል መንገድ ይጻፉ"
 
-#: ../widget/terminal.vala:380
+#: ../widget/terminal.vala:404
 msgid "Upload"
 msgstr "መጫኛ"
 
-#: ../widget/terminal.vala:282
+#: ../widget/terminal.vala:303
 msgid "Upload file"
 msgstr "ፋይል መጫኛ"
 
-#: ../widget/preference.vala:383
+#: ../widget/preference.vala:390
 msgid "Use on starting:"
 msgstr "በሚጀምር ጊዜ መጠቀሚያ:"
 
-#: ../widget/remote_server_dialog.vala:102
+#: ../widget/remote_server_dialog.vala:107
 msgid "Username"
 msgstr "የ ተጠቃሚ ስም"
 
-#: ../widget/remote_server_dialog.vala:227
+#: ../widget/remote_server_dialog.vala:232
 msgid "Username:"
 msgstr "የ ተጠቃሚ ስም:"
 
@@ -614,11 +631,11 @@ msgstr "የ ተጠቃሚ ስም:"
 msgid "Version:"
 msgstr "እትም"
 
-#: ../widget/terminal.vala:250 ../widget/config_window.vala:295
+#: ../widget/terminal.vala:270 ../widget/config_window.vala:331
 msgid "Vertical split"
 msgstr "በ ቁመት መክፈያ"
 
-#: ../widget/preference.vala:313
+#: ../widget/preference.vala:318
 msgid "Vertical split:"
 msgstr "በ ቁመት መክፈያ:"
 
@@ -631,31 +648,31 @@ msgstr ""
 "እንኳን ደህና መጡ ወደ ዲፕኢን ተርሚናል: እባክዎን እርግጠኛ ይሁኑ የ  rz እና sz ትእዛዝ መገጠሙን በ ሰርቨር ውስጥ"
 " በ ቀኝ ከ መጫንዎት በፊት: ፋይሎችን ለ መጫን እና ለ ማውረድ"
 
-#: ../widget/preference_slidebar.vala:91 ../widget/preference.vala:369
+#: ../widget/preference_slidebar.vala:91 ../widget/preference.vala:376
 msgid "Window"
 msgstr "መስኮት"
 
-#: ../widget/preference_slidebar.vala:72 ../widget/preference.vala:303
-#: ../widget/config_window.vala:307
+#: ../widget/preference_slidebar.vala:72 ../widget/preference.vala:308
+#: ../widget/config_window.vala:343
 msgid "Workspace"
 msgstr "የስራ ቦታ"
 
-#: ../widget/config_window.vala:269
+#: ../widget/config_window.vala:305
 msgid "Zoom in"
 msgstr "በርቀት ማሳያ"
 
-#: ../widget/preference.vala:296
+#: ../widget/preference.vala:301
 msgid "Zoom in:"
 msgstr "በቅርብ ማሳያ"
 
-#: ../widget/config_window.vala:270
+#: ../widget/config_window.vala:306
 msgid "Zoom out"
 msgstr "በርቀት ማሳያ"
 
-#: ../widget/preference.vala:297
+#: ../widget/preference.vala:302
 msgid "Zoom out:"
 msgstr "በርቀት ማሳያ:"
 
-#: ../widget/terminal.vala:539 ../widget/terminal.vala:962
+#: ../widget/terminal.vala:613 ../widget/terminal.vala:1043
 msgid "deepin"
 msgstr "ዲፕኢን"
