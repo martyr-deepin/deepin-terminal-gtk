@@ -39,6 +39,7 @@ namespace Widgets {
         public Gtk.Box window_widget_box;
         public WorkspaceManager workspace_manager;
         public bool quake_mode = false;
+        public bool show_quake_menu = false;
         public bool? config_theme_is_light;
         public int active_tab_underline_x;
         public int cache_height = 0;

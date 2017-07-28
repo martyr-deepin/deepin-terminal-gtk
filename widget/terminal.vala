@@ -215,6 +215,13 @@ namespace Widgets {
         
         public void show_menu(int x, int y) {
             bool in_quake_window = this.get_toplevel().get_type().is_a(typeof(Widgets.QuakeWindow));
+            
+            // Set variable 'show_quake_menu' to true if terminal's window is quake window.
+            // Avoid quake window hide when config option 'hide_quakewindow_after_lost_focus' is turn on.
+            if (in_quake_window) {
+                Widgets.ConfigWindow window = (Widgets.ConfigWindow) term.get_toplevel();
+                window.show_quake_menu = true;
+            }
                             
             bool display_first_spliter = false;
             

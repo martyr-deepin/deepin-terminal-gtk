@@ -106,8 +106,14 @@ namespace Widgets {
                     update_style();
 
                     try {
+                        // Hide quake window when lost focus, and config option 'hide_quakewindow_after_lost_focus' must be true, variable 'show_quake_menu' must be fasle.
+                        // If variable 'show_quake_menu' is true, lost focus signal is cause by click right menu on quake terminal.
                         if (config.config_file.get_boolean("advanced", "hide_quakewindow_after_lost_focus")) {
-                            hide();
+                            if (show_quake_menu) {
+                                show_quake_menu = false;
+                            } else {
+                                hide();
+                            }
                         }
                     } catch (Error e) {
                         print("quake_window focus_out_event: %s\n", e.message);
