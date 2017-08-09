@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */ 
+ */
 
 using Gee;
 using Gtk;
@@ -35,11 +35,11 @@ namespace Widgets {
             STRING,
             TEXT
         }
-        
-		public Menu.Menu menu;
-		public WorkspaceManager workspace_manager;
-		public bool has_select_all = false;
-		public int font_size = 0;
+
+        public Menu.Menu menu;
+        public WorkspaceManager workspace_manager;
+        public bool has_select_all = false;
+        public int font_size = 0;
         private bool enter_sz_command = false;
         private string save_file_directory = "";
         public ArrayList<int> command_execute_y_coordinates;
@@ -47,7 +47,7 @@ namespace Widgets {
         public Gdk.RGBA background_color = Gdk.RGBA();
         public Gdk.RGBA foreground_color = Gdk.RGBA();
         public Terminal term;
-        public bool is_first_term; 
+        public bool is_first_term;
         public bool press_anything = false;
         public bool child_has_exit = false;
         public bool has_print_exit_notify = false;
@@ -55,6 +55,7 @@ namespace Widgets {
         public string current_dir = "";
         public string expect_file_path = "";
         public string? uri_at_right_press;
+        public string? remote_server_name;
         public uint launch_idle_id;
 
         public static string USERCHARS = "-[:alnum:]";
@@ -75,26 +76,26 @@ namespace Widgets {
             "(?:mailto:)?" + USERCHARS_CLASS + "[" + USERCHARS + ".]*\\@" + HOSTCHARS_CLASS + "+\\." + HOST,
             "(?:news:|man:|info:)[[:alnum:]\\Q^_{|}~!\"#$%&'()*+,./;:=?`\\E]+"
         };
-        
+
         public signal void change_title(string dir);
         public signal void exit();
         public signal void highlight_tab();
-        
+
         public Term(bool first_term, string? work_directory, WorkspaceManager manager) {
             Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
-            
-			workspace_manager = manager;
+
+            workspace_manager = manager;
             is_first_term = first_term;
             command_execute_y_coordinates = new ArrayList<int>();
-            
+
             get_style_context().add_class("scrolledwindow");
-            
-            
-			term = new Terminal();
-			
+
+
+            term = new Terminal();
+
             term.child_exited.connect((t)=> {
                     child_has_exit = true;
-                    
+
                     if (is_launch_command() && workspace_manager.is_first_term(this)) {
                         // Print exit notify if command execute finish.
                         print_exit_notify();
@@ -108,12 +109,12 @@ namespace Widgets {
                 });
             term.realize.connect((t) => {
                     setup_from_config();
-					
+
                     focus_term();
                 });
             term.window_title_changed.connect((t) => {
                     update_terminal_title();
-                    
+
                     // Command finish will trigger 'window-title-changed' signal emit.
                     // we will notify user if background terminal command finish.
                     if (!term.get_toplevel().get_type().is_a(typeof(ConfigWindow))) {
@@ -124,41 +125,41 @@ namespace Widgets {
                 });
             term.key_press_event.connect(on_key_press);
             term.scroll_event.connect(on_scroll);
-			term.button_press_event.connect((event) => {
-					has_select_all = false;
-					
-					string? uri = term.match_check_event(event, null);
-                
+            term.button_press_event.connect((event) => {
+                    has_select_all = false;
+
+                    string? uri = term.match_check_event(event, null);
+
                     switch (event.button) {
-                        case Gdk.BUTTON_PRIMARY:
-                            if (event.state == Gdk.ModifierType.CONTROL_MASK && uri != null) {
+                    case Gdk.BUTTON_PRIMARY:
+                        if (event.state == Gdk.ModifierType.CONTROL_MASK && uri != null) {
+                            try {
+                                Gtk.show_uri(null, (!) uri, Gtk.get_current_event_time());
+                                return true;
+                            } catch (GLib.Error error) {
                                 try {
+                                    uri = "http://%s".printf(uri);
                                     Gtk.show_uri(null, (!) uri, Gtk.get_current_event_time());
-                                    return true;
                                 } catch (GLib.Error error) {
-                                    try {
-                                        uri = "http://%s".printf(uri);
-                                        Gtk.show_uri(null, (!) uri, Gtk.get_current_event_time());
-                                    } catch (GLib.Error error) {
-                                        warning("Could Not Open link");
-                                    }
+                                    warning("Could Not Open link");
                                 }
                             }
-				    
-                            return false;
-						case Gdk.BUTTON_SECONDARY:
-							// Grab focus terminal first. 
-							term.grab_focus();
+                        }
 
-                            uri_at_right_press = term.match_check_event(event, null);
-                            show_menu((int) event.x_root, (int) event.y_root);
-                            
-							return false;
+                        return false;
+                    case Gdk.BUTTON_SECONDARY:
+                        // Grab focus terminal first.
+                        term.grab_focus();
+
+                        uri_at_right_press = term.match_check_event(event, null);
+                        show_menu((int) event.x_root, (int) event.y_root);
+
+                        return false;
                     }
-					
+
                     return false;
-				});
-            
+                });
+
             /* target entries specify what kind of data the terminal widget accepts */
             Gtk.TargetEntry uri_entry = { "text/uri-list", Gtk.TargetFlags.OTHER_APP, DropTargets.URILIST };
             Gtk.TargetEntry string_entry = { "STRING", Gtk.TargetFlags.OTHER_APP, DropTargets.STRING };
@@ -174,7 +175,7 @@ namespace Widgets {
 
             /* Make Links Clickable */
             this.clickable(REGEX_STRINGS);
-            
+
             // NOTE: if terminal start with option '-e', use functional 'launch_command' and don't use function 'launch_shell'.
             // terminal will crash if we launch_command after launch_shell.
             if (is_launch_command() && workspace_manager.is_first_term(this)) {
@@ -182,19 +183,19 @@ namespace Widgets {
             } else {
                 launch_shell(work_directory);
             }
-            
+
             set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             add(term);
         }
-        
+
         public bool is_in_remote_server() {
-            bool in_remote_server = false; 
+            bool in_remote_server = false;
             int foreground_pid;
             var has_foreground_process = try_get_foreground_pid(out foreground_pid);
             if (has_foreground_process) {
                 try {
                     Widgets.ConfigWindow window = (Widgets.ConfigWindow) term.get_toplevel();
-                    
+
                     string command = get_proc_file_content("/proc/%i/comm".printf(foreground_pid)).strip();
                     string remote_commands = window.config.config_file.get_string("advanced", "remote_commands");
                     if (command in remote_commands.split(";")) {
@@ -209,36 +210,36 @@ namespace Widgets {
                     print("is_in_remote_server: %s\n", e.message);
                 }
             }
-            
+
             return in_remote_server;
         }
-        
+
         public void show_menu(int x, int y) {
             bool in_quake_window = this.get_toplevel().get_type().is_a(typeof(Widgets.QuakeWindow));
-            
+
             // Set variable 'show_quake_menu' to true if terminal's window is quake window.
             // Avoid quake window hide when config option 'hide_quakewindow_after_lost_focus' is turn on.
             if (in_quake_window) {
                 Widgets.ConfigWindow window = (Widgets.ConfigWindow) term.get_toplevel();
                 window.show_quake_menu = true;
             }
-                            
+
             bool display_first_spliter = false;
-            
+
             var menu_content = new GLib.List<Menu.MenuItem>();
             if (term.get_has_selection()) {
                 menu_content.append(new Menu.MenuItem("copy", _("Copy")));
-                
+
                 display_first_spliter = true;
             } else if (uri_at_right_press != null) {
                 menu_content.append(new Menu.MenuItem("copy", _("Copy link")));
-                
+
                 display_first_spliter = true;
             }
-            
+
             if (clipboard_has_context()) {
                 menu_content.append(new Menu.MenuItem("paste", _("Paste")));
-                
+
                 display_first_spliter = true;
             }
             if (term.get_has_selection()) {
@@ -246,13 +247,13 @@ namespace Widgets {
                 if (selection_file != null) {
                     menu_content.append(new Menu.MenuItem("open", _("Open")));
                 }
-                
+
                 display_first_spliter = true;
             }
             if (display_first_spliter) {
                 menu_content.append(new Menu.MenuItem("", ""));
             }
-                            
+
             menu_content.append(new Menu.MenuItem("horizontal_split", _("Horizontal split")));
             menu_content.append(new Menu.MenuItem("vertical_split", _("Vertical split")));
             menu_content.append(new Menu.MenuItem("close_window", _("Close window")));
@@ -260,10 +261,10 @@ namespace Widgets {
                 menu_content.append(new Menu.MenuItem("close_other_windows", _("Close other windows")));
             }
             menu_content.append(new Menu.MenuItem("", ""));
-                            
+
             menu_content.append(new Menu.MenuItem("new_workspace", _("New workspace")));
             menu_content.append(new Menu.MenuItem("", ""));
-                            
+
             if (!in_quake_window) {
                 var window = ((Widgets.Window) get_toplevel());
                 if (window.window_is_fullscreen()) {
@@ -272,7 +273,7 @@ namespace Widgets {
                     menu_content.append(new Menu.MenuItem("fullscreen", _("Fullscreen")));
                 }
             }
-                            
+
             menu_content.append(new Menu.MenuItem("search", _("Search")));
             if (term.get_has_selection()) {
                 menu_content.append(new Menu.MenuItem("google", "Google"));
@@ -289,106 +290,106 @@ namespace Widgets {
                 menu_content.append(new Menu.MenuItem("upload_file", _("Upload file")));
                 menu_content.append(new Menu.MenuItem("download_file", _("Download file")));
             }
-                            
+
             menu_content.append(new Menu.MenuItem("", ""));
             menu_content.append(new Menu.MenuItem("preference", _("Settings")));
-							
+
             menu = new Menu.Menu(x, y, menu_content);
             menu.click_item.connect(handle_menu_item_click);
             menu.destroy.connect(handle_menu_destroy);
-							
+
         }
-		
-		public void handle_menu_item_click(string item_id) {
-			if (workspace_manager.get_type().is_a(typeof(WorkspaceManager))) {
-			    switch(item_id) {
-			    	case "paste":
-			    		term.paste_clipboard();
-			    		break;
-					case "copy":
-                        if (term.get_has_selection()) {
-                            term.copy_clipboard();
-                        } else if (uri_at_right_press != null) {
-                            var display = ((Gtk.Window) this.get_toplevel()).get_display();
-                            Gtk.Clipboard.get_for_display(display, Gdk.SELECTION_CLIPBOARD).set_text(uri_at_right_press, uri_at_right_press.length);
-                            Gtk.Clipboard.get_for_display(display, Gdk.SELECTION_PRIMARY).set_text(uri_at_right_press, uri_at_right_press.length);
-                            
-                        }
-						break;
-                    case "open":
-                        open_selection_file();
-                        break;
-                    case "fullscreen":
-                        var window = ((Widgets.Window) get_toplevel());
-                        window.toggle_fullscreen();
-                        break;
-                    case "quit_fullscreen":
-                        var window = ((Widgets.Window) get_toplevel());
-                        window.toggle_fullscreen();
-                        break;
-			    	case "search":
-                        workspace_manager.focus_workspace.search(get_selection_text());
-			    		break;
-                    case "google":
-                        search_in_google(get_selection_text());
-                        break;
-					case "horizontal_split":
-						workspace_manager.focus_workspace.split_horizontal();
-						break;
-					case "vertical_split":
-						workspace_manager.focus_workspace.split_vertical();
-						break;
-					case "close_window":
-						workspace_manager.focus_workspace.close_focus_term();
-						break;
-					case "close_other_windows":
-						workspace_manager.focus_workspace.close_other_terms();
-						break;
-					case "new_workspace":
-						workspace_manager.new_workspace_with_current_directory();
-						break;
-                    case "custom_commands":
-						workspace_manager.focus_workspace.show_command_panel(workspace_manager.focus_workspace);
-						break;
-                    case "remote_manage":
-						workspace_manager.focus_workspace.show_remote_panel(workspace_manager.focus_workspace);
-						break;
-                    case "switch_theme":
-                        workspace_manager.focus_workspace.show_theme_panel(workspace_manager.focus_workspace);
-                        break;
-                    case "upload_file":
-                        upload_file();
-                        break;
-                    case "download_file":
-                        download_file();
-                        break;
-                    case "encoding":
-                        workspace_manager.focus_workspace.show_encoding_panel(workspace_manager.focus_workspace);
-                        break;
-                    case "preference":
-                        var preference = new Widgets.Preference((Widgets.ConfigWindow) this.get_toplevel(), ((Gtk.Window) this.get_toplevel()).get_focus());
-                        preference.transient_for_window((Widgets.ConfigWindow) this.get_toplevel());
-                        break;
-                        
-			    }
-			} else {
-				print("handle_menu_item_click: impossible here!\n");
-			}
-			
-		}
-        
-        
+
+        public void handle_menu_item_click(string item_id) {
+            if (workspace_manager.get_type().is_a(typeof(WorkspaceManager))) {
+                switch(item_id) {
+                case "paste":
+                    term.paste_clipboard();
+                    break;
+                case "copy":
+                    if (term.get_has_selection()) {
+                        term.copy_clipboard();
+                    } else if (uri_at_right_press != null) {
+                        var display = ((Gtk.Window) this.get_toplevel()).get_display();
+                        Gtk.Clipboard.get_for_display(display, Gdk.SELECTION_CLIPBOARD).set_text(uri_at_right_press, uri_at_right_press.length);
+                        Gtk.Clipboard.get_for_display(display, Gdk.SELECTION_PRIMARY).set_text(uri_at_right_press, uri_at_right_press.length);
+
+                    }
+                    break;
+                case "open":
+                    open_selection_file();
+                    break;
+                case "fullscreen":
+                    var window = ((Widgets.Window) get_toplevel());
+                    window.toggle_fullscreen();
+                    break;
+                case "quit_fullscreen":
+                    var window = ((Widgets.Window) get_toplevel());
+                    window.toggle_fullscreen();
+                    break;
+                case "search":
+                    workspace_manager.focus_workspace.search(get_selection_text());
+                    break;
+                case "google":
+                    search_in_google(get_selection_text());
+                    break;
+                case "horizontal_split":
+                    workspace_manager.focus_workspace.split_horizontal();
+                    break;
+                case "vertical_split":
+                    workspace_manager.focus_workspace.split_vertical();
+                    break;
+                case "close_window":
+                    workspace_manager.focus_workspace.close_focus_term();
+                    break;
+                case "close_other_windows":
+                    workspace_manager.focus_workspace.close_other_terms();
+                    break;
+                case "new_workspace":
+                    workspace_manager.new_workspace_with_current_directory();
+                    break;
+                case "custom_commands":
+                    workspace_manager.focus_workspace.show_command_panel(workspace_manager.focus_workspace);
+                    break;
+                case "remote_manage":
+                    workspace_manager.focus_workspace.show_remote_panel(workspace_manager.focus_workspace);
+                    break;
+                case "switch_theme":
+                    workspace_manager.focus_workspace.show_theme_panel(workspace_manager.focus_workspace);
+                    break;
+                case "upload_file":
+                    upload_file();
+                    break;
+                case "download_file":
+                    download_file();
+                    break;
+                case "encoding":
+                    workspace_manager.focus_workspace.show_encoding_panel(workspace_manager.focus_workspace);
+                    break;
+                case "preference":
+                    var preference = new Widgets.Preference((Widgets.ConfigWindow) this.get_toplevel(), ((Gtk.Window) this.get_toplevel()).get_focus());
+                    preference.transient_for_window((Widgets.ConfigWindow) this.get_toplevel());
+                    break;
+
+                }
+            } else {
+                print("handle_menu_item_click: impossible here!\n");
+            }
+
+        }
+
+
         public void upload_file () {
             Gtk.FileChooserAction action = Gtk.FileChooserAction.OPEN;
-            var chooser = new Gtk.FileChooserDialog(_("Select file to upload"), 
-                    get_toplevel() as Gtk.Window, action);
+            var chooser = new Gtk.FileChooserDialog(_("Select file to upload"),
+                                                    get_toplevel() as Gtk.Window, action);
             chooser.add_button(_("Cancel"), Gtk.ResponseType.CANCEL);
             chooser.set_select_multiple(true);
             chooser.add_button(_("Upload"), Gtk.ResponseType.ACCEPT);
-            
+
             if (chooser.run () == Gtk.ResponseType.ACCEPT) {
                 var file_list = chooser.get_files();
-                
+
                 press_ctrl_at();
                 GLib.Timeout.add(500, () => {
                         string upload_command = "sz ";
@@ -396,48 +397,48 @@ namespace Widgets {
                             upload_command = upload_command + "'" + file.get_path() + "' ";
                         }
                         upload_command = upload_command + "\n";
-                        
+
                         this.term.feed_child(upload_command, upload_command.length);
-                        
+
                         return false;
-                        });
-                
+                    });
+
             }
-            
+
             chooser.destroy();
         }
-        
+
         public void download_file() {
             Gtk.FileChooserAction action = Gtk.FileChooserAction.SELECT_FOLDER;
             var chooser = new Gtk.FileChooserDialog(_("Select directory to save download file"), null, action);
             chooser.add_button(_("Cancel"), Gtk.ResponseType.CANCEL);
             chooser.add_button(_("Select"), Gtk.ResponseType.ACCEPT);
-            
+
             if (chooser.run () == Gtk.ResponseType.ACCEPT) {
                 save_file_directory = chooser.get_filename();
-                
+
                 press_ctrl_a();
-                
+
                 GLib.Timeout.add(100, () => {
                         press_ctrl_k();
-                        
+
                         GLib.Timeout.add(100, () => {
                                 // NOTE: Use quote around $file to avoid escape filepath.
                                 string command = "read -e -a files -p \"%s: \"; sz \"${files[@]}\"\n".printf(_("Type path for download file"));
                                 this.term.feed_child(command, command.length);
-                                
+
                                 enter_sz_command = true;
-                                
+
                                 return false;
                             });
-                        
+
                         return false;
                     });
             }
-            
+
             chooser.destroy();
         }
-        
+
         public void execute_download() {
             // Sleep 1 second to wait sz command execute.
             GLib.Timeout.add(1000, () => {
@@ -449,29 +450,29 @@ namespace Widgets {
                             // Switch directory in zssh.
                             string switch_command = "cd %s\n".printf(save_file_directory);
                             this.term.feed_child(switch_command, switch_command.length);
-                    
+
                             // Do rz command to download file.
                             GLib.Timeout.add(100, () => {
                                     string download_command = "rz\n";
                                     this.term.feed_child(download_command, download_command.length);
-                                    
+
                                     // Press enter automatically.
                                     GLib.Timeout.add(100, () => {
                                             string enter_command = "\n";
                                             this.term.feed_child(enter_command, enter_command.length);
-                                            
+
                                             return false;
                                         });
-                
+
                                     return false;
                                 });
                             return false;
                         });
-                    
+
                     return false;
-                    });
+                });
         }
-        
+
         public void press_ctrl_at() {
             Gdk.EventKey* event;
             event = (Gdk.EventKey*) new Gdk.Event(Gdk.EventType.KEY_PRESS);
@@ -482,7 +483,7 @@ namespace Widgets {
             event->hardware_keycode = (uint16) 11;
             ((Gdk.Event*) event)->put();
         }
-        
+
         public void press_ctrl_k() {
             Gdk.EventKey* event;
             event = (Gdk.EventKey*) new Gdk.Event(Gdk.EventType.KEY_PRESS);
@@ -493,7 +494,7 @@ namespace Widgets {
             event->hardware_keycode = (uint16) 45;
             ((Gdk.Event*) event)->put();
         }
-        
+
         public void press_ctrl_a() {
             Gdk.EventKey* event;
             event = (Gdk.EventKey*) new Gdk.Event(Gdk.EventType.KEY_PRESS);
@@ -515,58 +516,62 @@ namespace Widgets {
             event->hardware_keycode = (uint16) 26;
             ((Gdk.Event*) event)->put();
         }
-        
-		public void handle_menu_destroy() {
-			menu = null;
-		}
-        
+
+        public void handle_menu_destroy() {
+            menu = null;
+        }
+
         public void focus_term() {
             term.grab_focus();
             update_terminal_title(false);
         }
-        
+
         public void update_terminal_title(bool update_when_title_change=true) {
-            int foreground_pid;
-            var has_foreground_process = try_get_foreground_pid(out foreground_pid);
-                    
-            string title;
-            if (has_foreground_process) {
-                string? title_string = term.get_window_title();
-                if (title_string != null) {
-                    var title_infos = title_string.split(" ");
-                    if (title_infos.length >= 2) {
-                        title = "%s %s".printf(title_infos[0], GLib.Path.get_basename(title_infos[1]));
+            if (remote_server_name != null) {
+                change_title(remote_server_name);
+            } else {
+                int foreground_pid;
+                var has_foreground_process = try_get_foreground_pid(out foreground_pid);
+
+                string title;
+                if (has_foreground_process) {
+                    string? title_string = term.get_window_title();
+                    if (title_string != null) {
+                        var title_infos = title_string.split(" ");
+                        if (title_infos.length >= 2) {
+                            title = "%s %s".printf(title_infos[0], GLib.Path.get_basename(title_infos[1]));
+                        } else {
+                            title = title_string;
+                        }
                     } else {
-                        title = title_string;
+                        // NOTE:
+                        // Set terminal title with 'deepin' if some shell get_window_title return null.
+                        // If you install bash-it tools will cause bash return null title to make deepin-terminal crash.
+                        title = _("deepin");
                     }
                 } else {
-                    // NOTE:
-                    // Set terminal title with 'deepin' if some shell get_window_title return null.
-                    // If you install bash-it tools will cause bash return null title to make deepin-terminal crash. 
-                    title = _("deepin");
+                    title = get_cwd();
                 }
-            } else {
-                title = get_cwd();
-            }
-            
-            Utils.write_log("change title to: %s\n".printf(title));
-                    
-            if (title.length > 0) {
-                // Change title.
-                if (has_foreground_process) {
-                    change_title(title);
-                } else {
-                    if (update_when_title_change && current_dir != title) {
-                        current_dir = title;
-                                
-                        change_title(GLib.Path.get_basename(title));
+
+                Utils.write_log("change title to: %s\n".printf(title));
+
+                if (title.length > 0) {
+                    // Change title.
+                    if (has_foreground_process) {
+                        change_title(title);
                     } else {
-                        change_title(GLib.Path.get_basename(title));
+                        if (update_when_title_change && current_dir != title) {
+                            current_dir = title;
+
+                            change_title(GLib.Path.get_basename(title));
+                        } else {
+                            change_title(GLib.Path.get_basename(title));
+                        }
                     }
                 }
             }
         }
-        
+
         public string get_cwd() {
             if (this.term.get_pty() == null) {
                 return this.current_dir;
@@ -578,8 +583,8 @@ namespace Widgets {
                 } else {
                     try {
                         var path = FileUtils.read_link("/proc/%d/cwd".printf(fpid));
-                        
-                        // NOTE: 
+
+                        // NOTE:
                         // Because 'man' command (such as 'man ls') will change active process's path.
                         // Just read current directory when active process is 'man'.
                         if (path == "/usr/share/man") {
@@ -590,41 +595,41 @@ namespace Widgets {
                     } catch (Error e) {
                         stderr.printf("Parse cwd of %d failed %s\n", fpid, e.message);
                         return this.current_dir;
-                    }            
+                    }
                 }
             }
         }
-        
+
         public bool on_scroll(Gtk.Widget widget, Gdk.EventScroll scroll_event) {
             if ((scroll_event.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
-				try {
-					Widgets.ConfigWindow window = (Widgets.ConfigWindow) term.get_toplevel();
-				
-					double old_opacity = window.config.config_file.get_double("general", "opacity");
-					double new_opacity = old_opacity;
-				
-					if (scroll_event.delta_y < 0) {
-						new_opacity = double.min(double.max(old_opacity + 0.1, Constant.TERMINAL_MIN_OPACITY), 1);
-					} else if (scroll_event.delta_y > 0) {
-						new_opacity = double.min(double.max(old_opacity - 0.1, Constant.TERMINAL_MIN_OPACITY), 1);
-					}
-			
-					if (new_opacity != old_opacity) {
-						window.config.config_file.set_double("general", "opacity", new_opacity);
-						window.config.save();
-					
-						window.config.update();
-					}
-                    
+                try {
+                    Widgets.ConfigWindow window = (Widgets.ConfigWindow) term.get_toplevel();
+
+                    double old_opacity = window.config.config_file.get_double("general", "opacity");
+                    double new_opacity = old_opacity;
+
+                    if (scroll_event.delta_y < 0) {
+                        new_opacity = double.min(double.max(old_opacity + 0.1, Constant.TERMINAL_MIN_OPACITY), 1);
+                    } else if (scroll_event.delta_y > 0) {
+                        new_opacity = double.min(double.max(old_opacity - 0.1, Constant.TERMINAL_MIN_OPACITY), 1);
+                    }
+
+                    if (new_opacity != old_opacity) {
+                        window.config.config_file.set_double("general", "opacity", new_opacity);
+                        window.config.save();
+
+                        window.config.update();
+                    }
+
                     return true;
-				} catch (GLib.KeyFileError e) {
-					print("Terminal on_scroll: %s\n", e.message);
-				}
+                } catch (GLib.KeyFileError e) {
+                    print("Terminal on_scroll: %s\n", e.message);
+                }
             }
 
             return false;
         }
-        
+
         private bool on_key_press(Gtk.Widget widget, Gdk.EventKey key_event) {
             // Exit terminal if got `child_exited' signal by command execute finish.
             if (child_has_exit && is_launch_command() && workspace_manager.is_first_term(this)) {
@@ -632,90 +637,90 @@ namespace Widgets {
                 if (keyname == "Enter") {
                     // Exit key press callback if current terminal has exit.
                     exit();
-                    
+
                     return true;
                 }
             }
-            
+
             // This variable use for highlight_tab.
             press_anything = true;
-            
-			try {
+
+            try {
                 string keyname = Keymap.get_keyevent_name(key_event);
-                
+
                 Widgets.ConfigWindow parent_window = (Widgets.ConfigWindow) term.get_toplevel();
 
                 if (keyname == "Menu") {
                     int pointer_x, pointer_y;
                     Utils.get_pointer_position(out pointer_x, out pointer_y);
-                    
+
                     int window_width, window_height;
                     ((ConfigWindow) get_toplevel()).get_size(out window_width, out window_height);
-                    
-                    int window_x, window_y; 
+
+                    int window_x, window_y;
                     ((ConfigWindow) get_toplevel()).get_window().get_origin(out window_x, out window_y);
-                    
+
                     if (pointer_x < window_x || pointer_x > window_x + window_width) {
                         pointer_x = window_x + window_width / 2;
                     }
-                    
+
                     if (pointer_y < window_y || pointer_y > window_y + window_height) {
                         pointer_y = window_y + window_height / 2;
                     }
-                    
+
                     show_menu(pointer_x, pointer_y);
-                    
+
                     return true;
                 }
-                
-			    var copy_key = parent_window.config.config_file.get_string("shortcut", "copy");
-			    if (copy_key != "" && keyname == copy_key) {
-			    	term.copy_clipboard();
-			    	return true;
-			    }
-			    
-			    var paste_key = parent_window.config.config_file.get_string("shortcut", "paste");
-			    if (paste_key != "" && keyname == paste_key) {
-			    	term.paste_clipboard();
-			    	return true;
-			    }
 
-			    var open_key = parent_window.config.config_file.get_string("shortcut", "open");
-			    if (open_key != "" && keyname == open_key) {
+                var copy_key = parent_window.config.config_file.get_string("shortcut", "copy");
+                if (copy_key != "" && keyname == copy_key) {
+                    term.copy_clipboard();
+                    return true;
+                }
+
+                var paste_key = parent_window.config.config_file.get_string("shortcut", "paste");
+                if (paste_key != "" && keyname == paste_key) {
+                    term.paste_clipboard();
+                    return true;
+                }
+
+                var open_key = parent_window.config.config_file.get_string("shortcut", "open");
+                if (open_key != "" && keyname == open_key) {
                     open_selection_file();
-			    	return true;
-			    }
-                
-				var zoom_in_key = parent_window.config.config_file.get_string("shortcut", "zoom_in");
-			    if (zoom_in_key != "" && keyname == zoom_in_key) {
-			    	increment_size();
-			    	return true;
-			    }
-			    
-			    var zoom_out_key = parent_window.config.config_file.get_string("shortcut", "zoom_out");
-			    if (zoom_out_key != "" && keyname == zoom_out_key) {
-			    	decrement_size();
-			    	return true;
-			    }
-			    
-			    var zoom_reset_key = parent_window.config.config_file.get_string("shortcut", "default_size");
-			    if (zoom_reset_key != "" && keyname == zoom_reset_key) {
-			    	set_default_font_size();
-			    	return true;
-			    }
-                
-			    var jump_to_next_command_key = parent_window.config.config_file.get_string("shortcut", "jump_to_next_command");
-			    if (jump_to_next_command_key != "" && keyname == jump_to_next_command_key) {
-			    	jump_to_next_command();
-			    	return true;
-			    }
+                    return true;
+                }
 
-			    var jump_to_previous_command_key = parent_window.config.config_file.get_string("shortcut", "jump_to_previous_command");
-			    if (jump_to_previous_command_key != "" && keyname == jump_to_previous_command_key) {
-			    	jump_to_previous_command();
-			    	return true;
-			    }
-                
+                var zoom_in_key = parent_window.config.config_file.get_string("shortcut", "zoom_in");
+                if (zoom_in_key != "" && keyname == zoom_in_key) {
+                    increment_size();
+                    return true;
+                }
+
+                var zoom_out_key = parent_window.config.config_file.get_string("shortcut", "zoom_out");
+                if (zoom_out_key != "" && keyname == zoom_out_key) {
+                    decrement_size();
+                    return true;
+                }
+
+                var zoom_reset_key = parent_window.config.config_file.get_string("shortcut", "default_size");
+                if (zoom_reset_key != "" && keyname == zoom_reset_key) {
+                    set_default_font_size();
+                    return true;
+                }
+
+                var jump_to_next_command_key = parent_window.config.config_file.get_string("shortcut", "jump_to_next_command");
+                if (jump_to_next_command_key != "" && keyname == jump_to_next_command_key) {
+                    jump_to_next_command();
+                    return true;
+                }
+
+                var jump_to_previous_command_key = parent_window.config.config_file.get_string("shortcut", "jump_to_previous_command");
+                if (jump_to_previous_command_key != "" && keyname == jump_to_previous_command_key) {
+                    jump_to_previous_command();
+                    return true;
+                }
+
                 if (keyname == "Enter" || keyname == "Ctrl + m") {
                     if (enter_sz_command) {
                         execute_download();
@@ -731,13 +736,13 @@ namespace Widgets {
                         }
                     }
                 }
-                
+
                 if (keyname == "Ctrl + c" || keyname == "Ctrl + d") {
                     enter_sz_command = false;
-                    
+
                     return false;
                 }
-                
+
                 // Avoid key single character do command shorcut scan.
                 if (keyname.length > 1 && keyname != "Enter") {
                     string command_config_file_path = Utils.get_config_file_path("command-config.conf");
@@ -746,12 +751,12 @@ namespace Widgets {
                         try {
                             KeyFile command_config_file = new KeyFile();
                             command_config_file.load_from_file(command_config_file_path, KeyFileFlags.NONE);
-                            
+
                             foreach (unowned string option in command_config_file.get_groups ()) {
                                 if (keyname == command_config_file.get_value(option, "Shortcut")) {
                                     var command_string = "%s\n".printf(command_config_file.get_value(option, "Command"));
                                     term.feed_child(command_string, command_string.length);
-                                    
+
                                     return true;
                                 }
                             }
@@ -762,52 +767,52 @@ namespace Widgets {
                         }
                     }
                 }
-                
+
                 return false;
-			} catch (GLib.KeyFileError e) {
-				print("Terminal on_key_press: %s\n", e.message);
-				
-				return false;
-			}
+            } catch (GLib.KeyFileError e) {
+                print("Terminal on_key_press: %s\n", e.message);
+
+                return false;
+            }
         }
-		
-		public void update_font_info() {
-			try {
-				Widgets.ConfigWindow parent_window = (Widgets.ConfigWindow) term.get_toplevel();
-				var font = parent_window.config.config_file.get_string("general", "font");
-				Pango.FontDescription current_font = new Pango.FontDescription();
-				current_font.set_family(font);
-				current_font.set_size((int) (font_size * zoom_factor));
-				term.set_font(current_font);
-			} catch (GLib.KeyFileError e) {
-				print("Terminal update_font_info: %s\n", e.message);
-			}
-		}
+
+        public void update_font_info() {
+            try {
+                Widgets.ConfigWindow parent_window = (Widgets.ConfigWindow) term.get_toplevel();
+                var font = parent_window.config.config_file.get_string("general", "font");
+                Pango.FontDescription current_font = new Pango.FontDescription();
+                current_font.set_family(font);
+                current_font.set_size((int) (font_size * zoom_factor));
+                term.set_font(current_font);
+            } catch (GLib.KeyFileError e) {
+                print("Terminal update_font_info: %s\n", e.message);
+            }
+        }
 
         public void increment_size () {
-			if (zoom_factor < 3) {
-				zoom_factor += 0.1;
-				
-				update_font_info();
-			}
-		}
+            if (zoom_factor < 3) {
+                zoom_factor += 0.1;
+
+                update_font_info();
+            }
+        }
 
         public void decrement_size () {
-			if (zoom_factor > 0.8) {
-				zoom_factor -= 0.1;
-				
-				update_font_info();
-			}
-		}
+            if (zoom_factor > 0.8) {
+                zoom_factor -= 0.1;
+
+                update_font_info();
+            }
+        }
 
         public void set_default_font_size () {
-			zoom_factor = 1.0;
-			update_font_info();
-		}
-        
+            zoom_factor = 1.0;
+            update_font_info();
+        }
+
         public void jump_to_next_command() {
             bool jump_once = false;
-            
+
             var y_coordinate = (int) this.get_vadjustment().get_value();
             foreach (int command_y_coordiante in command_execute_y_coordinates) {
                 if (y_coordinate < command_y_coordiante) {
@@ -816,13 +821,13 @@ namespace Widgets {
                     break;
                 }
             }
-            
+
             // Jump to bottom if no next position to jump.
             if (!jump_once) {
                 this.get_vadjustment().set_value(this.get_vadjustment().get_upper());
             }
         }
-        
+
         public void jump_to_previous_command() {
             var y_coordinate = (int) this.get_vadjustment().get_value();
             for (int count = 0; count < command_execute_y_coordinates.size; count++) {
@@ -836,41 +841,41 @@ namespace Widgets {
         public void drag_received (Gdk.DragContext context, int x, int y,
                                    Gtk.SelectionData selection_data, uint target_type, uint time_) {
             switch (target_type) {
-                case DropTargets.URILIST:
-                    var uris = selection_data.get_uris ();
-                    string path;
-                    File file;
+            case DropTargets.URILIST:
+                var uris = selection_data.get_uris ();
+                string path;
+                File file;
 
-                    for (var i = 0; i < uris.length; i++) {
-                         file = File.new_for_uri (uris[i]);
-                         if ((path = file.get_path ()) != null) {
-                             uris[i] = Shell.quote (path) + " ";
-                        }
+                for (var i = 0; i < uris.length; i++) {
+                    file = File.new_for_uri (uris[i]);
+                    if ((path = file.get_path ()) != null) {
+                        uris[i] = Shell.quote (path) + " ";
                     }
+                }
 
-                    string uris_s = string.joinv ("", uris);
-                    this.term.feed_child(uris_s, uris_s.length);
+                string uris_s = string.joinv ("", uris);
+                this.term.feed_child(uris_s, uris_s.length);
 
-                    break;
-                case DropTargets.STRING:
-                case DropTargets.TEXT:
-                    var data = selection_data.get_text ();
+                break;
+            case DropTargets.STRING:
+            case DropTargets.TEXT:
+                var data = selection_data.get_text ();
 
-                    if (data != null) {
-                        this.term.feed_child(data, data.length);
-                    }
+                if (data != null) {
+                    this.term.feed_child(data, data.length);
+                }
 
-                    break;
+                break;
             }
         }
-        
+
         private void clickable (string[] str) {
             foreach (string exp in str) {
                 try {
                     var regex = new GLib.Regex(exp,
-											   GLib.RegexCompileFlags.OPTIMIZE |
-											   GLib.RegexCompileFlags.MULTILINE,
-											   0);
+                                               GLib.RegexCompileFlags.OPTIMIZE |
+                                               GLib.RegexCompileFlags.MULTILINE,
+                                               0);
                     int id = term.match_add_gregex(regex, 0);
 
                     term.match_set_cursor_type (id, Gdk.CursorType.HAND2);
@@ -889,7 +894,7 @@ namespace Widgets {
             }
 
             string? shell;
-            
+
             shell = Vte.get_user_shell();
             if (shell == null || shell[0] == '\0') {
                 shell = Environment.get_variable("SHELL");
@@ -897,7 +902,7 @@ namespace Widgets {
             if (shell == null || shell[0] == '\0') {
                 shell = "/bin/sh";
             }
-            
+
             string[] argv;
 
             try {
@@ -907,7 +912,7 @@ namespace Widgets {
                     warning("Terminal launch_shell: %s\n", e.message);
                 }
             }
-            
+
             launch_idle_id = GLib.Idle.add(() => {
                     try {
                         term.spawn_sync(Vte.PtyFlags.DEFAULT,
@@ -918,32 +923,32 @@ namespace Widgets {
                                         null, /* child setup */
                                         out child_pid,
                                         null /* cancellable */);
-                        
+
                         GLib.Timeout.add(200, () => {
                                 update_terminal_title(false);
-                                
+
                                 return false;
                             });
                     } catch (Error e) {
                         warning("Terminal launch_idle_id: %s\n", e.message);
                     }
-                    
+
                     launch_idle_id = 0;
                     return false;
                 });
         }
-        
+
         public bool is_launch_command() {
             return Application.commands.size > 0;
         }
-        
+
         public void print_exit_notify() {
             if (!has_print_exit_notify) {
                 GLib.Timeout.add(200, () => {
                         try {
                             term.spawn_sync(Vte.PtyFlags.DEFAULT,
                                             null,
-                                            {"echo", _("\nCommand has been completed, press ENTER to exit the terminal.")},
+                    {"echo", _("\nCommand has been completed, press ENTER to exit the terminal.")},
                                             null,
                                             GLib.SpawnFlags.SEARCH_PATH,
                                             null, /* child setup */
@@ -952,29 +957,29 @@ namespace Widgets {
                         } catch (Error e) {
                             warning("Terminal print_exit_notify: %s\n", e.message);
                         }
-                        
+
                         return false;
                     });
-                
+
                 has_print_exit_notify = true;
             }
         }
-        
+
         public void launch_command(ArrayList<string> commands, string? dir) {
             string[] argv = {};
             foreach (string arg in commands) {
                 argv += arg;
             }
-            
+
             // Set tab name when launch command.
             GLib.Timeout.add(200, () => {
                     if (workspace_manager.tabbar.tab_name_map.get(workspace_manager.workspace_index) == "") {
                         workspace_manager.tabbar.rename_tab(workspace_manager.workspace_index, _("deepin"));
                     }
-					
+
                     return false;
                 });
-            
+
             launch_idle_id = GLib.Idle.add(() => {
                     try {
                         term.spawn_sync(Vte.PtyFlags.DEFAULT,
@@ -988,12 +993,12 @@ namespace Widgets {
                     } catch (Error e) {
                         warning("Terminal launch_idle_id: %s\n", e.message);
                     }
-                    
+
                     launch_idle_id = 0;
                     return false;
                 });
-        }        
-        
+        }
+
         public bool try_get_foreground_pid (out int pid) {
             if (this.term.get_pty() == null) {
                 pid = -1;
@@ -1001,7 +1006,7 @@ namespace Widgets {
             } else {
                 int pty_fd = this.term.get_pty().fd;
                 int fgpid = Posix.tcgetpgrp(pty_fd);
-                
+
                 if (fgpid != this.child_pid && fgpid != -1) {
                     pid = (int) fgpid;
                     return true;
@@ -1022,80 +1027,80 @@ namespace Widgets {
                 Posix.kill(fg_pid, Posix.SIGKILL);
             }
         }
-		
-		public void toggle_select_all() {
-			if (has_select_all) {
-				term.unselect_all();
-			} else {
-				term.select_all();
-			}
-			
-			has_select_all = !has_select_all;
-		}
-		
-		public void setup_from_config() {
+
+        public void toggle_select_all() {
+            if (has_select_all) {
+                term.unselect_all();
+            } else {
+                term.select_all();
+            }
+
+            has_select_all = !has_select_all;
+        }
+
+        public void setup_from_config() {
             try {
                 Widgets.ConfigWindow parent_window = (Widgets.ConfigWindow) term.get_toplevel();
-                
+
                 var is_cursor_blink = parent_window.config.config_file.get_boolean("advanced", "cursor_blink_mode");
                 if (is_cursor_blink) {
                     term.set_cursor_blink_mode(Vte.CursorBlinkMode.ON);
                 } else {
                     term.set_cursor_blink_mode(Vte.CursorBlinkMode.OFF);
                 }
-                
+
                 var scroll_lines = parent_window.config.config_file.get_integer("advanced", "scroll_line");
                 term.set_scrollback_lines(scroll_lines);
-				
-				var cursor_shape = parent_window.config.config_file.get_string("advanced", "cursor_shape");
-				if (cursor_shape == "block") {
-					term.set_cursor_shape(Vte.CursorShape.BLOCK);
-				} else if (cursor_shape == "ibeam") {
-					term.set_cursor_shape(Vte.CursorShape.IBEAM);
-				} else if (cursor_shape == "underline") {
-					term.set_cursor_shape(Vte.CursorShape.UNDERLINE);
-				}
-				
-				background_color = Utils.hex_to_rgba(
+
+                var cursor_shape = parent_window.config.config_file.get_string("advanced", "cursor_shape");
+                if (cursor_shape == "block") {
+                    term.set_cursor_shape(Vte.CursorShape.BLOCK);
+                } else if (cursor_shape == "ibeam") {
+                    term.set_cursor_shape(Vte.CursorShape.IBEAM);
+                } else if (cursor_shape == "underline") {
+                    term.set_cursor_shape(Vte.CursorShape.UNDERLINE);
+                }
+
+                background_color = Utils.hex_to_rgba(
                     parent_window.config.config_file.get_string("theme", "background"),
                     parent_window.config.config_file.get_double("general", "opacity"));
-				foreground_color = Utils.hex_to_rgba(parent_window.config.config_file.get_string("theme", "foreground"));
-				var palette = new Gdk.RGBA[16];
-				for (int i = 0; i < 16; i++) {
-					Gdk.RGBA new_color= Utils.hex_to_rgba(parent_window.config.config_file.get_string("theme", "color_%i".printf(i + 1)));
+                foreground_color = Utils.hex_to_rgba(parent_window.config.config_file.get_string("theme", "foreground"));
+                var palette = new Gdk.RGBA[16];
+                for (int i = 0; i < 16; i++) {
+                    Gdk.RGBA new_color= Utils.hex_to_rgba(parent_window.config.config_file.get_string("theme", "color_%i".printf(i + 1)));
 
-					palette[i] = new_color;
-				}
-				term.set_colors(foreground_color, background_color, palette);
-                
+                    palette[i] = new_color;
+                }
+                term.set_colors(foreground_color, background_color, palette);
+
                 term.set_scroll_on_output(parent_window.config.config_file.get_boolean("advanced", "scroll_on_output"));
                 term.set_scroll_on_keystroke(parent_window.config.config_file.get_boolean("advanced", "scroll_on_key"));
-                
+
                 if (parent_window.config.config_file.get_string("theme", "style") == "light") {
                     get_vscrollbar().get_style_context().remove_class("light_scrollbar");
                     get_vscrollbar().get_style_context().remove_class("dark_scrollbar");
-                    
+
                     get_vscrollbar().get_style_context().add_class("light_scrollbar");
                 } else {
                     get_vscrollbar().get_style_context().remove_class("light_scrollbar");
                     get_vscrollbar().get_style_context().remove_class("dark_scrollbar");
-                    
+
                     get_vscrollbar().get_style_context().add_class("dark_scrollbar");
                 }
-				
-				var config_size = parent_window.config.config_file.get_integer("general", "font_size");
-				font_size = config_size * Pango.SCALE;
-				update_font_info();
+
+                var config_size = parent_window.config.config_file.get_integer("general", "font_size");
+                font_size = config_size * Pango.SCALE;
+                update_font_info();
             } catch (GLib.KeyFileError e) {
                 stdout.printf(e.message);
             }
         }
-        
+
         public bool clipboard_has_context() {
             var clipboard_text = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD).wait_for_text();
             return clipboard_text != null && clipboard_text.strip() != "";
         }
-        
+
         public string? get_selection_file() {
             string? clipboard_text = get_selection_text();
             if (clipboard_text != "") {
@@ -1116,10 +1121,10 @@ namespace Widgets {
                 // So i get selected text from clipboard that i need save clipboard context before i test selection context.
                 var clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD);
                 var current_clipboard_text = clipboard.wait_for_text();
-            
+
                 term.copy_clipboard();
                 var clipboard_text = clipboard.wait_for_text();
-            
+
                 // FIXME: vte developer private function 'get_selected_text', so i can't get selected text from api.
                 // So i get selected text from clipboard that i need restore clipboard context before i test selection context.
                 if (current_clipboard_text != null) {
@@ -1135,7 +1140,7 @@ namespace Widgets {
                 return "";
             }
         }
-        
+
         public void search_in_google(string search_text) {
             try {
                 GLib.AppInfo appinfo = GLib.AppInfo.create_from_commandline(
@@ -1146,7 +1151,7 @@ namespace Widgets {
                 print("Terminal search_in_google: %s\n", e.message);
             }
         }
-        
+
         public void open_selection_file() {
             var selection_file = get_selection_file();
             if (selection_file != null) {
@@ -1158,5 +1163,5 @@ namespace Widgets {
                 }
             }
         }
-	}
+    }
 }
