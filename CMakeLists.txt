@@ -80,6 +80,7 @@ vala_precompile(VALA_C
 	./widget/base_panel.vala
 	./widget/config_window.vala
 	./widget/confirm_dialog.vala
+	./widget/rename_dialog.vala
 	./widget/cursor_toggle_button.vala
 	./widget/dialog.vala
 	./widget/dialog_button.vala

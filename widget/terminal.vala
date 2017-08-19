@@ -53,9 +53,10 @@ namespace Widgets {
         public bool has_print_exit_notify = false;
         public double zoom_factor = 1.0;
         public string current_dir = "";
+        public string current_title = "";
         public string expect_file_path = "";
         public string? uri_at_right_press;
-        public string? remote_server_name;
+        public string? customize_title;
         public uint launch_idle_id;
 
         public static string USERCHARS = "-[:alnum:]";
@@ -132,6 +133,9 @@ namespace Widgets {
 
                     switch (event.button) {
                     case Gdk.BUTTON_PRIMARY:
+                        // Grab focus terminal first.
+                        focus_term();
+
                         if (event.state == Gdk.ModifierType.CONTROL_MASK && uri != null) {
                             try {
                                 Gtk.show_uri(null, (!) uri, Gtk.get_current_event_time());
@@ -149,7 +153,7 @@ namespace Widgets {
                         return false;
                     case Gdk.BUTTON_SECONDARY:
                         // Grab focus terminal first.
-                        term.grab_focus();
+                        focus_term();
 
                         uri_at_right_press = term.match_check_event(event, null);
                         show_menu((int) event.x_root, (int) event.y_root);
@@ -282,6 +286,7 @@ namespace Widgets {
             if (in_quake_window) {
                 menu_content.append(new Menu.MenuItem("switch_theme", _("Switch theme")));
             }
+            menu_content.append(new Menu.MenuItem("rename_title", _("Rename title")));
             menu_content.append(new Menu.MenuItem("encoding", _("Encoding")));
             menu_content.append(new Menu.MenuItem("custom_commands", _("Custom commands")));
             menu_content.append(new Menu.MenuItem("remote_manage", _("Remote management")));
@@ -363,6 +368,9 @@ namespace Widgets {
                 case "download_file":
                     download_file();
                     break;
+                case "rename_title":
+                    rename_title();
+                    break;
                 case "encoding":
                     workspace_manager.focus_workspace.show_encoding_panel(workspace_manager.focus_workspace);
                     break;
@@ -437,6 +445,22 @@ namespace Widgets {
             }
 
             chooser.destroy();
+        }
+
+        public void rename_title() {
+            Widgets.ConfigWindow parent_window = (Widgets.ConfigWindow) term.get_toplevel();
+
+            var rename_dialog = new Widgets.RenameDialog(
+                _("Rename title"),
+                current_title,
+                _("Cancel"),
+                _("Rename")
+                );
+            rename_dialog.transient_for_window(parent_window);
+            rename_dialog.rename.connect((w, new_title) => {
+                    customize_title = new_title;
+                    update_terminal_title();
+                });
         }
 
         public void execute_download() {
@@ -527,8 +551,9 @@ namespace Widgets {
         }
 
         public void update_terminal_title(bool update_when_title_change=true) {
-            if (remote_server_name != null) {
-                change_title(remote_server_name);
+            if (customize_title != null) {
+                change_title(customize_title);
+                current_title = customize_title;
             } else {
                 int foreground_pid;
                 var has_foreground_process = try_get_foreground_pid(out foreground_pid);
@@ -559,13 +584,16 @@ namespace Widgets {
                     // Change title.
                     if (has_foreground_process) {
                         change_title(title);
+                        current_title = title;
                     } else {
                         if (update_when_title_change && current_dir != title) {
                             current_dir = title;
 
                             change_title(GLib.Path.get_basename(title));
+                            current_title = GLib.Path.get_basename(title);
                         } else {
                             change_title(GLib.Path.get_basename(title));
+                            current_title = GLib.Path.get_basename(title);
                         }
                     }
                 }

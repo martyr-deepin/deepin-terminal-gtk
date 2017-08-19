@@ -349,6 +349,7 @@ namespace Widgets {
 
                 builder.begin_array();
 
+                insert_shortcut_key(builder, _("Rename title"), config.config_file.get_string("shortcut", "rename_title"));;
                 insert_shortcut_key(builder, _("Switch fullscreen"), config.config_file.get_string("shortcut", "switch_fullscreen"));;
                 insert_shortcut_key(builder, _("Display shortcuts"), config.config_file.get_string("shortcut", "display_shortcuts"));;
                 insert_shortcut_key(builder, _("Custom commands"), config.config_file.get_string("shortcut", "custom_commands"));;
@@ -510,6 +511,14 @@ namespace Widgets {
                     if (!quake_mode) {
                         toggle_fullscreen();
                     }
+                    return true;
+                }
+                
+                var rename_title_key = config.config_file.get_string("shortcut", "rename_title");
+                if (rename_title_key != "" && keyname == rename_title_key) {
+                    Term focus_term = workspace_manager.focus_workspace.get_focus_term(workspace_manager.focus_workspace);
+                    focus_term.rename_title();
+                    
                     return true;
                 }
 

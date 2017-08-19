@@ -39,6 +39,7 @@ namespace Widgets {
 		public ShortcutEntry copy_key_entry;
 		public ShortcutEntry display_hotkey_terminal_key_entry;
 		public ShortcutEntry fullscreen_key_entry;
+		public ShortcutEntry rename_title_key_entry;
 		public ShortcutEntry new_workspace_key_entry;
 		public ShortcutEntry next_workspace_key_entry;
 		public ShortcutEntry paste_key_entry;
@@ -67,6 +68,7 @@ namespace Widgets {
 		public Gtk.Label display_hotkey_terminal_key_label;
 		public Gtk.Label font_label;
 		public Gtk.Label fullscreen_key_label;
+		public Gtk.Label rename_title_key_label;
 		public Gtk.Label new_workspace_key_label;
 		public Gtk.Label next_workspace_key_label;
 		public Gtk.Label opacity_label;
@@ -181,6 +183,8 @@ namespace Widgets {
 			close_other_windows_key_entry = new ShortcutEntry();
 			fullscreen_key_label = create_label();
 			fullscreen_key_entry = new ShortcutEntry();
+			rename_title_key_label = create_label();
+			rename_title_key_entry = new ShortcutEntry();
 			display_hotkey_terminal_key_label = create_label();
 			display_hotkey_terminal_key_entry = new ShortcutEntry();
 			show_command_key_label = create_label();
@@ -325,7 +329,8 @@ namespace Widgets {
             content_box.pack_start(advanced_key_grid, false, false, 0);
             
             create_key_row(fullscreen_key_label, fullscreen_key_entry, _("Fullscreen:"), advanced_key_grid, "shortcut", "switch_fullscreen");
-            create_follow_key_row(display_hotkey_terminal_key_label, display_hotkey_terminal_key_entry, _("Display shortcuts:"), fullscreen_key_label, advanced_key_grid, "shortcut", "display_shortcuts");
+            create_follow_key_row(rename_title_key_label, rename_title_key_entry, _("Rename title:"), fullscreen_key_label, advanced_key_grid, "shortcut", "rename_title");
+            create_follow_key_row(display_hotkey_terminal_key_label, display_hotkey_terminal_key_entry, _("Display shortcuts:"), rename_title_key_label, advanced_key_grid, "shortcut", "display_shortcuts");
             create_follow_key_row(show_command_key_label, show_command_key_entry, _("Custom commands:"), display_hotkey_terminal_key_label, advanced_key_grid, "shortcut", "custom_commands");
             create_follow_key_row(show_remote_manage_key_label, show_remote_manage_key_entry, _("Remote management:"), show_command_key_label, advanced_key_grid, "shortcut", "remote_management");
             
@@ -482,6 +487,7 @@ namespace Widgets {
 				close_window_key_entry.set_text(parent_window.config.config_file.get_string("shortcut", "close_window"));
 				close_other_windows_key_entry.set_text(parent_window.config.config_file.get_string("shortcut", "close_other_windows"));
 				fullscreen_key_entry.set_text(parent_window.config.config_file.get_string("shortcut", "switch_fullscreen"));
+				rename_title_key_entry.set_text(parent_window.config.config_file.get_string("shortcut", "rename_title"));
 				display_hotkey_terminal_key_entry.set_text(parent_window.config.config_file.get_string("shortcut", "display_shortcuts"));
 				show_command_key_entry.set_text(parent_window.config.config_file.get_string("shortcut", "custom_commands"));
 				show_remote_manage_key_entry.set_text(parent_window.config.config_file.get_string("shortcut", "remote_management"));
