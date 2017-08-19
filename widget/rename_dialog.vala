@@ -100,12 +100,13 @@ namespace Widgets {
                 });
             
             var tab_order_list = new List<Gtk.Widget>();
+            tab_order_list.append((Gtk.Widget) title_entry);
             if (cancel_text != "") {
                 tab_order_list.append((Gtk.Widget) cancel_button);
             }
             tab_order_list.append((Gtk.Widget) rename_button);
             button_box.set_focus_chain(tab_order_list);
-            button_box.set_focus_child(rename_button);
+            button_box.set_focus_child(title_entry);
                 
             close_button_box.pack_start(close_button, true, true, 0);
             label_box.pack_start(title_label, false, false, 0);
