@@ -116,6 +116,7 @@ namespace Config {
 
                 config_file.set_string("advanced", "cursor_shape", "block");
                 config_file.set_boolean("advanced", "cursor_blink_mode", true);
+                config_file.set_boolean("advanced", "cursor_auto_hide", false);
 
                 config_file.set_boolean("advanced", "scroll_on_key", true);
                 config_file.set_boolean("advanced", "scroll_on_output", false);
@@ -305,6 +306,7 @@ namespace Config {
 
             check_string("advanced", "cursor_shape", "block");
             check_boolean("advanced", "cursor_blink_mode", true);
+            check_boolean("advanced", "cursor_auto_hide", false);
 
             check_boolean("advanced", "scroll_on_key", true);
             check_boolean("advanced", "scroll_on_output", false);

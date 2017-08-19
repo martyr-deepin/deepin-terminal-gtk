@@ -1076,6 +1076,8 @@ namespace Widgets {
                 } else {
                     term.set_cursor_blink_mode(Vte.CursorBlinkMode.OFF);
                 }
+                
+                term.set_mouse_autohide(parent_window.config.config_file.get_boolean("advanced", "cursor_auto_hide"));
 
                 var scroll_lines = parent_window.config.config_file.get_integer("advanced", "scroll_line");
                 term.set_scrollback_lines(scroll_lines);
@@ -1103,7 +1105,7 @@ namespace Widgets {
 
                 term.set_scroll_on_output(parent_window.config.config_file.get_boolean("advanced", "scroll_on_output"));
                 term.set_scroll_on_keystroke(parent_window.config.config_file.get_boolean("advanced", "scroll_on_key"));
-
+                
                 if (parent_window.config.config_file.get_string("theme", "style") == "light") {
                     get_vscrollbar().get_style_context().remove_class("light_scrollbar");
                     get_vscrollbar().get_style_context().remove_class("dark_scrollbar");

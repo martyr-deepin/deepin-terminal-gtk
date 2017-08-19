@@ -95,6 +95,7 @@ namespace Widgets {
 		public Widgets.SpinButton font_size_spinbutton;
 		public ScrolledWindow scrolledwindow;
 		public Widgets.CheckButton cursor_blink_checkbutton;
+		public Widgets.CheckButton cursor_auto_hide_checkbutton;
 		public Widgets.CheckButton scroll_on_key_checkbutton;
 		public Widgets.CheckButton scroll_on_out_checkbutton;
 		public Widgets.CheckButton hide_quakewindow_after_lost_focus_checkbutton;
@@ -195,6 +196,7 @@ namespace Widgets {
             cursor_style_label = create_label(_("Cursor style:"));
 			cursor_style_button = new Widgets.CursorToggleButton();
 			cursor_blink_checkbutton = new Widgets.CheckButton();
+			cursor_auto_hide_checkbutton = new Widgets.CheckButton();
 			scroll_on_key_checkbutton = new Widgets.CheckButton();
 			scroll_on_out_checkbutton = new Widgets.CheckButton();
             hide_quakewindow_after_lost_focus_checkbutton = new Widgets.CheckButton();
@@ -359,7 +361,8 @@ namespace Widgets {
             grid_attach(cursor_grid, cursor_style_label, 0, 0, preference_name_width, grid_height);
             grid_attach_next_to(cursor_grid, cursor_style_button, cursor_style_label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
             
-            create_follow_check_row(cursor_blink_checkbutton, _("Cursor blink"), cursor_style_label, cursor_grid, "advanced", "cursor_blink_mode");
+            var cursor_blink_box = create_follow_check_row(cursor_blink_checkbutton, _("Cursor blink"), cursor_style_label, cursor_grid, "advanced", "cursor_blink_mode");
+            create_follow_check_row(cursor_auto_hide_checkbutton, _("Cursor autohide"), cursor_blink_box, cursor_grid, "advanced", "cursor_auto_hide");
             
             var scroll_segment = get_second_segment(_("Scroll"));
             content_box.pack_start(scroll_segment, false, false, 0);
@@ -495,6 +498,7 @@ namespace Widgets {
 				cursor_style_button.set_cursor_state(parent_window.config.config_file.get_string("advanced", "cursor_shape"));;
 		    
 				cursor_blink_checkbutton.set_active(parent_window.config.config_file.get_boolean("advanced", "cursor_blink_mode"));
+				cursor_auto_hide_checkbutton.set_active(parent_window.config.config_file.get_boolean("advanced", "cursor_auto_hide"));
 				scroll_on_key_checkbutton.set_active(parent_window.config.config_file.get_boolean("advanced", "scroll_on_key"));
 				scroll_on_out_checkbutton.set_active(parent_window.config.config_file.get_boolean("advanced", "scroll_on_output"));
 				hide_quakewindow_after_lost_focus_checkbutton.set_active(parent_window.config.config_file.get_boolean("advanced", "hide_quakewindow_after_lost_focus"));
