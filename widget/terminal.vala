@@ -97,12 +97,18 @@ namespace Widgets {
             term.child_exited.connect((t)=> {
                     child_has_exit = true;
 
-                    if (is_launch_command() && workspace_manager.is_first_term(this)) {
-                        // Print exit notify if command execute finish.
-                        print_exit_notify();
-                    } else {
-                        // Just exit terminal if `child_exited' signal emit by shell.
-                        exit();
+                    Widgets.ConfigWindow window = (Widgets.ConfigWindow) term.get_toplevel();
+
+                    try {
+                        if (window.config.config_file.get_boolean("advanced", "print_notify_after_script_finish") && is_launch_command() && workspace_manager.is_first_term(this)) {
+                            // Print exit notify if command execute finish.
+                            print_exit_notify();
+                        } else {
+                            // Just exit terminal if `child_exited' signal emit by shell.
+                            exit();
+                        }
+                    } catch (Error e) {
+                        print("child_exited: %s\n", e.message);
                     }
                 });
             term.destroy.connect((t) => {
@@ -1076,7 +1082,7 @@ namespace Widgets {
                 } else {
                     term.set_cursor_blink_mode(Vte.CursorBlinkMode.OFF);
                 }
-                
+
                 term.set_mouse_autohide(parent_window.config.config_file.get_boolean("advanced", "cursor_auto_hide"));
 
                 var scroll_lines = parent_window.config.config_file.get_integer("advanced", "scroll_line");
@@ -1105,7 +1111,7 @@ namespace Widgets {
 
                 term.set_scroll_on_output(parent_window.config.config_file.get_boolean("advanced", "scroll_on_output"));
                 term.set_scroll_on_keystroke(parent_window.config.config_file.get_boolean("advanced", "scroll_on_key"));
-                
+
                 if (parent_window.config.config_file.get_string("theme", "style") == "light") {
                     get_vscrollbar().get_style_context().remove_class("light_scrollbar");
                     get_vscrollbar().get_style_context().remove_class("dark_scrollbar");
