@@ -258,7 +258,7 @@ namespace Widgets {
 							Term term = workspace_manager.focus_workspace.get_focus_term(workspace_manager.focus_workspace);
 							term.term.set_encoding(config_file.get_value(server_info, "Encode"));
                             
-                            term.customize_title = config_file.get_value(server_info, "Name");
+                            term.remote_server_title = config_file.get_value(server_info, "Name");
 						
 							var backspace_binding = config_file.get_value(server_info, "Backspace");
 							if (backspace_binding == "auto") {

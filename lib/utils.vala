@@ -417,11 +417,41 @@ namespace Utils {
             return screen.get_primary_monitor();
         }
     }
-    
+
     public int get_pointer_monitor(Gdk.Screen screen) {
         int x, y;
         get_pointer_position(out x, out y);
 
         return screen.get_monitor_at_point(x, y);
+    }
+
+    public string get_process_cmdline(int pid) {
+        var cmd_file = File.new_for_path ("/proc/%d/cmdline".printf(pid));
+        string command = "";
+        if (!cmd_file.query_exists()) {
+            return command;
+        }
+
+        try {
+            var dis = new DataInputStream (cmd_file.read ());
+            uint8[] data = new uint8[4097];
+            var size = dis.read (data);
+
+            if (size <= 0) {
+                command = "";
+            }
+
+            for (int pos = 0; pos < size; pos++) {
+                if (data[pos] == '\0' || data[pos] == '\n') {
+                    data[pos] = ' ';
+                }
+            }
+
+            command = (string) data;
+        } catch (Error e) {
+            warning ("%s\n", e.message);
+        }
+
+        return command;
     }
 }

@@ -51,12 +51,14 @@ namespace Widgets {
         public bool press_anything = false;
         public bool child_has_exit = false;
         public bool has_print_exit_notify = false;
+        public bool login_remote_server = false;
         public double zoom_factor = 1.0;
         public string current_dir = "";
         public string current_title = "";
         public string expect_file_path = "";
         public string? uri_at_right_press;
         public string? customize_title;
+        public string? remote_server_title;
         public uint launch_idle_id;
 
         public static string USERCHARS = "-[:alnum:]";
@@ -464,7 +466,12 @@ namespace Widgets {
                 );
             rename_dialog.transient_for_window(parent_window);
             rename_dialog.rename.connect((w, new_title) => {
-                    customize_title = new_title;
+                    if (new_title.strip() == "") {
+                        customize_title = null;
+                    } else {
+                        customize_title = new_title.strip();
+                    }
+                    
                     update_terminal_title();
                 });
         }
@@ -557,10 +564,35 @@ namespace Widgets {
         }
 
         public void update_terminal_title(bool update_when_title_change=true) {
+            // Clean remote_server_title if logout from remote server.
+            int test_foreground_pid;
+            var test_have_foreground_pid = try_get_foreground_pid(out test_foreground_pid);
+
+            if (test_have_foreground_pid) {
+                var command = Utils.get_process_cmdline(test_foreground_pid);
+                if (command.index_of("expect -f /tmp/deepin-terminal-") == 0 && !login_remote_server) {
+                    login_remote_server = true;
+                }
+            } else if (login_remote_server) {
+                login_remote_server = false;
+                
+                if (remote_server_title != null) {
+                    remote_server_title = null;
+                }
+            }
+
+            // Always use customize title if customize_title is not null.
             if (customize_title != null) {
                 change_title(customize_title);
                 current_title = customize_title;
-            } else {
+            }
+            // Use remote server name if user not customize name and when remote_server_title is not null.
+            else if (remote_server_title != null) {
+                change_title(remote_server_title);
+                current_title = remote_server_title;
+            }
+            // Otherwise change title with current directory.
+            else {
                 int foreground_pid;
                 var has_foreground_process = try_get_foreground_pid(out foreground_pid);
 
