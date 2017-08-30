@@ -396,7 +396,7 @@ namespace Widgets {
                                     "advanced", 
                                     "hide_quakewindow_after_lost_focus");
             
-            var reset_button = new Widgets.ImageButton("reset_button", false, _("Restore default settings"));
+            var reset_button = new Widgets.ImageButton("reset_button", false, _("Restore Defaults"));
             reset_button.set_halign(Gtk.Align.CENTER);
             reset_button.margin_top = reset_button_margin;
             reset_button.margin_bottom = reset_button_margin;
