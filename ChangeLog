@@ -1,0 +1,19 @@
+2.6
+
+2017-09-01	Andy Stewart <lazycat.manatee@gmail.com>
+	* Update transifex translations.
+	
+2017-08-21	Andy Stewart <lazycat.manatee@gmail.com>
+	* Find a safe way to make server title will change along with server login status.
+	
+2017-08-20	Andy Stewart <lazycat.manatee@gmail.com>
+	* Add deepin-menu in debian dependence.
+	* Add advanced option 'print_notify_after_script_finish', terminal will quit immediately once command execute finish when this option set as true, default is false.
+
+2017-08-19	Andy Stewart <lazycat.manatee@gmail.com>
+	* Add option 'cursor auto hide', terminal cursor will autohide when type text in terminal when this option set as true, default is false.
+	* Add rename dialog in right-click menu, to make user customize terminal title, this feature can tricked by press F2.
+	
+2017-08-10	Andy Stewart <lazycat.manatee@gmail.com>
+	* Set tab title with server name instead server path when login in server.
+	
