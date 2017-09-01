@@ -256,11 +256,11 @@ msgstr "编辑服务器"
 
 #: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:298
 msgid "Encoding"
-msgstr "编码"
+msgstr "编码方式"
 
 #: ../widget/remote_server_dialog.vala:307
 msgid "Encoding:"
-msgstr "编码："
+msgstr "编码方式："
 
 #: ../widget/confirm_dialog.vala:131 ../widget/appbar.vala:130
 msgid "Exit"

@@ -74,7 +74,7 @@ msgstr "Erweiterte Optionen "
 
 #: ../widget/remote_server_dialog.vala:425 ../widget/command_dialog.vala:249
 msgid "Are you sure to delete"
-msgstr "Sind Sie sicher, dass folgendes gelöscht werden soll:"
+msgstr "Sind Sie sicher, dass das folgende gelöscht werden soll:"
 
 #: ../widget/confirm_dialog.vala:131
 msgid "Are you sure to exit?"
@@ -167,7 +167,7 @@ msgstr ""
 
 #: ../widget/preference.vala:364
 msgid "Cursor blink"
-msgstr "Mauszeigerblinken"
+msgstr "Cursorblinkgeschwindigkeit"
 
 #: ../widget/preference.vala:196
 msgid "Cursor style:"
@@ -300,7 +300,7 @@ msgstr "Hilfe"
 
 #: ../widget/preference.vala:393
 msgid "Hide quake window after lost focus"
-msgstr "Fenster verstecken wenn kein Fokus"
+msgstr "Fenster am oberen Bildschirmrand verstecken"
 
 #: ../widget/terminal.vala:269 ../widget/config_window.vala:332
 msgid "Horizontal split"
@@ -449,11 +449,11 @@ msgstr "Umbenennen"
 #: ../widget/terminal.vala:297 ../widget/terminal.vala:462
 #: ../widget/config_window.vala:352
 msgid "Rename title"
-msgstr ""
+msgstr "Titel umbenennen"
 
 #: ../widget/preference.vala:334
 msgid "Rename title:"
-msgstr ""
+msgstr "Titel umbenennen:"
 
 #: ../widget/remote_server_dialog.vala:186
 #: ../widget/remote_server_dialog.vala:196
@@ -470,8 +470,8 @@ msgstr "Standardeinstellungen wiederherstellen "
 msgid ""
 "Run '%s --help' to view a full list of available command line pass_options"
 msgstr ""
-"Führen Sie den Befehl '%s --help' aus, um eine vollständige Liste der "
-"Befehlszeilenparameter zu erhalten."
+"Führen Sie den Befehl -help' aus, %s --help' aus, um eine vollständige Liste"
+" der Befehlszeilenparameter zu erhalten."
 
 #: ../main.vala:151 ../main.vala:160
 msgid "Run a program in the terminal"
@@ -517,8 +517,7 @@ msgstr "Alles auswählen:"
 
 #: ../widget/terminal.vala:429
 msgid "Select directory to save download file"
-msgstr ""
-"Wählen Sie ein Verzeichnis aus, in dem der Download gespeichert werden soll."
+msgstr "Downloadordner auswählen"
 
 #: ../widget/terminal.vala:400
 msgid "Select file to upload"
@@ -574,9 +573,7 @@ msgstr "Servername:"
 
 #: ../main.vala:133
 msgid "Set the terminal startup directory"
-msgstr ""
-"Legen Sie das Verzeichnis fest, in dem Sie starten möchten, wenn das "
-"Terminal geöffnet wird."
+msgstr "Hauptverzeichnis festlegen indem das Terminal gestartet wird."
 
 #: ../main.vala:115
 msgid "Set the terminal window mode"

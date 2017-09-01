@@ -163,7 +163,7 @@ msgstr "Cursor"
 
 #: ../widget/preference.vala:365
 msgid "Cursor autohide"
-msgstr ""
+msgstr "Auto ocultar cursor"
 
 #: ../widget/preference.vala:364
 msgid "Cursor blink"
@@ -449,11 +449,11 @@ msgstr "Renomear"
 #: ../widget/terminal.vala:297 ../widget/terminal.vala:462
 #: ../widget/config_window.vala:352
 msgid "Rename title"
-msgstr ""
+msgstr "Renomear o título"
 
 #: ../widget/preference.vala:334
 msgid "Rename title:"
-msgstr ""
+msgstr "Renomear o título:"
 
 #: ../widget/remote_server_dialog.vala:186
 #: ../widget/remote_server_dialog.vala:196
