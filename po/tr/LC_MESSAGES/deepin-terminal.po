@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-29 22:04+0800\n"
+"POT-Creation-Date: 2017-08-30 12:34+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Adem Çalışkan <ademcal@yahoo.com>, 2017\n"
 "Language-Team: Turkish (https://www.transifex.com/linuxdeepin/teams/3976/tr/)\n"
@@ -462,8 +462,8 @@ msgid "Required"
 msgstr "Gerekli"
 
 #: ../widget/preference.vala:399
-msgid "Restore default settings"
-msgstr "Varsayılan ayarları geri yükle"
+msgid "Restore Defaults"
+msgstr "Varsayılanı Geri Yükle"
 
 #: ../main.vala:182
 msgid ""

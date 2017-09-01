@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-29 22:04+0800\n"
+"POT-Creation-Date: 2017-08-30 12:34+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Charles Monzat <superboa@hotmail.fr>, 2017\n"
 "Language-Team: French (https://www.transifex.com/linuxdeepin/teams/3976/fr/)\n"
@@ -462,8 +462,8 @@ msgid "Required"
 msgstr "Requis"
 
 #: ../widget/preference.vala:399
-msgid "Restore default settings"
-msgstr "Paramètres par défaut"
+msgid "Restore Defaults"
+msgstr "Restaurer les valeurs par défaut"
 
 #: ../main.vala:182
 msgid ""

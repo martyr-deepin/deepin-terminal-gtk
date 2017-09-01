@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-29 22:04+0800\n"
+"POT-Creation-Date: 2017-08-30 12:34+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: cxbii <mycxbii@gmail.com>, 2017\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/linuxdeepin/teams/3976/zh_CN/)\n"
@@ -463,8 +463,8 @@ msgid "Required"
 msgstr "必填"
 
 #: ../widget/preference.vala:399
-msgid "Restore default settings"
-msgstr "恢复默认设置"
+msgid "Restore Defaults"
+msgstr "恢复默认"
 
 #: ../main.vala:182
 msgid ""

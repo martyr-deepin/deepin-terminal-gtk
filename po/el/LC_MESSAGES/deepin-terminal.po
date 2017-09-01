@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-29 22:04+0800\n"
+"POT-Creation-Date: 2017-08-30 12:34+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: geost <george.stefanakis@gmail.com>, 2017\n"
 "Language-Team: Greek (https://www.transifex.com/linuxdeepin/teams/3976/el/)\n"
@@ -463,8 +463,8 @@ msgid "Required"
 msgstr "Απαιτείται"
 
 #: ../widget/preference.vala:399
-msgid "Restore default settings"
-msgstr "Επαναφορά αρχικών ρυθμίσεων"
+msgid "Restore Defaults"
+msgstr ""
 
 #: ../main.vala:182
 msgid ""
