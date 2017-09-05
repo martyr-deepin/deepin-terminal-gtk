@@ -15,7 +15,6 @@ You can run, exit or create shortcuts for Deepin Terminal.
 
 1. Click on ![launcher-24](icon/launcher-24.svg) on dock to enter launcher interface.
 2. Find ![terminal-24](icon/terminal-24.svg) to click on, you can:
-
  - Click on **Send to desktop** to create a desktop shortcut.
  - Click on **Send to dock** to fix it on dock.
  - Click on **Add to startup** to add it to startup, it will automatically run when the system starts up.
@@ -38,7 +37,7 @@ You can run, exit or create shortcuts for Deepin Terminal.
 
 You can press ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![QM](icon/QM.svg) on keyboard to open shortcuts preview interface.
 
- ![1|hotkey](png/hotkey.png)
+ ![1|shortcuts](png/shortcuts.png)
 
 
 ## Basic Operations|../common/icon_basicoperation.svg|
@@ -65,6 +64,18 @@ You can use the search function to quickly search contents in terminal.
 > ![tips](icon/tips.svg): Press ![Enter](icon/Enter.svg) to search down from current location. You can also click on ![up](icon/up.svg) and ![down](icon/down.svg) to search.
 
 
+### Google ###
+
+You can search the keyword through Google in terminal.
+
+1. Type some words in terminal.
+
+2. Selected the words and right click to select **Google**.
+
+3. The words will be searched and the results will be displayed in Google.
+
+
+
 ### Copy/Paste ###
 
 You can freely copy and paste the contents or commands among terminal and anywhere else.
@@ -80,7 +91,7 @@ You can freely copy and paste the contents or commands among terminal and anywhe
 
 ### Quake Mode ###
 
-Press ![Alt](icon/Alt.svg) + ![F2](icon/F2.svg) to open a quake window, and then press again to hide.
+Press ![Alt](icon/Alt.svg) + ![F2](icon/F2.svg) to open a quake window, and then hide after lost focus.
 
 > ![tips](icon/tips.svg): You can also click on ![terminal-24](icon/terminal-24.svg) on Dock to select **Quake Terminal** to open a quake window.
 
@@ -125,6 +136,19 @@ Window is the base for you to do other operations in terminal. You can create ma
 
 > ![tips](icon/tips.svg): You can also right click on ![terminal-24](icon/terminal-24.svg) on Dock to select **New Window**.
 
+### Rename Window ###
+
+
+1. Right click on Deepin Terminal interface.
+
+2. Select **Rename title**.
+
+3. Input the name and click on **Rename**.
+
+> ![tips](icon/tips.svg): You can also press ![F2](icon/F2.svg)  to rename the window title.
+
+ ![1|rename](png/rename.png)
+
 
 ### Split Window ###
 
@@ -164,7 +188,7 @@ For multiple splitting windows, you can execute the following operations to clos
 
   - Select **Close other windows** to close other splitting windows except the current window.
 
- ![1|closesplitscreen](png/closesplitscreen.png)
+ ![1|closewindow](png/closewindow.png)
 
 
 ## Workspace Operations|../common/icon_workspaceoperation.svg|
@@ -274,7 +298,7 @@ You can upload and download files after logged in a server.
 
 3. Select file to upload.
 
-![1|export](png/export.png)
+![1|upload](png/upload.png)
 
 
 #### Download File ####
@@ -318,7 +342,7 @@ You can upload and download files after logged in a server.
 
 3. Select **Add command**.
 
-4. Input **Name**,**Command** and **Shortcuts**.
+4. Input **Name**, **Command** and **Shortcuts**.
 
 5. Click on **Add**.
 
@@ -365,17 +389,21 @@ You can upload and download files after logged in a server.
 
   - Set cursor style.
 
-  - Enable or disable cursor blink.
+  - Enable or disable **Cursor blink**.
 
-  - Enable or disable the function of **Scroll on keystroke**.
+  - Enable or disable **Cursor autohide**.
 
-  - Enable or disable the function of **Scroll on output**.
+  - Enable or disable **Scroll on keystroke**.
+
+  - Enable or disable **Scroll on output**.
 
   - Set window startup mode.
 
- ![0|advancedset](png/advancedset.png)
+  - Enable or disable **Hide quake window after lost focus**.
 
-> ![notes](icon/notes.svg): If you need to restore all default settings, please click on **Restore default settings**.
+ ![0|advanced](png/advanced.png)
+
+> ![notes](icon/notes.svg): If you need to restore all default settings, please click on **Restore Defaults**.
 
 
 ### Help ###
