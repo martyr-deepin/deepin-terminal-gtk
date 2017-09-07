@@ -1212,7 +1212,7 @@ namespace Widgets {
         public void search_in_google(string search_text) {
             try {
                 GLib.AppInfo appinfo = GLib.AppInfo.create_from_commandline(
-                    "xdg-open 'http://google.com/search?q=%s'".printf(search_text.escape("\n")),
+                    "xdg-open 'http://google.com/search?q=%s'".printf(search_text),
                     null, GLib.AppInfoCreateFlags.NONE);
                 appinfo.launch(null, null);
             } catch (GLib.Error e) {
