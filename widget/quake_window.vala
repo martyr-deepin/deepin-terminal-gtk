@@ -112,7 +112,23 @@ namespace Widgets {
                             if (show_quake_menu) {
                                 show_quake_menu = false;
                             } else {
-                                hide();
+                                GLib.Timeout.add(200, () => {
+                                        var window_state = get_window().get_state();
+                                        // Because some desktop environment, such as DDE will grab keyboard focus when press keystroke. :(
+                                        //
+                                        // When press quakewindow shortcuts will make code follow order: `focus_out event -> toggle_quake_window'.
+                                        // focus_out event will make quakewindow hide immediately, quakewindow will show agian when execute toggle_quake_window.
+                                        // At last, quakewindow will execute 'hide' and 'show' actions twice, not just simple hide window.
+                                        // 
+                                        // So i add 200ms timeout to wait toggle_quake_window execute,
+                                        // focus_out event will hide window if it find window is show state after execute toggle_quake_window.
+                                        if (!(Gdk.WindowState.WITHDRAWN in window_state)) {
+                                            hide();
+                                        }
+
+                                        return false;
+                                    });
+                                // hide();
                             }
                         }
                     } catch (Error e) {
@@ -222,6 +238,7 @@ namespace Widgets {
                     show_all();
                     present();
                 } else {
+
                     try {
                         // When option hide_quakewindow_after_lost_focus enable.
                         // Focus terminal if terminal is not active, only hide temrinal after terminal focus.
