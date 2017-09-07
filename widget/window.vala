@@ -572,6 +572,7 @@ namespace Widgets {
             get_window().get_frame_extents(out rect);
 
             if (window_is_normal()) {
+                config.load_config();
                 config.config_file.set_integer("advanced", "window_width", rect.width);
                 config.config_file.set_integer("advanced", "window_height", rect.height);
                 config.save();

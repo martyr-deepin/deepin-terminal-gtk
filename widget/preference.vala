@@ -261,6 +261,7 @@ namespace Widgets {
 			
 			opacity_progressbar.set_percent(opacity);
 			opacity_progressbar.update.connect((w, percent) => {
+                    parent_window.config.load_config();
 					parent_window.config.config_file.set_double("general", "opacity", percent);
 					parent_window.config.save();
 					
@@ -352,6 +353,7 @@ namespace Widgets {
 				print("Preference set cursor shape: %s\n", e.message);
 			}
 			cursor_style_button.change_cursor_state.connect((w, active_state) => {
+                    parent_window.config.load_config();
 					parent_window.config.config_file.set_string("advanced", "cursor_shape", active_state);
 					parent_window.config.save();
 					
@@ -602,6 +604,7 @@ namespace Widgets {
 		
 		public void monitor_check_key(ShortcutEntry entry, string group_name, string key) {
             entry.change_key.connect((e, new_key) => {
+                    parent_window.config.load_config();
 					parent_window.config.config_file.set_string(group_name, key, new_key);
 					parent_window.config.save();
 					
@@ -631,6 +634,7 @@ namespace Widgets {
                 }
                 
                 combox.changed.connect((w) => {
+                        parent_window.config.load_config();
                         parent_window.config.config_file.set_string(group_name, key, values[combox.get_active()]);
                         parent_window.config.save();
 						
@@ -658,6 +662,7 @@ namespace Widgets {
                 }
                 
                 combox.changed.connect((w) => {
+                        parent_window.config.load_config();
                         parent_window.config.config_file.set_string(group_name, key, values[combox.get_active()]);
                         parent_window.config.save();
 						
@@ -749,6 +754,7 @@ namespace Widgets {
             checkbutton.toggled.connect((w) => {
                     var is_active = checkbutton.get_active();
                     
+                    parent_window.config.load_config();
                     parent_window.config.config_file.set_boolean(group_name, key, is_active);
                     parent_window.config.save();
                     
@@ -760,6 +766,7 @@ namespace Widgets {
             spinbutton.value_changed.connect((w) => {
                     var spin_value = spinbutton.get_value();
                     
+                    parent_window.config.load_config();
                     parent_window.config.config_file.set_integer(group_name, key, (int) spin_value);
                     parent_window.config.save();
                     

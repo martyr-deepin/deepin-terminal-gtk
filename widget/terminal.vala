@@ -681,6 +681,7 @@ namespace Widgets {
                     }
 
                     if (new_opacity != old_opacity) {
+                        window.config.load_config();
                         window.config.config_file.set_double("general", "opacity", new_opacity);
                         window.config.save();
 
