@@ -199,7 +199,6 @@ namespace Widgets {
 
                 var search_label = new Gtk.Label(null);
                 search_label.set_text("%s %s".printf(_("Search:"), search_text));
-                search_label.get_style_context().add_class("remote_search_label");
                 top_box.pack_start(search_label, true, true, 0);
 
                 var split_line = new SplitLine(parent_window.is_light_theme());
@@ -220,6 +219,15 @@ namespace Widgets {
                         });
                     command_box.pack_start(command_button, false, false, 0);
                 }
+
+                realize.connect((w) => {
+                        bool is_light_theme = ((Widgets.ConfigWindow) get_toplevel()).is_light_theme();
+                        if (is_light_theme) {
+                            search_label.get_style_context().add_class("remote_search_label_light");
+                        } else {
+                            search_label.get_style_context().add_class("remote_search_label_dark");
+                        }
+                    });
             } catch (Error e) {
                 if (!FileUtils.test(config_file_path, FileTest.EXISTS)) {
                     print("CommandPanel create_search_page: %s\n", e.message);

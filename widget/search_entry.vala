@@ -62,7 +62,6 @@ namespace Widgets {
             search_label = new Gtk.Label(null);
             search_label.set_valign(Gtk.Align.CENTER);
             search_label.set_text(_("Search"));
-            search_label.get_style_context().add_class("remote_search_label");
             search_entry = new Widgets.Entry();
             search_entry.set_placeholder_text(_("Search"));
             search_entry.get_style_context().add_class("remote_search_entry");
@@ -74,6 +73,15 @@ namespace Widgets {
                 });
             
             switch_to_display();
+            
+            realize.connect((w) => {
+                    bool is_light_theme = ((Widgets.ConfigWindow) get_toplevel()).is_light_theme();
+                    if (is_light_theme) {
+                        search_label.get_style_context().add_class("remote_search_label_light");
+                    } else {
+                        search_label.get_style_context().add_class("remote_search_label_dark");
+                    }
+                });
             
             button_press_event.connect((w, e) => {
                     display_box.set_halign(Gtk.Align.START);

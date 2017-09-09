@@ -492,8 +492,12 @@
 	font-size: 11px;
 }
 
-.remote_search_label {
+.remote_search_label_dark {
 	color: #ffffff;
+}
+
+.remote_search_label_light {
+    color: #000000;
 }
 
 .password_invisible_entry {
