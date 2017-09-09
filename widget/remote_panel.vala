@@ -126,7 +126,7 @@ namespace Widgets {
                         }
                     });
 
-                var split_line = new SplitLine(parent_window.is_light_theme());
+                var split_line = new SplitLine();
                 home_page_box.pack_start(split_line, false, false, 0);
             }
 
@@ -154,7 +154,7 @@ namespace Widgets {
 
             }
 
-            var split_line = new SplitLine(parent_window.is_light_theme());
+            var split_line = new SplitLine();
             home_page_box.pack_start(split_line, false, false, 0);
 
             Widgets.AddButton add_server_button = create_add_server_button();
@@ -349,7 +349,7 @@ namespace Widgets {
                 });
             top_box.pack_start(back_button, false, false, 0);
 
-            var split_line = new SplitLine(parent_window.is_light_theme());
+            var split_line = new SplitLine();
             group_page_box.pack_start(split_line, false, false, 0);
 
             if (ungroups.size > 1) {
@@ -473,7 +473,7 @@ namespace Widgets {
                 search_label.set_text("%s %s".printf(_("Search:"), search_text));
                 top_box.pack_start(search_label, true, true, 0);
 
-                var split_line = new SplitLine(parent_window.is_light_theme());
+                var split_line = new SplitLine();
                 search_page_box.pack_start(split_line, false, false, 0);
 
                 search_page_scrolledwindow = create_scrolled_window();
@@ -581,7 +581,7 @@ namespace Widgets {
         }
 
         public Widgets.AddButton create_add_server_button() {
-            Widgets.AddButton add_server_button = new Widgets.AddButton(parent_window.is_light_theme(), _("Add server"));
+            Widgets.AddButton add_server_button = new Widgets.AddButton(_("Add server"));
             add_server_button.clicked.connect((w) => {
                     var remote_server_dialog = new Widgets.RemoteServerDialog(parent_window, this);
                     remote_server_dialog.transient_for_window(parent_window);

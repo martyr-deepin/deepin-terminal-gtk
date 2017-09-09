@@ -101,7 +101,7 @@ namespace Widgets {
                         }
                     });
 
-                var split_line = new SplitLine(parent_window.is_light_theme());
+                var split_line = new SplitLine();
                 home_page_box.pack_start(split_line, false, false, 0);
             }
 
@@ -124,7 +124,7 @@ namespace Widgets {
 
             }
 
-            var split_line = new SplitLine(parent_window.is_light_theme());
+            var split_line = new SplitLine();
             home_page_box.pack_start(split_line, false, false, 0);
 
             Widgets.AddButton add_command_button = create_add_command_button();
@@ -201,7 +201,7 @@ namespace Widgets {
                 search_label.set_text("%s %s".printf(_("Search:"), search_text));
                 top_box.pack_start(search_label, true, true, 0);
 
-                var split_line = new SplitLine(parent_window.is_light_theme());
+                var split_line = new SplitLine();
                 search_page_box.pack_start(split_line, false, false, 0);
 
                 search_page_scrolledwindow = create_scrolled_window();
@@ -308,7 +308,7 @@ namespace Widgets {
         }
 
         public Widgets.AddButton create_add_command_button() {
-            Widgets.AddButton add_command_button = new Widgets.AddButton(parent_window.is_light_theme(), _("Add command"));
+            Widgets.AddButton add_command_button = new Widgets.AddButton(_("Add command"));
             add_command_button.clicked.connect((w) => {
                     Term focus_term = workspace_manager.focus_workspace.get_focus_term(workspace_manager.focus_workspace);
                     var command_dialog = new Widgets.CommandDialog(parent_window, focus_term, this);

@@ -28,15 +28,18 @@ namespace Widgets {
     public class AddButton : Gtk.Button {
         public int height = 36;
 
-        public AddButton(bool is_light_theme, string button_name) {
+        public AddButton(string button_name) {
             set_label("＋ %s".printf(button_name));
             set_size_request(-1, height);
             
-            if (is_light_theme) {
-                get_style_context().add_class("add_button_light");
-            } else {
-                get_style_context().add_class("add_button_dark");
-            }
+            realize.connect((w) => {
+                    bool is_light_theme = ((Widgets.ConfigWindow) get_toplevel()).is_light_theme();
+                    if (is_light_theme) {
+                        get_style_context().add_class("add_button_light");
+                    } else {
+                        get_style_context().add_class("add_button_dark");
+                    }
+                });
         }
     }
 }
