@@ -419,7 +419,21 @@ namespace Widgets {
                     "%s + 6".printf(select_workspace_key),
                     "%s + 7".printf(select_workspace_key),
                     "%s + 8".printf(select_workspace_key),
-                    "%s + 9".printf(select_workspace_key)};
+                    "%s + 9".printf(select_workspace_key)
+                };
+
+                var new_terminal_key = config.config_file.get_string("shortcut", "new_terminal");
+                string[] new_terminal_shortcuts = {
+                    "%s + 1".printf(new_terminal_key),
+                    "%s + 2".printf(new_terminal_key),
+                    "%s + 3".printf(new_terminal_key),
+                    "%s + 4".printf(new_terminal_key),
+                    "%s + 5".printf(new_terminal_key),
+                    "%s + 6".printf(new_terminal_key),
+                    "%s + 7".printf(new_terminal_key),
+                    "%s + 8".printf(new_terminal_key),
+                    "%s + 9".printf(new_terminal_key)
+                };
 
                 if (keyname == "F1") {
                     Utils.show_manual();
@@ -573,6 +587,19 @@ namespace Widgets {
 
                 if (keyname in select_workspace_shortcuts) {
                     workspace_manager.switch_workspace_with_index(int.parse(Keymap.get_key_name(key_event.keyval)));
+                    return true;
+                }
+                
+                if (keyname in new_terminal_shortcuts) {
+                    var theme_name = config.config_file.get_string("theme_terminal", "theme%i".printf(int.parse(Keymap.get_key_name(key_event.keyval))));
+                    
+                    try {
+                        GLib.AppInfo appinfo = GLib.AppInfo.create_from_commandline("deepin-terminal --load-theme %s".printf(theme_name), null, GLib.AppInfoCreateFlags.NONE);
+                        appinfo.launch(null, null);
+                    } catch (GLib.Error e) {
+                        print("Appbar menu item 'new window': %s\n", e.message);
+                    }
+                    
                     return true;
                 }
 

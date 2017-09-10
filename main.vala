@@ -74,6 +74,7 @@ public class Application : Object {
 	private static bool quake_mode = false;
     private static string? window_mode = null;
 	private static string? work_directory = null;
+    private static string? load_theme = null;
 
     // pass_options just for print help information, we need parse -e or -x commands myself.
     [CCode (array_length = false, array_null_terminated = true)]
@@ -169,6 +170,15 @@ public class Application : Object {
                     description=_("Quake mode"),
                     arg_description=null
                 },
+                OptionEntry() {
+                    long_name="load-theme",
+                    short_name='l', 
+                    flags=0, 
+                    arg=OptionArg.STRING, 
+                    arg_data=&load_theme,
+                    description=_("Load theme in new terminal"),
+                    arg_description=null
+                },
                 OptionEntry()
             };
 
@@ -244,6 +254,7 @@ public class Application : Object {
             } else {
                 window = new Widgets.Window(window_mode);
                 window.show_window((TerminalApp) this, workspace_manager, tabbar, has_start);
+                window.config.set_theme(load_theme);
                 Utils.write_log("Deepin terminal start in: %s\n".printf((GLib.get_real_time() / 1000 - Application.start_time).to_string()));
                 tabbar.init(workspace_manager, window);
             }

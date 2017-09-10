@@ -113,6 +113,7 @@ namespace Config {
                 config_file.set_string("shortcut", "custom_commands", "Ctrl + [");
                 config_file.set_string("shortcut", "remote_management", "Ctrl + /");
                 config_file.set_string("shortcut", "select_workspace", "Alt");
+                config_file.set_string("shortcut", "new_terminal", "Ctrl + Alt");
 
                 config_file.set_string("advanced", "cursor_shape", "block");
                 config_file.set_boolean("advanced", "cursor_blink_mode", true);
@@ -162,6 +163,16 @@ namespace Config {
                 config_file.set_string("theme", "foreground", "#00cd00");
                 config_file.set_string("theme", "tab", "#2CA7F8");
                 config_file.set_string("theme", "style", "dark");
+
+                config_file.set_string("theme_terminal", "theme1", "solarized dark");
+                config_file.set_string("theme_terminal", "theme2", "bim");
+                config_file.set_string("theme_terminal", "theme3", "hemisu light");
+                config_file.set_string("theme_terminal", "theme4", "gruvbox light");
+                config_file.set_string("theme_terminal", "theme5", "elementary");
+                config_file.set_string("theme_terminal", "theme6", "azu");
+                config_file.set_string("theme_terminal", "theme7", "aco");
+                config_file.set_string("theme_terminal", "theme8", "miu");
+                config_file.set_string("theme_terminal", "theme9", "material");
             } catch (Error e) {
                 print("Config init_config: %s\n", e.message);
             }
@@ -304,6 +315,7 @@ namespace Config {
             check_string("shortcut", "custom_commands", "Ctrl + [");
             check_string("shortcut", "remote_management", "Ctrl + /");
             check_string("shortcut", "select_workspace", "Alt");
+            check_string("shortcut", "new_terminal", "Ctrl + Alt");
 
             check_string("advanced", "cursor_shape", "block");
             check_boolean("advanced", "cursor_blink_mode", true);
@@ -343,6 +355,16 @@ namespace Config {
             check_string("theme", "foreground", "#00cd00");  // foreground
             check_string("theme", "tab", "#2CA7F8");         // tab
             check_string("theme", "style", "dark");          // style
+
+            check_string("theme_terminal", "theme1", "solarized dark");
+            check_string("theme_terminal", "theme2", "bim");
+            check_string("theme_terminal", "theme3", "hemisu light");
+            check_string("theme_terminal", "theme4", "gruvbox light");
+            check_string("theme_terminal", "theme5", "elementary");
+            check_string("theme_terminal", "theme6", "azu");
+            check_string("theme_terminal", "theme7", "aco");
+            check_string("theme_terminal", "theme8", "miu");
+            check_string("theme_terminal", "theme9", "material");
 
             save();
         }
