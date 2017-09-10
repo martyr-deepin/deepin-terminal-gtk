@@ -253,8 +253,8 @@ public class Application : Object {
                 tabbar.init(workspace_manager, quake_window);
             } else {
                 window = new Widgets.Window(window_mode);
-                window.show_window((TerminalApp) this, workspace_manager, tabbar, has_start);
                 window.config.set_theme(load_theme);
+                window.show_window((TerminalApp) this, workspace_manager, tabbar, has_start);
                 Utils.write_log("Deepin terminal start in: %s\n".printf((GLib.get_real_time() / 1000 - Application.start_time).to_string()));
                 tabbar.init(workspace_manager, window);
             }
