@@ -35,6 +35,8 @@ namespace Config {
         public string default_mono_font = "";
         public KeyFile config_file;
         public string config_file_path = Utils.get_config_file_path("config.conf");
+        public string? temp_theme = null;
+        public string? origin_theme = null;
 
         public signal void update();
 
@@ -381,7 +383,26 @@ namespace Config {
             }
         }
 
+        public void load_temp_theme(string theme_name) {
+            try {
+                origin_theme = config_file.get_string("general", "theme");
+                update_theme(theme_name);
+                temp_theme = theme_name;
+            } catch (Error e) {
+                print("load_temp_theme: %s\n", e.message);
+            }
+        }
+        
         public void set_theme(string theme_name) {
+            // Set temp theme with null to override.
+            temp_theme = null;
+            
+            update_theme(theme_name);
+            save();
+            update();
+        }
+        
+        public void update_theme(string theme_name) {
             try {
                 KeyFile theme_file = new KeyFile();
                 theme_file.load_from_file(Utils.get_theme_path(theme_name), KeyFileFlags.NONE);
@@ -398,16 +419,18 @@ namespace Config {
                 }
 
                 config_file.set_string("general", "theme", theme_name);
-                save();
-                update();
             } catch (Error e) {
-                print("Config set_theme: %s\n", e.message);
+                print("Config update_theme: %s\n", e.message);
             }
         }
 
         public void save() {
             try {
                 Utils.touch_dir(Utils.get_config_dir());
+                
+                if (temp_theme != null) {
+                    update_theme(origin_theme);
+                }
 
                 config_file.save_to_file(config_file_path);
             } catch (GLib.FileError e) {

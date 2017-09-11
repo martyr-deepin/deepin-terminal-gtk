@@ -256,7 +256,7 @@ public class Application : Object {
 
                 // Change theme temporary if 'load_theme' option is valid.
                 if (load_theme != null) {
-                    window.config.set_theme(load_theme);
+                    window.config.load_temp_theme(load_theme);
                 }
                 
                 window.show_window((TerminalApp) this, workspace_manager, tabbar, has_start);
