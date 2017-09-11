@@ -176,7 +176,7 @@ public class Application : Object {
                     flags=0, 
                     arg=OptionArg.STRING, 
                     arg_data=&load_theme,
-                    description=_("Load theme in new terminal"),
+                    description=_("Load theme"),
                     arg_description=null
                 },
                 OptionEntry()
