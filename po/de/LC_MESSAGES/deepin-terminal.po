@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-30 12:34+0800\n"
+"POT-Creation-Date: 2017-09-11 11:15+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Timo Kröning <timo.kroening@gmx.de>, 2017\n"
+"Last-Translator: Niklas Poslovski <ni.pos@gmx.de>, 2017\n"
 "Language-Team: German (https://www.transifex.com/linuxdeepin/teams/3976/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../widget/terminal.vala:1017
+#: ../widget/terminal.vala:1018
 msgid ""
 "\n"
 "Command has been completed, press ENTER to exit the terminal."
@@ -46,11 +46,11 @@ msgstr "Befehl hinzufügen "
 msgid "Add Server"
 msgstr "Server hinzufügen "
 
-#: ../widget/command_panel.vala:303
+#: ../widget/command_panel.vala:311
 msgid "Add command"
 msgstr "Befehl hinzufügen "
 
-#: ../widget/remote_panel.vala:576
+#: ../widget/remote_panel.vala:584
 msgid "Add server"
 msgstr "Server hinzufügen "
 
@@ -63,8 +63,8 @@ msgid "Address:"
 msgstr "Adresse:"
 
 #: ../widget/preference_slidebar.vala:75 ../widget/preference_slidebar.vala:82
-#: ../widget/preference.vala:327 ../widget/preference.vala:339
-#: ../widget/config_window.vala:361
+#: ../widget/preference.vala:328 ../widget/preference.vala:340
+#: ../widget/config_window.vala:363
 msgid "Advanced"
 msgstr "Erweitert"
 
@@ -108,27 +108,27 @@ msgstr "Zertifikat"
 msgid "Certificate:"
 msgstr "Zertifikat:"
 
-#: ../widget/terminal.vala:273 ../widget/config_window.vala:338
+#: ../widget/terminal.vala:273 ../widget/config_window.vala:340
 msgid "Close other windows"
 msgstr "Andere Fenster schließen"
 
-#: ../widget/preference.vala:325
+#: ../widget/preference.vala:326
 msgid "Close other windows:"
 msgstr "Andere Fenster schließen:"
 
-#: ../widget/terminal.vala:271 ../widget/config_window.vala:337
+#: ../widget/terminal.vala:271 ../widget/config_window.vala:339
 msgid "Close window"
 msgstr "Fenster schließen"
 
-#: ../widget/preference.vala:324
+#: ../widget/preference.vala:325
 msgid "Close window:"
 msgstr "Fenster schließen:"
 
-#: ../widget/config_window.vala:327
+#: ../widget/config_window.vala:328
 msgid "Close workspace"
 msgstr "Arbeitsfläche schließen"
 
-#: ../widget/preference.vala:315
+#: ../widget/preference.vala:316
 msgid "Close workspace:"
 msgstr "Arbeitsfläche schließen:"
 
@@ -153,19 +153,19 @@ msgstr "Kopieren"
 msgid "Copy link"
 msgstr "Link kopieren "
 
-#: ../widget/preference.vala:297
+#: ../widget/preference.vala:298
 msgid "Copy:"
 msgstr "Kopieren:"
 
-#: ../widget/preference_slidebar.vala:85 ../widget/preference.vala:342
+#: ../widget/preference_slidebar.vala:85 ../widget/preference.vala:343
 msgid "Cursor"
 msgstr "Mauszeiger"
 
-#: ../widget/preference.vala:365
+#: ../widget/preference.vala:367
 msgid "Cursor autohide"
-msgstr ""
+msgstr "Mauszeiger automatisch ausblenden"
 
-#: ../widget/preference.vala:364
+#: ../widget/preference.vala:366
 msgid "Cursor blink"
 msgstr "Cursorblinkgeschwindigkeit"
 
@@ -173,12 +173,12 @@ msgstr "Cursorblinkgeschwindigkeit"
 msgid "Cursor style:"
 msgstr "Mauszeigerstil:"
 
-#: ../widget/terminal.vala:299 ../widget/config_window.vala:355
+#: ../widget/terminal.vala:299 ../widget/config_window.vala:357
 #: ../widget/appbar.vala:122
 msgid "Custom commands"
 msgstr "Benutzerdefinierte Befehle"
 
-#: ../widget/preference.vala:336
+#: ../widget/preference.vala:337
 msgid "Custom commands:"
 msgstr "Benutzerdefinierte Befehle:"
 
@@ -186,11 +186,11 @@ msgstr "Benutzerdefinierte Befehle:"
 msgid "Cut"
 msgstr "Ausschneiden"
 
-#: ../main.vala:175 ../widget/about_widget.vala:82 ../widget/tabbar.vala:603
+#: ../main.vala:185 ../widget/about_widget.vala:82 ../widget/tabbar.vala:603
 msgid "Deepin Terminal"
 msgstr "Deepin Terminal"
 
-#: ../main.vala:176 ../widget/about_widget.vala:49
+#: ../main.vala:186 ../widget/about_widget.vala:49
 msgid ""
 "Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.\n"
 "\n"
@@ -204,7 +204,7 @@ msgstr ""
 msgid "Default size"
 msgstr "Standardgröße"
 
-#: ../widget/preference.vala:303
+#: ../widget/preference.vala:304
 msgid "Default size:"
 msgstr "Standardgröße:"
 
@@ -230,15 +230,15 @@ msgstr "Taste löschen:"
 msgid "Delete server"
 msgstr "Server löschen"
 
-#: ../widget/config_window.vala:354
+#: ../widget/config_window.vala:356
 msgid "Display shortcuts"
 msgstr "Tastenkürzel anzeigen "
 
-#: ../widget/preference.vala:335
+#: ../widget/preference.vala:336
 msgid "Display shortcuts:"
 msgstr "Tastenkürzel anzeigen:"
 
-#: ../main.vala:124
+#: ../main.vala:125
 msgid "Display version"
 msgstr "Version anzeigen "
 
@@ -270,19 +270,19 @@ msgstr "Beenden"
 msgid "Exit fullscreen"
 msgstr "Vollbild beenden"
 
-#: ../widget/preference.vala:286
+#: ../widget/preference.vala:287
 msgid "Font size:"
 msgstr "Schriftgröße:"
 
-#: ../widget/preference.vala:284
+#: ../widget/preference.vala:285
 msgid "Font:"
 msgstr "Schriftart:"
 
-#: ../widget/preference.vala:389 ../widget/terminal.vala:285
+#: ../widget/preference.vala:391 ../widget/terminal.vala:285
 msgid "Fullscreen"
 msgstr "Vollbild"
 
-#: ../widget/preference.vala:333
+#: ../widget/preference.vala:334
 msgid "Fullscreen:"
 msgstr "Vollbild:"
 
@@ -298,15 +298,15 @@ msgstr "Gruppe:"
 msgid "Help"
 msgstr "Hilfe"
 
-#: ../widget/preference.vala:393
+#: ../widget/preference.vala:395
 msgid "Hide quake window after lost focus"
 msgstr "Fenster am oberen Bildschirmrand verstecken"
 
-#: ../widget/terminal.vala:269 ../widget/config_window.vala:332
+#: ../widget/terminal.vala:269 ../widget/config_window.vala:334
 msgid "Horizontal split"
 msgstr "Horizontal teilen"
 
-#: ../widget/preference.vala:319
+#: ../widget/preference.vala:320
 msgid "Horizontal split:"
 msgstr "Horizontal teilen:"
 
@@ -318,7 +318,7 @@ msgstr "Schnittstelle"
 msgid "Jump to next command"
 msgstr "Zum nächsten Befehl springen"
 
-#: ../widget/preference.vala:304
+#: ../widget/preference.vala:305
 msgid "Jump to next command:"
 msgstr "Zum nächsten Befehl springen:"
 
@@ -326,11 +326,15 @@ msgstr "Zum nächsten Befehl springen:"
 msgid "Jump to previous command"
 msgstr "Zum vorherigen Befehl springen"
 
-#: ../widget/preference.vala:305
+#: ../widget/preference.vala:306
 msgid "Jump to previous command:"
 msgstr "Zum vorherigen Befehl springen:"
 
-#: ../widget/preference.vala:388
+#: ../main.vala:179
+msgid "Load theme"
+msgstr ""
+
+#: ../widget/preference.vala:390
 msgid "Maximize"
 msgstr "Maximieren"
 
@@ -342,27 +346,31 @@ msgstr "Name"
 msgid "Name:"
 msgstr "Name:"
 
+#: ../widget/config_window.vala:332
+msgid "New theme terminal"
+msgstr ""
+
 #: ../widget/appbar.vala:120
 msgid "New window"
 msgstr "Neues Fenster "
 
-#: ../widget/terminal.vala:277 ../widget/config_window.vala:326
+#: ../widget/terminal.vala:277 ../widget/config_window.vala:327
 msgid "New workspace"
 msgstr "Neue Arbeitsfläche"
 
-#: ../widget/preference.vala:314
+#: ../widget/preference.vala:315
 msgid "New workspace:"
 msgstr "Neue Arbeitsfläche:"
 
-#: ../widget/config_window.vala:328
+#: ../widget/config_window.vala:329
 msgid "Next workspace"
 msgstr "Nächste Arbeitsfläche"
 
-#: ../widget/preference.vala:317
+#: ../widget/preference.vala:318
 msgid "Next workspace:"
 msgstr "Nächste Arbeitsfläche:"
 
-#: ../widget/preference.vala:387
+#: ../widget/preference.vala:389
 msgid "Normal window"
 msgstr "Normales Fenster"
 
@@ -374,7 +382,7 @@ msgstr "Undurchsichtigkeit:"
 msgid "Open"
 msgstr "Öffnen"
 
-#: ../widget/preference.vala:299
+#: ../widget/preference.vala:300
 msgid "Open:"
 msgstr "Öffnen:"
 
@@ -397,7 +405,7 @@ msgstr "Passwort:"
 msgid "Paste"
 msgstr "Einfügen"
 
-#: ../widget/preference.vala:298
+#: ../widget/preference.vala:299
 msgid "Paste:"
 msgstr "Einfügen:"
 
@@ -417,11 +425,11 @@ msgstr "Bitte geben Sie ein neues Tastenkürzel ein "
 msgid "Port:"
 msgstr "Port"
 
-#: ../widget/config_window.vala:329
+#: ../widget/config_window.vala:330
 msgid "Previous workspace"
 msgstr "Vorherige Arbeitsfläche"
 
-#: ../widget/preference.vala:316
+#: ../widget/preference.vala:317
 msgid "Previous workspace:"
 msgstr "Vorherige Arbeitsfläche:"
 
@@ -429,16 +437,16 @@ msgstr "Vorherige Arbeitsfläche:"
 msgid "Programs are still running in terminal"
 msgstr "Es werden noch Programme im Terminal ausgeführt"
 
-#: ../main.vala:169
+#: ../main.vala:170
 msgid "Quake mode"
 msgstr "Quake-Modus"
 
-#: ../widget/terminal.vala:300 ../widget/config_window.vala:356
+#: ../widget/terminal.vala:300 ../widget/config_window.vala:358
 #: ../widget/appbar.vala:123
 msgid "Remote management"
 msgstr "Fernverwaltung"
 
-#: ../widget/preference.vala:337
+#: ../widget/preference.vala:338
 msgid "Remote management:"
 msgstr "Fernverwaltung:"
 
@@ -447,11 +455,11 @@ msgid "Rename"
 msgstr "Umbenennen"
 
 #: ../widget/terminal.vala:297 ../widget/terminal.vala:462
-#: ../widget/config_window.vala:352
+#: ../widget/config_window.vala:354
 msgid "Rename title"
 msgstr "Titel umbenennen"
 
-#: ../widget/preference.vala:334
+#: ../widget/preference.vala:335
 msgid "Rename title:"
 msgstr "Titel umbenennen:"
 
@@ -462,18 +470,18 @@ msgstr "Titel umbenennen:"
 msgid "Required"
 msgstr "Erforderlich"
 
-#: ../widget/preference.vala:399
+#: ../widget/preference.vala:401
 msgid "Restore Defaults"
 msgstr "Standardeinstellungen wiederherstellen"
 
-#: ../main.vala:182
+#: ../main.vala:192
 msgid ""
 "Run '%s --help' to view a full list of available command line pass_options"
 msgstr ""
 "Führen Sie den Befehl -help' aus, %s --help' aus, um eine vollständige Liste"
 " der Befehlszeilenparameter zu erhalten."
 
-#: ../main.vala:151 ../main.vala:160
+#: ../main.vala:152 ../main.vala:161
 msgid "Run a program in the terminal"
 msgstr "Ein Programm im Terminal ausführen "
 
@@ -481,24 +489,24 @@ msgstr "Ein Programm im Terminal ausführen "
 msgid "Save"
 msgstr "Speichern"
 
-#: ../widget/preference_slidebar.vala:88 ../widget/preference.vala:367
+#: ../widget/preference_slidebar.vala:88 ../widget/preference.vala:369
 msgid "Scroll"
 msgstr "Bildlauf"
 
-#: ../widget/preference.vala:373
+#: ../widget/preference.vala:375
 msgid "Scroll on keystroke"
 msgstr "Bildlauf bei Tastendruck"
 
-#: ../widget/preference.vala:374
+#: ../widget/preference.vala:376
 msgid "Scroll on output"
 msgstr "Bildlauf bei Ausgabe"
 
 #: ../widget/terminal.vala:289 ../widget/search_entry.vala:64
-#: ../widget/search_entry.vala:67 ../widget/config_window.vala:304
+#: ../widget/search_entry.vala:66 ../widget/config_window.vala:304
 msgid "Search"
 msgstr "Suchen"
 
-#: ../widget/preference.vala:300 ../widget/remote_panel.vala:473
+#: ../widget/preference.vala:301 ../widget/remote_panel.vala:473
 #: ../widget/command_panel.vala:201
 msgid "Search:"
 msgstr "Suchen:"
@@ -511,7 +519,7 @@ msgstr "Auswählen"
 msgid "Select all"
 msgstr "Alles auswählen"
 
-#: ../widget/preference.vala:306
+#: ../widget/preference.vala:307
 msgid "Select all:"
 msgstr "Alles auswählen:"
 
@@ -523,27 +531,27 @@ msgstr "Downloadordner auswählen"
 msgid "Select file to upload"
 msgstr "Datei zum Hochladen auswählen"
 
-#: ../widget/config_window.vala:335
+#: ../widget/config_window.vala:337
 msgid "Select left window"
 msgstr "Linkes Fenster auswählen"
 
-#: ../widget/preference.vala:322
+#: ../widget/preference.vala:323
 msgid "Select left window:"
 msgstr "Linkes Fenster auswählen:"
 
-#: ../widget/config_window.vala:334
+#: ../widget/config_window.vala:336
 msgid "Select lower window"
 msgstr "Unteres Fenster auswählen"
 
-#: ../widget/preference.vala:321
+#: ../widget/preference.vala:322
 msgid "Select lower window:"
 msgstr "Unteres Fenster auswählen:"
 
-#: ../widget/config_window.vala:336
+#: ../widget/config_window.vala:338
 msgid "Select right window"
 msgstr "Rechtes Fenster auswählen"
 
-#: ../widget/preference.vala:323
+#: ../widget/preference.vala:324
 msgid "Select right window:"
 msgstr "Rechtes Fenster auswählen:"
 
@@ -551,15 +559,15 @@ msgstr "Rechtes Fenster auswählen:"
 msgid "Select the private key file"
 msgstr "Private Schlüsseldatei auswählen"
 
-#: ../widget/config_window.vala:333
+#: ../widget/config_window.vala:335
 msgid "Select upper window"
 msgstr "Oberes Fenster auswählen"
 
-#: ../widget/preference.vala:320
+#: ../widget/preference.vala:321
 msgid "Select upper window:"
 msgstr "Oberes Fenster auswählen:"
 
-#: ../widget/config_window.vala:330
+#: ../widget/config_window.vala:331
 msgid "Select workspace"
 msgstr "Arbeitsfläche auswählen"
 
@@ -571,11 +579,11 @@ msgstr "Servername"
 msgid "Server name:"
 msgstr "Servername:"
 
-#: ../main.vala:133
+#: ../main.vala:134
 msgid "Set the terminal startup directory"
 msgstr "Hauptverzeichnis festlegen indem das Terminal gestartet wird."
 
-#: ../main.vala:115
+#: ../main.vala:116
 msgid "Set the terminal window mode"
 msgstr "Den Fenstermodus des Terminals festlegen."
 
@@ -583,7 +591,7 @@ msgstr "Den Fenstermodus des Terminals festlegen."
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: ../widget/preference_slidebar.vala:66 ../widget/preference.vala:288
+#: ../widget/preference_slidebar.vala:66 ../widget/preference.vala:289
 #: ../widget/command_dialog.vala:83
 msgid "Shortcuts"
 msgstr "Tastenkürzel"
@@ -592,7 +600,7 @@ msgstr "Tastenkürzel"
 msgid "Shortcuts:"
 msgstr "Tastenkürzel:"
 
-#: ../widget/config_window.vala:353
+#: ../widget/config_window.vala:355
 msgid "Switch fullscreen"
 msgstr "Vollbild umschalten"
 
@@ -600,7 +608,7 @@ msgstr "Vollbild umschalten"
 msgid "Switch theme"
 msgstr "Thema wechseln"
 
-#: ../widget/preference_slidebar.vala:69 ../widget/preference.vala:291
+#: ../widget/preference_slidebar.vala:69 ../widget/preference.vala:292
 #: ../widget/config_window.vala:315
 msgid "Terminal"
 msgstr "Terminal"
@@ -617,7 +625,7 @@ msgstr "Hochladen"
 msgid "Upload file"
 msgstr "Datei hochladen"
 
-#: ../widget/preference.vala:390
+#: ../widget/preference.vala:392
 msgid "Use on starting:"
 msgstr "Beim Startvorgang verwenden:"
 
@@ -633,11 +641,11 @@ msgstr "Benutzername:"
 msgid "Version:"
 msgstr "Version:"
 
-#: ../widget/terminal.vala:270 ../widget/config_window.vala:331
+#: ../widget/terminal.vala:270 ../widget/config_window.vala:333
 msgid "Vertical split"
 msgstr "Vertikal teilen"
 
-#: ../widget/preference.vala:318
+#: ../widget/preference.vala:319
 msgid "Vertical split:"
 msgstr "Vertikal teilen:"
 
@@ -652,12 +660,12 @@ msgstr ""
 "Rechtsklick Dateien auf den Server Hochladen oder einen Download vom Server "
 "beginnen."
 
-#: ../widget/preference_slidebar.vala:91 ../widget/preference.vala:376
+#: ../widget/preference_slidebar.vala:91 ../widget/preference.vala:378
 msgid "Window"
 msgstr "Fenster"
 
-#: ../widget/preference_slidebar.vala:72 ../widget/preference.vala:308
-#: ../widget/config_window.vala:343
+#: ../widget/preference_slidebar.vala:72 ../widget/preference.vala:309
+#: ../widget/config_window.vala:345
 msgid "Workspace"
 msgstr "Arbeitsfläche"
 
@@ -665,7 +673,7 @@ msgstr "Arbeitsfläche"
 msgid "Zoom in"
 msgstr "Hineinzoomen:"
 
-#: ../widget/preference.vala:301
+#: ../widget/preference.vala:302
 msgid "Zoom in:"
 msgstr "Hineinzoomen:"
 
@@ -673,10 +681,10 @@ msgstr "Hineinzoomen:"
 msgid "Zoom out"
 msgstr "Hinauszoomen:"
 
-#: ../widget/preference.vala:302
+#: ../widget/preference.vala:303
 msgid "Zoom out:"
 msgstr "Hinauszoomen:"
 
-#: ../widget/terminal.vala:613 ../widget/terminal.vala:1043
+#: ../widget/terminal.vala:613 ../widget/terminal.vala:1044
 msgid "deepin"
 msgstr "deepin"
