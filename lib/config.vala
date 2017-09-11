@@ -113,7 +113,7 @@ namespace Config {
                 config_file.set_string("shortcut", "custom_commands", "Ctrl + [");
                 config_file.set_string("shortcut", "remote_management", "Ctrl + /");
                 config_file.set_string("shortcut", "select_workspace", "Alt");
-                config_file.set_string("shortcut", "new_terminal", "Ctrl + Alt");
+                config_file.set_string("shortcut", "new_theme_terminal", "Ctrl + Alt");
 
                 config_file.set_string("advanced", "cursor_shape", "block");
                 config_file.set_boolean("advanced", "cursor_blink_mode", true);
@@ -315,7 +315,7 @@ namespace Config {
             check_string("shortcut", "custom_commands", "Ctrl + [");
             check_string("shortcut", "remote_management", "Ctrl + /");
             check_string("shortcut", "select_workspace", "Alt");
-            check_string("shortcut", "new_terminal", "Ctrl + Alt");
+            check_string("shortcut", "new_theme_terminal", "Ctrl + Alt");
 
             check_string("advanced", "cursor_shape", "block");
             check_boolean("advanced", "cursor_blink_mode", true);
