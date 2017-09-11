@@ -1,3 +1,10 @@
+2.7	
+	
+2017-09-11	Andy Stewart <lazycat.manatee@gmail.com>
+	* Add 'load_theme' option to make new terminal load theme that provide by user.
+	* Add "New theme terminal" feature: press Ctrl + Alt + num to create new theme terminal.
+	* Update pot file with new feature: load_theme option and new theme terminal window.
+	
 2.6
 
 2017-09-05	Andy Stewart <lazycat.manatee@gmail.com>
