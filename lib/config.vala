@@ -36,7 +36,6 @@ namespace Config {
         public KeyFile config_file;
         public string config_file_path = Utils.get_config_file_path("config.conf");
         public string? temp_theme = null;
-        public string? origin_theme = null;
 
         public signal void update();
 
@@ -384,13 +383,8 @@ namespace Config {
         }
 
         public void load_temp_theme(string theme_name) {
-            try {
-                origin_theme = config_file.get_string("general", "theme");
-                update_theme(theme_name);
-                temp_theme = theme_name;
-            } catch (Error e) {
-                print("load_temp_theme: %s\n", e.message);
-            }
+            update_theme(theme_name);
+            temp_theme = theme_name;
         }
         
         public void set_theme(string theme_name) {
@@ -428,8 +422,17 @@ namespace Config {
             try {
                 Utils.touch_dir(Utils.get_config_dir());
                 
+                // Restore config file theme if temp_theme is not null.
                 if (temp_theme != null) {
-                    update_theme(origin_theme);
+                    try {
+                        var theme_file = new KeyFile();
+                        theme_file.load_from_file(config_file_path, KeyFileFlags.NONE);
+                    
+                        var theme_name = theme_file.get_string("general", "theme").strip();
+                        update_theme(theme_name);
+                    } catch (KeyFileError e) {
+                        print("save: %s\n", e.message);
+                    }
                 }
 
                 config_file.save_to_file(config_file_path);
