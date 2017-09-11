@@ -255,7 +255,6 @@ public class Application : Object {
                 window = new Widgets.Window(window_mode);
                 if (load_theme != null) {
                     window.config.set_theme(load_theme);
-                    print("Load theme %s\n", load_theme);
                 }
                 window.show_window((TerminalApp) this, workspace_manager, tabbar, has_start);
                 Utils.write_log("Deepin terminal start in: %s\n".printf((GLib.get_real_time() / 1000 - Application.start_time).to_string()));
