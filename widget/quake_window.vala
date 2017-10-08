@@ -65,31 +65,22 @@ namespace Widgets {
                     update_frame();
 
                     try {
-                        var config_height = config.config_file.get_double("advanced", "quake_window_height");
-                        if (config_height == 0) {
-                            set_default_size(rect.width, (int) (rect.height * window_default_height_scale));
+                        var quake_window_fullscreen = config.config_file.get_boolean("advanced", "quake_window_fullscreen");
+                        if (quake_window_fullscreen) {
+                            fullscreen();
                         } else {
-                            set_default_size(rect.width, (int) (rect.height * double.min(config_height, 1.0)));
-                        }
-
-                        if (config_height > window_max_height_scale) {
-                            if (config_height >= 1.0) {
-                                // When quake_window_height >= 1.0, i just make terminal fullscreen.
-                                // Happy now? ;)
-                                fullscreen();
-                            } else {
-                                Gdk.Geometry geo = Gdk.Geometry();
-                                geo.min_width = rect.width;
-                                geo.min_height = (int) (rect.height * window_default_height_scale);
-                                this.set_geometry_hints(null, geo, Gdk.WindowHints.MIN_SIZE);
+                            // Don't make quake window too height that can't resize quake window from bottom edge.
+                            var config_height = config.config_file.get_double("advanced", "quake_window_height");
+                            if (config_height > window_max_height_scale) {
+                                config_height = window_max_height_scale;
                             }
-                        } else {
-                            Gdk.Geometry geo = Gdk.Geometry();
-                            geo.min_width = rect.width;
-                            geo.min_height = (int) (rect.height * window_default_height_scale);
-                            geo.max_width = rect.width;
-                            geo.max_height = (int) (rect.height * window_max_height_scale);
-                            this.set_geometry_hints(null, geo, Gdk.WindowHints.MIN_SIZE | Gdk.WindowHints.MAX_SIZE);
+
+                            // Set default size.
+                            if (config_height == 0) {
+                                set_default_size(rect.width, (int) (rect.height * window_default_height_scale));
+                            } else {
+                                set_default_size(rect.width, (int) (rect.height * double.min(config_height, 1.0)));
+                            }
                         }
                     } catch (Error e) {
                         print("QuakeWindow init: %s\n", e.message);
@@ -119,7 +110,7 @@ namespace Widgets {
                                         // When press quakewindow shortcuts will make code follow order: `focus_out event -> toggle_quake_window'.
                                         // focus_out event will make quakewindow hide immediately, quakewindow will show agian when execute toggle_quake_window.
                                         // At last, quakewindow will execute 'hide' and 'show' actions twice, not just simple hide window.
-                                        // 
+                                        //
                                         // So i add 200ms timeout to wait toggle_quake_window execute,
                                         // focus_out event will hide window if it find window is show state after execute toggle_quake_window.
                                         if (!(Gdk.WindowState.WITHDRAWN in window_state)) {
@@ -234,9 +225,7 @@ namespace Widgets {
             if (monitor == window_monitor) {
                 var window_state = get_window().get_state();
                 if (Gdk.WindowState.WITHDRAWN in window_state) {
-                    move(rect.x, 0);
-                    show_all();
-                    present();
+                    show_quake_window(rect);
                 } else {
 
                     try {
@@ -265,10 +254,21 @@ namespace Widgets {
                     }
                 }
             } else {
-                move(rect.x, 0);
-                show_all();
-                present();
+                show_quake_window(rect);
             }
+        }
+
+        public void show_quake_window(Gdk.Rectangle rect) {
+            // Init.
+            int width, height;
+            get_size(out width, out height);
+            show_all();
+
+            // Resize quake terminal window's width along with monitor's width.
+            get_window().move_resize(rect.x, 0, rect.width, height);
+
+            // Present window.
+            present();
         }
 
         public void update_style() {
@@ -384,19 +384,16 @@ namespace Widgets {
 
         public override void window_save_before_quit() {
             try {
-                var config_height = config.config_file.get_double("advanced", "quake_window_height");
-                if (config_height < 1.0) {
-                    int monitor = config.get_terminal_monitor();
-                    Gdk.Rectangle rect;
-                    screen.get_monitor_geometry(monitor, out rect);
+                int monitor = config.get_terminal_monitor();
+                Gdk.Rectangle rect;
+                screen.get_monitor_geometry(monitor, out rect);
 
-                    int width, height;
-                    get_size(out width, out height);
+                int width, height;
+                get_size(out width, out height);
 
-                    config.load_config();
-                    config.config_file.set_double("advanced", "quake_window_height", height * 1.0 / rect.height);
-                    config.save();
-                }
+                config.load_config();
+                config.config_file.set_double("advanced", "quake_window_height", height * 1.0 / rect.height);
+                config.save();
             } catch (Error e) {
                 print("QuakeWindow window_save_before_quit: %s\n", e.message);
             }
