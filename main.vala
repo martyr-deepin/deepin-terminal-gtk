@@ -188,8 +188,11 @@ public class Application : Object {
 			opt_context.add_main_entries(pass_options, null);
 			opt_context.parse(ref args);
 		} catch (OptionError e) {
-			stdout.printf("error: %s\n", e.message);
-			stdout.printf(_("Run '%s --help' to view a full list of available command line pass_options").printf(args[0]) + "\n");
+            // Don't print option error if have '-e' or '-x' in arguments.
+            if (!find_command_flag) {
+                stdout.printf("error: %s\n", e.message);
+                stdout.printf(_("Run '%s --help' to view a full list of available command line pass_options").printf(args[0]) + "\n");
+            }
 		}
 
         if (version) {
