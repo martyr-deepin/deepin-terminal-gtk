@@ -1,0 +1,46 @@
+# Bulgarian translation of vte po-file.
+# Copyright (C) 2002, 2007, 2007, 2010, 2014, 2017 Free Software Foundation, Inc.
+# This file is distributed under the same license as the vte package.
+# Alexander Shopov <ash@kambanaria.org>, 2002, 2007, 2010, 2014, 2017.
+# Vladimir "Kaladan" Petkov <vpetkov@i-space.org>, 2005.
+# Yavor Doganov <yavor@doganov.org>, 2005.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: vte master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-09-02 09:32+0300\n"
+"PO-Revision-Date: 2017-08-25 10:55+0200\n"
+"Last-Translator: Alexander Shopov <ash@kambanaria.org>\n"
+"Language-Team: Bulgarian <dict@fsa-bg.org>\n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../src/iso2022.cc:73 ../src/iso2022.cc:81 ../src/iso2022.cc:111
+#: ../src/vtegtk.cc:3423
+#, c-format
+msgid "Unable to convert characters from %s to %s."
+msgstr "Неуспешно преобразуването на знаците от %s към %s."
+
+#. Translators: %s is replaced with error message returned by strerror().
+#: ../src/vte.cc:4067
+#, c-format
+msgid "Error reading from child: %s."
+msgstr "Грешка при четене от дъщерния процес: %s."
+
+#: ../src/vte.cc:4206
+#, c-format
+msgid "Error (%s) converting data for child, dropping."
+msgstr ""
+"Грешка (%s) при преобразуването на данните за дъщерния процес, пропускане."
+
+#: ../src/vte.cc:8148
+msgid "WARNING"
+msgstr "ПРЕДУПРЕЖДЕНИЕ"
+
+#: ../src/vte.cc:8149
+msgid "GNUTLS not enabled; data will be written to disk unencrypted!"
+msgstr "GNUTLS не е включена. Данните ще бъдат записани в нешифриран вид."

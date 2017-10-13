@@ -1,0 +1,118 @@
+# translation of vte.HEAD.tr.po to Turkish
+# Turkish translation of vte.
+# Copyright (C) 2003 vte's COPYRIGHT HOLDER
+# This file is distributed under the same license as the vte package.
+#
+# Görkem Çetin <gorkem@gelecek.com.tr>, 2003.
+# Arman Aksoy <armish@linux-sevenler.de>, 2003.
+# Baris Cicek <baris@teamforce.name.tr>, 2004, 2008.
+# Volkan Yalçın <vlyalcin@gmail.com>, 2011.
+# Yaşar Şentürk <yasarix@gmail.com>, 2014.
+# Muhammet Kara <muhammetk@gmail.com>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: vte.HEAD.tr\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=vte&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2016-05-16 08:25+0000\n"
+"PO-Revision-Date: 2016-05-26 22:19+0300\n"
+"Last-Translator: Muhammet Kara <muhammetk@gmail.com>\n"
+"Language-Team: Turkish <gnome-turk@gnome.org>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.6\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../src/iso2022.cc:73 ../src/iso2022.cc:81 ../src/iso2022.cc:111
+#: ../src/vtegtk.cc:3090
+#, c-format
+msgid "Unable to convert characters from %s to %s."
+msgstr "Karakterler %s'den %s'e dönüştürülemiyor."
+
+#. Translators: %s is replaced with error message returned by strerror().
+#: ../src/vte.cc:4248
+#, c-format
+msgid "Error reading from child: %s."
+msgstr "Çocuk süreçten okunurken hata: %s."
+
+#: ../src/vte.cc:4387
+#, c-format
+msgid "Error (%s) converting data for child, dropping."
+msgstr "Çocuk süreç için veriyi çevirirken hata (%s), bırakılıyor."
+
+#: ../src/vte.cc:8156
+msgid "WARNING"
+msgstr "UYARI"
+
+#: ../src/vte.cc:8157
+msgid "GNUTLS not enabled; data will be written to disk unencrypted!"
+msgstr "GNUTLS etkin değil; veriler diske şifrelenmemiş olarak yazılacak!"
+
+#~ msgid "Copy"
+#~ msgstr "Kopyala"
+
+#~ msgid "Paste"
+#~ msgstr "Yapıştır"
+
+#~ msgid "Reset (use Ctrl to reset and clear)"
+#~ msgstr "Sıfırla (Sıfırlamak ve temizlemek için Ctrl'yi kullanın)"
+
+#~ msgid "Reset"
+#~ msgstr "Sıfırla"
+
+#~ msgid "Toggle input enabled setting"
+#~ msgstr "Girişi aç/kapa"
+
+#~ msgid "Input"
+#~ msgstr "Giriş"
+
+#~ msgid "Could not open console.\n"
+#~ msgstr "Konsol açılamadı.\n"
+
+#~ msgid "Could not parse the geometry spec passed to --geometry"
+#~ msgstr "--geometry'de belirtilen geometri belirtimi ayrıştırılamadı"
+
+#~ msgid "Unable to send data to child, invalid charset convertor"
+#~ msgstr "Alt sürece veri gönderilemedi, geçersiz karakter kümesi çevirici"
+
+#~ msgid "Error reading PTY size, using defaults: %s\n"
+#~ msgstr "PTY boyutu okunurken hata, öntanımlı değerler kullanılıyor: %s\n"
+
+#~ msgid "Attempt to set invalid NRC map '%c'."
+#~ msgstr "Geçersiz NRC haritası '%c' ayarlanmaya çalışıldı."
+
+#~ msgid "Unrecognized identified coding system."
+#~ msgstr "Anımsanmayan tanımlanmış kodlama sistemi."
+
+#~ msgid "Attempt to set invalid wide NRC map '%c'."
+#~ msgstr "Geçersiz geniş NRC haritası '%c' ayarlanmaya çalışıldı."
+
+#~ msgid "Duplicate (%s/%s)!"
+#~ msgstr "Çift (%s/%s)!"
+
+#~ msgid "Error compiling regular expression \"%s\"."
+#~ msgstr "Düzenli ifade derlenirken hata: \"%s\"."
+
+#~ msgid "_vte_conv_open() failed setting word characters"
+#~ msgstr "_vte_iconv_open() kelime karakterlerini ayarlarken başarısız oldu"
+
+#~ msgid "can not run %s"
+#~ msgstr "%s çalıştırılamadı"
+
+#~ msgid "Error creating signal pipe."
+#~ msgstr "Sinyal borusu oluştururken hata."
+
+#~ msgid "No handler for control sequence `%s' defined."
+#~ msgstr "`%s' kontrol serisi için işlemci tanımlanmamış."
+
+#~ msgid "Error setting PTY size: %s."
+#~ msgstr "PTY boyutu ayarlanırken hata: %s."
+
+#~ msgid "Got unexpected (key?) sequence `%s'."
+#~ msgstr "Beklenmeyen (tuş?) serisi `%s' alındı."
+
+#~ msgid "Unknown pixel mode %d.\n"
+#~ msgstr "Bilinmeyen benek kipi %d.\n"

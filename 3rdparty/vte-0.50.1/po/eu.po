@@ -1,0 +1,114 @@
+# Basque translation of vte.
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+#
+#
+# Alberto Fernández Benito <afernn@euskalnet.net>, 2003.
+# Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2004, 2007, 2008, 2010, 2014, 2016.
+msgid ""
+msgstr ""
+"Project-Id-Version: vte master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=vte"
+"&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2016-08-15 12:39+0000\n"
+"PO-Revision-Date: 2016-09-20 12:09+0100\n"
+"Last-Translator: dooteo <dooteo@zundan.com>\n"
+"Language-Team: Basque <librezale@librezale.org>\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 2.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../src/iso2022.cc:73 ../src/iso2022.cc:81 ../src/iso2022.cc:111
+#: ../src/vtegtk.cc:3069
+#, c-format
+msgid "Unable to convert characters from %s to %s."
+msgstr "Karaktereak ezin dira %s-(e)tik %s-(e)ra bihurtu."
+
+#. Translators: %s is replaced with error message returned by strerror().
+#: ../src/vte.cc:4003
+#, c-format
+msgid "Error reading from child: %s."
+msgstr "Errorea umetik irakurtzean: %s. "
+
+#: ../src/vte.cc:4142
+#, c-format
+msgid "Error (%s) converting data for child, dropping."
+msgstr "Errorea datuak bihurtzean (%s) umearentzako, jaregiten."
+
+#: ../src/vte.cc:7911
+msgid "WARNING"
+msgstr "ABISUA"
+
+#: ../src/vte.cc:7912
+msgid "GNUTLS not enabled; data will be written to disk unencrypted!"
+msgstr "GNUTLS ez dago gaituta: datuak enkriptatu gabe idatziko dira diskoan!"
+
+#~ msgid "Copy"
+#~ msgstr "Kopiatu"
+
+#~ msgid "Paste"
+#~ msgstr "Itsatsi"
+
+#~ msgid "Reset (use Ctrl to reset and clear)"
+#~ msgstr "Leheneratu (erabili Ktrl leheneratzeko eta garbitzeko)"
+
+#~ msgid "Reset"
+#~ msgstr "Leheneratu"
+
+#~ msgid "Toggle input enabled setting"
+#~ msgstr "Txandakatu aktibatutako sarreraren ezarpena"
+
+#~ msgid "Input"
+#~ msgstr "Sarrera"
+
+#~ msgid "Attempt to set invalid NRC map '%c'."
+#~ msgstr "Saiatu '%c' baliogabeko NRC mapa ezartzen."
+
+#~ msgid "Unrecognized identified coding system."
+#~ msgstr "Identifikatu kodeketa-sistema ezezaguna."
+
+#~ msgid "Attempt to set invalid wide NRC map '%c'."
+#~ msgstr "Saiatu baliogabeko zabalera NRC mapan ezartzen '%c'."
+
+#~ msgid "Could not open console.\n"
+#~ msgstr "Ezin izan da kontsola ireki.\n"
+
+#~ msgid "Could not parse the geometry spec passed to --geometry"
+#~ msgstr "Ezin izan da '--geometry' parametroari emandako geometria aztertu"
+
+#~ msgid "Unable to send data to child, invalid charset convertor"
+#~ msgstr ""
+#~ "Ezin dira datuak umeari bidali, baliogabeko karaktere-multzo bihurtzailea"
+
+#~ msgid "Error reading PTY size, using defaults: %s\n"
+#~ msgstr "Errorea PTY-ren tamaina irakurtzean, lehenetsiak erabiltzen: %s\n"
+
+#~ msgid "Duplicate (%s/%s)!"
+#~ msgstr "Bikoiztu (%s / %s)!"
+
+#~ msgid "Error compiling regular expression \"%s\"."
+#~ msgstr "Errorea \"%s\" adierazpen erregularra konpilatzean."
+
+#~ msgid "_vte_conv_open() failed setting word characters"
+#~ msgstr "_vte_conv_open()-ek ezin izan du hitzaren karaktereak ezarri"
+
+#~ msgid "can not run %s"
+#~ msgstr "ezin da %s exekutatu"
+
+#~ msgid "Error creating signal pipe."
+#~ msgstr "Errorea kanalizazio seinalea sortzean."
+
+#~ msgid "No handler for control sequence `%s' defined."
+#~ msgstr "Ez da `%s' kontrol sekuentziarako kudeatzailerik definitu."
+
+#~ msgid "Error setting PTY size: %s."
+#~ msgstr "Errorea PTY-ren tamaina ezartzean: %s."
+
+#~ msgid "Got unexpected (key?) sequence `%s'."
+#~ msgstr "'%s' ustekabeko (tekla?) sekuentzia jaso da."
+
+#~ msgid "Unknown pixel mode %d.\n"
+#~ msgstr "%d pixelaren modu ezezaguna.\n"

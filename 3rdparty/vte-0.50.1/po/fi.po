@@ -1,0 +1,98 @@
+# vte Finnish translation.
+# Suomennos: http://gnome-fi.sourceforge.net/
+#
+# Copyright (C) 2003 Free Software Foundation, Inc.
+# Pauli Virtanen <pauli.virtanen@hut.fi>, 2003.
+# Tommi Vainikainen <thv@iki.fi>, 2011.
+# Jiri Grönroos <jiri.gronroos+l10n@iki.fi>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: vte\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=vte&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2014-09-07 01:27+0000\n"
+"PO-Revision-Date: 2014-09-07 11:59+0300\n"
+"Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
+"Language-Team: suomi <gnome-fi-laatu@lists.sourceforge.net>\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Gtranslator 2.91.6\n"
+
+#: ../src/app.ui.h:1
+msgid "Copy"
+msgstr "Kopioi"
+
+#: ../src/app.ui.h:2
+msgid "Paste"
+msgstr "Liitä"
+
+#: ../src/app.ui.h:3
+msgid "Reset (use Ctrl to reset and clear)"
+msgstr ""
+"Palauta asetukset (käytä Ctrl-näppäintä palauttaaksesi ja tyhjentääksesi)"
+
+#: ../src/app.ui.h:4
+msgid "Reset"
+msgstr "Palauta asetukset"
+
+#: ../src/app.ui.h:5
+msgid "Toggle input enabled setting"
+msgstr ""
+
+#: ../src/app.ui.h:6
+msgid "Input"
+msgstr "Syöte"
+
+#: ../src/iso2022.c:791 ../src/iso2022.c:799 ../src/iso2022.c:830
+#: ../src/vte.c:2003
+#, c-format
+msgid "Unable to convert characters from %s to %s."
+msgstr "Merkkien muuntaminen merkistöstä %s merkistöön %s ei onnistu."
+
+#: ../src/iso2022.c:1496
+#, c-format
+msgid "Attempt to set invalid NRC map '%c'."
+msgstr "Yritys asettaa virheellinen NRC-kartta \"%c\"."
+
+#. Application signalled an "identified coding system" we haven't heard of.  See ECMA-35 for gory details.
+#: ../src/iso2022.c:1526
+msgid "Unrecognized identified coding system."
+msgstr "Sovelluksen tunnetuksi ilmoittama merkistö on tuntematon."
+
+#: ../src/iso2022.c:1585 ../src/iso2022.c:1612
+#, c-format
+msgid "Attempt to set invalid wide NRC map '%c'."
+msgstr "Yritys asettaa virheellinen laaja NRC-kartta \"%c\"."
+
+#. Bail back to normal mode.
+#: ../src/vteapp.c:1027
+msgid "Could not open console.\n"
+msgstr "Konsolin avaaminen ei onnistunut.\n"
+
+#: ../src/vteapp.c:1137
+msgid "Could not parse the geometry spec passed to --geometry"
+msgstr "Geometriamäärittelyä parametrissa --geometry ei voitu tulkita oikein"
+
+#. Translators: %s is replaced with error message returned by strerror().
+#: ../src/vte.c:4169
+#, c-format
+msgid "Error reading from child: %s."
+msgstr "Virhe lapselta lukemisessa: %s."
+
+#: ../src/vte.c:4305
+msgid "Unable to send data to child, invalid charset convertor"
+msgstr "Tietoja ei voitu lähettää lapselle, virheellinen merkistömuunnin"
+
+#: ../src/vte.c:4316 ../src/vte.c:5365
+#, c-format
+msgid "Error (%s) converting data for child, dropping."
+msgstr "Virhe (%s) datan muuntamisessa lapselle, putoaa pois."
+
+#: ../src/vte.c:7678
+#, c-format
+msgid "Error reading PTY size, using defaults: %s\n"
+msgstr "Virhe PTY-koon lukemisessa: oletus käytössä: %s\n"

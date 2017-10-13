@@ -1,0 +1,31 @@
+/*** BEGIN file-header ***/
+#if !defined (__VTE_VTE_H_INSIDE__) && !defined (VTE_COMPILATION)
+#error "Only <vte/vte.h> can be included directly."
+#endif
+
+#ifndef __VTE_VTE_TYPE_BUILTINS_H__
+#define __VTE_VTE_TYPE_BUILTINS_H__
+
+#include <glib-object.h>
+
+#include "vtemacros.h"
+
+G_BEGIN_DECLS
+/*** END file-header ***/
+
+/*** BEGIN file-production ***/
+
+/* enumerations from "@basename@" */
+/*** END file-production ***/
+
+/*** BEGIN value-header ***/
+_VTE_PUBLIC
+GType @enum_name@_get_type (void);
+#define VTE_TYPE_@ENUMSHORT@ (@enum_name@_get_type ())
+/*** END value-header ***/
+
+/*** BEGIN file-tail ***/
+G_END_DECLS
+
+#endif /* __VTE_VTE_TYPE_BUILTINS_H__ */
+/*** END file-tail ***/

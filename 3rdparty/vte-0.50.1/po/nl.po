@@ -1,0 +1,153 @@
+# Dutch translation for vte.
+#
+# Taco Witte <T.C.Witte@phys.uu.nl>, 2002
+# Reinout van Schouwen <reinout@cs.vu.nl>, 2002
+# Tino Meinen <a.t.meinen@chello.nl> 2003
+# Wouter Bolsterlee <wbolster@gnome.org>, 2007, 2010
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: vte\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-09-19 20:26+0200\n"
+"PO-Revision-Date: 2010-09-19 20:27+0200\n"
+"Last-Translator: Wouter Bolsterlee <wbolster@gnome.org>\n"
+"Language-Team: Dutch <vertaling@nl.linux.org>\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../src/iso2022.c:779 ../src/iso2022.c:787 ../src/iso2022.c:818
+#: ../src/vte.c:2260
+#, c-format
+msgid "Unable to convert characters from %s to %s."
+msgstr "Kan tekens niet converteren van %s naar %s."
+
+#: ../src/iso2022.c:1472
+#, c-format
+msgid "Attempt to set invalid NRC map '%c'."
+msgstr "Poging ongeldige NRC-kaart  '%c' in te stellen."
+
+#. Application signalled an "identified coding system" we haven't heard of.  See ECMA-35 for gory details.
+#: ../src/iso2022.c:1502
+msgid "Unrecognized identified coding system."
+msgstr "Onbekend geïdentificeerd coding-systeem."
+
+#: ../src/iso2022.c:1561 ../src/iso2022.c:1588
+#, c-format
+msgid "Attempt to set invalid wide NRC map '%c'."
+msgstr "Poging ongeldige brede NRC-kaart '%c' in te stellen."
+
+#: ../src/trie.c:409
+#, c-format
+msgid "Duplicate (%s/%s)!"
+msgstr "Dupliceren (%s/%s)!"
+
+#. Bail back to normal mode.
+#: ../src/vteapp.c:971
+msgid "Could not open console.\n"
+msgstr "Kon het console niet openen.\n"
+
+#: ../src/vteapp.c:1062
+msgid "Could not parse the geometry spec passed to --geometry"
+msgstr "Kan de afmetingen opgegeven in --geometry niet lezen"
+
+#: ../src/vte.c:1286
+#, c-format
+msgid "Error compiling regular expression \"%s\"."
+msgstr "Er is een fout opgetreden bij samenstellen reguliere expressie \"%s\"."
+
+#. Translators: %s is replaced with error message returned by strerror().
+#: ../src/vte.c:4396
+#, c-format
+msgid "Error reading from child: %s."
+msgstr "Er is een fout opgetreden bij lezen van kind: %s."
+
+#: ../src/vte.c:4523
+msgid "Unable to send data to child, invalid charset convertor"
+msgstr "Kan gegevens niet naar child versturen: ongeldige tekensetconversie"
+
+#: ../src/vte.c:4534 ../src/vte.c:5565
+#, c-format
+msgid "Error (%s) converting data for child, dropping."
+msgstr "Fout (%s) bij converteren gegevens voor dochter, laat het vallen."
+
+#: ../src/vte.c:7759
+#, c-format
+msgid "Error reading PTY size, using defaults: %s\n"
+msgstr "Fout bij lezen van PTY-grootte; standaardwaarden worden gebruikt: %s\n"
+
+#. Aaargh.  We're screwed.
+#: ../src/vte.c:13330
+msgid "_vte_conv_open() failed setting word characters"
+msgstr "_vte_conv_open() niet geslaagd in instellen woordtekens"
+
+#~ msgid "can not run %s"
+#~ msgstr "Kan %s niet starten"
+
+#~ msgid "Error creating signal pipe."
+#~ msgstr "Er is een fout opgetreden bij maken van signaal-pipe."
+
+#~ msgid "No handler for control sequence `%s' defined."
+#~ msgstr "Geen afhandelaar voor controlecombinatie `%s' gedefinieerd."
+
+#~ msgid "Error setting PTY size: %s."
+#~ msgstr "Er is een fout opgetreden bij instellen PTY-grootte: %s."
+
+#~ msgid "Got unexpected (key?) sequence `%s'."
+#~ msgstr "Onverwachte (toetsenbord?)-combinatie `%s' ontvangen."
+
+#~ msgid "Unknown pixel mode %d.\n"
+#~ msgstr "Onbekende beeldpunt-modus %d.\n"
+
+#~ msgid "Can not find appropiate font for character U+%04x.\n"
+#~ msgstr "Kan geen geschikt lettertype vinden voor karakter U+%04x.\n"
+
+#~ msgid "Error adding `%s' to environment, continuing."
+#~ msgstr ""
+#~ "Er is een fout opgetreden bij toevoegen `%s' aan omgeving. Doorgaan."
+
+#~ msgid "Using fontset \"%s\", which is missing these character sets: %s."
+#~ msgstr ""
+#~ "Lettertypenset \"%s\" wordt gebruikt, welke deze tekensets mist: %s."
+
+#~ msgid ""
+#~ "Failed to load Xft font pattern \"%s\", falling back to default font."
+#~ msgstr ""
+#~ "Laden Xft lettertype patroon \"%s\" mislukt, val terug op standaard "
+#~ "lettertype."
+
+#~ msgid "Failed to load default Xft font."
+#~ msgstr "Laden standaard Xft lettertype mislukt."
+
+#~ msgid "Failed to load font set \"%s\", falling back to default font."
+#~ msgstr ""
+#~ "Het laden van lettertypenset \"%s\" is mislukt, terugvallen op standaard "
+#~ "lettertype."
+
+#~ msgid "Failed to load default font, crashing or behaving abnormally."
+#~ msgstr ""
+#~ "Het laden van het standaard lettertype is mislukt, het gedrag ervan is "
+#~ "abnormaal."
+
+#~ msgid "Error allocating draw, disabling Xft."
+#~ msgstr ""
+#~ "Er is een fout opgetreden bij toewijzing tekenen, Xft wordt uitgeschakeld."
+
+#~ msgid "Error allocating context, disabling Pango."
+#~ msgstr ""
+#~ "Er is een fout opgetreden bij toewijzing context, Pango wordt "
+#~ "uitgeschakeld."
+
+#~ msgid "Error allocating layout, disabling Pango."
+#~ msgstr ""
+#~ "Er is een fout opgetreden bij toewijzing lay-out, Pango wordt "
+#~ "uitgeschakeld."
+
+#~ msgid "Character 0x%x is undefined, allocating one column."
+#~ msgstr "Teken 0x%x is ongedefinieerd, wijs één kolom toe."
+
+#~ msgid "Error allocating Xft font, disabling Xft."
+#~ msgstr ""
+#~ "Er is een fout opgetreden bij toewijzen Xft lettertype, zet Xft uit."

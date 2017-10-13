@@ -1,0 +1,108 @@
+# Romanian translation for vte
+# Copyright (C) 2003 - 2006 Free Software Foundation, Inc.
+# Mișu Moldovan <dumol@gnome.ro>, 2003 - 2006, 2009
+# Lucian Adrian Grijincu <lucian.grijincu@gmail.com>, 2010.
+# Daniel Șerbănescu <cyber19rider@gmail.com>, 2010.
+# Daniel Șerbănescu <daniel [at] serbanescu [dot] dk>, 2015.
+msgid ""
+msgstr ""
+"Project-Id-Version: vte\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
+"product=vte&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2017-02-28 06:44+0000\n"
+"PO-Revision-Date: 2017-09-02 19:30+0300\n"
+"Last-Translator: Daniel Șerbănescu <daniel [at] serbanescu [dot] dk>\n"
+"Language-Team: Gnome Romanian Translation Team\n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2);;\n"
+"X-Generator: Poedit 1.8.12\n"
+"X-Launchpad-Export-Date: 2009-01-14 02:40+0000\n"
+"X-Project-Style: gnome\n"
+
+#: ../src/iso2022.cc:73 ../src/iso2022.cc:81 ../src/iso2022.cc:111
+#: ../src/vtegtk.cc:3262
+#, c-format
+msgid "Unable to convert characters from %s to %s."
+msgstr "Nu se pot converti caracterele din %s în %s."
+
+#. Translators: %s is replaced with error message returned by strerror().
+#: ../src/vte.cc:4014
+#, c-format
+msgid "Error reading from child: %s."
+msgstr "Eroare la citirea datelor de la procesul copil: %s."
+
+#: ../src/vte.cc:4153
+#, c-format
+msgid "Error (%s) converting data for child, dropping."
+msgstr ""
+"Eroare (%s) în timpul convertirii datelor pentru procesul copil, se "
+"abandonează acțiunea."
+
+#: ../src/vte.cc:7922
+msgid "WARNING"
+msgstr "AVERTIZARE"
+
+#: ../src/vte.cc:7923
+msgid "GNUTLS not enabled; data will be written to disk unencrypted!"
+msgstr "GNUTLS nu este activat; datele vor fi scrise pe disc necriptate!"
+
+#~ msgid "Copy"
+#~ msgstr "Copiază"
+
+#~ msgid "Paste"
+#~ msgstr "Lipește"
+
+#~ msgid "Reset (use Ctrl to reset and clear)"
+#~ msgstr "Restabilește (folosiți Ctrl pentru a restabili și a curăța)"
+
+#~ msgid "Reset"
+#~ msgstr "Restabilește"
+
+#~ msgid "Toggle input enabled setting"
+#~ msgstr "Comută configurări pentru intrări activate"
+
+#~ msgid "Input"
+#~ msgstr "Intrare"
+
+#~ msgid "Could not open console.\n"
+#~ msgstr "Nu s-a putut deschide consola.\n"
+
+#~ msgid "Could not parse the geometry spec passed to --geometry"
+#~ msgstr "Nu s-a putut analiza specificația geometriei trimisă de --geometry"
+
+#~ msgid "Unable to send data to child, invalid charset convertor"
+#~ msgstr ""
+#~ "Nu s-au putut trimite datele către procesul părinte, convertorul pentru "
+#~ "seturi de caractere nu este valid"
+
+#~ msgid "Error reading PTY size, using defaults: %s\n"
+#~ msgstr ""
+#~ "Eroare la citirea mărimii PTY, se utilizează valoarea implicită: %s\n"
+
+#~ msgid "Attempt to set invalid NRC map '%c'."
+#~ msgstr "Încercare de a seta harta NRC invalidă „%c”."
+
+#~ msgid "Unrecognized identified coding system."
+#~ msgstr "Sistemul de codificare identificat nu este cunoscut."
+
+#~ msgid "Attempt to set invalid wide NRC map '%c'."
+#~ msgstr "Încercare de a seta harta „wide” NRC „%c”."
+
+#~ msgid "Duplicate (%s/%s)!"
+#~ msgstr "Duplicat (%s/%s)!"
+
+#~ msgid "Error compiling regular expression \"%s\"."
+#~ msgstr "Eroare la compilarea expresiei regulate „%s”."
+
+#~ msgid "_vte_conv_open() failed setting word characters"
+#~ msgstr "_vte_iconv_open() a eșuat la definirea caracterelor cuvintelor"
+
+#~ msgid "can not run %s"
+#~ msgstr "nu se poate porni %s"
+
+#~ msgid "Error setting PTY size: %s."
+#~ msgstr "Eroare la definirea mărimii PTY: %s."

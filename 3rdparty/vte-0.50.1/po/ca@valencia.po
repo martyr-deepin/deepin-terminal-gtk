@@ -1,0 +1,100 @@
+# vte Catalan translation.
+# Copyright © 2002, 2003, 2007 Free Software Foundation, Inc.
+# Enric Balletbó Serra <enric.balletbo@campus.uab.es>, 2002.
+# Jordi Mallach <jordi@sindominio.net>, 2003, 2007.
+# Gil Forcada <gilforcada@guifi.net>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: vte 0.11.6\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-17 13:50+0200\n"
+"PO-Revision-Date: 2014-08-17 13:49+0200\n"
+"Last-Translator: Gil Forcada <gilforcada@guifi.net>\n"
+"Language-Team: Catalan <tradgnome@softcatala.org>\n"
+"Language: ca@valencia\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bits\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: ../src/app.ui.h:1
+msgid "Copy"
+msgstr "Copia"
+
+#: ../src/app.ui.h:2
+msgid "Paste"
+msgstr "Apega"
+
+#: ../src/app.ui.h:3
+msgid "Reset (use Ctrl to reset and clear)"
+msgstr "Reinicia (utilitzeu Ctrl per reiniciar i netejar)"
+
+#: ../src/app.ui.h:4
+msgid "Reset"
+msgstr "Reinicia"
+
+#: ../src/app.ui.h:5
+msgid "Toggle input enabled setting"
+msgstr "Commuta el paràmetre del mètode d'entrada actiu"
+
+#: ../src/app.ui.h:6
+msgid "Input"
+msgstr "Entrada"
+
+#: ../src/iso2022.c:791 ../src/iso2022.c:799 ../src/iso2022.c:830
+#: ../src/vte.c:1992
+#, c-format
+msgid "Unable to convert characters from %s to %s."
+msgstr "No es pot convertir el caràcter %s a %s."
+
+#: ../src/iso2022.c:1496
+#, c-format
+msgid "Attempt to set invalid NRC map '%c'."
+msgstr "S'ha intentat fixar el mapa NRC invàlid «%c»."
+
+#. Application signalled an "identified coding system" we haven't heard of.  See ECMA-35 for gory details.
+#: ../src/iso2022.c:1526
+msgid "Unrecognized identified coding system."
+msgstr "No s'ha reconegut el sistema de codificació identificat."
+
+#: ../src/iso2022.c:1585 ../src/iso2022.c:1612
+#, c-format
+msgid "Attempt to set invalid wide NRC map '%c'."
+msgstr "S'ha intentat fixar el mapa global NRC «%c»."
+
+#. Bail back to normal mode.
+#: ../src/vteapp.c:1026
+msgid "Could not open console.\n"
+msgstr "No s'ha pogut obrir la consola.\n"
+
+#: ../src/vteapp.c:1136
+msgid "Could not parse the geometry spec passed to --geometry"
+msgstr ""
+"No s'ha pogut analitzar l'especificació geomètrica indicada a --geometry"
+
+#. Translators: %s is replaced with error message returned by strerror().
+#: ../src/vte.c:4208
+#, c-format
+msgid "Error reading from child: %s."
+msgstr "S'ha produït un error en llegir del fill: %s."
+
+#: ../src/vte.c:4344
+msgid "Unable to send data to child, invalid charset convertor"
+msgstr ""
+"No s'ha pogut enviar les dades al fill, el convertidor de codificació no és "
+"vàlid"
+
+#: ../src/vte.c:4355 ../src/vte.c:5377
+#, c-format
+msgid "Error (%s) converting data for child, dropping."
+msgstr ""
+"S'ha produït un error (%s) en convertir dades per al fill; s'ometrà la "
+"conversió."
+
+#: ../src/vte.c:7678
+#, c-format
+msgid "Error reading PTY size, using defaults: %s\n"
+msgstr ""
+"S'ha produït un error en llegir la mida de PTY; s'utilitzarà el valor per "
+"defecte: %s\n"

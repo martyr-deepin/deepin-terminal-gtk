@@ -1,0 +1,120 @@
+# translation of vte.HEAD.ml.po to Malayalam
+# This file is distributed under the same license as the vte package.
+# Copyright (C) 2003-2008 vte'S COPYRIGHT HOLDER.
+# FSF-India <locale@gnu.org.in>, 2003.
+# Suresh Valiya Parambil <mvpsuresh@yahoo.com>, 2003.
+# Ani Peter <apeter@redhat.com>, 2006.
+# Santhosh Thottingal <santhosh.thottingal@gmail.com>, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: vte.HEAD.ml\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-04-25 03:21+0100\n"
+"PO-Revision-Date: 2008-03-8 23:12+0530\n"
+"Last-Translator: Santhosh Thottingal <santhosh.thottingal@gmail.com>\n"
+"Language-Team: Swathanthra|സ്വതന്ത്ര Malayalam|മലയാളം Computing|കമ്പ്യൂട്ടിങ്ങ് <smc-discuss@googlegroups.com>\n"
+"Language: ml\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.9.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"\n"
+
+#: ../src/iso2022.c:791 ../src/iso2022.c:799 ../src/iso2022.c:830
+#: ../src/vte.c:1797
+#, c-format
+msgid "Unable to convert characters from %s to %s."
+msgstr "%s-ല്‍ നിന്നും %s-ലേക്ക് അക്ഷരങ്ങളെ മാറ്റാന്‍ സാധിക്കുന്നില്ല."
+
+#: ../src/iso2022.c:1539
+#, c-format
+msgid "Attempt to set invalid NRC map '%c'."
+msgstr "അസാധുവായ NRC മാപ്പ് '%c' ക്രമീകരിയ്ക്കുവാനുളള ശ്രമം."
+
+#. Application signalled an "identified coding system" we haven't heard of.  See ECMA-35 for gory details.
+#: ../src/iso2022.c:1569
+msgid "Unrecognized identified coding system."
+msgstr "അജ്ഞാതമായ ഐഡന്റിഫൈഡ് കോഡിങ് സിസ്റ്റം."
+
+#: ../src/iso2022.c:1628 ../src/iso2022.c:1655
+#, c-format
+msgid "Attempt to set invalid wide NRC map '%c'."
+msgstr "അസാധുവായ വീതിയുളള NRC മാപ്പ് '%c' ക്രമീകരിയ്ക്കുവാനുളള ശ്രമം."
+
+#. Give the user some clue as to why session logging is not
+#. * going to work (assuming we can open a pty using some other
+#. * method).
+#: ../src/pty.c:837
+#, c-format
+msgid "can not run %s"
+msgstr "%s പ്രവര്‍ത്തിപ്പിയ്ക്കുവാന്‍ കഴിയുന്നില്ല"
+
+#: ../src/reaper.c:136
+msgid "Error creating signal pipe."
+msgstr "സിഗ്നല്‍ പൈപ്പ് ഉണ്ടാക്കുന്നതില്‍ പിഴവു്."
+
+#: ../src/trie.c:414
+#, c-format
+msgid "Duplicate (%s/%s)!"
+msgstr "തനിപകര്‍പ്പു് (%s/%s)!"
+
+#: ../src/vte.c:1187
+#, c-format
+msgid "Error compiling regular expression \"%s\"."
+msgstr "റെഗുലര്‍ എക്സ്പ്രഷന്‍ \"%s\"സമാഹാരിയ്ക്കുന്നതില്‍ പിശകു്."
+
+#: ../src/vte.c:2657 ../src/vte.c:2662
+#, c-format
+msgid "No handler for control sequence `%s' defined."
+msgstr "control sequence `%s'-ന് ഹാന്‍ഡ്ലറുകള്‍ ലഭ്യമല്ല."
+
+#. Translators: %s is replaced with error message returned by strerror().
+#: ../src/vte.c:3627
+#, c-format
+msgid "Error reading from child: %s."
+msgstr "ചൈള്‍ഡില്‍ നിന്നും വായിക്കുന്നതില്‍ പിശകു്: %s."
+
+#: ../src/vte.c:3743
+msgid "Unable to send data to child, invalid charset convertor"
+msgstr "ചൈല്‍ഡിനു് ഡാറ്റ അയക്കാന്‍ പറ്റുന്നില്ല. തെറ്റായ കാര്‍സെറ്റ് കണ്‍വെര്‍ട്ടര്‍"
+
+#: ../src/vte.c:3754 ../src/vte.c:4631
+#, c-format
+msgid "Error (%s) converting data for child, dropping."
+msgstr "ചൈള്‍ഡിനു് ഡേറ്റാ മാറ്റുന്നതില്‍ പിഴവു് (%s), ഉപേക്ഷിയ്ക്കുന്നു."
+
+#: ../src/vte.c:6866
+#, c-format
+msgid "Error reading PTY size, using defaults: %s."
+msgstr "PTY വലിപ്പം വായിയ്ക്കുന്നതില്‍ പിശകു്, വതേയുള്ളതു്  ഉപയോഗിക്കുന്നു: %s."
+
+#: ../src/vte.c:6895
+#, c-format
+msgid "Error setting PTY size: %s."
+msgstr "PTY വലിപ്പം സജ്ജീകരിയ്ക്കുന്നതില്‍ തകരാര്‍: %s."
+
+#. Aaargh.  We're screwed.
+#: ../src/vte.c:11348
+msgid "_vte_conv_open() failed setting word characters"
+msgstr "_vte_conv_open() failed setting word characters"
+
+#: ../src/vteseq.c:3926
+#, c-format
+msgid "Got unexpected (key?) sequence `%s'."
+msgstr "Got unexpected (key?) sequence `%s'."
+
+#. Bail back to normal mode.
+#: ../src/vteapp.c:774
+msgid "Could not open console.\n"
+msgstr "കണ്‍സോള്‍ തുറക്കാനാവുന്നില്ല.\n"
+
+#: ../src/vteapp.c:838
+msgid "Could not parse the geometry spec passed to --geometry"
+msgstr "Could not parse the geometry spec passed to --geometry"
+
+#: ../src/vteglyph.c:562
+#, c-format
+msgid "Unknown pixel mode %d.\n"
+msgstr "അറിയാത്ത പിക്സല്‍ രീതി %d.\n"

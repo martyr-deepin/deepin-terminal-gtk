@@ -1,0 +1,85 @@
+# vte
+# This file is distributed under the same license as the vte package.
+#
+# Nam SungHyun <namsh@kldp.org>, 2003
+# Changwoo Ryu <cwryu@debian.org>, 2007, 2009, 2010, 2014, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: vte\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=vte&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2016-08-26 22:58+0000\n"
+"PO-Revision-Date: 2016-09-03 23:11+0900\n"
+"Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
+"Language-Team: GNOME Korea <gnome-kr@googlegroups.com>\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../src/iso2022.cc:73 ../src/iso2022.cc:81 ../src/iso2022.cc:111
+#: ../src/vtegtk.cc:3069
+#, c-format
+msgid "Unable to convert characters from %s to %s."
+msgstr "문자를 %s을(를) %s(으)로 변환할 수 없습니다."
+
+#. Translators: %s is replaced with error message returned by strerror().
+#: ../src/vte.cc:4002
+#, c-format
+msgid "Error reading from child: %s."
+msgstr "하위 프로세스에서 읽기 오류: %s."
+
+#: ../src/vte.cc:4141
+#, c-format
+msgid "Error (%s) converting data for child, dropping."
+msgstr ""
+"하위 프로세스를 위한 데이터 변환에 오류가 발생했습니다. (%s) 그만둡니다."
+
+#: ../src/vte.cc:7910
+msgid "WARNING"
+msgstr "경고"
+
+#: ../src/vte.cc:7911
+msgid "GNUTLS not enabled; data will be written to disk unencrypted!"
+msgstr "GNUTLS 사용하지 않음: 데이터를 암호화하지 않은 상태로 디스크에 씁니다"
+
+#~ msgid "Copy"
+#~ msgstr "복사"
+
+#~ msgid "Paste"
+#~ msgstr "붙여넣기"
+
+#~ msgid "Reset (use Ctrl to reset and clear)"
+#~ msgstr "초기화(초기화하고 지우려면 Ctrl 사용)"
+
+#~ msgid "Reset"
+#~ msgstr "초기화"
+
+#~ msgid "Toggle input enabled setting"
+#~ msgstr "입력 관련 설정 토글"
+
+#~ msgid "Input"
+#~ msgstr "입력"
+
+#~ msgid "Attempt to set invalid NRC map '%c'."
+#~ msgstr "잘못된 NRC 맵 '%c' 설정을 시도했습니다."
+
+#~ msgid "Unrecognized identified coding system."
+#~ msgstr "올바르지만 알지 못하는 코딩 시스템."
+
+#~ msgid "Attempt to set invalid wide NRC map '%c'."
+#~ msgstr "잘못된 와이드 NRC 맵 '%c' 설정을 시도했습니다."
+
+#~ msgid "Could not open console.\n"
+#~ msgstr "콘솔을 열 수 없습니다.\n"
+
+#~ msgid "Could not parse the geometry spec passed to --geometry"
+#~ msgstr "--geometry 옵션에 넘긴 위치/크기 정보를 파싱할 수 없습니다"
+
+#~ msgid "Unable to send data to child, invalid charset convertor"
+#~ msgstr ""
+#~ "데이터를 하위 프로세스로 보낼 수 없습니다. 문자세트 변환이 잘못되었습니다"
+
+#~ msgid "Error reading PTY size, using defaults: %s\n"
+#~ msgstr "PTY 크기 읽기 오류, 기본값 사용: %s\n"

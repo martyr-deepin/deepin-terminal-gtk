@@ -1,0 +1,102 @@
+# translation of gl.po to Galego
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) 2010 Fran Diéguez
+# Ignacio Casal Quinteiro <nacho.resa@gmail.com>, 2005.
+# Ignacio Casal Quinteiro <icq@cvs.gnome.org>, 2007, 2008.
+# Mancomún - Centro de Referencia e Servizos de Software Libre <g11n@mancomun.org>, 2009.
+# Fran Diéguez <frandieguez@ubuntu.com>, 2010, 2011.
+# Fran Dieguez <frandieguez@gnome.org>, 2014, 2016.
+msgid ""
+msgstr ""
+"Project-Id-Version: gl\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-09-09 00:02+0200\n"
+"PO-Revision-Date: 2016-09-09 00:03+0200\n"
+"Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
+"Language-Team: Galician\n"
+"Language: gl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.7.1\n"
+
+#: ../src/iso2022.cc:73 ../src/iso2022.cc:81 ../src/iso2022.cc:111
+#: ../src/vtegtk.cc:3072
+#, c-format
+msgid "Unable to convert characters from %s to %s."
+msgstr "Non foi posíbel converter os caracteres desde %s a %s."
+
+#. Translators: %s is replaced with error message returned by strerror().
+#: ../src/vte.cc:4002
+#, c-format
+msgid "Error reading from child: %s."
+msgstr "Produciuse un erro ao ler desde o fillo: %s."
+
+#: ../src/vte.cc:4141
+#, c-format
+msgid "Error (%s) converting data for child, dropping."
+msgstr "Produciuse un erro (%s) ao converter os datos do fillo; eliminando."
+
+#: ../src/vte.cc:7910
+msgid "WARNING"
+msgstr "AVISO"
+
+#: ../src/vte.cc:7911
+msgid "GNUTLS not enabled; data will be written to disk unencrypted!"
+msgstr "GNUTLS non está activado; os datos escribiranse no disco sen cifrar!"
+
+#~ msgid "Copy"
+#~ msgstr "Copiar"
+
+#~ msgid "Paste"
+#~ msgstr "Pegar"
+
+#~ msgid "Reset (use Ctrl to reset and clear)"
+#~ msgstr "Restabelecer (use Ctrl para restabelecer e limpar)"
+
+#~ msgid "Reset"
+#~ msgstr "Restabelecer"
+
+#~ msgid "Toggle input enabled setting"
+#~ msgstr "Troca as preferencias entrada activada"
+
+#~ msgid "Input"
+#~ msgstr "Entrada"
+
+#~ msgid "Attempt to set invalid NRC map '%c'."
+#~ msgstr "Tentando definir un mapa NRC «%c» incorrecto."
+
+#~ msgid "Unrecognized identified coding system."
+#~ msgstr "Sistema de codificación identificado non recoñecido."
+
+#~ msgid "Attempt to set invalid wide NRC map '%c'."
+#~ msgstr "Tentando definir un mapa NRC global «%c» incorrecto."
+
+#~ msgid "Could not open console.\n"
+#~ msgstr "Non foi posíbel abrir a consola.\n"
+
+#~ msgid "Could not parse the geometry spec passed to --geometry"
+#~ msgstr ""
+#~ "Non foi posíbel analizar a especificación de xeometría pasada a --geometry"
+
+#~ msgid "Unable to send data to child, invalid charset convertor"
+#~ msgstr ""
+#~ "Non foi posíbel enviar os datos ao fillo; o convertedor de conxunto de "
+#~ "caracteres é incorrecto"
+
+#~ msgid "Error reading PTY size, using defaults: %s\n"
+#~ msgstr ""
+#~ "Produciuse un erro ao ler o tamaño do PTY; usarase o valor "
+#~ "predeterminado: %s\n"
+
+#~ msgid "Duplicate (%s/%s)!"
+#~ msgstr "Duplicado (%s/%s)!"
+
+#~ msgid "Error compiling regular expression \"%s\"."
+#~ msgstr "Produciuse un erro ao compilar a expresión regular «%s»."
+
+#~ msgid "_vte_conv_open() failed setting word characters"
+#~ msgstr ""
+#~ "Produciuse un fallo en _vte_conv_open() ao definir os caracteres da "
+#~ "palabra"

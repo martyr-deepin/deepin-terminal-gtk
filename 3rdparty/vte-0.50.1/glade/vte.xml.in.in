@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<glade-catalog name="vte-@VTE_API_VERSION@"
+               version="@VERSION@"
+               library="vte-@VTE_API_VERSION@"
+               domain="vte-@VTE_API_VERSION@"
+               depends="gtk+"
+               book="vte"
+               supports="gtkbuilder">
+  <glade-widget-classes>
+    <glade-widget-class title="VTE Terminal" name="VteTerminal" generic-name="terminal">
+      <properties>
+        <property id="allow-bold" />
+        <property id="audible-bell" />
+        <property id="backspace-binding" />
+        <property id="cjk-ambiguous-width" />
+        <property id="current-directory-uri" />
+        <property id="current-file-uri" />
+        <property id="cursor-blink-mode" />
+        <property id="cursor-shape" />
+        <property id="delete-binding" />
+        <property id="encoding" />
+        <property id="font-desc" />
+        <property id="font-scale" />
+        <property id="hadjustment" />
+        <property id="hscroll-policy" />
+        <property id="icon-title" />
+        <property id="input-enabled" />
+        <property id="pointer-autohide" />
+        <property id="pty" />
+        <property id="rewrap-on-resize" />
+        <property id="scrollback-lines" />
+        <property id="scroll-on-keystroke" />
+        <property id="scroll-on-output" />
+        <property id="vadjustment" />
+        <property id="vscroll-policy" />
+        <property id="window-title" />
+      </properties>
+    </glade-widget-class>
+  </glade-widget-classes>
+
+  <glade-widget-group name="vte-terminal" title="VTE Terminal">
+    <glade-widget-class-ref name="VteTerminal"/>
+  </glade-widget-group>
+
+</glade-catalog>

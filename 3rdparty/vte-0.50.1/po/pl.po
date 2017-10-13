@@ -1,0 +1,53 @@
+# Polish translation for vte.
+# Copyright © 2003-2017 the vte authors.
+# This file is distributed under the same license as the vte package.
+# Zbigniew Chyla <chyla@alice.ci.pwr.wroc.pl>, 2003.
+# Artur Flinta <aflinta@at.kernel.pl>, 2003-2007.
+# Piotr Drąg <piotrdrag@gmail.com>, 2010-2017.
+# Aviary.pl <community-poland@mozilla.org>, 2010-2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: vte\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-08-12 02:10+0200\n"
+"PO-Revision-Date: 2017-08-12 02:11+0200\n"
+"Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
+"Language-Team: Polish <community-poland@mozilla.org>\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+
+#: ../src/iso2022.cc:73 ../src/iso2022.cc:81 ../src/iso2022.cc:111
+#: ../src/vtegtk.cc:3423
+#, c-format
+msgid "Unable to convert characters from %s to %s."
+msgstr "Nie można przekonwertować znaków z %s na %s."
+
+#. Translators: %s is replaced with error message returned by strerror().
+#: ../src/vte.cc:4067
+#, c-format
+msgid "Error reading from child: %s."
+msgstr "Błąd podczas odczytywania z procesu potomnego: %s."
+
+#: ../src/vte.cc:4206
+#, c-format
+msgid "Error (%s) converting data for child, dropping."
+msgstr ""
+"Błąd (%s) podczas konwertowania danych dla procesu potomnego. Porzucanie."
+
+#: ../src/vte.cc:8148
+msgid "WARNING"
+msgstr "OSTRZEŻENIE"
+
+#: ../src/vte.cc:8149
+msgid "GNUTLS not enabled; data will be written to disk unencrypted!"
+msgstr ""
+"Nie włączono obsługi biblioteki GnuTLS. Dane zapisywane na dysku nie będą "
+"zaszyfrowane."
+
+msgid "Command completed"
+msgstr "Ukończono polecenie"
