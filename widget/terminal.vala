@@ -29,7 +29,7 @@ using Vte;
 using Widgets;
 
 namespace Widgets {
-    public class Term : Gtk.ScrolledWindow {
+    public class Term : Gtk.Overlay {
         enum DropTargets {
             URILIST,
             STRING,
@@ -47,6 +47,7 @@ namespace Widgets {
         public Gdk.RGBA background_color = Gdk.RGBA();
         public Gdk.RGBA foreground_color = Gdk.RGBA();
         public Terminal term;
+        public Gtk.VScrollbar scrollbar;
         public bool is_first_term;
         public bool press_anything = false;
         public bool child_has_exit = false;
@@ -60,6 +61,10 @@ namespace Widgets {
         public string? customize_title;
         public string? remote_server_title;
         public uint launch_idle_id;
+        public int hide_scrollbar_offset = 20;
+        public int show_scrollbar_offset = 15;
+        public bool is_press_scrollbar = false;
+        public uint? hide_scrollbar_timeout_source_id = null;
 
         public static string USERCHARS = "-[:alnum:]";
         public static string USERCHARS_CLASS = "[" + USERCHARS + "]";
@@ -90,8 +95,6 @@ namespace Widgets {
             workspace_manager = manager;
             is_first_term = first_term;
             command_execute_y_coordinates = new ArrayList<int>();
-
-            get_style_context().add_class("scrolledwindow");
 
 
             term = new Terminal();
@@ -196,8 +199,76 @@ namespace Widgets {
                 launch_shell(work_directory);
             }
 
-            set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             add(term);
+
+            // Create overlay scrollbar.
+            // NOTE: Why not use vte in Gtk.ScrolledWindow?
+            // Because VTE implement Gtk.Scrollable that conflict with Gtk.ScrolledWindow.
+            // Terminal process will *CRASH* if use Gtk.ScrolledWindow when vte have huge output scroll.
+            scrollbar = new Gtk.VScrollbar(term.get_vadjustment());
+            scrollbar.set_halign(Gtk.Align.END);
+            scrollbar.set_child_visible(false);
+
+            scrollbar.button_press_event.connect((w, e) => {
+                    is_press_scrollbar = true;
+
+                    return false;
+                });
+            scrollbar.button_release_event.connect((w, e) => {
+                    is_press_scrollbar = false;
+
+                    return false;
+                });
+            scrollbar.value_changed.connect(() => {
+                    // Try to show scrollbar when scroll value changed.
+                    // Don't show scrollbar if scrollbar's height equal to terminal height (such as run aptitude).
+                    var adj = scrollbar.get_adjustment();
+                    if (adj.get_upper() == adj.get_lower() + adj.get_page_size()) {
+                        scrollbar.set_child_visible(false);
+                    } else {
+                        // Try to run hide scrollbar timer after show scrollbar. 
+                        scrollbar.set_child_visible(true);
+                        
+                        try_hide_scrollbar();
+                    }
+                });
+            term.motion_notify_event.connect((w, e) => {
+                    Gtk.Allocation rect;
+                    w.get_allocation(out rect);
+
+                    if (e.x < rect.width - hide_scrollbar_offset) {
+                        try_hide_scrollbar();
+                    } else if (e.x > rect.width - show_scrollbar_offset) {
+                        var adj = scrollbar.get_adjustment();
+                        if (adj.get_upper() != adj.get_lower() + adj.get_page_size()) {
+                            scrollbar.set_child_visible(true);
+                        }
+                    }
+
+                    return false;
+                });
+
+            add_overlay(scrollbar);
+        }
+
+        public void try_hide_scrollbar() {
+            if (hide_scrollbar_timeout_source_id != null) {
+                GLib.Source.remove(hide_scrollbar_timeout_source_id);
+                hide_scrollbar_timeout_source_id = null;
+            }
+            
+            if (hide_scrollbar_timeout_source_id == null) {
+                hide_scrollbar_timeout_source_id = GLib.Timeout.add(3000, () => {
+                        // Don't hide scrollbar is user is pressing button.
+                        if (!is_press_scrollbar) {
+                            scrollbar.set_child_visible(false);
+                        }
+                        
+                        hide_scrollbar_timeout_source_id = null;
+
+                        return false;
+                    });
+            }
         }
 
         public bool is_in_remote_server() {
@@ -471,7 +542,7 @@ namespace Widgets {
                     } else {
                         customize_title = new_title.strip();
                     }
-                    
+
                     update_terminal_title();
                 });
         }
@@ -575,7 +646,7 @@ namespace Widgets {
                 }
             } else if (login_remote_server) {
                 login_remote_server = false;
-                
+
                 if (remote_server_title != null) {
                     remote_server_title = null;
                 }
@@ -796,7 +867,7 @@ namespace Widgets {
                         // If user press enter or 'ctrl + m' and not foreground(command-line) process exit.
                         // We consider user execute command.
                         if (!has_foreground_process()) {
-                            var y_coordinate = (int) this.get_vadjustment().get_value();
+                            var y_coordinate = (int) scrollbar.get_adjustment().get_value();
                             if (command_execute_y_coordinates.size == 0 || y_coordinate != command_execute_y_coordinates[command_execute_y_coordinates.size - 1]) {
                                 command_execute_y_coordinates.add(y_coordinate);
                             }
@@ -880,26 +951,26 @@ namespace Widgets {
         public void jump_to_next_command() {
             bool jump_once = false;
 
-            var y_coordinate = (int) this.get_vadjustment().get_value();
+            var y_coordinate = (int) scrollbar.get_adjustment().get_value();
             foreach (int command_y_coordiante in command_execute_y_coordinates) {
                 if (y_coordinate < command_y_coordiante) {
                     jump_once = true;
-                    this.get_vadjustment().set_value(command_y_coordiante);
+                    scrollbar.get_adjustment().set_value(command_y_coordiante);
                     break;
                 }
             }
 
             // Jump to bottom if no next position to jump.
             if (!jump_once) {
-                this.get_vadjustment().set_value(this.get_vadjustment().get_upper());
+                scrollbar.get_adjustment().set_value(scrollbar.get_adjustment().get_upper());
             }
         }
 
         public void jump_to_previous_command() {
-            var y_coordinate = (int) this.get_vadjustment().get_value();
+            var y_coordinate = (int) scrollbar.get_adjustment().get_value();
             for (int count = 0; count < command_execute_y_coordinates.size; count++) {
                 if (y_coordinate > command_execute_y_coordinates[command_execute_y_coordinates.size - 1 - count]) {
-                    this.get_vadjustment().set_value(command_execute_y_coordinates[command_execute_y_coordinates.size - 1 - count]);
+                    scrollbar.get_adjustment().set_value(command_execute_y_coordinates[command_execute_y_coordinates.size - 1 - count]);
                     break;
                 }
             }
@@ -1146,15 +1217,15 @@ namespace Widgets {
                 term.set_scroll_on_keystroke(parent_window.config.config_file.get_boolean("advanced", "scroll_on_key"));
 
                 if (parent_window.config.config_file.get_string("theme", "style") == "light") {
-                    get_vscrollbar().get_style_context().remove_class("light_scrollbar");
-                    get_vscrollbar().get_style_context().remove_class("dark_scrollbar");
+                    scrollbar.get_style_context().remove_class("light_scrollbar");
+                    scrollbar.get_style_context().remove_class("dark_scrollbar");
 
-                    get_vscrollbar().get_style_context().add_class("light_scrollbar");
+                    scrollbar.get_style_context().add_class("light_scrollbar");
                 } else {
-                    get_vscrollbar().get_style_context().remove_class("light_scrollbar");
-                    get_vscrollbar().get_style_context().remove_class("dark_scrollbar");
+                    scrollbar.get_style_context().remove_class("light_scrollbar");
+                    scrollbar.get_style_context().remove_class("dark_scrollbar");
 
-                    get_vscrollbar().get_style_context().add_class("dark_scrollbar");
+                    scrollbar.get_style_context().add_class("dark_scrollbar");
                 }
 
                 var config_size = parent_window.config.config_file.get_integer("general", "font_size");
