@@ -65,7 +65,7 @@ namespace Widgets {
         public string? uri_at_right_press;
         public uint launch_idle_id;
         public uint? hide_scrollbar_timeout_source_id = null;
-        
+
         public static string USERCHARS = "-[:alnum:]";
         public static string USERCHARS_CLASS = "[" + USERCHARS + "]";
         public static string PASSCHARS_CLASS = "[-[:alnum:]\\Q,?;.:/!%$^*&~\"#'\\E]";
@@ -120,14 +120,6 @@ namespace Widgets {
                     kill_fg();
                 });
             term.realize.connect((t) => {
-                    // NOTE: if terminal start with option '-e', use functional 'launch_command' and don't use function 'launch_shell'.
-                    // terminal will crash if we launch_command after launch_shell.
-                    if (is_launch_command() && workspace_manager.is_first_term(this)) {
-                        launch_command(Application.commands, work_directory);
-                    } else {
-                        launch_shell(work_directory);
-                    }
-
                     setup_from_config();
 
                     focus_term();
@@ -198,6 +190,14 @@ namespace Widgets {
 
             /* Make Links Clickable */
             this.clickable(REGEX_STRINGS);
+
+            // NOTE: if terminal start with option '-e', use functional 'launch_command' and don't use function 'launch_shell'.
+            // terminal will crash if we launch_command after launch_shell.
+            if (is_launch_command() && workspace_manager.is_first_term(this)) {
+                launch_command(Application.commands, work_directory);
+            } else {
+                launch_shell(work_directory);
+            }
 
             add(term);
 
@@ -1056,8 +1056,10 @@ namespace Widgets {
             GLib.SpawnFlags spawn_flags =  0;
 
             try {
-                Widgets.ConfigWindow window = (Widgets.ConfigWindow) term.get_toplevel();
-                bool run_as_login_shell = window.config.config_file.get_boolean("advanced", "run_as_login_shell");
+                // Because terminal haven't realize finish when call 'launch_shell'.
+                // So we don't use ConfigWindow to get config value, new Config object to get config value.
+                Config.Config config = new Config.Config();
+                bool run_as_login_shell = config.config_file.get_boolean("advanced", "run_as_login_shell");
 
                 if (run_as_login_shell) {
                     pty_flags |= PtyFlags.NO_LASTLOG;
@@ -1069,7 +1071,7 @@ namespace Widgets {
             } catch (GLib.KeyFileError e) {
                 print("terminal launch_shell: %s\n", e.message);
             }
-            
+
             launch_idle_id = GLib.Idle.add(() => {
                     try {
                         term.spawn_sync(pty_flags,
