@@ -24,7 +24,6 @@
 using GLib;
 
 namespace Keymap {
-	
     public string get_keyevent_name(Gdk.EventKey key_event) {
         if ((key_event.is_modifier) != 0) {
             return "";
