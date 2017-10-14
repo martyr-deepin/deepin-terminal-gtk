@@ -47,6 +47,7 @@ Below is keymap list for deepin-terminal:
 | Select right window             | <kbd>Alt</kbd>  + <kbd>l</kbd>                          |
 | Close window                    | <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>q</kbd>         |
 | Close other windows             | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>q</kbd>       |
+| Create new theme window         | <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>number</kbd>    |
 |                                                                                           |
 | Switch fullscreen               | <kbd>F11</kbd>                                          |
 | Adjust background opacity       | <kbd>Ctrl</kbd> + <kbd>ScrollButton</kbd>               |
