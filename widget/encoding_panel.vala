@@ -28,7 +28,9 @@ using Widgets;
 
 namespace Widgets {
 	public class EncodingPanel : Gtk.HBox {
+        public Widgets.Switcher switcher;
 		public Widgets.ConfigWindow parent_window;
+        public Workspace workspace;
 		public WorkspaceManager workspace_manager;
         public Gdk.RGBA background_color;
         public Gdk.RGBA line_dark_color;
@@ -38,8 +40,6 @@ namespace Widgets {
         public Gtk.Widget focus_widget;
         public KeyFile config_file;
         public Term focus_term;
-        public Widgets.Switcher switcher;
-        public Workspace workspace;
         public int back_button_margin_left = 8;
         public int back_button_margin_top = 6;
         public int encoding_button_padding = 5;

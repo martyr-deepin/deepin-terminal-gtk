@@ -31,9 +31,9 @@ namespace Widgets {
         
         public LinkButton(string link_name, string link_uri, string link_css) {
             add_events(Gdk.EventMask.BUTTON_PRESS_MASK
-                                     | Gdk.EventMask.BUTTON_RELEASE_MASK
-                                     | Gdk.EventMask.POINTER_MOTION_MASK
-                                     | Gdk.EventMask.LEAVE_NOTIFY_MASK);
+					   | Gdk.EventMask.BUTTON_RELEASE_MASK
+					   | Gdk.EventMask.POINTER_MOTION_MASK
+					   | Gdk.EventMask.LEAVE_NOTIFY_MASK);
             visible_window = false;
             
             var link_label = new Gtk.Label(null);

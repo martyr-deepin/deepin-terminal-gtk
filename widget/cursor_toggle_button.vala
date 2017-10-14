@@ -26,11 +26,11 @@ using Widgets;
 
 namespace Widgets {
 	public class CursorToggleButton : Gtk.Bin {
+        public CursorStyleButton block_button;
 		public CursorStyleButton ibeam_button;
 		public CursorStyleButton underline_button;
 		public int cursor_height = 26;
 		public int cursor_width = 36;
-        public CursorStyleButton block_button;
 		
 		public signal void change_cursor_state(string active_state);
         
