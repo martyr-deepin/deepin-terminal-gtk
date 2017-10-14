@@ -42,7 +42,7 @@ namespace Widgets {
         public GLib.Pid child_pid;
         public Gdk.RGBA background_color = Gdk.RGBA();
         public Gdk.RGBA foreground_color = Gdk.RGBA();
-        public Gtk.VScrollbar scrollbar;
+        public Gtk.Scrollbar scrollbar;
         public Menu.Menu menu;
         public Terminal term;
         public WorkspaceManager workspace_manager;
@@ -205,7 +205,7 @@ namespace Widgets {
             // NOTE: Why not use vte in Gtk.ScrolledWindow?
             // Because VTE implement Gtk.Scrollable that conflict with Gtk.ScrolledWindow.
             // Terminal process will *CRASH* if use Gtk.ScrolledWindow when vte have huge output scroll.
-            scrollbar = new Gtk.VScrollbar(term.get_vadjustment());
+            scrollbar = new Gtk.Scrollbar(Gtk.Orientation.VERTICAL, term.get_vadjustment());
             scrollbar.set_halign(Gtk.Align.END);
             scrollbar.set_child_visible(false);
 
