@@ -120,6 +120,14 @@ namespace Widgets {
                     kill_fg();
                 });
             term.realize.connect((t) => {
+                    // NOTE: if terminal start with option '-e', use functional 'launch_command' and don't use function 'launch_shell'.
+                    // terminal will crash if we launch_command after launch_shell.
+                    if (is_launch_command() && workspace_manager.is_first_term(this)) {
+                        launch_command(Application.commands, work_directory);
+                    } else {
+                        launch_shell(work_directory);
+                    }
+
                     setup_from_config();
 
                     focus_term();
@@ -191,14 +199,6 @@ namespace Widgets {
             /* Make Links Clickable */
             this.clickable(REGEX_STRINGS);
 
-            // NOTE: if terminal start with option '-e', use functional 'launch_command' and don't use function 'launch_shell'.
-            // terminal will crash if we launch_command after launch_shell.
-            if (is_launch_command() && workspace_manager.is_first_term(this)) {
-                launch_command(Application.commands, work_directory);
-            } else {
-                launch_shell(work_directory);
-            }
-
             add(term);
 
             // Create overlay scrollbar.
@@ -226,9 +226,9 @@ namespace Widgets {
                     if (adj.get_upper() == adj.get_lower() + adj.get_page_size()) {
                         scrollbar.set_child_visible(false);
                     } else {
-                        // Try to run hide scrollbar timer after show scrollbar. 
+                        // Try to run hide scrollbar timer after show scrollbar.
                         scrollbar.set_child_visible(true);
-                        
+
                         try_hide_scrollbar();
                     }
                 });
@@ -256,14 +256,14 @@ namespace Widgets {
                 GLib.Source.remove(hide_scrollbar_timeout_source_id);
                 hide_scrollbar_timeout_source_id = null;
             }
-            
+
             if (hide_scrollbar_timeout_source_id == null) {
                 hide_scrollbar_timeout_source_id = GLib.Timeout.add(3000, () => {
                         // Don't hide scrollbar is user is pressing button.
                         if (!is_press_scrollbar) {
                             scrollbar.set_child_visible(false);
                         }
-                        
+
                         hide_scrollbar_timeout_source_id = null;
 
                         return false;
@@ -1051,13 +1051,32 @@ namespace Widgets {
                 }
             }
 
+            // Init spawn/pty/argv arugment with option 'run_as_login_shell'.
+            PtyFlags pty_flags = PtyFlags.DEFAULT;
+            GLib.SpawnFlags spawn_flags =  0;
+
+            try {
+                Widgets.ConfigWindow window = (Widgets.ConfigWindow) term.get_toplevel();
+                bool run_as_login_shell = window.config.config_file.get_boolean("advanced", "run_as_login_shell");
+
+                if (run_as_login_shell) {
+                    pty_flags |= PtyFlags.NO_LASTLOG;
+                    spawn_flags |= GLib.SpawnFlags.FILE_AND_ARGV_ZERO;
+                    argv += "-%s".printf(GLib.Path.get_basename(shell));
+                } else {
+                    spawn_flags |= GLib.SpawnFlags.SEARCH_PATH;
+                }
+            } catch (GLib.KeyFileError e) {
+                print("terminal launch_shell: %s\n", e.message);
+            }
+            
             launch_idle_id = GLib.Idle.add(() => {
                     try {
-                        term.spawn_sync(Vte.PtyFlags.DEFAULT,
+                        term.spawn_sync(pty_flags,
                                         directory,
                                         argv,
                                         null,
-                                        GLib.SpawnFlags.SEARCH_PATH,
+                                        spawn_flags,
                                         null, /* child setup */
                                         out child_pid,
                                         null /* cancellable */);
