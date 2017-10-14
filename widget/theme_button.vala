@@ -1,8 +1,8 @@
 /* -*- Mode: Vala; indent-tabs-mode: nil; tab-width: 4 -*-
  * -*- coding: utf-8 -*-
  *
- * Copyright (C) 2011 ~ 2016 Deepin, Inc.
- *               2011 ~ 2016 Wang Yong
+ * Copyright (C) 2011 ~ 2017 Deepin, Inc.
+ *               2011 ~ 2017 Wang Yong
  *
  * Author:     Wang Yong <wangyong@deepin.com>
  * Maintainer: Wang Yong <wangyong@deepin.com>
@@ -21,21 +21,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */ 
 
+using Gee;
 using Gtk;
 using Widgets;
-using Gee;
 
 namespace Widgets {
     public class ThemeButton : Gtk.EventBox {
+        public Cairo.ImageSurface active_theme_border_surface;
+        public Cairo.ImageSurface dark_theme_border_surface;
+        public Cairo.ImageSurface light_theme_border_surface;
         public Gdk.RGBA background_color;
         public Gdk.RGBA content_color;
         public Gdk.RGBA foreground_color;
-        public Cairo.ImageSurface dark_theme_border_surface;
-        public Cairo.ImageSurface light_theme_border_surface;
-        public Cairo.ImageSurface active_theme_border_surface;
         public KeyFile theme_file;
         public bool is_active = false;
         public bool is_light_color;
+        public int background_padding = 2;
+        public int border_padding = 1;
         public int button_radius = 5;
         public int content_font_size = 11;
         public int content_padding_x = 14;
@@ -43,8 +45,6 @@ namespace Widgets {
         public int title_font_size = 11;
         public int title_padding_x = 14;
         public int title_padding_y = 6;
-        public int background_padding = 2;
-        public int border_padding = 1;
         public string theme_name;
         
         public ThemeButton(string name) {

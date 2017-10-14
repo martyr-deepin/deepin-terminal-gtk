@@ -1,8 +1,8 @@
 /* -*- Mode: Vala; indent-tabs-mode: nil; tab-width: 4 -*-
  * -*- coding: utf-8 -*-
  *
- * Copyright (C) 2011 ~ 2016 Deepin, Inc.
- *               2011 ~ 2016 Wang Yong
+ * Copyright (C) 2011 ~ 2017 Deepin, Inc.
+ *               2011 ~ 2017 Wang Yong
  *
  * Author:     Wang Yong <wangyong@deepin.com>
  * Maintainer: Wang Yong <wangyong@deepin.com>
@@ -22,9 +22,9 @@
  */
 
 using Gtk;
+using Utils;
 using Widgets;
 using XUtils;
-using Utils;
 
 namespace Widgets {
     public class QuakeWindow : Widgets.ConfigWindow {

@@ -1,8 +1,8 @@
 /* -*- Mode: Vala; indent-tabs-mode: nil; tab-width: 4 -*-
  * -*- coding: utf-8 -*-
  *
- * Copyright (C) 2011 ~ 2016 Deepin, Inc.
- *               2011 ~ 2016 Wang Yong
+ * Copyright (C) 2011 ~ 2017 Deepin, Inc.
+ *               2011 ~ 2017 Wang Yong
  *
  * Author:     Wang Yong <wangyong@deepin.com>
  * Maintainer: Wang Yong <wangyong@deepin.com>
@@ -26,7 +26,6 @@ using Widgets;
 
 namespace Widgets {
     public class PanelButton : Widgets.ClickEventBox {
-        public bool is_at_edit_button_area = false;
 		public bool is_hover = false;
         public Cairo.ImageSurface button_dark_surface;
         public Cairo.ImageSurface button_edit_hover_dark_surface;
@@ -38,33 +37,34 @@ namespace Widgets {
         public Cairo.ImageSurface button_light_surface;
         public Gdk.RGBA button_content_dark_color;
         public Gdk.RGBA button_content_light_color;
+        public Gdk.RGBA button_name_dark_color;
+        public Gdk.RGBA button_name_light_color;
         public Gdk.RGBA hover_dark_color;
         public Gdk.RGBA hover_light_color;
         public Gdk.RGBA line_dark_color;
         public Gdk.RGBA line_light_color;
         public Gdk.RGBA press_dark_color;
         public Gdk.RGBA press_light_color;
-        public Gdk.RGBA button_name_dark_color;
-        public Gdk.RGBA button_name_light_color;
         public bool display_bottom_line = true;
         public bool has_click = false;
+        public bool is_at_edit_button_area = false;
         public int button_content_size = 10;
         public int button_content_y = 27;
+        public int button_name_size = 11;
+        public int button_name_y = 5;
         public int edit_button_x = 254;
         public int edit_button_y;
         public int height = 56;
         public int image_x = 12;
         public int text_width = 136;
         public int text_x = 72;
-        public int button_name_size = 11;
-        public int button_name_y = 5;
         public int width = Constant.SLIDER_WIDTH;
         public string button_content;
         public string button_name;
         public string? button_display_name;
         
-        public signal void click_edit_button();
         public signal void click_button();
+        public signal void click_edit_button();
         
         public PanelButton(string name, string content, string? display_name, string edit_button_name) {
             this.add_events(Gdk.EventMask.BUTTON_PRESS_MASK

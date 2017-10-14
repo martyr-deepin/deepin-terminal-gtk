@@ -1,8 +1,8 @@
 /* -*- Mode: Vala; indent-tabs-mode: nil; tab-width: 4 -*-
  * -*- coding: utf-8 -*-
  *
- * Copyright (C) 2011 ~ 2016 Deepin, Inc.
- *               2011 ~ 2016 Wang Yong
+ * Copyright (C) 2011 ~ 2017 Deepin, Inc.
+ *               2011 ~ 2017 Wang Yong
  *
  * Author:     Wang Yong <wangyong@deepin.com>
  * Maintainer: Wang Yong <wangyong@deepin.com>
@@ -26,25 +26,25 @@ using Widgets;
 
 namespace Widgets {
     public class CommandDialog : Widgets.Dialog {
-        public Gtk.Box content_box;
         public Gtk.Box box;
         public Gtk.Box command_action_box;
+        public Gtk.Box content_box;
         public Gtk.ComboBoxText backspace_key_box;
         public Gtk.ComboBoxText del_key_box;
         public Gtk.ComboBoxText encode_box;
-        public Widgets.ShortcutEntry shortcut_entry;
+        public Gtk.Grid advanced_grid;
+        public Gtk.Widget? focus_widget;
+        public Term? focus_term;
+        public Widgets.ConfigWindow parent_window;
         public Widgets.Entry command_entry;
         public Widgets.Entry groupname_entry;
         public Widgets.Entry name_entry;
         public Widgets.Entry path_entry;
         public Widgets.Entry port_entry;
         public Widgets.Entry user_entry;
-        public Gtk.Grid advanced_grid;
-        public Gtk.Widget? focus_widget;
-        public Term? focus_term;
-        public Widgets.ConfigWindow parent_window;
-        public Widgets.PasswordButton password_button;
         public Widgets.FileButton file_button;
+        public Widgets.PasswordButton password_button;
+        public Widgets.ShortcutEntry shortcut_entry;
         public Widgets.TextButton delete_command_button;
         public Widgets.TextButton show_advanced_button;
         public int action_button_margin_top = 20;

@@ -1,8 +1,8 @@
 /* -*- Mode: Vala; indent-tabs-mode: nil; tab-width: 4 -*-
  * -*- coding: utf-8 -*-
  *
- * Copyright (C) 2011 ~ 2016 Deepin, Inc.
- *               2011 ~ 2016 Wang Yong
+ * Copyright (C) 2011 ~ 2017 Deepin, Inc.
+ *               2011 ~ 2017 Wang Yong
  *
  * Author:     Wang Yong <wangyong@deepin.com>
  * Maintainer: Wang Yong <wangyong@deepin.com>
@@ -21,10 +21,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */ 
 
-using Gtk;
-using Widgets;
-using Utils;
 using Gee;
+using Gtk;
+using Utils;
+using Widgets;
 
 namespace Widgets {
 	public class ThemePanel : Gtk.HBox {

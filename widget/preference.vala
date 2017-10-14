@@ -1,8 +1,8 @@
 /* -*- Mode: Vala; indent-tabs-mode: nil; tab-width: 4 -*-
  * -*- coding: utf-8 -*-
  *
- * Copyright (C) 2011 ~ 2016 Deepin, Inc.
- *               2011 ~ 2016 Wang Yong
+ * Copyright (C) 2011 ~ 2017 Deepin, Inc.
+ *               2011 ~ 2017 Wang Yong
  *
  * Author:     Wang Yong <wangyong@deepin.com>
  * Maintainer: Wang Yong <wangyong@deepin.com>
@@ -21,10 +21,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */ 
 
+using Animation;
+using Gee;
 using Gtk;
 using Widgets;
-using Gee;
-using Animation;
 
 namespace Widgets {
     public class Preference : Widgets.Dialog {
@@ -33,33 +33,6 @@ namespace Widgets {
 		public ArrayList<string> window_state_name_list;
 		public Gtk.ComboBoxText font_combox;
 		public Gtk.ComboBoxText window_combox;
-		public ShortcutEntry close_other_windows_key_entry;
-		public ShortcutEntry close_window_key_entry;
-		public ShortcutEntry close_workspace_key_entry;
-		public ShortcutEntry copy_key_entry;
-		public ShortcutEntry display_hotkey_terminal_key_entry;
-		public ShortcutEntry fullscreen_key_entry;
-		public ShortcutEntry rename_title_key_entry;
-		public ShortcutEntry new_workspace_key_entry;
-		public ShortcutEntry next_workspace_key_entry;
-		public ShortcutEntry paste_key_entry;
-		public ShortcutEntry open_key_entry;
-		public ShortcutEntry previous_workspace_key_entry;
-		public ShortcutEntry search_key_entry;
-		public ShortcutEntry select_all_key_entry;
-		public ShortcutEntry select_down_window_key_entry;
-		public ShortcutEntry select_left_window_key_entry;
-		public ShortcutEntry select_right_window_key_entry;
-		public ShortcutEntry select_up_window_key_entry;
-		public ShortcutEntry show_command_key_entry;
-		public ShortcutEntry show_remote_manage_key_entry;
-		public ShortcutEntry split_horizontally_key_entry;
-		public ShortcutEntry split_vertically_key_entry;
-		public ShortcutEntry zoom_in_key_entry;
-		public ShortcutEntry zoom_out_key_entry;
-		public ShortcutEntry zoom_reset_key_entry;
-		public ShortcutEntry jump_to_next_command_key_entry;
-		public ShortcutEntry jump_to_previous_command_key_entry;
 		public Gtk.Label close_other_windows_key_label;
 		public Gtk.Label close_window_key_label;
 		public Gtk.Label close_workspace_key_label;
@@ -68,13 +41,15 @@ namespace Widgets {
 		public Gtk.Label display_hotkey_terminal_key_label;
 		public Gtk.Label font_label;
 		public Gtk.Label fullscreen_key_label;
-		public Gtk.Label rename_title_key_label;
+		public Gtk.Label jump_to_next_command_key_label;
+		public Gtk.Label jump_to_previous_command_key_label;
 		public Gtk.Label new_workspace_key_label;
 		public Gtk.Label next_workspace_key_label;
 		public Gtk.Label opacity_label;
-		public Gtk.Label paste_key_label;
 		public Gtk.Label open_key_label;
+		public Gtk.Label paste_key_label;
 		public Gtk.Label previous_workspace_key_label;
+		public Gtk.Label rename_title_key_label;
 		public Gtk.Label search_key_label;
 		public Gtk.Label select_all_key_label;
 		public Gtk.Label select_down_window_key_label;
@@ -90,24 +65,49 @@ namespace Widgets {
 		public Gtk.Label zoom_in_key_label;
 		public Gtk.Label zoom_out_key_label;
 		public Gtk.Label zoom_reset_key_label;
-		public Gtk.Label jump_to_next_command_key_label;
-		public Gtk.Label jump_to_previous_command_key_label;
-		public Widgets.SpinButton font_size_spinbutton;
 		public ScrolledWindow scrolledwindow;
-		public Widgets.CheckButton cursor_blink_checkbutton;
+		public ShortcutEntry close_other_windows_key_entry;
+		public ShortcutEntry close_window_key_entry;
+		public ShortcutEntry close_workspace_key_entry;
+		public ShortcutEntry copy_key_entry;
+		public ShortcutEntry display_hotkey_terminal_key_entry;
+		public ShortcutEntry fullscreen_key_entry;
+		public ShortcutEntry jump_to_next_command_key_entry;
+		public ShortcutEntry jump_to_previous_command_key_entry;
+		public ShortcutEntry new_workspace_key_entry;
+		public ShortcutEntry next_workspace_key_entry;
+		public ShortcutEntry open_key_entry;
+		public ShortcutEntry paste_key_entry;
+		public ShortcutEntry previous_workspace_key_entry;
+		public ShortcutEntry rename_title_key_entry;
+		public ShortcutEntry search_key_entry;
+		public ShortcutEntry select_all_key_entry;
+		public ShortcutEntry select_down_window_key_entry;
+		public ShortcutEntry select_left_window_key_entry;
+		public ShortcutEntry select_right_window_key_entry;
+		public ShortcutEntry select_up_window_key_entry;
+		public ShortcutEntry show_command_key_entry;
+		public ShortcutEntry show_remote_manage_key_entry;
+		public ShortcutEntry split_horizontally_key_entry;
+		public ShortcutEntry split_vertically_key_entry;
+		public ShortcutEntry zoom_in_key_entry;
+		public ShortcutEntry zoom_out_key_entry;
+		public ShortcutEntry zoom_reset_key_entry;
 		public Widgets.CheckButton cursor_auto_hide_checkbutton;
+		public Widgets.CheckButton cursor_blink_checkbutton;
+		public Widgets.CheckButton hide_quakewindow_after_lost_focus_checkbutton;
 		public Widgets.CheckButton scroll_on_key_checkbutton;
 		public Widgets.CheckButton scroll_on_out_checkbutton;
-		public Widgets.CheckButton hide_quakewindow_after_lost_focus_checkbutton;
 		public Widgets.ConfigWindow parent_window;
 		public Widgets.CursorToggleButton cursor_style_button;
 		public Widgets.ProgressBar opacity_progressbar;
-        public Widgets.PreferenceSlidebar slidebar;
+		public Widgets.SpinButton font_size_spinbutton;
 		public double timer_end_value;
 		public double timer_start_value;
         public AnimateTimer timer;
         public Gtk.Box content_box;
         public Gtk.Widget? focus_widget;
+        public Widgets.PreferenceSlidebar slidebar;
         public bool in_animation = false;
         public int checkbutton_margin_right = 5;
         public int checkbutton_margin_top = 4;

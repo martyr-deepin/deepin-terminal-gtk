@@ -1,8 +1,8 @@
 /* -*- Mode: Vala; indent-tabs-mode: nil; tab-width: 4 -*-
  * -*- coding: utf-8 -*-
  *
- * Copyright (C) 2011 ~ 2016 Deepin, Inc.
- *               2011 ~ 2016 Wang Yong
+ * Copyright (C) 2011 ~ 2017 Deepin, Inc.
+ *               2011 ~ 2017 Wang Yong
  *
  * Author:     Wang Yong <wangyong@deepin.com>
  * Maintainer: Wang Yong <wangyong@deepin.com>
@@ -30,17 +30,17 @@ namespace Widgets {
         public Cairo.ImageSurface logo_surface;
         public int about_height = 9;
         public int about_x = 38;
+        public int about_y = 270;
+        public int acknowledgments_y = 10;
         public int height = 320;
+        public int homepage_y = 200;
+        public int icon_y = 13;
+        public int logo_y = 176;
         public int name_height = 13;
+        public int name_y = 106;
         public int version_height = 12;
         public int version_size = 9;
-        public int icon_y = 13;
-        public int name_y = 106;
         public int version_y = 146;
-        public int logo_y = 176;
-        public int homepage_y = 200;
-        public int acknowledgments_y = 10;
-        public int about_y = 270;
         public string about_text;
         
         public AboutWidget() {

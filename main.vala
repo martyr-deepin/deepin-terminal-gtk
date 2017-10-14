@@ -1,8 +1,8 @@
 /* -*- Mode: Vala; indent-tabs-mode: nil; tab-width: 4 -*-
  * -*- coding: utf-8 -*-
  *
- * Copyright (C) 2011 ~ 2016 Deepin, Inc.
- *               2011 ~ 2016 Wang Yong
+ * Copyright (C) 2011 ~ 2017 Deepin, Inc.
+ *               2011 ~ 2017 Wang Yong
  *
  * Author:     Wang Yong <wangyong@deepin.com>
  * Maintainer: Wang Yong <wangyong@deepin.com>
@@ -80,14 +80,14 @@ public class Application : Object {
     [CCode (array_length = false, array_null_terminated = true)]
 	public static string[]? pass_options = null;
     
-    public static ArrayList<string> commands;
-    private static bool version = false;
     public Widgets.QuakeWindow quake_window;
     public Widgets.Window window;
     public WorkspaceManager workspace_manager;
+    public static ArrayList<string> commands;
     public static int64 start_time;
-	
+    
     private bool inited = false;
+    private static bool version = false;
 
     public static void main(string[] args) {
         start_time = GLib.get_real_time() / 1000;

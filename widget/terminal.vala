@@ -1,8 +1,8 @@
 /* -*- Mode: Vala; indent-tabs-mode: nil; tab-width: 4 -*-
  * -*- coding: utf-8 -*-
  *
- * Copyright (C) 2011 ~ 2016 Deepin, Inc.
- *               2011 ~ 2016 Wang Yong
+ * Copyright (C) 2011 ~ 2017 Deepin, Inc.
+ *               2011 ~ 2017 Wang Yong
  *
  * Author:     Wang Yong <wangyong@deepin.com>
  * Maintainer: Wang Yong <wangyong@deepin.com>
@@ -36,36 +36,36 @@ namespace Widgets {
             TEXT
         }
 
-        public Menu.Menu menu;
-        public WorkspaceManager workspace_manager;
-        public bool has_select_all = false;
-        public int font_size = 0;
         private bool enter_sz_command = false;
         private string save_file_directory = "";
         public ArrayList<int> command_execute_y_coordinates;
         public GLib.Pid child_pid;
         public Gdk.RGBA background_color = Gdk.RGBA();
         public Gdk.RGBA foreground_color = Gdk.RGBA();
-        public Terminal term;
         public Gtk.VScrollbar scrollbar;
-        public bool is_first_term;
-        public bool press_anything = false;
+        public Menu.Menu menu;
+        public Terminal term;
+        public WorkspaceManager workspace_manager;
         public bool child_has_exit = false;
         public bool has_print_exit_notify = false;
+        public bool has_select_all = false;
+        public bool is_first_term;
+        public bool is_press_scrollbar = false;
         public bool login_remote_server = false;
+        public bool press_anything = false;
         public double zoom_factor = 1.0;
+        public int font_size = 0;
+        public int hide_scrollbar_offset = 20;
+        public int show_scrollbar_offset = 15;
         public string current_dir = "";
         public string current_title = "";
         public string expect_file_path = "";
-        public string? uri_at_right_press;
         public string? customize_title;
         public string? remote_server_title;
+        public string? uri_at_right_press;
         public uint launch_idle_id;
-        public int hide_scrollbar_offset = 20;
-        public int show_scrollbar_offset = 15;
-        public bool is_press_scrollbar = false;
         public uint? hide_scrollbar_timeout_source_id = null;
-
+        
         public static string USERCHARS = "-[:alnum:]";
         public static string USERCHARS_CLASS = "[" + USERCHARS + "]";
         public static string PASSCHARS_CLASS = "[-[:alnum:]\\Q,?;.:/!%$^*&~\"#'\\E]";

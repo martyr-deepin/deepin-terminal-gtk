@@ -1,8 +1,8 @@
 /* -*- Mode: Vala; indent-tabs-mode: nil; tab-width: 4 -*-
  * -*- coding: utf-8 -*-
  *
- * Copyright (C) 2011 ~ 2016 Deepin, Inc.
- *               2011 ~ 2016 Wang Yong
+ * Copyright (C) 2011 ~ 2017 Deepin, Inc.
+ *               2011 ~ 2017 Wang Yong
  *
  * Author:     Wang Yong <wangyong@deepin.com>
  * Maintainer: Wang Yong <wangyong@deepin.com>
@@ -28,9 +28,9 @@ namespace Widgets {
     public class PasswordButton : Gtk.EventBox {
         public Gtk.Box box;
         public Gtk.Box button_box;
-        public Widgets.Entry entry;
         public ImageButton hide_password_button;
         public ImageButton show_password_button;
+        public Widgets.Entry entry;
         public int height = 26;
         
         public PasswordButton() {

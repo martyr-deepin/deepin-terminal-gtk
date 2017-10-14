@@ -1,8 +1,8 @@
 /* -*- Mode: Vala; indent-tabs-mode: nil; tab-width: 4 -*-
  * -*- coding: utf-8 -*-
  *
- * Copyright (C) 2011 ~ 2016 Deepin, Inc.
- *               2011 ~ 2016 Wang Yong
+ * Copyright (C) 2011 ~ 2017 Deepin, Inc.
+ *               2011 ~ 2017 Wang Yong
  *
  * Author:     Wang Yong <wangyong@deepin.com>
  * Maintainer: Wang Yong <wangyong@deepin.com>
@@ -27,8 +27,6 @@ using Utils;
 
 namespace Widgets {
     public class ConfigWindow : Gtk.Window {
-        public int active_tab_underline_width;
-        private bool is_show_shortcut_viewer = false;
         public Config.Config config;
         public Gdk.RGBA title_line_dark_color;
         public Gdk.RGBA title_line_light_color;
@@ -41,15 +39,18 @@ namespace Widgets {
         public bool quake_mode = false;
         public bool show_quake_menu = false;
         public bool? config_theme_is_light;
+        public int active_tab_underline_width;
         public int active_tab_underline_x;
         public int cache_height = 0;
         public int cache_width = 0;
         public int reset_timeout_delay = 150;
-        public int resize_timeout_delay = 150;
         public int resize_cache_x = 0;
         public int resize_cache_y = 0;
+        public int resize_timeout_delay = 150;
         public uint? reset_timeout_source_id = null;
         public uint? resize_timeout_source_id = null;
+        
+        private bool is_show_shortcut_viewer = false;
 
         public ConfigWindow() {
             Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");

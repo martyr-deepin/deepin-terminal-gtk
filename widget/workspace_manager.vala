@@ -1,8 +1,8 @@
 /* -*- Mode: Vala; indent-tabs-mode: nil; tab-width: 4 -*-
  * -*- coding: utf-8 -*-
  *
- * Copyright (C) 2011 ~ 2016 Deepin, Inc.
- *               2011 ~ 2016 Wang Yong
+ * Copyright (C) 2011 ~ 2017 Deepin, Inc.
+ *               2011 ~ 2017 Wang Yong
  *
  * Author:     Wang Yong <wangyong@deepin.com>
  * Maintainer: Wang Yong <wangyong@deepin.com>
@@ -27,13 +27,12 @@ using Widgets;
 
 namespace Widgets {
     public class WorkspaceManager : Gtk.Box {
+        private Widgets.Term? first_term;
+        private bool has_first_term_created;
         public HashMap<int, Workspace> workspace_map;
         public Tabbar tabbar;
         public Workspace focus_workspace;
         public int workspace_index;
-        
-        private bool has_first_term_created;
-        private Widgets.Term? first_term;
         
         public WorkspaceManager(Tabbar t, string? work_directory) {
             Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");

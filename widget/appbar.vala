@@ -1,8 +1,8 @@
 /* -*- Mode: Vala; indent-tabs-mode: nil; tab-width: 4 -*-
  * -*- coding: utf-8 -*-
  *
- * Copyright (C) 2011 ~ 2016 Deepin, Inc.
- *               2011 ~ 2016 Wang Yong
+ * Copyright (C) 2011 ~ 2017 Deepin, Inc.
+ *               2011 ~ 2017 Wang Yong
  *
  * Author:     Wang Yong <wangyong@deepin.com>
  * Maintainer: Wang Yong <wangyong@deepin.com>
@@ -37,23 +37,23 @@ namespace Widgets {
         public Box window_button_box;
         public Box window_close_button_box;
         public Gtk.Widget? focus_widget;
+        public Menu.Menu menu;
+        public Tabbar tabbar;
+        public Widgets.Window window;
+        public Widgets.WindowEventArea event_area;
         public WindowButton close_button;
         public WindowButton max_button;
         public WindowButton menu_button;
         public WindowButton min_button;
         public WindowButton quit_fullscreen_button;
         public WindowButton unmax_button;
-        public Menu.Menu menu;
-        public Tabbar tabbar;
-        public Widgets.Window window;
-        public Widgets.WindowEventArea event_area;
         public WorkspaceManager workspace_manager;
         public int logo_width = 48;
         public int titlebar_right_cache_width = 10;
         
         public signal void close_window();
-        public signal void quit_fullscreen();
         public signal void exit_terminal();
+        public signal void quit_fullscreen();
         
         public Appbar(TerminalApp app, Widgets.Window win, Tabbar tab_bar, WorkspaceManager manager, bool has_start) {
             Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");

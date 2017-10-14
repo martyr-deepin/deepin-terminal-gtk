@@ -1,8 +1,8 @@
 /* -*- Mode: Vala; indent-tabs-mode: nil; tab-width: 4 -*-
  * -*- coding: utf-8 -*-
  *
- * Copyright (C) 2011 ~ 2016 Deepin, Inc.
- *               2011 ~ 2016 Wang Yong
+ * Copyright (C) 2011 ~ 2017 Deepin, Inc.
+ *               2011 ~ 2017 Wang Yong
  *
  * Author:     Wang Yong <wangyong@deepin.com>
  * Maintainer: Wang Yong <wangyong@deepin.com>
@@ -26,7 +26,6 @@ using Widgets;
 
 namespace Widgets {
     public class ServerGroupButton : Widgets.ClickEventBox {
-        public bool is_hover = false;
         public Cairo.ImageSurface arrow_dark_surface;
         public Cairo.ImageSurface arrow_light_surface;
         public Cairo.ImageSurface server_group_dark_surface;
@@ -42,6 +41,7 @@ namespace Widgets {
         public Gdk.RGBA title_dark_color;
         public Gdk.RGBA title_light_color;
         public bool display_bottom_line = true;
+        public bool is_hover = false;
         public int arrow_x = Constant.SLIDER_WIDTH - 22;
         public int content_size = 10;
         public int content_y = 27;

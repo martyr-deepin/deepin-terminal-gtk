@@ -1,8 +1,8 @@
 /* -*- Mode: Vala; indent-tabs-mode: nil; tab-width: 4 -*-
  * -*- coding: utf-8 -*-
  *
- * Copyright (C) 2011 ~ 2016 Deepin, Inc.
- *               2011 ~ 2016 Wang Yong
+ * Copyright (C) 2011 ~ 2017 Deepin, Inc.
+ *               2011 ~ 2017 Wang Yong
  *
  * Author:     Wang Yong <wangyong@deepin.com>
  * Maintainer: Wang Yong <wangyong@deepin.com>
@@ -26,21 +26,20 @@ using Widgets;
 
 namespace Widgets {
     public class PreferenceSlidebar : Gtk.Grid {
-		public int height = 30;
-        public PreferenceSlideItem focus_segment_item;
-        public int segment_spacing = 20;
-        public int width = Constant.PREFERENCE_SLIDEBAR_WIDTH;
-        
-        public PreferenceSlideItem basic_segment;
-        public PreferenceSlideItem theme_segment;
-        public PreferenceSlideItem hotkey_segment;
-        public PreferenceSlideItem terminal_key_segment;
-        public PreferenceSlideItem workspace_key_segment;
         public PreferenceSlideItem advanced_key_segment;
         public PreferenceSlideItem advanced_segment;
+        public PreferenceSlideItem basic_segment;
         public PreferenceSlideItem cursor_segment;
+        public PreferenceSlideItem focus_segment_item;
+        public PreferenceSlideItem hotkey_segment;
         public PreferenceSlideItem scroll_segment;
+        public PreferenceSlideItem terminal_key_segment;
+        public PreferenceSlideItem theme_segment;
         public PreferenceSlideItem window_segment;
+        public PreferenceSlideItem workspace_key_segment;
+		public int height = 30;
+        public int segment_spacing = 20;
+        public int width = Constant.PREFERENCE_SLIDEBAR_WIDTH;
         
 		public signal void click_item(string name);
 		

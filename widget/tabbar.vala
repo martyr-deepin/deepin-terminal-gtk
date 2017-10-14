@@ -1,8 +1,8 @@
 /* -*- Mode: Vala; indent-tabs-mode: nil; tab-width: 4 -*-
  * -*- coding: utf-8 -*-
  *
- * Copyright (C) 2011 ~ 2016 Deepin, Inc.
- *               2011 ~ 2016 Wang Yong
+ * Copyright (C) 2011 ~ 2017 Deepin, Inc.
+ *               2011 ~ 2017 Wang Yong
  *
  * Author:     Wang Yong <wangyong@deepin.com>
  * Maintainer: Wang Yong <wangyong@deepin.com>
@@ -33,8 +33,6 @@ namespace Widgets {
     public class Tabbar : Gtk.DrawingArea {
 		public Gdk.RGBA tab_split_dark_color;
 		public Gdk.RGBA tab_split_light_color;
-        public Gdk.RGBA text_active_color;
-        public Gdk.RGBA tab_text_color;
 		public HashMap<int, bool> tab_highlight_map;
         private Cairo.ImageSurface add_hover_dark_surface;
         private Cairo.ImageSurface add_hover_light_surface;
@@ -59,6 +57,8 @@ namespace Widgets {
         public ArrayList<int> tab_list;
         public Gdk.RGBA hover_arrow_color;
         public Gdk.RGBA inactive_arrow_color;
+        public Gdk.RGBA tab_text_color;
+        public Gdk.RGBA text_active_color;
         public Gdk.RGBA text_dark_color;
         public Gdk.RGBA text_highlight_color;
         public Gdk.RGBA text_hover_dark_color;
@@ -69,12 +69,12 @@ namespace Widgets {
         public bool allowed_add_tab = true;
         public int font_size = 11;
         public int height = Constant.TITLEBAR_HEIGHT;
-        public int tab_index = 0;
-        public int min_tab_width = 70;
         public int hover_clip_right_offset = 6;
+        public int min_tab_width = 70;
+        public int tab_index = 0;
         
-		public signal void update_tab_underline(int x, int width);
 		public signal void press_tab(int tab_index, int tab_id);
+		public signal void update_tab_underline(int x, int width);
         public signal void close_tab(int tab_index, int tab_id);
         public signal void new_tab();
 		

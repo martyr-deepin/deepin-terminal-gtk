@@ -1,8 +1,8 @@
 /* -*- Mode: Vala; indent-tabs-mode: nil; tab-width: 4 -*-
  * -*- coding: utf-8 -*-
  *
- * Copyright (C) 2011 ~ 2016 Deepin, Inc.
- *               2011 ~ 2016 Wang Yong
+ * Copyright (C) 2011 ~ 2017 Deepin, Inc.
+ *               2011 ~ 2017 Wang Yong
  *
  * Author:     Wang Yong <wangyong@deepin.com>
  * Maintainer: Wang Yong <wangyong@deepin.com>
@@ -27,6 +27,7 @@ using XUtils;
 
 namespace Widgets {
     public class WindowEventArea : Gtk.EventBox {
+        public FilterDoubleClick? filter_double_click_callback = null;
         public Gtk.Container drawing_area;
         public Gtk.Widget? child_before_leave;
         public bool is_double_clicked = false;
@@ -34,7 +35,6 @@ namespace Widgets {
         public double press_x = 0;
         public double press_y = 0;
         public int double_clicked_max_delay = 150;
-        public FilterDoubleClick? filter_double_click_callback = null;
     
         public delegate bool FilterDoubleClick(int x, int y);
         
@@ -47,15 +47,6 @@ namespace Widgets {
                        | Gdk.EventMask.BUTTON_RELEASE_MASK
                        | Gdk.EventMask.POINTER_MOTION_MASK
                        | Gdk.EventMask.LEAVE_NOTIFY_MASK);
-            
-            // draw.connect((w, cr) => {
-            //         Gtk.Allocation rect;
-            //         w.get_allocation(out rect);
-            //         cr.set_source_rgba(1, 0, 0, 0.5);
-            //         Draw.draw_rectangle(cr, 0, 0, rect.width, rect.height);
-                    
-            //         return true;
-            //     });
             
             leave_notify_event.connect((w, e) => {
                     if (child_before_leave != null) {

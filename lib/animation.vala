@@ -20,14 +20,9 @@
 
 namespace Animation {
     public class AnimateTimer : Object {
-        /* The following are the same intervals that Unity uses */
-        private TimeSpan extra_time = 0;
-        private TimeSpan length = 0;
-        private TimeSpan start_time = 0;
-        private double extra_progress = 0.0;
-        private uint timeout = 0;
         public bool is_running { get { return timeout != 0; } }
         public double progress { get; private set; }
+        
         /* speed is in milliseconds */
         public int speed { get; set; }
         
@@ -53,6 +48,12 @@ namespace Animation {
         
         /* x and y are 0.0 to 1.0 */
         public delegate double EasingFunc (double x);
+        
+        private TimeSpan extra_time = 0;
+        private TimeSpan length = 0;
+        private TimeSpan start_time = 0;
+        private double extra_progress = 0.0;
+        private uint timeout = 0;
 
         public AnimateTimer (EasingFunc func, int speed) {
             Object (speed: speed);

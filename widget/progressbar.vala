@@ -1,8 +1,8 @@
 /* -*- Mode: Vala; indent-tabs-mode: nil; tab-width: 4 -*-
  * -*- coding: utf-8 -*-
  *
- * Copyright (C) 2011 ~ 2016 Deepin, Inc.
- *               2011 ~ 2016 Wang Yong
+ * Copyright (C) 2011 ~ 2017 Deepin, Inc.
+ *               2011 ~ 2017 Wang Yong
  *
  * Author:     Wang Yong <wangyong@deepin.com>
  * Maintainer: Wang Yong <wangyong@deepin.com>
@@ -26,8 +26,8 @@ using Widgets;
 
 namespace Widgets {
 	public class ProgressBar : Gtk.EventBox {
-		public double percent;
 		public double draw_percent;
+		public double percent;
 		public int height = 22;
         public Cairo.ImageSurface pointer_surface;
         public Gdk.RGBA background_color;

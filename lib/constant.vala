@@ -1,8 +1,8 @@
 /* -*- Mode: Vala; indent-tabs-mode: nil; tab-width: 4 -*-
  * -*- coding: utf-8 -*-
  *
- * Copyright (C) 2011 ~ 2016 Deepin, Inc.
- *               2011 ~ 2016 Wang Yong
+ * Copyright (C) 2011 ~ 2017 Deepin, Inc.
+ *               2011 ~ 2017 Wang Yong
  *
  * Author:     Wang Yong <wangyong@deepin.com>
  * Maintainer: Wang Yong <wangyong@deepin.com>
@@ -25,10 +25,13 @@ public class Constant {
     public static double TERMINAL_MIN_OPACITY = 0;
     public static double VERSION = 2.6;
     public static int ACTIVE_TAB_UNDERLINE_HEIGHT = 2;
-    public static int WINDOW_BUTTON_WIDHT = 27;
     public static int CLOSE_BUTTON_MARGIN_RIGHT = 5;
     public static int CLOSE_BUTTON_MARGIN_TOP = 3;
     public static int CLOSE_BUTTON_WIDTH = 27;
+    public static int COMMAND_BUTTON_HEIGHT = 54;
+    public static int COMMAND_BUTTON_PADDING = 5;
+    public static int COMMAND_BUTTON_WIDTH = 190;
+    public static int COMMAND_SLIDER_WIDTH = 280;
     public static int DIALOG_BUTTON_HEIGHT = 28;
     public static int ENCODING_BUTTON_HEIGHT = 54;
     public static int ENCODING_BUTTON_PADDING = 5;
@@ -47,9 +50,6 @@ public class Constant {
     public static int THEME_BUTTON_PADDING = 5;
     public static int THEME_BUTTON_WIDTH = 190;
     public static int THEME_SLIDER_WIDTH = 230;
-    public static int COMMAND_BUTTON_HEIGHT = 54;
-    public static int COMMAND_BUTTON_PADDING = 5;
-    public static int COMMAND_BUTTON_WIDTH = 190;
-    public static int COMMAND_SLIDER_WIDTH = 280;
     public static int TITLEBAR_HEIGHT = 39;
+    public static int WINDOW_BUTTON_WIDHT = 27;
 }                         

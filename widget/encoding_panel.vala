@@ -1,8 +1,8 @@
 /* -*- Mode: Vala; indent-tabs-mode: nil; tab-width: 4 -*-
  * -*- coding: utf-8 -*-
  *
- * Copyright (C) 2011 ~ 2016 Deepin, Inc.
- *               2011 ~ 2016 Wang Yong
+ * Copyright (C) 2011 ~ 2017 Deepin, Inc.
+ *               2011 ~ 2017 Wang Yong
  *
  * Author:     Wang Yong <wangyong@deepin.com>
  * Maintainer: Wang Yong <wangyong@deepin.com>
@@ -21,10 +21,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */ 
 
-using Gtk;
-using Widgets;
-using Utils;
 using Gee;
+using Gtk;
+using Utils;
+using Widgets;
 
 namespace Widgets {
 	public class EncodingPanel : Gtk.HBox {
@@ -37,16 +37,16 @@ namespace Widgets {
         public Gtk.ScrolledWindow scrolledwindow;
         public Gtk.Widget focus_widget;
         public KeyFile config_file;
+        public Term focus_term;
         public Widgets.Switcher switcher;
         public Workspace workspace;
         public int back_button_margin_left = 8;
         public int back_button_margin_top = 6;
-        public int split_line_margin_left = 1;
         public int encoding_button_padding = 5;
         public int encoding_list_margin_bottom = 5;
         public int encoding_list_margin_top = 5;
+        public int split_line_margin_left = 1;
         public int width = Constant.ENCODING_SLIDER_WIDTH;
-        public Term focus_term;
         
         public delegate void UpdatePageAfterEdit();
 		
