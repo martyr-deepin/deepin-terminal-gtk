@@ -2,3 +2,4 @@ main
 *.h.gch
 *.swp
 build/
+3rdparty/
