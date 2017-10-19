@@ -75,7 +75,6 @@ You can search the keyword through Google in terminal.
 3. The words will be searched and the results will be displayed in Google.
 
 
-
 ### Copy/Paste ###
 
 You can freely copy and paste the contents or commands among terminal and anywhere else.
@@ -130,11 +129,15 @@ Window is the base for you to do other operations in terminal. You can create ma
 
 ### New Window ###
 
-1. Open Deepin Terminal and click the main menu to select **New Window**.
+You can create a new window in the following ways:
 
-2. Then a new terminal window will be opened.
+1. Open Deepin Terminal and click on ![menu_icon](icon/menu_icon.svg) to select **New Window**.
 
-> ![tips](icon/tips.svg): You can also right click on ![terminal-24](icon/terminal-24.svg) on Dock to select **New Window**.
+2. Click on ![terminal-24](icon/terminal-24.svg) on Dock to select **New Window**.
+
+3. Press ![Ctrl](icon/Ctrl.svg)+![Alt](icon/Alt.svg)+ 1~9 Number key to open new windows in different colors.
+
+ ![0|new_window](png/new_window.png)
 
 ### Rename Window ###
 
@@ -284,6 +287,8 @@ When there are many servers, the search box will be displayed on the top of remo
 2. The search results will be displayed at the panel.
 
 ![0|searchssh](png/searchssh.png)
+
+> ![notes](icon/notes.svg): You can customize the searched server name according to needs.
 
 
 ### Upload/Download File ###

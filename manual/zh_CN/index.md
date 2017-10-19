@@ -105,10 +105,10 @@
 
  ![0|newwindows](png/newwindows.png)
 
-1. 在启动器界面打开深度终端。
-2. 选择 ![menu](icon/icon_menu.svg) > **新建窗口**，将会在桌面打开一个新的终端。
-
-> ![tips](icon/tips.svg) ：您也可以右键单击任务栏上的 ![deepin-terminal](icon/deepin-terminal.svg) 图标，选择 **新建窗口**，来打开雷神模式的终端窗口。
+在启动器界面打开深度终端，您可以通过一下方法新建窗口：
+ - 选择 ![menu](icon/icon_menu.svg) > **新建窗口**，将会在桌面打开一个新的终端。
+ - 右键单击任务栏上的 ![deepin-terminal](icon/deepin-terminal.svg) 图标，选择 **新建窗口**。
+ - 使用快捷键 ![Ctrl](icon/Ctrl.svg)+![Alt](icon/Alt.svg)+1~9，不同的数字会新建一个不同主题的终端窗口。
 
 ### 分割窗口 ###
 
@@ -198,6 +198,8 @@
 3.  点击 **保存**。
 
  ![0|editssh](png/editssh.png)
+
+![notes](icon/notes.svg)您也可以自定义服务器名称，方便您区分和使用。
 
 ### 分组服务器
 
