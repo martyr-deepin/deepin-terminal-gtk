@@ -98,7 +98,7 @@ msgstr "Temel"
 #: ../widget/terminal.vala:464 ../widget/file_button.vala:69
 #: ../widget/command_dialog.vala:192 ../widget/command_dialog.vala:250
 msgid "Cancel"
-msgstr "İptal"
+msgstr "İptal Et"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Certificate"
@@ -188,7 +188,7 @@ msgstr "Kes"
 
 #: ../main.vala:185 ../widget/about_widget.vala:82 ../widget/tabbar.vala:603
 msgid "Deepin Terminal"
-msgstr "Deepin Terminal"
+msgstr "Deepin Uçbirim"
 
 #: ../main.vala:186 ../widget/about_widget.vala:49
 msgid ""
@@ -196,7 +196,7 @@ msgid ""
 "\n"
 "It sharpens your focus in the world of command line!"
 msgstr ""
-"Deepin Uçbirim, çalışma alanı, birden fazla pencere, uzaktan yönetim, deprem modu ve diğer özellikleri olan gelişmiş bir uçbirim emülatörüdür.\n"
+"Deepin Uçbirim, çalışma alanı, birden fazla pencere, uzaktan yönetim, quake kipi ve diğer özellikleri olan gelişmiş bir uçbirim emülatörüdür.\n"
 "Komut satırı dünyasında odaklanmanızı keskinleştirir!"
 
 #: ../widget/config_window.vala:307
@@ -331,11 +331,11 @@ msgstr "Bir önceki komuta atla:"
 
 #: ../main.vala:179
 msgid "Load theme"
-msgstr ""
+msgstr "Tema yükle"
 
 #: ../widget/preference.vala:390
 msgid "Maximize"
-msgstr "Büyüt"
+msgstr "Ekranı kapla"
 
 #: ../widget/command_dialog.vala:83
 msgid "Name"
@@ -347,7 +347,7 @@ msgstr "İsim:"
 
 #: ../widget/config_window.vala:332
 msgid "New theme terminal"
-msgstr ""
+msgstr "Yeni uçbirim teması"
 
 #: ../widget/appbar.vala:120
 msgid "New window"
@@ -438,7 +438,7 @@ msgstr "Programlar hala uçbirimde çalışıyor"
 
 #: ../main.vala:170
 msgid "Quake mode"
-msgstr "Deprem mod"
+msgstr "Quake Kipi"
 
 #: ../widget/terminal.vala:300 ../widget/config_window.vala:358
 #: ../widget/appbar.vala:123
@@ -516,59 +516,59 @@ msgstr "Seç"
 
 #: ../widget/config_window.vala:308 ../widget/entry_menu.vala:24
 msgid "Select all"
-msgstr "Hepsini seç"
+msgstr "Tümünü seçme"
 
 #: ../widget/preference.vala:307
 msgid "Select all:"
-msgstr "Tümünü seç:"
+msgstr "Tümünü seçme:"
 
 #: ../widget/terminal.vala:429
 msgid "Select directory to save download file"
-msgstr "İndirme dosyasını kaydetmek için dizin seçin"
+msgstr "İndirme dosyasını kaydetmek için dizin seçiniz"
 
 #: ../widget/terminal.vala:400
 msgid "Select file to upload"
-msgstr "Yüklemek dosya Seçin"
+msgstr "Yüklemek için dosya seçiniz"
 
 #: ../widget/config_window.vala:337
 msgid "Select left window"
-msgstr "Sol pencere seç"
+msgstr "Sol pencere seçme"
 
 #: ../widget/preference.vala:323
 msgid "Select left window:"
-msgstr "Sol pencere seç:"
+msgstr "Sol pencere seçme:"
 
 #: ../widget/config_window.vala:336
 msgid "Select lower window"
-msgstr "Alt pencereyi seçin"
+msgstr "Alt pencereyi seçme"
 
 #: ../widget/preference.vala:322
 msgid "Select lower window:"
-msgstr "Alt pencereyi seçin:"
+msgstr "Alt pencereyi seçme:"
 
 #: ../widget/config_window.vala:338
 msgid "Select right window"
-msgstr "Sağ pencere seçin"
+msgstr "Sağ pencere seçme"
 
 #: ../widget/preference.vala:324
 msgid "Select right window:"
-msgstr "Sağ pencere seçin:"
+msgstr "Sağ pencere seçme:"
 
 #: ../widget/file_button.vala:67
 msgid "Select the private key file"
-msgstr "Özel anahtar dosyasını seçin"
+msgstr "Özel anahtar dosyasını seçme"
 
 #: ../widget/config_window.vala:335
 msgid "Select upper window"
-msgstr "Üst pencereyi seçin"
+msgstr "Üst pencere seçme"
 
 #: ../widget/preference.vala:321
 msgid "Select upper window:"
-msgstr "Üst pencereyi seçin:"
+msgstr "Üst pencereyi seçme:"
 
 #: ../widget/config_window.vala:331
 msgid "Select workspace"
-msgstr "Çalışma alanı seç"
+msgstr "Çalışma alanı seçme"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Server name"
@@ -584,7 +584,7 @@ msgstr "Uçbirim başlangıç dizini ayarlama"
 
 #: ../main.vala:116
 msgid "Set the terminal window mode"
-msgstr "Uçbirim penceresi modunu ayarlama"
+msgstr "Uçbirim pencere kipi ayarlama"
 
 #: ../widget/terminal.vala:308 ../widget/appbar.vala:125
 msgid "Settings"
@@ -614,7 +614,7 @@ msgstr "Uçbirim"
 
 #: ../widget/terminal.vala:443
 msgid "Type path for download file"
-msgstr "İndirme dosyası için yazım yolu"
+msgstr "İndirme dosyası için yol türü"
 
 #: ../widget/terminal.vala:404
 msgid "Upload"
@@ -638,7 +638,7 @@ msgstr "Kullanıcı adı:"
 
 #: ../widget/about_widget.vala:86
 msgid "Version:"
-msgstr "Versiyon:"
+msgstr "Sürüm:"
 
 #: ../widget/terminal.vala:270 ../widget/config_window.vala:333
 msgid "Vertical split"

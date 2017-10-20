@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-09-11 11:15+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: António Ribeiro <contact@antonioribeiro.xyz>, 2017\n"
+"Last-Translator: Joao Pedro Correia da Silva Carvalhinho <joao.carvalhinho@gmail.com>, 2017\n"
 "Language-Team: Portuguese (https://www.transifex.com/linuxdeepin/teams/3976/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -163,7 +163,7 @@ msgstr "Cursor"
 
 #: ../widget/preference.vala:367
 msgid "Cursor autohide"
-msgstr ""
+msgstr "Esconder cursor"
 
 #: ../widget/preference.vala:366
 msgid "Cursor blink"
@@ -332,7 +332,7 @@ msgstr "Saltar para o comando anterior:"
 
 #: ../main.vala:179
 msgid "Load theme"
-msgstr ""
+msgstr "Carregar tema"
 
 #: ../widget/preference.vala:390
 msgid "Maximize"
@@ -348,7 +348,7 @@ msgstr "Nome:"
 
 #: ../widget/config_window.vala:332
 msgid "New theme terminal"
-msgstr ""
+msgstr "Novo tema de terminal"
 
 #: ../widget/appbar.vala:120
 msgid "New window"
@@ -457,11 +457,11 @@ msgstr "Mudar o nome"
 #: ../widget/terminal.vala:297 ../widget/terminal.vala:462
 #: ../widget/config_window.vala:354
 msgid "Rename title"
-msgstr ""
+msgstr "Alterar título"
 
 #: ../widget/preference.vala:335
 msgid "Rename title:"
-msgstr ""
+msgstr "Alterar título:"
 
 #: ../widget/remote_server_dialog.vala:186
 #: ../widget/remote_server_dialog.vala:196
@@ -472,7 +472,7 @@ msgstr "Obrigatório"
 
 #: ../widget/preference.vala:401
 msgid "Restore Defaults"
-msgstr ""
+msgstr "Restaurar definições padrão"
 
 #: ../main.vala:192
 msgid ""

@@ -332,7 +332,7 @@ msgstr "跳到下個命令："
 
 #: ../main.vala:179
 msgid "Load theme"
-msgstr ""
+msgstr "載入主題"
 
 #: ../widget/preference.vala:390
 msgid "Maximize"

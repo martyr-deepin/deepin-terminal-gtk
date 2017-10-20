@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-09-11 11:15+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Vitalik Drozd <www.vitalik1999@gmail.com>, 2017\n"
+"Last-Translator: Andriy Kyrylenko <jkq68121@sjuaq.com>, 2017\n"
 "Language-Team: Ukrainian (https://www.transifex.com/linuxdeepin/teams/3976/uk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -68,7 +68,7 @@ msgstr "Додаткове"
 
 #: ../widget/remote_server_dialog.vala:336
 msgid "Advanced options"
-msgstr ""
+msgstr "Розширені параметри"
 
 #: ../widget/remote_server_dialog.vala:425 ../widget/command_dialog.vala:249
 msgid "Are you sure to delete"
@@ -149,7 +149,7 @@ msgstr "Копіювати"
 
 #: ../widget/terminal.vala:247
 msgid "Copy link"
-msgstr ""
+msgstr "Копіювати посилання"
 
 #: ../widget/preference.vala:298
 msgid "Copy:"
@@ -161,7 +161,7 @@ msgstr "Курсор"
 
 #: ../widget/preference.vala:367
 msgid "Cursor autohide"
-msgstr ""
+msgstr "Автоматично приховувати курсор"
 
 #: ../widget/preference.vala:366
 msgid "Cursor blink"
@@ -197,11 +197,11 @@ msgstr ""
 
 #: ../widget/config_window.vala:307
 msgid "Default size"
-msgstr ""
+msgstr "Стандартний розмір"
 
 #: ../widget/preference.vala:304
 msgid "Default size:"
-msgstr ""
+msgstr "Стандартний розмір:"
 
 #: ../widget/remote_server_dialog.vala:427 ../widget/command_dialog.vala:251
 #: ../widget/entry_menu.vala:21
@@ -247,7 +247,7 @@ msgstr ""
 
 #: ../widget/remote_server_dialog.vala:152
 msgid "Edit Server"
-msgstr ""
+msgstr "Редагувати сервер"
 
 #: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:298
 msgid "Encoding"
@@ -255,7 +255,7 @@ msgstr "Кодування"
 
 #: ../widget/remote_server_dialog.vala:307
 msgid "Encoding:"
-msgstr ""
+msgstr "Кодування:"
 
 #: ../widget/confirm_dialog.vala:131 ../widget/appbar.vala:130
 msgid "Exit"
@@ -267,11 +267,11 @@ msgstr "Вийти з повноекранного режиму"
 
 #: ../widget/preference.vala:287
 msgid "Font size:"
-msgstr ""
+msgstr "Розмір шрифту:"
 
 #: ../widget/preference.vala:285
 msgid "Font:"
-msgstr ""
+msgstr "Шрифт:"
 
 #: ../widget/preference.vala:391 ../widget/terminal.vala:285
 msgid "Fullscreen"
@@ -279,15 +279,15 @@ msgstr "Повний екран"
 
 #: ../widget/preference.vala:334
 msgid "Fullscreen:"
-msgstr ""
+msgstr "Повний екран"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Group"
-msgstr ""
+msgstr "Група"
 
 #: ../widget/remote_server_dialog.vala:276
 msgid "Group:"
-msgstr ""
+msgstr "Група:"
 
 #: ../widget/appbar.vala:127
 msgid "Help"
@@ -339,7 +339,7 @@ msgstr "Назва"
 
 #: ../widget/command_dialog.vala:159
 msgid "Name:"
-msgstr ""
+msgstr "Ім'я:"
 
 #: ../widget/config_window.vala:332
 msgid "New theme terminal"
@@ -347,7 +347,7 @@ msgstr ""
 
 #: ../widget/appbar.vala:120
 msgid "New window"
-msgstr ""
+msgstr "Нове вікно"
 
 #: ../widget/terminal.vala:277 ../widget/config_window.vala:327
 msgid "New workspace"
@@ -379,7 +379,7 @@ msgstr "Відкрити"
 
 #: ../widget/preference.vala:300
 msgid "Open:"
-msgstr ""
+msgstr "Відкрити:"
 
 #: ../widget/remote_server_dialog.vala:274
 #: ../widget/remote_server_dialog.vala:284
@@ -393,7 +393,7 @@ msgstr "Пароль"
 
 #: ../widget/remote_server_dialog.vala:246
 msgid "Password:"
-msgstr ""
+msgstr "Пароль:"
 
 #: ../widget/terminal.vala:253 ../widget/config_window.vala:302
 #: ../widget/entry_menu.vala:18
@@ -402,11 +402,11 @@ msgstr "Вставити"
 
 #: ../widget/preference.vala:299
 msgid "Paste:"
-msgstr ""
+msgstr "Вставити:"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Path"
-msgstr ""
+msgstr "Шлях"
 
 #: ../widget/remote_server_dialog.vala:285
 msgid "Path:"
@@ -418,7 +418,7 @@ msgstr "Будь ласка, введіть нове сполучення кла
 
 #: ../widget/remote_server_dialog.vala:199
 msgid "Port:"
-msgstr ""
+msgstr "Порт:"
 
 #: ../widget/config_window.vala:330
 msgid "Previous workspace"
@@ -467,7 +467,7 @@ msgstr "Вимагається"
 
 #: ../widget/preference.vala:401
 msgid "Restore Defaults"
-msgstr ""
+msgstr "Відновити за замовчуванням"
 
 #: ../main.vala:192
 msgid ""
@@ -502,7 +502,7 @@ msgstr "Пошук"
 #: ../widget/preference.vala:301 ../widget/remote_panel.vala:473
 #: ../widget/command_panel.vala:201
 msgid "Search:"
-msgstr ""
+msgstr "Пошук:"
 
 #: ../widget/terminal.vala:431 ../widget/file_button.vala:71
 msgid "Select"
@@ -514,7 +514,7 @@ msgstr "Вибрати все"
 
 #: ../widget/preference.vala:307
 msgid "Select all:"
-msgstr ""
+msgstr "Вибрати все:"
 
 #: ../widget/terminal.vala:429
 msgid "Select directory to save download file"
@@ -591,7 +591,7 @@ msgstr "Ярлики"
 
 #: ../widget/command_dialog.vala:180
 msgid "Shortcuts:"
-msgstr ""
+msgstr "Ярлики:"
 
 #: ../widget/config_window.vala:355
 msgid "Switch fullscreen"

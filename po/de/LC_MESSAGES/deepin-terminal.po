@@ -332,7 +332,7 @@ msgstr "Zum vorherigen Befehl springen:"
 
 #: ../main.vala:179
 msgid "Load theme"
-msgstr ""
+msgstr "Aktives Theme"
 
 #: ../widget/preference.vala:390
 msgid "Maximize"
@@ -348,7 +348,7 @@ msgstr "Name:"
 
 #: ../widget/config_window.vala:332
 msgid "New theme terminal"
-msgstr ""
+msgstr "Neues Theme fürs Terminal"
 
 #: ../widget/appbar.vala:120
 msgid "New window"

@@ -472,7 +472,7 @@ msgstr "Szükséges"
 
 #: ../widget/preference.vala:401
 msgid "Restore Defaults"
-msgstr ""
+msgstr "Alaphelyzetbe állítás"
 
 #: ../main.vala:192
 msgid ""

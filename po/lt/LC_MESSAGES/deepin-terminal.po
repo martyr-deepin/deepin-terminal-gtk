@@ -163,7 +163,7 @@ msgstr "Žymeklis"
 
 #: ../widget/preference.vala:367
 msgid "Cursor autohide"
-msgstr ""
+msgstr "Automatiškai slėpti žymeklį"
 
 #: ../widget/preference.vala:366
 msgid "Cursor blink"
@@ -332,7 +332,7 @@ msgstr "Pereiti prie ankstesnės komandos:"
 
 #: ../main.vala:179
 msgid "Load theme"
-msgstr ""
+msgstr "Įkelti temą"
 
 #: ../widget/preference.vala:390
 msgid "Maximize"
@@ -457,11 +457,11 @@ msgstr "Pervadinti"
 #: ../widget/terminal.vala:297 ../widget/terminal.vala:462
 #: ../widget/config_window.vala:354
 msgid "Rename title"
-msgstr ""
+msgstr "Pervadinti pavadinimą"
 
 #: ../widget/preference.vala:335
 msgid "Rename title:"
-msgstr ""
+msgstr "Pervadinti pavadinimą:"
 
 #: ../widget/remote_server_dialog.vala:186
 #: ../widget/remote_server_dialog.vala:196

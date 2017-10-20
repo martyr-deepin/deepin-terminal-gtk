@@ -472,7 +472,7 @@ msgstr "Potrebno"
 
 #: ../widget/preference.vala:401
 msgid "Restore Defaults"
-msgstr ""
+msgstr "Obnovi zadano"
 
 #: ../main.vala:192
 msgid ""

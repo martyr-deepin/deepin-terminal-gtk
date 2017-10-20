@@ -88,7 +88,7 @@ msgstr ""
 
 #: ../widget/preference_slidebar.vala:56 ../widget/preference.vala:243
 msgid "Basic"
-msgstr ""
+msgstr "ベーシック"
 
 #: ../widget/remote_server_dialog.vala:346
 #: ../widget/remote_server_dialog.vala:426 ../widget/confirm_dialog.vala:131

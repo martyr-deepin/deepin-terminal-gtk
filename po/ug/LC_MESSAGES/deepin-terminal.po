@@ -26,7 +26,7 @@ msgstr ""
 
 #: ../widget/appbar.vala:129
 msgid "About"
-msgstr ""
+msgstr "ھەققىدە"
 
 #: ../widget/about_widget.vala:62
 msgid "Acknowledgments"
@@ -259,7 +259,7 @@ msgstr ""
 
 #: ../widget/confirm_dialog.vala:131 ../widget/appbar.vala:130
 msgid "Exit"
-msgstr ""
+msgstr "چېكىنىش"
 
 #: ../widget/terminal.vala:283
 msgid "Exit fullscreen"
@@ -291,7 +291,7 @@ msgstr ""
 
 #: ../widget/appbar.vala:127
 msgid "Help"
-msgstr ""
+msgstr "ياردەم"
 
 #: ../widget/preference.vala:395
 msgid "Hide quake window after lost focus"
