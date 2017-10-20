@@ -38,14 +38,14 @@ namespace Widgets {
         public Cairo.ImageSurface unchecked_press_surface;
         
         public CheckButton() {
-            checked_normal_surface = Utils.create_image_surface("checkbox_checked_normal.png");
-            checked_hover_surface = Utils.create_image_surface("checkbox_checked_hover.png");
-            checked_press_surface = Utils.create_image_surface("checkbox_checked_press.png");
-            checked_insensitive_surface = Utils.create_image_surface("checkbox_checked_insensitive.png");
-            unchecked_normal_surface = Utils.create_image_surface("checkbox_unchecked_normal.png");
-            unchecked_hover_surface = Utils.create_image_surface("checkbox_unchecked_hover.png");
-            unchecked_press_surface = Utils.create_image_surface("checkbox_unchecked_press.png");
-            unchecked_insensitive_surface = Utils.create_image_surface("checkbox_unchecked_insensitive.png");
+            checked_normal_surface = Utils.create_image_surface("checkbox_checked_normal.svg");
+            checked_hover_surface = Utils.create_image_surface("checkbox_checked_hover.svg");
+            checked_press_surface = Utils.create_image_surface("checkbox_checked_press.svg");
+            checked_insensitive_surface = Utils.create_image_surface("checkbox_checked_insensitive.svg");
+            unchecked_normal_surface = Utils.create_image_surface("checkbox_unchecked_normal.svg");
+            unchecked_hover_surface = Utils.create_image_surface("checkbox_unchecked_hover.svg");
+            unchecked_press_surface = Utils.create_image_surface("checkbox_unchecked_press.svg");
+            unchecked_insensitive_surface = Utils.create_image_surface("checkbox_unchecked_insensitive.svg");
             
             set_size_request(checked_normal_surface.get_width(), checked_normal_surface.get_height());
             

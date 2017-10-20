@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>checkbox_checked_insensitive</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M8.02655029,1 L2.00328407,1 C0.896900829,1 0,1.90195036 0,3.0085302 L0,10.9914698 C0,12.1007504 0.901950359,13 2.0085302,13 L9.9914698,13 C11.1007504,13 12,12.1036926 12,11.0016059 L12,4.9954834" id="path-1"></path>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.4">
+        <g id="checkbox_checked_insensitive">
+            <g id="checkbox-checked_insensitive" transform="translate(2.000000, 1.000000)">
+                <g id="Combined-Shape">
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <path stroke-opacity="0.5" stroke="#000000" stroke-width="1" d="M8.23446737,0.5 L12.5,4.78918599 L12.5,11.0016059 C12.5,12.380892 11.3758358,13.5 9.9914698,13.5 L2.0085302,13.5 C0.624979077,13.5 -0.5,12.3760648 -0.5,10.9914698 L-0.5,3.0085302 C-0.5,1.62527108 0.621290501,0.5 2.00328407,0.5 L8.23446737,0.5 Z"></path>
+                </g>
+                <polyline id="Path-1112" stroke="#303030" stroke-width="1.5" points="1.88402778 7.01499605 5.125 10 12.8467277 0.112396565"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>

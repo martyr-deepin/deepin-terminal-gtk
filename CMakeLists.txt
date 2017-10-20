@@ -20,17 +20,18 @@ find_package(Gettext)
 pkg_check_modules(GTK3 REQUIRED gtk+-3.0)
 pkg_check_modules(GEE REQUIRED gee-0.8)
 pkg_check_modules(GIO REQUIRED gio-unix-2.0)
+pkg_check_modules(RSVG REQUIRED librsvg-2.0)
 pkg_check_modules(WNCK REQUIRED libwnck-3.0)
 pkg_check_modules(FONTCONFIG REQUIRED fontconfig)
 pkg_check_modules(GLIB REQUIRED glib-2.0)
 
 ExternalProject_Add(Vte-0.29
-	SOURCE_DIR ${CMAKE_SOURCE_DIR}/3rdparty/vte-0.50.1
-	CONFIGURE_COMMAND ./configure --enable-static
-	BUILD_COMMAND make
-	INSTALL_COMMAND ""
-	BUILD_IN_SOURCE 1
-	)
+  SOURCE_DIR ${CMAKE_SOURCE_DIR}/3rdparty/vte-0.50.1
+  CONFIGURE_COMMAND ./configure --enable-static
+  BUILD_COMMAND make
+  INSTALL_COMMAND ""
+  BUILD_IN_SOURCE 1
+  )
 
 set(CFLAGS
 	${GIO_CFLAGS}
@@ -48,6 +49,7 @@ set(INCLUDE_PATHS
 	${GTK3_INCLUDE_DIRS}
 	${GEE_INCLUDE_DIRS}
 	${WNCK_INCLUDE_DIRS}
+	${RSVG_INCLUDE_DIRS}
 	${JsonGlib_INCLUDE_DIRS}
 	${LIBSECRET_INCLUDE_DIRS}
 	${CMAKE_SOURCE_DIR}/3rdparty/vte-0.50.1/src
@@ -60,6 +62,7 @@ set(LIBS
 	${GTK3_LIBRARIES}
 	${GEE_LIBRARIES}
 	${WNCK_LIBRARIES}
+	${RSVG_LIBRARIES}
 	${JsonGlib_LIBRARIES}
 	${LIBSECRET_LIBRARIES}
 	${ZLIB_LIBRARIES}
@@ -151,6 +154,7 @@ PACKAGES
 	libsecret-1
 	gdk-x11-3.0
 	glib-2.0
+	librsvg-2.0
 )
 add_executable(${target} ${VALA_C} ${CMAKE_SOURCE_DIR}/project_path.c ${CMAKE_SOURCE_DIR}/lib/font.c)
 target_link_libraries(${target} ${LIBS} ${CMAKE_SOURCE_DIR}/3rdparty/vte-0.50.1/src/.libs/libvte-2.91.a)

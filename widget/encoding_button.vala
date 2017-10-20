@@ -60,9 +60,9 @@ namespace Widgets {
                 foreground_color = Utils.hex_to_rgba(theme_file.get_string("theme", "foreground").strip());
                 content_color = Utils.hex_to_rgba(theme_file.get_string("theme", "color_2").strip());
                 
-                dark_theme_border_surface = Utils.create_image_surface("dark_theme_border.png");
-                light_theme_border_surface = Utils.create_image_surface("light_theme_border.png");
-                active_theme_border_surface = Utils.create_image_surface("active_theme_border.png");
+                dark_theme_border_surface = Utils.create_image_surface("dark_theme_border.svg");
+                light_theme_border_surface = Utils.create_image_surface("light_theme_border.svg");
+                active_theme_border_surface = Utils.create_image_surface("active_theme_border.svg");
             } catch (Error e) {
                 print("EncodingButton: %s\n", e.message);
             }

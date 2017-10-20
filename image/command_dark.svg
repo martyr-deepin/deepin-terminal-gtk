@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>command_dark_dark</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#D5D5D5" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="0" y="0" width="40" height="44" rx="2"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-34">
+            <g id="cmd_dark" transform="translate(4.000000, 2.000000)">
+                <mask id="mask-3" fill="white">
+                    <use xlink:href="#path-2"></use>
+                </mask>
+                <use id="Rectangle-44" fill-opacity="0.4" fill="url(#linearGradient-1)" opacity="0.300000012" xlink:href="#path-2"></use>
+                <rect id="Rectangle-6" fill="#FFFFFF" opacity="0.200000003" mask="url(#mask-3)" x="7" y="33" width="6" height="6"></rect>
+                <rect id="Rectangle-6" fill="#FFFFFF" opacity="0.200000003" mask="url(#mask-3)" x="17" y="33" width="6" height="6"></rect>
+                <rect id="Rectangle-6" fill="#FFFFFF" opacity="0.200000003" mask="url(#mask-3)" x="27" y="33" width="6" height="6"></rect>
+                <text id="&gt;_" mask="url(#mask-3)" font-family="SourceHanSansSC-Regular, Source Han Sans SC" font-size="12" font-weight="normal" fill="#FFFFFF">
+                    <tspan x="11.816" y="18">&gt;_</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

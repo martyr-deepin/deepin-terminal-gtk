@@ -66,10 +66,10 @@ namespace Widgets {
             title = server_title;
             server_number = number;
             
-			server_group_dark_surface = Utils.create_image_surface("server_group_dark.png");
-			server_group_light_surface = Utils.create_image_surface("server_group_light.png");
-			arrow_dark_surface = Utils.create_image_surface("list_arrow_dark.png");
-			arrow_light_surface = Utils.create_image_surface("list_arrow_light.png");
+			server_group_dark_surface = Utils.create_image_surface("server_group_dark.svg");
+			server_group_light_surface = Utils.create_image_surface("server_group_light.svg");
+			arrow_dark_surface = Utils.create_image_surface("list_arrow_dark.svg");
+			arrow_light_surface = Utils.create_image_surface("list_arrow_light.svg");
             
             title_dark_color = Utils.hex_to_rgba("#FFFFFF");
             content_dark_color = Utils.hex_to_rgba("#FFFFFF", 0.5);

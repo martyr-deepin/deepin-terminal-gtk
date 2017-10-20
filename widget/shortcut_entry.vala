@@ -50,8 +50,8 @@ namespace Widgets {
         public ShortcutEntry() {
             Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
             
-			button_left_surface = Utils.create_image_surface("shortcut_button_left.png");
-			button_right_surface = Utils.create_image_surface("shortcut_button_right.png");
+			button_left_surface = Utils.create_image_surface("shortcut_button_left.svg");
+			button_right_surface = Utils.create_image_surface("shortcut_button_right.svg");
             
             set_visible_window(false);
             set_can_focus(true);

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>tab_close_hover</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="7.71777291" cy="7.61111111" r="7"></circle>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="终端" transform="translate(-479.000000, -705.000000)">
+            <g id="tab_close_hover" transform="translate(480.000000, 706.000000)">
+                <g id="Oval-58">
+                    <use fill-opacity="0.5" fill="#000000" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <circle stroke-opacity="0.4" stroke="#FFFFFF" stroke-width="1" cx="7.71777291" cy="7.61111111" r="7.5"></circle>
+                </g>
+                <g id="Group-15" transform="translate(5.384440, 5.277778)" stroke="#FFFFFF" stroke-width="1.2" stroke-linecap="round">
+                    <path d="M0,4.66666083 L4.66666667,-5.83333349e-06" id="Stroke-12"></path>
+                    <path d="M4.66666667,4.66666083 L0,-5.83333349e-06" id="Stroke-13"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

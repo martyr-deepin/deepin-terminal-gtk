@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="26px" viewBox="0 0 24 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>fileload_press</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#0B8CFF" offset="0%"></stop>
+            <stop stop-color="#0AA1FF" offset="100%"></stop>
+        </linearGradient>
+        <path d="M0,1 L0,25 L20,25 L20,25 C22.209139,25 24,23.209139 24,21 L24,5 L24,5 C24,2.790861 22.209139,1 20,1 L0,1 Z" id="path-2"></path>
+        <filter x="-8.3%" y="-4.2%" width="116.7%" height="116.7%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.05 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="输入框" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="fileload_press">
+            <g id="按钮背景-2">
+                <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+                <path stroke-opacity="0.3" stroke="#1D82FF" stroke-width="1" d="M0.5,1.5 L0.5,24.5 L20,24.5 C21.9329966,24.5 23.5,22.9329966 23.5,21 L23.5,5 C23.5,3.06700338 21.9329966,1.5 20,1.5 L0.5,1.5 Z"></path>
+            </g>
+            <path d="M7.5,14 C7.22385763,14 7,13.7761424 7,13.5 C7,13.2238576 7.22385763,13 7.5,13 C7.77614237,13 8,13.2238576 8,13.5 C8,13.7761424 7.77614237,14 7.5,14 Z M12,14 C11.7238576,14 11.5,13.7761424 11.5,13.5 C11.5,13.2238576 11.7238576,13 12,13 C12.2761424,13 12.5,13.2238576 12.5,13.5 C12.5,13.7761424 12.2761424,14 12,14 Z M16.5,14 C16.2238576,14 16,13.7761424 16,13.5 C16,13.2238576 16.2238576,13 16.5,13 C16.7761424,13 17,13.2238576 17,13.5 C17,13.7761424 16.7761424,14 16.5,14 Z" id="Combined-Shape" stroke="#FFFFFF"></path>
+        </g>
+    </g>
+</svg>

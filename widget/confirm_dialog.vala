@@ -60,7 +60,7 @@ namespace Widgets {
             content_button_box.margin_bottom = box_margin_bottom;
             content_button_box.margin_end = box_margin_end;
             
-            Gtk.Image logo_image = new Gtk.Image.from_file(Utils.get_image_path("dialog_icon.png"));
+            Gtk.Image logo_image = new Gtk.Image.from_file(Utils.get_image_path("dialog_icon.svg"));
             logo_image.margin_start = logo_margin_start;
             logo_image.margin_end = logo_margin_end;
             

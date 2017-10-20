@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>深度终端-24px</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="深度终端-24px">
+            <image id="Bitmap" x="1" y="3" width="22" height="20" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAYAAACJfM0wAAAABGdBTUEAA1teXP8meAAAAFtJREFUOBHtlVEKwCAMQ1s3739hN5cH0gusfggNxPr1kFCim5nL95oavzVFGEC7/MqPnKFLkNZ0AM+C8jBYDniLChyxVhQVRSQQl9qKw6Og8SnnLMGalPyWr+kDNPgKLUxeO18AAAAASUVORK5CYII="></image>
+            <rect id="Rectangle-118" fill="#DE434E" x="2" y="4" width="20" height="18"></rect>
+            <path d="M14.4545455,16 C14.7557917,16 15,15.7761424 15,15.5 C15,15.2238576 14.7557917,15 14.4545455,15 L9.54545455,15 C9.24420832,15 9,15.2238576 9,15.5 C9,15.7761424 9.24420832,16 9.54545455,16 L14.4545455,16 Z" id="Path" fill="#FFFFFF"></path>
+            <path d="M8.55249307,10.002568 L5.23500053,12.0760008 C5.00083226,12.222356 4.92964568,12.5308312 5.07600085,12.7649995 C5.22235601,12.9991677 5.5308312,13.0703543 5.76499947,12.9239992 L9.76499947,10.4239992 C10.0783335,10.2281654 10.0783335,9.77183462 9.76499947,9.57600085 L5.76499947,7.07600085 C5.5308312,6.92964568 5.22235601,7.00083226 5.07600085,7.23500053 C4.92964568,7.4691688 5.00083226,7.77764399 5.23500053,7.92399915 L8.55249307,10.002568 Z" id="Path-2" fill="#FFFFFF"></path>
+        </g>
+    </g>
+</svg>

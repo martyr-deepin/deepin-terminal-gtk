@@ -24,6 +24,8 @@
 using Gdk;
 using Gee;
 using Gtk;
+using Rsvg;
+using Cairo;
 
 extern char* project_path();
 extern string font_match(string family);
@@ -134,7 +136,7 @@ namespace Utils {
                     files.add(info.get_name());
                 }
             }
-        } catch (Error e) {
+        } catch (GLib.Error e) {
             print("list_files: %s\n", e.message);
         }
 
@@ -225,7 +227,7 @@ namespace Utils {
         string? paths = Environment.get_variable("PATH");
 
         foreach (string bin_path in paths.split(":")) {
-            var file = File.new_for_path(GLib.Path.build_path(Path.DIR_SEPARATOR_S, bin_path, command_name));
+            var file = File.new_for_path(GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, bin_path, command_name));
             if (file.query_exists()) {
                 return true;
             }
@@ -240,7 +242,7 @@ namespace Utils {
             string std_out;
             Process.spawn_command_line_sync(cmd, out std_out, null, out exit_code);
             return std_out;
-        } catch (Error e){
+        } catch (GLib.Error e){
             return "";
         }
     }
@@ -260,42 +262,42 @@ namespace Utils {
             } else {
                 return "";
             }
-        } catch (Error e) {
+        } catch (GLib.Error e) {
             print("get_proc_file_content: %s\n", e.message);
             return "";
         }
     }
 
     public string get_image_path(string image_name) {
-        return GLib.Path.build_path(Path.DIR_SEPARATOR_S, GLib.Path.get_dirname((string) project_path()), "image", image_name);
+        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, GLib.Path.get_dirname((string) project_path()), "image", image_name);
     }
 
     public string get_theme_path(string theme_name) {
-        return GLib.Path.build_path(Path.DIR_SEPARATOR_S, GLib.Path.get_dirname((string) project_path()), "theme", theme_name);
+        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, GLib.Path.get_dirname((string) project_path()), "theme", theme_name);
     }
 
     public string get_theme_dir() {
-        return GLib.Path.build_path(Path.DIR_SEPARATOR_S, GLib.Path.get_dirname((string) project_path()), "theme");
+        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, GLib.Path.get_dirname((string) project_path()), "theme");
     }
 
     public string get_root_path(string file_path) {
-        return GLib.Path.build_path(Path.DIR_SEPARATOR_S, GLib.Path.get_dirname((string) project_path()), file_path);
+        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, GLib.Path.get_dirname((string) project_path()), file_path);
     }
 
     public string get_config_dir() {
-        return GLib.Path.build_path(Path.DIR_SEPARATOR_S, Environment.get_user_config_dir(), "deepin", "deepin-terminal");
+        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, Environment.get_user_config_dir(), "deepin", "deepin-terminal");
     }
 
     public string get_config_file_path(string config_name) {
-        return GLib.Path.build_path(Path.DIR_SEPARATOR_S, Environment.get_user_config_dir(), "deepin", "deepin-terminal", config_name);
+        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, Environment.get_user_config_dir(), "deepin", "deepin-terminal", config_name);
     }
 
     public string get_ssh_script_path() {
-        return GLib.Path.build_path(Path.DIR_SEPARATOR_S, GLib.Path.get_dirname((string) project_path()), "ssh_login.sh");
+        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, GLib.Path.get_dirname((string) project_path()), "ssh_login.sh");
     }
 
     public string get_default_private_key_path() {
-        return GLib.Path.build_path(Path.DIR_SEPARATOR_S, Environment.get_home_dir(), ".ssh", "id_rsa");
+        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, Environment.get_home_dir(), ".ssh", "id_rsa");
     }
 
     public string lookup_password(string user, string server_address, string? port=null) {
@@ -319,7 +321,7 @@ namespace Utils {
         try {
             password = Secret.password_lookup_sync(password_schema, null, null, "number", 8, "string", "eight", "even", true);
             // print("Lookup password: '%s'\n", password);
-        } catch (Error e) {
+        } catch (GLib.Error e) {
             error ("%s", e.message);
         }
 
@@ -344,7 +346,7 @@ namespace Utils {
 
         try {
             Secret.password_clear_sync(password_schema, null, "number", 8, "string", "eight", "even", true);
-        } catch (Error e) {
+        } catch (GLib.Error e) {
             print("%s", e.message);
             return;
         }
@@ -355,7 +357,7 @@ namespace Utils {
                                      null, (obj, async_res) => {
                                          try {
                                              Secret.password_store.end(async_res);
-                                         } catch (Error e) {
+                                         } catch (GLib.Error e) {
                                              print("%s", e.message);
                                              return;
                                          }
@@ -395,19 +397,32 @@ namespace Utils {
     }
 
     public void write_log(string log) {
-        var log_file_dir = GLib.Path.build_path(Path.DIR_SEPARATOR_S, Environment.get_user_cache_dir(), "deepin", "deepin-terminal");
-        var log_file = GLib.Path.build_path(Path.DIR_SEPARATOR_S, Environment.get_user_cache_dir(), "deepin", "deepin-terminal", "deepin-terminal.log");
+        var log_file_dir = GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, Environment.get_user_cache_dir(), "deepin", "deepin-terminal");
+        var log_file = GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, Environment.get_user_cache_dir(), "deepin", "deepin-terminal", "deepin-terminal.log");
         touch_dir(log_file_dir);
         try {
             FileUtils.set_contents(log_file, log);
-        } catch (Error e) {
+        } catch (GLib.Error e) {
             print("write_log: %s\n", e.message);
         }
     }
 
     public Cairo.ImageSurface create_image_surface(string surface_path) {
-        return new Cairo.ImageSurface.from_png(Utils.get_image_path(surface_path));
-    }
+		try {
+			Rsvg.Handle r = new Rsvg.Handle.from_file(Utils.get_image_path(surface_path));
+			Rsvg.DimensionData d = r.get_dimensions();
+			Cairo.ImageSurface cs = new Cairo.ImageSurface(Cairo.Format.ARGB32, d.width, d.height);
+			Cairo.Context c = new Cairo.Context(cs);
+			r.render_cairo(c);		
+		
+			return cs;
+		} catch (GLib.Error e) {
+			print("create_image_surface: %s %s\n", surface_path, e.message);
+			
+			Cairo.ImageSurface cs = new Cairo.ImageSurface(Cairo.Format.ARGB32, 1, 1);
+			return cs;
+		}
+	}
 
     public int get_active_monitor(Gdk.Screen screen) {
         var window = screen.get_active_window();
@@ -448,7 +463,7 @@ namespace Utils {
             }
 
             command = (string) data;
-        } catch (Error e) {
+        } catch (GLib.Error e) {
             warning ("%s\n", e.message);
         }
 

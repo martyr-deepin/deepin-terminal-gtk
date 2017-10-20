@@ -99,10 +99,10 @@ namespace Widgets {
 		public CursorStyleButton(string icon_name) {
 			set_size_request(cursor_width, cursor_height);
 			
-            normal_surface = Utils.create_image_surface(icon_name + "_normal.png");
-            hover_surface = Utils.create_image_surface(icon_name + "_hover.png");
-            press_surface = Utils.create_image_surface(icon_name + "_press.png");
-            checked_surface = Utils.create_image_surface(icon_name + "_checked.png");
+            normal_surface = Utils.create_image_surface(icon_name + "_normal.svg");
+            hover_surface = Utils.create_image_surface(icon_name + "_hover.svg");
+            press_surface = Utils.create_image_surface(icon_name + "_press.svg");
+            checked_surface = Utils.create_image_surface(icon_name + "_checked.svg");
 			
 			button_press_event.connect((w) => {
 					active();

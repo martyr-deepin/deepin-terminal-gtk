@@ -95,16 +95,16 @@ namespace Widgets {
         
             set_size_request(-1, height);
             
-            close_normal_surface = Utils.create_image_surface("tab_close_normal.png");
-            close_hover_surface = Utils.create_image_surface("tab_close_hover.png");
-            close_press_surface = Utils.create_image_surface("tab_close_press.png");
+            close_normal_surface = Utils.create_image_surface("tab_close_normal.svg");
+            close_hover_surface = Utils.create_image_surface("tab_close_hover.svg");
+            close_press_surface = Utils.create_image_surface("tab_close_press.svg");
 
-            add_normal_dark_surface = Utils.create_image_surface("tab_add_dark_normal.png");
-            add_hover_dark_surface = Utils.create_image_surface("tab_add_dark_hover.png");
-            add_press_dark_surface = Utils.create_image_surface("tab_add_dark_press.png");
-            add_normal_light_surface = Utils.create_image_surface("tab_add_light_normal.png");
-            add_hover_light_surface = Utils.create_image_surface("tab_add_light_hover.png");
-            add_press_light_surface = Utils.create_image_surface("tab_add_light_press.png");
+            add_normal_dark_surface = Utils.create_image_surface("tab_add_dark_normal.svg");
+            add_hover_dark_surface = Utils.create_image_surface("tab_add_dark_hover.svg");
+            add_press_dark_surface = Utils.create_image_surface("tab_add_dark_press.svg");
+            add_normal_light_surface = Utils.create_image_surface("tab_add_light_normal.svg");
+            add_hover_light_surface = Utils.create_image_surface("tab_add_light_hover.svg");
+            add_press_light_surface = Utils.create_image_surface("tab_add_light_press.svg");
             
             inactive_arrow_color = Utils.hex_to_rgba("#393937");
             hover_arrow_color = Utils.hex_to_rgba("#494943");
