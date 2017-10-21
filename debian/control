@@ -17,6 +17,7 @@ Build-Depends: debhelper (>=9), valac, cmake,
                libgirepository1.0-dev (>= 0.9.12),
                gettext, gperf,
                gtk-doc-tools,
+               librsvg2-dev,
                libgladeui-dev,
                intltool (>= 0.35)
 Standards-Version: 3.9.8
