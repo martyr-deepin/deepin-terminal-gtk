@@ -57,7 +57,7 @@ namespace Widgets {
             
             set_size_request(width, height);
             
-            surface_y = (height - normal_dark_surface.get_height()) / 2;
+            surface_y = (height - normal_dark_surface.get_height() / get_scale_factor()) / 2;
             
             draw.connect(on_draw);
 			enter_notify_event.connect((w, e) => {

@@ -70,6 +70,16 @@ namespace Menu {
 		}
 		
 	    public void show_menu(int x, int y, List<MenuItem> menu_content) {
+			// since GTK only supports integral scaling yet DDE supports fractional scaling,
+			// the scale on both sides may not be the same, so we need to negtiate here.
+			var scale = Utils.get_default_monitor_scale();
+			var dde_scale = Utils.get_dde_scale_ratio();
+
+			if (scale != dde_scale) {
+				x = (int)(x * scale / dde_scale);
+				y = (int)(y * scale / dde_scale);
+			}
+
 	    	try {
 	    	    Json.Builder builder = new Json.Builder();
 	    	    

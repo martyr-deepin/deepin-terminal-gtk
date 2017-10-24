@@ -409,11 +409,13 @@ namespace Utils {
 
     public Cairo.ImageSurface create_image_surface(string surface_path) {
 		try {
+			var scale = get_default_monitor_scale();
 			Rsvg.Handle r = new Rsvg.Handle.from_file(Utils.get_image_path(surface_path));
 			Rsvg.DimensionData d = r.get_dimensions();
-			Cairo.ImageSurface cs = new Cairo.ImageSurface(Cairo.Format.ARGB32, d.width, d.height);
+			Cairo.ImageSurface cs = new Cairo.ImageSurface(Cairo.Format.ARGB32, (int)(d.width * scale), (int)(d.height * scale));
+			cs.set_device_scale(scale, scale);
 			Cairo.Context c = new Cairo.Context(cs);
-			r.render_cairo(c);		
+			r.render_cairo(c);
 		
 			return cs;
 		} catch (GLib.Error e) {
@@ -431,6 +433,27 @@ namespace Utils {
         } else {
             return screen.get_primary_monitor();
         }
+    }
+
+    public double get_default_monitor_scale() {
+        var display = Display.get_default();
+        if (display != null) {
+            var monitor = display.get_primary_monitor();
+            if (monitor != null) {
+                return monitor.get_scale_factor();
+            }
+        }
+        return 1.0;
+    }
+
+    public double get_dde_scale_ratio() {
+        var scaleStr = GLib.Environment.get_variable("QT_SCALE_FACTOR");
+        if (scaleStr == null) {
+            return 1.0;
+        }
+
+        var parsedScale = double.parse(scaleStr);
+        return parsedScale == 0 ? 1.0 : parsedScale;
     }
 
     public int get_pointer_monitor(Gdk.Screen screen) {
