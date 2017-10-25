@@ -107,8 +107,8 @@ namespace Widgets {
             
             Draw.draw_surface(cr,
                               pointer_surface,
-                              int.max(-draw_pointer_offset, int.min((int) (rect.width * draw_percent) - pointer_surface.get_width() / 2,
-                                                 rect.width - pointer_surface.get_width() + draw_pointer_offset)),
+                              int.max(-draw_pointer_offset, int.min((int) (rect.width * draw_percent) - pointer_surface.get_width() / 2 / 2,
+                                                 rect.width - pointer_surface.get_width() / 2 + draw_pointer_offset)),
                               0);
             
             return true;

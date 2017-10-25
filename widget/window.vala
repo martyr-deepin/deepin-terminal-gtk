@@ -390,11 +390,11 @@ namespace Widgets {
                         cr.save();
                         cr.set_source_rgba(frame_color.red, frame_color.green, frame_color.blue, config.config_file.get_double("general", "opacity"));
                         // Bottom.
-                        Draw.draw_rectangle(cr, x + 3, y + height - 2, width - 6, 1);
+                        Draw.draw_rectangle(cr, x + 2, y + height - 2, width - 4, 1);
                         // Left.
-                        Draw.draw_rectangle(cr, x + 1, y + Constant.TITLEBAR_HEIGHT + 2, 1, height - Constant.TITLEBAR_HEIGHT - 5);
+                        Draw.draw_rectangle(cr, x + 1, y + Constant.TITLEBAR_HEIGHT + 2, 1, height - Constant.TITLEBAR_HEIGHT - 4);
                         // Rigt..
-                        Draw.draw_rectangle(cr, x + width - 2, y + Constant.TITLEBAR_HEIGHT + 2, 1, height - Constant.TITLEBAR_HEIGHT - 5);
+                        Draw.draw_rectangle(cr, x + width - 2, y + Constant.TITLEBAR_HEIGHT + 2, 1, height - Constant.TITLEBAR_HEIGHT - 4);
                         cr.restore();
                     } else {
                         // Draw line *innner* of window frame.
@@ -439,34 +439,35 @@ namespace Widgets {
                     } else {
                         // Draw line above at titlebar.
                         cr.set_source_rgba(frame_color.red, frame_color.green, frame_color.blue, config.config_file.get_double("general", "opacity"));
-                        Draw.draw_rectangle(cr, x + 3, y + 1, width - 6, 1);
+                        Draw.draw_rectangle(cr, x + 2, y + 1, width - 4, 1);
 
                         if (is_light_theme) {
                             Utils.set_context_color(cr, top_line_light_color);
                         } else {
                             Utils.set_context_color(cr, top_line_dark_color);
                         }
-                        Draw.draw_rectangle(cr, x + 3, y + 1, width - 6, 1);
+                        Draw.draw_rectangle(cr, x + 2, y + 1, width - 4, 1);
 
                         cr.set_source_rgba(1, 1, 1, 0.0625 * config.config_file.get_double("general", "opacity")); // Draw top line at window.
-                        Draw.draw_rectangle(cr, x + 3, y + 1, width - 6, 1);
+                        Draw.draw_rectangle(cr, x + 2, y + 1, width - 4, 1);
 
                         // Draw line around titlebar side.
                         cr.set_source_rgba(frame_color.red, frame_color.green, frame_color.blue, config.config_file.get_double("general", "opacity"));
                         // Left.
-                        Draw.draw_rectangle(cr, x + 1, y + 3, 1, Constant.TITLEBAR_HEIGHT - 1);
+                        Draw.draw_rectangle(cr, x + 1, y + 2, 1, Constant.TITLEBAR_HEIGHT);
                         // Right.
-                        Draw.draw_rectangle(cr, x + width - 2, y + 3, 1, Constant.TITLEBAR_HEIGHT - 1);
+                        Draw.draw_rectangle(cr, x + width - 2, y + 2, 1, Constant.TITLEBAR_HEIGHT);
 
                         if (is_light_theme) {
                             Utils.set_context_color(cr, top_line_light_color);
                         } else {
                             Utils.set_context_color(cr, top_line_dark_color);
                         }
+
                         // Left.
-                        Draw.draw_rectangle(cr, x + 1, y + 3, 1, Constant.TITLEBAR_HEIGHT - 1);
+                        Draw.draw_rectangle(cr, x + 1, y + 2, 1, Constant.TITLEBAR_HEIGHT);
                         // Right.
-                        Draw.draw_rectangle(cr, x + width - 2, y + 3, 1, Constant.TITLEBAR_HEIGHT - 1);
+                        Draw.draw_rectangle(cr, x + width - 2, y + 2, 1, Constant.TITLEBAR_HEIGHT);
 
                         draw_titlebar_underline(cr, x + 1, y, width - 2, 1);
                         draw_active_tab_underline(cr, x + active_tab_underline_x - window_frame_box.margin_start, y + Constant.TITLEBAR_HEIGHT);
