@@ -170,8 +170,8 @@ namespace Widgets {
                     
                     int key_width = int.max(text_width, 20);
 
-                    int button_width = button_left_surface.get_width();
-                    int button_height = button_left_surface.get_height();
+                    int button_width = button_left_surface.get_width() / get_scale_factor();
+                    int button_height = button_left_surface.get_height() / get_scale_factor();
                     int button_y = (height - button_height) / 2;
                     int shortcut_key_width = key_width + shortcut_key_padding_x * 2;
                     

@@ -68,7 +68,8 @@ namespace Widgets {
                 text_press_color = Utils.hex_to_rgba("#FFFFFF");
             }
             
-            set_size_request(this.normal_dark_surface.get_width(), this.normal_dark_surface.get_height());
+			set_size_request(this.normal_dark_surface.get_width() / get_scale_factor(), 
+							 this.normal_dark_surface.get_height() / get_scale_factor());
             
             draw.connect(on_draw);
 			enter_notify_event.connect((w, e) => {
@@ -104,8 +105,10 @@ namespace Widgets {
             } else {
                 is_light_theme = ((Widgets.ConfigWindow) get_toplevel()).is_light_theme();
             }
-            
-            if (is_hover) {
+			
+			var ratio = get_scale_factor();
+			
+			if (is_hover) {
                 if (is_press) {
                     if (is_theme_button && is_light_theme) {
                         Draw.draw_surface(cr, press_light_surface);
@@ -115,7 +118,7 @@ namespace Widgets {
                     
                     if (button_text != null) {
                         Utils.set_context_color(cr, text_press_color);
-                        Draw.draw_text(cr, button_text, 0, 0, normal_dark_surface.get_width(), normal_dark_surface.get_height(), button_text_size, Pango.Alignment.CENTER);
+                        Draw.draw_text(cr, button_text, 0, 0, normal_dark_surface.get_width() / ratio, normal_dark_surface.get_height() / ratio, button_text_size, Pango.Alignment.CENTER);
                     }
                 } else {
                     if (is_theme_button && is_light_theme) {
@@ -126,7 +129,7 @@ namespace Widgets {
                     
                     if (button_text != null) {
                         Utils.set_context_color(cr, text_hover_color);
-                        Draw.draw_text(cr, button_text, 0, 0, normal_dark_surface.get_width(), normal_dark_surface.get_height(), button_text_size, Pango.Alignment.CENTER);
+                        Draw.draw_text(cr, button_text, 0, 0, normal_dark_surface.get_width() / ratio, normal_dark_surface.get_height() / ratio, button_text_size, Pango.Alignment.CENTER);
                     }
                 }
             } else {
@@ -138,7 +141,7 @@ namespace Widgets {
                     
                 if (button_text != null) {
                     Utils.set_context_color(cr, text_normal_color);
-                    Draw.draw_text(cr, button_text, 0, 0, normal_dark_surface.get_width(), normal_dark_surface.get_height(), button_text_size, Pango.Alignment.CENTER);
+                    Draw.draw_text(cr, button_text, 0, 0, normal_dark_surface.get_width() / ratio, normal_dark_surface.get_height() / ratio, button_text_size, Pango.Alignment.CENTER);
                 }
             }
             

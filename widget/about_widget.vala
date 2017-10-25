@@ -75,7 +75,7 @@ namespace Widgets {
             widget.get_allocation(out rect);
             
             // Draw icon.
-            Draw.draw_surface(cr, icon_surface, (rect.width - icon_surface.get_width()) / 2, icon_y);
+            Draw.draw_surface(cr, icon_surface, (rect.width - icon_surface.get_width() / get_scale_factor()) / 2, icon_y);
             
             // Draw name.
             cr.set_source_rgba(0, 0, 0, 1);
@@ -86,7 +86,7 @@ namespace Widgets {
             Draw.draw_text(cr, "%s V%.01f".printf(_("Version:"), Constant.VERSION), 0, version_y, rect.width, version_height, version_size, Pango.Alignment.CENTER, "top");
             
             // Draw logo.
-            Draw.draw_surface(cr, logo_surface, (rect.width - logo_surface.get_width()) / 2, logo_y);
+            Draw.draw_surface(cr, logo_surface, (rect.width - logo_surface.get_width() / get_scale_factor()) / 2, logo_y);
             
             // Draw about.
             cr.set_source_rgba(0.1, 0.1, 0.1, 1);

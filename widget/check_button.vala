@@ -47,7 +47,8 @@ namespace Widgets {
             unchecked_press_surface = Utils.create_image_surface("checkbox_unchecked_press.svg");
             unchecked_insensitive_surface = Utils.create_image_surface("checkbox_unchecked_insensitive.svg");
             
-            set_size_request(checked_normal_surface.get_width(), checked_normal_surface.get_height());
+            set_size_request(checked_normal_surface.get_width() / get_scale_factor(), 
+                             checked_normal_surface.get_height() / get_scale_factor());
             
             draw.connect(on_draw);
 			enter_notify_event.connect((w, e) => {
