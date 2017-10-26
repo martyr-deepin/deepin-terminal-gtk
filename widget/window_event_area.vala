@@ -101,6 +101,8 @@ namespace Widgets {
                                 e.device.get_position(null, out pointer_x, out pointer_y);
                                 
                                 if (pointer_x != press_x || pointer_y != press_y) {
+                                    pointer_x *= get_scale_factor();
+                                    pointer_y *= get_scale_factor();
                                     move_window(this, pointer_x, pointer_y, (int) e.button);
                                     return false;
                                 } else {

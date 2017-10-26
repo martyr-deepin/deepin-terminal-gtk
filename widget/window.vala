@@ -181,6 +181,8 @@ namespace Widgets {
 
                             var cursor_type = get_frame_cursor_type(e.x_root, e.y_root);
                             if (cursor_type != null) {
+                                pointer_x *= get_scale_factor();
+                                pointer_y *= get_scale_factor();
                                 resize_window(this, pointer_x, pointer_y, (int) e.button, cursor_type);
                             }
                         }
@@ -196,6 +198,8 @@ namespace Widgets {
 
                         var cursor_type = get_cursor_type(e.x_root, e.y_root);
                         if (cursor_type != null) {
+                            pointer_x *= get_scale_factor();
+                            pointer_y *= get_scale_factor();
                             resize_window(this, pointer_x, pointer_y, (int) e.button, cursor_type);
                         }
                     }
