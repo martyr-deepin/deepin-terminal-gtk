@@ -171,4 +171,15 @@ namespace Draw {
          cr.rectangle(x, y, w, h);
          cr.clip();
     }
+	
+	public void clip_rounded_rectangle(Context cr, int x, int y, int width, int height, double r) {
+        cr.new_sub_path();
+        cr.arc(x + width - r, y + r, r, Math.PI * 3 / 2, Math.PI * 2);
+        cr.arc(x + width - r, y + height - r, r, 0, Math.PI / 2);
+        cr.arc(x + r, y + height - r, r, Math.PI / 2, Math.PI);
+        cr.arc(x + r, y + r, r, Math.PI, Math.PI * 3 / 2);
+        cr.close_path();
+        
+        cr.clip();
+	}
 }
