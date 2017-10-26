@@ -433,13 +433,23 @@ namespace Widgets {
 
                 try {
                     if (window_is_fullscreen()) {
+						int titlebar_y = y;
+						if (get_scale_factor() > 1) {
+							titlebar_y -= 1;
+						}
+						
                         if (draw_tabbar_line) {
-                            draw_titlebar_underline(cr, x, y, width, 1);
-                            draw_active_tab_underline(cr, x + active_tab_underline_x - window_frame_box.margin_start, y + Constant.TITLEBAR_HEIGHT);
+                            draw_titlebar_underline(cr, x, titlebar_y, width, 1);
+                            draw_active_tab_underline(cr, x + active_tab_underline_x - window_frame_box.margin_start, titlebar_y + Constant.TITLEBAR_HEIGHT);
                         }
                     } else if (window_is_max() || window_is_tiled()) {
-                        draw_titlebar_underline(cr, x + 1, y, width - 2, 1);
-                        draw_active_tab_underline(cr, x + active_tab_underline_x - window_frame_box.margin_start, y + Constant.TITLEBAR_HEIGHT + 1);
+						int titlebar_y = y;
+						if (get_scale_factor() > 1) {
+							titlebar_y -= 1;
+						}
+						
+                        draw_titlebar_underline(cr, x + 1, titlebar_y, width - 2, 1);
+                        draw_active_tab_underline(cr, x + active_tab_underline_x - window_frame_box.margin_start, titlebar_y + Constant.TITLEBAR_HEIGHT + 1);
                     } else {
                         // Draw line above at titlebar.
                         cr.set_source_rgba(frame_color.red, frame_color.green, frame_color.blue, config.config_file.get_double("general", "opacity"));
@@ -473,8 +483,13 @@ namespace Widgets {
                         // Right.
                         Draw.draw_rectangle(cr, x + width - 2, y + 2, 1, Constant.TITLEBAR_HEIGHT);
 
-                        draw_titlebar_underline(cr, x + 1, y, width - 2, 1);
-                        draw_active_tab_underline(cr, x + active_tab_underline_x - window_frame_box.margin_start, y + Constant.TITLEBAR_HEIGHT);
+						int titlebar_y = y;
+						if (get_scale_factor() > 1) {
+							titlebar_y += 1;
+						}
+						
+                        draw_titlebar_underline(cr, x + 1, titlebar_y, width - 2, 1);
+                        draw_active_tab_underline(cr, x + active_tab_underline_x - window_frame_box.margin_start, titlebar_y + Constant.TITLEBAR_HEIGHT);
                     }
                 } catch (Error e) {
                     print("Window draw_window_above: %s\n", e.message);

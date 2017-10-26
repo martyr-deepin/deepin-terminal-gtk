@@ -339,8 +339,13 @@ namespace Widgets {
             int width = window_frame_rect.width;
             int height = window_frame_rect.height;
 
-            draw_titlebar_underline(cr, x, y + height - Constant.TITLEBAR_HEIGHT - 1, width, -1);
-            draw_active_tab_underline(cr, x + active_tab_underline_x, y + height - Constant.TITLEBAR_HEIGHT - 1);
+			int titlebar_y = y;
+			if (get_scale_factor() > 1) {
+				titlebar_y += 1;
+			}
+			
+            draw_titlebar_underline(cr, x, titlebar_y + height - Constant.TITLEBAR_HEIGHT - 1, width, -1);
+            draw_active_tab_underline(cr, x + active_tab_underline_x, titlebar_y + height - Constant.TITLEBAR_HEIGHT - 1);
         }
 
         public void show_window(WorkspaceManager workspace_manager, Tabbar tabbar) {
