@@ -163,7 +163,7 @@ msgstr "Pokazivač"
 
 #: ../widget/preference.vala:367
 msgid "Cursor autohide"
-msgstr ""
+msgstr "Samoskrivanje pokazivača"
 
 #: ../widget/preference.vala:366
 msgid "Cursor blink"
@@ -260,7 +260,7 @@ msgstr "Enkodiranje"
 
 #: ../widget/remote_server_dialog.vala:307
 msgid "Encoding:"
-msgstr ""
+msgstr "Kodiranje:"
 
 #: ../widget/confirm_dialog.vala:131 ../widget/appbar.vala:130
 msgid "Exit"
@@ -332,7 +332,7 @@ msgstr "Skoči na prethodnu naredbu:"
 
 #: ../main.vala:179
 msgid "Load theme"
-msgstr ""
+msgstr "Učitaj temu"
 
 #: ../widget/preference.vala:390
 msgid "Maximize"
@@ -457,11 +457,11 @@ msgstr "Preimenuj"
 #: ../widget/terminal.vala:297 ../widget/terminal.vala:462
 #: ../widget/config_window.vala:354
 msgid "Rename title"
-msgstr ""
+msgstr "Preimenuj naslov"
 
 #: ../widget/preference.vala:335
 msgid "Rename title:"
-msgstr ""
+msgstr "Preimenuj naslov:"
 
 #: ../widget/remote_server_dialog.vala:186
 #: ../widget/remote_server_dialog.vala:196
@@ -600,7 +600,7 @@ msgstr "Prečaci:"
 
 #: ../widget/config_window.vala:355
 msgid "Switch fullscreen"
-msgstr ""
+msgstr "Prebaci na cijeli zaslon"
 
 #: ../widget/terminal.vala:295 ../widget/appbar.vala:121
 msgid "Switch theme"

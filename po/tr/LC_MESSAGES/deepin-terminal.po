@@ -478,7 +478,7 @@ msgid ""
 "Run '%s --help' to view a full list of available command line pass_options"
 msgstr ""
 "Kullanılabilir komut satırı pass_options'ın tam listesini görüntülemek için "
-"'% s --help' komutunu çalıştırınız"
+"'%s --help' komutunu çalıştırınız"
 
 #: ../main.vala:152 ../main.vala:161
 msgid "Run a program in the terminal"
@@ -685,4 +685,4 @@ msgstr "Uzaklaştır:"
 
 #: ../widget/terminal.vala:613 ../widget/terminal.vala:1044
 msgid "deepin"
-msgstr "deepin"
+msgstr "Deepin"

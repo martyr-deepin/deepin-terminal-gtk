@@ -296,7 +296,7 @@ msgstr "Grupė:"
 
 #: ../widget/appbar.vala:127
 msgid "Help"
-msgstr "Pagalba"
+msgstr "Žinynas"
 
 #: ../widget/preference.vala:395
 msgid "Hide quake window after lost focus"
@@ -348,7 +348,7 @@ msgstr "Pavadinimas:"
 
 #: ../widget/config_window.vala:332
 msgid "New theme terminal"
-msgstr ""
+msgstr "Nauja terminalo tema"
 
 #: ../widget/appbar.vala:120
 msgid "New window"

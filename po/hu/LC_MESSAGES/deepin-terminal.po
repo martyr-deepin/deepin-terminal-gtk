@@ -163,7 +163,7 @@ msgstr "Kurzor"
 
 #: ../widget/preference.vala:367
 msgid "Cursor autohide"
-msgstr ""
+msgstr "Kurzor automata elrejtés"
 
 #: ../widget/preference.vala:366
 msgid "Cursor blink"
@@ -332,7 +332,7 @@ msgstr "Visszaugrás az előző parancsra:"
 
 #: ../main.vala:179
 msgid "Load theme"
-msgstr ""
+msgstr "Téma betöltés"
 
 #: ../widget/preference.vala:390
 msgid "Maximize"
@@ -348,7 +348,7 @@ msgstr "Név:"
 
 #: ../widget/config_window.vala:332
 msgid "New theme terminal"
-msgstr ""
+msgstr "Új terminal-téma"
 
 #: ../widget/appbar.vala:120
 msgid "New window"
@@ -457,11 +457,11 @@ msgstr "Átnevezés"
 #: ../widget/terminal.vala:297 ../widget/terminal.vala:462
 #: ../widget/config_window.vala:354
 msgid "Rename title"
-msgstr ""
+msgstr "Elem átnevezése"
 
 #: ../widget/preference.vala:335
 msgid "Rename title:"
-msgstr ""
+msgstr "Elem átnevezése:"
 
 #: ../widget/remote_server_dialog.vala:186
 #: ../widget/remote_server_dialog.vala:196
