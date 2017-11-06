@@ -1,0 +1,35 @@
+
+MAKE		=  @MAKE@
+INSTALL		=  @INSTALL@
+TAR		=  @TAR@
+AR		=  @AR@
+RANLIB		=  @RANLIB@
+CC		=  @CC@
+CFLAGS		=  @CFLAGS@ @DEFS@
+CPPFLAGS	=  @CPPFLAGS@
+LIBS		=  @LIBS@ 
+LDFLAGS 	=  @LDFLAGS@
+
+
+NAME	= libreadline.a
+SRC	= readline.c
+OBJ	= $(SRC:.c=.o)
+
+all : $(NAME)
+
+
+$(NAME) : $(OBJ)
+	-rm $@
+	$(AR) cq $@ $(OBJ)
+	$(RANLIB) $@
+
+
+new : clean all
+
+
+clean :
+	-rm *.o *~ *.a \#*\# core $(NAME) typescript nohup.out 
+
+distclean : clean
+
+

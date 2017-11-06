@@ -1,0 +1,75 @@
+
+
+			zssh FAQ
+		------------------------
+
+
+1) It doesn't even compile ! What should i do ?
+
+    Chances are your OS has  not been tested yet.  First delete config.h.in
+    and  remake it  using autoheader  (you need  autoconf  installed).  The
+    configure script can be regenerated using autoconf ...
+
+
+2) It doesn't seem to work ! pressing ^@ (C-space) is ineffective.
+
+    You are maybe using a console/terminal emulator that does not allow
+    you to generate this code (Gnome Terminal is affected), or your window
+    manager is using this key, so underlying applications won't ever see
+    it ...
+    Try using another terminal emulator/escape sequence.
+    To change the escape sequence, either define the ZSSHESCAPE variable
+    or use the -z option for zssh.
+
+
+3) It just doesn't transmit any file, though i invoke the sz/rz commands as
+   explained in the man page.
+
+    zssh depends on 3 other binaries  to operate properly : ssh, sz and rz.
+    ssh is run  from the local machine,  sz and rz are run  from _both_ the
+    local and remote machine.
+    
+    Actually, when downloading remote runs sz, local  runs rz 
+	           uploading   local  runs sz, remote runs rz. 
+    
+    zssh thus depends on the rz/sz  package to be working on both machines,
+    _and_ of compatible versions.  Make sure the problem does not come from
+    sz/rz before suspecting zssh.
+
+
+4) I don't get my shell prompt back after file transfer completes !!!
+
+    Just press return 2 or 3 times and stay calm =)
+
+5) File transfer is initiated but never completes
+
+( ie a line like :
+    Bytes Sent:  38144/4610624   BPS:3424     ETA 22:15
+  or
+    Bytes Sent:      0/    513   BPS:0        ETA 00:00  Retry 0: Got ZCAN
+  can be seen, but transfer never completes
+)
+
+Chances are the pty/tty on one of the systems are not 8-bit clean.
+(Linux is 8-bit clean, NetBSD is not)
+Using the -e (escape) option of sz should solve this problem.
+
+6) It still doesn't work
+
+Beware that any program interferring (ie non transparent) with the tty/pty
+chain will likely prevent file tranfers from working.
+
+For example, running 'screen' on the REMOTE side will prevent zssh from
+working properly because it will be messing things between sz and rz :
+
+
+ ------------------------REMOTE----------------------                  ----------------------------LOCAL---------------------------
+                                                                                                **************
+                                                                                            /  **     sz     **    
+ ******             **********             ********                     *******           |/ /| **************      
+** rz ** <tty=pty> ** screen ** <tty=pty> ** sshd ** <==ssh_channel==> ** ssh ** <tty=pty>  /                       <initial_tty=... 
+ ******             **********             ********                     *******                  ***************  /
+                                                                                                ** zssh output **
+                                                                                                 ***************
+
+(screen on the local side is no problem of course)

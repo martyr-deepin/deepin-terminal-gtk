@@ -1,0 +1,83 @@
+# 
+# Makefile.in for zssh
+# 
+# Made by Matthieu Lucotte
+# Login   <gounter@users.sourceforge.net>
+# 
+# Started on  Thu Jun 29 19:04:08 2000 Matthieu Lucotte
+# Last update Wed Sep 24 00:18:41 2003 
+# 
+
+#System specific vars
+
+
+MAKE		=  @MAKE@
+INSTALL		=  @INSTALL@
+TAR		=  @TAR@
+AR		=  @AR@
+RANLIB		=  @RANLIB@
+CC		=  @CC@
+CFLAGS		=  @CFLAGS@ @DEFS@ @EXTRA_CFLAGS@  -I..
+CPPFLAGS	=  @CPPFLAGS@
+LIBS		=  @LIBS@  @EXTRA_LIBS@ 
+LDFLAGS 	=  @LDFLAGS@ 
+EXTRA_DEPS	=  @EXTRA_DEPS@
+
+#uncomment this for debug infos
+#CFLAGS += -DDEBUG
+
+# old stuff. safely ignore.
+#
+# uncomment this if your keyboard doesn't send combined key codes packed
+# The ALT-1 key will not be detected in this case, unless DUMB_KEYBOARD
+# is defined
+#CFLAGS += -DDUMB_KEYBOARD
+
+
+#End of system specific vars
+
+T1		= local_tty_test
+T1_SRC		= $(T1:=.c)
+T1_OBJS		= $(T1_SRC:.c=.o) ../util.o ../openpty.o
+
+T2		= ttydump
+T2_SRC		= $(T2:=.c)
+T2_OBJS		= $(T2_SRC:.c=.o) ../util.o ../openpty.o
+
+T3		= ttyprint
+T3_SRC		= $(T3:=.c)
+T3_OBJS		= $(T3_SRC:.c=.o) ../util.o ../openpty.o
+
+PRGS		= $(T1) $(T2) $(T3)
+INCL		= ../config.h ../zssh.h
+
+all: $(PRGS) 
+
+local_tty_test : $(EXTRA_DEPS) $(T1_OBJS)
+	$(CC) -o $@  $(T1_OBJS) $(LDFLAGS) $(LIBS) 
+
+ttydump : $(EXTRA_DEPS) $(T2_OBJS)
+	$(CC) -o $@  $(T2_OBJS) $(LDFLAGS) $(LIBS) 
+
+ttyprint : $(EXTRA_DEPS) $(T3_OBJS)
+	$(CC) -o $@  $(T3_OBJS) $(LDFLAGS) $(LIBS) 
+
+TAGS :
+	etags *.[ch]
+
+new : clean all
+
+clean :
+	-rm *.o *~ *.a \#*\# core $(PRGS) typescript nohup.out $(RPMSPEC) $(BACKLINK) output.*
+
+distclean : clean
+	-rm Makefile config.cache config.status config.log config.scan config.h TAGS
+
+autoconf:
+	autoconf
+	autoheader
+
+force :
+
+
+$(OBJS) : $(INCL)

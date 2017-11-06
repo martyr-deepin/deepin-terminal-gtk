@@ -33,6 +33,14 @@ ExternalProject_Add(Vte-0.29
   BUILD_IN_SOURCE 1
   )
 
+ExternalProject_Add(zssh-1.5c
+  SOURCE_DIR ${CMAKE_SOURCE_DIR}/3rdparty/zssh-1.5c
+  CONFIGURE_COMMAND ./configure --disable-readline
+  BUILD_COMMAND make
+  INSTALL_COMMAND ""
+  BUILD_IN_SOURCE 1
+  )
+
 set(CFLAGS
 	${GIO_CFLAGS}
 	${GTK3_CFLAGS} ${GTK3_CFLAGS_OTHER}
@@ -53,7 +61,6 @@ set(INCLUDE_PATHS
 	${JsonGlib_INCLUDE_DIRS}
 	${LIBSECRET_INCLUDE_DIRS}
 	${CMAKE_SOURCE_DIR}/3rdparty/vte-0.50.1/src
-	#$${VTE_INCLUDE_DIRS}
 )
 find_library(VTE_LIB NAMES libvte-2.91.a tcmalloc_minimal)
 include_directories(${INCLUDE_PATHS})
@@ -175,6 +182,7 @@ foreach(lang ${dirlist})
 endforeach()
 
 INSTALL (TARGETS ${target} DESTINATION bin)
+INSTALL (PROGRAMS ssh_login.sh ${CMAKE_SOURCE_DIR}/3rdparty/zssh-1.5c/zssh DESTINATION lib/${target})
 INSTALL (FILES hicolor/32x32/deepin-terminal.png DESTINATION share/icons/hicolor/32x32/apps)
 INSTALL (FILES hicolor/48x48/deepin-terminal.png DESTINATION share/icons/hicolor/48x48/apps)
 INSTALL (FILES hicolor/96x96/deepin-terminal.png DESTINATION share/icons/hicolor/96x96/apps)
@@ -184,5 +192,5 @@ INSTALL (DIRECTORY image DESTINATION share/${target} FILES_MATCHING PATTERN "*.p
 INSTALL (DIRECTORY image DESTINATION share/${target} FILES_MATCHING PATTERN "*.svg")
 INSTALL (DIRECTORY theme DESTINATION share/${target} FILES_MATCHING PATTERN "*")
 INSTALL (DIRECTORY manual/common  manual/en_US  manual/zh_CN DESTINATION share/dman/${target})
-INSTALL (FILES style.css ssh_login.sh DESTINATION share/${target})
+INSTALL (FILES style.css DESTINATION share/${target})
 INSTALL (FILES deepin-terminal.desktop DESTINATION share/applications)

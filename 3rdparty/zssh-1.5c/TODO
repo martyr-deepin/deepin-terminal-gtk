@@ -1,0 +1,29 @@
+
+** DOC **
+*********
+
+todo:
+- update INSTALL (configure arguments)
+- and add a generic INSTALL file
+
+
+** CODE **
+**********
+
+todo:
+
+- find a solution for *bsd users 
+  -> should neither be insecure, nor require suid privileges (...)
+- add support for irix
+	(segfaults mysteriously for now ...)
+- detect if telnet accepts '-8' and do something if this is not the case
+- add ZSSH_FORCE env variable
+
+
+done:
+
+- check for readline headers in configure script
+- works on MacOS X:
+  - updated config: readline depends on (n)curses instead of termcap on some systems
+  - don't use getpgid(): some systems don't have it
+- now compiles with readline v4.2
