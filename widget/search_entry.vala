@@ -64,8 +64,7 @@ namespace Widgets {
             search_label.set_text(_("Search"));
             search_entry = new Widgets.Entry();
             search_entry.set_placeholder_text(_("Search"));
-            search_entry.get_style_context().add_class("remote_search_entry");
-            clear_button = new ImageButton("search_clear", true);
+			clear_button = new ImageButton("search_clear", true);
             clear_button.margin_right = clear_button_margin_right;
             clear_button.set_valign(Gtk.Align.CENTER);
             clear_button.clicked.connect((w, e) => {
@@ -77,8 +76,10 @@ namespace Widgets {
             realize.connect((w) => {
                     bool is_light_theme = ((Widgets.ConfigWindow) get_toplevel()).is_light_theme();
                     if (is_light_theme) {
+						search_entry.get_style_context().add_class("remote_search_light_entry");
                         search_label.get_style_context().add_class("remote_search_label_light");
                     } else {
+						search_entry.get_style_context().add_class("remote_search_dark_entry");
                         search_label.get_style_context().add_class("remote_search_label_dark");
                     }
                 });

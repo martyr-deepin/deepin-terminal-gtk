@@ -473,20 +473,39 @@
 	font-size: 11px;
 }
 
-.remote_search_entry {
+.remote_search_light_entry {
 	background: transparent;
 	border: 0px solid rgba(0,0,0,0.10);
 	font-size: 11px;
 }
 
-.remote_search_entry:focus {
+.remote_search_light_entry:focus {
+	color: black;
+	font-size: 11px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+.remote_search_light_entry selection:focus {
+	color: white;
+	background-color: #61B5F8;
+	font-size: 11px;
+}
+
+.remote_search_dark_entry {
+	background: transparent;
+	border: 0px solid rgba(0,0,0,0.10);
+	font-size: 11px;
+}
+
+.remote_search_dark_entry:focus {
 	color: white;
 	font-size: 11px;
     padding-top: 1px;
     padding-bottom: 1px;
 }
 
-.remote_search_entry selection:focus {
+.remote_search_dark_entry selection:focus {
 	color: white;
 	background-color: #61B5F8;
 	font-size: 11px;
