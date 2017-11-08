@@ -358,10 +358,15 @@ namespace Widgets {
             }
 
             menu_content.append(new Menu.MenuItem("search", _("Search")));
+            menu_content.append(new Menu.MenuItem("", ""));
             if (term.get_has_selection()) {
                 menu_content.append(new Menu.MenuItem("google", "Google"));
                 menu_content.append(new Menu.MenuItem("bing", "Bing"));
-                menu_content.append(new Menu.MenuItem("baidu", "Baidu"));
+
+                string? lang = Environment.get_variable("LANG");
+                if (lang != null && lang == "zh_CN.UTF-8") {
+                    menu_content.append(new Menu.MenuItem("baidu", "Baidu"));
+                }
             }
             menu_content.append(new Menu.MenuItem("", ""));
             if (in_quake_window) {
