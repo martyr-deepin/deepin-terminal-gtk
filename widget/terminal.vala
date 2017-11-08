@@ -360,6 +360,8 @@ namespace Widgets {
             menu_content.append(new Menu.MenuItem("search", _("Search")));
             if (term.get_has_selection()) {
                 menu_content.append(new Menu.MenuItem("google", "Google"));
+                menu_content.append(new Menu.MenuItem("bing", "Bing"));
+                menu_content.append(new Menu.MenuItem("baidu", "Baidu"));
             }
             menu_content.append(new Menu.MenuItem("", ""));
             if (in_quake_window) {
@@ -416,6 +418,12 @@ namespace Widgets {
                     break;
                 case "google":
                     search_in_google(get_selection_text());
+                    break;
+                case "bing":
+                    search_in_bing(get_selection_text());
+                    break;
+                case "baidu":
+                    search_in_baidu(get_selection_text());
                     break;
                 case "horizontal_split":
                     workspace_manager.focus_workspace.split_horizontal();
@@ -1312,7 +1320,27 @@ namespace Widgets {
                 print("Terminal search_in_google: %s\n", e.message);
             }
         }
+        public void search_in_bing(string search_text) {
+            try {
+                GLib.AppInfo appinfo = GLib.AppInfo.create_from_commandline(
+                    "xdg-open 'http://cn.bing.com/search?q=%s'".printf(search_text),
+                    null, GLib.AppInfoCreateFlags.NONE);
+                appinfo.launch(null, null);
+            } catch (GLib.Error e) {
+                print("Terminal search_in_bing: %s\n", e.message);
+            }
+        }
 
+        public void search_in_baidu(string search_text) {
+            try {
+                GLib.AppInfo appinfo = GLib.AppInfo.create_from_commandline(
+                    "xdg-open 'https://www.baidu.com/s?wd=%s'".printf(search_text),
+                    null, GLib.AppInfoCreateFlags.NONE);
+                appinfo.launch(null, null);
+            } catch (GLib.Error e) {
+                print("Terminal search_in_baidu: %s\n", e.message);
+            }
+        }
         public void open_selection_file() {
             var selection_file = get_selection_file();
             if (selection_file != null) {
