@@ -19,6 +19,7 @@ Build-Depends: debhelper (>=9), valac, cmake,
                gtk-doc-tools,
                librsvg2-dev,
                libgladeui-dev,
+               libreadline-dev,
                intltool (>= 0.35)
 Standards-Version: 3.9.8
 Homepage: http://www.deepin.org
@@ -26,7 +27,7 @@ Homepage: http://www.deepin.org
 Package: deepin-terminal
 Architecture: any
 Provides: x-terminal-emulator
-Depends: ${shlibs:Depends}, ${misc:Depends}, zssh, lrzsz, expect, deepin-menu
+Depends: ${shlibs:Depends}, ${misc:Depends}, lrzsz, expect, deepin-menu
 Description: Deepin terminal, it sharpens your focus in the world of command line!
  Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.
  It sharpens your focus in the world of command line!
