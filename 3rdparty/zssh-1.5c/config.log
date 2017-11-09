@@ -1,0 +1,47 @@
+This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+configure:539: checking whether to use libreadline for cmd-line editing
+configure:592: checking for a BSD compatible install
+configure:647: checking for gmake
+configure:677: checking for gtar
+configure:707: checking for gar
+configure:737: checking for granlib
+configure:768: checking for gcc
+configure:881: checking whether the C compiler (gcc  ) works
+configure:897: gcc -o conftest   -O2  conftest.c  1>&5
+configure:894:1: warning: return type defaults to 'int' [-Wimplicit-int]
+ 
+ ^   
+configure:923: checking whether the C compiler (gcc  ) is a cross-compiler
+configure:928: checking whether we are using GNU C
+configure:956: checking whether gcc accepts -g
+configure:988: checking how to run the C preprocessor
+configure:1069: checking whether gcc needs -traditional
+configure:1118: checking that the C compiler understands -Wall
+configure:1131: gcc -c -g -O2 -Wall  -O2 conftest.c 1>&5
+configure:1151: checking for ANSI C header files
+configure:1255: checking for sys/wait.h that is POSIX.1 compatible
+configure:1301: checking for fcntl.h
+configure:1301: checking for paths.h
+configure:1301: checking for sys/ioctl.h
+configure:1301: checking for sys/time.h
+configure:1301: checking for termios.h
+configure:1301: checking for unistd.h
+configure:1301: checking for err.h
+configure:1301: checking for sys/cdefs.h
+configure:1301: checking for sys/param.h
+configure:1301: checking for util.h
+configure:1301: checking for stropts.h
+configure:1647: checking whether getpgrp takes no argument
+configure:1734: checking return type of signal handlers
+configure:1777: checking for strdup
+configure:1777: checking for getpt
+configure:1777: checking for isastream
+configure:1777: checking for tcsetpgrp
+configure:1834: checking for _getpty
+configure:1834: checking for getpseudotty
+configure:1834: checking for openpty
+configure:1834: checking for grantpt
+configure:1834: checking for unlockpt
+configure:1887: checking for pseudo ttys

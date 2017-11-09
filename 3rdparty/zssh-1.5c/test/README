@@ -1,0 +1,65 @@
+
+This directory has a few utilities that will hopefully make it easier to trace
+tty problems. Here's how to proceed:
+
+1) test tty sanity on the local host (the one you're running zssh on).
+   - cd in this directory, type make to build the tools.
+   - run ./local_test. this script runs local_tty_test, which basically opens
+     a pty/tty pair on the local host, prints all 256 ascii chars on the tty,
+     and displays what comes out of the pty on stdout.
+     it also checks the other direction - writing to the pty, reading frome the
+     tty.
+
+2) test tty sanity on the remote host (the one you're ssh'ing to).
+   same thing: copy the zssh source tree there, run configure, cd to the test/
+   directory, type make and run the script.
+
+3) end to end test:
+
+  [local side]
+   - on the local host, cd to this directory (test/).
+   - connect to the remote side using zssh
+
+  [remote side, through zssh]
+   - cd to the test/ directory that got created in step 2)
+   - there should be a ttydump program in there. it roughly does a 
+	cat > output.dump
+     (as the tty is put in raw mode however, it's immune to ^C and stuff, so
+      you'll have to kill it from another term)
+     run it:
+
+         $ ./ttydump
+         type ' kill  15627 ' to kill me  
+         output file is output.dump       
+
+   - now hit the zssh escape key, and type
+
+         zssh > hook ./ttyprint
+    
+     that will send our reference output on the tty.   
+   - now kill ttydump from another term on the remote host.
+   - check the output:
+
+         $ ./check_remote_test
+         remote tty test passed !
+
+4) end to end test, the other way this time:
+   proceed likewise but with the remote side sending, and local side receiving:
+   	
+  [remote side, through zssh]
+   - it's a little bit more tricky because you need to setup the local side before
+     the remote side can send, so :
+
+         $ sleep 20 ; ./ttyprint
+
+   - hit zssh escape key
+
+         zssh > hook ./ttydump
+
+  [local side]
+   - wait 20 seconds, kill ttydump
+   - check the output:
+
+         $ ./check_remote_test
+         remote tty test passed !
+
