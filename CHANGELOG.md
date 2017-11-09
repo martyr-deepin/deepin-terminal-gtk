@@ -4,6 +4,11 @@ This is default terminal emulation application for Deepin
 ## [Unreleased]
 
 
+## [2.7.6] - 2017-11-09
+- Buildin zssh in deepin-terminal, don't need depend zssh in linux distribution
+- Fixed search text color is not correctly when terminal use light theme
+- Add baidu and bing search engine in right menu
+
 ## [2.7.5] - 2017-11-06
 - Synchronous translations
 
