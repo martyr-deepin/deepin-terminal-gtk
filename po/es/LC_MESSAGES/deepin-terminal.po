@@ -74,11 +74,11 @@ msgstr "Opciones avanzadas"
 
 #: ../widget/remote_server_dialog.vala:425 ../widget/command_dialog.vala:249
 msgid "Are you sure to delete"
-msgstr "Estás seguro de borrar"
+msgstr "¿Estás seguro de borrar?"
 
 #: ../widget/confirm_dialog.vala:131
 msgid "Are you sure to exit?"
-msgstr "Estás seguro de salir"
+msgstr "¿Estás seguro de salir?"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Backspace key"

@@ -460,7 +460,7 @@ msgstr "Renommer le titre"
 
 #: ../widget/preference.vala:335
 msgid "Rename title:"
-msgstr "Renommer le titre :"
+msgstr "Renommer le titre:"
 
 #: ../widget/remote_server_dialog.vala:186
 #: ../widget/remote_server_dialog.vala:196

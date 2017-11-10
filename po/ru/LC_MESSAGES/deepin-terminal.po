@@ -300,7 +300,7 @@ msgstr "Помощь"
 
 #: ../widget/preference.vala:395
 msgid "Hide quake window after lost focus"
-msgstr "Скрыть окно терминала quake после потери фокуса"
+msgstr "Скрыть окно выпадающего терминала после потери фокуса"
 
 #: ../widget/terminal.vala:269 ../widget/config_window.vala:334
 msgid "Horizontal split"
