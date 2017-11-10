@@ -270,6 +270,7 @@ namespace Widgets {
 			adjust_option_widgets(opacity_label, opacity_progressbar);
             grid_attach(opacity_grid, opacity_label, 0, 0, preference_name_width, grid_height);
             grid_attach_next_to(opacity_grid, opacity_progressbar, opacity_label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
+			opacity_label.get_style_context().add_class("preference_title");
             
             var font_grid = new Gtk.Grid();
             content_box.pack_start(font_grid, false, false, 0);
@@ -283,10 +284,9 @@ namespace Widgets {
 			font_names.sort();
 			
             create_combox_row(font_label, font_combox, _("Font:"), font_grid, font_names, "general", "font");
-            
             create_follow_spinbutton_row(font_size_spinbutton, _("Font size:"), font_label, font_grid, "general", "font_size");
             
-            var hotkey_segment = get_first_segment(_("Shortcuts"));
+			var hotkey_segment = get_first_segment(_("Shortcuts"));
             content_box.pack_start(hotkey_segment, false, false, 0);
             
             var terminal_key_segment = get_second_segment(_("Terminal"));
@@ -362,8 +362,9 @@ namespace Widgets {
 			adjust_option_widgets(cursor_style_label, cursor_style_button);
             grid_attach(cursor_grid, cursor_style_label, 0, 0, preference_name_width, grid_height);
             grid_attach_next_to(cursor_grid, cursor_style_button, cursor_style_label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
+			cursor_style_label.get_style_context().add_class("preference_title");
             
-            var cursor_blink_box = create_follow_check_row(cursor_blink_checkbutton, _("Cursor blink"), cursor_style_label, cursor_grid, "advanced", "cursor_blink_mode");
+			var cursor_blink_box = create_follow_check_row(cursor_blink_checkbutton, _("Cursor blink"), cursor_style_label, cursor_grid, "advanced", "cursor_blink_mode");
             create_follow_check_row(cursor_auto_hide_checkbutton, _("Cursor autohide"), cursor_blink_box, cursor_grid, "advanced", "cursor_auto_hide");
             
             var scroll_segment = get_second_segment(_("Scroll"));
@@ -584,6 +585,7 @@ namespace Widgets {
         
         public void create_key_row(Gtk.Label label, ShortcutEntry entry, string name, Gtk.Grid grid, string? group_name=null, string? key=null) {
 			label.set_text(name);
+			label.get_style_context().add_class("preference_title");
 
 			monitor_check_key(entry, group_name, key);
 			
@@ -594,6 +596,7 @@ namespace Widgets {
         
         public void create_follow_key_row(Gtk.Label label, ShortcutEntry entry, string name, Gtk.Label previous_label, Gtk.Grid grid, string? group_name=null, string? key=null) {
 			label.set_text(name);
+			label.get_style_context().add_class("preference_title");
             
 			monitor_check_key(entry, group_name, key);
 			
@@ -622,6 +625,8 @@ namespace Widgets {
         
         public void create_combox_row(Gtk.Label label, Gtk.ComboBoxText combox, string name, Gtk.Grid grid, ArrayList<string>? values=null, string? group_name=null, string? key=null) {
 			label.set_text(name);
+			label.get_style_context().add_class("preference_title");
+
 			if (values != null) {
                 foreach (string value in values) {
                     combox.append(value, value);
@@ -648,6 +653,8 @@ namespace Widgets {
 
         public void create_combox_row_with_name(Gtk.Label label, Gtk.ComboBoxText combox, string name, Gtk.Grid grid, ArrayList<string>? values=null, ArrayList<string>? names=null, string? group_name=null, string? key=null) {
 			label.set_text(name);
+			label.get_style_context().add_class("preference_title");
+
 			if (values != null) {
                 int index = 0;
                 foreach (string value in values) {
@@ -689,6 +696,7 @@ namespace Widgets {
         public Gtk.Box create_check_row(Widgets.CheckButton checkbutton, string name, Gtk.Grid grid, string? group_name=null, string? key=null) {
             var box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             var label = create_label(name);
+			label.get_style_context().add_class("preference_title");
             adjust_option_checkbutton(label, checkbutton);
 
             read_check_value(checkbutton, group_name, key);
@@ -703,7 +711,9 @@ namespace Widgets {
         public Gtk.Box create_follow_check_row(Widgets.CheckButton checkbutton, string name, Gtk.Widget previous_widget, Gtk.Grid grid, string? group_name=null, string? key=null) {
             var box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
 			var label = create_label(name);
-            adjust_option_checkbutton(label, checkbutton);
+			label.get_style_context().add_class("preference_title");
+
+			adjust_option_checkbutton(label, checkbutton);
             
             read_check_value(checkbutton, group_name, key);
             
@@ -728,6 +738,7 @@ namespace Widgets {
         
         public Gtk.Label create_follow_spinbutton_row(Widgets.SpinButton spinbutton, string name, Gtk.Widget previous_widget, Gtk.Grid grid, string? group_name=null, string? key=null) {
             var label = create_label(name);
+			label.get_style_context().add_class("preference_title");
             adjust_option_widgets(label, spinbutton);
             
             read_spin_value(spinbutton, group_name, key);

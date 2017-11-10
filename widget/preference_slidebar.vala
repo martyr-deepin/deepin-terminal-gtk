@@ -209,7 +209,7 @@ namespace Widgets {
                 } else {
                     Utils.set_context_color(cr, first_segment_text_color);
                 }
-                Draw.draw_text(cr, item_name, first_segment_margin, 0, rect.width - first_segment_margin, rect.height, first_segment_size);
+                Draw.draw_text(cr, "<b>" + item_name + "</b>", first_segment_margin, 0, rect.width - first_segment_margin, rect.height, first_segment_size);
             } else {
                 if (is_selected) {
                     Utils.set_context_color(cr, highlight_text_color);
