@@ -293,8 +293,8 @@ namespace Utils {
     }
 
     public string get_ssh_script_path() {
-        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, GLib.Path.get_dirname((string) project_path()), "ssh_login.sh");
-    }
+        return "/usr/lib/deepin-terminal/ssh_login.sh";
+	}
 
     public string get_default_private_key_path() {
         return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, Environment.get_home_dir(), ".ssh", "id_rsa");
