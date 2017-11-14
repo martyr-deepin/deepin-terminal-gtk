@@ -1,14 +1,14 @@
 # Generated automatically from Makefile.in by configure.
 
-MAKE		=  make
+MAKE		=  gmake
 INSTALL		=  /usr/bin/install -c
 TAR		=  tar
 AR		=  ar
 RANLIB		=  ranlib
 CC		=  gcc
 CFLAGS		=  -g -O2 -Wall -DHAVE_CONFIG_H
-CPPFLAGS	=   -O2
-LIBS		=   
+CPPFLAGS	=  
+LIBS		=  -lreadline  -ltermcap 
 LDFLAGS 	=  
 
 

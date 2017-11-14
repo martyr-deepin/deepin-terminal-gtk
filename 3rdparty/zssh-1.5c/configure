@@ -52,7 +52,6 @@ includedir='${prefix}/include'
 oldincludedir='/usr/include'
 infodir='${prefix}/info'
 mandir='${prefix}/man'
-CPPFLAGS="$CPPFLAGS -O2"
 
 # Initialize some other variables.
 subdirs=
