@@ -68,10 +68,10 @@ TAGS :
 new : clean all
 
 clean :
-	-rm *.o *~ *.a \#*\# core $(PRGS) typescript nohup.out $(RPMSPEC) $(BACKLINK) output.*
+	-rm -f *.o *~ *.a \#*\# core $(PRGS) typescript nohup.out $(RPMSPEC) $(BACKLINK) output.*
 
 distclean : clean
-	-rm Makefile config.cache config.status config.log config.scan config.h TAGS
+	-rm -f Makefile config.cache config.status config.log config.scan config.h TAGS
 
 autoconf:
 	autoconf

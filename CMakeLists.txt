@@ -35,7 +35,7 @@ ExternalProject_Add(Vte-0.29
 
 ExternalProject_Add(zssh-1.5c
   SOURCE_DIR ${CMAKE_SOURCE_DIR}/3rdparty/zssh-1.5c
-  CONFIGURE_COMMAND ./configure --disable-readline
+  CONFIGURE_COMMAND ./configure
   BUILD_COMMAND make
   INSTALL_COMMAND ""
   BUILD_IN_SOURCE 1

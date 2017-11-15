@@ -57,7 +57,7 @@ AC_CONFIG_HEADER(config.h)
 AC_HEADER_STDC
 AC_HEADER_SYS_WAIT
 AC_CHECK_HEADERS(fcntl.h paths.h sys/ioctl.h sys/time.h termios.h unistd.h \
-	err.h sys/cdefs.h sys/param.h util.h stropts.h)
+	err.h sys/cdefs.h sys/param.h util.h stropts.h pty.h)
 
 
 
@@ -97,7 +97,14 @@ AC_CHECK_FUNCS(strdup getpt isastream tcsetpgrp)
 
 
 dnl Check what is available for tty/pty allocation 
-AC_CHECK_FUNCS(_getpty getpseudotty openpty grantpt unlockpt)
+AC_CHECK_FUNCS(_getpty getpseudotty grantpt unlockpt)
+AC_CHECK_FUNCS(openpty,,
+	[AC_CHECK_LIB(util,openpty,
+		[AC_DEFINE(HAVE_OPENPTY)
+		LIBS="$LIBS -lutil"]
+	)])
+
+
 AC_MSG_CHECKING(for pseudo ttys)
 if test -c /dev/getpty && test $ac_cv_func_getpseudotty = yes
 then
