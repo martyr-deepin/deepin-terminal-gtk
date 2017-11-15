@@ -108,7 +108,7 @@ namespace Widgets {
                                         // Because some desktop environment, such as DDE will grab keyboard focus when press keystroke. :(
                                         //
                                         // When press quakewindow shortcuts will make code follow order: `focus_out event -> toggle_quake_window'.
-                                        // focus_out event will make quakewindow hide immediately, quakewindow will show agian when execute toggle_quake_window.
+                                        // focus_out event will make quakewindow hide immediately, quakewindow will show again when execute toggle_quake_window.
                                         // At last, quakewindow will execute 'hide' and 'show' actions twice, not just simple hide window.
                                         //
                                         // So i add 200ms timeout to wait toggle_quake_window execute,
@@ -343,7 +343,7 @@ namespace Widgets {
 			if (get_scale_factor() > 1) {
 				titlebar_y += 1;
 			}
-			
+
             draw_titlebar_underline(cr, x, titlebar_y + height - Constant.TITLEBAR_HEIGHT - 1, width, -1);
             draw_active_tab_underline(cr, x + active_tab_underline_x, titlebar_y + height - Constant.TITLEBAR_HEIGHT - 1);
         }
