@@ -3,6 +3,10 @@ This is default terminal emulation application for Deepin
 
 ## [Unreleased]
 
+## [2.7.7] - 2017-11-22
+- Downgrade zssh version
+- Change get_ssh_script_path path to follow debian policy.
+- Adjust preference dialog font attribute.
 
 ## [2.7.6] - 2017-11-09
 - Buildin zssh in deepin-terminal, don't need depend zssh in linux distribution
