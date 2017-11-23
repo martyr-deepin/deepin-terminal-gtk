@@ -3,7 +3,7 @@ This is default terminal emulation application for Deepin
 
 ## [Unreleased]
 
-## [2.7.8] - 2017-11-23
+## [2.8] - 2017-11-23
 - Drag file to remote server if terminal is login.
 
 ## [2.7.7] - 2017-11-22
