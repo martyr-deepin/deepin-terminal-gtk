@@ -495,7 +495,7 @@ namespace Widgets {
                         string upload_command = "sz ";
                         foreach (File file in file_list) {
                             upload_command = upload_command + "'" + file.get_path() + "' ";
-                        }
+						}
                         upload_command = upload_command + "\n";
 
                         this.term.feed_child(upload_command, upload_command.length);
@@ -993,20 +993,46 @@ namespace Widgets {
                                    Gtk.SelectionData selection_data, uint target_type, uint time_) {
             switch (target_type) {
             case DropTargets.URILIST:
-                var uris = selection_data.get_uris ();
-                string path;
-                File file;
+                var uris = selection_data.get_uris();
+				
+				string path;
+				File file;
 
-                for (var i = 0; i < uris.length; i++) {
-                    file = File.new_for_uri (uris[i]);
-                    if ((path = file.get_path ()) != null) {
-                        uris[i] = Shell.quote (path) + " ";
-                    }
-                }
+				// Drag file to remote server if terminal is login.
+				if (login_remote_server) {
+					for (var i = 0; i < uris.length; i++) {
+						file = File.new_for_uri(uris[i]);
+						if ((path = file.get_path()) != null) {
+							uris[i] = Shell.quote(path);
+						}
+					}
+				
+					press_ctrl_at();
+					GLib.Timeout.add(500, () => {
+							string upload_command = "sz ";
+							foreach (string file_path in uris) {
+								upload_command = upload_command + "'" + file_path + "' ";
+							}
+							upload_command = upload_command + "\n";
 
-                string uris_s = string.joinv ("", uris);
-                this.term.feed_child(uris_s, uris_s.length);
+							this.term.feed_child(upload_command, upload_command.length);
 
+							return false;
+						});
+				}
+				// Just copy file path if terminal at local.
+				else {
+					for (var i = 0; i < uris.length; i++) {
+						file = File.new_for_uri(uris[i]);
+						if ((path = file.get_path()) != null) {
+							uris[i] = Shell.quote(path) + " ";
+						}
+					}
+				
+					string uris_s = string.joinv("", uris);
+					this.term.feed_child(uris_s, uris_s.length);
+				}
+				
                 break;
             case DropTargets.STRING:
             case DropTargets.TEXT:
