@@ -94,6 +94,9 @@ public class Application : Object {
         
         // NOTE: set IBUS_NO_SNOOPER_APPS variable to avoid Ctrl + 5 eat by input method (such as fcitx.);
         Environment.set_variable("IBUS_DISABLE_SNOOPER", "1", true);
+
+		// Set 'NO_AT_BRIDGE' environment variable with 1 to dislable accessibility dbus warning.
+        Environment.set_variable("NO_AT_BRIDGE", "1", true);
         
         Intl.setlocale();
         Intl.bind_textdomain_codeset(GETTEXT_PACKAGE, "utf-8");
