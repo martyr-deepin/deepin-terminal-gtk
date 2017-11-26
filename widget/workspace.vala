@@ -242,10 +242,10 @@ namespace Widgets {
 			// Split terminal.
             split(Gtk.Orientation.HORIZONTAL);
             update_focus_terminal(get_focus_term(this));
-
+			
             // Login server in timeout callback, otherwise login action can't execute.
             if (split_term_server_info != null) {
-                GLib.Timeout.add(10, () => {
+                GLib.Timeout.add(50, () => {
                         get_focus_term(this).login_server(split_term_server_info);
 
                         return false;
@@ -267,7 +267,7 @@ namespace Widgets {
 
             // Login server in timeout callback, otherwise login action can't execute.
             if (split_term_server_info != null) {
-                GLib.Timeout.add(10, () => {
+                GLib.Timeout.add(50, () => {
                         get_focus_term(this).login_server(split_term_server_info);
 
                         return false;
