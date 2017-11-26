@@ -63,6 +63,7 @@ namespace Widgets {
         public string? customize_title;
         public string? remote_server_title;
         public string? uri_at_right_press;
+        public string? server_info;
         public uint launch_idle_id;
         public uint? hide_scrollbar_timeout_source_id = null;
 
@@ -495,7 +496,7 @@ namespace Widgets {
                         string upload_command = "sz ";
                         foreach (File file in file_list) {
                             upload_command = upload_command + "'" + file.get_path() + "' ";
-						}
+                        }
                         upload_command = upload_command + "\n";
 
                         this.term.feed_child(upload_command, upload_command.length);
@@ -994,45 +995,45 @@ namespace Widgets {
             switch (target_type) {
             case DropTargets.URILIST:
                 var uris = selection_data.get_uris();
-				
-				string path;
-				File file;
 
-				// Drag file to remote server if terminal is login.
-				if (login_remote_server) {
-					for (var i = 0; i < uris.length; i++) {
-						file = File.new_for_uri(uris[i]);
-						if ((path = file.get_path()) != null) {
-							uris[i] = Shell.quote(path);
-						}
-					}
-				
-					press_ctrl_at();
-					GLib.Timeout.add(500, () => {
-							string upload_command = "sz ";
-							foreach (string file_path in uris) {
-								upload_command = upload_command + "'" + file_path + "' ";
-							}
-							upload_command = upload_command + "\n";
+                string path;
+                File file;
 
-							this.term.feed_child(upload_command, upload_command.length);
+                // Drag file to remote server if terminal is login.
+                if (login_remote_server) {
+                    for (var i = 0; i < uris.length; i++) {
+                        file = File.new_for_uri(uris[i]);
+                        if ((path = file.get_path()) != null) {
+                            uris[i] = Shell.quote(path);
+                        }
+                    }
 
-							return false;
-						});
-				}
-				// Just copy file path if terminal at local.
-				else {
-					for (var i = 0; i < uris.length; i++) {
-						file = File.new_for_uri(uris[i]);
-						if ((path = file.get_path()) != null) {
-							uris[i] = Shell.quote(path) + " ";
-						}
-					}
-				
-					string uris_s = string.joinv("", uris);
-					this.term.feed_child(uris_s, uris_s.length);
-				}
-				
+                    press_ctrl_at();
+                    GLib.Timeout.add(500, () => {
+                            string upload_command = "sz ";
+                            foreach (string file_path in uris) {
+                                upload_command = upload_command + "'" + file_path + "' ";
+                            }
+                            upload_command = upload_command + "\n";
+
+                            this.term.feed_child(upload_command, upload_command.length);
+
+                            return false;
+                        });
+                }
+                // Just copy file path if terminal at local.
+                else {
+                    for (var i = 0; i < uris.length; i++) {
+                        file = File.new_for_uri(uris[i]);
+                        if ((path = file.get_path()) != null) {
+                            uris[i] = Shell.quote(path) + " ";
+                        }
+                    }
+
+                    string uris_s = string.joinv("", uris);
+                    this.term.feed_child(uris_s, uris_s.length);
+                }
+
                 break;
             case DropTargets.STRING:
             case DropTargets.TEXT:
@@ -1372,6 +1373,7 @@ namespace Widgets {
                 print("Terminal search_in_baidu: %s\n", e.message);
             }
         }
+
         public void open_selection_file() {
             var selection_file = get_selection_file();
             if (selection_file != null) {
@@ -1381,6 +1383,144 @@ namespace Widgets {
                 } catch (GLib.Error e) {
                     print("Terminal open_selection_file: %s\n", e.message);
                 }
+            }
+        }
+
+        public void login_server(string info) {
+			// Record server info.
+			server_info = info;
+				
+            // Load config.
+            KeyFile config_file = new KeyFile();
+            string config_file_path = Utils.get_config_file_path("server-config.conf");
+
+            var gio_file = File.new_for_path(config_file_path);
+            if (!gio_file.query_exists()) {
+                Utils.touch_dir(Utils.get_config_dir());
+                Utils.create_file(config_file_path);
+            } else {
+                try {
+                    config_file.load_from_file(config_file_path, KeyFileFlags.NONE);
+                } catch (Error e) {
+                    if (!FileUtils.test(config_file_path, FileTest.EXISTS)) {
+                        print("Config: %s\n", e.message);
+                    }
+                }
+            }
+
+            try {
+                // Build ssh temp file.
+                var file = File.new_for_path(Utils.get_ssh_script_path());
+
+                if (!file.query_exists ()) {
+                    stderr.printf("File '%s' doesn't exist.\n", file.get_path());
+                }
+
+                var dis = new DataInputStream(file.read());
+                string line;
+                string ssh_script_content = "";
+                while ((line = dis.read_line(null)) != null) {
+                    ssh_script_content = ssh_script_content.concat("%s\n".printf(line));
+                }
+
+                string[] server_infos = server_info.split("@");
+
+                string password = "";
+                if (server_info.length > 2) {
+                    password = Utils.lookup_password(server_infos[0], server_infos[1], server_infos[2]);
+                } else {
+                    password = Utils.lookup_password(server_infos[0], server_infos[1]);
+                }
+
+                ssh_script_content = ssh_script_content.replace("<<USER>>", server_infos[0]);
+                ssh_script_content = ssh_script_content.replace("<<SERVER>>", server_infos[1]);
+                if (server_infos.length > 2) {
+                    ssh_script_content = ssh_script_content.replace("<<PORT>>", server_infos[2]);
+                } else {
+                    ssh_script_content = ssh_script_content.replace("<<PORT>>", config_file.get_value(server_info, "Port"));
+                }
+
+                bool use_private_key = true;
+                string private_key_file = "";
+                try {
+                    private_key_file = config_file.get_value(server_info, "PrivateKey");
+                    use_private_key = FileUtils.test(private_key_file, FileTest.EXISTS);
+                } catch (GLib.KeyFileError e) {
+                    use_private_key = false;
+                }
+
+                if (use_private_key) {
+                    ssh_script_content = ssh_script_content.replace("<<PRIVATE_KEY>>", " -i %s".printf(private_key_file));
+                    ssh_script_content = ssh_script_content.replace("<<PASSWORD>>", "");
+                    ssh_script_content = ssh_script_content.replace("<<AUTHENTICATION>>", "yes");
+                } else {
+                    ssh_script_content = ssh_script_content.replace("<<PRIVATE_KEY>>", "");
+                    ssh_script_content = ssh_script_content.replace("<<PASSWORD>>", password);
+                    ssh_script_content = ssh_script_content.replace("<<AUTHENTICATION>>", "no");
+                }
+
+                var path = config_file.get_string(server_info, "Path");
+                var command = config_file.get_string(server_info, "Command");
+
+                string remote_command = "echo %s &&".printf(_("Welcome to Deepin Terminal, please make sure that rz and sz commands have been installed in the server before right clicking to upload and download files."));
+                if (path.strip() != "") {
+                    remote_command += "cd %s && ".printf(path);
+                }
+                if (command.strip() != "") {
+                    remote_command += "%s && ".printf(command);
+                }
+
+                ssh_script_content = ssh_script_content.replace("<<REMOTE_COMMAND>>", remote_command);
+
+                // Create temporary expect script file, and the file will
+                // be delete by itself.
+                FileIOStream iostream;
+                var tmpfile = File.new_tmp("deepin-terminal-XXXXXX", out iostream);
+                OutputStream ostream = iostream.output_stream;
+                DataOutputStream dos = new DataOutputStream(ostream);
+                dos.put_string(ssh_script_content);
+
+                // Enable for debug.
+                // print("%s\n", ssh_script_content);
+
+                // Set term server info.
+                term.set_encoding(config_file.get_value(server_info, "Encode"));
+
+                remote_server_title = config_file.get_value(server_info, "Name");
+
+                var backspace_binding = config_file.get_value(server_info, "Backspace");
+                if (backspace_binding == "auto") {
+                    term.set_backspace_binding(Vte.EraseBinding.AUTO);
+                } else if (backspace_binding == "escape-sequence") {
+                    term.set_backspace_binding(Vte.EraseBinding.DELETE_SEQUENCE);
+                } else if (backspace_binding == "ascii-del") {
+                    term.set_backspace_binding(Vte.EraseBinding.ASCII_DELETE);
+                } else if (backspace_binding == "control-h") {
+                    term.set_backspace_binding(Vte.EraseBinding.ASCII_BACKSPACE);
+                } else if (backspace_binding == "tty") {
+                    term.set_backspace_binding(Vte.EraseBinding.TTY);
+                }
+
+                var del_binding = config_file.get_value(server_info, "Del");
+                if (del_binding == "auto") {
+                    term.set_delete_binding(Vte.EraseBinding.AUTO);
+                } else if (del_binding == "escape-sequence") {
+                    term.set_delete_binding(Vte.EraseBinding.DELETE_SEQUENCE);
+                } else if (del_binding == "ascii-del") {
+                    term.set_delete_binding(Vte.EraseBinding.ASCII_DELETE);
+                } else if (del_binding == "control-h") {
+                    term.set_delete_binding(Vte.EraseBinding.ASCII_BACKSPACE);
+                } else if (del_binding == "tty") {
+                    term.set_delete_binding(Vte.EraseBinding.TTY);
+                }
+
+                if (term != null) {
+                    string login_command = "expect -f " + tmpfile.get_path() + "\n";
+                    expect_file_path = tmpfile.get_path();
+                    term.feed_child(login_command, login_command.length);
+                }
+            } catch (Error e) {
+                stderr.printf("login_server: %s\n", e.message);
             }
         }
     }

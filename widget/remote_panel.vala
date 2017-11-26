@@ -166,132 +166,24 @@ namespace Widgets {
         }
 
         public void login_server(string server_info) {
-            load_config();
-
-            // A reference to our file
-            var file = File.new_for_path(Utils.get_ssh_script_path());
-
-            if (!file.query_exists ()) {
-                stderr.printf("File '%s' doesn't exist.\n", file.get_path());
-            }
-
             try {
-                var dis = new DataInputStream(file.read());
-                string line;
-                string ssh_script_content = "";
-                while ((line = dis.read_line(null)) != null) {
-                    ssh_script_content = ssh_script_content.concat("%s\n".printf(line));
-                }
-
-                string[] server_infos = server_info.split("@");
-
-                string password = "";
-                if (server_info.length > 2) {
-                    password = Utils.lookup_password(server_infos[0], server_infos[1], server_infos[2]);
-                } else {
-                    password = Utils.lookup_password(server_infos[0], server_infos[1]);
-                }
-
-                ssh_script_content = ssh_script_content.replace("<<USER>>", server_infos[0]);
-                ssh_script_content = ssh_script_content.replace("<<SERVER>>", server_infos[1]);
-                if (server_infos.length > 2) {
-                    ssh_script_content = ssh_script_content.replace("<<PORT>>", server_infos[2]);
-                } else {
-                    ssh_script_content = ssh_script_content.replace("<<PORT>>", config_file.get_value(server_info, "Port"));
-                }
-
-                bool use_private_key = true;
-                string private_key_file = "";
-                try {
-                    private_key_file = config_file.get_value(server_info, "PrivateKey");
-                    use_private_key = FileUtils.test(private_key_file, FileTest.EXISTS);
-                } catch (GLib.KeyFileError e) {
-                    use_private_key = false;
-                }
-
-                if (use_private_key) {
-                    ssh_script_content = ssh_script_content.replace("<<PRIVATE_KEY>>", " -i %s".printf(private_key_file));
-                    ssh_script_content = ssh_script_content.replace("<<PASSWORD>>", "");
-                    ssh_script_content = ssh_script_content.replace("<<AUTHENTICATION>>", "yes");
-                } else {
-                    ssh_script_content = ssh_script_content.replace("<<PRIVATE_KEY>>", "");
-                    ssh_script_content = ssh_script_content.replace("<<PASSWORD>>", password);
-                    ssh_script_content = ssh_script_content.replace("<<AUTHENTICATION>>", "no");
-                }
-
-                var path = config_file.get_string(server_info, "Path");
-                var command = config_file.get_string(server_info, "Command");
-
-                string remote_command = "echo %s &&".printf(_("Welcome to Deepin Terminal, please make sure that rz and sz commands have been installed in the server before right clicking to upload and download files."));
-                if (path.strip() != "") {
-                    remote_command += "cd %s && ".printf(path);
-                }
-                if (command.strip() != "") {
-                    remote_command += "%s && ".printf(command);
-                }
-
-                ssh_script_content = ssh_script_content.replace("<<REMOTE_COMMAND>>", remote_command);
-
-                // Create temporary expect script file, and the file will
-                // be delete by itself.
-                FileIOStream iostream;
-                var tmpfile = File.new_tmp("deepin-terminal-XXXXXX", out iostream);
-                OutputStream ostream = iostream.output_stream;
-                DataOutputStream dos = new DataOutputStream(ostream);
-                dos.put_string(ssh_script_content);
-
-                // Enable for debug.
-                // print("%s\n", ssh_script_content);
-
+				// Hide remote panel first.
                 workspace.hide_remote_panel();
                 if (focus_widget != null) {
                     focus_widget.grab_focus();
                 }
 
+				// New workspace if focus terminal has foreground process.
                 Term focus_term = workspace_manager.focus_workspace.get_focus_term(workspace_manager.focus_workspace);
                 if (focus_term.has_foreground_process()) {
                     workspace_manager.new_workspace_with_current_directory(true);
                 }
 
+				// Login server in timeout callback, otherwise login action can't execute.
                 GLib.Timeout.add(10, () => {
                         try {
                             Term term = workspace_manager.focus_workspace.get_focus_term(workspace_manager.focus_workspace);
-                            term.term.set_encoding(config_file.get_value(server_info, "Encode"));
-
-                            term.remote_server_title = config_file.get_value(server_info, "Name");
-
-                            var backspace_binding = config_file.get_value(server_info, "Backspace");
-                            if (backspace_binding == "auto") {
-                                term.term.set_backspace_binding(Vte.EraseBinding.AUTO);
-                            } else if (backspace_binding == "escape-sequence") {
-                                term.term.set_backspace_binding(Vte.EraseBinding.DELETE_SEQUENCE);
-                            } else if (backspace_binding == "ascii-del") {
-                                term.term.set_backspace_binding(Vte.EraseBinding.ASCII_DELETE);
-                            } else if (backspace_binding == "control-h") {
-                                term.term.set_backspace_binding(Vte.EraseBinding.ASCII_BACKSPACE);
-                            } else if (backspace_binding == "tty") {
-                                term.term.set_backspace_binding(Vte.EraseBinding.TTY);
-                            }
-
-
-                            var del_binding = config_file.get_value(server_info, "Del");
-                            if (del_binding == "auto") {
-                                term.term.set_delete_binding(Vte.EraseBinding.AUTO);
-                            } else if (del_binding == "escape-sequence") {
-                                term.term.set_delete_binding(Vte.EraseBinding.DELETE_SEQUENCE);
-                            } else if (del_binding == "ascii-del") {
-                                term.term.set_delete_binding(Vte.EraseBinding.ASCII_DELETE);
-                            } else if (del_binding == "control-h") {
-                                term.term.set_delete_binding(Vte.EraseBinding.ASCII_BACKSPACE);
-                            } else if (del_binding == "tty") {
-                                term.term.set_delete_binding(Vte.EraseBinding.TTY);
-                            }
-
-                            if (term != null) {
-                                string login_command = "expect -f " + tmpfile.get_path() + "\n";
-                                term.expect_file_path = tmpfile.get_path();
-                                term.term.feed_child(login_command, login_command.length);
-                            }
+							term.login_server(server_info);
                         } catch (Error e) {
                             error ("%s", e.message);
                         }
