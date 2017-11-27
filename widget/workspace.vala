@@ -46,12 +46,14 @@ namespace Widgets {
         public Term? focus_terminal;
         public Term? terminal_before_popup;
         public ThemePanel? theme_panel;
+        public HighlightFrame? highlight_frame;
         public int PANED_HANDLE_SIZE = 1;
         public int hide_slider_interval = 500;
         public int hide_slider_start_x;
         public int index;
         public int show_slider_interval = 500;
         public int show_slider_start_x;
+        public uint? highlight_frame_timeout_source_id = null;
 
         public signal void change_title(int index, string dir);
         public signal void exit(int index);
@@ -232,17 +234,17 @@ namespace Widgets {
         }
 
         public void split_vertical() {
-			// Get current terminal's server info.
+            // Get current terminal's server info.
             string? split_term_server_info = null;
             Term focus_term = get_focus_term(this);
             if (focus_term.server_info != null && focus_term.login_remote_server) {
                 split_term_server_info = focus_term.server_info;
             }
 
-			// Split terminal.
+            // Split terminal.
             split(Gtk.Orientation.HORIZONTAL);
             update_focus_terminal(get_focus_term(this));
-			
+
             // Login server in timeout callback, otherwise login action can't execute.
             if (split_term_server_info != null) {
                 GLib.Timeout.add(50, () => {
@@ -254,14 +256,14 @@ namespace Widgets {
         }
 
         public void split_horizontal() {
-			// Get current terminal's server info.
+            // Get current terminal's server info.
             string? split_term_server_info = null;
             Term focus_term = get_focus_term(this);
             if (focus_term.server_info != null && focus_term.login_remote_server) {
                 split_term_server_info = focus_term.server_info;
             }
 
-			// Split terminal.
+            // Split terminal.
             split(Gtk.Orientation.VERTICAL);
             update_focus_terminal(get_focus_term(this));
 
@@ -351,24 +353,78 @@ namespace Widgets {
             select_horizontal_terminal(true);
 
             update_focus_terminal(get_focus_term(this));
+
+            highlight_select_window();
         }
 
         public void select_right_window() {
             select_horizontal_terminal(false);
 
             update_focus_terminal(get_focus_term(this));
+
+            highlight_select_window();
         }
 
         public void select_up_window() {
             select_vertical_terminal(true);
 
             update_focus_terminal(get_focus_term(this));
+
+            highlight_select_window();
         }
 
         public void select_down_window() {
             select_vertical_terminal(false);
 
             update_focus_terminal(get_focus_term(this));
+
+            highlight_select_window();
+        }
+
+        public void highlight_select_window() {
+			// Get workspace allocation.
+            Gtk.Allocation rect;
+            this.get_allocation(out rect);
+
+			// Get terminal allocation and coordiante.
+            Term focus_term = get_focus_term(this);
+
+            int term_x, term_y;
+            focus_term.translate_coordinates(this, 0, 0, out term_x, out term_y);
+            Gtk.Allocation term_rect;
+            focus_term.get_allocation(out term_rect);
+
+			// Remove temp highlight frame and timeout source id.
+            if (highlight_frame != null) {
+                remove(highlight_frame);
+                highlight_frame = null;
+            }
+            if (highlight_frame_timeout_source_id != null) {
+                GLib.Source.remove(highlight_frame_timeout_source_id);
+                highlight_frame_timeout_source_id = null;
+            }
+
+			// Create new highlight frame.
+            highlight_frame = new HighlightFrame();
+            highlight_frame.set_size_request(term_rect.width, term_rect.height);
+            highlight_frame.margin_start = term_x;
+            highlight_frame.margin_end = rect.width - term_x - term_rect.width;
+            highlight_frame.margin_top = term_y;
+            highlight_frame.margin_bottom = rect.height - term_y - term_rect.height;
+            add_overlay(highlight_frame);
+            show_all();
+
+			// Hide highlight frame when timeout finish.
+            highlight_frame_timeout_source_id = GLib.Timeout.add(300, () => {
+                    if (highlight_frame != null) {
+                        remove(highlight_frame);
+                        highlight_frame = null;
+                    }
+					
+					highlight_frame_timeout_source_id = null;
+
+                    return false;
+                });
         }
 
         public ArrayList<Term> find_intersects_horizontal_terminals(Gtk.Allocation rect, bool left=true) {

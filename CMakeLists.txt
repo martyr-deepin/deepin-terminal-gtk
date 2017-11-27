@@ -125,6 +125,7 @@ vala_precompile(VALA_C
 	./widget/remote_panel.vala
 	./widget/remote_server_dialog.vala
 	./widget/link_button.vala
+	./widget/highlight_frame.vala
 	./widget/search_entry.vala
 	./widget/search_panel.vala
 	./widget/server_button.vala
