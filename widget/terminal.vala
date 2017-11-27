@@ -992,6 +992,8 @@ namespace Widgets {
 
         public void drag_received (Gdk.DragContext context, int x, int y,
                                    Gtk.SelectionData selection_data, uint target_type, uint time_) {
+			term.grab_focus();
+			
             switch (target_type) {
             case DropTargets.URILIST:
                 var uris = selection_data.get_uris();
