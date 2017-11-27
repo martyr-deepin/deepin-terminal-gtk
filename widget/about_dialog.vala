@@ -53,7 +53,7 @@ namespace Widgets {
             var about_widget = new AboutWidget();
             box.pack_start(about_widget, true, true, 0);
             
-            set_init_size(500, 440);
+            set_init_size(500, 460);
             
             int about_text_height = Draw.get_text_render_height(
                 about_widget,

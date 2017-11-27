@@ -128,7 +128,7 @@ namespace Widgets {
         public Preference(Widgets.ConfigWindow window, Gtk.Widget? widget) {
             Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
             
-            set_init_size(720, 670);
+            set_init_size(740, 670);
             
 			theme_label = create_label();
             opacity_label = create_label(_("Opacity:"));
