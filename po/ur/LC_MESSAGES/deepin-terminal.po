@@ -10,13 +10,13 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-11-27 16:58+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Selwyn Francisco <selwynaerole@gmail.com>, 2017\n"
-"Language-Team: Filipino (https://www.transifex.com/linuxdeepin/teams/3976/fil/)\n"
+"Last-Translator: MUHAMMAD FAHAD IRSHAD <m.fahadirshad@gmail.com>, 2017\n"
+"Language-Team: Urdu (https://www.transifex.com/linuxdeepin/teams/3976/ur/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fil\n"
-"Plural-Forms: nplurals=2; plural=(n == 1 || n==2 || n==3) || (n % 10 != 4 || n % 10 != 6 || n % 10 != 9);\n"
+"Language: ur\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../widget/terminal.vala:1152
 msgid ""
@@ -190,7 +190,7 @@ msgstr ""
 
 #: ../main.vala:188 ../widget/about_widget.vala:82 ../widget/tabbar.vala:603
 msgid "Deepin Terminal"
-msgstr "Deepin Terminal"
+msgstr ""
 
 #: ../main.vala:189 ../widget/about_widget.vala:49
 msgid ""
@@ -295,7 +295,7 @@ msgstr ""
 
 #: ../widget/appbar.vala:127
 msgid "Help"
-msgstr "Tulong"
+msgstr ""
 
 #: ../widget/preference.vala:400
 msgid "Hide quake window after lost focus"
@@ -393,7 +393,7 @@ msgstr ""
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Password"
-msgstr "Password"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:246
 msgid "Password:"
@@ -623,7 +623,7 @@ msgstr ""
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Username"
-msgstr "Username"
+msgstr "صارف کا نام"
 
 #: ../widget/remote_server_dialog.vala:232
 msgid "Username:"
