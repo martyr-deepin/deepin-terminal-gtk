@@ -3,6 +3,16 @@ This is default terminal emulation application for Deepin
 
 ## [Unreleased]
 
+## [2.9] - 2017-11-27
+- Upload file to remote server when drag file to remote terminal.
+- Split terminal to login server if current terminal has login.
+- Set 'NO_AT_BRIDGE' environment variable with 1 to dislable accessibility dbus warning.
+- Display highlight frame when select different terminal window.
+- Fixed preference dialog widget width problem when use German.
+- Adjust slider button text width to make it can display ip address completely.
+- Add "blur background" option in preference dialog.
+- Update translations.
+
 ## [2.8] - 2017-11-23
 - Drag file to remote server if terminal is login.
 
