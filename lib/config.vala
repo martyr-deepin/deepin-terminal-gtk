@@ -124,6 +124,7 @@ namespace Config {
                 config_file.set_boolean("advanced", "scroll_on_output", false);
                 config_file.set_integer("advanced", "scroll_line", -1);
                 config_file.set_string("advanced", "use_on_starting", "window");
+                config_file.set_boolean("advanced", "blur_background", false);
                 config_file.set_integer("advanced", "window_width", 0);
                 config_file.set_integer("advanced", "window_height", 0);
                 config_file.set_double("advanced", "quake_window_height", 0);
@@ -328,6 +329,7 @@ namespace Config {
             check_boolean("advanced", "scroll_on_output", false);
             check_integer("advanced", "scroll_line", -1);
             check_string("advanced", "use_on_starting", "window");
+            check_boolean("advanced", "blur_background", false);
             check_integer("advanced", "window_width", 0);
             check_integer("advanced", "window_height", 0);
             check_double("advanced", "quake_window_height", 0);

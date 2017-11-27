@@ -199,8 +199,8 @@ namespace Widgets {
                         cache_width = width;
                         cache_height = height;
                     }
-
-                    return false;
+					
+					return false;
                 });
 
             init_active_tab_underline(tabbar);
