@@ -3,6 +3,11 @@ This is default terminal emulation application for Deepin
 
 ## [Unreleased]
 
+## [2.9.1] - 2017-11-27
+- Add option 'show_highlight_frame', default set to false, it's nosie to display highlight frame everytime i select terminal window.
+- Adjust about dialog font size.
+- Adjust progressbar draw coordinate.
+
 ## [2.9] - 2017-11-27
 - Upload file to remote server when drag file to remote terminal.
 - Split terminal to login server if current terminal has login.
