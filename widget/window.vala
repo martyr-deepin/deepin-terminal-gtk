@@ -227,7 +227,7 @@ namespace Widgets {
             config.update.connect((w) => {
                     update_style();
 					
-					update_blur_status();
+					update_blur_status(true);
                 });
         }
 
@@ -298,45 +298,53 @@ namespace Widgets {
             window_frame_box.get_style_context().remove_class("window_noradius_noshadow_active");
         }
 		
-		public void update_blur_status() {
+		public void update_blur_status(bool force_update=false) {
 			try {
-				unowned X.Display xdisplay = (get_window().get_display() as Gdk.X11.Display).get_xdisplay();
-				var xid = (int)((Gdk.X11.Window) get_window()).get_xid();
-				var atom_NET_WM_DEEPIN_BLUR_REGION_ROUNDED = xdisplay.intern_atom("_NET_WM_DEEPIN_BLUR_REGION_ROUNDED", false);
+				int width, height;
+				get_size(out width, out height);
+				
+				if (width != resize_cache_width || height != resize_cache_height || force_update) {
+					resize_cache_width = width;
+					resize_cache_height = height;
+
+					unowned X.Display xdisplay = (get_window().get_display() as Gdk.X11.Display).get_xdisplay();
+					var xid = (int)((Gdk.X11.Window) get_window()).get_xid();
+					var atom_NET_WM_DEEPIN_BLUR_REGION_ROUNDED = xdisplay.intern_atom("_NET_WM_DEEPIN_BLUR_REGION_ROUNDED", false);
 						
-				var blur_background = config.config_file.get_boolean("advanced", "blur_background");
-				if (blur_background) {
-					Cairo.RectangleInt blur_rect;
-					get_window().get_frame_extents(out blur_rect);
-					blur_rect.x = 0;
-					blur_rect.y = 0;
+					var blur_background = config.config_file.get_boolean("advanced", "blur_background");
+					if (blur_background) {
+						Cairo.RectangleInt blur_rect;
+						get_window().get_frame_extents(out blur_rect);
+						blur_rect.x = 0;
+						blur_rect.y = 0;
 					
-					if (!window_is_fullscreen() && !window_is_max() && screen_monitor.is_composited()) {
-						blur_rect.x = window_frame_box.margin_start;
-						blur_rect.y = window_frame_box.margin_top;
-						blur_rect.width += - window_frame_box.margin_start - window_frame_box.margin_end;
-						blur_rect.height += - window_frame_box.margin_top - window_frame_box.margin_bottom;
+						if (!window_is_fullscreen() && !window_is_max() && screen_monitor.is_composited()) {
+							blur_rect.x = window_frame_box.margin_start;
+							blur_rect.y = window_frame_box.margin_top;
+							blur_rect.width += - window_frame_box.margin_start - window_frame_box.margin_end;
+							blur_rect.height += - window_frame_box.margin_top - window_frame_box.margin_bottom;
+						}
+					
+						ulong[] data = {(ulong) blur_rect.x, (ulong) blur_rect.y, (ulong) blur_rect.width, (ulong) blur_rect.height, 8, 8};
+						xdisplay.change_property(
+							xid,
+							atom_NET_WM_DEEPIN_BLUR_REGION_ROUNDED,
+							X.XA_CARDINAL,
+							32,
+							X.PropMode.Replace,
+							(uchar[])data,
+							((ulong[]) data).length);					
+					} else {
+						ulong[] data = {0, 0, 0, 0, 0, 0};
+						xdisplay.change_property(
+							xid,
+							atom_NET_WM_DEEPIN_BLUR_REGION_ROUNDED,
+							X.XA_CARDINAL,
+							32,
+							X.PropMode.Replace,
+							(uchar[])data,
+							((ulong[]) data).length);					
 					}
-					
-					ulong[] data = {(ulong) blur_rect.x, (ulong) blur_rect.y, (ulong) blur_rect.width, (ulong) blur_rect.height, 8, 8};
-					xdisplay.change_property(
-						xid,
-						atom_NET_WM_DEEPIN_BLUR_REGION_ROUNDED,
-						X.XA_CARDINAL,
-						32,
-						X.PropMode.Replace,
-						(uchar[])data,
-						((ulong[]) data).length);					
-				} else {
-					ulong[] data = {0, 0, 0, 0, 0, 0};
-					xdisplay.change_property(
-						xid,
-						atom_NET_WM_DEEPIN_BLUR_REGION_ROUNDED,
-						X.XA_CARDINAL,
-						32,
-						X.PropMode.Replace,
-						(uchar[])data,
-						((ulong[]) data).length);					
 				}
 			} catch (GLib.KeyFileError e) {
 				print("%s\n", e.message);

@@ -46,6 +46,8 @@ namespace Widgets {
         public int reset_timeout_delay = 150;
         public int resize_cache_x = 0;
         public int resize_cache_y = 0;
+		public int resize_cache_width = 0;
+		public int resize_cache_height = 0;
         public int resize_timeout_delay = 150;
         public uint? reset_timeout_source_id = null;
         public uint? resize_timeout_source_id = null;
