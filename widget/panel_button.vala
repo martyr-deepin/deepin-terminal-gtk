@@ -56,7 +56,7 @@ namespace Widgets {
         public int edit_button_y;
         public int height = 56;
         public int image_x = 12;
-        public int text_width = 136;
+        public int text_width = Constant.SLIDER_PANEL_TEXT_WIDTH;
         public int text_x = 72;
         public int width = Constant.SLIDER_WIDTH;
         public string button_content;

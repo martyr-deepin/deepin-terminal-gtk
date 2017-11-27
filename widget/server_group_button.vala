@@ -48,7 +48,7 @@ namespace Widgets {
         public int height = 56;
         public int image_x = 12;
         public int server_number;
-        public int text_width = 136;
+        public int text_width = Constant.SLIDER_PANEL_TEXT_WIDTH;
         public int text_x = 72;
         public int title_size = 11;
         public int title_y = 5;
