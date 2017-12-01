@@ -324,6 +324,11 @@ namespace Widgets {
 							blur_rect.width += - window_frame_box.margin_start - window_frame_box.margin_end;
 							blur_rect.height += - window_frame_box.margin_top - window_frame_box.margin_bottom;
 						}
+						
+						blur_rect.x = (int) (blur_rect.x * Utils.get_default_monitor_scale());
+						blur_rect.y = (int) (blur_rect.y * Utils.get_default_monitor_scale());
+						blur_rect.width = (int) (blur_rect.width * Utils.get_default_monitor_scale());
+						blur_rect.height = (int) (blur_rect.height * Utils.get_default_monitor_scale());
 					
 						ulong[] data = {(ulong) blur_rect.x, (ulong) blur_rect.y, (ulong) blur_rect.width, (ulong) blur_rect.height, 8, 8};
 						xdisplay.change_property(
