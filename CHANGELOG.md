@@ -3,6 +3,9 @@ This is default terminal emulation application for Deepin
 
 ## [Unreleased]
 
+## [2.9.2] - 2017-12-01
+- Fixed blur background not work for 4k screen.
+
 ## [2.9.1] - 2017-11-27
 - Add option 'show_highlight_frame', default set to false, it's nosie to display highlight frame everytime i select terminal window.
 - Adjust about dialog font size.
