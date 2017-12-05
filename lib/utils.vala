@@ -269,19 +269,19 @@ namespace Utils {
     }
 
     public string get_image_path(string image_name) {
-        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, (string) project_path(), "share", "deepin-terminal", "image", image_name);
+        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, GLib.Path.get_dirname((string) project_path()), "image", image_name);
     }
 
     public string get_theme_path(string theme_name) {
-        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, (string) project_path(), "share", "deepin-terminal", "theme", theme_name);
+        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, GLib.Path.get_dirname((string) project_path()), "theme", theme_name);
     }
 
     public string get_theme_dir() {
-        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, (string) project_path(), "share", "deepin-terminal", "theme");
+        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, GLib.Path.get_dirname((string) project_path()), "theme");
     }
 
     public string get_root_path(string file_path) {
-        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, (string) project_path(), "share", "deepin-terminal", file_path);
+        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, GLib.Path.get_dirname((string) project_path()), file_path);
     }
 
     public string get_config_dir() {
@@ -293,7 +293,7 @@ namespace Utils {
     }
 
     public string get_ssh_script_path() {
-        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S,  "usr", "lib", "deepin-terminal", "ssh_login.sh");
+        return "/usr/lib/deepin-terminal/ssh_login.sh";
 	}
 
     public string get_default_private_key_path() {
