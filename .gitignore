@@ -3,3 +3,4 @@ main
 *.swp
 build/
 3rdparty/
+project_path.c
