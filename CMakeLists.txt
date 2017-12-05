@@ -30,7 +30,7 @@ OPTION(TEST_BUILD "Build with native testing" ON)
 if(TEST_BUILD)
 message("set project_path to native test")
 execute_process(
-    COMMAND sed s|@@PROJECT_PATH@@|__FILE__|g
+    COMMAND sed s|@@PROJECT_PATH@@|\"${CMAKE_SOURCE_DIR}\"|g
     OUTPUT_FILE ${CMAKE_CURRENT_SOURCE_DIR}/project_path.c
     INPUT_FILE ${CMAKE_CURRENT_SOURCE_DIR}/project_path.c.in
 )

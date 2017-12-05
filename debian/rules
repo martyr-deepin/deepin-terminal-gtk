@@ -5,9 +5,6 @@
 override_dh_auto_configure:
 	cmake -DCMAKE_INSTALL_PREFIX=/usr -DTEST_BUILD=OFF .
 
-override_dh_auto_install:
-	dh_auto_install
-
 override_dh_clean:
 	rm -fr CMakeFiles CMakeCache.txt cmake_install.cmake install_manifest.txt Makefile project_path.c || true
 	dh_clean
