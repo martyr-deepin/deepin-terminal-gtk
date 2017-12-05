@@ -113,6 +113,10 @@ macro(vala_precompile output)
     foreach(pkg ${ARGS_PACKAGES})
         list(APPEND vala_pkg_opts "--pkg=${pkg}")
     endforeach(pkg ${ARGS_PACKAGES})
+    set(vala_define_opts "")
+    foreach(def ${ARGS_DEFINITIONS})
+        list(APPEND vala_define_opts "--define=${def}")
+    endforeach(def ${ARGS_DEFINITIONS})
     set(in_files "")
     set(out_files "")
     set(${output} "")
@@ -165,6 +169,7 @@ macro(vala_precompile output)
         "-b" ${CMAKE_CURRENT_SOURCE_DIR} 
         "-d" ${DIRECTORY} 
         ${vala_pkg_opts} 
+        ${vala_define_opts}
         ${ARGS_OPTIONS} 
         ${in_files} 
         ${custom_vapi_arguments}

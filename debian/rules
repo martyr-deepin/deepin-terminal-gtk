@@ -3,7 +3,7 @@
 	dh $@ 
 
 override_dh_auto_configure:
-	cmake -DCMAKE_INSTALL_PREFIX=/usr .
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DTEST_BUILD=OFF .
 
 override_dh_auto_install:
 	dh_auto_install

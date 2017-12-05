@@ -269,19 +269,35 @@ namespace Utils {
     }
 
     public string get_image_path(string image_name) {
+#if TEST_BUILD
+        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, (string) project_path(), "image", image_name);
+#else
         return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, (string) project_path(), "share", "deepin-terminal", "image", image_name);
+#endif
     }
 
     public string get_theme_path(string theme_name) {
+#if TEST_BUILD
+        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, (string) project_path(), "theme", theme_name);
+#else
         return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, (string) project_path(), "share", "deepin-terminal", "theme", theme_name);
+#endif
     }
 
     public string get_theme_dir() {
+#if TEST_BUILD
+        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, (string) project_path(), "theme");
+#else
         return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, (string) project_path(), "share", "deepin-terminal", "theme");
+#endif
     }
 
     public string get_root_path(string file_path) {
+#if TEST_BUILD
+        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, (string) project_path(), file_path);
+#else
         return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, (string) project_path(), "share", "deepin-terminal", file_path);
+#endif
     }
 
     public string get_config_dir() {
@@ -293,7 +309,11 @@ namespace Utils {
     }
 
     public string get_ssh_script_path() {
-        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S,  "usr", "lib", "deepin-terminal", "ssh_login.sh");
+#if TEST_BUILD
+        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S,  (string) project_path(), "ssh_login.sh");
+#else
+        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S,  (string) project_path(), "lib", "deepin-terminal", "ssh_login.sh");
+#endif
 	}
 
     public string get_default_private_key_path() {
