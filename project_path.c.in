@@ -25,5 +25,5 @@
 #include <string.h>
 
 char* project_path() {
-    return __FILE__;
+    return @@PROJECT_PATH@@;
 }

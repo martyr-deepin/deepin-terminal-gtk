@@ -25,6 +25,13 @@ pkg_check_modules(WNCK REQUIRED libwnck-3.0)
 pkg_check_modules(FONTCONFIG REQUIRED fontconfig)
 pkg_check_modules(GLIB REQUIRED glib-2.0)
 
+message("set project_path to ${CMAKE_INSTALL_PREFIX}")
+execute_process(
+    COMMAND sed s|@@PROJECT_PATH@@|\"${CMAKE_INSTALL_PREFIX}\"|g
+    OUTPUT_FILE ${CMAKE_CURRENT_SOURCE_DIR}/project_path.c
+    INPUT_FILE ${CMAKE_CURRENT_SOURCE_DIR}/project_path.c.in
+)
+
 ExternalProject_Add(Vte-0.29
   SOURCE_DIR ${CMAKE_SOURCE_DIR}/3rdparty/vte-0.50.1
   CONFIGURE_COMMAND ./configure --enable-static
