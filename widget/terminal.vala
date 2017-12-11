@@ -100,22 +100,25 @@ namespace Widgets {
 
             term = new Terminal();
 
-            term.child_exited.connect((t)=> {
-                    child_has_exit = true;
+            term.child_exited.connect((t, exit_status)=> {
+					// Just call exit callback when exit_status equal 0.
+					if (exit_status == 0) {
+						child_has_exit = true;
 
-                    Widgets.ConfigWindow window = (Widgets.ConfigWindow) term.get_toplevel();
+						Widgets.ConfigWindow window = (Widgets.ConfigWindow) term.get_toplevel();
 
-                    try {
-                        if (window.config.config_file.get_boolean("advanced", "print_notify_after_script_finish") && is_launch_command() && workspace_manager.is_first_term(this)) {
-                            // Print exit notify if command execute finish.
-                            print_exit_notify();
-                        } else {
-                            // Just exit terminal if `child_exited' signal emit by shell.
-                            exit();
-                        }
-                    } catch (Error e) {
-                        print("child_exited: %s\n", e.message);
-                    }
+						try {
+							if (window.config.config_file.get_boolean("advanced", "print_notify_after_script_finish") && is_launch_command() && workspace_manager.is_first_term(this)) {
+								// Print exit notify if command execute finish.
+								print_exit_notify();
+							} else {
+								// Just exit terminal if `child_exited' signal emit by shell.
+								exit();
+							}
+						} catch (Error e) {
+							print("child_exited: %s\n", e.message);
+						}
+					}
                 });
             term.destroy.connect((t) => {
                     kill_fg();
