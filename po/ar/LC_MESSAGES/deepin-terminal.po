@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-11-27 16:58+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: abs1515 <ayobbasher@gmail.com>, 2017\n"
+"Last-Translator: Abdullah Alnahdy <abdullahalnahdy@gmail.com>, 2017\n"
 "Language-Team: Arabic (https://www.transifex.com/linuxdeepin/teams/3976/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -94,7 +94,7 @@ msgstr "أساسي"
 
 #: ../widget/preference.vala:407
 msgid "Blur background"
-msgstr ""
+msgstr "خلفية ضبابية"
 
 #: ../widget/remote_server_dialog.vala:346
 #: ../widget/remote_server_dialog.vala:426 ../widget/confirm_dialog.vala:131

@@ -94,7 +94,7 @@ msgstr "መሰረታዊ"
 
 #: ../widget/preference.vala:407
 msgid "Blur background"
-msgstr ""
+msgstr "መደብ ማደብዘዣ"
 
 #: ../widget/remote_server_dialog.vala:346
 #: ../widget/remote_server_dialog.vala:426 ../widget/confirm_dialog.vala:131
@@ -304,7 +304,7 @@ msgstr "እርዳታ"
 
 #: ../widget/preference.vala:400
 msgid "Hide quake window after lost focus"
-msgstr ""
+msgstr "የ quake መስኮት መደበቂያ ትኩረት ካጣ በኋላ"
 
 #: ../widget/terminal.vala:341 ../widget/config_window.vala:335
 msgid "Horizontal split"

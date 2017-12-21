@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-11-27 16:58+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Tomáš Kratochvíl <kratochvil.tomas.dev@gmail.com>, 2017\n"
+"Last-Translator: Maggie Liu <maggie.liufei@gmail.com>, 2017\n"
 "Language-Team: Czech (https://www.transifex.com/linuxdeepin/teams/3976/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -94,7 +94,7 @@ msgstr "Základní"
 
 #: ../widget/preference.vala:407
 msgid "Blur background"
-msgstr ""
+msgstr "Rozmazat pozadí"
 
 #: ../widget/remote_server_dialog.vala:346
 #: ../widget/remote_server_dialog.vala:426 ../widget/confirm_dialog.vala:131
@@ -304,7 +304,7 @@ msgstr "Nápověda"
 
 #: ../widget/preference.vala:400
 msgid "Hide quake window after lost focus"
-msgstr "Skrýt posuvné okno..."
+msgstr "Skrýt posuvné okno po ztrátě zaměření..."
 
 #: ../widget/terminal.vala:341 ../widget/config_window.vala:335
 msgid "Horizontal split"

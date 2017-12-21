@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-11-27 16:58+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: mi estas ni <nikajnun@gmail.com>, 2017\n"
+"Last-Translator: Pablo Chere <pablo.foche@gmail.com>, 2017\n"
 "Language-Team: Esperanto (https://www.transifex.com/linuxdeepin/teams/3976/eo/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -467,7 +467,7 @@ msgstr ""
 #: ../widget/remote_server_dialog.vala:231 ../widget/command_dialog.vala:158
 #: ../widget/command_dialog.vala:171
 msgid "Required"
-msgstr ""
+msgstr "Nepra"
 
 #: ../widget/preference.vala:413
 msgid "Restore Defaults"
@@ -586,7 +586,7 @@ msgstr "Agordoj"
 #: ../widget/preference_slidebar.vala:65 ../widget/preference.vala:293
 #: ../widget/command_dialog.vala:83
 msgid "Shortcuts"
-msgstr ""
+msgstr "Fulmoklavoj"
 
 #: ../widget/command_dialog.vala:180
 msgid "Shortcuts:"

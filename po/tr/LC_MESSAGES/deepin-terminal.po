@@ -94,7 +94,7 @@ msgstr "Temel"
 
 #: ../widget/preference.vala:407
 msgid "Blur background"
-msgstr ""
+msgstr "Arka planı bulanıklaştır"
 
 #: ../widget/remote_server_dialog.vala:346
 #: ../widget/remote_server_dialog.vala:426 ../widget/confirm_dialog.vala:131
@@ -102,7 +102,7 @@ msgstr ""
 #: ../widget/terminal.vala:549 ../widget/file_button.vala:69
 #: ../widget/command_dialog.vala:192 ../widget/command_dialog.vala:250
 msgid "Cancel"
-msgstr "İptal Et"
+msgstr "İptal et"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Certificate"

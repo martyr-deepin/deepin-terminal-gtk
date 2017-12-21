@@ -389,7 +389,7 @@ msgstr ""
 #: ../widget/remote_server_dialog.vala:284
 #: ../widget/remote_server_dialog.vala:293
 msgid "Optional"
-msgstr ""
+msgstr "ئىختىيارىي"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Password"

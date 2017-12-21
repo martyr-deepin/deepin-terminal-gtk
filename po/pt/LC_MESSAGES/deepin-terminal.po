@@ -94,7 +94,7 @@ msgstr "Básico"
 
 #: ../widget/preference.vala:407
 msgid "Blur background"
-msgstr ""
+msgstr "Fundo desfocado"
 
 #: ../widget/remote_server_dialog.vala:346
 #: ../widget/remote_server_dialog.vala:426 ../widget/confirm_dialog.vala:131
@@ -192,7 +192,7 @@ msgstr "Cortar"
 
 #: ../main.vala:188 ../widget/about_widget.vala:82 ../widget/tabbar.vala:603
 msgid "Deepin Terminal"
-msgstr "Terminal Deepin"
+msgstr "Deepin Terminal"
 
 #: ../main.vala:189 ../widget/about_widget.vala:49
 msgid ""
@@ -200,7 +200,7 @@ msgid ""
 "\n"
 "It sharpens your focus in the world of command line!"
 msgstr ""
-"O Terminal Deepin é um avançado emulador de terminal com áreas de trabalho, múltiplas janelas, gestão remota, modo quake e outras funções.\n"
+"O Deepin Terminal é um avançado emulador de terminal com áreas de trabalho, múltiplas janelas, gestão remota, modo quake e outras funções.\n"
 "\n"
 "Isto aguçará o foco no mundo da linha de comandos!"
 
@@ -652,7 +652,7 @@ msgid ""
 "been installed in the server before right clicking to upload and download "
 "files."
 msgstr ""
-"Bem-vindo ao Terminal Deepin, por favor tenha a certeza que os comandos rz e"
+"Bem-vindo ao Deepin Terminal, por favor tenha a certeza que os comandos rz e"
 " sz estejam instalados no servidor antes de clicar no botão direito para "
 "fazer envio e transferência de ficheiros"
 
