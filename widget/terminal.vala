@@ -89,6 +89,7 @@ namespace Widgets {
         public signal void change_title(string dir);
         public signal void exit();
         public signal void highlight_tab();
+		public signal void exit_with_bad_code(int exit_status);
 
         public Term(bool first_term, string? work_directory, WorkspaceManager manager) {
             Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
@@ -118,8 +119,10 @@ namespace Widgets {
 						} catch (Error e) {
 							print("child_exited: %s\n", e.message);
 						}
+					} else {
+						exit_with_bad_code(exit_status);
 					}
-                });
+				});
             term.destroy.connect((t) => {
                     kill_fg();
                 });

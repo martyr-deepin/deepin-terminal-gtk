@@ -95,7 +95,7 @@ namespace Widgets {
         }
 
         public Term new_term(bool first_term, string? work_directory) {
-            Term term = new Widgets.Term(first_term, work_directory, workspace_manager);
+			Term term = new Widgets.Term(first_term, work_directory, workspace_manager);
             term.change_title.connect((term, dir) => {
                     change_title(index, dir);
                 });
@@ -105,6 +105,9 @@ namespace Widgets {
             term.exit.connect((term) => {
                     remove_all_panels();
                     close_term(term);
+                });
+            term.exit_with_bad_code.connect((w, status) => {
+                    reset_term(status);
                 });
             term.term.button_press_event.connect((w, e) => {
                     remove_search_panel();
@@ -122,6 +125,26 @@ namespace Widgets {
 
             return term;
         }
+
+        public void reset_term(int exit_status) {
+			Term focus_term = get_focus_term(this);
+            string term_dir = focus_term.get_cwd();
+			
+			split_vertical();
+			close_term(focus_term);
+
+            GLib.Timeout.add(500, () => {
+					if (term_dir.length > 0) {
+						Term new_focus_term = get_focus_term(this);
+						string switch_command = "cd %s\n".printf(term_dir);
+						new_focus_term.term.feed_child(switch_command, switch_command.length);
+					}
+
+					return false;
+				});
+			
+			print("Reset terminal after got exit status: %i\n", exit_status);
+		}
 
         public bool has_active_term() {
             foreach (Term term in term_list) {
@@ -324,6 +347,7 @@ namespace Widgets {
 
                     return true;
                 });
+			
             Term term = new_term(false, focus_term.get_cwd());
             paned.pack1(focus_term, true, false);
             paned.pack2(term, true, false);
@@ -382,57 +406,57 @@ namespace Widgets {
         }
 
         public void highlight_select_window() {
-			try {
-				Widgets.ConfigWindow parent_window = (Widgets.ConfigWindow) this.get_toplevel();
-				bool show_highlight_frame = parent_window.config.config_file.get_boolean("advanced", "show_highlight_frame");
-				if (show_highlight_frame) {
-					// Get workspace allocation.
-					Gtk.Allocation rect;
-					this.get_allocation(out rect);
+            try {
+                Widgets.ConfigWindow parent_window = (Widgets.ConfigWindow) this.get_toplevel();
+                bool show_highlight_frame = parent_window.config.config_file.get_boolean("advanced", "show_highlight_frame");
+                if (show_highlight_frame) {
+                    // Get workspace allocation.
+                    Gtk.Allocation rect;
+                    this.get_allocation(out rect);
 
-					// Get terminal allocation and coordiante.
-					Term focus_term = get_focus_term(this);
+                    // Get terminal allocation and coordiante.
+                    Term focus_term = get_focus_term(this);
 
-					int term_x, term_y;
-					focus_term.translate_coordinates(this, 0, 0, out term_x, out term_y);
-					Gtk.Allocation term_rect;
-					focus_term.get_allocation(out term_rect);
+                    int term_x, term_y;
+                    focus_term.translate_coordinates(this, 0, 0, out term_x, out term_y);
+                    Gtk.Allocation term_rect;
+                    focus_term.get_allocation(out term_rect);
 
-					// Remove temp highlight frame and timeout source id.
-					if (highlight_frame != null) {
-						remove(highlight_frame);
-						highlight_frame = null;
-					}
-					if (highlight_frame_timeout_source_id != null) {
-						GLib.Source.remove(highlight_frame_timeout_source_id);
-						highlight_frame_timeout_source_id = null;
-					}
+                    // Remove temp highlight frame and timeout source id.
+                    if (highlight_frame != null) {
+                        remove(highlight_frame);
+                        highlight_frame = null;
+                    }
+                    if (highlight_frame_timeout_source_id != null) {
+                        GLib.Source.remove(highlight_frame_timeout_source_id);
+                        highlight_frame_timeout_source_id = null;
+                    }
 
-					// Create new highlight frame.
-					highlight_frame = new HighlightFrame();
-					highlight_frame.set_size_request(term_rect.width, term_rect.height);
-					highlight_frame.margin_start = term_x;
-					highlight_frame.margin_end = rect.width - term_x - term_rect.width;
-					highlight_frame.margin_top = term_y;
-					highlight_frame.margin_bottom = rect.height - term_y - term_rect.height;
-					add_overlay(highlight_frame);
-					show_all();
+                    // Create new highlight frame.
+                    highlight_frame = new HighlightFrame();
+                    highlight_frame.set_size_request(term_rect.width, term_rect.height);
+                    highlight_frame.margin_start = term_x;
+                    highlight_frame.margin_end = rect.width - term_x - term_rect.width;
+                    highlight_frame.margin_top = term_y;
+                    highlight_frame.margin_bottom = rect.height - term_y - term_rect.height;
+                    add_overlay(highlight_frame);
+                    show_all();
 
-					// Hide highlight frame when timeout finish.
-					highlight_frame_timeout_source_id = GLib.Timeout.add(300, () => {
-							if (highlight_frame != null) {
-								remove(highlight_frame);
-								highlight_frame = null;
-							}
-					
-							highlight_frame_timeout_source_id = null;
+                    // Hide highlight frame when timeout finish.
+                    highlight_frame_timeout_source_id = GLib.Timeout.add(300, () => {
+                            if (highlight_frame != null) {
+                                remove(highlight_frame);
+                                highlight_frame = null;
+                            }
 
-							return false;
-						});
-				}
-			} catch (GLib.KeyFileError e) {
-				print("%s\n", e.message);
-			}
+                            highlight_frame_timeout_source_id = null;
+
+                            return false;
+                        });
+                }
+            } catch (GLib.KeyFileError e) {
+                print("%s\n", e.message);
+            }
         }
 
         public ArrayList<Term> find_intersects_horizontal_terminals(Gtk.Allocation rect, bool left=true) {
