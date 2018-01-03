@@ -137,6 +137,7 @@ namespace Config {
                 config_file.set_boolean("advanced", "print_notify_after_script_finish", true);
                 config_file.set_boolean("advanced", "run_as_login_shell", false);
                 config_file.set_boolean("advanced", "show_highlight_frame", false);
+                config_file.set_boolean("advanced", "copy_on_select", false);
 
                 config_file.set_string("theme", "color_1", "#073642");
                 config_file.set_comment("theme", "color_1", "host");
@@ -343,6 +344,7 @@ namespace Config {
             check_boolean("advanced", "print_notify_after_script_finish", true);
             check_boolean("advanced", "run_as_login_shell", false);
             check_boolean("advanced", "show_highlight_frame", false);
+            check_boolean("advanced", "copy_on_select", false);
 
             check_string("theme", "color_1", "#073642");
             check_string("theme", "color_2", "#bdb76b");  // string

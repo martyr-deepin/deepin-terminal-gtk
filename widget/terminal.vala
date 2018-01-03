@@ -98,7 +98,6 @@ namespace Widgets {
             is_first_term = first_term;
             command_execute_y_coordinates = new ArrayList<int>();
 
-
             term = new Terminal();
 
             term.child_exited.connect((t, exit_status)=> {
@@ -157,6 +156,7 @@ namespace Widgets {
                         if (event.state == Gdk.ModifierType.CONTROL_MASK && uri != null) {
                             try {
                                 Gtk.show_uri(null, (!) uri, Gtk.get_current_event_time());
+								
                                 return true;
                             } catch (GLib.Error error) {
                                 try {
@@ -181,9 +181,23 @@ namespace Widgets {
 
                     return false;
                 });
+			term.button_release_event.connect((event) => {
+					try {
+						Widgets.ConfigWindow window = (Widgets.ConfigWindow) term.get_toplevel();
+					
+						// Like XShell, if user set config option 'copy_on_select' to true, terminal will copy select text to system clipboard when text is selected.
+						if (window.config.config_file.get_boolean("advanced", "copy_on_select") && term.get_has_selection()) {
+							term.copy_clipboard();
+						}
+					} catch (Error e) {
+						print("term button_release_event: %s\n", e.message);
+					}
+					
+					return false;
+				});
 
-            /* target entries specify what kind of data the terminal widget accepts */
-            Gtk.TargetEntry uri_entry = { "text/uri-list", Gtk.TargetFlags.OTHER_APP, DropTargets.URILIST };
+			/* target entries specify what kind of data the terminal widget accepts */
+			Gtk.TargetEntry uri_entry = { "text/uri-list", Gtk.TargetFlags.OTHER_APP, DropTargets.URILIST };
             Gtk.TargetEntry string_entry = { "STRING", Gtk.TargetFlags.OTHER_APP, DropTargets.STRING };
             Gtk.TargetEntry text_entry = { "text/plain", Gtk.TargetFlags.OTHER_APP, DropTargets.TEXT };
 
