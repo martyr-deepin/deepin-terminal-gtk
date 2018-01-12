@@ -102,7 +102,7 @@ namespace Widgets {
 
             term.child_exited.connect((t, exit_status)=> {
 					// Just call exit callback when exit_status equal 0.
-					if (exit_status == 0) {
+					if (exit_status == Constant.EXIT_CODE_NORMAL || exit_status == Constant.EXIT_CODE_CTRL_C) {
 						child_has_exit = true;
 
 						Widgets.ConfigWindow window = (Widgets.ConfigWindow) term.get_toplevel();
@@ -119,6 +119,8 @@ namespace Widgets {
 							print("child_exited: %s\n", e.message);
 						}
 					} else {
+						print("Got bad exit code: %i\n", exit_status);
+						
 						exit_with_bad_code(exit_status);
 					}
 				});
