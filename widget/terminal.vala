@@ -102,7 +102,7 @@ namespace Widgets {
 
             term.child_exited.connect((t, exit_status)=> {
 					// Just call exit callback when exit_status equal 0.
-					if (exit_status == Constant.EXIT_CODE_NORMAL || exit_status == Constant.EXIT_CODE_CTRL_C) {
+					if (exit_status == Constant.EXIT_CODE_NORMAL || exit_status == Constant.EXIT_CODE_CTRL_C_1 || exit_status == Constant.EXIT_CODE_CTRL_C_2) {
 						child_has_exit = true;
 
 						Widgets.ConfigWindow window = (Widgets.ConfigWindow) term.get_toplevel();
