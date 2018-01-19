@@ -65,6 +65,80 @@ Remote servers' configure save at:
 Customize command's configure save at:
 ~/.config/deepin/deepin-terminal/command-config.conf
 
+## Advanced config
+cursor_shape=block
+Cursor shape type, can set with 'block', 'ibeam', 'underline', default is block type.
+
+cursor_blink_mode=true
+Whether blink cursor, default is true, set with false will improve performance though decrease repaint times.
+
+cursor_auto_hide=false
+Whether auto hide cursor when don't type in terminal, this option default is disable.
+
+scroll_on_key=true
+Scroll terminal when type something in terminal, this option default is enable.
+
+scroll_on_output=false
+Scroll terminal when have new output, this option default is disable, please don't enable this option, it's nosing.
+
+scroll_line=-1
+The line of terminal can scroll back, default is -1, mean save all history, don't stripe terminal output.
+
+use_on_starting=window
+The window status at start, can set with 'window', 'maximize' and 'fullscreen', default is 'window'.
+
+blur_background=false
+Whether blur terminal's background, blur feature provide by DDE's window manager -- deepin-wm, default is disable for better performance.  
+
+window_width=1134
+Window width when start, this option is record when you adjust window size.
+Of course, you can set it manually.
+
+window_height=648
+Window height when start, this option is record when you adjust window size.
+Of course, you can set it manually.
+
+quake_window_height=0.29999999999999999
+The max height of quake terminal, set it with 1.0 can make quake window with any height you like.
+
+quake_window_fullscreen=false
+Whether make quake window use fullscreen mode, default is disable.
+
+remote_commands=zssh
+Remote command list to help deepin-terminal detect current environment whether in remote server, you can add new command in list, command separator use character ; ,
+like remote_commands=zssh;new_command;another_command;
+
+hide_quakewindow_after_lost_focus=false
+Hide quake window after lost keyboard focus immediately, default is disable to keep quake window even lost keyboard focus.
+Anyway, feel free to turn this option if you more like quake window hide after lost keyboard focus.
+
+show_quakewindow_tab=true
+Whether show tabbar in quake terminal, default is true. It's cool if you don't like tabbar in quake terminal.
+
+follow_active_window=true
+Create new terminal in active monitor when this option set as true, create new terminal with cursor place when this option set as false.
+
+hide_quakewindow_when_active=true
+Just hide quake window when cursor is active when this option is true, if cursor is inactive, press quake-terminal keystroke will focus quake window first, and hide quake-terminal when press quake-temrinal keystroke agian.
+This behaviour help user jump back to quake-terminal quickly.
+It's feel free to turn off this feature if you just like to toggle quake-terminal when you press quake-terminal keystroke.
+
+
+print_notify_after_script_finish=true
+Press notify after you use terminal execute script finish, terminal won't exit until you press key, this feature useful to watch script execute result.
+Feel free to turn off this option if you know script's result exactly.
+
+run_as_login_shell=false
+Run shell as login_shell, default is disable.
+
+show_highlight_frame=false
+Show highlight frame when you focus on terminal window, notify user cursor place.
+This option default is disable, because it's too nosing to me.
+
+copy_on_select=false
+Copy select text to system clipboard directly if you turn on this option, i think many XShell users like this. ;) 
+This optoin default is disable, because it's linux style. ;)
+
 ## Getting help
 
 Any usage issues can ask for help via
