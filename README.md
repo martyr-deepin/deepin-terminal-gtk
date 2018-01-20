@@ -70,16 +70,16 @@ Customize command's configure save at:
 Cursor shape type, can set with 'block', 'ibeam', 'underline', default is block type.
 
 #### cursor_blink_mode
-Whether blink cursor, default is true, set with false will improve performance though decrease repaint times.
+Whether blink cursor, the default is true, set with false will improve performance though decrease repaint times.
 
 #### cursor_auto_hide
-Whether auto hide cursor when don't type in terminal, this option default is false.
+Whether auto hide cursor when don't type in terminal, this default option is false.
 
 #### scroll_on_key
-Scroll terminal when type something in terminal, this option default is true.
+Scroll terminal when type something in terminal, this option the default is true.
 
 #### scroll_on_output
-Scroll terminal when have new output, this option default is false, please don't enable this option, it's nosing.
+Scroll terminal when have new output, this default option is false, please don't enable this option, it's nosing.
 
 #### scroll_line
 The line of terminal can scroll back, default is -1, mean save all history, don't stripe terminal output.
@@ -106,7 +106,7 @@ Whether make quake window use fullscreen mode, default is false.
 
 #### remote_commands
 Remote command list to help deepin-terminal detect current environment whether in remote server, default is zssh.
-You can add new command in list, command separator use character ; ,
+You can add new command in list, command separator use character ;
 like remote_commands=zssh;new_command;another_command;
 
 #### hide_quakewindow_after_lost_focus
@@ -114,7 +114,7 @@ Hide quake window after lost keyboard focus immediately, default is false to kee
 Anyway, feel free to turn this option if you more like quake window hide after lost keyboard focus.
 
 #### show_quakewindow_tab
-Whether show tabbar in quake terminal, default is true. It's cool if you don't like tabbar in quake terminal.
+Whether show tabbar in quake terminal, the default is true. It's cool if you don't like tabbar in quake terminal.
 
 #### follow_active_window
 Create new terminal in active monitor when this option set as true, create new terminal with cursor place when this option set as false.
@@ -126,14 +126,14 @@ It's feel free to turn off this feature if you just like to toggle quake-termina
 
 #### print_notify_after_script_finish
 Press notify after you use terminal execute script finish, terminal won't exit until you press key, this feature useful to watch script execute result.
-Default is true, feel free to turn off this option if you know script's result exactly.
+The default is true, feel free to turn off this option if you know script's result exactly.
 
 #### run_as_login_shell
 Run shell as login_shell, default is false.
 
 #### show_highlight_frame
 Show highlight frame when you focus on terminal window, notify user cursor place.
-This option default is false, because it's too nosing to me.
+this default option is false, because it's too nosing to me.
 
 #### copy_on_select
 Copy select text to system clipboard directly if you turn on this option, i think many XShell users like this. ;) 
