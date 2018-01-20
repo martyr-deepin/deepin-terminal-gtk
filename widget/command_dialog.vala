@@ -29,9 +29,9 @@ namespace Widgets {
         public Gtk.Box box;
         public Gtk.Box command_action_box;
         public Gtk.Box content_box;
-        public Gtk.ComboBoxText backspace_key_box;
-        public Gtk.ComboBoxText del_key_box;
-        public Gtk.ComboBoxText encode_box;
+        public Widgets.DropdownTextButton backspace_key_box;
+        public Widgets.DropdownTextButton del_key_box;
+        public Widgets.DropdownTextButton encode_box;
         public Gtk.Grid advanced_grid;
         public Gtk.Widget? focus_widget;
         public Term? focus_term;

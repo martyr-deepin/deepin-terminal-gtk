@@ -31,8 +31,8 @@ namespace Widgets {
 		public ArrayList<string> font_names;
 		public ArrayList<string> window_state_list;
 		public ArrayList<string> window_state_name_list;
-		public Gtk.ComboBoxText font_combox;
-		public Gtk.ComboBoxText window_combox;
+		public Widgets.DropdownTextButton font_combox;
+		public Widgets.DropdownTextButton window_combox;
 		public Gtk.Label close_other_windows_key_label;
 		public Gtk.Label close_window_key_label;
 		public Gtk.Label close_workspace_key_label;
@@ -635,7 +635,7 @@ namespace Widgets {
 			}
 		}
         
-        public void create_combox_row(Gtk.Label label, Gtk.ComboBoxText combox, string name, Gtk.Grid grid, ArrayList<string>? values=null, string? group_name=null, string? key=null) {
+        public void create_combox_row(Gtk.Label label, Widgets.DropdownTextButton combox, string name, Gtk.Grid grid, ArrayList<string>? values=null, string? group_name=null, string? key=null) {
 			label.set_text(name);
 			label.get_style_context().add_class("preference_title");
 
@@ -663,7 +663,7 @@ namespace Widgets {
             grid_attach_next_to(grid, combox, label, Gtk.PositionType.RIGHT, preference_widget_width, grid_height);
 		}
 
-        public void create_combox_row_with_name(Gtk.Label label, Gtk.ComboBoxText combox, string name, Gtk.Grid grid, ArrayList<string>? values=null, ArrayList<string>? names=null, string? group_name=null, string? key=null) {
+        public void create_combox_row_with_name(Gtk.Label label, Widgets.DropdownTextButton combox, string name, Gtk.Grid grid, ArrayList<string>? values=null, ArrayList<string>? names=null, string? group_name=null, string? key=null) {
 			label.set_text(name);
 			label.get_style_context().add_class("preference_title");
 
@@ -810,8 +810,8 @@ namespace Widgets {
             return entry;
         }
         
-        public Gtk.ComboBoxText create_combox_text() {
-            var combox = new Gtk.ComboBoxText();
+        public Widgets.DropdownTextButton create_combox_text() {
+            var combox = new Widgets.DropdownTextButton();
             combox.get_style_context().add_class("preference_comboboxtext");
             
             return combox;
@@ -819,6 +819,10 @@ namespace Widgets {
         
         public Widgets.SpinButton create_spinbutton(int min, int max, int step) {
             var spinbutton = new Widgets.SpinButton();
+			// Prevent scroll event.
+			spinbutton.scroll_event.connect((w, e) => {
+					return true;
+				});
             spinbutton.set_range(min, max);
             spinbutton.set_increments(step, step * 10);
             spinbutton.get_style_context().add_class("preference_spinbutton");
