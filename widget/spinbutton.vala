@@ -39,6 +39,11 @@ namespace Widgets {
                     
                     return false;
                 });
+			
+			// Prevent scroll event.
+			scroll_event.connect((w, e) => {
+					return true;
+				});
         }
     }
 }

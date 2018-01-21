@@ -819,11 +819,7 @@ namespace Widgets {
         
         public Widgets.SpinButton create_spinbutton(int min, int max, int step) {
             var spinbutton = new Widgets.SpinButton();
-			// Prevent scroll event.
-			spinbutton.scroll_event.connect((w, e) => {
-					return true;
-				});
-            spinbutton.set_range(min, max);
+			spinbutton.set_range(min, max);
             spinbutton.set_increments(step, step * 10);
             spinbutton.get_style_context().add_class("preference_spinbutton");
             
