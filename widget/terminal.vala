@@ -101,8 +101,12 @@ namespace Widgets {
             term = new Terminal();
 
             term.child_exited.connect((t, exit_status)=> {
-					// Just call exit callback when exit_status equal 0.
-					if (exit_status == Constant.EXIT_CODE_NORMAL || exit_status == Constant.EXIT_CODE_CTRL_C_1 || exit_status == Constant.EXIT_CODE_CTRL_C_2) {
+					print("Terminal exit with code: %i\n", exit_status);
+					
+					// Just reset terminal when exit code match EXIT_CODE_BAD_SMABA (139).
+					if (exit_status == Constant.EXIT_CODE_BAD_SMABA) {
+						exit_with_bad_code(exit_status);
+					} else {
 						child_has_exit = true;
 
 						Widgets.ConfigWindow window = (Widgets.ConfigWindow) term.get_toplevel();
@@ -118,10 +122,6 @@ namespace Widgets {
 						} catch (Error e) {
 							print("child_exited: %s\n", e.message);
 						}
-					} else {
-						print("Got bad exit code: %i\n", exit_status);
-						
-						exit_with_bad_code(exit_status);
 					}
 				});
             term.destroy.connect((t) => {
