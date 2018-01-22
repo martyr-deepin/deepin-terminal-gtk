@@ -4,3 +4,4 @@ main
 build/
 3rdparty/
 project_path.c
+.vscode/

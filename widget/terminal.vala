@@ -102,7 +102,7 @@ namespace Widgets {
 
             term.child_exited.connect((t, exit_status)=> {
 					print("Terminal exit with code: %i\n", exit_status);
-					
+
 					// Just reset terminal when exit code match EXIT_CODE_BAD_SMABA (139).
 					if (exit_status == Constant.EXIT_CODE_BAD_SMABA) {
 						exit_with_bad_code(exit_status);
@@ -158,7 +158,7 @@ namespace Widgets {
                         if (event.state == Gdk.ModifierType.CONTROL_MASK && uri != null) {
                             try {
                                 Gtk.show_uri(null, (!) uri, Gtk.get_current_event_time());
-								
+
                                 return true;
                             } catch (GLib.Error error) {
                                 try {
@@ -186,7 +186,7 @@ namespace Widgets {
 			term.button_release_event.connect((event) => {
 					try {
 						Widgets.ConfigWindow window = (Widgets.ConfigWindow) term.get_toplevel();
-					
+
 						// Like XShell, if user set config option 'copy_on_select' to true, terminal will copy select text to system clipboard when text is selected.
 						if (window.config.config_file.get_boolean("advanced", "copy_on_select") && term.get_has_selection()) {
 							term.copy_clipboard();
@@ -194,7 +194,7 @@ namespace Widgets {
 					} catch (Error e) {
 						print("term button_release_event: %s\n", e.message);
 					}
-					
+
 					return false;
 				});
 
@@ -383,13 +383,17 @@ namespace Widgets {
             menu_content.append(new Menu.MenuItem("search", _("Search")));
             menu_content.append(new Menu.MenuItem("", ""));
             if (term.get_has_selection()) {
-                menu_content.append(new Menu.MenuItem("google", "Google"));
-                menu_content.append(new Menu.MenuItem("bing", "Bing"));
+                Menu.MenuItem onlineSearch  = new Menu.MenuItem("online_search", _("Online search"));
+
+                onlineSearch.add_submenu_item(new Menu.MenuItem("google", "Google"));
+                onlineSearch.add_submenu_item(new Menu.MenuItem("bing", "Bing"));
 
                 string? lang = Environment.get_variable("LANG");
                 if (lang != null && lang == "zh_CN.UTF-8") {
-                    menu_content.append(new Menu.MenuItem("baidu", "Baidu"));
+                    onlineSearch.add_submenu_item(new Menu.MenuItem("baidu", "Baidu"));
                 }
+
+                menu_content.append(onlineSearch);
             }
             menu_content.append(new Menu.MenuItem("", ""));
             if (in_quake_window) {
@@ -1015,7 +1019,7 @@ namespace Widgets {
         public void drag_received (Gdk.DragContext context, int x, int y,
                                    Gtk.SelectionData selection_data, uint target_type, uint time_) {
 			term.grab_focus();
-			
+
             switch (target_type) {
             case DropTargets.URILIST:
                 var uris = selection_data.get_uris();
@@ -1413,7 +1417,7 @@ namespace Widgets {
         public void login_server(string info) {
 			// Record server info.
 			server_info = info;
-				
+
             // Load config.
             KeyFile config_file = new KeyFile();
             string config_file_path = Utils.get_config_file_path("server-config.conf");
