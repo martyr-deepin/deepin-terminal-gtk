@@ -380,20 +380,20 @@ namespace Widgets {
                 }
             }
 
-            menu_content.append(new Menu.MenuItem("search", _("Search")));
+            menu_content.append(new Menu.MenuItem("find", _("Find")));
             menu_content.append(new Menu.MenuItem("", ""));
             if (term.get_has_selection()) {
-                Menu.MenuItem onlineSearch  = new Menu.MenuItem("online_search", _("Online search"));
+                Menu.MenuItem online_search  = new Menu.MenuItem("search", _("Search"));
 
-                onlineSearch.add_submenu_item(new Menu.MenuItem("google", "Google"));
-                onlineSearch.add_submenu_item(new Menu.MenuItem("bing", "Bing"));
+                online_search.add_submenu_item(new Menu.MenuItem("google", "Google"));
+                online_search.add_submenu_item(new Menu.MenuItem("bing", "Bing"));
 
                 string? lang = Environment.get_variable("LANG");
                 if (lang != null && lang == "zh_CN.UTF-8") {
-                    onlineSearch.add_submenu_item(new Menu.MenuItem("baidu", "Baidu"));
+                    online_search.add_submenu_item(new Menu.MenuItem("baidu", "Baidu"));
                 }
 
-                menu_content.append(onlineSearch);
+                menu_content.append(online_search);
             }
             menu_content.append(new Menu.MenuItem("", ""));
             if (in_quake_window) {
@@ -445,7 +445,7 @@ namespace Widgets {
                     var window = ((Widgets.Window) get_toplevel());
                     window.toggle_fullscreen();
                     break;
-                case "search":
+                case "find":
                     workspace_manager.focus_workspace.search(get_selection_text());
                     break;
                 case "google":
