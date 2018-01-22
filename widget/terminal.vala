@@ -89,7 +89,7 @@ namespace Widgets {
         public signal void change_title(string dir);
         public signal void exit();
         public signal void highlight_tab();
-		public signal void exit_with_bad_code(int exit_status);
+        public signal void exit_with_bad_code(int exit_status);
 
         public Term(bool first_term, string? work_directory, WorkspaceManager manager) {
             Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
@@ -101,29 +101,29 @@ namespace Widgets {
             term = new Terminal();
 
             term.child_exited.connect((t, exit_status)=> {
-					print("Terminal exit with code: %i\n", exit_status);
+                    print("Terminal exit with code: %i\n", exit_status);
 
-					// Just reset terminal when exit code match EXIT_CODE_BAD_SMABA (139).
-					if (exit_status == Constant.EXIT_CODE_BAD_SMABA) {
-						exit_with_bad_code(exit_status);
-					} else {
-						child_has_exit = true;
+                    // Just reset terminal when exit code match EXIT_CODE_BAD_SMABA (139).
+                    if (exit_status == Constant.EXIT_CODE_BAD_SMABA) {
+                        exit_with_bad_code(exit_status);
+                    } else {
+                        child_has_exit = true;
 
-						Widgets.ConfigWindow window = (Widgets.ConfigWindow) term.get_toplevel();
+                        Widgets.ConfigWindow window = (Widgets.ConfigWindow) term.get_toplevel();
 
-						try {
-							if (window.config.config_file.get_boolean("advanced", "print_notify_after_script_finish") && is_launch_command() && workspace_manager.is_first_term(this)) {
-								// Print exit notify if command execute finish.
-								print_exit_notify();
-							} else {
-								// Just exit terminal if `child_exited' signal emit by shell.
-								exit();
-							}
-						} catch (Error e) {
-							print("child_exited: %s\n", e.message);
-						}
-					}
-				});
+                        try {
+                            if (window.config.config_file.get_boolean("advanced", "print_notify_after_script_finish") && is_launch_command() && workspace_manager.is_first_term(this)) {
+                                // Print exit notify if command execute finish.
+                                print_exit_notify();
+                            } else {
+                                // Just exit terminal if `child_exited' signal emit by shell.
+                                exit();
+                            }
+                        } catch (Error e) {
+                            print("child_exited: %s\n", e.message);
+                        }
+                    }
+                });
             term.destroy.connect((t) => {
                     kill_fg();
                 });
@@ -183,23 +183,23 @@ namespace Widgets {
 
                     return false;
                 });
-			term.button_release_event.connect((event) => {
-					try {
-						Widgets.ConfigWindow window = (Widgets.ConfigWindow) term.get_toplevel();
+            term.button_release_event.connect((event) => {
+                    try {
+                        Widgets.ConfigWindow window = (Widgets.ConfigWindow) term.get_toplevel();
 
-						// Like XShell, if user set config option 'copy_on_select' to true, terminal will copy select text to system clipboard when text is selected.
-						if (window.config.config_file.get_boolean("advanced", "copy_on_select") && term.get_has_selection()) {
-							term.copy_clipboard();
-						}
-					} catch (Error e) {
-						print("term button_release_event: %s\n", e.message);
-					}
+                        // Like XShell, if user set config option 'copy_on_select' to true, terminal will copy select text to system clipboard when text is selected.
+                        if (window.config.config_file.get_boolean("advanced", "copy_on_select") && term.get_has_selection()) {
+                            term.copy_clipboard();
+                        }
+                    } catch (Error e) {
+                        print("term button_release_event: %s\n", e.message);
+                    }
 
-					return false;
-				});
+                    return false;
+                });
 
-			/* target entries specify what kind of data the terminal widget accepts */
-			Gtk.TargetEntry uri_entry = { "text/uri-list", Gtk.TargetFlags.OTHER_APP, DropTargets.URILIST };
+            /* target entries specify what kind of data the terminal widget accepts */
+            Gtk.TargetEntry uri_entry = { "text/uri-list", Gtk.TargetFlags.OTHER_APP, DropTargets.URILIST };
             Gtk.TargetEntry string_entry = { "STRING", Gtk.TargetFlags.OTHER_APP, DropTargets.STRING };
             Gtk.TargetEntry text_entry = { "text/plain", Gtk.TargetFlags.OTHER_APP, DropTargets.TEXT };
 
@@ -448,15 +448,6 @@ namespace Widgets {
                 case "find":
                     workspace_manager.focus_workspace.search(get_selection_text());
                     break;
-                case "google":
-                    search_in_google(get_selection_text());
-                    break;
-                case "bing":
-                    search_in_bing(get_selection_text());
-                    break;
-                case "baidu":
-                    search_in_baidu(get_selection_text());
-                    break;
                 case "horizontal_split":
                     workspace_manager.focus_workspace.split_horizontal();
                     break;
@@ -497,7 +488,16 @@ namespace Widgets {
                     var preference = new Widgets.Preference((Widgets.ConfigWindow) this.get_toplevel(), ((Gtk.Window) this.get_toplevel()).get_focus());
                     preference.transient_for_window((Widgets.ConfigWindow) this.get_toplevel());
                     break;
-
+                default:
+					if (item_id == "google") {
+						search_text_in_search_engine(get_selection_text(), "http://google.com/search?q=%s");
+					} else if (item_id == "bing") {
+						search_text_in_search_engine(get_selection_text(), "http://cn.bing.com/search?q=%s");
+					} else if (item_id == "baidu") {
+						search_text_in_search_engine(get_selection_text(), "https://www.baidu.com/s?wd=%s");
+					}
+					
+                    break;
                 }
             } else {
                 print("handle_menu_item_click: impossible here!\n");
@@ -1018,7 +1018,7 @@ namespace Widgets {
 
         public void drag_received (Gdk.DragContext context, int x, int y,
                                    Gtk.SelectionData selection_data, uint target_type, uint time_) {
-			term.grab_focus();
+            term.grab_focus();
 
             switch (target_type) {
             case DropTargets.URILIST:
@@ -1370,35 +1370,14 @@ namespace Widgets {
             }
         }
 
-        public void search_in_google(string search_text) {
+        public void search_text_in_search_engine(string search_text, string search_engline_api) {
             try {
                 GLib.AppInfo appinfo = GLib.AppInfo.create_from_commandline(
-                    "xdg-open 'http://google.com/search?q=%s'".printf(search_text),
+                    "xdg-open '%s'".printf(search_engline_api).printf(search_text),
                     null, GLib.AppInfoCreateFlags.NONE);
                 appinfo.launch(null, null);
             } catch (GLib.Error e) {
-                print("Terminal search_in_google: %s\n", e.message);
-            }
-        }
-        public void search_in_bing(string search_text) {
-            try {
-                GLib.AppInfo appinfo = GLib.AppInfo.create_from_commandline(
-                    "xdg-open 'http://cn.bing.com/search?q=%s'".printf(search_text),
-                    null, GLib.AppInfoCreateFlags.NONE);
-                appinfo.launch(null, null);
-            } catch (GLib.Error e) {
-                print("Terminal search_in_bing: %s\n", e.message);
-            }
-        }
-
-        public void search_in_baidu(string search_text) {
-            try {
-                GLib.AppInfo appinfo = GLib.AppInfo.create_from_commandline(
-                    "xdg-open 'https://www.baidu.com/s?wd=%s'".printf(search_text),
-                    null, GLib.AppInfoCreateFlags.NONE);
-                appinfo.launch(null, null);
-            } catch (GLib.Error e) {
-                print("Terminal search_in_baidu: %s\n", e.message);
+                print("Terminal search_in_search_engine: %s\n", e.message);
             }
         }
 
@@ -1415,8 +1394,8 @@ namespace Widgets {
         }
 
         public void login_server(string info) {
-			// Record server info.
-			server_info = info;
+            // Record server info.
+            server_info = info;
 
             // Load config.
             KeyFile config_file = new KeyFile();
