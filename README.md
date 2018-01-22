@@ -139,6 +139,26 @@ this default option is false, because it's too nosing to me.
 Copy select text to system clipboard directly if you turn on this option, i think many XShell users like this. ;) 
 This optoin default is false, because it's linux style. ;)
 
+## Customize search engine
+Deepin terminal build-in many search engine for engineer, such as Google, Bing, Baidu, GitHub, Stackover Flow, DuckDuckGo.
+Anyway, if you want build your own search engine, just follow below command:
+* Create config file ~/.config/deepin/deepin-terminal/search-engine-config.conf
+* Add content like below:
+
+`
+[flickr]
+name=Flickr
+api=https://www.flickr.com/search/?text=%s
+
+[googleimage]
+name=Google Image
+api=http://images.google.com/search?q=%s
+`
+
+Content in [] is searchengine name, use by terminal for id search.
+name mean human name of search engine, you can name it to anything you like
+api mean search api for search engine, note, you need use %s replace search keyword, otherwise, deepin-terminal don't know how to concat search api url and search keyboard.
+
 ## Getting help
 
 Any usage issues can ask for help via

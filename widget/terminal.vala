@@ -86,6 +86,9 @@ namespace Widgets {
             "(?:news:|man:|info:)[[:alnum:]\\Q^_{|}~!\"#$%&'()*+,./;:=?`\\E]+"
         };
 
+        public KeyFile search_engine_config_file;
+        public string search_engine_config_file_path = Utils.get_config_file_path("search-engine-config.conf");
+
         public signal void change_title(string dir);
         public signal void exit();
         public signal void highlight_tab();
@@ -99,6 +102,8 @@ namespace Widgets {
             command_execute_y_coordinates = new ArrayList<int>();
 
             term = new Terminal();
+			
+            search_engine_config_file = new KeyFile();
 
             term.child_exited.connect((t, exit_status)=> {
                     print("Terminal exit with code: %i\n", exit_status);
@@ -392,10 +397,30 @@ namespace Widgets {
                 if (lang != null && lang == "zh_CN.UTF-8") {
                     online_search.add_submenu_item(new Menu.MenuItem("baidu", "Baidu"));
                 }
-				
+
                 online_search.add_submenu_item(new Menu.MenuItem("github", "Github"));
                 online_search.add_submenu_item(new Menu.MenuItem("stackoverflow", "Stack Overflow"));
                 online_search.add_submenu_item(new Menu.MenuItem("duckduckgo", "DuckDuckGo"));
+
+                var file = File.new_for_path(search_engine_config_file_path);
+                if (file.query_exists()) {
+                    try {
+                        search_engine_config_file.load_from_file(search_engine_config_file_path, KeyFileFlags.NONE);
+
+                        foreach (unowned string option in search_engine_config_file.get_groups()) {
+							string search_engine_name = search_engine_config_file.get_value(option, "name");
+							string search_engine_api = search_engine_config_file.get_value(option, "api");
+							
+							if (search_engine_name != "" && search_engine_api != "") {
+								online_search.add_submenu_item(new Menu.MenuItem(option, search_engine_name));
+							}
+						}
+                    } catch (Error e) {
+                        if (!FileUtils.test(search_engine_config_file_path, FileTest.EXISTS)) {
+                            print("Config: %s\n", e.message);
+                        }
+                    }
+                }
 
                 menu_content.append(online_search);
             }
@@ -493,21 +518,36 @@ namespace Widgets {
                     preference.transient_for_window((Widgets.ConfigWindow) this.get_toplevel());
                     break;
                 default:
-					if (item_id == "google") {
-						search_text_in_search_engine(get_selection_text(), "http://google.com/search?q=%s");
-					} else if (item_id == "bing") {
-						search_text_in_search_engine(get_selection_text(), "http://cn.bing.com/search?q=%s");
-					} else if (item_id == "baidu") {
-						search_text_in_search_engine(get_selection_text(), "https://www.baidu.com/s?wd=%s");
-					} else if (item_id == "github") {
-						search_text_in_search_engine(get_selection_text(), "https://github.com/search?q=%s");
-					} else if (item_id == "stackoverflow") {
-						search_text_in_search_engine(get_selection_text(), "https://stackoverflow.com/search?q=%s");
-					} else if (item_id == "duckduckgo") {
-						search_text_in_search_engine(get_selection_text(), "https://duckduckgo.com/?q=%s");
+                    if (item_id == "google") {
+                        search_text_in_search_engine(get_selection_text(), "http://google.com/search?q=%s");
+                    } else if (item_id == "bing") {
+                        search_text_in_search_engine(get_selection_text(), "http://cn.bing.com/search?q=%s");
+                    } else if (item_id == "baidu") {
+                        search_text_in_search_engine(get_selection_text(), "https://www.baidu.com/s?wd=%s");
+                    } else if (item_id == "github") {
+                        search_text_in_search_engine(get_selection_text(), "https://github.com/search?q=%s");
+                    } else if (item_id == "stackoverflow") {
+                        search_text_in_search_engine(get_selection_text(), "https://stackoverflow.com/search?q=%s");
+                    } else if (item_id == "duckduckgo") {
+                        search_text_in_search_engine(get_selection_text(), "https://duckduckgo.com/?q=%s");
+                    } else {
+						foreach (unowned string option in search_engine_config_file.get_groups()) {
+							if (item_id == option) {
+								try {
+									string search_engine_api = search_engine_config_file.get_value(option, "api");
+									search_text_in_search_engine(get_selection_text(), search_engine_api);
+								} catch (Error e) {
+									if (!FileUtils.test(search_engine_config_file_path, FileTest.EXISTS)) {
+										print("Config: %s\n", e.message);
+									}
+								}
+								
+								break;
+							}
+						}
 					}
-					
-                    break;
+
+					break;
                 }
             } else {
                 print("handle_menu_item_click: impossible here!\n");
