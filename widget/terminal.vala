@@ -835,10 +835,10 @@ namespace Widgets {
                     double old_opacity = window.config.config_file.get_double("general", "opacity");
                     double new_opacity = old_opacity;
 
-                    if (scroll_event.delta_y < 0) {
-                        new_opacity = double.min(double.max(old_opacity + 0.1, Constant.TERMINAL_MIN_OPACITY), 1);
+					if (scroll_event.delta_y < 0) {
+                        new_opacity = double.min(double.max(old_opacity + 0.01, Constant.TERMINAL_MIN_OPACITY), 1);
                     } else if (scroll_event.delta_y > 0) {
-                        new_opacity = double.min(double.max(old_opacity - 0.1, Constant.TERMINAL_MIN_OPACITY), 1);
+                        new_opacity = double.min(double.max(old_opacity - 0.01, Constant.TERMINAL_MIN_OPACITY), 1);
                     }
 
                     if (new_opacity != old_opacity) {
