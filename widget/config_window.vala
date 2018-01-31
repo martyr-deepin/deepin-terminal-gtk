@@ -442,7 +442,9 @@ namespace Widgets {
 
                 if (keyname == "F1") {
                     Utils.show_manual();
-                }
+					
+					return true;
+				}
 
                 var search_key = config.config_file.get_string("shortcut", "search");
                 if (search_key != "" && keyname == search_key) {

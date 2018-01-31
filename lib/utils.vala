@@ -32,6 +32,11 @@ extern string font_match(string family);
 extern string[] list_mono_or_dot_fonts(out int num);
 
 namespace Utils {
+    [DBus (name = "com.deepin.Manual.Open")]
+    interface DeepinManualInterface : Object {
+        public abstract void ShowManual(string appName) throws IOError;
+    }
+	
     public Gdk.RGBA hex_to_rgba(string hex_color, double alpha=1.0) {
         Gdk.RGBA rgba_color = Gdk.RGBA();
         rgba_color.parse(hex_color);
@@ -406,14 +411,12 @@ namespace Utils {
     }
 
     public void show_manual() {
-        if (Utils.is_command_exist("dman")) {
-            try {
-                GLib.AppInfo appinfo = GLib.AppInfo.create_from_commandline("dman deepin-terminal", null, GLib.AppInfoCreateFlags.NONE);
-                appinfo.launch(null, null);
-            } catch (GLib.Error e) {
-                print("Appbar menu item 'help': %s\n", e.message);
-            }
-        }
+		try {
+			DeepinManualInterface deepin_manual_interface = Bus.get_proxy_sync(BusType.SESSION, "com.deepin.Manual.Open", "/com/deepin/Manual/Open");
+			deepin_manual_interface.ShowManual("deepin-terminal");
+		} catch (GLib.IOError e) {
+			print("show_manual: %s\n", e.message);
+		}
     }
 
     public void write_log(string log) {
