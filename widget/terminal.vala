@@ -102,7 +102,7 @@ namespace Widgets {
             command_execute_y_coordinates = new ArrayList<int>();
 
             term = new Terminal();
-			
+
             search_engine_config_file = new KeyFile();
 
             term.child_exited.connect((t, exit_status)=> {
@@ -361,6 +361,15 @@ namespace Widgets {
 
                 display_first_spliter = true;
             }
+            if (current_dir != "") {
+				var dir_file = GLib.File.new_for_path(current_dir);
+				if (dir_file.query_exists()) {
+					menu_content.append(new Menu.MenuItem("open_in_filemanager", _("Open in file manager")));
+				}
+				
+				display_first_spliter = true;
+            }
+
             if (display_first_spliter) {
                 menu_content.append(new Menu.MenuItem("", ""));
             }
@@ -408,13 +417,13 @@ namespace Widgets {
                         search_engine_config_file.load_from_file(search_engine_config_file_path, KeyFileFlags.NONE);
 
                         foreach (unowned string option in search_engine_config_file.get_groups()) {
-							string search_engine_name = search_engine_config_file.get_value(option, "name");
-							string search_engine_api = search_engine_config_file.get_value(option, "api");
-							
-							if (search_engine_name != "" && search_engine_api != "") {
-								online_search.add_submenu_item(new Menu.MenuItem(option, search_engine_name));
-							}
-						}
+                            string search_engine_name = search_engine_config_file.get_value(option, "name");
+                            string search_engine_api = search_engine_config_file.get_value(option, "api");
+
+                            if (search_engine_name != "" && search_engine_api != "") {
+                                online_search.add_submenu_item(new Menu.MenuItem(option, search_engine_name));
+                            }
+                        }
                     } catch (Error e) {
                         if (!FileUtils.test(search_engine_config_file_path, FileTest.EXISTS)) {
                             print("Config: %s\n", e.message);
@@ -466,6 +475,9 @@ namespace Widgets {
                 case "open":
                     open_selection_file();
                     break;
+				case "open_in_filemanager":
+					open_current_dir_in_file_manager();
+					break;
                 case "fullscreen":
                     var window = ((Widgets.Window) get_toplevel());
                     window.toggle_fullscreen();
@@ -531,23 +543,23 @@ namespace Widgets {
                     } else if (item_id == "duckduckgo") {
                         search_text_in_search_engine(get_selection_text(), "https://duckduckgo.com/?q=%s");
                     } else {
-						foreach (unowned string option in search_engine_config_file.get_groups()) {
-							if (item_id == option) {
-								try {
-									string search_engine_api = search_engine_config_file.get_value(option, "api");
-									search_text_in_search_engine(get_selection_text(), search_engine_api);
-								} catch (Error e) {
-									if (!FileUtils.test(search_engine_config_file_path, FileTest.EXISTS)) {
-										print("Config: %s\n", e.message);
-									}
-								}
-								
-								break;
-							}
-						}
-					}
+                        foreach (unowned string option in search_engine_config_file.get_groups()) {
+                            if (item_id == option) {
+                                try {
+                                    string search_engine_api = search_engine_config_file.get_value(option, "api");
+                                    search_text_in_search_engine(get_selection_text(), search_engine_api);
+                                } catch (Error e) {
+                                    if (!FileUtils.test(search_engine_config_file_path, FileTest.EXISTS)) {
+                                        print("Config: %s\n", e.message);
+                                    }
+                                }
 
-					break;
+                                break;
+                            }
+                        }
+                    }
+
+                    break;
                 }
             } else {
                 print("handle_menu_item_click: impossible here!\n");
@@ -835,7 +847,7 @@ namespace Widgets {
                     double old_opacity = window.config.config_file.get_double("general", "opacity");
                     double new_opacity = old_opacity;
 
-					if (scroll_event.delta_y < 0) {
+                    if (scroll_event.delta_y < 0) {
                         new_opacity = double.min(double.max(old_opacity + 0.01, Constant.TERMINAL_MIN_OPACITY), 1);
                     } else if (scroll_event.delta_y > 0) {
                         new_opacity = double.min(double.max(old_opacity - 0.01, Constant.TERMINAL_MIN_OPACITY), 1);
@@ -1443,6 +1455,15 @@ namespace Widgets {
             }
         }
 
+        public void open_current_dir_in_file_manager() {
+			try {
+				GLib.AppInfo appinfo = GLib.AppInfo.create_from_commandline("xdg-open '%s'".printf(current_dir), null, GLib.AppInfoCreateFlags.NONE);
+				appinfo.launch(null, null);
+			} catch (GLib.Error e) {
+				print("Terminal open_current_dir_in_file_manager: %s\n", e.message);
+			}
+		}
+		
         public void login_server(string info) {
             // Record server info.
             server_info = info;
