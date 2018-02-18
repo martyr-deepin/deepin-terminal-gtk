@@ -83,8 +83,9 @@ namespace Widgets {
             "(?:www|ftp)" + HOSTCHARS_CLASS + "*\\." + HOST + PORT + URLPATH,
             "(?:callto:|h323:|sip:)" + USERCHARS_CLASS + "[" + USERCHARS + ".]*(?:" + PORT + "/[a-z0-9]+)?\\@" + HOST,
             "(?:mailto:)?" + USERCHARS_CLASS + "[" + USERCHARS + ".]*\\@" + HOSTCHARS_CLASS + "+\\." + HOST,
-            "(?:news:|man:|info:)[[:alnum:]\\Q^_{|}~!\"#$%&'()*+,./;:=?`\\E]+"
-        };
+            "(?:news:|man:|info:)[[:alnum:]\\Q^_{|}~!\"#$%&'()*+,./;:=?`\\E]+",
+			"git\\@" + HOST + ":" + HOST + URLPATH,
+		};
 
         public KeyFile search_engine_config_file;
         public string search_engine_config_file_path = Utils.get_config_file_path("search-engine-config.conf");
@@ -1146,7 +1147,7 @@ namespace Widgets {
                                                0);
                     int id = term.match_add_gregex(regex, 0);
 
-                    term.match_set_cursor_type (id, Gdk.CursorType.HAND2);
+                    term.match_set_cursor_type(id, Gdk.CursorType.HAND2);
                 } catch (GLib.RegexError error) {
                     warning (error.message);
                 }
