@@ -157,6 +157,8 @@ namespace Widgets {
             theme_button_map = new HashMap<string, ThemeButton>();
 
             var theme_names = Utils.list_files(Utils.get_theme_dir());
+            var additional_theme_names = Utils.list_files(Utils.get_additional_theme_dir());
+            theme_names.add_all(additional_theme_names);
             theme_names.sort((CompareDataFunc) compare_color_brightness);
             foreach (string theme_name in theme_names) {
                 var button = new Widgets.ThemeButton(theme_name);
