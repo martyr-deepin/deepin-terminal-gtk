@@ -6,11 +6,11 @@ This is default terminal emulation application for Deepin.
 
 In debian, use below command to install compile dependencies:
 
-`sudo apt-get install valac libgtk-3-dev libgee-0.8-dev libjson-glib-dev libsecret-1-dev libwnck-3-dev librsvg2-dev`
+`sudo apt-get install valac cmake g++ intltool libgtk-3-dev libgee-0.8-dev libjson-glib-dev libsecret-1-dev libwnck-3-dev librsvg2-dev libreadline-dev libpcre2-dev gobject-introspection libgirepository1.0-dev gperf libxml2-utils`
 
 In debian, use below command to install running dependencies:
 
-`sudo apt-get install libatk1.0-0 libc6 libcairo-gobject2 libcairo2 libfontconfig1 libfreetype6 libgdk-pixbuf2.0-0 libgee-0.8-2 libglib2.0-0 libgnutls30 libgtk-3-0 libjson-glib-1.0-0 libpango-1.0-0 libpangocairo-1.0-0 libsecret-1-0 libwnck-3-0 libx11-6 libxcb1 zlib1g lrzsz`
+`sudo apt-get install libatk1.0-0 libc6 libcairo-gobject2 libcairo2 libfontconfig1 libgdk-pixbuf2.0-0 libgee-0.8-2 libglib2.0-0 libgnutls30 libgtk-3-0 libice6 libjson-glib-1.0-0 libpango-1.0-0 libpangocairo-1.0-0 libpcre2-8-0 libreadline7 librsvg2-2 libsecret-1-0 libsm6 libstdc++6 libtinfo5 libwnck-3-0 libx11-6 libxext6 zlib1g lrzsz expect deepin-menu`
 
 And you also need `deepin-menu` from [http://mirrors.deepin.com/deepin/pool/main/d/deepin-menu/](http://mirrors.deepin.com/deepin/pool/main/d/deepin-menu/) .
 
