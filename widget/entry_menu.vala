@@ -26,31 +26,55 @@ using Utils;
 
 namespace Widgets {
     public class EntryMenu : Object {
-        public Menu.Menu menu;
+        public bool config_theme_is_light;
         
         public EntryMenu() {
             Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
         }
 
-        public void create_entry_menu(Gtk.Entry entry, int x, int y) {
-            var menu_content = new List<Menu.MenuItem>();
-            if (is_selection(entry)) {
-                menu_content.append(new Menu.MenuItem("cut", _("Cut")));
-                menu_content.append(new Menu.MenuItem("copy", _("Copy")));
+        public Gtk.MenuItem get_menu_item(Gtk.Entry entry, string item_id, string item_text) {
+            var item = new Gtk.MenuItem.with_label(item_text);
+            if(item_text == "") {
+                item = new Gtk.SeparatorMenuItem();
             }
-            menu_content.append(new Menu.MenuItem("paste", _("Paste")));
-            menu_content.append(new Menu.MenuItem("", ""));
-            if (is_selection(entry)) {
-                menu_content.append(new Menu.MenuItem("delete", _("Delete")));
-                menu_content.append(new Menu.MenuItem("", ""));
-            }
-            menu_content.append(new Menu.MenuItem("select_all", _("Select all")));
-                        
-            menu = new Menu.Menu(x, y, menu_content);
-            menu.click_item.connect((item_id) => {
-                    handle_menu_item_click(entry, item_id);
+            if (!config_theme_is_light) 
+                item.get_style_context().add_class("gtk_menu_item");
+            else 
+                item.get_style_context().add_class("gtk_menu_item_light");
+
+            item.activate.connect(() => { 
+                handle_menu_item_click(entry, item_id); 
                 });
-            menu.destroy.connect(handle_menu_destroy);
+            return item;
+        }
+
+        public void create_entry_menu(Gtk.Entry entry, int x, int y) {
+            Gdk.Screen screen = Gdk.Screen.get_default();
+            CssProvider provider = new Gtk.CssProvider();
+            try {
+                provider.load_from_data(Utils.get_menu_css());
+            } catch (GLib.Error e) {
+                warning("Something bad happened with CSS load %s", e.message);
+            }
+            Gtk.StyleContext.add_provider_for_screen(screen,provider,Gtk.STYLE_PROVIDER_PRIORITY_USER);
+
+            Gtk.Menu menu_content = new Gtk.Menu();
+            menu_content.get_style_context().add_class("gtk_menu");
+
+            if (is_selection(entry)) {
+                menu_content.append(get_menu_item(entry, "cut", _("Cut")));
+                menu_content.append(get_menu_item(entry, "copy", _("Copy")));
+            }
+            menu_content.append(get_menu_item(entry, "paste", _("Paste")));
+            menu_content.append(get_menu_item(entry, "", ""));
+            if (is_selection(entry)) {
+                menu_content.append(get_menu_item(entry, "delete", _("Delete")));
+                menu_content.append(get_menu_item(entry, "", ""));
+            }
+            menu_content.append(get_menu_item(entry, "select_all", _("Select all")));
+                        
+            menu_content.show_all();
+            menu_content.popup(null, null, null, 0, get_current_event_time());
         }
 
         public void handle_menu_item_click(Gtk.Entry entry, string item_id) {
@@ -78,10 +102,6 @@ namespace Widgets {
             entry.get_selection_bounds(out start_pos, out end_pos);
                 
             return start_pos != end_pos;
-        }
-            
-        public void handle_menu_destroy() {
-            menu = null;
         }
     }
 }
