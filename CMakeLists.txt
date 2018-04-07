@@ -66,7 +66,7 @@ set(CFLAGS
 	${GEE_CFLAGS}
 	${X11_CFLAGS} ${X11_CFLAGS_OTHER}
 	-DWNCK_I_KNOW_THIS_IS_UNSTABLE
-	-DGETTEXT_PACKAGE="deepin-terminal"
+	-DGETTEXT_PACKAGE=${target}
 	-s -O3 -w
 	#	-g
 )
@@ -103,68 +103,20 @@ set(LIBS
 	gnutls
 	pcre2-8
 )
+SET(APP_SOURCES, "")
+FILE(GLOB valalist LIST_FILES true */*.vala)
+FOREACH(child ${valalist})
+	file(RELATIVE_PATH
+    file_path
+    ${CMAKE_SOURCE_DIR}
+    ${child}
+	)
+	set (APP_SOURCES ${APP_SOURCES} ${file_path})
+ENDFOREACH()
+
 vala_precompile(VALA_C
-	./lib/animation.vala
-	./lib/config.vala
-	./lib/constant.vala
-	./lib/draw.vala
-	./lib/keymap.vala
-	./lib/menu.vala
-	./lib/utils.vala
-	./lib/xutils.vala
-	./widget/about_dialog.vala
-	./widget/about_widget.vala
-	./widget/add_button.vala
-	./widget/appbar.vala
-	./widget/check_button.vala
-	./widget/click_event_box.vala 
-	./widget/command_button.vala
-	./widget/command_dialog.vala
-	./widget/command_panel.vala
-	./widget/base_panel.vala
-	./widget/config_window.vala
-	./widget/confirm_dialog.vala
-	./widget/rename_dialog.vala
-	./widget/cursor_toggle_button.vala
-	./widget/dropdown_text_button.vala
-	./widget/dialog.vala
-	./widget/dialog_button.vala
-	./widget/encoding_button.vala 
-	./widget/encoding_panel.vala 
-	./widget/entry.vala 
-	./widget/entry_menu.vala 
-	./widget/file_button.vala 
-	./widget/image_button.vala
-	./widget/window_button.vala
-	./widget/panel_button.vala
-	./widget/password_button.vala
-	./widget/preference.vala
-	./widget/preference_slidebar.vala
-	./widget/progressbar.vala
-	./widget/quake_window.vala
-	./widget/remote_panel.vala
-	./widget/remote_server_dialog.vala
-	./widget/link_button.vala
-	./widget/highlight_frame.vala
-	./widget/search_entry.vala
-	./widget/search_panel.vala
-	./widget/server_button.vala
-	./widget/server_group_button.vala
-	./widget/shortcut_entry.vala
-	./widget/split_line.vala
-	./widget/spinbutton.vala
-	./widget/switcher.vala
-	./widget/tabbar.vala
-	./widget/terminal.vala
-	./widget/text_button.vala
-	./widget/theme_button.vala
-	./widget/theme_panel.vala
-	./widget/titlebar.vala
-	./widget/window.vala
-	./widget/window_event_area.vala
-	./widget/workspace.vala
-	./widget/workspace_manager.vala 
-	main.vala
+	./main.vala
+	${APP_SOURCES}
 
 OPTIONS
 --vapidir=${CMAKE_SOURCE_DIR}/vapi
@@ -190,28 +142,43 @@ add_dependencies(${target} Vte-0.29)
 
 FILE(GLOB children LIST_DIRECTORIES true po/*)
 SET(dirlist "")
-SET(polist "")
+
 FOREACH(child ${children})
 	IF(IS_DIRECTORY ${child})
 		get_filename_component(childdir ${child} NAME)
 		LIST(APPEND dirlist ${childdir})
 	ENDIF()
 ENDFOREACH()
-foreach(lang ${dirlist})
-	MESSAGE( STATUS "lang is " ${lang})
-	GETTEXT_PROCESS_PO_FILES(${lang} ALL INSTALL_DESTINATION share/locale/ PO_FILES po/${lang}/LC_MESSAGES/deepin-terminal.po)
-endforeach()
+
+FOREACH(lang ${dirlist})
+	SET(gmoFiles)
+	FOREACH(current_PO_FILE po/${lang}/LC_MESSAGES/deepin-terminal.po)
+    	  SET(gmoFile ${CMAKE_CURRENT_BINARY_DIR}/${lang}-${target}.gmo)
+    	  SET(INSTALL_DESTINATION share/locale/)
+    	  ADD_CUSTOM_COMMAND(OUTPUT ${gmoFile}
+    	        COMMAND ${GETTEXT_MSGFMT_EXECUTABLE} -o ${gmoFile} ${current_PO_FILE}
+    	        WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+    	        DEPENDS ${current_PO_FILE}
+    	     )
+    	  INSTALL(FILES ${gmoFile} DESTINATION ${INSTALL_DESTINATION}/${lang}/LC_MESSAGES/  RENAME ${target}.mo)
+	
+    	  LIST(APPEND gmoFiles ${gmoFile})
+    ENDFOREACH(current_PO_FILE)
+
+    ADD_CUSTOM_TARGET(${lang} ALL DEPENDS ${gmoFiles})
+	
+ENDFOREACH(lang)
 
 INSTALL (TARGETS ${target} DESTINATION bin)
 INSTALL (PROGRAMS ssh_login.sh ${CMAKE_SOURCE_DIR}/3rdparty/zssh-1.5c/zssh DESTINATION lib/${target})
-INSTALL (FILES hicolor/32x32/deepin-terminal.png DESTINATION share/icons/hicolor/32x32/apps)
-INSTALL (FILES hicolor/48x48/deepin-terminal.png DESTINATION share/icons/hicolor/48x48/apps)
-INSTALL (FILES hicolor/96x96/deepin-terminal.png DESTINATION share/icons/hicolor/96x96/apps)
-INSTALL (FILES hicolor/128x128/deepin-terminal.png DESTINATION share/icons/hicolor/128x128/apps)
-INSTALL (FILES hicolor/deepin-terminal.svg DESTINATION share/icons/hicolor/scalable/apps)
+INSTALL (FILES hicolor/32x32/${target}.png DESTINATION share/icons/hicolor/32x32/apps)
+INSTALL (FILES hicolor/48x48/${target}.png DESTINATION share/icons/hicolor/48x48/apps)
+INSTALL (FILES hicolor/96x96/${target}.png DESTINATION share/icons/hicolor/96x96/apps)
+INSTALL (FILES hicolor/128x128/${target}.png DESTINATION share/icons/hicolor/128x128/apps)
+INSTALL (FILES hicolor/${target}.svg DESTINATION share/icons/hicolor/scalable/apps)
 INSTALL (DIRECTORY image DESTINATION share/${target} FILES_MATCHING PATTERN "*.png")
 INSTALL (DIRECTORY image DESTINATION share/${target} FILES_MATCHING PATTERN "*.svg")
 INSTALL (DIRECTORY theme DESTINATION share/${target} FILES_MATCHING PATTERN "*")
 INSTALL (DIRECTORY manual/common  manual/en_US  manual/zh_CN DESTINATION share/dman/${target})
 INSTALL (FILES style.css DESTINATION share/${target})
-INSTALL (FILES deepin-terminal.desktop DESTINATION share/applications)
+INSTALL (FILES ${target}.desktop DESTINATION share/applications)
