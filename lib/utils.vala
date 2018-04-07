@@ -283,10 +283,18 @@ namespace Utils {
 
     public string get_theme_path(string theme_name) {
 #if TEST_BUILD
-        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, (string) project_path(), "theme", theme_name);
+        var theme_path = GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, (string) project_path(), "theme", theme_name);
 #else
-        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, (string) project_path(), "share", "deepin-terminal", "theme", theme_name);
+        var theme_path = GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, (string) project_path(), "share", "deepin-terminal", "theme", theme_name);
 #endif
+        var dir_file = GLib.File.new_for_path(theme_path);
+        if (!dir_file.query_exists())
+           theme_path = get_additional_theme_path(theme_name);
+        return theme_path;
+    }
+
+    public string get_additional_theme_path(string theme_name) {
+        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, GLib.Path.get_dirname((string) get_additional_theme_dir()), "themes", theme_name);
     }
 
     public string get_theme_dir() {
@@ -295,6 +303,10 @@ namespace Utils {
 #else
         return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, (string) project_path(), "share", "deepin-terminal", "theme");
 #endif
+    }
+
+    public string get_additional_theme_dir() {
+        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, GLib.Path.get_dirname((string) get_config_dir()), "deepin-terminal", "themes");
     }
 
     public string get_root_path(string file_path) {
