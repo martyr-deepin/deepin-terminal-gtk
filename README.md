@@ -6,7 +6,7 @@ This is default terminal emulation application for Deepin.
 
 In debian, use below command to install compile dependencies:
 
-`sudo apt-get install valac libgtk-3-dev libgee-0.8-dev libjson-glib-dev libsecret-1-dev libwnck-3-dev`
+`sudo apt-get install valac libgtk-3-dev libgee-0.8-dev libjson-glib-dev libsecret-1-dev libwnck-3-dev librsvg2-dev`
 
 In debian, use below command to install running dependencies:
 
