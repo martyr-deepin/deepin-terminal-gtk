@@ -41,7 +41,7 @@ namespace Widgets {
         
         public SearchPanel(Widgets.ConfigWindow config_window, Term term, string init_search_text) {
             terminal = term;
-            search_text = "";
+            search_text = init_search_text;
             
             search_image = new ImageButton("search", true);
             search_entry = new Widgets.Entry();
@@ -86,6 +86,8 @@ namespace Widgets {
                         
                     if (keyname == "Esc") {
                         quit_search();
+                    } else if (keyname == "Enter") {
+                        update_search_text();
                     }
                         
                     return false;
@@ -113,12 +115,6 @@ namespace Widgets {
                 });
             search_entry.activate.connect((w) => {
                     if (search_text != "") {
-                        terminal.term.search_find_next();
-                    }
-                });
-            search_entry.changed.connect((w) => {
-                    if (search_text != "") {
-                        update_search_text();
                         terminal.term.search_find_next();
                     }
                 });
