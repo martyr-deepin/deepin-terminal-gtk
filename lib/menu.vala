@@ -76,8 +76,9 @@ namespace Menu {
 				menu_interface.MenuUnregistered.connect(() => {
 						destroy();
 					});
-			} catch (IOError e) {
+			} catch (Error e) {
 				stderr.printf ("%s\n", e.message);
+				is_gtk_menu = true;
 			}
 
 			config_theme_is_light = light_theme;
