@@ -215,22 +215,6 @@ namespace Widgets {
                 });
         }
 
-        public Gtk.MenuItem get_menu_item(string item_id, string item_text) {
-            var item = new Gtk.MenuItem.with_label(item_text);
-            if(item_text == "") {
-                item = new Gtk.SeparatorMenuItem();
-            }
-            if (!((Widgets.ConfigWindow) get_toplevel()).is_light_theme())
-                item.get_style_context().add_class("gtk_menu_item");
-            else
-                item.get_style_context().add_class("gtk_menu_item_light");
-
-            item.activate.connect(() => {
-                handle_menu_item_click(item_id);
-            });
-            return item;
-        }
-
         public void show_window_button() {
             window_button_box.pack_start(menu_button, false, false, 0);
             window_button_box.pack_start(min_button, false, false, 0);

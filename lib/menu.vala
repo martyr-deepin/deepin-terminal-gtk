@@ -21,6 +21,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 using Gtk;
+using Gdk;
+
 namespace Menu {
     [DBus (name = "com.deepin.menu.Manager")]
     interface MenuManagerInterface : Object {
@@ -79,12 +81,10 @@ namespace Menu {
 			} catch (Error e) {
 				stderr.printf ("%s\n", e.message);
 				is_gtk_menu = true;
+				create_gtk_menu();
 			}
 
 			config_theme_is_light = light_theme;
-			if (is_gtk_menu)
-				create_gtk_menu();
-
 			menu_content = new List<MenuItem>();
 		}
 
@@ -164,7 +164,7 @@ namespace Menu {
 
 	    public void show_menu(int x, int y) {
 	    	if (is_gtk_menu) {
-	    		show_gtk_menu();
+	    		show_gtk_menu(x, y);
 	    		return;
 	    	}
 
@@ -209,9 +209,12 @@ namespace Menu {
 	    	}
 	    }
 
-	    public void show_gtk_menu() {
+	    public void show_gtk_menu(int x, int y) {
 	    	gtk_menu.show_all();
-            gtk_menu.popup(null, null, null, 0, get_current_event_time());
+	    	Gtk.Allocation menu_rect = Gtk.Allocation();
+	    	menu_rect.x = x;
+	    	menu_rect.y = y;
+	    	gtk_menu.popup_at_rect (Gdk.Screen.get_default().get_root_window(), menu_rect, Gravity.NORTH_WEST, Gravity.NORTH_WEST, null);
             gtk_menu = null;
 	    }
 
