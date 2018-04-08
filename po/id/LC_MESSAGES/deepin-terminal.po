@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-27 16:58+0800\n"
+"POT-Creation-Date: 2018-04-08 12:45+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Rhevin Fardhika <rhevinf@gmail.com>, 2017\n"
+"Last-Translator: Muhammad Fauzi <fauzi.padlaw@gmail.com>, 2018\n"
 "Language-Team: Indonesian (https://www.transifex.com/linuxdeepin/teams/3976/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../widget/terminal.vala:1152
+#: ../widget/terminal.vala:1241
 msgid ""
 "\n"
 "Command has been completed, press ENTER to exit the terminal."
@@ -30,11 +30,11 @@ msgstr ""
 msgid "About"
 msgstr "Tentang"
 
-#: ../widget/about_widget.vala:62
+#: ../widget/about_widget.vala:81
 msgid "Acknowledgments"
 msgstr "Ucapan terima kasih"
 
-#: ../widget/remote_server_dialog.vala:351 ../widget/command_dialog.vala:197
+#: ../widget/remote_server_dialog.vala:352 ../widget/command_dialog.vala:197
 msgid "Add"
 msgstr "Tambah"
 
@@ -50,7 +50,7 @@ msgstr "Tambah Server"
 msgid "Add command"
 msgstr "Tambah perintah"
 
-#: ../widget/remote_panel.vala:476
+#: ../widget/remote_panel.vala:468
 msgid "Add server"
 msgstr "Tambah server"
 
@@ -64,15 +64,15 @@ msgstr "Alamat:"
 
 #: ../widget/preference_slidebar.vala:74 ../widget/preference_slidebar.vala:81
 #: ../widget/preference.vala:332 ../widget/preference.vala:344
-#: ../widget/config_window.vala:364
+#: ../widget/config_window.vala:366
 msgid "Advanced"
 msgstr "Lanjutan"
 
-#: ../widget/remote_server_dialog.vala:336
+#: ../widget/remote_server_dialog.vala:337
 msgid "Advanced options"
 msgstr "Opsi lanjutan"
 
-#: ../widget/remote_server_dialog.vala:425 ../widget/command_dialog.vala:249
+#: ../widget/remote_server_dialog.vala:426 ../widget/command_dialog.vala:249
 msgid "Are you sure to delete"
 msgstr "Apakah Anda yakin ingin menghapus"
 
@@ -84,7 +84,7 @@ msgstr "Apakah Anda yakin ingin keluar?"
 msgid "Backspace key"
 msgstr "Kunci Backspace"
 
-#: ../widget/remote_server_dialog.vala:320
+#: ../widget/remote_server_dialog.vala:321
 msgid "Backspace key:"
 msgstr "Kunci Backspace:"
 
@@ -94,12 +94,12 @@ msgstr "Dasar"
 
 #: ../widget/preference.vala:407
 msgid "Blur background"
-msgstr ""
+msgstr "Latar belakang buram"
 
-#: ../widget/remote_server_dialog.vala:346
-#: ../widget/remote_server_dialog.vala:426 ../widget/confirm_dialog.vala:131
-#: ../widget/terminal.vala:487 ../widget/terminal.vala:515
-#: ../widget/terminal.vala:549 ../widget/file_button.vala:69
+#: ../widget/remote_server_dialog.vala:347
+#: ../widget/remote_server_dialog.vala:427 ../widget/confirm_dialog.vala:131
+#: ../widget/terminal.vala:576 ../widget/terminal.vala:604
+#: ../widget/terminal.vala:638 ../widget/file_button.vala:69
 #: ../widget/command_dialog.vala:192 ../widget/command_dialog.vala:250
 msgid "Cancel"
 msgstr "Batal"
@@ -108,11 +108,11 @@ msgstr "Batal"
 msgid "Certificate"
 msgstr "Sertifikat"
 
-#: ../widget/remote_server_dialog.vala:260
+#: ../widget/remote_server_dialog.vala:261
 msgid "Certificate:"
 msgstr "Sertifikat:"
 
-#: ../widget/terminal.vala:345 ../widget/config_window.vala:341
+#: ../widget/terminal.vala:382 ../widget/config_window.vala:343
 msgid "Close other windows"
 msgstr "Tutup jendela lainnya"
 
@@ -120,7 +120,7 @@ msgstr "Tutup jendela lainnya"
 msgid "Close other windows:"
 msgstr "Tutup jendela lainnya:"
 
-#: ../widget/terminal.vala:343 ../widget/config_window.vala:340
+#: ../widget/terminal.vala:380 ../widget/config_window.vala:342
 msgid "Close window"
 msgstr "Tutup jendela"
 
@@ -128,7 +128,7 @@ msgstr "Tutup jendela"
 msgid "Close window:"
 msgstr "Tutup jendela:"
 
-#: ../widget/config_window.vala:329
+#: ../widget/config_window.vala:331
 msgid "Close workspace"
 msgstr "Tutup ruang kerja"
 
@@ -140,7 +140,7 @@ msgstr "Tutup ruang kerja:"
 msgid "Command"
 msgstr "Perintah"
 
-#: ../widget/remote_server_dialog.vala:294 ../widget/command_dialog.vala:172
+#: ../widget/remote_server_dialog.vala:295 ../widget/command_dialog.vala:172
 msgid "Command:"
 msgstr "Perintah:"
 
@@ -148,12 +148,12 @@ msgstr "Perintah:"
 msgid "Content"
 msgstr "Konten"
 
-#: ../widget/terminal.vala:315 ../widget/config_window.vala:302
+#: ../widget/terminal.vala:343 ../widget/config_window.vala:304
 #: ../widget/entry_menu.vala:39
 msgid "Copy"
 msgstr "Salin"
 
-#: ../widget/terminal.vala:319
+#: ../widget/terminal.vala:347
 msgid "Copy link"
 msgstr "Salin tautan"
 
@@ -167,7 +167,7 @@ msgstr "Kursor"
 
 #: ../widget/preference.vala:372
 msgid "Cursor autohide"
-msgstr ""
+msgstr "Otomomatis sembunyi kursor"
 
 #: ../widget/preference.vala:371
 msgid "Cursor blink"
@@ -177,7 +177,7 @@ msgstr "Kedip Kursor"
 msgid "Cursor style:"
 msgstr "Gaya Kursor:"
 
-#: ../widget/terminal.vala:378 ../widget/config_window.vala:358
+#: ../widget/terminal.vala:443 ../widget/config_window.vala:360
 #: ../widget/appbar.vala:122
 msgid "Custom commands"
 msgstr "Perintah sesuaian"
@@ -190,7 +190,7 @@ msgstr "Perintah sesuaian:"
 msgid "Cut"
 msgstr "Potong"
 
-#: ../main.vala:188 ../widget/about_widget.vala:82 ../widget/tabbar.vala:603
+#: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:603
 msgid "Deepin Terminal"
 msgstr "Terminal Deepin"
 
@@ -204,7 +204,7 @@ msgstr ""
 "\n"
 "Mempertajam fokus Anda di dunia command line!"
 
-#: ../widget/config_window.vala:308
+#: ../widget/config_window.vala:310
 msgid "Default size"
 msgstr "Ukuran bawaan"
 
@@ -212,7 +212,7 @@ msgstr "Ukuran bawaan"
 msgid "Default size:"
 msgstr "Ukuran bawaan:"
 
-#: ../widget/remote_server_dialog.vala:427 ../widget/command_dialog.vala:251
+#: ../widget/remote_server_dialog.vala:428 ../widget/command_dialog.vala:251
 #: ../widget/entry_menu.vala:44
 msgid "Delete"
 msgstr "Hapus"
@@ -225,16 +225,16 @@ msgstr "Hapus perintah"
 msgid "Delete key"
 msgstr "Hapus kunci"
 
-#: ../widget/remote_server_dialog.vala:333
+#: ../widget/remote_server_dialog.vala:334
 msgid "Delete key:"
 msgstr "Hapus kunci:"
 
-#: ../widget/remote_server_dialog.vala:414
-#: ../widget/remote_server_dialog.vala:424
+#: ../widget/remote_server_dialog.vala:415
+#: ../widget/remote_server_dialog.vala:425
 msgid "Delete server"
 msgstr "Hapus server"
 
-#: ../widget/config_window.vala:357
+#: ../widget/config_window.vala:359
 msgid "Display shortcuts"
 msgstr "Tampilkan pintasan"
 
@@ -246,7 +246,7 @@ msgstr "Tampilkan pintasan:"
 msgid "Display version"
 msgstr "Versi tampilan"
 
-#: ../widget/terminal.vala:383
+#: ../widget/terminal.vala:448
 msgid "Download file"
 msgstr "Unduh berkas"
 
@@ -258,11 +258,11 @@ msgstr "Ubah perintah"
 msgid "Edit Server"
 msgstr "Ubah server"
 
-#: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:377
+#: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:442
 msgid "Encoding"
 msgstr "Menyandi"
 
-#: ../widget/remote_server_dialog.vala:307
+#: ../widget/remote_server_dialog.vala:308
 msgid "Encoding:"
 msgstr "Menyandi:"
 
@@ -270,9 +270,13 @@ msgstr "Menyandi:"
 msgid "Exit"
 msgstr "Keluar"
 
-#: ../widget/terminal.vala:355
+#: ../widget/terminal.vala:392
 msgid "Exit fullscreen"
 msgstr "Keluar layar penuh"
+
+#: ../widget/terminal.vala:398
+msgid "Find"
+msgstr ""
 
 #: ../widget/preference.vala:291
 msgid "Font size:"
@@ -282,7 +286,7 @@ msgstr "Ukuran fon:"
 msgid "Font:"
 msgstr "Fon:"
 
-#: ../widget/preference.vala:396 ../widget/terminal.vala:357
+#: ../widget/preference.vala:396 ../widget/terminal.vala:394
 msgid "Fullscreen"
 msgstr "Layar Penuh"
 
@@ -294,7 +298,7 @@ msgstr "Layar Penuh:"
 msgid "Group"
 msgstr "Grup"
 
-#: ../widget/remote_server_dialog.vala:276
+#: ../widget/remote_server_dialog.vala:277
 msgid "Group:"
 msgstr "Grup:"
 
@@ -306,7 +310,7 @@ msgstr "Bantuan"
 msgid "Hide quake window after lost focus"
 msgstr "Sembunyikan quake jendela ketika kehilangan fokus"
 
-#: ../widget/terminal.vala:341 ../widget/config_window.vala:335
+#: ../widget/terminal.vala:378 ../widget/config_window.vala:337
 msgid "Horizontal split"
 msgstr "Bagi horizontal"
 
@@ -318,7 +322,7 @@ msgstr "Bagi horizontal:"
 msgid "Interface"
 msgstr "Antarmuka"
 
-#: ../widget/config_window.vala:310
+#: ../widget/config_window.vala:312
 msgid "Jump to next command"
 msgstr "Loncat ke perintah berikutnya"
 
@@ -326,7 +330,7 @@ msgstr "Loncat ke perintah berikutnya"
 msgid "Jump to next command:"
 msgstr "Loncat ke perintah berikutnya:"
 
-#: ../widget/config_window.vala:311
+#: ../widget/config_window.vala:313
 msgid "Jump to previous command"
 msgstr "Loncat ke perintah sebelumnya"
 
@@ -336,7 +340,7 @@ msgstr "Loncat ke perintah berikutnya:"
 
 #: ../main.vala:182
 msgid "Load theme"
-msgstr ""
+msgstr "Muat tema"
 
 #: ../widget/preference.vala:395
 msgid "Maximize"
@@ -350,15 +354,15 @@ msgstr "Nama"
 msgid "Name:"
 msgstr "Nama:"
 
-#: ../widget/config_window.vala:333
+#: ../widget/config_window.vala:335
 msgid "New theme terminal"
-msgstr ""
+msgstr "Tema baru terminal"
 
 #: ../widget/appbar.vala:120
 msgid "New window"
 msgstr "Jendela baru"
 
-#: ../widget/terminal.vala:349 ../widget/config_window.vala:328
+#: ../widget/terminal.vala:386 ../widget/config_window.vala:330
 msgid "New workspace"
 msgstr "Ruang kerja baru"
 
@@ -366,7 +370,7 @@ msgstr "Ruang kerja baru"
 msgid "New workspace:"
 msgstr "Ruang kerja baru:"
 
-#: ../widget/config_window.vala:330
+#: ../widget/config_window.vala:332
 msgid "Next workspace"
 msgstr "Ruang kerja berikutnya"
 
@@ -382,17 +386,21 @@ msgstr "Jendela normal"
 msgid "Opacity:"
 msgstr "Kegelapan:"
 
-#: ../widget/terminal.vala:332 ../widget/config_window.vala:304
+#: ../widget/terminal.vala:360 ../widget/config_window.vala:306
 msgid "Open"
 msgstr "Buka"
+
+#: ../widget/terminal.vala:368
+msgid "Open in file manager"
+msgstr ""
 
 #: ../widget/preference.vala:304
 msgid "Open:"
 msgstr "Buka:"
 
-#: ../widget/remote_server_dialog.vala:274
-#: ../widget/remote_server_dialog.vala:284
-#: ../widget/remote_server_dialog.vala:293
+#: ../widget/remote_server_dialog.vala:275
+#: ../widget/remote_server_dialog.vala:285
+#: ../widget/remote_server_dialog.vala:294
 msgid "Optional"
 msgstr "Pilihan"
 
@@ -400,11 +408,11 @@ msgstr "Pilihan"
 msgid "Password"
 msgstr "Sandi lewat"
 
-#: ../widget/remote_server_dialog.vala:246
+#: ../widget/remote_server_dialog.vala:247
 msgid "Password:"
 msgstr "Sandi lewat:"
 
-#: ../widget/terminal.vala:325 ../widget/config_window.vala:303
+#: ../widget/terminal.vala:353 ../widget/config_window.vala:305
 #: ../widget/entry_menu.vala:41
 msgid "Paste"
 msgstr "Tempel"
@@ -417,7 +425,7 @@ msgstr "Tempel:"
 msgid "Path"
 msgstr "Jejak"
 
-#: ../widget/remote_server_dialog.vala:285
+#: ../widget/remote_server_dialog.vala:286
 msgid "Path:"
 msgstr "Jejak:"
 
@@ -429,7 +437,7 @@ msgstr "Silakan masukkan sebuah pintasan baru"
 msgid "Port:"
 msgstr "Port:"
 
-#: ../widget/config_window.vala:331
+#: ../widget/config_window.vala:333
 msgid "Previous workspace"
 msgstr "Ruang kerja sebelumnya"
 
@@ -445,7 +453,7 @@ msgstr "Program masih berjalan dalam terminal"
 msgid "Quake mode"
 msgstr "Mode quake"
 
-#: ../widget/terminal.vala:379 ../widget/config_window.vala:359
+#: ../widget/terminal.vala:444 ../widget/config_window.vala:361
 #: ../widget/appbar.vala:123
 msgid "Remote management"
 msgstr "Manajemen jarak jauh"
@@ -454,35 +462,35 @@ msgstr "Manajemen jarak jauh"
 msgid "Remote management:"
 msgstr "Manajemen jarak jauh:"
 
-#: ../widget/terminal.vala:550
+#: ../widget/terminal.vala:639
 msgid "Rename"
 msgstr "Rename"
 
-#: ../widget/terminal.vala:376 ../widget/terminal.vala:547
-#: ../widget/config_window.vala:355
+#: ../widget/terminal.vala:441 ../widget/terminal.vala:636
+#: ../widget/config_window.vala:357
 msgid "Rename title"
-msgstr ""
+msgstr "Rubah judul"
 
 #: ../widget/preference.vala:339
 msgid "Rename title:"
-msgstr ""
+msgstr "Rubah judul:"
 
 #: ../widget/remote_server_dialog.vala:186
 #: ../widget/remote_server_dialog.vala:196
-#: ../widget/remote_server_dialog.vala:231 ../widget/command_dialog.vala:158
+#: ../widget/remote_server_dialog.vala:232 ../widget/command_dialog.vala:158
 #: ../widget/command_dialog.vala:171
 msgid "Required"
 msgstr "Dibutuhkan"
 
 #: ../widget/preference.vala:413
 msgid "Restore Defaults"
-msgstr ""
+msgstr "Kembalikan Defaults"
 
 #: ../main.vala:155 ../main.vala:164
 msgid "Run a program in the terminal"
 msgstr "Jalankan program dalam terminal"
 
-#: ../widget/remote_server_dialog.vala:349 ../widget/command_dialog.vala:195
+#: ../widget/remote_server_dialog.vala:350 ../widget/command_dialog.vala:195
 msgid "Save"
 msgstr "Simpan"
 
@@ -498,21 +506,21 @@ msgstr "Gulung ke keystroke"
 msgid "Scroll on output"
 msgstr "Gulung pada keluaran"
 
-#: ../widget/terminal.vala:361 ../widget/search_entry.vala:64
-#: ../widget/search_entry.vala:66 ../widget/config_window.vala:305
+#: ../widget/terminal.vala:401 ../widget/search_entry.vala:64
+#: ../widget/search_entry.vala:66 ../widget/config_window.vala:307
 msgid "Search"
 msgstr "Cari"
 
-#: ../widget/preference.vala:305 ../widget/remote_panel.vala:365
+#: ../widget/preference.vala:305 ../widget/remote_panel.vala:357
 #: ../widget/command_panel.vala:201
 msgid "Search:"
 msgstr "Cari:"
 
-#: ../widget/terminal.vala:516 ../widget/file_button.vala:71
+#: ../widget/terminal.vala:605 ../widget/file_button.vala:71
 msgid "Select"
 msgstr "Pilih"
 
-#: ../widget/config_window.vala:309 ../widget/entry_menu.vala:47
+#: ../widget/config_window.vala:311 ../widget/entry_menu.vala:47
 msgid "Select all"
 msgstr "Pilih semua"
 
@@ -520,15 +528,15 @@ msgstr "Pilih semua"
 msgid "Select all:"
 msgstr "Pilih semua:"
 
-#: ../widget/terminal.vala:514
+#: ../widget/terminal.vala:603
 msgid "Select directory to save download file"
 msgstr "Pilih direktori untuk menyimpan berkas unduhan"
 
-#: ../widget/terminal.vala:485
+#: ../widget/terminal.vala:574
 msgid "Select file to upload"
 msgstr "Pilih berkas untuk diunggah"
 
-#: ../widget/config_window.vala:338
+#: ../widget/config_window.vala:340
 msgid "Select left window"
 msgstr "Pilih jendela kiri"
 
@@ -536,7 +544,7 @@ msgstr "Pilih jendela kiri"
 msgid "Select left window:"
 msgstr "Pilih jendela kiri:"
 
-#: ../widget/config_window.vala:337
+#: ../widget/config_window.vala:339
 msgid "Select lower window"
 msgstr "Pilih jendela lebih rendah"
 
@@ -544,7 +552,7 @@ msgstr "Pilih jendela lebih rendah"
 msgid "Select lower window:"
 msgstr "Pilih jendela lebih rendah:"
 
-#: ../widget/config_window.vala:339
+#: ../widget/config_window.vala:341
 msgid "Select right window"
 msgstr "Pilih jendela lebih kanan"
 
@@ -556,7 +564,7 @@ msgstr "Pilih jendela lebih kanan:"
 msgid "Select the private key file"
 msgstr "Pilih berkas kunci pribadi"
 
-#: ../widget/config_window.vala:336
+#: ../widget/config_window.vala:338
 msgid "Select upper window"
 msgstr "Pilih jendela lebih tinggi"
 
@@ -564,7 +572,7 @@ msgstr "Pilih jendela lebih tinggi"
 msgid "Select upper window:"
 msgstr "Pilih jendela lebih tinggi"
 
-#: ../widget/config_window.vala:332
+#: ../widget/config_window.vala:334
 msgid "Select workspace"
 msgstr "Pilih ruang kerja"
 
@@ -584,7 +592,7 @@ msgstr "Setel terminal direktori memulai"
 msgid "Set the terminal window mode"
 msgstr "Setel terminal mode jendela"
 
-#: ../widget/terminal.vala:387 ../widget/appbar.vala:125
+#: ../widget/terminal.vala:452 ../widget/appbar.vala:125
 msgid "Settings"
 msgstr "Pengaturan"
 
@@ -597,28 +605,28 @@ msgstr "Pintasan"
 msgid "Shortcuts:"
 msgstr "Pintasan:"
 
-#: ../widget/config_window.vala:356
+#: ../widget/config_window.vala:358
 msgid "Switch fullscreen"
 msgstr "Alih layar penuh"
 
-#: ../widget/terminal.vala:374 ../widget/appbar.vala:121
+#: ../widget/terminal.vala:439 ../widget/appbar.vala:121
 msgid "Switch theme"
 msgstr "Alih tema"
 
 #: ../widget/preference_slidebar.vala:68 ../widget/preference.vala:296
-#: ../widget/config_window.vala:316
+#: ../widget/config_window.vala:318
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../widget/terminal.vala:528
+#: ../widget/terminal.vala:617
 msgid "Type path for download file"
 msgstr "Ketik jejak untuk berkas diunduh"
 
-#: ../widget/terminal.vala:489
+#: ../widget/terminal.vala:578
 msgid "Upload"
 msgstr "Unggaj"
 
-#: ../widget/terminal.vala:382
+#: ../widget/terminal.vala:447
 msgid "Upload file"
 msgstr "Unggah berkas"
 
@@ -630,15 +638,15 @@ msgstr "Gunakan pada saat dimulai:"
 msgid "Username"
 msgstr "Nama pengguna"
 
-#: ../widget/remote_server_dialog.vala:232
+#: ../widget/remote_server_dialog.vala:233
 msgid "Username:"
 msgstr "Nama pengguna:"
 
-#: ../widget/about_widget.vala:86
+#: ../widget/about_widget.vala:105
 msgid "Version:"
 msgstr "Versi:"
 
-#: ../widget/terminal.vala:342 ../widget/config_window.vala:334
+#: ../widget/terminal.vala:379 ../widget/config_window.vala:336
 msgid "Vertical split"
 msgstr "Bagi vertikal"
 
@@ -646,7 +654,7 @@ msgstr "Bagi vertikal"
 msgid "Vertical split:"
 msgstr "Bagi vertikal"
 
-#: ../widget/terminal.vala:1467
+#: ../widget/terminal.vala:1544
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "
@@ -661,11 +669,11 @@ msgid "Window"
 msgstr "Jendela"
 
 #: ../widget/preference_slidebar.vala:71 ../widget/preference.vala:313
-#: ../widget/config_window.vala:346
+#: ../widget/config_window.vala:348
 msgid "Workspace"
 msgstr "Ruang kerja"
 
-#: ../widget/config_window.vala:306
+#: ../widget/config_window.vala:308
 msgid "Zoom in"
 msgstr "Perbesar"
 
@@ -673,7 +681,7 @@ msgstr "Perbesar"
 msgid "Zoom in:"
 msgstr "Perbesar:"
 
-#: ../widget/config_window.vala:307
+#: ../widget/config_window.vala:309
 msgid "Zoom out"
 msgstr "Perkecil"
 
@@ -681,6 +689,6 @@ msgstr "Perkecil"
 msgid "Zoom out:"
 msgstr "Perkecil:"
 
-#: ../widget/terminal.vala:698 ../widget/terminal.vala:1178
+#: ../widget/terminal.vala:787 ../widget/terminal.vala:1267
 msgid "deepin"
 msgstr "deepin"

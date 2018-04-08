@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-27 16:58+0800\n"
+"POT-Creation-Date: 2018-04-08 12:45+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Abdullah Alnahdy <abdullahalnahdy@gmail.com>, 2017\n"
 "Language-Team: Arabic (https://www.transifex.com/linuxdeepin/teams/3976/ar/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: ../widget/terminal.vala:1152
+#: ../widget/terminal.vala:1241
 msgid ""
 "\n"
 "Command has been completed, press ENTER to exit the terminal."
@@ -30,11 +30,11 @@ msgstr ""
 msgid "About"
 msgstr "حول"
 
-#: ../widget/about_widget.vala:62
+#: ../widget/about_widget.vala:81
 msgid "Acknowledgments"
 msgstr "شكر وتقدير "
 
-#: ../widget/remote_server_dialog.vala:351 ../widget/command_dialog.vala:197
+#: ../widget/remote_server_dialog.vala:352 ../widget/command_dialog.vala:197
 msgid "Add"
 msgstr "إضافة"
 
@@ -50,7 +50,7 @@ msgstr "إضافة خادم"
 msgid "Add command"
 msgstr "إضافة أمر"
 
-#: ../widget/remote_panel.vala:476
+#: ../widget/remote_panel.vala:468
 msgid "Add server"
 msgstr "إضافة خادم"
 
@@ -64,15 +64,15 @@ msgstr "العنوان:"
 
 #: ../widget/preference_slidebar.vala:74 ../widget/preference_slidebar.vala:81
 #: ../widget/preference.vala:332 ../widget/preference.vala:344
-#: ../widget/config_window.vala:364
+#: ../widget/config_window.vala:366
 msgid "Advanced"
 msgstr "متقدم"
 
-#: ../widget/remote_server_dialog.vala:336
+#: ../widget/remote_server_dialog.vala:337
 msgid "Advanced options"
 msgstr "خيارات متقدمة"
 
-#: ../widget/remote_server_dialog.vala:425 ../widget/command_dialog.vala:249
+#: ../widget/remote_server_dialog.vala:426 ../widget/command_dialog.vala:249
 msgid "Are you sure to delete"
 msgstr "هل أنت متأكد من الحذف"
 
@@ -84,7 +84,7 @@ msgstr "هل أنت متأكد من الخروج؟"
 msgid "Backspace key"
 msgstr "مفتاح مسافة للخلف"
 
-#: ../widget/remote_server_dialog.vala:320
+#: ../widget/remote_server_dialog.vala:321
 msgid "Backspace key:"
 msgstr "مفتاح مسافة للخلف:"
 
@@ -96,10 +96,10 @@ msgstr "أساسي"
 msgid "Blur background"
 msgstr "خلفية ضبابية"
 
-#: ../widget/remote_server_dialog.vala:346
-#: ../widget/remote_server_dialog.vala:426 ../widget/confirm_dialog.vala:131
-#: ../widget/terminal.vala:487 ../widget/terminal.vala:515
-#: ../widget/terminal.vala:549 ../widget/file_button.vala:69
+#: ../widget/remote_server_dialog.vala:347
+#: ../widget/remote_server_dialog.vala:427 ../widget/confirm_dialog.vala:131
+#: ../widget/terminal.vala:576 ../widget/terminal.vala:604
+#: ../widget/terminal.vala:638 ../widget/file_button.vala:69
 #: ../widget/command_dialog.vala:192 ../widget/command_dialog.vala:250
 msgid "Cancel"
 msgstr "إلغاء"
@@ -108,11 +108,11 @@ msgstr "إلغاء"
 msgid "Certificate"
 msgstr "شهادة"
 
-#: ../widget/remote_server_dialog.vala:260
+#: ../widget/remote_server_dialog.vala:261
 msgid "Certificate:"
 msgstr "شهادة:"
 
-#: ../widget/terminal.vala:345 ../widget/config_window.vala:341
+#: ../widget/terminal.vala:382 ../widget/config_window.vala:343
 msgid "Close other windows"
 msgstr "إغلاق النوافذ الأخرى"
 
@@ -120,7 +120,7 @@ msgstr "إغلاق النوافذ الأخرى"
 msgid "Close other windows:"
 msgstr "إغلاق النوافذ الأخرى:"
 
-#: ../widget/terminal.vala:343 ../widget/config_window.vala:340
+#: ../widget/terminal.vala:380 ../widget/config_window.vala:342
 msgid "Close window"
 msgstr "إغلاق النافذة"
 
@@ -128,7 +128,7 @@ msgstr "إغلاق النافذة"
 msgid "Close window:"
 msgstr "إغلاق النافذة:"
 
-#: ../widget/config_window.vala:329
+#: ../widget/config_window.vala:331
 msgid "Close workspace"
 msgstr "إغلاق مساحة العمل"
 
@@ -140,7 +140,7 @@ msgstr "إغلاق مساحة العمل:"
 msgid "Command"
 msgstr "أمر"
 
-#: ../widget/remote_server_dialog.vala:294 ../widget/command_dialog.vala:172
+#: ../widget/remote_server_dialog.vala:295 ../widget/command_dialog.vala:172
 msgid "Command:"
 msgstr "أمر"
 
@@ -148,12 +148,12 @@ msgstr "أمر"
 msgid "Content"
 msgstr "محتوى"
 
-#: ../widget/terminal.vala:315 ../widget/config_window.vala:302
+#: ../widget/terminal.vala:343 ../widget/config_window.vala:304
 #: ../widget/entry_menu.vala:39
 msgid "Copy"
 msgstr "نسخ"
 
-#: ../widget/terminal.vala:319
+#: ../widget/terminal.vala:347
 msgid "Copy link"
 msgstr "نسخ الرابط"
 
@@ -177,7 +177,7 @@ msgstr "وميض المؤشر"
 msgid "Cursor style:"
 msgstr "نمط المؤشر:"
 
-#: ../widget/terminal.vala:378 ../widget/config_window.vala:358
+#: ../widget/terminal.vala:443 ../widget/config_window.vala:360
 #: ../widget/appbar.vala:122
 msgid "Custom commands"
 msgstr "أوامر مخصصة"
@@ -190,7 +190,7 @@ msgstr "أوامر مخصصة:"
 msgid "Cut"
 msgstr "قص"
 
-#: ../main.vala:188 ../widget/about_widget.vala:82 ../widget/tabbar.vala:603
+#: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:603
 msgid "Deepin Terminal"
 msgstr "طرفية ديبين"
 
@@ -204,7 +204,7 @@ msgstr ""
 "\n"
 "إنها تجعل تركيزك حاداً  في عالم سطر الأوامر."
 
-#: ../widget/config_window.vala:308
+#: ../widget/config_window.vala:310
 msgid "Default size"
 msgstr "الحجم الافتراضي"
 
@@ -212,7 +212,7 @@ msgstr "الحجم الافتراضي"
 msgid "Default size:"
 msgstr "الحجم الافتراضي:"
 
-#: ../widget/remote_server_dialog.vala:427 ../widget/command_dialog.vala:251
+#: ../widget/remote_server_dialog.vala:428 ../widget/command_dialog.vala:251
 #: ../widget/entry_menu.vala:44
 msgid "Delete"
 msgstr "حذف"
@@ -225,16 +225,16 @@ msgstr "حذف الأمر"
 msgid "Delete key"
 msgstr "مفتاح الحذف"
 
-#: ../widget/remote_server_dialog.vala:333
+#: ../widget/remote_server_dialog.vala:334
 msgid "Delete key:"
 msgstr "مفتاح الحذف:"
 
-#: ../widget/remote_server_dialog.vala:414
-#: ../widget/remote_server_dialog.vala:424
+#: ../widget/remote_server_dialog.vala:415
+#: ../widget/remote_server_dialog.vala:425
 msgid "Delete server"
 msgstr "حذف الخادم"
 
-#: ../widget/config_window.vala:357
+#: ../widget/config_window.vala:359
 msgid "Display shortcuts"
 msgstr "عرض الإختصارات"
 
@@ -246,7 +246,7 @@ msgstr "عرض الإختصارات:"
 msgid "Display version"
 msgstr "عرض الإصدار"
 
-#: ../widget/terminal.vala:383
+#: ../widget/terminal.vala:448
 msgid "Download file"
 msgstr "تحميل الملف"
 
@@ -258,11 +258,11 @@ msgstr "تعديل الأمر"
 msgid "Edit Server"
 msgstr "تعديل الخادم"
 
-#: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:377
+#: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:442
 msgid "Encoding"
 msgstr "التشفير"
 
-#: ../widget/remote_server_dialog.vala:307
+#: ../widget/remote_server_dialog.vala:308
 msgid "Encoding:"
 msgstr "التشفير:"
 
@@ -270,9 +270,13 @@ msgstr "التشفير:"
 msgid "Exit"
 msgstr "خروج"
 
-#: ../widget/terminal.vala:355
+#: ../widget/terminal.vala:392
 msgid "Exit fullscreen"
 msgstr "خروج من وضع ملء الشاشة"
+
+#: ../widget/terminal.vala:398
+msgid "Find"
+msgstr "بحث"
 
 #: ../widget/preference.vala:291
 msgid "Font size:"
@@ -282,7 +286,7 @@ msgstr "حجم الخط:"
 msgid "Font:"
 msgstr "الخط:"
 
-#: ../widget/preference.vala:396 ../widget/terminal.vala:357
+#: ../widget/preference.vala:396 ../widget/terminal.vala:394
 msgid "Fullscreen"
 msgstr "ملء الشاشة"
 
@@ -294,7 +298,7 @@ msgstr "ملء الشاشة:"
 msgid "Group"
 msgstr "مجموعة"
 
-#: ../widget/remote_server_dialog.vala:276
+#: ../widget/remote_server_dialog.vala:277
 msgid "Group:"
 msgstr "مجموعة:"
 
@@ -306,7 +310,7 @@ msgstr "مساعدة"
 msgid "Hide quake window after lost focus"
 msgstr "إخفاء النافذة العائمة بعد فقدان التركيز"
 
-#: ../widget/terminal.vala:341 ../widget/config_window.vala:335
+#: ../widget/terminal.vala:378 ../widget/config_window.vala:337
 msgid "Horizontal split"
 msgstr "تقسيم أفقي"
 
@@ -318,7 +322,7 @@ msgstr "التقسيم الأفقي :"
 msgid "Interface"
 msgstr "الواجهة"
 
-#: ../widget/config_window.vala:310
+#: ../widget/config_window.vala:312
 msgid "Jump to next command"
 msgstr "الانتقال إلى الأمر التالي"
 
@@ -326,7 +330,7 @@ msgstr "الانتقال إلى الأمر التالي"
 msgid "Jump to next command:"
 msgstr "الانتقال إلى الأمر التالي :"
 
-#: ../widget/config_window.vala:311
+#: ../widget/config_window.vala:313
 msgid "Jump to previous command"
 msgstr "الانتقال إلى الأمر السابق"
 
@@ -350,7 +354,7 @@ msgstr "الاسم"
 msgid "Name:"
 msgstr "الاسم :"
 
-#: ../widget/config_window.vala:333
+#: ../widget/config_window.vala:335
 msgid "New theme terminal"
 msgstr "سمة جديدة للطرفية"
 
@@ -358,7 +362,7 @@ msgstr "سمة جديدة للطرفية"
 msgid "New window"
 msgstr "نافذة جديدة"
 
-#: ../widget/terminal.vala:349 ../widget/config_window.vala:328
+#: ../widget/terminal.vala:386 ../widget/config_window.vala:330
 msgid "New workspace"
 msgstr "مساحة عمل جديدة"
 
@@ -366,7 +370,7 @@ msgstr "مساحة عمل جديدة"
 msgid "New workspace:"
 msgstr "مساحة عمل جديدة:"
 
-#: ../widget/config_window.vala:330
+#: ../widget/config_window.vala:332
 msgid "Next workspace"
 msgstr "مساحة العمل التالية"
 
@@ -382,17 +386,21 @@ msgstr "نافذة عادية"
 msgid "Opacity:"
 msgstr "التعتيم"
 
-#: ../widget/terminal.vala:332 ../widget/config_window.vala:304
+#: ../widget/terminal.vala:360 ../widget/config_window.vala:306
 msgid "Open"
 msgstr "فتح"
+
+#: ../widget/terminal.vala:368
+msgid "Open in file manager"
+msgstr "فتح في مدير الملفات"
 
 #: ../widget/preference.vala:304
 msgid "Open:"
 msgstr "فتح:"
 
-#: ../widget/remote_server_dialog.vala:274
-#: ../widget/remote_server_dialog.vala:284
-#: ../widget/remote_server_dialog.vala:293
+#: ../widget/remote_server_dialog.vala:275
+#: ../widget/remote_server_dialog.vala:285
+#: ../widget/remote_server_dialog.vala:294
 msgid "Optional"
 msgstr "اختياري"
 
@@ -400,11 +408,11 @@ msgstr "اختياري"
 msgid "Password"
 msgstr "كلمة المرور"
 
-#: ../widget/remote_server_dialog.vala:246
+#: ../widget/remote_server_dialog.vala:247
 msgid "Password:"
 msgstr "كلمة المرور:"
 
-#: ../widget/terminal.vala:325 ../widget/config_window.vala:303
+#: ../widget/terminal.vala:353 ../widget/config_window.vala:305
 #: ../widget/entry_menu.vala:41
 msgid "Paste"
 msgstr "لصق"
@@ -417,7 +425,7 @@ msgstr "لصق:"
 msgid "Path"
 msgstr "مسار"
 
-#: ../widget/remote_server_dialog.vala:285
+#: ../widget/remote_server_dialog.vala:286
 msgid "Path:"
 msgstr "المسار:"
 
@@ -429,7 +437,7 @@ msgstr "يرجى إدخال اختصار جديد"
 msgid "Port:"
 msgstr "المنفذ:"
 
-#: ../widget/config_window.vala:331
+#: ../widget/config_window.vala:333
 msgid "Previous workspace"
 msgstr "مساحة العمل السابقة"
 
@@ -445,7 +453,7 @@ msgstr "لا تزال هناك برامج تعمل في الطرفية"
 msgid "Quake mode"
 msgstr "الوضع العائم"
 
-#: ../widget/terminal.vala:379 ../widget/config_window.vala:359
+#: ../widget/terminal.vala:444 ../widget/config_window.vala:361
 #: ../widget/appbar.vala:123
 msgid "Remote management"
 msgstr "الإدارة عن بعد"
@@ -454,12 +462,12 @@ msgstr "الإدارة عن بعد"
 msgid "Remote management:"
 msgstr "الإدارة عن بعد:"
 
-#: ../widget/terminal.vala:550
+#: ../widget/terminal.vala:639
 msgid "Rename"
 msgstr "إعادة تسمية"
 
-#: ../widget/terminal.vala:376 ../widget/terminal.vala:547
-#: ../widget/config_window.vala:355
+#: ../widget/terminal.vala:441 ../widget/terminal.vala:636
+#: ../widget/config_window.vala:357
 msgid "Rename title"
 msgstr "إعادة تسمية العنوان"
 
@@ -469,7 +477,7 @@ msgstr "إعادة تسمية العنوان :"
 
 #: ../widget/remote_server_dialog.vala:186
 #: ../widget/remote_server_dialog.vala:196
-#: ../widget/remote_server_dialog.vala:231 ../widget/command_dialog.vala:158
+#: ../widget/remote_server_dialog.vala:232 ../widget/command_dialog.vala:158
 #: ../widget/command_dialog.vala:171
 msgid "Required"
 msgstr "مطلوب"
@@ -482,7 +490,7 @@ msgstr "استعادة الافتراضيات"
 msgid "Run a program in the terminal"
 msgstr "تشغيل برنامج في الطرفية"
 
-#: ../widget/remote_server_dialog.vala:349 ../widget/command_dialog.vala:195
+#: ../widget/remote_server_dialog.vala:350 ../widget/command_dialog.vala:195
 msgid "Save"
 msgstr "حفظ"
 
@@ -498,21 +506,21 @@ msgstr "تنقل بالمفاتيح"
 msgid "Scroll on output"
 msgstr "التمرير على المخرجات"
 
-#: ../widget/terminal.vala:361 ../widget/search_entry.vala:64
-#: ../widget/search_entry.vala:66 ../widget/config_window.vala:305
+#: ../widget/terminal.vala:401 ../widget/search_entry.vala:64
+#: ../widget/search_entry.vala:66 ../widget/config_window.vala:307
 msgid "Search"
 msgstr "بحث "
 
-#: ../widget/preference.vala:305 ../widget/remote_panel.vala:365
+#: ../widget/preference.vala:305 ../widget/remote_panel.vala:357
 #: ../widget/command_panel.vala:201
 msgid "Search:"
 msgstr "بحث:"
 
-#: ../widget/terminal.vala:516 ../widget/file_button.vala:71
+#: ../widget/terminal.vala:605 ../widget/file_button.vala:71
 msgid "Select"
 msgstr "تحديد"
 
-#: ../widget/config_window.vala:309 ../widget/entry_menu.vala:47
+#: ../widget/config_window.vala:311 ../widget/entry_menu.vala:47
 msgid "Select all"
 msgstr "تحديد الكل"
 
@@ -520,15 +528,15 @@ msgstr "تحديد الكل"
 msgid "Select all:"
 msgstr "تحديد الكل:"
 
-#: ../widget/terminal.vala:514
+#: ../widget/terminal.vala:603
 msgid "Select directory to save download file"
 msgstr "حدد دليل لحفظ ملف التنزيل"
 
-#: ../widget/terminal.vala:485
+#: ../widget/terminal.vala:574
 msgid "Select file to upload"
 msgstr "تحديد ملف للرفع"
 
-#: ../widget/config_window.vala:338
+#: ../widget/config_window.vala:340
 msgid "Select left window"
 msgstr "تحدبد النافذة اليسرى"
 
@@ -536,7 +544,7 @@ msgstr "تحدبد النافذة اليسرى"
 msgid "Select left window:"
 msgstr "تحدبد النافذة اليسرى:"
 
-#: ../widget/config_window.vala:337
+#: ../widget/config_window.vala:339
 msgid "Select lower window"
 msgstr "تحدبد النافذة السفلى"
 
@@ -544,7 +552,7 @@ msgstr "تحدبد النافذة السفلى"
 msgid "Select lower window:"
 msgstr "تحدبد النافذة السفلى:"
 
-#: ../widget/config_window.vala:339
+#: ../widget/config_window.vala:341
 msgid "Select right window"
 msgstr "تحدبد النافذة اليمنى"
 
@@ -556,7 +564,7 @@ msgstr "تحدبد النافذة اليمنى:"
 msgid "Select the private key file"
 msgstr "تحديد ملف المفتاح الخاص"
 
-#: ../widget/config_window.vala:336
+#: ../widget/config_window.vala:338
 msgid "Select upper window"
 msgstr "حدد النافذة العليا"
 
@@ -564,7 +572,7 @@ msgstr "حدد النافذة العليا"
 msgid "Select upper window:"
 msgstr "تحديد النافذة العليا:"
 
-#: ../widget/config_window.vala:332
+#: ../widget/config_window.vala:334
 msgid "Select workspace"
 msgstr "تحديد مساحة عمل"
 
@@ -584,7 +592,7 @@ msgstr "إعداد دليل بدء تشغيل الطرفية"
 msgid "Set the terminal window mode"
 msgstr "إعداد وضع نافذة الطرفية"
 
-#: ../widget/terminal.vala:387 ../widget/appbar.vala:125
+#: ../widget/terminal.vala:452 ../widget/appbar.vala:125
 msgid "Settings"
 msgstr "الإعدادات"
 
@@ -597,28 +605,28 @@ msgstr "الإختصارات"
 msgid "Shortcuts:"
 msgstr "اختصارات:"
 
-#: ../widget/config_window.vala:356
+#: ../widget/config_window.vala:358
 msgid "Switch fullscreen"
 msgstr "وضع الشاشة الكاملة"
 
-#: ../widget/terminal.vala:374 ../widget/appbar.vala:121
+#: ../widget/terminal.vala:439 ../widget/appbar.vala:121
 msgid "Switch theme"
 msgstr "تغيير السمة"
 
 #: ../widget/preference_slidebar.vala:68 ../widget/preference.vala:296
-#: ../widget/config_window.vala:316
+#: ../widget/config_window.vala:318
 msgid "Terminal"
 msgstr "الطرفية"
 
-#: ../widget/terminal.vala:528
+#: ../widget/terminal.vala:617
 msgid "Type path for download file"
 msgstr "اكتب المسار لتنزيل الملف"
 
-#: ../widget/terminal.vala:489
+#: ../widget/terminal.vala:578
 msgid "Upload"
 msgstr "رفع"
 
-#: ../widget/terminal.vala:382
+#: ../widget/terminal.vala:447
 msgid "Upload file"
 msgstr "رفع الملف"
 
@@ -630,15 +638,15 @@ msgstr "استخدام عند البدء:"
 msgid "Username"
 msgstr "اسم المستخدم"
 
-#: ../widget/remote_server_dialog.vala:232
+#: ../widget/remote_server_dialog.vala:233
 msgid "Username:"
 msgstr "اسم المستخدم:"
 
-#: ../widget/about_widget.vala:86
+#: ../widget/about_widget.vala:105
 msgid "Version:"
 msgstr "الإصدار :"
 
-#: ../widget/terminal.vala:342 ../widget/config_window.vala:334
+#: ../widget/terminal.vala:379 ../widget/config_window.vala:336
 msgid "Vertical split"
 msgstr "تقسيم عمودي"
 
@@ -646,7 +654,7 @@ msgstr "تقسيم عمودي"
 msgid "Vertical split:"
 msgstr "التقسيم العمودي :"
 
-#: ../widget/terminal.vala:1467
+#: ../widget/terminal.vala:1544
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "
@@ -660,11 +668,11 @@ msgid "Window"
 msgstr "النافذة"
 
 #: ../widget/preference_slidebar.vala:71 ../widget/preference.vala:313
-#: ../widget/config_window.vala:346
+#: ../widget/config_window.vala:348
 msgid "Workspace"
 msgstr "مساحة العمل"
 
-#: ../widget/config_window.vala:306
+#: ../widget/config_window.vala:308
 msgid "Zoom in"
 msgstr "تكبير"
 
@@ -672,7 +680,7 @@ msgstr "تكبير"
 msgid "Zoom in:"
 msgstr "تقريب"
 
-#: ../widget/config_window.vala:307
+#: ../widget/config_window.vala:309
 msgid "Zoom out"
 msgstr "تصغير"
 
@@ -680,6 +688,6 @@ msgstr "تصغير"
 msgid "Zoom out:"
 msgstr "تبعيد"
 
-#: ../widget/terminal.vala:698 ../widget/terminal.vala:1178
+#: ../widget/terminal.vala:787 ../widget/terminal.vala:1267
 msgid "deepin"
 msgstr "دييبن"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-27 16:58+0800\n"
+"POT-Creation-Date: 2018-04-08 12:45+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Enes YAVUZ <ensyvz14@gmail.com>, 2017\n"
 "Language-Team: Turkish (https://www.transifex.com/linuxdeepin/teams/3976/tr/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: tr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: ../widget/terminal.vala:1152
+#: ../widget/terminal.vala:1241
 msgid ""
 "\n"
 "Command has been completed, press ENTER to exit the terminal."
@@ -30,11 +30,11 @@ msgstr ""
 msgid "About"
 msgstr "Hakkında"
 
-#: ../widget/about_widget.vala:62
+#: ../widget/about_widget.vala:81
 msgid "Acknowledgments"
 msgstr "Teşekkürler"
 
-#: ../widget/remote_server_dialog.vala:351 ../widget/command_dialog.vala:197
+#: ../widget/remote_server_dialog.vala:352 ../widget/command_dialog.vala:197
 msgid "Add"
 msgstr "Ekle"
 
@@ -50,7 +50,7 @@ msgstr "Sunucu Ekle"
 msgid "Add command"
 msgstr "Komut Ekle"
 
-#: ../widget/remote_panel.vala:476
+#: ../widget/remote_panel.vala:468
 msgid "Add server"
 msgstr "Sunucu Ekle"
 
@@ -64,15 +64,15 @@ msgstr "Adres:"
 
 #: ../widget/preference_slidebar.vala:74 ../widget/preference_slidebar.vala:81
 #: ../widget/preference.vala:332 ../widget/preference.vala:344
-#: ../widget/config_window.vala:364
+#: ../widget/config_window.vala:366
 msgid "Advanced"
 msgstr "Gelişmiş"
 
-#: ../widget/remote_server_dialog.vala:336
+#: ../widget/remote_server_dialog.vala:337
 msgid "Advanced options"
 msgstr "Gelişmiş seçenekler"
 
-#: ../widget/remote_server_dialog.vala:425 ../widget/command_dialog.vala:249
+#: ../widget/remote_server_dialog.vala:426 ../widget/command_dialog.vala:249
 msgid "Are you sure to delete"
 msgstr "Silmek istediğinize emin misiniz:"
 
@@ -84,7 +84,7 @@ msgstr "Çıkmak istediğinize emin misiniz:"
 msgid "Backspace key"
 msgstr "Geri al tuşu"
 
-#: ../widget/remote_server_dialog.vala:320
+#: ../widget/remote_server_dialog.vala:321
 msgid "Backspace key:"
 msgstr "Geri al tuşu:"
 
@@ -96,10 +96,10 @@ msgstr "Temel"
 msgid "Blur background"
 msgstr "Arka planı bulanıklaştır"
 
-#: ../widget/remote_server_dialog.vala:346
-#: ../widget/remote_server_dialog.vala:426 ../widget/confirm_dialog.vala:131
-#: ../widget/terminal.vala:487 ../widget/terminal.vala:515
-#: ../widget/terminal.vala:549 ../widget/file_button.vala:69
+#: ../widget/remote_server_dialog.vala:347
+#: ../widget/remote_server_dialog.vala:427 ../widget/confirm_dialog.vala:131
+#: ../widget/terminal.vala:576 ../widget/terminal.vala:604
+#: ../widget/terminal.vala:638 ../widget/file_button.vala:69
 #: ../widget/command_dialog.vala:192 ../widget/command_dialog.vala:250
 msgid "Cancel"
 msgstr "İptal et"
@@ -108,11 +108,11 @@ msgstr "İptal et"
 msgid "Certificate"
 msgstr "Sertifika"
 
-#: ../widget/remote_server_dialog.vala:260
+#: ../widget/remote_server_dialog.vala:261
 msgid "Certificate:"
 msgstr "Sertifika:"
 
-#: ../widget/terminal.vala:345 ../widget/config_window.vala:341
+#: ../widget/terminal.vala:382 ../widget/config_window.vala:343
 msgid "Close other windows"
 msgstr "Diğer pencereleri kapat"
 
@@ -120,7 +120,7 @@ msgstr "Diğer pencereleri kapat"
 msgid "Close other windows:"
 msgstr "Diğer pencereleri kapat:"
 
-#: ../widget/terminal.vala:343 ../widget/config_window.vala:340
+#: ../widget/terminal.vala:380 ../widget/config_window.vala:342
 msgid "Close window"
 msgstr "Pencereyi kapat"
 
@@ -128,7 +128,7 @@ msgstr "Pencereyi kapat"
 msgid "Close window:"
 msgstr "Pencereyi kapat:"
 
-#: ../widget/config_window.vala:329
+#: ../widget/config_window.vala:331
 msgid "Close workspace"
 msgstr "Çalışma alanını kapat"
 
@@ -140,7 +140,7 @@ msgstr "Çalışma alanını kapat:"
 msgid "Command"
 msgstr "Komut"
 
-#: ../widget/remote_server_dialog.vala:294 ../widget/command_dialog.vala:172
+#: ../widget/remote_server_dialog.vala:295 ../widget/command_dialog.vala:172
 msgid "Command:"
 msgstr "Komut:"
 
@@ -148,12 +148,12 @@ msgstr "Komut:"
 msgid "Content"
 msgstr "İçerik"
 
-#: ../widget/terminal.vala:315 ../widget/config_window.vala:302
+#: ../widget/terminal.vala:343 ../widget/config_window.vala:304
 #: ../widget/entry_menu.vala:39
 msgid "Copy"
 msgstr "Kopyala"
 
-#: ../widget/terminal.vala:319
+#: ../widget/terminal.vala:347
 msgid "Copy link"
 msgstr "Linki kopyala"
 
@@ -177,7 +177,7 @@ msgstr "İmleç yanıp sönmesi"
 msgid "Cursor style:"
 msgstr "İmleç sitili:"
 
-#: ../widget/terminal.vala:378 ../widget/config_window.vala:358
+#: ../widget/terminal.vala:443 ../widget/config_window.vala:360
 #: ../widget/appbar.vala:122
 msgid "Custom commands"
 msgstr "Geçerli komutlar"
@@ -190,7 +190,7 @@ msgstr "Geçerli komutlar:"
 msgid "Cut"
 msgstr "Kes"
 
-#: ../main.vala:188 ../widget/about_widget.vala:82 ../widget/tabbar.vala:603
+#: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:603
 msgid "Deepin Terminal"
 msgstr "Deepin Uçbirim"
 
@@ -203,7 +203,7 @@ msgstr ""
 "Deepin Uçbirim, çalışma alanı, birden fazla pencere, uzaktan yönetim, quake kipi ve diğer özellikleri olan gelişmiş bir uçbirim emülatörüdür.\n"
 "Komut satırı dünyasında odaklanmanızı keskinleştirir!"
 
-#: ../widget/config_window.vala:308
+#: ../widget/config_window.vala:310
 msgid "Default size"
 msgstr "Varsayılan boyut"
 
@@ -211,7 +211,7 @@ msgstr "Varsayılan boyut"
 msgid "Default size:"
 msgstr "Varsayılan boyut:"
 
-#: ../widget/remote_server_dialog.vala:427 ../widget/command_dialog.vala:251
+#: ../widget/remote_server_dialog.vala:428 ../widget/command_dialog.vala:251
 #: ../widget/entry_menu.vala:44
 msgid "Delete"
 msgstr "Sil"
@@ -224,16 +224,16 @@ msgstr "Komutu sil"
 msgid "Delete key"
 msgstr "Anahtarı sil"
 
-#: ../widget/remote_server_dialog.vala:333
+#: ../widget/remote_server_dialog.vala:334
 msgid "Delete key:"
 msgstr "Anahtarı sil:"
 
-#: ../widget/remote_server_dialog.vala:414
-#: ../widget/remote_server_dialog.vala:424
+#: ../widget/remote_server_dialog.vala:415
+#: ../widget/remote_server_dialog.vala:425
 msgid "Delete server"
 msgstr "Sunucuyu sil"
 
-#: ../widget/config_window.vala:357
+#: ../widget/config_window.vala:359
 msgid "Display shortcuts"
 msgstr "Kısayolları göster"
 
@@ -245,7 +245,7 @@ msgstr "Kısayolları göster:"
 msgid "Display version"
 msgstr "Sürümü göster"
 
-#: ../widget/terminal.vala:383
+#: ../widget/terminal.vala:448
 msgid "Download file"
 msgstr "Dosya indir"
 
@@ -257,11 +257,11 @@ msgstr "Komutu Düzenle"
 msgid "Edit Server"
 msgstr "Sunucuyu Düzenle"
 
-#: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:377
+#: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:442
 msgid "Encoding"
 msgstr "Kodlama"
 
-#: ../widget/remote_server_dialog.vala:307
+#: ../widget/remote_server_dialog.vala:308
 msgid "Encoding:"
 msgstr "Kodlama:"
 
@@ -269,9 +269,13 @@ msgstr "Kodlama:"
 msgid "Exit"
 msgstr "Çık"
 
-#: ../widget/terminal.vala:355
+#: ../widget/terminal.vala:392
 msgid "Exit fullscreen"
 msgstr "Tam ekrandan çık"
+
+#: ../widget/terminal.vala:398
+msgid "Find"
+msgstr ""
 
 #: ../widget/preference.vala:291
 msgid "Font size:"
@@ -281,7 +285,7 @@ msgstr "Yazı tipi boyutu:"
 msgid "Font:"
 msgstr "Yazı tipi:"
 
-#: ../widget/preference.vala:396 ../widget/terminal.vala:357
+#: ../widget/preference.vala:396 ../widget/terminal.vala:394
 msgid "Fullscreen"
 msgstr "Tam ekran"
 
@@ -293,7 +297,7 @@ msgstr "Tam ekran:"
 msgid "Group"
 msgstr "Grup"
 
-#: ../widget/remote_server_dialog.vala:276
+#: ../widget/remote_server_dialog.vala:277
 msgid "Group:"
 msgstr "Grup:"
 
@@ -305,7 +309,7 @@ msgstr "Yardım"
 msgid "Hide quake window after lost focus"
 msgstr "Odaklamayı kaybettikten sonra quake penceresini gizle"
 
-#: ../widget/terminal.vala:341 ../widget/config_window.vala:335
+#: ../widget/terminal.vala:378 ../widget/config_window.vala:337
 msgid "Horizontal split"
 msgstr "Yatay bölme"
 
@@ -317,7 +321,7 @@ msgstr "Yatay bölme:"
 msgid "Interface"
 msgstr "Arayüz"
 
-#: ../widget/config_window.vala:310
+#: ../widget/config_window.vala:312
 msgid "Jump to next command"
 msgstr "Bir sonraki komuta atla"
 
@@ -325,7 +329,7 @@ msgstr "Bir sonraki komuta atla"
 msgid "Jump to next command:"
 msgstr "Bir sonraki komuta atla:"
 
-#: ../widget/config_window.vala:311
+#: ../widget/config_window.vala:313
 msgid "Jump to previous command"
 msgstr "Bir önceki komuta atla"
 
@@ -349,7 +353,7 @@ msgstr "İsim"
 msgid "Name:"
 msgstr "İsim:"
 
-#: ../widget/config_window.vala:333
+#: ../widget/config_window.vala:335
 msgid "New theme terminal"
 msgstr "Yeni uçbirim teması"
 
@@ -357,7 +361,7 @@ msgstr "Yeni uçbirim teması"
 msgid "New window"
 msgstr "Yeni pencere"
 
-#: ../widget/terminal.vala:349 ../widget/config_window.vala:328
+#: ../widget/terminal.vala:386 ../widget/config_window.vala:330
 msgid "New workspace"
 msgstr "Yeni çalışma alanı"
 
@@ -365,7 +369,7 @@ msgstr "Yeni çalışma alanı"
 msgid "New workspace:"
 msgstr "Yeni çalışma alanı:"
 
-#: ../widget/config_window.vala:330
+#: ../widget/config_window.vala:332
 msgid "Next workspace"
 msgstr "Sonraki çalışma alanı"
 
@@ -381,17 +385,21 @@ msgstr "Normal pencere"
 msgid "Opacity:"
 msgstr "Bulanıklık:"
 
-#: ../widget/terminal.vala:332 ../widget/config_window.vala:304
+#: ../widget/terminal.vala:360 ../widget/config_window.vala:306
 msgid "Open"
 msgstr "Aç"
+
+#: ../widget/terminal.vala:368
+msgid "Open in file manager"
+msgstr ""
 
 #: ../widget/preference.vala:304
 msgid "Open:"
 msgstr "Aç:"
 
-#: ../widget/remote_server_dialog.vala:274
-#: ../widget/remote_server_dialog.vala:284
-#: ../widget/remote_server_dialog.vala:293
+#: ../widget/remote_server_dialog.vala:275
+#: ../widget/remote_server_dialog.vala:285
+#: ../widget/remote_server_dialog.vala:294
 msgid "Optional"
 msgstr "İsteğe bağlı"
 
@@ -399,11 +407,11 @@ msgstr "İsteğe bağlı"
 msgid "Password"
 msgstr "Şifre"
 
-#: ../widget/remote_server_dialog.vala:246
+#: ../widget/remote_server_dialog.vala:247
 msgid "Password:"
 msgstr "Şifre:"
 
-#: ../widget/terminal.vala:325 ../widget/config_window.vala:303
+#: ../widget/terminal.vala:353 ../widget/config_window.vala:305
 #: ../widget/entry_menu.vala:41
 msgid "Paste"
 msgstr "Yapıştır"
@@ -416,7 +424,7 @@ msgstr "Yapıştır:"
 msgid "Path"
 msgstr "Yol"
 
-#: ../widget/remote_server_dialog.vala:285
+#: ../widget/remote_server_dialog.vala:286
 msgid "Path:"
 msgstr "Yol:"
 
@@ -428,7 +436,7 @@ msgstr "Lütfen yeni bir kısayol giriniz"
 msgid "Port:"
 msgstr "Port: "
 
-#: ../widget/config_window.vala:331
+#: ../widget/config_window.vala:333
 msgid "Previous workspace"
 msgstr "Önceki çalışma alanı"
 
@@ -444,7 +452,7 @@ msgstr "Programlar hala uçbirimde çalışıyor"
 msgid "Quake mode"
 msgstr "Quake Kipi"
 
-#: ../widget/terminal.vala:379 ../widget/config_window.vala:359
+#: ../widget/terminal.vala:444 ../widget/config_window.vala:361
 #: ../widget/appbar.vala:123
 msgid "Remote management"
 msgstr "Uzaktan yönetim"
@@ -453,12 +461,12 @@ msgstr "Uzaktan yönetim"
 msgid "Remote management:"
 msgstr "Uzaktan yönetim:"
 
-#: ../widget/terminal.vala:550
+#: ../widget/terminal.vala:639
 msgid "Rename"
 msgstr "Yeniden Adlandır"
 
-#: ../widget/terminal.vala:376 ../widget/terminal.vala:547
-#: ../widget/config_window.vala:355
+#: ../widget/terminal.vala:441 ../widget/terminal.vala:636
+#: ../widget/config_window.vala:357
 msgid "Rename title"
 msgstr "Başlığı yeniden adlandır"
 
@@ -468,7 +476,7 @@ msgstr "Başlığı yeniden adlandır:"
 
 #: ../widget/remote_server_dialog.vala:186
 #: ../widget/remote_server_dialog.vala:196
-#: ../widget/remote_server_dialog.vala:231 ../widget/command_dialog.vala:158
+#: ../widget/remote_server_dialog.vala:232 ../widget/command_dialog.vala:158
 #: ../widget/command_dialog.vala:171
 msgid "Required"
 msgstr "Gerekli"
@@ -481,7 +489,7 @@ msgstr "Varsayılanı Geri Yükle"
 msgid "Run a program in the terminal"
 msgstr "Uçbirimde program çalıştır"
 
-#: ../widget/remote_server_dialog.vala:349 ../widget/command_dialog.vala:195
+#: ../widget/remote_server_dialog.vala:350 ../widget/command_dialog.vala:195
 msgid "Save"
 msgstr "Kaydet"
 
@@ -497,21 +505,21 @@ msgstr "Tuş üzerinde ilerleyin"
 msgid "Scroll on output"
 msgstr "Çıktıda kaydır"
 
-#: ../widget/terminal.vala:361 ../widget/search_entry.vala:64
-#: ../widget/search_entry.vala:66 ../widget/config_window.vala:305
+#: ../widget/terminal.vala:401 ../widget/search_entry.vala:64
+#: ../widget/search_entry.vala:66 ../widget/config_window.vala:307
 msgid "Search"
 msgstr "Ara"
 
-#: ../widget/preference.vala:305 ../widget/remote_panel.vala:365
+#: ../widget/preference.vala:305 ../widget/remote_panel.vala:357
 #: ../widget/command_panel.vala:201
 msgid "Search:"
 msgstr "Ara:"
 
-#: ../widget/terminal.vala:516 ../widget/file_button.vala:71
+#: ../widget/terminal.vala:605 ../widget/file_button.vala:71
 msgid "Select"
 msgstr "Seç"
 
-#: ../widget/config_window.vala:309 ../widget/entry_menu.vala:47
+#: ../widget/config_window.vala:311 ../widget/entry_menu.vala:47
 msgid "Select all"
 msgstr "Tümünü seçme"
 
@@ -519,15 +527,15 @@ msgstr "Tümünü seçme"
 msgid "Select all:"
 msgstr "Tümünü seçme:"
 
-#: ../widget/terminal.vala:514
+#: ../widget/terminal.vala:603
 msgid "Select directory to save download file"
 msgstr "İndirme dosyasını kaydetmek için dizin seçiniz"
 
-#: ../widget/terminal.vala:485
+#: ../widget/terminal.vala:574
 msgid "Select file to upload"
 msgstr "Yüklemek için dosya seçiniz"
 
-#: ../widget/config_window.vala:338
+#: ../widget/config_window.vala:340
 msgid "Select left window"
 msgstr "Sol pencere seçme"
 
@@ -535,7 +543,7 @@ msgstr "Sol pencere seçme"
 msgid "Select left window:"
 msgstr "Sol pencere seçme:"
 
-#: ../widget/config_window.vala:337
+#: ../widget/config_window.vala:339
 msgid "Select lower window"
 msgstr "Alt pencereyi seçme"
 
@@ -543,7 +551,7 @@ msgstr "Alt pencereyi seçme"
 msgid "Select lower window:"
 msgstr "Alt pencereyi seçme:"
 
-#: ../widget/config_window.vala:339
+#: ../widget/config_window.vala:341
 msgid "Select right window"
 msgstr "Sağ pencere seçme"
 
@@ -555,7 +563,7 @@ msgstr "Sağ pencere seçme:"
 msgid "Select the private key file"
 msgstr "Özel anahtar dosyasını seçme"
 
-#: ../widget/config_window.vala:336
+#: ../widget/config_window.vala:338
 msgid "Select upper window"
 msgstr "Üst pencere seçme"
 
@@ -563,7 +571,7 @@ msgstr "Üst pencere seçme"
 msgid "Select upper window:"
 msgstr "Üst pencereyi seçme:"
 
-#: ../widget/config_window.vala:332
+#: ../widget/config_window.vala:334
 msgid "Select workspace"
 msgstr "Çalışma alanı seçme"
 
@@ -583,7 +591,7 @@ msgstr "Uçbirim başlangıç dizini ayarlama"
 msgid "Set the terminal window mode"
 msgstr "Uçbirim pencere kipi ayarlama"
 
-#: ../widget/terminal.vala:387 ../widget/appbar.vala:125
+#: ../widget/terminal.vala:452 ../widget/appbar.vala:125
 msgid "Settings"
 msgstr "Ayarlar"
 
@@ -596,28 +604,28 @@ msgstr "Kısayollar"
 msgid "Shortcuts:"
 msgstr "Kısayollar:"
 
-#: ../widget/config_window.vala:356
+#: ../widget/config_window.vala:358
 msgid "Switch fullscreen"
 msgstr "Tam ekranı değiştir"
 
-#: ../widget/terminal.vala:374 ../widget/appbar.vala:121
+#: ../widget/terminal.vala:439 ../widget/appbar.vala:121
 msgid "Switch theme"
 msgstr "Temayı değiştir"
 
 #: ../widget/preference_slidebar.vala:68 ../widget/preference.vala:296
-#: ../widget/config_window.vala:316
+#: ../widget/config_window.vala:318
 msgid "Terminal"
 msgstr "Uçbirim"
 
-#: ../widget/terminal.vala:528
+#: ../widget/terminal.vala:617
 msgid "Type path for download file"
 msgstr "İndirme dosyası için yol türü"
 
-#: ../widget/terminal.vala:489
+#: ../widget/terminal.vala:578
 msgid "Upload"
 msgstr "Yükle"
 
-#: ../widget/terminal.vala:382
+#: ../widget/terminal.vala:447
 msgid "Upload file"
 msgstr "Dosya yükle"
 
@@ -629,15 +637,15 @@ msgstr "Başlangıçta kullan:"
 msgid "Username"
 msgstr "Kullanıcı Adı"
 
-#: ../widget/remote_server_dialog.vala:232
+#: ../widget/remote_server_dialog.vala:233
 msgid "Username:"
 msgstr "Kullanıcı adı:"
 
-#: ../widget/about_widget.vala:86
+#: ../widget/about_widget.vala:105
 msgid "Version:"
 msgstr "Sürüm:"
 
-#: ../widget/terminal.vala:342 ../widget/config_window.vala:334
+#: ../widget/terminal.vala:379 ../widget/config_window.vala:336
 msgid "Vertical split"
 msgstr "Dikey bölme"
 
@@ -645,7 +653,7 @@ msgstr "Dikey bölme"
 msgid "Vertical split:"
 msgstr "Dikey bölme:"
 
-#: ../widget/terminal.vala:1467
+#: ../widget/terminal.vala:1544
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "
@@ -660,11 +668,11 @@ msgid "Window"
 msgstr "Pencere"
 
 #: ../widget/preference_slidebar.vala:71 ../widget/preference.vala:313
-#: ../widget/config_window.vala:346
+#: ../widget/config_window.vala:348
 msgid "Workspace"
 msgstr "Çalışma alanı"
 
-#: ../widget/config_window.vala:306
+#: ../widget/config_window.vala:308
 msgid "Zoom in"
 msgstr "Yakınlıştır"
 
@@ -672,7 +680,7 @@ msgstr "Yakınlıştır"
 msgid "Zoom in:"
 msgstr "Yakınlıştır:"
 
-#: ../widget/config_window.vala:307
+#: ../widget/config_window.vala:309
 msgid "Zoom out"
 msgstr "Uzaklaştır"
 
@@ -680,6 +688,6 @@ msgstr "Uzaklaştır"
 msgid "Zoom out:"
 msgstr "Uzaklaştır:"
 
-#: ../widget/terminal.vala:698 ../widget/terminal.vala:1178
+#: ../widget/terminal.vala:787 ../widget/terminal.vala:1267
 msgid "deepin"
 msgstr "Deepin"
