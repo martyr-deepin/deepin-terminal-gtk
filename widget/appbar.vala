@@ -23,6 +23,7 @@
 
 using Gdk;
 using Gtk;
+using Menu;
 using Widgets;
 
 [DBus (name = "com.deepin.terminal")]
@@ -48,6 +49,7 @@ namespace Widgets {
         public WindowButton quit_fullscreen_button;
         public WindowButton unmax_button;
         public WorkspaceManager workspace_manager;
+        public Menu.Menu? menu;
         public int logo_width = 48;
         public int menu_button_width = Constant.WINDOW_BUTTON_WIDTH;
         public int titlebar_right_cache_width = 10;
@@ -116,29 +118,22 @@ namespace Widgets {
             
             menu_button.clicked.connect((b) => {
                     focus_widget = ((Gtk.Window) menu_button.get_toplevel()).get_focus();
-                    
-                    Gdk.Screen screen = Gdk.Screen.get_default();
-                    CssProvider provider = new Gtk.CssProvider();
-                    try {
-                        provider.load_from_data(Utils.get_menu_css());
-                    } catch (GLib.Error e) {
-                        warning("Something bad happened with CSS load %s", e.message);
-                    }
-                    Gtk.StyleContext.add_provider_for_screen(screen,provider,Gtk.STYLE_PROVIDER_PRIORITY_USER);
+                    menu = new Menu.Menu(((Widgets.ConfigWindow) get_toplevel()).is_light_theme());
+                    menu.click_item.connect(handle_menu_item_click);
+                    menu.destroy.connect(handle_menu_destroy);
 
-                    Gtk.Menu menu_content = new Gtk.Menu();
-                    menu_content.get_style_context().add_class("gtk_menu");
-                    menu_content.append(get_menu_item("new_window", _("New window")));
-                    menu_content.append(get_menu_item("switch_theme", _("Switch theme")));
-                    menu_content.append(get_menu_item("custom_commands", _("Custom commands")));
-                    menu_content.append(get_menu_item("remote_manage", _("Remote management")));
-                    menu_content.append(get_menu_item("", ""));
-                    menu_content.append(get_menu_item("preference", _("Settings")));
+                    menu.append(new Menu.MenuItem("new_window", _("New window")));
+                    menu.append(new Menu.MenuItem("switch_theme", _("Switch theme")));
+                    menu.append(new Menu.MenuItem("custom_commands", _("Custom commands")));
+                    menu.append(new Menu.MenuItem("remote_manage", _("Remote management")));
+                    menu.append(new Menu.MenuItem("", ""));
+                    menu.append(new Menu.MenuItem("preference", _("Settings")));
+
                     if (Utils.is_command_exist("dman")) {
-                        menu_content.append(get_menu_item("help", _("Help")));
+                        menu.append(new Menu.MenuItem("help", _("Help")));
                     }
-                    menu_content.append(get_menu_item("about", _("About")));
-                    menu_content.append(get_menu_item("exit", _("Exit")));
+                    menu.append(new Menu.MenuItem("about", _("About")));
+                    menu.append(new Menu.MenuItem("exit", _("Exit")));
                     
                     int menu_x, menu_y;
                     menu_button.translate_coordinates(menu_button.get_toplevel(), 0, 0, out menu_x, out menu_y);
@@ -146,13 +141,10 @@ namespace Widgets {
                     menu_button.get_allocation(out menu_rect);
                     int window_x, window_y;
                     menu_button.get_toplevel().get_window().get_origin(out window_x, out window_y);
-                    
-                    menu_content.show_all();
 
                     menu_rect.x -= menu_button_width;
                     menu_rect.y += menu_button_width;
-                    menu_content.popup_at_rect (get_toplevel().get_window(), menu_rect, Gravity.NORTH_EAST, Gravity.NORTH_EAST, null);
-                    menu_content.destroy.connect(handle_menu_destroy);
+                    menu.show_menu(window_x + menu_rect.x, window_y + menu_rect.y);
                 });
             
             max_toggle_box = new Box(Gtk.Orientation.HORIZONTAL, 0);
@@ -298,6 +290,7 @@ namespace Widgets {
             if (focus_widget != null) {
                 focus_widget.grab_focus();
             }
+            menu = null;
         }
         
         public void update_max_button() {
