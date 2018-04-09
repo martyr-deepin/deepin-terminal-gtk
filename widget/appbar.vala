@@ -21,9 +21,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */ 
 
-using Gdk;
 using Gtk;
-using Menu;
 using Widgets;
 
 [DBus (name = "com.deepin.terminal")]
@@ -39,6 +37,7 @@ namespace Widgets {
         public Box window_button_box;
         public Box window_close_button_box;
         public Gtk.Widget? focus_widget;
+        public Menu.Menu menu;
         public Tabbar tabbar;
         public Widgets.Window window;
         public Widgets.WindowEventArea event_area;
@@ -49,9 +48,7 @@ namespace Widgets {
         public WindowButton quit_fullscreen_button;
         public WindowButton unmax_button;
         public WorkspaceManager workspace_manager;
-        public Menu.Menu? menu;
         public int logo_width = 48;
-        public int menu_button_width = Constant.WINDOW_BUTTON_WIDTH;
         public int titlebar_right_cache_width = 10;
         
         public signal void close_window();
@@ -102,12 +99,12 @@ namespace Widgets {
             window_button_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             window_close_button_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             
-            menu_button = new WindowButton("window_menu", true, Constant.WINDOW_BUTTON_WIDTH, Constant.TITLEBAR_HEIGHT);
-            min_button = new WindowButton("window_min", true, Constant.WINDOW_BUTTON_WIDTH, Constant.TITLEBAR_HEIGHT);
-            max_button = new WindowButton("window_max", true, Constant.WINDOW_BUTTON_WIDTH, Constant.TITLEBAR_HEIGHT);
-            unmax_button = new WindowButton("window_unmax", true, Constant.WINDOW_BUTTON_WIDTH, Constant.TITLEBAR_HEIGHT);
-            close_button = new WindowButton("window_close", true, Constant.WINDOW_BUTTON_WIDTH + Constant.CLOSE_BUTTON_MARGIN_RIGHT, Constant.TITLEBAR_HEIGHT);
-            quit_fullscreen_button = new WindowButton("quit_fullscreen", true, Constant.WINDOW_BUTTON_WIDTH + Constant.CLOSE_BUTTON_MARGIN_RIGHT, Constant.TITLEBAR_HEIGHT);
+            menu_button = new WindowButton("window_menu", true, Constant.WINDOW_BUTTON_WIDHT, Constant.TITLEBAR_HEIGHT);
+            min_button = new WindowButton("window_min", true, Constant.WINDOW_BUTTON_WIDHT, Constant.TITLEBAR_HEIGHT);
+            max_button = new WindowButton("window_max", true, Constant.WINDOW_BUTTON_WIDHT, Constant.TITLEBAR_HEIGHT);
+            unmax_button = new WindowButton("window_unmax", true, Constant.WINDOW_BUTTON_WIDHT, Constant.TITLEBAR_HEIGHT);
+            close_button = new WindowButton("window_close", true, Constant.WINDOW_BUTTON_WIDHT + Constant.CLOSE_BUTTON_MARGIN_RIGHT, Constant.TITLEBAR_HEIGHT);
+            quit_fullscreen_button = new WindowButton("quit_fullscreen", true, Constant.WINDOW_BUTTON_WIDHT + Constant.CLOSE_BUTTON_MARGIN_RIGHT, Constant.TITLEBAR_HEIGHT);
             
             close_button.clicked.connect((w) => {
                     close_window();
@@ -118,22 +115,19 @@ namespace Widgets {
             
             menu_button.clicked.connect((b) => {
                     focus_widget = ((Gtk.Window) menu_button.get_toplevel()).get_focus();
-                    menu = new Menu.Menu(((Widgets.ConfigWindow) get_toplevel()).is_light_theme());
-                    menu.click_item.connect(handle_menu_item_click);
-                    menu.destroy.connect(handle_menu_destroy);
-
-                    menu.append(new Menu.MenuItem("new_window", _("New window")));
-                    menu.append(new Menu.MenuItem("switch_theme", _("Switch theme")));
-                    menu.append(new Menu.MenuItem("custom_commands", _("Custom commands")));
-                    menu.append(new Menu.MenuItem("remote_manage", _("Remote management")));
-                    menu.append(new Menu.MenuItem("", ""));
-                    menu.append(new Menu.MenuItem("preference", _("Settings")));
-
+                    
+                    var menu_content = new List<Menu.MenuItem>();
+                    menu_content.append(new Menu.MenuItem("new_window", _("New window")));
+                    menu_content.append(new Menu.MenuItem("switch_theme", _("Switch theme")));
+                    menu_content.append(new Menu.MenuItem("custom_commands", _("Custom commands")));
+                    menu_content.append(new Menu.MenuItem("remote_manage", _("Remote management")));
+                    menu_content.append(new Menu.MenuItem("", ""));
+                    menu_content.append(new Menu.MenuItem("preference", _("Settings")));
                     if (Utils.is_command_exist("dman")) {
-                        menu.append(new Menu.MenuItem("help", _("Help")));
+                        menu_content.append(new Menu.MenuItem("help", _("Help")));
                     }
-                    menu.append(new Menu.MenuItem("about", _("About")));
-                    menu.append(new Menu.MenuItem("exit", _("Exit")));
+                    menu_content.append(new Menu.MenuItem("about", _("About")));
+                    menu_content.append(new Menu.MenuItem("exit", _("Exit")));
                     
                     int menu_x, menu_y;
                     menu_button.translate_coordinates(menu_button.get_toplevel(), 0, 0, out menu_x, out menu_y);
@@ -141,10 +135,10 @@ namespace Widgets {
                     menu_button.get_allocation(out menu_rect);
                     int window_x, window_y;
                     menu_button.get_toplevel().get_window().get_origin(out window_x, out window_y);
-
-                    menu_rect.x -= menu_button_width;
-                    menu_rect.y += menu_button_width;
-                    menu.show_menu(window_x + menu_rect.x, window_y + menu_rect.y);
+                    
+                    menu = new Menu.Menu(window_x + menu_x, window_y + menu_y + menu_rect.height, menu_content);
+                    menu.click_item.connect(handle_menu_item_click);
+                    menu.destroy.connect(handle_menu_destroy);
                 });
             
             max_toggle_box = new Box(Gtk.Orientation.HORIZONTAL, 0);
@@ -214,7 +208,7 @@ namespace Widgets {
                     return true;
                 });
         }
-
+        
         public void show_window_button() {
             window_button_box.pack_start(menu_button, false, false, 0);
             window_button_box.pack_start(min_button, false, false, 0);
@@ -271,10 +265,11 @@ namespace Widgets {
 		}        
         
 		public void handle_menu_destroy() {
+			menu = null;
+            
             if (focus_widget != null) {
                 focus_widget.grab_focus();
             }
-            menu = null;
         }
         
         public void update_max_button() {
