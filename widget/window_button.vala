@@ -121,7 +121,7 @@ namespace Widgets {
     }
 
     public WindowButton create_close_button() {
-        var close_button = new WindowButton("titlebar_close", false, Constant.WINDOW_BUTTON_WIDTH + Constant.CLOSE_BUTTON_MARGIN_RIGHT, Constant.TITLEBAR_HEIGHT);
+        var close_button = new WindowButton("titlebar_close", false, Constant.WINDOW_BUTTON_WIDHT + Constant.CLOSE_BUTTON_MARGIN_RIGHT, Constant.TITLEBAR_HEIGHT);
         close_button.set_halign(Gtk.Align.END);
         
         return close_button;
