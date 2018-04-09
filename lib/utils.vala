@@ -105,6 +105,51 @@ namespace Utils {
         return b;
     }
 
+    public string get_menu_css() {
+            Config.Config config = new Config.Config();
+            string background_color = null;
+            string foreground_color = null;
+            try {
+                background_color = config.config_file.get_string("theme", "background");
+                foreground_color = config.config_file.get_string("theme", "foreground");
+            } catch (GLib.KeyFileError e) {
+                print("Can't read config file: %s\n", e.message);
+                background_color = "#ffffff";
+                foreground_color = "#000000";
+            }
+
+            return @"
+                    .window-frame {
+                        box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+                    }
+                    .window-frame.csd.popup {
+                        box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22), 0 0 0 1px rgba(0, 0, 0, 0.2);
+                    }
+                    .gtk_menu{
+                        background: $background_color;
+                        border: none;
+                        border-top: 0px solid rgba(0, 0, 0, 0.4);
+                    }
+                    .gtk_menu_item{
+                        background: $background_color;
+                    }
+                    .gtk_menu_item:hover{
+                        background-color: $foreground_color;
+                        color:black;
+                        transition: color 10ms linear;
+                    }
+                    .gtk_menu_item_light{
+                        color:black;
+                        background: $background_color;
+                    }
+                    .gtk_menu_item_light:hover{
+                        background-color: $foreground_color;
+                        color:white;
+                        transition: color 10ms linear;
+                    }
+                    ";
+        }
+
     public void touch_dir(string dir) {
         var dir_file = GLib.File.new_for_path(dir);
         if (!dir_file.query_exists()) {

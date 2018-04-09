@@ -43,8 +43,8 @@ namespace Widgets {
         public Gdk.RGBA background_color = Gdk.RGBA();
         public Gdk.RGBA foreground_color = Gdk.RGBA();
         public Gtk.Scrollbar scrollbar;
-        public Menu.Menu menu;
         public Terminal term;
+        public Menu.Menu? menu;
         public WorkspaceManager workspace_manager;
         public bool child_has_exit = false;
         public bool has_print_exit_notify = false;
@@ -66,7 +66,6 @@ namespace Widgets {
         public string? server_info;
         public uint launch_idle_id;
         public uint? hide_scrollbar_timeout_source_id = null;
-
         public static string USERCHARS = "-[:alnum:]";
         public static string USERCHARS_CLASS = "[" + USERCHARS + "]";
         public static string PASSCHARS_CLASS = "[-[:alnum:]\\Q,?;.:/!%$^*&~\"#'\\E]";
@@ -326,7 +325,14 @@ namespace Widgets {
             return in_remote_server;
         }
 
+        private void create_menu() {
+            menu = new Menu.Menu(((Widgets.ConfigWindow) get_toplevel()).is_light_theme());
+            menu.click_item.connect(handle_menu_item_click);
+            menu.destroy.connect(handle_menu_destroy);
+        }
+
         public void show_menu(int x, int y) {
+            create_menu();
             bool in_quake_window = this.get_toplevel().get_type().is_a(typeof(Widgets.QuakeWindow));
 
             // Set variable 'show_quake_menu' to true if terminal's window is quake window.
@@ -338,26 +344,24 @@ namespace Widgets {
 
             bool display_first_spliter = false;
 
-            var menu_content = new GLib.List<Menu.MenuItem>();
             if (term.get_has_selection()) {
-                menu_content.append(new Menu.MenuItem("copy", _("Copy")));
-
+                menu.append(new Menu.MenuItem("copy", _("Copy")));
                 display_first_spliter = true;
             } else if (uri_at_right_press != null) {
-                menu_content.append(new Menu.MenuItem("copy", _("Copy link")));
+                menu.append(new Menu.MenuItem("copy", _("Copy link")));
 
                 display_first_spliter = true;
             }
 
             if (clipboard_has_context()) {
-                menu_content.append(new Menu.MenuItem("paste", _("Paste")));
+                menu.append(new Menu.MenuItem("paste", _("Paste")));
 
                 display_first_spliter = true;
             }
             if (term.get_has_selection()) {
                 var selection_file = get_selection_file();
                 if (selection_file != null) {
-                    menu_content.append(new Menu.MenuItem("open", _("Open")));
+                    menu.append(new Menu.MenuItem("open", _("Open")));
                 }
 
                 display_first_spliter = true;
@@ -365,52 +369,51 @@ namespace Widgets {
             if (current_dir != "") {
 				var dir_file = GLib.File.new_for_path(current_dir);
 				if (dir_file.query_exists()) {
-					menu_content.append(new Menu.MenuItem("open_in_filemanager", _("Open in file manager")));
+					menu.append(new Menu.MenuItem("open_in_filemanager", _("Open in file manager")));
 				}
 				
 				display_first_spliter = true;
             }
 
             if (display_first_spliter) {
-                menu_content.append(new Menu.MenuItem("", ""));
+                menu.append(new Menu.MenuItem("", ""));
             }
-
-            menu_content.append(new Menu.MenuItem("horizontal_split", _("Horizontal split")));
-            menu_content.append(new Menu.MenuItem("vertical_split", _("Vertical split")));
-            menu_content.append(new Menu.MenuItem("close_window", _("Close window")));
+            menu.append(new Menu.MenuItem("horizontal_split", _("Horizontal split")));
+            menu.append(new Menu.MenuItem("vertical_split", _("Vertical split")));
+            menu.append(new Menu.MenuItem("close_window", _("Close window")));
             if (workspace_manager.focus_workspace.term_list.size > 1) {
-                menu_content.append(new Menu.MenuItem("close_other_windows", _("Close other windows")));
+                menu.append(new Menu.MenuItem("close_other_windows", _("Close other windows")));
             }
-            menu_content.append(new Menu.MenuItem("", ""));
+            menu.append(new Menu.MenuItem("", ""));
 
-            menu_content.append(new Menu.MenuItem("new_workspace", _("New workspace")));
-            menu_content.append(new Menu.MenuItem("", ""));
+            menu.append(new Menu.MenuItem("new_workspace", _("New workspace")));
+            menu.append(new Menu.MenuItem("", ""));
 
             if (!in_quake_window) {
                 var window = ((Widgets.Window) get_toplevel());
                 if (window.window_is_fullscreen()) {
-                    menu_content.append(new Menu.MenuItem("quit_fullscreen", _("Exit fullscreen")));
+                    menu.append(new Menu.MenuItem("quit_fullscreen", _("Exit fullscreen")));
                 } else {
-                    menu_content.append(new Menu.MenuItem("fullscreen", _("Fullscreen")));
+                    menu.append(new Menu.MenuItem("fullscreen", _("Fullscreen")));
                 }
             }
 
-            menu_content.append(new Menu.MenuItem("find", _("Find")));
-            menu_content.append(new Menu.MenuItem("", ""));
+            menu.append(new Menu.MenuItem("find", _("Find")));
+            menu.append(new Menu.MenuItem("", ""));
             if (term.get_has_selection()) {
-                Menu.MenuItem online_search  = new Menu.MenuItem("search", _("Search"));
+                menu.create_submenu("search", _("Search"));
 
-                online_search.add_submenu_item(new Menu.MenuItem("google", "Google"));
-                online_search.add_submenu_item(new Menu.MenuItem("bing", "Bing"));
+                menu.add_submenu_item("google", "Google");
+                menu.add_submenu_item("bing", "Bing");
 
                 string? lang = Environment.get_variable("LANG");
                 if (lang != null && lang == "zh_CN.UTF-8") {
-                    online_search.add_submenu_item(new Menu.MenuItem("baidu", "Baidu"));
+                    menu.add_submenu_item("baidu", "Baidu");
                 }
 
-                online_search.add_submenu_item(new Menu.MenuItem("github", "Github"));
-                online_search.add_submenu_item(new Menu.MenuItem("stackoverflow", "Stack Overflow"));
-                online_search.add_submenu_item(new Menu.MenuItem("duckduckgo", "DuckDuckGo"));
+                menu.add_submenu_item("github", "Github");
+                menu.add_submenu_item("stackoverflow", "Stack Overflow");
+                menu.add_submenu_item("duckduckgo", "DuckDuckGo");
 
                 var file = File.new_for_path(search_engine_config_file_path);
                 if (file.query_exists()) {
@@ -422,7 +425,7 @@ namespace Widgets {
                             string search_engine_api = search_engine_config_file.get_value(option, "api");
 
                             if (search_engine_name != "" && search_engine_api != "") {
-                                online_search.add_submenu_item(new Menu.MenuItem(option, search_engine_name));
+                                menu.add_submenu_item(option, search_engine_name);
                             }
                         }
                     } catch (Error e) {
@@ -431,30 +434,23 @@ namespace Widgets {
                         }
                     }
                 }
-
-                menu_content.append(online_search);
             }
-            menu_content.append(new Menu.MenuItem("", ""));
-            if (in_quake_window) {
-                menu_content.append(new Menu.MenuItem("switch_theme", _("Switch theme")));
-            }
-            menu_content.append(new Menu.MenuItem("rename_title", _("Rename title")));
-            menu_content.append(new Menu.MenuItem("encoding", _("Encoding")));
-            menu_content.append(new Menu.MenuItem("custom_commands", _("Custom commands")));
-            menu_content.append(new Menu.MenuItem("remote_manage", _("Remote management")));
+            menu.append(new Menu.MenuItem("", ""));
+            menu.append(new Menu.MenuItem("switch_theme", _("Switch theme")));
+            menu.append(new Menu.MenuItem("rename_title", _("Rename title")));
+            menu.append(new Menu.MenuItem("encoding", _("Encoding")));
+            menu.append(new Menu.MenuItem("custom_commands", _("Custom commands")));
+            menu.append(new Menu.MenuItem("remote_manage", _("Remote management")));
             if (is_in_remote_server()) {
-                menu_content.append(new Menu.MenuItem("", ""));
-                menu_content.append(new Menu.MenuItem("upload_file", _("Upload file")));
-                menu_content.append(new Menu.MenuItem("download_file", _("Download file")));
+                menu.append(new Menu.MenuItem("", ""));
+                menu.append(new Menu.MenuItem("upload_file", _("Upload file")));
+                menu.append(new Menu.MenuItem("download_file", _("Download file")));
             }
 
-            menu_content.append(new Menu.MenuItem("", ""));
-            menu_content.append(new Menu.MenuItem("preference", _("Settings")));
+            menu.append(new Menu.MenuItem("", ""));
+            menu.append(new Menu.MenuItem("preference", _("Settings")));
 
-            menu = new Menu.Menu(x, y, menu_content);
-            menu.click_item.connect(handle_menu_item_click);
-            menu.destroy.connect(handle_menu_destroy);
-
+            menu.show_menu(x, y);
         }
 
         public void handle_menu_item_click(string item_id) {

@@ -52,7 +52,7 @@ public class Constant {
     public static int THEME_BUTTON_WIDTH = 190;
     public static int THEME_SLIDER_WIDTH = 230;
     public static int TITLEBAR_HEIGHT = 39;
-    public static int WINDOW_BUTTON_WIDHT = 27;
+    public static int WINDOW_BUTTON_WIDTH = 27;
     public static int EXIT_CODE_BAD_SMABA = 139;
     public static int EXIT_CODE_NORMAL = 0;
 }                         

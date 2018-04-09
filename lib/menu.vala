@@ -20,6 +20,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+using Gtk;
+using Gdk;
 
 namespace Menu {
     [DBus (name = "com.deepin.menu.Manager")]
@@ -53,11 +55,18 @@ namespace Menu {
 
 	public class Menu : Object {
 		MenuInterface menu_interface;
+		public List<MenuItem> menu_content;
+		public MenuItem? search_submenu;
+
+		public bool config_theme_is_light = false;
+		public bool is_gtk_menu = false;
+		public Gtk.Menu? gtk_menu;
+		public Gtk.Menu? gtk_search_submenu;
 
 		public signal void click_item(string item_id);
 		public signal void destroy();
 
-		public Menu(int menu_x, int menu_y, List<MenuItem> menu_content) {
+		public Menu(bool light_theme) {
 			try {
 			    MenuManagerInterface menu_manager_interface = Bus.get_proxy_sync(BusType.SESSION, "com.deepin.menu", "/com/deepin/menu");
 			    string menu_object_path = menu_manager_interface.RegisterMenu();
@@ -69,14 +78,96 @@ namespace Menu {
 				menu_interface.MenuUnregistered.connect(() => {
 						destroy();
 					});
-			} catch (IOError e) {
+			} catch (Error e) {
 				stderr.printf ("%s\n", e.message);
+				is_gtk_menu = true;
+				create_gtk_menu();
 			}
 
-			show_menu(menu_x, menu_y, menu_content);
+			config_theme_is_light = light_theme;
+			menu_content = new List<MenuItem>();
 		}
 
-	    public void show_menu(int x, int y, List<MenuItem> menu_content) {
+		public void create_gtk_menu() {
+			Gdk.Screen screen = Gdk.Screen.get_default();
+            CssProvider provider = new Gtk.CssProvider();
+            try {
+                provider.load_from_data(Utils.get_menu_css());
+            } catch (GLib.Error e) {
+                    warning("Something bad happened with CSS load %s", e.message);
+            }
+            Gtk.StyleContext.add_provider_for_screen(screen,provider,Gtk.STYLE_PROVIDER_PRIORITY_USER);
+            gtk_menu = new Gtk.Menu();
+            gtk_menu.get_style_context().add_class("gtk_menu");
+            gtk_menu.destroy.connect(handle_gtk_menu_destroy);
+		}
+
+		public void create_submenu(string item_id, string item_text) {
+            if (is_gtk_menu) {
+                gtk_search_submenu = new Gtk.Menu();
+                var item = new Gtk.MenuItem.with_label(item_text);
+                if (!config_theme_is_light)
+                    item.get_style_context().add_class("gtk_menu_item");
+                else
+                    item.get_style_context().add_class("gtk_menu_item_light");
+
+                item.activate.connect(() => {
+                    click_item(item_id);
+                });
+                item.set_submenu(gtk_search_submenu);
+                gtk_menu.append(item);
+            } else {
+                search_submenu = new MenuItem(item_id, item_text);
+                append(search_submenu);
+            }
+        }
+
+        public void add_submenu_item(string item_id, string item_text) {
+            if (is_gtk_menu) {
+                var item = new Gtk.MenuItem.with_label(item_text);
+                if(item_text == "") {
+                    item = new Gtk.SeparatorMenuItem();
+                }
+                if (!config_theme_is_light) 
+                    item.get_style_context().add_class("gtk_menu_item");
+                else 
+                    item.get_style_context().add_class("gtk_menu_item_light");
+
+                item.activate.connect(() => { 
+                    click_item(item_id); 
+                });
+                gtk_search_submenu.add(item);
+            } else {
+                search_submenu.add_submenu_item(new MenuItem(item_id, item_text));
+            }
+        }
+
+		public void append(MenuItem menu_item) {
+			if (is_gtk_menu) {
+				var item = new Gtk.MenuItem.with_label(menu_item.menu_item_text);
+                if(menu_item.menu_item_text == "") {
+                    item = new Gtk.SeparatorMenuItem();
+                }
+                if (!config_theme_is_light) 
+                    item.get_style_context().add_class("gtk_menu_item");
+                else 
+                    item.get_style_context().add_class("gtk_menu_item_light");
+
+                item.activate.connect(() => { 
+                    click_item(menu_item.menu_item_id); 
+                });
+                gtk_menu.append(item);
+			} else {
+				menu_content.append(menu_item);
+			}
+		}
+
+	    public void show_menu(int x, int y) {
+	    	if (is_gtk_menu) {
+	    		show_gtk_menu(x, y);
+	    		return;
+	    	}
+
 			// since GTK only supports integral scaling yet DDE supports fractional scaling,
 			// the scale on both sides may not be the same, so we need to negtiate here.
 			var scale = Utils.get_default_monitor_scale();
@@ -116,6 +207,15 @@ namespace Menu {
 	    	} catch (IOError e) {
 	    		stderr.printf ("%s\n", e.message);
 	    	}
+	    }
+
+	    public void show_gtk_menu(int x, int y) {
+	    	gtk_menu.show_all();
+	    	Gtk.Allocation menu_rect = Gtk.Allocation();
+	    	menu_rect.x = x;
+	    	menu_rect.y = y;
+	    	gtk_menu.popup_at_rect (Gdk.Screen.get_default().get_root_window(), menu_rect, Gravity.NORTH_WEST, Gravity.NORTH_WEST, null);
+            gtk_menu = null;
 	    }
 
 	    public string get_items_node(List<MenuItem> menu_content) {
@@ -194,5 +294,10 @@ namespace Menu {
 
 	        return builder.get_root();
 	    }
+
+	    public void handle_gtk_menu_destroy() {
+        	search_submenu = null;
+        	gtk_search_submenu = null;
+		}
 	}
 }
