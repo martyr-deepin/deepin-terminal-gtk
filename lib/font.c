@@ -78,15 +78,24 @@ gchar** list_mono_or_dot_fonts(gint* num, int* result_length) {
         /*       FcPatternFormat(fs->fonts[j], (FcChar8*)"%{spacing}"), */
         /*       FcPatternFormat(fs->fonts[j], (FcChar8*)"%{charset}") */
         /*       ); */
-        
+
+	char *font_family = (char*) FcPatternFormat(fs->fonts[j], (FcChar8*)"%{family}");
+	char *comma = NULL;
+
+	// split with ',' and using last one
+	while ((comma = strchr(font_family, ',')) != NULL)
+		font_family = comma + 1;
+
         /* spacing 100 is mono font, spacing 110 is dot font */
 	    if (strcmp((char*) FcPatternFormat(fs->fonts[j], (FcChar8*)"%{spacing}"), "100") == 0 
             || strcmp((char*) FcPatternFormat(fs->fonts[j], (FcChar8*)"%{spacing}"), "110") == 0
-            || strcmp((char*) FcPatternFormat(fs->fonts[j], (FcChar8*)"%{family}"), "YaHei Consolas Hybrid") == 0
-            || strcmp((char*) FcPatternFormat(fs->fonts[j], (FcChar8*)"%{family}"), "mononoki") == 0
-            || strcmp((char*) FcPatternFormat(fs->fonts[j], (FcChar8*)"%{family}"), "Roboto Mono") == 0
-            || strcmp((char*) FcPatternFormat(fs->fonts[j], (FcChar8*)"%{family}"), "Oxygen Mono") == 0
-            || strcmp((char*) FcPatternFormat(fs->fonts[j], (FcChar8*)"%{family}"), "Monaco") == 0
+            || strcmp(font_family, "WenQuanYi Micro Hei Mono") == 0
+            || strcmp(font_family, "WenQuanYi Zen Hei Mono") == 0
+            || strcmp(font_family, "YaHei Consolas Hybrid") == 0
+            || strcmp(font_family, "mononoki") == 0
+            || strcmp(font_family, "Roboto Mono") == 0
+            || strcmp(font_family, "Oxygen Mono") == 0
+            || strcmp(font_family, "Monaco") == 0
             ) {
 		    /* Realloc was realloc(fonts, 0), and you have to take space for <char *> */
 		    fonts = realloc(fonts, (count + 1) * sizeof(gchar*));
@@ -104,7 +113,7 @@ gchar** list_mono_or_dot_fonts(gint* num, int* result_length) {
 			free(charset);
 		  
 			/* Got font name */
-			gchar* font = (gchar*) FcPatternFormat(fs->fonts[j], (FcChar8*)"%{family}");
+			gchar* font = g_strdup(font_family);
 			
 			/* Need space for store font */
 			fonts[count] = malloc((strlen(font) + 1) * sizeof(gchar));
