@@ -3,6 +3,28 @@ This is default terminal emulation application for Deepin
 
 ## [Unreleased]
 
+## [3.0.0] - 2018-05-14
+* Add customize search engine to right menu.
+* Like XShell, if user set config option 'copy_on_select' to true, terminal will copy select text to system clipboard when text is selected.
+* Add github, stackoverflow, duckduckgo in default search engine.
+* Add git ssh link support: mouse hover git link to copy it.
+* Open current directory in file manager.
+* Slow down the opacity adjust speed.
+* Use DBus instead dman to start Deepin Manual, Deepin Manual just will run in flatpak runtime in the future.
+* Search improvements, allow to search with enter key and previous/next buttons even after initial search panel opening, improved by avently, thanks.
+* Search improvements, disabled live search, improved by avently, thanks.
+* Refactory CMakeLists.txt, improved by avently, thanks.
+* Add WenQuanYi in mono font whitelist, WenQuanYi's attribute is incomplete, not include spacing attribue.
+* Just reset terminal when exit code match samba error code, other non-zero code (such as Ctrl + C etc) don't trigger reset terminal.
+* Refactory code: move prevent event code to Widgets.SpinButton.
+* Prevent scrolling event of Gtk.ComboBoxText and Gtk.SpinButton.
+* Add empathy theme.
+* Fixed spell of README.md, thanks wtz.
+* Add miss dependences in README.md.
+* Add advanced options in README.md.
+* Update copyright year.
+* Update translations.
+
 ## [2.9.2] - 2017-12-01
 - Fixed blur background not work for 4k screen.
 
