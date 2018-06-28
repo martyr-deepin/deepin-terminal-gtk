@@ -179,6 +179,5 @@ INSTALL (FILES hicolor/${target}.svg DESTINATION share/icons/hicolor/scalable/ap
 INSTALL (DIRECTORY image DESTINATION share/${target} FILES_MATCHING PATTERN "*.png")
 INSTALL (DIRECTORY image DESTINATION share/${target} FILES_MATCHING PATTERN "*.svg")
 INSTALL (DIRECTORY theme DESTINATION share/${target} FILES_MATCHING PATTERN "*")
-INSTALL (DIRECTORY manual/common  manual/en_US  manual/zh_CN DESTINATION share/dman/${target})
 INSTALL (FILES style.css DESTINATION share/${target})
 INSTALL (FILES ${target}.desktop DESTINATION share/applications)
