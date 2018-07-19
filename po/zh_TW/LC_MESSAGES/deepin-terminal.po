@@ -276,7 +276,7 @@ msgstr "結束全螢幕"
 
 #: ../widget/terminal.vala:398
 msgid "Find"
-msgstr ""
+msgstr "搜尋"
 
 #: ../widget/preference.vala:291
 msgid "Font size:"
@@ -392,7 +392,7 @@ msgstr "開啟"
 
 #: ../widget/terminal.vala:368
 msgid "Open in file manager"
-msgstr ""
+msgstr "以檔案管理程式開啟"
 
 #: ../widget/preference.vala:304
 msgid "Open:"

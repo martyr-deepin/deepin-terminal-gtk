@@ -277,7 +277,7 @@ msgstr "Esci dalla modalità fullscreen"
 
 #: ../widget/terminal.vala:398
 msgid "Find"
-msgstr ""
+msgstr "Trova"
 
 #: ../widget/preference.vala:291
 msgid "Font size:"
@@ -393,7 +393,7 @@ msgstr "Apri"
 
 #: ../widget/terminal.vala:368
 msgid "Open in file manager"
-msgstr ""
+msgstr "Apri nel file manager"
 
 #: ../widget/preference.vala:304
 msgid "Open:"

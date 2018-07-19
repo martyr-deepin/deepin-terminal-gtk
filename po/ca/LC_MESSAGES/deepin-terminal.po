@@ -276,7 +276,7 @@ msgstr "Surt de la pantalla completa"
 
 #: ../widget/terminal.vala:398
 msgid "Find"
-msgstr ""
+msgstr "Troba"
 
 #: ../widget/preference.vala:291
 msgid "Font size:"
@@ -392,7 +392,7 @@ msgstr "Obre"
 
 #: ../widget/terminal.vala:368
 msgid "Open in file manager"
-msgstr ""
+msgstr "Obre al gestor de fitxers"
 
 #: ../widget/preference.vala:304
 msgid "Open:"

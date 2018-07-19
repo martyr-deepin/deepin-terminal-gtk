@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-08 12:45+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Mehrab Poladov <many.mous.hacking@gmail.com>, 2018\n"
+"Last-Translator: Elşad <elsad.ipaf.92@mail.ru>, 2018\n"
 "Language-Team: Azerbaijani (https://www.transifex.com/linuxdeepin/teams/3976/az/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -428,7 +428,7 @@ msgstr ""
 
 #: ../widget/shortcut_entry.vala:147
 msgid "Please enter a new shortcut"
-msgstr ""
+msgstr "Zəhmət olmasa yeni qısayolu daxil edin"
 
 #: ../widget/remote_server_dialog.vala:199
 msgid "Port:"
@@ -477,7 +477,7 @@ msgstr ""
 #: ../widget/remote_server_dialog.vala:232 ../widget/command_dialog.vala:158
 #: ../widget/command_dialog.vala:171
 msgid "Required"
-msgstr ""
+msgstr "Tələb olunur"
 
 #: ../widget/preference.vala:413
 msgid "Restore Defaults"
@@ -596,7 +596,7 @@ msgstr "Tənzimləmələr"
 #: ../widget/preference_slidebar.vala:65 ../widget/preference.vala:293
 #: ../widget/command_dialog.vala:83
 msgid "Shortcuts"
-msgstr ""
+msgstr "Qısayollar"
 
 #: ../widget/command_dialog.vala:180
 msgid "Shortcuts:"
