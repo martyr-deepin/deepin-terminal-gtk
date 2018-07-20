@@ -1,0 +1,8 @@
+[clog]
+repository = "https://github.com/linuxdeepin/deepin-terminal"
+from-latest-tag = true
+
+changelog = "CHANGELOG.md"
+
+[sections]
+Others = ["chore"]

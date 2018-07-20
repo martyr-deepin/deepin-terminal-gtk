@@ -1,3 +1,14 @@
+<a name="2.9.3"></a>
+### 2.9.3 (2018-07-20)
+
+
+#### Bug Fixes
+
+*   Adapt lintian ([748a876a](https://github.com/linuxdeepin/deepin-terminal/commit/748a876a40725005ce8e415793b343d04de2fc03))
+*   add TEST_BUILD configure condition ([7d757089](https://github.com/linuxdeepin/deepin-terminal/commit/7d75708997ea45f6424d80566edd67812c7fed05))
+
+
+
 # Change Log
 This is default terminal emulation application for Deepin
 
