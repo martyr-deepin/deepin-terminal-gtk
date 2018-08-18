@@ -734,16 +734,16 @@ namespace Widgets {
 
         public void focus_term() {
             term.grab_focus();
-            update_terminal_title(false);
+            update_terminal_title();
         }
 
-        public void update_terminal_title(bool update_when_title_change=true) {
+        public void update_terminal_title() {
             // Clean remote_server_title if logout from remote server.
-            int test_foreground_pid;
-            var test_have_foreground_pid = try_get_foreground_pid(out test_foreground_pid);
+            int foreground_pid;
+            var has_foreground_process = try_get_foreground_pid(out foreground_pid);
 
-            if (test_have_foreground_pid) {
-                var command = Utils.get_process_cmdline(test_foreground_pid);
+            if (has_foreground_process) {
+                var command = Utils.get_process_cmdline(foreground_pid);
                 if (command.index_of("expect -f /tmp/deepin-terminal-") == 0 && !login_remote_server) {
                     login_remote_server = true;
                 }
@@ -755,61 +755,33 @@ namespace Widgets {
                 }
             }
 
+            string title;
             // Always use customize title if customize_title is not null.
             if (customize_title != null) {
-                change_title(customize_title);
-                current_title = customize_title;
+                title = customize_title;
             }
             // Use remote server name if user not customize name and when remote_server_title is not null.
             else if (remote_server_title != null) {
-                change_title(remote_server_title);
-                current_title = remote_server_title;
+                title = remote_server_title;
             }
-            // Otherwise change title with current directory.
             else {
-                int foreground_pid;
-                var has_foreground_process = try_get_foreground_pid(out foreground_pid);
-
-                string title;
-                if (has_foreground_process) {
-                    string? title_string = term.get_window_title();
-                    if (title_string != null) {
-                        var title_infos = title_string.split(" ");
-                        if (title_infos.length >= 2) {
-                            title = "%s %s".printf(title_infos[0], GLib.Path.get_basename(title_infos[1]));
-                        } else {
-                            title = title_string;
-                        }
+                string? vte_window_title = term.get_window_title();
+                // Use vte window title if vte_window_title is not null.
+                if (vte_window_title != null) {
+                    title = vte_window_title;
+                } else {
+                    string? dir_basename = GLib.Path.get_basename(get_cwd());
+                    if (dir_basename != null) {
+                        title = dir_basename;
+                        current_title = dir_basename;
                     } else {
-                        // NOTE:
-                        // Set terminal title with 'deepin' if some shell get_window_title return null.
-                        // If you install bash-it tools will cause bash return null title to make deepin-terminal crash.
                         title = _("deepin");
                     }
-                } else {
-                    title = get_cwd();
-                }
-
-                Utils.write_log("change title to: %s\n".printf(title));
-
-                if (title.length > 0) {
-                    // Change title.
-                    if (has_foreground_process) {
-                        change_title(title);
-                        current_title = title;
-                    } else {
-                        if (update_when_title_change && current_dir != title) {
-                            current_dir = title;
-
-                            change_title(GLib.Path.get_basename(title));
-                            current_title = GLib.Path.get_basename(title);
-                        } else {
-                            change_title(GLib.Path.get_basename(title));
-                            current_title = GLib.Path.get_basename(title);
-                        }
-                    }
                 }
             }
+            // Change the title.
+            change_title(title);
+            current_title = title;
         }
 
         public string get_cwd() {
@@ -1215,7 +1187,7 @@ namespace Widgets {
                                         null /* cancellable */);
 
                         GLib.Timeout.add(200, () => {
-                                update_terminal_title(false);
+                                update_terminal_title();
 
                                 return false;
                             });
