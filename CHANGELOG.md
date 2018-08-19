@@ -1,3 +1,7 @@
+## [3.0.2] - 2018-08-19
+* generate version information from git
+* fix: support set tab title use OSC escape sequence
+
 <a name="3.0.1"></a>
 ### 3.0.1 (2018-07-20)
 
