@@ -1,3 +1,6 @@
+## [3.0.3] - 2018-08-19
+* feat: support customized version string
+
 ## [3.0.2] - 2018-08-19
 * generate version information from git
 * fix: support set tab title use OSC escape sequence

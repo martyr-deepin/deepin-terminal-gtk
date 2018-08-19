@@ -27,14 +27,16 @@ pkg_check_modules(GLIB REQUIRED glib-2.0)
 
 OPTION(TEST_BUILD "Build with native testing" ON)
 
+if (NOT DEFINED VERSION)
 find_package(Git)
 message("generate version from git")
 execute_process(COMMAND ${GIT_EXECUTABLE}
     describe --abbrev=6 --dirty --tags
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-    OUTPUT_VARIABLE GIT_REPO_VERSION
+    OUTPUT_VARIABLE VERSION
     OUTPUT_STRIP_TRAILING_WHITESPACE
 )
+endif()
 configure_file(
     ${CMAKE_CURRENT_SOURCE_DIR}/lib/constant.vala.in
     ${CMAKE_CURRENT_SOURCE_DIR}/lib/constant.vala
