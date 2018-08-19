@@ -1154,7 +1154,7 @@ namespace Widgets {
                 }
             }
 
-            // Init spawn/pty/argv arugment with option 'run_as_login_shell'.
+            // Init spawn/pty/argv argument with option 'run_as_login_shell'.
             PtyFlags pty_flags = PtyFlags.DEFAULT;
             GLib.SpawnFlags spawn_flags =  0;
 

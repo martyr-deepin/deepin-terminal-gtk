@@ -462,7 +462,7 @@ namespace Widgets {
                         Draw.draw_rectangle(cr, x + 2, y + height - 2, width - 4, 1);
                         // Left.
                         Draw.draw_rectangle(cr, x + 1, y + Constant.TITLEBAR_HEIGHT + 2, 1, height - Constant.TITLEBAR_HEIGHT - 4);
-                        // Rigt..
+                        // Right..
                         Draw.draw_rectangle(cr, x + width - 2, y + Constant.TITLEBAR_HEIGHT + 2, 1, height - Constant.TITLEBAR_HEIGHT - 4);
                         cr.restore();
                     } else {

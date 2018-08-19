@@ -35,7 +35,7 @@ find_package(Vala REQUIRED)
 #
 # The initial argument is the version to check for
 # 
-# It may be followed by a optional parameter to specifiy a version range. The
+# It may be followed by a optional parameter to specify a version range. The
 # following options are valid:
 # 
 # EXACT

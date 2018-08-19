@@ -78,7 +78,7 @@ namespace Keymap {
             var keyname = Gdk.keyval_name(keyval);
             
             // Gdk.keyval_name will return null when user's hardware got KEY_UNKNOWN from hardware.
-            // So, we need return emptry string to protect program won't crash later.
+            // So, we need return empty string to protect program won't crash later.
             if (keyname == null) {
                 return "";
             }

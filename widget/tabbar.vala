@@ -391,7 +391,7 @@ namespace Widgets {
             }
             
             if (tab_width + add_button_width > alloc.width) {
-                // FIXEME: I know 0.97 is magic number, this number avoid add_button render out of area of tabbar.
+                // FIXME: I know 0.97 is magic number, this number avoid add_button render out of area of tabbar.
                 // Welcome to fix this.
                 draw_scale = (double) alloc.width / (tab_width + add_button_width) * 0.97;
             } else {

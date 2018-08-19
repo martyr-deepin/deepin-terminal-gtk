@@ -23,6 +23,6 @@
 
 /*
  * This empty file used to compile deepin-terminal/lib/font.c .
- * Don't delete thise file.
+ * Don't delete this file.
  * 
  */
