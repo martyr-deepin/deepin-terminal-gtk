@@ -195,7 +195,7 @@ public class Application : Object {
 		}
 
         if (version) {
-			stdout.printf("Deepin Terminal %.01f\n".printf(Constant.VERSION));
+			stdout.printf("Deepin Terminal %s\n".printf(Constant.VERSION));
             stdout.printf ("Copyright 2011-2017 Deepin, Inc.\n");
         } else {
             Gtk.init(ref args);

@@ -4,4 +4,5 @@ main
 build/
 3rdparty/
 project_path.c
+lib/constant.vala
 .vscode/
