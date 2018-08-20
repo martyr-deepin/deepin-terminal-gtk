@@ -182,6 +182,11 @@ namespace Widgets {
                         focus_term();
 
                         uri_at_right_press = term.match_check_event(event, null);
+
+                        if (menu != null) {
+                            menu.unregister();
+                            handle_menu_destroy();
+                        }
                         show_menu((int) event.x_root, (int) event.y_root);
 
                         return false;

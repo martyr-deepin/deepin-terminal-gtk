@@ -25,6 +25,7 @@ namespace Menu {
     [DBus (name = "com.deepin.menu.Manager")]
     interface MenuManagerInterface : Object {
         public abstract string RegisterMenu() throws IOError;
+        public abstract void UnregisterMenu(string object_path) throws IOError;
     }
 
     [DBus (name = "com.deepin.menu.Menu")]
@@ -52,15 +53,17 @@ namespace Menu {
 	}
 
 	public class Menu : Object {
+		MenuManagerInterface menu_manager_interface;
 		MenuInterface menu_interface;
+		string menu_object_path;
 
 		public signal void click_item(string item_id);
 		public signal void destroy();
 
 		public Menu(int menu_x, int menu_y, List<MenuItem> menu_content) {
 			try {
-			    MenuManagerInterface menu_manager_interface = Bus.get_proxy_sync(BusType.SESSION, "com.deepin.menu", "/com/deepin/menu");
-			    string menu_object_path = menu_manager_interface.RegisterMenu();
+			    menu_manager_interface = Bus.get_proxy_sync(BusType.SESSION, "com.deepin.menu", "/com/deepin/menu");
+			    menu_object_path = menu_manager_interface.RegisterMenu();
 
 				menu_interface = Bus.get_proxy_sync(BusType.SESSION, "com.deepin.menu", menu_object_path);
 			    menu_interface.ItemInvoked.connect((item_id, checked) => {
@@ -74,6 +77,14 @@ namespace Menu {
 			}
 
 			show_menu(menu_x, menu_y, menu_content);
+		}
+
+		public void unregister(){
+			try {
+				menu_manager_interface.UnregisterMenu(menu_object_path);
+			} catch (IOError e) {
+				stderr.printf ("%s\n", e.message);
+			}
 		}
 
 	    public void show_menu(int x, int y, List<MenuItem> menu_content) {
