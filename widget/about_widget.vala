@@ -102,7 +102,7 @@ namespace Widgets {
 
             // Draw version.
             cr.set_source_rgba(0.4, 0.4, 0.4, 1);
-            Draw.draw_text(cr, "%s V%s".printf(_("Version:"), Constant.VERSION), 0, version_y, rect.width, version_height, version_size, Pango.Alignment.CENTER, "top");
+            Draw.draw_text(cr, "%s %s".printf(_("Version:"), Constant.VERSION), 0, version_y, rect.width, version_height, version_size, Pango.Alignment.CENTER, "top");
 
             // Draw logo.
             Draw.draw_surface(cr, logo_surface, (rect.width - logo_surface.get_width() / get_scale_factor()) / 2, logo_y);
