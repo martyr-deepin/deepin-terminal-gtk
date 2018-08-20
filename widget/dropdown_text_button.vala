@@ -19,19 +19,19 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */ 
+ */
 
 using Gtk;
 using Widgets;
 
 namespace Widgets {
-	public class DropdownTextButton : Gtk.ComboBoxText {
-		public DropdownTextButton() {
-			scroll_event.connect(on_scroll);
-		}
-		
-		public bool on_scroll(Gtk.Widget widget, Gdk.EventScroll scroll_event) {
-			return true;
-		}
-	}
+    public class DropdownTextButton : Gtk.ComboBoxText {
+        public DropdownTextButton() {
+            scroll_event.connect(on_scroll);
+        }
+
+        public bool on_scroll(Gtk.Widget widget, Gdk.EventScroll scroll_event) {
+            return true;
+        }
+    }
 }

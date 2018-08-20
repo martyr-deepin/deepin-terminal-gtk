@@ -166,25 +166,25 @@ namespace Widgets {
         }
 
         public void login_server(string server_info) {
-			// Hide remote panel first.
-			workspace.hide_remote_panel();
-			if (focus_widget != null) {
-				focus_widget.grab_focus();
-			}
+            // Hide remote panel first.
+            workspace.hide_remote_panel();
+            if (focus_widget != null) {
+                focus_widget.grab_focus();
+            }
 
-			// New workspace if focus terminal has foreground process.
-			Term focus_term = workspace_manager.focus_workspace.get_focus_term(workspace_manager.focus_workspace);
-			if (focus_term.has_foreground_process()) {
-				workspace_manager.new_workspace_with_current_directory(true);
-			}
+            // New workspace if focus terminal has foreground process.
+            Term focus_term = workspace_manager.focus_workspace.get_focus_term(workspace_manager.focus_workspace);
+            if (focus_term.has_foreground_process()) {
+                workspace_manager.new_workspace_with_current_directory(true);
+            }
 
-			// Login server in timeout callback, otherwise login action can't execute.
-			GLib.Timeout.add(10, () => {
-					Term term = workspace_manager.focus_workspace.get_focus_term(workspace_manager.focus_workspace);
-					term.login_server(server_info);
+            // Login server in timeout callback, otherwise login action can't execute.
+            GLib.Timeout.add(10, () => {
+                    Term term = workspace_manager.focus_workspace.get_focus_term(workspace_manager.focus_workspace);
+                    term.login_server(server_info);
 
-					return false;
-				});
+                    return false;
+                });
         }
 
         public void show_group_page(string group_name, Gtk.Widget start_widget, string directoin) {

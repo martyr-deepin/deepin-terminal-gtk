@@ -19,15 +19,15 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */ 
+ */
 
 using Gtk;
 using Widgets;
 
 namespace Widgets {
     public class CheckButton : Gtk.CheckButton {
-		public bool is_hover = false;
-		public bool is_press = false;
+        public bool is_hover = false;
+        public bool is_press = false;
         public Cairo.ImageSurface checked_hover_surface;
         public Cairo.ImageSurface checked_insensitive_surface;
         public Cairo.ImageSurface checked_normal_surface;
@@ -36,7 +36,7 @@ namespace Widgets {
         public Cairo.ImageSurface unchecked_insensitive_surface;
         public Cairo.ImageSurface unchecked_normal_surface;
         public Cairo.ImageSurface unchecked_press_surface;
-        
+
         public CheckButton() {
             checked_normal_surface = Utils.create_image_surface("checkbox_checked_normal.svg");
             checked_hover_surface = Utils.create_image_surface("checkbox_checked_hover.svg");
@@ -46,38 +46,38 @@ namespace Widgets {
             unchecked_hover_surface = Utils.create_image_surface("checkbox_unchecked_hover.svg");
             unchecked_press_surface = Utils.create_image_surface("checkbox_unchecked_press.svg");
             unchecked_insensitive_surface = Utils.create_image_surface("checkbox_unchecked_insensitive.svg");
-            
-            set_size_request(checked_normal_surface.get_width() / get_scale_factor(), 
+
+            set_size_request(checked_normal_surface.get_width() / get_scale_factor(),
                              checked_normal_surface.get_height() / get_scale_factor());
-            
+
             draw.connect(on_draw);
-			enter_notify_event.connect((w, e) => {
-					is_hover = true;
-					queue_draw();
-					
-					return false;
-				});
-			leave_notify_event.connect((w, e) => {
-					is_hover = false;
-					queue_draw();
-					
-					return false;
-				});
-			button_press_event.connect((w, e) => {
-					is_press = true;
-					queue_draw();
-					
-					return false;
-				});
-			button_release_event.connect((w, e) => {
-					is_hover = false;
-					is_press = false;
-					queue_draw();
-					
-					return false;
-				});
+            enter_notify_event.connect((w, e) => {
+                    is_hover = true;
+                    queue_draw();
+
+                    return false;
+                });
+            leave_notify_event.connect((w, e) => {
+                    is_hover = false;
+                    queue_draw();
+
+                    return false;
+                });
+            button_press_event.connect((w, e) => {
+                    is_press = true;
+                    queue_draw();
+
+                    return false;
+                });
+            button_release_event.connect((w, e) => {
+                    is_hover = false;
+                    is_press = false;
+                    queue_draw();
+
+                    return false;
+                });
         }
-        
+
         private bool on_draw(Gtk.Widget widget, Cairo.Context cr) {
             if (get_sensitive()) {
                 if (get_active()) {
@@ -104,7 +104,7 @@ namespace Widgets {
                     Draw.draw_surface(cr, unchecked_insensitive_surface);
                 }
             }
-            
+
             return true;
         }
     }

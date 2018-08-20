@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */ 
+ */
 
 using Gtk;
 using Widgets;
@@ -31,7 +31,7 @@ namespace Widgets {
         public AddButton(string button_name) {
             set_label("＋ %s".printf(button_name));
             set_size_request(-1, height);
-            
+
             realize.connect((w) => {
                     bool is_light_theme = ((Widgets.ConfigWindow) get_toplevel()).is_light_theme();
                     if (is_light_theme) {

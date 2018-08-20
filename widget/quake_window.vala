@@ -130,7 +130,7 @@ namespace Widgets {
                 });
 
             configure_event.connect((w) => {
-					// Update input shape.
+                    // Update input shape.
                     int width, height;
                     get_size(out width, out height);
 
@@ -146,9 +146,9 @@ namespace Widgets {
 
                     var shape = new Cairo.Region.rectangle(input_shape_rect);
                     get_window().input_shape_combine_region(shape, 0, 0);
-					
-					// Update blur area.
-					update_blur_status();
+
+                    // Update blur area.
+                    update_blur_status();
 
                     window_save_before_quit();
 
@@ -215,66 +215,66 @@ namespace Widgets {
 
             config.update.connect((w) => {
                     update_style();
-					
-					update_blur_status(true);
+
+                    update_blur_status(true);
                 });
         }
-		
-		public void update_blur_status(bool force_update=false) {
-			try {
-				int width, height;
-				get_size(out width, out height);
-				
-				if (width != resize_cache_width || height != resize_cache_height || force_update) {
-					resize_cache_width = width;
-					resize_cache_height = height;
 
-					unowned X.Display xdisplay = (get_window().get_display() as Gdk.X11.Display).get_xdisplay();
-					var xid = (int)((Gdk.X11.Window) get_window()).get_xid();
-					var atom_NET_WM_DEEPIN_BLUR_REGION_ROUNDED = xdisplay.intern_atom("_NET_WM_DEEPIN_BLUR_REGION_ROUNDED", false);
-						
-					var blur_background = config.config_file.get_boolean("advanced", "blur_background");
-					if (blur_background) {
-						Cairo.RectangleInt blur_rect;
-						get_window().get_frame_extents(out blur_rect);
+        public void update_blur_status(bool force_update=false) {
+            try {
+                int width, height;
+                get_size(out width, out height);
 
-						if (screen_monitor.is_composited()) {
-							blur_rect.x = 0;
-							blur_rect.y = 0;
-							blur_rect.width = width;
-							blur_rect.height = height - window_frame_box.margin_bottom;
-						}
-						
-						blur_rect.x = (int) (blur_rect.x * Utils.get_default_monitor_scale());
-						blur_rect.y = (int) (blur_rect.y * Utils.get_default_monitor_scale());
-						blur_rect.width = (int) (blur_rect.width * Utils.get_default_monitor_scale());
-						blur_rect.height = (int) (blur_rect.height * Utils.get_default_monitor_scale());
-					
-						ulong[] data = {(ulong) blur_rect.x, (ulong) blur_rect.y, (ulong) blur_rect.width, (ulong) blur_rect.height, 8, 8};
-						xdisplay.change_property(
-							xid,
-							atom_NET_WM_DEEPIN_BLUR_REGION_ROUNDED,
-							X.XA_CARDINAL,
-							32,
-							X.PropMode.Replace,
-							(uchar[])data,
-							((ulong[]) data).length);					
-					} else {
-						ulong[] data = {0, 0, 0, 0, 0, 0};
-						xdisplay.change_property(
-							xid,
-							atom_NET_WM_DEEPIN_BLUR_REGION_ROUNDED,
-							X.XA_CARDINAL,
-							32,
-							X.PropMode.Replace,
-							(uchar[])data,
-							((ulong[]) data).length);					
-					}
-				}
-			} catch (GLib.KeyFileError e) {
-				print("%s\n", e.message);
-			}
-		}
+                if (width != resize_cache_width || height != resize_cache_height || force_update) {
+                    resize_cache_width = width;
+                    resize_cache_height = height;
+
+                    unowned X.Display xdisplay = (get_window().get_display() as Gdk.X11.Display).get_xdisplay();
+                    var xid = (int)((Gdk.X11.Window) get_window()).get_xid();
+                    var atom_NET_WM_DEEPIN_BLUR_REGION_ROUNDED = xdisplay.intern_atom("_NET_WM_DEEPIN_BLUR_REGION_ROUNDED", false);
+
+                    var blur_background = config.config_file.get_boolean("advanced", "blur_background");
+                    if (blur_background) {
+                        Cairo.RectangleInt blur_rect;
+                        get_window().get_frame_extents(out blur_rect);
+
+                        if (screen_monitor.is_composited()) {
+                            blur_rect.x = 0;
+                            blur_rect.y = 0;
+                            blur_rect.width = width;
+                            blur_rect.height = height - window_frame_box.margin_bottom;
+                        }
+
+                        blur_rect.x = (int) (blur_rect.x * Utils.get_default_monitor_scale());
+                        blur_rect.y = (int) (blur_rect.y * Utils.get_default_monitor_scale());
+                        blur_rect.width = (int) (blur_rect.width * Utils.get_default_monitor_scale());
+                        blur_rect.height = (int) (blur_rect.height * Utils.get_default_monitor_scale());
+
+                        ulong[] data = {(ulong) blur_rect.x, (ulong) blur_rect.y, (ulong) blur_rect.width, (ulong) blur_rect.height, 8, 8};
+                        xdisplay.change_property(
+                            xid,
+                            atom_NET_WM_DEEPIN_BLUR_REGION_ROUNDED,
+                            X.XA_CARDINAL,
+                            32,
+                            X.PropMode.Replace,
+                            (uchar[])data,
+                            ((ulong[]) data).length);
+                    } else {
+                        ulong[] data = {0, 0, 0, 0, 0, 0};
+                        xdisplay.change_property(
+                            xid,
+                            atom_NET_WM_DEEPIN_BLUR_REGION_ROUNDED,
+                            X.XA_CARDINAL,
+                            32,
+                            X.PropMode.Replace,
+                            (uchar[])data,
+                            ((ulong[]) data).length);
+                    }
+                }
+            } catch (GLib.KeyFileError e) {
+                print("%s\n", e.message);
+            }
+        }
 
         public void add_widget(Gtk.Widget widget) {
             window_widget_box.pack_start(widget, true, true, 0);
@@ -401,10 +401,10 @@ namespace Widgets {
             int width = window_frame_rect.width;
             int height = window_frame_rect.height;
 
-			int titlebar_y = y;
-			if (get_scale_factor() > 1) {
-				titlebar_y += 1;
-			}
+            int titlebar_y = y;
+            if (get_scale_factor() > 1) {
+                titlebar_y += 1;
+            }
 
             draw_titlebar_underline(cr, x, titlebar_y + height - Constant.TITLEBAR_HEIGHT - 1, width, -1);
             draw_active_tab_underline(cr, x + active_tab_underline_x, titlebar_y + height - Constant.TITLEBAR_HEIGHT - 1);

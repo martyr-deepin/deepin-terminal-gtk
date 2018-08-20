@@ -22,10 +22,10 @@ namespace Animation {
     public class AnimateTimer : Object {
         public bool is_running { get { return timeout != 0; } }
         public double progress { get; private set; }
-        
+
         /* speed is in milliseconds */
         public int speed { get; set; }
-        
+
         public unowned EasingFunc easing_func { get; private set; }
 
         /* progress is from 0.0 to 1.0 */
@@ -45,10 +45,10 @@ namespace Animation {
            ease_out_quint.
         */
         /* speed is in milliseconds */
-        
+
         /* x and y are 0.0 to 1.0 */
         public delegate double EasingFunc (double x);
-        
+
         private TimeSpan extra_time = 0;
         private TimeSpan length = 0;
         private TimeSpan start_time = 0;
@@ -124,7 +124,7 @@ namespace Animation {
         public static double ease_in_quad (double x) {
           return Math.pow (x, 2);
           }
-    
+
         public static double ease_out_quad (double x) {
           return -1 * Math.pow (x - 1, 2) + 1;
           }
@@ -132,7 +132,7 @@ namespace Animation {
         public static double ease_in_quint (double x) {
           return Math.pow (x, 5);
           }
-    
+
         public static double ease_out_quint (double x) {
             return Math.pow (x - 1, 5) + 1;
         }

@@ -36,7 +36,7 @@ namespace Utils {
     interface DeepinManualInterface : Object {
         public abstract void ShowManual(string appName) throws IOError;
     }
-	
+
     public Gdk.RGBA hex_to_rgba(string hex_color, double alpha=1.0) {
         Gdk.RGBA rgba_color = Gdk.RGBA();
         rgba_color.parse(hex_color);
@@ -319,7 +319,7 @@ namespace Utils {
 #else
         return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S,  (string) project_path(), "lib", "deepin-terminal", "ssh_login.sh");
 #endif
-	}
+    }
 
     public string get_default_private_key_path() {
         return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, Environment.get_home_dir(), ".ssh", "id_rsa");
@@ -411,12 +411,12 @@ namespace Utils {
     }
 
     public void show_manual() {
-		try {
-			DeepinManualInterface deepin_manual_interface = Bus.get_proxy_sync(BusType.SESSION, "com.deepin.Manual.Open", "/com/deepin/Manual/Open");
-			deepin_manual_interface.ShowManual("deepin-terminal");
-		} catch (GLib.IOError e) {
-			print("show_manual: %s\n", e.message);
-		}
+        try {
+            DeepinManualInterface deepin_manual_interface = Bus.get_proxy_sync(BusType.SESSION, "com.deepin.Manual.Open", "/com/deepin/Manual/Open");
+            deepin_manual_interface.ShowManual("deepin-terminal");
+        } catch (GLib.IOError e) {
+            print("show_manual: %s\n", e.message);
+        }
     }
 
     public void write_log(string log) {
@@ -431,23 +431,23 @@ namespace Utils {
     }
 
     public Cairo.ImageSurface create_image_surface(string surface_path) {
-		try {
-			var scale = get_default_monitor_scale();
-			Rsvg.Handle r = new Rsvg.Handle.from_file(Utils.get_image_path(surface_path));
-			Rsvg.DimensionData d = r.get_dimensions();
-			Cairo.ImageSurface cs = new Cairo.ImageSurface(Cairo.Format.ARGB32, (int)(d.width * scale), (int)(d.height * scale));
-			cs.set_device_scale(scale, scale);
-			Cairo.Context c = new Cairo.Context(cs);
-			r.render_cairo(c);
-		
-			return cs;
-		} catch (GLib.Error e) {
-			print("create_image_surface: %s %s\n", surface_path, e.message);
-			
-			Cairo.ImageSurface cs = new Cairo.ImageSurface(Cairo.Format.ARGB32, 1, 1);
-			return cs;
-		}
-	}
+        try {
+            var scale = get_default_monitor_scale();
+            Rsvg.Handle r = new Rsvg.Handle.from_file(Utils.get_image_path(surface_path));
+            Rsvg.DimensionData d = r.get_dimensions();
+            Cairo.ImageSurface cs = new Cairo.ImageSurface(Cairo.Format.ARGB32, (int)(d.width * scale), (int)(d.height * scale));
+            cs.set_device_scale(scale, scale);
+            Cairo.Context c = new Cairo.Context(cs);
+            r.render_cairo(c);
+
+            return cs;
+        } catch (GLib.Error e) {
+            print("create_image_surface: %s %s\n", surface_path, e.message);
+
+            Cairo.ImageSurface cs = new Cairo.ImageSurface(Cairo.Format.ARGB32, 1, 1);
+            return cs;
+        }
+    }
 
     public int get_active_monitor(Gdk.Screen screen) {
         var window = screen.get_active_window();

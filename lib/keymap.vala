@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */ 
+ */
 
 using GLib;
 
@@ -30,7 +30,7 @@ namespace Keymap {
         } else {
             var key_modifiers = get_key_event_modifiers(key_event);
             var key_name = get_key_name(key_event.keyval);
-            
+
             if (key_modifiers.length == 0) {
                 return key_name;
             } else {
@@ -39,7 +39,7 @@ namespace Keymap {
                     name += modifier + " + ";
                 }
                 name += key_name;
-                        
+
                 return name;
             }
         }
@@ -63,20 +63,20 @@ namespace Keymap {
         if ((key_event.state & Gdk.ModifierType.MOD1_MASK) != 0) {
             modifiers += "Alt";
         }
-        
+
         if ((key_event.state & Gdk.ModifierType.SHIFT_MASK) != 0) {
             modifiers += "Shift";
         }
-        
+
         return modifiers;
     }
 
     public string get_key_name(uint keyval) {
         unichar key_unicode = Gdk.keyval_to_unicode(Gdk.keyval_to_lower(keyval));
-        
+
         if (key_unicode == 0) {  // function keys at top line of keyboard
             var keyname = Gdk.keyval_name(keyval);
-            
+
             // Gdk.keyval_name will return null when user's hardware got KEY_UNKNOWN from hardware.
             // So, we need return empty string to protect program won't crash later.
             if (keyname == null) {
@@ -96,8 +96,8 @@ namespace Keymap {
             } else if (key_unicode == 27) {
                 return "Esc";
             } else if (key_unicode == 8) {
-				return "Backspace";
-			} else if (key_unicode == 127) {
+                return "Backspace";
+            } else if (key_unicode == 127) {
                 return "Delete";
             } else if (key_unicode == 32) {
                 return "Space";
@@ -109,7 +109,7 @@ namespace Keymap {
 
     public bool has_ctrl_mask(Gdk.EventKey key_event) {
         string[] mask_list = {"Control_L", "Control_R"};
-        
+
         return get_key_name(key_event.keyval) in mask_list;
     }
 
@@ -118,8 +118,8 @@ namespace Keymap {
         return get_key_name(key_event.keyval) in mask_list;
     }
 
-	public bool is_no_key_press(Gdk.EventKey key_event) {
-		return (key_event.is_modifier == 0 && get_key_name(key_event.keyval) == get_keyevent_name(key_event) ||
-				key_event.is_modifier != 0 && get_key_event_modifiers(key_event).length == 1);
-	}
+    public bool is_no_key_press(Gdk.EventKey key_event) {
+        return (key_event.is_modifier == 0 && get_key_name(key_event.keyval) == get_keyevent_name(key_event) ||
+                key_event.is_modifier != 0 && get_key_event_modifiers(key_event).length == 1);
+    }
 }

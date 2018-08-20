@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */ 
+ */
 
 using Cairo;
 using Draw;
@@ -44,10 +44,10 @@ namespace Widgets {
                     get_style_context().add_class("dialog_noradius_button_%s_%s".printf(direction, type));
                 }
             }
-            
+
             enter_notify_event.connect((w) => {
                     grab_focus();
-                    
+
                     return false;
                 });
         }

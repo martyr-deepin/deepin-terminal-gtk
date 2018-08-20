@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */ 
+ */
 
 using Gtk;
 using Utils;
@@ -27,7 +27,7 @@ using Utils;
 namespace Widgets {
     public class EntryMenu : Object {
         public Menu.Menu menu;
-        
+
         public EntryMenu() {
             Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
         }
@@ -45,7 +45,7 @@ namespace Widgets {
                 menu_content.append(new Menu.MenuItem("", ""));
             }
             menu_content.append(new Menu.MenuItem("select_all", _("Select all")));
-                        
+
             menu = new Menu.Menu(x, y, menu_content);
             menu.click_item.connect((item_id) => {
                     handle_menu_item_click(entry, item_id);
@@ -71,15 +71,15 @@ namespace Widgets {
                     entry.select_region(0, -1);
                     break;
             }
-        }        
-            
+        }
+
         public bool is_selection(Gtk.Entry entry) {
             int start_pos, end_pos;
             entry.get_selection_bounds(out start_pos, out end_pos);
-                
+
             return start_pos != end_pos;
         }
-            
+
         public void handle_menu_destroy() {
             menu = null;
         }

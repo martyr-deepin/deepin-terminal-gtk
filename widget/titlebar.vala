@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */ 
+ */
 
 using Gtk;
 using Widgets;
@@ -28,19 +28,19 @@ namespace Widgets {
     public class Titlebar : Gtk.Overlay {
         public Widgets.WindowEventArea event_area;
         public WindowButton close_button;
-        
+
         public Titlebar() {
             close_button = Widgets.create_close_button();
-            
+
             Box box = new Box(Gtk.Orientation.HORIZONTAL, 0);
             box.pack_start(close_button, true, true, 0);
-            
+
             event_area = new Widgets.WindowEventArea(this);
             event_area.margin_end = Constant.CLOSE_BUTTON_WIDTH;
 
             add(box);
             add_overlay(event_area);
-            
+
             set_size_request(-1, Constant.TITLEBAR_HEIGHT);
         }
     }

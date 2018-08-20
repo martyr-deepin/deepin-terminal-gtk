@@ -84,8 +84,8 @@ namespace Widgets {
             "(?:callto:|h323:|sip:)" + USERCHARS_CLASS + "[" + USERCHARS + ".]*(?:" + PORT + "/[a-z0-9]+)?\\@" + HOST,
             "(?:mailto:)?" + USERCHARS_CLASS + "[" + USERCHARS + ".]*\\@" + HOSTCHARS_CLASS + "+\\." + HOST,
             "(?:news:|man:|info:)[[:alnum:]\\Q^_{|}~!\"#$%&'()*+,./;:=?`\\E]+",
-			"git\\@" + HOST + ":" + HOST + URLPATH,
-		};
+            "git\\@" + HOST + ":" + HOST + URLPATH,
+        };
 
         public KeyFile search_engine_config_file;
         public string search_engine_config_file_path = Utils.get_config_file_path("search-engine-config.conf");
@@ -368,12 +368,12 @@ namespace Widgets {
                 display_first_spliter = true;
             }
             if (current_dir != "") {
-				var dir_file = GLib.File.new_for_path(current_dir);
-				if (dir_file.query_exists()) {
-					menu_content.append(new Menu.MenuItem("open_in_filemanager", _("Open in file manager")));
-				}
-				
-				display_first_spliter = true;
+                var dir_file = GLib.File.new_for_path(current_dir);
+                if (dir_file.query_exists()) {
+                    menu_content.append(new Menu.MenuItem("open_in_filemanager", _("Open in file manager")));
+                }
+
+                display_first_spliter = true;
             }
 
             if (display_first_spliter) {
@@ -481,9 +481,9 @@ namespace Widgets {
                 case "open":
                     open_selection_file();
                     break;
-				case "open_in_filemanager":
-					open_current_dir_in_file_manager();
-					break;
+                case "open_in_filemanager":
+                    open_current_dir_in_file_manager();
+                    break;
                 case "fullscreen":
                     var window = ((Widgets.Window) get_toplevel());
                     window.toggle_fullscreen();
@@ -1434,14 +1434,14 @@ namespace Widgets {
         }
 
         public void open_current_dir_in_file_manager() {
-			try {
-				GLib.AppInfo appinfo = GLib.AppInfo.create_from_commandline("xdg-open '%s'".printf(current_dir), null, GLib.AppInfoCreateFlags.NONE);
-				appinfo.launch(null, null);
-			} catch (GLib.Error e) {
-				print("Terminal open_current_dir_in_file_manager: %s\n", e.message);
-			}
-		}
-		
+            try {
+                GLib.AppInfo appinfo = GLib.AppInfo.create_from_commandline("xdg-open '%s'".printf(current_dir), null, GLib.AppInfoCreateFlags.NONE);
+                appinfo.launch(null, null);
+            } catch (GLib.Error e) {
+                print("Terminal open_current_dir_in_file_manager: %s\n", e.message);
+            }
+        }
+
         public void login_server(string info) {
             // Record server info.
             server_info = info;

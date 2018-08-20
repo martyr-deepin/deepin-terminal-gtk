@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */ 
+ */
 
 namespace XUtils {
     public static int _NET_WM_MOVERESIZE_MOVE = 8;
@@ -88,9 +88,9 @@ namespace XUtils {
     public void send_message(int xid, long x, long y, int action, int button, int secret_value) {
         weak X.Display display = Gdk.X11.get_default_xdisplay();
         weak X.Window xrootwindow = display.root_window(0);
-            
+
         X.Event event = X.Event();
-    	    
+
         event.xclient.type = X.EventType.ClientMessage;
         event.xclient.message_type = Gdk.X11.get_xatom_by_name("_NET_WM_MOVERESIZE");
         event.xclient.display = display;
@@ -101,13 +101,13 @@ namespace XUtils {
         event.xclient.data.l[2] = action;
         event.xclient.data.l[3] = button;
         event.xclient.data.l[4] = secret_value;
-    	    
+
         display.send_event(
             xrootwindow,
             false,
             X.EventMask.SubstructureNotifyMask | X.EventMask.SubstructureRedirectMask,
             ref event);
-                                            
+
         display.flush();
     }
 }

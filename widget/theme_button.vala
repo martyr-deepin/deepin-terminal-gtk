@@ -92,17 +92,17 @@ namespace Widgets {
             Gtk.Allocation rect;
             widget.get_allocation(out rect);
 
-			cr.save();
-			// Clip round rectangle when DPI > 1, for perfect radius effect.
-			if (get_scale_factor() > 1) {
-				Draw.clip_rounded_rectangle(
-					cr,
-					background_padding,
-					background_padding,
-					rect.width - background_padding * 2,
-					rect.height - background_padding * 2,
-					button_radius / get_scale_factor() + 1);
-			}
+            cr.save();
+            // Clip round rectangle when DPI > 1, for perfect radius effect.
+            if (get_scale_factor() > 1) {
+                Draw.clip_rounded_rectangle(
+                    cr,
+                    background_padding,
+                    background_padding,
+                    rect.width - background_padding * 2,
+                    rect.height - background_padding * 2,
+                    button_radius / get_scale_factor() + 1);
+            }
             cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, background_color.alpha);
             Draw.fill_rounded_rectangle(
                 cr,
@@ -111,9 +111,9 @@ namespace Widgets {
                 rect.width - background_padding * 2,
                 rect.height - background_padding * 2,
                 button_radius / get_scale_factor());
-			cr.restore();
+            cr.restore();
 
-			cr.set_source_rgba(foreground_color.red, foreground_color.green, foreground_color.blue, foreground_color.alpha);
+            cr.set_source_rgba(foreground_color.red, foreground_color.green, foreground_color.blue, foreground_color.alpha);
             Draw.draw_text(cr, "deepin@linux > _", title_padding_x, title_padding_y, rect.width, rect.height, title_font_size, Pango.Alignment.LEFT, "top");
 
             cr.set_source_rgba(content_color.red, content_color.green, content_color.blue, content_color.alpha);

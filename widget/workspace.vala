@@ -95,7 +95,7 @@ namespace Widgets {
         }
 
         public Term new_term(bool first_term, string? work_directory) {
-			Term term = new Widgets.Term(first_term, work_directory, workspace_manager);
+            Term term = new Widgets.Term(first_term, work_directory, workspace_manager);
             term.change_title.connect((term, dir) => {
                     change_title(index, dir);
                 });
@@ -127,24 +127,24 @@ namespace Widgets {
         }
 
         public void reset_term(int exit_status) {
-			Term focus_term = get_focus_term(this);
+            Term focus_term = get_focus_term(this);
             string term_dir = focus_term.get_cwd();
-			
-			split_vertical();
-			close_term(focus_term);
+
+            split_vertical();
+            close_term(focus_term);
 
             GLib.Timeout.add(500, () => {
-					if (term_dir.length > 0) {
-						Term new_focus_term = get_focus_term(this);
-						string switch_command = "cd %s\n".printf(term_dir);
-						new_focus_term.term.feed_child(switch_command, switch_command.length);
-					}
+                    if (term_dir.length > 0) {
+                        Term new_focus_term = get_focus_term(this);
+                        string switch_command = "cd %s\n".printf(term_dir);
+                        new_focus_term.term.feed_child(switch_command, switch_command.length);
+                    }
 
-					return false;
-				});
-			
-			print("Reset terminal after got exit status: %i\n", exit_status);
-		}
+                    return false;
+                });
+
+            print("Reset terminal after got exit status: %i\n", exit_status);
+        }
 
         public bool has_active_term() {
             foreach (Term term in term_list) {
@@ -347,7 +347,7 @@ namespace Widgets {
 
                     return true;
                 });
-			
+
             Term term = new_term(false, focus_term.get_cwd());
             paned.pack1(focus_term, true, false);
             paned.pack2(term, true, false);

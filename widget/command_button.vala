@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */ 
+ */
 
 using Gtk;
 using Widgets;
@@ -28,10 +28,10 @@ namespace Widgets {
     public class CommandButton : Widgets.PanelButton {
         public signal void edit_command(string command_name);
         public signal void execute_command(string command_value);
-        
+
         public CommandButton(string name, string value, string shortcut) {
             base(name, shortcut, null, "command");
-            
+
             click_edit_button.connect((w) => {
                     edit_command(name);
                 });

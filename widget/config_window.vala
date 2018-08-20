@@ -46,12 +46,12 @@ namespace Widgets {
         public int reset_timeout_delay = 150;
         public int resize_cache_x = 0;
         public int resize_cache_y = 0;
-		public int resize_cache_width = 0;
-		public int resize_cache_height = 0;
+        public int resize_cache_width = 0;
+        public int resize_cache_height = 0;
         public int resize_timeout_delay = 150;
         public uint? reset_timeout_source_id = null;
         public uint? resize_timeout_source_id = null;
-        
+
         private bool is_show_shortcut_viewer = false;
 
         public ConfigWindow() {
@@ -201,8 +201,8 @@ namespace Widgets {
                         cache_width = width;
                         cache_height = height;
                     }
-					
-					return false;
+
+                    return false;
                 });
 
             init_active_tab_underline(tabbar);
@@ -442,9 +442,9 @@ namespace Widgets {
 
                 if (keyname == "F1") {
                     Utils.show_manual();
-					
-					return true;
-				}
+
+                    return true;
+                }
 
                 var search_key = config.config_file.get_string("shortcut", "search");
                 if (search_key != "" && keyname == search_key) {
@@ -534,12 +534,12 @@ namespace Widgets {
                     }
                     return true;
                 }
-                
+
                 var rename_title_key = config.config_file.get_string("shortcut", "rename_title");
                 if (rename_title_key != "" && keyname == rename_title_key) {
                     Term focus_term = workspace_manager.focus_workspace.get_focus_term(workspace_manager.focus_workspace);
                     focus_term.rename_title();
-                    
+
                     return true;
                 }
 
@@ -596,17 +596,17 @@ namespace Widgets {
                     workspace_manager.switch_workspace_with_index(int.parse(Keymap.get_key_name(key_event.keyval)));
                     return true;
                 }
-                
+
                 if (keyname in new_terminal_shortcuts) {
                     var theme_name = config.config_file.get_string("theme_terminal", "theme%i".printf(int.parse(Keymap.get_key_name(key_event.keyval))));
-                    
+
                     try {
                         GLib.AppInfo appinfo = GLib.AppInfo.create_from_commandline("deepin-terminal --load-theme '%s'".printf(theme_name), null, GLib.AppInfoCreateFlags.NONE);
                         appinfo.launch(null, null);
                     } catch (GLib.Error e) {
                         print("Appbar menu item 'new window': %s\n", e.message);
                     }
-                    
+
                     return true;
                 }
 

@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */ 
+ */
 
 #include <fontconfig/fontconfig.h>
 #include <fontconfig/fcfreetype.h>
@@ -30,7 +30,7 @@
 
 gchar** list_mono_or_dot_fonts(gint* num, int* result_length) {
     FcInit();
-	
+
     FcPattern *pat = FcPatternCreate();
     if (!pat) {
         fprintf(stderr, "Create FcPattern Failed\n");
@@ -46,7 +46,7 @@ gchar** list_mono_or_dot_fonts(gint* num, int* result_length) {
         FC_FILE,
         FC_LANG,
         FC_SPACING,
-		FC_CHARSET,
+        FC_CHARSET,
         NULL);
     if (!os) {
         fprintf(stderr, "Build FcObjectSet Failed\n");
@@ -62,11 +62,11 @@ gchar** list_mono_or_dot_fonts(gint* num, int* result_length) {
         return NULL;
     }
 
-	/* Read family name of mono font. */
-	gchar** fonts = NULL;
-	int j;
-	int count = 0;
-	for (j = 0; j < fs->nfont; j++) {
+    /* Read family name of mono font. */
+    gchar** fonts = NULL;
+    int j;
+    int count = 0;
+    for (j = 0; j < fs->nfont; j++) {
         /* printf("family: %s\n familylang: %s\n fullname: %s\n fullnamelang: %s\n style: %s\n file: %s\n lang: %s\n spacing: %s\n charset: %s\n", */
         /*       FcPatternFormat(fs->fonts[j], (FcChar8*)"%{family}"), */
         /*       FcPatternFormat(fs->fonts[j], (FcChar8*)"%{familylang}"), */
@@ -79,15 +79,15 @@ gchar** list_mono_or_dot_fonts(gint* num, int* result_length) {
         /*       FcPatternFormat(fs->fonts[j], (FcChar8*)"%{charset}") */
         /*       ); */
 
-	char *font_family = (char*) FcPatternFormat(fs->fonts[j], (FcChar8*)"%{family}");
-	char *comma = NULL;
+    char *font_family = (char*) FcPatternFormat(fs->fonts[j], (FcChar8*)"%{family}");
+    char *comma = NULL;
 
-	// split with ',' and using last one
-	while ((comma = strchr(font_family, ',')) != NULL)
-		font_family = comma + 1;
+    // split with ',' and using last one
+    while ((comma = strchr(font_family, ',')) != NULL)
+        font_family = comma + 1;
 
         /* spacing 100 is mono font, spacing 110 is dot font */
-	    if (strcmp((char*) FcPatternFormat(fs->fonts[j], (FcChar8*)"%{spacing}"), "100") == 0 
+        if (strcmp((char*) FcPatternFormat(fs->fonts[j], (FcChar8*)"%{spacing}"), "100") == 0
             || strcmp((char*) FcPatternFormat(fs->fonts[j], (FcChar8*)"%{spacing}"), "110") == 0
             || strcmp(font_family, "WenQuanYi Micro Hei Mono") == 0
             || strcmp(font_family, "WenQuanYi Zen Hei Mono") == 0
@@ -97,58 +97,58 @@ gchar** list_mono_or_dot_fonts(gint* num, int* result_length) {
             || strcmp(font_family, "Oxygen Mono") == 0
             || strcmp(font_family, "Monaco") == 0
             ) {
-		    /* Realloc was realloc(fonts, 0), and you have to take space for <char *> */
-		    fonts = realloc(fonts, (count + 1) * sizeof(gchar*));
-			if (fonts == NULL) {
-			    fprintf(stderr, "Alloc memory at append %d font info failed\n", count + 1);
-			    return NULL;
-			}
+            /* Realloc was realloc(fonts, 0), and you have to take space for <char *> */
+            fonts = realloc(fonts, (count + 1) * sizeof(gchar*));
+            if (fonts == NULL) {
+                fprintf(stderr, "Alloc memory at append %d font info failed\n", count + 1);
+                return NULL;
+            }
 
-			/* Filter charset font */
-			char *charset = (char*)FcPatternFormat(fs->fonts[j], (FcChar8*)"%{charset}");
-			if (charset == NULL || strlen(charset) == 0) {
-				free(charset);
-				continue;
-			}
-			free(charset);
-		  
-			/* Got font name */
-			gchar* font = g_strdup(font_family);
-			
-			/* Need space for store font */
-			fonts[count] = malloc((strlen(font) + 1) * sizeof(gchar));
-			if (fonts[count] == NULL) {
-			    fprintf(stderr, "Malloc %d failed\n", count + 1);
-			    return NULL;
-			}
-			
-			strcpy(fonts[count], font);
-			
-			free(font);
-			
-			count++;
-		}
-	}
+            /* Filter charset font */
+            char *charset = (char*)FcPatternFormat(fs->fonts[j], (FcChar8*)"%{charset}");
+            if (charset == NULL || strlen(charset) == 0) {
+                free(charset);
+                continue;
+            }
+            free(charset);
 
-	/* Remove duplicate font family. */
-	int i, k;
-	for (i = 0; i < count; i++) {
+            /* Got font name */
+            gchar* font = g_strdup(font_family);
+
+            /* Need space for store font */
+            fonts[count] = malloc((strlen(font) + 1) * sizeof(gchar));
+            if (fonts[count] == NULL) {
+                fprintf(stderr, "Malloc %d failed\n", count + 1);
+                return NULL;
+            }
+
+            strcpy(fonts[count], font);
+
+            free(font);
+
+            count++;
+        }
+    }
+
+    /* Remove duplicate font family. */
+    int i, k;
+    for (i = 0; i < count; i++) {
         for (j = i + 1; j < count;) {
-		    if (strcmp(fonts[j], fonts[i]) == 0) {
+            if (strcmp(fonts[j], fonts[i]) == 0) {
                 for (k = j; k < count; k++) {
                     fonts[k] = fonts[k + 1];
-				}
-				count--;
-			} else
-			  j++;
-		}
+                }
+                count--;
+            } else
+              j++;
+        }
     }
-	*num = count;
-	*result_length = count;
-	
-	FcFontSetDestroy(fs);
-	
-	return fonts;
+    *num = count;
+    *result_length = count;
+
+    FcFontSetDestroy(fs);
+
+    return fonts;
 }
 
 gchar* font_match(gchar* family) {
@@ -180,7 +180,7 @@ gchar* font_match(gchar* family) {
      FcPatternDestroy(font);
      FcFontSetDestroy(fs);
      FcPatternDestroy(match);
-	 
+
      if (!ret) {
          return NULL;
      }
@@ -191,13 +191,12 @@ gchar* font_match(gchar* family) {
 /* void main(int argc, char *argv[]) { */
 /*     int font_num = 0; */
 /*     char** fonts = list_mono_or_dot_fonts(&font_num); */
-	
-/* 	int i; */
-/* 	for (i = 0; i < font_num; i++) { */
-/* 	    printf("%s\n", fonts[i]); */
-/* 	} */
-	
-/* 	printf("\n"); */
-/* 	printf("%s", font_match("mono")); */
+
+/*     int i; */
+/*     for (i = 0; i < font_num; i++) { */
+/*         printf("%s\n", fonts[i]); */
+/*     } */
+
+/*     printf("\n"); */
+/*     printf("%s", font_match("mono")); */
 /* } */
-  

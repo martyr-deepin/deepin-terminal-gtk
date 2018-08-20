@@ -198,7 +198,7 @@ namespace Widgets {
                 address_entry.get_style_context().add_class("preference_entry");
                 Label port_label = create_label(_("Port:"));
                 port_spinbutton = new Widgets.SpinButton();
-                
+
                 port_spinbutton.set_range(0, 65535);
                 port_spinbutton.set_increments(1, 10);
                 port_spinbutton.get_style_context().add_class("preference_spinbutton");

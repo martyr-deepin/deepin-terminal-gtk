@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */ 
+ */
 
 using Gee;
 using Gtk;
@@ -27,11 +27,11 @@ using Utils;
 using Widgets;
 
 namespace Widgets {
-	public class EncodingPanel : Gtk.HBox {
+    public class EncodingPanel : Gtk.HBox {
         public Widgets.Switcher switcher;
-		public Widgets.ConfigWindow parent_window;
+        public Widgets.ConfigWindow parent_window;
         public Workspace workspace;
-		public WorkspaceManager workspace_manager;
+        public WorkspaceManager workspace_manager;
         public Gdk.RGBA background_color;
         public Gdk.RGBA line_dark_color;
         public Gdk.RGBA line_light_color;
@@ -47,44 +47,44 @@ namespace Widgets {
         public int encoding_list_margin_top = 5;
         public int split_line_margin_left = 1;
         public int width = Constant.ENCODING_SLIDER_WIDTH;
-        
+
         public delegate void UpdatePageAfterEdit();
-		
-		public EncodingPanel(Workspace space, WorkspaceManager manager, Term term) {
+
+        public EncodingPanel(Workspace space, WorkspaceManager manager, Term term) {
             Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
-            
+
             workspace = space;
-			workspace_manager = manager;
+            workspace_manager = manager;
             focus_term = term;
-            
+
             config_file = new KeyFile();
-            
+
             line_dark_color = Utils.hex_to_rgba("#ffffff", 0.1);
             line_light_color = Utils.hex_to_rgba("#000000", 0.1);
-            
+
             focus_widget = ((Gtk.Window) workspace.get_toplevel()).get_focus();
-			parent_window = (Widgets.ConfigWindow) workspace.get_toplevel();
-            
+            parent_window = (Widgets.ConfigWindow) workspace.get_toplevel();
+
             switcher = new Widgets.Switcher(width);
-            
+
             home_page_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
 
             set_size_request(width, -1);
             home_page_box.set_size_request(width, -1);
-            
+
             pack_start(switcher, true, true, 0);
-            
+
             show_home_page();
-			
-			draw.connect(on_draw);
+
+            draw.connect(on_draw);
         }
-        
+
         private bool on_draw(Gtk.Widget widget, Cairo.Context cr) {
             bool is_light_theme = ((Widgets.ConfigWindow) get_toplevel()).is_light_theme();
-            
+
             Gtk.Allocation rect;
             widget.get_allocation(out rect);
-			
+
             try {
                 background_color = Utils.hex_to_rgba(parent_window.config.config_file.get_string("theme", "background"));
             } catch (Error e) {
@@ -92,18 +92,18 @@ namespace Widgets {
             }
             cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, 0.8);
             Draw.draw_rectangle(cr, 1, 0, rect.width - 1, rect.height);
-            
+
             if (is_light_theme) {
                 Utils.set_context_color(cr, line_light_color);
             } else {
                 Utils.set_context_color(cr, line_dark_color);
             }
             Draw.draw_rectangle(cr, 0, 0, 1, rect.height);
-            
+
             return false;
         }
-		
-		public void show_home_page(Gtk.Widget? start_widget=null) {
+
+        public void show_home_page(Gtk.Widget? start_widget=null) {
             scrolledwindow = new ScrolledWindow(null, null);
             scrolledwindow.get_style_context().add_class("scrolledwindow");
             scrolledwindow.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
@@ -114,7 +114,7 @@ namespace Widgets {
             realize.connect((w) => {
                     init_scrollbar();
                 });
-            
+
             var encoding_list = new EncodingList(focus_term.term.get_encoding(), parent_window.config.encoding_names, workspace);
             encoding_list.margin_top = encoding_list_margin_top;
             encoding_list.margin_bottom = encoding_list_margin_bottom;
@@ -124,33 +124,33 @@ namespace Widgets {
                     } catch (Error e) {
                         print("EncodingPanel set_encoding error: %s\n", e.message);
                     }
-                        
+
                     init_scrollbar();
 
                     queue_draw();
                 });
-            
+
             scrolledwindow.add(encoding_list);
-            
+
             switcher.add_to_left_box(home_page_box);
 
             show.connect((w) => {
                     GLib.Timeout.add(100, () => {
                             int widget_x, widget_y;
                             encoding_list.active_encoding_button.translate_coordinates(encoding_list, 0, 0, out widget_x, out widget_y);
-                        
+
                             Gtk.Allocation rect;
                             get_allocation(out rect);
-                                
+
                             var adjust = scrolledwindow.get_vadjustment();
                             adjust.set_value(widget_y - (rect.height - Constant.ENCODING_BUTTON_HEIGHT) / 2);
-                                
+
                             return false;
                         });
                 });
-            
+
             show_all();
-		}
+        }
 
         public void init_scrollbar() {
             scrolledwindow.get_vscrollbar().get_style_context().remove_class("light_scrollbar");

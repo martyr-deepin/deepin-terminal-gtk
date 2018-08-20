@@ -396,16 +396,16 @@ namespace Config {
             update_theme(theme_name);
             temp_theme = theme_name;
         }
-        
+
         public void set_theme(string theme_name) {
             // Set temp theme with null to override.
             temp_theme = null;
-            
+
             update_theme(theme_name);
             save();
             update();
         }
-        
+
         public void update_theme(string theme_name) {
             try {
                 KeyFile theme_file = new KeyFile();
@@ -431,13 +431,13 @@ namespace Config {
         public void save() {
             try {
                 Utils.touch_dir(Utils.get_config_dir());
-                
+
                 // Restore config file theme if temp_theme is not null.
                 if (temp_theme != null) {
                     try {
                         var theme_file = new KeyFile();
                         theme_file.load_from_file(config_file_path, KeyFileFlags.NONE);
-                    
+
                         var theme_name = theme_file.get_string("general", "theme").strip();
                         update_theme(theme_name);
                     } catch (KeyFileError e) {

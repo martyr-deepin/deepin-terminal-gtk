@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */ 
+ */
 
 using Gtk;
 using Utils;
@@ -27,23 +27,23 @@ using Utils;
 namespace Widgets {
     public class SpinButton : Gtk.SpinButton {
         public Widgets.EntryMenu menu;
-        
+
         public SpinButton() {
             button_press_event.connect((w, e) => {
                     if (Utils.is_right_button(e)) {
                         menu = new Widgets.EntryMenu();
                         menu.create_entry_menu(this, (int) e.x_root, (int) e.y_root);
-                        
+
                         return true;
                     }
-                    
+
                     return false;
                 });
-			
-			// Prevent scroll event.
-			scroll_event.connect((w, e) => {
-					return true;
-				});
+
+            // Prevent scroll event.
+            scroll_event.connect((w, e) => {
+                    return true;
+                });
         }
     }
 }

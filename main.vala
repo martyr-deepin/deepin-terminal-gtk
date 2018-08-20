@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */ 
+ */
 
 using Gdk;
 using Gee;
@@ -37,12 +37,12 @@ public class TerminalApp : Application {
             stderr.printf("Could not register service\n");
         }
     }
-    
+
     public void exit() {
         quit();
         window.quit();
     }
-    
+
     public signal void quit();
 }
 
@@ -55,7 +55,7 @@ public class QuakeTerminalApp : Application {
             stderr.printf("Could not register service\n");
         }
     }
-    
+
     public void show_or_hide() {
         this.quake_window.toggle_quake_window();
     }
@@ -67,41 +67,41 @@ interface QuakeDaemon : Object {
 }
 
 
-const string GETTEXT_PACKAGE = "deepin-terminal"; 
+const string GETTEXT_PACKAGE = "deepin-terminal";
 
 public class Application : Object {
-    
-	private static bool quake_mode = false;
+
+    private static bool quake_mode = false;
     private static string? window_mode = null;
-	private static string? work_directory = null;
+    private static string? work_directory = null;
     private static string? load_theme = null;
 
     // pass_options just for print help information, we need parse -e or -x commands myself.
     [CCode (array_length = false, array_null_terminated = true)]
-	public static string[]? pass_options = null;
-    
+    public static string[]? pass_options = null;
+
     public Widgets.QuakeWindow quake_window;
     public Widgets.Window window;
     public WorkspaceManager workspace_manager;
     public static ArrayList<string> commands;
     public static int64 start_time;
-    
+
     private bool inited = false;
     private static bool version = false;
 
     public static void main(string[] args) {
         start_time = GLib.get_real_time() / 1000;
-        
+
         // NOTE: set IBUS_NO_SNOOPER_APPS variable to avoid Ctrl + 5 eat by input method (such as fcitx.);
         Environment.set_variable("IBUS_DISABLE_SNOOPER", "1", true);
 
-		// Set 'NO_AT_BRIDGE' environment variable with 1 to dislable accessibility dbus warning.
+        // Set 'NO_AT_BRIDGE' environment variable with 1 to dislable accessibility dbus warning.
         Environment.set_variable("NO_AT_BRIDGE", "1", true);
-        
+
         Intl.setlocale();
         Intl.bind_textdomain_codeset(GETTEXT_PACKAGE, "utf-8");
         Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
-        
+
         // Need parse -e or -x commands my self, OptionEntry just will got first argument after -e or -x.
         commands = new ArrayList<string>();
         bool find_command_flag = false;
@@ -109,44 +109,44 @@ public class Application : Object {
             if (find_command_flag) {
                 commands.add(arg);
             }
-            
+
             if (arg == "-e" || arg == "-x") {
                 find_command_flag = true;
             }
         }
-        
+
         try {
             string window_mode_description = "%s (normal, maximize, fullscreen)".printf(_("Set the terminal window mode"));
-            
+
             GLib.OptionEntry[] pass_options = {
                 OptionEntry() {
-                    long_name="version", 
-                    short_name=0, 
-                    flags=0, 
-                    arg=OptionArg.NONE, 
+                    long_name="version",
+                    short_name=0,
+                    flags=0,
+                    arg=OptionArg.NONE,
                     arg_data=&version,
-                    description=_("Display version"), 
+                    description=_("Display version"),
                     arg_description=null
                 },
                 OptionEntry() {
                     long_name="work-directory",
-                    short_name='w', 
-                    flags=0, 
-                    arg=OptionArg.FILENAME, 
+                    short_name='w',
+                    flags=0,
+                    arg=OptionArg.FILENAME,
                     arg_data=&work_directory,
-                    description=_("Set the terminal startup directory"), 
+                    description=_("Set the terminal startup directory"),
                     arg_description=null
                 },
                 OptionEntry() {
                     long_name="window-mode",
-                    short_name='m', 
-                    flags=0, 
-                    arg=OptionArg.STRING, 
+                    short_name='m',
+                    flags=0,
+                    arg=OptionArg.STRING,
                     arg_data=&window_mode,
                     description=window_mode_description,
                     arg_description=null
                 },
-                OptionEntry() { 
+                OptionEntry() {
                     long_name="execute",
                     short_name='e',
                     flags=0,
@@ -155,7 +155,7 @@ public class Application : Object {
                     description=_("Run a program in the terminal"),
                     arg_description=null
                 },
-                OptionEntry() { 
+                OptionEntry() {
                     long_name="execute",
                     short_name='x',
                     flags=0,
@@ -164,7 +164,7 @@ public class Application : Object {
                     description=_("Run a program in the terminal"),
                     arg_description=null
                 },
-                OptionEntry() { 
+                OptionEntry() {
                     long_name="quake-mode",
                     short_name='q',
                     flags=0,
@@ -175,9 +175,9 @@ public class Application : Object {
                 },
                 OptionEntry() {
                     long_name="load-theme",
-                    short_name='l', 
-                    flags=0, 
-                    arg=OptionArg.STRING, 
+                    short_name='l',
+                    flags=0,
+                    arg=OptionArg.STRING,
                     arg_data=&load_theme,
                     description=_("Load theme"),
                     arg_description=null
@@ -185,24 +185,24 @@ public class Application : Object {
                 OptionEntry()
             };
 
-			var opt_context = new OptionContext(_("Deepin Terminal"));
+            var opt_context = new OptionContext(_("Deepin Terminal"));
             opt_context.set_summary(_("Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.\n\nIt sharpens your focus in the world of command line!"));
-			opt_context.set_help_enabled(true);
-			opt_context.add_main_entries(pass_options, null);
-			opt_context.parse(ref args);
-		} catch (OptionError e) {
+            opt_context.set_help_enabled(true);
+            opt_context.add_main_entries(pass_options, null);
+            opt_context.parse(ref args);
+        } catch (OptionError e) {
             // Don't print option error, avoid confuse user.
-		}
+        }
 
         if (version) {
-			stdout.printf("Deepin Terminal %s\n".printf(Constant.VERSION));
+            stdout.printf("Deepin Terminal %s\n".printf(Constant.VERSION));
             stdout.printf ("Copyright 2011-2017 Deepin, Inc.\n");
         } else {
             Gtk.init(ref args);
-            
+
             // Just for debug perfermance.
             // Gdk.Window.set_debug_updates(true);
-            
+
             if (quake_mode) {
                 QuakeTerminalApp app = new QuakeTerminalApp();
                 Bus.own_name(BusType.SESSION,
@@ -220,7 +220,7 @@ public class Application : Object {
                              () => {app.run(false);},
                              () => {app.run(true);});
             }
-            
+
             Gtk.main();
         }
     }
@@ -240,14 +240,14 @@ public class Application : Object {
             } catch (IOError e) {
                 stderr.printf("%s\n", e.message);
             }
-            
+
             Gtk.main_quit();
         } else {
             Utils.load_css_theme(Utils.get_root_path("style.css"));
-            
+
             Tabbar tabbar = new Tabbar();
-            workspace_manager = new WorkspaceManager(tabbar, work_directory); 
-            
+            workspace_manager = new WorkspaceManager(tabbar, work_directory);
+
             if (quake_mode) {
                 quake_window = new Widgets.QuakeWindow();
                 quake_window.show_window(workspace_manager, tabbar);
@@ -260,12 +260,12 @@ public class Application : Object {
                 if (load_theme != null) {
                     window.config.load_temp_theme(load_theme);
                 }
-                
+
                 window.show_window((TerminalApp) this, workspace_manager, tabbar, has_start);
                 Utils.write_log("Deepin terminal start in: %s\n".printf((GLib.get_real_time() / 1000 - Application.start_time).to_string()));
                 tabbar.init(workspace_manager, window);
             }
-            
+
         }
     }
 }

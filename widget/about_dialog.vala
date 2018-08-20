@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */ 
+ */
 
 using Gtk;
 using Widgets;
@@ -27,34 +27,34 @@ using Widgets;
 namespace Widgets {
     public class AboutDialog : Widgets.Dialog {
         public Gtk.Widget? focus_widget;
-        
+
         public AboutDialog(Gtk.Widget? widget) {
             focus_widget = widget;
-            
+
             var overlay = new Gtk.Overlay();
 
             var close_button = Widgets.create_close_button();
             close_button.clicked.connect((b) => {
                     this.destroy();
                 });
-            
+
             destroy.connect((w) => {
                     if (focus_widget != null) {
                         focus_widget.grab_focus();
                     }
                 });
-            
+
             var button_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             button_box.pack_start(close_button, true, true, 0);
 
             var box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             box.pack_start(button_box, false, false, 0);
-            
+
             var about_widget = new AboutWidget();
             box.pack_start(about_widget, true, true, 0);
-            
+
             set_init_size(500, 460);
-            
+
             int about_text_height = Draw.get_text_render_height(
                 about_widget,
                 about_widget.about_text,
@@ -66,7 +66,7 @@ namespace Widgets {
                 Pango.Alignment.LEFT,
                 "top",
                 window_init_width - about_widget.about_x * 2);
-            
+
             window_init_height += about_text_height;
 
             var event_area = new Widgets.WindowEventArea(this);
@@ -76,10 +76,10 @@ namespace Widgets {
             } else {
                 event_area.margin_bottom = window_init_height - Constant.TITLEBAR_HEIGHT;
             }
-            
+
             overlay.add(box);
             overlay.add_overlay(event_area);
-            
+
             add_widget(overlay);
         }
     }
