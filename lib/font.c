@@ -26,7 +26,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <regex.h>
 #include <glib.h>
+
+static int string_rematch(const char* string,const char* pattern) {
+    int ret;
+    regex_t regex;
+    regcomp(&regex, pattern, REG_ICASE);
+    if (regexec(&regex, string, 0, NULL, 0) == REG_NOERROR) {
+        ret = 1;
+    } else {
+        ret = 0;
+    }
+    regfree(&regex);
+    return ret;
+}
 
 gchar** list_mono_or_dot_fonts(gint* num, int* result_length) {
     FcInit();
@@ -89,12 +103,8 @@ gchar** list_mono_or_dot_fonts(gint* num, int* result_length) {
         /* spacing 100 is mono font, spacing 110 is dot font */
         if (strcmp((char*) FcPatternFormat(fs->fonts[j], (FcChar8*)"%{spacing}"), "100") == 0
             || strcmp((char*) FcPatternFormat(fs->fonts[j], (FcChar8*)"%{spacing}"), "110") == 0
-            || strcmp(font_family, "WenQuanYi Micro Hei Mono") == 0
-            || strcmp(font_family, "WenQuanYi Zen Hei Mono") == 0
+            || string_rematch(font_family, "mono")
             || strcmp(font_family, "YaHei Consolas Hybrid") == 0
-            || strcmp(font_family, "mononoki") == 0
-            || strcmp(font_family, "Roboto Mono") == 0
-            || strcmp(font_family, "Oxygen Mono") == 0
             || strcmp(font_family, "Monaco") == 0
             ) {
             /* Realloc was realloc(fonts, 0), and you have to take space for <char *> */
@@ -188,15 +198,16 @@ gchar* font_match(gchar* family) {
      return (gchar*)ret;
 }
 
-/* void main(int argc, char *argv[]) { */
-/*     int font_num = 0; */
-/*     char** fonts = list_mono_or_dot_fonts(&font_num); */
+/* void main(int argc, char *argv[]) {
+    gint num = 0;
+    int font_num = 0;
+    gchar** fonts = list_mono_or_dot_fonts(&num, &font_num);
 
-/*     int i; */
-/*     for (i = 0; i < font_num; i++) { */
-/*         printf("%s\n", fonts[i]); */
-/*     } */
+    int i;
+    for (i = 0; i < font_num; i++) {
+        printf("%s\n", fonts[i]);
+    }
 
-/*     printf("\n"); */
-/*     printf("%s", font_match("mono")); */
-/* } */
+    printf("\n");
+    printf("%s", font_match("Mono"));
+} */
