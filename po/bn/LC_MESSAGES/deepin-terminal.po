@@ -26,7 +26,7 @@ msgstr ""
 
 #: ../widget/appbar.vala:129
 msgid "About"
-msgstr ""
+msgstr "সম্পর্কে"
 
 #: ../widget/about_widget.vala:81
 msgid "Acknowledgments"
@@ -34,7 +34,7 @@ msgstr ""
 
 #: ../widget/remote_server_dialog.vala:352 ../widget/command_dialog.vala:197
 msgid "Add"
-msgstr ""
+msgstr "যোগ করুন"
 
 #: ../widget/command_dialog.vala:126
 msgid "Add Command"
@@ -64,7 +64,7 @@ msgstr ""
 #: ../widget/preference.vala:332 ../widget/preference.vala:344
 #: ../widget/config_window.vala:366
 msgid "Advanced"
-msgstr ""
+msgstr "উন্নত"
 
 #: ../widget/remote_server_dialog.vala:337
 msgid "Advanced options"
@@ -136,7 +136,7 @@ msgstr ""
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Command"
-msgstr ""
+msgstr "কমান্ড"
 
 #: ../widget/remote_server_dialog.vala:295 ../widget/command_dialog.vala:172
 msgid "Command:"
@@ -210,7 +210,7 @@ msgstr ""
 #: ../widget/remote_server_dialog.vala:428 ../widget/command_dialog.vala:251
 #: ../widget/entry_menu.vala:44
 msgid "Delete"
-msgstr ""
+msgstr "মুছে ফেলুন"
 
 #: ../widget/command_dialog.vala:238 ../widget/command_dialog.vala:248
 msgid "Delete command"
@@ -299,7 +299,7 @@ msgstr ""
 
 #: ../widget/appbar.vala:127
 msgid "Help"
-msgstr ""
+msgstr "সাহায্য করুন"
 
 #: ../widget/preference.vala:400
 msgid "Hide quake window after lost focus"
@@ -315,7 +315,7 @@ msgstr ""
 
 #: ../widget/preference_slidebar.vala:58 ../widget/preference.vala:250
 msgid "Interface"
-msgstr ""
+msgstr "ইন্টারফেস"
 
 #: ../widget/config_window.vala:312
 msgid "Jump to next command"
@@ -397,7 +397,7 @@ msgstr ""
 #: ../widget/remote_server_dialog.vala:285
 #: ../widget/remote_server_dialog.vala:294
 msgid "Optional"
-msgstr ""
+msgstr "ঐচ্ছিক"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Password"
@@ -426,7 +426,7 @@ msgstr ""
 
 #: ../widget/shortcut_entry.vala:147
 msgid "Please enter a new shortcut"
-msgstr ""
+msgstr "অনুগ্রহ করে একটি নতুন শর্টকাট প্রবেশ করান"
 
 #: ../widget/remote_server_dialog.vala:199
 msgid "Port:"
@@ -475,7 +475,7 @@ msgstr ""
 #: ../widget/remote_server_dialog.vala:232 ../widget/command_dialog.vala:158
 #: ../widget/command_dialog.vala:171
 msgid "Required"
-msgstr ""
+msgstr "আবশ্যক"
 
 #: ../widget/preference.vala:413
 msgid "Restore Defaults"
@@ -487,7 +487,7 @@ msgstr ""
 
 #: ../widget/remote_server_dialog.vala:350 ../widget/command_dialog.vala:195
 msgid "Save"
-msgstr ""
+msgstr "সংরক্ষণ করুন"
 
 #: ../widget/preference_slidebar.vala:87 ../widget/preference.vala:374
 msgid "Scroll"
@@ -504,7 +504,7 @@ msgstr ""
 #: ../widget/terminal.vala:401 ../widget/search_entry.vala:64
 #: ../widget/search_entry.vala:66 ../widget/config_window.vala:307
 msgid "Search"
-msgstr ""
+msgstr "খুঁজুন"
 
 #: ../widget/preference.vala:305 ../widget/remote_panel.vala:357
 #: ../widget/command_panel.vala:201
@@ -658,7 +658,7 @@ msgstr ""
 
 #: ../widget/preference_slidebar.vala:90 ../widget/preference.vala:383
 msgid "Window"
-msgstr ""
+msgstr "উইন্ডো"
 
 #: ../widget/preference_slidebar.vala:71 ../widget/preference.vala:313
 #: ../widget/config_window.vala:348

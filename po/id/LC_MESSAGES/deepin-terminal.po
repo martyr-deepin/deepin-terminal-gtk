@@ -276,7 +276,7 @@ msgstr "Keluar layar penuh"
 
 #: ../widget/terminal.vala:398
 msgid "Find"
-msgstr ""
+msgstr "Temukan"
 
 #: ../widget/preference.vala:291
 msgid "Font size:"
@@ -392,7 +392,7 @@ msgstr "Buka"
 
 #: ../widget/terminal.vala:368
 msgid "Open in file manager"
-msgstr ""
+msgstr "Buka pada manajer berkas"
 
 #: ../widget/preference.vala:304
 msgid "Open:"
@@ -464,16 +464,16 @@ msgstr "Manajemen jarak jauh:"
 
 #: ../widget/terminal.vala:639
 msgid "Rename"
-msgstr "Rename"
+msgstr "Ganti nama"
 
 #: ../widget/terminal.vala:441 ../widget/terminal.vala:636
 #: ../widget/config_window.vala:357
 msgid "Rename title"
-msgstr "Rubah judul"
+msgstr "Ubah judul"
 
 #: ../widget/preference.vala:339
 msgid "Rename title:"
-msgstr "Rubah judul:"
+msgstr "Ubah judul:"
 
 #: ../widget/remote_server_dialog.vala:186
 #: ../widget/remote_server_dialog.vala:196

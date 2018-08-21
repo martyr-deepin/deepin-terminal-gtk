@@ -276,7 +276,7 @@ msgstr "Colar de pantalla completa"
 
 #: ../widget/terminal.vala:398
 msgid "Find"
-msgstr ""
+msgstr "Alcontrar"
 
 #: ../widget/preference.vala:291
 msgid "Font size:"
@@ -392,7 +392,7 @@ msgstr "Abrir"
 
 #: ../widget/terminal.vala:368
 msgid "Open in file manager"
-msgstr ""
+msgstr "Abrir nel xestor de ficheros"
 
 #: ../widget/preference.vala:304
 msgid "Open:"

@@ -671,7 +671,7 @@ msgstr "Finestra"
 #: ../widget/preference_slidebar.vala:71 ../widget/preference.vala:313
 #: ../widget/config_window.vala:348
 msgid "Workspace"
-msgstr "Workspace"
+msgstr "Espai de treball"
 
 #: ../widget/config_window.vala:308
 msgid "Zoom in"

@@ -276,7 +276,7 @@ msgstr "Volledig scherm afsluiten"
 
 #: ../widget/terminal.vala:398
 msgid "Find"
-msgstr ""
+msgstr "Zoeken"
 
 #: ../widget/preference.vala:291
 msgid "Font size:"
@@ -308,7 +308,7 @@ msgstr "Hulp"
 
 #: ../widget/preference.vala:400
 msgid "Hide quake window after lost focus"
-msgstr "Verberg quakevenster na verlies van focus"
+msgstr "Quake-venster verbergen na verliezen van focus"
 
 #: ../widget/terminal.vala:378 ../widget/config_window.vala:337
 msgid "Horizontal split"
@@ -356,7 +356,7 @@ msgstr "Naam:"
 
 #: ../widget/config_window.vala:335
 msgid "New theme terminal"
-msgstr "Nieuw terminal thema"
+msgstr "Nieuw terminalthema"
 
 #: ../widget/appbar.vala:120
 msgid "New window"
@@ -392,7 +392,7 @@ msgstr "Openen"
 
 #: ../widget/terminal.vala:368
 msgid "Open in file manager"
-msgstr ""
+msgstr "Openen in bestandsbeheerder"
 
 #: ../widget/preference.vala:304
 msgid "Open:"
@@ -464,16 +464,16 @@ msgstr "Beheer op afstand:"
 
 #: ../widget/terminal.vala:639
 msgid "Rename"
-msgstr "Hernoemen"
+msgstr "Naam wijzigen"
 
 #: ../widget/terminal.vala:441 ../widget/terminal.vala:636
 #: ../widget/config_window.vala:357
 msgid "Rename title"
-msgstr "Titel hernoemen"
+msgstr "Titelnaam wijzigen"
 
 #: ../widget/preference.vala:339
 msgid "Rename title:"
-msgstr "Titel hernoemen:"
+msgstr "Titelnaam wijzigen:"
 
 #: ../widget/remote_server_dialog.vala:186
 #: ../widget/remote_server_dialog.vala:196
