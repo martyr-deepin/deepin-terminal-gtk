@@ -55,7 +55,7 @@ namespace Menu {
     public class Menu : Object {
         MenuManagerInterface menu_manager_interface;
         MenuInterface menu_interface;
-        string menu_object_path;
+        static string? menu_object_path;
 
         public signal void click_item(string item_id);
         public signal void destroy();
@@ -63,6 +63,9 @@ namespace Menu {
         public Menu(int menu_x, int menu_y, List<MenuItem> menu_content) {
             try {
                 menu_manager_interface = Bus.get_proxy_sync(BusType.SESSION, "com.deepin.menu", "/com/deepin/menu");
+
+                if (menu_object_path != null)
+                    unregister();
                 menu_object_path = menu_manager_interface.RegisterMenu();
 
                 menu_interface = Bus.get_proxy_sync(BusType.SESSION, "com.deepin.menu", menu_object_path);
@@ -70,6 +73,7 @@ namespace Menu {
                         click_item(item_id);
                     });
                 menu_interface.MenuUnregistered.connect(() => {
+                        menu_object_path = null;
                         destroy();
                     });
             } catch (IOError e) {
@@ -85,6 +89,7 @@ namespace Menu {
             } catch (IOError e) {
                 stderr.printf ("%s\n", e.message);
             }
+            menu_object_path = null;
         }
 
         public void show_menu(int x, int y, List<MenuItem> menu_content) {
