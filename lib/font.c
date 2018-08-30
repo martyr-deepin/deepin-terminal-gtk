@@ -30,14 +30,11 @@
 #include <glib.h>
 
 static int string_rematch(const char* string,const char* pattern) {
-    int ret;
+    int ret = 0;
     regex_t regex;
     regcomp(&regex, pattern, REG_ICASE);
-    if (regexec(&regex, string, 0, NULL, 0) == REG_NOERROR) {
+    if (regexec(&regex, string, 0, NULL, 0) == REG_NOERROR)
         ret = 1;
-    } else {
-        ret = 0;
-    }
     regfree(&regex);
     return ret;
 }
