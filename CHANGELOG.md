@@ -1,3 +1,7 @@
+## [3.0.4] - 2018-09-07
+* fix: unregister menu before recreate menu
+* refactor: match more mono fonts
+
 ## [3.0.3] - 2018-08-19
 * feat: support customized version string
 
