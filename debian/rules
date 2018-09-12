@@ -2,7 +2,7 @@
 %:
 	dh $@ 
 
-VERSION ?= $(shell dpkg-parsechangelog -SVersion | awk -F'+|-' '{print $$1}')
+VERSION ?= $(shell dpkg-parsechangelog -SVersion | awk -F'[+-]' '{print $$1}')
 override_dh_auto_configure:
 	cmake -DVERSION=${VERSION} -DCMAKE_INSTALL_PREFIX=/usr -DTEST_BUILD=OFF .
 
