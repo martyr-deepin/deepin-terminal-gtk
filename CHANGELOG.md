@@ -1,3 +1,6 @@
+## [3.0.5] - 2018-09-17
+* fix: missing verison info when building the deb
+
 ## [3.0.4] - 2018-09-07
 * fix: unregister menu before recreate menu
 * refactor: match more mono fonts
