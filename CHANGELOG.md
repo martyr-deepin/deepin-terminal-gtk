@@ -1,3 +1,6 @@
+## [3.0.6] - 2018-10-04
+* fix: github issue #73
+
 ## [3.0.5] - 2018-09-17
 * fix: missing verison info when building the deb
 
