@@ -137,7 +137,7 @@ namespace Widgets {
                     if (term_dir.length > 0) {
                         Term new_focus_term = get_focus_term(this);
                         string switch_command = "cd %s\n".printf(term_dir);
-                        new_focus_term.term.feed_child(switch_command, switch_command.length);
+                        new_focus_term.term.feed_child(switch_command.to_utf8());
                     }
 
                     return false;

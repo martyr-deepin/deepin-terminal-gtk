@@ -591,7 +591,7 @@ namespace Widgets {
                         }
                         upload_command = upload_command + "\n";
 
-                        this.term.feed_child(upload_command, upload_command.length);
+                        this.term.feed_child(upload_command.to_utf8());
 
                         return false;
                     });
@@ -618,7 +618,7 @@ namespace Widgets {
                         GLib.Timeout.add(100, () => {
                                 // NOTE: Use quote around $file to avoid escape filepath.
                                 string command = "read -e -a files -p \"%s: \"; sz \"${files[@]}\"\n".printf(_("Type path for download file"));
-                                this.term.feed_child(command, command.length);
+                                this.term.feed_child(command.to_utf8());
 
                                 enter_sz_command = true;
 
@@ -663,17 +663,17 @@ namespace Widgets {
                     GLib.Timeout.add(100, () => {
                             // Switch directory in zssh.
                             string switch_command = "cd %s\n".printf(save_file_directory);
-                            this.term.feed_child(switch_command, switch_command.length);
+                            this.term.feed_child(switch_command.to_utf8());
 
                             // Do rz command to download file.
                             GLib.Timeout.add(100, () => {
                                     string download_command = "rz\n";
-                                    this.term.feed_child(download_command, download_command.length);
+                                    this.term.feed_child(download_command.to_utf8());
 
                                     // Press enter automatically.
                                     GLib.Timeout.add(100, () => {
                                             string enter_command = "\n";
-                                            this.term.feed_child(enter_command, enter_command.length);
+                                            this.term.feed_child(enter_command.to_utf8());
 
                                             return false;
                                         });
@@ -971,7 +971,7 @@ namespace Widgets {
                             foreach (unowned string option in command_config_file.get_groups ()) {
                                 if (keyname == command_config_file.get_value(option, "Shortcut")) {
                                     var command_string = "%s\n".printf(command_config_file.get_value(option, "Command"));
-                                    term.feed_child(command_string, command_string.length);
+                                    term.feed_child(command_string.to_utf8());
 
                                     return true;
                                 }
@@ -1082,7 +1082,7 @@ namespace Widgets {
                             }
                             upload_command = upload_command + "\n";
 
-                            this.term.feed_child(upload_command, upload_command.length);
+                            this.term.feed_child(upload_command.to_utf8());
 
                             return false;
                         });
@@ -1097,7 +1097,7 @@ namespace Widgets {
                     }
 
                     string uris_s = string.joinv("", uris);
-                    this.term.feed_child(uris_s, uris_s.length);
+                    this.term.feed_child(uris_s.to_utf8());
                 }
 
                 break;
@@ -1106,7 +1106,7 @@ namespace Widgets {
                 var data = selection_data.get_text ();
 
                 if (data != null) {
-                    this.term.feed_child(data, data.length);
+                    this.term.feed_child(data.to_utf8());
                 }
 
                 break;
@@ -1571,7 +1571,7 @@ namespace Widgets {
                 if (term != null) {
                     string login_command = "expect -f " + tmpfile.get_path() + "\n";
                     expect_file_path = tmpfile.get_path();
-                    term.feed_child(login_command, login_command.length);
+                    term.feed_child(login_command.to_utf8());
                 }
             } catch (Error e) {
                 stderr.printf("login_server: %s\n", e.message);

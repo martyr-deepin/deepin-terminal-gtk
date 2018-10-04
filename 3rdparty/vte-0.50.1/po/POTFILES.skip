@@ -1,4 +1,0 @@
-bindings/vala/app.ui
-bindings/vala/search-popover.ui
-src/vteapp.c
-src/vtespawn.cc

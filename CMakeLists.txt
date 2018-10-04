@@ -24,6 +24,7 @@ pkg_check_modules(RSVG REQUIRED librsvg-2.0)
 pkg_check_modules(WNCK REQUIRED libwnck-3.0)
 pkg_check_modules(FONTCONFIG REQUIRED fontconfig)
 pkg_check_modules(GLIB REQUIRED glib-2.0)
+pkg_check_modules(VTE REQUIRED vte-2.91)
 
 OPTION(TEST_BUILD "Build with native testing" ON)
 
@@ -59,22 +60,6 @@ execute_process(
 )
 endif()
 
-ExternalProject_Add(Vte-0.29
-  SOURCE_DIR ${CMAKE_SOURCE_DIR}/3rdparty/vte-0.50.1
-  CONFIGURE_COMMAND ./configure --enable-static
-  BUILD_COMMAND make
-  INSTALL_COMMAND ""
-  BUILD_IN_SOURCE 1
-  )
-
-ExternalProject_Add(zssh-1.5c
-  SOURCE_DIR ${CMAKE_SOURCE_DIR}/3rdparty/zssh-1.5c
-  CONFIGURE_COMMAND ./configure
-  BUILD_COMMAND make
-  INSTALL_COMMAND ""
-  BUILD_IN_SOURCE 1
-  )
-
 set(CFLAGS
 	${GIO_CFLAGS}
 	${GTK3_CFLAGS} ${GTK3_CFLAGS_OTHER}
@@ -94,9 +79,8 @@ set(INCLUDE_PATHS
 	${RSVG_INCLUDE_DIRS}
 	${JsonGlib_INCLUDE_DIRS}
 	${LIBSECRET_INCLUDE_DIRS}
-	${CMAKE_SOURCE_DIR}/3rdparty/vte-0.50.1/src
+	${VTE_INCLUDE_DIRS}
 )
-find_library(VTE_LIB NAMES libvte-2.91.a tcmalloc_minimal)
 include_directories(${INCLUDE_PATHS})
 set(LIBS
 	${GIO_LIBRARIES}
@@ -111,6 +95,7 @@ set(LIBS
 	${XTST_LIBRARIES}
 	${FONTCONFIG_LIBRARY}
 	${M_LIBRARIES}
+	${VTE_LIBRARIES}
 	stdc++
 	m
 	z
@@ -133,9 +118,6 @@ vala_precompile(VALA_C
 	./main.vala
 	${APP_SOURCES}
 
-OPTIONS
---vapidir=${CMAKE_SOURCE_DIR}/vapi
-
 PACKAGES
 	xcb
 	gtk+-3.0
@@ -145,15 +127,13 @@ PACKAGES
 	gio-2.0
 	libwnck-3.0
 	posix
-	fontconfig
 	libsecret-1
 	gdk-x11-3.0
 	glib-2.0
 	librsvg-2.0
 )
 add_executable(${target} ${VALA_C} ${CMAKE_SOURCE_DIR}/project_path.c ${CMAKE_SOURCE_DIR}/lib/font.c)
-target_link_libraries(${target} ${LIBS} ${CMAKE_SOURCE_DIR}/3rdparty/vte-0.50.1/src/.libs/libvte-2.91.a)
-add_dependencies(${target} Vte-0.29)
+target_link_libraries(${target} ${LIBS})
 
 FILE(GLOB children LIST_DIRECTORIES true po/*)
 SET(dirlist "")
@@ -185,7 +165,7 @@ FOREACH(lang ${dirlist})
 ENDFOREACH(lang)
 
 INSTALL (TARGETS ${target} DESTINATION bin)
-INSTALL (PROGRAMS ssh_login.sh ${CMAKE_SOURCE_DIR}/3rdparty/zssh-1.5c/zssh DESTINATION lib/${target})
+INSTALL (PROGRAMS ssh_login.sh DESTINATION lib/${target})
 INSTALL (FILES hicolor/32x32/${target}.png DESTINATION share/icons/hicolor/32x32/apps)
 INSTALL (FILES hicolor/48x48/${target}.png DESTINATION share/icons/hicolor/48x48/apps)
 INSTALL (FILES hicolor/96x96/${target}.png DESTINATION share/icons/hicolor/96x96/apps)
