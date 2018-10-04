@@ -115,18 +115,21 @@ namespace Widgets {
                     } else {
                         child_has_exit = true;
 
-                        Widgets.ConfigWindow window = (Widgets.ConfigWindow) term.get_toplevel();
+                        // Since vte@0276859 (v0.53.92), the vte terminal always emit the `child-exited` signal
+                        if (term.get_toplevel().get_type().is_a(typeof(ConfigWindow))) {
+                            ConfigWindow window = (ConfigWindow) term.get_toplevel();
 
-                        try {
-                            if (window.config.config_file.get_boolean("advanced", "print_notify_after_script_finish") && is_launch_command() && workspace_manager.is_first_term(this)) {
-                                // Print exit notify if command execute finish.
-                                print_exit_notify();
-                            } else {
-                                // Just exit terminal if `child_exited' signal emit by shell.
-                                exit();
+                            try {
+                                if (window.config.config_file.get_boolean("advanced", "print_notify_after_script_finish") && is_launch_command() && workspace_manager.is_first_term(this)) {
+                                    // Print exit notify if command execute finish.
+                                    print_exit_notify();
+                                } else {
+                                    // Just exit terminal if `child_exited' signal emit by shell.
+                                    exit();
+                                }
+                            } catch (Error e) {
+                                print("child_exited: %s\n", e.message);
                             }
-                        } catch (Error e) {
-                            print("child_exited: %s\n", e.message);
                         }
                     }
                 });
