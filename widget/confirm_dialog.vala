@@ -53,7 +53,6 @@ namespace Widgets {
                     this.destroy();
                 });
             var close_button_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-            close_button_box.pack_start(close_button, true, true, 0);
 
             var content_button_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             content_button_box.margin_top = box_margin_top;
