@@ -1272,7 +1272,7 @@ namespace Widgets {
                 int pty_fd = this.term.get_pty().fd;
                 int fgpid = Posix.tcgetpgrp(pty_fd);
 
-                if (fgpid != this.child_pid && fgpid != -1) {
+                if (fgpid != this.child_pid && fgpid > 0) {
                     pid = (int) fgpid;
                     return true;
                 } else {
