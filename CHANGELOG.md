@@ -1,3 +1,8 @@
+## [3.0.7] - 2018-10-07
+* fix: github issue #74
+* fix: gtk_box_pack assertion error
+* refactor: remove 3rdparty/ and vapi/
+
 ## [3.0.6] - 2018-10-04
 * fix: github issue #73
 
