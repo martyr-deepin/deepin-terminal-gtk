@@ -34,7 +34,7 @@ extern string[] list_mono_or_dot_fonts(out int num);
 namespace Utils {
     [DBus (name = "com.deepin.Manual.Open")]
     interface DeepinManualInterface : Object {
-        public abstract void ShowManual(string appName) throws IOError;
+        public abstract void ShowManual(string appName) throws GLib.Error;
     }
 
     public Gdk.RGBA hex_to_rgba(string hex_color, double alpha=1.0) {
@@ -414,7 +414,7 @@ namespace Utils {
         try {
             DeepinManualInterface deepin_manual_interface = Bus.get_proxy_sync(BusType.SESSION, "com.deepin.Manual.Open", "/com/deepin/Manual/Open");
             deepin_manual_interface.ShowManual("deepin-terminal");
-        } catch (GLib.IOError e) {
+        } catch (GLib.Error e) {
             print("show_manual: %s\n", e.message);
         }
     }

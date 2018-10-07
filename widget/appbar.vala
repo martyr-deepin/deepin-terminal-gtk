@@ -26,7 +26,7 @@ using Widgets;
 
 [DBus (name = "com.deepin.terminal")]
 interface TerminalBus : Object {
-    public abstract void exit() throws GLib.IOError;
+    public abstract void exit() throws Error;
     public signal void quit();
 }
 
@@ -79,11 +79,11 @@ namespace Widgets {
                     exit_terminal.connect(() => {
                             try {
                                 bus.exit();
-                            } catch (IOError e) {
+                            } catch (Error e) {
                                 stderr.printf("AppBar bus.ext: %s\n", e.message);
                             }
                         });
-                } catch (IOError e) {
+                } catch (Error e) {
                     stderr.printf("AppBar bus own: %s\n", e.message);
                 }
             } else {

@@ -24,13 +24,13 @@
 namespace Menu {
     [DBus (name = "com.deepin.menu.Manager")]
     interface MenuManagerInterface : Object {
-        public abstract string RegisterMenu() throws IOError;
-        public abstract void UnregisterMenu(string object_path) throws IOError;
+        public abstract string RegisterMenu() throws Error;
+        public abstract void UnregisterMenu(string object_path) throws Error;
     }
 
     [DBus (name = "com.deepin.menu.Menu")]
     interface MenuInterface : Object {
-        public abstract void ShowMenu(string menu_json_content) throws IOError;
+        public abstract void ShowMenu(string menu_json_content) throws Error;
         public signal void ItemInvoked(string item_id, bool checked);
         public signal void MenuUnregistered();
     }
@@ -76,7 +76,7 @@ namespace Menu {
                         menu_object_path = null;
                         destroy();
                     });
-            } catch (IOError e) {
+            } catch (Error e) {
                 stderr.printf ("%s\n", e.message);
             }
 
@@ -86,7 +86,7 @@ namespace Menu {
         public void unregister(){
             try {
                 menu_manager_interface.UnregisterMenu(menu_object_path);
-            } catch (IOError e) {
+            } catch (Error e) {
                 stderr.printf ("%s\n", e.message);
             }
             menu_object_path = null;
@@ -129,7 +129,7 @@ namespace Menu {
                 string menu_json_content = generator.to_data(null);
 
                 menu_interface.ShowMenu(menu_json_content);
-            } catch (IOError e) {
+            } catch (Error e) {
                 stderr.printf ("%s\n", e.message);
             }
         }

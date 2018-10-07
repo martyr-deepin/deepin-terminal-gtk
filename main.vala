@@ -33,7 +33,7 @@ public class TerminalApp : Application {
     public static void on_bus_acquired(DBusConnection conn, TerminalApp app) {
         try {
             conn.register_object("/com/deepin/terminal", app);
-        } catch (IOError e) {
+        } catch (Error e) {
             stderr.printf("Could not register service\n");
         }
     }
@@ -51,7 +51,7 @@ public class QuakeTerminalApp : Application {
     public static void on_bus_acquired(DBusConnection conn, QuakeTerminalApp app) {
         try {
             conn.register_object("/com/deepin/quake_terminal", app);
-        } catch (IOError e) {
+        } catch (Error e) {
             stderr.printf("Could not register service\n");
         }
     }
@@ -63,7 +63,7 @@ public class QuakeTerminalApp : Application {
 
 [DBus (name = "com.deepin.quake_terminal")]
 interface QuakeDaemon : Object {
-    public abstract void show_or_hide() throws IOError;
+    public abstract void show_or_hide() throws Error;
 }
 
 
@@ -237,7 +237,7 @@ public class Application : Object {
             try {
                 QuakeDaemon daemon = Bus.get_proxy_sync(BusType.SESSION, "com.deepin.quake_terminal", "/com/deepin/quake_terminal");
                 daemon.show_or_hide();
-            } catch (IOError e) {
+            } catch (Error e) {
                 stderr.printf("%s\n", e.message);
             }
 
