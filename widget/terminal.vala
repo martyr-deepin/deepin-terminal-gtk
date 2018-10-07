@@ -365,7 +365,7 @@ namespace Widgets {
 
                 display_first_spliter = true;
             }
-            if (current_dir != "") {
+            if (get_cwd() != "") {
                 var dir_file = GLib.File.new_for_path(current_dir);
                 if (dir_file.query_exists()) {
                     menu_content.append(new Menu.MenuItem("open_in_filemanager", _("Open in file manager")));
@@ -788,31 +788,18 @@ namespace Widgets {
         }
 
         public string get_cwd() {
-            if (this.term.get_pty() == null) {
-                return this.current_dir;
-            } else {
+            if (this.term.get_pty() != null) {
                 int pty_fd = this.term.get_pty().fd;
                 int fpid = Posix.tcgetpgrp(pty_fd);
-                if (fpid == -1) {
-                    return this.current_dir;
-                } else {
+                if (fpid > 0) {
                     try {
-                        var path = FileUtils.read_link("/proc/%d/cwd".printf(fpid));
-
-                        // NOTE:
-                        // Because 'man' command (such as 'man ls') will change active process's path.
-                        // Just read current directory when active process is 'man'.
-                        if (path == "/usr/share/man") {
-                            return this.current_dir;
-                        } else {
-                            return path;
-                        }
+                        current_dir = FileUtils.read_link("/proc/%d/cwd".printf(fpid));
                     } catch (Error e) {
-                        stderr.printf("Parse cwd of %d failed %s\n", fpid, e.message);
-                        return this.current_dir;
+                        stderr.printf("Parse cwd of %d failed: %s\n", fpid, e.message);
                     }
                 }
             }
+            return current_dir;
         }
 
         public bool on_scroll(Gtk.Widget widget, Gdk.EventScroll scroll_event) {
