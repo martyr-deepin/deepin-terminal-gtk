@@ -37,7 +37,7 @@ set password {<<PASSWORD>>}
 set private_key {<<PRIVATE_KEY>>}
 set port {<<PORT>>}
 set authentication {<<AUTHENTICATION>>}
-set ssh_cmd {/usr/lib/deepin-terminal/zssh -X -o ServerAliveInterval=60}
+set ssh_cmd {zssh -X -o ServerAliveInterval=60}
 set ssh_opt {$user@$server -p $port -o PubkeyAuthentication=$authentication}
 set remote_command {<<REMOTE_COMMAND>>}
 
