@@ -1,3 +1,7 @@
+## [3.0.8] - 2018-10-16
+* fix: open_in_filemanager
+* fix: handle `GLib.Error'
+
 ## [3.0.7] - 2018-10-07
 * fix: github issue #74
 * fix: gtk_box_pack assertion error
