@@ -1,16 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="27px" height="23px" viewBox="0 0 27 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
-    <title>window_menu_dark_press</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="最大化最小化" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Artboard-3" transform="translate(-94.000000, -166.000000)">
-            <g id="menu_press" transform="translate(94.000000, 166.000000)">
-                <rect id="Rectangle-23" fill-opacity="0.288836051" fill="#000000" opacity="0" x="0" y="0" width="27" height="23"></rect>
-                <rect id="Rectangle-62" fill-opacity="0.1" fill="#000000" x="4" y="2" width="19" height="19" rx="2"></rect>
-                <path d="M9.4375,8 L9,8 L9,7 L9.4375,7 L15.5625,7 L16,7 L16,8 L15.5625,8 L9.4375,8 Z M9.42352941,12 L9,12 L9,11 L9.42352941,11 L17.5764706,11 L18,11 L18,12 L17.5764706,12 L9.42352941,12 Z M9.42352941,16 L9,16 L9,15 L9.42352941,15 L17.5764706,15 L18,15 L18,16 L17.5764706,16 L9.42352941,16 Z" id="Combined-Shape" fill="#2CA7F8" fill-rule="nonzero"></path>
-            </g>
-        </g>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <g fill="none" fill-rule="evenodd" transform="translate(-2)">
+    <rect width="27" height="23" y="9" fill="#000" fill-opacity=".289" opacity="0"/>
+    <rect width="40" height="40" x="2" fill="#000" fill-opacity=".1"/>
+    <path fill="#2CA7F8" fill-rule="nonzero" d="M24.5625,16 L17.4375,16 L17,16 L17,15 L17.4375,15 L24.5625,15 L25,15 L25,16 L24.5625,16 Z M26.5764706,20 L17.4235294,20 L17,20 L17,19 L17.4235294,19 L26.5764706,19 L27,19 L27,20 L26.5764706,20 Z M26.5764706,24 L17.4235294,24 L17,24 L17,23 L17.4235294,23 L26.5764706,23 L27,23 L27,24 L26.5764706,24 Z"/>
+  </g>
 </svg>

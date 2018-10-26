@@ -1,16 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="27px" height="23px" viewBox="0 0 27 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
-    <title>window_unmax_light_press</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="最大化最小化" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="浅色-无阴影" transform="translate(-224.000000, -181.000000)">
-            <g id="unmaximize_press" transform="translate(224.000000, 181.000000)">
-                <rect id="Rectangle-22" fill-opacity="0.288836051" fill="#000000" opacity="0" x="0" y="0" width="27" height="23"></rect>
-                <rect id="Rectangle-62" fill-opacity="0.1" fill="#34344B" x="4" y="2" width="19" height="19" rx="2"></rect>
-                <path d="M17,8 L10,8 L10,7 L18,7 L18,15 L17,15 L17,8 Z M9,14 L9,11 L9,9 L11,9 L14,9 L16,9 L16,11 L16,14 L16,16 L14,16 L11,16 L9,16 L9,14 Z M10,15 L15,15 L15,10 L10,10 L10,15 Z" id="unmaximize_normal" fill="#2CA7F8"></path>
-            </g>
-        </g>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <g fill="none" fill-rule="evenodd">
+    <rect width="40" height="40" fill="#34344B" fill-opacity=".1"/>
+    <path fill="#2CA7F8" fill-rule="nonzero" d="M24,16 L16,16 L16,15 L25,15 L25,24 L24,24 L24,16 Z M15,23 L15,19 L15,17 L17,17 L21,17 L23,17 L23,19 L23,23 L23,25 L21,25 L17,25 L15,25 L15,23 Z M16,24 L22,24 L22,18 L16,18 L16,24 Z"/>
+  </g>
 </svg>

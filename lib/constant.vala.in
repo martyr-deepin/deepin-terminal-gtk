@@ -25,9 +25,9 @@ public class Constant {
     public static double TERMINAL_MIN_OPACITY = 0;
     public const string VERSION = "@VERSION@";
     public static int ACTIVE_TAB_UNDERLINE_HEIGHT = 2;
-    public static int CLOSE_BUTTON_MARGIN_RIGHT = 5;
-    public static int CLOSE_BUTTON_MARGIN_TOP = 3;
-    public static int CLOSE_BUTTON_WIDTH = 27;
+    public static int CLOSE_BUTTON_MARGIN_RIGHT = 0;
+    public static int CLOSE_BUTTON_MARGIN_TOP = 0;
+    public static int CLOSE_BUTTON_WIDTH = 40;
     public static int COMMAND_BUTTON_HEIGHT = 54;
     public static int COMMAND_BUTTON_PADDING = 5;
     public static int COMMAND_BUTTON_WIDTH = 190;
@@ -52,7 +52,7 @@ public class Constant {
     public static int THEME_BUTTON_WIDTH = 190;
     public static int THEME_SLIDER_WIDTH = 230;
     public static int TITLEBAR_HEIGHT = 39;
-    public static int WINDOW_BUTTON_WIDHT = 27;
+    public static int WINDOW_BUTTON_WIDHT = 40;
     public static int EXIT_CODE_BAD_SMABA = 139;
     public static int EXIT_CODE_NORMAL = 0;
 }

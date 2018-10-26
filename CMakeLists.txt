@@ -156,12 +156,12 @@ FOREACH(lang ${dirlist})
     	        DEPENDS ${current_PO_FILE}
     	     )
     	  INSTALL(FILES ${gmoFile} DESTINATION ${INSTALL_DESTINATION}/${lang}/LC_MESSAGES/  RENAME ${target}.mo)
-	
+
     	  LIST(APPEND gmoFiles ${gmoFile})
     ENDFOREACH(current_PO_FILE)
 
     ADD_CUSTOM_TARGET(${lang} ALL DEPENDS ${gmoFiles})
-	
+
 ENDFOREACH(lang)
 
 INSTALL (TARGETS ${target} DESTINATION bin)

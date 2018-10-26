@@ -1,16 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="27px" height="23px" viewBox="0 0 27 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
-    <title>window_close_dark_hover</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="最大化最小化" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Artboard-3" transform="translate(-254.000000, -102.000000)">
-            <g id="close-hover-dark" transform="translate(254.000000, 102.000000)">
-                <rect id="Rectangle-14" fill-opacity="0.288836051" fill="#000000" opacity="0" x="0" y="0" width="27" height="23"></rect>
-                <rect id="Rectangle-62" fill-opacity="0.15" fill="#FFFFFF" x="0" y="0" width="27" height="23" rx="2"></rect>
-                <polygon id="Combined-Shape" fill="#F27E00" fill-rule="nonzero" points="13.2426407 11.9497475 10.0606602 15.131728 9.70710678 15.4852814 9 14.7781746 9.35355339 14.4246212 12.5355339 11.2426407 9.35355339 8.06066017 9 7.70710678 9.70710678 7 10.0606602 7.35355339 13.2426407 10.5355339 16.4246212 7.35355339 16.7781746 7 17.4852814 7.70710678 17.131728 8.06066017 13.9497475 11.2426407 17.131728 14.4246212 17.4852814 14.7781746 16.7781746 15.4852814 16.4246212 15.131728"></polygon>
-            </g>
-        </g>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <g fill="none" fill-rule="evenodd">
+    <rect width="27" height="23" x="7" fill="#000" fill-opacity=".289" opacity="0"/>
+    <rect width="40" height="40" fill="#FFF" fill-opacity=".15"/>
+    <polygon fill="#F27E00" fill-rule="nonzero" points="20.243 20.95 17.061 24.132 16.707 24.485 16 23.778 16.354 23.425 19.536 20.243 16.354 17.061 16 16.707 16.707 16 17.061 16.354 20.243 19.536 23.425 16.354 23.778 16 24.485 16.707 24.132 17.061 20.95 20.243 24.132 23.425 24.485 23.778 23.778 24.485 23.425 24.132"/>
+  </g>
 </svg>

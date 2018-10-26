@@ -1,16 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="27px" height="23px" viewBox="0 0 27 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
-    <title>window_menu_light_press</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="最大化最小化" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="浅色-无阴影" transform="translate(-101.000000, -181.000000)">
-            <g id="menu_press" transform="translate(101.000000, 181.000000)">
-                <rect id="Rectangle-23" fill-opacity="0.288836051" fill="#000000" fill-rule="evenodd" opacity="0" x="0" y="0" width="27" height="23"></rect>
-                <rect id="Rectangle-62" fill-opacity="0.1" fill="#34344B" fill-rule="evenodd" x="4" y="2" width="19" height="19" rx="2"></rect>
-                <path d="M9.4375,8 L9,8 L9,7 L9.4375,7 L15.5625,7 L16,7 L16,8 L15.5625,8 L9.4375,8 Z M9.42352941,12 L9,12 L9,11 L9.42352941,11 L17.5764706,11 L18,11 L18,12 L17.5764706,12 L9.42352941,12 Z M9.42352941,16 L9,16 L9,15 L9.42352941,15 L17.5764706,15 L18,15 L18,16 L17.5764706,16 L9.42352941,16 Z" id="Combined-Shape" fill="#2CA7F8" fill-rule="nonzero"></path>
-            </g>
-        </g>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <g fill="none" fill-rule="evenodd">
+    <rect width="40" height="40" fill="#34344B" fill-opacity=".1"/>
+    <path fill="#2CA7F8" fill-rule="nonzero" d="M22.5625,16 L15.4375,16 L15,16 L15,15 L15.4375,15 L22.5625,15 L23,15 L23,16 L22.5625,16 Z M24.5764706,20 L15.4235294,20 L15,20 L15,19 L15.4235294,19 L24.5764706,19 L25,19 L25,20 L24.5764706,20 Z M24.5764706,24 L15.4235294,24 L15,24 L15,23 L15.4235294,23 L24.5764706,23 L25,23 L25,24 L24.5764706,24 Z"/>
+  </g>
 </svg>
