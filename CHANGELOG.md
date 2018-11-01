@@ -1,3 +1,6 @@
+## [3.0.9] - 2018-11-1
+* feat: update window titlebar button style
+
 ## [3.0.8] - 2018-10-16
 * fix: open_in_filemanager
 * fix: handle `GLib.Error'
