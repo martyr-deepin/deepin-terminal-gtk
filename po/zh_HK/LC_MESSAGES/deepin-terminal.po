@@ -3,14 +3,25 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# nigelinux <nnigelinux@gmail.com>, 2017
+# tomoe_musashi <hkg.musashi@gmail.com>, 2017
+# Tam Chun Kit <airbigi@yahool.com>, 2017
+# spions kwong, 2017
+# Chi-Hsun Tsai, 2017
+# Michelle Lam <michellelam525@gmail.com>, 2017
+# Philip CHEUNG, 2017
+# iceleaf <iceleaf916@gmail.com>, 2017
+# 李洪武 <lihongwu1987@gmail.com>, 2017
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-08 12:45+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Michelle Lam <michellelam525@gmail.com>, 2017\n"
+"PO-Revision-Date: 2017-02-04 05:38+0000\n"
+"Last-Translator: 李洪武 <lihongwu1987@gmail.com>, 2017\n"
 "Language-Team: Chinese (Hong Kong) (https://www.transifex.com/linuxdeepin/teams/3976/zh_HK/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"

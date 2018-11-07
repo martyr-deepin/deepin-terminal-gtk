@@ -3,13 +3,18 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Maggie Liu <maggie.liufei@gmail.com>, 2017
+# e2f_in_c3 <e2f_in_c3@outlook.com>, 2017
+# Panwar108 <caspian7pena@gmail.com>, 2018
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-08 12:45+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2017-02-04 05:38+0000\n"
 "Last-Translator: Panwar108 <caspian7pena@gmail.com>, 2018\n"
 "Language-Team: Hindi (India) (https://www.transifex.com/linuxdeepin/teams/3976/hi_IN/)\n"
 "MIME-Version: 1.0\n"

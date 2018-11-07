@@ -3,14 +3,27 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Jop Vernooij <jop@jopv.net>, 2017
+# Lars Acou <lars.acou@gmail.com>, 2017
+# closeddoors1559 <mrvnp@msn.com>, 2017
+# Timothy Vanderaerden <timothyvanderaerden@gmail.com>, 2017
+# Alain Baudrez <inactive+Wamukota@transifex.com>, 2017
+# Anne <a.vangulick@hotmail.com>, 2017
+# Maggie Liu <maggie.liufei@gmail.com>, 2017
+# Anduxor <itachiandu@gmail.com>, 2017
+# jasper580 <jasperweyne@gmail.com>, 2017
+# dragnadh <dragnadh@gmail.com>, 2018
+# Heimen Stoffels <vistausss@outlook.com>, 2018
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-08 12:45+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: dragnadh <dragnadh@gmail.com>, 2017\n"
+"PO-Revision-Date: 2017-02-04 05:38+0000\n"
+"Last-Translator: Heimen Stoffels <vistausss@outlook.com>, 2018\n"
 "Language-Team: Dutch (https://www.transifex.com/linuxdeepin/teams/3976/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"

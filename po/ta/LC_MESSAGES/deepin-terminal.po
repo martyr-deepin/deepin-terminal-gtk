@@ -3,13 +3,22 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Praveen Thangamuthu (பிரவீன்) <praveenindia@gmx.com>, 2017
+# Muthuramalingam <muthu1809@gmail.com>, 2017
+# dhasthagheer <dhasthagheer@gmail.com>, 2017
+# Aravindan Aravind <aravindan1992@gmail.com>, 2017
+# vimalkumar <vimivimal@outlook.com>, 2017
+# Buvanesh Kumar <linuxsbk@gmail.com>, 2017
+# Moganesswaran Panchanathan <monizdevelopment@gmail.com>, 2017
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-08 12:45+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2017-02-04 05:38+0000\n"
 "Last-Translator: Moganesswaran Panchanathan <monizdevelopment@gmail.com>, 2017\n"
 "Language-Team: Tamil (https://www.transifex.com/linuxdeepin/teams/3976/ta/)\n"
 "MIME-Version: 1.0\n"

@@ -3,14 +3,19 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Mantas Kriaučiūnas <mantas@akl.lt>, 2017
+# Jonas Motiejūnas <exjonas@gmail.com>, 2017
+# Moo, 2018
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-08 12:45+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Jonas Motiejūnas <exjonas@gmail.com>, 2017\n"
+"PO-Revision-Date: 2017-02-04 05:38+0000\n"
+"Last-Translator: Moo, 2018\n"
 "Language-Team: Lithuanian (https://www.transifex.com/linuxdeepin/teams/3976/lt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"

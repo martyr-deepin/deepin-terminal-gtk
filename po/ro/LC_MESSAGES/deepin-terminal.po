@@ -3,13 +3,21 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# pacificator <pacificator2@gmail.com>, 2017
+# Maggie Liu <maggie.liufei@gmail.com>, 2017
+# Nicolae Crefelean, 2017
+# cricri8o <inactive+cricri8o@transifex.com>, 2017
+# Vasile Rusu <basil_russu@hotmail.com>, 2017
+# Holyme, 2018
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-08 12:45+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2017-02-04 05:38+0000\n"
 "Last-Translator: Holyme, 2018\n"
 "Language-Team: Romanian (https://www.transifex.com/linuxdeepin/teams/3976/ro/)\n"
 "MIME-Version: 1.0\n"

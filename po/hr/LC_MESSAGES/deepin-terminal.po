@@ -3,14 +3,21 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Vlado V. <vlays@mail.com>, 2017
+# e2f_hr_c2 <e2fhorse@outlook.com>, 2017
+# gogo <trebelnik2@gmail.com>, 2017
+# Marino Vuletić <marino.vuletic@outlook.com>, 2017
+# Ivica  Kolić <ikoli@yahoo.com>, 2017
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-08 12:45+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Marino Vuletić <marino.vuletic@outlook.com>, 2017\n"
+"PO-Revision-Date: 2017-02-04 05:38+0000\n"
+"Last-Translator: Ivica  Kolić <ikoli@yahoo.com>, 2017\n"
 "Language-Team: Croatian (https://www.transifex.com/linuxdeepin/teams/3976/hr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"

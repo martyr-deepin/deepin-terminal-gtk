@@ -3,14 +3,30 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# ICesarI <icesari@msn.com>, 2017
+# iceleaf <iceleaf916@gmail.com>, 2017
+# efedezeta <pocodance@gmail.com>, 2017
+# Maggie Liu <maggie.liufei@gmail.com>, 2017
+# Alejandro Hamann <linkstat@gmail.com>, 2017
+# Francisco B.G. <inactive+franchulo@transifex.com>, 2017
+# jose luis <josemdance@outlook.com>, 2017
+# Luis Castillo <castilloluis2005@gmail.com>, 2017
+# jhalo <jhalo@protonmail.com>, 2017
+# roberto lopez <riscogordo@gmail.com>, 2017
+# Jean Rivas <jeancarlosrivas@gmail.com>, 2017
+# Alvaro Samudio <alvarosamudio1@gmail.com>, 2017
+# Deepin en Español, 2018
+# Diego Sanguinetti, 2018
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-08 12:45+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Deepin en Español, 2017\n"
+"PO-Revision-Date: 2017-02-04 05:38+0000\n"
+"Last-Translator: Diego Sanguinetti, 2018\n"
 "Language-Team: Spanish (https://www.transifex.com/linuxdeepin/teams/3976/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -171,7 +187,7 @@ msgstr "Autoocultar cursor"
 
 #: ../widget/preference.vala:371
 msgid "Cursor blink"
-msgstr "Parpadeo cursor"
+msgstr "Parpadear cursor"
 
 #: ../widget/preference.vala:199
 msgid "Cursor style:"
@@ -260,11 +276,11 @@ msgstr "Editar servidor"
 
 #: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:442
 msgid "Encoding"
-msgstr "Codificando"
+msgstr "Codificación"
 
 #: ../widget/remote_server_dialog.vala:308
 msgid "Encoding:"
-msgstr "Codificando:"
+msgstr "Codificación:"
 
 #: ../widget/confirm_dialog.vala:131 ../widget/appbar.vala:130
 msgid "Exit"
@@ -308,7 +324,7 @@ msgstr "Ayuda"
 
 #: ../widget/preference.vala:400
 msgid "Hide quake window after lost focus"
-msgstr "Esconder la ventana después de desenfocar"
+msgstr "Esconder el modo quake después de desenfocar"
 
 #: ../widget/terminal.vala:378 ../widget/config_window.vala:337
 msgid "Horizontal split"
@@ -504,7 +520,7 @@ msgstr "Desplazamiento de tecla"
 
 #: ../widget/preference.vala:381
 msgid "Scroll on output"
-msgstr "Desplazarse en la salida"
+msgstr "Desplazamiento en la impresión"
 
 #: ../widget/terminal.vala:401 ../widget/search_entry.vala:64
 #: ../widget/search_entry.vala:66 ../widget/config_window.vala:307
@@ -594,12 +610,12 @@ msgstr "Establecer el modo de ventana de terminal "
 
 #: ../widget/terminal.vala:452 ../widget/appbar.vala:125
 msgid "Settings"
-msgstr "Configuración"
+msgstr "Ajustes"
 
 #: ../widget/preference_slidebar.vala:65 ../widget/preference.vala:293
 #: ../widget/command_dialog.vala:83
 msgid "Shortcuts"
-msgstr "Atajos de teclado"
+msgstr "Teclas atajo"
 
 #: ../widget/command_dialog.vala:180
 msgid "Shortcuts:"
@@ -632,7 +648,7 @@ msgstr "Subir archivo"
 
 #: ../widget/preference.vala:397
 msgid "Use on starting:"
-msgstr "Usar para empezar:"
+msgstr "Usar al empezar:"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Username"

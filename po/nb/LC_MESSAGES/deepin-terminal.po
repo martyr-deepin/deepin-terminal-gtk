@@ -3,14 +3,25 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Kristoffer Ulseth <ulseth85@gmail.com>, 2017
+# Torstein Olsen <tor.jetix16@gmail.com>, 2017
+# Ronnie André Bjørvik Sletta <rsletta@gmail.com>, 2017
+# Espen Bye, 2017
+# grognak <alex-_88@hotmail.com>, 2017
+# heimeg <sigve@hagesaeter.com>, 2017
+# Andreas Dreyer Hysing, 2017
+# hansa71 <hans@n5.no>, 2018
+# ddybing <daniel.dybing@me.com>, 2018
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-08 12:45+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: hansa71 <hans@n5.no>, 2017\n"
+"PO-Revision-Date: 2017-02-04 05:38+0000\n"
+"Last-Translator: ddybing <daniel.dybing@me.com>, 2018\n"
 "Language-Team: Norwegian Bokmål (https://www.transifex.com/linuxdeepin/teams/3976/nb/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -118,7 +129,7 @@ msgstr "Lukk andre vinduer"
 
 #: ../widget/preference.vala:330
 msgid "Close other windows:"
-msgstr "Lukk andre vindu:"
+msgstr "Lukk andre vinduer:"
 
 #: ../widget/terminal.vala:380 ../widget/config_window.vala:342
 msgid "Close window"
@@ -308,7 +319,7 @@ msgstr "Hjelp"
 
 #: ../widget/preference.vala:400
 msgid "Hide quake window after lost focus"
-msgstr ""
+msgstr "Skjul vindu etter at fokus er borte"
 
 #: ../widget/terminal.vala:378 ../widget/config_window.vala:337
 msgid "Horizontal split"

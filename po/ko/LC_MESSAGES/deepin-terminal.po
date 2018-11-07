@@ -3,14 +3,20 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# 박찬 <parkchan37@gmail.com>, 2017
+# Sangmin Lee <sangminlee7648@gmail.com>, 2017
+# Sungjin Kang <potopro@gmail.com>, 2017
+# Maggie Liu <maggie.liufei@gmail.com>, 2017
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-08 12:45+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: 박찬 <parkchan37@gmail.com>, 2017\n"
+"PO-Revision-Date: 2017-02-04 05:38+0000\n"
+"Last-Translator: Maggie Liu <maggie.liufei@gmail.com>, 2017\n"
 "Language-Team: Korean (https://www.transifex.com/linuxdeepin/teams/3976/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"

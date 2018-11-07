@@ -3,14 +3,24 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Jim Spentzos, 2017
+# Francesko Isallari <francesko1989@gmail.com>, 2017
+# Michael Slave <gamato.kal@gmail.com>, 2017
+# Panagiotis Tabakis <tabakisp@gmail.com>, 2017
+# geost <george.stefanakis@gmail.com>, 2017
+# Maggie Liu <maggie.liufei@gmail.com>, 2017
+# Jim Gios (Joker) <jgpers@gmail.com>, 2018
+# theologos kalotrapezis <kalotrapezis@gmail.com>, 2018
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-08 12:45+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Jim Gios (Joker) <jgpers@gmail.com>, 2018\n"
+"PO-Revision-Date: 2017-02-04 05:38+0000\n"
+"Last-Translator: theologos kalotrapezis <kalotrapezis@gmail.com>, 2018\n"
 "Language-Team: Greek (https://www.transifex.com/linuxdeepin/teams/3976/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -356,7 +366,7 @@ msgstr "Όνομα:"
 
 #: ../widget/config_window.vala:335
 msgid "New theme terminal"
-msgstr ""
+msgstr "Νέο θέμα τερματικού"
 
 #: ../widget/appbar.vala:120
 msgid "New window"

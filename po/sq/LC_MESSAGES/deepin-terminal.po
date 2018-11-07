@@ -4,9 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Ashik Salahudeen <aashiks@aashiks.in>, 2017
-# Abhinav Krishna C K <abhinavkrishna2000@gmail.com>, 2017
-# Balasankar C <c.balasankar@gmail.com>, 2017
+# Besnik <besnik@programeshqip.org>, 2018
 # 
 #, fuzzy
 msgid ""
@@ -15,12 +13,12 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-08 12:45+0800\n"
 "PO-Revision-Date: 2017-02-04 05:38+0000\n"
-"Last-Translator: Balasankar C <c.balasankar@gmail.com>, 2017\n"
-"Language-Team: Malayalam (https://www.transifex.com/linuxdeepin/teams/3976/ml/)\n"
+"Last-Translator: Besnik <besnik@programeshqip.org>, 2018\n"
+"Language-Team: Albanian (https://www.transifex.com/linuxdeepin/teams/3976/sq/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ml\n"
+"Language: sq\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../widget/terminal.vala:1241
@@ -31,7 +29,7 @@ msgstr ""
 
 #: ../widget/appbar.vala:129
 msgid "About"
-msgstr "ഇതിനെ കുറിച്ച്"
+msgstr ""
 
 #: ../widget/about_widget.vala:81
 msgid "Acknowledgments"
@@ -39,7 +37,7 @@ msgstr ""
 
 #: ../widget/remote_server_dialog.vala:352 ../widget/command_dialog.vala:197
 msgid "Add"
-msgstr "ചേർക്കുക"
+msgstr ""
 
 #: ../widget/command_dialog.vala:126
 msgid "Add Command"
@@ -105,7 +103,7 @@ msgstr ""
 #: ../widget/terminal.vala:638 ../widget/file_button.vala:69
 #: ../widget/command_dialog.vala:192 ../widget/command_dialog.vala:250
 msgid "Cancel"
-msgstr "റദ്ദാക്കുക"
+msgstr "Anuloje"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Certificate"
@@ -141,7 +139,7 @@ msgstr ""
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Command"
-msgstr "നിർദേശം"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:295 ../widget/command_dialog.vala:172
 msgid "Command:"
@@ -154,7 +152,7 @@ msgstr ""
 #: ../widget/terminal.vala:343 ../widget/config_window.vala:304
 #: ../widget/entry_menu.vala:39
 msgid "Copy"
-msgstr "പകർത്തുക"
+msgstr ""
 
 #: ../widget/terminal.vala:347
 msgid "Copy link"
@@ -195,7 +193,7 @@ msgstr ""
 
 #: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:603
 msgid "Deepin Terminal"
-msgstr "ഡീപിൻ ടെർമിനൽ"
+msgstr ""
 
 #: ../main.vala:189 ../widget/about_widget.vala:49
 msgid ""
@@ -215,7 +213,7 @@ msgstr ""
 #: ../widget/remote_server_dialog.vala:428 ../widget/command_dialog.vala:251
 #: ../widget/entry_menu.vala:44
 msgid "Delete"
-msgstr "നീക്കം ചെയ്യുക"
+msgstr ""
 
 #: ../widget/command_dialog.vala:238 ../widget/command_dialog.vala:248
 msgid "Delete command"
@@ -268,7 +266,7 @@ msgstr ""
 
 #: ../widget/confirm_dialog.vala:131 ../widget/appbar.vala:130
 msgid "Exit"
-msgstr "പുറത്തേക്ക് കടക്കുക"
+msgstr "Dalje"
 
 #: ../widget/terminal.vala:392
 msgid "Exit fullscreen"
@@ -348,7 +346,7 @@ msgstr ""
 
 #: ../widget/command_dialog.vala:83
 msgid "Name"
-msgstr "പേര്"
+msgstr ""
 
 #: ../widget/command_dialog.vala:159
 msgid "Name:"
@@ -406,7 +404,7 @@ msgstr ""
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Password"
-msgstr "രഹസ്യവാക്ക്"
+msgstr "Fjalëkalim"
 
 #: ../widget/remote_server_dialog.vala:247
 msgid "Password:"
@@ -492,7 +490,7 @@ msgstr ""
 
 #: ../widget/remote_server_dialog.vala:350 ../widget/command_dialog.vala:195
 msgid "Save"
-msgstr "സൂക്ഷിക്കുക"
+msgstr ""
 
 #: ../widget/preference_slidebar.vala:87 ../widget/preference.vala:374
 msgid "Scroll"
@@ -509,7 +507,7 @@ msgstr ""
 #: ../widget/terminal.vala:401 ../widget/search_entry.vala:64
 #: ../widget/search_entry.vala:66 ../widget/config_window.vala:307
 msgid "Search"
-msgstr "തിരയുക"
+msgstr ""
 
 #: ../widget/preference.vala:305 ../widget/remote_panel.vala:357
 #: ../widget/command_panel.vala:201
@@ -616,7 +614,7 @@ msgstr ""
 #: ../widget/preference_slidebar.vala:68 ../widget/preference.vala:296
 #: ../widget/config_window.vala:318
 msgid "Terminal"
-msgstr "ടെർമിനൽ"
+msgstr ""
 
 #: ../widget/terminal.vala:617
 msgid "Type path for download file"
@@ -636,7 +634,7 @@ msgstr ""
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Username"
-msgstr "ഉപയോക്തൃനാമം"
+msgstr "Emër përdoruesi"
 
 #: ../widget/remote_server_dialog.vala:233
 msgid "Username:"
@@ -663,12 +661,12 @@ msgstr ""
 
 #: ../widget/preference_slidebar.vala:90 ../widget/preference.vala:383
 msgid "Window"
-msgstr "ജാലകം"
+msgstr ""
 
 #: ../widget/preference_slidebar.vala:71 ../widget/preference.vala:313
 #: ../widget/config_window.vala:348
 msgid "Workspace"
-msgstr "പ്രവർത്തന സ്ഥലം"
+msgstr ""
 
 #: ../widget/config_window.vala:308
 msgid "Zoom in"

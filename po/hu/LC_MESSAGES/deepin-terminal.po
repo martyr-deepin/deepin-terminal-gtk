@@ -3,14 +3,28 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# Maggie Liu <maggie.liufei@gmail.com>, 2017
+# Gerstmayer Norbert <gerstmajer@gmail.com>, 2017
+# Marcell Lévai, 2017
+# vmarci21 <vmarci21@msn.com>, 2017
+# kdavid97 <kdavid97@gmail.hu>, 2017
+# Walton Henry <waltonh@mail.com>, 2017
+# ddabrahim <ddabrahim@googlemail.com>, 2017
+# Laszlo Espadas, 2017
+# SlazO <blum1866@gmail.com>, 2017
+# Kiss Zoltan <atari@freemail.hu>, 2017
+# Jack Howell <jack.howell@protonmail.com>, 2018
+# ccedb894e6c246847bbbb58794dea50d, 2018
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-08 12:45+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Jack Howell <jack.howell@protonmail.com>, 2018\n"
+"PO-Revision-Date: 2017-02-04 05:38+0000\n"
+"Last-Translator: ccedb894e6c246847bbbb58794dea50d, 2018\n"
 "Language-Team: Hungarian (https://www.transifex.com/linuxdeepin/teams/3976/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,7 +38,7 @@ msgid ""
 "Command has been completed, press ENTER to exit the terminal."
 msgstr ""
 "\n"
-"A parancs végrehajtásra került. Nyomjuk meg az ENTER billentyűt a kilépéshez."
+"A parancs végrehajtásra került. Nyomj ENTER-t a kilépéshez."
 
 #: ../widget/appbar.vala:129
 msgid "About"
@@ -276,7 +290,7 @@ msgstr "Kilépés a teljes képernyőböl"
 
 #: ../widget/terminal.vala:398
 msgid "Find"
-msgstr ""
+msgstr "Keresés"
 
 #: ../widget/preference.vala:291
 msgid "Font size:"
@@ -392,7 +406,7 @@ msgstr "Megnyitás"
 
 #: ../widget/terminal.vala:368
 msgid "Open in file manager"
-msgstr ""
+msgstr "Megnyitás fájlkezelőben"
 
 #: ../widget/preference.vala:304
 msgid "Open:"
