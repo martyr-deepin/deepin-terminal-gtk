@@ -520,11 +520,11 @@ namespace Widgets {
                         cr.set_source_rgba(frame_color.red, frame_color.green, frame_color.blue, config.config_file.get_double("general", "opacity"));
                         Draw.draw_rectangle(cr, x + 2, y + 1, width - 4, 1);
 
-                        if (is_light_theme) {
-                            Utils.set_context_color(cr, top_line_light_color);
-                        } else {
-                            Utils.set_context_color(cr, top_line_dark_color);
-                        }
+                        //  if (is_light_theme) {
+                        //      Utils.set_context_color(cr, top_line_light_color);
+                        //  } else {
+                        //      Utils.set_context_color(cr, top_line_dark_color);
+                        //  }
                         Draw.draw_rectangle(cr, x + 2, y + 1, width - 4, 1);
 
                         cr.set_source_rgba(1, 1, 1, 0.0625 * config.config_file.get_double("general", "opacity")); // Draw top line at window.
@@ -537,11 +537,11 @@ namespace Widgets {
                         // Right.
                         Draw.draw_rectangle(cr, x + width - 2, y + 2, 1, Constant.TITLEBAR_HEIGHT);
 
-                        if (is_light_theme) {
-                            Utils.set_context_color(cr, top_line_light_color);
-                        } else {
-                            Utils.set_context_color(cr, top_line_dark_color);
-                        }
+                        //  if (is_light_theme) {
+                        //      Utils.set_context_color(cr, top_line_light_color);
+                        //  } else {
+                        //      Utils.set_context_color(cr, top_line_dark_color);
+                        //  }
 
                         // Left.
                         Draw.draw_rectangle(cr, x + 1, y + 2, 1, Constant.TITLEBAR_HEIGHT);
