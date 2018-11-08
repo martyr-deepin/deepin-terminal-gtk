@@ -64,11 +64,17 @@ namespace Widgets {
                     is_hover = true;
                     queue_draw();
 
+                    // set cursor.
+                    get_window().set_cursor(new Gdk.Cursor.for_display(Gdk.Display.get_default(),
+                                                                       Gdk.CursorType.HAND1));
+
                     return false;
                 });
             leave_notify_event.connect((w, e) => {
                     is_hover = false;
                     queue_draw();
+
+                    get_window().set_cursor(null);
 
                     return false;
                 });
