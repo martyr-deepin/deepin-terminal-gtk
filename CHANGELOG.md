@@ -1,3 +1,15 @@
+<a name="3.0.10"></a>
+## 3.0.10 (2018-11-09)
+
+
+#### Bug Fixes
+
+*   theme preview use the correct color'n'text ([fb1fec94](https://github.com/linuxdeepin/deepin-terminal/commit/fb1fec94f1ba618b6524288ddb0993e97c5cb3ef))
+*   remove line above at titlebar. ([8afd630e](https://github.com/linuxdeepin/deepin-terminal/commit/8afd630e3b8bf6794247f5fc05087fbb932afa55))
+*   window button hover state set to hand type. ([565e97ea](https://github.com/linuxdeepin/deepin-terminal/commit/565e97ea93ab4f6287aeeb1ec0edb9fa914db260))
+
+
+
 ## [3.0.9] - 2018-11-1
 * feat: update window titlebar button style
 
