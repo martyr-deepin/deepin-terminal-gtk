@@ -31,7 +31,7 @@ namespace Widgets {
         public Cairo.ImageSurface dark_theme_border_surface;
         public Cairo.ImageSurface light_theme_border_surface;
         public Gdk.RGBA background_color;
-        public Gdk.RGBA content_color;
+        public Gdk.RGBA prompt_color;
         public Gdk.RGBA foreground_color;
         public KeyFile theme_file;
         public bool is_active = false;
@@ -58,7 +58,7 @@ namespace Widgets {
 
                 background_color.alpha = 0.8;
                 foreground_color = Utils.hex_to_rgba(theme_file.get_string("theme", "foreground").strip());
-                content_color = Utils.hex_to_rgba(theme_file.get_string("theme", "color_2").strip());
+                prompt_color = Utils.hex_to_rgba(theme_file.get_string("theme", "color_11").strip());
 
                 dark_theme_border_surface = Utils.create_image_surface("dark_theme_border.svg");
                 light_theme_border_surface = Utils.create_image_surface("light_theme_border.svg");
@@ -113,10 +113,10 @@ namespace Widgets {
                 button_radius / get_scale_factor());
             cr.restore();
 
-            cr.set_source_rgba(foreground_color.red, foreground_color.green, foreground_color.blue, foreground_color.alpha);
-            Draw.draw_text(cr, "deepin@linux > _", title_padding_x, title_padding_y, rect.width, rect.height, title_font_size, Pango.Alignment.LEFT, "top");
+            cr.set_source_rgba(prompt_color.red, prompt_color.green, prompt_color.blue, prompt_color.alpha);
+            Draw.draw_text(cr, "deepin@linux:~$ _", title_padding_x, title_padding_y, rect.width, rect.height, title_font_size, Pango.Alignment.LEFT, "top");
 
-            cr.set_source_rgba(content_color.red, content_color.green, content_color.blue, content_color.alpha);
+            cr.set_source_rgba(foreground_color.red, foreground_color.green, foreground_color.blue, foreground_color.alpha);
             Draw.draw_text(cr, theme_name, content_padding_x, content_padding_y, rect.width, rect.height, content_font_size, Pango.Alignment.LEFT, "top");
 
             if (is_active) {
