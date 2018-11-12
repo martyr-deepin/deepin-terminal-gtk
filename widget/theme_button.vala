@@ -31,7 +31,8 @@ namespace Widgets {
         public Cairo.ImageSurface dark_theme_border_surface;
         public Cairo.ImageSurface light_theme_border_surface;
         public Gdk.RGBA background_color;
-        public Gdk.RGBA prompt_color;
+        public Gdk.RGBA prompt_color_host;
+        public Gdk.RGBA prompt_color_path;
         public Gdk.RGBA foreground_color;
         public KeyFile theme_file;
         public bool is_active = false;
@@ -58,7 +59,8 @@ namespace Widgets {
 
                 background_color.alpha = 0.8;
                 foreground_color = Utils.hex_to_rgba(theme_file.get_string("theme", "foreground").strip());
-                prompt_color = Utils.hex_to_rgba(theme_file.get_string("theme", "color_11").strip());
+                prompt_color_host = Utils.hex_to_rgba(theme_file.get_string("theme", "color_11").strip());
+                prompt_color_path = Utils.hex_to_rgba(theme_file.get_string("theme", "color_13").strip());
 
                 dark_theme_border_surface = Utils.create_image_surface("dark_theme_border.svg");
                 light_theme_border_surface = Utils.create_image_surface("light_theme_border.svg");
@@ -92,6 +94,9 @@ namespace Widgets {
             Gtk.Allocation rect;
             widget.get_allocation(out rect);
 
+            int clip_width = rect.width - background_padding * 2;
+            int clip_height = rect.height - background_padding * 2;
+
             cr.save();
             // Clip round rectangle when DPI > 1, for perfect radius effect.
             if (get_scale_factor() > 1) {
@@ -99,8 +104,8 @@ namespace Widgets {
                     cr,
                     background_padding,
                     background_padding,
-                    rect.width - background_padding * 2,
-                    rect.height - background_padding * 2,
+                    clip_width,
+                    clip_height,
                     button_radius / get_scale_factor() + 1);
             }
             cr.set_source_rgba(background_color.red, background_color.green, background_color.blue, background_color.alpha);
@@ -108,15 +113,25 @@ namespace Widgets {
                 cr,
                 background_padding,
                 background_padding,
-                rect.width - background_padding * 2,
-                rect.height - background_padding * 2,
+                clip_width,
+                clip_height,
                 button_radius / get_scale_factor());
             cr.restore();
 
-            cr.set_source_rgba(prompt_color.red, prompt_color.green, prompt_color.blue, prompt_color.alpha);
-            Draw.draw_text(cr, "deepin@linux:~$ _", title_padding_x, title_padding_y, rect.width, rect.height, title_font_size, Pango.Alignment.LEFT, "top");
+            string prompt_host = "dde@linux:", prompt_path = "~/Theme";
 
-            cr.set_source_rgba(foreground_color.red, foreground_color.green, foreground_color.blue, foreground_color.alpha);
+            Draw.set_context_source_color(cr, prompt_color_host);
+            Draw.draw_text(cr, prompt_host, title_padding_x, title_padding_y, rect.width, rect.height, title_font_size, Pango.Alignment.LEFT, "top");
+            int prompt_host_width = Draw.get_text_render_width(cr, prompt_host, clip_width, clip_height, title_font_size);
+
+            Draw.set_context_source_color(cr, prompt_color_path);
+            Draw.draw_text(cr, prompt_path, title_padding_x + prompt_host_width, title_padding_y, rect.width, rect.height, title_font_size, Pango.Alignment.LEFT, "top");
+            int prompt_host_n_path_width = Draw.get_text_render_width(cr, prompt_path, clip_width, clip_height, title_font_size) + prompt_host_width;
+
+            Draw.set_context_source_color(cr, foreground_color);
+            Draw.draw_text(cr, "$ _", title_padding_x + prompt_host_n_path_width, title_padding_y, rect.width, rect.height, title_font_size, Pango.Alignment.LEFT, "top");
+
+            Draw.set_context_source_color(cr, foreground_color);
             Draw.draw_text(cr, theme_name, content_padding_x, content_padding_y, rect.width, rect.height, content_font_size, Pango.Alignment.LEFT, "top");
 
             if (is_active) {

@@ -58,8 +58,6 @@ namespace Widgets {
             int about_text_height = Draw.get_text_render_height(
                 about_widget,
                 about_widget.about_text,
-                about_widget.about_x,
-                about_widget.about_y,
                 window_init_width - about_widget.about_x * 2,
                 about_widget.about_height,
                 about_widget.about_height,
