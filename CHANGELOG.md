@@ -1,3 +1,13 @@
+<a name="3.0.10.1"></a>
+## 3.0.10.1 (2018-11-12)
+
+
+#### Features
+
+*   better theme preview 'eye-candy' ([edbe56a4](https://github.com/linuxdeepin/deepin-terminal/commit/edbe56a4a723a5fad60e7f10f35070afc8ecc546))
+
+
+
 <a name="3.0.10"></a>
 ## 3.0.10 (2018-11-09)
 
