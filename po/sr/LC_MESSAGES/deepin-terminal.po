@@ -387,7 +387,7 @@ msgstr "Следећи радни простор:"
 
 #: ../widget/preference.vala:394
 msgid "Normal window"
-msgstr "Нормални прозор"
+msgstr "Нормалан прозор"
 
 #: ../widget/preference.vala:136
 msgid "Opacity:"

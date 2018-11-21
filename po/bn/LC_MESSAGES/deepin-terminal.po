@@ -7,7 +7,7 @@
 # Syed Muhammad Mahmudul Haque, 2017
 # Sekander Badsha <badsha_eee@yahoo.com>, 2017
 # TechLovinGeek <techlovingeek@hotmail.com>, 2017
-# Deepin <justfortest16162215@gmail.com>, 2017
+# Siam Sami <justfortest16162215@gmail.com>, 2017
 # deepin_transifex <xiabin@linuxdeepin.com>, 2018
 # Md. Emruz Hossain <hossainemruz@gmail.com>, 2018
 # 

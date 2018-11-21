@@ -193,7 +193,7 @@ msgstr ""
 
 #: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:603
 msgid "Deepin Terminal"
-msgstr ""
+msgstr "Terminali Deepin"
 
 #: ../main.vala:189 ../widget/about_widget.vala:49
 msgid ""
@@ -614,7 +614,7 @@ msgstr ""
 #: ../widget/preference_slidebar.vala:68 ../widget/preference.vala:296
 #: ../widget/config_window.vala:318
 msgid "Terminal"
-msgstr ""
+msgstr "Terminal"
 
 #: ../widget/terminal.vala:617
 msgid "Type path for download file"

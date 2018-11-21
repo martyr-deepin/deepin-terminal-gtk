@@ -8,7 +8,7 @@
 # Maggie Liu <maggie.liufei@gmail.com>, 2017
 # Ricardo Simões <xmcorporation@gmail.com>, 2017
 # João P Carvalhinho <joao.carvalhinho@gmail.com>, 2017
-# MS, 2018
+# MS <manuelarodsilva@gmail.com>, 2018
 # Luís Lima <geral@liqensoft.com>, 2018
 # 
 #, fuzzy
