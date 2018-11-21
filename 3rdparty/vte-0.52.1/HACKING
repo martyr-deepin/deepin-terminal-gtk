@@ -1,0 +1,11 @@
+This entire tree is "some highly unsupported crackrock", though we are
+cleaning it as fast as possible and aiming for a 1.0 release "next year".
+Please contact people listed in filed MAINTAINERS if you intend to hack
+on it, especially if you want to commit stuff.
+
+This is the most useful resource in understanding various internal states
+as well as control sequences:
+
+	http://invisible-island.net/xterm/ctlseqs/ctlseqs.html
+
+And to understand termcap, terminfo, etc, "man 5 terminfo" is a great start.

@@ -1,0 +1,128 @@
+# Ukrainian translation of vte.
+# Copyright (C) 2002
+# This file is distributed under the same license as the vte package.
+# Yuriy Syrota <rastaman@renome.rovno.ua>, 2002.
+# Korostil Daniel <ted.korostiled@gmail.com>, 2011.
+# Mykola Tkach <Stuartlittle1970@gmail.com>, 2014.
+msgid ""
+msgstr ""
+"Project-Id-Version: vte\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=vte&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2014-09-25 11:04+0000\n"
+"PO-Revision-Date: 2014-09-25 21:00+0300\n"
+"Last-Translator: Mykola Tkach <Stuartlittle1970@gmail.com>\n"
+"Language-Team: translation@linux.org.ua\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Virtaal 0.6.1\n"
+
+#: ../src/app.ui.h:1
+msgid "Copy"
+msgstr "Копіювати"
+
+#: ../src/app.ui.h:2
+msgid "Paste"
+msgstr "Вставити"
+
+#: ../src/app.ui.h:3
+msgid "Reset (use Ctrl to reset and clear)"
+msgstr "Скинути (для скидання та очищування використовуйте Ctrl)"
+
+#: ../src/app.ui.h:4
+msgid "Reset"
+msgstr "Скинути"
+
+#: ../src/app.ui.h:5
+msgid "Toggle input enabled setting"
+msgstr "Перемикнути параметр вводу"
+
+#: ../src/app.ui.h:6
+msgid "Input"
+msgstr "Ввід"
+
+#: ../src/iso2022.c:791
+#: ../src/iso2022.c:799
+#: ../src/iso2022.c:830
+#: ../src/vte.c:1998
+#, c-format
+msgid "Unable to convert characters from %s to %s."
+msgstr "Неможливо перетворити символи з %s у %s."
+
+#: ../src/iso2022.c:1496
+#, c-format
+msgid "Attempt to set invalid NRC map '%c'."
+msgstr "Спроба встановити неправильну мапу заміни національних символів «%c»."
+
+#. Application signalled an "identified coding system" we haven't heard of.  See ECMA-35 for gory details.
+#: ../src/iso2022.c:1526
+msgid "Unrecognized identified coding system."
+msgstr "Не розпізнано вказану систему кодування."
+
+#: ../src/iso2022.c:1585
+#: ../src/iso2022.c:1612
+#, c-format
+msgid "Attempt to set invalid wide NRC map '%c'."
+msgstr "Спроба встановити неправильну широку мапу заміни національних символів «%c»."
+
+#. Bail back to normal mode.
+#: ../src/vteapp.c:1027
+msgid "Could not open console.\n"
+msgstr "Не вдалося відкрити консоль.\n"
+
+#: ../src/vteapp.c:1137
+msgid "Could not parse the geometry spec passed to --geometry"
+msgstr "Не вдалося розібрати геометрію, вказану у ключі --geometry"
+
+#. Translators: %s is replaced with error message returned by strerror().
+#: ../src/vte.c:4164
+#, c-format
+msgid "Error reading from child: %s."
+msgstr "Помилка зчитування з дочірнього процесу: %s."
+
+#: ../src/vte.c:4300
+msgid "Unable to send data to child, invalid charset convertor"
+msgstr "Не вдалось надіслати дані дочірньому процесу, неправильне перетворення символу"
+
+#: ../src/vte.c:4311
+#: ../src/vte.c:5315
+#, c-format
+msgid "Error (%s) converting data for child, dropping."
+msgstr "Помилка (%s) перетворення даних для дочірнього процесу, відкинуто."
+
+#: ../src/vte.c:7628
+#, c-format
+msgid "Error reading PTY size, using defaults: %s\n"
+msgstr "Помилка зчитування розміру PTY, використання типових: %s.\n"
+
+#~ msgid "Duplicate (%s/%s)!"
+#~ msgstr "Повторення (%s/%s)!"
+
+#~ msgid "Error compiling regular expression \"%s\"."
+#~ msgstr "Помилка компіляції формального виразу «%s»."
+
+#~ msgid "_vte_conv_open() failed setting word characters"
+#~ msgstr "_vte_conv_open() не вдалось налаштувати словесні символи"
+
+#~ msgid "can not run %s"
+#~ msgstr "неможливо виконати %s"
+
+#~ msgid "Error creating signal pipe."
+#~ msgstr "Помилка створення сигнального каналу."
+
+#~ msgid "No handler for control sequence `%s' defined."
+#~ msgstr "Не визначено обробника для керівної послідовності \"%s\"."
+
+#~ msgid "Error setting PTY size: %s."
+#~ msgstr "Помилка встановлення розміру PTY: %s."
+
+#~ msgid "Got unexpected (key?) sequence `%s'."
+#~ msgstr "Отримано неочікувану послідовність \"%s\"."
+
+#~ msgid "Unknown pixel mode %d.\n"
+#~ msgstr "Невідомий піксельний режим %d.\n"
+
+#~ msgid "Can not find appropiate font for character U+%04x.\n"
+#~ msgstr "Не вдається знайти відповідний шрифт для символу U+%04x.\n"

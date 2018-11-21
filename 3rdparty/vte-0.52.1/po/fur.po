@@ -1,0 +1,82 @@
+# Friulian translation for vte.
+# Copyright (C) 2012 vte's COPYRIGHT HOLDER
+# This file is distributed under the same license as the vte package.
+# TmTFx <f.t.public@gmail.com>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: vte vte-0-34\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=vte&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2016-05-16 08:25+0000\n"
+"PO-Revision-Date: 2016-07-25 12:07+0200\n"
+"Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
+"Language-Team: Friulian <fur@li.org>\n"
+"Language: fur\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.8\n"
+
+#: ../src/iso2022.cc:73 ../src/iso2022.cc:81 ../src/iso2022.cc:111
+#: ../src/vtegtk.cc:3090
+#, c-format
+msgid "Unable to convert characters from %s to %s."
+msgstr "Impussibil convertî i caratars di %s a %s."
+
+#. Translators: %s is replaced with error message returned by strerror().
+#: ../src/vte.cc:4248
+#, c-format
+msgid "Error reading from child: %s."
+msgstr "Erôr leint dal procès fî: %s."
+
+#: ../src/vte.cc:4387
+#, c-format
+msgid "Error (%s) converting data for child, dropping."
+msgstr "Erôr (%s) convertint i dâts par il proces fî, a restaran come prime."
+
+#: ../src/vte.cc:8156
+msgid "WARNING"
+msgstr "AVERTIMENT"
+
+#: ../src/vte.cc:8157
+msgid "GNUTLS not enabled; data will be written to disk unencrypted!"
+msgstr ""
+"GNUTLS no abilitât; i dâts a vegnaran scrits tal disc cence jessi cifrâts!"
+
+#~ msgid "Copy"
+#~ msgstr "Copie"
+
+#~ msgid "Paste"
+#~ msgstr "Incole"
+
+#~ msgid "Could not open console.\n"
+#~ msgstr "No puès vierzi la console.\n"
+
+#~ msgid "Could not parse the geometry spec passed to --geometry"
+#~ msgstr "No puès analizâ le specifiche di geometrie pasade a --geometry"
+
+#~ msgid "Unable to send data to child, invalid charset convertor"
+#~ msgstr ""
+#~ "Impussibil inviâ dâts al procès fî, convertidôr di caratars no valit"
+
+#~ msgid "Error reading PTY size, using defaults: %s\n"
+#~ msgstr "Erôr leint la dimension PTY, doprarai i valôrs di default: %s\n"
+
+#~ msgid "Attempt to set invalid NRC map '%c'."
+#~ msgstr "Tentatîf di impuestâ une mape NRC '%c' no valide."
+
+#~ msgid "Unrecognized identified coding system."
+#~ msgstr "«Sisteme di codifiche identificât» no ricognossût."
+
+#~ msgid "Attempt to set invalid wide NRC map '%c'."
+#~ msgstr "Tentatîf di impuestâ une mape NRC amplie no valide \"%c\"."
+
+#~ msgid "Duplicate (%s/%s)!"
+#~ msgstr "Duplicât (%s/%s)!"
+
+#~ msgid "Error compiling regular expression \"%s\"."
+#~ msgstr "Erôr compilant l'espresion regolâr \"%s\"."
+
+#~ msgid "_vte_conv_open() failed setting word characters"
+#~ msgstr "_vte_conv_open() al a falît tal impuestâ i caratars de peraule"

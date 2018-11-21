@@ -3,12 +3,8 @@ Section: utils
 Priority: optional
 Maintainer: Deepin Packages Builder <packages@deepin.com>
 Build-Depends: debhelper (>=9), valac, cmake,
-               libvte-2.91-dev,
-               libgee-0.8-dev,
-               libjson-glib-dev,
-               libsecret-1-dev,
-               libwnck-3-dev,
-               libfontconfig1-dev,
+	       libgee-0.8-dev, libjson-glib-dev,
+               libsecret-1-dev, libwnck-3-dev,
                gnome-pkg-tools (>= 0.10),
                dh-autoreconf,
                libglib2.0-dev (>= 2.40.0),
@@ -31,7 +27,7 @@ Homepage: http://www.deepin.org
 Package: deepin-terminal
 Architecture: any
 Provides: x-terminal-emulator
-Depends: ${shlibs:Depends}, ${misc:Depends}, deepin-menu, expect, lrzsz, zssh
+Depends: ${shlibs:Depends}, ${misc:Depends}, deepin-menu, expect, lrzsz
 Description: sharpens your focus in the world of command line!
  Deepin Terminal is an advanced terminal emulator with workspace,
  multiple windows, remote management, quake mode and other features.

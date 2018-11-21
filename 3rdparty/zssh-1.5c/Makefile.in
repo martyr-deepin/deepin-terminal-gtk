@@ -1,0 +1,155 @@
+# 
+# Makefile.in for zssh
+# 
+# Made by Matthieu Lucotte
+# Login   <gounter@users.sourceforge.net>
+# 
+# Started on  Thu Jun 29 19:04:08 2000 Matthieu Lucotte
+# Last update Mon Sep 22 22:18:54 2003 
+# 
+
+#System specific vars
+
+prefix		= @prefix@
+exec_prefix	= @exec_prefix@
+
+MAKE		=  @MAKE@
+INSTALL		=  @INSTALL@
+TAR		=  @TAR@
+AR		=  @AR@
+RANLIB		=  @RANLIB@
+CC		=  @CC@
+CFLAGS		=  @CFLAGS@ @DEFS@ @EXTRA_CFLAGS@
+CPPFLAGS	=  @CPPFLAGS@
+LIBS		=  @LIBS@  @EXTRA_LIBS@ 
+LDFLAGS 	=  @LDFLAGS@
+EXTRA_DEPS	=  @EXTRA_DEPS@
+
+#uncomment this for debug infos
+#CFLAGS += -DDEBUG
+
+# old stuff. safely ignore.
+#
+# uncomment this if your keyboard doesn't send combined key codes packed
+# The ALT-1 key will not be detected in this case, unless DUMB_KEYBOARD
+# is defined
+#CFLAGS += -DDUMB_KEYBOARD
+
+
+#End of system specific vars
+
+
+NAME		= zssh
+VERSION		= $(shell cat VERSION)
+PRGS		= zssh ztelnet
+MANS		= $(PRGS:=.1)
+# Files to be installed
+FILES		= $(PRGS) $(MANS)
+SRC		= completion.c doit.c escape.c escape_multi.c globbing.c init.c main.c misc.c openpty.c pc_test_escapes.c quote_removal.c signal.c split_words.c tilde_expansion.c util.c zmodem.c zmodem_act.c
+OBJS		= $(SRC:.c=.o)
+INCL		= config.h parse.h zssh.h
+
+# archive and packaging stuff
+
+# only used if you do a 'make rpm'
+RPMDIR		= /usr/src/redhat
+# where to write archives
+BACKDIR		= ${HOME}/backup
+# name of symlink to BACKDIR
+BACKLINK	= backup
+# archives are chown-ed to BACKOWNER:BACKGROUP
+BACKOWNER	= 500
+BACKGROUP	= $(BACKOWNER)
+TGZ		= $(NAME)-$(VERSION).tgz
+RPMSPEC		= $(NAME).spec
+RPMBUILDARCH	= $(shell rpm --showrc | grep "^build arch" | cut -d: -f2 | xargs echo )
+
+all: $(PRGS)
+
+$(NAME) : $(EXTRA_DEPS) version.h ${OBJS}
+	$(CC) -o $(NAME) $(LDFLAGS) $(OBJS) $(LIBS)
+
+ztelnet : $(NAME)
+	@-rm $@ > /dev/null 2>&1
+	ln $(NAME) $@
+
+install :
+	strip $(NAME)
+	$(INSTALL) -m 0711 zssh @bindir@
+	ln -f @bindir@/zssh  @bindir@/ztelnet
+	$(INSTALL) -m 0644 $(MANS) @mandir@/man1
+
+uninstall :
+	-cd @bindir@      && rm $(PRGS)
+	-cd @mandir@/man1 && rm $(MANS)
+
+fake_readline : force
+	-cd fake_readline && $(MAKE)
+
+lrzsz :
+	cd lrzsz-0.12.20 && ./configure --prefix=@prefix@
+	cd lrzsz-0.12.20 && $(MAKE)
+
+lrzsz_links :
+	ln -s @bindir@/lrz @bindir@/rz
+	ln -s @bindir@/lsz @bindir@/sz
+	ln -s @bindir@/lrb @bindir@/rb
+	ln -s @bindir@/lsb @bindir@/sb
+	ln -s @bindir@/lrx @bindir@/rx
+	ln -s @bindir@/lsx @bindir@/sx
+
+lrzsz_install :
+	cd lrzsz-0.12.20 && $(MAKE) install
+
+# create source archive in ~/backup
+tgz $(TGZ) : distclean force
+	@cdir=`pwd` && cdir=`basename $$cdir` && cd .. && \
+	echo "#################################################" && \
+	echo $(TAR) -cvzf "$(BACKDIR)/$(TGZ)" "$$cdir" && \
+	echo "#################################################" && echo -n "Press return" && read f && \
+	     $(TAR) -cvzf "$(BACKDIR)/$(TGZ)" "$$cdir"
+	ln -sf $(BACKDIR) $(BACKLINK)
+
+# create rpm and srpm
+rpm : $(RPMSPEC)
+	@echo -n "Be sure to 'make tgz' before 'make rpm'. Usually must be root to succeed. Press return if ok" && read f
+	cp -f $(BACKLINK)/$(TGZ) $(RPMDIR)/SOURCES
+	rpm -ba $(RPMSPEC)
+	$(INSTALL) -o $(BACKOWNER) -g $(BACKGROUP) -m 600 $(RPMDIR)/RPMS/$(RPMBUILDARCH)/$(NAME)-$(VERSION)-1.$(RPMBUILDARCH).rpm  $(BACKLINK)
+	$(INSTALL) -o $(BACKOWNER) -g $(BACKGROUP) -m 600 $(RPMDIR)/SRPMS/$(NAME)-$(VERSION)-1.src.rpm  $(BACKLINK)
+
+
+$(RPMSPEC) : $(RPMSPEC:.spec=.spec.tpl)
+	echo  "%define ZSSHVER		$(VERSION)" > $(RPMSPEC)
+	cat $(RPMSPEC:.spec=.spec.tpl) >> $(RPMSPEC)
+
+
+version.h : force
+	echo '#define ZSSH_VERSION "' `cat VERSION` ', built' `date` '"' > version.h
+
+fun.h : $(SRC)
+	protos -o fun.h $(SRC)
+
+TAGS :
+	etags *.[ch]
+
+new : clean all
+
+clean :
+	-rm *.o *~ *.a \#*\# core $(PRGS) typescript nohup.out $(RPMSPEC) $(BACKLINK)
+
+distclean : clean
+	-rm Makefile config.cache config.status config.log config.scan config.h TAGS
+	-(cd lrzsz-0.12.20 && $(MAKE) distclean)
+	-(cd fake_readline && $(MAKE) distclean)
+	-(cd test && $(MAKE) distclean)
+
+autoconf:
+	autoconf
+	autoheader
+
+force :
+
+
+$(OBJS) : $(INCL)
+init.o : version.h

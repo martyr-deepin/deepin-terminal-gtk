@@ -1,0 +1,20 @@
+#!/bin/sh
+
+if [ -f "output.dump" ]; then : ; else 
+  echo "output.dump file not found" 
+  exit 1 
+fi 
+
+size=`wc -c < local_tty_test.reference_output` 
+size=`echo $size`
+
+rm -f output.dump2 ; \
+dd if="output.dump" of="output.dump2" bs=1 count=$size   >& /dev/null
+
+if  diff local_tty_test.reference_output  output.dump2 >& /dev/null ; then 
+	echo "remote tty test passed !" 
+else 
+	echo "remote tty test FAILED !" 
+	echo "diff -au local_tty_test.reference_output  output.dump2" 
+	diff -au local_tty_test.reference_output  output.dump2 
+fi

@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+               "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+]>
+<book id="index" xmlns:xi="http://www.w3.org/2003/XInclude">
+  <!--
+    Copyright © 2009, 2010 Christian Persch
+
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2.1 of the License, or (at your option) any later version.
+ 
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Lesser General Public License for more details.
+ 
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+    -->
+
+  <bookinfo>
+    <title>VTE Reference Manual</title>
+    <releaseinfo>
+      Documentation for VTE version &version;.
+      The latest version of this documentation can be found on-line at the
+      <ulink role="online-location" url="http://library.gnome.org/devel/vte/">GNOME Library</ulink>.
+    </releaseinfo>
+
+    <copyright>
+      <year>2009</year>
+      <year>2010</year>
+      <holder>Christian Persch</holder>
+    </copyright>
+
+    <legalnotice>
+      <para>
+        Permission is granted to copy, distribute and/or modify this document
+        under the terms of the <citetitle>GNU Lesser General Public Licence</citetitle>, Version 2.1
+        or (at your option) any later version published by the Free Software Foundation.
+
+        You may obtain a copy of the <citetitle>GNU Lesser General Public Licence</citetitle>
+        from the Free Software Foundation at
+        <ulink type="http" url="http://www.gnu.org/licences/">GNU Licences web site</ulink>
+        or by writing to:
+
+        <address>
+          The Free Software Foundation, Inc.,
+          <street>51 Franklin St</street> – Fifth Floor,
+          <city>Boston</city>, <state>MA</state> <postcode>02110-1301</postcode>,
+          <country>USA</country>
+        </address>
+      </para>
+    </legalnotice>
+  </bookinfo>
+
+  <part>
+    <title>API Reference</title>
+    <chapter>
+      <xi:include href="xml/vte-terminal.xml"/>
+    </chapter>
+    <chapter>
+      <xi:include href="xml/vte-regex.xml"/>
+    </chapter>
+    <chapter>
+      <xi:include href="xml/vte-pty.xml"/>
+    </chapter>
+    <chapter>
+      <xi:include href="xml/vte-version.xml"/>
+    </chapter>
+  </part>
+
+  <chapter id="object-hierarchy">
+  <title>Object Hierarchy</title>
+    <xi:include href="xml/tree_index.sgml"/>
+  </chapter>
+
+  <index id="api-index-full">
+    <title id="index-all">Index</title>
+    <xi:include href="xml/api-index-full.xml"><xi:fallback /></xi:include>
+  </index>
+  <index id="api-index-deprecated" role="deprecated">
+    <title>Index of deprecated symbols</title>
+    <xi:include href="xml/api-index-deprecated.xml"><xi:fallback /></xi:include>
+  </index>
+  <index id="api-index-0-40" role="0.40">
+    <title>Index of new symbols in 0.40</title>
+    <xi:include href="xml/api-index-0.40.xml"><xi:fallback /></xi:include>
+  </index>
+  <index id="api-index-0-44" role="0.44">
+    <title>Index of new symbols in 0.44</title>
+    <xi:include href="xml/api-index-0.44.xml"><xi:fallback /></xi:include>
+  </index>
+  <index id="api-index-0-46" role="0.46">
+    <title>Index of new symbols in 0.46</title>
+    <xi:include href="xml/api-index-0.46.xml"><xi:fallback /></xi:include>
+  </index>
+  <index id="api-index-0-48" role="0.48">
+    <title>Index of new symbols in 0.48</title>
+    <xi:include href="xml/api-index-0.48.xml"><xi:fallback /></xi:include>
+  </index>
+  <index id="api-index-0-50" role="0.50">
+    <title>Index of new symbols in 0.50</title>
+    <xi:include href="xml/api-index-0.50.xml"><xi:fallback /></xi:include>
+  </index>
+  <index id="api-index-0-52" role="0.52">
+    <title>Index of new symbols in 0.52</title>
+    <xi:include href="xml/api-index-0.52.xml"><xi:fallback /></xi:include>
+  </index>
+
+  <xi:include href="xml/annotation-glossary.xml"><xi:fallback /></xi:include>
+
+  <appendix id="licence">
+    <title>Licence</title>
+
+    <para>
+      This library is free software; you can redistribute it and/or
+      modify it under the terms of the <citetitle>GNU Lesser General Public
+      Licence</citetitle> as published by the Free Software Foundation; either
+      version 2.1 of the Licence, or (at your option) any later version.
+    </para>
+
+    <para>
+      This library is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      <citetitle>GNU Lesser General Public Licence</citetitle> for
+      more details.
+    </para>
+
+    <para>
+      You may obtain a copy of the <citetitle>GNU Lesser General Public Licence</citetitle>
+      from the Free Software Foundation at
+      <ulink type="http" url="http://www.gnu.org/licences/">GNU Licences web site</ulink>
+      or by writing to:
+
+      <address>
+        The Free Software Foundation, Inc.,
+        <street>51 Franklin St</street> – Fifth Floor,
+        <city>Boston</city>, <state>MA</state> <postcode>02110-1301</postcode>,
+        <country>USA</country>
+      </address>
+    </para>
+  </appendix>
+
+</book>

@@ -1,0 +1,780 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Vte PTY: VTE Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
+<link rel="home" href="index.html" title="VTE Reference Manual">
+<link rel="up" href="ch03.html" title="">
+<link rel="prev" href="ch03.html" title="">
+<link rel="next" href="ch04.html" title="">
+<meta name="generator" content="GTK-Doc V1.27 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#vte-Vte-PTY.description" class="shortcut">Description</a></span><span id="nav_hierarchy">  <span class="dim">|</span> 
+                  <a href="#vte-Vte-PTY.object-hierarchy" class="shortcut">Object Hierarchy</a></span><span id="nav_interfaces">  <span class="dim">|</span> 
+                  <a href="#vte-Vte-PTY.implemented-interfaces" class="shortcut">Implemented Interfaces</a></span><span id="nav_properties">  <span class="dim">|</span> 
+                  <a href="#vte-Vte-PTY.properties" class="shortcut">Properties</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="ch03.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="ch03.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="ch04.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="vte-Vte-PTY"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="vte-Vte-PTY.top_of_page"></a>Vte PTY</span></h2>
+<p>Vte PTY — Functions for starting a new process on a new pseudo-terminal and for
+manipulating pseudo-terminals</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="vte-Vte-PTY.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a class="link" href="vte-Vte-PTY.html#VtePty"><span class="returnvalue">VtePty</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="vte-Vte-PTY.html#vte-pty-new-sync" title="vte_pty_new_sync ()">vte_pty_new_sync</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="vte-Vte-PTY.html#VtePty"><span class="returnvalue">VtePty</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="vte-Vte-PTY.html#vte-pty-new-foreign-sync" title="vte_pty_new_foreign_sync ()">vte_pty_new_foreign_sync</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="vte-Vte-PTY.html#vte-pty-child-setup" title="vte_pty_child_setup ()">vte_pty_child_setup</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">int</span>
+</td>
+<td class="function_name">
+<a class="link" href="vte-Vte-PTY.html#vte-pty-get-fd" title="vte_pty_get_fd ()">vte_pty_get_fd</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="vte-Vte-PTY.html#vte-pty-set-size" title="vte_pty_set_size ()">vte_pty_set_size</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="vte-Vte-PTY.html#vte-pty-get-size" title="vte_pty_get_size ()">vte_pty_get_size</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="vte-Vte-PTY.html#vte-pty-set-utf8" title="vte_pty_set_utf8 ()">vte_pty_set_utf8</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="vte-Vte-PTY.html#vte-pty-spawn-async" title="vte_pty_spawn_async ()">vte_pty_spawn_async</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="vte-Vte-PTY.html#vte-pty-spawn-finish" title="vte_pty_spawn_finish ()">vte_pty_spawn_finish</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="vte-Vte-PTY.html#vte-pty-close" title="vte_pty_close ()">vte_pty_close</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="vte-Vte-PTY.properties"></a><h2>Properties</h2>
+<div class="informaltable"><table class="informaltable" border="0">
+<colgroup>
+<col width="150px" class="properties_type">
+<col width="300px" class="properties_name">
+<col width="200px" class="properties_flags">
+</colgroup>
+<tbody>
+<tr>
+<td class="property_type"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a></td>
+<td class="property_name"><a class="link" href="vte-Vte-PTY.html#VtePty--fd" title="The “fd” property">fd</a></td>
+<td class="property_flags">Read / Write / Construct Only</td>
+</tr>
+<tr>
+<td class="property_type"><a class="link" href="vte-Vte-PTY.html#VtePtyFlags" title="enum VtePtyFlags"><span class="type">VtePtyFlags</span></a></td>
+<td class="property_name"><a class="link" href="vte-Vte-PTY.html#VtePty--flags" title="The “flags” property">flags</a></td>
+<td class="property_flags">Read / Write / Construct Only</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<a name="VtePty"></a><div class="refsect1">
+<a name="vte-Vte-PTY.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody>
+<tr>
+<td class="datatype_keyword">enum</td>
+<td class="function_name"><a class="link" href="vte-Vte-PTY.html#VtePtyFlags" title="enum VtePtyFlags">VtePtyFlags</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">enum</td>
+<td class="function_name"><a class="link" href="vte-Vte-PTY.html#VtePtyError" title="enum VtePtyError">VtePtyError</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword"> </td>
+<td class="function_name"><a class="link" href="vte-Vte-PTY.html#VtePty-struct" title="VtePty">VtePty</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="vte-Vte-PTY.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    <a href="/usr/share/gtk-doc/html/gobject/gobject-Enumeration-and-Flag-Types.html">GEnum</a>
+    <span class="lineart">╰──</span> VtePtyError
+    <a href="/usr/share/gtk-doc/html/gobject/gobject-Enumeration-and-Flag-Types.html">GFlags</a>
+    <span class="lineart">╰──</span> VtePtyFlags
+    <a href="/usr/share/gtk-doc/html/gobject/gobject-The-Base-Object-Type.html#GObject-struct">GObject</a>
+    <span class="lineart">╰──</span> VtePty
+</pre>
+</div>
+<div class="refsect1">
+<a name="vte-Vte-PTY.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+VtePty implements
+ <a href="/usr/share/gtk-doc/html/gio/GInitable.html#GInitable-struct">GInitable</a>.</p>
+</div>
+<div class="refsect1">
+<a name="vte-Vte-PTY.description"></a><h2>Description</h2>
+<p>The terminal widget uses these functions to start commands with new controlling
+pseudo-terminals and to resize pseudo-terminals.</p>
+</div>
+<div class="refsect1">
+<a name="vte-Vte-PTY.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="vte-pty-new-sync"></a><h3>vte_pty_new_sync ()</h3>
+<pre class="programlisting"><a class="link" href="vte-Vte-PTY.html#VtePty"><span class="returnvalue">VtePty</span></a> *
+vte_pty_new_sync (<em class="parameter"><code><a class="link" href="vte-Vte-PTY.html#VtePtyFlags" title="enum VtePtyFlags"><span class="type">VtePtyFlags</span></a> flags</code></em>,
+                  <em class="parameter"><code><a href="/usr/share/gtk-doc/html/gio/GCancellable.html#GCancellable-struct"><span class="type">GCancellable</span></a> *cancellable</code></em>,
+                  <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>Allocates a new pseudo-terminal.</p>
+<p>You can later use <code class="function">fork()</code> or the <a href="/usr/share/gtk-doc/html/glib/glib-Spawning-Processes.html#g-spawn-async"><code class="function">g_spawn_async()</code></a> family of functions
+to start a process on the PTY.</p>
+<p>If using <code class="function">fork()</code>, you MUST call <a class="link" href="vte-Vte-PTY.html#vte-pty-child-setup" title="vte_pty_child_setup ()"><code class="function">vte_pty_child_setup()</code></a> in the child.</p>
+<p>If using <a href="/usr/share/gtk-doc/html/glib/glib-Spawning-Processes.html#g-spawn-async"><code class="function">g_spawn_async()</code></a> and friends, you MUST either use
+<a class="link" href="vte-Vte-PTY.html#vte-pty-child-setup" title="vte_pty_child_setup ()"><code class="function">vte_pty_child_setup()</code></a> directly as the child setup function, or call
+<a class="link" href="vte-Vte-PTY.html#vte-pty-child-setup" title="vte_pty_child_setup ()"><code class="function">vte_pty_child_setup()</code></a> from your own child setup function supplied.</p>
+<p>When using <a class="link" href="VteTerminal.html#vte-terminal-spawn-sync" title="vte_terminal_spawn_sync ()"><code class="function">vte_terminal_spawn_sync()</code></a> with a custom child setup
+function, <a class="link" href="vte-Vte-PTY.html#vte-pty-child-setup" title="vte_pty_child_setup ()"><code class="function">vte_pty_child_setup()</code></a> will be called before the supplied
+function; you must not call it again.</p>
+<p>Also, you MUST pass the <a href="/usr/share/gtk-doc/html/glib/glib-Spawning-Processes.html#G-SPAWN-DO-NOT-REAP-CHILD:CAPS"><code class="literal">G_SPAWN_DO_NOT_REAP_CHILD</code></a> flag.</p>
+<p><span class="annotation">[<acronym title="This symbol is a constructor, not a static method."><span class="acronym">constructor</span></acronym>]</span></p>
+<div class="refsect3">
+<a name="vte-pty-new-sync.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>flags</p></td>
+<td class="parameter_description"><p>flags from <a class="link" href="vte-Vte-PTY.html#VtePtyFlags" title="enum VtePtyFlags"><span class="type">VtePtyFlags</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>cancellable</p></td>
+<td class="parameter_description"><p>a <a href="/usr/share/gtk-doc/html/gio/GCancellable.html#GCancellable-struct"><span class="type">GCancellable</span></a>, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p>return location for a <a href="/usr/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"><span class="type">GError</span></a>, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="vte-pty-new-sync.returns"></a><h4>Returns</h4>
+<p>a new <a class="link" href="vte-Vte-PTY.html#VtePty"><span class="type">VtePty</span></a>, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> on error with <em class="parameter"><code>error</code></em>
+filled in. </p>
+<p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="vte-pty-new-foreign-sync"></a><h3>vte_pty_new_foreign_sync ()</h3>
+<pre class="programlisting"><a class="link" href="vte-Vte-PTY.html#VtePty"><span class="returnvalue">VtePty</span></a> *
+vte_pty_new_foreign_sync (<em class="parameter"><code><span class="type">int</span> fd</code></em>,
+                          <em class="parameter"><code><a href="/usr/share/gtk-doc/html/gio/GCancellable.html#GCancellable-struct"><span class="type">GCancellable</span></a> *cancellable</code></em>,
+                          <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>Creates a new <a class="link" href="vte-Vte-PTY.html#VtePty"><span class="type">VtePty</span></a> for the PTY master <em class="parameter"><code>fd</code></em>
+.</p>
+<p>No entry will be made in the lastlog, utmp or wtmp system files.</p>
+<p>Note that the newly created <a class="link" href="vte-Vte-PTY.html#VtePty"><span class="type">VtePty</span></a> will take ownership of <em class="parameter"><code>fd</code></em>
+
+and close it on finalize.</p>
+<p><span class="annotation">[<acronym title="This symbol is a constructor, not a static method."><span class="acronym">constructor</span></acronym>]</span></p>
+<div class="refsect3">
+<a name="vte-pty-new-foreign-sync.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>fd</p></td>
+<td class="parameter_description"><p>a file descriptor to the PTY. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>cancellable</p></td>
+<td class="parameter_description"><p>a <a href="/usr/share/gtk-doc/html/gio/GCancellable.html#GCancellable-struct"><span class="type">GCancellable</span></a>, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p>return location for a <a href="/usr/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"><span class="type">GError</span></a>, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="vte-pty-new-foreign-sync.returns"></a><h4>Returns</h4>
+<p>a new <a class="link" href="vte-Vte-PTY.html#VtePty"><span class="type">VtePty</span></a> for <em class="parameter"><code>fd</code></em>
+, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> on error with <em class="parameter"><code>error</code></em>
+filled in. </p>
+<p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="vte-pty-child-setup"></a><h3>vte_pty_child_setup ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+vte_pty_child_setup (<em class="parameter"><code><a class="link" href="vte-Vte-PTY.html#VtePty"><span class="type">VtePty</span></a> *pty</code></em>);</pre>
+<p>FIXMEchpe</p>
+<div class="refsect3">
+<a name="vte-pty-child-setup.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>pty</p></td>
+<td class="parameter_description"><p>a <a class="link" href="vte-Vte-PTY.html#VtePty"><span class="type">VtePty</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="vte-pty-get-fd"></a><h3>vte_pty_get_fd ()</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+vte_pty_get_fd (<em class="parameter"><code><a class="link" href="vte-Vte-PTY.html#VtePty"><span class="type">VtePty</span></a> *pty</code></em>);</pre>
+<div class="refsect3">
+<a name="vte-pty-get-fd.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>pty</p></td>
+<td class="parameter_description"><p>a <a class="link" href="vte-Vte-PTY.html#VtePty"><span class="type">VtePty</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="vte-pty-get-fd.returns"></a><h4>Returns</h4>
+<p>the file descriptor of the PTY master in <em class="parameter"><code>pty</code></em>
+. The
+file descriptor belongs to <em class="parameter"><code>pty</code></em>
+and must not be closed. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="vte-pty-set-size"></a><h3>vte_pty_set_size ()</h3>
+<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+vte_pty_set_size (<em class="parameter"><code><a class="link" href="vte-Vte-PTY.html#VtePty"><span class="type">VtePty</span></a> *pty</code></em>,
+                  <em class="parameter"><code><span class="type">int</span> rows</code></em>,
+                  <em class="parameter"><code><span class="type">int</span> columns</code></em>,
+                  <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>Attempts to resize the pseudo terminal's window size.  If successful, the
+OS kernel will send <span class="type">SIGWINCH</span> to the child process group.</p>
+<p>If setting the window size failed, <em class="parameter"><code>error</code></em>
+ will be set to a <a href="/usr/share/gtk-doc/html/glib/glib-IO-Channels.html#GIOError"><span class="type">GIOError</span></a>.</p>
+<div class="refsect3">
+<a name="vte-pty-set-size.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>pty</p></td>
+<td class="parameter_description"><p>a <a class="link" href="vte-Vte-PTY.html#VtePty"><span class="type">VtePty</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>rows</p></td>
+<td class="parameter_description"><p>the desired number of rows</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>columns</p></td>
+<td class="parameter_description"><p>the desired number of columns</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p>return location to store a <a href="/usr/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"><span class="type">GError</span></a>, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="vte-pty-set-size.returns"></a><h4>Returns</h4>
+<p> <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> on success, <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> on failure with <em class="parameter"><code>error</code></em>
+filled in</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="vte-pty-get-size"></a><h3>vte_pty_get_size ()</h3>
+<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+vte_pty_get_size (<em class="parameter"><code><a class="link" href="vte-Vte-PTY.html#VtePty"><span class="type">VtePty</span></a> *pty</code></em>,
+                  <em class="parameter"><code><span class="type">int</span> *rows</code></em>,
+                  <em class="parameter"><code><span class="type">int</span> *columns</code></em>,
+                  <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>Reads the pseudo terminal's window size.</p>
+<p>If getting the window size failed, <em class="parameter"><code>error</code></em>
+ will be set to a <a href="/usr/share/gtk-doc/html/glib/glib-IO-Channels.html#GIOError"><span class="type">GIOError</span></a>.</p>
+<div class="refsect3">
+<a name="vte-pty-get-size.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>pty</p></td>
+<td class="parameter_description"><p>a <a class="link" href="vte-Vte-PTY.html#VtePty"><span class="type">VtePty</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>rows</p></td>
+<td class="parameter_description"><p>a location to store the number of rows, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>][<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>columns</p></td>
+<td class="parameter_description"><p>a location to store the number of columns, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>][<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p>return location to store a <a href="/usr/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"><span class="type">GError</span></a>, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="vte-pty-get-size.returns"></a><h4>Returns</h4>
+<p> <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> on success, <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> on failure with <em class="parameter"><code>error</code></em>
+filled in</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="vte-pty-set-utf8"></a><h3>vte_pty_set_utf8 ()</h3>
+<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+vte_pty_set_utf8 (<em class="parameter"><code><a class="link" href="vte-Vte-PTY.html#VtePty"><span class="type">VtePty</span></a> *pty</code></em>,
+                  <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="type">gboolean</span></a> utf8</code></em>,
+                  <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<p>Tells the kernel whether the terminal is UTF-8 or not, in case it can make
+use of the info.  Linux 2.6.5 or so defines IUTF8 to make the line
+discipline do multibyte backspace correctly.</p>
+<div class="refsect3">
+<a name="vte-pty-set-utf8.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>pty</p></td>
+<td class="parameter_description"><p>a <a class="link" href="vte-Vte-PTY.html#VtePty"><span class="type">VtePty</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>utf8</p></td>
+<td class="parameter_description"><p>whether or not the pty is in UTF-8 mode</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p>return location to store a <a href="/usr/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"><span class="type">GError</span></a>, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="vte-pty-set-utf8.returns"></a><h4>Returns</h4>
+<p> <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> on success, <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> on failure with <em class="parameter"><code>error</code></em>
+filled in</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="vte-pty-spawn-async"></a><h3>vte_pty_spawn_async ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+vte_pty_spawn_async (<em class="parameter"><code><a class="link" href="vte-Vte-PTY.html#VtePty"><span class="type">VtePty</span></a> *pty</code></em>,
+                     <em class="parameter"><code>const <span class="type">char</span> *working_directory</code></em>,
+                     <em class="parameter"><code><span class="type">char</span> **argv</code></em>,
+                     <em class="parameter"><code><span class="type">char</span> **envv</code></em>,
+                     <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Spawning-Processes.html#GSpawnFlags"><span class="type">GSpawnFlags</span></a> spawn_flags</code></em>,
+                     <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Spawning-Processes.html#GSpawnChildSetupFunc"><span class="type">GSpawnChildSetupFunc</span></a> child_setup</code></em>,
+                     <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> child_setup_data</code></em>,
+                     <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Datasets.html#GDestroyNotify"><span class="type">GDestroyNotify</span></a> child_setup_data_destroy</code></em>,
+                     <em class="parameter"><code><span class="type">int</span> timeout</code></em>,
+                     <em class="parameter"><code><a href="/usr/share/gtk-doc/html/gio/GCancellable.html#GCancellable-struct"><span class="type">GCancellable</span></a> *cancellable</code></em>,
+                     <em class="parameter"><code><a href="/usr/share/gtk-doc/html/gio/GAsyncResult.html#GAsyncReadyCallback"><span class="type">GAsyncReadyCallback</span></a> callback</code></em>,
+                     <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gpointer"><span class="type">gpointer</span></a> user_data</code></em>);</pre>
+<p>Starts the specified command under the pseudo-terminal <em class="parameter"><code>pty</code></em>
+.
+The <em class="parameter"><code>argv</code></em>
+ and <em class="parameter"><code>envv</code></em>
+ lists should be <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>-terminated.
+The "TERM" environment variable is automatically set to a default value,
+but can be overridden from <em class="parameter"><code>envv</code></em>
+.
+<em class="parameter"><code>pty_flags</code></em>
+ controls logging the session to the specified system log files.</p>
+<p>Note that <a href="/usr/share/gtk-doc/html/glib/glib-Spawning-Processes.html#G-SPAWN-DO-NOT-REAP-CHILD:CAPS"><code class="literal">G_SPAWN_DO_NOT_REAP_CHILD</code></a> will always be added to <em class="parameter"><code>spawn_flags</code></em>
+.</p>
+<p>Note that all open file descriptors will be closed in the child. If you want
+to keep some file descriptor open for use in the child process, you need to
+use a child setup function that unsets the FD_CLOEXEC flag on that file
+descriptor.</p>
+<p>See <code class="function">vte_pty_new()</code>, <a href="/usr/share/gtk-doc/html/glib/glib-Spawning-Processes.html#g-spawn-async"><code class="function">g_spawn_async()</code></a> and <a class="link" href="VteTerminal.html#vte-terminal-watch-child" title="vte_terminal_watch_child ()"><code class="function">vte_terminal_watch_child()</code></a> for more information.</p>
+<div class="refsect3">
+<a name="vte-pty-spawn-async.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>pty</p></td>
+<td class="parameter_description"><p>a <a class="link" href="vte-Vte-PTY.html#VtePty"><span class="type">VtePty</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>working_directory</p></td>
+<td class="parameter_description"><p>the name of a directory the command should start
+in, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> to use the current working directory. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>argv</p></td>
+<td class="parameter_description"><p>child's argument vector. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Parameter points to an array of items."><span class="acronym">array</span></acronym> zero-terminated=1][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> filename]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>envv</p></td>
+<td class="parameter_description"><p>a list of environment
+variables to be added to the environment before starting the process, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>][<acronym title="Parameter points to an array of items."><span class="acronym">array</span></acronym> zero-terminated=1][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> filename]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>spawn_flags</p></td>
+<td class="parameter_description"><p>flags from <a href="/usr/share/gtk-doc/html/glib/glib-Spawning-Processes.html#GSpawnFlags"><span class="type">GSpawnFlags</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>child_setup</p></td>
+<td class="parameter_description"><p>an extra child setup function to run in the child just before <code class="function">exec()</code>, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>][<acronym title="The callback is valid until first called."><span class="acronym">scope async</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>child_setup_data</p></td>
+<td class="parameter_description"><p>user data for <em class="parameter"><code>child_setup</code></em>
+, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="This parameter is a 'user_data', for callbacks; many bindings can pass NULL here."><span class="acronym">closure</span></acronym> child_setup]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>child_setup_data_destroy</p></td>
+<td class="parameter_description"><p>a <a href="/usr/share/gtk-doc/html/glib/glib-Datasets.html#GDestroyNotify"><span class="type">GDestroyNotify</span></a> for <em class="parameter"><code>child_setup_data</code></em>
+, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="This parameter is a 'destroy_data', for callbacks."><span class="acronym">destroy</span></acronym> child_setup_data]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>timeout</p></td>
+<td class="parameter_description"><p>a timeout value in ms, or -1 to wait indefinitely</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>cancellable</p></td>
+<td class="parameter_description"><p>a <a href="/usr/share/gtk-doc/html/gio/GCancellable.html#GCancellable-struct"><span class="type">GCancellable</span></a>, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-0-48.html#api-index-0.48">0.48</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="vte-pty-spawn-finish"></a><h3>vte_pty_spawn_finish ()</h3>
+<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+vte_pty_spawn_finish (<em class="parameter"><code><a class="link" href="vte-Vte-PTY.html#VtePty"><span class="type">VtePty</span></a> *pty</code></em>,
+                      <em class="parameter"><code><a href="/usr/share/gtk-doc/html/gio/GAsyncResult.html#GAsyncResult-struct"><span class="type">GAsyncResult</span></a> *result</code></em>,
+                      <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-The-Main-Event-Loop.html#GPid"><span class="type">GPid</span></a> *child_pid</code></em>,
+                      <em class="parameter"><code><a href="/usr/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
+<div class="refsect3">
+<a name="vte-pty-spawn-finish.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>pty</p></td>
+<td class="parameter_description"><p>a <a class="link" href="vte-Vte-PTY.html#VtePty"><span class="type">VtePty</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>result</p></td>
+<td class="parameter_description"><p>a <a href="/usr/share/gtk-doc/html/gio/GAsyncResult.html#GAsyncResult-struct"><span class="type">GAsyncResult</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>child_pid</p></td>
+<td class="parameter_description"><p>a location to store the child PID, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>][<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>][<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p>return location for a <a href="/usr/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"><span class="type">GError</span></a>, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="vte-pty-spawn-finish.returns"></a><h4>Returns</h4>
+<p> <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> on success, or <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> on error with <em class="parameter"><code>error</code></em>
+filled in</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-0-48.html#api-index-0.48">0.48</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="vte-pty-close"></a><h3>vte_pty_close ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+vte_pty_close (<em class="parameter"><code><a class="link" href="vte-Vte-PTY.html#VtePty"><span class="type">VtePty</span></a> *pty</code></em>);</pre>
+<div class="warning"><p><code class="literal">vte_pty_close</code> has been deprecated since version 0.42 and should not be used in newly-written code.</p></div>
+<p>Since 0.42 this is a no-op.</p>
+<div class="refsect3">
+<a name="vte-pty-close.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>pty</p></td>
+<td class="parameter_description"><p>a <a class="link" href="vte-Vte-PTY.html#VtePty"><span class="type">VtePty</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="vte-Vte-PTY.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="VtePtyFlags"></a><h3>enum VtePtyFlags</h3>
+<div class="refsect3">
+<a name="VtePtyFlags.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="enum_members_name">
+<col class="enum_members_description">
+<col width="200px" class="enum_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="enum_member_name"><p><a name="VTE-PTY-NO-LASTLOG:CAPS"></a>VTE_PTY_NO_LASTLOG</p></td>
+<td class="enum_member_description">
+<p>Unused. Deprecated: 0.38</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="VTE-PTY-NO-UTMP:CAPS"></a>VTE_PTY_NO_UTMP</p></td>
+<td class="enum_member_description">
+<p>Unused. Deprecated: 0.38</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="VTE-PTY-NO-WTMP:CAPS"></a>VTE_PTY_NO_WTMP</p></td>
+<td class="enum_member_description">
+<p>Unused. Deprecated: 0.38</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="VTE-PTY-NO-HELPER:CAPS"></a>VTE_PTY_NO_HELPER</p></td>
+<td class="enum_member_description">
+<p>Unused. Deprecated: 0.38</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="VTE-PTY-NO-FALLBACK:CAPS"></a>VTE_PTY_NO_FALLBACK</p></td>
+<td class="enum_member_description">
+<p>Unused. Deprecated: 0.38</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="VTE-PTY-DEFAULT:CAPS"></a>VTE_PTY_DEFAULT</p></td>
+<td class="enum_member_description">
+<p>the default flags</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="VtePtyError"></a><h3>enum VtePtyError</h3>
+<div class="refsect3">
+<a name="VtePtyError.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="enum_members_name">
+<col class="enum_members_description">
+<col width="200px" class="enum_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="enum_member_name"><p><a name="VTE-PTY-ERROR-PTY-HELPER-FAILED:CAPS"></a>VTE_PTY_ERROR_PTY_HELPER_FAILED</p></td>
+<td class="enum_member_description">
+<p>Obsolete. Deprecated: 0.42</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="VTE-PTY-ERROR-PTY98-FAILED:CAPS"></a>VTE_PTY_ERROR_PTY98_FAILED</p></td>
+<td class="enum_member_description">
+<p>failure when using PTY98 to allocate the PTY</p>
+</td>
+<td class="enum_member_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="VtePty-struct"></a><h3>VtePty</h3>
+<pre class="programlisting">typedef struct _VtePty VtePty;</pre>
+</div>
+</div>
+<div class="refsect1">
+<a name="vte-Vte-PTY.property-details"></a><h2>Property Details</h2>
+<div class="refsect2">
+<a name="VtePty--fd"></a><h3>The <code class="literal">“fd”</code> property</h3>
+<pre class="programlisting">  “fd”                       <a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gint"><span class="type">gint</span></a></pre>
+<p>The file descriptor of the PTY master.</p>
+<p>Flags: Read / Write / Construct Only</p>
+<p>Allowed values: &gt;= -1</p>
+<p>Default value: -1</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="VtePty--flags"></a><h3>The <code class="literal">“flags”</code> property</h3>
+<pre class="programlisting">  “flags”                    <a class="link" href="vte-Vte-PTY.html#VtePtyFlags" title="enum VtePtyFlags"><span class="type">VtePtyFlags</span></a></pre>
+<p>Flags.</p>
+<p>Flags: Read / Write / Construct Only</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.27</div>
+</body>
+</html>

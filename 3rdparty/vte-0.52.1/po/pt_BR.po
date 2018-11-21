@@ -1,0 +1,101 @@
+# Brazilian Portuguese translation of vte
+# Copyright (C) 2002-2016 Free Software Foundation, Inc.
+# This file is distributed under the same license as the vte package.
+# Alexandre Folle de Menezes <afmenez@terra.com.br>, 2002-2003.
+# Leonardo Ferreira Fontenelle <leo.fontenelle@gmail.com>, 2007.
+# Lucas Mazzardo Veloso <lmveloso@gmail.com>, 2007.
+# Enrico Nicoletto <liverig@gmail.com>, 2014.
+# Rafael Fontenelle <rafaelff@gnome.org>, 2016.
+msgid ""
+msgstr ""
+"Project-Id-Version: 2.0\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=vte&key"
+"words=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2016-05-16 08:25+0000\n"
+"PO-Revision-Date: 2016-06-13 20:18-0200\n"
+"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
+"Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Virtaal 0.7.1\n"
+"X-Project-Style: gnome\n"
+
+#: ../src/iso2022.cc:73 ../src/iso2022.cc:81 ../src/iso2022.cc:111
+#: ../src/vtegtk.cc:3090
+#, c-format
+msgid "Unable to convert characters from %s to %s."
+msgstr "Não foi possível converter caracteres de %s para %s."
+
+#. Translators: %s is replaced with error message returned by strerror().
+#: ../src/vte.cc:4248
+#, c-format
+msgid "Error reading from child: %s."
+msgstr "Erro ao ler do filho: %s."
+
+#: ../src/vte.cc:4387
+#, c-format
+msgid "Error (%s) converting data for child, dropping."
+msgstr "Erro (%s) ao converter dados para filho, descartando."
+
+#: ../src/vte.cc:8156
+msgid "WARNING"
+msgstr "AVISO"
+
+#: ../src/vte.cc:8157
+msgid "GNUTLS not enabled; data will be written to disk unencrypted!"
+msgstr ""
+"GNUTLS não está habilitado; os dados serão escritos em um disco "
+"descriptografado!"
+
+#~ msgid "Copy"
+#~ msgstr "Copiar"
+
+#~ msgid "Paste"
+#~ msgstr "Colar"
+
+#~ msgid "Reset (use Ctrl to reset and clear)"
+#~ msgstr "Reiniciar (use Ctrl para reiniciar e limpar)"
+
+#~ msgid "Reset"
+#~ msgstr "Reiniciar"
+
+#~ msgid "Toggle input enabled setting"
+#~ msgstr "Alternar configuração de entrada ativa"
+
+#~ msgid "Input"
+#~ msgstr "Entrada"
+
+#~ msgid "Attempt to set invalid NRC map '%c'."
+#~ msgstr "Tentativa de definir mapa NRC inválido \"%c\"."
+
+#~ msgid "Unrecognized identified coding system."
+#~ msgstr "O sistema de codificação identificado não é reconhecido."
+
+#~ msgid "Attempt to set invalid wide NRC map '%c'."
+#~ msgstr "Tentativa de definir mapa NRC largo inválido \"%c\"."
+
+#~ msgid "Duplicate (%s/%s)!"
+#~ msgstr "Duplicata (%s/%s)!"
+
+#~ msgid "Unable to send data to child, invalid charset convertor"
+#~ msgstr ""
+#~ "Não foi possível enviar dados para o filho, conversor inválido de "
+#~ "conjunto de caracteres"
+
+#~ msgid "Error reading PTY size, using defaults: %s\n"
+#~ msgstr "Erro ao ler o tamanho do PTY, usando padrões: %s\n"
+
+#~ msgid "Could not open console.\n"
+#~ msgstr "Não foi possível abrir console.\n"
+
+#~ msgid "Could not parse the geometry spec passed to --geometry"
+#~ msgstr "Não foi possível analisar a geometria do argumento --geometry"
+
+#~ msgid "Error compiling regular expression \"%s\"."
+#~ msgstr "Erro compilando a expressão regular \"%s\"."
+
+#~ msgid "_vte_conv_open() failed setting word characters"
+#~ msgstr "_vte_conv_open() falhou ao definir caracteres de palavra"

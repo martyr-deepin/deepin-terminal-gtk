@@ -1,0 +1,88 @@
+# Indonesia translation of vte.
+# Copyright (C) 2005 THE vte's COPYRIGHT HOLDER
+# This file is distributed under the same license as the vte package.
+#
+#
+# Mohammad DAMT <mdamt@bisnisweb.com>, 2005.
+msgid ""
+msgstr ""
+"Project-Id-Version: vte.master.id\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=vte&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2016-08-15 12:39+0000\n"
+"PO-Revision-Date: 2016-08-18 11:50+0700\n"
+"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
+"Language-Team: GNOME Indonesian Translation Team <gnome-l10n-id@googlegroups."
+"com>\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.10\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../src/iso2022.cc:73 ../src/iso2022.cc:81 ../src/iso2022.cc:111
+#: ../src/vtegtk.cc:3069
+#, c-format
+msgid "Unable to convert characters from %s to %s."
+msgstr "Tidak dapat mengkonversi karakter dari %s ke %s."
+
+#. Translators: %s is replaced with error message returned by strerror().
+#: ../src/vte.cc:4003
+#, c-format
+msgid "Error reading from child: %s."
+msgstr "Galat sewaktu membaca dari anak: %s."
+
+#: ../src/vte.cc:4142
+#, c-format
+msgid "Error (%s) converting data for child, dropping."
+msgstr "Galat (%s) sewaktu mengkonversi data untuk anak, dibuang."
+
+#: ../src/vte.cc:7911
+msgid "WARNING"
+msgstr "PERINGATAN"
+
+#: ../src/vte.cc:7912
+msgid "GNUTLS not enabled; data will be written to disk unencrypted!"
+msgstr "GNUTLS tidak difungsikanl; data akan ditulis ke disk tanpa enkripsi!"
+
+#~ msgid "Copy"
+#~ msgstr "Salin"
+
+#~ msgid "Paste"
+#~ msgstr "Tempel"
+
+#~ msgid "Reset (use Ctrl to reset and clear)"
+#~ msgstr "Reset (gunakan Ctrl untuk mereset dan membersihkan)"
+
+#~ msgid "Reset"
+#~ msgstr "Reset"
+
+#~ msgid "Toggle input enabled setting"
+#~ msgstr "Jungkitkan pengaturan pemfungsian masukan"
+
+#~ msgid "Input"
+#~ msgstr "Masukan"
+
+#~ msgid "Attempt to set invalid NRC map '%c'."
+#~ msgstr "Mencoba untuk mengeset peta NRC '%c' yang salah."
+
+#~ msgid "Unrecognized identified coding system."
+#~ msgstr "Tidak mengenali sistem koding yang telah diidentifikasi."
+
+#~ msgid "Attempt to set invalid wide NRC map '%c'."
+#~ msgstr "Mencoba untuk mengeset peta luas NRC '%c' yang salah."
+
+#~ msgid "Could not open console.\n"
+#~ msgstr "Tidak dapat membuka konsol.\n"
+
+#~ msgid "Could not parse the geometry spec passed to --geometry"
+#~ msgstr ""
+#~ "Tidak dapat mengurai spesifikasi geometri yang diberikan pada --geometry"
+
+#~ msgid "Unable to send data to child, invalid charset convertor"
+#~ msgstr ""
+#~ "Tidak dapat mengirim data menuju anakan, pengkonversi set karakter salah"
+
+#~ msgid "Error reading PTY size, using defaults: %s\n"
+#~ msgstr "Galat sewaktu membaca ukuran PTY, beralih ke nilai baku: %s\n"

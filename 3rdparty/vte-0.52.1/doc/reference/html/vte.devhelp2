@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<book xmlns="http://www.devhelp.net/book" title="VTE Reference Manual" link="index.html" author="" name="vte" version="2" language="c" online="http://library.gnome.org/devel/vte/">
+  <chapters>
+    <sub name="API Reference" link="pt01.html">
+      <sub name="" link="ch01.html">
+        <sub name="VteTerminal" link="VteTerminal.html"/>
+      </sub>
+      <sub name="" link="ch02.html">
+        <sub name="VteRegex" link="VteRegex.html"/>
+      </sub>
+      <sub name="" link="ch03.html">
+        <sub name="Vte PTY" link="vte-Vte-PTY.html"/>
+      </sub>
+      <sub name="" link="ch04.html">
+        <sub name="Version Information" link="vte-Version-Information.html"/>
+      </sub>
+    </sub>
+    <sub name="Object Hierarchy" link="object-hierarchy.html"/>
+    <sub name="Index" link="api-index-full.html"/>
+    <sub name="Index of deprecated symbols" link="api-index-deprecated.html"/>
+    <sub name="Index of new symbols in 0.40" link="api-index-0-40.html"/>
+    <sub name="Index of new symbols in 0.44" link="api-index-0-44.html"/>
+    <sub name="Index of new symbols in 0.46" link="api-index-0-46.html"/>
+    <sub name="Index of new symbols in 0.48" link="api-index-0-48.html"/>
+    <sub name="Index of new symbols in 0.50" link="api-index-0-50.html"/>
+    <sub name="Index of new symbols in 0.52" link="api-index-0-52.html"/>
+    <sub name="Annotation Glossary" link="annotation-glossary.html"/>
+    <sub name="Licence" link="licence.html"/>
+  </chapters>
+  <functions>
+    <keyword type="function" name="VteSelectionFunc ()" link="VteTerminal.html#VteSelectionFunc"/>
+    <keyword type="function" name="vte_terminal_new ()" link="VteTerminal.html#vte-terminal-new"/>
+    <keyword type="function" name="vte_terminal_feed ()" link="VteTerminal.html#vte-terminal-feed"/>
+    <keyword type="function" name="vte_terminal_feed_child ()" link="VteTerminal.html#vte-terminal-feed-child"/>
+    <keyword type="function" name="vte_terminal_feed_child_binary ()" link="VteTerminal.html#vte-terminal-feed-child-binary"/>
+    <keyword type="function" name="vte_terminal_select_all ()" link="VteTerminal.html#vte-terminal-select-all"/>
+    <keyword type="function" name="vte_terminal_unselect_all ()" link="VteTerminal.html#vte-terminal-unselect-all"/>
+    <keyword type="function" name="vte_terminal_copy_clipboard_format ()" link="VteTerminal.html#vte-terminal-copy-clipboard-format" since="0.50"/>
+    <keyword type="function" name="vte_terminal_paste_clipboard ()" link="VteTerminal.html#vte-terminal-paste-clipboard"/>
+    <keyword type="function" name="vte_terminal_copy_primary ()" link="VteTerminal.html#vte-terminal-copy-primary"/>
+    <keyword type="function" name="vte_terminal_paste_primary ()" link="VteTerminal.html#vte-terminal-paste-primary"/>
+    <keyword type="function" name="vte_terminal_set_size ()" link="VteTerminal.html#vte-terminal-set-size"/>
+    <keyword type="function" name="vte_terminal_set_font_scale ()" link="VteTerminal.html#vte-terminal-set-font-scale"/>
+    <keyword type="function" name="vte_terminal_get_font_scale ()" link="VteTerminal.html#vte-terminal-get-font-scale"/>
+    <keyword type="function" name="vte_terminal_set_audible_bell ()" link="VteTerminal.html#vte-terminal-set-audible-bell"/>
+    <keyword type="function" name="vte_terminal_get_audible_bell ()" link="VteTerminal.html#vte-terminal-get-audible-bell"/>
+    <keyword type="function" name="vte_terminal_set_allow_bold ()" link="VteTerminal.html#vte-terminal-set-allow-bold"/>
+    <keyword type="function" name="vte_terminal_get_allow_bold ()" link="VteTerminal.html#vte-terminal-get-allow-bold"/>
+    <keyword type="function" name="vte_terminal_set_bold_is_bright ()" link="VteTerminal.html#vte-terminal-set-bold-is-bright" since="0.52"/>
+    <keyword type="function" name="vte_terminal_get_bold_is_bright ()" link="VteTerminal.html#vte-terminal-get-bold-is-bright" since="0.52"/>
+    <keyword type="function" name="vte_terminal_set_allow_hyperlink ()" link="VteTerminal.html#vte-terminal-set-allow-hyperlink" since="0.50"/>
+    <keyword type="function" name="vte_terminal_get_allow_hyperlink ()" link="VteTerminal.html#vte-terminal-get-allow-hyperlink" since="0.50"/>
+    <keyword type="function" name="vte_terminal_set_scroll_on_output ()" link="VteTerminal.html#vte-terminal-set-scroll-on-output"/>
+    <keyword type="function" name="vte_terminal_get_scroll_on_output ()" link="VteTerminal.html#vte-terminal-get-scroll-on-output" since="0.52"/>
+    <keyword type="function" name="vte_terminal_set_scroll_on_keystroke ()" link="VteTerminal.html#vte-terminal-set-scroll-on-keystroke"/>
+    <keyword type="function" name="vte_terminal_get_scroll_on_keystroke ()" link="VteTerminal.html#vte-terminal-get-scroll-on-keystroke" since="0.52"/>
+    <keyword type="function" name="vte_terminal_set_rewrap_on_resize ()" link="VteTerminal.html#vte-terminal-set-rewrap-on-resize"/>
+    <keyword type="function" name="vte_terminal_get_rewrap_on_resize ()" link="VteTerminal.html#vte-terminal-get-rewrap-on-resize"/>
+    <keyword type="function" name="vte_terminal_set_cell_height_scale ()" link="VteTerminal.html#vte-terminal-set-cell-height-scale" since="0.52"/>
+    <keyword type="function" name="vte_terminal_get_cell_height_scale ()" link="VteTerminal.html#vte-terminal-get-cell-height-scale" since="0.52"/>
+    <keyword type="function" name="vte_terminal_set_cell_width_scale ()" link="VteTerminal.html#vte-terminal-set-cell-width-scale" since="0.52"/>
+    <keyword type="function" name="vte_terminal_get_cell_width_scale ()" link="VteTerminal.html#vte-terminal-get-cell-width-scale" since="0.52"/>
+    <keyword type="function" name="vte_terminal_set_color_bold ()" link="VteTerminal.html#vte-terminal-set-color-bold"/>
+    <keyword type="function" name="vte_terminal_set_color_foreground ()" link="VteTerminal.html#vte-terminal-set-color-foreground"/>
+    <keyword type="function" name="vte_terminal_set_color_background ()" link="VteTerminal.html#vte-terminal-set-color-background"/>
+    <keyword type="function" name="vte_terminal_set_color_cursor ()" link="VteTerminal.html#vte-terminal-set-color-cursor"/>
+    <keyword type="function" name="vte_terminal_set_color_cursor_foreground ()" link="VteTerminal.html#vte-terminal-set-color-cursor-foreground" since="0.44"/>
+    <keyword type="function" name="vte_terminal_set_color_highlight ()" link="VteTerminal.html#vte-terminal-set-color-highlight"/>
+    <keyword type="function" name="vte_terminal_set_color_highlight_foreground ()" link="VteTerminal.html#vte-terminal-set-color-highlight-foreground"/>
+    <keyword type="function" name="vte_terminal_set_colors ()" link="VteTerminal.html#vte-terminal-set-colors"/>
+    <keyword type="function" name="vte_terminal_set_default_colors ()" link="VteTerminal.html#vte-terminal-set-default-colors"/>
+    <keyword type="function" name="vte_terminal_set_cursor_shape ()" link="VteTerminal.html#vte-terminal-set-cursor-shape"/>
+    <keyword type="function" name="vte_terminal_get_cursor_shape ()" link="VteTerminal.html#vte-terminal-get-cursor-shape"/>
+    <keyword type="function" name="vte_terminal_get_cursor_blink_mode ()" link="VteTerminal.html#vte-terminal-get-cursor-blink-mode"/>
+    <keyword type="function" name="vte_terminal_set_cursor_blink_mode ()" link="VteTerminal.html#vte-terminal-set-cursor-blink-mode"/>
+    <keyword type="function" name="vte_terminal_get_text_blink_mode ()" link="VteTerminal.html#vte-terminal-get-text-blink-mode" since="0.52"/>
+    <keyword type="function" name="vte_terminal_set_text_blink_mode ()" link="VteTerminal.html#vte-terminal-set-text-blink-mode" since="0.52"/>
+    <keyword type="function" name="vte_terminal_set_scrollback_lines ()" link="VteTerminal.html#vte-terminal-set-scrollback-lines"/>
+    <keyword type="function" name="vte_terminal_get_scrollback_lines ()" link="VteTerminal.html#vte-terminal-get-scrollback-lines" since="0.52"/>
+    <keyword type="function" name="vte_terminal_set_font ()" link="VteTerminal.html#vte-terminal-set-font"/>
+    <keyword type="function" name="vte_terminal_get_font ()" link="VteTerminal.html#vte-terminal-get-font"/>
+    <keyword type="function" name="vte_terminal_get_has_selection ()" link="VteTerminal.html#vte-terminal-get-has-selection"/>
+    <keyword type="function" name="vte_terminal_set_backspace_binding ()" link="VteTerminal.html#vte-terminal-set-backspace-binding"/>
+    <keyword type="function" name="vte_terminal_set_delete_binding ()" link="VteTerminal.html#vte-terminal-set-delete-binding"/>
+    <keyword type="function" name="vte_terminal_set_mouse_autohide ()" link="VteTerminal.html#vte-terminal-set-mouse-autohide"/>
+    <keyword type="function" name="vte_terminal_get_mouse_autohide ()" link="VteTerminal.html#vte-terminal-get-mouse-autohide"/>
+    <keyword type="function" name="vte_terminal_reset ()" link="VteTerminal.html#vte-terminal-reset"/>
+    <keyword type="function" name="vte_terminal_get_text ()" link="VteTerminal.html#vte-terminal-get-text"/>
+    <keyword type="function" name="vte_terminal_get_text_include_trailing_spaces ()" link="VteTerminal.html#vte-terminal-get-text-include-trailing-spaces"/>
+    <keyword type="function" name="vte_terminal_get_text_range ()" link="VteTerminal.html#vte-terminal-get-text-range"/>
+    <keyword type="function" name="vte_terminal_get_cursor_position ()" link="VteTerminal.html#vte-terminal-get-cursor-position"/>
+    <keyword type="function" name="vte_terminal_hyperlink_check_event ()" link="VteTerminal.html#vte-terminal-hyperlink-check-event" since="0.50"/>
+    <keyword type="function" name="vte_terminal_match_add_regex ()" link="VteTerminal.html#vte-terminal-match-add-regex" since="0.46"/>
+    <keyword type="function" name="vte_terminal_match_remove ()" link="VteTerminal.html#vte-terminal-match-remove"/>
+    <keyword type="function" name="vte_terminal_match_remove_all ()" link="VteTerminal.html#vte-terminal-match-remove-all"/>
+    <keyword type="function" name="vte_terminal_match_check ()" link="VteTerminal.html#vte-terminal-match-check" deprecated="0.46: Use vte_terminal_match_check_event() instead."/>
+    <keyword type="function" name="vte_terminal_match_check_event ()" link="VteTerminal.html#vte-terminal-match-check-event"/>
+    <keyword type="function" name="vte_terminal_match_set_cursor_type ()" link="VteTerminal.html#vte-terminal-match-set-cursor-type"/>
+    <keyword type="function" name="vte_terminal_match_set_cursor_name ()" link="VteTerminal.html#vte-terminal-match-set-cursor-name"/>
+    <keyword type="function" name="vte_terminal_set_cjk_ambiguous_width ()" link="VteTerminal.html#vte-terminal-set-cjk-ambiguous-width"/>
+    <keyword type="function" name="vte_terminal_get_cjk_ambiguous_width ()" link="VteTerminal.html#vte-terminal-get-cjk-ambiguous-width"/>
+    <keyword type="function" name="vte_terminal_set_encoding ()" link="VteTerminal.html#vte-terminal-set-encoding"/>
+    <keyword type="function" name="vte_terminal_get_encoding ()" link="VteTerminal.html#vte-terminal-get-encoding"/>
+    <keyword type="function" name="vte_terminal_set_word_char_exceptions ()" link="VteTerminal.html#vte-terminal-set-word-char-exceptions" since="0.40"/>
+    <keyword type="function" name="vte_terminal_get_word_char_exceptions ()" link="VteTerminal.html#vte-terminal-get-word-char-exceptions" since="0.40"/>
+    <keyword type="function" name="vte_terminal_set_input_enabled ()" link="VteTerminal.html#vte-terminal-set-input-enabled"/>
+    <keyword type="function" name="vte_terminal_get_input_enabled ()" link="VteTerminal.html#vte-terminal-get-input-enabled"/>
+    <keyword type="function" name="vte_terminal_write_contents_sync ()" link="VteTerminal.html#vte-terminal-write-contents-sync"/>
+    <keyword type="function" name="vte_terminal_search_find_next ()" link="VteTerminal.html#vte-terminal-search-find-next"/>
+    <keyword type="function" name="vte_terminal_search_find_previous ()" link="VteTerminal.html#vte-terminal-search-find-previous"/>
+    <keyword type="function" name="vte_terminal_search_get_regex ()" link="VteTerminal.html#vte-terminal-search-get-regex" since="0.46"/>
+    <keyword type="function" name="vte_terminal_search_get_wrap_around ()" link="VteTerminal.html#vte-terminal-search-get-wrap-around"/>
+    <keyword type="function" name="vte_terminal_search_set_regex ()" link="VteTerminal.html#vte-terminal-search-set-regex" since="0.46"/>
+    <keyword type="function" name="vte_terminal_search_set_wrap_around ()" link="VteTerminal.html#vte-terminal-search-set-wrap-around"/>
+    <keyword type="function" name="vte_terminal_event_check_regex_simple ()" link="VteTerminal.html#vte-terminal-event-check-regex-simple" since="0.46"/>
+    <keyword type="function" name="vte_get_user_shell ()" link="VteTerminal.html#vte-get-user-shell"/>
+    <keyword type="function" name="vte_get_features ()" link="VteTerminal.html#vte-get-features" since="0.40"/>
+    <keyword type="function" name="VteTerminalSpawnAsyncCallback ()" link="VteTerminal.html#VteTerminalSpawnAsyncCallback" since="0.48"/>
+    <keyword type="function" name="vte_terminal_spawn_async ()" link="VteTerminal.html#vte-terminal-spawn-async" since="0.48"/>
+    <keyword type="function" name="vte_terminal_get_pty ()" link="VteTerminal.html#vte-terminal-get-pty"/>
+    <keyword type="function" name="vte_terminal_set_pty ()" link="VteTerminal.html#vte-terminal-set-pty"/>
+    <keyword type="function" name="vte_terminal_pty_new_sync ()" link="VteTerminal.html#vte-terminal-pty-new-sync"/>
+    <keyword type="function" name="vte_terminal_watch_child ()" link="VteTerminal.html#vte-terminal-watch-child"/>
+    <keyword type="function" name="vte_terminal_set_clear_background ()" link="VteTerminal.html#vte-terminal-set-clear-background" since="0.52"/>
+    <keyword type="function" name="vte_terminal_get_char_height ()" link="VteTerminal.html#vte-terminal-get-char-height"/>
+    <keyword type="function" name="vte_terminal_get_char_width ()" link="VteTerminal.html#vte-terminal-get-char-width"/>
+    <keyword type="function" name="vte_terminal_get_column_count ()" link="VteTerminal.html#vte-terminal-get-column-count"/>
+    <keyword type="function" name="vte_terminal_get_icon_title ()" link="VteTerminal.html#vte-terminal-get-icon-title"/>
+    <keyword type="function" name="vte_terminal_get_row_count ()" link="VteTerminal.html#vte-terminal-get-row-count"/>
+    <keyword type="function" name="vte_terminal_get_window_title ()" link="VteTerminal.html#vte-terminal-get-window-title"/>
+    <keyword type="function" name="vte_terminal_get_current_directory_uri ()" link="VteTerminal.html#vte-terminal-get-current-directory-uri"/>
+    <keyword type="function" name="vte_terminal_get_current_file_uri ()" link="VteTerminal.html#vte-terminal-get-current-file-uri"/>
+    <keyword type="function" name="vte_terminal_copy_clipboard ()" link="VteTerminal.html#vte-terminal-copy-clipboard" deprecated=""/>
+    <keyword type="function" name="vte_terminal_match_set_cursor ()" link="VteTerminal.html#vte-terminal-match-set-cursor" deprecated="0.40: Use vte_terminal_match_set_cursor_type() or vte_terminal_match_set_cursor_named() instead."/>
+    <keyword type="function" name="vte_terminal_match_add_gregex ()" link="VteTerminal.html#vte-terminal-match-add-gregex" deprecated="0.46: Use vte_terminal_match_add_regex() or vte_terminal_match_add_regex_full() instead."/>
+    <keyword type="function" name="vte_terminal_search_get_gregex ()" link="VteTerminal.html#vte-terminal-search-get-gregex" deprecated="0.46: use vte_terminal_search_get_regex() instead."/>
+    <keyword type="function" name="vte_terminal_search_set_gregex ()" link="VteTerminal.html#vte-terminal-search-set-gregex" deprecated="0.46: use vte_terminal_search_set_regex() instead."/>
+    <keyword type="function" name="vte_terminal_event_check_gregex_simple ()" link="VteTerminal.html#vte-terminal-event-check-gregex-simple" deprecated="0.46: Use vte_terminal_event_check_regex_simple() instead." since="0.44"/>
+    <keyword type="function" name="vte_terminal_spawn_sync ()" link="VteTerminal.html#vte-terminal-spawn-sync" deprecated="0.48: Use vte_terminal_spawn_async() instead."/>
+    <keyword type="function" name="vte_terminal_get_geometry_hints ()" link="VteTerminal.html#vte-terminal-get-geometry-hints" deprecated="0.52"/>
+    <keyword type="function" name="vte_terminal_set_geometry_hints_for_window ()" link="VteTerminal.html#vte-terminal-set-geometry-hints-for-window" deprecated="0.52"/>
+    <keyword type="struct" name="struct VteTerminal" link="VteTerminal.html#VteTerminal-struct"/>
+    <keyword type="enum" name="enum VteCursorBlinkMode" link="VteTerminal.html#VteCursorBlinkMode"/>
+    <keyword type="enum" name="enum VteCursorShape" link="VteTerminal.html#VteCursorShape"/>
+    <keyword type="enum" name="enum VteEraseBinding" link="VteTerminal.html#VteEraseBinding"/>
+    <keyword type="enum" name="enum VteTextBlinkMode" link="VteTerminal.html#VteTextBlinkMode" since="0.52"/>
+    <keyword type="enum" name="enum VteFormat" link="VteTerminal.html#VteFormat" since="0.50"/>
+    <keyword type="enum" name="enum VteWriteFlags" link="VteTerminal.html#VteWriteFlags"/>
+    <keyword type="property" name="The “allow-bold” property" link="VteTerminal.html#VteTerminal--allow-bold"/>
+    <keyword type="property" name="The “allow-hyperlink” property" link="VteTerminal.html#VteTerminal--allow-hyperlink"/>
+    <keyword type="property" name="The “audible-bell” property" link="VteTerminal.html#VteTerminal--audible-bell"/>
+    <keyword type="property" name="The “backspace-binding” property" link="VteTerminal.html#VteTerminal--backspace-binding"/>
+    <keyword type="property" name="The “bold-is-bright” property" link="VteTerminal.html#VteTerminal--bold-is-bright"/>
+    <keyword type="property" name="The “cell-height-scale” property" link="VteTerminal.html#VteTerminal--cell-height-scale"/>
+    <keyword type="property" name="The “cell-width-scale” property" link="VteTerminal.html#VteTerminal--cell-width-scale"/>
+    <keyword type="property" name="The “cjk-ambiguous-width” property" link="VteTerminal.html#VteTerminal--cjk-ambiguous-width"/>
+    <keyword type="property" name="The “current-directory-uri” property" link="VteTerminal.html#VteTerminal--current-directory-uri"/>
+    <keyword type="property" name="The “current-file-uri” property" link="VteTerminal.html#VteTerminal--current-file-uri"/>
+    <keyword type="property" name="The “cursor-blink-mode” property" link="VteTerminal.html#VteTerminal--cursor-blink-mode"/>
+    <keyword type="property" name="The “cursor-shape” property" link="VteTerminal.html#VteTerminal--cursor-shape"/>
+    <keyword type="property" name="The “delete-binding” property" link="VteTerminal.html#VteTerminal--delete-binding"/>
+    <keyword type="property" name="The “encoding” property" link="VteTerminal.html#VteTerminal--encoding"/>
+    <keyword type="property" name="The “font-desc” property" link="VteTerminal.html#VteTerminal--font-desc"/>
+    <keyword type="property" name="The “font-scale” property" link="VteTerminal.html#VteTerminal--font-scale"/>
+    <keyword type="property" name="The “hyperlink-hover-uri” property" link="VteTerminal.html#VteTerminal--hyperlink-hover-uri"/>
+    <keyword type="property" name="The “icon-title” property" link="VteTerminal.html#VteTerminal--icon-title"/>
+    <keyword type="property" name="The “input-enabled” property" link="VteTerminal.html#VteTerminal--input-enabled"/>
+    <keyword type="property" name="The “pointer-autohide” property" link="VteTerminal.html#VteTerminal--pointer-autohide"/>
+    <keyword type="property" name="The “pty” property" link="VteTerminal.html#VteTerminal--pty"/>
+    <keyword type="property" name="The “rewrap-on-resize” property" link="VteTerminal.html#VteTerminal--rewrap-on-resize"/>
+    <keyword type="property" name="The “scroll-on-keystroke” property" link="VteTerminal.html#VteTerminal--scroll-on-keystroke"/>
+    <keyword type="property" name="The “scroll-on-output” property" link="VteTerminal.html#VteTerminal--scroll-on-output"/>
+    <keyword type="property" name="The “scrollback-lines” property" link="VteTerminal.html#VteTerminal--scrollback-lines"/>
+    <keyword type="property" name="The “text-blink-mode” property" link="VteTerminal.html#VteTerminal--text-blink-mode"/>
+    <keyword type="property" name="The “window-title” property" link="VteTerminal.html#VteTerminal--window-title"/>
+    <keyword type="property" name="The “word-char-exceptions” property" link="VteTerminal.html#VteTerminal--word-char-exceptions"/>
+    <keyword type="signal" name="The “bell” signal" link="VteTerminal.html#VteTerminal-bell"/>
+    <keyword type="signal" name="The “char-size-changed” signal" link="VteTerminal.html#VteTerminal-char-size-changed"/>
+    <keyword type="signal" name="The “child-exited” signal" link="VteTerminal.html#VteTerminal-child-exited"/>
+    <keyword type="signal" name="The “commit” signal" link="VteTerminal.html#VteTerminal-commit"/>
+    <keyword type="signal" name="The “contents-changed” signal" link="VteTerminal.html#VteTerminal-contents-changed"/>
+    <keyword type="signal" name="The “copy-clipboard” signal" link="VteTerminal.html#VteTerminal-copy-clipboard"/>
+    <keyword type="signal" name="The “current-directory-uri-changed” signal" link="VteTerminal.html#VteTerminal-current-directory-uri-changed"/>
+    <keyword type="signal" name="The “current-file-uri-changed” signal" link="VteTerminal.html#VteTerminal-current-file-uri-changed"/>
+    <keyword type="signal" name="The “cursor-moved” signal" link="VteTerminal.html#VteTerminal-cursor-moved"/>
+    <keyword type="signal" name="The “decrease-font-size” signal" link="VteTerminal.html#VteTerminal-decrease-font-size"/>
+    <keyword type="signal" name="The “deiconify-window” signal" link="VteTerminal.html#VteTerminal-deiconify-window"/>
+    <keyword type="signal" name="The “encoding-changed” signal" link="VteTerminal.html#VteTerminal-encoding-changed"/>
+    <keyword type="signal" name="The “eof” signal" link="VteTerminal.html#VteTerminal-eof"/>
+    <keyword type="signal" name="The “hyperlink-hover-uri-changed” signal" link="VteTerminal.html#VteTerminal-hyperlink-hover-uri-changed"/>
+    <keyword type="signal" name="The “icon-title-changed” signal" link="VteTerminal.html#VteTerminal-icon-title-changed"/>
+    <keyword type="signal" name="The “iconify-window” signal" link="VteTerminal.html#VteTerminal-iconify-window"/>
+    <keyword type="signal" name="The “increase-font-size” signal" link="VteTerminal.html#VteTerminal-increase-font-size"/>
+    <keyword type="signal" name="The “lower-window” signal" link="VteTerminal.html#VteTerminal-lower-window"/>
+    <keyword type="signal" name="The “maximize-window” signal" link="VteTerminal.html#VteTerminal-maximize-window"/>
+    <keyword type="signal" name="The “move-window” signal" link="VteTerminal.html#VteTerminal-move-window"/>
+    <keyword type="signal" name="The “paste-clipboard” signal" link="VteTerminal.html#VteTerminal-paste-clipboard"/>
+    <keyword type="signal" name="The “raise-window” signal" link="VteTerminal.html#VteTerminal-raise-window"/>
+    <keyword type="signal" name="The “refresh-window” signal" link="VteTerminal.html#VteTerminal-refresh-window"/>
+    <keyword type="signal" name="The “resize-window” signal" link="VteTerminal.html#VteTerminal-resize-window"/>
+    <keyword type="signal" name="The “restore-window” signal" link="VteTerminal.html#VteTerminal-restore-window"/>
+    <keyword type="signal" name="The “selection-changed” signal" link="VteTerminal.html#VteTerminal-selection-changed"/>
+    <keyword type="signal" name="The “text-deleted” signal" link="VteTerminal.html#VteTerminal-text-deleted"/>
+    <keyword type="signal" name="The “text-inserted” signal" link="VteTerminal.html#VteTerminal-text-inserted"/>
+    <keyword type="signal" name="The “text-modified” signal" link="VteTerminal.html#VteTerminal-text-modified"/>
+    <keyword type="signal" name="The “text-scrolled” signal" link="VteTerminal.html#VteTerminal-text-scrolled"/>
+    <keyword type="signal" name="The “window-title-changed” signal" link="VteTerminal.html#VteTerminal-window-title-changed"/>
+    <keyword type="function" name="vte_regex_ref ()" link="VteRegex.html#vte-regex-ref"/>
+    <keyword type="function" name="vte_regex_unref ()" link="VteRegex.html#vte-regex-unref"/>
+    <keyword type="function" name="vte_regex_new_for_match ()" link="VteRegex.html#vte-regex-new-for-match"/>
+    <keyword type="function" name="vte_regex_new_for_search ()" link="VteRegex.html#vte-regex-new-for-search"/>
+    <keyword type="function" name="vte_regex_jit ()" link="VteRegex.html#vte-regex-jit"/>
+    <keyword type="struct" name="VteRegex" link="VteRegex.html#VteRegex-struct"/>
+    <keyword type="function" name="vte_pty_new_sync ()" link="vte-Vte-PTY.html#vte-pty-new-sync"/>
+    <keyword type="function" name="vte_pty_new_foreign_sync ()" link="vte-Vte-PTY.html#vte-pty-new-foreign-sync"/>
+    <keyword type="function" name="vte_pty_child_setup ()" link="vte-Vte-PTY.html#vte-pty-child-setup"/>
+    <keyword type="function" name="vte_pty_get_fd ()" link="vte-Vte-PTY.html#vte-pty-get-fd"/>
+    <keyword type="function" name="vte_pty_set_size ()" link="vte-Vte-PTY.html#vte-pty-set-size"/>
+    <keyword type="function" name="vte_pty_get_size ()" link="vte-Vte-PTY.html#vte-pty-get-size"/>
+    <keyword type="function" name="vte_pty_set_utf8 ()" link="vte-Vte-PTY.html#vte-pty-set-utf8"/>
+    <keyword type="function" name="vte_pty_spawn_async ()" link="vte-Vte-PTY.html#vte-pty-spawn-async" since="0.48"/>
+    <keyword type="function" name="vte_pty_spawn_finish ()" link="vte-Vte-PTY.html#vte-pty-spawn-finish" since="0.48"/>
+    <keyword type="function" name="vte_pty_close ()" link="vte-Vte-PTY.html#vte-pty-close" deprecated="0.42"/>
+    <keyword type="enum" name="enum VtePtyFlags" link="vte-Vte-PTY.html#VtePtyFlags"/>
+    <keyword type="enum" name="enum VtePtyError" link="vte-Vte-PTY.html#VtePtyError"/>
+    <keyword type="struct" name="VtePty" link="vte-Vte-PTY.html#VtePty-struct"/>
+    <keyword type="property" name="The “fd” property" link="vte-Vte-PTY.html#VtePty--fd"/>
+    <keyword type="property" name="The “flags” property" link="vte-Vte-PTY.html#VtePty--flags"/>
+    <keyword type="function" name="vte_get_major_version ()" link="vte-Version-Information.html#vte-get-major-version" since="0.40"/>
+    <keyword type="function" name="vte_get_minor_version ()" link="vte-Version-Information.html#vte-get-minor-version" since="0.40"/>
+    <keyword type="function" name="vte_get_micro_version ()" link="vte-Version-Information.html#vte-get-micro-version" since="0.40"/>
+    <keyword type="macro" name="VTE_CHECK_VERSION()" link="vte-Version-Information.html#VTE-CHECK-VERSION:CAPS"/>
+    <keyword type="macro" name="VTE_MAJOR_VERSION" link="vte-Version-Information.html#VTE-MAJOR-VERSION:CAPS"/>
+    <keyword type="macro" name="VTE_MINOR_VERSION" link="vte-Version-Information.html#VTE-MINOR-VERSION:CAPS"/>
+    <keyword type="macro" name="VTE_MICRO_VERSION" link="vte-Version-Information.html#VTE-MICRO-VERSION:CAPS"/>
+    <keyword type="constant" name="VTE_CURSOR_BLINK_SYSTEM" link="VteTerminal.html#VTE-CURSOR-BLINK-SYSTEM:CAPS"/>
+    <keyword type="constant" name="VTE_CURSOR_BLINK_ON" link="VteTerminal.html#VTE-CURSOR-BLINK-ON:CAPS"/>
+    <keyword type="constant" name="VTE_CURSOR_BLINK_OFF" link="VteTerminal.html#VTE-CURSOR-BLINK-OFF:CAPS"/>
+    <keyword type="constant" name="VTE_CURSOR_SHAPE_BLOCK" link="VteTerminal.html#VTE-CURSOR-SHAPE-BLOCK:CAPS"/>
+    <keyword type="constant" name="VTE_CURSOR_SHAPE_IBEAM" link="VteTerminal.html#VTE-CURSOR-SHAPE-IBEAM:CAPS"/>
+    <keyword type="constant" name="VTE_CURSOR_SHAPE_UNDERLINE" link="VteTerminal.html#VTE-CURSOR-SHAPE-UNDERLINE:CAPS"/>
+    <keyword type="constant" name="VTE_ERASE_AUTO" link="VteTerminal.html#VTE-ERASE-AUTO:CAPS"/>
+    <keyword type="constant" name="VTE_ERASE_ASCII_BACKSPACE" link="VteTerminal.html#VTE-ERASE-ASCII-BACKSPACE:CAPS"/>
+    <keyword type="constant" name="VTE_ERASE_ASCII_DELETE" link="VteTerminal.html#VTE-ERASE-ASCII-DELETE:CAPS"/>
+    <keyword type="constant" name="VTE_ERASE_DELETE_SEQUENCE" link="VteTerminal.html#VTE-ERASE-DELETE-SEQUENCE:CAPS"/>
+    <keyword type="constant" name="VTE_ERASE_TTY" link="VteTerminal.html#VTE-ERASE-TTY:CAPS"/>
+    <keyword type="constant" name="VTE_TEXT_BLINK_NEVER" link="VteTerminal.html#VTE-TEXT-BLINK-NEVER:CAPS"/>
+    <keyword type="constant" name="VTE_TEXT_BLINK_FOCUSED" link="VteTerminal.html#VTE-TEXT-BLINK-FOCUSED:CAPS"/>
+    <keyword type="constant" name="VTE_TEXT_BLINK_UNFOCUSED" link="VteTerminal.html#VTE-TEXT-BLINK-UNFOCUSED:CAPS"/>
+    <keyword type="constant" name="VTE_TEXT_BLINK_ALWAYS" link="VteTerminal.html#VTE-TEXT-BLINK-ALWAYS:CAPS"/>
+    <keyword type="constant" name="VTE_FORMAT_TEXT" link="VteTerminal.html#VTE-FORMAT-TEXT:CAPS"/>
+    <keyword type="constant" name="VTE_FORMAT_HTML" link="VteTerminal.html#VTE-FORMAT-HTML:CAPS"/>
+    <keyword type="constant" name="VTE_WRITE_DEFAULT" link="VteTerminal.html#VTE-WRITE-DEFAULT:CAPS"/>
+    <keyword type="constant" name="VTE_PTY_NO_LASTLOG" link="vte-Vte-PTY.html#VTE-PTY-NO-LASTLOG:CAPS"/>
+    <keyword type="constant" name="VTE_PTY_NO_UTMP" link="vte-Vte-PTY.html#VTE-PTY-NO-UTMP:CAPS"/>
+    <keyword type="constant" name="VTE_PTY_NO_WTMP" link="vte-Vte-PTY.html#VTE-PTY-NO-WTMP:CAPS"/>
+    <keyword type="constant" name="VTE_PTY_NO_HELPER" link="vte-Vte-PTY.html#VTE-PTY-NO-HELPER:CAPS"/>
+    <keyword type="constant" name="VTE_PTY_NO_FALLBACK" link="vte-Vte-PTY.html#VTE-PTY-NO-FALLBACK:CAPS"/>
+    <keyword type="constant" name="VTE_PTY_DEFAULT" link="vte-Vte-PTY.html#VTE-PTY-DEFAULT:CAPS"/>
+    <keyword type="constant" name="VTE_PTY_ERROR_PTY_HELPER_FAILED" link="vte-Vte-PTY.html#VTE-PTY-ERROR-PTY-HELPER-FAILED:CAPS"/>
+    <keyword type="constant" name="VTE_PTY_ERROR_PTY98_FAILED" link="vte-Vte-PTY.html#VTE-PTY-ERROR-PTY98-FAILED:CAPS"/>
+  </functions>
+</book>

@@ -1,0 +1,21 @@
+#!/bin/sh
+
+./local_tty_test tty > output.tty
+if  diff local_tty_test.reference_output  output.tty >& /dev/null ; then 
+	echo "local tty -> pty test passed !" 
+else 
+	echo "local tty -> pty test FAILED !" 
+	echo "diff -au local_tty_test.reference_output  output.tty" 
+	diff -au local_tty_test.reference_output  output.tty 
+fi
+
+
+./local_tty_test pty > output.pty
+if  diff local_tty_test.reference_output  output.pty >& /dev/null ; then 
+	echo "local pty -> tty test passed !" 
+else 
+	echo "local pty -> tty test FAILED !" 
+	echo "diff -au local_tty_test.reference_output  output.pty" 
+	diff -au local_tty_test.reference_output  output.pty 
+fi
+

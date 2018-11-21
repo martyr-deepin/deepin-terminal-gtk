@@ -1,0 +1,42 @@
+# Norwegian (bokmål) translation of vte.
+# Copyright (C) Kjartan Maraas, 2002-2014.
+# Free Software Foundation, 2002.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: vte 0.46.x\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-10-16 12:39+0200\n"
+"PO-Revision-Date: 2016-10-16 12:38+0200\n"
+"Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
+"Language-Team: Norwegian Bokmål <i18n-nb@lister.ping.uio.no>\n"
+"Language: nb\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../src/iso2022.cc:73 ../src/iso2022.cc:81 ../src/iso2022.cc:111
+#: ../src/vtegtk.cc:3072
+#, c-format
+msgid "Unable to convert characters from %s to %s."
+msgstr "Kan ikke konvertere tegn fra %s til %s."
+
+#. Translators: %s is replaced with error message returned by strerror().
+#: ../src/vte.cc:4002
+#, c-format
+msgid "Error reading from child: %s."
+msgstr "Feil under lesing fra underprosess: %s."
+
+#: ../src/vte.cc:4141
+#, c-format
+msgid "Error (%s) converting data for child, dropping."
+msgstr "Feil (%s) ved konvertering av data for underprosess. Hopper over."
+
+#: ../src/vte.cc:7910
+msgid "WARNING"
+msgstr "ADVARSEL"
+
+#: ../src/vte.cc:7911
+msgid "GNUTLS not enabled; data will be written to disk unencrypted!"
+msgstr ""
+"GNUTLS er ikke aktivert; data vil bli skrevet til disk uten kryptering!"

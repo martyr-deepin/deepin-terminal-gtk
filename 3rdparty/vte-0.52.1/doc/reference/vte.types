@@ -1,0 +1,17 @@
+#include <glib.h>
+#include <glib-object.h>
+#include <gio/gio.h>
+#include <gtk/gtk.h>
+#include "vte.h"
+
+vte_pty_get_type
+vte_terminal_get_type
+vte_regex_get_type
+
+vte_pty_error_get_type
+vte_pty_flags_get_type
+vte_cursor_blink_mode_get_type
+vte_cursor_shape_get_type
+vte_erase_binding_get_type
+vte_write_flags_get_type
+vte_regex_error_get_type

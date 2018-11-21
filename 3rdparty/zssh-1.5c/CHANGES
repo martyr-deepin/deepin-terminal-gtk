@@ -1,0 +1,120 @@
+version 1.5c
+
+Jim Grishaw <jgrishaw@myrealbox.com>
+- fixes for cygwin
+
+- added tty test suite (test/ directory)
+
+-----------------------------
+
+version 1.5b
+
+Richard Hoyle <rhoyle@cix.co.uk>
+- fix problem with initial flush of tty on some systems (slackware 9.0)
+
+- cleanup, got rid of c++ style comments, fixed warnings
+
+-----------------------------
+
+version 1.5a
+
+- now compiles with readline v4.2
+- works on MacOS X
+
+config:
+- detect readline headers
+- fixed configure.in bug (-ltermcap not needed in AC_CHECK_LIB) (Jeff Squyres)
+
+-----------------------------
+
+v1.5
+- now compiles under solaris
+
+- added hostname in prompt
+- fixed tilde expansion: used to done by glob()'s GLOB_TILDE option
+  which is not supported everywhere, and is buggy 
+ 	( substitutes in ~/a/b but not in ~/a/b/c !)
+  some more code now replaces this ...
+- improved completion : builtin, tilde and pathname completions
+
+- cleaned/rewrote openpty.c
+  - ask user whether to continue after failed grantpt()
+    or if using a tty with dangerous perms
+  - check that old controlling tty has been dropped
+  - under linux use /dev/ptmx if available instead of /dev/pty*
+  - should be easier to port
+- added 'suspend' and 'disconnect' builtins
+- fixed race conditions due to fork()
+- fixed signal handlers : they have to reset themselves so that it works
+  everywhere ...
+- fixed some memory leaks
+- cleaning cleaning cleaning
+
+- added '--force' option to avoid being asked questions (doesn't suppres 
+  warnings though)
+- added '--' option to allow separation of zssh options from ssh options
+
+- handle quotes in --shell option, so that we can now do some really weird
+  stuff such as:
+	zssh -s "sh -c 'ps aux | grep ssh'"
+
+config:
+  - detect pty functions/devices available
+  - added '--disable-readline' option of configure to allow building zssh
+    without libreadline
+  - use -Wall compiler option if available
+
+-----------------------------
+
+v1.4
+
+- added escape key help msg
+- fixed rpm spec file bug
+- added escape builtin : allows to change the escape key 
+- added -s switch to allow the remote shell to be changed
+- fixed bug with child handling (delay in sfork)
+- added hook builtin : allows to hook any proram to the tty/pty,
+  not just rz and sz
+- added ztelnet hard link : remote logging prg defaults to "telnet -8 -E"
+  instead of "ssh -e none"
+
+------------------------------
+
+v1.3
+
+- Fixed a bug that cause the app to segfault under FreeBSD
+  (globbing.c:27)
+- Added redefinable escape sequence (environment variable and command
+  line arg)
+- tilde expansion is now performed (provided the GLOB_TILDE flag is supported
+  by the glob(3) function)
+
+------------------------------
+
+v1.2*
+
+- Install problem fixes mainly
+
+------------------------------
+
+v1.1
+
+- Changed escape sequence from Alt-1 to ^@ (C-space)
+  Alt-1 is bound by default under window maker
+  and Ctrl-x sequences will be easier to customize.
+
+------------------------------
+
+v1.0
+
+- Removed sending of "rz" command to the remote shell,
+  it seems it works just fine without !
+- Fixed ^D in local shell... caused segfault
+- ^C works when sz-ing (^X sent to interrupt remote rz)
+  rz-ing not tested yet
+- Added test for both text and X11 Alt-1 key codes
+- fixed bug in shell escapes handling : used to exit on parse error !
+- Added builtin 'repeat'
+- Now correctly flushes output after ^C during transfert
+  The tty should no longer be polluted !
+

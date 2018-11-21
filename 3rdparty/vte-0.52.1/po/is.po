@@ -1,0 +1,118 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Samúel Jón Gunnarsson  <sammi@techattack.nu>, 2003.
+# Sveinn í Felli <sv1@fellsnet.is>, 2015, 2017.
+msgid ""
+msgstr ""
+"Project-Id-Version: vte\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=vte&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2016-09-17 18:49+0000\n"
+"PO-Revision-Date: 2017-03-01 11:45+0000\n"
+"Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
+"Language-Team: Icelandic <translation-team-is@lists.sourceforge.net>\n"
+"Language: is\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 1.5\n"
+
+#: ../src/iso2022.cc:73 ../src/iso2022.cc:81 ../src/iso2022.cc:111
+#: ../src/vtegtk.cc:3072
+#, c-format
+msgid "Unable to convert characters from %s to %s."
+msgstr "Ekki tókst að umbreyta stöfum frá %s yfir í %s."
+
+#. Translators: %s is replaced with error message returned by strerror().
+#: ../src/vte.cc:4002
+#, c-format
+msgid "Error reading from child: %s."
+msgstr "Villa. Ekki tókst að lesa frá afleiðu: %s"
+
+#: ../src/vte.cc:4141
+#, c-format
+msgid "Error (%s) converting data for child, dropping."
+msgstr "Villa (%s) við umbreytingu á gögnum frá afleiðu, hætti við."
+
+#: ../src/vte.cc:7910
+msgid "WARNING"
+msgstr "AÐVÖRUN"
+
+#: ../src/vte.cc:7911
+msgid "GNUTLS not enabled; data will be written to disk unencrypted!"
+msgstr "GNUTLS er ekki virkt; gögn verða skrifuð ódulrituð á disk!"
+
+#~ msgid "Copy"
+#~ msgstr "Afrita"
+
+#~ msgid "Paste"
+#~ msgstr "Líma"
+
+#~ msgid "Reset (use Ctrl to reset and clear)"
+#~ msgstr "Frumstilla (nota Ctrl til að endurræsa og hreinsa)"
+
+#~ msgid "Reset"
+#~ msgstr "Frumstilla"
+
+#~ msgid "Toggle input enabled setting"
+#~ msgstr "Víxla inntaksháðum stillingum"
+
+#~ msgid "Input"
+#~ msgstr "Inntak"
+
+#~ msgid "Could not open console.\n"
+#~ msgstr "Ekki tókst að opna stjórnskjá.\n"
+
+#~ msgid "Could not parse the geometry spec passed to --geometry"
+#~ msgstr "Gat ekki þáttað stærðarupplýsingar sem sendar voru til --geometry"
+
+#~ msgid "Unable to send data to child, invalid charset convertor"
+#~ msgstr "Tókst ekki að senda gögn til afleiðu, ógild stafatöfluumbreyting"
+
+#~| msgid "Error reading PTY size, using defaults: %s."
+#~ msgid "Error reading PTY size, using defaults: %s\n"
+#~ msgstr "Villa við að lesa PTY stærð, nota sjálfgefið: %s\n"
+
+#~ msgid "Attempt to set invalid NRC map '%c'."
+#~ msgstr "Reyndi að setja ógilt NRC kort '%c'."
+
+#  Application signalled an "identified coding system" we haven't heard of.  See ECMA-35 for gory details.
+#~ msgid "Unrecognized identified coding system."
+#~ msgstr "Óþekkt \"identified coding system\"."
+
+#~ msgid "Attempt to set invalid wide NRC map '%c'."
+#~ msgstr "Reyndi að setja upp ógilda breidd á NRC korti '%c'."
+
+#~ msgid "Error adding `%s' to environment, continuing."
+#~ msgstr "Villa. Ekki tókst að bæta `%s' við í umhverfið, held áfram."
+
+#~ msgid "can not run %s"
+#~ msgstr "get ekki keyrt %s"
+
+#~ msgid "Error creating signal pipe."
+#~ msgstr "Villa. Ekki tókst að búa til merkja pípu."
+
+#~ msgid "Duplicate (%s/%s)!"
+#~ msgstr "Tvöfalda (%s/%s)!"
+
+#~ msgid "Error compiling regular expression \"%s\"."
+#~ msgstr "Villa. Ekki tókst að vistþýða venjulega segð \"%s\"."
+
+#~ msgid "No handler for control sequence `%s' defined."
+#~ msgstr "Engin aðgerð fyrir stjórnun á runu `%s' skilgreind."
+
+#~ msgid "Error setting PTY size: %s."
+#~ msgstr "Villa. Ekki tókst að setja PTY stærð: %s"
+
+#~ msgid "_vte_conv_open() failed setting word characters"
+#~ msgstr "g_iconv_open() tókst ekki að setja orðrittákn"
+
+#~ msgid "Unknown pixel mode %d.\n"
+#~ msgstr "Óþekktur punkta hamur %d.\n"
+
+#~ msgid "Can not draw character U+%04x.\n"
+#~ msgstr "Ekki tókst að teikna tákn U+%04x.\n"
+
+#~ msgid "Got unexpected (key?) sequence `%s'."
+#~ msgstr "Meðtók óvænta (flýtilykla?) runu `%s'."

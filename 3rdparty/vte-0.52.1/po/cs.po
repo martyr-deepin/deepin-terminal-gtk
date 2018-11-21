@@ -1,0 +1,88 @@
+# Czech translation of vte.
+# Copyright (C) 2002, 2008 Free Software Foundation.
+# This file is distributed under the same license as the vte package.
+#
+# Miloslav Trmac <mitr@volny.cz>, 2002, 2003, 2004.
+# Pavel Šefránek <ps@pjoul.cz>, 2008.
+# Marek Černocký <marek@manet.cz>, 2010, 2014, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: vte\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=vte&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2016-05-16 08:25+0000\n"
+"PO-Revision-Date: 2016-08-13 23:26+0200\n"
+"Last-Translator: Marek Černocký <marek@manet.cz>\n"
+"Language-Team: čeština <gnome-cs-list@gnome.org>\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Gtranslator 2.91.7\n"
+
+#: ../src/iso2022.cc:73 ../src/iso2022.cc:81 ../src/iso2022.cc:111
+#: ../src/vtegtk.cc:3090
+#, c-format
+msgid "Unable to convert characters from %s to %s."
+msgstr "Nelze převést znaky z %s do %s."
+
+#. Translators: %s is replaced with error message returned by strerror().
+#: ../src/vte.cc:4248
+#, c-format
+msgid "Error reading from child: %s."
+msgstr "Chyba při čtení od potomka: %s."
+
+#: ../src/vte.cc:4387
+#, c-format
+msgid "Error (%s) converting data for child, dropping."
+msgstr "Chyba (%s) při převodu dat pro potomka, zahazuje se."
+
+#: ../src/vte.cc:8156
+msgid "WARNING"
+msgstr "VAROVÁNÍ"
+
+#: ../src/vte.cc:8157
+msgid "GNUTLS not enabled; data will be written to disk unencrypted!"
+msgstr "Není povoleno GNUTLS – data budou na disku uložena nezašifrovaná!"
+
+#~ msgid "Copy"
+#~ msgstr "Kopírovat"
+
+#~ msgid "Paste"
+#~ msgstr "Vložit"
+
+#~ msgid "Reset (use Ctrl to reset and clear)"
+#~ msgstr "Reset (použijte Ctrl pro reset a vymazání)"
+
+#~ msgid "Reset"
+#~ msgstr "Reset"
+
+#~ msgid "Toggle input enabled setting"
+#~ msgstr "Přepnout nastavení povolující vstup"
+
+#~ msgid "Input"
+#~ msgstr "Vstup"
+
+#~ msgid "Attempt to set invalid NRC map '%c'."
+#~ msgstr "Pokus nastavit neplatnou mapu NRC „%c“."
+
+#~ msgid "Unrecognized identified coding system."
+#~ msgstr "Systém kódování, který byl rozpoznán, je neznámý."
+
+#~ msgid "Attempt to set invalid wide NRC map '%c'."
+#~ msgstr "Pokus nastavit neplatnou širokou mapu NRC „%c“."
+
+#~ msgid "Could not open console.\n"
+#~ msgstr "Nelze otevřít konzoli.\n"
+
+#~ msgid "Could not parse the geometry spec passed to --geometry"
+#~ msgstr "Nelze zpracovat rozměry a umístění zadavné v --geometry"
+
+#~ msgid "Unable to send data to child, invalid charset convertor"
+#~ msgstr ""
+#~ "Nelze poslat zprávu potomkovi z důvodu neplatného převodníku znakové sady"
+
+#~ msgid "Error reading PTY size, using defaults: %s\n"
+#~ msgstr "Chyba při čtení velikosti PTY, použije se výchozí: %s\n"

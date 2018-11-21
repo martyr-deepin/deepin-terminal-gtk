@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Version Information: VTE Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.79.1">
+<link rel="home" href="index.html" title="VTE Reference Manual">
+<link rel="up" href="ch04.html" title="">
+<link rel="prev" href="ch04.html" title="">
+<link rel="next" href="object-hierarchy.html" title="Object Hierarchy">
+<meta name="generator" content="GTK-Doc V1.27 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#vte-Version-Information.description" class="shortcut">Description</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="ch04.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="ch04.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="object-hierarchy.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="vte-Version-Information"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="vte-Version-Information.top_of_page"></a>Version Information</span></h2>
+<p>Version Information — Library version checks</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="vte-Version-Information.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_return">
+<col class="functions_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="vte-Version-Information.html#vte-get-major-version" title="vte_get_major_version ()">vte_get_major_version</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="vte-Version-Information.html#vte-get-minor-version" title="vte_get_minor_version ()">vte_get_minor_version</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="vte-Version-Information.html#vte-get-micro-version" title="vte_get_micro_version ()">vte_get_micro_version</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name">
+<a class="link" href="vte-Version-Information.html#VTE-CHECK-VERSION:CAPS" title="VTE_CHECK_VERSION()">VTE_CHECK_VERSION</a><span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="vte-Version-Information.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="name">
+<col class="description">
+</colgroup>
+<tbody>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="vte-Version-Information.html#VTE-MAJOR-VERSION:CAPS" title="VTE_MAJOR_VERSION">VTE_MAJOR_VERSION</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="vte-Version-Information.html#VTE-MINOR-VERSION:CAPS" title="VTE_MINOR_VERSION">VTE_MINOR_VERSION</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="vte-Version-Information.html#VTE-MICRO-VERSION:CAPS" title="VTE_MICRO_VERSION">VTE_MICRO_VERSION</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="vte-Version-Information.description"></a><h2>Description</h2>
+<p>These macros enable compile time checks of the library version.</p>
+</div>
+<div class="refsect1">
+<a name="vte-Version-Information.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="vte-get-major-version"></a><h3>vte_get_major_version ()</h3>
+<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>
+vte_get_major_version (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>Returns the major version of the VTE library at runtime.
+Contrast this with <a class="link" href="vte-Version-Information.html#VTE-MAJOR-VERSION:CAPS" title="VTE_MAJOR_VERSION"><code class="literal">VTE_MAJOR_VERSION</code></a> which represents
+the version of the VTE library that the code was compiled
+with.</p>
+<div class="refsect3">
+<a name="vte-get-major-version.returns"></a><h4>Returns</h4>
+<p> the major version</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-0-40.html#api-index-0.40">0.40</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="vte-get-minor-version"></a><h3>vte_get_minor_version ()</h3>
+<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>
+vte_get_minor_version (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>Returns the minor version of the VTE library at runtime.
+Contrast this with <a class="link" href="vte-Version-Information.html#VTE-MINOR-VERSION:CAPS" title="VTE_MINOR_VERSION"><code class="literal">VTE_MINOR_VERSION</code></a> which represents
+the version of the VTE library that the code was compiled
+with.</p>
+<div class="refsect3">
+<a name="vte-get-minor-version.returns"></a><h4>Returns</h4>
+<p> the minor version</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-0-40.html#api-index-0.40">0.40</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="vte-get-micro-version"></a><h3>vte_get_micro_version ()</h3>
+<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#guint"><span class="returnvalue">guint</span></a>
+vte_get_micro_version (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>Returns the micro version of the VTE library at runtime.
+Contrast this with <a class="link" href="vte-Version-Information.html#VTE-MICRO-VERSION:CAPS" title="VTE_MICRO_VERSION"><code class="literal">VTE_MICRO_VERSION</code></a> which represents
+the version of the VTE library that the code was compiled
+with.</p>
+<div class="refsect3">
+<a name="vte-get-micro-version.returns"></a><h4>Returns</h4>
+<p> the micro version</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-0-40.html#api-index-0.40">0.40</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="VTE-CHECK-VERSION:CAPS"></a><h3>VTE_CHECK_VERSION()</h3>
+<pre class="programlisting">#define             VTE_CHECK_VERSION(major,minor,micro)</pre>
+<p>Macro to check the library version at compile time.
+It returns <code class="literal">1</code> if the version of VTE is greater or
+equal to the required one, and <code class="literal">0</code> otherwise.</p>
+<div class="refsect3">
+<a name="VTE-CHECK-VERSION.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>major</p></td>
+<td class="parameter_description"><p>required major version</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>minor</p></td>
+<td class="parameter_description"><p>required minor version</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>micro</p></td>
+<td class="parameter_description"><p>required micro version</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="vte-Version-Information.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="VTE-MAJOR-VERSION:CAPS"></a><h3>VTE_MAJOR_VERSION</h3>
+<pre class="programlisting">#define VTE_MAJOR_VERSION (0)
+</pre>
+<p>The major version number of the VTE library
+(e.g. in version 3.1.4 this is 3).</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="VTE-MINOR-VERSION:CAPS"></a><h3>VTE_MINOR_VERSION</h3>
+<pre class="programlisting">#define VTE_MINOR_VERSION (52)
+</pre>
+<p>The minor version number of the VTE library
+(e.g. in version 3.1.4 this is 1).</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="VTE-MICRO-VERSION:CAPS"></a><h3>VTE_MICRO_VERSION</h3>
+<pre class="programlisting">#define VTE_MICRO_VERSION (1)
+</pre>
+<p>The micro version number of the VTE library
+(e.g. in version 3.1.4 this is 4).</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.27</div>
+</body>
+</html>

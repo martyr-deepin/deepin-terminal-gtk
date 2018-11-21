@@ -24,9 +24,13 @@ pkg_check_modules(RSVG REQUIRED librsvg-2.0)
 pkg_check_modules(WNCK REQUIRED libwnck-3.0)
 pkg_check_modules(FONTCONFIG REQUIRED fontconfig)
 pkg_check_modules(GLIB REQUIRED glib-2.0)
-pkg_check_modules(VTE REQUIRED vte-2.91)
 
-OPTION(TEST_BUILD "Build with native testing" ON)
+option(TEST_BUILD "Build with native testing" ON)
+option(USE_VENDOR_LIB "Backport support for debian stretch" ON)
+
+if (NOT USE_VENDOR_LIB)
+pkg_check_modules(VTE REQUIRED vte-2.91)
+endif()
 
 if (NOT DEFINED VERSION)
 find_package(Git)
@@ -60,6 +64,24 @@ execute_process(
 )
 endif()
 
+if (USE_VENDOR_LIB)
+ExternalProject_Add(Vte-0.52
+  SOURCE_DIR ${CMAKE_SOURCE_DIR}/3rdparty/vte-0.52.1
+  CONFIGURE_COMMAND ./configure --enable-static
+  BUILD_COMMAND make
+  INSTALL_COMMAND ""
+  BUILD_IN_SOURCE 1
+  )
+
+ExternalProject_Add(zssh-1.5c
+  SOURCE_DIR ${CMAKE_SOURCE_DIR}/3rdparty/zssh-1.5c
+  CONFIGURE_COMMAND ./configure
+  BUILD_COMMAND make
+  INSTALL_COMMAND ""
+  BUILD_IN_SOURCE 1
+  )
+endif()
+
 set(CFLAGS
 	${GIO_CFLAGS}
 	${GTK3_CFLAGS} ${GTK3_CFLAGS_OTHER}
@@ -79,8 +101,15 @@ set(INCLUDE_PATHS
 	${RSVG_INCLUDE_DIRS}
 	${JsonGlib_INCLUDE_DIRS}
 	${LIBSECRET_INCLUDE_DIRS}
-	${VTE_INCLUDE_DIRS}
 )
+
+if (USE_VENDOR_LIB)
+	list(APPEND INCLUDE_PATHS ${CMAKE_SOURCE_DIR}/3rdparty/vte-0.52.1/src)
+	find_library(VTE_LIB NAMES libvte-2.91.a tcmalloc_minimal)
+else()
+	list(APPEND INCLUDE_PATHS ${VTE_INCLUDE_DIRS})
+endif()
+
 include_directories(${INCLUDE_PATHS})
 set(LIBS
 	${GIO_LIBRARIES}
@@ -95,7 +124,6 @@ set(LIBS
 	${XTST_LIBRARIES}
 	${FONTCONFIG_LIBRARY}
 	${M_LIBRARIES}
-	${VTE_LIBRARIES}
 	stdc++
 	m
 	z
@@ -103,6 +131,11 @@ set(LIBS
 	gnutls
 	pcre2-8
 )
+
+if (NOT USE_VENDOR_LIB)
+	list(APPEND LIBS ${VTE_LIBRARIES})
+endif()
+
 SET(APP_SOURCES, "")
 FILE(GLOB valalist LIST_FILES true */*.vala)
 FOREACH(child ${valalist})
@@ -114,11 +147,7 @@ FOREACH(child ${valalist})
 	set (APP_SOURCES ${APP_SOURCES} ${file_path})
 ENDFOREACH()
 
-vala_precompile(VALA_C
-	./main.vala
-	${APP_SOURCES}
-
-PACKAGES
+set(VALA_PRECOMPILE_PACKAGES
 	xcb
 	gtk+-3.0
 	vte-2.91
@@ -132,8 +161,38 @@ PACKAGES
 	glib-2.0
 	librsvg-2.0
 )
+
+if (USE_VENDOR_LIB)
+	list(APPEND VALA_PRECOMPILE_PACKAGES fontconfig)
+
+	vala_precompile(VALA_C
+		./main.vala
+		${APP_SOURCES}
+
+	OPTIONS
+	--vapidir=${CMAKE_SOURCE_DIR}/vapi
+
+	PACKAGES
+		${VALA_PRECOMPILE_PACKAGES}
+	)
+else()
+	vala_precompile(VALA_C
+		./main.vala
+		${APP_SOURCES}
+
+	PACKAGES
+		${VALA_PRECOMPILE_PACKAGES}
+	)
+endif()
+
 add_executable(${target} ${VALA_C} ${CMAKE_SOURCE_DIR}/project_path.c ${CMAKE_SOURCE_DIR}/lib/font.c)
-target_link_libraries(${target} ${LIBS})
+
+if (USE_VENDOR_LIB)
+	target_link_libraries(${target} ${LIBS} ${CMAKE_SOURCE_DIR}/3rdparty/vte-0.52.1/src/.libs/libvte-2.91.a)
+	add_dependencies(${target} Vte-0.52)
+else()
+	target_link_libraries(${target} ${LIBS})
+endif()
 
 FILE(GLOB children LIST_DIRECTORIES true po/*)
 SET(dirlist "")
@@ -165,7 +224,11 @@ FOREACH(lang ${dirlist})
 ENDFOREACH(lang)
 
 INSTALL (TARGETS ${target} DESTINATION bin)
-INSTALL (PROGRAMS ssh_login.sh DESTINATION lib/${target})
+if (USE_VENDOR_LIB)
+	INSTALL (PROGRAMS ssh_login.sh ${CMAKE_SOURCE_DIR}/3rdparty/zssh-1.5c/zssh DESTINATION lib/${target})
+else()
+	INSTALL (PROGRAMS ssh_login.sh DESTINATION lib/${target})
+endif()
 INSTALL (FILES hicolor/32x32/${target}.png DESTINATION share/icons/hicolor/32x32/apps)
 INSTALL (FILES hicolor/48x48/${target}.png DESTINATION share/icons/hicolor/48x48/apps)
 INSTALL (FILES hicolor/96x96/${target}.png DESTINATION share/icons/hicolor/96x96/apps)

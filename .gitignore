@@ -2,7 +2,10 @@ main
 *.h.gch
 *.swp
 build/
-3rdparty/
+*.o
+*.log
+*.user
+# 3rdparty/
 project_path.c
 lib/constant.vala
 .vscode/

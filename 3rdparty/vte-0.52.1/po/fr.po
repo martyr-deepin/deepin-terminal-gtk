@@ -1,0 +1,49 @@
+# French translation of vte.
+# Copyright (C) 2002-2016 Free Software Foundation, Inc.
+# This file is under the same license as the vte package.
+#
+# Laurent Richard <kouran@iespana.es>, 2002.
+# Christophe Merlet <redfox@redfoxcenter.org>, 2002-2006.
+# Jonathan Ernst <jonathan@ernstfamily.ch>, 2007.
+# Stéphane Raimbault <stephane.raimbault@gmail.com>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: vte 0.14.1\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=vte&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2016-08-15 12:39+0000\n"
+"PO-Revision-Date: 2016-08-30 08:55+0200\n"
+"Last-Translator: Claude Paroz <claude@2xlibre.net>\n"
+"Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../src/iso2022.cc:73 ../src/iso2022.cc:81 ../src/iso2022.cc:111
+#: ../src/vtegtk.cc:3069
+#, c-format
+msgid "Unable to convert characters from %s to %s."
+msgstr "Impossible de convertir les caractères %s en %s."
+
+#. Translators: %s is replaced with error message returned by strerror().
+#: ../src/vte.cc:4003
+#, c-format
+msgid "Error reading from child: %s."
+msgstr "Erreur lors de la lecture du fils : « %s »."
+
+#: ../src/vte.cc:4142
+#, c-format
+msgid "Error (%s) converting data for child, dropping."
+msgstr "Erreur (%s) lors de la conversion de données pour le fils, abandon."
+
+#: ../src/vte.cc:7911
+msgid "WARNING"
+msgstr "AVERTISSEMENT"
+
+#: ../src/vte.cc:7912
+msgid "GNUTLS not enabled; data will be written to disk unencrypted!"
+msgstr ""
+"GNUTLS n'est pas activé ; les données seront écrites sur le disque sans "
+"être chiffrées !"

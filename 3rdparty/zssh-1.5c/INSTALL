@@ -1,0 +1,76 @@
+
+Dependencies :
+
+libreadline, libtermcap and their headers must be properly installed
+
+(if you're using rpm, make sure the packages 
+   readline, readline-devel, libtermcap, libtermcap-devel
+ are installed)
+
+****************************************************************************
+
+Just follow the usual steps :
+     > ./configure
+     (edit Makefile)
+     > make
+     > su
+     # make install
+
+****************************************************************************
+
+Testing tools:
+
+the test/ directory has a few tools to trace tty problems.
+
+****************************************************************************
+
+NetBSD
+------
+
+you may have to tell configure where to find libreadline,
+which is usually in /usr/pkg/lib :
+
+CFLAGS=-I/usr/pkg/include  LIBS=-L/usr/pkg/lib  ./configure
+
+****************************************************************************
+
+If compilation fails, edit the Makefile produced by the configure script
+to ensure it is correct for your system.
+
+
+If you want to install the rz/sz commands from the lrzsz package
+(probably because you don't have them, or they don't work), you'll
+also have to :
+     > make lrzsz
+     > su
+     # make lrzsz_install
+     # make lrzsz_links		(make symlinks : sz -> lsz, rz -> lrz ...)
+
+** Also, make _sure_ the new programs are run and not the old ones
+** -> Check your path / (re)move the old ones / do as you wish
+** `whereis sz' should answer /usr/local/bin/sz (or where-ever you put it)
+
+Also remember that sz and rz need to be installed on the remote host and
+(preferably) be somewhat compatible with your local versions for the magic
+to work. Hopefully, rz and sz will already be there and working =)
+
+
+arch: tested on
+	- linux
+	- NetBSD
+	- OpenBSD
+	- FreeBSD
+
+      you're on your own anywhere else ... (though POSIX should be ok)
+
+other make rules :
+      clean : cleans temporary and binary files
+
+      distclean : even removes autoconf files
+		  config.h, Makefile
+
+      uninstall : remove installed files
+
+
+
+
