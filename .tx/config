@@ -8,3 +8,9 @@ file_filter = po/<lang>/LC_MESSAGES/deepin-terminal.po
 source_file = i18n/deepin-terminal.pot
 source_lang = en
 type = PO
+
+[deepin-terminal.deepin-terminal-desktop]
+file_filter = i18n/translations/deepin-terminal-desktop/desktop_<lang>.ts
+source_file = i18n/translations/deepin-terminal-desktop/desktop.ts
+source_lang = en
+type = QT

@@ -1,13 +1,15 @@
 [Desktop Entry]
-Categories=GNOME;GTK;Utility;System;TerminalEmulator;
+Categories=GNOME;GTK;DDE;Utility;System;TerminalEmulator;
 Comment=Use the command line
 Exec=deepin-terminal
 Icon=deepin-terminal
 Keywords=shell;prompt;command;commandline;
 Name=Deepin Terminal
+GenericName=Terminal
 StartupNotify=true
 TryExec=deepin-terminal
 Type=Application
+X-Deepin-Vendor=deepin
 
 # Translations
 Name[am]=ተርሚናል
@@ -66,7 +68,7 @@ Name[pt_BR]=Deepin Terminal
 Comment[pt_BR]=Usar a linha de comando
 Name[ro]=Terminalul Deepin
 Comment[ro]=Utilizare linia de comandă
-Name[ru]=Терминал Deepin 
+Name[ru]=Терминал Deepin
 Comment[ru]=Использовать командную строку
 Name[nl_NL]=Deepin Terminal
 Comment[nl_NL]=De commandoregel gebruiken
@@ -112,7 +114,7 @@ Name[et]=Uus aken
 Name[fa]=پنجره جدید
 Name[fi]=Uusi ikkuna
 Name[fil]=New Window
-Name[fr]=Nouvelle fenêtre 
+Name[fr]=Nouvelle fenêtre
 Name[gu]=નવી વિંડો
 Name[hi]=नई विंडो
 Name[hr]=Novi prozor
