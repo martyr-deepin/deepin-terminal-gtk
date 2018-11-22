@@ -1,3 +1,9 @@
+<a name="3.0.11"></a>
+## 3.0.11 (2018-11-22)
+
+*   backport support for debian stretch ([d3ec0a0](https://github.com/linuxdeepin/deepin-terminal/commit/d3ec0a077cb621cddd7945c647d655422dcdad03))
+
+
 <a name="3.0.10.2"></a>
 ## 3.0.10.2 (2018-11-13)
 
