@@ -1,3 +1,13 @@
+<a name="3.0.11.1"></a>
+## 3.0.11.1 (2018-11-26)
+
+
+#### Bug Fixes
+
+*   Update ts file and deepin vendor support ([30b80b66](https://github.com/linuxdeepin/deepin-terminal/commit/30b80b66c71e64a6178b41bbcc59388b4b55de13))
+
+
+
 <a name="3.0.11"></a>
 ## 3.0.11 (2018-11-22)
 
