@@ -1892,7 +1892,7 @@ EOF
 
   echo "$ac_t""getpseudotty" 1>&6
 else
-if test -c /dev/ptmx && test -c /dev/pts/0
+if test -c /dev/ptmx
 then
   cat >> confdefs.h <<\EOF
 #define HAVE_DEV_PTMX 1

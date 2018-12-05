@@ -225,7 +225,7 @@ ENDFOREACH(lang)
 
 INSTALL (TARGETS ${target} DESTINATION bin)
 if (USE_VENDOR_LIB)
-	INSTALL (PROGRAMS ssh_login.sh ${CMAKE_SOURCE_DIR}/3rdparty/zssh-1.5c/zssh DESTINATION lib/${target})
+	INSTALL (PROGRAMS ${CMAKE_SOURCE_DIR}/3rdparty/ssh_login.sh ${CMAKE_SOURCE_DIR}/3rdparty/zssh-1.5c/zssh DESTINATION lib/${target})
 else()
 	INSTALL (PROGRAMS ssh_login.sh DESTINATION lib/${target})
 endif()

@@ -28,7 +28,7 @@ new : clean all
 
 
 clean :
-	-rm *.o *~ *.a \#*\# core $(NAME) typescript nohup.out 
+	-rm -f *.o *~ *.a \#*\# core $(NAME) typescript nohup.out 
 
 distclean : clean
 

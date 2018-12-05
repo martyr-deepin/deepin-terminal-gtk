@@ -53,7 +53,7 @@ void	initialize_readline()
     so that if zssh_completion() fails nothing is completed */
    rl_completion_entry_function = fake_generator;
    /* Tell the completer that we want a crack first. */
-   rl_attempted_completion_function = (CPPFunction *) zssh_completion;
+   rl_attempted_completion_function = (rl_completion_func_t *) zssh_completion;
    
 }
 

@@ -74,10 +74,10 @@ ztelnet : $(NAME)
 	ln $(NAME) $@
 
 install :
-	strip $(NAME)
-	$(INSTALL) -m 0711 zssh @bindir@
-	ln -f @bindir@/zssh  @bindir@/ztelnet
-	$(INSTALL) -m 0644 $(MANS) @mandir@/man1
+	#strip $(NAME)
+	$(INSTALL) -m 0711 zssh $(DESTDIR)/@bindir@
+	#ln -f $(DESTDIR)/@bindir@/zssh  $(DESTDIR)/@bindir@/ztelnet
+	$(INSTALL) -m 0644 $(MANS) $(DESTDIR)/@mandir@/man1
 
 uninstall :
 	-cd @bindir@      && rm $(PRGS)
@@ -85,21 +85,6 @@ uninstall :
 
 fake_readline : force
 	-cd fake_readline && $(MAKE)
-
-lrzsz :
-	cd lrzsz-0.12.20 && ./configure --prefix=@prefix@
-	cd lrzsz-0.12.20 && $(MAKE)
-
-lrzsz_links :
-	ln -s @bindir@/lrz @bindir@/rz
-	ln -s @bindir@/lsz @bindir@/sz
-	ln -s @bindir@/lrb @bindir@/rb
-	ln -s @bindir@/lsb @bindir@/sb
-	ln -s @bindir@/lrx @bindir@/rx
-	ln -s @bindir@/lsx @bindir@/sx
-
-lrzsz_install :
-	cd lrzsz-0.12.20 && $(MAKE) install
 
 # create source archive in ~/backup
 tgz $(TGZ) : distclean force
@@ -125,7 +110,7 @@ $(RPMSPEC) : $(RPMSPEC:.spec=.spec.tpl)
 
 
 version.h : force
-	echo '#define ZSSH_VERSION "' `cat VERSION` ', built' `date` '"' > version.h
+	echo '#define ZSSH_VERSION "' `cat VERSION` '"' > version.h
 
 fun.h : $(SRC)
 	protos -o fun.h $(SRC)
@@ -136,11 +121,10 @@ TAGS :
 new : clean all
 
 clean :
-	-rm *.o *~ *.a \#*\# core $(PRGS) typescript nohup.out $(RPMSPEC) $(BACKLINK)
+	-rm -f *.o *~ *.a \#*\# core $(PRGS) typescript nohup.out $(RPMSPEC) $(BACKLINK)
 
 distclean : clean
-	-rm Makefile config.cache config.status config.log config.scan config.h TAGS
-	-(cd lrzsz-0.12.20 && $(MAKE) distclean)
+	-rm -f Makefile config.cache config.status config.log config.scan config.h TAGS
 	-(cd fake_readline && $(MAKE) distclean)
 	-(cd test && $(MAKE) distclean)
 
