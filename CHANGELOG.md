@@ -1,3 +1,13 @@
+<a name="3.0.12"></a>
+## 3.0.12 (2018-12-06)
+
+
+#### Bug Fixes
+
+*   zssh "out of pty's" issue on debian stretch w/ vendor lib ([e2efb5dc](https://github.com/linuxdeepin/deepin-terminal/commit/e2efb5dc3e0e148ebb2639d352df34df53a89f22))
+
+
+
 <a name="3.0.11.1"></a>
 ## 3.0.11.1 (2018-11-26)
 
