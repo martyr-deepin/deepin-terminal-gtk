@@ -3877,7 +3877,7 @@ next_match:
 				bbox_bottomright.y - bbox_topleft.y);
 	}
 
-        // FIXMEchpe: also need to take into account if the number of columns the cursor 
+        // FIXMEchpe: also need to take into account if the number of columns the cursor
         // occupies has changed due to the cell it's on being changed...
         if ((saved_cursor.col != m_screen->cursor.col) ||
             (saved_cursor.row != m_screen->cursor.row)) {
@@ -7204,7 +7204,12 @@ VteTerminalPrivate::widget_button_press(GdkEventButton *event)
                                                       rowcol.row())) {
 					extend_selecting = TRUE;
 				} else {
-					start_selecting = TRUE;
+					auto cursor_in_selection = m_has_selection \
+								   && m_selection_start.col <= rowcol.column() \
+								   && m_selection_start.row <= rowcol.row() \
+								   && rowcol.column() <= m_selection_end.col \
+								   && rowcol.row() <= m_selection_end.row;
+					start_selecting = !cursor_in_selection;
 				}
 			}
 			if (start_selecting) {
