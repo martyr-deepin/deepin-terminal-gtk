@@ -371,8 +371,8 @@ namespace Widgets {
             cursor_style_label.get_style_context().add_class("preference_title");
 
             var cursor_blink_box = create_follow_check_row(cursor_blink_checkbutton, _("Cursor blink"), cursor_style_label, cursor_grid, "advanced", "cursor_blink_mode");
-            var create_follow_box = create_follow_check_row(cursor_auto_hide_checkbutton, _("Cursor autohide"), cursor_blink_box, cursor_grid, "advanced", "cursor_auto_hide");
-            create_follow_check_row(copy_on_select_checkbutton, _("Copy on select"), create_follow_box, cursor_grid, "advanced", "copy_on_select");
+            var cursor_auto_hide_box = create_follow_check_row(cursor_auto_hide_checkbutton, _("Cursor autohide"), cursor_blink_box, cursor_grid, "advanced", "cursor_auto_hide");
+            create_follow_check_row(copy_on_select_checkbutton, _("Copy on select"), cursor_auto_hide_box, cursor_grid, "advanced", "copy_on_select");
 
             var scroll_segment = get_second_segment(_("Scroll"));
             content_box.pack_start(scroll_segment, false, false, 0);
