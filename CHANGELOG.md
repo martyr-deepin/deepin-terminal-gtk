@@ -1,3 +1,13 @@
+<a name="3.1"></a>
+## 3.1 (2018-12-24)
+
+
+#### Bug Fixes
+
+*   touch on selection causing deselection ([0a96f03a](https://github.com/linuxdeepin/deepin-terminal/commit/0a96f03a00f16b5c89f1df80257140ecd1c7e26f))
+
+
+
 <a name="3.0.12"></a>
 ## 3.0.12 (2018-12-06)
 
