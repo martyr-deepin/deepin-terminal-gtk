@@ -70,10 +70,10 @@ namespace Config {
             }
 
             var file = File.new_for_path(config_file_path);
-            if (!file.query_exists()) {
-                init_config();
-            } else {
+            if (file.query_exists()) {
                 load_config();
+            } else {
+                init_config();
             }
         }
 
@@ -108,7 +108,7 @@ namespace Config {
                 config_file.set_string("shortcut", "close_window", "Ctrl + Alt + q");
                 config_file.set_string("shortcut", "close_other_windows", "Ctrl + Shift + q");
 
-                config_file.set_string("shortcut", "rename_title", "F2");
+                config_file.set_string("shortcut", "rename_title", "Alt + t");
                 config_file.set_string("shortcut", "switch_fullscreen", "F11");
                 config_file.set_string("shortcut", "display_shortcuts", "Ctrl + Shift + ?");
                 config_file.set_string("shortcut", "custom_commands", "Ctrl + [");

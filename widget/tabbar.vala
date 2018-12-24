@@ -290,7 +290,7 @@ namespace Widgets {
         public bool on_button_release(Gtk.Widget widget, Gdk.EventButton event) {
             is_button_press = false;
 
-            if (is_left_button(event)) {
+            if (is_action_mouse_button(event)) {
                 int button_release_x, button_release_y;
                 event.device.get_position(null, out button_release_x, out button_release_y);
 
@@ -309,10 +309,17 @@ namespace Widgets {
 
                         if (release_x > draw_x && release_x < draw_x + tab_width) {
                             if (release_x > draw_x && release_x < draw_x + tab_width - get_tab_close_button_padding()) {
-                                select_nth_tab(counter);
+                                if(is_left_button(event)) {
+                                    select_nth_tab(counter);
+    
+                                    press_tab(counter, tab_id);
+                                    return false;
+                                }
 
-                                press_tab(counter, tab_id);
-                                return false;
+                                if(is_mouse_wheel(event)) {
+                                    close_nth_tab(counter);
+                                    return false;
+                                }                                
                             } else if (release_x > draw_x + tab_width - get_tab_close_button_padding()) {
                                 close_nth_tab(counter);
                                 return false;
