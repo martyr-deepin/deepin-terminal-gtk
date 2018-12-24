@@ -95,6 +95,7 @@ namespace Widgets {
         public ShortcutEntry zoom_out_key_entry;
         public ShortcutEntry zoom_reset_key_entry;
         public Widgets.CheckButton cursor_auto_hide_checkbutton;
+        public Widgets.CheckButton copy_on_select_checkbutton;
         public Widgets.CheckButton cursor_blink_checkbutton;
         public Widgets.CheckButton hide_quakewindow_after_lost_focus_checkbutton;
         public Widgets.CheckButton scroll_on_key_checkbutton;
@@ -200,6 +201,7 @@ namespace Widgets {
             cursor_style_button = new Widgets.CursorToggleButton();
             cursor_blink_checkbutton = new Widgets.CheckButton();
             cursor_auto_hide_checkbutton = new Widgets.CheckButton();
+            copy_on_select_checkbutton = new Widgets.CheckButton();
             scroll_on_key_checkbutton = new Widgets.CheckButton();
             scroll_on_out_checkbutton = new Widgets.CheckButton();
             blur_background_checkbutton = new Widgets.CheckButton();
@@ -369,7 +371,8 @@ namespace Widgets {
             cursor_style_label.get_style_context().add_class("preference_title");
 
             var cursor_blink_box = create_follow_check_row(cursor_blink_checkbutton, _("Cursor blink"), cursor_style_label, cursor_grid, "advanced", "cursor_blink_mode");
-            create_follow_check_row(cursor_auto_hide_checkbutton, _("Cursor autohide"), cursor_blink_box, cursor_grid, "advanced", "cursor_auto_hide");
+            var create_follow_box = create_follow_check_row(cursor_auto_hide_checkbutton, _("Cursor autohide"), cursor_blink_box, cursor_grid, "advanced", "cursor_auto_hide");
+            create_follow_check_row(copy_on_select_checkbutton, _("Copy on select"), create_follow_box, cursor_grid, "advanced", "copy_on_select");
 
             var scroll_segment = get_second_segment(_("Scroll"));
             content_box.pack_start(scroll_segment, false, false, 0);
@@ -513,6 +516,7 @@ namespace Widgets {
 
                 cursor_blink_checkbutton.set_active(parent_window.config.config_file.get_boolean("advanced", "cursor_blink_mode"));
                 cursor_auto_hide_checkbutton.set_active(parent_window.config.config_file.get_boolean("advanced", "cursor_auto_hide"));
+                copy_on_select_checkbutton.set_active(parent_window.config.config_file.get_boolean("advanced", "copy_on_select"));
                 scroll_on_key_checkbutton.set_active(parent_window.config.config_file.get_boolean("advanced", "scroll_on_key"));
                 scroll_on_out_checkbutton.set_active(parent_window.config.config_file.get_boolean("advanced", "scroll_on_output"));
                 blur_background_checkbutton.set_active(parent_window.config.config_file.get_boolean("advanced", "blur_background"));
