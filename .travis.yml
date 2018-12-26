@@ -1,0 +1,13 @@
+dist: xenial
+
+language: minimal
+
+before_install:
+  - docker pull hualet/deepin:stable-unclean
+
+script:
+  - ls -al
+  - docker run --rm -w /source -v `pwd`:/source --add-host=packages.deepin.com:202.141.160.114 hualet/deepin:stable-unclean /bin/bash -c "apt build-dep deepin-terminal -y && dpkg-buildpackage -us -uc -nc -j`nproc`"
+
+services:
+  - docker
