@@ -194,8 +194,16 @@ namespace Utils {
         return event.button == 1;
     }
 
+    public bool is_mouse_wheel(Gdk.EventButton event) {
+        return event.button == 2;
+    }
+
     public bool is_right_button(Gdk.EventButton event) {
         return event.button == 3;
+    }
+
+    public bool is_action_mouse_button(Gdk.EventButton event) {
+        return is_left_button(event) || is_mouse_wheel(event);
     }
 
     public bool is_double_click(Gdk.EventButton event) {
