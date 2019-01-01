@@ -164,7 +164,8 @@ namespace Widgets {
                         // Grab focus terminal first.
                         focus_term();
 
-                        if (event.state == Gdk.ModifierType.CONTROL_MASK && uri != null) {
+                        int modifiers = Gtk.accelerator_get_default_mod_mask();
+                        if ((event.state & modifiers) == Gdk.ModifierType.CONTROL_MASK && uri != null) {
                             try {
                                 Gtk.show_uri(null, (!) uri, Gtk.get_current_event_time());
 
