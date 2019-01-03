@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-08 12:45+0800\n"
+"POT-Creation-Date: 2019-01-03 10:53+0800\n"
 "PO-Revision-Date: 2017-02-04 05:38+0000\n"
 "Last-Translator: fri, 2018\n"
 "Language-Team: Czech (https://www.transifex.com/linuxdeepin/teams/3976/cs/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: ../widget/terminal.vala:1241
+#: ../widget/terminal.vala:1204
 msgid ""
 "\n"
 "Command has been completed, press ENTER to exit the terminal."
@@ -68,7 +68,7 @@ msgid "Address:"
 msgstr "Adresa:"
 
 #: ../widget/preference_slidebar.vala:74 ../widget/preference_slidebar.vala:81
-#: ../widget/preference.vala:332 ../widget/preference.vala:344
+#: ../widget/preference.vala:334 ../widget/preference.vala:346
 #: ../widget/config_window.vala:366
 msgid "Advanced"
 msgstr "Pokročilé"
@@ -81,7 +81,7 @@ msgstr "Pokročilé volby"
 msgid "Are you sure to delete"
 msgstr "Opravdu chcete smazat"
 
-#: ../widget/confirm_dialog.vala:131
+#: ../widget/confirm_dialog.vala:130
 msgid "Are you sure to exit?"
 msgstr "Opravdu chcete skončit?"
 
@@ -93,18 +93,18 @@ msgstr "Klávesa Backspace"
 msgid "Backspace key:"
 msgstr "Klávesa Backspace:"
 
-#: ../widget/preference_slidebar.vala:55 ../widget/preference.vala:247
+#: ../widget/preference_slidebar.vala:55 ../widget/preference.vala:249
 msgid "Basic"
 msgstr "Základní"
 
-#: ../widget/preference.vala:407
+#: ../widget/preference.vala:410
 msgid "Blur background"
 msgstr "Rozmazat pozadí"
 
 #: ../widget/remote_server_dialog.vala:347
-#: ../widget/remote_server_dialog.vala:427 ../widget/confirm_dialog.vala:131
-#: ../widget/terminal.vala:576 ../widget/terminal.vala:604
-#: ../widget/terminal.vala:638 ../widget/file_button.vala:69
+#: ../widget/remote_server_dialog.vala:427 ../widget/confirm_dialog.vala:130
+#: ../widget/terminal.vala:580 ../widget/terminal.vala:608
+#: ../widget/terminal.vala:642 ../widget/file_button.vala:69
 #: ../widget/command_dialog.vala:192 ../widget/command_dialog.vala:250
 msgid "Cancel"
 msgstr "Zrušit"
@@ -117,19 +117,19 @@ msgstr "Certifikát"
 msgid "Certificate:"
 msgstr "Certifikát:"
 
-#: ../widget/terminal.vala:382 ../widget/config_window.vala:343
+#: ../widget/terminal.vala:386 ../widget/config_window.vala:343
 msgid "Close other windows"
 msgstr "Zavřít další okna"
 
-#: ../widget/preference.vala:330
+#: ../widget/preference.vala:332
 msgid "Close other windows:"
 msgstr "Zavřít další okna:"
 
-#: ../widget/terminal.vala:380 ../widget/config_window.vala:342
+#: ../widget/terminal.vala:384 ../widget/config_window.vala:342
 msgid "Close window"
 msgstr "Zavřít okno"
 
-#: ../widget/preference.vala:329
+#: ../widget/preference.vala:331
 msgid "Close window:"
 msgstr "Zavřít okno:"
 
@@ -137,7 +137,7 @@ msgstr "Zavřít okno:"
 msgid "Close workspace"
 msgstr "Zavřít pracovní prostor"
 
-#: ../widget/preference.vala:320
+#: ../widget/preference.vala:322
 msgid "Close workspace:"
 msgstr "Zavřít pracovní prostor:"
 
@@ -153,41 +153,45 @@ msgstr "Příkaz:"
 msgid "Content"
 msgstr "Obsah"
 
-#: ../widget/terminal.vala:343 ../widget/config_window.vala:304
+#: ../widget/terminal.vala:347 ../widget/config_window.vala:304
 #: ../widget/entry_menu.vala:39
 msgid "Copy"
 msgstr "Kopírovat"
 
-#: ../widget/terminal.vala:347
+#: ../widget/terminal.vala:351
 msgid "Copy link"
 msgstr "Kopírovat odkaz"
 
-#: ../widget/preference.vala:302
+#: ../widget/preference.vala:375
+msgid "Copy on select"
+msgstr ""
+
+#: ../widget/preference.vala:304
 msgid "Copy:"
 msgstr "Kopírovat:"
 
-#: ../widget/preference_slidebar.vala:84 ../widget/preference.vala:347
+#: ../widget/preference_slidebar.vala:84 ../widget/preference.vala:349
 msgid "Cursor"
 msgstr "Ukazatel"
 
-#: ../widget/preference.vala:372
+#: ../widget/preference.vala:374
 msgid "Cursor autohide"
 msgstr "Automatické skrytí ukazatele"
 
-#: ../widget/preference.vala:371
+#: ../widget/preference.vala:373
 msgid "Cursor blink"
 msgstr "Blikání ukazatele"
 
-#: ../widget/preference.vala:199
+#: ../widget/preference.vala:200
 msgid "Cursor style:"
 msgstr "Styl ukazatele: "
 
-#: ../widget/terminal.vala:443 ../widget/config_window.vala:360
+#: ../widget/terminal.vala:447 ../widget/config_window.vala:360
 #: ../widget/appbar.vala:122
 msgid "Custom commands"
 msgstr "Vlastní příkazy"
 
-#: ../widget/preference.vala:341
+#: ../widget/preference.vala:343
 msgid "Custom commands:"
 msgstr "Vlastní příkazy:"
 
@@ -195,7 +199,7 @@ msgstr "Vlastní příkazy:"
 msgid "Cut"
 msgstr "Vyjmout"
 
-#: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:603
+#: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:610
 msgid "Deepin Terminal"
 msgstr "Terminál"
 
@@ -213,7 +217,7 @@ msgstr ""
 msgid "Default size"
 msgstr "Výchozí velikost"
 
-#: ../widget/preference.vala:308
+#: ../widget/preference.vala:310
 msgid "Default size:"
 msgstr "Výchozí velikost:"
 
@@ -243,7 +247,7 @@ msgstr "Smazat server"
 msgid "Display shortcuts"
 msgstr "Zobrazit klávesové zkratky"
 
-#: ../widget/preference.vala:340
+#: ../widget/preference.vala:342
 msgid "Display shortcuts:"
 msgstr "Zobrazit klávesové zkratky:"
 
@@ -251,7 +255,7 @@ msgstr "Zobrazit klávesové zkratky:"
 msgid "Display version"
 msgstr "Zobrazit verzi"
 
-#: ../widget/terminal.vala:448
+#: ../widget/terminal.vala:452
 msgid "Download file"
 msgstr "Stáhnout soubor"
 
@@ -263,7 +267,7 @@ msgstr "Upravit příkaz"
 msgid "Edit Server"
 msgstr "Upravit server"
 
-#: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:442
+#: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:446
 msgid "Encoding"
 msgstr "Kódování"
 
@@ -271,31 +275,31 @@ msgstr "Kódování"
 msgid "Encoding:"
 msgstr "Kódování:"
 
-#: ../widget/confirm_dialog.vala:131 ../widget/appbar.vala:130
+#: ../widget/confirm_dialog.vala:130 ../widget/appbar.vala:130
 msgid "Exit"
 msgstr "Ukončit"
 
-#: ../widget/terminal.vala:392
+#: ../widget/terminal.vala:396
 msgid "Exit fullscreen"
 msgstr "Opustit celou obrazovku"
 
-#: ../widget/terminal.vala:398
+#: ../widget/terminal.vala:402
 msgid "Find"
 msgstr "Najít"
 
-#: ../widget/preference.vala:291
+#: ../widget/preference.vala:293
 msgid "Font size:"
 msgstr "Velikost písma: "
 
-#: ../widget/preference.vala:290
+#: ../widget/preference.vala:292
 msgid "Font:"
 msgstr "Písmo:"
 
-#: ../widget/preference.vala:396 ../widget/terminal.vala:394
+#: ../widget/preference.vala:399 ../widget/terminal.vala:398
 msgid "Fullscreen"
 msgstr "Celá obrazovka"
 
-#: ../widget/preference.vala:338
+#: ../widget/preference.vala:340
 msgid "Fullscreen:"
 msgstr "Celá obrazovka:"
 
@@ -311,19 +315,19 @@ msgstr "Skupina:"
 msgid "Help"
 msgstr "Nápověda"
 
-#: ../widget/preference.vala:400
+#: ../widget/preference.vala:403
 msgid "Hide quake window after lost focus"
 msgstr "Skrýt posuvné okno po ztrátě zaměření..."
 
-#: ../widget/terminal.vala:378 ../widget/config_window.vala:337
+#: ../widget/terminal.vala:382 ../widget/config_window.vala:337
 msgid "Horizontal split"
 msgstr "Vodorovné rozdělení"
 
-#: ../widget/preference.vala:324
+#: ../widget/preference.vala:326
 msgid "Horizontal split:"
 msgstr "Vodorovné rozdělení:"
 
-#: ../widget/preference_slidebar.vala:58 ../widget/preference.vala:250
+#: ../widget/preference_slidebar.vala:58 ../widget/preference.vala:252
 msgid "Interface"
 msgstr "Rozhraní"
 
@@ -331,7 +335,7 @@ msgstr "Rozhraní"
 msgid "Jump to next command"
 msgstr "Skočit na další příkaz"
 
-#: ../widget/preference.vala:309
+#: ../widget/preference.vala:311
 msgid "Jump to next command:"
 msgstr "Skočit na další příkaz:"
 
@@ -339,7 +343,7 @@ msgstr "Skočit na další příkaz:"
 msgid "Jump to previous command"
 msgstr "Skočit na předchozí příkaz"
 
-#: ../widget/preference.vala:310
+#: ../widget/preference.vala:312
 msgid "Jump to previous command:"
 msgstr "Skočit na předchozí příkaz:"
 
@@ -347,7 +351,7 @@ msgstr "Skočit na předchozí příkaz:"
 msgid "Load theme"
 msgstr "Nahrát vzhled"
 
-#: ../widget/preference.vala:395
+#: ../widget/preference.vala:398
 msgid "Maximize"
 msgstr "Zvětšit"
 
@@ -367,11 +371,11 @@ msgstr "Nový terminál se vzhledem"
 msgid "New window"
 msgstr "Nové okno"
 
-#: ../widget/terminal.vala:386 ../widget/config_window.vala:330
+#: ../widget/terminal.vala:390 ../widget/config_window.vala:330
 msgid "New workspace"
 msgstr "Nový pracovní prostor"
 
-#: ../widget/preference.vala:319
+#: ../widget/preference.vala:321
 msgid "New workspace:"
 msgstr "Nový pracovní prostor:"
 
@@ -379,27 +383,27 @@ msgstr "Nový pracovní prostor:"
 msgid "Next workspace"
 msgstr "Další pracovní prostor"
 
-#: ../widget/preference.vala:322
+#: ../widget/preference.vala:324
 msgid "Next workspace:"
 msgstr "Další pracovní prostor:"
 
-#: ../widget/preference.vala:394
+#: ../widget/preference.vala:397
 msgid "Normal window"
 msgstr "Obyčejné okno"
 
-#: ../widget/preference.vala:136
+#: ../widget/preference.vala:137
 msgid "Opacity:"
 msgstr "Neprůhlednost:"
 
-#: ../widget/terminal.vala:360 ../widget/config_window.vala:306
+#: ../widget/terminal.vala:364 ../widget/config_window.vala:306
 msgid "Open"
 msgstr "Otevřít"
 
-#: ../widget/terminal.vala:368
+#: ../widget/terminal.vala:372
 msgid "Open in file manager"
 msgstr "Otevřít ve správci souborů"
 
-#: ../widget/preference.vala:304
+#: ../widget/preference.vala:306
 msgid "Open:"
 msgstr "Otevřít:"
 
@@ -417,12 +421,12 @@ msgstr "Heslo"
 msgid "Password:"
 msgstr "Heslo:"
 
-#: ../widget/terminal.vala:353 ../widget/config_window.vala:305
+#: ../widget/terminal.vala:357 ../widget/config_window.vala:305
 #: ../widget/entry_menu.vala:41
 msgid "Paste"
 msgstr "Vložit"
 
-#: ../widget/preference.vala:303
+#: ../widget/preference.vala:305
 msgid "Paste:"
 msgstr "Vložit:"
 
@@ -446,11 +450,11 @@ msgstr "Přípojka (port): "
 msgid "Previous workspace"
 msgstr "Předchozí pracovní prostor"
 
-#: ../widget/preference.vala:321
+#: ../widget/preference.vala:323
 msgid "Previous workspace:"
 msgstr "Předchozí pracovní prostor:"
 
-#: ../widget/confirm_dialog.vala:131
+#: ../widget/confirm_dialog.vala:130
 msgid "Programs are still running in terminal"
 msgstr "V terminálu stále běží programy"
 
@@ -458,25 +462,25 @@ msgstr "V terminálu stále běží programy"
 msgid "Quake mode"
 msgstr "Režim Quake"
 
-#: ../widget/terminal.vala:444 ../widget/config_window.vala:361
+#: ../widget/terminal.vala:448 ../widget/config_window.vala:361
 #: ../widget/appbar.vala:123
 msgid "Remote management"
 msgstr "Vzdálená správa"
 
-#: ../widget/preference.vala:342
+#: ../widget/preference.vala:344
 msgid "Remote management:"
 msgstr "Vzdálená správa:"
 
-#: ../widget/terminal.vala:639
+#: ../widget/terminal.vala:643
 msgid "Rename"
 msgstr "Přejmenovat"
 
-#: ../widget/terminal.vala:441 ../widget/terminal.vala:636
+#: ../widget/terminal.vala:445 ../widget/terminal.vala:640
 #: ../widget/config_window.vala:357
 msgid "Rename title"
 msgstr "Přejmenovat název"
 
-#: ../widget/preference.vala:339
+#: ../widget/preference.vala:341
 msgid "Rename title:"
 msgstr "Přejmenovat název:"
 
@@ -487,7 +491,7 @@ msgstr "Přejmenovat název:"
 msgid "Required"
 msgstr "Požadováno"
 
-#: ../widget/preference.vala:413
+#: ../widget/preference.vala:416
 msgid "Restore Defaults"
 msgstr "Obnovit výchozí"
 
@@ -499,29 +503,29 @@ msgstr "Spustit program v terminálu"
 msgid "Save"
 msgstr "Uložit"
 
-#: ../widget/preference_slidebar.vala:87 ../widget/preference.vala:374
+#: ../widget/preference_slidebar.vala:87 ../widget/preference.vala:377
 msgid "Scroll"
 msgstr "Otáčet kolečkem myši"
 
-#: ../widget/preference.vala:380
+#: ../widget/preference.vala:383
 msgid "Scroll on keystroke"
 msgstr "Posunout při úhozu na klávesnici"
 
-#: ../widget/preference.vala:381
+#: ../widget/preference.vala:384
 msgid "Scroll on output"
 msgstr "Posunout při výstupu"
 
-#: ../widget/terminal.vala:401 ../widget/search_entry.vala:64
+#: ../widget/terminal.vala:405 ../widget/search_entry.vala:64
 #: ../widget/search_entry.vala:66 ../widget/config_window.vala:307
 msgid "Search"
 msgstr "Hledat"
 
-#: ../widget/preference.vala:305 ../widget/remote_panel.vala:357
+#: ../widget/preference.vala:307 ../widget/remote_panel.vala:357
 #: ../widget/command_panel.vala:201
 msgid "Search:"
 msgstr "Hledat:"
 
-#: ../widget/terminal.vala:605 ../widget/file_button.vala:71
+#: ../widget/terminal.vala:609 ../widget/file_button.vala:71
 msgid "Select"
 msgstr "Vybrat"
 
@@ -529,15 +533,15 @@ msgstr "Vybrat"
 msgid "Select all"
 msgstr "Vybrat vše"
 
-#: ../widget/preference.vala:311
+#: ../widget/preference.vala:313
 msgid "Select all:"
 msgstr "Vybrat vše:"
 
-#: ../widget/terminal.vala:603
+#: ../widget/terminal.vala:607
 msgid "Select directory to save download file"
 msgstr "Vybrat adresář pro uložení staženého souboru"
 
-#: ../widget/terminal.vala:574
+#: ../widget/terminal.vala:578
 msgid "Select file to upload"
 msgstr "Vybrat soubor k nahrání"
 
@@ -545,7 +549,7 @@ msgstr "Vybrat soubor k nahrání"
 msgid "Select left window"
 msgstr "Vybrat levé okno"
 
-#: ../widget/preference.vala:327
+#: ../widget/preference.vala:329
 msgid "Select left window:"
 msgstr "Vybrat levé okno:"
 
@@ -553,7 +557,7 @@ msgstr "Vybrat levé okno:"
 msgid "Select lower window"
 msgstr "Vybrat dolní okno"
 
-#: ../widget/preference.vala:326
+#: ../widget/preference.vala:328
 msgid "Select lower window:"
 msgstr "Vybrat dolní okno:"
 
@@ -561,7 +565,7 @@ msgstr "Vybrat dolní okno:"
 msgid "Select right window"
 msgstr "Vybrat pravé okno"
 
-#: ../widget/preference.vala:328
+#: ../widget/preference.vala:330
 msgid "Select right window:"
 msgstr "Vybrat pravé okno:"
 
@@ -573,7 +577,7 @@ msgstr "Vybrat soubor se soukromým klíčem"
 msgid "Select upper window"
 msgstr "Vybrat horní okno"
 
-#: ../widget/preference.vala:325
+#: ../widget/preference.vala:327
 msgid "Select upper window:"
 msgstr "Vybrat horní okno:"
 
@@ -597,11 +601,11 @@ msgstr "Nastavit spouštěcí adresář terminálu"
 msgid "Set the terminal window mode"
 msgstr "Nastavit okenní režim terminálu"
 
-#: ../widget/terminal.vala:452 ../widget/appbar.vala:125
+#: ../widget/terminal.vala:456 ../widget/appbar.vala:125
 msgid "Settings"
 msgstr "Nastavení"
 
-#: ../widget/preference_slidebar.vala:65 ../widget/preference.vala:293
+#: ../widget/preference_slidebar.vala:65 ../widget/preference.vala:295
 #: ../widget/command_dialog.vala:83
 msgid "Shortcuts"
 msgstr "Klávesové zkratky"
@@ -614,28 +618,28 @@ msgstr "Klávesové zkratky:"
 msgid "Switch fullscreen"
 msgstr "Přepnout na celou obrazovku"
 
-#: ../widget/terminal.vala:439 ../widget/appbar.vala:121
+#: ../widget/terminal.vala:443 ../widget/appbar.vala:121
 msgid "Switch theme"
 msgstr "Přepnout vzhled"
 
-#: ../widget/preference_slidebar.vala:68 ../widget/preference.vala:296
+#: ../widget/preference_slidebar.vala:68 ../widget/preference.vala:298
 #: ../widget/config_window.vala:318
 msgid "Terminal"
 msgstr "Terminál"
 
-#: ../widget/terminal.vala:617
+#: ../widget/terminal.vala:621
 msgid "Type path for download file"
 msgstr "Napsat cestu pro stažený soubor"
 
-#: ../widget/terminal.vala:578
+#: ../widget/terminal.vala:582
 msgid "Upload"
 msgstr "Nahrát"
 
-#: ../widget/terminal.vala:447
+#: ../widget/terminal.vala:451
 msgid "Upload file"
 msgstr "Nahrát soubor"
 
-#: ../widget/preference.vala:397
+#: ../widget/preference.vala:400
 msgid "Use on starting:"
 msgstr "Použít při spuštění:"
 
@@ -651,15 +655,15 @@ msgstr "Uživatelské jméno:"
 msgid "Version:"
 msgstr "Verze:"
 
-#: ../widget/terminal.vala:379 ../widget/config_window.vala:336
+#: ../widget/terminal.vala:383 ../widget/config_window.vala:336
 msgid "Vertical split"
 msgstr "Svislé rozdělení"
 
-#: ../widget/preference.vala:323
+#: ../widget/preference.vala:325
 msgid "Vertical split:"
 msgstr "Svislé rozdělení:"
 
-#: ../widget/terminal.vala:1544
+#: ../widget/terminal.vala:1507
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "
@@ -669,11 +673,11 @@ msgstr ""
 "příkazy rz a sz, předtím než klepnete pravým tlačítkem myši pro nahrání a "
 "stažení souborů."
 
-#: ../widget/preference_slidebar.vala:90 ../widget/preference.vala:383
+#: ../widget/preference_slidebar.vala:90 ../widget/preference.vala:386
 msgid "Window"
 msgstr "Okno"
 
-#: ../widget/preference_slidebar.vala:71 ../widget/preference.vala:313
+#: ../widget/preference_slidebar.vala:71 ../widget/preference.vala:315
 #: ../widget/config_window.vala:348
 msgid "Workspace"
 msgstr "Pracovní prostor"
@@ -682,7 +686,7 @@ msgstr "Pracovní prostor"
 msgid "Zoom in"
 msgstr "Přiblížit"
 
-#: ../widget/preference.vala:306
+#: ../widget/preference.vala:308
 msgid "Zoom in:"
 msgstr "Přiblížit:"
 
@@ -690,10 +694,10 @@ msgstr "Přiblížit:"
 msgid "Zoom out"
 msgstr "Oddálit"
 
-#: ../widget/preference.vala:307
+#: ../widget/preference.vala:309
 msgid "Zoom out:"
 msgstr "Oddálit:"
 
-#: ../widget/terminal.vala:787 ../widget/terminal.vala:1267
+#: ../widget/terminal.vala:782 ../widget/terminal.vala:1230
 msgid "deepin"
 msgstr "deepin"

@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-08 12:45+0800\n"
+"POT-Creation-Date: 2019-01-03 10:53+0800\n"
 "PO-Revision-Date: 2017-02-04 05:38+0000\n"
 "Last-Translator: Валерий Владимирович, 2018\n"
 "Language-Team: Russian (https://www.transifex.com/linuxdeepin/teams/3976/ru/)\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: ../widget/terminal.vala:1241
+#: ../widget/terminal.vala:1204
 msgid ""
 "\n"
 "Command has been completed, press ENTER to exit the terminal."
@@ -72,7 +72,7 @@ msgid "Address:"
 msgstr "Адрес:"
 
 #: ../widget/preference_slidebar.vala:74 ../widget/preference_slidebar.vala:81
-#: ../widget/preference.vala:332 ../widget/preference.vala:344
+#: ../widget/preference.vala:334 ../widget/preference.vala:346
 #: ../widget/config_window.vala:366
 msgid "Advanced"
 msgstr "Дополнительно"
@@ -85,7 +85,7 @@ msgstr "Дополнительные опции"
 msgid "Are you sure to delete"
 msgstr "Вы уверены, что хотите удалить"
 
-#: ../widget/confirm_dialog.vala:131
+#: ../widget/confirm_dialog.vala:130
 msgid "Are you sure to exit?"
 msgstr "Вы уверены, что хотите выйти?"
 
@@ -97,18 +97,18 @@ msgstr "Клавиша Backspace"
 msgid "Backspace key:"
 msgstr "Клавиша Backspace:"
 
-#: ../widget/preference_slidebar.vala:55 ../widget/preference.vala:247
+#: ../widget/preference_slidebar.vala:55 ../widget/preference.vala:249
 msgid "Basic"
 msgstr "Основная"
 
-#: ../widget/preference.vala:407
+#: ../widget/preference.vala:410
 msgid "Blur background"
 msgstr "Размытие фона"
 
 #: ../widget/remote_server_dialog.vala:347
-#: ../widget/remote_server_dialog.vala:427 ../widget/confirm_dialog.vala:131
-#: ../widget/terminal.vala:576 ../widget/terminal.vala:604
-#: ../widget/terminal.vala:638 ../widget/file_button.vala:69
+#: ../widget/remote_server_dialog.vala:427 ../widget/confirm_dialog.vala:130
+#: ../widget/terminal.vala:580 ../widget/terminal.vala:608
+#: ../widget/terminal.vala:642 ../widget/file_button.vala:69
 #: ../widget/command_dialog.vala:192 ../widget/command_dialog.vala:250
 msgid "Cancel"
 msgstr "Отмена"
@@ -121,19 +121,19 @@ msgstr "Сертификат"
 msgid "Certificate:"
 msgstr "Сертификат:"
 
-#: ../widget/terminal.vala:382 ../widget/config_window.vala:343
+#: ../widget/terminal.vala:386 ../widget/config_window.vala:343
 msgid "Close other windows"
 msgstr "Закрыть другие окна"
 
-#: ../widget/preference.vala:330
+#: ../widget/preference.vala:332
 msgid "Close other windows:"
 msgstr "Закрыть другие окна:"
 
-#: ../widget/terminal.vala:380 ../widget/config_window.vala:342
+#: ../widget/terminal.vala:384 ../widget/config_window.vala:342
 msgid "Close window"
 msgstr "Закрыть окно"
 
-#: ../widget/preference.vala:329
+#: ../widget/preference.vala:331
 msgid "Close window:"
 msgstr "Закрыть окно:"
 
@@ -141,7 +141,7 @@ msgstr "Закрыть окно:"
 msgid "Close workspace"
 msgstr "Закрыть рабочую область"
 
-#: ../widget/preference.vala:320
+#: ../widget/preference.vala:322
 msgid "Close workspace:"
 msgstr "Закрыть рабочую область:"
 
@@ -157,41 +157,45 @@ msgstr "Команда:"
 msgid "Content"
 msgstr "Содержание"
 
-#: ../widget/terminal.vala:343 ../widget/config_window.vala:304
+#: ../widget/terminal.vala:347 ../widget/config_window.vala:304
 #: ../widget/entry_menu.vala:39
 msgid "Copy"
 msgstr "Копировать"
 
-#: ../widget/terminal.vala:347
+#: ../widget/terminal.vala:351
 msgid "Copy link"
 msgstr "Копировать ссылку"
 
-#: ../widget/preference.vala:302
+#: ../widget/preference.vala:375
+msgid "Copy on select"
+msgstr ""
+
+#: ../widget/preference.vala:304
 msgid "Copy:"
 msgstr "Копировать:"
 
-#: ../widget/preference_slidebar.vala:84 ../widget/preference.vala:347
+#: ../widget/preference_slidebar.vala:84 ../widget/preference.vala:349
 msgid "Cursor"
 msgstr "Курсор"
 
-#: ../widget/preference.vala:372
+#: ../widget/preference.vala:374
 msgid "Cursor autohide"
 msgstr "Автоматическое скрытие курсора"
 
-#: ../widget/preference.vala:371
+#: ../widget/preference.vala:373
 msgid "Cursor blink"
 msgstr "Частота мигания курсора"
 
-#: ../widget/preference.vala:199
+#: ../widget/preference.vala:200
 msgid "Cursor style:"
 msgstr "Вид Курсора:"
 
-#: ../widget/terminal.vala:443 ../widget/config_window.vala:360
+#: ../widget/terminal.vala:447 ../widget/config_window.vala:360
 #: ../widget/appbar.vala:122
 msgid "Custom commands"
 msgstr "Пользовательские команды"
 
-#: ../widget/preference.vala:341
+#: ../widget/preference.vala:343
 msgid "Custom commands:"
 msgstr "Пользовательские команды:"
 
@@ -199,7 +203,7 @@ msgstr "Пользовательские команды:"
 msgid "Cut"
 msgstr "Вырезать"
 
-#: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:603
+#: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:610
 msgid "Deepin Terminal"
 msgstr " Терминал Deepin "
 
@@ -217,7 +221,7 @@ msgstr ""
 msgid "Default size"
 msgstr "Размер по умолчанию"
 
-#: ../widget/preference.vala:308
+#: ../widget/preference.vala:310
 msgid "Default size:"
 msgstr "Размер по умолчанию"
 
@@ -247,7 +251,7 @@ msgstr "Удалить сервер"
 msgid "Display shortcuts"
 msgstr "Горячие клавиши"
 
-#: ../widget/preference.vala:340
+#: ../widget/preference.vala:342
 msgid "Display shortcuts:"
 msgstr "Отобразить сочетания клавиш:"
 
@@ -255,7 +259,7 @@ msgstr "Отобразить сочетания клавиш:"
 msgid "Display version"
 msgstr "Отобразить версию"
 
-#: ../widget/terminal.vala:448
+#: ../widget/terminal.vala:452
 msgid "Download file"
 msgstr "Загрузить файл"
 
@@ -267,7 +271,7 @@ msgstr "Редактировать Команду"
 msgid "Edit Server"
 msgstr "Редактировать Сервер"
 
-#: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:442
+#: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:446
 msgid "Encoding"
 msgstr "Кодировка"
 
@@ -275,31 +279,31 @@ msgstr "Кодировка"
 msgid "Encoding:"
 msgstr "Кодировка:"
 
-#: ../widget/confirm_dialog.vala:131 ../widget/appbar.vala:130
+#: ../widget/confirm_dialog.vala:130 ../widget/appbar.vala:130
 msgid "Exit"
 msgstr "Выход"
 
-#: ../widget/terminal.vala:392
+#: ../widget/terminal.vala:396
 msgid "Exit fullscreen"
 msgstr "Выйти из полноэкранного режима"
 
-#: ../widget/terminal.vala:398
+#: ../widget/terminal.vala:402
 msgid "Find"
 msgstr "Найти"
 
-#: ../widget/preference.vala:291
+#: ../widget/preference.vala:293
 msgid "Font size:"
 msgstr "Размер шрифта:"
 
-#: ../widget/preference.vala:290
+#: ../widget/preference.vala:292
 msgid "Font:"
 msgstr "Шрифт:"
 
-#: ../widget/preference.vala:396 ../widget/terminal.vala:394
+#: ../widget/preference.vala:399 ../widget/terminal.vala:398
 msgid "Fullscreen"
 msgstr "Полноэкранный режим"
 
-#: ../widget/preference.vala:338
+#: ../widget/preference.vala:340
 msgid "Fullscreen:"
 msgstr "Полный экран:"
 
@@ -315,19 +319,19 @@ msgstr "Группа:"
 msgid "Help"
 msgstr "Помощь"
 
-#: ../widget/preference.vala:400
+#: ../widget/preference.vala:403
 msgid "Hide quake window after lost focus"
 msgstr "Скрыть окно выпадающего терминала после потери фокуса"
 
-#: ../widget/terminal.vala:378 ../widget/config_window.vala:337
+#: ../widget/terminal.vala:382 ../widget/config_window.vala:337
 msgid "Horizontal split"
 msgstr "Разделить по горизонтали"
 
-#: ../widget/preference.vala:324
+#: ../widget/preference.vala:326
 msgid "Horizontal split:"
 msgstr "Разделить по горизонтали:"
 
-#: ../widget/preference_slidebar.vala:58 ../widget/preference.vala:250
+#: ../widget/preference_slidebar.vala:58 ../widget/preference.vala:252
 msgid "Interface"
 msgstr "Интерфейс"
 
@@ -335,7 +339,7 @@ msgstr "Интерфейс"
 msgid "Jump to next command"
 msgstr "Перейти к следующий команде"
 
-#: ../widget/preference.vala:309
+#: ../widget/preference.vala:311
 msgid "Jump to next command:"
 msgstr "Перейти к следующий команде:"
 
@@ -343,7 +347,7 @@ msgstr "Перейти к следующий команде:"
 msgid "Jump to previous command"
 msgstr "Перейти к предыдущей команде"
 
-#: ../widget/preference.vala:310
+#: ../widget/preference.vala:312
 msgid "Jump to previous command:"
 msgstr "Перейти к предыдущей команде:"
 
@@ -351,7 +355,7 @@ msgstr "Перейти к предыдущей команде:"
 msgid "Load theme"
 msgstr "Загрузить тему"
 
-#: ../widget/preference.vala:395
+#: ../widget/preference.vala:398
 msgid "Maximize"
 msgstr "Развернуть"
 
@@ -371,11 +375,11 @@ msgstr "Новая тема для терминала"
 msgid "New window"
 msgstr "Новое окно"
 
-#: ../widget/terminal.vala:386 ../widget/config_window.vala:330
+#: ../widget/terminal.vala:390 ../widget/config_window.vala:330
 msgid "New workspace"
 msgstr "Новая рабочая область"
 
-#: ../widget/preference.vala:319
+#: ../widget/preference.vala:321
 msgid "New workspace:"
 msgstr "Новая вкладка:"
 
@@ -383,27 +387,27 @@ msgstr "Новая вкладка:"
 msgid "Next workspace"
 msgstr "Следующая рабочая область"
 
-#: ../widget/preference.vala:322
+#: ../widget/preference.vala:324
 msgid "Next workspace:"
 msgstr "Следующая вкладка:"
 
-#: ../widget/preference.vala:394
+#: ../widget/preference.vala:397
 msgid "Normal window"
 msgstr "Обычное окно"
 
-#: ../widget/preference.vala:136
+#: ../widget/preference.vala:137
 msgid "Opacity:"
 msgstr "Непрозрачность:"
 
-#: ../widget/terminal.vala:360 ../widget/config_window.vala:306
+#: ../widget/terminal.vala:364 ../widget/config_window.vala:306
 msgid "Open"
 msgstr "Открыть"
 
-#: ../widget/terminal.vala:368
+#: ../widget/terminal.vala:372
 msgid "Open in file manager"
 msgstr "Открыть в файловом менеджере"
 
-#: ../widget/preference.vala:304
+#: ../widget/preference.vala:306
 msgid "Open:"
 msgstr "Открыть:"
 
@@ -421,12 +425,12 @@ msgstr "Пароль"
 msgid "Password:"
 msgstr "Пароль:"
 
-#: ../widget/terminal.vala:353 ../widget/config_window.vala:305
+#: ../widget/terminal.vala:357 ../widget/config_window.vala:305
 #: ../widget/entry_menu.vala:41
 msgid "Paste"
 msgstr "Вставить"
 
-#: ../widget/preference.vala:303
+#: ../widget/preference.vala:305
 msgid "Paste:"
 msgstr "Вставить:"
 
@@ -450,11 +454,11 @@ msgstr "Порт:"
 msgid "Previous workspace"
 msgstr "Предыдущая вкладка"
 
-#: ../widget/preference.vala:321
+#: ../widget/preference.vala:323
 msgid "Previous workspace:"
 msgstr "Предыдущая вкладка:"
 
-#: ../widget/confirm_dialog.vala:131
+#: ../widget/confirm_dialog.vala:130
 msgid "Programs are still running in terminal"
 msgstr "Программы по-прежнему работают в терминале"
 
@@ -462,25 +466,25 @@ msgstr "Программы по-прежнему работают в терми�
 msgid "Quake mode"
 msgstr "Выпадающий режим"
 
-#: ../widget/terminal.vala:444 ../widget/config_window.vala:361
+#: ../widget/terminal.vala:448 ../widget/config_window.vala:361
 #: ../widget/appbar.vala:123
 msgid "Remote management"
 msgstr "Удаленное управление"
 
-#: ../widget/preference.vala:342
+#: ../widget/preference.vala:344
 msgid "Remote management:"
 msgstr "Удаленное управление:"
 
-#: ../widget/terminal.vala:639
+#: ../widget/terminal.vala:643
 msgid "Rename"
 msgstr "Переименовать"
 
-#: ../widget/terminal.vala:441 ../widget/terminal.vala:636
+#: ../widget/terminal.vala:445 ../widget/terminal.vala:640
 #: ../widget/config_window.vala:357
 msgid "Rename title"
 msgstr "Переименовать заголовок"
 
-#: ../widget/preference.vala:339
+#: ../widget/preference.vala:341
 msgid "Rename title:"
 msgstr "Переименовать заголовок:"
 
@@ -491,7 +495,7 @@ msgstr "Переименовать заголовок:"
 msgid "Required"
 msgstr "Требуется"
 
-#: ../widget/preference.vala:413
+#: ../widget/preference.vala:416
 msgid "Restore Defaults"
 msgstr "Восстановить Значения по умолчанию"
 
@@ -503,29 +507,29 @@ msgstr "Запустить в терминале"
 msgid "Save"
 msgstr "Сохранить"
 
-#: ../widget/preference_slidebar.vala:87 ../widget/preference.vala:374
+#: ../widget/preference_slidebar.vala:87 ../widget/preference.vala:377
 msgid "Scroll"
 msgstr "Прокрутка"
 
-#: ../widget/preference.vala:380
+#: ../widget/preference.vala:383
 msgid "Scroll on keystroke"
 msgstr "Прокрутка нажатием клавиши"
 
-#: ../widget/preference.vala:381
+#: ../widget/preference.vala:384
 msgid "Scroll on output"
 msgstr "Прокрутка при вводе"
 
-#: ../widget/terminal.vala:401 ../widget/search_entry.vala:64
+#: ../widget/terminal.vala:405 ../widget/search_entry.vala:64
 #: ../widget/search_entry.vala:66 ../widget/config_window.vala:307
 msgid "Search"
 msgstr "Поиск"
 
-#: ../widget/preference.vala:305 ../widget/remote_panel.vala:357
+#: ../widget/preference.vala:307 ../widget/remote_panel.vala:357
 #: ../widget/command_panel.vala:201
 msgid "Search:"
 msgstr "Поиск:"
 
-#: ../widget/terminal.vala:605 ../widget/file_button.vala:71
+#: ../widget/terminal.vala:609 ../widget/file_button.vala:71
 msgid "Select"
 msgstr "Выбрать"
 
@@ -533,15 +537,15 @@ msgstr "Выбрать"
 msgid "Select all"
 msgstr "Выбрать все"
 
-#: ../widget/preference.vala:311
+#: ../widget/preference.vala:313
 msgid "Select all:"
 msgstr "Выбрать все:"
 
-#: ../widget/terminal.vala:603
+#: ../widget/terminal.vala:607
 msgid "Select directory to save download file"
 msgstr "Выберите папку для сохранения файла"
 
-#: ../widget/terminal.vala:574
+#: ../widget/terminal.vala:578
 msgid "Select file to upload"
 msgstr "Выберите файл для загрузки"
 
@@ -549,7 +553,7 @@ msgstr "Выберите файл для загрузки"
 msgid "Select left window"
 msgstr "Выберите левое окно"
 
-#: ../widget/preference.vala:327
+#: ../widget/preference.vala:329
 msgid "Select left window:"
 msgstr "Выберите левое окно:"
 
@@ -557,7 +561,7 @@ msgstr "Выберите левое окно:"
 msgid "Select lower window"
 msgstr "Выберите нижнее окно"
 
-#: ../widget/preference.vala:326
+#: ../widget/preference.vala:328
 msgid "Select lower window:"
 msgstr "Выберите нижнее окно:"
 
@@ -565,7 +569,7 @@ msgstr "Выберите нижнее окно:"
 msgid "Select right window"
 msgstr "Выберите правое окно"
 
-#: ../widget/preference.vala:328
+#: ../widget/preference.vala:330
 msgid "Select right window:"
 msgstr "Выберите правое окно:"
 
@@ -577,7 +581,7 @@ msgstr "Выберите файл с закрытым ключом"
 msgid "Select upper window"
 msgstr "Выберите верхнее окно"
 
-#: ../widget/preference.vala:325
+#: ../widget/preference.vala:327
 msgid "Select upper window:"
 msgstr "Выберите верхнее окно:"
 
@@ -601,11 +605,11 @@ msgstr "Установить каталог запуска терминала"
 msgid "Set the terminal window mode"
 msgstr "Установить режим окна для терминала"
 
-#: ../widget/terminal.vala:452 ../widget/appbar.vala:125
+#: ../widget/terminal.vala:456 ../widget/appbar.vala:125
 msgid "Settings"
 msgstr "Настройки"
 
-#: ../widget/preference_slidebar.vala:65 ../widget/preference.vala:293
+#: ../widget/preference_slidebar.vala:65 ../widget/preference.vala:295
 #: ../widget/command_dialog.vala:83
 msgid "Shortcuts"
 msgstr "Горячие клавиши"
@@ -618,28 +622,28 @@ msgstr "Комбинации клавиш:"
 msgid "Switch fullscreen"
 msgstr "Переключиться в полноэкранный режим"
 
-#: ../widget/terminal.vala:439 ../widget/appbar.vala:121
+#: ../widget/terminal.vala:443 ../widget/appbar.vala:121
 msgid "Switch theme"
 msgstr "Переключить тему оформления"
 
-#: ../widget/preference_slidebar.vala:68 ../widget/preference.vala:296
+#: ../widget/preference_slidebar.vala:68 ../widget/preference.vala:298
 #: ../widget/config_window.vala:318
 msgid "Terminal"
 msgstr "Терминал"
 
-#: ../widget/terminal.vala:617
+#: ../widget/terminal.vala:621
 msgid "Type path for download file"
 msgstr "Введите путь для загрузки файла"
 
-#: ../widget/terminal.vala:578
+#: ../widget/terminal.vala:582
 msgid "Upload"
 msgstr "Загрузить"
 
-#: ../widget/terminal.vala:447
+#: ../widget/terminal.vala:451
 msgid "Upload file"
 msgstr "Загрузить файл"
 
-#: ../widget/preference.vala:397
+#: ../widget/preference.vala:400
 msgid "Use on starting:"
 msgstr "Запускать при старте:"
 
@@ -655,15 +659,15 @@ msgstr "Имя пользователя:"
 msgid "Version:"
 msgstr "Версия:"
 
-#: ../widget/terminal.vala:379 ../widget/config_window.vala:336
+#: ../widget/terminal.vala:383 ../widget/config_window.vala:336
 msgid "Vertical split"
 msgstr "Разделить по вертикали"
 
-#: ../widget/preference.vala:323
+#: ../widget/preference.vala:325
 msgid "Vertical split:"
 msgstr "Разделить по вертикали"
 
-#: ../widget/terminal.vala:1544
+#: ../widget/terminal.vala:1507
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "
@@ -673,11 +677,11 @@ msgstr ""
 "команды были установлены на сервере, для возможности использования правой "
 "кнопки мыши, при загрузке и скачивании файлов."
 
-#: ../widget/preference_slidebar.vala:90 ../widget/preference.vala:383
+#: ../widget/preference_slidebar.vala:90 ../widget/preference.vala:386
 msgid "Window"
 msgstr "Окно"
 
-#: ../widget/preference_slidebar.vala:71 ../widget/preference.vala:313
+#: ../widget/preference_slidebar.vala:71 ../widget/preference.vala:315
 #: ../widget/config_window.vala:348
 msgid "Workspace"
 msgstr "Рабочая область"
@@ -686,7 +690,7 @@ msgstr "Рабочая область"
 msgid "Zoom in"
 msgstr "Приблизить"
 
-#: ../widget/preference.vala:306
+#: ../widget/preference.vala:308
 msgid "Zoom in:"
 msgstr "Приблизить:"
 
@@ -694,10 +698,10 @@ msgstr "Приблизить:"
 msgid "Zoom out"
 msgstr "Отдалить"
 
-#: ../widget/preference.vala:307
+#: ../widget/preference.vala:309
 msgid "Zoom out:"
 msgstr "Отдалить:"
 
-#: ../widget/terminal.vala:787 ../widget/terminal.vala:1267
+#: ../widget/terminal.vala:782 ../widget/terminal.vala:1230
 msgid "deepin"
 msgstr "deepin"
