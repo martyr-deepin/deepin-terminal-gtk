@@ -1,3 +1,15 @@
+<a name="3.2"></a>
+## 3.2 (2019-01-03)
+
+
+#### Others
+
+*   merge po ([2706d53b](https://github.com/linuxdeepin/deepin-terminal/commit/2706d53b237f496b92d2aadb98dd38feafa41a5d))
+*   update pot ([42229a93](https://github.com/linuxdeepin/deepin-terminal/commit/42229a93b9f72013862e176b408ee05f9ee97fc0))
+*   add travis-ci build ([6a71d5a9](https://github.com/linuxdeepin/deepin-terminal/commit/6a71d5a9037802c22df37374e2e96d15d58baf75))
+
+
+
 <a name="3.1"></a>
 ## 3.1 (2018-12-24)
 
