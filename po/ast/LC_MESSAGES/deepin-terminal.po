@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-08 12:45+0800\n"
+"POT-Creation-Date: 2019-01-03 10:53+0800\n"
 "PO-Revision-Date: 2017-02-04 05:38+0000\n"
 "Last-Translator: enolp <enolp@softastur.org>, 2018\n"
 "Language-Team: Asturian (https://www.transifex.com/linuxdeepin/teams/3976/ast/)\n"
@@ -22,13 +22,13 @@ msgstr ""
 "Language: ast\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../widget/terminal.vala:1241
+#: ../widget/terminal.vala:1204
 msgid ""
 "\n"
 "Command has been completed, press ENTER to exit the terminal."
 msgstr ""
 "\n"
-"Completóse'l comandu, primi ENTER pa colar de la terminal."
+"Completóse'l comandu, primi INTRO pa colar de la terminal."
 
 #: ../widget/appbar.vala:129
 msgid "About"
@@ -44,19 +44,19 @@ msgstr "Amestar"
 
 #: ../widget/command_dialog.vala:126
 msgid "Add Command"
-msgstr "Amestar comandu"
+msgstr "Amiestu d'un comandu"
 
 #: ../widget/remote_server_dialog.vala:154
 msgid "Add Server"
-msgstr "Amestar sirvidor"
+msgstr "Amiestu d'un sirvidor"
 
 #: ../widget/command_panel.vala:311
 msgid "Add command"
-msgstr "Amestar comandu"
+msgstr "Amestar un comandu"
 
 #: ../widget/remote_panel.vala:468
 msgid "Add server"
-msgstr "Amestar sirvidor"
+msgstr "Amestar un sirvidor"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Address"
@@ -67,10 +67,10 @@ msgid "Address:"
 msgstr "Direición:"
 
 #: ../widget/preference_slidebar.vala:74 ../widget/preference_slidebar.vala:81
-#: ../widget/preference.vala:332 ../widget/preference.vala:344
+#: ../widget/preference.vala:334 ../widget/preference.vala:346
 #: ../widget/config_window.vala:366
 msgid "Advanced"
-msgstr "Avanzáu"
+msgstr "Avanzao"
 
 #: ../widget/remote_server_dialog.vala:337
 msgid "Advanced options"
@@ -80,30 +80,30 @@ msgstr "Opciones avanzaes"
 msgid "Are you sure to delete"
 msgstr "¿De xuru que quies desaniciar"
 
-#: ../widget/confirm_dialog.vala:131
+#: ../widget/confirm_dialog.vala:130
 msgid "Are you sure to exit?"
 msgstr "¿De xuru que quies colar?"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Backspace key"
-msgstr "Tecla de retrocesu"
+msgstr "Tecla del retrocesu"
 
 #: ../widget/remote_server_dialog.vala:321
 msgid "Backspace key:"
-msgstr "Tecla de retrocesu:"
+msgstr "Tecla del retrocesu:"
 
-#: ../widget/preference_slidebar.vala:55 ../widget/preference.vala:247
+#: ../widget/preference_slidebar.vala:55 ../widget/preference.vala:249
 msgid "Basic"
-msgstr "Básicu"
+msgstr "Básico"
 
-#: ../widget/preference.vala:407
+#: ../widget/preference.vala:410
 msgid "Blur background"
-msgstr "Fondu desenfocáu"
+msgstr "Desenfocar el fondu"
 
 #: ../widget/remote_server_dialog.vala:347
-#: ../widget/remote_server_dialog.vala:427 ../widget/confirm_dialog.vala:131
-#: ../widget/terminal.vala:576 ../widget/terminal.vala:604
-#: ../widget/terminal.vala:638 ../widget/file_button.vala:69
+#: ../widget/remote_server_dialog.vala:427 ../widget/confirm_dialog.vala:130
+#: ../widget/terminal.vala:580 ../widget/terminal.vala:608
+#: ../widget/terminal.vala:642 ../widget/file_button.vala:69
 #: ../widget/command_dialog.vala:192 ../widget/command_dialog.vala:250
 msgid "Cancel"
 msgstr "Encaboxar"
@@ -116,29 +116,29 @@ msgstr "Certificáu"
 msgid "Certificate:"
 msgstr "Certificáu:"
 
-#: ../widget/terminal.vala:382 ../widget/config_window.vala:343
+#: ../widget/terminal.vala:386 ../widget/config_window.vala:343
 msgid "Close other windows"
-msgstr "Zarrar otres ventanes"
+msgstr "Zarrar les otres ventanes"
 
-#: ../widget/preference.vala:330
+#: ../widget/preference.vala:332
 msgid "Close other windows:"
-msgstr "Zarrar otres ventanes:"
+msgstr "Zarrar les otres ventanes:"
 
-#: ../widget/terminal.vala:380 ../widget/config_window.vala:342
+#: ../widget/terminal.vala:384 ../widget/config_window.vala:342
 msgid "Close window"
-msgstr "Zarrar ventana"
+msgstr "Zarrar la ventana"
 
-#: ../widget/preference.vala:329
+#: ../widget/preference.vala:331
 msgid "Close window:"
-msgstr "Zarrar ventana:"
+msgstr "Zarrar la ventana"
 
 #: ../widget/config_window.vala:331
 msgid "Close workspace"
-msgstr "Zarrar estaya de trabayu"
+msgstr "Zarrar la estaya de trabayu"
 
-#: ../widget/preference.vala:320
+#: ../widget/preference.vala:322
 msgid "Close workspace:"
-msgstr "Zarrar estaya de trabayu:"
+msgstr "Zarrar la estaya de trabayu"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Command"
@@ -152,41 +152,45 @@ msgstr "Comandu:"
 msgid "Content"
 msgstr "Conteníu"
 
-#: ../widget/terminal.vala:343 ../widget/config_window.vala:304
+#: ../widget/terminal.vala:347 ../widget/config_window.vala:304
 #: ../widget/entry_menu.vala:39
 msgid "Copy"
 msgstr "Copiar"
 
-#: ../widget/terminal.vala:347
+#: ../widget/terminal.vala:351
 msgid "Copy link"
-msgstr "Copiar enllaz"
+msgstr "Copiar l'enllaz"
 
-#: ../widget/preference.vala:302
+#: ../widget/preference.vala:375
+msgid "Copy on select"
+msgstr ""
+
+#: ../widget/preference.vala:304
 msgid "Copy:"
 msgstr "Copiar:"
 
-#: ../widget/preference_slidebar.vala:84 ../widget/preference.vala:347
+#: ../widget/preference_slidebar.vala:84 ../widget/preference.vala:349
 msgid "Cursor"
 msgstr "Cursor"
 
-#: ../widget/preference.vala:372
+#: ../widget/preference.vala:374
 msgid "Cursor autohide"
-msgstr "Auto-anubrir cursor"
+msgstr "Anubrir automáticamente'l cursor"
 
-#: ../widget/preference.vala:371
+#: ../widget/preference.vala:373
 msgid "Cursor blink"
-msgstr "Parpaguiu de cursor"
+msgstr "Parpaguiu del cursor"
 
-#: ../widget/preference.vala:199
+#: ../widget/preference.vala:200
 msgid "Cursor style:"
 msgstr "Estilu del cursor:"
 
-#: ../widget/terminal.vala:443 ../widget/config_window.vala:360
+#: ../widget/terminal.vala:447 ../widget/config_window.vala:360
 #: ../widget/appbar.vala:122
 msgid "Custom commands"
 msgstr "Comandos personalizaos"
 
-#: ../widget/preference.vala:341
+#: ../widget/preference.vala:343
 msgid "Custom commands:"
 msgstr "Comandos personalizaos:"
 
@@ -194,9 +198,9 @@ msgstr "Comandos personalizaos:"
 msgid "Cut"
 msgstr "Cortar"
 
-#: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:603
+#: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:610
 msgid "Deepin Terminal"
-msgstr "Terminal Deepin"
+msgstr "Deepin Terminal"
 
 #: ../main.vala:189 ../widget/about_widget.vala:49
 msgid ""
@@ -204,17 +208,17 @@ msgid ""
 "\n"
 "It sharpens your focus in the world of command line!"
 msgstr ""
-"Terminal Deepin ye un emulador avanzáu de terminal con estayes de trabayu, ventanes múltiples, xestión remota, mou quake y otres carauterístiques.\n"
+"Deepin Terminal ye un emulador avanzáu de la terminal con sofitu pa estayes de trabayu, munches vistes dixebraes, xestión remota, mou Quake y otres carauterístiques.\n"
 "\n"
-"¡Refina'l to enfoque del mundu de la llinia de comandos!"
+"¡Afina'l to enfoque nel mundu de la llinia de comandos!"
 
 #: ../widget/config_window.vala:310
 msgid "Default size"
-msgstr "Tamañu por defeutu"
+msgstr "Tamañu predetermináu"
 
-#: ../widget/preference.vala:308
+#: ../widget/preference.vala:310
 msgid "Default size:"
-msgstr "Tamañu por defeutu:"
+msgstr "Tamañu predetermináu:"
 
 #: ../widget/remote_server_dialog.vala:428 ../widget/command_dialog.vala:251
 #: ../widget/entry_menu.vala:44
@@ -227,42 +231,42 @@ msgstr "Desaniciar comandu"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Delete key"
-msgstr "Desaniciar clave"
+msgstr "Tecla del desaniciu"
 
 #: ../widget/remote_server_dialog.vala:334
 msgid "Delete key:"
-msgstr "Desaniciar clave:"
+msgstr "Tecla del desaniciu:"
 
 #: ../widget/remote_server_dialog.vala:415
 #: ../widget/remote_server_dialog.vala:425
 msgid "Delete server"
-msgstr "Desaniciar sirvidor"
+msgstr "Desnaiciar sirvidor"
 
 #: ../widget/config_window.vala:359
 msgid "Display shortcuts"
 msgstr "Amosar atayos"
 
-#: ../widget/preference.vala:340
+#: ../widget/preference.vala:342
 msgid "Display shortcuts:"
 msgstr "Amosar atayos:"
 
 #: ../main.vala:128
 msgid "Display version"
-msgstr "Amosar versión"
+msgstr "Amuesa la versión"
 
-#: ../widget/terminal.vala:448
+#: ../widget/terminal.vala:452
 msgid "Download file"
-msgstr "Baxar ficheru"
+msgstr "Ficheru de la descarga"
 
 #: ../widget/command_dialog.vala:124
 msgid "Edit Command"
-msgstr "Editar comandu"
+msgstr "Edición d'un comandu"
 
 #: ../widget/remote_server_dialog.vala:152
 msgid "Edit Server"
-msgstr "Editar sirvidor"
+msgstr "Edición d'un sirvidor"
 
-#: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:442
+#: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:446
 msgid "Encoding"
 msgstr "Codificación"
 
@@ -270,33 +274,33 @@ msgstr "Codificación"
 msgid "Encoding:"
 msgstr "Codificación:"
 
-#: ../widget/confirm_dialog.vala:131 ../widget/appbar.vala:130
+#: ../widget/confirm_dialog.vala:130 ../widget/appbar.vala:130
 msgid "Exit"
 msgstr "Colar"
 
-#: ../widget/terminal.vala:392
+#: ../widget/terminal.vala:396
 msgid "Exit fullscreen"
-msgstr "Colar de pantalla completa"
+msgstr "Colar de la pantalla completa"
 
-#: ../widget/terminal.vala:398
+#: ../widget/terminal.vala:402
 msgid "Find"
 msgstr "Alcontrar"
 
-#: ../widget/preference.vala:291
+#: ../widget/preference.vala:293
 msgid "Font size:"
-msgstr "Tamañu de fonte:"
+msgstr "Tamañu de la fonte:"
 
-#: ../widget/preference.vala:290
+#: ../widget/preference.vala:292
 msgid "Font:"
 msgstr "Fonte:"
 
-#: ../widget/preference.vala:396 ../widget/terminal.vala:394
+#: ../widget/preference.vala:399 ../widget/terminal.vala:398
 msgid "Fullscreen"
-msgstr "Panatalla completa"
+msgstr "Pantalla completa"
 
-#: ../widget/preference.vala:338
+#: ../widget/preference.vala:340
 msgid "Fullscreen:"
-msgstr "Panatalla completa:"
+msgstr "Pantalla completa:"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Group"
@@ -310,19 +314,19 @@ msgstr "Grupu:"
 msgid "Help"
 msgstr "Ayuda"
 
-#: ../widget/preference.vala:400
+#: ../widget/preference.vala:403
 msgid "Hide quake window after lost focus"
-msgstr "Anubrir ventana quake dempués de perder el focu"
+msgstr "Anubrir la ventana Quake tres perder el focu"
 
-#: ../widget/terminal.vala:378 ../widget/config_window.vala:337
+#: ../widget/terminal.vala:382 ../widget/config_window.vala:337
 msgid "Horizontal split"
 msgstr "Dixebra horizontal"
 
-#: ../widget/preference.vala:324
+#: ../widget/preference.vala:326
 msgid "Horizontal split:"
 msgstr "Dixebra horizontal:"
 
-#: ../widget/preference_slidebar.vala:58 ../widget/preference.vala:250
+#: ../widget/preference_slidebar.vala:58 ../widget/preference.vala:252
 msgid "Interface"
 msgstr "Interfaz"
 
@@ -330,23 +334,23 @@ msgstr "Interfaz"
 msgid "Jump to next command"
 msgstr "Dir al comandu siguiente"
 
-#: ../widget/preference.vala:309
+#: ../widget/preference.vala:311
 msgid "Jump to next command:"
 msgstr "Dir al comandu siguiente:"
 
 #: ../widget/config_window.vala:313
 msgid "Jump to previous command"
-msgstr "Dir al comandu previu"
+msgstr "Dir al comandu anterior"
 
-#: ../widget/preference.vala:310
+#: ../widget/preference.vala:312
 msgid "Jump to previous command:"
-msgstr "Dir al comandu previu:"
+msgstr "Dir al comandu anterior:"
 
 #: ../main.vala:182
 msgid "Load theme"
-msgstr "Cargar tema"
+msgstr "Carga un estilu"
 
-#: ../widget/preference.vala:395
+#: ../widget/preference.vala:398
 msgid "Maximize"
 msgstr "Maximizar"
 
@@ -360,45 +364,45 @@ msgstr "Nome:"
 
 #: ../widget/config_window.vala:335
 msgid "New theme terminal"
-msgstr "Tema nuevu de terminal"
+msgstr "Terminal nueva con otru estilu"
 
 #: ../widget/appbar.vala:120
 msgid "New window"
 msgstr "Ventana nueva"
 
-#: ../widget/terminal.vala:386 ../widget/config_window.vala:330
+#: ../widget/terminal.vala:390 ../widget/config_window.vala:330
 msgid "New workspace"
 msgstr "Estaya de trabayu nueva"
 
-#: ../widget/preference.vala:319
+#: ../widget/preference.vala:321
 msgid "New workspace:"
-msgstr "Estaya nueva de trabayu:"
+msgstr "Estaya de trabayu nueva:"
 
 #: ../widget/config_window.vala:332
 msgid "Next workspace"
-msgstr "Estaya de trabayu siguiente"
+msgstr "Estaya siguiente de trabayu"
 
-#: ../widget/preference.vala:322
+#: ../widget/preference.vala:324
 msgid "Next workspace:"
-msgstr "Estaya de trabayu siguiente:"
+msgstr "Estaya siguiente de trabayu"
 
-#: ../widget/preference.vala:394
+#: ../widget/preference.vala:397
 msgid "Normal window"
 msgstr "Ventana normal"
 
-#: ../widget/preference.vala:136
+#: ../widget/preference.vala:137
 msgid "Opacity:"
 msgstr "Opacidá:"
 
-#: ../widget/terminal.vala:360 ../widget/config_window.vala:306
+#: ../widget/terminal.vala:364 ../widget/config_window.vala:306
 msgid "Open"
 msgstr "Abrir"
 
-#: ../widget/terminal.vala:368
+#: ../widget/terminal.vala:372
 msgid "Open in file manager"
 msgstr "Abrir nel xestor de ficheros"
 
-#: ../widget/preference.vala:304
+#: ../widget/preference.vala:306
 msgid "Open:"
 msgstr "Abrir:"
 
@@ -416,12 +420,12 @@ msgstr "Contraseña"
 msgid "Password:"
 msgstr "Contraseña:"
 
-#: ../widget/terminal.vala:353 ../widget/config_window.vala:305
+#: ../widget/terminal.vala:357 ../widget/config_window.vala:305
 #: ../widget/entry_menu.vala:41
 msgid "Paste"
 msgstr "Apegar"
 
-#: ../widget/preference.vala:303
+#: ../widget/preference.vala:305
 msgid "Paste:"
 msgstr "Apegar:"
 
@@ -435,7 +439,7 @@ msgstr "Camín:"
 
 #: ../widget/shortcut_entry.vala:147
 msgid "Please enter a new shortcut"
-msgstr "Introduz un atayu nuevu, por favor"
+msgstr "Introduz un comandu nuevu"
 
 #: ../widget/remote_server_dialog.vala:199
 msgid "Port:"
@@ -443,41 +447,41 @@ msgstr "Puertu:"
 
 #: ../widget/config_window.vala:333
 msgid "Previous workspace"
-msgstr "Estaya de trabayu previa"
+msgstr "Estaya anterior de trabayu"
 
-#: ../widget/preference.vala:321
+#: ../widget/preference.vala:323
 msgid "Previous workspace:"
-msgstr "Estaya de trabayu previa:"
+msgstr "Estaya anterior de trabayu"
 
-#: ../widget/confirm_dialog.vala:131
+#: ../widget/confirm_dialog.vala:130
 msgid "Programs are still running in terminal"
-msgstr "Entá hai programes executándose na terminal"
+msgstr "Entá hai programes n'execución na terminal"
 
 #: ../main.vala:173
 msgid "Quake mode"
 msgstr "Mou Quake"
 
-#: ../widget/terminal.vala:444 ../widget/config_window.vala:361
+#: ../widget/terminal.vala:448 ../widget/config_window.vala:361
 #: ../widget/appbar.vala:123
 msgid "Remote management"
 msgstr "Xestión remota"
 
-#: ../widget/preference.vala:342
+#: ../widget/preference.vala:344
 msgid "Remote management:"
 msgstr "Xestión remota:"
 
-#: ../widget/terminal.vala:639
+#: ../widget/terminal.vala:643
 msgid "Rename"
 msgstr "Renomar"
 
-#: ../widget/terminal.vala:441 ../widget/terminal.vala:636
+#: ../widget/terminal.vala:445 ../widget/terminal.vala:640
 #: ../widget/config_window.vala:357
 msgid "Rename title"
-msgstr "Renomar títulu"
+msgstr "Renomar el títulu"
 
-#: ../widget/preference.vala:339
+#: ../widget/preference.vala:341
 msgid "Rename title:"
-msgstr "Renomar títulu:"
+msgstr "Renomar el títulu:"
 
 #: ../widget/remote_server_dialog.vala:186
 #: ../widget/remote_server_dialog.vala:196
@@ -486,41 +490,41 @@ msgstr "Renomar títulu:"
 msgid "Required"
 msgstr "Ríquese"
 
-#: ../widget/preference.vala:413
+#: ../widget/preference.vala:416
 msgid "Restore Defaults"
 msgstr "Reafitar valores"
 
 #: ../main.vala:155 ../main.vala:164
 msgid "Run a program in the terminal"
-msgstr "Executar un programa na terminal"
+msgstr "Executa un programa na terminal"
 
 #: ../widget/remote_server_dialog.vala:350 ../widget/command_dialog.vala:195
 msgid "Save"
 msgstr "Guardar"
 
-#: ../widget/preference_slidebar.vala:87 ../widget/preference.vala:374
+#: ../widget/preference_slidebar.vala:87 ../widget/preference.vala:377
 msgid "Scroll"
 msgstr "Desplazamientu"
 
-#: ../widget/preference.vala:380
+#: ../widget/preference.vala:383
 msgid "Scroll on keystroke"
-msgstr "Desplazase al primir tecles"
+msgstr "Desplazase la primir les fleches direicionales"
 
-#: ../widget/preference.vala:381
+#: ../widget/preference.vala:384
 msgid "Scroll on output"
-msgstr "Desplazamientu na salida de mensaxes"
+msgstr "Desplazase al xenerase la salida"
 
-#: ../widget/terminal.vala:401 ../widget/search_entry.vala:64
+#: ../widget/terminal.vala:405 ../widget/search_entry.vala:64
 #: ../widget/search_entry.vala:66 ../widget/config_window.vala:307
 msgid "Search"
 msgstr "Guetar"
 
-#: ../widget/preference.vala:305 ../widget/remote_panel.vala:357
+#: ../widget/preference.vala:307 ../widget/remote_panel.vala:357
 #: ../widget/command_panel.vala:201
 msgid "Search:"
 msgstr "Guetar:"
 
-#: ../widget/terminal.vala:605 ../widget/file_button.vala:71
+#: ../widget/terminal.vala:609 ../widget/file_button.vala:71
 msgid "Select"
 msgstr "Esbillar"
 
@@ -528,51 +532,51 @@ msgstr "Esbillar"
 msgid "Select all"
 msgstr "Esbillar too"
 
-#: ../widget/preference.vala:311
+#: ../widget/preference.vala:313
 msgid "Select all:"
 msgstr "Esbillar too:"
 
-#: ../widget/terminal.vala:603
+#: ../widget/terminal.vala:607
 msgid "Select directory to save download file"
-msgstr "Esbilla'l direutoriu pa guardar el ficheru de descarga"
+msgstr "Esbilla del direutoriu onde guardar el ficheru de la descarga"
 
-#: ../widget/terminal.vala:574
+#: ../widget/terminal.vala:578
 msgid "Select file to upload"
-msgstr "Esbilla'l ficheru pa xubir"
+msgstr "Esbilla del ficheru a unviar"
 
 #: ../widget/config_window.vala:340
 msgid "Select left window"
-msgstr "Esbillar ventana esquierda"
+msgstr "Esbillar la ventana esquierda"
 
-#: ../widget/preference.vala:327
+#: ../widget/preference.vala:329
 msgid "Select left window:"
-msgstr "Esbillar ventana esquierda:"
+msgstr "Esbillar la ventana esquierda:"
 
 #: ../widget/config_window.vala:339
 msgid "Select lower window"
-msgstr "Esbillar ventana baxera"
+msgstr "Esbillar la ventana baxera"
 
-#: ../widget/preference.vala:326
+#: ../widget/preference.vala:328
 msgid "Select lower window:"
-msgstr "Esbillar ventana baxera:"
+msgstr "Esbillar la ventana baxera:"
 
 #: ../widget/config_window.vala:341
 msgid "Select right window"
-msgstr "Esbillar ventana drecha"
+msgstr "Esbillar la ventana drecha"
 
-#: ../widget/preference.vala:328
+#: ../widget/preference.vala:330
 msgid "Select right window:"
-msgstr "Esbillar ventana drecha:"
+msgstr "Esbillar la ventana drecha:"
 
 #: ../widget/file_button.vala:67
 msgid "Select the private key file"
-msgstr "Esbillar ficheru de clave privada"
+msgstr "Esbilla del ficheru de la clave privada"
 
 #: ../widget/config_window.vala:338
 msgid "Select upper window"
 msgstr "Esbillar ventana cimera"
 
-#: ../widget/preference.vala:325
+#: ../widget/preference.vala:327
 msgid "Select upper window:"
 msgstr "Esbillar ventana cimera:"
 
@@ -590,17 +594,17 @@ msgstr "Nome del sirvidor:"
 
 #: ../main.vala:137
 msgid "Set the terminal startup directory"
-msgstr "Efitar el direutoriu d'aniciu de la terminal"
+msgstr "Afita'l direutoriu del aniciu de la terminal"
 
 #: ../main.vala:119
 msgid "Set the terminal window mode"
-msgstr "Afitar el mou de ventana de la terminal"
+msgstr "Afita'l mou de la ventana de la terminal"
 
-#: ../widget/terminal.vala:452 ../widget/appbar.vala:125
+#: ../widget/terminal.vala:456 ../widget/appbar.vala:125
 msgid "Settings"
 msgstr "Axustes"
 
-#: ../widget/preference_slidebar.vala:65 ../widget/preference.vala:293
+#: ../widget/preference_slidebar.vala:65 ../widget/preference.vala:295
 #: ../widget/command_dialog.vala:83
 msgid "Shortcuts"
 msgstr "Atayos"
@@ -613,65 +617,65 @@ msgstr "Atayos:"
 msgid "Switch fullscreen"
 msgstr "Pantalla completa"
 
-#: ../widget/terminal.vala:439 ../widget/appbar.vala:121
+#: ../widget/terminal.vala:443 ../widget/appbar.vala:121
 msgid "Switch theme"
-msgstr "Camudar tema"
+msgstr "Camudar l'estilu"
 
-#: ../widget/preference_slidebar.vala:68 ../widget/preference.vala:296
+#: ../widget/preference_slidebar.vala:68 ../widget/preference.vala:298
 #: ../widget/config_window.vala:318
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../widget/terminal.vala:617
+#: ../widget/terminal.vala:621
 msgid "Type path for download file"
-msgstr "Teclexa'l camín pal ficheru de descarga"
+msgstr "Teclexa'l camín del ficheru de la descarga"
 
-#: ../widget/terminal.vala:578
+#: ../widget/terminal.vala:582
 msgid "Upload"
 msgstr "Xubir"
 
-#: ../widget/terminal.vala:447
+#: ../widget/terminal.vala:451
 msgid "Upload file"
-msgstr "Xubir ficheru"
+msgstr "Xuba del ficheru"
 
-#: ../widget/preference.vala:397
+#: ../widget/preference.vala:400
 msgid "Use on starting:"
-msgstr "Usar nel aniciu:"
+msgstr "Nel aniciu:"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Username"
-msgstr "Nome d'usuariu"
+msgstr "Nome del usuariu"
 
 #: ../widget/remote_server_dialog.vala:233
 msgid "Username:"
-msgstr "Nome d'usuariu:"
+msgstr "Nome del usuariu:"
 
 #: ../widget/about_widget.vala:105
 msgid "Version:"
 msgstr "Versión:"
 
-#: ../widget/terminal.vala:379 ../widget/config_window.vala:336
+#: ../widget/terminal.vala:383 ../widget/config_window.vala:336
 msgid "Vertical split"
 msgstr "Dixebra vertical"
 
-#: ../widget/preference.vala:323
+#: ../widget/preference.vala:325
 msgid "Vertical split:"
 msgstr "Dixebra vertical:"
 
-#: ../widget/terminal.vala:1544
+#: ../widget/terminal.vala:1507
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "
 "files."
 msgstr ""
-"Afáyate en Terminal Deepin, asegúrate que los comandos rz y sz tán instalaos"
-" nel sirvidor enantes de facer clic drechu pa xubir y baxar ficheros."
+"Afáyate en Deepin Terminal. Asegúrate que los comandos rz y sz tán instalaos"
+" nel sirvidor enantes de facer clic drechu pa xubir o baxar ficheros."
 
-#: ../widget/preference_slidebar.vala:90 ../widget/preference.vala:383
+#: ../widget/preference_slidebar.vala:90 ../widget/preference.vala:386
 msgid "Window"
 msgstr "Ventana"
 
-#: ../widget/preference_slidebar.vala:71 ../widget/preference.vala:313
+#: ../widget/preference_slidebar.vala:71 ../widget/preference.vala:315
 #: ../widget/config_window.vala:348
 msgid "Workspace"
 msgstr "Estaya de trabayu"
@@ -680,7 +684,7 @@ msgstr "Estaya de trabayu"
 msgid "Zoom in"
 msgstr "Averar"
 
-#: ../widget/preference.vala:306
+#: ../widget/preference.vala:308
 msgid "Zoom in:"
 msgstr "Averar:"
 
@@ -688,10 +692,10 @@ msgstr "Averar:"
 msgid "Zoom out"
 msgstr "Alloñar"
 
-#: ../widget/preference.vala:307
+#: ../widget/preference.vala:309
 msgid "Zoom out:"
 msgstr "Alloñar:"
 
-#: ../widget/terminal.vala:787 ../widget/terminal.vala:1267
+#: ../widget/terminal.vala:782 ../widget/terminal.vala:1230
 msgid "deepin"
 msgstr "deepin"
