@@ -40,6 +40,7 @@ namespace Widgets {
         public int window_frame_margin_end = 50;
         public int window_frame_margin_start = 50;
         public int window_frame_margin_top = 50;
+        public bool tabbar_at_the_bottom = false;
         public int window_fullscreen_monitor_height = Constant.TITLEBAR_HEIGHT * 2;
         public int window_fullscreen_monitor_timeout = 150;
         public int window_fullscreen_response_height = 5;
@@ -51,12 +52,16 @@ namespace Widgets {
         public int window_width;
 
         public Window(string? window_mode) {
+            tabbar_at_the_bottom = config.config_file.get_boolean("advanced", "tabbar_at_the_bottom");
             transparent_window();
             init_window();
 
             int monitor = config.get_terminal_monitor();
             Gdk.Rectangle rect;
             screen.get_monitor_geometry(monitor, out rect);
+
+            if (tabbar_at_the_bottom)
+                window_fullscreen_monitor_height = rect.height - window_fullscreen_monitor_height;
 
             Gdk.Geometry geo = Gdk.Geometry();
             geo.min_width = rect.width / 3;
@@ -65,6 +70,14 @@ namespace Widgets {
 
             top_line_dark_color = Utils.hex_to_rgba("#000000", 0.2);
             top_line_light_color = Utils.hex_to_rgba("#ffffff", 0.2);
+
+            // Shadow around window will be hidden
+            if (Utils.is_tiling_wm())  {
+                window_frame_margin_top = 0;
+                window_frame_margin_bottom = 0;
+                window_frame_margin_start = 0;
+                window_frame_margin_end = 0;
+            }
 
             window_frame_box.margin_top = window_frame_margin_top;
             window_frame_box.margin_bottom = window_frame_margin_bottom;
@@ -130,7 +143,10 @@ namespace Widgets {
         }
 
         public void init_window() {
-            set_decorated(false);
+            if (Utils.is_tiling_wm()) 
+                set_decorated(true);
+            else 
+                set_decorated(false);
 
             window_frame_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             window_widget_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
@@ -396,7 +412,7 @@ namespace Widgets {
         public override void update_frame() {
             update_style();
 
-            if (!screen_monitor.is_composited() || window_is_fullscreen() || window_is_max()) {
+            if (Utils.is_tiling_wm() || window_is_fullscreen() || window_is_max()) {
                 window_widget_box.margin_top = 0;
                 window_widget_box.margin_bottom = 0;
                 window_widget_box.margin_start = 0;
@@ -488,6 +504,7 @@ namespace Widgets {
                 int x = window_frame_box.margin_start;
                 int y = window_frame_box.margin_top;
                 int width = window_frame_rect.width;
+                int height = window_frame_rect.height;
                 Gdk.RGBA frame_color = Gdk.RGBA();
 
                 bool is_light_theme = is_light_theme();
@@ -556,7 +573,10 @@ namespace Widgets {
                         }
 
                         draw_titlebar_underline(cr, x + 1, titlebar_y, width - 2, 1);
-                        draw_active_tab_underline(cr, x + active_tab_underline_x - window_frame_box.margin_start, titlebar_y + Constant.TITLEBAR_HEIGHT);
+                        if (tabbar_at_the_bottom) 
+                            draw_active_tab_underline(cr, x + active_tab_underline_x - window_frame_box.margin_start, y + height - Constant.TITLEBAR_HEIGHT - 1);
+                        else 
+                            draw_active_tab_underline(cr, x + active_tab_underline_x - window_frame_box.margin_start, y + Constant.TITLEBAR_HEIGHT);
                     }
                 } catch (Error e) {
                     print("Window draw_window_above: %s\n", e.message);
@@ -592,17 +612,20 @@ namespace Widgets {
 
             motion_notify_event.connect((w, e) => {
                     if (window_is_fullscreen()) {
-                        if (e.y_root < window_fullscreen_monitor_height) {
+                       var receiveEvents = tabbar_at_the_bottom? e.y_root > window_fullscreen_monitor_height : e.y_root < window_fullscreen_monitor_height;
+                        if (receiveEvents) {
                             GLib.Timeout.add(window_fullscreen_monitor_timeout, () => {
                                     int pointer_x, pointer_y;
                                     Utils.get_pointer_position(out pointer_x, out pointer_y);
 
-                                    if (pointer_y < window_fullscreen_response_height) {
+                                    var showAll = tabbar_at_the_bottom? pointer_y > window_fullscreen_monitor_height + Constant.TITLEBAR_HEIGHT : pointer_y < window_fullscreen_response_height;
+                                    var hideAll = tabbar_at_the_bottom? pointer_y < window_fullscreen_monitor_height + Constant.TITLEBAR_HEIGHT : pointer_y > Constant.TITLEBAR_HEIGHT;
+                                    if (showAll) {
                                         appbar.show_all();
                                         draw_tabbar_line = true;
 
                                         redraw_window();
-                                    } else if (pointer_y > Constant.TITLEBAR_HEIGHT) {
+                                    } else if (hideAll) {
                                         appbar.hide();
                                         draw_tabbar_line = false;
 
@@ -621,7 +644,10 @@ namespace Widgets {
         public void show_window(TerminalApp app, WorkspaceManager workspace_manager, Tabbar tabbar, bool has_start=false) {
             Appbar appbar = new Appbar(app, this, tabbar, workspace_manager, has_start);
 
-            appbar.set_valign(Gtk.Align.START);
+            if (tabbar_at_the_bottom) 
+                appbar.set_valign(Gtk.Align.END);
+            else
+                appbar.set_valign(Gtk.Align.START);
             appbar.close_window.connect((w) => {
                     quit();
                 });
@@ -644,8 +670,14 @@ namespace Widgets {
 
             var overlay = new Gtk.Overlay();
             top_box.pack_start(fullscreen_box, false, false, 0);
-            box.pack_start(top_box, false, false, 0);
-            box.pack_start(workspace_manager, true, true, 0);
+            if (tabbar_at_the_bottom) {
+                box.pack_start(workspace_manager, true, true, 0);
+                box.pack_start(top_box, false, false, 0);
+            }
+            else {
+                box.pack_start(top_box, false, false, 0);
+                box.pack_start(workspace_manager, true, true, 0);
+            }
 
             overlay.add(box);
             overlay.add_overlay(appbar);

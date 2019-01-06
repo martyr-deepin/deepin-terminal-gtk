@@ -439,9 +439,8 @@ namespace Widgets {
                 menu_content.append(online_search);
             }
             menu_content.append(new Menu.MenuItem("", ""));
-            if (in_quake_window) {
-                menu_content.append(new Menu.MenuItem("switch_theme", _("Switch theme")));
-            }
+            
+            menu_content.append(new Menu.MenuItem("switch_theme", _("Switch theme")));
             menu_content.append(new Menu.MenuItem("rename_title", _("Rename title")));
             menu_content.append(new Menu.MenuItem("encoding", _("Encoding")));
             menu_content.append(new Menu.MenuItem("custom_commands", _("Custom commands")));

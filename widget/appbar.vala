@@ -50,6 +50,7 @@ namespace Widgets {
         public WorkspaceManager workspace_manager;
         public int logo_width = 48;
         public int titlebar_right_cache_width = 10;
+        public int menu_button_width = Constant.WINDOW_BUTTON_WIDHT;
 
         public signal void close_window();
         public signal void exit_terminal();
@@ -99,11 +100,15 @@ namespace Widgets {
             window_button_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             window_close_button_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
 
-            menu_button = new WindowButton("window_menu", true, Constant.WINDOW_BUTTON_WIDHT, Constant.TITLEBAR_HEIGHT);
-            min_button = new WindowButton("window_min", true, Constant.WINDOW_BUTTON_WIDHT, Constant.TITLEBAR_HEIGHT);
-            max_button = new WindowButton("window_max", true, Constant.WINDOW_BUTTON_WIDHT, Constant.TITLEBAR_HEIGHT);
-            unmax_button = new WindowButton("window_unmax", true, Constant.WINDOW_BUTTON_WIDHT, Constant.TITLEBAR_HEIGHT);
-            close_button = new WindowButton("window_close", true, Constant.WINDOW_BUTTON_WIDHT + Constant.CLOSE_BUTTON_MARGIN_RIGHT, Constant.TITLEBAR_HEIGHT);
+            // Hide all butons. Only right-click menu will be working
+            if (Utils.is_tiling_wm()) menu_button_width = 0;
+
+            menu_button = new WindowButton("window_menu", true, menu_button_width, Constant.TITLEBAR_HEIGHT);
+            min_button = new WindowButton("window_min", true, menu_button_width, Constant.TITLEBAR_HEIGHT);
+            max_button = new WindowButton("window_max", true, menu_button_width, Constant.TITLEBAR_HEIGHT);
+            unmax_button = new WindowButton("window_unmax", true, menu_button_width, Constant.TITLEBAR_HEIGHT);
+            close_button = new WindowButton("window_close", true, menu_button_width + Constant.CLOSE_BUTTON_MARGIN_RIGHT, Constant.TITLEBAR_HEIGHT);
+
             quit_fullscreen_button = new WindowButton("quit_fullscreen", true, Constant.WINDOW_BUTTON_WIDHT + Constant.CLOSE_BUTTON_MARGIN_RIGHT, Constant.TITLEBAR_HEIGHT);
 
             close_button.clicked.connect((w) => {

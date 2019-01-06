@@ -101,6 +101,7 @@ namespace Widgets {
         public Widgets.CheckButton scroll_on_key_checkbutton;
         public Widgets.CheckButton scroll_on_out_checkbutton;
         public Widgets.CheckButton blur_background_checkbutton;
+        public Widgets.CheckButton tabbar_location_checkbutton;
         public Widgets.ConfigWindow parent_window;
         public Widgets.CursorToggleButton cursor_style_button;
         public Widgets.ProgressBar opacity_progressbar;
@@ -206,6 +207,7 @@ namespace Widgets {
             scroll_on_out_checkbutton = new Widgets.CheckButton();
             blur_background_checkbutton = new Widgets.CheckButton();
             hide_quakewindow_after_lost_focus_checkbutton = new Widgets.CheckButton();
+            tabbar_location_checkbutton = new Widgets.CheckButton();
 
             font_size_spinbutton = create_spinbutton(Constant.FONT_MIN_SIZE, Constant.FONT_MAX_SIZE, 1);
 
@@ -406,12 +408,14 @@ namespace Widgets {
                                                                "advanced",
                                                                "hide_quakewindow_after_lost_focus");
 
-            create_follow_check_row(blur_background_checkbutton,
+            var blur_background_box = create_follow_check_row(blur_background_checkbutton,
                                     _("Blur background"),
                                     hide_quakewindow_box,
                                     window_grid,
                                     "advanced",
                                     "blur_background");
+
+            create_follow_check_row(tabbar_location_checkbutton, _("Tabbar at the bottom of the screen"), blur_background_box, window_grid, "advanced", "tabbar_at_the_bottom");
 
             var reset_button = new Widgets.ImageButton("reset_button", false, _("Restore Defaults"));
             reset_button.set_halign(Gtk.Align.CENTER);
