@@ -306,6 +306,12 @@ namespace Config {
             check_string("shortcut", "close_workspace", "Ctrl + Shift + w");
             check_string("shortcut", "next_workspace", "Ctrl + Tab");
             check_string("shortcut", "previous_workspace", "Ctrl + Shift + Tab");
+
+            check_string("shortcut", "resize_workspace_up", "Ctrl + Alt + Up");
+            check_string("shortcut", "resize_workspace_down", "Ctrl + Alt + Down");
+            check_string("shortcut", "resize_workspace_left", "Ctrl + Alt + Left");
+            check_string("shortcut", "resize_workspace_right", "Ctrl + Alt + Right");
+
             check_string("shortcut", "vertical_split", "Ctrl + Shift + j");
             check_string("shortcut", "horizontal_split", "Ctrl + Shift + h");
             check_string("shortcut", "select_upper_window", "Alt + k");

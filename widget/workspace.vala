@@ -55,6 +55,10 @@ namespace Widgets {
         public int show_slider_start_x;
         public uint? highlight_frame_timeout_source_id = null;
 
+        private enum WorkspaceResizeKey {
+            LEFT, RIGHT, UP, DOWN
+        }
+
         public signal void change_title(int index, string dir);
         public signal void exit(int index);
         public signal void highlight_tab(int index);
@@ -818,6 +822,50 @@ namespace Widgets {
             if (focus_terminal != null) {
                 focus_terminal.focus_term();
             }
+        }
+
+        private void resize_workspace(Term term, WorkspaceResizeKey key) {
+            Paned paned = (Paned) term.get_parent();
+
+            // Trying to find needed paned widget with correct orientation. So for left/right keys paned should have horizontal orientation
+            var correct_paned_found = is_paned_correct(paned, key);
+
+            while (paned.get_parent().get_type().is_a(typeof(Paned)) && !correct_paned_found) {
+                    paned = (Paned) paned.get_parent();
+                    correct_paned_found = is_paned_correct(paned, key);
+            }
+
+            if (!correct_paned_found) return;
+
+            int value = 0;
+            if (key == WorkspaceResizeKey.LEFT || key == WorkspaceResizeKey.UP)
+                value = -20;
+            else //key == WorkspaceResizeKey.RIGHT || key == WorkspaceResizeKey.DOWN
+                value = 20;
+
+            int pos = paned.get_position() + value;
+            paned.set_position(pos);
+        }
+
+        private bool is_paned_correct(Paned paned, WorkspaceResizeKey key) {
+            return ((key == WorkspaceResizeKey.LEFT || key == WorkspaceResizeKey.RIGHT) && paned.get_orientation() == Gtk.Orientation.HORIZONTAL) 
+            ||  ((key == WorkspaceResizeKey.UP || key == WorkspaceResizeKey.DOWN) && paned.get_orientation() == Gtk.Orientation.VERTICAL);
+        }
+
+        public void resize_workspace_left() {
+            resize_workspace (get_focus_term(this), WorkspaceResizeKey.LEFT);
+        }
+
+        public void resize_workspace_right() {
+            resize_workspace (get_focus_term(this), WorkspaceResizeKey.RIGHT);
+        }
+
+        public void resize_workspace_up() {
+            resize_workspace (get_focus_term(this), WorkspaceResizeKey.UP);
+        }
+
+        public void resize_workspace_down() {
+            resize_workspace (get_focus_term(this), WorkspaceResizeKey.DOWN);
         }
 
         public void remove_all_panels() {
