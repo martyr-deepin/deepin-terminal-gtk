@@ -1,3 +1,13 @@
+<a name="3.2.1"></a>
+## 3.2.1 (2019-01-25)
+
+
+#### Bug Fixes
+
+*   avoid using dpkg-parsechangelog ([e249b909](https://github.com/linuxdeepin/deepin-terminal/commit/e249b909ec1d6cc3a5e1d77753b9df42f6254194))
+
+
+
 <a name="3.2"></a>
 ## 3.2 (2019-01-03)
 
