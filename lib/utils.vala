@@ -494,7 +494,7 @@ namespace Utils {
         if (scaleStr == null) {
             var dpiStr = GLib.Environment.get_variable("QT_FONT_DPI");
             if (dpiStr == null) {
-            	return 1.0;
+                return 1.0;
             }
             return double.parse(dpiStr)/96;
         }
