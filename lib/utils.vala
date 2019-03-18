@@ -492,7 +492,11 @@ namespace Utils {
     public double get_dde_scale_ratio() {
         var scaleStr = GLib.Environment.get_variable("QT_SCALE_FACTOR");
         if (scaleStr == null) {
-            return 1.0;
+			var dpiStr = GLib.Environment.get_variable("QT_FONT_DPI");
+			if (dpiStr == null) {
+				return 1.0;
+			}
+			return double.parse(dpiStr)/96;
         }
 
         var parsedScale = double.parse(scaleStr);
