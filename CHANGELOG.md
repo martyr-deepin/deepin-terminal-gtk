@@ -1,3 +1,17 @@
+<a name="3.2.1.2"></a>
+## 3.2.1.2 (2019-03-28)
+
+
+#### Bug Fixes
+
+*   fix: Take `QT_FONT_DPI` into consideration. ([700286c](https://github.com/linuxdeepin/deepin-terminal/commit/700286cd3d0b090effe744c0788b50d9c87f457c))
+
+#### Others
+
+*   auto pull translation files from transifex ([634e4a0d](https://github.com/linuxdeepin/deepin-terminal/commit/634e4a0d40bb21ff85176de98f5a03eb51fe726a))
+
+
+
 <a name="3.2.1.1"></a>
 ## 3.2.1.1 (2019-02-25)
 
