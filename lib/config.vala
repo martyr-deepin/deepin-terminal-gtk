@@ -332,6 +332,7 @@ namespace Config {
             check_string("advanced", "cursor_shape", "block");
             check_boolean("advanced", "cursor_blink_mode", true);
             check_boolean("advanced", "cursor_auto_hide", false);
+            check_boolean("advanced", "bold_is_bright", false);
 
             check_boolean("advanced", "scroll_on_key", true);
             check_boolean("advanced", "scroll_on_output", false);
