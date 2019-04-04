@@ -1302,6 +1302,8 @@ namespace Widgets {
                     term.set_cursor_blink_mode(Vte.CursorBlinkMode.OFF);
                 }
 
+                term.set_bold_is_bright(parent_window.config.config_file.get_boolean("advanced", "bold_is_bright"));
+
                 term.set_mouse_autohide(parent_window.config.config_file.get_boolean("advanced", "cursor_auto_hide"));
 
                 var scroll_lines = parent_window.config.config_file.get_integer("advanced", "scroll_line");
