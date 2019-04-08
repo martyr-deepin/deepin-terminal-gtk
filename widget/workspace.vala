@@ -418,7 +418,7 @@ namespace Widgets {
                     Gtk.Allocation rect;
                     this.get_allocation(out rect);
 
-                    // Get terminal allocation and coordiante.
+                    // Get terminal allocation and coordinate.
                     Term focus_term = get_focus_term(this);
 
                     int term_x, term_y;
