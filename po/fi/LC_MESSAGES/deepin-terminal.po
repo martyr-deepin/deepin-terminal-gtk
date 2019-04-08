@@ -1,28 +1,20 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Finnish translations for PACKAGE package.
+# Copyright (C) 2019 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
-# Translators:
-# ImSpaceman, 2017
-# Maggie Liu <maggie.liufei@gmail.com>, 2017
-# artor <arto@rusanen.me>, 2017
-# Kimmo Siniluoto <robotti1984@gmail.com>, 2017
-# Deathmist, 2018
-# 
-#, fuzzy
+# Automatically generated, 2019.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-03 10:53+0800\n"
-"PO-Revision-Date: 2017-02-04 05:38+0000\n"
-"Last-Translator: Deathmist, 2018\n"
-"Language-Team: Finnish (https://www.transifex.com/linuxdeepin/teams/3976/fi/)\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2019-04-08 11:58+0800\n"
+"PO-Revision-Date: 2019-04-08 11:58+0800\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
 "Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ASCII\n"
+"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../widget/terminal.vala:1204
@@ -30,78 +22,76 @@ msgid ""
 "\n"
 "Command has been completed, press ENTER to exit the terminal."
 msgstr ""
-"\n"
-"Komento on suoritettu, paina ENTER poistuaksesi päätteestä."
 
 #: ../widget/appbar.vala:129
 msgid "About"
-msgstr "Tietoja sovelluksesta"
+msgstr ""
 
 #: ../widget/about_widget.vala:81
 msgid "Acknowledgments"
-msgstr "Kiitokset"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:352 ../widget/command_dialog.vala:197
 msgid "Add"
-msgstr "Lisää"
+msgstr ""
 
 #: ../widget/command_dialog.vala:126
 msgid "Add Command"
-msgstr "Lisää Komento"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:154
 msgid "Add Server"
-msgstr "Lisää Palvelin"
+msgstr ""
 
 #: ../widget/command_panel.vala:311
 msgid "Add command"
-msgstr "Lisää komento"
+msgstr ""
 
 #: ../widget/remote_panel.vala:468
 msgid "Add server"
-msgstr "Lisää palvelin"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Address"
-msgstr "Osoite"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:190
 msgid "Address:"
-msgstr "Osoite:"
+msgstr ""
 
 #: ../widget/preference_slidebar.vala:74 ../widget/preference_slidebar.vala:81
 #: ../widget/preference.vala:334 ../widget/preference.vala:346
 #: ../widget/config_window.vala:366
 msgid "Advanced"
-msgstr "Lisäasetukset"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:337
 msgid "Advanced options"
-msgstr "Lisäasetukset"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:426 ../widget/command_dialog.vala:249
-msgid "Are you sure to delete"
-msgstr "Haluatko varmasti poistaa kohteen"
+msgid "Are you sure you want to delete %s?"
+msgstr ""
 
 #: ../widget/confirm_dialog.vala:130
-msgid "Are you sure to exit?"
-msgstr "Haluatko varmasti poistua?"
+msgid "Are you sure you want to exit?"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Backspace key"
-msgstr "Askelpalautin"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:321
 msgid "Backspace key:"
-msgstr "Askelpalautin:"
+msgstr ""
 
 #: ../widget/preference_slidebar.vala:55 ../widget/preference.vala:249
 msgid "Basic"
-msgstr "Perusasetukset"
+msgstr ""
 
 #: ../widget/preference.vala:410
 msgid "Blur background"
-msgstr "Sumeuta tausta"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:347
 #: ../widget/remote_server_dialog.vala:427 ../widget/confirm_dialog.vala:130
@@ -109,60 +99,60 @@ msgstr "Sumeuta tausta"
 #: ../widget/terminal.vala:642 ../widget/file_button.vala:69
 #: ../widget/command_dialog.vala:192 ../widget/command_dialog.vala:250
 msgid "Cancel"
-msgstr "Peruuta"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Certificate"
-msgstr "Sertifikaatti"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:261
 msgid "Certificate:"
-msgstr "Sertifikaatti:"
+msgstr ""
 
 #: ../widget/terminal.vala:386 ../widget/config_window.vala:343
 msgid "Close other windows"
-msgstr "Sulje muut paneelit"
+msgstr ""
 
 #: ../widget/preference.vala:332
 msgid "Close other windows:"
-msgstr "Sulje muut paneelit:"
+msgstr ""
 
 #: ../widget/terminal.vala:384 ../widget/config_window.vala:342
 msgid "Close window"
-msgstr "Sulje paneeli"
+msgstr ""
 
 #: ../widget/preference.vala:331
 msgid "Close window:"
-msgstr "Sulje paneeli:"
+msgstr ""
 
 #: ../widget/config_window.vala:331
 msgid "Close workspace"
-msgstr "Sulje välilehti"
+msgstr ""
 
 #: ../widget/preference.vala:322
 msgid "Close workspace:"
-msgstr "Sulje välilehti:"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Command"
-msgstr "Käsky"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:295 ../widget/command_dialog.vala:172
 msgid "Command:"
-msgstr "Komento:"
+msgstr ""
 
 #: ../widget/command_dialog.vala:83
 msgid "Content"
-msgstr "Sisältö"
+msgstr ""
 
 #: ../widget/terminal.vala:347 ../widget/config_window.vala:304
 #: ../widget/entry_menu.vala:39
 msgid "Copy"
-msgstr "Kopioi"
+msgstr ""
 
 #: ../widget/terminal.vala:351
 msgid "Copy link"
-msgstr "Kopioi linkki"
+msgstr ""
 
 #: ../widget/preference.vala:375
 msgid "Copy on select"
@@ -170,535 +160,537 @@ msgstr ""
 
 #: ../widget/preference.vala:304
 msgid "Copy:"
-msgstr "Kopioi:"
+msgstr ""
 
 #: ../widget/preference_slidebar.vala:84 ../widget/preference.vala:349
 msgid "Cursor"
-msgstr "Osoitin"
+msgstr ""
 
 #: ../widget/preference.vala:374
 msgid "Cursor autohide"
-msgstr "Kohdistimen automaattinen piilotus"
+msgstr ""
 
 #: ../widget/preference.vala:373
 msgid "Cursor blink"
-msgstr "Kohdistimen vilkkuminen"
+msgstr ""
 
 #: ../widget/preference.vala:200
 msgid "Cursor style:"
-msgstr "Kohdistimen tyyli:"
+msgstr ""
 
 #: ../widget/terminal.vala:447 ../widget/config_window.vala:360
 #: ../widget/appbar.vala:122
 msgid "Custom commands"
-msgstr "Mukautetut komennot"
+msgstr ""
 
 #: ../widget/preference.vala:343
 msgid "Custom commands:"
-msgstr "Mukautetut komennot:"
+msgstr ""
 
 #: ../widget/entry_menu.vala:38
 msgid "Cut"
-msgstr "Leikkaa"
+msgstr ""
+
+#: ../main.vala:189
+msgid ""
+"Deepin Teminal is an advanced terminal emulator with window-splitting, "
+"workspaces, remote management, Quake mode and other features."
+msgstr ""
 
 #: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:610
 msgid "Deepin Terminal"
-msgstr "Deepin-terminaali"
+msgstr ""
 
-#: ../main.vala:189 ../widget/about_widget.vala:49
+#: ../widget/about_widget.vala:49
 msgid ""
-"Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.\n"
+"Deepin Terminal is an advanced terminal emulator with workspace, multiple "
+"windows, remote management, quake mode and other features.\n"
 "\n"
 "It sharpens your focus in the world of command line!"
 msgstr ""
-"Deepin Pääte on edistynyt pääte-emulaattori, jossa on välilehdet, useita paneeleja, SSH-palvelinten hallinta, quake-tila ja muita ominaisuuksia.\n"
-"\n"
-"Se terävöittää keskittymistäsi komentorivin maailmassa!"
 
 #: ../widget/config_window.vala:310
 msgid "Default size"
-msgstr "Oletuskoko"
+msgstr ""
 
 #: ../widget/preference.vala:310
 msgid "Default size:"
-msgstr "Oletuskoko:"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:428 ../widget/command_dialog.vala:251
 #: ../widget/entry_menu.vala:44
 msgid "Delete"
-msgstr "Poista"
+msgstr ""
 
 #: ../widget/command_dialog.vala:238 ../widget/command_dialog.vala:248
 msgid "Delete command"
-msgstr "Delete komento"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Delete key"
-msgstr "Delete-näppäin"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:334
 msgid "Delete key:"
-msgstr "Delete-näppäin:"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:415
 #: ../widget/remote_server_dialog.vala:425
 msgid "Delete server"
-msgstr "Poista palvelin"
+msgstr ""
 
 #: ../widget/config_window.vala:359
 msgid "Display shortcuts"
-msgstr "Näytä pikanäppäimet"
+msgstr ""
 
 #: ../widget/preference.vala:342
 msgid "Display shortcuts:"
-msgstr "Näytä pikanäppäimet:"
+msgstr ""
 
 #: ../main.vala:128
 msgid "Display version"
-msgstr "Näytetty versio"
+msgstr ""
 
 #: ../widget/terminal.vala:452
 msgid "Download file"
-msgstr "Lataa tiedosto"
+msgstr ""
 
 #: ../widget/command_dialog.vala:124
 msgid "Edit Command"
-msgstr "Muokkaa Komentoa"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:152
 msgid "Edit Server"
-msgstr "Muokkaa Palvelinta"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:446
 msgid "Encoding"
-msgstr "Tavuesitys"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:308
 msgid "Encoding:"
-msgstr "Tavuesitys:"
+msgstr ""
 
 #: ../widget/confirm_dialog.vala:130 ../widget/appbar.vala:130
 msgid "Exit"
-msgstr "Poistu"
+msgstr ""
 
 #: ../widget/terminal.vala:396
 msgid "Exit fullscreen"
-msgstr "Poistu kokoruututilasta"
+msgstr ""
 
 #: ../widget/terminal.vala:402
 msgid "Find"
-msgstr "Etsi"
+msgstr ""
 
 #: ../widget/preference.vala:293
 msgid "Font size:"
-msgstr "Fonttikoko:"
+msgstr ""
 
 #: ../widget/preference.vala:292
 msgid "Font:"
-msgstr "Fontti:"
+msgstr ""
 
 #: ../widget/preference.vala:399 ../widget/terminal.vala:398
 msgid "Fullscreen"
-msgstr "Kokoruututila"
+msgstr ""
 
 #: ../widget/preference.vala:340
 msgid "Fullscreen:"
-msgstr "Kokoruututila:"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Group"
-msgstr "Ryhmä"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:277
 msgid "Group:"
-msgstr "Ryhmä:"
+msgstr ""
 
 #: ../widget/appbar.vala:127
 msgid "Help"
-msgstr "Ohje"
+msgstr ""
 
 #: ../widget/preference.vala:403
-msgid "Hide quake window after lost focus"
-msgstr "Piilota quake-ikkuna kadotetun tarkennuksen jälkeen"
+msgid "Hide Quake window after losing focus"
+msgstr ""
 
 #: ../widget/terminal.vala:382 ../widget/config_window.vala:337
 msgid "Horizontal split"
-msgstr "Vaakasuora jako"
+msgstr ""
 
 #: ../widget/preference.vala:326
 msgid "Horizontal split:"
-msgstr "Vaakasuora jako:"
+msgstr ""
 
 #: ../widget/preference_slidebar.vala:58 ../widget/preference.vala:252
 msgid "Interface"
-msgstr "Käyttöliittymä"
+msgstr ""
 
 #: ../widget/config_window.vala:312
 msgid "Jump to next command"
-msgstr "Siirry seuraavaan komentoon"
+msgstr ""
 
 #: ../widget/preference.vala:311
 msgid "Jump to next command:"
-msgstr "Siirry seuraavaan komentoon:"
+msgstr ""
 
 #: ../widget/config_window.vala:313
 msgid "Jump to previous command"
-msgstr "Siirry edelliseen komentoon"
+msgstr ""
 
 #: ../widget/preference.vala:312
 msgid "Jump to previous command:"
-msgstr "Siirry edelliseen komentoon:"
+msgstr ""
 
 #: ../main.vala:182
 msgid "Load theme"
-msgstr "Lataa teema"
+msgstr ""
 
 #: ../widget/preference.vala:398
 msgid "Maximize"
-msgstr "Suurenna"
+msgstr ""
 
 #: ../widget/command_dialog.vala:83
 msgid "Name"
-msgstr "Nimi"
+msgstr ""
 
 #: ../widget/command_dialog.vala:159
 msgid "Name:"
-msgstr "Nimi:"
-
-#: ../widget/config_window.vala:335
-msgid "New theme terminal"
-msgstr "Uusi teemapääte"
+msgstr ""
 
 #: ../widget/appbar.vala:120
 msgid "New window"
-msgstr "Uusi ikkuna"
+msgstr ""
 
 #: ../widget/terminal.vala:390 ../widget/config_window.vala:330
 msgid "New workspace"
-msgstr "Uusi välilehti"
+msgstr ""
 
 #: ../widget/preference.vala:321
 msgid "New workspace:"
-msgstr "Uusi välilehti:"
+msgstr ""
 
 #: ../widget/config_window.vala:332
 msgid "Next workspace"
-msgstr "Seuraava välilehti"
+msgstr ""
 
 #: ../widget/preference.vala:324
 msgid "Next workspace:"
-msgstr "Seuraava välilehti:"
+msgstr ""
 
 #: ../widget/preference.vala:397
 msgid "Normal window"
-msgstr "Normaali ikkuna"
+msgstr ""
 
 #: ../widget/preference.vala:137
 msgid "Opacity:"
-msgstr "Läpikuultamattomuus:"
+msgstr ""
 
 #: ../widget/terminal.vala:364 ../widget/config_window.vala:306
 msgid "Open"
-msgstr "Avaa"
+msgstr ""
 
 #: ../widget/terminal.vala:372
 msgid "Open in file manager"
-msgstr "Avaa tiedostonhallinnassa"
+msgstr ""
+
+#: ../widget/config_window.vala:335
+msgid "Open terminal with a new theme"
+msgstr ""
 
 #: ../widget/preference.vala:306
 msgid "Open:"
-msgstr "Avaa:"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:275
 #: ../widget/remote_server_dialog.vala:285
 #: ../widget/remote_server_dialog.vala:294
 msgid "Optional"
-msgstr "Valinnainen"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Password"
-msgstr "Salasana"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:247
 msgid "Password:"
-msgstr "Salasana:"
+msgstr ""
 
 #: ../widget/terminal.vala:357 ../widget/config_window.vala:305
 #: ../widget/entry_menu.vala:41
 msgid "Paste"
-msgstr "Liitä"
+msgstr ""
 
 #: ../widget/preference.vala:305
 msgid "Paste:"
-msgstr "Liitä:"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Path"
-msgstr "Polku"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:286
 msgid "Path:"
-msgstr "Polku:"
+msgstr ""
 
 #: ../widget/shortcut_entry.vala:147
 msgid "Please enter a new shortcut"
-msgstr "Ole hyvä ja anna uusi pikanäppäin"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:199
 msgid "Port:"
-msgstr "Portti:"
+msgstr ""
 
 #: ../widget/config_window.vala:333
 msgid "Previous workspace"
-msgstr "Edellinen välilehti"
+msgstr ""
 
 #: ../widget/preference.vala:323
 msgid "Previous workspace:"
-msgstr "Edellinen välilehti:"
+msgstr ""
 
 #: ../widget/confirm_dialog.vala:130
 msgid "Programs are still running in terminal"
-msgstr "Ohjelmia on silti käynnissä päätteessä"
+msgstr ""
 
 #: ../main.vala:173
 msgid "Quake mode"
-msgstr "Quake-tila"
+msgstr ""
 
 #: ../widget/terminal.vala:448 ../widget/config_window.vala:361
 #: ../widget/appbar.vala:123
 msgid "Remote management"
-msgstr "Etähallinta"
+msgstr ""
 
 #: ../widget/preference.vala:344
 msgid "Remote management:"
-msgstr "Etähallinta:"
+msgstr ""
 
 #: ../widget/terminal.vala:643
 msgid "Rename"
-msgstr "Nimeä uudelleen"
+msgstr ""
 
 #: ../widget/terminal.vala:445 ../widget/terminal.vala:640
 #: ../widget/config_window.vala:357
 msgid "Rename title"
-msgstr "Nimeä välilehden otsikko uudelleen"
+msgstr ""
 
 #: ../widget/preference.vala:341
 msgid "Rename title:"
-msgstr "Nimeä välilehden otsikko uudelleen:"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:186
 #: ../widget/remote_server_dialog.vala:196
 #: ../widget/remote_server_dialog.vala:232 ../widget/command_dialog.vala:158
 #: ../widget/command_dialog.vala:171
 msgid "Required"
-msgstr "Vaadittu"
+msgstr ""
 
 #: ../widget/preference.vala:416
 msgid "Restore Defaults"
-msgstr "Palauta Oletusasetukset"
+msgstr ""
 
 #: ../main.vala:155 ../main.vala:164
 msgid "Run a program in the terminal"
-msgstr "Suorita ohjelma päätteessä"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:350 ../widget/command_dialog.vala:195
 msgid "Save"
-msgstr "Tallenna"
+msgstr ""
 
 #: ../widget/preference_slidebar.vala:87 ../widget/preference.vala:377
 msgid "Scroll"
-msgstr "Vieritä"
+msgstr ""
 
 #: ../widget/preference.vala:383
 msgid "Scroll on keystroke"
-msgstr "Vieritä näppäinpainalluksessa"
+msgstr ""
 
 #: ../widget/preference.vala:384
 msgid "Scroll on output"
-msgstr "Vieritä tekstin ulostulossa"
+msgstr ""
 
 #: ../widget/terminal.vala:405 ../widget/search_entry.vala:64
 #: ../widget/search_entry.vala:66 ../widget/config_window.vala:307
 msgid "Search"
-msgstr "Etsi"
+msgstr ""
 
 #: ../widget/preference.vala:307 ../widget/remote_panel.vala:357
 #: ../widget/command_panel.vala:201
 msgid "Search:"
-msgstr "Etsi:"
+msgstr ""
 
 #: ../widget/terminal.vala:609 ../widget/file_button.vala:71
 msgid "Select"
-msgstr "Valitse"
+msgstr ""
 
 #: ../widget/config_window.vala:311 ../widget/entry_menu.vala:47
 msgid "Select all"
-msgstr "Valitse kaikki"
+msgstr ""
 
 #: ../widget/preference.vala:313
 msgid "Select all:"
-msgstr "Valitse kaikki:"
+msgstr ""
 
 #: ../widget/terminal.vala:607
-msgid "Select directory to save download file"
-msgstr "Valitse sijainti ladatulle tiedostolle"
+msgid "Select directory to save the file"
+msgstr ""
 
 #: ../widget/terminal.vala:578
 msgid "Select file to upload"
-msgstr "Valitse lähetettävä tiedosto"
+msgstr ""
 
 #: ../widget/config_window.vala:340
 msgid "Select left window"
-msgstr "Valitse vasen paneeli"
+msgstr ""
 
 #: ../widget/preference.vala:329
 msgid "Select left window:"
-msgstr "Valitse vasen paneeli:"
+msgstr ""
 
 #: ../widget/config_window.vala:339
 msgid "Select lower window"
-msgstr "Valitse alempi paneeli"
+msgstr ""
 
 #: ../widget/preference.vala:328
 msgid "Select lower window:"
-msgstr "Valitse alempi paneeli:"
+msgstr ""
 
 #: ../widget/config_window.vala:341
 msgid "Select right window"
-msgstr "Valitse oikea paneeli"
+msgstr ""
 
 #: ../widget/preference.vala:330
 msgid "Select right window:"
-msgstr "Valitse oikea paneeli:"
+msgstr ""
 
 #: ../widget/file_button.vala:67
 msgid "Select the private key file"
-msgstr "Valitse yksityinen avaintiedosto"
+msgstr ""
 
 #: ../widget/config_window.vala:338
 msgid "Select upper window"
-msgstr "Valitse ylempi paneeli"
+msgstr ""
 
 #: ../widget/preference.vala:327
 msgid "Select upper window:"
-msgstr "Valitse ylempi paneeli:"
+msgstr ""
 
 #: ../widget/config_window.vala:334
 msgid "Select workspace"
-msgstr "Valitse välilehti"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Server name"
-msgstr "Palvelimen nimi"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:187
 msgid "Server name:"
-msgstr "Palvelimen nimi:"
+msgstr ""
 
 #: ../main.vala:137
 msgid "Set the terminal startup directory"
-msgstr "Aseta pääteikkunan aloituskansio"
+msgstr ""
 
 #: ../main.vala:119
 msgid "Set the terminal window mode"
-msgstr "Aseta pääteikkunan tila"
+msgstr ""
 
 #: ../widget/terminal.vala:456 ../widget/appbar.vala:125
 msgid "Settings"
-msgstr "Asetukset"
+msgstr ""
 
 #: ../widget/preference_slidebar.vala:65 ../widget/preference.vala:295
 #: ../widget/command_dialog.vala:83
 msgid "Shortcuts"
-msgstr "Pikanäppäimet"
+msgstr ""
 
 #: ../widget/command_dialog.vala:180
 msgid "Shortcuts:"
-msgstr "Pikanäppäimet:"
-
-#: ../widget/config_window.vala:358
-msgid "Switch fullscreen"
-msgstr "Siirry kokoruututilaan"
+msgstr ""
 
 #: ../widget/terminal.vala:443 ../widget/appbar.vala:121
 msgid "Switch theme"
-msgstr "Vaihda teemaa"
+msgstr ""
 
 #: ../widget/preference_slidebar.vala:68 ../widget/preference.vala:298
 #: ../widget/config_window.vala:318
 msgid "Terminal"
-msgstr "Pääte"
+msgstr ""
+
+#: ../widget/config_window.vala:358
+msgid "Toggle fullscreen"
+msgstr ""
 
 #: ../widget/terminal.vala:621
-msgid "Type path for download file"
-msgstr "Syötä sijainti ladatulle tiedostolle"
+msgid "Type path to download file"
+msgstr ""
 
 #: ../widget/terminal.vala:582
 msgid "Upload"
-msgstr "Lähetä"
+msgstr ""
 
 #: ../widget/terminal.vala:451
 msgid "Upload file"
-msgstr "Lähetä tiedosto"
+msgstr ""
 
 #: ../widget/preference.vala:400
 msgid "Use on starting:"
-msgstr "Käytä käynnistäessä:"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Username"
-msgstr "Käyttäjänimi"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:233
 msgid "Username:"
-msgstr "Käyttäjänimi:"
+msgstr ""
 
 #: ../widget/about_widget.vala:105
 msgid "Version:"
-msgstr "Versio:"
+msgstr ""
 
 #: ../widget/terminal.vala:383 ../widget/config_window.vala:336
 msgid "Vertical split"
-msgstr "Pystysuora jako"
+msgstr ""
 
 #: ../widget/preference.vala:325
 msgid "Vertical split:"
-msgstr "Pystysuora jako:"
+msgstr ""
 
-#: ../widget/terminal.vala:1507
+#: ../widget/terminal.vala:1509
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "
 "files."
 msgstr ""
-"Tervetuloa Deepin Päätteeseen, ole hyvä ja varmista, että palvelimelle on "
-"asennettu rz- ja sz-komennot ennen tiedostojen lähettämistä ja lataamista."
 
 #: ../widget/preference_slidebar.vala:90 ../widget/preference.vala:386
 msgid "Window"
-msgstr "Ikkuna"
+msgstr ""
 
 #: ../widget/preference_slidebar.vala:71 ../widget/preference.vala:315
 #: ../widget/config_window.vala:348
 msgid "Workspace"
-msgstr "Välilehti"
+msgstr ""
 
 #: ../widget/config_window.vala:308
 msgid "Zoom in"
-msgstr "Lähennä"
+msgstr ""
 
 #: ../widget/preference.vala:308
 msgid "Zoom in:"
-msgstr "Lähennä:"
+msgstr ""
 
 #: ../widget/config_window.vala:309
 msgid "Zoom out"
-msgstr "Loitonna"
+msgstr ""
 
 #: ../widget/preference.vala:309
 msgid "Zoom out:"
-msgstr "Loitonna:"
+msgstr ""
 
 #: ../widget/terminal.vala:782 ../widget/terminal.vala:1230
 msgid "deepin"
-msgstr "Deepin"
+msgstr ""

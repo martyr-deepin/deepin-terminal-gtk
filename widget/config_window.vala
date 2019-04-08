@@ -332,7 +332,7 @@ namespace Widgets {
                 insert_shortcut_key(builder, _("Next workspace"), config.config_file.get_string("shortcut", "next_workspace"));;
                 insert_shortcut_key(builder, _("Previous workspace"), config.config_file.get_string("shortcut", "previous_workspace"));;
                 insert_shortcut_key(builder, _("Select workspace"), "%s + 1 ~ %s + 9".printf(select_workspace_key, select_workspace_key));;
-                insert_shortcut_key(builder, _("New theme terminal"), "%s + 1 ~ %s + 9".printf(new_theme_terminal_key, new_theme_terminal_key));;
+                insert_shortcut_key(builder, _("Open terminal with a new theme"), "%s + 1 ~ %s + 9".printf(new_theme_terminal_key, new_theme_terminal_key));;
                 insert_shortcut_key(builder, _("Vertical split"), config.config_file.get_string("shortcut", "vertical_split"));;
                 insert_shortcut_key(builder, _("Horizontal split"), config.config_file.get_string("shortcut", "horizontal_split"));;
                 insert_shortcut_key(builder, _("Select upper window"), config.config_file.get_string("shortcut", "select_upper_window"));;
@@ -355,7 +355,7 @@ namespace Widgets {
                 builder.begin_array();
 
                 insert_shortcut_key(builder, _("Rename title"), config.config_file.get_string("shortcut", "rename_title"));;
-                insert_shortcut_key(builder, _("Switch fullscreen"), config.config_file.get_string("shortcut", "switch_fullscreen"));;
+                insert_shortcut_key(builder, _("Toggle fullscreen"), config.config_file.get_string("shortcut", "switch_fullscreen"));;
                 insert_shortcut_key(builder, _("Display shortcuts"), config.config_file.get_string("shortcut", "display_shortcuts"));;
                 insert_shortcut_key(builder, _("Custom commands"), config.config_file.get_string("shortcut", "custom_commands"));;
                 insert_shortcut_key(builder, _("Remote management"), config.config_file.get_string("shortcut", "remote_management"));;

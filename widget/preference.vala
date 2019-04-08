@@ -400,7 +400,7 @@ namespace Widgets {
             create_combox_row_with_name(window_label, window_combox, _("Use on starting:"), window_grid, window_state_list, window_state_name_list, "advanced", "use_on_starting");
 
             var hide_quakewindow_box = create_follow_check_row(hide_quakewindow_after_lost_focus_checkbutton,
-                                                               _("Hide quake window after lost focus"),
+                                                               _("Hide Quake window after losing focus"),
                                                                window_label,
                                                                window_grid,
                                                                "advanced",
