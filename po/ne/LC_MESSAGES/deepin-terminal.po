@@ -1,20 +1,25 @@
-# Nepali translations for PACKAGE package.
-# Copyright (C) 2019 THE PACKAGE'S COPYRIGHT HOLDER
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Automatically generated, 2019.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Saroj Poudel <sarojpoudel33@gmail.com>, 2018
+# 
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-08 11:58+0800\n"
-"PO-Revision-Date: 2019-04-08 11:58+0800\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
-"Language: ne\n"
+"POT-Creation-Date: 2019-01-03 10:53+0800\n"
+"PO-Revision-Date: 2017-02-04 05:38+0000\n"
+"Last-Translator: Saroj Poudel <sarojpoudel33@gmail.com>, 2018\n"
+"Language-Team: Nepali (https://www.transifex.com/linuxdeepin/teams/3976/ne/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ASCII\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ne\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../widget/terminal.vala:1204
 msgid ""
@@ -32,7 +37,7 @@ msgstr ""
 
 #: ../widget/remote_server_dialog.vala:352 ../widget/command_dialog.vala:197
 msgid "Add"
-msgstr ""
+msgstr "थप्नुहोस्"
 
 #: ../widget/command_dialog.vala:126
 msgid "Add Command"
@@ -62,18 +67,18 @@ msgstr ""
 #: ../widget/preference.vala:334 ../widget/preference.vala:346
 #: ../widget/config_window.vala:366
 msgid "Advanced"
-msgstr ""
+msgstr "उच्च"
 
 #: ../widget/remote_server_dialog.vala:337
 msgid "Advanced options"
 msgstr ""
 
 #: ../widget/remote_server_dialog.vala:426 ../widget/command_dialog.vala:249
-msgid "Are you sure you want to delete %s?"
+msgid "Are you sure to delete"
 msgstr ""
 
 #: ../widget/confirm_dialog.vala:130
-msgid "Are you sure you want to exit?"
+msgid "Are you sure to exit?"
 msgstr ""
 
 #: ../widget/remote_server_dialog.vala:107
@@ -98,7 +103,7 @@ msgstr ""
 #: ../widget/terminal.vala:642 ../widget/file_button.vala:69
 #: ../widget/command_dialog.vala:192 ../widget/command_dialog.vala:250
 msgid "Cancel"
-msgstr ""
+msgstr "रद्द गर्नुहोस्"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Certificate"
@@ -134,7 +139,7 @@ msgstr ""
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Command"
-msgstr ""
+msgstr "आदेश"
 
 #: ../widget/remote_server_dialog.vala:295 ../widget/command_dialog.vala:172
 msgid "Command:"
@@ -147,7 +152,7 @@ msgstr ""
 #: ../widget/terminal.vala:347 ../widget/config_window.vala:304
 #: ../widget/entry_menu.vala:39
 msgid "Copy"
-msgstr ""
+msgstr "कपी"
 
 #: ../widget/terminal.vala:351
 msgid "Copy link"
@@ -190,20 +195,13 @@ msgstr ""
 msgid "Cut"
 msgstr ""
 
-#: ../main.vala:189
-msgid ""
-"Deepin Teminal is an advanced terminal emulator with window-splitting, "
-"workspaces, remote management, Quake mode and other features."
-msgstr ""
-
 #: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:610
 msgid "Deepin Terminal"
 msgstr ""
 
-#: ../widget/about_widget.vala:49
+#: ../main.vala:189 ../widget/about_widget.vala:49
 msgid ""
-"Deepin Terminal is an advanced terminal emulator with workspace, multiple "
-"windows, remote management, quake mode and other features.\n"
+"Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.\n"
 "\n"
 "It sharpens your focus in the world of command line!"
 msgstr ""
@@ -219,7 +217,7 @@ msgstr ""
 #: ../widget/remote_server_dialog.vala:428 ../widget/command_dialog.vala:251
 #: ../widget/entry_menu.vala:44
 msgid "Delete"
-msgstr ""
+msgstr "मेटाउनुहोस्"
 
 #: ../widget/command_dialog.vala:238 ../widget/command_dialog.vala:248
 msgid "Delete command"
@@ -308,10 +306,10 @@ msgstr ""
 
 #: ../widget/appbar.vala:127
 msgid "Help"
-msgstr ""
+msgstr "सहायता"
 
 #: ../widget/preference.vala:403
-msgid "Hide Quake window after losing focus"
+msgid "Hide quake window after lost focus"
 msgstr ""
 
 #: ../widget/terminal.vala:382 ../widget/config_window.vala:337
@@ -324,7 +322,7 @@ msgstr ""
 
 #: ../widget/preference_slidebar.vala:58 ../widget/preference.vala:252
 msgid "Interface"
-msgstr ""
+msgstr "इन्टरफेस"
 
 #: ../widget/config_window.vala:312
 msgid "Jump to next command"
@@ -352,10 +350,14 @@ msgstr ""
 
 #: ../widget/command_dialog.vala:83
 msgid "Name"
-msgstr ""
+msgstr "नाम"
 
 #: ../widget/command_dialog.vala:159
 msgid "Name:"
+msgstr ""
+
+#: ../widget/config_window.vala:335
+msgid "New theme terminal"
 msgstr ""
 
 #: ../widget/appbar.vala:120
@@ -388,14 +390,10 @@ msgstr ""
 
 #: ../widget/terminal.vala:364 ../widget/config_window.vala:306
 msgid "Open"
-msgstr ""
+msgstr "खोल्नुहोस्"
 
 #: ../widget/terminal.vala:372
 msgid "Open in file manager"
-msgstr ""
-
-#: ../widget/config_window.vala:335
-msgid "Open terminal with a new theme"
 msgstr ""
 
 #: ../widget/preference.vala:306
@@ -406,11 +404,11 @@ msgstr ""
 #: ../widget/remote_server_dialog.vala:285
 #: ../widget/remote_server_dialog.vala:294
 msgid "Optional"
-msgstr ""
+msgstr "वैकल्पिक"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Password"
-msgstr ""
+msgstr "पासवर्ड"
 
 #: ../widget/remote_server_dialog.vala:247
 msgid "Password:"
@@ -435,7 +433,7 @@ msgstr ""
 
 #: ../widget/shortcut_entry.vala:147
 msgid "Please enter a new shortcut"
-msgstr ""
+msgstr "कृपया नयाँ सर्टकट प्रविष्ट गर्नुहोस्"
 
 #: ../widget/remote_server_dialog.vala:199
 msgid "Port:"
@@ -484,7 +482,7 @@ msgstr ""
 #: ../widget/remote_server_dialog.vala:232 ../widget/command_dialog.vala:158
 #: ../widget/command_dialog.vala:171
 msgid "Required"
-msgstr ""
+msgstr "आवश्यक छ"
 
 #: ../widget/preference.vala:416
 msgid "Restore Defaults"
@@ -496,7 +494,7 @@ msgstr ""
 
 #: ../widget/remote_server_dialog.vala:350 ../widget/command_dialog.vala:195
 msgid "Save"
-msgstr ""
+msgstr "बचत गर्नुहोस्"
 
 #: ../widget/preference_slidebar.vala:87 ../widget/preference.vala:377
 msgid "Scroll"
@@ -513,7 +511,7 @@ msgstr ""
 #: ../widget/terminal.vala:405 ../widget/search_entry.vala:64
 #: ../widget/search_entry.vala:66 ../widget/config_window.vala:307
 msgid "Search"
-msgstr ""
+msgstr "खोजी गर्नुहोस्"
 
 #: ../widget/preference.vala:307 ../widget/remote_panel.vala:357
 #: ../widget/command_panel.vala:201
@@ -533,7 +531,7 @@ msgid "Select all:"
 msgstr ""
 
 #: ../widget/terminal.vala:607
-msgid "Select directory to save the file"
+msgid "Select directory to save download file"
 msgstr ""
 
 #: ../widget/terminal.vala:578
@@ -598,15 +596,19 @@ msgstr ""
 
 #: ../widget/terminal.vala:456 ../widget/appbar.vala:125
 msgid "Settings"
-msgstr ""
+msgstr "सेटिंग्स"
 
 #: ../widget/preference_slidebar.vala:65 ../widget/preference.vala:295
 #: ../widget/command_dialog.vala:83
 msgid "Shortcuts"
-msgstr ""
+msgstr "सर्टकटहरू"
 
 #: ../widget/command_dialog.vala:180
 msgid "Shortcuts:"
+msgstr ""
+
+#: ../widget/config_window.vala:358
+msgid "Switch fullscreen"
 msgstr ""
 
 #: ../widget/terminal.vala:443 ../widget/appbar.vala:121
@@ -616,14 +618,10 @@ msgstr ""
 #: ../widget/preference_slidebar.vala:68 ../widget/preference.vala:298
 #: ../widget/config_window.vala:318
 msgid "Terminal"
-msgstr ""
-
-#: ../widget/config_window.vala:358
-msgid "Toggle fullscreen"
-msgstr ""
+msgstr "टर्मिनल"
 
 #: ../widget/terminal.vala:621
-msgid "Type path to download file"
+msgid "Type path for download file"
 msgstr ""
 
 #: ../widget/terminal.vala:582
@@ -640,7 +638,7 @@ msgstr ""
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Username"
-msgstr ""
+msgstr "प्रयोगकर्तानाम"
 
 #: ../widget/remote_server_dialog.vala:233
 msgid "Username:"
@@ -658,7 +656,7 @@ msgstr ""
 msgid "Vertical split:"
 msgstr ""
 
-#: ../widget/terminal.vala:1509
+#: ../widget/terminal.vala:1507
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "
@@ -667,7 +665,7 @@ msgstr ""
 
 #: ../widget/preference_slidebar.vala:90 ../widget/preference.vala:386
 msgid "Window"
-msgstr ""
+msgstr "विन्डो"
 
 #: ../widget/preference_slidebar.vala:71 ../widget/preference.vala:315
 #: ../widget/config_window.vala:348
