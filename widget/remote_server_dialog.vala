@@ -423,7 +423,7 @@ namespace Widgets {
 
                         var confirm_dialog = new Widgets.ConfirmDialog(
                             _("Delete server"),
-                            "%s %s?".printf(_("Are you sure to delete"), server_name),
+                            _("Are you sure you want to delete %s?").printf(server_name),
                             _("Cancel"),
                             _("Delete"));
                         confirm_dialog.transient_for_window(parent_window);

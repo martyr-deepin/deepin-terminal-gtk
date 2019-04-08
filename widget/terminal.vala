@@ -604,7 +604,7 @@ namespace Widgets {
 
         public void download_file() {
             Gtk.FileChooserAction action = Gtk.FileChooserAction.SELECT_FOLDER;
-            var chooser = new Gtk.FileChooserDialog(_("Select directory to save download file"), null, action);
+            var chooser = new Gtk.FileChooserDialog(_("Select directory to save the file"), null, action);
             chooser.add_button(_("Cancel"), Gtk.ResponseType.CANCEL);
             chooser.add_button(_("Select"), Gtk.ResponseType.ACCEPT);
 
@@ -618,7 +618,7 @@ namespace Widgets {
 
                         GLib.Timeout.add(100, () => {
                                 // NOTE: Use quote around $file to avoid escape filepath.
-                                string command = "read -e -a files -p \"%s: \"; sz \"${files[@]}\"\n".printf(_("Type path for download file"));
+                                string command = "read -e -a files -p \"%s: \"; sz \"${files[@]}\"\n".printf(_("Type path to download file"));
                                 this.term.feed_child(command.to_utf8());
 
                                 enter_sz_command = true;

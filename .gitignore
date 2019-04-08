@@ -5,7 +5,7 @@ build/
 *.o
 *.log
 *.user
-# 3rdparty/
+3rdparty/
 project_path.c
 lib/constant.vala
 .vscode/

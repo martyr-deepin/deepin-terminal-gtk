@@ -127,7 +127,7 @@ namespace Widgets {
     }
 
     public ConfirmDialog create_running_confirm_dialog(Widgets.ConfigWindow window) {
-        ConfirmDialog dialog = new ConfirmDialog(_("Programs are still running in terminal"), _("Are you sure to exit?"), _("Cancel"), _("Exit"));
+        ConfirmDialog dialog = new ConfirmDialog(_("Programs are still running in terminal"), _("Are you sure you want to exit?"), _("Cancel"), _("Exit"));
         dialog.transient_for_window(window);
 
         return dialog;

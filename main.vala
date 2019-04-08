@@ -186,7 +186,7 @@ public class Application : Object {
             };
 
             var opt_context = new OptionContext(_("Deepin Terminal"));
-            opt_context.set_summary(_("Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.\n\nIt sharpens your focus in the world of command line!"));
+            opt_context.set_summary(_("Deepin Teminal is an advanced terminal emulator with window-splitting, workspaces, remote management, Quake mode and other features."));
             opt_context.set_help_enabled(true);
             opt_context.add_main_entries(pass_options, null);
             opt_context.parse(ref args);
