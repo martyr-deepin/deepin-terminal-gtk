@@ -29,5 +29,5 @@ Architecture: any
 Provides: x-terminal-emulator
 Depends: ${shlibs:Depends}, ${misc:Depends}, deepin-menu, expect, lrzsz
 Description: sharpens your focus in the world of command line!
-Deepin Teminal is an advanced terminal emulator with window-splitting,
-workspaces, remote management, Quake mode and other features.
+ Deepin Teminal is an advanced terminal emulator with window-splitting,
+ workspaces, remote management, Quake mode and other features.
