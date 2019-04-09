@@ -9,15 +9,16 @@
 # artor <arto@rusanen.me>, 2017
 # Kimmo Siniluoto <robotti1984@gmail.com>, 2017
 # Deathmist, 2018
+# Kimmo Kujansuu <mrkujansuu@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-03 10:53+0800\n"
+"POT-Creation-Date: 2019-04-08 11:58+0800\n"
 "PO-Revision-Date: 2017-02-04 05:38+0000\n"
-"Last-Translator: Deathmist, 2018\n"
+"Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>, 2019\n"
 "Language-Team: Finnish (https://www.transifex.com/linuxdeepin/teams/3976/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -80,12 +81,12 @@ msgid "Advanced options"
 msgstr "Lisäasetukset"
 
 #: ../widget/remote_server_dialog.vala:426 ../widget/command_dialog.vala:249
-msgid "Are you sure to delete"
-msgstr "Haluatko varmasti poistaa kohteen"
+msgid "Are you sure you want to delete %s?"
+msgstr "Haluatko varmasti poistaa %s?"
 
 #: ../widget/confirm_dialog.vala:130
-msgid "Are you sure to exit?"
-msgstr "Haluatko varmasti poistua?"
+msgid "Are you sure you want to exit?"
+msgstr "Oletko varma, että haluat poistua?"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Backspace key"
@@ -166,7 +167,7 @@ msgstr "Kopioi linkki"
 
 #: ../widget/preference.vala:375
 msgid "Copy on select"
-msgstr ""
+msgstr "Kopioi valittu"
 
 #: ../widget/preference.vala:304
 msgid "Copy:"
@@ -201,11 +202,19 @@ msgstr "Mukautetut komennot:"
 msgid "Cut"
 msgstr "Leikkaa"
 
+#: ../main.vala:189
+msgid ""
+"Deepin Teminal is an advanced terminal emulator with window-splitting, "
+"workspaces, remote management, Quake mode and other features."
+msgstr ""
+"Deepin Terminal on edistynyt pääte-emulaattori, jossa on välilehdet, "
+"työtilat, etähallinta, Quake-tila ja muut ominaisuudet."
+
 #: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:610
 msgid "Deepin Terminal"
 msgstr "Deepin-terminaali"
 
-#: ../main.vala:189 ../widget/about_widget.vala:49
+#: ../widget/about_widget.vala:49
 msgid ""
 "Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.\n"
 "\n"
@@ -318,7 +327,7 @@ msgid "Help"
 msgstr "Ohje"
 
 #: ../widget/preference.vala:403
-msgid "Hide quake window after lost focus"
+msgid "Hide Quake window after losing focus"
 msgstr "Piilota quake-ikkuna kadotetun tarkennuksen jälkeen"
 
 #: ../widget/terminal.vala:382 ../widget/config_window.vala:337
@@ -365,10 +374,6 @@ msgstr "Nimi"
 msgid "Name:"
 msgstr "Nimi:"
 
-#: ../widget/config_window.vala:335
-msgid "New theme terminal"
-msgstr "Uusi teemapääte"
-
 #: ../widget/appbar.vala:120
 msgid "New window"
 msgstr "Uusi ikkuna"
@@ -404,6 +409,10 @@ msgstr "Avaa"
 #: ../widget/terminal.vala:372
 msgid "Open in file manager"
 msgstr "Avaa tiedostonhallinnassa"
+
+#: ../widget/config_window.vala:335
+msgid "Open terminal with a new theme"
+msgstr "Avaa terminaali uudella teemalla"
 
 #: ../widget/preference.vala:306
 msgid "Open:"
@@ -540,8 +549,8 @@ msgid "Select all:"
 msgstr "Valitse kaikki:"
 
 #: ../widget/terminal.vala:607
-msgid "Select directory to save download file"
-msgstr "Valitse sijainti ladatulle tiedostolle"
+msgid "Select directory to save the file"
+msgstr "Valitse hakemisto tallentaaksesi tiedoston"
 
 #: ../widget/terminal.vala:578
 msgid "Select file to upload"
@@ -616,10 +625,6 @@ msgstr "Pikanäppäimet"
 msgid "Shortcuts:"
 msgstr "Pikanäppäimet:"
 
-#: ../widget/config_window.vala:358
-msgid "Switch fullscreen"
-msgstr "Siirry kokoruututilaan"
-
 #: ../widget/terminal.vala:443 ../widget/appbar.vala:121
 msgid "Switch theme"
 msgstr "Vaihda teemaa"
@@ -629,9 +634,13 @@ msgstr "Vaihda teemaa"
 msgid "Terminal"
 msgstr "Pääte"
 
+#: ../widget/config_window.vala:358
+msgid "Toggle fullscreen"
+msgstr "Vaihda kokonäyttö"
+
 #: ../widget/terminal.vala:621
-msgid "Type path for download file"
-msgstr "Syötä sijainti ladatulle tiedostolle"
+msgid "Type path to download file"
+msgstr "Kirjoita ladattavan tiedoston polku"
 
 #: ../widget/terminal.vala:582
 msgid "Upload"
@@ -665,7 +674,7 @@ msgstr "Pystysuora jako"
 msgid "Vertical split:"
 msgstr "Pystysuora jako:"
 
-#: ../widget/terminal.vala:1507
+#: ../widget/terminal.vala:1509
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "

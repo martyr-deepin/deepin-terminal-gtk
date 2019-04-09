@@ -6,15 +6,16 @@
 # Translators:
 # Maggie Liu <maggie.liufei@gmail.com>, 2017
 # Piotr Strębski <strebski@gmail.com>, 2018
+# Krzysztof Kut <jooyo@o2.pl>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-03 10:53+0800\n"
+"POT-Creation-Date: 2019-04-08 11:58+0800\n"
 "PO-Revision-Date: 2017-02-04 05:38+0000\n"
-"Last-Translator: Piotr Strębski <strebski@gmail.com>, 2018\n"
+"Last-Translator: Krzysztof Kut <jooyo@o2.pl>, 2019\n"
 "Language-Team: Polish (https://www.transifex.com/linuxdeepin/teams/3976/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -77,12 +78,12 @@ msgid "Advanced options"
 msgstr "Zaawansowane opcje"
 
 #: ../widget/remote_server_dialog.vala:426 ../widget/command_dialog.vala:249
-msgid "Are you sure to delete"
-msgstr "Czy na pewno usunąć?"
+msgid "Are you sure you want to delete %s?"
+msgstr ""
 
 #: ../widget/confirm_dialog.vala:130
-msgid "Are you sure to exit?"
-msgstr "Czy na pewno chcesz wyjść?"
+msgid "Are you sure you want to exit?"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Backspace key"
@@ -163,7 +164,7 @@ msgstr "Kopiuj odnośnik"
 
 #: ../widget/preference.vala:375
 msgid "Copy on select"
-msgstr ""
+msgstr "Kopiuj przy zaznaczaniu"
 
 #: ../widget/preference.vala:304
 msgid "Copy:"
@@ -198,11 +199,17 @@ msgstr "Polecenia własne:"
 msgid "Cut"
 msgstr "Wytnij"
 
+#: ../main.vala:189
+msgid ""
+"Deepin Teminal is an advanced terminal emulator with window-splitting, "
+"workspaces, remote management, Quake mode and other features."
+msgstr ""
+
 #: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:610
 msgid "Deepin Terminal"
 msgstr "Terminal Deepin"
 
-#: ../main.vala:189 ../widget/about_widget.vala:49
+#: ../widget/about_widget.vala:49
 msgid ""
 "Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.\n"
 "\n"
@@ -315,8 +322,8 @@ msgid "Help"
 msgstr "Pomoc"
 
 #: ../widget/preference.vala:403
-msgid "Hide quake window after lost focus"
-msgstr "Ukryj okno quake po utracie zaznaczenia"
+msgid "Hide Quake window after losing focus"
+msgstr ""
 
 #: ../widget/terminal.vala:382 ../widget/config_window.vala:337
 msgid "Horizontal split"
@@ -362,10 +369,6 @@ msgstr "Nazwa"
 msgid "Name:"
 msgstr "Nazwa:"
 
-#: ../widget/config_window.vala:335
-msgid "New theme terminal"
-msgstr "Nowy motyw terminala"
-
 #: ../widget/appbar.vala:120
 msgid "New window"
 msgstr "Nowe okno"
@@ -401,6 +404,10 @@ msgstr "Otwórz"
 #: ../widget/terminal.vala:372
 msgid "Open in file manager"
 msgstr "Otwórz w menedżerze plików"
+
+#: ../widget/config_window.vala:335
+msgid "Open terminal with a new theme"
+msgstr ""
 
 #: ../widget/preference.vala:306
 msgid "Open:"
@@ -537,8 +544,8 @@ msgid "Select all:"
 msgstr "Zaznacz wszystko:"
 
 #: ../widget/terminal.vala:607
-msgid "Select directory to save download file"
-msgstr "Wybierz katalog do zapisu pobranego pliku"
+msgid "Select directory to save the file"
+msgstr ""
 
 #: ../widget/terminal.vala:578
 msgid "Select file to upload"
@@ -613,10 +620,6 @@ msgstr "Skróty"
 msgid "Shortcuts:"
 msgstr "Skróty:"
 
-#: ../widget/config_window.vala:358
-msgid "Switch fullscreen"
-msgstr "Przełącz pełen ekran"
-
 #: ../widget/terminal.vala:443 ../widget/appbar.vala:121
 msgid "Switch theme"
 msgstr "Przełącz motyw"
@@ -626,9 +629,13 @@ msgstr "Przełącz motyw"
 msgid "Terminal"
 msgstr "Terminal"
 
+#: ../widget/config_window.vala:358
+msgid "Toggle fullscreen"
+msgstr ""
+
 #: ../widget/terminal.vala:621
-msgid "Type path for download file"
-msgstr "Wpisz ścieżkę dla pobieranych plików"
+msgid "Type path to download file"
+msgstr ""
 
 #: ../widget/terminal.vala:582
 msgid "Upload"
@@ -662,7 +669,7 @@ msgstr "Podział pionowy"
 msgid "Vertical split:"
 msgstr "Podział pionowy:"
 
-#: ../widget/terminal.vala:1507
+#: ../widget/terminal.vala:1509
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "

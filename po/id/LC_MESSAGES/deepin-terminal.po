@@ -12,15 +12,16 @@
 # Dedy Yugo Purwanto <dedy.yugo.purwanto@gmail.com>, 2017
 # Muhammad Fauzi <fauzi.padlaw@gmail.com>, 2018
 # Aril Apria Susanto <awriel@gmail.com>, 2018
+# jemmy surya <jemmysurya@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-03 10:53+0800\n"
+"POT-Creation-Date: 2019-04-08 11:58+0800\n"
 "PO-Revision-Date: 2017-02-04 05:38+0000\n"
-"Last-Translator: Aril Apria Susanto <awriel@gmail.com>, 2018\n"
+"Last-Translator: jemmy surya <jemmysurya@gmail.com>, 2019\n"
 "Language-Team: Indonesian (https://www.transifex.com/linuxdeepin/teams/3976/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -83,12 +84,12 @@ msgid "Advanced options"
 msgstr "Opsi lanjutan"
 
 #: ../widget/remote_server_dialog.vala:426 ../widget/command_dialog.vala:249
-msgid "Are you sure to delete"
-msgstr "Apakah Anda yakin ingin menghapus"
+msgid "Are you sure you want to delete %s?"
+msgstr ""
 
 #: ../widget/confirm_dialog.vala:130
-msgid "Are you sure to exit?"
-msgstr "Apakah Anda yakin ingin keluar?"
+msgid "Are you sure you want to exit?"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Backspace key"
@@ -169,7 +170,7 @@ msgstr "Salin tautan"
 
 #: ../widget/preference.vala:375
 msgid "Copy on select"
-msgstr ""
+msgstr "Salin saat pilih"
 
 #: ../widget/preference.vala:304
 msgid "Copy:"
@@ -204,11 +205,17 @@ msgstr "Perintah sesuaian:"
 msgid "Cut"
 msgstr "Potong"
 
+#: ../main.vala:189
+msgid ""
+"Deepin Teminal is an advanced terminal emulator with window-splitting, "
+"workspaces, remote management, Quake mode and other features."
+msgstr ""
+
 #: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:610
 msgid "Deepin Terminal"
 msgstr "Terminal Deepin"
 
-#: ../main.vala:189 ../widget/about_widget.vala:49
+#: ../widget/about_widget.vala:49
 msgid ""
 "Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.\n"
 "\n"
@@ -321,8 +328,8 @@ msgid "Help"
 msgstr "Bantuan"
 
 #: ../widget/preference.vala:403
-msgid "Hide quake window after lost focus"
-msgstr "Sembunyikan quake jendela ketika kehilangan fokus"
+msgid "Hide Quake window after losing focus"
+msgstr ""
 
 #: ../widget/terminal.vala:382 ../widget/config_window.vala:337
 msgid "Horizontal split"
@@ -368,10 +375,6 @@ msgstr "Nama"
 msgid "Name:"
 msgstr "Nama:"
 
-#: ../widget/config_window.vala:335
-msgid "New theme terminal"
-msgstr "Tema baru terminal"
-
 #: ../widget/appbar.vala:120
 msgid "New window"
 msgstr "Jendela baru"
@@ -407,6 +410,10 @@ msgstr "Buka"
 #: ../widget/terminal.vala:372
 msgid "Open in file manager"
 msgstr "Buka pada manajer berkas"
+
+#: ../widget/config_window.vala:335
+msgid "Open terminal with a new theme"
+msgstr ""
 
 #: ../widget/preference.vala:306
 msgid "Open:"
@@ -543,8 +550,8 @@ msgid "Select all:"
 msgstr "Pilih semua:"
 
 #: ../widget/terminal.vala:607
-msgid "Select directory to save download file"
-msgstr "Pilih direktori untuk menyimpan berkas unduhan"
+msgid "Select directory to save the file"
+msgstr ""
 
 #: ../widget/terminal.vala:578
 msgid "Select file to upload"
@@ -619,10 +626,6 @@ msgstr "Pintasan"
 msgid "Shortcuts:"
 msgstr "Pintasan:"
 
-#: ../widget/config_window.vala:358
-msgid "Switch fullscreen"
-msgstr "Alih layar penuh"
-
 #: ../widget/terminal.vala:443 ../widget/appbar.vala:121
 msgid "Switch theme"
 msgstr "Alih tema"
@@ -632,9 +635,13 @@ msgstr "Alih tema"
 msgid "Terminal"
 msgstr "Terminal"
 
+#: ../widget/config_window.vala:358
+msgid "Toggle fullscreen"
+msgstr ""
+
 #: ../widget/terminal.vala:621
-msgid "Type path for download file"
-msgstr "Ketik jejak untuk berkas diunduh"
+msgid "Type path to download file"
+msgstr ""
 
 #: ../widget/terminal.vala:582
 msgid "Upload"
@@ -668,7 +675,7 @@ msgstr "Bagi vertikal"
 msgid "Vertical split:"
 msgstr "Bagi vertikal"
 
-#: ../widget/terminal.vala:1507
+#: ../widget/terminal.vala:1509
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "

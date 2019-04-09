@@ -7,16 +7,16 @@
 # Maggie Liu <maggie.liufei@gmail.com>, 2017
 # Morten Juhl-Johansen Zölde-Fejér <morten@writtenandread.net>, 2017
 # Carl Andersen <carl@black-pearl.dk>, 2017
-# scootergrisen, 2018
+# scootergrisen, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-03 10:53+0800\n"
+"POT-Creation-Date: 2019-04-08 11:58+0800\n"
 "PO-Revision-Date: 2017-02-04 05:38+0000\n"
-"Last-Translator: scootergrisen, 2018\n"
+"Last-Translator: scootergrisen, 2019\n"
 "Language-Team: Danish (https://www.transifex.com/linuxdeepin/teams/3976/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -79,12 +79,12 @@ msgid "Advanced options"
 msgstr "Avancerede valgmuligheder"
 
 #: ../widget/remote_server_dialog.vala:426 ../widget/command_dialog.vala:249
-msgid "Are you sure to delete"
-msgstr "Er du sikker på, at du vil slette"
+msgid "Are you sure you want to delete %s?"
+msgstr ""
 
 #: ../widget/confirm_dialog.vala:130
-msgid "Are you sure to exit?"
-msgstr "Er du sikker på, at du vil forlade?"
+msgid "Are you sure you want to exit?"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Backspace key"
@@ -165,7 +165,7 @@ msgstr "Kopiér link"
 
 #: ../widget/preference.vala:375
 msgid "Copy on select"
-msgstr ""
+msgstr "Kopiér ved vælg"
 
 #: ../widget/preference.vala:304
 msgid "Copy:"
@@ -200,11 +200,17 @@ msgstr "Brugerdefinerede kommandoer:"
 msgid "Cut"
 msgstr "Klip"
 
+#: ../main.vala:189
+msgid ""
+"Deepin Teminal is an advanced terminal emulator with window-splitting, "
+"workspaces, remote management, Quake mode and other features."
+msgstr ""
+
 #: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:610
 msgid "Deepin Terminal"
 msgstr "Deepin terminal"
 
-#: ../main.vala:189 ../widget/about_widget.vala:49
+#: ../widget/about_widget.vala:49
 msgid ""
 "Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.\n"
 "\n"
@@ -317,8 +323,8 @@ msgid "Help"
 msgstr "Hjælp"
 
 #: ../widget/preference.vala:403
-msgid "Hide quake window after lost focus"
-msgstr "Skjul quake-vindue efter mistet fokus"
+msgid "Hide Quake window after losing focus"
+msgstr ""
 
 #: ../widget/terminal.vala:382 ../widget/config_window.vala:337
 msgid "Horizontal split"
@@ -364,10 +370,6 @@ msgstr "Navn"
 msgid "Name:"
 msgstr "Navn:"
 
-#: ../widget/config_window.vala:335
-msgid "New theme terminal"
-msgstr "Ny tematerminal"
-
 #: ../widget/appbar.vala:120
 msgid "New window"
 msgstr "Nyt vindue"
@@ -403,6 +405,10 @@ msgstr "Åbn"
 #: ../widget/terminal.vala:372
 msgid "Open in file manager"
 msgstr "Åbn i filhåndtering"
+
+#: ../widget/config_window.vala:335
+msgid "Open terminal with a new theme"
+msgstr ""
 
 #: ../widget/preference.vala:306
 msgid "Open:"
@@ -539,8 +545,8 @@ msgid "Select all:"
 msgstr "Slet alt:"
 
 #: ../widget/terminal.vala:607
-msgid "Select directory to save download file"
-msgstr "Vælg mappe hvor downloadet fil skal gemmes"
+msgid "Select directory to save the file"
+msgstr ""
 
 #: ../widget/terminal.vala:578
 msgid "Select file to upload"
@@ -615,10 +621,6 @@ msgstr "Genveje"
 msgid "Shortcuts:"
 msgstr "Genveje:"
 
-#: ../widget/config_window.vala:358
-msgid "Switch fullscreen"
-msgstr "Fuldskærm til/fra"
-
 #: ../widget/terminal.vala:443 ../widget/appbar.vala:121
 msgid "Switch theme"
 msgstr "Skift tema"
@@ -628,9 +630,13 @@ msgstr "Skift tema"
 msgid "Terminal"
 msgstr "Terminal"
 
+#: ../widget/config_window.vala:358
+msgid "Toggle fullscreen"
+msgstr ""
+
 #: ../widget/terminal.vala:621
-msgid "Type path for download file"
-msgstr "Skriv stil til downloadet fil"
+msgid "Type path to download file"
+msgstr ""
 
 #: ../widget/terminal.vala:582
 msgid "Upload"
@@ -664,7 +670,7 @@ msgstr "Lodret opdeling"
 msgid "Vertical split:"
 msgstr "Lodret opdeling:"
 
-#: ../widget/terminal.vala:1507
+#: ../widget/terminal.vala:1509
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "

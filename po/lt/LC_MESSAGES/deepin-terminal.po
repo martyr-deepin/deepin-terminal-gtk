@@ -6,16 +6,16 @@
 # Translators:
 # Mantas Kriaučiūnas <mantas@akl.lt>, 2017
 # Jonas Motiejūnas <exjonas@gmail.com>, 2017
-# Moo, 2018
+# Moo, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-03 10:53+0800\n"
+"POT-Creation-Date: 2019-04-08 11:58+0800\n"
 "PO-Revision-Date: 2017-02-04 05:38+0000\n"
-"Last-Translator: Moo, 2018\n"
+"Last-Translator: Moo, 2019\n"
 "Language-Team: Lithuanian (https://www.transifex.com/linuxdeepin/teams/3976/lt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -78,12 +78,12 @@ msgid "Advanced options"
 msgstr "Išplėstinės parinktys"
 
 #: ../widget/remote_server_dialog.vala:426 ../widget/command_dialog.vala:249
-msgid "Are you sure to delete"
-msgstr "Ar tikrai ištrinti"
+msgid "Are you sure you want to delete %s?"
+msgstr "Ar tikrai norite ištrinti %s?"
 
 #: ../widget/confirm_dialog.vala:130
-msgid "Are you sure to exit?"
-msgstr "Ar tikrai išeiti?"
+msgid "Are you sure you want to exit?"
+msgstr "Ar tikrai norite išeiti?"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Backspace key"
@@ -164,7 +164,7 @@ msgstr "Kopijuoti nuorodą"
 
 #: ../widget/preference.vala:375
 msgid "Copy on select"
-msgstr ""
+msgstr "Kopijuoti, žymint tekstą"
 
 #: ../widget/preference.vala:304
 msgid "Copy:"
@@ -199,11 +199,20 @@ msgstr "Tinkintos komandos:"
 msgid "Cut"
 msgstr "Iškirpti"
 
+#: ../main.vala:189
+msgid ""
+"Deepin Teminal is an advanced terminal emulator with window-splitting, "
+"workspaces, remote management, Quake mode and other features."
+msgstr ""
+"Deepin terminalas yra išplėstinis terminalo emuliatorius su lango "
+"perskyrimo, darbo sričių, nuotolinio administravimo, Quake veiksenos ir "
+"kitomis ypatybės."
+
 #: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:610
 msgid "Deepin Terminal"
 msgstr "Deepin terminalas"
 
-#: ../main.vala:189 ../widget/about_widget.vala:49
+#: ../widget/about_widget.vala:49
 msgid ""
 "Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.\n"
 "\n"
@@ -316,8 +325,8 @@ msgid "Help"
 msgstr "Žinynas"
 
 #: ../widget/preference.vala:403
-msgid "Hide quake window after lost focus"
-msgstr "Slėpti quake langą, jam praradus fokusavimą"
+msgid "Hide Quake window after losing focus"
+msgstr "Slėpti Quake langą, jam praradus fokusavimą"
 
 #: ../widget/terminal.vala:382 ../widget/config_window.vala:337
 msgid "Horizontal split"
@@ -363,10 +372,6 @@ msgstr "Pavadinimas"
 msgid "Name:"
 msgstr "Pavadinimas:"
 
-#: ../widget/config_window.vala:335
-msgid "New theme terminal"
-msgstr "Nauja terminalo tema"
-
 #: ../widget/appbar.vala:120
 msgid "New window"
 msgstr "Naujas langas"
@@ -402,6 +407,10 @@ msgstr "Atverti"
 #: ../widget/terminal.vala:372
 msgid "Open in file manager"
 msgstr "Atverti failų tvarkytuvėje"
+
+#: ../widget/config_window.vala:335
+msgid "Open terminal with a new theme"
+msgstr "Atverti terminalą su nauja tema"
 
 #: ../widget/preference.vala:306
 msgid "Open:"
@@ -538,8 +547,8 @@ msgid "Select all:"
 msgstr "Žymėti viską:"
 
 #: ../widget/terminal.vala:607
-msgid "Select directory to save download file"
-msgstr "Norėdami įrašyti atsiuntimo failą, pasirinkite katalogą"
+msgid "Select directory to save the file"
+msgstr "Pasirinkite katalogą failo įrašymui"
 
 #: ../widget/terminal.vala:578
 msgid "Select file to upload"
@@ -614,10 +623,6 @@ msgstr "Trumpiniai"
 msgid "Shortcuts:"
 msgstr "Trumpiniai:"
 
-#: ../widget/config_window.vala:358
-msgid "Switch fullscreen"
-msgstr "Perjungti visą ekraną"
-
 #: ../widget/terminal.vala:443 ../widget/appbar.vala:121
 msgid "Switch theme"
 msgstr "Pakeisti temą"
@@ -627,9 +632,13 @@ msgstr "Pakeisti temą"
 msgid "Terminal"
 msgstr "Terminalas"
 
+#: ../widget/config_window.vala:358
+msgid "Toggle fullscreen"
+msgstr "Perjungti visą ekraną"
+
 #: ../widget/terminal.vala:621
-msgid "Type path for download file"
-msgstr "Įvesti kelią atsiunčiamam failui"
+msgid "Type path to download file"
+msgstr "Įveskite kelią atsiunčiamam failui"
 
 #: ../widget/terminal.vala:582
 msgid "Upload"
@@ -663,7 +672,7 @@ msgstr "Vertikalus dalijimas"
 msgid "Vertical split:"
 msgstr "Vertikalus dalijimas:"
 
-#: ../widget/terminal.vala:1507
+#: ../widget/terminal.vala:1509
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "

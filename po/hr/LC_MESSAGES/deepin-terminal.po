@@ -5,7 +5,7 @@
 # 
 # Translators:
 # Vlado V. <vlays@mail.com>, 2017
-# e2f_hr_c2 <e2fhorse@outlook.com>, 2017
+# 3e282d1ae4897f0bb79601171df0b2ff, 2017
 # gogo <trebelnik2@gmail.com>, 2017
 # Marino Vuletić <marino.vuletic@outlook.com>, 2017
 # Ivica  Kolić <ikoli@yahoo.com>, 2017
@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-03 10:53+0800\n"
+"POT-Creation-Date: 2019-04-08 11:58+0800\n"
 "PO-Revision-Date: 2017-02-04 05:38+0000\n"
 "Last-Translator: Ivica  Kolić <ikoli@yahoo.com>, 2017\n"
 "Language-Team: Croatian (https://www.transifex.com/linuxdeepin/teams/3976/hr/)\n"
@@ -80,12 +80,12 @@ msgid "Advanced options"
 msgstr "Napredne opcije"
 
 #: ../widget/remote_server_dialog.vala:426 ../widget/command_dialog.vala:249
-msgid "Are you sure to delete"
-msgstr "Jeste li sigurni da želite izbrisati"
+msgid "Are you sure you want to delete %s?"
+msgstr ""
 
 #: ../widget/confirm_dialog.vala:130
-msgid "Are you sure to exit?"
-msgstr "Jeste li sigurni da želite izaći"
+msgid "Are you sure you want to exit?"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Backspace key"
@@ -201,11 +201,17 @@ msgstr "Prilagođene naredbe:"
 msgid "Cut"
 msgstr "Izreži"
 
+#: ../main.vala:189
+msgid ""
+"Deepin Teminal is an advanced terminal emulator with window-splitting, "
+"workspaces, remote management, Quake mode and other features."
+msgstr ""
+
 #: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:610
 msgid "Deepin Terminal"
 msgstr "Deepin terminal"
 
-#: ../main.vala:189 ../widget/about_widget.vala:49
+#: ../widget/about_widget.vala:49
 msgid ""
 "Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.\n"
 "\n"
@@ -318,7 +324,7 @@ msgid "Help"
 msgstr "Pomoć"
 
 #: ../widget/preference.vala:403
-msgid "Hide quake window after lost focus"
+msgid "Hide Quake window after losing focus"
 msgstr ""
 
 #: ../widget/terminal.vala:382 ../widget/config_window.vala:337
@@ -365,10 +371,6 @@ msgstr "Ime"
 msgid "Name:"
 msgstr "Ime:"
 
-#: ../widget/config_window.vala:335
-msgid "New theme terminal"
-msgstr ""
-
 #: ../widget/appbar.vala:120
 msgid "New window"
 msgstr "Novi prozor"
@@ -403,6 +405,10 @@ msgstr "Otvori"
 
 #: ../widget/terminal.vala:372
 msgid "Open in file manager"
+msgstr ""
+
+#: ../widget/config_window.vala:335
+msgid "Open terminal with a new theme"
 msgstr ""
 
 #: ../widget/preference.vala:306
@@ -540,8 +546,8 @@ msgid "Select all:"
 msgstr "Odaberi sve:"
 
 #: ../widget/terminal.vala:607
-msgid "Select directory to save download file"
-msgstr "Odaberite direktorij za spremanje preuzetih datoteka"
+msgid "Select directory to save the file"
+msgstr ""
 
 #: ../widget/terminal.vala:578
 msgid "Select file to upload"
@@ -616,10 +622,6 @@ msgstr "Prečaci"
 msgid "Shortcuts:"
 msgstr "Prečaci:"
 
-#: ../widget/config_window.vala:358
-msgid "Switch fullscreen"
-msgstr "Prebaci na cijeli zaslon"
-
 #: ../widget/terminal.vala:443 ../widget/appbar.vala:121
 msgid "Switch theme"
 msgstr "Promjeni temu"
@@ -629,9 +631,13 @@ msgstr "Promjeni temu"
 msgid "Terminal"
 msgstr "Terminal"
 
+#: ../widget/config_window.vala:358
+msgid "Toggle fullscreen"
+msgstr ""
+
 #: ../widget/terminal.vala:621
-msgid "Type path for download file"
-msgstr "Ukucajte putanju za preuzimanje datoteke"
+msgid "Type path to download file"
+msgstr ""
 
 #: ../widget/terminal.vala:582
 msgid "Upload"
@@ -665,7 +671,7 @@ msgstr "Okomita podjela"
 msgid "Vertical split:"
 msgstr "Okomita podjela:"
 
-#: ../widget/terminal.vala:1507
+#: ../widget/terminal.vala:1509
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "

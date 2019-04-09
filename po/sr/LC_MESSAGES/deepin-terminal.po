@@ -8,16 +8,16 @@
 # Nikola Obradović <carnikolao@gmail.com>, 2017
 # kolera <koleramilan@gmail.com>, 2017
 # Smarty <kidsmart33@gmail.com>, 2018
-# Марко Пејовић <3acejax@gmail.com>, 2018
+# Марко Пејовић <3acejax@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-03 10:53+0800\n"
+"POT-Creation-Date: 2019-04-08 11:58+0800\n"
 "PO-Revision-Date: 2017-02-04 05:38+0000\n"
-"Last-Translator: Марко Пејовић <3acejax@gmail.com>, 2018\n"
+"Last-Translator: Марко Пејовић <3acejax@gmail.com>, 2019\n"
 "Language-Team: Serbian (https://www.transifex.com/linuxdeepin/teams/3976/sr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -80,12 +80,12 @@ msgid "Advanced options"
 msgstr "Напредне опције"
 
 #: ../widget/remote_server_dialog.vala:426 ../widget/command_dialog.vala:249
-msgid "Are you sure to delete"
-msgstr "Заиста желите да обришете"
+msgid "Are you sure you want to delete %s?"
+msgstr ""
 
 #: ../widget/confirm_dialog.vala:130
-msgid "Are you sure to exit?"
-msgstr "Заиста желите да изађете?"
+msgid "Are you sure you want to exit?"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Backspace key"
@@ -166,7 +166,7 @@ msgstr "Копирај везу"
 
 #: ../widget/preference.vala:375
 msgid "Copy on select"
-msgstr ""
+msgstr "Копирај при избору"
 
 #: ../widget/preference.vala:304
 msgid "Copy:"
@@ -201,11 +201,17 @@ msgstr "Прилагођене команде:"
 msgid "Cut"
 msgstr "Исеци"
 
+#: ../main.vala:189
+msgid ""
+"Deepin Teminal is an advanced terminal emulator with window-splitting, "
+"workspaces, remote management, Quake mode and other features."
+msgstr ""
+
 #: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:610
 msgid "Deepin Terminal"
 msgstr "Дипин Терминал"
 
-#: ../main.vala:189 ../widget/about_widget.vala:49
+#: ../widget/about_widget.vala:49
 msgid ""
 "Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.\n"
 "\n"
@@ -318,8 +324,8 @@ msgid "Help"
 msgstr "Помоћ"
 
 #: ../widget/preference.vala:403
-msgid "Hide quake window after lost focus"
-msgstr "Сакриј спуштајући терминал када није у фокусу"
+msgid "Hide Quake window after losing focus"
+msgstr ""
 
 #: ../widget/terminal.vala:382 ../widget/config_window.vala:337
 msgid "Horizontal split"
@@ -365,10 +371,6 @@ msgstr "Име"
 msgid "Name:"
 msgstr "Име:"
 
-#: ../widget/config_window.vala:335
-msgid "New theme terminal"
-msgstr "Нова тема терминала"
-
 #: ../widget/appbar.vala:120
 msgid "New window"
 msgstr "Нови прозор"
@@ -404,6 +406,10 @@ msgstr "Отвори"
 #: ../widget/terminal.vala:372
 msgid "Open in file manager"
 msgstr "Отвори у управнику података"
+
+#: ../widget/config_window.vala:335
+msgid "Open terminal with a new theme"
+msgstr ""
 
 #: ../widget/preference.vala:306
 msgid "Open:"
@@ -495,7 +501,7 @@ msgstr "Потребно"
 
 #: ../widget/preference.vala:416
 msgid "Restore Defaults"
-msgstr "Врати подразумевано"
+msgstr "Врати Подразумевано"
 
 #: ../main.vala:155 ../main.vala:164
 msgid "Run a program in the terminal"
@@ -529,63 +535,63 @@ msgstr "Претражи:"
 
 #: ../widget/terminal.vala:609 ../widget/file_button.vala:71
 msgid "Select"
-msgstr "Одабери"
+msgstr "Изабери"
 
 #: ../widget/config_window.vala:311 ../widget/entry_menu.vala:47
 msgid "Select all"
-msgstr "Одабери све"
+msgstr "Изабери све"
 
 #: ../widget/preference.vala:313
 msgid "Select all:"
-msgstr "Одабери све:"
+msgstr "Изабери све:"
 
 #: ../widget/terminal.vala:607
-msgid "Select directory to save download file"
-msgstr "Одабери директоријум за чување преузете датотеке"
+msgid "Select directory to save the file"
+msgstr ""
 
 #: ../widget/terminal.vala:578
 msgid "Select file to upload"
-msgstr "Одабери датотеку за отпремање"
+msgstr "Изабери датотеку за отпремање"
 
 #: ../widget/config_window.vala:340
 msgid "Select left window"
-msgstr "Одабери леви прозор"
+msgstr "Изабери леви прозор"
 
 #: ../widget/preference.vala:329
 msgid "Select left window:"
-msgstr "Одабери леви прозор:"
+msgstr "Изабери леви прозор:"
 
 #: ../widget/config_window.vala:339
 msgid "Select lower window"
-msgstr "Одабери доњи прозор"
+msgstr "Изабери доњи прозор"
 
 #: ../widget/preference.vala:328
 msgid "Select lower window:"
-msgstr "Одабери доњи прозор:"
+msgstr "Изабери доњи прозор:"
 
 #: ../widget/config_window.vala:341
 msgid "Select right window"
-msgstr "Одабери десни прозор"
+msgstr "Изабери десни прозор"
 
 #: ../widget/preference.vala:330
 msgid "Select right window:"
-msgstr "Одабери десни прозор:"
+msgstr "Изабери десни прозор:"
 
 #: ../widget/file_button.vala:67
 msgid "Select the private key file"
-msgstr "Одабери датотеку са приватним кључем"
+msgstr "Изабери датотеку са приватним кључем"
 
 #: ../widget/config_window.vala:338
 msgid "Select upper window"
-msgstr "Одабери горњи прозор"
+msgstr "Изабери горњи прозор"
 
 #: ../widget/preference.vala:327
 msgid "Select upper window:"
-msgstr "Одабери горњи прозор:"
+msgstr "Изабери горњи прозор:"
 
 #: ../widget/config_window.vala:334
 msgid "Select workspace"
-msgstr "Одабери радни простор"
+msgstr "Изабери радни простор"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Server name"
@@ -616,10 +622,6 @@ msgstr "Пречице"
 msgid "Shortcuts:"
 msgstr "Пречице:"
 
-#: ../widget/config_window.vala:358
-msgid "Switch fullscreen"
-msgstr "Пребаци на цео екран"
-
 #: ../widget/terminal.vala:443 ../widget/appbar.vala:121
 msgid "Switch theme"
 msgstr "Промени тему"
@@ -629,9 +631,13 @@ msgstr "Промени тему"
 msgid "Terminal"
 msgstr "Терминал"
 
+#: ../widget/config_window.vala:358
+msgid "Toggle fullscreen"
+msgstr ""
+
 #: ../widget/terminal.vala:621
-msgid "Type path for download file"
-msgstr "Унеси путању за преузимање датотеке"
+msgid "Type path to download file"
+msgstr ""
 
 #: ../widget/terminal.vala:582
 msgid "Upload"
@@ -665,7 +671,7 @@ msgstr "Вертикална подела"
 msgid "Vertical split:"
 msgstr "Вертикална подела:"
 
-#: ../widget/terminal.vala:1507
+#: ../widget/terminal.vala:1509
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "
