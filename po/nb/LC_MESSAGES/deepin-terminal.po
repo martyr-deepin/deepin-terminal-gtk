@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-03 10:53+0800\n"
+"POT-Creation-Date: 2019-04-08 11:58+0800\n"
 "PO-Revision-Date: 2017-02-04 05:38+0000\n"
 "Last-Translator: ddybing <daniel.dybing@me.com>, 2018\n"
 "Language-Team: Norwegian Bokmål (https://www.transifex.com/linuxdeepin/teams/3976/nb/)\n"
@@ -84,12 +84,12 @@ msgid "Advanced options"
 msgstr "Avanserte innstillinger"
 
 #: ../widget/remote_server_dialog.vala:426 ../widget/command_dialog.vala:249
-msgid "Are you sure to delete"
-msgstr "Er du sikker på å slette?"
+msgid "Are you sure you want to delete %s?"
+msgstr ""
 
 #: ../widget/confirm_dialog.vala:130
-msgid "Are you sure to exit?"
-msgstr "Er du sikker på at du vil avslutte?"
+msgid "Are you sure you want to exit?"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Backspace key"
@@ -205,11 +205,17 @@ msgstr "Egendefinerte kommandoer:"
 msgid "Cut"
 msgstr "Klipp"
 
+#: ../main.vala:189
+msgid ""
+"Deepin Teminal is an advanced terminal emulator with window-splitting, "
+"workspaces, remote management, Quake mode and other features."
+msgstr ""
+
 #: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:610
 msgid "Deepin Terminal"
 msgstr "Deepin terminal"
 
-#: ../main.vala:189 ../widget/about_widget.vala:49
+#: ../widget/about_widget.vala:49
 msgid ""
 "Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.\n"
 "\n"
@@ -322,8 +328,8 @@ msgid "Help"
 msgstr "Hjelp"
 
 #: ../widget/preference.vala:403
-msgid "Hide quake window after lost focus"
-msgstr "Skjul vindu etter at fokus er borte"
+msgid "Hide Quake window after losing focus"
+msgstr ""
 
 #: ../widget/terminal.vala:382 ../widget/config_window.vala:337
 msgid "Horizontal split"
@@ -369,10 +375,6 @@ msgstr "Navn"
 msgid "Name:"
 msgstr "Navn:"
 
-#: ../widget/config_window.vala:335
-msgid "New theme terminal"
-msgstr "Nytt tema til terminal"
-
 #: ../widget/appbar.vala:120
 msgid "New window"
 msgstr "Nytt vindu"
@@ -408,6 +410,10 @@ msgstr "Åpne"
 #: ../widget/terminal.vala:372
 msgid "Open in file manager"
 msgstr "Åpne i filbehandleren"
+
+#: ../widget/config_window.vala:335
+msgid "Open terminal with a new theme"
+msgstr ""
 
 #: ../widget/preference.vala:306
 msgid "Open:"
@@ -544,8 +550,8 @@ msgid "Select all:"
 msgstr "Søk alle:"
 
 #: ../widget/terminal.vala:607
-msgid "Select directory to save download file"
-msgstr "Velg en mappe for å lagre nedlastet fil"
+msgid "Select directory to save the file"
+msgstr ""
 
 #: ../widget/terminal.vala:578
 msgid "Select file to upload"
@@ -620,10 +626,6 @@ msgstr "Hurtigtaster"
 msgid "Shortcuts:"
 msgstr "Hurtigtaster:"
 
-#: ../widget/config_window.vala:358
-msgid "Switch fullscreen"
-msgstr "Bytt fullskjerm"
-
 #: ../widget/terminal.vala:443 ../widget/appbar.vala:121
 msgid "Switch theme"
 msgstr "Bytt tema"
@@ -633,9 +635,13 @@ msgstr "Bytt tema"
 msgid "Terminal"
 msgstr "Terminal"
 
+#: ../widget/config_window.vala:358
+msgid "Toggle fullscreen"
+msgstr ""
+
 #: ../widget/terminal.vala:621
-msgid "Type path for download file"
-msgstr "Oppgi sti for å laste ned fila"
+msgid "Type path to download file"
+msgstr ""
 
 #: ../widget/terminal.vala:582
 msgid "Upload"
@@ -669,7 +675,7 @@ msgstr "Vertikal splitt"
 msgid "Vertical split:"
 msgstr "Vertikal splitt:"
 
-#: ../widget/terminal.vala:1507
+#: ../widget/terminal.vala:1509
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "

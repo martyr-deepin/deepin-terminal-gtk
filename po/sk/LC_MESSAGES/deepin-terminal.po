@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-03 10:53+0800\n"
+"POT-Creation-Date: 2019-04-08 11:58+0800\n"
 "PO-Revision-Date: 2017-02-04 05:38+0000\n"
 "Last-Translator: Marek Bujko <marek.bujko@gmail.com>, 2018\n"
 "Language-Team: Slovak (https://www.transifex.com/linuxdeepin/teams/3976/sk/)\n"
@@ -79,12 +79,12 @@ msgid "Advanced options"
 msgstr "Pokročilé možnosti"
 
 #: ../widget/remote_server_dialog.vala:426 ../widget/command_dialog.vala:249
-msgid "Are you sure to delete"
-msgstr "Naozaj chcete vymazať"
+msgid "Are you sure you want to delete %s?"
+msgstr ""
 
 #: ../widget/confirm_dialog.vala:130
-msgid "Are you sure to exit?"
-msgstr "Naozaj chcete ukončiť?"
+msgid "Are you sure you want to exit?"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Backspace key"
@@ -200,11 +200,17 @@ msgstr "Vlastné príkazy:"
 msgid "Cut"
 msgstr "Vystrihnúť"
 
+#: ../main.vala:189
+msgid ""
+"Deepin Teminal is an advanced terminal emulator with window-splitting, "
+"workspaces, remote management, Quake mode and other features."
+msgstr ""
+
 #: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:610
 msgid "Deepin Terminal"
 msgstr "Deepin Terminál"
 
-#: ../main.vala:189 ../widget/about_widget.vala:49
+#: ../widget/about_widget.vala:49
 msgid ""
 "Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.\n"
 "\n"
@@ -317,8 +323,8 @@ msgid "Help"
 msgstr "Nápoveda"
 
 #: ../widget/preference.vala:403
-msgid "Hide quake window after lost focus"
-msgstr "Skryť quake okno po rozostrení"
+msgid "Hide Quake window after losing focus"
+msgstr ""
 
 #: ../widget/terminal.vala:382 ../widget/config_window.vala:337
 msgid "Horizontal split"
@@ -364,10 +370,6 @@ msgstr "Názov"
 msgid "Name:"
 msgstr "Názov:"
 
-#: ../widget/config_window.vala:335
-msgid "New theme terminal"
-msgstr "Nový terminál témy"
-
 #: ../widget/appbar.vala:120
 msgid "New window"
 msgstr "Nové okno"
@@ -403,6 +405,10 @@ msgstr "Otvoriť"
 #: ../widget/terminal.vala:372
 msgid "Open in file manager"
 msgstr "Otvoriť v správcovi súborov"
+
+#: ../widget/config_window.vala:335
+msgid "Open terminal with a new theme"
+msgstr ""
 
 #: ../widget/preference.vala:306
 msgid "Open:"
@@ -539,8 +545,8 @@ msgid "Select all:"
 msgstr "Vybrať všetko:"
 
 #: ../widget/terminal.vala:607
-msgid "Select directory to save download file"
-msgstr "Vyberte adresár pre uloženie sťahovaných súborov"
+msgid "Select directory to save the file"
+msgstr ""
 
 #: ../widget/terminal.vala:578
 msgid "Select file to upload"
@@ -615,10 +621,6 @@ msgstr "Odkazy"
 msgid "Shortcuts:"
 msgstr "Skratky:"
 
-#: ../widget/config_window.vala:358
-msgid "Switch fullscreen"
-msgstr "Prepnúť na celú obrazovku"
-
 #: ../widget/terminal.vala:443 ../widget/appbar.vala:121
 msgid "Switch theme"
 msgstr "Zmeniť tému"
@@ -628,9 +630,13 @@ msgstr "Zmeniť tému"
 msgid "Terminal"
 msgstr "Terminál"
 
+#: ../widget/config_window.vala:358
+msgid "Toggle fullscreen"
+msgstr ""
+
 #: ../widget/terminal.vala:621
-msgid "Type path for download file"
-msgstr "Typ cesty k súboru na stiahnutie"
+msgid "Type path to download file"
+msgstr ""
 
 #: ../widget/terminal.vala:582
 msgid "Upload"
@@ -664,7 +670,7 @@ msgstr "Vertikálne rozdelenie"
 msgid "Vertical split:"
 msgstr "Vertikálne rozdelenie:"
 
-#: ../widget/terminal.vala:1507
+#: ../widget/terminal.vala:1509
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "

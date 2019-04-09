@@ -11,17 +11,18 @@
 # Pablo Alessandro <pablo.alessandro@gmail.com>, 2017
 # Bruno Gonçalves <bigbruno@gmail.com>, 2017
 # RAFAEL GAUNA <rafaelgt.mbin@gmail.com>, 2017
-# Raphael Miquelis <raphaelmiquelis@gmail.com>, 2017
 # 58fae44c6c4ff84516f8c8656a7fb14d, 2018
+# Raphael Miquelis <raphaelmiquelis@gmail.com>, 2018
+# Paulo Schopf, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-03 10:53+0800\n"
+"POT-Creation-Date: 2019-04-08 11:58+0800\n"
 "PO-Revision-Date: 2017-02-04 05:38+0000\n"
-"Last-Translator: 58fae44c6c4ff84516f8c8656a7fb14d, 2018\n"
+"Last-Translator: Paulo Schopf, 2019\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/linuxdeepin/teams/3976/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -84,12 +85,12 @@ msgid "Advanced options"
 msgstr "Opções avançadas"
 
 #: ../widget/remote_server_dialog.vala:426 ../widget/command_dialog.vala:249
-msgid "Are you sure to delete"
-msgstr "Deseja excluir?"
+msgid "Are you sure you want to delete %s?"
+msgstr "Quer realmente excluir %s?"
 
 #: ../widget/confirm_dialog.vala:130
-msgid "Are you sure to exit?"
-msgstr "Deseja sair?"
+msgid "Are you sure you want to exit?"
+msgstr "Quer realmente sair?"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Backspace key"
@@ -170,7 +171,7 @@ msgstr "Copiar link"
 
 #: ../widget/preference.vala:375
 msgid "Copy on select"
-msgstr ""
+msgstr "Copiar ao selecionar"
 
 #: ../widget/preference.vala:304
 msgid "Copy:"
@@ -205,11 +206,19 @@ msgstr "Comandos personalizados:"
 msgid "Cut"
 msgstr "Recortar"
 
+#: ../main.vala:189
+msgid ""
+"Deepin Teminal is an advanced terminal emulator with window-splitting, "
+"workspaces, remote management, Quake mode and other features."
+msgstr ""
+"O Deepin Terminal é um emulador de terminal avançado com divisão de janelas,"
+" áreas de trabalho, gerenciamento remoto, modo Quake e outros recursos."
+
 #: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:610
 msgid "Deepin Terminal"
 msgstr "Terminal"
 
-#: ../main.vala:189 ../widget/about_widget.vala:49
+#: ../widget/about_widget.vala:49
 msgid ""
 "Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.\n"
 "\n"
@@ -322,8 +331,8 @@ msgid "Help"
 msgstr "Ajuda"
 
 #: ../widget/preference.vala:403
-msgid "Hide quake window after lost focus"
-msgstr "Ocultar janela quake depois de perder o foco"
+msgid "Hide Quake window after losing focus"
+msgstr "Ocultar a janela do Quake após perder o foco"
 
 #: ../widget/terminal.vala:382 ../widget/config_window.vala:337
 msgid "Horizontal split"
@@ -369,10 +378,6 @@ msgstr "Nome"
 msgid "Name:"
 msgstr "Nome:"
 
-#: ../widget/config_window.vala:335
-msgid "New theme terminal"
-msgstr "Novo tema para o terminal"
-
 #: ../widget/appbar.vala:120
 msgid "New window"
 msgstr "Nova janela"
@@ -408,6 +413,10 @@ msgstr "Abrir"
 #: ../widget/terminal.vala:372
 msgid "Open in file manager"
 msgstr "Abrir no gerenciador de arquivos"
+
+#: ../widget/config_window.vala:335
+msgid "Open terminal with a new theme"
+msgstr "Abrir o terminal com um novo tema"
 
 #: ../widget/preference.vala:306
 msgid "Open:"
@@ -544,8 +553,8 @@ msgid "Select all:"
 msgstr "Selecionar tudo:"
 
 #: ../widget/terminal.vala:607
-msgid "Select directory to save download file"
-msgstr "Selecionar diretório para salvar o arquivo"
+msgid "Select directory to save the file"
+msgstr "Selecionar o diretório para salvar o arquivo"
 
 #: ../widget/terminal.vala:578
 msgid "Select file to upload"
@@ -620,10 +629,6 @@ msgstr "Atalhos"
 msgid "Shortcuts:"
 msgstr "Atalhos:"
 
-#: ../widget/config_window.vala:358
-msgid "Switch fullscreen"
-msgstr "Alterar para tela cheia"
-
 #: ../widget/terminal.vala:443 ../widget/appbar.vala:121
 msgid "Switch theme"
 msgstr "Alterar tema"
@@ -633,9 +638,13 @@ msgstr "Alterar tema"
 msgid "Terminal"
 msgstr "Terminal"
 
+#: ../widget/config_window.vala:358
+msgid "Toggle fullscreen"
+msgstr "Alternar para o modo tela cheia"
+
 #: ../widget/terminal.vala:621
-msgid "Type path for download file"
-msgstr "Digite o caminho para o arquivo de download"
+msgid "Type path to download file"
+msgstr "Digite o caminho para baixar o arquivo"
 
 #: ../widget/terminal.vala:582
 msgid "Upload"
@@ -669,7 +678,7 @@ msgstr "Dividir verticalmente"
 msgid "Vertical split:"
 msgstr "Dividir verticalmente:"
 
-#: ../widget/terminal.vala:1507
+#: ../widget/terminal.vala:1509
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "

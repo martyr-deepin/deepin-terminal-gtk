@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-03 10:53+0800\n"
+"POT-Creation-Date: 2019-04-08 11:58+0800\n"
 "PO-Revision-Date: 2017-02-04 05:38+0000\n"
 "Last-Translator: Saroj Poudel <sarojpoudel33@gmail.com>, 2018\n"
 "Language-Team: Nepali (https://www.transifex.com/linuxdeepin/teams/3976/ne/)\n"
@@ -74,11 +74,11 @@ msgid "Advanced options"
 msgstr ""
 
 #: ../widget/remote_server_dialog.vala:426 ../widget/command_dialog.vala:249
-msgid "Are you sure to delete"
+msgid "Are you sure you want to delete %s?"
 msgstr ""
 
 #: ../widget/confirm_dialog.vala:130
-msgid "Are you sure to exit?"
+msgid "Are you sure you want to exit?"
 msgstr ""
 
 #: ../widget/remote_server_dialog.vala:107
@@ -195,11 +195,17 @@ msgstr ""
 msgid "Cut"
 msgstr ""
 
+#: ../main.vala:189
+msgid ""
+"Deepin Teminal is an advanced terminal emulator with window-splitting, "
+"workspaces, remote management, Quake mode and other features."
+msgstr ""
+
 #: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:610
 msgid "Deepin Terminal"
 msgstr ""
 
-#: ../main.vala:189 ../widget/about_widget.vala:49
+#: ../widget/about_widget.vala:49
 msgid ""
 "Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.\n"
 "\n"
@@ -309,7 +315,7 @@ msgid "Help"
 msgstr "सहायता"
 
 #: ../widget/preference.vala:403
-msgid "Hide quake window after lost focus"
+msgid "Hide Quake window after losing focus"
 msgstr ""
 
 #: ../widget/terminal.vala:382 ../widget/config_window.vala:337
@@ -356,10 +362,6 @@ msgstr "नाम"
 msgid "Name:"
 msgstr ""
 
-#: ../widget/config_window.vala:335
-msgid "New theme terminal"
-msgstr ""
-
 #: ../widget/appbar.vala:120
 msgid "New window"
 msgstr ""
@@ -394,6 +396,10 @@ msgstr "खोल्नुहोस्"
 
 #: ../widget/terminal.vala:372
 msgid "Open in file manager"
+msgstr ""
+
+#: ../widget/config_window.vala:335
+msgid "Open terminal with a new theme"
 msgstr ""
 
 #: ../widget/preference.vala:306
@@ -531,7 +537,7 @@ msgid "Select all:"
 msgstr ""
 
 #: ../widget/terminal.vala:607
-msgid "Select directory to save download file"
+msgid "Select directory to save the file"
 msgstr ""
 
 #: ../widget/terminal.vala:578
@@ -607,10 +613,6 @@ msgstr "सर्टकटहरू"
 msgid "Shortcuts:"
 msgstr ""
 
-#: ../widget/config_window.vala:358
-msgid "Switch fullscreen"
-msgstr ""
-
 #: ../widget/terminal.vala:443 ../widget/appbar.vala:121
 msgid "Switch theme"
 msgstr ""
@@ -620,8 +622,12 @@ msgstr ""
 msgid "Terminal"
 msgstr "टर्मिनल"
 
+#: ../widget/config_window.vala:358
+msgid "Toggle fullscreen"
+msgstr ""
+
 #: ../widget/terminal.vala:621
-msgid "Type path for download file"
+msgid "Type path to download file"
 msgstr ""
 
 #: ../widget/terminal.vala:582
@@ -656,7 +662,7 @@ msgstr ""
 msgid "Vertical split:"
 msgstr ""
 
-#: ../widget/terminal.vala:1507
+#: ../widget/terminal.vala:1509
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "

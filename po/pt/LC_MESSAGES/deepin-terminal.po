@@ -8,17 +8,18 @@
 # Maggie Liu <maggie.liufei@gmail.com>, 2017
 # Ricardo Simões <xmcorporation@gmail.com>, 2017
 # João P Carvalhinho <joao.carvalhinho@gmail.com>, 2017
-# MS <manuelarodsilva@gmail.com>, 2018
 # Luís Lima <geral@liqensoft.com>, 2018
+# MS <manuelarodsilva@gmail.com>, 2018
+# Hugo Carvalho <hugokarvalho@hotmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-03 10:53+0800\n"
+"POT-Creation-Date: 2019-04-08 11:58+0800\n"
 "PO-Revision-Date: 2017-02-04 05:38+0000\n"
-"Last-Translator: Luís Lima <geral@liqensoft.com>, 2018\n"
+"Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>, 2019\n"
 "Language-Team: Portuguese (https://www.transifex.com/linuxdeepin/teams/3976/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,7 +37,7 @@ msgstr ""
 
 #: ../widget/appbar.vala:129
 msgid "About"
-msgstr "Sobre"
+msgstr "Acerca"
 
 #: ../widget/about_widget.vala:81
 msgid "Acknowledgments"
@@ -81,12 +82,12 @@ msgid "Advanced options"
 msgstr "Opções avançadas"
 
 #: ../widget/remote_server_dialog.vala:426 ../widget/command_dialog.vala:249
-msgid "Are you sure to delete"
-msgstr "Tem a certeza que desejas eliminar"
+msgid "Are you sure you want to delete %s?"
+msgstr ""
 
 #: ../widget/confirm_dialog.vala:130
-msgid "Are you sure to exit?"
-msgstr "Tem a certeza que deseja sair?"
+msgid "Are you sure you want to exit?"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Backspace key"
@@ -167,7 +168,7 @@ msgstr "Copiar hiperligação"
 
 #: ../widget/preference.vala:375
 msgid "Copy on select"
-msgstr ""
+msgstr "Copiar ao selecionar"
 
 #: ../widget/preference.vala:304
 msgid "Copy:"
@@ -179,7 +180,7 @@ msgstr "Cursor"
 
 #: ../widget/preference.vala:374
 msgid "Cursor autohide"
-msgstr "Auto ocultar cursor"
+msgstr "Ocultar automaticamente o cursor"
 
 #: ../widget/preference.vala:373
 msgid "Cursor blink"
@@ -202,11 +203,17 @@ msgstr "Comandos personalizados:"
 msgid "Cut"
 msgstr "Cortar"
 
+#: ../main.vala:189
+msgid ""
+"Deepin Teminal is an advanced terminal emulator with window-splitting, "
+"workspaces, remote management, Quake mode and other features."
+msgstr ""
+
 #: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:610
 msgid "Deepin Terminal"
 msgstr "Deepin Terminal"
 
-#: ../main.vala:189 ../widget/about_widget.vala:49
+#: ../widget/about_widget.vala:49
 msgid ""
 "Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.\n"
 "\n"
@@ -218,7 +225,7 @@ msgstr ""
 
 #: ../widget/config_window.vala:310
 msgid "Default size"
-msgstr "Tamanho predefinido"
+msgstr "Tamanho Predefinido"
 
 #: ../widget/preference.vala:310
 msgid "Default size:"
@@ -319,8 +326,8 @@ msgid "Help"
 msgstr "Ajuda"
 
 #: ../widget/preference.vala:403
-msgid "Hide quake window after lost focus"
-msgstr "Ocultar janela quake depois de foco perdido"
+msgid "Hide Quake window after losing focus"
+msgstr ""
 
 #: ../widget/terminal.vala:382 ../widget/config_window.vala:337
 msgid "Horizontal split"
@@ -366,10 +373,6 @@ msgstr "Nome"
 msgid "Name:"
 msgstr "Nome:"
 
-#: ../widget/config_window.vala:335
-msgid "New theme terminal"
-msgstr "Novo tema de terminal"
-
 #: ../widget/appbar.vala:120
 msgid "New window"
 msgstr "Nova janela"
@@ -405,6 +408,10 @@ msgstr "Abrir"
 #: ../widget/terminal.vala:372
 msgid "Open in file manager"
 msgstr "Abrir no gestor de ficheiros"
+
+#: ../widget/config_window.vala:335
+msgid "Open terminal with a new theme"
+msgstr ""
 
 #: ../widget/preference.vala:306
 msgid "Open:"
@@ -508,7 +515,7 @@ msgstr "Guardar"
 
 #: ../widget/preference_slidebar.vala:87 ../widget/preference.vala:377
 msgid "Scroll"
-msgstr "Movimentar"
+msgstr "Rolar"
 
 #: ../widget/preference.vala:383
 msgid "Scroll on keystroke"
@@ -516,7 +523,7 @@ msgstr "Rolar ao tocar em tecla"
 
 #: ../widget/preference.vala:384
 msgid "Scroll on output"
-msgstr "Rolar no resultado"
+msgstr "Rolar na saída"
 
 #: ../widget/terminal.vala:405 ../widget/search_entry.vala:64
 #: ../widget/search_entry.vala:66 ../widget/config_window.vala:307
@@ -541,8 +548,8 @@ msgid "Select all:"
 msgstr "Selecionar tudo:"
 
 #: ../widget/terminal.vala:607
-msgid "Select directory to save download file"
-msgstr "Selecionar diretoria para guardar ficheiro transferido"
+msgid "Select directory to save the file"
+msgstr ""
 
 #: ../widget/terminal.vala:578
 msgid "Select file to upload"
@@ -558,11 +565,11 @@ msgstr "Selecionar janela esquerda:"
 
 #: ../widget/config_window.vala:339
 msgid "Select lower window"
-msgstr "Selecionar janela baixa"
+msgstr "Selecionar janela inferior"
 
 #: ../widget/preference.vala:328
 msgid "Select lower window:"
-msgstr "Selecionar janela baixa:"
+msgstr "Selecionar janela inferior:"
 
 #: ../widget/config_window.vala:341
 msgid "Select right window"
@@ -578,11 +585,11 @@ msgstr "Selecionar o ficheiro de chave privada"
 
 #: ../widget/config_window.vala:338
 msgid "Select upper window"
-msgstr "Selecionar janela de cima"
+msgstr "Selecionar janela superior"
 
 #: ../widget/preference.vala:327
 msgid "Select upper window:"
-msgstr "Selecionar janela de cima:"
+msgstr "Selecionar janela superior:"
 
 #: ../widget/config_window.vala:334
 msgid "Select workspace"
@@ -617,10 +624,6 @@ msgstr "Atalhos"
 msgid "Shortcuts:"
 msgstr "Atalhos:"
 
-#: ../widget/config_window.vala:358
-msgid "Switch fullscreen"
-msgstr "Mudar para ecrã completo"
-
 #: ../widget/terminal.vala:443 ../widget/appbar.vala:121
 msgid "Switch theme"
 msgstr "Mudar tema"
@@ -630,9 +633,13 @@ msgstr "Mudar tema"
 msgid "Terminal"
 msgstr "Terminal"
 
+#: ../widget/config_window.vala:358
+msgid "Toggle fullscreen"
+msgstr ""
+
 #: ../widget/terminal.vala:621
-msgid "Type path for download file"
-msgstr "Digite o caminho para transferir o ficheiro"
+msgid "Type path to download file"
+msgstr ""
 
 #: ../widget/terminal.vala:582
 msgid "Upload"
@@ -666,7 +673,7 @@ msgstr "Dividir verticalmente"
 msgid "Vertical split:"
 msgstr "Dividir verticalmente:"
 
-#: ../widget/terminal.vala:1507
+#: ../widget/terminal.vala:1509
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "
@@ -687,7 +694,7 @@ msgstr "Área de Trabalho"
 
 #: ../widget/config_window.vala:308
 msgid "Zoom in"
-msgstr "Ampliar"
+msgstr "Aumentar"
 
 #: ../widget/preference.vala:308
 msgid "Zoom in:"

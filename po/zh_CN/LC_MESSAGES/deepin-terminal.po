@@ -7,16 +7,16 @@
 # hualet <mr.asianwang@gmail.com>, 2017
 # cxbii <mycxbii@gmail.com>, 2017
 # Maggie Liu <maggie.liufei@gmail.com>, 2017
-# Cindy0514 <zhuxiujuan@deepin.com>, 2019
+# Cindy0514, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-03 10:53+0800\n"
+"POT-Creation-Date: 2019-04-08 11:58+0800\n"
 "PO-Revision-Date: 2017-02-04 05:38+0000\n"
-"Last-Translator: Cindy0514 <zhuxiujuan@deepin.com>, 2019\n"
+"Last-Translator: Cindy0514, 2019\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/linuxdeepin/teams/3976/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -79,11 +79,11 @@ msgid "Advanced options"
 msgstr "高级选项"
 
 #: ../widget/remote_server_dialog.vala:426 ../widget/command_dialog.vala:249
-msgid "Are you sure to delete"
-msgstr "您确定要删除"
+msgid "Are you sure you want to delete %s?"
+msgstr "您确定要删除%s?"
 
 #: ../widget/confirm_dialog.vala:130
-msgid "Are you sure to exit?"
+msgid "Are you sure you want to exit?"
 msgstr "您确定要退出吗?"
 
 #: ../widget/remote_server_dialog.vala:107
@@ -200,11 +200,20 @@ msgstr "自定义命令："
 msgid "Cut"
 msgstr "剪切"
 
+#: ../main.vala:189
+msgid ""
+"Deepin Teminal is an advanced terminal emulator with window-splitting, "
+"workspaces, remote management, Quake mode and other features."
+msgstr ""
+"深度终端是一款集工作区、多窗口、远程管理、雷神模式等功能的高级的终端模拟器。\n"
+"\n"
+"深度终端， 让您更专注于命令行世界！"
+
 #: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:610
 msgid "Deepin Terminal"
 msgstr "深度终端"
 
-#: ../main.vala:189 ../widget/about_widget.vala:49
+#: ../widget/about_widget.vala:49
 msgid ""
 "Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.\n"
 "\n"
@@ -317,7 +326,7 @@ msgid "Help"
 msgstr "帮助"
 
 #: ../widget/preference.vala:403
-msgid "Hide quake window after lost focus"
+msgid "Hide Quake window after losing focus"
 msgstr "丢失焦点后隐藏雷神窗口"
 
 #: ../widget/terminal.vala:382 ../widget/config_window.vala:337
@@ -364,10 +373,6 @@ msgstr "名称"
 msgid "Name:"
 msgstr "名称："
 
-#: ../widget/config_window.vala:335
-msgid "New theme terminal"
-msgstr "新建主题终端"
-
 #: ../widget/appbar.vala:120
 msgid "New window"
 msgstr "新建窗口"
@@ -403,6 +408,10 @@ msgstr "打开"
 #: ../widget/terminal.vala:372
 msgid "Open in file manager"
 msgstr "在文件管理器中打开"
+
+#: ../widget/config_window.vala:335
+msgid "Open terminal with a new theme"
+msgstr "新建主题终端"
 
 #: ../widget/preference.vala:306
 msgid "Open:"
@@ -539,7 +548,7 @@ msgid "Select all:"
 msgstr "全选："
 
 #: ../widget/terminal.vala:607
-msgid "Select directory to save download file"
+msgid "Select directory to save the file"
 msgstr "选择下载文件的保存目录"
 
 #: ../widget/terminal.vala:578
@@ -615,10 +624,6 @@ msgstr "快捷键"
 msgid "Shortcuts:"
 msgstr "快捷键："
 
-#: ../widget/config_window.vala:358
-msgid "Switch fullscreen"
-msgstr "切换全屏"
-
 #: ../widget/terminal.vala:443 ../widget/appbar.vala:121
 msgid "Switch theme"
 msgstr "切换主题"
@@ -628,8 +633,12 @@ msgstr "切换主题"
 msgid "Terminal"
 msgstr "终端"
 
+#: ../widget/config_window.vala:358
+msgid "Toggle fullscreen"
+msgstr "切换全屏"
+
 #: ../widget/terminal.vala:621
-msgid "Type path for download file"
+msgid "Type path to download file"
 msgstr "请输入下载文件的路径"
 
 #: ../widget/terminal.vala:582
@@ -664,7 +673,7 @@ msgstr "纵向分屏"
 msgid "Vertical split:"
 msgstr "纵向分屏："
 
-#: ../widget/terminal.vala:1507
+#: ../widget/terminal.vala:1509
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "

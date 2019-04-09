@@ -9,18 +9,17 @@
 # LNDDYL, 2017
 # 李洪武 <lihongwu1987@gmail.com>, 2017
 # 凡凡不想平凡 <freddy4212@gmail.com>, 2017
-# Bob Kao <s.bob.kao@gmail.com>, 2018
 # Julian Lai <laichiaheng@outlook.com>, 2018
-# byStarTW (pan93412) <pan93412@gmail.com>, 2018
+# byStarTW (pan93412) <pan93412@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-03 10:53+0800\n"
+"POT-Creation-Date: 2019-04-08 11:58+0800\n"
 "PO-Revision-Date: 2017-02-04 05:38+0000\n"
-"Last-Translator: byStarTW (pan93412) <pan93412@gmail.com>, 2018\n"
+"Last-Translator: byStarTW (pan93412) <pan93412@gmail.com>, 2019\n"
 "Language-Team: Chinese (Taiwan) (https://www.transifex.com/linuxdeepin/teams/3976/zh_TW/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -83,12 +82,12 @@ msgid "Advanced options"
 msgstr "進階選項"
 
 #: ../widget/remote_server_dialog.vala:426 ../widget/command_dialog.vala:249
-msgid "Are you sure to delete"
-msgstr "確定刪除"
+msgid "Are you sure you want to delete %s?"
+msgstr ""
 
 #: ../widget/confirm_dialog.vala:130
-msgid "Are you sure to exit?"
-msgstr "確定離開？"
+msgid "Are you sure you want to exit?"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Backspace key"
@@ -169,7 +168,7 @@ msgstr "複製連結"
 
 #: ../widget/preference.vala:375
 msgid "Copy on select"
-msgstr ""
+msgstr "複製選取區塊"
 
 #: ../widget/preference.vala:304
 msgid "Copy:"
@@ -204,11 +203,17 @@ msgstr "自訂命令："
 msgid "Cut"
 msgstr "剪下"
 
+#: ../main.vala:189
+msgid ""
+"Deepin Teminal is an advanced terminal emulator with window-splitting, "
+"workspaces, remote management, Quake mode and other features."
+msgstr ""
+
 #: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:610
 msgid "Deepin Terminal"
 msgstr "Deepin 終端機"
 
-#: ../main.vala:189 ../widget/about_widget.vala:49
+#: ../widget/about_widget.vala:49
 msgid ""
 "Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.\n"
 "\n"
@@ -321,8 +326,8 @@ msgid "Help"
 msgstr "說明"
 
 #: ../widget/preference.vala:403
-msgid "Hide quake window after lost focus"
-msgstr "非焦點時隱藏雷神模式視窗"
+msgid "Hide Quake window after losing focus"
+msgstr ""
 
 #: ../widget/terminal.vala:382 ../widget/config_window.vala:337
 msgid "Horizontal split"
@@ -368,10 +373,6 @@ msgstr "名稱"
 msgid "Name:"
 msgstr "名稱："
 
-#: ../widget/config_window.vala:335
-msgid "New theme terminal"
-msgstr "新增主題終端機"
-
 #: ../widget/appbar.vala:120
 msgid "New window"
 msgstr "新增視窗"
@@ -407,6 +408,10 @@ msgstr "開啟"
 #: ../widget/terminal.vala:372
 msgid "Open in file manager"
 msgstr "在檔案管理器中開啟"
+
+#: ../widget/config_window.vala:335
+msgid "Open terminal with a new theme"
+msgstr ""
 
 #: ../widget/preference.vala:306
 msgid "Open:"
@@ -543,8 +548,8 @@ msgid "Select all:"
 msgstr "全選："
 
 #: ../widget/terminal.vala:607
-msgid "Select directory to save download file"
-msgstr "選擇要儲存下載檔案的目錄"
+msgid "Select directory to save the file"
+msgstr ""
 
 #: ../widget/terminal.vala:578
 msgid "Select file to upload"
@@ -619,10 +624,6 @@ msgstr "快速鍵"
 msgid "Shortcuts:"
 msgstr "快速鍵："
 
-#: ../widget/config_window.vala:358
-msgid "Switch fullscreen"
-msgstr "全螢幕"
-
 #: ../widget/terminal.vala:443 ../widget/appbar.vala:121
 msgid "Switch theme"
 msgstr "更換主題"
@@ -632,9 +633,13 @@ msgstr "更換主題"
 msgid "Terminal"
 msgstr "終端機"
 
+#: ../widget/config_window.vala:358
+msgid "Toggle fullscreen"
+msgstr ""
+
 #: ../widget/terminal.vala:621
-msgid "Type path for download file"
-msgstr "輸入下載路徑"
+msgid "Type path to download file"
+msgstr ""
 
 #: ../widget/terminal.vala:582
 msgid "Upload"
@@ -668,7 +673,7 @@ msgstr "垂直分割"
 msgid "Vertical split:"
 msgstr "垂直分割："
 
-#: ../widget/terminal.vala:1507
+#: ../widget/terminal.vala:1509
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "

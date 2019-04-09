@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-03 10:53+0800\n"
+"POT-Creation-Date: 2019-04-08 11:58+0800\n"
 "PO-Revision-Date: 2017-02-04 05:38+0000\n"
 "Last-Translator: samson <sambelet@yahoo.com>, 2017\n"
 "Language-Team: Amharic (Ethiopia) (https://www.transifex.com/linuxdeepin/teams/3976/am_ET/)\n"
@@ -77,12 +77,12 @@ msgid "Advanced options"
 msgstr "የረቀቀ ምርጫ"
 
 #: ../widget/remote_server_dialog.vala:426 ../widget/command_dialog.vala:249
-msgid "Are you sure to delete"
-msgstr "በ እርግጥ ማጥፋት ይፈልጋሉ?"
+msgid "Are you sure you want to delete %s?"
+msgstr ""
 
 #: ../widget/confirm_dialog.vala:130
-msgid "Are you sure to exit?"
-msgstr "በ እርግጥ መውጣት ይፈልጋሉ?"
+msgid "Are you sure you want to exit?"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Backspace key"
@@ -198,11 +198,17 @@ msgstr "ትእዛዝ ማስተካከያ"
 msgid "Cut"
 msgstr "መቁረጫ"
 
+#: ../main.vala:189
+msgid ""
+"Deepin Teminal is an advanced terminal emulator with window-splitting, "
+"workspaces, remote management, Quake mode and other features."
+msgstr ""
+
 #: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:610
 msgid "Deepin Terminal"
 msgstr "የ ዲፕኢን ተርሚናል"
 
-#: ../main.vala:189 ../widget/about_widget.vala:49
+#: ../widget/about_widget.vala:49
 msgid ""
 "Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.\n"
 "\n"
@@ -315,8 +321,8 @@ msgid "Help"
 msgstr "እርዳታ"
 
 #: ../widget/preference.vala:403
-msgid "Hide quake window after lost focus"
-msgstr "የ quake መስኮት መደበቂያ ትኩረት ካጣ በኋላ"
+msgid "Hide Quake window after losing focus"
+msgstr ""
 
 #: ../widget/terminal.vala:382 ../widget/config_window.vala:337
 msgid "Horizontal split"
@@ -362,10 +368,6 @@ msgstr "ስም"
 msgid "Name:"
 msgstr "ስም: "
 
-#: ../widget/config_window.vala:335
-msgid "New theme terminal"
-msgstr "አዲስ የ ተርሚናል ገጽታ"
-
 #: ../widget/appbar.vala:120
 msgid "New window"
 msgstr "አዲስ መስኮት"
@@ -400,6 +402,10 @@ msgstr "መክፈቻ"
 
 #: ../widget/terminal.vala:372
 msgid "Open in file manager"
+msgstr ""
+
+#: ../widget/config_window.vala:335
+msgid "Open terminal with a new theme"
 msgstr ""
 
 #: ../widget/preference.vala:306
@@ -537,8 +543,8 @@ msgid "Select all:"
 msgstr "ሁሉንም መምረጫ:"
 
 #: ../widget/terminal.vala:607
-msgid "Select directory to save download file"
-msgstr "የ ወረዱ ፋይሎችን ማስቀመጫ ዳይሬክቶሪ ይምረጡ"
+msgid "Select directory to save the file"
+msgstr ""
 
 #: ../widget/terminal.vala:578
 msgid "Select file to upload"
@@ -613,10 +619,6 @@ msgstr "አቋራጭ "
 msgid "Shortcuts:"
 msgstr "አቋራጮች:"
 
-#: ../widget/config_window.vala:358
-msgid "Switch fullscreen"
-msgstr "ከ ሙሉ መመልከቻው ዘዴ መቀየሪያ"
-
 #: ../widget/terminal.vala:443 ../widget/appbar.vala:121
 msgid "Switch theme"
 msgstr "ገጽታ መቀየሪያ"
@@ -626,9 +628,13 @@ msgstr "ገጽታ መቀየሪያ"
 msgid "Terminal"
 msgstr "ተርሚናል"
 
+#: ../widget/config_window.vala:358
+msgid "Toggle fullscreen"
+msgstr ""
+
 #: ../widget/terminal.vala:621
-msgid "Type path for download file"
-msgstr "ለሚወርደው ፋይል መንገድ ይጻፉ"
+msgid "Type path to download file"
+msgstr ""
 
 #: ../widget/terminal.vala:582
 msgid "Upload"
@@ -662,7 +668,7 @@ msgstr "በ ቁመት መክፈያ"
 msgid "Vertical split:"
 msgstr "በ ቁመት መክፈያ:"
 
-#: ../widget/terminal.vala:1507
+#: ../widget/terminal.vala:1509
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "

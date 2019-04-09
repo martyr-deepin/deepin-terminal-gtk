@@ -7,16 +7,16 @@
 # Marc Sancho <msgsistemes@gmail.com>, 2017
 # jordi222 <jjuvilla@gmail.com>, 2017
 # el_libre como el chaval <el.libre@gmail.com>, 2017
-# Davidmp <medipas@gmail.com>, 2018
+# Davidmp <medipas@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-03 10:53+0800\n"
+"POT-Creation-Date: 2019-04-08 11:58+0800\n"
 "PO-Revision-Date: 2017-02-04 05:38+0000\n"
-"Last-Translator: Davidmp <medipas@gmail.com>, 2018\n"
+"Last-Translator: Davidmp <medipas@gmail.com>, 2019\n"
 "Language-Team: Catalan (https://www.transifex.com/linuxdeepin/teams/3976/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -79,12 +79,12 @@ msgid "Advanced options"
 msgstr "Opcions avançades"
 
 #: ../widget/remote_server_dialog.vala:426 ../widget/command_dialog.vala:249
-msgid "Are you sure to delete"
-msgstr "Segur que voleu eliminar"
+msgid "Are you sure you want to delete %s?"
+msgstr ""
 
 #: ../widget/confirm_dialog.vala:130
-msgid "Are you sure to exit?"
-msgstr "Segur que voleu sortir-ne?"
+msgid "Are you sure you want to exit?"
+msgstr ""
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Backspace key"
@@ -165,7 +165,7 @@ msgstr "Copia l'enllaç"
 
 #: ../widget/preference.vala:375
 msgid "Copy on select"
-msgstr ""
+msgstr "Copia en seleccionar"
 
 #: ../widget/preference.vala:304
 msgid "Copy:"
@@ -200,11 +200,17 @@ msgstr "Ordres personalitzades:"
 msgid "Cut"
 msgstr "Retalla"
 
+#: ../main.vala:189
+msgid ""
+"Deepin Teminal is an advanced terminal emulator with window-splitting, "
+"workspaces, remote management, Quake mode and other features."
+msgstr ""
+
 #: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:610
 msgid "Deepin Terminal"
 msgstr "Terminal del Deepin "
 
-#: ../main.vala:189 ../widget/about_widget.vala:49
+#: ../widget/about_widget.vala:49
 msgid ""
 "Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.\n"
 "\n"
@@ -317,8 +323,8 @@ msgid "Help"
 msgstr "Ajuda"
 
 #: ../widget/preference.vala:403
-msgid "Hide quake window after lost focus"
-msgstr "Oculta la finestra desplegable en perdre el focus."
+msgid "Hide Quake window after losing focus"
+msgstr ""
 
 #: ../widget/terminal.vala:382 ../widget/config_window.vala:337
 msgid "Horizontal split"
@@ -364,10 +370,6 @@ msgstr "Nom"
 msgid "Name:"
 msgstr "Nom:"
 
-#: ../widget/config_window.vala:335
-msgid "New theme terminal"
-msgstr "Tema del terminal nou"
-
 #: ../widget/appbar.vala:120
 msgid "New window"
 msgstr "Finestra nova"
@@ -403,6 +405,10 @@ msgstr "Obre"
 #: ../widget/terminal.vala:372
 msgid "Open in file manager"
 msgstr "Obre al gestor de fitxers"
+
+#: ../widget/config_window.vala:335
+msgid "Open terminal with a new theme"
+msgstr ""
 
 #: ../widget/preference.vala:306
 msgid "Open:"
@@ -539,8 +545,8 @@ msgid "Select all:"
 msgstr "Selecciona-ho tot:"
 
 #: ../widget/terminal.vala:607
-msgid "Select directory to save download file"
-msgstr "Seleccioneu el directori per desar-hi el fitxer baixat"
+msgid "Select directory to save the file"
+msgstr ""
 
 #: ../widget/terminal.vala:578
 msgid "Select file to upload"
@@ -615,10 +621,6 @@ msgstr "Dreceres"
 msgid "Shortcuts:"
 msgstr "Dreceres:"
 
-#: ../widget/config_window.vala:358
-msgid "Switch fullscreen"
-msgstr "Commuta la pantalla completa"
-
 #: ../widget/terminal.vala:443 ../widget/appbar.vala:121
 msgid "Switch theme"
 msgstr "Canvia el tema"
@@ -628,9 +630,13 @@ msgstr "Canvia el tema"
 msgid "Terminal"
 msgstr "Terminal"
 
+#: ../widget/config_window.vala:358
+msgid "Toggle fullscreen"
+msgstr ""
+
 #: ../widget/terminal.vala:621
-msgid "Type path for download file"
-msgstr "Escriviu el camí per baixar el fitxer"
+msgid "Type path to download file"
+msgstr ""
 
 #: ../widget/terminal.vala:582
 msgid "Upload"
@@ -664,7 +670,7 @@ msgstr "Divisió vertical"
 msgid "Vertical split:"
 msgstr "Divisió vertical:"
 
-#: ../widget/terminal.vala:1507
+#: ../widget/terminal.vala:1509
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "
