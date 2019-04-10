@@ -1,3 +1,19 @@
+<a name="3.2.2"></a>
+## 3.2.2 (2019-04-10)
+
+
+#### Others
+
+*   auto pull translation files from transifex ([1b73d534](https://github.com/linuxdeepin/deepin-terminal/commit/1b73d534866937a469e4c99b70eccc6830b644f4))
+*   correct a typo ([0f3e0d13](https://github.com/linuxdeepin/deepin-terminal/commit/0f3e0d13987fd08bb75846fa62d63d9cc80eda48))
+*   translation update. (#138) ([3f8556a4](https://github.com/linuxdeepin/deepin-terminal/commit/3f8556a4180d8fb32ed1b361db119b4b8f4bdbeb))
+
+#### Features
+
+*   config option for bold_is_bright (#135) ([16cf3780](https://github.com/linuxdeepin/deepin-terminal/commit/16cf3780b225baf701b6725725aaf5a836e042d1))
+
+
+
 <a name="3.2.1.2"></a>
 ## 3.2.1.2 (2019-03-28)
 
