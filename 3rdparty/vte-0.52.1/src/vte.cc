@@ -7204,16 +7204,10 @@ VteTerminalPrivate::widget_button_press(GdkEventButton *event)
                                                       rowcol.row())) {
 					extend_selecting = TRUE;
 				} else {
-					auto cursor_in_selection = m_has_selection \
-								   && m_selection_start.col <= rowcol.column() \
-								   && m_selection_start.row <= rowcol.row() \
-								   && rowcol.column() <= m_selection_end.col \
-								   && rowcol.row() <= m_selection_end.row;
-					start_selecting = !cursor_in_selection;
+					start_selecting = TRUE;
 				}
 			}
 			if (start_selecting) {
-				deselect_all();
 				m_selecting_after_threshold = TRUE;
                                 m_selection_block_mode = !!(m_modifiers & GDK_CONTROL_MASK);
 				handled = true;
@@ -7339,6 +7333,8 @@ VteTerminalPrivate::widget_button_release(GdkEventButton *event)
 		case 1:
                         if ((m_mouse_handled_buttons & 1) != 0)
                                 handled = maybe_end_selection();
+			if (m_selecting_after_threshold)
+				deselect_all();
 			break;
 		case 2:
                         handled = (m_mouse_handled_buttons & 2) != 0;
