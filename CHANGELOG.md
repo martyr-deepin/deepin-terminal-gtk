@@ -1,3 +1,13 @@
+<a name="3.2.2.1"></a>
+## 3.2.2.1 (2019-04-12)
+
+
+#### Bug Fixes
+
+*   touchscreen support breaks line selection ([8e14fa05](https://github.com/linuxdeepin/deepin-terminal/commit/8e14fa054583edf3cfcdd4479b331c02da8ed35e))
+
+
+
 <a name="3.2.2"></a>
 ## 3.2.2 (2019-04-10)
 
