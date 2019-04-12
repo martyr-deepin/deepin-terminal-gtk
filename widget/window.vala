@@ -189,6 +189,7 @@ namespace Widgets {
                                 pointer_x *= get_scale_factor();
                                 pointer_y *= get_scale_factor();
                                 resize_window(this, pointer_x, pointer_y, (int) e.button, cursor_type);
+                                return true;
                             }
                         }
                     }
@@ -206,6 +207,7 @@ namespace Widgets {
                             pointer_x *= get_scale_factor();
                             pointer_y *= get_scale_factor();
                             resize_window(this, pointer_x, pointer_y, (int) e.button, cursor_type);
+                            return true;
                         }
                     }
 
