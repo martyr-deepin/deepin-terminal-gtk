@@ -348,6 +348,7 @@ namespace Widgets {
 
                 display_first_spliter = true;
             } else if (uri_at_right_press != null) {
+                menu_content.append(new Menu.MenuItem("open", _("Open link")));
                 menu_content.append(new Menu.MenuItem("copy", _("Copy link")));
 
                 display_first_spliter = true;
@@ -477,7 +478,15 @@ namespace Widgets {
                     }
                     break;
                 case "open":
-                    open_selection_file();
+                    if (term.get_has_selection()) {
+                        open_selection_file();
+                    } else if (uri_at_right_press != null) {
+                        try {
+                            Process.spawn_command_line_sync("xdg-open '%s'".printf(uri_at_right_press));
+                        } catch (SpawnError e) {
+                            print("Terminal open_uri: %s\n", e.message);
+                        }
+                    }
                     break;
                 case "open_in_filemanager":
                     open_current_dir_in_file_manager();
