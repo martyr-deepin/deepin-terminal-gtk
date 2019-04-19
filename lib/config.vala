@@ -107,6 +107,7 @@ namespace Config {
                 config_file.set_string("shortcut", "select_right_window", "Alt + l");
                 config_file.set_string("shortcut", "close_window", "Ctrl + Alt + q");
                 config_file.set_string("shortcut", "close_other_windows", "Ctrl + Shift + q");
+                config_file.set_string("shortcut", "clear_scrollback", "Ctrl + k");
 
                 config_file.set_string("shortcut", "rename_title", "F2");
                 config_file.set_string("shortcut", "switch_fullscreen", "F11");
@@ -320,6 +321,7 @@ namespace Config {
             check_string("shortcut", "select_right_window", "Alt + l");
             check_string("shortcut", "close_window", "Ctrl + Alt + q");
             check_string("shortcut", "close_other_windows", "Ctrl + Shift + q");
+            check_string("shortcut", "clear_scrollback", "Ctrl + k");
 
             check_string("shortcut", "rename_title", "F2");
             check_string("shortcut", "switch_fullscreen", "F11");

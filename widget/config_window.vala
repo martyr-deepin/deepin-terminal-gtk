@@ -359,6 +359,7 @@ namespace Widgets {
                 insert_shortcut_key(builder, _("Display shortcuts"), config.config_file.get_string("shortcut", "display_shortcuts"));;
                 insert_shortcut_key(builder, _("Custom commands"), config.config_file.get_string("shortcut", "custom_commands"));;
                 insert_shortcut_key(builder, _("Remote management"), config.config_file.get_string("shortcut", "remote_management"));;
+                insert_shortcut_key(builder, _("Clear scrollback"), config.config_file.get_string("shortcut", "clear_scrollback"));;
 
                 builder.end_array();
 

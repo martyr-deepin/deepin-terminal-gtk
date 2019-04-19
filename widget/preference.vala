@@ -39,6 +39,7 @@ namespace Widgets {
         public Gtk.Label copy_key_label;
         public Gtk.Label cursor_style_label;
         public Gtk.Label display_hotkey_terminal_key_label;
+        public Gtk.Label clear_scrollback_key_label;
         public Gtk.Label font_label;
         public Gtk.Label fullscreen_key_label;
         public Gtk.Label jump_to_next_command_key_label;
@@ -72,6 +73,7 @@ namespace Widgets {
         public ShortcutEntry close_workspace_key_entry;
         public ShortcutEntry copy_key_entry;
         public ShortcutEntry display_hotkey_terminal_key_entry;
+        public ShortcutEntry clear_scrollback_key_entry;
         public ShortcutEntry fullscreen_key_entry;
         public ShortcutEntry jump_to_next_command_key_entry;
         public ShortcutEntry jump_to_previous_command_key_entry;
@@ -192,6 +194,8 @@ namespace Widgets {
             rename_title_key_entry = new ShortcutEntry();
             display_hotkey_terminal_key_label = create_label();
             display_hotkey_terminal_key_entry = new ShortcutEntry();
+            clear_scrollback_key_entry = new ShortcutEntry();
+            clear_scrollback_key_label = create_label();
             show_command_key_label = create_label();
             show_remote_manage_key_label = create_label();
             show_command_key_entry = new ShortcutEntry();
@@ -342,6 +346,7 @@ namespace Widgets {
             create_follow_key_row(display_hotkey_terminal_key_label, display_hotkey_terminal_key_entry, _("Display shortcuts:"), rename_title_key_label, advanced_key_grid, "shortcut", "display_shortcuts");
             create_follow_key_row(show_command_key_label, show_command_key_entry, _("Custom commands:"), display_hotkey_terminal_key_label, advanced_key_grid, "shortcut", "custom_commands");
             create_follow_key_row(show_remote_manage_key_label, show_remote_manage_key_entry, _("Remote management:"), show_command_key_label, advanced_key_grid, "shortcut", "remote_management");
+            create_follow_key_row(clear_scrollback_key_label, clear_scrollback_key_entry, _("Clear scrollback:"), show_remote_manage_key_label, advanced_key_grid, "shortcut", "clear_scrollback");
 
             var advanced_segment = get_first_segment(_("Advanced"));
             content_box.pack_start(advanced_segment, false, false, 0);
@@ -511,6 +516,7 @@ namespace Widgets {
                 display_hotkey_terminal_key_entry.set_text(parent_window.config.config_file.get_string("shortcut", "display_shortcuts"));
                 show_command_key_entry.set_text(parent_window.config.config_file.get_string("shortcut", "custom_commands"));
                 show_remote_manage_key_entry.set_text(parent_window.config.config_file.get_string("shortcut", "remote_management"));
+                clear_scrollback_key_entry.set_text(parent_window.config.config_file.get_string("shortcut", "clear_scrollback"));
 
                 cursor_style_button.set_cursor_state(parent_window.config.config_file.get_string("advanced", "cursor_shape"));;
 

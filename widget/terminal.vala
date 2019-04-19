@@ -941,6 +941,12 @@ namespace Widgets {
                     }
                 }
 
+                var clear_scrollback_command_key = parent_window.config.config_file.get_string("shortcut", "clear_scrollback");
+                if (clear_scrollback_command_key != "" && keyname == clear_scrollback_command_key) {
+                    term.reset(true, true);
+                    return true;
+                }
+
                 if (keyname == "Ctrl + c" || keyname == "Ctrl + d") {
                     enter_sz_command = false;
 
