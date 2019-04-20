@@ -247,6 +247,26 @@ namespace Widgets {
             close_nth_tab(tab_index);
         }
 
+        public void move_current_left() {
+            if (tab_list.size > 1 && tab_index > 0) {
+                var tmp = tab_list.get(tab_index - 1);
+                tab_list.set(tab_index - 1, tab_list.get(tab_index));
+                tab_list.set(tab_index, tmp);
+
+                switch_tab(tab_index - 1);
+            }
+        }
+
+        public void move_current_right() {
+            if (tab_list.size > 1 && tab_index < tab_list.size - 1) {
+                var tmp = tab_list.get(tab_index + 1);
+                tab_list.set(tab_index + 1, tab_list.get(tab_index));
+                tab_list.set(tab_index, tmp);
+
+                switch_tab(tab_index + 1);
+            }
+        }
+
         public void close_nth_tab(int index) {
             if (tab_list.size > 0) {
                 var tab_id = tab_list.get(index);
@@ -311,7 +331,7 @@ namespace Widgets {
                             if (release_x > draw_x && release_x < draw_x + tab_width - get_tab_close_button_padding()) {
                                 if(is_left_button(event)) {
                                     select_nth_tab(counter);
-    
+
                                     press_tab(counter, tab_id);
                                     return false;
                                 }
@@ -319,7 +339,7 @@ namespace Widgets {
                                 if(is_mouse_wheel(event)) {
                                     close_nth_tab(counter);
                                     return false;
-                                }                                
+                                }
                             } else if (release_x > draw_x + tab_width - get_tab_close_button_padding()) {
                                 close_nth_tab(counter);
                                 return false;

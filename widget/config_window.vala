@@ -332,6 +332,8 @@ namespace Widgets {
                 insert_shortcut_key(builder, _("Next workspace"), config.config_file.get_string("shortcut", "next_workspace"));;
                 insert_shortcut_key(builder, _("Previous workspace"), config.config_file.get_string("shortcut", "previous_workspace"));;
                 insert_shortcut_key(builder, _("Select workspace"), "%s + 1 ~ %s + 9".printf(select_workspace_key, select_workspace_key));;
+                insert_shortcut_key(builder, _("Move workspace left"), config.config_file.get_string("shortcut", "move_workspace_left"));;
+                insert_shortcut_key(builder, _("Move workspace right"), config.config_file.get_string("shortcut", "move_workspace_right"));;
                 insert_shortcut_key(builder, _("Open terminal with a new theme"), "%s + 1 ~ %s + 9".printf(new_theme_terminal_key, new_theme_terminal_key));;
                 insert_shortcut_key(builder, _("Vertical split"), config.config_file.get_string("shortcut", "vertical_split"));;
                 insert_shortcut_key(builder, _("Horizontal split"), config.config_file.get_string("shortcut", "horizontal_split"));;
@@ -470,6 +472,18 @@ namespace Widgets {
                 if (previous_workspace_key != "" && keyname == previous_workspace_key) {
                     workspace_manager.tabbar.select_previous_tab();
                     return true;
+                }
+
+                var move_workspace_left_key = config.config_file.get_string("shortcut", "move_workspace_left");
+                if (move_workspace_left_key != "" && keyname == move_workspace_left_key) {
+                   workspace_manager.tabbar.move_current_left();
+                   return true;
+                }
+
+                var move_workspace_right_key = config.config_file.get_string("shortcut", "move_workspace_right");
+                if (move_workspace_right_key != "" && keyname == move_workspace_right_key) {
+                   workspace_manager.tabbar.move_current_right();
+                   return true;
                 }
 
                 var resize_workspace_left_key = config.config_file.get_string("shortcut", "resize_workspace_left");

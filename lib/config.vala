@@ -99,6 +99,8 @@ namespace Config {
                 config_file.set_string("shortcut", "close_workspace", "Ctrl + Shift + w");
                 config_file.set_string("shortcut", "next_workspace", "Ctrl + Tab");
                 config_file.set_string("shortcut", "previous_workspace", "Ctrl + Shift + Tab");
+                config_file.set_string("shortcut", "move_workspace_left", "Ctrl + Shift + Left");
+                config_file.set_string("shortcut", "move_workspace_right", "Ctrl + Shift + Right");
                 config_file.set_string("shortcut", "vertical_split", "Ctrl + Shift + j");
                 config_file.set_string("shortcut", "horizontal_split", "Ctrl + Shift + h");
                 config_file.set_string("shortcut", "select_upper_window", "Alt + k");

@@ -46,6 +46,8 @@ namespace Widgets {
         public Gtk.Label jump_to_previous_command_key_label;
         public Gtk.Label new_workspace_key_label;
         public Gtk.Label next_workspace_key_label;
+        public Gtk.Label move_workspace_left_key_label;
+        public Gtk.Label move_workspace_right_key_label;
         public Gtk.Label opacity_label;
         public Gtk.Label open_key_label;
         public Gtk.Label paste_key_label;
@@ -79,6 +81,8 @@ namespace Widgets {
         public ShortcutEntry jump_to_previous_command_key_entry;
         public ShortcutEntry new_workspace_key_entry;
         public ShortcutEntry next_workspace_key_entry;
+        public ShortcutEntry move_workspace_left_key_entry;
+        public ShortcutEntry move_workspace_right_key_entry;
         public ShortcutEntry open_key_entry;
         public ShortcutEntry paste_key_entry;
         public ShortcutEntry previous_workspace_key_entry;
@@ -172,6 +176,10 @@ namespace Widgets {
             previous_workspace_key_entry = new ShortcutEntry();
             next_workspace_key_label = create_label();
             next_workspace_key_entry = new ShortcutEntry();
+            move_workspace_left_key_label = create_label();
+            move_workspace_left_key_entry = new ShortcutEntry();
+            move_workspace_right_key_label = create_label();
+            move_workspace_right_key_entry = new ShortcutEntry();
             split_vertically_key_label = create_label();
             split_vertically_key_entry = new ShortcutEntry();
             split_horizontally_key_label = create_label();
@@ -326,7 +334,9 @@ namespace Widgets {
             create_follow_key_row(close_workspace_key_label, close_workspace_key_entry, _("Close workspace:"), new_workspace_key_label, workspace_key_grid, "shortcut", "close_workspace");
             create_follow_key_row(previous_workspace_key_label, previous_workspace_key_entry, _("Previous workspace:"), close_workspace_key_label, workspace_key_grid, "shortcut", "previous_workspace");
             create_follow_key_row(next_workspace_key_label, next_workspace_key_entry, _("Next workspace:"), previous_workspace_key_label, workspace_key_grid, "shortcut", "next_workspace");
-            create_follow_key_row(split_vertically_key_label, split_vertically_key_entry, _("Vertical split:"), next_workspace_key_label, workspace_key_grid, "shortcut", "vertical_split");
+            create_follow_key_row(move_workspace_left_key_label, move_workspace_left_key_entry, _("Move workspace left:"), next_workspace_key_label, workspace_key_grid, "shortcut", "move_workspace_left");
+            create_follow_key_row(move_workspace_right_key_label, move_workspace_right_key_entry, _("Move workspace right:"), move_workspace_left_key_label, workspace_key_grid, "shortcut", "move_workspace_right");
+            create_follow_key_row(split_vertically_key_label, split_vertically_key_entry, _("Vertical split:"), move_workspace_right_key_label, workspace_key_grid, "shortcut", "vertical_split");
             create_follow_key_row(split_horizontally_key_label, split_horizontally_key_entry, _("Horizontal split:"), split_vertically_key_label, workspace_key_grid, "shortcut", "horizontal_split");
             create_follow_key_row(select_up_window_key_label, select_up_window_key_entry, _("Select upper window:"), split_horizontally_key_label, workspace_key_grid, "shortcut", "select_upper_window");
             create_follow_key_row(select_down_window_key_label, select_down_window_key_entry, _("Select lower window:"), select_up_window_key_label, workspace_key_grid, "shortcut", "select_lower_window");
@@ -503,6 +513,8 @@ namespace Widgets {
                 close_workspace_key_entry.set_text(parent_window.config.config_file.get_string("shortcut", "close_workspace"));
                 previous_workspace_key_entry.set_text(parent_window.config.config_file.get_string("shortcut", "previous_workspace"));
                 next_workspace_key_entry.set_text(parent_window.config.config_file.get_string("shortcut", "next_workspace"));
+                move_workspace_left_key_entry.set_text(parent_window.config.config_file.get_string("shortcut", "move_workspace_left"));
+                move_workspace_right_key_entry.set_text(parent_window.config.config_file.get_string("shortcut", "move_workspace_right"));
                 split_vertically_key_entry.set_text(parent_window.config.config_file.get_string("shortcut", "vertical_split"));
                 split_horizontally_key_entry.set_text(parent_window.config.config_file.get_string("shortcut", "horizontal_split"));
                 select_up_window_key_entry.set_text(parent_window.config.config_file.get_string("shortcut", "select_upper_window"));
