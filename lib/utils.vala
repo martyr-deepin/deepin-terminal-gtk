@@ -30,6 +30,8 @@ using Cairo;
 extern char* project_path();
 extern string font_match(string family);
 extern string[] list_mono_or_dot_fonts(out int num);
+private static bool is_tiling = false;
+private static bool tiling_checked = false;
 
 namespace Utils {
     [DBus (name = "com.deepin.Manual.Open")]
@@ -103,6 +105,21 @@ namespace Utils {
         b = max_v;
 
         return b;
+    }
+
+    public bool is_tiling_wm() {
+        // This check needed to prevent multiple queries to Process.spawn
+        if (tiling_checked) return is_tiling;
+        var output = "";
+        try {
+            // This command returns something if one of this WMs will be running or "" if non
+            Process.spawn_command_line_sync (@"pidof i3 xmonad wmii wmfs wingo subtle sway stumpwm spectrwm snapwm ratpoison qtile notion herbstluftwm frankenwm dwm bspwm awesome alopex", out output);
+        } catch (GLib.SpawnError e) {
+            warning("Something bad happened with pidof command %s", e.message);
+        }
+        is_tiling = output != "";
+        tiling_checked = true;
+        return is_tiling;
     }
 
     public void touch_dir(string dir) {
