@@ -120,6 +120,9 @@ namespace Menu {
                 builder.set_member_name("menuJsonContent");
                 builder.add_string_value(get_items_node(menu_content));
 
+                builder.set_member_name("isScaled");
+                builder.add_boolean_value(false);
+
                 builder.end_object ();
 
                 Json.Generator generator = new Json.Generator();
