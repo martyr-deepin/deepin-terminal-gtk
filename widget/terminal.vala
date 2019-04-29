@@ -358,7 +358,7 @@ namespace Widgets {
 
                 display_first_spliter = true;
             }
-            if (term.get_has_selection()) {
+            if (term.get_has_selection() || uri_at_right_press != null) {
                 var selection_file = get_selection_file();
                 if (selection_file != null) {
                     menu_content.append(new Menu.MenuItem("open", _("Open")));
@@ -1366,6 +1366,8 @@ namespace Widgets {
                 } else {
                     return null;
                 }
+            } else if (uri_at_right_press != null){
+                return uri_at_right_press;
             } else {
                 return null;
             }
