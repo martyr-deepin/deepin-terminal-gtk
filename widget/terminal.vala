@@ -1360,7 +1360,12 @@ namespace Widgets {
         public string? get_selection_file() {
             string? clipboard_text = get_selection_text();
             if (clipboard_text != "") {
-                var clipboard_file_path = GLib.Path.build_path(Path.DIR_SEPARATOR_S, current_dir, clipboard_text);
+                //TODO: support "~"
+                var clipboard_file_path = clipboard_text;
+                if (FileUtils.test(clipboard_file_path, FileTest.EXISTS)) {
+                    return clipboard_file_path;
+                }
+                clipboard_file_path = GLib.Path.build_path(Path.DIR_SEPARATOR_S, current_dir, clipboard_text);
                 if (FileUtils.test(clipboard_file_path, FileTest.EXISTS)) {
                     return clipboard_file_path;
                 } else {
