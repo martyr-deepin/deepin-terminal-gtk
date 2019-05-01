@@ -481,11 +481,16 @@ namespace Widgets {
                     if (term.get_has_selection()) {
                         open_selection_file();
                     } else if (uri_at_right_press != null) {
-                        try {
-                            Process.spawn_command_line_sync("xdg-open '%s'".printf(uri_at_right_press));
-                        } catch (SpawnError e) {
-                            print("Terminal open_uri: %s\n", e.message);
-                        }
+                        try { 
+                            Gtk.show_uri(null, (!) uri_at_right_press, Gtk.get_current_event_time()); 
+                        } catch (GLib.Error error) { 
+                            try { 
+                                var uri = "http://%s".printf(uri_at_right_press); 
+                                Gtk.show_uri(null, (!) uri, Gtk.get_current_event_time()); 
+                            } catch (GLib.Error error) { 
+                                warning("Could Not Open link"); 
+                            } 
+                        } 
                     }
                     break;
                 case "open_in_filemanager":
