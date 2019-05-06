@@ -120,7 +120,7 @@ Whether show tabbar in quake terminal, the default is true. It's cool if you don
 Create new terminal in active monitor when this option set as true, create new terminal with cursor place when this option set as false.
 
 #### hide_quakewindow_when_active
-Just hide quake window when cursor is active when this option is true, if cursor is inactive, press quake-terminal keystroke will focus quake window first, and hide quake-terminal when press quake-temrinal keystroke agian.
+Just hide quake window when cursor is active when this option is true, if cursor is inactive, press quake-terminal keystroke will focus quake window first, and hide quake-terminal when press quake-temrinal keystroke again.
 This behaviour help user jump back to quake-terminal quickly.
 It's feel free to turn off this feature if you just like to toggle quake-terminal when you press quake-terminal keystroke.
 
