@@ -348,6 +348,7 @@ namespace Widgets {
 
                 display_first_spliter = true;
             } else if (uri_at_right_press != null) {
+                menu_content.append(new Menu.MenuItem("open", _("Open link")));
                 menu_content.append(new Menu.MenuItem("copy", _("Copy link")));
 
                 display_first_spliter = true;
@@ -477,7 +478,20 @@ namespace Widgets {
                     }
                     break;
                 case "open":
-                    open_selection_file();
+                    if (term.get_has_selection()) {
+                        open_selection_file();
+                    } else if (uri_at_right_press != null) {
+                        try { 
+                            Gtk.show_uri(null, (!) uri_at_right_press, Gtk.get_current_event_time()); 
+                        } catch (GLib.Error error) { 
+                            try { 
+                                var uri = "http://%s".printf(uri_at_right_press); 
+                                Gtk.show_uri(null, (!) uri, Gtk.get_current_event_time()); 
+                            } catch (GLib.Error error) { 
+                                warning("Could Not Open link"); 
+                            } 
+                        } 
+                    }
                     break;
                 case "open_in_filemanager":
                     open_current_dir_in_file_manager();
