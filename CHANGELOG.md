@@ -1,3 +1,23 @@
+<a name="3.2.3"></a>
+## 3.2.3 (2019-05-09)
+
+
+#### Bug Fixes
+
+*   blur under KWin wm support ([28a4438c](https://github.com/linuxdeepin/deepin-terminal/commit/28a4438cf15726eb2ae7eb8c1ab28298e27f17b2))
+
+#### Others
+
+*   auto pull translation files from transifex (#153) ([4de4065c](https://github.com/linuxdeepin/deepin-terminal/commit/4de4065ce0dd1525f7f95f84d53afe6d93925357))
+*   correct a typo ([ba8fd083](https://github.com/linuxdeepin/deepin-terminal/commit/ba8fd0832406f69e9f829303fc3d21d076cdabc7))
+
+#### Features
+
+*   make "Open" menu item supporting absolution paths ([a0897d95](https://github.com/linuxdeepin/deepin-terminal/commit/a0897d95c9bbdf773651478ae33d040ea09dab12))
+*   dde-menu support isScaled property ([bd4df48b](https://github.com/linuxdeepin/deepin-terminal/commit/bd4df48b4eb002f183710d002bebe623dd95271b))
+
+
+
 <a name="3.2.2.1"></a>
 ## 3.2.2.1 (2019-04-12)
 
