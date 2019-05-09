@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-08 11:58+0800\n"
+"POT-Creation-Date: 2019-04-26 13:06+0800\n"
 "PO-Revision-Date: 2017-02-04 05:38+0000\n"
 "Last-Translator: abuyop <abuyop@gmail.com>, 2019\n"
 "Language-Team: Malay (https://www.transifex.com/linuxdeepin/teams/3976/ms/)\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Language: ms\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../widget/terminal.vala:1204
+#: ../widget/terminal.vala:1214
 msgid ""
 "\n"
 "Command has been completed, press ENTER to exit the terminal."
@@ -78,11 +78,11 @@ msgstr "Pilihan lanjutan"
 
 #: ../widget/remote_server_dialog.vala:426 ../widget/command_dialog.vala:249
 msgid "Are you sure you want to delete %s?"
-msgstr ""
+msgstr "Anda pasti mahu memadam %s?"
 
 #: ../widget/confirm_dialog.vala:130
 msgid "Are you sure you want to exit?"
-msgstr ""
+msgstr "Anda pasti mahu keluar?"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Backspace key"
@@ -102,8 +102,8 @@ msgstr "Latar belakang kabur"
 
 #: ../widget/remote_server_dialog.vala:347
 #: ../widget/remote_server_dialog.vala:427 ../widget/confirm_dialog.vala:130
-#: ../widget/terminal.vala:580 ../widget/terminal.vala:608
-#: ../widget/terminal.vala:642 ../widget/file_button.vala:69
+#: ../widget/terminal.vala:590 ../widget/terminal.vala:618
+#: ../widget/terminal.vala:652 ../widget/file_button.vala:69
 #: ../widget/command_dialog.vala:192 ../widget/command_dialog.vala:250
 msgid "Cancel"
 msgstr "Batal"
@@ -116,7 +116,7 @@ msgstr "Sijil"
 msgid "Certificate:"
 msgstr "Sijil:"
 
-#: ../widget/terminal.vala:386 ../widget/config_window.vala:343
+#: ../widget/terminal.vala:387 ../widget/config_window.vala:343
 msgid "Close other windows"
 msgstr "Tutup tetingkap lain"
 
@@ -124,7 +124,7 @@ msgstr "Tutup tetingkap lain"
 msgid "Close other windows:"
 msgstr "Tutup tetingkap lain:"
 
-#: ../widget/terminal.vala:384 ../widget/config_window.vala:342
+#: ../widget/terminal.vala:385 ../widget/config_window.vala:342
 msgid "Close window"
 msgstr "Tutup tetingkap"
 
@@ -157,7 +157,7 @@ msgstr "Kandungan"
 msgid "Copy"
 msgstr "Salin"
 
-#: ../widget/terminal.vala:351
+#: ../widget/terminal.vala:352
 msgid "Copy link"
 msgstr "Salin pautan"
 
@@ -185,7 +185,7 @@ msgstr "Kerlipan kursor"
 msgid "Cursor style:"
 msgstr "Gaya kursor:"
 
-#: ../widget/terminal.vala:447 ../widget/config_window.vala:360
+#: ../widget/terminal.vala:448 ../widget/config_window.vala:360
 #: ../widget/appbar.vala:122
 msgid "Custom commands"
 msgstr "Perintah suai"
@@ -203,6 +203,9 @@ msgid ""
 "Deepin Teminal is an advanced terminal emulator with window-splitting, "
 "workspaces, remote management, Quake mode and other features."
 msgstr ""
+"Terminal Deepin ialah sebuah emulator terminal lanjutan dengan fitur "
+"pemisahan tetingkap, ruang kerja, pengurusan jauh, mod Quake dan lain-lain "
+"fitur."
 
 #: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:610
 msgid "Deepin Terminal"
@@ -260,7 +263,7 @@ msgstr "Papar pintasan:"
 msgid "Display version"
 msgstr "Papar versi"
 
-#: ../widget/terminal.vala:452
+#: ../widget/terminal.vala:453
 msgid "Download file"
 msgstr "Muat turun fail"
 
@@ -272,7 +275,7 @@ msgstr "Sunting Perintah"
 msgid "Edit Server"
 msgstr "Sunting Pelayan"
 
-#: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:446
+#: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:447
 msgid "Encoding"
 msgstr "Pengekodan"
 
@@ -284,11 +287,11 @@ msgstr "Pengekodan:"
 msgid "Exit"
 msgstr "Keluar"
 
-#: ../widget/terminal.vala:396
+#: ../widget/terminal.vala:397
 msgid "Exit fullscreen"
 msgstr "Keluar dari skrin penuh"
 
-#: ../widget/terminal.vala:402
+#: ../widget/terminal.vala:403
 msgid "Find"
 msgstr "Cari"
 
@@ -300,7 +303,7 @@ msgstr "Saiz fon:"
 msgid "Font:"
 msgstr "Fon:"
 
-#: ../widget/preference.vala:399 ../widget/terminal.vala:398
+#: ../widget/preference.vala:399 ../widget/terminal.vala:399
 msgid "Fullscreen"
 msgstr "Skrin Penuh"
 
@@ -322,9 +325,9 @@ msgstr "Bantuan"
 
 #: ../widget/preference.vala:403
 msgid "Hide Quake window after losing focus"
-msgstr ""
+msgstr "Sembunyi tetingkap Quake setelah hilang fokus"
 
-#: ../widget/terminal.vala:382 ../widget/config_window.vala:337
+#: ../widget/terminal.vala:383 ../widget/config_window.vala:337
 msgid "Horizontal split"
 msgstr "Pisah mengufuk"
 
@@ -372,7 +375,7 @@ msgstr "Nama:"
 msgid "New window"
 msgstr "Tetingkap baharu"
 
-#: ../widget/terminal.vala:390 ../widget/config_window.vala:330
+#: ../widget/terminal.vala:391 ../widget/config_window.vala:330
 msgid "New workspace"
 msgstr "Ruang kerja baharu"
 
@@ -396,17 +399,21 @@ msgstr "Tetingkap biasa"
 msgid "Opacity:"
 msgstr "Kelegapan:"
 
-#: ../widget/terminal.vala:364 ../widget/config_window.vala:306
+#: ../widget/terminal.vala:365 ../widget/config_window.vala:306
 msgid "Open"
 msgstr "Buka"
 
-#: ../widget/terminal.vala:372
+#: ../widget/terminal.vala:373
 msgid "Open in file manager"
 msgstr "Buka dalam pengurus fail"
 
+#: ../widget/terminal.vala:351
+msgid "Open link"
+msgstr ""
+
 #: ../widget/config_window.vala:335
 msgid "Open terminal with a new theme"
-msgstr ""
+msgstr "Buka terminal dengan tema baharu"
 
 #: ../widget/preference.vala:306
 msgid "Open:"
@@ -426,7 +433,7 @@ msgstr "Kata Laluan"
 msgid "Password:"
 msgstr "Kata Laluan:"
 
-#: ../widget/terminal.vala:357 ../widget/config_window.vala:305
+#: ../widget/terminal.vala:358 ../widget/config_window.vala:305
 #: ../widget/entry_menu.vala:41
 msgid "Paste"
 msgstr "Tampal"
@@ -467,7 +474,7 @@ msgstr "Program masih lagu berjalan di dalam terminal"
 msgid "Quake mode"
 msgstr "Mod Quake"
 
-#: ../widget/terminal.vala:448 ../widget/config_window.vala:361
+#: ../widget/terminal.vala:449 ../widget/config_window.vala:361
 #: ../widget/appbar.vala:123
 msgid "Remote management"
 msgstr "Pengurusan jauh"
@@ -476,11 +483,11 @@ msgstr "Pengurusan jauh"
 msgid "Remote management:"
 msgstr "Pengurusan jauh:"
 
-#: ../widget/terminal.vala:643
+#: ../widget/terminal.vala:653
 msgid "Rename"
 msgstr "Nama Semula"
 
-#: ../widget/terminal.vala:445 ../widget/terminal.vala:640
+#: ../widget/terminal.vala:446 ../widget/terminal.vala:650
 #: ../widget/config_window.vala:357
 msgid "Rename title"
 msgstr "Nama semula tajuk"
@@ -520,7 +527,7 @@ msgstr "Tatal ketika ketukan kekunci"
 msgid "Scroll on output"
 msgstr "Tatal ketika output"
 
-#: ../widget/terminal.vala:405 ../widget/search_entry.vala:64
+#: ../widget/terminal.vala:406 ../widget/search_entry.vala:64
 #: ../widget/search_entry.vala:66 ../widget/config_window.vala:307
 msgid "Search"
 msgstr "Gelintar"
@@ -530,7 +537,7 @@ msgstr "Gelintar"
 msgid "Search:"
 msgstr "Gelintar:"
 
-#: ../widget/terminal.vala:609 ../widget/file_button.vala:71
+#: ../widget/terminal.vala:619 ../widget/file_button.vala:71
 msgid "Select"
 msgstr "Pilih"
 
@@ -542,11 +549,11 @@ msgstr "Pilih semua"
 msgid "Select all:"
 msgstr "Pilih semua:"
 
-#: ../widget/terminal.vala:607
+#: ../widget/terminal.vala:617
 msgid "Select directory to save the file"
-msgstr ""
+msgstr "Pilih direktori untuk menyimpan fail"
 
-#: ../widget/terminal.vala:578
+#: ../widget/terminal.vala:588
 msgid "Select file to upload"
 msgstr "Pilih fail untuk dimuat naik"
 
@@ -606,7 +613,7 @@ msgstr "Tetapkan direktori permulaan terminal"
 msgid "Set the terminal window mode"
 msgstr "Tetapkan mod tetingkap terminal"
 
-#: ../widget/terminal.vala:456 ../widget/appbar.vala:125
+#: ../widget/terminal.vala:457 ../widget/appbar.vala:125
 msgid "Settings"
 msgstr "Tetapan"
 
@@ -619,7 +626,7 @@ msgstr "Pintasan"
 msgid "Shortcuts:"
 msgstr "Pintasan:"
 
-#: ../widget/terminal.vala:443 ../widget/appbar.vala:121
+#: ../widget/terminal.vala:444 ../widget/appbar.vala:121
 msgid "Switch theme"
 msgstr "Tukar tema"
 
@@ -630,17 +637,17 @@ msgstr "Terminal"
 
 #: ../widget/config_window.vala:358
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "Togol skrin penuh"
 
-#: ../widget/terminal.vala:621
+#: ../widget/terminal.vala:631
 msgid "Type path to download file"
-msgstr ""
+msgstr "Taip laluan untuk muat turun fail"
 
-#: ../widget/terminal.vala:582
+#: ../widget/terminal.vala:592
 msgid "Upload"
 msgstr "Muat naik"
 
-#: ../widget/terminal.vala:451
+#: ../widget/terminal.vala:452
 msgid "Upload file"
 msgstr "Muat naik fail"
 
@@ -660,7 +667,7 @@ msgstr "Nama Pengguna:"
 msgid "Version:"
 msgstr "Versi:"
 
-#: ../widget/terminal.vala:383 ../widget/config_window.vala:336
+#: ../widget/terminal.vala:384 ../widget/config_window.vala:336
 msgid "Vertical split"
 msgstr "Pisah menegak"
 
@@ -668,7 +675,7 @@ msgstr "Pisah menegak"
 msgid "Vertical split:"
 msgstr "Pisah menegak:"
 
-#: ../widget/terminal.vala:1509
+#: ../widget/terminal.vala:1519
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "
@@ -703,6 +710,6 @@ msgstr "Zum keluar"
 msgid "Zoom out:"
 msgstr "Zum keluar:"
 
-#: ../widget/terminal.vala:782 ../widget/terminal.vala:1230
+#: ../widget/terminal.vala:792 ../widget/terminal.vala:1240
 msgid "deepin"
 msgstr "deepin"

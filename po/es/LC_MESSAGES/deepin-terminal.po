@@ -15,18 +15,18 @@
 # roberto lopez <riscogordo@gmail.com>, 2017
 # jhalo <jhalo@protonmail.com>, 2017
 # Jean Rivas <jeancarlosrivas@gmail.com>, 2017
-# Deepin en Español, 2018
 # Diego Sanguinetti, 2018
 # Alvaro Samudio <alvarosamudio1@gmail.com>, 2019
+# Deepin en Español, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-08 11:58+0800\n"
+"POT-Creation-Date: 2019-04-26 13:06+0800\n"
 "PO-Revision-Date: 2017-02-04 05:38+0000\n"
-"Last-Translator: Alvaro Samudio <alvarosamudio1@gmail.com>, 2019\n"
+"Last-Translator: Deepin en Español, 2019\n"
 "Language-Team: Spanish (https://www.transifex.com/linuxdeepin/teams/3976/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -34,7 +34,7 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../widget/terminal.vala:1204
+#: ../widget/terminal.vala:1214
 msgid ""
 "\n"
 "Command has been completed, press ENTER to exit the terminal."
@@ -90,11 +90,11 @@ msgstr "Opciones avanzadas"
 
 #: ../widget/remote_server_dialog.vala:426 ../widget/command_dialog.vala:249
 msgid "Are you sure you want to delete %s?"
-msgstr ""
+msgstr "¿Estás seguro que quieres eliminarlos?"
 
 #: ../widget/confirm_dialog.vala:130
 msgid "Are you sure you want to exit?"
-msgstr ""
+msgstr "¿Esta seguro que desea salir?"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Backspace key"
@@ -114,8 +114,8 @@ msgstr "Desenfoque del fondo"
 
 #: ../widget/remote_server_dialog.vala:347
 #: ../widget/remote_server_dialog.vala:427 ../widget/confirm_dialog.vala:130
-#: ../widget/terminal.vala:580 ../widget/terminal.vala:608
-#: ../widget/terminal.vala:642 ../widget/file_button.vala:69
+#: ../widget/terminal.vala:590 ../widget/terminal.vala:618
+#: ../widget/terminal.vala:652 ../widget/file_button.vala:69
 #: ../widget/command_dialog.vala:192 ../widget/command_dialog.vala:250
 msgid "Cancel"
 msgstr "Cancelar"
@@ -128,7 +128,7 @@ msgstr "Certificado"
 msgid "Certificate:"
 msgstr "Certificado:"
 
-#: ../widget/terminal.vala:386 ../widget/config_window.vala:343
+#: ../widget/terminal.vala:387 ../widget/config_window.vala:343
 msgid "Close other windows"
 msgstr "Cerrar otras ventanas"
 
@@ -136,7 +136,7 @@ msgstr "Cerrar otras ventanas"
 msgid "Close other windows:"
 msgstr "Cerrar otras ventanas:"
 
-#: ../widget/terminal.vala:384 ../widget/config_window.vala:342
+#: ../widget/terminal.vala:385 ../widget/config_window.vala:342
 msgid "Close window"
 msgstr "Cerrar ventana"
 
@@ -169,7 +169,7 @@ msgstr "Contenido"
 msgid "Copy"
 msgstr "Copiar"
 
-#: ../widget/terminal.vala:351
+#: ../widget/terminal.vala:352
 msgid "Copy link"
 msgstr "Copiar enlace"
 
@@ -197,7 +197,7 @@ msgstr "Parpadear cursor"
 msgid "Cursor style:"
 msgstr "Estilo cursor:"
 
-#: ../widget/terminal.vala:447 ../widget/config_window.vala:360
+#: ../widget/terminal.vala:448 ../widget/config_window.vala:360
 #: ../widget/appbar.vala:122
 msgid "Custom commands"
 msgstr "Comandos personalizados"
@@ -215,6 +215,9 @@ msgid ""
 "Deepin Teminal is an advanced terminal emulator with window-splitting, "
 "workspaces, remote management, Quake mode and other features."
 msgstr ""
+"Terminal Deepin es un emulador de terminal avanzado con espacio de trabajo "
+"múltiples y ventanas, administración remota, modo rápido y otras "
+"características."
 
 #: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:610
 msgid "Deepin Terminal"
@@ -272,7 +275,7 @@ msgstr "Atajos de pantalla:"
 msgid "Display version"
 msgstr "Versión pantalla"
 
-#: ../widget/terminal.vala:452
+#: ../widget/terminal.vala:453
 msgid "Download file"
 msgstr "Archivo descargado"
 
@@ -284,7 +287,7 @@ msgstr "Editar comando"
 msgid "Edit Server"
 msgstr "Editar servidor"
 
-#: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:446
+#: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:447
 msgid "Encoding"
 msgstr "Codificación"
 
@@ -296,11 +299,11 @@ msgstr "Codificación:"
 msgid "Exit"
 msgstr "Salir"
 
-#: ../widget/terminal.vala:396
+#: ../widget/terminal.vala:397
 msgid "Exit fullscreen"
 msgstr "Salir de pantalla completa"
 
-#: ../widget/terminal.vala:402
+#: ../widget/terminal.vala:403
 msgid "Find"
 msgstr "Buscar"
 
@@ -312,7 +315,7 @@ msgstr "Tamaño fuente:"
 msgid "Font:"
 msgstr "Fuente:"
 
-#: ../widget/preference.vala:399 ../widget/terminal.vala:398
+#: ../widget/preference.vala:399 ../widget/terminal.vala:399
 msgid "Fullscreen"
 msgstr "Pantalla completa"
 
@@ -334,9 +337,9 @@ msgstr "Ayuda"
 
 #: ../widget/preference.vala:403
 msgid "Hide Quake window after losing focus"
-msgstr ""
+msgstr "Esconder el modo quake después de desenfocar"
 
-#: ../widget/terminal.vala:382 ../widget/config_window.vala:337
+#: ../widget/terminal.vala:383 ../widget/config_window.vala:337
 msgid "Horizontal split"
 msgstr "División horizontal"
 
@@ -384,7 +387,7 @@ msgstr "Nombre:"
 msgid "New window"
 msgstr "Nueva ventana"
 
-#: ../widget/terminal.vala:390 ../widget/config_window.vala:330
+#: ../widget/terminal.vala:391 ../widget/config_window.vala:330
 msgid "New workspace"
 msgstr "Nuevo espacio de trabajo"
 
@@ -408,17 +411,21 @@ msgstr "Ventana normal"
 msgid "Opacity:"
 msgstr "Opacidad:"
 
-#: ../widget/terminal.vala:364 ../widget/config_window.vala:306
+#: ../widget/terminal.vala:365 ../widget/config_window.vala:306
 msgid "Open"
 msgstr "Abierta"
 
-#: ../widget/terminal.vala:372
+#: ../widget/terminal.vala:373
 msgid "Open in file manager"
 msgstr "Abrir en el gestor de archivos"
 
+#: ../widget/terminal.vala:351
+msgid "Open link"
+msgstr ""
+
 #: ../widget/config_window.vala:335
 msgid "Open terminal with a new theme"
-msgstr ""
+msgstr "Abrir terminal con un nuevo tema."
 
 #: ../widget/preference.vala:306
 msgid "Open:"
@@ -438,7 +445,7 @@ msgstr "Contraseña"
 msgid "Password:"
 msgstr "Contraseña:"
 
-#: ../widget/terminal.vala:357 ../widget/config_window.vala:305
+#: ../widget/terminal.vala:358 ../widget/config_window.vala:305
 #: ../widget/entry_menu.vala:41
 msgid "Paste"
 msgstr "Pegar"
@@ -479,7 +486,7 @@ msgstr "Programas todavia se estan ejecutando en la terminal"
 msgid "Quake mode"
 msgstr "Modo Quake"
 
-#: ../widget/terminal.vala:448 ../widget/config_window.vala:361
+#: ../widget/terminal.vala:449 ../widget/config_window.vala:361
 #: ../widget/appbar.vala:123
 msgid "Remote management"
 msgstr "Administración remota"
@@ -488,11 +495,11 @@ msgstr "Administración remota"
 msgid "Remote management:"
 msgstr "Administración remota:"
 
-#: ../widget/terminal.vala:643
+#: ../widget/terminal.vala:653
 msgid "Rename"
 msgstr "Renombrar"
 
-#: ../widget/terminal.vala:445 ../widget/terminal.vala:640
+#: ../widget/terminal.vala:446 ../widget/terminal.vala:650
 #: ../widget/config_window.vala:357
 msgid "Rename title"
 msgstr "Renombrar título"
@@ -532,7 +539,7 @@ msgstr "Desplazamiento de tecla"
 msgid "Scroll on output"
 msgstr "Desplazamiento en la impresión"
 
-#: ../widget/terminal.vala:405 ../widget/search_entry.vala:64
+#: ../widget/terminal.vala:406 ../widget/search_entry.vala:64
 #: ../widget/search_entry.vala:66 ../widget/config_window.vala:307
 msgid "Search"
 msgstr "Buscar"
@@ -542,7 +549,7 @@ msgstr "Buscar"
 msgid "Search:"
 msgstr "Buscar:"
 
-#: ../widget/terminal.vala:609 ../widget/file_button.vala:71
+#: ../widget/terminal.vala:619 ../widget/file_button.vala:71
 msgid "Select"
 msgstr "Seleccionar"
 
@@ -554,11 +561,11 @@ msgstr "Seleccionar todo"
 msgid "Select all:"
 msgstr "Seleccionar todo:"
 
-#: ../widget/terminal.vala:607
+#: ../widget/terminal.vala:617
 msgid "Select directory to save the file"
-msgstr ""
+msgstr "Seleccionar directorio para guardar el archivo"
 
-#: ../widget/terminal.vala:578
+#: ../widget/terminal.vala:588
 msgid "Select file to upload"
 msgstr "Seleccionar archivo para subir"
 
@@ -618,7 +625,7 @@ msgstr "Establecer el directorio de inicio terminal "
 msgid "Set the terminal window mode"
 msgstr "Establecer el modo de ventana de terminal "
 
-#: ../widget/terminal.vala:456 ../widget/appbar.vala:125
+#: ../widget/terminal.vala:457 ../widget/appbar.vala:125
 msgid "Settings"
 msgstr "Ajustes"
 
@@ -631,7 +638,7 @@ msgstr "Teclas atajo"
 msgid "Shortcuts:"
 msgstr "Atajos de teclado:"
 
-#: ../widget/terminal.vala:443 ../widget/appbar.vala:121
+#: ../widget/terminal.vala:444 ../widget/appbar.vala:121
 msgid "Switch theme"
 msgstr "Cambiar tema"
 
@@ -642,17 +649,17 @@ msgstr "Terminal "
 
 #: ../widget/config_window.vala:358
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "Cambiar a pantalla completa"
 
-#: ../widget/terminal.vala:621
+#: ../widget/terminal.vala:631
 msgid "Type path to download file"
-msgstr ""
+msgstr "Escriba ruta de acceso para descarga de archivo"
 
-#: ../widget/terminal.vala:582
+#: ../widget/terminal.vala:592
 msgid "Upload"
 msgstr "Subir"
 
-#: ../widget/terminal.vala:451
+#: ../widget/terminal.vala:452
 msgid "Upload file"
 msgstr "Subir archivo"
 
@@ -672,7 +679,7 @@ msgstr "Nombre de usuario:"
 msgid "Version:"
 msgstr "Versión:"
 
-#: ../widget/terminal.vala:383 ../widget/config_window.vala:336
+#: ../widget/terminal.vala:384 ../widget/config_window.vala:336
 msgid "Vertical split"
 msgstr "División vertical"
 
@@ -680,7 +687,7 @@ msgstr "División vertical"
 msgid "Vertical split:"
 msgstr "División vertical:"
 
-#: ../widget/terminal.vala:1509
+#: ../widget/terminal.vala:1519
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "
@@ -715,6 +722,6 @@ msgstr "Alejar"
 msgid "Zoom out:"
 msgstr "Alejar:"
 
-#: ../widget/terminal.vala:782 ../widget/terminal.vala:1230
+#: ../widget/terminal.vala:792 ../widget/terminal.vala:1240
 msgid "deepin"
 msgstr "deepin"
