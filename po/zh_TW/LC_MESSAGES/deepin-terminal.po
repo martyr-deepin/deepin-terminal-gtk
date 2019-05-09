@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-08 11:58+0800\n"
+"POT-Creation-Date: 2019-04-26 13:06+0800\n"
 "PO-Revision-Date: 2017-02-04 05:38+0000\n"
 "Last-Translator: byStarTW (pan93412) <pan93412@gmail.com>, 2019\n"
 "Language-Team: Chinese (Taiwan) (https://www.transifex.com/linuxdeepin/teams/3976/zh_TW/)\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Language: zh_TW\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../widget/terminal.vala:1204
+#: ../widget/terminal.vala:1214
 msgid ""
 "\n"
 "Command has been completed, press ENTER to exit the terminal."
@@ -83,11 +83,11 @@ msgstr "進階選項"
 
 #: ../widget/remote_server_dialog.vala:426 ../widget/command_dialog.vala:249
 msgid "Are you sure you want to delete %s?"
-msgstr ""
+msgstr "確定刪除 %s？"
 
 #: ../widget/confirm_dialog.vala:130
 msgid "Are you sure you want to exit?"
-msgstr ""
+msgstr "確定退出？"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Backspace key"
@@ -107,8 +107,8 @@ msgstr "模糊背景"
 
 #: ../widget/remote_server_dialog.vala:347
 #: ../widget/remote_server_dialog.vala:427 ../widget/confirm_dialog.vala:130
-#: ../widget/terminal.vala:580 ../widget/terminal.vala:608
-#: ../widget/terminal.vala:642 ../widget/file_button.vala:69
+#: ../widget/terminal.vala:590 ../widget/terminal.vala:618
+#: ../widget/terminal.vala:652 ../widget/file_button.vala:69
 #: ../widget/command_dialog.vala:192 ../widget/command_dialog.vala:250
 msgid "Cancel"
 msgstr "取消"
@@ -121,7 +121,7 @@ msgstr "憑證檔案"
 msgid "Certificate:"
 msgstr "憑證檔案："
 
-#: ../widget/terminal.vala:386 ../widget/config_window.vala:343
+#: ../widget/terminal.vala:387 ../widget/config_window.vala:343
 msgid "Close other windows"
 msgstr "關閉其他視窗"
 
@@ -129,7 +129,7 @@ msgstr "關閉其他視窗"
 msgid "Close other windows:"
 msgstr "關閉其他視窗："
 
-#: ../widget/terminal.vala:384 ../widget/config_window.vala:342
+#: ../widget/terminal.vala:385 ../widget/config_window.vala:342
 msgid "Close window"
 msgstr "關閉視窗"
 
@@ -162,7 +162,7 @@ msgstr "內容"
 msgid "Copy"
 msgstr "複製"
 
-#: ../widget/terminal.vala:351
+#: ../widget/terminal.vala:352
 msgid "Copy link"
 msgstr "複製連結"
 
@@ -190,7 +190,7 @@ msgstr "游標閃爍"
 msgid "Cursor style:"
 msgstr "游標樣式："
 
-#: ../widget/terminal.vala:447 ../widget/config_window.vala:360
+#: ../widget/terminal.vala:448 ../widget/config_window.vala:360
 #: ../widget/appbar.vala:122
 msgid "Custom commands"
 msgstr "自訂命令"
@@ -207,7 +207,7 @@ msgstr "剪下"
 msgid ""
 "Deepin Teminal is an advanced terminal emulator with window-splitting, "
 "workspaces, remote management, Quake mode and other features."
-msgstr ""
+msgstr "Deepin 終端機是個進階的終端模擬器，具備視窗切割、工作區、遠端管理、雷神模式等其他功能。"
 
 #: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:610
 msgid "Deepin Terminal"
@@ -265,7 +265,7 @@ msgstr "顯示快速鍵："
 msgid "Display version"
 msgstr "顯示版本"
 
-#: ../widget/terminal.vala:452
+#: ../widget/terminal.vala:453
 msgid "Download file"
 msgstr "下載檔案"
 
@@ -277,7 +277,7 @@ msgstr "編輯命令"
 msgid "Edit Server"
 msgstr "編輯伺服器"
 
-#: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:446
+#: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:447
 msgid "Encoding"
 msgstr "編碼方式"
 
@@ -289,11 +289,11 @@ msgstr "編碼方式："
 msgid "Exit"
 msgstr "離開"
 
-#: ../widget/terminal.vala:396
+#: ../widget/terminal.vala:397
 msgid "Exit fullscreen"
 msgstr "結束全螢幕"
 
-#: ../widget/terminal.vala:402
+#: ../widget/terminal.vala:403
 msgid "Find"
 msgstr "搜尋"
 
@@ -305,7 +305,7 @@ msgstr "字型大小："
 msgid "Font:"
 msgstr "字型："
 
-#: ../widget/preference.vala:399 ../widget/terminal.vala:398
+#: ../widget/preference.vala:399 ../widget/terminal.vala:399
 msgid "Fullscreen"
 msgstr "全螢幕"
 
@@ -327,9 +327,9 @@ msgstr "說明"
 
 #: ../widget/preference.vala:403
 msgid "Hide Quake window after losing focus"
-msgstr ""
+msgstr "失去焦點時隱藏雷神視窗"
 
-#: ../widget/terminal.vala:382 ../widget/config_window.vala:337
+#: ../widget/terminal.vala:383 ../widget/config_window.vala:337
 msgid "Horizontal split"
 msgstr "水平分割"
 
@@ -377,7 +377,7 @@ msgstr "名稱："
 msgid "New window"
 msgstr "新增視窗"
 
-#: ../widget/terminal.vala:390 ../widget/config_window.vala:330
+#: ../widget/terminal.vala:391 ../widget/config_window.vala:330
 msgid "New workspace"
 msgstr "新增工作區"
 
@@ -401,17 +401,21 @@ msgstr "正常視窗"
 msgid "Opacity:"
 msgstr "不透明度："
 
-#: ../widget/terminal.vala:364 ../widget/config_window.vala:306
+#: ../widget/terminal.vala:365 ../widget/config_window.vala:306
 msgid "Open"
 msgstr "開啟"
 
-#: ../widget/terminal.vala:372
+#: ../widget/terminal.vala:373
 msgid "Open in file manager"
 msgstr "在檔案管理器中開啟"
 
+#: ../widget/terminal.vala:351
+msgid "Open link"
+msgstr ""
+
 #: ../widget/config_window.vala:335
 msgid "Open terminal with a new theme"
-msgstr ""
+msgstr "開啟套用新主題的終端機"
 
 #: ../widget/preference.vala:306
 msgid "Open:"
@@ -431,7 +435,7 @@ msgstr "密碼"
 msgid "Password:"
 msgstr "密碼："
 
-#: ../widget/terminal.vala:357 ../widget/config_window.vala:305
+#: ../widget/terminal.vala:358 ../widget/config_window.vala:305
 #: ../widget/entry_menu.vala:41
 msgid "Paste"
 msgstr "貼上"
@@ -472,7 +476,7 @@ msgstr "多個程式仍在執行"
 msgid "Quake mode"
 msgstr "雷神模式"
 
-#: ../widget/terminal.vala:448 ../widget/config_window.vala:361
+#: ../widget/terminal.vala:449 ../widget/config_window.vala:361
 #: ../widget/appbar.vala:123
 msgid "Remote management"
 msgstr "遠端管理"
@@ -481,11 +485,11 @@ msgstr "遠端管理"
 msgid "Remote management:"
 msgstr "遠端管理："
 
-#: ../widget/terminal.vala:643
+#: ../widget/terminal.vala:653
 msgid "Rename"
 msgstr "重新命名"
 
-#: ../widget/terminal.vala:445 ../widget/terminal.vala:640
+#: ../widget/terminal.vala:446 ../widget/terminal.vala:650
 #: ../widget/config_window.vala:357
 msgid "Rename title"
 msgstr "重命名分頁"
@@ -525,7 +529,7 @@ msgstr "點擊鍵盤時捲動"
 msgid "Scroll on output"
 msgstr "輸出時捲動"
 
-#: ../widget/terminal.vala:405 ../widget/search_entry.vala:64
+#: ../widget/terminal.vala:406 ../widget/search_entry.vala:64
 #: ../widget/search_entry.vala:66 ../widget/config_window.vala:307
 msgid "Search"
 msgstr "搜尋"
@@ -535,7 +539,7 @@ msgstr "搜尋"
 msgid "Search:"
 msgstr "搜尋："
 
-#: ../widget/terminal.vala:609 ../widget/file_button.vala:71
+#: ../widget/terminal.vala:619 ../widget/file_button.vala:71
 msgid "Select"
 msgstr "選擇"
 
@@ -547,11 +551,11 @@ msgstr "全選"
 msgid "Select all:"
 msgstr "全選："
 
-#: ../widget/terminal.vala:607
+#: ../widget/terminal.vala:617
 msgid "Select directory to save the file"
-msgstr ""
+msgstr "選擇檔案儲存路徑"
 
-#: ../widget/terminal.vala:578
+#: ../widget/terminal.vala:588
 msgid "Select file to upload"
 msgstr "選擇要上傳的檔案"
 
@@ -611,7 +615,7 @@ msgstr "設定終端機的啟動目錄"
 msgid "Set the terminal window mode"
 msgstr "設定終端機的視窗模式"
 
-#: ../widget/terminal.vala:456 ../widget/appbar.vala:125
+#: ../widget/terminal.vala:457 ../widget/appbar.vala:125
 msgid "Settings"
 msgstr "設定"
 
@@ -624,7 +628,7 @@ msgstr "快速鍵"
 msgid "Shortcuts:"
 msgstr "快速鍵："
 
-#: ../widget/terminal.vala:443 ../widget/appbar.vala:121
+#: ../widget/terminal.vala:444 ../widget/appbar.vala:121
 msgid "Switch theme"
 msgstr "更換主題"
 
@@ -635,17 +639,17 @@ msgstr "終端機"
 
 #: ../widget/config_window.vala:358
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "切換全螢幕"
 
-#: ../widget/terminal.vala:621
+#: ../widget/terminal.vala:631
 msgid "Type path to download file"
-msgstr ""
+msgstr "輸入位置以下載檔案"
 
-#: ../widget/terminal.vala:582
+#: ../widget/terminal.vala:592
 msgid "Upload"
 msgstr "上傳"
 
-#: ../widget/terminal.vala:451
+#: ../widget/terminal.vala:452
 msgid "Upload file"
 msgstr "上傳檔案"
 
@@ -665,7 +669,7 @@ msgstr "使用者名稱："
 msgid "Version:"
 msgstr "版本："
 
-#: ../widget/terminal.vala:383 ../widget/config_window.vala:336
+#: ../widget/terminal.vala:384 ../widget/config_window.vala:336
 msgid "Vertical split"
 msgstr "垂直分割"
 
@@ -673,7 +677,7 @@ msgstr "垂直分割"
 msgid "Vertical split:"
 msgstr "垂直分割："
 
-#: ../widget/terminal.vala:1509
+#: ../widget/terminal.vala:1519
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "
@@ -705,6 +709,6 @@ msgstr "縮小"
 msgid "Zoom out:"
 msgstr "縮小："
 
-#: ../widget/terminal.vala:782 ../widget/terminal.vala:1230
+#: ../widget/terminal.vala:792 ../widget/terminal.vala:1240
 msgid "deepin"
 msgstr "deepin"

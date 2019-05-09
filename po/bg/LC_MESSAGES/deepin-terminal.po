@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-08 11:58+0800\n"
+"POT-Creation-Date: 2019-04-26 13:06+0800\n"
 "PO-Revision-Date: 2017-02-04 05:38+0000\n"
 "Last-Translator: Galin Iskrenov <loot270@abv.bg>, 2019\n"
 "Language-Team: Bulgarian (https://www.transifex.com/linuxdeepin/teams/3976/bg/)\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../widget/terminal.vala:1204
+#: ../widget/terminal.vala:1214
 msgid ""
 "\n"
 "Command has been completed, press ENTER to exit the terminal."
@@ -107,8 +107,8 @@ msgstr "Размазване на фон"
 
 #: ../widget/remote_server_dialog.vala:347
 #: ../widget/remote_server_dialog.vala:427 ../widget/confirm_dialog.vala:130
-#: ../widget/terminal.vala:580 ../widget/terminal.vala:608
-#: ../widget/terminal.vala:642 ../widget/file_button.vala:69
+#: ../widget/terminal.vala:590 ../widget/terminal.vala:618
+#: ../widget/terminal.vala:652 ../widget/file_button.vala:69
 #: ../widget/command_dialog.vala:192 ../widget/command_dialog.vala:250
 msgid "Cancel"
 msgstr "Отказ"
@@ -121,7 +121,7 @@ msgstr "Сертификат"
 msgid "Certificate:"
 msgstr "Сертификат:"
 
-#: ../widget/terminal.vala:386 ../widget/config_window.vala:343
+#: ../widget/terminal.vala:387 ../widget/config_window.vala:343
 msgid "Close other windows"
 msgstr "Затвори другите прозорци"
 
@@ -129,7 +129,7 @@ msgstr "Затвори другите прозорци"
 msgid "Close other windows:"
 msgstr "Затваряне на другите прозорци:"
 
-#: ../widget/terminal.vala:384 ../widget/config_window.vala:342
+#: ../widget/terminal.vala:385 ../widget/config_window.vala:342
 msgid "Close window"
 msgstr "Затваряне на прозореца"
 
@@ -162,7 +162,7 @@ msgstr "Съдържание"
 msgid "Copy"
 msgstr "Копиране"
 
-#: ../widget/terminal.vala:351
+#: ../widget/terminal.vala:352
 msgid "Copy link"
 msgstr "Копиране на връзка"
 
@@ -190,7 +190,7 @@ msgstr "Мигащ курсор"
 msgid "Cursor style:"
 msgstr "Стил на курсор:"
 
-#: ../widget/terminal.vala:447 ../widget/config_window.vala:360
+#: ../widget/terminal.vala:448 ../widget/config_window.vala:360
 #: ../widget/appbar.vala:122
 msgid "Custom commands"
 msgstr "Потребителски команди"
@@ -265,7 +265,7 @@ msgstr "Комбинации за екрана:"
 msgid "Display version"
 msgstr "Версия монитор"
 
-#: ../widget/terminal.vala:452
+#: ../widget/terminal.vala:453
 msgid "Download file"
 msgstr "Файл за сваляне"
 
@@ -277,7 +277,7 @@ msgstr "Команда за редактиране"
 msgid "Edit Server"
 msgstr "Редакция сървър"
 
-#: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:446
+#: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:447
 msgid "Encoding"
 msgstr "Кодиране"
 
@@ -289,11 +289,11 @@ msgstr "Кодиране:"
 msgid "Exit"
 msgstr "Изход"
 
-#: ../widget/terminal.vala:396
+#: ../widget/terminal.vala:397
 msgid "Exit fullscreen"
 msgstr "Изход от цял екран"
 
-#: ../widget/terminal.vala:402
+#: ../widget/terminal.vala:403
 msgid "Find"
 msgstr "Търси"
 
@@ -305,7 +305,7 @@ msgstr "Размер шрифт:"
 msgid "Font:"
 msgstr "Шрифт:"
 
-#: ../widget/preference.vala:399 ../widget/terminal.vala:398
+#: ../widget/preference.vala:399 ../widget/terminal.vala:399
 msgid "Fullscreen"
 msgstr "Цял екран"
 
@@ -329,7 +329,7 @@ msgstr "Помощ"
 msgid "Hide Quake window after losing focus"
 msgstr ""
 
-#: ../widget/terminal.vala:382 ../widget/config_window.vala:337
+#: ../widget/terminal.vala:383 ../widget/config_window.vala:337
 msgid "Horizontal split"
 msgstr "Раздели хоризонтално"
 
@@ -377,7 +377,7 @@ msgstr "Име:"
 msgid "New window"
 msgstr "Нов прозорец"
 
-#: ../widget/terminal.vala:390 ../widget/config_window.vala:330
+#: ../widget/terminal.vala:391 ../widget/config_window.vala:330
 msgid "New workspace"
 msgstr "Ново работно място"
 
@@ -401,13 +401,17 @@ msgstr "Нормален прозорец"
 msgid "Opacity:"
 msgstr "Непрозрачност:"
 
-#: ../widget/terminal.vala:364 ../widget/config_window.vala:306
+#: ../widget/terminal.vala:365 ../widget/config_window.vala:306
 msgid "Open"
 msgstr "Отваряне"
 
-#: ../widget/terminal.vala:372
+#: ../widget/terminal.vala:373
 msgid "Open in file manager"
 msgstr "Отвори във файловия мениджър"
+
+#: ../widget/terminal.vala:351
+msgid "Open link"
+msgstr ""
 
 #: ../widget/config_window.vala:335
 msgid "Open terminal with a new theme"
@@ -431,7 +435,7 @@ msgstr "Парола"
 msgid "Password:"
 msgstr "Парола:"
 
-#: ../widget/terminal.vala:357 ../widget/config_window.vala:305
+#: ../widget/terminal.vala:358 ../widget/config_window.vala:305
 #: ../widget/entry_menu.vala:41
 msgid "Paste"
 msgstr "Поставяне"
@@ -472,7 +476,7 @@ msgstr "Програни се извършват в теминала"
 msgid "Quake mode"
 msgstr "Quake режим"
 
-#: ../widget/terminal.vala:448 ../widget/config_window.vala:361
+#: ../widget/terminal.vala:449 ../widget/config_window.vala:361
 #: ../widget/appbar.vala:123
 msgid "Remote management"
 msgstr "Отдалечено управление"
@@ -481,11 +485,11 @@ msgstr "Отдалечено управление"
 msgid "Remote management:"
 msgstr "Отдалечено управление:"
 
-#: ../widget/terminal.vala:643
+#: ../widget/terminal.vala:653
 msgid "Rename"
 msgstr "Преименуване"
 
-#: ../widget/terminal.vala:445 ../widget/terminal.vala:640
+#: ../widget/terminal.vala:446 ../widget/terminal.vala:650
 #: ../widget/config_window.vala:357
 msgid "Rename title"
 msgstr "Преименуване на заглавие"
@@ -525,7 +529,7 @@ msgstr "Превъртане с клавиши"
 msgid "Scroll on output"
 msgstr "Превъртана на изхода:"
 
-#: ../widget/terminal.vala:405 ../widget/search_entry.vala:64
+#: ../widget/terminal.vala:406 ../widget/search_entry.vala:64
 #: ../widget/search_entry.vala:66 ../widget/config_window.vala:307
 msgid "Search"
 msgstr "Търсене"
@@ -535,7 +539,7 @@ msgstr "Търсене"
 msgid "Search:"
 msgstr "Търсене:"
 
-#: ../widget/terminal.vala:609 ../widget/file_button.vala:71
+#: ../widget/terminal.vala:619 ../widget/file_button.vala:71
 msgid "Select"
 msgstr "Избери"
 
@@ -547,11 +551,11 @@ msgstr "Избери всички"
 msgid "Select all:"
 msgstr "Избери всичко:"
 
-#: ../widget/terminal.vala:607
+#: ../widget/terminal.vala:617
 msgid "Select directory to save the file"
 msgstr ""
 
-#: ../widget/terminal.vala:578
+#: ../widget/terminal.vala:588
 msgid "Select file to upload"
 msgstr "Изберете файл за качване"
 
@@ -611,7 +615,7 @@ msgstr "Задаване на стартова папка на терминал"
 msgid "Set the terminal window mode"
 msgstr "Задаване прозоречен режим на терминал"
 
-#: ../widget/terminal.vala:456 ../widget/appbar.vala:125
+#: ../widget/terminal.vala:457 ../widget/appbar.vala:125
 msgid "Settings"
 msgstr "Настройки"
 
@@ -624,7 +628,7 @@ msgstr "Кратък път"
 msgid "Shortcuts:"
 msgstr " Кратък път:"
 
-#: ../widget/terminal.vala:443 ../widget/appbar.vala:121
+#: ../widget/terminal.vala:444 ../widget/appbar.vala:121
 msgid "Switch theme"
 msgstr "Смяна на тема"
 
@@ -637,15 +641,15 @@ msgstr "Терминал"
 msgid "Toggle fullscreen"
 msgstr ""
 
-#: ../widget/terminal.vala:621
+#: ../widget/terminal.vala:631
 msgid "Type path to download file"
 msgstr ""
 
-#: ../widget/terminal.vala:582
+#: ../widget/terminal.vala:592
 msgid "Upload"
 msgstr "Качване"
 
-#: ../widget/terminal.vala:451
+#: ../widget/terminal.vala:452
 msgid "Upload file"
 msgstr "Качване на файл"
 
@@ -665,7 +669,7 @@ msgstr "Потребителско име:"
 msgid "Version:"
 msgstr "Версия:"
 
-#: ../widget/terminal.vala:383 ../widget/config_window.vala:336
+#: ../widget/terminal.vala:384 ../widget/config_window.vala:336
 msgid "Vertical split"
 msgstr "Вертикално разделяне"
 
@@ -673,7 +677,7 @@ msgstr "Вертикално разделяне"
 msgid "Vertical split:"
 msgstr "Вертикално разделяне:"
 
-#: ../widget/terminal.vala:1509
+#: ../widget/terminal.vala:1519
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "
@@ -708,6 +712,6 @@ msgstr "Намаляване"
 msgid "Zoom out:"
 msgstr "Намаляване:"
 
-#: ../widget/terminal.vala:782 ../widget/terminal.vala:1230
+#: ../widget/terminal.vala:792 ../widget/terminal.vala:1240
 msgid "deepin"
 msgstr "deepin"

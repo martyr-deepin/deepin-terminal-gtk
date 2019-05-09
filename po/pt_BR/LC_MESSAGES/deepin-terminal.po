@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-08 11:58+0800\n"
+"POT-Creation-Date: 2019-04-26 13:06+0800\n"
 "PO-Revision-Date: 2017-02-04 05:38+0000\n"
 "Last-Translator: Paulo Schopf, 2019\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/linuxdeepin/teams/3976/pt_BR/)\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: ../widget/terminal.vala:1204
+#: ../widget/terminal.vala:1214
 msgid ""
 "\n"
 "Command has been completed, press ENTER to exit the terminal."
@@ -110,8 +110,8 @@ msgstr "Desfoque de fundo"
 
 #: ../widget/remote_server_dialog.vala:347
 #: ../widget/remote_server_dialog.vala:427 ../widget/confirm_dialog.vala:130
-#: ../widget/terminal.vala:580 ../widget/terminal.vala:608
-#: ../widget/terminal.vala:642 ../widget/file_button.vala:69
+#: ../widget/terminal.vala:590 ../widget/terminal.vala:618
+#: ../widget/terminal.vala:652 ../widget/file_button.vala:69
 #: ../widget/command_dialog.vala:192 ../widget/command_dialog.vala:250
 msgid "Cancel"
 msgstr "Cancelar"
@@ -124,7 +124,7 @@ msgstr "Certificado"
 msgid "Certificate:"
 msgstr "Certificado:"
 
-#: ../widget/terminal.vala:386 ../widget/config_window.vala:343
+#: ../widget/terminal.vala:387 ../widget/config_window.vala:343
 msgid "Close other windows"
 msgstr "Fechar outras janelas"
 
@@ -132,7 +132,7 @@ msgstr "Fechar outras janelas"
 msgid "Close other windows:"
 msgstr "Fechar outras janelas:"
 
-#: ../widget/terminal.vala:384 ../widget/config_window.vala:342
+#: ../widget/terminal.vala:385 ../widget/config_window.vala:342
 msgid "Close window"
 msgstr "Fechar janela"
 
@@ -165,7 +165,7 @@ msgstr "Conteúdo"
 msgid "Copy"
 msgstr "Copiar"
 
-#: ../widget/terminal.vala:351
+#: ../widget/terminal.vala:352
 msgid "Copy link"
 msgstr "Copiar link"
 
@@ -193,7 +193,7 @@ msgstr "Intermitência do cursor"
 msgid "Cursor style:"
 msgstr "Estilo do cursor:"
 
-#: ../widget/terminal.vala:447 ../widget/config_window.vala:360
+#: ../widget/terminal.vala:448 ../widget/config_window.vala:360
 #: ../widget/appbar.vala:122
 msgid "Custom commands"
 msgstr "Comandos personalizados"
@@ -270,7 +270,7 @@ msgstr "Exibir atalhos:"
 msgid "Display version"
 msgstr "Exibir versão"
 
-#: ../widget/terminal.vala:452
+#: ../widget/terminal.vala:453
 msgid "Download file"
 msgstr "Baixar arquivo"
 
@@ -282,7 +282,7 @@ msgstr "Editar comando"
 msgid "Edit Server"
 msgstr "Editar servidor"
 
-#: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:446
+#: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:447
 msgid "Encoding"
 msgstr "Codificação"
 
@@ -294,11 +294,11 @@ msgstr "Codificação:"
 msgid "Exit"
 msgstr "Sair"
 
-#: ../widget/terminal.vala:396
+#: ../widget/terminal.vala:397
 msgid "Exit fullscreen"
 msgstr "Sair da tela cheia"
 
-#: ../widget/terminal.vala:402
+#: ../widget/terminal.vala:403
 msgid "Find"
 msgstr "Encontrar"
 
@@ -310,7 +310,7 @@ msgstr "Tamanho da fonte:"
 msgid "Font:"
 msgstr "Fonte:"
 
-#: ../widget/preference.vala:399 ../widget/terminal.vala:398
+#: ../widget/preference.vala:399 ../widget/terminal.vala:399
 msgid "Fullscreen"
 msgstr "Tela cheia"
 
@@ -334,7 +334,7 @@ msgstr "Ajuda"
 msgid "Hide Quake window after losing focus"
 msgstr "Ocultar a janela do Quake após perder o foco"
 
-#: ../widget/terminal.vala:382 ../widget/config_window.vala:337
+#: ../widget/terminal.vala:383 ../widget/config_window.vala:337
 msgid "Horizontal split"
 msgstr "Dividir horizontalmente"
 
@@ -382,7 +382,7 @@ msgstr "Nome:"
 msgid "New window"
 msgstr "Nova janela"
 
-#: ../widget/terminal.vala:390 ../widget/config_window.vala:330
+#: ../widget/terminal.vala:391 ../widget/config_window.vala:330
 msgid "New workspace"
 msgstr "Novo espaço de trabalho"
 
@@ -406,13 +406,17 @@ msgstr "Janela normal"
 msgid "Opacity:"
 msgstr "Opacidade:"
 
-#: ../widget/terminal.vala:364 ../widget/config_window.vala:306
+#: ../widget/terminal.vala:365 ../widget/config_window.vala:306
 msgid "Open"
 msgstr "Abrir"
 
-#: ../widget/terminal.vala:372
+#: ../widget/terminal.vala:373
 msgid "Open in file manager"
 msgstr "Abrir no gerenciador de arquivos"
+
+#: ../widget/terminal.vala:351
+msgid "Open link"
+msgstr ""
 
 #: ../widget/config_window.vala:335
 msgid "Open terminal with a new theme"
@@ -436,7 +440,7 @@ msgstr "Senha"
 msgid "Password:"
 msgstr "Senha:"
 
-#: ../widget/terminal.vala:357 ../widget/config_window.vala:305
+#: ../widget/terminal.vala:358 ../widget/config_window.vala:305
 #: ../widget/entry_menu.vala:41
 msgid "Paste"
 msgstr "Colar"
@@ -477,7 +481,7 @@ msgstr "Os programas ainda estão sendo executados no terminal"
 msgid "Quake mode"
 msgstr "Modo Quake"
 
-#: ../widget/terminal.vala:448 ../widget/config_window.vala:361
+#: ../widget/terminal.vala:449 ../widget/config_window.vala:361
 #: ../widget/appbar.vala:123
 msgid "Remote management"
 msgstr "Gerenciamento remoto"
@@ -486,11 +490,11 @@ msgstr "Gerenciamento remoto"
 msgid "Remote management:"
 msgstr "Gerenciamento remoto:"
 
-#: ../widget/terminal.vala:643
+#: ../widget/terminal.vala:653
 msgid "Rename"
 msgstr "Renomear"
 
-#: ../widget/terminal.vala:445 ../widget/terminal.vala:640
+#: ../widget/terminal.vala:446 ../widget/terminal.vala:650
 #: ../widget/config_window.vala:357
 msgid "Rename title"
 msgstr "Renomear o título"
@@ -530,7 +534,7 @@ msgstr "Rolar ao teclar"
 msgid "Scroll on output"
 msgstr "Rolar com a saída de dados"
 
-#: ../widget/terminal.vala:405 ../widget/search_entry.vala:64
+#: ../widget/terminal.vala:406 ../widget/search_entry.vala:64
 #: ../widget/search_entry.vala:66 ../widget/config_window.vala:307
 msgid "Search"
 msgstr "Pesquisar"
@@ -540,7 +544,7 @@ msgstr "Pesquisar"
 msgid "Search:"
 msgstr "Pesquisar:"
 
-#: ../widget/terminal.vala:609 ../widget/file_button.vala:71
+#: ../widget/terminal.vala:619 ../widget/file_button.vala:71
 msgid "Select"
 msgstr "Selecionar"
 
@@ -552,11 +556,11 @@ msgstr "Selecionar tudo"
 msgid "Select all:"
 msgstr "Selecionar tudo:"
 
-#: ../widget/terminal.vala:607
+#: ../widget/terminal.vala:617
 msgid "Select directory to save the file"
 msgstr "Selecionar o diretório para salvar o arquivo"
 
-#: ../widget/terminal.vala:578
+#: ../widget/terminal.vala:588
 msgid "Select file to upload"
 msgstr "Selecionar arquivo para enviar"
 
@@ -616,7 +620,7 @@ msgstr "Definir o diretório inicial do terminal"
 msgid "Set the terminal window mode"
 msgstr "Definir o tipo de janela do terminal"
 
-#: ../widget/terminal.vala:456 ../widget/appbar.vala:125
+#: ../widget/terminal.vala:457 ../widget/appbar.vala:125
 msgid "Settings"
 msgstr "Configurações"
 
@@ -629,7 +633,7 @@ msgstr "Atalhos"
 msgid "Shortcuts:"
 msgstr "Atalhos:"
 
-#: ../widget/terminal.vala:443 ../widget/appbar.vala:121
+#: ../widget/terminal.vala:444 ../widget/appbar.vala:121
 msgid "Switch theme"
 msgstr "Alterar tema"
 
@@ -642,15 +646,15 @@ msgstr "Terminal"
 msgid "Toggle fullscreen"
 msgstr "Alternar para o modo tela cheia"
 
-#: ../widget/terminal.vala:621
+#: ../widget/terminal.vala:631
 msgid "Type path to download file"
 msgstr "Digite o caminho para baixar o arquivo"
 
-#: ../widget/terminal.vala:582
+#: ../widget/terminal.vala:592
 msgid "Upload"
 msgstr "Enviar"
 
-#: ../widget/terminal.vala:451
+#: ../widget/terminal.vala:452
 msgid "Upload file"
 msgstr "Enviar arquivo"
 
@@ -670,7 +674,7 @@ msgstr "Usuário:"
 msgid "Version:"
 msgstr "Versão:"
 
-#: ../widget/terminal.vala:383 ../widget/config_window.vala:336
+#: ../widget/terminal.vala:384 ../widget/config_window.vala:336
 msgid "Vertical split"
 msgstr "Dividir verticalmente"
 
@@ -678,7 +682,7 @@ msgstr "Dividir verticalmente"
 msgid "Vertical split:"
 msgstr "Dividir verticalmente:"
 
-#: ../widget/terminal.vala:1509
+#: ../widget/terminal.vala:1519
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "
@@ -713,6 +717,6 @@ msgstr "Diminuir zoom"
 msgid "Zoom out:"
 msgstr "Diminuir zoom:"
 
-#: ../widget/terminal.vala:782 ../widget/terminal.vala:1230
+#: ../widget/terminal.vala:792 ../widget/terminal.vala:1240
 msgid "deepin"
 msgstr "deepin"
