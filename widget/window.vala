@@ -328,6 +328,7 @@ namespace Widgets {
                     unowned X.Display xdisplay = (get_window().get_display() as Gdk.X11.Display).get_xdisplay();
                     var xid = (int)((Gdk.X11.Window) get_window()).get_xid();
                     var atom_NET_WM_DEEPIN_BLUR_REGION_ROUNDED = xdisplay.intern_atom("_NET_WM_DEEPIN_BLUR_REGION_ROUNDED", false);
+                    var atom_KDE_NET_WM_BLUR_BEHIND_REGION = xdisplay.intern_atom("_KDE_NET_WM_BLUR_BEHIND_REGION", false);
 
                     var blur_background = config.config_file.get_boolean("advanced", "blur_background");
                     if (blur_background) {
@@ -341,6 +342,13 @@ namespace Widgets {
                             blur_rect.y = window_frame_box.margin_top;
                             blur_rect.width += - window_frame_box.margin_start - window_frame_box.margin_end;
                             blur_rect.height += - window_frame_box.margin_top - window_frame_box.margin_bottom;
+                        }
+
+                        // blumia: not sure why it could just randomly happens, anyway we did this as a workaround.
+                        if (blur_rect.width < 0) {
+                            print("[!!!] blur_rect calc result error! blur_rect.width = %d which is negative!\n", blur_rect.width);
+                            blur_rect.width = width - window_frame_box.get_margin_left() - window_frame_box.get_margin_right();
+                            blur_rect.height = height - window_frame_box.get_margin_top() - window_frame_box.get_margin_bottom();
                         }
 
                         blur_rect.x = (int) (blur_rect.x * Utils.get_default_monitor_scale());
@@ -357,16 +365,19 @@ namespace Widgets {
                             X.PropMode.Replace,
                             (uchar[])data,
                             ((ulong[]) data).length);
-                    } else {
-                        ulong[] data = {0, 0, 0, 0, 0, 0};
+
                         xdisplay.change_property(
                             xid,
-                            atom_NET_WM_DEEPIN_BLUR_REGION_ROUNDED,
+                            atom_KDE_NET_WM_BLUR_BEHIND_REGION,
                             X.XA_CARDINAL,
                             32,
                             X.PropMode.Replace,
                             (uchar[])data,
-                            ((ulong[]) data).length);
+                            ((ulong[]) data).length - 2
+                        );
+                    } else {
+                        xdisplay.delete_property(xid, atom_NET_WM_DEEPIN_BLUR_REGION_ROUNDED);
+                        xdisplay.delete_property(xid, atom_KDE_NET_WM_BLUR_BEHIND_REGION);
                     }
                 }
             } catch (GLib.KeyFileError e) {
