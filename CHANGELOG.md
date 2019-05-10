@@ -1,3 +1,13 @@
+<a name="3.2.3.1"></a>
+## 3.2.3.1 (2019-05-10)
+
+
+#### Bug Fixes
+
+*   Quake window get focus on KWin ([a3e46ed0](https://github.com/linuxdeepin/deepin-terminal/commit/a3e46ed0cc034d3db56f61667f2dcd4c4ad75be3))
+
+
+
 <a name="3.2.3"></a>
 ## 3.2.3 (2019-05-09)
 
