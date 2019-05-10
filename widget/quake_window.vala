@@ -305,7 +305,10 @@ namespace Widgets {
                                     if (is_active) {
                                         hide();
                                     } else {
-                                        present();
+                                        // blumia: present(), which send `_NET_ACTIVE_WINDOW` with current time (0) as timestamp,
+                                        //         doesn't works under KWin, a correct timestamp form X-server start is required.
+                                        //present();
+                                        present_with_time(Gdk.X11.get_server_time((Gdk.X11.Window)get_window()));
                                     }
 
                                     return false;
