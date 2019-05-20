@@ -307,6 +307,11 @@ namespace Widgets {
         public void split(Orientation orientation) {
             Term focus_term = get_focus_term(this);
 
+            // blumia: This fix is a little bit dirty. Here we set the value of `terminal_before_popup` everytime we call split().
+            //         Otherwish it will crash at get_focus_term(). Try comment the following line, open up a new terminal window,
+            //         and press: Ctrl+Shfit+j > Ctrl+Shfit+q > Ctrl+Shfit+j > Alt+h > Ctrl+Shfit+j > (should crashed now)
+            terminal_before_popup = focus_term;
+
             Gtk.Allocation alloc;
             focus_term.get_allocation(out alloc);
 
