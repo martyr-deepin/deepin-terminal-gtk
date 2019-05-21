@@ -12,11 +12,13 @@ In debian, use below command to install running dependencies:
 
 `sudo apt-get install libatk1.0-0 libc6 libcairo-gobject2 libcairo2 libfontconfig1 libgdk-pixbuf2.0-0 libgee-0.8-2 libglib2.0-0 libgnutls30 libgtk-3-0 libice6 libjson-glib-1.0-0 libpango-1.0-0 libpangocairo-1.0-0 libpcre2-8-0 libreadline7 librsvg2-2 libsecret-1-0 libsm6 libstdc++6 libtinfo5 libwnck-3-0 libx11-6 libxext6 zlib1g lrzsz expect deepin-menu`
 
-And you also need `deepin-menu` from [http://mirrors.deepin.com/deepin/pool/main/d/deepin-menu/](http://mirrors.deepin.com/deepin/pool/main/d/deepin-menu/) .
+And you also need the [`deepin-menu`](https://github.com/linuxdeepin/deepin-menu) package.
 
 ## Installation
 
 `mkdir build; cd build; cmake ..; make; ./deepin-terminal`
+
+Tip: Use `cmake ../ -DUSE_VENDOR_LIB=off` if you don't want to use the vendor lib.
 
 ## Usage
 
@@ -39,6 +41,7 @@ Below is keymap list for deepin-terminal:
 | Next workspace                  | <kbd>Ctrl</kbd> + <kbd>Tab</kbd>                        |
 | Preview workspace               | <kbd>Ctrl</kbd> + <kbd>Shfit</kbd> + <kbd>Tab</kbd>     |
 | Select workspace with number    | <kbd>Alt</kbd> + <kbd>number</kbd>                      |
+| Resize workspace                | <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Arrow Key</kbd> |
 | Vertical split                  | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>j</kbd>       |
 | Horizontal split                | <kbd>Ctrl</kbd> + <kbd>Shfit</kbd> + <kbd>h</kbd>       |
 | Select upper window             | <kbd>Alt</kbd>  + <kbd>k</kbd>                          |
@@ -138,6 +141,16 @@ this default option is false, because it's too nosing to me.
 #### copy_on_select
 Copy select text to system clipboard directly if you turn on this option, i think many XShell users like this. ;) 
 This optoin default is false, because it's linux style. ;)
+
+#### bold_is_bright
+Checks whether the SGR 1 attribute also switches to the bright counterpart of the first 8 palette colors, in addition to making them bold (legacy behavior) or if SGR 1 only enables bold and leaves the color intact.
+Some people may miss the matrix look-n-feel with the default theme since this value used to be `true` by default, now it's `false` by default.
+
+#### tabbar_at_the_bottom
+Some tiling WM user may prefer let the tabbar at the window bottom, set `tabbar_at_the_bottom` to `true` will do this for ya, default is `false`.
+
+## Customize themes
+User can place its own theme file to `~/.config/deepin/deepin-terminal/themes` (create if path not exist), the theme file added to this location will available to use from the theme selection panel.
 
 ## Customize search engine
 Deepin terminal build-in many search engine for engineer, such as Google, Bing, Baidu, GitHub, Stackover Flow, DuckDuckGo.
