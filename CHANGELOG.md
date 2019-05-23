@@ -1,3 +1,13 @@
+<a name="3.2.4"></a>
+## 3.2.4 (2019-05-23)
+
+
+#### Bug Fixes
+
+*   May crash when split terminal window ([882b4d8c](https://github.com/linuxdeepin/deepin-terminal/commit/882b4d8c89be6419cef18124eaf2d54f79c3dfbe))
+
+
+
 <a name="3.2.3.1"></a>
 ## 3.2.3.1 (2019-05-10)
 
