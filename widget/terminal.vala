@@ -617,7 +617,8 @@ namespace Widgets {
 
         public void download_file() {
             Gtk.FileChooserAction action = Gtk.FileChooserAction.SELECT_FOLDER;
-            var chooser = new Gtk.FileChooserDialog(_("Select directory to save the file"), null, action);
+            var chooser = new Gtk.FileChooserDialog(_("Select directory to save the file"), 
+                                                    get_toplevel() as Gtk.Window, action);
             chooser.add_button(_("Cancel"), Gtk.ResponseType.CANCEL);
             chooser.add_button(_("Select"), Gtk.ResponseType.ACCEPT);
 
