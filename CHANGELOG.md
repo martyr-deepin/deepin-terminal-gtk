@@ -1,3 +1,14 @@
+<a name="3.2.5"></a>
+## 3.2.5 (2019-06-01)
+
+
+#### Bug Fixes
+
+*   terminal window drifts after toggling compositor. ([b757ef93](https://github.com/linuxdeepin/deepin-terminal/commit/b757ef93f96d0a40060a9db9bde33188c0f7186f))
+*   download file opened dialog should modal parent ([fdea3be8](https://github.com/linuxdeepin/deepin-terminal/commit/fdea3be8e7f9a96d85e057a69ae480b6063bf62b))
+
+
+
 <a name="3.2.4"></a>
 ## 3.2.4 (2019-05-23)
 
