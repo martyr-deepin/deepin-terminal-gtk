@@ -420,8 +420,6 @@ namespace Widgets {
             }
         }
 
-        delegate void AdjustPositionDelegate(int m);
-
         public override void update_frame() {
             update_style();
 
@@ -442,15 +440,6 @@ namespace Widgets {
                 window_widget_box.margin_end = 2;
             }
 
-            AdjustPositionDelegate adjust_position = (m) => {
-                int x, y, w, h;
-                get_window().get_geometry(null, null, out w, out h);
-                get_window().get_position(out x, out y);
-                if (x != 0 || y != 0) {
-                    get_window().move_resize(x + m * window_frame_margin_start, y + m * window_frame_margin_top, w - m * (window_frame_margin_start + window_frame_margin_end), h - m * (window_frame_margin_top + window_frame_margin_top));
-                }
-            };
-
             if (!screen_monitor.is_composited() || window_is_fullscreen() || window_is_max()) {
                 window_frame_box.margin_top = 0;
                 window_frame_box.margin_bottom = 0;
@@ -458,7 +447,6 @@ namespace Widgets {
                 window_frame_box.margin_end = 0;
 
                 get_window().set_shadow_width(0, 0, 0, 0);
-                adjust_position(1);
             } else {
                 window_frame_box.margin_top = window_frame_margin_top;
                 window_frame_box.margin_bottom = window_frame_margin_bottom;
@@ -466,7 +454,6 @@ namespace Widgets {
                 window_frame_box.margin_end = window_frame_margin_end;
 
                 get_window().set_shadow_width(window_frame_margin_start, window_frame_margin_end, window_frame_margin_top, window_frame_margin_bottom);
-                adjust_position(-1);
             }
         }
 
