@@ -1,3 +1,9 @@
+<a name="3.2.5.1"></a>
+## 3.2.5.1 (2019-06-03)
+
+*  Revert a commit which cause window size grows. (#116)
+
+
 <a name="3.2.5"></a>
 ## 3.2.5 (2019-06-01)
 
