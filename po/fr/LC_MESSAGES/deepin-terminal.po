@@ -38,7 +38,7 @@ msgid ""
 "Command has been completed, press ENTER to exit the terminal."
 msgstr ""
 "\n"
-"Commande executée, appuyez sur ENTER pour quitter le terminal."
+"Commande exécutée, appuyez sur ENTREE pour quitter le terminal."
 
 #: ../widget/appbar.vala:129
 msgid "About"
@@ -74,7 +74,7 @@ msgstr "Adresse"
 
 #: ../widget/remote_server_dialog.vala:190
 msgid "Address:"
-msgstr "Adresse :"
+msgstr "Adresse : "
 
 #: ../widget/preference_slidebar.vala:74 ../widget/preference_slidebar.vala:81
 #: ../widget/preference.vala:334 ../widget/preference.vala:346
@@ -92,7 +92,7 @@ msgstr "Êtes-vous sûr de vouloir supprimer %s ?"
 
 #: ../widget/confirm_dialog.vala:130
 msgid "Are you sure you want to exit?"
-msgstr "Êtes-vous sûr de vouloir sortir ?"
+msgstr "Êtes-vous sûr de vouloir fermer ?"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Backspace key"
@@ -100,7 +100,7 @@ msgstr "Touche retour arrière"
 
 #: ../widget/remote_server_dialog.vala:321
 msgid "Backspace key:"
-msgstr "Touche retour arrière :"
+msgstr "Touche retour arrière : "
 
 #: ../widget/preference_slidebar.vala:55 ../widget/preference.vala:249
 msgid "Basic"
@@ -124,7 +124,7 @@ msgstr "Certificat"
 
 #: ../widget/remote_server_dialog.vala:261
 msgid "Certificate:"
-msgstr "Certificat :"
+msgstr "Certificat : "
 
 #: ../widget/terminal.vala:387 ../widget/config_window.vala:343
 msgid "Close other windows"
@@ -132,7 +132,7 @@ msgstr "Fermer les autres fenêtres"
 
 #: ../widget/preference.vala:332
 msgid "Close other windows:"
-msgstr "Fermer les autres fenêtres :"
+msgstr "Fermer les autres fenêtres : "
 
 #: ../widget/terminal.vala:385 ../widget/config_window.vala:342
 msgid "Close window"
@@ -140,7 +140,7 @@ msgstr "Fermer la fenêtre"
 
 #: ../widget/preference.vala:331
 msgid "Close window:"
-msgstr "Fermer la fenêtre :"
+msgstr "Fermer la fenêtre : "
 
 #: ../widget/config_window.vala:331
 msgid "Close workspace"
@@ -148,7 +148,7 @@ msgstr "Fermer l'espace de travail"
 
 #: ../widget/preference.vala:322
 msgid "Close workspace:"
-msgstr "Fermer l'espace de travail :"
+msgstr "Fermer l'espace de travail : "
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Command"
@@ -156,7 +156,7 @@ msgstr "Commande"
 
 #: ../widget/remote_server_dialog.vala:295 ../widget/command_dialog.vala:172
 msgid "Command:"
-msgstr "Commande :"
+msgstr "Commande : "
 
 #: ../widget/command_dialog.vala:83
 msgid "Content"
@@ -165,7 +165,7 @@ msgstr "Contenu"
 #: ../widget/terminal.vala:347 ../widget/config_window.vala:304
 #: ../widget/entry_menu.vala:39
 msgid "Copy"
-msgstr "Copier "
+msgstr "Copier"
 
 #: ../widget/terminal.vala:352
 msgid "Copy link"
@@ -177,7 +177,7 @@ msgstr "Copie la sélection"
 
 #: ../widget/preference.vala:304
 msgid "Copy:"
-msgstr "Copier :"
+msgstr "Copier : "
 
 #: ../widget/preference_slidebar.vala:84 ../widget/preference.vala:349
 msgid "Cursor"
@@ -193,7 +193,7 @@ msgstr "Clignotement du curseur"
 
 #: ../widget/preference.vala:200
 msgid "Cursor style:"
-msgstr "Thème du curseur :"
+msgstr "Thème du curseur : "
 
 #: ../widget/terminal.vala:448 ../widget/config_window.vala:360
 #: ../widget/appbar.vala:122
@@ -202,7 +202,7 @@ msgstr "Commandes personnalisées"
 
 #: ../widget/preference.vala:343
 msgid "Custom commands:"
-msgstr "Commandes personnalisées :"
+msgstr "Commandes personnalisées : "
 
 #: ../widget/entry_menu.vala:38
 msgid "Cut"
@@ -236,7 +236,7 @@ msgstr "Taille par défaut "
 
 #: ../widget/preference.vala:310
 msgid "Default size:"
-msgstr "Taille par défaut :"
+msgstr "Taille par défaut : "
 
 #: ../widget/remote_server_dialog.vala:428 ../widget/command_dialog.vala:251
 #: ../widget/entry_menu.vala:44
@@ -253,7 +253,7 @@ msgstr "Supprimer la clé"
 
 #: ../widget/remote_server_dialog.vala:334
 msgid "Delete key:"
-msgstr "Supprimer la clé :"
+msgstr "Supprimer la clé : "
 
 #: ../widget/remote_server_dialog.vala:415
 #: ../widget/remote_server_dialog.vala:425
@@ -266,7 +266,7 @@ msgstr "Afficher raccourcis "
 
 #: ../widget/preference.vala:342
 msgid "Display shortcuts:"
-msgstr "Afficher les raccourcis :"
+msgstr "Afficher les raccourcis : "
 
 #: ../main.vala:128
 msgid "Display version"
@@ -290,7 +290,7 @@ msgstr "Encodage"
 
 #: ../widget/remote_server_dialog.vala:308
 msgid "Encoding:"
-msgstr "Encodage :"
+msgstr "Encodage : "
 
 #: ../widget/confirm_dialog.vala:130 ../widget/appbar.vala:130
 msgid "Exit"
@@ -306,11 +306,11 @@ msgstr "Trouver"
 
 #: ../widget/preference.vala:293
 msgid "Font size:"
-msgstr "Taille de la fonte :"
+msgstr "Taille de la police : "
 
 #: ../widget/preference.vala:292
 msgid "Font:"
-msgstr "Fonte :"
+msgstr "Police :"
 
 #: ../widget/preference.vala:399 ../widget/terminal.vala:399
 msgid "Fullscreen"
@@ -318,7 +318,7 @@ msgstr "Plein écran"
 
 #: ../widget/preference.vala:340
 msgid "Fullscreen:"
-msgstr "Plein écran :"
+msgstr "Plein écran : "
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Group"
@@ -326,7 +326,7 @@ msgstr "Groupe "
 
 #: ../widget/remote_server_dialog.vala:277
 msgid "Group:"
-msgstr "Groupe :"
+msgstr "Groupe : "
 
 #: ../widget/appbar.vala:127
 msgid "Help"
@@ -342,7 +342,7 @@ msgstr "Diviser horizontalement"
 
 #: ../widget/preference.vala:326
 msgid "Horizontal split:"
-msgstr "Diviser horizontalement :"
+msgstr "Diviser horizontalement : "
 
 #: ../widget/preference_slidebar.vala:58 ../widget/preference.vala:252
 msgid "Interface"
@@ -354,7 +354,7 @@ msgstr "Commande suivante"
 
 #: ../widget/preference.vala:311
 msgid "Jump to next command:"
-msgstr "Commande suivante :"
+msgstr "Commande suivante : "
 
 #: ../widget/config_window.vala:313
 msgid "Jump to previous command"
@@ -362,7 +362,7 @@ msgstr "Commande précédente "
 
 #: ../widget/preference.vala:312
 msgid "Jump to previous command:"
-msgstr "Commande précédente :"
+msgstr "Commande précédente : "
 
 #: ../main.vala:182
 msgid "Load theme"
@@ -378,7 +378,7 @@ msgstr "Nom"
 
 #: ../widget/command_dialog.vala:159
 msgid "Name:"
-msgstr "Nom :"
+msgstr "Nom : "
 
 #: ../widget/appbar.vala:120
 msgid "New window"
@@ -390,7 +390,7 @@ msgstr "Nouvel espace de travail"
 
 #: ../widget/preference.vala:321
 msgid "New workspace:"
-msgstr "Nouvel espace de travail"
+msgstr "Nouvel espace de travail : "
 
 #: ../widget/config_window.vala:332
 msgid "Next workspace"
@@ -398,7 +398,7 @@ msgstr "Espace de travail suivant"
 
 #: ../widget/preference.vala:324
 msgid "Next workspace:"
-msgstr "Espace de travail suivant :"
+msgstr "Espace de travail suivant : "
 
 #: ../widget/preference.vala:397
 msgid "Normal window"
@@ -406,7 +406,7 @@ msgstr "Fenêtre normale"
 
 #: ../widget/preference.vala:137
 msgid "Opacity:"
-msgstr "Transparence :"
+msgstr "Opacité :"
 
 #: ../widget/terminal.vala:365 ../widget/config_window.vala:306
 msgid "Open"
@@ -414,11 +414,11 @@ msgstr "Ouvrir"
 
 #: ../widget/terminal.vala:373
 msgid "Open in file manager"
-msgstr "Ouvrir le gestionnaire de fichiers"
+msgstr "Ouvrir dans un gestionnaire de fichiers"
 
 #: ../widget/terminal.vala:351
 msgid "Open link"
-msgstr ""
+msgstr "Ouvrir le lien"
 
 #: ../widget/config_window.vala:335
 msgid "Open terminal with a new theme"
@@ -426,13 +426,13 @@ msgstr "Ouvrir le terminal avec un nouveau thème"
 
 #: ../widget/preference.vala:306
 msgid "Open:"
-msgstr "Ouvrir :"
+msgstr "Ouvrir"
 
 #: ../widget/remote_server_dialog.vala:275
 #: ../widget/remote_server_dialog.vala:285
 #: ../widget/remote_server_dialog.vala:294
 msgid "Optional"
-msgstr "Options"
+msgstr "Optionnel"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Password"
@@ -440,7 +440,7 @@ msgstr "Mot de passe"
 
 #: ../widget/remote_server_dialog.vala:247
 msgid "Password:"
-msgstr "Mot de passe :"
+msgstr "Mot de passe : "
 
 #: ../widget/terminal.vala:358 ../widget/config_window.vala:305
 #: ../widget/entry_menu.vala:41
@@ -457,7 +457,7 @@ msgstr "Chemin"
 
 #: ../widget/remote_server_dialog.vala:286
 msgid "Path:"
-msgstr "Chemin :"
+msgstr "Chemin : "
 
 #: ../widget/shortcut_entry.vala:147
 msgid "Please enter a new shortcut"
@@ -465,7 +465,7 @@ msgstr "Veuillez créer un nouveau raccourci"
 
 #: ../widget/remote_server_dialog.vala:199
 msgid "Port:"
-msgstr "Port :"
+msgstr "Port : "
 
 #: ../widget/config_window.vala:333
 msgid "Previous workspace"
@@ -473,7 +473,7 @@ msgstr "Espace de travail précédent"
 
 #: ../widget/preference.vala:323
 msgid "Previous workspace:"
-msgstr "Espace de travail précédent :"
+msgstr "Espace de travail précédent : "
 
 #: ../widget/confirm_dialog.vala:130
 msgid "Programs are still running in terminal"
@@ -490,7 +490,7 @@ msgstr "Contrôle à distance"
 
 #: ../widget/preference.vala:344
 msgid "Remote management:"
-msgstr "Contrôle à distance :"
+msgstr "Contrôle à distance : "
 
 #: ../widget/terminal.vala:653
 msgid "Rename"
@@ -503,7 +503,7 @@ msgstr "Renommer le titre"
 
 #: ../widget/preference.vala:341
 msgid "Rename title:"
-msgstr "Renommer le titre :"
+msgstr "Renommer le titre : "
 
 #: ../widget/remote_server_dialog.vala:186
 #: ../widget/remote_server_dialog.vala:196
@@ -534,7 +534,7 @@ msgstr "Défilement sur pression d'une touche"
 
 #: ../widget/preference.vala:384
 msgid "Scroll on output"
-msgstr "Faire défiler la sortie"
+msgstr "Défiler vers la sortie"
 
 #: ../widget/terminal.vala:406 ../widget/search_entry.vala:64
 #: ../widget/search_entry.vala:66 ../widget/config_window.vala:307
@@ -544,7 +544,7 @@ msgstr "Rechercher"
 #: ../widget/preference.vala:307 ../widget/remote_panel.vala:357
 #: ../widget/command_panel.vala:201
 msgid "Search:"
-msgstr "Rechercher :"
+msgstr "Rechercher : "
 
 #: ../widget/terminal.vala:619 ../widget/file_button.vala:71
 msgid "Select"
@@ -556,7 +556,7 @@ msgstr "Tout sélectionner"
 
 #: ../widget/preference.vala:313
 msgid "Select all:"
-msgstr "Tout sélectionner :"
+msgstr "Tout sélectionner : "
 
 #: ../widget/terminal.vala:617
 msgid "Select directory to save the file"
@@ -568,11 +568,11 @@ msgstr "Sélectionner le fichier à envoyer"
 
 #: ../widget/config_window.vala:340
 msgid "Select left window"
-msgstr "Sélectionnez fenêtre gauche"
+msgstr "Sélectionnez la fenêtre de gauche"
 
 #: ../widget/preference.vala:329
 msgid "Select left window:"
-msgstr "Sélectionner fenêtre gauche :"
+msgstr "Sélectionner la fenêtre de gauche : "
 
 #: ../widget/config_window.vala:339
 msgid "Select lower window"
@@ -580,15 +580,15 @@ msgstr "Sélectionnez la fenêtre inférieure"
 
 #: ../widget/preference.vala:328
 msgid "Select lower window:"
-msgstr "Sélectionner la fenêtre inférieure :"
+msgstr "Sélectionner la fenêtre inférieure : "
 
 #: ../widget/config_window.vala:341
 msgid "Select right window"
-msgstr "Sélectionnez fenêtre droite"
+msgstr "Sélectionnez la fenêtre de droite"
 
 #: ../widget/preference.vala:330
 msgid "Select right window:"
-msgstr "Sélectionner fenêtre droite :"
+msgstr "Sélectionner la fenêtre de droite : "
 
 #: ../widget/file_button.vala:67
 msgid "Select the private key file"
@@ -600,7 +600,7 @@ msgstr "Sélectionnez la fenêtre supérieure"
 
 #: ../widget/preference.vala:327
 msgid "Select upper window:"
-msgstr "Sélectionnez la fenêtre supérieure :"
+msgstr "Sélectionnez la fenêtre supérieure : "
 
 #: ../widget/config_window.vala:334
 msgid "Select workspace"
@@ -612,7 +612,7 @@ msgstr "Nom du serveur"
 
 #: ../widget/remote_server_dialog.vala:187
 msgid "Server name:"
-msgstr "Nom du serveur :"
+msgstr "Nom du serveur : "
 
 #: ../main.vala:137
 msgid "Set the terminal startup directory"
@@ -646,7 +646,7 @@ msgstr "Terminal"
 
 #: ../widget/config_window.vala:358
 msgid "Toggle fullscreen"
-msgstr "Basculer plein écran"
+msgstr "Basculer en plein écran"
 
 #: ../widget/terminal.vala:631
 msgid "Type path to download file"
@@ -658,11 +658,11 @@ msgstr "Envoyer "
 
 #: ../widget/terminal.vala:452
 msgid "Upload file"
-msgstr "Envoyer fichier"
+msgstr "Envoyer un fichier"
 
 #: ../widget/preference.vala:400
 msgid "Use on starting:"
-msgstr "Utilisation au démarrage :"
+msgstr "Utilisation au démarrage : "
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Username"
@@ -670,11 +670,11 @@ msgstr "Nom d'utilisateur"
 
 #: ../widget/remote_server_dialog.vala:233
 msgid "Username:"
-msgstr "Nom d'utilisateur :"
+msgstr "Nom d'utilisateur : "
 
 #: ../widget/about_widget.vala:105
 msgid "Version:"
-msgstr "Version :"
+msgstr "Version : "
 
 #: ../widget/terminal.vala:384 ../widget/config_window.vala:336
 msgid "Vertical split"
@@ -682,7 +682,7 @@ msgstr "Diviser verticalement"
 
 #: ../widget/preference.vala:325
 msgid "Vertical split:"
-msgstr "Diviser verticalement :"
+msgstr "Diviser verticalement : "
 
 #: ../widget/terminal.vala:1519
 msgid ""
@@ -709,7 +709,7 @@ msgstr "Zoom avant"
 
 #: ../widget/preference.vala:308
 msgid "Zoom in:"
-msgstr "Zoom avant :"
+msgstr "Zoom avant : "
 
 #: ../widget/config_window.vala:309
 msgid "Zoom out"
@@ -717,7 +717,7 @@ msgstr "Zoom arrière"
 
 #: ../widget/preference.vala:309
 msgid "Zoom out:"
-msgstr "Zoom arrière :"
+msgstr "Zoom arrière : "
 
 #: ../widget/terminal.vala:792 ../widget/terminal.vala:1240
 msgid "deepin"
