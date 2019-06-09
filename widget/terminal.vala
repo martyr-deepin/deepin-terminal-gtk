@@ -1518,7 +1518,8 @@ namespace Widgets {
                     ssh_script_content = ssh_script_content.replace("<<AUTHENTICATION>>", "yes");
                 } else {
                     ssh_script_content = ssh_script_content.replace("<<PRIVATE_KEY>>", "");
-                    ssh_script_content = ssh_script_content.replace("<<PASSWORD>>", password);
+                    string escaped_password = new GLib.Regex("([\"$\\\\])").replace(password, -1, 0, "\\\\\\1");
+                    ssh_script_content = ssh_script_content.replace("<<PASSWORD>>", escaped_password);
                     ssh_script_content = ssh_script_content.replace("<<AUTHENTICATION>>", "no");
                 }
 
