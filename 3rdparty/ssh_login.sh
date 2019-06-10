@@ -33,7 +33,7 @@ file delete $argv0
 set timeout -1
 set user {<<USER>>}
 set server {<<SERVER>>}
-set password {<<PASSWORD>>}
+set password "<<PASSWORD>>"
 set private_key {<<PRIVATE_KEY>>}
 set port {<<PORT>>}
 set authentication {<<AUTHENTICATION>>}
