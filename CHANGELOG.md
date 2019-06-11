@@ -1,3 +1,13 @@
+<a name="3.2.6"></a>
+## 3.2.6 (2019-06-11)
+
+
+#### Bug Fixes
+
+*   make special password for ssh login works. ([bb5b2736](https://github.com/linuxdeepin/deepin-terminal/commit/bb5b273658db43178d806cf7d967198fac69c9b2))
+
+
+
 <a name="3.2.5.1"></a>
 ## 3.2.5.1 (2019-06-03)
 
