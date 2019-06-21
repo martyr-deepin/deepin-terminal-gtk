@@ -149,6 +149,9 @@ Some people may miss the matrix look-n-feel with the default theme since this va
 #### tabbar_at_the_bottom
 Some tiling WM user may prefer let the tabbar at the window bottom, set `tabbar_at_the_bottom` to `true` will do this for ya, default is `false`.
 
+#### audible_bell
+Controls whether or not the terminal will beep when the child outputs the "bl" sequence. Default is `false`.
+
 ## Customize themes
 User can place its own theme file to `~/.config/deepin/deepin-terminal/themes` (create if path not exist), the theme file added to this location will available to use from the theme selection panel.
 
@@ -177,6 +180,7 @@ api=http://images.google.com/search?q=%s
 
 Any usage issues can ask for help via
 
+* [Developer Center](https://github.com/linuxdeepin/developer-center/issues)
 * [Gitter](https://gitter.im/orgs/linuxdeepin/rooms)
 * [IRC channel](https://webchat.freenode.net/?channels=deepin)
 * [Forum](https://bbs.deepin.org)

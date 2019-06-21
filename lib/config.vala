@@ -139,6 +139,7 @@ namespace Config {
                 config_file.set_boolean("advanced", "show_highlight_frame", false);
                 config_file.set_boolean("advanced", "copy_on_select", false);
                 config_file.set_boolean("advanced", "tabbar_at_the_bottom", false);
+                config_file.set_boolean("advanced", "audible_bell", false);
 
                 config_file.set_string("theme", "color_1", "#073642");
                 config_file.set_comment("theme", "color_1", "host");
@@ -334,6 +335,7 @@ namespace Config {
             check_boolean("advanced", "cursor_blink_mode", true);
             check_boolean("advanced", "cursor_auto_hide", false);
             check_boolean("advanced", "bold_is_bright", false);
+            check_boolean("advanced", "audible_bell", false);
 
             check_boolean("advanced", "scroll_on_key", true);
             check_boolean("advanced", "scroll_on_output", false);

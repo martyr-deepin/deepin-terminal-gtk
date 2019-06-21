@@ -1317,7 +1317,7 @@ namespace Widgets {
                 }
 
                 term.set_bold_is_bright(parent_window.config.config_file.get_boolean("advanced", "bold_is_bright"));
-
+                term.set_audible_bell(parent_window.config.config_file.get_boolean("advanced", "audible_bell"));
                 term.set_mouse_autohide(parent_window.config.config_file.get_boolean("advanced", "cursor_auto_hide"));
 
                 var scroll_lines = parent_window.config.config_file.get_integer("advanced", "scroll_line");
