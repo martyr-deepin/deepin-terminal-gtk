@@ -27,6 +27,7 @@ using Gtk;
 using Utils;
 using Wnck;
 using XUtils;
+using Widgets;
 
 namespace Widgets {
     public class Window : Widgets.ConfigWindow {
@@ -50,6 +51,8 @@ namespace Widgets {
         public int window_widget_margin_start = 2;
         public int window_widget_margin_top = 1;
         public int window_width;
+        
+        private Widgets.ResizeGrip resize_grip;
 
         public Window(string? window_mode) {
             tabbar_at_the_bottom = config.config_file.get_boolean("advanced", "tabbar_at_the_bottom");
@@ -455,6 +458,12 @@ namespace Widgets {
 
                 get_window().set_shadow_width(window_frame_margin_start, window_frame_margin_end, window_frame_margin_top, window_frame_margin_bottom);
             }
+
+            if (Utils.is_tiling_wm() || screen_monitor.is_composited() || window_is_fullscreen() || window_is_max()) {
+                resize_grip.hide();
+            } else {
+                resize_grip.show();
+            }
         }
 
         public void toggle_max() {
@@ -686,6 +695,7 @@ namespace Widgets {
             }
 
             var overlay = new Gtk.Overlay();
+            resize_grip = new Widgets.ResizeGrip(this);
             top_box.pack_start(fullscreen_box, false, false, 0);
             if (tabbar_at_the_bottom) {
                 box.pack_start(workspace_manager, true, true, 0);
@@ -694,6 +704,7 @@ namespace Widgets {
             else {
                 box.pack_start(top_box, false, false, 0);
                 box.pack_start(workspace_manager, true, true, 0);
+                box.pack_start(resize_grip, false, false, 0);
             }
 
             overlay.add(box);
