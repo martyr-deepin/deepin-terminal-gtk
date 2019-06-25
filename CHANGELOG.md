@@ -1,3 +1,15 @@
+<a name="3.2.7"></a>
+## 3.2.7 (2019-06-25)
+
+
+#### Features
+
+*   allow always hide resize grip line ([209f2338](https://github.com/linuxdeepin/deepin-terminal/commit/209f2338b3b5f40da5b260965a60124396db341e))
+*   add a resize grip line for not composited user ([d34a8a5a](https://github.com/linuxdeepin/deepin-terminal/commit/d34a8a5aa00e5737e6435ff546fd15459e1713a4))
+*   allow config audible bell behavior ([22874bed](https://github.com/linuxdeepin/deepin-terminal/commit/22874bed1e026be148accb6caca631c477e433c5))
+
+
+
 <a name="3.2.6"></a>
 ## 3.2.6 (2019-06-11)
 
