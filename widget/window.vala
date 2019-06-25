@@ -459,7 +459,7 @@ namespace Widgets {
                 get_window().set_shadow_width(window_frame_margin_start, window_frame_margin_end, window_frame_margin_top, window_frame_margin_bottom);
             }
 
-            if (Utils.is_tiling_wm() || screen_monitor.is_composited() || window_is_fullscreen() || window_is_max()) {
+            if (Utils.is_tiling_wm() || screen_monitor.is_composited() || window_is_fullscreen() || window_is_max() || config.config_file.get_boolean("advanced", "always_hide_resize_grip")) {
                 resize_grip.hide();
             } else {
                 resize_grip.show();
