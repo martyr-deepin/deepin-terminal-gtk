@@ -24,6 +24,9 @@
 using Gtk;
 using Widgets;
 
+// This is pretty dirty workaround to make the window resizable under not composited window manager.
+// Feel free to submit a patch if you have better solution.
+
 namespace Widgets {
     private static int GRIP_WIDTH = 8;
     public static int GRIP_HEIGHT = 8;
@@ -52,7 +55,7 @@ namespace Widgets {
             });
 
             leave_notify_event.connect((w, e) => {
-
+                // set cursor back.
                 get_window().set_cursor(null);
 
                 return false;
