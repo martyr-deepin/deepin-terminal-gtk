@@ -255,6 +255,7 @@ public class Application : Object {
                 tabbar.init(workspace_manager, quake_window);
             } else {
                 window = new Widgets.Window(window_mode);
+                window.set_has_resize_grip(true);
 
                 // Change theme temporary if 'load_theme' option is valid.
                 if (load_theme != null) {
