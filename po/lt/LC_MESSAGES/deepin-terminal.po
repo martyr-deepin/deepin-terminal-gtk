@@ -410,7 +410,7 @@ msgstr "Atverti failų tvarkytuvėje"
 
 #: ../widget/terminal.vala:351
 msgid "Open link"
-msgstr ""
+msgstr "Atverti nuorodą"
 
 #: ../widget/config_window.vala:335
 msgid "Open terminal with a new theme"

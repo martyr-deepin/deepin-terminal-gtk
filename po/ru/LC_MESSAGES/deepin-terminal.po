@@ -414,7 +414,7 @@ msgstr "Открыть в файловом менеджере"
 
 #: ../widget/terminal.vala:351
 msgid "Open link"
-msgstr ""
+msgstr "Открыть ссылку"
 
 #: ../widget/config_window.vala:335
 msgid "Open terminal with a new theme"
