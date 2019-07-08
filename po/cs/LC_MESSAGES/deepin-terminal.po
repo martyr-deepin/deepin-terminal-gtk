@@ -79,11 +79,11 @@ msgstr "Pokročilé volby"
 
 #: ../widget/remote_server_dialog.vala:426 ../widget/command_dialog.vala:249
 msgid "Are you sure you want to delete %s?"
-msgstr ""
+msgstr "Opravdu je chcete smazat %s?"
 
 #: ../widget/confirm_dialog.vala:130
 msgid "Are you sure you want to exit?"
-msgstr ""
+msgstr "Opravdu chcete opustit?"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Backspace key"
@@ -204,6 +204,8 @@ msgid ""
 "Deepin Teminal is an advanced terminal emulator with window-splitting, "
 "workspaces, remote management, Quake mode and other features."
 msgstr ""
+"Terminál Deepin je pokročilým emulátorem terminálu s rozdělováním oken, "
+"pracovními plochami, vzdálenou správou, režimem Quake a dalšími funkcemi."
 
 #: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:610
 msgid "Deepin Terminal"
@@ -323,7 +325,7 @@ msgstr "Nápověda"
 
 #: ../widget/preference.vala:403
 msgid "Hide Quake window after losing focus"
-msgstr ""
+msgstr "Skrýt okno Quake po ztrátě zaměření..."
 
 #: ../widget/terminal.vala:383 ../widget/config_window.vala:337
 msgid "Horizontal split"
@@ -407,11 +409,11 @@ msgstr "Otevřít ve správci souborů"
 
 #: ../widget/terminal.vala:351
 msgid "Open link"
-msgstr ""
+msgstr "Otevřít odkaz"
 
 #: ../widget/config_window.vala:335
 msgid "Open terminal with a new theme"
-msgstr ""
+msgstr "Otevřít terminál s novým vzhledem"
 
 #: ../widget/preference.vala:306
 msgid "Open:"
@@ -549,7 +551,7 @@ msgstr "Vybrat vše:"
 
 #: ../widget/terminal.vala:617
 msgid "Select directory to save the file"
-msgstr ""
+msgstr "Vybrat adresář pro uložení souboru"
 
 #: ../widget/terminal.vala:588
 msgid "Select file to upload"
@@ -635,11 +637,11 @@ msgstr "Terminál"
 
 #: ../widget/config_window.vala:358
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "Přepnout na celou obrazovku"
 
 #: ../widget/terminal.vala:631
 msgid "Type path to download file"
-msgstr ""
+msgstr "Napsat cestu pro stažení souboru"
 
 #: ../widget/terminal.vala:592
 msgid "Upload"

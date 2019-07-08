@@ -418,7 +418,7 @@ msgstr "Openen in bestandsbeheerder"
 
 #: ../widget/terminal.vala:351
 msgid "Open link"
-msgstr ""
+msgstr "Link openen"
 
 #: ../widget/config_window.vala:335
 msgid "Open terminal with a new theme"

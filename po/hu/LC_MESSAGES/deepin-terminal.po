@@ -6,7 +6,7 @@
 # Translators:
 # Maggie Liu <maggie.liufei@gmail.com>, 2017
 # Gerstmayer Norbert <gerstmajer@gmail.com>, 2017
-# Marcell Lévai, 2017
+# b1094bbfad3b29958bce7f8a2c08de92, 2017
 # vmarci21 <vmarci21@msn.com>, 2017
 # kdavid97 <kdavid97@gmail.hu>, 2017
 # ddabrahim <ddabrahim@googlemail.com>, 2017

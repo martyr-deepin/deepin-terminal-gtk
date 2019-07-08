@@ -8,6 +8,7 @@
 # Sangmin Lee <sangminlee7648@gmail.com>, 2017
 # Thomas Sungjin Kang <potopro@gmail.com>, 2017
 # Maggie Liu <maggie.liufei@gmail.com>, 2017
+# 이정희 <daemul72@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
@@ -16,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-04-26 13:06+0800\n"
 "PO-Revision-Date: 2017-02-04 05:38+0000\n"
-"Last-Translator: Maggie Liu <maggie.liufei@gmail.com>, 2017\n"
+"Last-Translator: 이정희 <daemul72@gmail.com>, 2019\n"
 "Language-Team: Korean (https://www.transifex.com/linuxdeepin/teams/3976/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,14 +30,16 @@ msgid ""
 "\n"
 "Command has been completed, press ENTER to exit the terminal."
 msgstr ""
+"\n"
+"명령이 완료 되었으면, ENTER를 눌러 터미널을 종료하세요."
 
 #: ../widget/appbar.vala:129
 msgid "About"
-msgstr "관련 정보 "
+msgstr "소개"
 
 #: ../widget/about_widget.vala:81
 msgid "Acknowledgments"
-msgstr ""
+msgstr "승인"
 
 #: ../widget/remote_server_dialog.vala:352 ../widget/command_dialog.vala:197
 msgid "Add"
@@ -44,19 +47,19 @@ msgstr "추가"
 
 #: ../widget/command_dialog.vala:126
 msgid "Add Command"
-msgstr ""
+msgstr "명령 추가"
 
 #: ../widget/remote_server_dialog.vala:154
 msgid "Add Server"
-msgstr ""
+msgstr "서버 추가"
 
 #: ../widget/command_panel.vala:311
 msgid "Add command"
-msgstr ""
+msgstr "명령 추가"
 
 #: ../widget/remote_panel.vala:468
 msgid "Add server"
-msgstr ""
+msgstr "서버 추가"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Address"
@@ -64,7 +67,7 @@ msgstr "주소"
 
 #: ../widget/remote_server_dialog.vala:190
 msgid "Address:"
-msgstr ""
+msgstr "주소:"
 
 #: ../widget/preference_slidebar.vala:74 ../widget/preference_slidebar.vala:81
 #: ../widget/preference.vala:334 ../widget/preference.vala:346
@@ -74,31 +77,31 @@ msgstr "고급"
 
 #: ../widget/remote_server_dialog.vala:337
 msgid "Advanced options"
-msgstr ""
+msgstr "고급 옵션"
 
 #: ../widget/remote_server_dialog.vala:426 ../widget/command_dialog.vala:249
 msgid "Are you sure you want to delete %s?"
-msgstr ""
+msgstr "%s을 삭제하시겠습니까?"
 
 #: ../widget/confirm_dialog.vala:130
 msgid "Are you sure you want to exit?"
-msgstr ""
+msgstr "종료 하시겠습니까?"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Backspace key"
-msgstr ""
+msgstr "백스페이스 키"
 
 #: ../widget/remote_server_dialog.vala:321
 msgid "Backspace key:"
-msgstr ""
+msgstr "백스페이스 키:"
 
 #: ../widget/preference_slidebar.vala:55 ../widget/preference.vala:249
 msgid "Basic"
-msgstr ""
+msgstr "기본"
 
 #: ../widget/preference.vala:410
 msgid "Blur background"
-msgstr ""
+msgstr "배경 흐림"
 
 #: ../widget/remote_server_dialog.vala:347
 #: ../widget/remote_server_dialog.vala:427 ../widget/confirm_dialog.vala:130
@@ -114,7 +117,7 @@ msgstr "인증서"
 
 #: ../widget/remote_server_dialog.vala:261
 msgid "Certificate:"
-msgstr ""
+msgstr "인증서:"
 
 #: ../widget/terminal.vala:387 ../widget/config_window.vala:343
 msgid "Close other windows"
@@ -122,23 +125,23 @@ msgstr "다른 창 닫기"
 
 #: ../widget/preference.vala:332
 msgid "Close other windows:"
-msgstr ""
+msgstr "다른 창 닫기:"
 
 #: ../widget/terminal.vala:385 ../widget/config_window.vala:342
 msgid "Close window"
-msgstr "윈도우 닫기"
+msgstr "창 닫기"
 
 #: ../widget/preference.vala:331
 msgid "Close window:"
-msgstr ""
+msgstr "창 닫기:"
 
 #: ../widget/config_window.vala:331
 msgid "Close workspace"
-msgstr "워크스페이스 닫기"
+msgstr "작업공간 닫기"
 
 #: ../widget/preference.vala:322
 msgid "Close workspace:"
-msgstr ""
+msgstr "작업공간 닫기:"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Command"
@@ -146,11 +149,11 @@ msgstr "명령"
 
 #: ../widget/remote_server_dialog.vala:295 ../widget/command_dialog.vala:172
 msgid "Command:"
-msgstr ""
+msgstr "명령:"
 
 #: ../widget/command_dialog.vala:83
 msgid "Content"
-msgstr ""
+msgstr "내용"
 
 #: ../widget/terminal.vala:347 ../widget/config_window.vala:304
 #: ../widget/entry_menu.vala:39
@@ -159,15 +162,15 @@ msgstr "복사"
 
 #: ../widget/terminal.vala:352
 msgid "Copy link"
-msgstr ""
+msgstr "링크 복사"
 
 #: ../widget/preference.vala:375
 msgid "Copy on select"
-msgstr ""
+msgstr "선택시 복사"
 
 #: ../widget/preference.vala:304
 msgid "Copy:"
-msgstr ""
+msgstr "복사:"
 
 #: ../widget/preference_slidebar.vala:84 ../widget/preference.vala:349
 msgid "Cursor"
@@ -175,34 +178,35 @@ msgstr "커서"
 
 #: ../widget/preference.vala:374
 msgid "Cursor autohide"
-msgstr ""
+msgstr "커서 자동 숨기기"
 
 #: ../widget/preference.vala:373
 msgid "Cursor blink"
-msgstr ""
+msgstr "커서 깜박임"
 
 #: ../widget/preference.vala:200
 msgid "Cursor style:"
-msgstr ""
+msgstr "커서 스타일:"
 
 #: ../widget/terminal.vala:448 ../widget/config_window.vala:360
 #: ../widget/appbar.vala:122
 msgid "Custom commands"
-msgstr ""
+msgstr "사용자 지정 명령"
 
 #: ../widget/preference.vala:343
 msgid "Custom commands:"
-msgstr ""
+msgstr "사용자 지정 명령:"
 
 #: ../widget/entry_menu.vala:38
 msgid "Cut"
-msgstr "자르기"
+msgstr "잘라내기"
 
 #: ../main.vala:189
 msgid ""
 "Deepin Teminal is an advanced terminal emulator with window-splitting, "
 "workspaces, remote management, Quake mode and other features."
 msgstr ""
+"Deepin 터미널은 윈도우 분할, 작업 공간, 원격 관리, 퀘이크 모드 및 기타 기능을 갖춘 고급 터미널 에뮬레이터 입니다."
 
 #: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:610
 msgid "Deepin Terminal"
@@ -214,14 +218,17 @@ msgid ""
 "\n"
 "It sharpens your focus in the world of command line!"
 msgstr ""
+"Deepin 터미널은 작업 공간, 다중 창, 원격 관리, 지진 모드 및 기타 기능을 갖춘 고급 터미널 에뮬레이터입니다. \n"
+"\n"
+"그것은 커맨드 라인의 세계에서 여러분의 집중력을 향상시킵니다!"
 
 #: ../widget/config_window.vala:310
 msgid "Default size"
-msgstr ""
+msgstr "기본 크기"
 
 #: ../widget/preference.vala:310
 msgid "Default size:"
-msgstr ""
+msgstr "기본 크기:"
 
 #: ../widget/remote_server_dialog.vala:428 ../widget/command_dialog.vala:251
 #: ../widget/entry_menu.vala:44
@@ -230,88 +237,88 @@ msgstr "삭제"
 
 #: ../widget/command_dialog.vala:238 ../widget/command_dialog.vala:248
 msgid "Delete command"
-msgstr ""
+msgstr "명령 삭제"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Delete key"
-msgstr ""
+msgstr "키 삭제"
 
 #: ../widget/remote_server_dialog.vala:334
 msgid "Delete key:"
-msgstr ""
+msgstr "키 삭제:"
 
 #: ../widget/remote_server_dialog.vala:415
 #: ../widget/remote_server_dialog.vala:425
 msgid "Delete server"
-msgstr ""
+msgstr "서버 삭제"
 
 #: ../widget/config_window.vala:359
 msgid "Display shortcuts"
-msgstr ""
+msgstr "단축키 표시"
 
 #: ../widget/preference.vala:342
 msgid "Display shortcuts:"
-msgstr ""
+msgstr "단축키 표시:"
 
 #: ../main.vala:128
 msgid "Display version"
-msgstr ""
+msgstr "버전 표시"
 
 #: ../widget/terminal.vala:453
 msgid "Download file"
-msgstr ""
+msgstr "다운로드 파일"
 
 #: ../widget/command_dialog.vala:124
 msgid "Edit Command"
-msgstr ""
+msgstr "명령 편집"
 
 #: ../widget/remote_server_dialog.vala:152
 msgid "Edit Server"
-msgstr ""
+msgstr "서버 편집"
 
 #: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:447
 msgid "Encoding"
-msgstr ""
+msgstr "인코딩"
 
 #: ../widget/remote_server_dialog.vala:308
 msgid "Encoding:"
-msgstr ""
+msgstr "인코딩:"
 
 #: ../widget/confirm_dialog.vala:130 ../widget/appbar.vala:130
 msgid "Exit"
-msgstr "나가기"
+msgstr "종료"
 
 #: ../widget/terminal.vala:397
 msgid "Exit fullscreen"
-msgstr "전체화면에서 나가기 "
+msgstr "전체화면 종료"
 
 #: ../widget/terminal.vala:403
 msgid "Find"
-msgstr ""
+msgstr "찾기"
 
 #: ../widget/preference.vala:293
 msgid "Font size:"
-msgstr ""
+msgstr "글꼴 크기:"
 
 #: ../widget/preference.vala:292
 msgid "Font:"
-msgstr ""
+msgstr "글꼴"
 
 #: ../widget/preference.vala:399 ../widget/terminal.vala:399
 msgid "Fullscreen"
-msgstr "전체 화면"
+msgstr "전체화면"
 
 #: ../widget/preference.vala:340
 msgid "Fullscreen:"
-msgstr ""
+msgstr "전체화면:"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Group"
-msgstr ""
+msgstr "그룹"
 
 #: ../widget/remote_server_dialog.vala:277
 msgid "Group:"
-msgstr ""
+msgstr "그룹:"
 
 #: ../widget/appbar.vala:127
 msgid "Help"
@@ -319,15 +326,15 @@ msgstr "도움말"
 
 #: ../widget/preference.vala:403
 msgid "Hide Quake window after losing focus"
-msgstr ""
+msgstr "초점을 잃은 후 퀘이크 창 숨기기"
 
 #: ../widget/terminal.vala:383 ../widget/config_window.vala:337
 msgid "Horizontal split"
-msgstr ""
+msgstr "수평 분할"
 
 #: ../widget/preference.vala:326
 msgid "Horizontal split:"
-msgstr ""
+msgstr "수평 분할:"
 
 #: ../widget/preference_slidebar.vala:58 ../widget/preference.vala:252
 msgid "Interface"
@@ -335,23 +342,23 @@ msgstr "인터페이스"
 
 #: ../widget/config_window.vala:312
 msgid "Jump to next command"
-msgstr ""
+msgstr "다음 명령으로 이동"
 
 #: ../widget/preference.vala:311
 msgid "Jump to next command:"
-msgstr ""
+msgstr "다음 명령으로 이동:"
 
 #: ../widget/config_window.vala:313
 msgid "Jump to previous command"
-msgstr ""
+msgstr "이전 명령으로 이동"
 
 #: ../widget/preference.vala:312
 msgid "Jump to previous command:"
-msgstr ""
+msgstr "이전 명령으로 이동:"
 
 #: ../main.vala:182
 msgid "Load theme"
-msgstr ""
+msgstr "테마 불러오기"
 
 #: ../widget/preference.vala:398
 msgid "Maximize"
@@ -363,35 +370,35 @@ msgstr "이름"
 
 #: ../widget/command_dialog.vala:159
 msgid "Name:"
-msgstr ""
+msgstr "이름:"
 
 #: ../widget/appbar.vala:120
 msgid "New window"
-msgstr ""
+msgstr "새 창"
 
 #: ../widget/terminal.vala:391 ../widget/config_window.vala:330
 msgid "New workspace"
-msgstr "새로운 워크스페이스"
+msgstr "새 작업공간"
 
 #: ../widget/preference.vala:321
 msgid "New workspace:"
-msgstr ""
+msgstr "새 작업공간:"
 
 #: ../widget/config_window.vala:332
 msgid "Next workspace"
-msgstr "다음 워크스페이스"
+msgstr "다음 작업공간"
 
 #: ../widget/preference.vala:324
 msgid "Next workspace:"
-msgstr ""
+msgstr "다음 작업공간"
 
 #: ../widget/preference.vala:397
 msgid "Normal window"
-msgstr ""
+msgstr "보통 창"
 
 #: ../widget/preference.vala:137
 msgid "Opacity:"
-msgstr ""
+msgstr "불투명도:"
 
 #: ../widget/terminal.vala:365 ../widget/config_window.vala:306
 msgid "Open"
@@ -399,25 +406,25 @@ msgstr "열기"
 
 #: ../widget/terminal.vala:373
 msgid "Open in file manager"
-msgstr ""
+msgstr "파일 관리자에서 열기"
 
 #: ../widget/terminal.vala:351
 msgid "Open link"
-msgstr ""
+msgstr "링크 열기"
 
 #: ../widget/config_window.vala:335
 msgid "Open terminal with a new theme"
-msgstr ""
+msgstr "새로운 테마로 터미널 열기"
 
 #: ../widget/preference.vala:306
 msgid "Open:"
-msgstr ""
+msgstr "열기:"
 
 #: ../widget/remote_server_dialog.vala:275
 #: ../widget/remote_server_dialog.vala:285
 #: ../widget/remote_server_dialog.vala:294
 msgid "Optional"
-msgstr ""
+msgstr "옵션"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Password"
@@ -425,7 +432,7 @@ msgstr "비밀번호"
 
 #: ../widget/remote_server_dialog.vala:247
 msgid "Password:"
-msgstr ""
+msgstr "비밀번호:"
 
 #: ../widget/terminal.vala:358 ../widget/config_window.vala:305
 #: ../widget/entry_menu.vala:41
@@ -434,48 +441,48 @@ msgstr "붙여넣기"
 
 #: ../widget/preference.vala:305
 msgid "Paste:"
-msgstr ""
+msgstr "붙여넣기:"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Path"
-msgstr ""
+msgstr "경로"
 
 #: ../widget/remote_server_dialog.vala:286
 msgid "Path:"
-msgstr ""
+msgstr "경로:"
 
 #: ../widget/shortcut_entry.vala:147
 msgid "Please enter a new shortcut"
-msgstr ""
+msgstr "새 단축키를 입력하세요"
 
 #: ../widget/remote_server_dialog.vala:199
 msgid "Port:"
-msgstr ""
+msgstr "포트:"
 
 #: ../widget/config_window.vala:333
 msgid "Previous workspace"
-msgstr "이전 워크스페이스"
+msgstr "이전 작업공간"
 
 #: ../widget/preference.vala:323
 msgid "Previous workspace:"
-msgstr ""
+msgstr "이전 작업공간:"
 
 #: ../widget/confirm_dialog.vala:130
 msgid "Programs are still running in terminal"
-msgstr ""
+msgstr "프로그램이 터미널에서 계속 실행되고 있습니다"
 
 #: ../main.vala:173
 msgid "Quake mode"
-msgstr ""
+msgstr "퀘이크 모드"
 
 #: ../widget/terminal.vala:449 ../widget/config_window.vala:361
 #: ../widget/appbar.vala:123
 msgid "Remote management"
-msgstr ""
+msgstr "원격 관리"
 
 #: ../widget/preference.vala:344
 msgid "Remote management:"
-msgstr ""
+msgstr "원격 관리:"
 
 #: ../widget/terminal.vala:653
 msgid "Rename"
@@ -484,26 +491,26 @@ msgstr "이름 변경"
 #: ../widget/terminal.vala:446 ../widget/terminal.vala:650
 #: ../widget/config_window.vala:357
 msgid "Rename title"
-msgstr ""
+msgstr "제목 이름 변경"
 
 #: ../widget/preference.vala:341
 msgid "Rename title:"
-msgstr ""
+msgstr "제목 이름 변경:"
 
 #: ../widget/remote_server_dialog.vala:186
 #: ../widget/remote_server_dialog.vala:196
 #: ../widget/remote_server_dialog.vala:232 ../widget/command_dialog.vala:158
 #: ../widget/command_dialog.vala:171
 msgid "Required"
-msgstr "필요"
+msgstr "요구됨"
 
 #: ../widget/preference.vala:416
 msgid "Restore Defaults"
-msgstr ""
+msgstr "기본값 복원"
 
 #: ../main.vala:155 ../main.vala:164
 msgid "Run a program in the terminal"
-msgstr ""
+msgstr "터미널에서 프로그램 실행"
 
 #: ../widget/remote_server_dialog.vala:350 ../widget/command_dialog.vala:195
 msgid "Save"
@@ -515,21 +522,21 @@ msgstr "스크롤"
 
 #: ../widget/preference.vala:383
 msgid "Scroll on keystroke"
-msgstr ""
+msgstr "키 입력시 스크롤"
 
 #: ../widget/preference.vala:384
 msgid "Scroll on output"
-msgstr ""
+msgstr "출력시 스크롤"
 
 #: ../widget/terminal.vala:406 ../widget/search_entry.vala:64
 #: ../widget/search_entry.vala:66 ../widget/config_window.vala:307
 msgid "Search"
-msgstr "찾기"
+msgstr "검색"
 
 #: ../widget/preference.vala:307 ../widget/remote_panel.vala:357
 #: ../widget/command_panel.vala:201
 msgid "Search:"
-msgstr ""
+msgstr "검색:"
 
 #: ../widget/terminal.vala:619 ../widget/file_button.vala:71
 msgid "Select"
@@ -541,71 +548,71 @@ msgstr "전체 선택"
 
 #: ../widget/preference.vala:313
 msgid "Select all:"
-msgstr ""
+msgstr "모두 선택:"
 
 #: ../widget/terminal.vala:617
 msgid "Select directory to save the file"
-msgstr ""
+msgstr "파일을 저장할 디렉토리 선택"
 
 #: ../widget/terminal.vala:588
 msgid "Select file to upload"
-msgstr ""
+msgstr "업로드할 파일 선택"
 
 #: ../widget/config_window.vala:340
 msgid "Select left window"
-msgstr ""
+msgstr "왼쪽 창 선택"
 
 #: ../widget/preference.vala:329
 msgid "Select left window:"
-msgstr ""
+msgstr "왼쪽 창 선택:"
 
 #: ../widget/config_window.vala:339
 msgid "Select lower window"
-msgstr ""
+msgstr "아래쪽 창 선택"
 
 #: ../widget/preference.vala:328
 msgid "Select lower window:"
-msgstr ""
+msgstr "아래쪽 창 선택:"
 
 #: ../widget/config_window.vala:341
 msgid "Select right window"
-msgstr ""
+msgstr "오른쪽 창 선택"
 
 #: ../widget/preference.vala:330
 msgid "Select right window:"
-msgstr ""
+msgstr "오른쪽 창 선택:"
 
 #: ../widget/file_button.vala:67
 msgid "Select the private key file"
-msgstr ""
+msgstr "개인 키 파일 선택"
 
 #: ../widget/config_window.vala:338
 msgid "Select upper window"
-msgstr ""
+msgstr "위쪽 창 선택"
 
 #: ../widget/preference.vala:327
 msgid "Select upper window:"
-msgstr ""
+msgstr "위쪽 창 선택:"
 
 #: ../widget/config_window.vala:334
 msgid "Select workspace"
-msgstr ""
+msgstr "작업 공간 선택"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Server name"
-msgstr ""
+msgstr "서버 이름"
 
 #: ../widget/remote_server_dialog.vala:187
 msgid "Server name:"
-msgstr ""
+msgstr "서버 이름:"
 
 #: ../main.vala:137
 msgid "Set the terminal startup directory"
-msgstr ""
+msgstr "터미널 시작 디렉터리 설정"
 
 #: ../main.vala:119
 msgid "Set the terminal window mode"
-msgstr ""
+msgstr "터미널 창 모드 설정"
 
 #: ../widget/terminal.vala:457 ../widget/appbar.vala:125
 msgid "Settings"
@@ -618,11 +625,11 @@ msgstr "단축키"
 
 #: ../widget/command_dialog.vala:180
 msgid "Shortcuts:"
-msgstr ""
+msgstr "단축키"
 
 #: ../widget/terminal.vala:444 ../widget/appbar.vala:121
 msgid "Switch theme"
-msgstr ""
+msgstr "테마 전환"
 
 #: ../widget/preference_slidebar.vala:68 ../widget/preference.vala:298
 #: ../widget/config_window.vala:318
@@ -631,23 +638,23 @@ msgstr "터미널"
 
 #: ../widget/config_window.vala:358
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "전체화면 전환"
 
 #: ../widget/terminal.vala:631
 msgid "Type path to download file"
-msgstr ""
+msgstr "파일을 다운로드할 경로 입력"
 
 #: ../widget/terminal.vala:592
 msgid "Upload"
-msgstr ""
+msgstr "업로드"
 
 #: ../widget/terminal.vala:452
 msgid "Upload file"
-msgstr ""
+msgstr "파일 업로드"
 
 #: ../widget/preference.vala:400
 msgid "Use on starting:"
-msgstr ""
+msgstr "시작시 사용:"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Username"
@@ -655,19 +662,19 @@ msgstr "사용자 이름"
 
 #: ../widget/remote_server_dialog.vala:233
 msgid "Username:"
-msgstr ""
+msgstr "사용자 이름:"
 
 #: ../widget/about_widget.vala:105
 msgid "Version:"
-msgstr ""
+msgstr "버전:"
 
 #: ../widget/terminal.vala:384 ../widget/config_window.vala:336
 msgid "Vertical split"
-msgstr ""
+msgstr "수직 분할"
 
 #: ../widget/preference.vala:325
 msgid "Vertical split:"
-msgstr ""
+msgstr "수평 분할:"
 
 #: ../widget/terminal.vala:1519
 msgid ""
@@ -675,32 +682,34 @@ msgid ""
 "been installed in the server before right clicking to upload and download "
 "files."
 msgstr ""
+"Deepin 터미널에 오신 것을 환영합니다. 파일을 업로드 및 다운로드하려면 오른쪽 버튼을 클릭하기 전에 서버에 rz 및 sz 명령이 "
+"설치되어 있는지 확인하세요."
 
 #: ../widget/preference_slidebar.vala:90 ../widget/preference.vala:386
 msgid "Window"
-msgstr "윈도우"
+msgstr "창"
 
 #: ../widget/preference_slidebar.vala:71 ../widget/preference.vala:315
 #: ../widget/config_window.vala:348
 msgid "Workspace"
-msgstr "워크 스페이스"
+msgstr "작업 공간"
 
 #: ../widget/config_window.vala:308
 msgid "Zoom in"
-msgstr "줌 인"
+msgstr "확대"
 
 #: ../widget/preference.vala:308
 msgid "Zoom in:"
-msgstr ""
+msgstr "확대:"
 
 #: ../widget/config_window.vala:309
 msgid "Zoom out"
-msgstr "줌 아웃"
+msgstr "축소"
 
 #: ../widget/preference.vala:309
 msgid "Zoom out:"
-msgstr ""
+msgstr "축소:"
 
 #: ../widget/terminal.vala:792 ../widget/terminal.vala:1240
 msgid "deepin"
-msgstr ""
+msgstr "deepin"

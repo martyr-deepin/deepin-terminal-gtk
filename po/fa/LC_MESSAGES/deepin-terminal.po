@@ -11,6 +11,8 @@
 # ali rahimi <saeed.ali.rahimi@gmail.com>, 2017
 # ali amiry <sector00256@gmail.com>, 2018
 # Amir Dadash <dadashamir25@gmail.com>, 2018
+# AmirHosein Lesani <xenups@outlook.com>, 2019
+# Cindy0514, 2019
 # 
 #, fuzzy
 msgid ""
@@ -19,7 +21,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-04-26 13:06+0800\n"
 "PO-Revision-Date: 2017-02-04 05:38+0000\n"
-"Last-Translator: Amir Dadash <dadashamir25@gmail.com>, 2018\n"
+"Last-Translator: Cindy0514, 2019\n"
 "Language-Team: Persian (https://www.transifex.com/linuxdeepin/teams/3976/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -286,7 +288,7 @@ msgstr "خروج"
 
 #: ../widget/terminal.vala:397
 msgid "Exit fullscreen"
-msgstr ""
+msgstr "خروج از تمام صفحه"
 
 #: ../widget/terminal.vala:403
 msgid "Find"
@@ -441,7 +443,7 @@ msgstr ""
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Path"
-msgstr ""
+msgstr "مسیر"
 
 #: ../widget/remote_server_dialog.vala:286
 msgid "Path:"

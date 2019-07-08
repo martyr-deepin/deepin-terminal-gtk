@@ -9,7 +9,7 @@
 # Ricardo Simões <xmcorporation@gmail.com>, 2017
 # João P Carvalhinho <joao.carvalhinho@gmail.com>, 2017
 # Luís Lima <geral@liqensoft.com>, 2018
-# Manuela Silva, 2018
+# Manuela Silva <manuelarodsilva@gmail.com>, 2018
 # Cindy0514, 2019
 # Hugo Carvalho <hugokarvalho@hotmail.com>, 2019
 # 
@@ -210,7 +210,7 @@ msgid ""
 "workspaces, remote management, Quake mode and other features."
 msgstr ""
 "O Deepin Terminal é um emulador de terminal avançado com áreas de trabalho, "
-"múltiplas janelas, gestão remota, modo \"quake\" e outras funcionalidades."
+"múltiplas janelas, gestão remota, modo \"Quake\" e outras funcionalidades."
 
 #: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:610
 msgid "Deepin Terminal"
@@ -330,7 +330,7 @@ msgstr "Ajuda"
 
 #: ../widget/preference.vala:403
 msgid "Hide Quake window after losing focus"
-msgstr "Ocultar janela quake depois de foco perdido"
+msgstr "Ocultar janela Quake depois de perder o foco"
 
 #: ../widget/terminal.vala:383 ../widget/config_window.vala:337
 msgid "Horizontal split"
@@ -414,7 +414,7 @@ msgstr "Abrir no gestor de ficheiros"
 
 #: ../widget/terminal.vala:351
 msgid "Open link"
-msgstr ""
+msgstr "Abrir hiperligação"
 
 #: ../widget/config_window.vala:335
 msgid "Open terminal with a new theme"
@@ -556,7 +556,7 @@ msgstr "Selecionar tudo:"
 
 #: ../widget/terminal.vala:617
 msgid "Select directory to save the file"
-msgstr "Selecionar diretoria para guardar ficheiro transferido"
+msgstr "Selecionar diretoria para guardar o ficheiro"
 
 #: ../widget/terminal.vala:588
 msgid "Select file to upload"
@@ -642,7 +642,7 @@ msgstr "Terminal"
 
 #: ../widget/config_window.vala:358
 msgid "Toggle fullscreen"
-msgstr "Ecrã completo"
+msgstr "Alternar para ecrã completo"
 
 #: ../widget/terminal.vala:631
 msgid "Type path to download file"
