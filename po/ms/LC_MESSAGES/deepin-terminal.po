@@ -409,7 +409,7 @@ msgstr "Buka dalam pengurus fail"
 
 #: ../widget/terminal.vala:351
 msgid "Open link"
-msgstr ""
+msgstr "Buka pautan"
 
 #: ../widget/config_window.vala:335
 msgid "Open terminal with a new theme"

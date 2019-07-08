@@ -14,8 +14,9 @@
 # Charles Monzat <c.monzat@laposte.net>, 2017
 # clement leclerc <inactive+lockiehte1st@transifex.com>, 2017
 # lexross <mais@techie.com>, 2018
-# Florian B <florianb3522@gmail.com>, 2019
 # Kristien <kristien@mailo.com>, 2019
+# Doryan R, 2019
+# Rox fr <roxfr@outlook.fr>, 2019
 # 
 #, fuzzy
 msgid ""
@@ -24,7 +25,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-04-26 13:06+0800\n"
 "PO-Revision-Date: 2017-02-04 05:38+0000\n"
-"Last-Translator: Kristien <kristien@mailo.com>, 2019\n"
+"Last-Translator: Rox fr <roxfr@outlook.fr>, 2019\n"
 "Language-Team: French (https://www.transifex.com/linuxdeepin/teams/3976/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -173,7 +174,7 @@ msgstr "Copier le lien"
 
 #: ../widget/preference.vala:375
 msgid "Copy on select"
-msgstr "Copie la sélection"
+msgstr "Copier la sélection"
 
 #: ../widget/preference.vala:304
 msgid "Copy:"
@@ -306,11 +307,11 @@ msgstr "Trouver"
 
 #: ../widget/preference.vala:293
 msgid "Font size:"
-msgstr "Taille de la fonte :"
+msgstr "Taille de police :"
 
 #: ../widget/preference.vala:292
 msgid "Font:"
-msgstr "Fonte :"
+msgstr "Police de caractère :"
 
 #: ../widget/preference.vala:399 ../widget/terminal.vala:399
 msgid "Fullscreen"
@@ -418,7 +419,7 @@ msgstr "Ouvrir le gestionnaire de fichiers"
 
 #: ../widget/terminal.vala:351
 msgid "Open link"
-msgstr ""
+msgstr "Ouvrir le lien"
 
 #: ../widget/config_window.vala:335
 msgid "Open terminal with a new theme"
@@ -646,11 +647,11 @@ msgstr "Terminal"
 
 #: ../widget/config_window.vala:358
 msgid "Toggle fullscreen"
-msgstr "Basculer plein écran"
+msgstr "Basculer en plein écran"
 
 #: ../widget/terminal.vala:631
 msgid "Type path to download file"
-msgstr "Saisissez le chemin pour télécharger le fichier"
+msgstr "Taper le chemin pour télécharger le fichier"
 
 #: ../widget/terminal.vala:592
 msgid "Upload"

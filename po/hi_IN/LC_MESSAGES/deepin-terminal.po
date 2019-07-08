@@ -7,6 +7,7 @@
 # Maggie Liu <maggie.liufei@gmail.com>, 2017
 # e2f_in_c3 <e2f_in_c3@outlook.com>, 2017
 # Panwar108 <caspian7pena@gmail.com>, 2018
+# Shubham Prakash <chimpulal@outlook.com>, 2019
 # 
 #, fuzzy
 msgid ""
@@ -15,7 +16,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-04-26 13:06+0800\n"
 "PO-Revision-Date: 2017-02-04 05:38+0000\n"
-"Last-Translator: Panwar108 <caspian7pena@gmail.com>, 2018\n"
+"Last-Translator: Shubham Prakash <chimpulal@outlook.com>, 2019\n"
 "Language-Team: Hindi (India) (https://www.transifex.com/linuxdeepin/teams/3976/hi_IN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -93,7 +94,7 @@ msgstr ""
 
 #: ../widget/preference_slidebar.vala:55 ../widget/preference.vala:249
 msgid "Basic"
-msgstr ""
+msgstr "मौलिक"
 
 #: ../widget/preference.vala:410
 msgid "Blur background"
@@ -270,7 +271,7 @@ msgstr ""
 
 #: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:447
 msgid "Encoding"
-msgstr ""
+msgstr "एन्कोडिंग"
 
 #: ../widget/remote_server_dialog.vala:308
 msgid "Encoding:"
@@ -441,7 +442,7 @@ msgstr ""
 
 #: ../widget/remote_server_dialog.vala:286
 msgid "Path:"
-msgstr ""
+msgstr "रास्ता:"
 
 #: ../widget/shortcut_entry.vala:147
 msgid "Please enter a new shortcut"
@@ -498,7 +499,7 @@ msgstr "आवश्यक"
 
 #: ../widget/preference.vala:416
 msgid "Restore Defaults"
-msgstr ""
+msgstr "डिफॉल्ट्स पुनःस्थापित करें"
 
 #: ../main.vala:155 ../main.vala:164
 msgid "Run a program in the terminal"

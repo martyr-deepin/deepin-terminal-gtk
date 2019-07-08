@@ -411,7 +411,7 @@ msgstr "Отвори у управнику података"
 
 #: ../widget/terminal.vala:351
 msgid "Open link"
-msgstr ""
+msgstr "Отвори везу"
 
 #: ../widget/config_window.vala:335
 msgid "Open terminal with a new theme"
@@ -503,7 +503,7 @@ msgstr "Промени наслов:"
 #: ../widget/remote_server_dialog.vala:232 ../widget/command_dialog.vala:158
 #: ../widget/command_dialog.vala:171
 msgid "Required"
-msgstr "Потребно"
+msgstr "Неопходно"
 
 #: ../widget/preference.vala:416
 msgid "Restore Defaults"

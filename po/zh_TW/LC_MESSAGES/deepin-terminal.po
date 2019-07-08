@@ -168,7 +168,7 @@ msgstr "複製連結"
 
 #: ../widget/preference.vala:375
 msgid "Copy on select"
-msgstr "複製選取區塊"
+msgstr "選取時複製"
 
 #: ../widget/preference.vala:304
 msgid "Copy:"
@@ -411,7 +411,7 @@ msgstr "在檔案管理器中開啟"
 
 #: ../widget/terminal.vala:351
 msgid "Open link"
-msgstr ""
+msgstr "開啟連結"
 
 #: ../widget/config_window.vala:335
 msgid "Open terminal with a new theme"
