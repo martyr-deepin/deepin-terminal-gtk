@@ -423,7 +423,7 @@ msgstr "Im Dateimanager öffnen"
 
 #: ../widget/terminal.vala:351
 msgid "Open link"
-msgstr ""
+msgstr "Link öffnen"
 
 #: ../widget/config_window.vala:335
 msgid "Open terminal with a new theme"

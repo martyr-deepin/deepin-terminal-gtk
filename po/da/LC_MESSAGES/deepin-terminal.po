@@ -6,7 +6,7 @@
 # Translators:
 # Maggie Liu <maggie.liufei@gmail.com>, 2017
 # Morten Juhl-Johansen Zölde-Fejér <morten@writtenandread.net>, 2017
-# Carl Andersen <carl@black-pearl.dk>, 2017
+# 31c8ff7daf246c6bd598eefe84c1433c, 2017
 # scootergrisen, 2019
 # 
 #, fuzzy
@@ -80,11 +80,11 @@ msgstr "Avancerede valgmuligheder"
 
 #: ../widget/remote_server_dialog.vala:426 ../widget/command_dialog.vala:249
 msgid "Are you sure you want to delete %s?"
-msgstr ""
+msgstr "Er du sikker på, at du vil slette %s?"
 
 #: ../widget/confirm_dialog.vala:130
 msgid "Are you sure you want to exit?"
-msgstr ""
+msgstr "Er du sikker på, at du vil afslutte?"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Backspace key"
@@ -205,6 +205,8 @@ msgid ""
 "Deepin Teminal is an advanced terminal emulator with window-splitting, "
 "workspaces, remote management, Quake mode and other features."
 msgstr ""
+"Deepin terminal er en avanceret terminalemulator med vinduesopdeling, "
+"arbejdsområder, fjern-håndtering, Quake-tilstand og andre faciliteter."
 
 #: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:610
 msgid "Deepin Terminal"
@@ -324,7 +326,7 @@ msgstr "Hjælp"
 
 #: ../widget/preference.vala:403
 msgid "Hide Quake window after losing focus"
-msgstr ""
+msgstr "Skjul Quake-vindue efter fokus mistes"
 
 #: ../widget/terminal.vala:383 ../widget/config_window.vala:337
 msgid "Horizontal split"
@@ -408,11 +410,11 @@ msgstr "Åbn i filhåndtering"
 
 #: ../widget/terminal.vala:351
 msgid "Open link"
-msgstr ""
+msgstr "Åbn link"
 
 #: ../widget/config_window.vala:335
 msgid "Open terminal with a new theme"
-msgstr ""
+msgstr "Åbn terminal med et nyt tema"
 
 #: ../widget/preference.vala:306
 msgid "Open:"
@@ -550,7 +552,7 @@ msgstr "Slet alt:"
 
 #: ../widget/terminal.vala:617
 msgid "Select directory to save the file"
-msgstr ""
+msgstr "Vælg mappe hvor filen skal gemmes"
 
 #: ../widget/terminal.vala:588
 msgid "Select file to upload"
@@ -636,11 +638,11 @@ msgstr "Terminal"
 
 #: ../widget/config_window.vala:358
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "Fuldskærm til/fra"
 
 #: ../widget/terminal.vala:631
 msgid "Type path to download file"
-msgstr ""
+msgstr "Skriv stil for at downloade fil"
 
 #: ../widget/terminal.vala:592
 msgid "Upload"

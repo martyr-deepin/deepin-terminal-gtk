@@ -12,6 +12,7 @@
 # mo-hd <mo-hd@windowslive.com>, 2017
 # Abdullah Alnahdy <abdullahalnahdy@gmail.com>, 2017
 # MUHAAB SHAAM <muhaab.org@gmail.com>, 2018
+# أشرف بصرى <ashrafmn2008@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
@@ -20,7 +21,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-04-26 13:06+0800\n"
 "PO-Revision-Date: 2017-02-04 05:38+0000\n"
-"Last-Translator: MUHAAB SHAAM <muhaab.org@gmail.com>, 2018\n"
+"Last-Translator: أشرف بصرى <ashrafmn2008@gmail.com>, 2019\n"
 "Language-Team: Arabic (https://www.transifex.com/linuxdeepin/teams/3976/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -84,11 +85,11 @@ msgstr "خيارات متقدمة"
 
 #: ../widget/remote_server_dialog.vala:426 ../widget/command_dialog.vala:249
 msgid "Are you sure you want to delete %s?"
-msgstr ""
+msgstr "هل أنت متأكد أنك تريد حذف %s ؟"
 
 #: ../widget/confirm_dialog.vala:130
 msgid "Are you sure you want to exit?"
-msgstr ""
+msgstr "هل أنت متأكد أنك تريد الخروج ؟"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Backspace key"
@@ -169,7 +170,7 @@ msgstr "نسخ الرابط"
 
 #: ../widget/preference.vala:375
 msgid "Copy on select"
-msgstr ""
+msgstr "نسخ عند التحديد"
 
 #: ../widget/preference.vala:304
 msgid "Copy:"
@@ -209,6 +210,8 @@ msgid ""
 "Deepin Teminal is an advanced terminal emulator with window-splitting, "
 "workspaces, remote management, Quake mode and other features."
 msgstr ""
+"طرفية ديبين : محاكي طرفية متقدم بمساحات عمل ، متعدد النوافذ ،إدارة عن بعد  ،"
+" وضع عائم وخيارات أخرى ."
 
 #: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:610
 msgid "Deepin Terminal"
@@ -328,7 +331,7 @@ msgstr "مساعدة"
 
 #: ../widget/preference.vala:403
 msgid "Hide Quake window after losing focus"
-msgstr ""
+msgstr "إخفاء النافذة العائمة بعد فقدان التركيز"
 
 #: ../widget/terminal.vala:383 ../widget/config_window.vala:337
 msgid "Horizontal split"
@@ -412,11 +415,11 @@ msgstr "فتح في مدير الملفات"
 
 #: ../widget/terminal.vala:351
 msgid "Open link"
-msgstr ""
+msgstr "فتح رابط"
 
 #: ../widget/config_window.vala:335
 msgid "Open terminal with a new theme"
-msgstr ""
+msgstr "بدأ طرفية بتنسيق جديد"
 
 #: ../widget/preference.vala:306
 msgid "Open:"
@@ -554,7 +557,7 @@ msgstr "تحديد الكل:"
 
 #: ../widget/terminal.vala:617
 msgid "Select directory to save the file"
-msgstr ""
+msgstr "حدد دليل لحفظ الملف"
 
 #: ../widget/terminal.vala:588
 msgid "Select file to upload"
@@ -640,11 +643,11 @@ msgstr "الطرفية"
 
 #: ../widget/config_window.vala:358
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "تبديل ملء الشاشة"
 
 #: ../widget/terminal.vala:631
 msgid "Type path to download file"
-msgstr ""
+msgstr "اكتب المسار لتنزيل الملف"
 
 #: ../widget/terminal.vala:592
 msgid "Upload"
