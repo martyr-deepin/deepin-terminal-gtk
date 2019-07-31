@@ -467,7 +467,7 @@ namespace Widgets {
                     cr.save();
                     clip_rectangle(cr, draw_x, 0, tab_width, height);
 
-                    update_tab_underline(draw_x, tab_width + 1);
+                    update_tab_underline(draw_x + 1, tab_width - 1);
 
                     cr.restore();
 

@@ -418,7 +418,7 @@ namespace Widgets {
             }
 
             draw_titlebar_underline(cr, x, titlebar_y + height - Constant.TITLEBAR_HEIGHT - 1, width, -1);
-            draw_active_tab_underline(cr, x + active_tab_underline_x, titlebar_y + height - Constant.TITLEBAR_HEIGHT - 1);
+            draw_active_tab_underline(cr, x + active_tab_underline_x, titlebar_y + height - Constant.TITLEBAR_HEIGHT);
         }
 
         public void show_window(WorkspaceManager workspace_manager, Tabbar tabbar) {
