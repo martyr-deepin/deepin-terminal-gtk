@@ -38,7 +38,7 @@ namespace Widgets {
                 display_name = "%s@%s".printf(server_infos[0], server_infos[1]);
             }
 
-            base(server_title, server_content, display_name, "server");
+            base(GLib.Markup.escape_text(server_title), server_content, display_name, "server");
 
             click_edit_button.connect((w) => {
                     edit_server(server_content);
