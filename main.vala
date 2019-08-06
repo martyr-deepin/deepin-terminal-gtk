@@ -75,6 +75,7 @@ public class Application : Object {
     private static string? window_mode = null;
     private static string? work_directory = null;
     private static string? load_theme = null;
+    private static string? open_tab = null;
 
     // pass_options just for print help information, we need parse -e or -x commands myself.
     [CCode (array_length = false, array_null_terminated = true)]
@@ -182,6 +183,15 @@ public class Application : Object {
                     description=_("Load theme"),
                     arg_description=null
                 },
+                OptionEntry() {
+                    long_name="tab",
+                    short_name='t',
+                    flags=0,
+                    arg=OptionArg.STRING,
+                    arg_data=&open_tab,
+                    description=_("Open tabs"),
+                    arg_description=null
+                },
                 OptionEntry()
             };
 
@@ -247,6 +257,13 @@ public class Application : Object {
 
             Tabbar tabbar = new Tabbar();
             workspace_manager = new WorkspaceManager(tabbar, work_directory);
+
+            if (open_tab != null) {
+                int new_tab = int.parse(open_tab);
+                for (int tab = 1; tab < new_tab; tab++) {
+                    workspace_manager.new_workspace(work_directory);
+                }
+            }
 
             if (quake_mode) {
                 quake_window = new Widgets.QuakeWindow();
