@@ -72,14 +72,6 @@ ExternalProject_Add(Vte-0.52
   INSTALL_COMMAND ""
   BUILD_IN_SOURCE 1
   )
-
-ExternalProject_Add(zssh-1.5c
-  SOURCE_DIR ${CMAKE_SOURCE_DIR}/3rdparty/zssh-1.5c
-  CONFIGURE_COMMAND ./configure
-  BUILD_COMMAND make
-  INSTALL_COMMAND ""
-  BUILD_IN_SOURCE 1
-  )
 endif()
 
 set(CFLAGS
@@ -224,11 +216,7 @@ FOREACH(lang ${dirlist})
 ENDFOREACH(lang)
 
 INSTALL (TARGETS ${target} DESTINATION bin)
-if (USE_VENDOR_LIB)
-	INSTALL (PROGRAMS ${CMAKE_SOURCE_DIR}/3rdparty/ssh_login.sh ${CMAKE_SOURCE_DIR}/3rdparty/zssh-1.5c/zssh DESTINATION lib/${target})
-else()
-	INSTALL (PROGRAMS ssh_login.sh DESTINATION lib/${target})
-endif()
+INSTALL (PROGRAMS ssh_login.sh DESTINATION lib/${target})
 INSTALL (FILES hicolor/32x32/${target}.png DESTINATION share/icons/hicolor/32x32/apps)
 INSTALL (FILES hicolor/48x48/${target}.png DESTINATION share/icons/hicolor/48x48/apps)
 INSTALL (FILES hicolor/96x96/${target}.png DESTINATION share/icons/hicolor/96x96/apps)
