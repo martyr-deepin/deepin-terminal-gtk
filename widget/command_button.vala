@@ -30,7 +30,7 @@ namespace Widgets {
         public signal void execute_command(string command_value);
 
         public CommandButton(string name, string value, string shortcut) {
-            base(name, shortcut, null, "command");
+            base(GLib.Markup.escape_text(name), shortcut, null, "command");
 
             click_edit_button.connect((w) => {
                     edit_command(name);
