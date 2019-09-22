@@ -88,6 +88,9 @@ namespace Widgets {
                         quit_search();
                     } else if (keyname == "Enter") {
                         update_search_text();
+                    } else if (keyname == "Shift + Enter") {
+                        update_search_text();
+                        terminal.term.search_find_previous();
                     }
 
                     return false;
