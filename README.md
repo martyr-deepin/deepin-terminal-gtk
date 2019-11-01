@@ -48,7 +48,7 @@ Below is keymap list for deepin-terminal:
 | Select lower window             | <kbd>Alt</kbd>  + <kbd>j</kbd>                          |
 | Select left window              | <kbd>Alt</kbd>  + <kbd>h</kbd>                          |
 | Select right window             | <kbd>Alt</kbd>  + <kbd>l</kbd>                          |
-| Close window                    | <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>q</kbd>         |
+| Close window                    | <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>q</kbd> or <kbd>Ctrl</kbd> + <kbd>d</kbd> |
 | Close other windows             | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>q</kbd>       |
 | Create new theme window         | <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>number</kbd>    |
 |                                                                                           |
