@@ -122,7 +122,7 @@ namespace Widgets {
 
                 string[]? server_infos = null;
                 if (server_info != null) {
-                    server_infos = server_info.split("@");
+                    server_infos = server_info.split("|");
                 }
 
                 box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
