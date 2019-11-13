@@ -1487,6 +1487,10 @@ namespace Widgets {
                 }
 
                 string[] server_infos = server_info.split("|");
+                if (server_infos.length == 1) {
+                    // old file format
+                    server_infos = server_info.split("@");
+                }
 
                 string password = "";
                 if (server_info.length > 2) {
