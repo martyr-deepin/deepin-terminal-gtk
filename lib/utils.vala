@@ -122,6 +122,11 @@ namespace Utils {
         return is_tiling;
     }
 
+    public void set_tiling_wm() {
+        tiling_checked = true;
+        is_tiling = true;
+    }
+
     public void touch_dir(string dir) {
         var dir_file = GLib.File.new_for_path(dir);
         if (!dir_file.query_exists()) {
