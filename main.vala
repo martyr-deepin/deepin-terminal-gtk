@@ -117,7 +117,7 @@ public class Application : Object {
         }
 
         try {
-            string window_mode_description = "%s (normal, maximize, fullscreen)".printf(_("Set the terminal window mode"));
+            string window_mode_description = "%s (normal, maximize, fullscreen, tiling)".printf(_("Set the terminal window mode"));
 
             GLib.OptionEntry[] pass_options = {
                 OptionEntry() {
@@ -254,6 +254,11 @@ public class Application : Object {
             Gtk.main_quit();
         } else {
             Utils.load_css_theme(Utils.get_root_path("style.css"));
+
+            if (window_mode == "tiling") {
+                // fix x-windows like VcXsrv
+                Utils.set_tiling_wm();
+            }
 
             Tabbar tabbar = new Tabbar();
             workspace_manager = new WorkspaceManager(tabbar, work_directory);
