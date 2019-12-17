@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Jim Spentzos <jimspentzos2000@gmail.com>, 2017
+# Δημήτρης Σπέντζος <jimspentzos2000@gmail.com>, 2017
 # Francesko Isallari <francesko1989@gmail.com>, 2017
 # Michael Slave <gamato.kal@gmail.com>, 2017
 # Panagiotis Tabakis <tabakisp@gmail.com>, 2017
@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-26 13:06+0800\n"
+"POT-Creation-Date: 2019-12-17 15:18+0800\n"
 "PO-Revision-Date: 2017-02-04 05:38+0000\n"
 "Last-Translator: Mark A <flamemilk@gmail.com>, 2019\n"
 "Language-Team: Greek (https://www.transifex.com/linuxdeepin/teams/3976/el/)\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../widget/terminal.vala:1214
+#: ../widget/terminal.vala:1218
 msgid ""
 "\n"
 "Command has been completed, press ENTER to exit the terminal."
@@ -35,11 +35,11 @@ msgstr ""
 "\n"
 "Η εντολή ολοκληρώθηκε, πατήστε ENTER για να κλείσετε το τερματικό."
 
-#: ../widget/appbar.vala:129
+#: ../widget/appbar.vala:134
 msgid "About"
 msgstr "Σχετικά"
 
-#: ../widget/about_widget.vala:81
+#: ../widget/about_widget.vala:107
 msgid "Acknowledgments"
 msgstr "Ευχαριστίες"
 
@@ -107,8 +107,8 @@ msgstr "Θωλό παρασκήνιο"
 
 #: ../widget/remote_server_dialog.vala:347
 #: ../widget/remote_server_dialog.vala:427 ../widget/confirm_dialog.vala:130
-#: ../widget/terminal.vala:590 ../widget/terminal.vala:618
-#: ../widget/terminal.vala:652 ../widget/file_button.vala:69
+#: ../widget/terminal.vala:593 ../widget/terminal.vala:622
+#: ../widget/terminal.vala:656 ../widget/file_button.vala:69
 #: ../widget/command_dialog.vala:192 ../widget/command_dialog.vala:250
 msgid "Cancel"
 msgstr "Ακύρωση"
@@ -190,8 +190,8 @@ msgstr "Αναβόσβημα δρομέα"
 msgid "Cursor style:"
 msgstr "Στυλ δρομέα:"
 
-#: ../widget/terminal.vala:448 ../widget/config_window.vala:360
-#: ../widget/appbar.vala:122
+#: ../widget/terminal.vala:447 ../widget/config_window.vala:360
+#: ../widget/appbar.vala:127
 msgid "Custom commands"
 msgstr "Προσαρμοσμένες εντολές"
 
@@ -203,7 +203,7 @@ msgstr "Προσαρμοσμένες εντολές:"
 msgid "Cut"
 msgstr "Αποκοπή"
 
-#: ../main.vala:189
+#: ../main.vala:199
 msgid ""
 "Deepin Teminal is an advanced terminal emulator with window-splitting, "
 "workspaces, remote management, Quake mode and other features."
@@ -212,11 +212,11 @@ msgstr ""
 "διαιρεμένα παράθυρα, σταθμούς εργασίας, απομακρυσμένο έλεγχο, λειτουργία "
 "\"Quake\" και άλλες λειτουργίες."
 
-#: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:610
+#: ../main.vala:198 ../widget/about_widget.vala:57 ../widget/tabbar.vala:610
 msgid "Deepin Terminal"
 msgstr "Deepin Tερματικό"
 
-#: ../widget/about_widget.vala:49
+#: ../widget/about_widget.vala:56
 msgid ""
 "Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.\n"
 "\n"
@@ -264,11 +264,11 @@ msgstr "Προβολή συντομεύσεων"
 msgid "Display shortcuts:"
 msgstr "Προβολή συντομεύσεων:"
 
-#: ../main.vala:128
+#: ../main.vala:129
 msgid "Display version"
 msgstr "Προβολή έκδοσης"
 
-#: ../widget/terminal.vala:453
+#: ../widget/terminal.vala:452
 msgid "Download file"
 msgstr "Λήψη αρχείου"
 
@@ -280,7 +280,7 @@ msgstr "Επεξεργασία Εντολής"
 msgid "Edit Server"
 msgstr "Επεξεργασία Διακομιστή"
 
-#: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:447
+#: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:446
 msgid "Encoding"
 msgstr "Κωδικοποίηση"
 
@@ -288,7 +288,7 @@ msgstr "Κωδικοποίηση"
 msgid "Encoding:"
 msgstr "Κωδικοποίηση:"
 
-#: ../widget/confirm_dialog.vala:130 ../widget/appbar.vala:130
+#: ../widget/confirm_dialog.vala:130 ../widget/appbar.vala:135
 msgid "Exit"
 msgstr "Έξοδος"
 
@@ -324,7 +324,7 @@ msgstr "Ομάδα"
 msgid "Group:"
 msgstr "Ομάδα:"
 
-#: ../widget/appbar.vala:127
+#: ../widget/appbar.vala:132
 msgid "Help"
 msgstr "Βοήθεια"
 
@@ -360,7 +360,7 @@ msgstr "Μετάβαση στην προηγούμενη εντολή"
 msgid "Jump to previous command:"
 msgstr "Μετάβαση στην προηγούμενη εντολή:"
 
-#: ../main.vala:182
+#: ../main.vala:183
 msgid "Load theme"
 msgstr "Φόρτωση θέματος"
 
@@ -376,7 +376,7 @@ msgstr "Όνομα"
 msgid "Name:"
 msgstr "Όνομα:"
 
-#: ../widget/appbar.vala:120
+#: ../widget/appbar.vala:125
 msgid "New window"
 msgstr "Νέο παράθυρο"
 
@@ -415,6 +415,10 @@ msgstr "Άνοιγμα στη διαχείριση αρχείων"
 #: ../widget/terminal.vala:351
 msgid "Open link"
 msgstr "Άνοιγμα συνδέσμου"
+
+#: ../main.vala:192
+msgid "Open tabs"
+msgstr ""
 
 #: ../widget/config_window.vala:335
 msgid "Open terminal with a new theme"
@@ -475,12 +479,12 @@ msgstr "Προηγούμενος χώρος εργασίας:"
 msgid "Programs are still running in terminal"
 msgstr "Εξακολουθούν να τρέχουν προγράμματα στο τερματικό"
 
-#: ../main.vala:173
+#: ../main.vala:174
 msgid "Quake mode"
 msgstr "Λειτουργία Quake"
 
-#: ../widget/terminal.vala:449 ../widget/config_window.vala:361
-#: ../widget/appbar.vala:123
+#: ../widget/terminal.vala:448 ../widget/config_window.vala:361
+#: ../widget/appbar.vala:128
 msgid "Remote management"
 msgstr "Απομακρυσμένη διαχείριση"
 
@@ -488,11 +492,11 @@ msgstr "Απομακρυσμένη διαχείριση"
 msgid "Remote management:"
 msgstr "Απομακρυσμένη διαχείριση:"
 
-#: ../widget/terminal.vala:653
+#: ../widget/terminal.vala:657
 msgid "Rename"
 msgstr "Μετονομασία"
 
-#: ../widget/terminal.vala:446 ../widget/terminal.vala:650
+#: ../widget/terminal.vala:445 ../widget/terminal.vala:654
 #: ../widget/config_window.vala:357
 msgid "Rename title"
 msgstr "Μετονομασία τίτλου"
@@ -512,7 +516,7 @@ msgstr "Απαιτείται"
 msgid "Restore Defaults"
 msgstr "Ανάκτηση Προεπιλογών"
 
-#: ../main.vala:155 ../main.vala:164
+#: ../main.vala:156 ../main.vala:165
 msgid "Run a program in the terminal"
 msgstr "Τρέξτε ένα πρόγραμμα στο τερματικό"
 
@@ -542,7 +546,7 @@ msgstr "Αναζήτηση"
 msgid "Search:"
 msgstr "Αναζήτηση:"
 
-#: ../widget/terminal.vala:619 ../widget/file_button.vala:71
+#: ../widget/terminal.vala:623 ../widget/file_button.vala:71
 msgid "Select"
 msgstr "Επιλογή"
 
@@ -554,11 +558,11 @@ msgstr "Επιλογή όλων"
 msgid "Select all:"
 msgstr "Επιλογή όλων:"
 
-#: ../widget/terminal.vala:617
+#: ../widget/terminal.vala:620
 msgid "Select directory to save the file"
 msgstr "Επιλέξτε φάκελο για αποθήκευση του αρχείου"
 
-#: ../widget/terminal.vala:588
+#: ../widget/terminal.vala:591
 msgid "Select file to upload"
 msgstr "Επιλογή αρχείου προς μεταφόρτωση"
 
@@ -610,15 +614,15 @@ msgstr "Όνομα διακομιστή"
 msgid "Server name:"
 msgstr "Όνομα διακομιστή:"
 
-#: ../main.vala:137
+#: ../main.vala:138
 msgid "Set the terminal startup directory"
 msgstr "Ρύθμιση καταλόγου εκκίνησης τερματικού"
 
-#: ../main.vala:119
+#: ../main.vala:120
 msgid "Set the terminal window mode"
 msgstr "Ρύθμιση λειτουργίας παραθύρων τερματικού"
 
-#: ../widget/terminal.vala:457 ../widget/appbar.vala:125
+#: ../widget/terminal.vala:456 ../widget/appbar.vala:130
 msgid "Settings"
 msgstr "Ρυθμίσεις"
 
@@ -631,28 +635,34 @@ msgstr "Συντομεύσεις"
 msgid "Shortcuts:"
 msgstr "Συντομεύσεις:"
 
-#: ../widget/terminal.vala:444 ../widget/appbar.vala:121
+#: ../widget/terminal.vala:444 ../widget/appbar.vala:126
 msgid "Switch theme"
 msgstr "Εναλλαγή θέματος"
 
-#: ../widget/preference_slidebar.vala:68 ../widget/preference.vala:298
-#: ../widget/config_window.vala:318
+#: ../widget/about_widget.vala:57 ../widget/preference_slidebar.vala:68
+#: ../widget/preference.vala:298 ../widget/config_window.vala:318
 msgid "Terminal"
 msgstr "Τερματικό"
+
+#: ../widget/about_widget.vala:55
+msgid ""
+"Terminal is an advanced terminal emulator with workspace, multiple windows, "
+"remote management, quake mode and other features."
+msgstr ""
 
 #: ../widget/config_window.vala:358
 msgid "Toggle fullscreen"
 msgstr "Eναλλαγή σε πλήρη οθόνη"
 
-#: ../widget/terminal.vala:631
+#: ../widget/terminal.vala:635
 msgid "Type path to download file"
 msgstr "Πληκτρολογήστε διαδρομή για το αρχείο λήψης"
 
-#: ../widget/terminal.vala:592
+#: ../widget/terminal.vala:595
 msgid "Upload"
 msgstr "Μεταφόρτωση"
 
-#: ../widget/terminal.vala:452
+#: ../widget/terminal.vala:451
 msgid "Upload file"
 msgstr "Μεταφόρτωση αρχείου"
 
@@ -668,7 +678,7 @@ msgstr "Όνομα χρήστη"
 msgid "Username:"
 msgstr "Όνομα χρήστη:"
 
-#: ../widget/about_widget.vala:105
+#: ../widget/about_widget.vala:131
 msgid "Version:"
 msgstr "Έκδοση:"
 
@@ -680,7 +690,7 @@ msgstr "Κάθετη διαίρεση"
 msgid "Vertical split:"
 msgstr "Κάθετη διαίρεση:"
 
-#: ../widget/terminal.vala:1519
+#: ../widget/terminal.vala:1529
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "
@@ -715,6 +725,6 @@ msgstr "Σμίκρυνση"
 msgid "Zoom out:"
 msgstr "Σμίκρυνση:"
 
-#: ../widget/terminal.vala:792 ../widget/terminal.vala:1240
+#: ../widget/terminal.vala:796 ../widget/terminal.vala:1244
 msgid "deepin"
 msgstr "deepin"

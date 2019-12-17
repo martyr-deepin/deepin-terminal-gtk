@@ -6,22 +6,22 @@
 # Translators:
 # Hadi Kamell <beemeyl@gmail.com>, 2017
 # Hootan Baraary <h.baraary@yahoo.com>, 2017
-# p.ajorlou <p.ajorlou@gmail.com>, 2017
+# pej A, 2017
 # Alik Miankoli <alikmiankoliid@gmail.com>, 2017
 # ali rahimi <saeed.ali.rahimi@gmail.com>, 2017
 # ali amiry <sector00256@gmail.com>, 2018
 # Amir Dadash <dadashamir25@gmail.com>, 2018
-# AmirHosein Lesani <xenups@outlook.com>, 2019
 # Cindy0514, 2019
+# AmirHosein Lesani <xenups@outlook.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-26 13:06+0800\n"
+"POT-Creation-Date: 2019-12-17 15:18+0800\n"
 "PO-Revision-Date: 2017-02-04 05:38+0000\n"
-"Last-Translator: Cindy0514, 2019\n"
+"Last-Translator: AmirHosein Lesani <xenups@outlook.com>, 2019\n"
 "Language-Team: Persian (https://www.transifex.com/linuxdeepin/teams/3976/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,19 +29,21 @@ msgstr ""
 "Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: ../widget/terminal.vala:1214
+#: ../widget/terminal.vala:1218
 msgid ""
 "\n"
 "Command has been completed, press ENTER to exit the terminal."
 msgstr ""
+"\n"
+"فرمان به اتمام رسیده است ، ENTER را فشار دهید تا از ترمینال خارج شوید."
 
-#: ../widget/appbar.vala:129
+#: ../widget/appbar.vala:134
 msgid "About"
 msgstr "درباره"
 
-#: ../widget/about_widget.vala:81
+#: ../widget/about_widget.vala:107
 msgid "Acknowledgments"
-msgstr ""
+msgstr "سپاسگزاریها"
 
 #: ../widget/remote_server_dialog.vala:352 ../widget/command_dialog.vala:197
 msgid "Add"
@@ -49,53 +51,53 @@ msgstr "اضافه کردن"
 
 #: ../widget/command_dialog.vala:126
 msgid "Add Command"
-msgstr ""
+msgstr "اضافه کردن فرمان"
 
 #: ../widget/remote_server_dialog.vala:154
 msgid "Add Server"
-msgstr ""
+msgstr "اضافه کردن سرور"
 
 #: ../widget/command_panel.vala:311
 msgid "Add command"
-msgstr ""
+msgstr "اضافه کردن فرمان"
 
 #: ../widget/remote_panel.vala:468
 msgid "Add server"
-msgstr ""
+msgstr "اضافه کردن سرور"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Address"
-msgstr ""
+msgstr "آدرس"
 
 #: ../widget/remote_server_dialog.vala:190
 msgid "Address:"
-msgstr ""
+msgstr "آدرس:"
 
 #: ../widget/preference_slidebar.vala:74 ../widget/preference_slidebar.vala:81
 #: ../widget/preference.vala:334 ../widget/preference.vala:346
 #: ../widget/config_window.vala:366
 msgid "Advanced"
-msgstr ""
+msgstr "پیشرفته"
 
 #: ../widget/remote_server_dialog.vala:337
 msgid "Advanced options"
-msgstr ""
+msgstr "گزینه های پیشرفته"
 
 #: ../widget/remote_server_dialog.vala:426 ../widget/command_dialog.vala:249
 msgid "Are you sure you want to delete %s?"
-msgstr ""
+msgstr "آیا شما از حذف  %sاطمینان دارید؟"
 
 #: ../widget/confirm_dialog.vala:130
 msgid "Are you sure you want to exit?"
-msgstr ""
+msgstr "آیا مطمئن هستید که میخواهید خارج شوید؟"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Backspace key"
-msgstr ""
+msgstr "کلید backspace"
 
 #: ../widget/remote_server_dialog.vala:321
 msgid "Backspace key:"
-msgstr ""
+msgstr "کلید backspace : "
 
 #: ../widget/preference_slidebar.vala:55 ../widget/preference.vala:249
 msgid "Basic"
@@ -103,31 +105,31 @@ msgstr "پایه ای"
 
 #: ../widget/preference.vala:410
 msgid "Blur background"
-msgstr ""
+msgstr "پس زمینه تار"
 
 #: ../widget/remote_server_dialog.vala:347
 #: ../widget/remote_server_dialog.vala:427 ../widget/confirm_dialog.vala:130
-#: ../widget/terminal.vala:590 ../widget/terminal.vala:618
-#: ../widget/terminal.vala:652 ../widget/file_button.vala:69
+#: ../widget/terminal.vala:593 ../widget/terminal.vala:622
+#: ../widget/terminal.vala:656 ../widget/file_button.vala:69
 #: ../widget/command_dialog.vala:192 ../widget/command_dialog.vala:250
 msgid "Cancel"
 msgstr "انصراف"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Certificate"
-msgstr ""
+msgstr "گواهینامه"
 
 #: ../widget/remote_server_dialog.vala:261
 msgid "Certificate:"
-msgstr ""
+msgstr "گواهینامه:"
 
 #: ../widget/terminal.vala:387 ../widget/config_window.vala:343
 msgid "Close other windows"
-msgstr ""
+msgstr "بستن پنجره های دیگر"
 
 #: ../widget/preference.vala:332
 msgid "Close other windows:"
-msgstr ""
+msgstr "بستن پنجره های دیگر:"
 
 #: ../widget/terminal.vala:385 ../widget/config_window.vala:342
 msgid "Close window"
@@ -135,15 +137,15 @@ msgstr "بستن پنجره"
 
 #: ../widget/preference.vala:331
 msgid "Close window:"
-msgstr ""
+msgstr "بستن پنجره:"
 
 #: ../widget/config_window.vala:331
 msgid "Close workspace"
-msgstr ""
+msgstr "بستن فضای کار"
 
 #: ../widget/preference.vala:322
 msgid "Close workspace:"
-msgstr ""
+msgstr "بستن فضای کار:"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Command"
@@ -151,11 +153,11 @@ msgstr "دستور"
 
 #: ../widget/remote_server_dialog.vala:295 ../widget/command_dialog.vala:172
 msgid "Command:"
-msgstr ""
+msgstr "دستور:"
 
 #: ../widget/command_dialog.vala:83
 msgid "Content"
-msgstr ""
+msgstr "محتوا"
 
 #: ../widget/terminal.vala:347 ../widget/config_window.vala:304
 #: ../widget/entry_menu.vala:39
@@ -164,15 +166,15 @@ msgstr "رونوشت"
 
 #: ../widget/terminal.vala:352
 msgid "Copy link"
-msgstr ""
+msgstr "کپی لینک"
 
 #: ../widget/preference.vala:375
 msgid "Copy on select"
-msgstr ""
+msgstr "کپی انتخاب شده ها"
 
 #: ../widget/preference.vala:304
 msgid "Copy:"
-msgstr ""
+msgstr "کپی"
 
 #: ../widget/preference_slidebar.vala:84 ../widget/preference.vala:349
 msgid "Cursor"
@@ -180,53 +182,58 @@ msgstr "اشاره گر"
 
 #: ../widget/preference.vala:374
 msgid "Cursor autohide"
-msgstr ""
+msgstr "مخفی شدن خودکار اشاره گر"
 
 #: ../widget/preference.vala:373
 msgid "Cursor blink"
-msgstr ""
+msgstr "چشمک زدن اشاره گر"
 
 #: ../widget/preference.vala:200
 msgid "Cursor style:"
-msgstr ""
+msgstr "سبک اشاره گر:"
 
-#: ../widget/terminal.vala:448 ../widget/config_window.vala:360
-#: ../widget/appbar.vala:122
+#: ../widget/terminal.vala:447 ../widget/config_window.vala:360
+#: ../widget/appbar.vala:127
 msgid "Custom commands"
-msgstr ""
+msgstr "دستورات سفارشی"
 
 #: ../widget/preference.vala:343
 msgid "Custom commands:"
-msgstr ""
+msgstr "دستورات سفارشی:"
 
 #: ../widget/entry_menu.vala:38
 msgid "Cut"
 msgstr "برش"
 
-#: ../main.vala:189
+#: ../main.vala:199
 msgid ""
 "Deepin Teminal is an advanced terminal emulator with window-splitting, "
 "workspaces, remote management, Quake mode and other features."
 msgstr ""
+"ترمینال دیپین یک شبیه ساز ترمینال پیشرفته با تقسیم پنجره ، فضای کاری ، "
+"مدیریت از راه دور ، حالت Quake و سایر ویژگی ها است."
 
-#: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:610
+#: ../main.vala:198 ../widget/about_widget.vala:57 ../widget/tabbar.vala:610
 msgid "Deepin Terminal"
-msgstr ""
+msgstr "ترمینال دیپین"
 
-#: ../widget/about_widget.vala:49
+#: ../widget/about_widget.vala:56
 msgid ""
 "Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.\n"
 "\n"
 "It sharpens your focus in the world of command line!"
 msgstr ""
+"ترمینال دیپین یک شبیه ساز ترمینال پیشرفته با تقسیم پنجره ، فضای کاری ، مدیریت از راه دور ، حالت Quake و سایر ویژگی ها است.\n"
+"\n"
+"این کار تمرکز شما را در دنیای خط فرمان افزایش می‌دهد !"
 
 #: ../widget/config_window.vala:310
 msgid "Default size"
-msgstr ""
+msgstr "اندازه پیش فرض"
 
 #: ../widget/preference.vala:310
 msgid "Default size:"
-msgstr ""
+msgstr "اندازه پیش فرض:"
 
 #: ../widget/remote_server_dialog.vala:428 ../widget/command_dialog.vala:251
 #: ../widget/entry_menu.vala:44
@@ -235,54 +242,54 @@ msgstr "حذف"
 
 #: ../widget/command_dialog.vala:238 ../widget/command_dialog.vala:248
 msgid "Delete command"
-msgstr ""
+msgstr "حذف فرمان"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Delete key"
-msgstr ""
+msgstr "کلید حذف"
 
 #: ../widget/remote_server_dialog.vala:334
 msgid "Delete key:"
-msgstr ""
+msgstr "کلید حذف:"
 
 #: ../widget/remote_server_dialog.vala:415
 #: ../widget/remote_server_dialog.vala:425
 msgid "Delete server"
-msgstr ""
+msgstr "حذف سرور"
 
 #: ../widget/config_window.vala:359
 msgid "Display shortcuts"
-msgstr ""
+msgstr "نمایش میانبرها"
 
 #: ../widget/preference.vala:342
 msgid "Display shortcuts:"
-msgstr ""
+msgstr "نمایش میانبرها:"
 
-#: ../main.vala:128
+#: ../main.vala:129
 msgid "Display version"
-msgstr ""
+msgstr "نسخه نمایش"
 
-#: ../widget/terminal.vala:453
+#: ../widget/terminal.vala:452
 msgid "Download file"
-msgstr ""
+msgstr "دانلود فایل"
 
 #: ../widget/command_dialog.vala:124
 msgid "Edit Command"
-msgstr ""
+msgstr "ویرایش فرمان"
 
 #: ../widget/remote_server_dialog.vala:152
 msgid "Edit Server"
-msgstr ""
+msgstr "ویرایش سرور"
 
-#: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:447
+#: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:446
 msgid "Encoding"
 msgstr "کدگذاری"
 
 #: ../widget/remote_server_dialog.vala:308
 msgid "Encoding:"
-msgstr ""
+msgstr "کدگذاری:"
 
-#: ../widget/confirm_dialog.vala:130 ../widget/appbar.vala:130
+#: ../widget/confirm_dialog.vala:130 ../widget/appbar.vala:135
 msgid "Exit"
 msgstr "خروج"
 
@@ -292,15 +299,15 @@ msgstr "خروج از تمام صفحه"
 
 #: ../widget/terminal.vala:403
 msgid "Find"
-msgstr ""
+msgstr "یافتن"
 
 #: ../widget/preference.vala:293
 msgid "Font size:"
-msgstr ""
+msgstr "سایز فونت:"
 
 #: ../widget/preference.vala:292
 msgid "Font:"
-msgstr ""
+msgstr "فونت"
 
 #: ../widget/preference.vala:399 ../widget/terminal.vala:399
 msgid "Fullscreen"
@@ -308,31 +315,31 @@ msgstr "تمام صفحه"
 
 #: ../widget/preference.vala:340
 msgid "Fullscreen:"
-msgstr ""
+msgstr "تمام صفحه:"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Group"
-msgstr ""
+msgstr "گروه"
 
 #: ../widget/remote_server_dialog.vala:277
 msgid "Group:"
-msgstr ""
+msgstr "گروه:"
 
-#: ../widget/appbar.vala:127
+#: ../widget/appbar.vala:132
 msgid "Help"
 msgstr "راهنما"
 
 #: ../widget/preference.vala:403
 msgid "Hide Quake window after losing focus"
-msgstr ""
+msgstr "پنجره Quake را پس از از دست دادن فوکوس مخفی کن"
 
 #: ../widget/terminal.vala:383 ../widget/config_window.vala:337
 msgid "Horizontal split"
-msgstr ""
+msgstr "تقسیم افقی"
 
 #: ../widget/preference.vala:326
 msgid "Horizontal split:"
-msgstr ""
+msgstr "تقسیم افقی:"
 
 #: ../widget/preference_slidebar.vala:58 ../widget/preference.vala:252
 msgid "Interface"
@@ -340,23 +347,23 @@ msgstr "رابط"
 
 #: ../widget/config_window.vala:312
 msgid "Jump to next command"
-msgstr ""
+msgstr "پرش به فرمان بعدی"
 
 #: ../widget/preference.vala:311
 msgid "Jump to next command:"
-msgstr ""
+msgstr "پرش به فرمان بعدی:"
 
 #: ../widget/config_window.vala:313
 msgid "Jump to previous command"
-msgstr ""
+msgstr "پرش به فرمان قبلی"
 
 #: ../widget/preference.vala:312
 msgid "Jump to previous command:"
-msgstr ""
+msgstr "پرش به فرمان قبلی:"
 
-#: ../main.vala:182
+#: ../main.vala:183
 msgid "Load theme"
-msgstr ""
+msgstr "بارگذاری تم"
 
 #: ../widget/preference.vala:398
 msgid "Maximize"
@@ -368,35 +375,35 @@ msgstr "نام"
 
 #: ../widget/command_dialog.vala:159
 msgid "Name:"
-msgstr ""
+msgstr "نام:"
 
-#: ../widget/appbar.vala:120
+#: ../widget/appbar.vala:125
 msgid "New window"
-msgstr ""
+msgstr "پنجره جدید"
 
 #: ../widget/terminal.vala:391 ../widget/config_window.vala:330
 msgid "New workspace"
-msgstr ""
+msgstr "فضای کاری جدید"
 
 #: ../widget/preference.vala:321
 msgid "New workspace:"
-msgstr ""
+msgstr "فضای کاری جدید:"
 
 #: ../widget/config_window.vala:332
 msgid "Next workspace"
-msgstr ""
+msgstr "فضای کاری بعدی"
 
 #: ../widget/preference.vala:324
 msgid "Next workspace:"
-msgstr ""
+msgstr "فضای کاری بعدی:"
 
 #: ../widget/preference.vala:397
 msgid "Normal window"
-msgstr ""
+msgstr "پنجره معمولی"
 
 #: ../widget/preference.vala:137
 msgid "Opacity:"
-msgstr ""
+msgstr "تاری:"
 
 #: ../widget/terminal.vala:365 ../widget/config_window.vala:306
 msgid "Open"
@@ -404,25 +411,29 @@ msgstr "باز کردن"
 
 #: ../widget/terminal.vala:373
 msgid "Open in file manager"
-msgstr ""
+msgstr "باز کردن در مدیر فایل"
 
 #: ../widget/terminal.vala:351
 msgid "Open link"
+msgstr "باز کردن لینک"
+
+#: ../main.vala:192
+msgid "Open tabs"
 msgstr ""
 
 #: ../widget/config_window.vala:335
 msgid "Open terminal with a new theme"
-msgstr ""
+msgstr "باز کردن ترمینال با تم جدید"
 
 #: ../widget/preference.vala:306
 msgid "Open:"
-msgstr ""
+msgstr "باز کردن:"
 
 #: ../widget/remote_server_dialog.vala:275
 #: ../widget/remote_server_dialog.vala:285
 #: ../widget/remote_server_dialog.vala:294
 msgid "Optional"
-msgstr ""
+msgstr "اختیاری"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Password"
@@ -430,7 +441,7 @@ msgstr "پسورد"
 
 #: ../widget/remote_server_dialog.vala:247
 msgid "Password:"
-msgstr ""
+msgstr "پسورد:"
 
 #: ../widget/terminal.vala:358 ../widget/config_window.vala:305
 #: ../widget/entry_menu.vala:41
@@ -439,7 +450,7 @@ msgstr "افزودن"
 
 #: ../widget/preference.vala:305
 msgid "Paste:"
-msgstr ""
+msgstr "چسباندن:"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Path"
@@ -451,64 +462,64 @@ msgstr "آدرس:"
 
 #: ../widget/shortcut_entry.vala:147
 msgid "Please enter a new shortcut"
-msgstr ""
+msgstr "لطفا میانبری جدید وارد کنید:"
 
 #: ../widget/remote_server_dialog.vala:199
 msgid "Port:"
-msgstr ""
+msgstr "پورت:"
 
 #: ../widget/config_window.vala:333
 msgid "Previous workspace"
-msgstr ""
+msgstr "فضای کاری قبلی"
 
 #: ../widget/preference.vala:323
 msgid "Previous workspace:"
-msgstr ""
+msgstr "فضای کاری قبلی:"
 
 #: ../widget/confirm_dialog.vala:130
 msgid "Programs are still running in terminal"
-msgstr ""
+msgstr "برنامه ها هنوز در ترمینال در حال اجرا هستند"
 
-#: ../main.vala:173
+#: ../main.vala:174
 msgid "Quake mode"
-msgstr ""
+msgstr "حالت Quake"
 
-#: ../widget/terminal.vala:449 ../widget/config_window.vala:361
-#: ../widget/appbar.vala:123
+#: ../widget/terminal.vala:448 ../widget/config_window.vala:361
+#: ../widget/appbar.vala:128
 msgid "Remote management"
-msgstr ""
+msgstr "مدیریت  راه دور"
 
 #: ../widget/preference.vala:344
 msgid "Remote management:"
-msgstr ""
+msgstr "مدیریت  راه دور:"
 
-#: ../widget/terminal.vala:653
+#: ../widget/terminal.vala:657
 msgid "Rename"
 msgstr "تغییر نام"
 
-#: ../widget/terminal.vala:446 ../widget/terminal.vala:650
+#: ../widget/terminal.vala:445 ../widget/terminal.vala:654
 #: ../widget/config_window.vala:357
 msgid "Rename title"
-msgstr ""
+msgstr "تغییر نام عنوان"
 
 #: ../widget/preference.vala:341
 msgid "Rename title:"
-msgstr ""
+msgstr "تغییر نام عنوان:"
 
 #: ../widget/remote_server_dialog.vala:186
 #: ../widget/remote_server_dialog.vala:196
 #: ../widget/remote_server_dialog.vala:232 ../widget/command_dialog.vala:158
 #: ../widget/command_dialog.vala:171
 msgid "Required"
-msgstr ""
+msgstr "مورد نیاز"
 
 #: ../widget/preference.vala:416
 msgid "Restore Defaults"
 msgstr "بازگرداندن پیش فرض ها"
 
-#: ../main.vala:155 ../main.vala:164
+#: ../main.vala:156 ../main.vala:165
 msgid "Run a program in the terminal"
-msgstr ""
+msgstr "برنامه را در ترمینال اجرا کن"
 
 #: ../widget/remote_server_dialog.vala:350 ../widget/command_dialog.vala:195
 msgid "Save"
@@ -516,15 +527,15 @@ msgstr "ذخیره"
 
 #: ../widget/preference_slidebar.vala:87 ../widget/preference.vala:377
 msgid "Scroll"
-msgstr ""
+msgstr "پیمایش"
 
 #: ../widget/preference.vala:383
 msgid "Scroll on keystroke"
-msgstr ""
+msgstr "پیمایش به keystroke"
 
 #: ../widget/preference.vala:384
 msgid "Scroll on output"
-msgstr ""
+msgstr "پیمایش به خروجی"
 
 #: ../widget/terminal.vala:406 ../widget/search_entry.vala:64
 #: ../widget/search_entry.vala:66 ../widget/config_window.vala:307
@@ -534,9 +545,9 @@ msgstr "جستجو"
 #: ../widget/preference.vala:307 ../widget/remote_panel.vala:357
 #: ../widget/command_panel.vala:201
 msgid "Search:"
-msgstr ""
+msgstr "جستجو:"
 
-#: ../widget/terminal.vala:619 ../widget/file_button.vala:71
+#: ../widget/terminal.vala:623 ../widget/file_button.vala:71
 msgid "Select"
 msgstr "انتخاب"
 
@@ -546,113 +557,119 @@ msgstr "انتخاب همه"
 
 #: ../widget/preference.vala:313
 msgid "Select all:"
-msgstr ""
+msgstr "انتخاب همه:"
 
-#: ../widget/terminal.vala:617
+#: ../widget/terminal.vala:620
 msgid "Select directory to save the file"
-msgstr ""
+msgstr "دایرکتوری را انتخاب کنید تا فایل ذخیره شود"
 
-#: ../widget/terminal.vala:588
+#: ../widget/terminal.vala:591
 msgid "Select file to upload"
-msgstr ""
+msgstr "فایل را برای بارگذاری انتخاب کنید"
 
 #: ../widget/config_window.vala:340
 msgid "Select left window"
-msgstr ""
+msgstr "انتخاب پنجره چپ"
 
 #: ../widget/preference.vala:329
 msgid "Select left window:"
-msgstr ""
+msgstr "انتخاب پنجره چپ:"
 
 #: ../widget/config_window.vala:339
 msgid "Select lower window"
-msgstr ""
+msgstr "انتخاب پنجره پایین"
 
 #: ../widget/preference.vala:328
 msgid "Select lower window:"
-msgstr ""
+msgstr "انتخاب پنجره پایین:"
 
 #: ../widget/config_window.vala:341
 msgid "Select right window"
-msgstr ""
+msgstr "انتخاب پنجره راست"
 
 #: ../widget/preference.vala:330
 msgid "Select right window:"
-msgstr ""
+msgstr "انتخاب پنجره راست:"
 
 #: ../widget/file_button.vala:67
 msgid "Select the private key file"
-msgstr ""
+msgstr "انتخاب فایل کلید خصوصی"
 
 #: ../widget/config_window.vala:338
 msgid "Select upper window"
-msgstr ""
+msgstr "انتخاب پنجره بالایی"
 
 #: ../widget/preference.vala:327
 msgid "Select upper window:"
-msgstr ""
+msgstr "انتخاب پنجره بالایی:"
 
 #: ../widget/config_window.vala:334
 msgid "Select workspace"
-msgstr ""
+msgstr "انتخاب فضای کاری"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Server name"
-msgstr ""
+msgstr "نام سرور"
 
 #: ../widget/remote_server_dialog.vala:187
 msgid "Server name:"
-msgstr ""
+msgstr "نام سرور:"
 
-#: ../main.vala:137
+#: ../main.vala:138
 msgid "Set the terminal startup directory"
-msgstr ""
+msgstr "تنظیم دایرکتوری راه اندازی ترمینال"
 
-#: ../main.vala:119
+#: ../main.vala:120
 msgid "Set the terminal window mode"
-msgstr ""
+msgstr "تنظیم  حالت پنجره ترمینال"
 
-#: ../widget/terminal.vala:457 ../widget/appbar.vala:125
+#: ../widget/terminal.vala:456 ../widget/appbar.vala:130
 msgid "Settings"
 msgstr "تنظیمات"
 
 #: ../widget/preference_slidebar.vala:65 ../widget/preference.vala:295
 #: ../widget/command_dialog.vala:83
 msgid "Shortcuts"
-msgstr "میانبر"
+msgstr "میانبرها"
 
 #: ../widget/command_dialog.vala:180
 msgid "Shortcuts:"
-msgstr ""
+msgstr "میانبرها:"
 
-#: ../widget/terminal.vala:444 ../widget/appbar.vala:121
+#: ../widget/terminal.vala:444 ../widget/appbar.vala:126
 msgid "Switch theme"
-msgstr ""
+msgstr "تغییر تم"
 
-#: ../widget/preference_slidebar.vala:68 ../widget/preference.vala:298
-#: ../widget/config_window.vala:318
+#: ../widget/about_widget.vala:57 ../widget/preference_slidebar.vala:68
+#: ../widget/preference.vala:298 ../widget/config_window.vala:318
 msgid "Terminal"
 msgstr "ترمینال"
 
+#: ../widget/about_widget.vala:55
+msgid ""
+"Terminal is an advanced terminal emulator with workspace, multiple windows, "
+"remote management, quake mode and other features."
+msgstr ""
+
 #: ../widget/config_window.vala:358
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "ضامن حالت تمام‌صفحه"
 
-#: ../widget/terminal.vala:631
+#: ../widget/terminal.vala:635
 msgid "Type path to download file"
-msgstr ""
+msgstr "مسیردانلود فایل را تایپ کنید"
 
-#: ../widget/terminal.vala:592
+#: ../widget/terminal.vala:595
 msgid "Upload"
-msgstr ""
+msgstr "آپلود"
 
-#: ../widget/terminal.vala:452
+#: ../widget/terminal.vala:451
 msgid "Upload file"
-msgstr ""
+msgstr "آپلود فایل"
 
 #: ../widget/preference.vala:400
 msgid "Use on starting:"
-msgstr ""
+msgstr "استفاده از شروع:"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Username"
@@ -660,26 +677,28 @@ msgstr "نام کاربری"
 
 #: ../widget/remote_server_dialog.vala:233
 msgid "Username:"
-msgstr ""
+msgstr "نام کاربری:"
 
-#: ../widget/about_widget.vala:105
+#: ../widget/about_widget.vala:131
 msgid "Version:"
 msgstr "نسخه:"
 
 #: ../widget/terminal.vala:384 ../widget/config_window.vala:336
 msgid "Vertical split"
-msgstr ""
+msgstr "تقسیم عمودی"
 
 #: ../widget/preference.vala:325
 msgid "Vertical split:"
-msgstr ""
+msgstr "تقسیم عمودی:"
 
-#: ../widget/terminal.vala:1519
+#: ../widget/terminal.vala:1529
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "
 "files."
 msgstr ""
+"به ترمینال دیپین خوش آمدید ، لطفاً اطمینان حاصل کنید که دستورات rz و sz در "
+"سرور قبل از کلیک راست روی آپلود و دانلود فایل ها نصب شده است."
 
 #: ../widget/preference_slidebar.vala:90 ../widget/preference.vala:386
 msgid "Window"
@@ -692,20 +711,20 @@ msgstr "فضای کار"
 
 #: ../widget/config_window.vala:308
 msgid "Zoom in"
-msgstr ""
+msgstr "بزرگنمایی"
 
 #: ../widget/preference.vala:308
 msgid "Zoom in:"
-msgstr ""
+msgstr "بزرگنمایی:"
 
 #: ../widget/config_window.vala:309
 msgid "Zoom out"
-msgstr ""
+msgstr "کوچک نمایی"
 
 #: ../widget/preference.vala:309
 msgid "Zoom out:"
-msgstr ""
+msgstr "کوچک نمایی:"
 
-#: ../widget/terminal.vala:792 ../widget/terminal.vala:1240
+#: ../widget/terminal.vala:796 ../widget/terminal.vala:1244
 msgid "deepin"
-msgstr ""
+msgstr "دیپین"

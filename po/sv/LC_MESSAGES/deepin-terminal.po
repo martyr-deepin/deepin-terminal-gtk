@@ -7,15 +7,16 @@
 # Jonatan Nyberg, 2017
 # Maggie Liu <maggie.liufei@gmail.com>, 2017
 # Joakim Nylén <me@jnylen.nu>, 2019
+# John Franzen <tndb82@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-26 13:06+0800\n"
+"POT-Creation-Date: 2019-12-17 15:18+0800\n"
 "PO-Revision-Date: 2017-02-04 05:38+0000\n"
-"Last-Translator: Joakim Nylén <me@jnylen.nu>, 2019\n"
+"Last-Translator: John Franzen <tndb82@gmail.com>, 2019\n"
 "Language-Team: Swedish (https://www.transifex.com/linuxdeepin/teams/3976/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,17 +24,19 @@ msgstr ""
 "Language: sv\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../widget/terminal.vala:1214
+#: ../widget/terminal.vala:1218
 msgid ""
 "\n"
 "Command has been completed, press ENTER to exit the terminal."
 msgstr ""
+"\n"
+"Kommandot har slutförts, tryck ENTER för att avsluta terminalen."
 
-#: ../widget/appbar.vala:129
+#: ../widget/appbar.vala:134
 msgid "About"
 msgstr "Om"
 
-#: ../widget/about_widget.vala:81
+#: ../widget/about_widget.vala:107
 msgid "Acknowledgments"
 msgstr "Erkännanden"
 
@@ -81,39 +84,39 @@ msgstr "Är du säker på att du vill ta bort %1?"
 
 #: ../widget/confirm_dialog.vala:130
 msgid "Are you sure you want to exit?"
-msgstr ""
+msgstr "Är du säker du vill avsluta?"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Backspace key"
-msgstr ""
+msgstr "Backspace tangent"
 
 #: ../widget/remote_server_dialog.vala:321
 msgid "Backspace key:"
-msgstr ""
+msgstr "Backspace tangent:"
 
 #: ../widget/preference_slidebar.vala:55 ../widget/preference.vala:249
 msgid "Basic"
-msgstr ""
+msgstr "Grundläggande"
 
 #: ../widget/preference.vala:410
 msgid "Blur background"
-msgstr ""
+msgstr "Suddig bakgrund"
 
 #: ../widget/remote_server_dialog.vala:347
 #: ../widget/remote_server_dialog.vala:427 ../widget/confirm_dialog.vala:130
-#: ../widget/terminal.vala:590 ../widget/terminal.vala:618
-#: ../widget/terminal.vala:652 ../widget/file_button.vala:69
+#: ../widget/terminal.vala:593 ../widget/terminal.vala:622
+#: ../widget/terminal.vala:656 ../widget/file_button.vala:69
 #: ../widget/command_dialog.vala:192 ../widget/command_dialog.vala:250
 msgid "Cancel"
 msgstr "Avbryt"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Certificate"
-msgstr ""
+msgstr "Certifikat"
 
 #: ../widget/remote_server_dialog.vala:261
 msgid "Certificate:"
-msgstr ""
+msgstr "Certifikat:"
 
 #: ../widget/terminal.vala:387 ../widget/config_window.vala:343
 msgid "Close other windows"
@@ -121,7 +124,7 @@ msgstr "Stäng andra fönster"
 
 #: ../widget/preference.vala:332
 msgid "Close other windows:"
-msgstr ""
+msgstr "Stäng andra fönster:"
 
 #: ../widget/terminal.vala:385 ../widget/config_window.vala:342
 msgid "Close window"
@@ -129,7 +132,7 @@ msgstr "Stäng fönster"
 
 #: ../widget/preference.vala:331
 msgid "Close window:"
-msgstr ""
+msgstr "Stäng fönster:"
 
 #: ../widget/config_window.vala:331
 msgid "Close workspace"
@@ -137,7 +140,7 @@ msgstr "Stäng arbetsyta"
 
 #: ../widget/preference.vala:322
 msgid "Close workspace:"
-msgstr ""
+msgstr "Stäng arbetsyta:"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Command"
@@ -145,11 +148,11 @@ msgstr "Kommando"
 
 #: ../widget/remote_server_dialog.vala:295 ../widget/command_dialog.vala:172
 msgid "Command:"
-msgstr ""
+msgstr "Kommando:"
 
 #: ../widget/command_dialog.vala:83
 msgid "Content"
-msgstr ""
+msgstr "Innehåll"
 
 #: ../widget/terminal.vala:347 ../widget/config_window.vala:304
 #: ../widget/entry_menu.vala:39
@@ -158,15 +161,15 @@ msgstr "Kopiera"
 
 #: ../widget/terminal.vala:352
 msgid "Copy link"
-msgstr ""
+msgstr "Kopiera länk"
 
 #: ../widget/preference.vala:375
 msgid "Copy on select"
-msgstr ""
+msgstr "Kopiera på val"
 
 #: ../widget/preference.vala:304
 msgid "Copy:"
-msgstr ""
+msgstr "Kopiera:"
 
 #: ../widget/preference_slidebar.vala:84 ../widget/preference.vala:349
 msgid "Cursor"
@@ -174,53 +177,58 @@ msgstr "Pil"
 
 #: ../widget/preference.vala:374
 msgid "Cursor autohide"
-msgstr ""
+msgstr "Göm pekare automatiskt"
 
 #: ../widget/preference.vala:373
 msgid "Cursor blink"
-msgstr ""
+msgstr "Muspekareblinkning:"
 
 #: ../widget/preference.vala:200
 msgid "Cursor style:"
-msgstr ""
+msgstr "Muspekarestil:"
 
-#: ../widget/terminal.vala:448 ../widget/config_window.vala:360
-#: ../widget/appbar.vala:122
+#: ../widget/terminal.vala:447 ../widget/config_window.vala:360
+#: ../widget/appbar.vala:127
 msgid "Custom commands"
-msgstr ""
+msgstr "Anpassade kommandon"
 
 #: ../widget/preference.vala:343
 msgid "Custom commands:"
-msgstr ""
+msgstr "Anpassade kommandon:"
 
 #: ../widget/entry_menu.vala:38
 msgid "Cut"
 msgstr "Klipp ut"
 
-#: ../main.vala:189
+#: ../main.vala:199
 msgid ""
 "Deepin Teminal is an advanced terminal emulator with window-splitting, "
 "workspaces, remote management, Quake mode and other features."
 msgstr ""
+"Deepin Terminal är en avancerad terminal emulator med fönster-delning, "
+"arbetsytor, fjärranslutning, Quake läge och andra funktioner."
 
-#: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:610
+#: ../main.vala:198 ../widget/about_widget.vala:57 ../widget/tabbar.vala:610
 msgid "Deepin Terminal"
 msgstr "Deepin-terminal"
 
-#: ../widget/about_widget.vala:49
+#: ../widget/about_widget.vala:56
 msgid ""
 "Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.\n"
 "\n"
 "It sharpens your focus in the world of command line!"
 msgstr ""
+"Deepin Terminal är en avancerad terminal emulator med fönster-delning, arbetsytor, fjärranslutning, Quake läge och andra funktioner.\n"
+"\n"
+"Den skärper din fokus i kommandorads världen!"
 
 #: ../widget/config_window.vala:310
 msgid "Default size"
-msgstr ""
+msgstr "Förvald storlek"
 
 #: ../widget/preference.vala:310
 msgid "Default size:"
-msgstr ""
+msgstr "Förvald storlek:"
 
 #: ../widget/remote_server_dialog.vala:428 ../widget/command_dialog.vala:251
 #: ../widget/entry_menu.vala:44
@@ -229,54 +237,54 @@ msgstr "Radera"
 
 #: ../widget/command_dialog.vala:238 ../widget/command_dialog.vala:248
 msgid "Delete command"
-msgstr ""
+msgstr "Radera kommando"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Delete key"
-msgstr ""
+msgstr "Radera nyckel"
 
 #: ../widget/remote_server_dialog.vala:334
 msgid "Delete key:"
-msgstr ""
+msgstr "Radera nyckel:"
 
 #: ../widget/remote_server_dialog.vala:415
 #: ../widget/remote_server_dialog.vala:425
 msgid "Delete server"
-msgstr ""
+msgstr "Radera server"
 
 #: ../widget/config_window.vala:359
 msgid "Display shortcuts"
-msgstr ""
+msgstr "Visa genvägar"
 
 #: ../widget/preference.vala:342
 msgid "Display shortcuts:"
-msgstr ""
+msgstr "Visa genvägar:"
 
-#: ../main.vala:128
+#: ../main.vala:129
 msgid "Display version"
-msgstr ""
+msgstr "Visa version"
 
-#: ../widget/terminal.vala:453
+#: ../widget/terminal.vala:452
 msgid "Download file"
-msgstr ""
+msgstr "Ladda ner fil"
 
 #: ../widget/command_dialog.vala:124
 msgid "Edit Command"
-msgstr ""
+msgstr "Editera Kommando"
 
 #: ../widget/remote_server_dialog.vala:152
 msgid "Edit Server"
-msgstr ""
+msgstr "Editera Server"
 
-#: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:447
+#: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:446
 msgid "Encoding"
-msgstr ""
+msgstr "Kodning"
 
 #: ../widget/remote_server_dialog.vala:308
 msgid "Encoding:"
-msgstr ""
+msgstr "Kodning:"
 
-#: ../widget/confirm_dialog.vala:130 ../widget/appbar.vala:130
+#: ../widget/confirm_dialog.vala:130 ../widget/appbar.vala:135
 msgid "Exit"
 msgstr "Avsluta"
 
@@ -286,15 +294,15 @@ msgstr "Stäng fullskärm"
 
 #: ../widget/terminal.vala:403
 msgid "Find"
-msgstr ""
+msgstr "Hitta"
 
 #: ../widget/preference.vala:293
 msgid "Font size:"
-msgstr ""
+msgstr "Font storlek:"
 
 #: ../widget/preference.vala:292
 msgid "Font:"
-msgstr ""
+msgstr "Font:"
 
 #: ../widget/preference.vala:399 ../widget/terminal.vala:399
 msgid "Fullscreen"
@@ -302,31 +310,31 @@ msgstr "Fullskärm"
 
 #: ../widget/preference.vala:340
 msgid "Fullscreen:"
-msgstr ""
+msgstr "Fullskärm:"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Group"
-msgstr ""
+msgstr "Grupp"
 
 #: ../widget/remote_server_dialog.vala:277
 msgid "Group:"
-msgstr ""
+msgstr "Grupp:"
 
-#: ../widget/appbar.vala:127
+#: ../widget/appbar.vala:132
 msgid "Help"
 msgstr "Hjälp"
 
 #: ../widget/preference.vala:403
 msgid "Hide Quake window after losing focus"
-msgstr ""
+msgstr "Göm Quake fönster efter tappad fokus"
 
 #: ../widget/terminal.vala:383 ../widget/config_window.vala:337
 msgid "Horizontal split"
-msgstr ""
+msgstr "Horisontell delning"
 
 #: ../widget/preference.vala:326
 msgid "Horizontal split:"
-msgstr ""
+msgstr "Horisontell delning:"
 
 #: ../widget/preference_slidebar.vala:58 ../widget/preference.vala:252
 msgid "Interface"
@@ -334,23 +342,23 @@ msgstr "Gränssnitt"
 
 #: ../widget/config_window.vala:312
 msgid "Jump to next command"
-msgstr ""
+msgstr "Gå till nästa kommando"
 
 #: ../widget/preference.vala:311
 msgid "Jump to next command:"
-msgstr ""
+msgstr "Gå till nästa kommando:"
 
 #: ../widget/config_window.vala:313
 msgid "Jump to previous command"
-msgstr ""
+msgstr "Gå till föregående kommando"
 
 #: ../widget/preference.vala:312
 msgid "Jump to previous command:"
-msgstr ""
+msgstr "Gå till föregående kommando:"
 
-#: ../main.vala:182
+#: ../main.vala:183
 msgid "Load theme"
-msgstr ""
+msgstr "Läs in tema"
 
 #: ../widget/preference.vala:398
 msgid "Maximize"
@@ -362,11 +370,11 @@ msgstr "Namn"
 
 #: ../widget/command_dialog.vala:159
 msgid "Name:"
-msgstr ""
+msgstr "Namn:"
 
-#: ../widget/appbar.vala:120
+#: ../widget/appbar.vala:125
 msgid "New window"
-msgstr ""
+msgstr "Nytt fönster"
 
 #: ../widget/terminal.vala:391 ../widget/config_window.vala:330
 msgid "New workspace"
@@ -374,7 +382,7 @@ msgstr "Ny arbetsyta"
 
 #: ../widget/preference.vala:321
 msgid "New workspace:"
-msgstr ""
+msgstr "Ny arbetsyta:"
 
 #: ../widget/config_window.vala:332
 msgid "Next workspace"
@@ -382,15 +390,15 @@ msgstr "Nästa arbetsyta"
 
 #: ../widget/preference.vala:324
 msgid "Next workspace:"
-msgstr ""
+msgstr "Nästa arbetsyta:"
 
 #: ../widget/preference.vala:397
 msgid "Normal window"
-msgstr ""
+msgstr "Normalt fönster"
 
 #: ../widget/preference.vala:137
 msgid "Opacity:"
-msgstr ""
+msgstr "Opacitet:"
 
 #: ../widget/terminal.vala:365 ../widget/config_window.vala:306
 msgid "Open"
@@ -398,25 +406,29 @@ msgstr "Öppna"
 
 #: ../widget/terminal.vala:373
 msgid "Open in file manager"
-msgstr ""
+msgstr "Öppna i filhanteraren"
 
 #: ../widget/terminal.vala:351
 msgid "Open link"
+msgstr "Öppna länk"
+
+#: ../main.vala:192
+msgid "Open tabs"
 msgstr ""
 
 #: ../widget/config_window.vala:335
 msgid "Open terminal with a new theme"
-msgstr ""
+msgstr "Öppna terminal med ett nytt tema"
 
 #: ../widget/preference.vala:306
 msgid "Open:"
-msgstr ""
+msgstr "Öppna:"
 
 #: ../widget/remote_server_dialog.vala:275
 #: ../widget/remote_server_dialog.vala:285
 #: ../widget/remote_server_dialog.vala:294
 msgid "Optional"
-msgstr ""
+msgstr "Valfri"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Password"
@@ -424,7 +436,7 @@ msgstr "Lösenord"
 
 #: ../widget/remote_server_dialog.vala:247
 msgid "Password:"
-msgstr ""
+msgstr "Lösenord:"
 
 #: ../widget/terminal.vala:358 ../widget/config_window.vala:305
 #: ../widget/entry_menu.vala:41
@@ -433,23 +445,23 @@ msgstr "Klistra in"
 
 #: ../widget/preference.vala:305
 msgid "Paste:"
-msgstr ""
+msgstr "Klistra in:"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Path"
-msgstr ""
+msgstr "Sökväg"
 
 #: ../widget/remote_server_dialog.vala:286
 msgid "Path:"
-msgstr ""
+msgstr "Sökväg:"
 
 #: ../widget/shortcut_entry.vala:147
 msgid "Please enter a new shortcut"
-msgstr ""
+msgstr "Var god mata in en ny genväg"
 
 #: ../widget/remote_server_dialog.vala:199
 msgid "Port:"
-msgstr ""
+msgstr "Port:"
 
 #: ../widget/config_window.vala:333
 msgid "Previous workspace"
@@ -457,37 +469,37 @@ msgstr "Föregående arbetsyta"
 
 #: ../widget/preference.vala:323
 msgid "Previous workspace:"
-msgstr ""
+msgstr "Föregående arbetsyta:"
 
 #: ../widget/confirm_dialog.vala:130
 msgid "Programs are still running in terminal"
-msgstr ""
+msgstr "Program körs fortfarande i terminalen"
 
-#: ../main.vala:173
+#: ../main.vala:174
 msgid "Quake mode"
-msgstr ""
+msgstr "Quake läge"
 
-#: ../widget/terminal.vala:449 ../widget/config_window.vala:361
-#: ../widget/appbar.vala:123
+#: ../widget/terminal.vala:448 ../widget/config_window.vala:361
+#: ../widget/appbar.vala:128
 msgid "Remote management"
-msgstr ""
+msgstr "Fjärrhantering"
 
 #: ../widget/preference.vala:344
 msgid "Remote management:"
-msgstr ""
+msgstr "Fjärrhantering:"
 
-#: ../widget/terminal.vala:653
+#: ../widget/terminal.vala:657
 msgid "Rename"
 msgstr "Byt namn"
 
-#: ../widget/terminal.vala:446 ../widget/terminal.vala:650
+#: ../widget/terminal.vala:445 ../widget/terminal.vala:654
 #: ../widget/config_window.vala:357
 msgid "Rename title"
-msgstr ""
+msgstr "Ändra titel"
 
 #: ../widget/preference.vala:341
 msgid "Rename title:"
-msgstr ""
+msgstr "Ändra titel:"
 
 #: ../widget/remote_server_dialog.vala:186
 #: ../widget/remote_server_dialog.vala:196
@@ -498,11 +510,11 @@ msgstr "Krävs"
 
 #: ../widget/preference.vala:416
 msgid "Restore Defaults"
-msgstr ""
+msgstr "Återställ Förval"
 
-#: ../main.vala:155 ../main.vala:164
+#: ../main.vala:156 ../main.vala:165
 msgid "Run a program in the terminal"
-msgstr ""
+msgstr "Kör ett program i terminalen"
 
 #: ../widget/remote_server_dialog.vala:350 ../widget/command_dialog.vala:195
 msgid "Save"
@@ -514,11 +526,11 @@ msgstr "Skrolla"
 
 #: ../widget/preference.vala:383
 msgid "Scroll on keystroke"
-msgstr ""
+msgstr "Skrolla på tangenttryckning"
 
 #: ../widget/preference.vala:384
 msgid "Scroll on output"
-msgstr ""
+msgstr "Skrolla på utmatning"
 
 #: ../widget/terminal.vala:406 ../widget/search_entry.vala:64
 #: ../widget/search_entry.vala:66 ../widget/config_window.vala:307
@@ -528,9 +540,9 @@ msgstr "Sök"
 #: ../widget/preference.vala:307 ../widget/remote_panel.vala:357
 #: ../widget/command_panel.vala:201
 msgid "Search:"
-msgstr ""
+msgstr "Sök:"
 
-#: ../widget/terminal.vala:619 ../widget/file_button.vala:71
+#: ../widget/terminal.vala:623 ../widget/file_button.vala:71
 msgid "Select"
 msgstr "Välj"
 
@@ -540,73 +552,73 @@ msgstr "Välj alla"
 
 #: ../widget/preference.vala:313
 msgid "Select all:"
-msgstr ""
+msgstr "Välj alla:"
 
-#: ../widget/terminal.vala:617
+#: ../widget/terminal.vala:620
 msgid "Select directory to save the file"
-msgstr ""
+msgstr "Välj mapp att spara filen"
 
-#: ../widget/terminal.vala:588
+#: ../widget/terminal.vala:591
 msgid "Select file to upload"
-msgstr ""
+msgstr "Välj fil att ladda upp"
 
 #: ../widget/config_window.vala:340
 msgid "Select left window"
-msgstr ""
+msgstr "Välj vänster fönster"
 
 #: ../widget/preference.vala:329
 msgid "Select left window:"
-msgstr ""
+msgstr "Välj vänster fönster:"
 
 #: ../widget/config_window.vala:339
 msgid "Select lower window"
-msgstr ""
+msgstr "Välj undre fönster"
 
 #: ../widget/preference.vala:328
 msgid "Select lower window:"
-msgstr ""
+msgstr "Välj undre fönster:"
 
 #: ../widget/config_window.vala:341
 msgid "Select right window"
-msgstr ""
+msgstr "Välj höger fönster"
 
 #: ../widget/preference.vala:330
 msgid "Select right window:"
-msgstr ""
+msgstr "Välj höger fönster:"
 
 #: ../widget/file_button.vala:67
 msgid "Select the private key file"
-msgstr ""
+msgstr "Välj en privat nyckelfil"
 
 #: ../widget/config_window.vala:338
 msgid "Select upper window"
-msgstr ""
+msgstr "Välj övre fönster"
 
 #: ../widget/preference.vala:327
 msgid "Select upper window:"
-msgstr ""
+msgstr "Välj övre fönster:"
 
 #: ../widget/config_window.vala:334
 msgid "Select workspace"
-msgstr ""
+msgstr "Välj arbetsyta"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Server name"
-msgstr ""
+msgstr "Servernamn"
 
 #: ../widget/remote_server_dialog.vala:187
 msgid "Server name:"
-msgstr ""
+msgstr "Servernamn:"
 
-#: ../main.vala:137
+#: ../main.vala:138
 msgid "Set the terminal startup directory"
-msgstr ""
+msgstr "Välj terminalens uppstartsmapp"
 
-#: ../main.vala:119
+#: ../main.vala:120
 msgid "Set the terminal window mode"
-msgstr ""
+msgstr "Välj terminalens fönsterläge"
 
-#: ../widget/terminal.vala:457 ../widget/appbar.vala:125
+#: ../widget/terminal.vala:456 ../widget/appbar.vala:130
 msgid "Settings"
 msgstr "Inställningar"
 
@@ -617,36 +629,42 @@ msgstr "Genvägar"
 
 #: ../widget/command_dialog.vala:180
 msgid "Shortcuts:"
-msgstr ""
+msgstr "Genvägar:"
 
-#: ../widget/terminal.vala:444 ../widget/appbar.vala:121
+#: ../widget/terminal.vala:444 ../widget/appbar.vala:126
 msgid "Switch theme"
-msgstr ""
+msgstr "Byta tema"
 
-#: ../widget/preference_slidebar.vala:68 ../widget/preference.vala:298
-#: ../widget/config_window.vala:318
+#: ../widget/about_widget.vala:57 ../widget/preference_slidebar.vala:68
+#: ../widget/preference.vala:298 ../widget/config_window.vala:318
 msgid "Terminal"
 msgstr "Terminal"
 
+#: ../widget/about_widget.vala:55
+msgid ""
+"Terminal is an advanced terminal emulator with workspace, multiple windows, "
+"remote management, quake mode and other features."
+msgstr ""
+
 #: ../widget/config_window.vala:358
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "Växla till fullskärm"
 
-#: ../widget/terminal.vala:631
+#: ../widget/terminal.vala:635
 msgid "Type path to download file"
-msgstr ""
+msgstr "Skriv in sökväg för att ladda ner fil"
 
-#: ../widget/terminal.vala:592
+#: ../widget/terminal.vala:595
 msgid "Upload"
-msgstr ""
+msgstr "Ladda upp"
 
-#: ../widget/terminal.vala:452
+#: ../widget/terminal.vala:451
 msgid "Upload file"
-msgstr ""
+msgstr "Ladda upp fil"
 
 #: ../widget/preference.vala:400
 msgid "Use on starting:"
-msgstr ""
+msgstr "Använd vid uppstart:"
 
 #: ../widget/remote_server_dialog.vala:107
 msgid "Username"
@@ -654,26 +672,29 @@ msgstr "Användarnamn"
 
 #: ../widget/remote_server_dialog.vala:233
 msgid "Username:"
-msgstr ""
+msgstr "Användarnamn:"
 
-#: ../widget/about_widget.vala:105
+#: ../widget/about_widget.vala:131
 msgid "Version:"
 msgstr "Version:"
 
 #: ../widget/terminal.vala:384 ../widget/config_window.vala:336
 msgid "Vertical split"
-msgstr ""
+msgstr "Vertikal delning"
 
 #: ../widget/preference.vala:325
 msgid "Vertical split:"
-msgstr ""
+msgstr "Vertikal delning:"
 
-#: ../widget/terminal.vala:1519
+#: ../widget/terminal.vala:1529
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "
 "files."
 msgstr ""
+"Välkommen till Deepin Terminal, var god kontrollera att rz och sz kommandon "
+"tidigare har installerats på servern innan du högerklickar för att ladda upp"
+" och ladda ner filer."
 
 #: ../widget/preference_slidebar.vala:90 ../widget/preference.vala:386
 msgid "Window"
@@ -690,7 +711,7 @@ msgstr "Zooma in"
 
 #: ../widget/preference.vala:308
 msgid "Zoom in:"
-msgstr ""
+msgstr "Zooma in:"
 
 #: ../widget/config_window.vala:309
 msgid "Zoom out"
@@ -698,8 +719,8 @@ msgstr "Zooma ut"
 
 #: ../widget/preference.vala:309
 msgid "Zoom out:"
-msgstr ""
+msgstr "Zooma ut:"
 
-#: ../widget/terminal.vala:792 ../widget/terminal.vala:1240
+#: ../widget/terminal.vala:796 ../widget/terminal.vala:1244
 msgid "deepin"
-msgstr ""
+msgstr "deepin"

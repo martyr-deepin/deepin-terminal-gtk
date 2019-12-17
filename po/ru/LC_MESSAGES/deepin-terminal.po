@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-26 13:06+0800\n"
+"POT-Creation-Date: 2019-12-17 15:18+0800\n"
 "PO-Revision-Date: 2017-02-04 05:38+0000\n"
 "Last-Translator: Валерий Владимирович, 2019\n"
 "Language-Team: Russian (https://www.transifex.com/linuxdeepin/teams/3976/ru/)\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: ../widget/terminal.vala:1214
+#: ../widget/terminal.vala:1218
 msgid ""
 "\n"
 "Command has been completed, press ENTER to exit the terminal."
@@ -35,11 +35,11 @@ msgstr ""
 "\n"
 "Команда была завершена, нажмите ENTER, чтобы выйти из терминала."
 
-#: ../widget/appbar.vala:129
+#: ../widget/appbar.vala:134
 msgid "About"
 msgstr "О программе "
 
-#: ../widget/about_widget.vala:81
+#: ../widget/about_widget.vala:107
 msgid "Acknowledgments"
 msgstr "Выражение признательности"
 
@@ -107,8 +107,8 @@ msgstr "Размытие фона"
 
 #: ../widget/remote_server_dialog.vala:347
 #: ../widget/remote_server_dialog.vala:427 ../widget/confirm_dialog.vala:130
-#: ../widget/terminal.vala:590 ../widget/terminal.vala:618
-#: ../widget/terminal.vala:652 ../widget/file_button.vala:69
+#: ../widget/terminal.vala:593 ../widget/terminal.vala:622
+#: ../widget/terminal.vala:656 ../widget/file_button.vala:69
 #: ../widget/command_dialog.vala:192 ../widget/command_dialog.vala:250
 msgid "Cancel"
 msgstr "Отмена"
@@ -190,8 +190,8 @@ msgstr "Частота мигания курсора"
 msgid "Cursor style:"
 msgstr "Вид Курсора:"
 
-#: ../widget/terminal.vala:448 ../widget/config_window.vala:360
-#: ../widget/appbar.vala:122
+#: ../widget/terminal.vala:447 ../widget/config_window.vala:360
+#: ../widget/appbar.vala:127
 msgid "Custom commands"
 msgstr "Пользовательские команды"
 
@@ -203,7 +203,7 @@ msgstr "Пользовательские команды:"
 msgid "Cut"
 msgstr "Вырезать"
 
-#: ../main.vala:189
+#: ../main.vala:199
 msgid ""
 "Deepin Teminal is an advanced terminal emulator with window-splitting, "
 "workspaces, remote management, Quake mode and other features."
@@ -212,11 +212,11 @@ msgstr ""
 "многооконным интерфейсом, удаленным управлением, выпадающим режимом и "
 "другими функциями. "
 
-#: ../main.vala:188 ../widget/about_widget.vala:101 ../widget/tabbar.vala:610
+#: ../main.vala:198 ../widget/about_widget.vala:57 ../widget/tabbar.vala:610
 msgid "Deepin Terminal"
 msgstr " Терминал Deepin "
 
-#: ../widget/about_widget.vala:49
+#: ../widget/about_widget.vala:56
 msgid ""
 "Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.\n"
 "\n"
@@ -264,11 +264,11 @@ msgstr "Горячие клавиши"
 msgid "Display shortcuts:"
 msgstr "Отобразить сочетания клавиш:"
 
-#: ../main.vala:128
+#: ../main.vala:129
 msgid "Display version"
 msgstr "Отобразить версию"
 
-#: ../widget/terminal.vala:453
+#: ../widget/terminal.vala:452
 msgid "Download file"
 msgstr "Загрузить файл"
 
@@ -280,7 +280,7 @@ msgstr "Редактировать Команду"
 msgid "Edit Server"
 msgstr "Редактировать Сервер"
 
-#: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:447
+#: ../widget/remote_server_dialog.vala:107 ../widget/terminal.vala:446
 msgid "Encoding"
 msgstr "Кодировка"
 
@@ -288,7 +288,7 @@ msgstr "Кодировка"
 msgid "Encoding:"
 msgstr "Кодировка:"
 
-#: ../widget/confirm_dialog.vala:130 ../widget/appbar.vala:130
+#: ../widget/confirm_dialog.vala:130 ../widget/appbar.vala:135
 msgid "Exit"
 msgstr "Выход"
 
@@ -324,7 +324,7 @@ msgstr "Группа"
 msgid "Group:"
 msgstr "Группа:"
 
-#: ../widget/appbar.vala:127
+#: ../widget/appbar.vala:132
 msgid "Help"
 msgstr "Помощь"
 
@@ -360,7 +360,7 @@ msgstr "Перейти к предыдущей команде"
 msgid "Jump to previous command:"
 msgstr "Перейти к предыдущей команде:"
 
-#: ../main.vala:182
+#: ../main.vala:183
 msgid "Load theme"
 msgstr "Загрузить тему"
 
@@ -376,7 +376,7 @@ msgstr "Имя"
 msgid "Name:"
 msgstr "Имя:"
 
-#: ../widget/appbar.vala:120
+#: ../widget/appbar.vala:125
 msgid "New window"
 msgstr "Новое окно"
 
@@ -415,6 +415,10 @@ msgstr "Открыть в файловом менеджере"
 #: ../widget/terminal.vala:351
 msgid "Open link"
 msgstr "Открыть ссылку"
+
+#: ../main.vala:192
+msgid "Open tabs"
+msgstr ""
 
 #: ../widget/config_window.vala:335
 msgid "Open terminal with a new theme"
@@ -475,12 +479,12 @@ msgstr "Предыдущая вкладка:"
 msgid "Programs are still running in terminal"
 msgstr "Программы по-прежнему работают в терминале"
 
-#: ../main.vala:173
+#: ../main.vala:174
 msgid "Quake mode"
 msgstr "Выпадающий режим"
 
-#: ../widget/terminal.vala:449 ../widget/config_window.vala:361
-#: ../widget/appbar.vala:123
+#: ../widget/terminal.vala:448 ../widget/config_window.vala:361
+#: ../widget/appbar.vala:128
 msgid "Remote management"
 msgstr "Удаленное управление"
 
@@ -488,11 +492,11 @@ msgstr "Удаленное управление"
 msgid "Remote management:"
 msgstr "Удаленное управление:"
 
-#: ../widget/terminal.vala:653
+#: ../widget/terminal.vala:657
 msgid "Rename"
 msgstr "Переименовать"
 
-#: ../widget/terminal.vala:446 ../widget/terminal.vala:650
+#: ../widget/terminal.vala:445 ../widget/terminal.vala:654
 #: ../widget/config_window.vala:357
 msgid "Rename title"
 msgstr "Переименовать заголовок"
@@ -512,7 +516,7 @@ msgstr "Требуется"
 msgid "Restore Defaults"
 msgstr "Восстановить Значения по умолчанию"
 
-#: ../main.vala:155 ../main.vala:164
+#: ../main.vala:156 ../main.vala:165
 msgid "Run a program in the terminal"
 msgstr "Запустить в терминале"
 
@@ -542,7 +546,7 @@ msgstr "Поиск"
 msgid "Search:"
 msgstr "Поиск:"
 
-#: ../widget/terminal.vala:619 ../widget/file_button.vala:71
+#: ../widget/terminal.vala:623 ../widget/file_button.vala:71
 msgid "Select"
 msgstr "Выбрать"
 
@@ -554,11 +558,11 @@ msgstr "Выбрать все"
 msgid "Select all:"
 msgstr "Выбрать все:"
 
-#: ../widget/terminal.vala:617
+#: ../widget/terminal.vala:620
 msgid "Select directory to save the file"
 msgstr "Выберите папку для сохранения файла"
 
-#: ../widget/terminal.vala:588
+#: ../widget/terminal.vala:591
 msgid "Select file to upload"
 msgstr "Выберите файл для загрузки"
 
@@ -610,15 +614,15 @@ msgstr "Имя сервера"
 msgid "Server name:"
 msgstr "Имя сервера:"
 
-#: ../main.vala:137
+#: ../main.vala:138
 msgid "Set the terminal startup directory"
 msgstr "Установить каталог запуска терминала"
 
-#: ../main.vala:119
+#: ../main.vala:120
 msgid "Set the terminal window mode"
 msgstr "Установить режим окна для терминала"
 
-#: ../widget/terminal.vala:457 ../widget/appbar.vala:125
+#: ../widget/terminal.vala:456 ../widget/appbar.vala:130
 msgid "Settings"
 msgstr "Настройки"
 
@@ -631,28 +635,34 @@ msgstr "Горячие клавиши"
 msgid "Shortcuts:"
 msgstr "Комбинации клавиш:"
 
-#: ../widget/terminal.vala:444 ../widget/appbar.vala:121
+#: ../widget/terminal.vala:444 ../widget/appbar.vala:126
 msgid "Switch theme"
 msgstr "Переключить тему оформления"
 
-#: ../widget/preference_slidebar.vala:68 ../widget/preference.vala:298
-#: ../widget/config_window.vala:318
+#: ../widget/about_widget.vala:57 ../widget/preference_slidebar.vala:68
+#: ../widget/preference.vala:298 ../widget/config_window.vala:318
 msgid "Terminal"
 msgstr "Терминал"
+
+#: ../widget/about_widget.vala:55
+msgid ""
+"Terminal is an advanced terminal emulator with workspace, multiple windows, "
+"remote management, quake mode and other features."
+msgstr ""
 
 #: ../widget/config_window.vala:358
 msgid "Toggle fullscreen"
 msgstr "Включить полноэкранный режим"
 
-#: ../widget/terminal.vala:631
+#: ../widget/terminal.vala:635
 msgid "Type path to download file"
 msgstr "Введите путь для загрузки файла"
 
-#: ../widget/terminal.vala:592
+#: ../widget/terminal.vala:595
 msgid "Upload"
 msgstr "Загрузить"
 
-#: ../widget/terminal.vala:452
+#: ../widget/terminal.vala:451
 msgid "Upload file"
 msgstr "Загрузить файл"
 
@@ -668,7 +678,7 @@ msgstr "Имя пользователя"
 msgid "Username:"
 msgstr "Имя пользователя:"
 
-#: ../widget/about_widget.vala:105
+#: ../widget/about_widget.vala:131
 msgid "Version:"
 msgstr "Версия:"
 
@@ -680,7 +690,7 @@ msgstr "Разделить по вертикали"
 msgid "Vertical split:"
 msgstr "Разделить по вертикали"
 
-#: ../widget/terminal.vala:1519
+#: ../widget/terminal.vala:1529
 msgid ""
 "Welcome to Deepin Terminal, please make sure that rz and sz commands have "
 "been installed in the server before right clicking to upload and download "
@@ -715,6 +725,6 @@ msgstr "Отдалить"
 msgid "Zoom out:"
 msgstr "Отдалить:"
 
-#: ../widget/terminal.vala:792 ../widget/terminal.vala:1240
+#: ../widget/terminal.vala:796 ../widget/terminal.vala:1244
 msgid "deepin"
 msgstr "deepin"
