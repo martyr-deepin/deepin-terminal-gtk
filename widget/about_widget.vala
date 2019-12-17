@@ -42,14 +42,33 @@ namespace Widgets {
         public int version_size = 9;
         public int version_y = 146;
         public string about_text;
+        public string product_name_text;
 
         public AboutWidget() {
             Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
 
-            about_text = _("Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.\n\nIt sharpens your focus in the world of command line!");
+            KeyFile distribution_info_file = new KeyFile ();
+            bool dif_loaded = distribution_info_file.load_from_file("/usr/share/deepin/distribution.info", KeyFileFlags.NONE);
+            string logo_path = Utils.get_image_path("logo.svg");
+            
+            about_text = dif_loaded ? 
+                _("Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.") :
+                _("Deepin Terminal is an advanced terminal emulator with workspace, multiple windows, remote management, quake mode and other features.\n\nIt sharpens your focus in the world of command line!");
+            product_name_text = dif_loaded ? _("Terminal") : _("Deepin Terminal");
+
+            try {
+                if (dif_loaded) {
+                    logo_path = distribution_info_file.get_string("Distribution", "LogoLight");
+                }
+                if (logo_path == "") {
+                    logo_path = Utils.get_image_path("logo.svg");
+                }
+            } catch (Error e) {
+                print("distribution_info_file process error: %s", e.message);
+            }
 
             icon_surface = Utils.create_image_surface("icon.svg");
-            logo_surface = Utils.create_image_surface("logo.svg");
+            logo_surface = Utils.create_image_surface_from_file(logo_path);
 
             set_size_request(-1, height);
 
@@ -71,6 +90,13 @@ namespace Widgets {
 
                 string homepage_name = is_professional ? "www.deepin.com" : "www.deepin.org";
                 string homepage_link = "https://" + homepage_name;
+
+                if (dif_loaded) {
+                    string dif_homepage_name = distribution_info_file.get_string("Distribution", "WebsiteName");
+                    string dif_homepage_link = distribution_info_file.get_string("Distribution", "Website");
+                    homepage_name = dif_homepage_name == "" ? homepage_name : dif_homepage_name;
+                    homepage_link = dif_homepage_link == "" ? homepage_link : dif_homepage_link;
+                }
 
                 var homepage_area = new Widgets.LinkButton(homepage_name, homepage_link, "homepage");
                 content_box.pack_start(homepage_area, false, false, 0);
@@ -98,7 +124,7 @@ namespace Widgets {
 
             // Draw name.
             cr.set_source_rgba(0, 0, 0, 1);
-            Draw.draw_text(cr, _("Deepin Terminal"), 0, name_y, rect.width, name_height, name_height, Pango.Alignment.CENTER, "top");
+            Draw.draw_text(cr, product_name_text, 0, name_y, rect.width, name_height, name_height, Pango.Alignment.CENTER, "top");
 
             // Draw version.
             cr.set_source_rgba(0.4, 0.4, 0.4, 1);

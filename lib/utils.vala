@@ -472,10 +472,10 @@ namespace Utils {
         }
     }
 
-    public Cairo.ImageSurface create_image_surface(string surface_path) {
+    public Cairo.ImageSurface create_image_surface_from_file(string file_path) {
         try {
             var scale = get_default_monitor_scale();
-            Rsvg.Handle r = new Rsvg.Handle.from_file(Utils.get_image_path(surface_path));
+            Rsvg.Handle r = new Rsvg.Handle.from_file(file_path);
             Rsvg.DimensionData d = r.get_dimensions();
             Cairo.ImageSurface cs = new Cairo.ImageSurface(Cairo.Format.ARGB32, (int)(d.width * scale), (int)(d.height * scale));
             cs.set_device_scale(scale, scale);
@@ -484,11 +484,15 @@ namespace Utils {
 
             return cs;
         } catch (GLib.Error e) {
-            print("create_image_surface: %s %s\n", surface_path, e.message);
+            print("create_image_surface: %s %s\n", file_path, e.message);
 
             Cairo.ImageSurface cs = new Cairo.ImageSurface(Cairo.Format.ARGB32, 1, 1);
             return cs;
         }
+    }
+
+    public Cairo.ImageSurface create_image_surface(string surface_path) {
+        return create_image_surface_from_file(Utils.get_image_path(surface_path));
     }
 
     public int get_active_monitor(Gdk.Screen screen) {
