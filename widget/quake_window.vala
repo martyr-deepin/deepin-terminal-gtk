@@ -24,7 +24,6 @@
 using Gtk;
 using Utils;
 using Widgets;
-using XUtils;
 
 namespace Widgets {
     public class QuakeWindow : Widgets.ConfigWindow {
@@ -166,10 +165,7 @@ namespace Widgets {
                                     e.device.get_position(null, out pointer_x, out pointer_y);
 
                                     if (pointer_x != press_x || pointer_y != press_y) {
-                                        pointer_x *= get_scale_factor();
-                                        pointer_y *= get_scale_factor();
-                                        resize_window(this, pointer_x, pointer_y, (int) e.button, Gdk.CursorType.BOTTOM_SIDE);
-
+                                        Utils.resize_window(this, e, cursor_type);
                                         return false;
                                     } else {
                                         return true;
@@ -191,10 +187,7 @@ namespace Widgets {
                                 e.device.get_position(null, out pointer_x, out pointer_y);
 
                                 if (pointer_x != press_x || pointer_y != press_y) {
-                                    pointer_x *= get_scale_factor();
-                                    pointer_y *= get_scale_factor();
-                                    resize_window(this, pointer_x, pointer_y, (int) e.button, Gdk.CursorType.BOTTOM_SIDE);
-
+                                    Utils.resize_window(this, e, cursor_type);
                                     return false;
                                 } else {
                                     return true;

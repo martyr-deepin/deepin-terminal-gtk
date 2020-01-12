@@ -3,8 +3,10 @@
  *
  * Copyright (C) 2011 ~ 2018 Deepin, Inc.
  *               2011 ~ 2018 Wang Yong
+ *               2019 ~ 2020 Gary Wang
  *
  * Author:     Wang Yong <wangyong@deepin.com>
+ *             Gary Wang <wzc782970009@gmail.com>
  * Maintainer: Wang Yong <wangyong@deepin.com>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -191,16 +193,51 @@ namespace Utils {
         return alloc;
     }
 
-    public bool move_window(Gtk.Widget widget, Gdk.EventButton event, Gtk.Window window) {
-        if (is_left_button(event)) {
-            window.begin_move_drag(
-                (int)event.button,
-                (int)event.x_root,
-                (int)event.y_root,
-                event.time);
+    public bool move_window(Gtk.Widget widget, Gdk.EventButton event) {
+        if (is_primary_button(event)) {
+            widget.get_toplevel().get_window().begin_move_drag(
+                (int) event.button, 
+                (int) event.x_root,
+                (int) event.y_root,
+                event.time
+            );
         }
 
         return false;
+    }
+
+    public bool resize_window(Gtk.Widget widget, Gdk.EventButton event, Gdk.CursorType cursor_type) {
+        widget.get_toplevel().get_window().begin_resize_drag(
+            cursor_type_to_window_edge(cursor_type),
+            (int) event.button, 
+            (int) event.x_root, 
+            (int) event.y_root, 
+            event.time
+        );
+
+        return true;
+    }
+
+    public Gdk.WindowEdge? cursor_type_to_window_edge(Gdk.CursorType cursor_type) {
+        if (cursor_type == Gdk.CursorType.TOP_LEFT_CORNER) {
+            return WindowEdge.NORTH_WEST;
+        } else if (cursor_type == Gdk.CursorType.TOP_SIDE) {
+            return WindowEdge.NORTH;
+        } else if (cursor_type == Gdk.CursorType.TOP_RIGHT_CORNER) {
+            return WindowEdge.NORTH_EAST;
+        } else if (cursor_type == Gdk.CursorType.RIGHT_SIDE) {
+            return WindowEdge.EAST;
+        } else if (cursor_type == Gdk.CursorType.BOTTOM_RIGHT_CORNER) {
+            return WindowEdge.SOUTH_EAST;
+        } else if (cursor_type == Gdk.CursorType.BOTTOM_SIDE) {
+            return WindowEdge.SOUTH;
+        } else if (cursor_type == Gdk.CursorType.BOTTOM_LEFT_CORNER) {
+            return WindowEdge.SOUTH_WEST;
+        } else if (cursor_type == Gdk.CursorType.LEFT_SIDE) {
+            return WindowEdge.WEST;
+        }
+
+        return null;
     }
 
     public void toggle_max_window(Gtk.Window window) {
@@ -210,6 +247,10 @@ namespace Utils {
         } else {
             window.maximize();
         }
+    }
+
+    public bool is_primary_button(Gdk.EventButton event) {
+        return event.button == Gdk.BUTTON_PRIMARY;
     }
 
     public bool is_left_button(Gdk.EventButton event) {

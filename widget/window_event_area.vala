@@ -3,8 +3,10 @@
  *
  * Copyright (C) 2011 ~ 2018 Deepin, Inc.
  *               2011 ~ 2018 Wang Yong
+ *               2019 ~ 2020 Gary Wang
  *
  * Author:     Wang Yong <wangyong@deepin.com>
+ *             Gary Wang <wzc782970009@gmail.com>
  * Maintainer: Wang Yong <wangyong@deepin.com>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -23,7 +25,6 @@
 
 using Gtk;
 using Widgets;
-using XUtils;
 
 namespace Widgets {
     public class WindowEventArea : Gtk.EventBox {
@@ -95,23 +96,22 @@ namespace Widgets {
                     e.device.get_position(null, out press_x, out press_y);
 
                     GLib.Timeout.add(10, () => {
-                            // Send 'move_window' event to xserver once find user first do drag.
-                            if (is_press) {
-                                int pointer_x, pointer_y;
-                                e.device.get_position(null, out pointer_x, out pointer_y);
+                        // blumia: should use begin_move_drag instead of send event to X
+                        //         so it should also works under wayland :)
+                        if (is_press) {
+                            int pointer_x, pointer_y;
+                            e.device.get_position(null, out pointer_x, out pointer_y);
 
-                                if (pointer_x != press_x || pointer_y != press_y) {
-                                    pointer_x *= get_scale_factor();
-                                    pointer_y *= get_scale_factor();
-                                    move_window(this, pointer_x, pointer_y, (int) e.button);
-                                    return false;
-                                } else {
-                                    return true;
-                                }
-                            } else {
+                            if (pointer_x != press_x || pointer_y != press_y) {
+                                Utils.move_window(this, e);
                                 return false;
+                            } else {
+                                return true;
                             }
-                        });
+                        } else {
+                            return false;
+                        }
+                    });
 
 
                     var child = get_child_at_pos(drawing_area, (int) e.x, (int) e.y);

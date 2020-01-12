@@ -3,8 +3,10 @@
  *
  * Copyright (C) 2011 ~ 2018 Deepin, Inc.
  *               2011 ~ 2018 Wang Yong
+ *               2019 ~ 2020 Gary Wang
  *
  * Author:     Wang Yong <wangyong@deepin.com>
+ *             Gary Wang <wzc782970009@gmail.com>
  * Maintainer: Wang Yong <wangyong@deepin.com>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -26,7 +28,6 @@ using Config;
 using Gtk;
 using Utils;
 using Wnck;
-using XUtils;
 using Widgets;
 
 namespace Widgets {
@@ -205,9 +206,7 @@ namespace Widgets {
 
                             var cursor_type = get_frame_cursor_type(e.x_root, e.y_root);
                             if (cursor_type != null) {
-                                pointer_x *= get_scale_factor();
-                                pointer_y *= get_scale_factor();
-                                resize_window(this, pointer_x, pointer_y, (int) e.button, cursor_type);
+                                Utils.resize_window(this, e, cursor_type);
                                 return true;
                             }
                         }
@@ -223,9 +222,7 @@ namespace Widgets {
 
                         var cursor_type = get_cursor_type(e.x_root, e.y_root);
                         if (cursor_type != null) {
-                            pointer_x *= get_scale_factor();
-                            pointer_y *= get_scale_factor();
-                            resize_window(this, pointer_x, pointer_y, (int) e.button, cursor_type);
+                            Utils.resize_window(this, e, cursor_type);
                             return true;
                         }
                     }
@@ -320,6 +317,11 @@ namespace Widgets {
         }
 
         public void update_blur_status(bool force_update=false) {
+            Gdk.Display current_display = get_window().get_display();
+            if ((current_display as Gdk.X11.Display) == null) {
+                return;
+            }
+            
             try {
                 int width, height;
                 get_size(out width, out height);
