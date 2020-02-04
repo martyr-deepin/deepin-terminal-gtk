@@ -338,6 +338,7 @@ namespace Config {
             check_boolean("advanced", "bold_is_bright", false);
             check_boolean("advanced", "audible_bell", false);
             check_boolean("advanced", "always_hide_resize_grip", false);
+            check_boolean("advanced", "allow_hyperlink", false);
 
             check_boolean("advanced", "scroll_on_key", true);
             check_boolean("advanced", "scroll_on_output", false);

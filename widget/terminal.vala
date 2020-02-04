@@ -157,7 +157,10 @@ namespace Widgets {
             term.button_press_event.connect((event) => {
                     has_select_all = false;
 
-                    string? uri = term.match_check_event(event, null);
+                    string? uri = term.hyperlink_check_event(event);
+                    if (uri == null) {
+                        uri = term.match_check_event(event, null);
+                    }
 
                     switch (event.button) {
                     case Gdk.BUTTON_PRIMARY:
@@ -185,7 +188,7 @@ namespace Widgets {
                         // Grab focus terminal first.
                         focus_term();
 
-                        uri_at_right_press = term.match_check_event(event, null);
+                        uri_at_right_press = uri;
                         show_menu((int) event.x_root, (int) event.y_root);
 
                         return false;
@@ -1319,6 +1322,7 @@ namespace Widgets {
                 term.set_bold_is_bright(parent_window.config.config_file.get_boolean("advanced", "bold_is_bright"));
                 term.set_audible_bell(parent_window.config.config_file.get_boolean("advanced", "audible_bell"));
                 term.set_mouse_autohide(parent_window.config.config_file.get_boolean("advanced", "cursor_auto_hide"));
+                term.set_allow_hyperlink(parent_window.config.config_file.get_boolean("advanced", "allow_hyperlink"));
 
                 var scroll_lines = parent_window.config.config_file.get_integer("advanced", "scroll_line");
                 term.set_scrollback_lines(scroll_lines);

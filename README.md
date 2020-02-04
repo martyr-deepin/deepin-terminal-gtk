@@ -155,6 +155,9 @@ Controls whether or not the terminal will beep when the child outputs the "bl" s
 #### always_hide_resize_grip
 When you are using deepin-terminal with not composited window manager, there will be a resize grip line at the bottom of the window for resizing the window. To disable the extra resize grip line, set `always_hide_resize_grip` to true.
 
+#### allow_hyperlink
+Enable Hyperlinks (a.k.a. HTML-like anchors) in deepin-terminal, default is `false`. ([learn more](https://gist.github.com/egmontkob/eb114294efbcd5adb1944c9f3cb5feda))
+
 ## Customize themes
 User can place its own theme file to `~/.config/deepin/deepin-terminal/themes` (create if path not exist), the theme file added to this location will available to use from the theme selection panel.
 
