@@ -141,9 +141,11 @@ namespace Widgets {
                     int window_x, window_y;
                     menu_button.get_toplevel().get_window().get_origin(out window_x, out window_y);
 
-                    menu = new Menu.Menu(window_x + menu_x, window_y + menu_y + menu_rect.height, menu_content);
+                    menu = new Menu.Menu();
                     menu.click_item.connect(handle_menu_item_click);
                     menu.destroy.connect(handle_menu_destroy);
+                    menu.set_prefer_deepin_menu(window.config.config_file.get_boolean("advanced", "prefer_deepin_menu"));
+                    menu.popup_at_position(menu_content, window_x + menu_x, window_y + menu_y + menu_rect.height);
                 });
 
             max_toggle_box = new Box(Gtk.Orientation.HORIZONTAL, 0);

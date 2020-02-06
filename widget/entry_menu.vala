@@ -46,11 +46,12 @@ namespace Widgets {
             }
             menu_content.append(new Menu.MenuItem("select_all", _("Select all")));
 
-            menu = new Menu.Menu(x, y, menu_content);
+            menu = new Menu.Menu();
             menu.click_item.connect((item_id) => {
                     handle_menu_item_click(entry, item_id);
                 });
             menu.destroy.connect(handle_menu_destroy);
+            menu.popup_at_position(menu_content, x, y);
         }
 
         public void handle_menu_item_click(Gtk.Entry entry, string item_id) {

@@ -57,33 +57,51 @@ namespace Menu {
         MenuInterface menu_interface;
         static string? menu_object_path;
 
+        private bool prefer_deepin_menu = true;
+        private bool inited = false;
+
         public signal void click_item(string item_id);
         public signal void destroy();
 
-        public Menu(int menu_x, int menu_y, List<MenuItem> menu_content) {
-            try {
-                menu_manager_interface = Bus.get_proxy_sync(BusType.SESSION, "com.deepin.menu", "/com/deepin/menu");
+        public Menu() {}
 
-                if (menu_object_path != null)
-                    unregister();
-                menu_object_path = menu_manager_interface.RegisterMenu();
+        public void set_prefer_deepin_menu(bool _prefer_deepin_menu) {
+            prefer_deepin_menu = _prefer_deepin_menu;
+        }
 
-                menu_interface = Bus.get_proxy_sync(BusType.SESSION, "com.deepin.menu", menu_object_path);
-                menu_interface.ItemInvoked.connect((item_id, checked) => {
+        private void init() {
+            if (inited) return;
+
+            register_deepin_menu_dbus_if_needed();
+
+            inited = true;
+        }
+
+        private void register_deepin_menu_dbus_if_needed() {
+            if (prefer_deepin_menu) {
+                try {
+                    menu_manager_interface = Bus.get_proxy_sync(BusType.SESSION, "com.deepin.menu", "/com/deepin/menu");
+    
+                    if (menu_object_path != null)
+                        unregister();
+                    menu_object_path = menu_manager_interface.RegisterMenu();
+    
+                    menu_interface = Bus.get_proxy_sync(BusType.SESSION, "com.deepin.menu", menu_object_path);
+                    menu_interface.ItemInvoked.connect((item_id, checked) => {
                         click_item(item_id);
                     });
-                menu_interface.MenuUnregistered.connect(() => {
+                    menu_interface.MenuUnregistered.connect(() => {
                         menu_object_path = null;
                         destroy();
                     });
-            } catch (Error e) {
-                stderr.printf ("%s\n", e.message);
+                } catch (Error e) {
+                    prefer_deepin_menu = false;
+                    stderr.printf ("%s\n", e.message);
+                }
             }
-
-            show_menu(menu_x, menu_y, menu_content);
         }
 
-        public void unregister(){
+        private void unregister(){
             try {
                 menu_manager_interface.UnregisterMenu(menu_object_path);
             } catch (Error e) {
@@ -92,7 +110,48 @@ namespace Menu {
             menu_object_path = null;
         }
 
-        public void show_menu(int x, int y, List<MenuItem> menu_content) {
+        public void popup_at_position(List<MenuItem> menu_content, int x, int y) {
+            init();
+
+            if (prefer_deepin_menu) {
+                show_deepin_menu(menu_content, x, y);
+            } else {
+                show_gtk_menu_at_pointer(menu_content);
+            }
+        }
+
+        private Gtk.Menu create_gtk_menu(List<MenuItem> menu_content) {
+            Gtk.Menu result = new Gtk.Menu();
+            
+            foreach (unowned MenuItem menu_item in menu_content) {
+                var item = create_gtk_menu_item(menu_item.menu_item_id, menu_item.menu_item_text);
+                if (menu_item.menu_item_submenu.length() > 0) {
+                    Gtk.Menu submenu = create_gtk_menu(menu_item.menu_item_submenu);
+                    item.set_submenu(submenu);   
+                }
+                result.append(item);
+            }
+
+            return result;
+        }
+
+        private Gtk.MenuItem create_gtk_menu_item(string item_id, string item_text) {
+            Gtk.MenuItem item = (item_text == "") ? new Gtk.SeparatorMenuItem() : new Gtk.MenuItem.with_label(item_text);
+
+            item.activate.connect(() => { 
+                click_item(item_id); 
+            });
+
+            return item;
+        }
+
+        private void show_gtk_menu_at_pointer(List<MenuItem> menu_content) {
+            var gtk_menu = create_gtk_menu(menu_content);
+            gtk_menu.show_all();
+            gtk_menu.popup_at_pointer();
+        }
+
+        private void show_deepin_menu(List<MenuItem> menu_content, int x, int y) {
             // since GTK only supports integral scaling yet DDE supports fractional scaling,
             // the scale on both sides may not be the same, so we need to negtiate here.
             var scale = Utils.get_default_monitor_scale();
@@ -137,7 +196,7 @@ namespace Menu {
             }
         }
 
-        public string get_items_node(List<MenuItem> menu_content) {
+        private string get_items_node(List<MenuItem> menu_content) {
             Json.Builder builder = new Json.Builder();
 
             builder.begin_object();
@@ -145,7 +204,7 @@ namespace Menu {
             builder.set_member_name("items");
             builder.begin_array ();
             foreach (MenuItem item in menu_content) {
-            builder.add_value(get_item_node(item));
+                builder.add_value(get_item_node(item));
             }
             builder.end_array ();
 
@@ -157,16 +216,16 @@ namespace Menu {
             return generator.to_data(null);
         }
 
-        public Json.Node get_item_node(MenuItem item) {
+        private Json.Node get_item_node(MenuItem item) {
             Json.Builder builder = new Json.Builder();
 
             builder.begin_object();
 
             builder.set_member_name("itemId");
-        builder.add_string_value(item.menu_item_id);
+            builder.add_string_value(item.menu_item_id);
 
             builder.set_member_name("itemText");
-        builder.add_string_value(item.menu_item_text);
+            builder.add_string_value(item.menu_item_text);
 
             builder.set_member_name("itemIcon");
             builder.add_string_value("");
@@ -186,28 +245,28 @@ namespace Menu {
             builder.set_member_name("checked");
             builder.add_boolean_value(false);
 
-        builder.set_member_name("itemSubMenu");
-        unowned List<MenuItem> submenu_items = item.menu_item_submenu;
+            builder.set_member_name("itemSubMenu");
+            unowned List<MenuItem> submenu_items = item.menu_item_submenu;
 
-        if (submenu_items.length() == 0) {
-            builder.add_null_value();
-        } else {
-            Json.Builder _builder = new Json.Builder();
+            if (submenu_items.length() == 0) {
+                builder.add_null_value();
+            } else {
+                Json.Builder _builder = new Json.Builder();
 
-            _builder.begin_object ();
+                _builder.begin_object ();
 
-            _builder.set_member_name("items");
+                _builder.set_member_name("items");
 
-            _builder.begin_array ();
-            foreach (MenuItem _item in submenu_items) {
-                _builder.add_value(get_item_node(_item));
+                _builder.begin_array ();
+                foreach (MenuItem _item in submenu_items) {
+                    _builder.add_value(get_item_node(_item));
+                }
+                _builder.end_array ();
+
+                _builder.end_object ();
+
+                builder.add_value(_builder.get_root());
             }
-            _builder.end_array ();
-
-            _builder.end_object ();
-
-            builder.add_value(_builder.get_root());
-        }
 
             builder.end_object ();
 

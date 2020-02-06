@@ -158,6 +158,9 @@ When you are using deepin-terminal with not composited window manager, there wil
 #### allow_hyperlink
 Enable Hyperlinks (a.k.a. HTML-like anchors) in deepin-terminal, default is `false`. ([learn more](https://gist.github.com/egmontkob/eb114294efbcd5adb1944c9f3cb5feda))
 
+#### prefer_deepin_menu
+Once enabled, will use deepin-menu if possible and use GTK native menu as a fallback. Set it to false will make it always show GTK native menu, default is `true`.
+
 ## Customize themes
 User can place its own theme file to `~/.config/deepin/deepin-terminal/themes` (create if path not exist), the theme file added to this location will available to use from the theme selection panel.
 

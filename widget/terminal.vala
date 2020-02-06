@@ -458,9 +458,12 @@ namespace Widgets {
             menu_content.append(new Menu.MenuItem("", ""));
             menu_content.append(new Menu.MenuItem("preference", _("Settings")));
 
-            menu = new Menu.Menu(x, y, menu_content);
+            var window = ((Widgets.Window) get_toplevel());
+            menu = new Menu.Menu();
             menu.click_item.connect(handle_menu_item_click);
             menu.destroy.connect(handle_menu_destroy);
+            menu.set_prefer_deepin_menu(window.config.config_file.get_boolean("advanced", "prefer_deepin_menu"));
+            menu.popup_at_position(menu_content, x, y);
 
         }
 
