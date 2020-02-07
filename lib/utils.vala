@@ -129,6 +129,40 @@ namespace Utils {
         is_tiling = true;
     }
 
+    public string get_menu_css() {
+        string background_color = "#ffffff";
+        string foreground_color = "#000000";
+        bool is_light_theme = true;
+        try {
+            Config.Config config = new Config.Config();
+            background_color = config.config_file.get_string("theme", "background");
+            foreground_color = config.config_file.get_string("theme", "foreground");
+            is_light_theme = config.config_file.get_string("theme", "style") == "light";
+        } catch (GLib.KeyFileError e) {
+            print("Can't read config file: %s\n", e.message);
+        }
+        string text_color = is_light_theme ? "white" : "black";
+        string text_color_on_hover = is_light_theme ? "black" : "white";
+
+        return @"
+            menu {
+                background: $background_color;
+                opacity: 0.95;
+                border: 0;
+            }
+            menu menuitem{
+                color: $text_color_on_hover;
+                background: $background_color;
+                opacity: 0.95;
+            }
+            menu menuitem:hover {
+                background-color: $foreground_color;
+                color: $text_color;
+                transition: color 10ms linear;
+            }
+            ";
+    }
+
     public void touch_dir(string dir) {
         var dir_file = GLib.File.new_for_path(dir);
         if (!dir_file.query_exists()) {

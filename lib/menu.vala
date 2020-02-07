@@ -21,6 +21,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+using Gtk;
+
 namespace Menu {
     [DBus (name = "com.deepin.menu.Manager")]
     interface MenuManagerInterface : Object {
@@ -121,6 +123,14 @@ namespace Menu {
         }
 
         private Gtk.Menu create_gtk_menu(List<MenuItem> menu_content) {
+            Gdk.Screen screen = Gdk.Screen.get_default();
+            CssProvider provider = new Gtk.CssProvider();
+            try {
+                provider.load_from_data(Utils.get_menu_css());
+            } catch (GLib.Error e) {
+                    warning("Something bad happened with CSS load %s", e.message);
+            }
+            Gtk.StyleContext.add_provider_for_screen(screen,provider,Gtk.STYLE_PROVIDER_PRIORITY_USER);
             Gtk.Menu result = new Gtk.Menu();
             
             foreach (unowned MenuItem menu_item in menu_content) {
