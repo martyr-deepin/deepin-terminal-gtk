@@ -501,9 +501,17 @@ namespace Widgets {
                         // Bottom.
                         Draw.draw_rectangle(cr, x + 2, y + height - 2, width - 4, 1);
                         // Left.
-                        Draw.draw_rectangle(cr, x + 1, y + Constant.TITLEBAR_HEIGHT + 2, 1, height - Constant.TITLEBAR_HEIGHT - 4);
+                        if (tabbar_at_the_bottom) {
+                            Draw.draw_rectangle(cr, x + 1, y + 2, 1, height - Constant.TITLEBAR_HEIGHT - 4);
+                        } else {
+                            Draw.draw_rectangle(cr, x + 1, y + Constant.TITLEBAR_HEIGHT + 2, 1, height - Constant.TITLEBAR_HEIGHT - 4);
+                        }
                         // Right..
-                        Draw.draw_rectangle(cr, x + width - 2, y + Constant.TITLEBAR_HEIGHT + 2, 1, height - Constant.TITLEBAR_HEIGHT - 4);
+                        if (tabbar_at_the_bottom) {
+                            Draw.draw_rectangle(cr, x + width - 2, y + 2, 1, height  - Constant.TITLEBAR_HEIGHT- 4);
+                        } else {
+                            Draw.draw_rectangle(cr, x + width - 2, y + Constant.TITLEBAR_HEIGHT + 2, 1, height - Constant.TITLEBAR_HEIGHT - 4);
+                        }
                         cr.restore();
                     } else {
                         // Draw line *innner* of window frame.
@@ -519,96 +527,98 @@ namespace Widgets {
         }
 
         public void draw_window_above(Cairo.Context cr) {
-            if (screen_monitor.is_composited()) {
-                Gtk.Allocation window_frame_rect;
-                window_frame_box.get_allocation(out window_frame_rect);
+            Gtk.Allocation window_frame_rect;
+            window_frame_box.get_allocation(out window_frame_rect);
 
-                int x = window_frame_box.margin_start;
-                int y = window_frame_box.margin_top;
-                int width = window_frame_rect.width;
-                int height = window_frame_rect.height;
-                Gdk.RGBA frame_color = Gdk.RGBA();
+            int x = window_frame_box.margin_start;
+            int y = window_frame_box.margin_top;
+            int width = window_frame_rect.width;
+            int height = window_frame_rect.height;
+            int titlebar_y = y;
+            if (tabbar_at_the_bottom) {
+                titlebar_y += height - Constant.TITLEBAR_HEIGHT;
+            }
+            if (get_scale_factor() > 1) {
+                titlebar_y -= 1;
+            }
+            Gdk.RGBA frame_color = Gdk.RGBA();
 
-                bool is_light_theme = is_light_theme();
+            bool is_light_theme = is_light_theme();
 
-                try {
-                    frame_color = Utils.hex_to_rgba(config.config_file.get_string("theme", "background"));
-                } catch (GLib.KeyFileError e) {
-                    print("Window draw_window_above: %s\n", e.message);
-                }
+            try {
+                frame_color = Utils.hex_to_rgba(config.config_file.get_string("theme", "background"));
+            } catch (GLib.KeyFileError e) {
+                print("Window draw_window_above: %s\n", e.message);
+            }
 
-                try {
-                    if (window_is_fullscreen()) {
-                        int titlebar_y = y;
-                        if (get_scale_factor() > 1) {
-                            titlebar_y -= 1;
+            try {
+                if (window_is_fullscreen()) {
+                    if (draw_tabbar_line) {
+                        if (tabbar_at_the_bottom) {
+                            draw_titlebar_underline(cr, x, titlebar_y, width, -1);
+                            draw_active_tab_underline(cr, x + active_tab_underline_x - window_frame_box.margin_start, titlebar_y - 1);
+                        } else {
+                            draw_titlebar_underline(cr, x, titlebar_y + Constant.TITLEBAR_HEIGHT, width, 1);
+                            draw_active_tab_underline(cr, x + active_tab_underline_x - window_frame_box.margin_start, titlebar_y +  Constant.TITLEBAR_HEIGHT - 1);
                         }
-
-                        if (draw_tabbar_line) {
-                            draw_titlebar_underline(cr, x, titlebar_y, width, 1);
-                            if (tabbar_at_the_bottom) 
-                                draw_active_tab_underline(cr, x + active_tab_underline_x - window_frame_box.margin_start, titlebar_y + height - Constant.TITLEBAR_HEIGHT - 1);
-                            else 
-                                draw_active_tab_underline(cr, x + active_tab_underline_x - window_frame_box.margin_start, titlebar_y +  Constant.TITLEBAR_HEIGHT - 1);
-                        }
-                    } else if (window_is_max() || window_is_tiled()) {
-                        int titlebar_y = y;
-                        if (get_scale_factor() > 1) {
-                            titlebar_y -= 1;
-                        }
-
-                        draw_titlebar_underline(cr, x + 1, titlebar_y, width - 2, 1);
-                        if (tabbar_at_the_bottom) 
-                            draw_active_tab_underline(cr, x + active_tab_underline_x - window_frame_box.margin_start, titlebar_y + height - Constant.TITLEBAR_HEIGHT - 1);
-                        else 
-                            draw_active_tab_underline(cr, x + active_tab_underline_x - window_frame_box.margin_start, titlebar_y + Constant.TITLEBAR_HEIGHT - 1);
-                    } else {
-                        // Draw line above at titlebar.
-                        cr.set_source_rgba(frame_color.red, frame_color.green, frame_color.blue, config.config_file.get_double("general", "opacity"));
-                        Draw.draw_rectangle(cr, x + 2, y + 1, width - 4, 1);
-
-                        //  if (is_light_theme) {
-                        //      Utils.set_context_color(cr, top_line_light_color);
-                        //  } else {
-                        //      Utils.set_context_color(cr, top_line_dark_color);
-                        //  }
-                        Draw.draw_rectangle(cr, x + 2, y + 1, width - 4, 1);
-
-                        cr.set_source_rgba(1, 1, 1, 0.0625 * config.config_file.get_double("general", "opacity")); // Draw top line at window.
-                        Draw.draw_rectangle(cr, x + 2, y + 1, width - 4, 1);
-
-                        // Draw line around titlebar side.
-                        cr.set_source_rgba(frame_color.red, frame_color.green, frame_color.blue, config.config_file.get_double("general", "opacity"));
-                        // Left.
-                        Draw.draw_rectangle(cr, x + 1, y + 2, 1, Constant.TITLEBAR_HEIGHT);
-                        // Right.
-                        Draw.draw_rectangle(cr, x + width - 2, y + 2, 1, Constant.TITLEBAR_HEIGHT);
-
-                        //  if (is_light_theme) {
-                        //      Utils.set_context_color(cr, top_line_light_color);
-                        //  } else {
-                        //      Utils.set_context_color(cr, top_line_dark_color);
-                        //  }
-
-                        // Left.
-                        Draw.draw_rectangle(cr, x + 1, y + 2, 1, Constant.TITLEBAR_HEIGHT);
-                        // Right.
-                        Draw.draw_rectangle(cr, x + width - 2, y + 2, 1, Constant.TITLEBAR_HEIGHT);
-
-                        int titlebar_y = y;
-                        if (get_scale_factor() > 1) {
-                            titlebar_y += 1;
-                        }
-
-                        draw_titlebar_underline(cr, x + 1, titlebar_y, width - 2, 1);
-                        if (tabbar_at_the_bottom) 
-                            draw_active_tab_underline(cr, x + active_tab_underline_x - window_frame_box.margin_start, y + height - Constant.TITLEBAR_HEIGHT - 1);
-                        else 
-                            draw_active_tab_underline(cr, x + active_tab_underline_x - window_frame_box.margin_start, y + Constant.TITLEBAR_HEIGHT -1);
                     }
-                } catch (Error e) {
-                    print("Window draw_window_above: %s\n", e.message);
+                } else if (window_is_max() || window_is_tiled()) {
+                    if (tabbar_at_the_bottom) {
+                        draw_titlebar_underline(cr, x + 1, titlebar_y, width - 2, -1);
+                        draw_active_tab_underline(cr, x + active_tab_underline_x - window_frame_box.margin_start, titlebar_y - 1);
+                    } else { 
+                        draw_titlebar_underline(cr, x + 1, titlebar_y + Constant.TITLEBAR_HEIGHT, width - 2, 1);
+                        draw_active_tab_underline(cr, x + active_tab_underline_x - window_frame_box.margin_start, titlebar_y + Constant.TITLEBAR_HEIGHT - 1);
+                    }
+                } else {
+                    int titlebar_near_frame_y = titlebar_y + 1;
+                    int side_margin = 2;
+                    if (tabbar_at_the_bottom) {
+                        titlebar_near_frame_y = titlebar_y + Constant.TITLEBAR_HEIGHT;
+                        side_margin = -2;
+                    }
+                    // Draw line above at titlebar.
+                    cr.set_source_rgba(frame_color.red, frame_color.green, frame_color.blue, config.config_file.get_double("general", "opacity"));
+                    Draw.draw_rectangle(cr, x + 2, y + 1, width - 4, 1);
+
+                    //  if (is_light_theme) {
+                    //      Utils.set_context_color(cr, top_line_light_color);
+                    //  } else {
+                    //      Utils.set_context_color(cr, top_line_dark_color);
+                    //  }
+                    Draw.draw_rectangle(cr, x + 2, y + 1, width - 4, 1);
+
+                    cr.set_source_rgba(1, 1, 1, 0.0625 * config.config_file.get_double("general", "opacity")); // Draw top line at window.
+                    Draw.draw_rectangle(cr, x + 2, y, width - 4, 1);
+
+                    // Draw line around titlebar side.
+                    cr.set_source_rgba(frame_color.red, frame_color.green, frame_color.blue, config.config_file.get_double("general", "opacity"));
+                    // Left.
+                    Draw.draw_rectangle(cr, x + 1, titlebar_y + side_margin, 1, Constant.TITLEBAR_HEIGHT);
+                    // Right.
+                    Draw.draw_rectangle(cr, x + width - 2, titlebar_y + side_margin, 1, Constant.TITLEBAR_HEIGHT);
+
+                    //  if (is_light_theme) {
+                    //      Utils.set_context_color(cr, top_line_light_color);
+                    //  } else {
+                    //      Utils.set_context_color(cr, top_line_dark_color);
+                    //  }
+
+                    // Left.
+                    Draw.draw_rectangle(cr, x + 1, titlebar_y + side_margin, 1, Constant.TITLEBAR_HEIGHT);
+                    // Right.
+                    Draw.draw_rectangle(cr, x + width - 2, titlebar_y + side_margin, 1, Constant.TITLEBAR_HEIGHT);
+
+                    if (tabbar_at_the_bottom)  {
+                        draw_titlebar_underline(cr, x + 1, titlebar_y, width - 2, -1);
+                        draw_active_tab_underline(cr, x + active_tab_underline_x - window_frame_box.margin_start, titlebar_y - 1);
+                    } else {
+                        draw_titlebar_underline(cr, x + 1, titlebar_y + Constant.TITLEBAR_HEIGHT, width - 2, 1);
+                        draw_active_tab_underline(cr, x + active_tab_underline_x - window_frame_box.margin_start, titlebar_y + Constant.TITLEBAR_HEIGHT -1);
+                    }
                 }
+            } catch (Error e) {
+                print("Window draw_window_above: %s\n", e.message);
             }
         }
 

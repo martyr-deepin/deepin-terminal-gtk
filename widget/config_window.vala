@@ -690,7 +690,7 @@ namespace Widgets {
                 Utils.set_context_color(cr, title_line_dark_color);
             }
             // cr.set_source_rgba(1, 0, 0, 1);
-            Draw.draw_rectangle(cr, x, y + Constant.TITLEBAR_HEIGHT + offset, width, 1);
+            Draw.draw_rectangle(cr, x, y + offset, width, 1);
             cr.restore();
         }
 
