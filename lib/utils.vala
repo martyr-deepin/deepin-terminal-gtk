@@ -607,7 +607,13 @@ namespace Utils {
         return command;
     }
 
+#if VTE_0_60
+    public uint8[] to_raw_data(string str) {
+        return str.data;
+    }
+#else
     public char[] to_raw_data(string str) {
         return str.to_utf8();
     }
+#endif
 }
