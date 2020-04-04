@@ -299,7 +299,7 @@ namespace Widgets {
         public void execute_command(string command) {
             Term focus_term = workspace_manager.focus_workspace.get_focus_term(workspace_manager.focus_workspace);
             var command_string = "%s\n".printf(command);
-            focus_term.term.feed_child(command_string.to_utf8());
+            focus_term.term.feed_child(Utils.to_raw_data(command_string));
 
             workspace.hide_command_panel();
             if (focus_widget != null) {

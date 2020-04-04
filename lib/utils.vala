@@ -606,4 +606,8 @@ namespace Utils {
 
         return command;
     }
+
+    public char[] to_raw_data(string str) {
+        return str.to_utf8();
+    }
 }
