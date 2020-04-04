@@ -30,6 +30,10 @@ option(USE_VENDOR_LIB "Backport support for debian stretch" ON)
 
 if (NOT USE_VENDOR_LIB)
 pkg_check_modules(VTE REQUIRED vte-2.91)
+# There're 3 releases for 0.59.x, only 0.59.0 keeps old behaviour
+if("${VTE_VERSION}" VERSION_GREATER "0.59.0")
+    list(APPEND ARGS_DEFINITIONS "VTE_0_60")
+endif()
 endif()
 
 if (NOT DEFINED VERSION)
