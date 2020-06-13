@@ -48,7 +48,17 @@ namespace Widgets {
             Intl.bindtextdomain(GETTEXT_PACKAGE, "/usr/share/locale");
 
             KeyFile distribution_info_file = new KeyFile ();
-            bool dif_loaded = distribution_info_file.load_from_file("/usr/share/deepin/distribution.info", KeyFileFlags.NONE);
+            bool dif_loaded = false;
+            try {
+                dif_loaded = distribution_info_file.load_from_file("/usr/share/deepin/distribution.info", KeyFileFlags.NONE);
+            } catch (FileError e) {
+                if (!(e is FileError.NOENT)) {
+                    print("distribution_info_file load error (FileError): %s", e.message);
+                }
+            } catch (KeyFileError e) {
+                print("distribution_info_file load error (KeyFileError): %s", e.message);
+            }
+
             string logo_path = Utils.get_image_path("logo.svg");
             
             about_text = dif_loaded ? 
