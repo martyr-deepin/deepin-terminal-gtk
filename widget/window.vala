@@ -407,9 +407,11 @@ namespace Widgets {
                 var workspace = window.get_workspace();
                 if (workspace != null && workspace.get_number() == active_workspace.get_number()) {
                     int pid = window.get_pid();
-                    string command = Utils.get_proc_file_content("/proc/%i/comm".printf(pid)).strip();
-                    if (command == "deepin-terminal") {
-                        return true;
+                    if (pid != 0) {
+                        string command = Utils.get_proc_file_content("/proc/%i/comm".printf(pid)).strip();
+                        if (command == "deepin-terminal") {
+                            return true;
+                        }
                     }
                 }
             }
