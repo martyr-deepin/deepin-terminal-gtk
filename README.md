@@ -1,11 +1,10 @@
 # Deepin Terminal
 
-This is default terminal emulation application for Deepin  (**This repository is no longer maintained by the official Deepin team).  Welcome to the [new terminal](https://github.com/linuxdeepin/deepin-terminal).**
+This is the old default terminal emulation application for Deepin  (**This repository is no longer maintained by the official Deepin team).  Welcome to the [new terminal](https://github.com/linuxdeepin/deepin-terminal).**
 
 ## Disclaimer: 
 
-**This repository is no longer maintained by the official Deepin team; however, it is loved by the community:
-This repository is no longer maintained by the official deepin team; it is still loved by the community, so we at Decide to keep it, and let the community decide where it goes.**
+**This repository is no longer maintained by the official Deepin team; however, it is loved by the community, so we decided to keep it, and let the community decide where it goes.**
 
 ## Dependencies
 
