@@ -337,16 +337,21 @@ namespace Widgets {
 
                     var blur_background = config.config_file.get_boolean("advanced", "blur_background");
                     if (blur_background) {
-                        Cairo.RectangleInt blur_rect;
+                        Cairo.RectangleInt blur_rect, blur_rect_kwin;
                         get_window().get_frame_extents(out blur_rect);
+                        get_window().get_frame_extents(out blur_rect_kwin);
                         blur_rect.x = 0;
                         blur_rect.y = 0;
+                        blur_rect_kwin.x = 0;
+                        blur_rect_kwin.y = 0;
 
                         if (!window_is_fullscreen() && !window_is_max() && screen_monitor.is_composited()) {
                             blur_rect.x = window_frame_box.margin_start;
                             blur_rect.y = window_frame_box.margin_top;
                             blur_rect.width += - window_frame_box.margin_start - window_frame_box.margin_end;
                             blur_rect.height += - window_frame_box.margin_top - window_frame_box.margin_bottom;
+                            blur_rect_kwin.width += - window_frame_box.margin_start - window_frame_box.margin_end;
+                            blur_rect_kwin.height += - window_frame_box.margin_top - window_frame_box.margin_bottom;
                         }
 
                         // blumia: not sure why it could just randomly happens, anyway we did this as a workaround.
@@ -355,13 +360,23 @@ namespace Widgets {
                             blur_rect.width = width - window_frame_box.get_margin_left() - window_frame_box.get_margin_right();
                             blur_rect.height = height - window_frame_box.get_margin_top() - window_frame_box.get_margin_bottom();
                         }
+                        if (blur_rect_kwin.width < 0) {
+                            print("[!!!] blur_rect_kwin calc result error! blur_rect_kwin.width = %d which is negative!\n", blur_rect_kwin.width);
+                            blur_rect_kwin.width = width - window_frame_box.get_margin_left() - window_frame_box.get_margin_right();
+                            blur_rect_kwin.height = height - window_frame_box.get_margin_top() - window_frame_box.get_margin_bottom();
+                        }
 
                         blur_rect.x = (int) (blur_rect.x * Utils.get_default_monitor_scale());
                         blur_rect.y = (int) (blur_rect.y * Utils.get_default_monitor_scale());
                         blur_rect.width = (int) (blur_rect.width * Utils.get_default_monitor_scale());
                         blur_rect.height = (int) (blur_rect.height * Utils.get_default_monitor_scale());
+                        blur_rect_kwin.x = (int) (blur_rect_kwin.x * Utils.get_default_monitor_scale());
+                        blur_rect_kwin.y = (int) (blur_rect_kwin.y * Utils.get_default_monitor_scale());
+                        blur_rect_kwin.width = (int) (blur_rect_kwin.width * Utils.get_default_monitor_scale());
+                        blur_rect_kwin.height = (int) (blur_rect_kwin.height * Utils.get_default_monitor_scale());
 
                         ulong[] data = {(ulong) blur_rect.x, (ulong) blur_rect.y, (ulong) blur_rect.width, (ulong) blur_rect.height, 8, 8};
+                        ulong[] data_kwin = {(ulong) blur_rect_kwin.x, (ulong) blur_rect_kwin.y, (ulong) blur_rect_kwin.width, (ulong) blur_rect_kwin.height, 8, 8};
                         xdisplay.change_property(
                             xid,
                             atom_NET_WM_DEEPIN_BLUR_REGION_ROUNDED,
@@ -377,8 +392,8 @@ namespace Widgets {
                             X.XA_CARDINAL,
                             32,
                             X.PropMode.Replace,
-                            (uchar[])data,
-                            ((ulong[]) data).length - 2
+                            (uchar[])data_kwin,
+                            ((ulong[]) data_kwin).length - 2
                         );
                     } else {
                         xdisplay.delete_property(xid, atom_NET_WM_DEEPIN_BLUR_REGION_ROUNDED);
