@@ -144,12 +144,18 @@ namespace Widgets {
             search_text = entry_text;
 
             try {
+                string pattern = GLib.Regex.escape_string(search_text);
+#if VTE_0_60
+                uint flags = 0x00000400u | 0x00000008u; /* PCRE2_MULTILINE | PCRE2_CASELESS */
+                var regex = new Vte.Regex.for_search(pattern, -1, flags); 
+                terminal.term.search_set_regex(regex, 0);
+#else
                 GLib.RegexCompileFlags flags = GLib.RegexCompileFlags.OPTIMIZE;
                 flags |= GLib.RegexCompileFlags.CASELESS;
-                string pattern = GLib.Regex.escape_string(search_text);
 
                 var regex = new Regex(pattern, flags, 0);
                 terminal.term.search_set_gregex(regex, 0);
+#endif
                 terminal.term.search_set_wrap_around(true);
             } catch (GLib.RegexError e) {
                 stdout.printf("Got error %s", e.message);
