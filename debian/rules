@@ -5,7 +5,7 @@ include /usr/share/dpkg/default.mk
 	dh $@ 
 
 override_dh_auto_configure:
-	cmake -DVERSION=${DEB_VERSION_UPSTREAM} -DCMAKE_INSTALL_PREFIX=/usr -DTEST_BUILD=OFF .
+	cmake -DVERSION=${DEB_VERSION_UPSTREAM} -DUSE_VENDOR_LIB=OFF -DCMAKE_INSTALL_PREFIX=/usr -DTEST_BUILD=OFF .
 
 override_dh_clean:
 	rm -fr CMakeFiles CMakeCache.txt cmake_install.cmake install_manifest.txt Makefile project_path.c || true
