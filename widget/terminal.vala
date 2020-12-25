@@ -1498,7 +1498,11 @@ namespace Widgets {
                     ssh_script_content = ssh_script_content.concat("%s\n".printf(line));
                 }
 
-                string[] server_infos = server_info.split("@");
+                string[] server_infos = server_info.split(":");
+                if (server_infos.length == 1) {
+                    // old file format
+                    server_infos = server_info.split("@");
+                }
 
                 string password = "";
                 if (server_info.length > 2) {

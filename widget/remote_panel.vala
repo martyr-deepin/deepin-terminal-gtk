@@ -288,7 +288,7 @@ namespace Widgets {
                 // Use ',' as array-element-separator instead of ';'.
                 config_file.set_list_separator (',');
 
-                string gname = "%s@%s@%i".printf(user, server_address, port);
+                string gname = "%s:%s:%i".printf(user, server_address, port);
                 config_file.set_string(gname, "Name", name);
                 config_file.set_string(gname, "GroupName", group_name);
                 config_file.set_string(gname, "Command", command);
