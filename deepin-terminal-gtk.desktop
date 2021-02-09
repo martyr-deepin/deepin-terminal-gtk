@@ -1,13 +1,13 @@
 [Desktop Entry]
-Categories=GNOME;GTK;DDE;Utility;System;TerminalEmulator;
+Categories=GNOME;GTK;Utility;System;TerminalEmulator;
 Comment=Use the command line
-Exec=deepin-terminal
+Exec=deepin-terminal-gtk
 GenericName=Terminal
-Icon=deepin-terminal
+Icon=deepin-terminal-gtk
 Keywords=shell;prompt;command;commandline;
 Name=Deepin Terminal
 StartupNotify=true
-TryExec=deepin-terminal
+TryExec=deepin-terminal-gtk
 Type=Application
 X-Deepin-Vendor=deepin
 
@@ -215,4 +215,3 @@ Name[sr]=Спуштајући терминал
 Name[tr]=Quake Uçbirim
 Name[uk]=Термінал Quake
 Name[zh_CN]=雷神终端
-

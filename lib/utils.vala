@@ -382,7 +382,7 @@ namespace Utils {
 #if TEST_BUILD
         return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, (string) project_path(), "image", image_name);
 #else
-        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, (string) project_path(), "share", "deepin-terminal", "image", image_name);
+        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, (string) project_path(), "share", "deepin-terminal-gtk", "image", image_name);
 #endif
     }
 
@@ -390,7 +390,7 @@ namespace Utils {
 #if TEST_BUILD
         var theme_path = GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, (string) project_path(), "theme", theme_name);
 #else
-        var theme_path = GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, (string) project_path(), "share", "deepin-terminal", "theme", theme_name);
+        var theme_path = GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, (string) project_path(), "share", "deepin-terminal-gtk", "theme", theme_name);
 #endif
         var dir_file = GLib.File.new_for_path(theme_path);
         if (!dir_file.query_exists())
@@ -406,35 +406,35 @@ namespace Utils {
 #if TEST_BUILD
         return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, (string) project_path(), "theme");
 #else
-        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, (string) project_path(), "share", "deepin-terminal", "theme");
+        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, (string) project_path(), "share", "deepin-terminal-gtk", "theme");
 #endif
     }
 
     public string get_additional_theme_dir() {
-        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, GLib.Path.get_dirname((string) get_config_dir()), "deepin-terminal", "themes");
+        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, GLib.Path.get_dirname((string) get_config_dir()), "deepin-terminal-gtk", "themes");
     }
 
     public string get_root_path(string file_path) {
 #if TEST_BUILD
         return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, (string) project_path(), file_path);
 #else
-        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, (string) project_path(), "share", "deepin-terminal", file_path);
+        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, (string) project_path(), "share", "deepin-terminal-gtk", file_path);
 #endif
     }
 
     public string get_config_dir() {
-        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, Environment.get_user_config_dir(), "deepin", "deepin-terminal");
+        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, Environment.get_user_config_dir(), "deepin", "deepin-terminal-gtk");
     }
 
     public string get_config_file_path(string config_name) {
-        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, Environment.get_user_config_dir(), "deepin", "deepin-terminal", config_name);
+        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, Environment.get_user_config_dir(), "deepin", "deepin-terminal-gtk", config_name);
     }
 
     public string get_ssh_script_path() {
 #if TEST_BUILD
         return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S,  (string) project_path(), "ssh_login.sh");
 #else
-        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S,  (string) project_path(), "lib", "deepin-terminal", "ssh_login.sh");
+        return GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S,  (string) project_path(), "lib", "deepin-terminal-gtk", "ssh_login.sh");
 #endif
     }
 
@@ -530,15 +530,15 @@ namespace Utils {
     public void show_manual() {
         try {
             DeepinManualInterface deepin_manual_interface = Bus.get_proxy_sync(BusType.SESSION, "com.deepin.Manual.Open", "/com/deepin/Manual/Open");
-            deepin_manual_interface.ShowManual("deepin-terminal");
+            deepin_manual_interface.ShowManual("deepin-terminal-gtk");
         } catch (GLib.Error e) {
             print("show_manual: %s\n", e.message);
         }
     }
 
     public void write_log(string log) {
-        var log_file_dir = GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, Environment.get_user_cache_dir(), "deepin", "deepin-terminal");
-        var log_file = GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, Environment.get_user_cache_dir(), "deepin", "deepin-terminal", "deepin-terminal.log");
+        var log_file_dir = GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, Environment.get_user_cache_dir(), "deepin", "deepin-terminal-gtk");
+        var log_file = GLib.Path.build_path(GLib.Path.DIR_SEPARATOR_S, Environment.get_user_cache_dir(), "deepin", "deepin-terminal-gtk", "deepin-terminal-gtk.log");
         touch_dir(log_file_dir);
         try {
             FileUtils.set_contents(log_file, log);

@@ -1,4 +1,4 @@
-Source: deepin-terminal
+Source: deepin-terminal-gtk
 Section: utils
 Priority: optional
 Maintainer: Deepin Packages Builder <packages@deepin.com>
@@ -11,7 +11,6 @@ Build-Depends:
  libsecret-1-dev,
  libwnck-3-dev,
  gnome-pkg-tools (>= 0.10),
- dh-autoreconf,
  libglib2.0-dev (>= 2.40.0),
  libpango1.0-dev (>= 1.22.0),
  libpcre2-dev (>= 10.21),
@@ -30,9 +29,13 @@ Build-Depends:
 Standards-Version: 4.5.0
 Homepage: https://github.com/linuxdeepin/deepin-terminal-gtk
 
-Package: deepin-terminal
+Package: deepin-terminal-gtk
 Architecture: any
 Provides: x-terminal-emulator
+Conflicts:
+ deepin-terminal
+Replaces:
+ deepin-terminal
 Depends: 
  ${shlibs:Depends},
  ${misc:Depends},

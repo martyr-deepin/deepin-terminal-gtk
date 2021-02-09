@@ -625,7 +625,7 @@ namespace Widgets {
                     var theme_name = config.config_file.get_string("theme_terminal", "theme%i".printf(int.parse(Keymap.get_key_name(key_event.keyval))));
 
                     try {
-                        GLib.AppInfo appinfo = GLib.AppInfo.create_from_commandline("deepin-terminal --load-theme '%s'".printf(theme_name), null, GLib.AppInfoCreateFlags.NONE);
+                        GLib.AppInfo appinfo = GLib.AppInfo.create_from_commandline("deepin-terminal-gtk --load-theme '%s'".printf(theme_name), null, GLib.AppInfoCreateFlags.NONE);
                         appinfo.launch(null, null);
                     } catch (GLib.Error e) {
                         print("Appbar menu item 'new window': %s\n", e.message);

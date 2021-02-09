@@ -22,7 +22,7 @@
  */ 
 
 /*
- * This empty file used to compile deepin-terminal/lib/font.c .
+ * This empty file used to compile deepin-terminal-gtk/lib/font.c .
  * Don't delete this file.
  * 
  */

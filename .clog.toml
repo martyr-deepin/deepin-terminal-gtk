@@ -1,5 +1,5 @@
 [clog]
-repository = "https://github.com/linuxdeepin/deepin-terminal"
+repository = "https://github.com/linuxdeepin/deepin-terminal-gtk"
 from-latest-tag = true
 
 changelog = "CHANGELOG.md"

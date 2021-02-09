@@ -238,7 +238,7 @@ namespace Widgets {
             switch(item_id) {
                 case "new_window":
                     try {
-                        GLib.AppInfo appinfo = GLib.AppInfo.create_from_commandline("deepin-terminal", null, GLib.AppInfoCreateFlags.NONE);
+                        GLib.AppInfo appinfo = GLib.AppInfo.create_from_commandline("deepin-terminal-gtk", null, GLib.AppInfoCreateFlags.NONE);
                         appinfo.launch(null, null);
                     } catch (GLib.Error e) {
                         print("Appbar menu item 'new window': %s\n", e.message);

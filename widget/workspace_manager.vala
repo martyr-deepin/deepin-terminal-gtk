@@ -106,9 +106,9 @@ namespace Widgets {
                     try {
                         GLib.AppInfo appinfo;
                         if (work_directory != null) {
-                            appinfo = GLib.AppInfo.create_from_commandline("deepin-terminal --work-directory=%s".printf(work_directory), null, GLib.AppInfoCreateFlags.NONE);
+                            appinfo = GLib.AppInfo.create_from_commandline("deepin-terminal-gtk --work-directory=%s".printf(work_directory), null, GLib.AppInfoCreateFlags.NONE);
                         } else {
-                            appinfo = GLib.AppInfo.create_from_commandline("deepin-terminal", null, GLib.AppInfoCreateFlags.NONE);
+                            appinfo = GLib.AppInfo.create_from_commandline("deepin-terminal-gtk", null, GLib.AppInfoCreateFlags.NONE);
                         }
                         appinfo.launch(null, null);
                     } catch (GLib.Error e) {

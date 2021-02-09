@@ -114,7 +114,7 @@ namespace Widgets {
                 print("AboutWidget error: %s", e.message);
             }
 
-            var acknowledgments_area = new Widgets.LinkButton(_("Acknowledgments"), "https://www.deepin.org/acknowledgments/deepin-terminal", "acknowledgments");
+            var acknowledgments_area = new Widgets.LinkButton(_("Acknowledgments"), "https://www.deepin.org/acknowledgments/deepin-terminal-gtk", "acknowledgments");
             acknowledgments_area.margin_top = acknowledgments_y;
             content_box.pack_start(acknowledgments_area, false, false, 0);
 

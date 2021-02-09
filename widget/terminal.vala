@@ -768,7 +768,7 @@ namespace Widgets {
 
             if (has_foreground_process) {
                 var command = Utils.get_process_cmdline(foreground_pid);
-                if (command.index_of("expect -f /tmp/deepin-terminal-") == 0 && !login_remote_server) {
+                if (command.index_of("expect -f /tmp/deepin-terminal-gtk-") == 0 && !login_remote_server) {
                     login_remote_server = true;
                 }
             } else if (login_remote_server) {
@@ -1551,7 +1551,7 @@ namespace Widgets {
                 // Create temporary expect script file, and the file will
                 // be delete by itself.
                 FileIOStream iostream;
-                var tmpfile = File.new_tmp("deepin-terminal-XXXXXX", out iostream);
+                var tmpfile = File.new_tmp("deepin-terminal-gtk-XXXXXX", out iostream);
                 OutputStream ostream = iostream.output_stream;
                 DataOutputStream dos = new DataOutputStream(ostream);
                 dos.put_string(ssh_script_content);
