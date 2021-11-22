@@ -1,12 +1,24 @@
 #!/usr/bin/make -f
+export DH_VERBOSE = 1
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+export DEB_CFLAGS_MAINT_APPEND  = -Wall -pedantic
+
+export QT_SELECT := 5
+
+DPKG_EXPORT_BUILDFLAGS = 1
+include /usr/share/dpkg/buildflags.mk
+
 include /usr/share/dpkg/default.mk
 
 %:
-	dh $@ 
+	dh $@
 
 override_dh_auto_configure:
-	cmake -DVERSION=${DEB_VERSION_UPSTREAM} -DUSE_VENDOR_LIB=OFF -DCMAKE_INSTALL_PREFIX=/usr -DTEST_BUILD=OFF .
-
-override_dh_clean:
-	rm -fr CMakeFiles CMakeCache.txt cmake_install.cmake install_manifest.txt Makefile project_path.c || true
-	dh_clean
+	dh_auto_configure -- \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DAPP_VERSION=$(DEB_VERSION_UPSTREAM) \
+	-DVERSION=$(DEB_VERSION_UPSTREAM) \
+	LIB_INSTALL_DIR=/usr/lib/$(DEB_HOST_MULTIARCH)

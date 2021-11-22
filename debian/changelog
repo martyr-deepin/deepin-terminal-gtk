@@ -1,6 +1,5 @@
-deepin-terminal-gtk (5.0.4.3-1) unstable; urgency=medium
+deepin-terminal-gtk (5.0.4.5-1) unstable; urgency=medium
 
-  * Initial version 5.0.4.3.
-  * Remove autobuild changelog.
+  * Initial release (Closes: #1000375).
 
- -- Deepin Packages Builder <packages@deepin.com>  Wed, 23 Dec 2020 23:19:12 +0800
+ -- Clay Stan <claystan97@gmail.com>  Mon, 22 Nov 2021 17:34:45 +0800
